@@ -75,4 +75,9 @@ CCFA-Skills/**/*.pdf
 # Upstream clone metadata, moved aside so the parent repo tracks the skill
 # content instead of an embedded-repository gitlink.
 .upstream_backup/
+# Machine-local skill root: junctions into the tracked CCFA-Skills bundles, so
+# the project root (rank 100) exposes the 17 ccf-* skills without a second copy.
+# A fresh clone recreates this layer with:
+#   powershell -NoProfile -ExecutionPolicy Bypass -File scripts\link_ccf_skills.ps1
+.dsh/skills/
 
