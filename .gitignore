@@ -69,3 +69,10 @@ outputs/gates/E1_R2_SEALED/
 outputs/gates/E1_R2_RESULTS_EVIDENCE_FIX/
 outputs/gates/E1_R2_FINAL_PACKAGE/
 
+# --- CCFA-Skills (vendored skill family, upstream mikubaka88/CCFA-Skills) ---
+# Third-party exemplar/template PDFs stay local-only: 90 files, ~302 MB.
+CCFA-Skills/**/*.pdf
+# Upstream clone metadata, moved aside so the parent repo tracks the skill
+# content instead of an embedded-repository gitlink.
+.upstream_backup/
+
