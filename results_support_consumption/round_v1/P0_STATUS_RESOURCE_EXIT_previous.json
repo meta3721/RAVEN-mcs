@@ -1,0 +1,22 @@
+{
+  "stage": "P0",
+  "status": "RESOURCE_EXIT",
+  "detail": "RESOURCE_EXIT: available memory 528781312 bytes is below 1073741824",
+  "evidence": {
+    "available_bytes": 527060992
+  },
+  "sample": {
+    "available_bytes": 527060992,
+    "cpu_seconds": 0.15625,
+    "wall_seconds": 0.0,
+    "rss_bytes": 22458368,
+    "peak_rss_bytes": 23093248,
+    "complete": true,
+    "note": "stopped before heavy imports"
+  },
+  "scope": "none",
+  "cancelled": "P0 P1 P2 P3 P4",
+  "waiting_user_review": true,
+  "training": false,
+  "prediction_gain": false
+}
