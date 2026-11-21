@@ -1,0 +1,8 @@
+{
+  "pid": 14380,
+  "command": [
+    ".venv_new/Scripts/python.exe",
+    "-c",
+    "import ast,sys; from pathlib import Path; import torch,numpy,cvxpy; paths=list(Path('src/raven_mcs').rglob('*.py'))+list(Path('tests/control_b0').glob('*.py'))+[Path('scripts')/s for s in ['calibration_budget.py','audit_calibration_first.py','review_first_seed_audit.py','run_calibration_first.py','resume_calibration_first.py','check_first_prefix_planner.py','summarize_calibration_first.py','reconcile_first_budget.py']]; [ast.parse(p.read_text(encoding='utf-8'),filename=str(p)) for p in paths]; print('SYNTAX_OK',len(paths),sys.version,torch.__version__,numpy.__version__,cvxpy.__version__)"
+  ]
+}

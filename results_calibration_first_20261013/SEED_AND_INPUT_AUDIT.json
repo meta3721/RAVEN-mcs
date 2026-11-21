@@ -1,0 +1,383 @@
+{
+  "audited_at_utc": "2026-10-12T23:34:02.418864+00:00",
+  "seed": 43001,
+  "scanned_text_files": 98710,
+  "matched_lines": [
+    {
+      "path": "C:\\Cursor\\raven.mcs\\artifacts\\e2_traffic_formal_results_analysis_r1\\LEDGER_ATTEMPT_AUDIT.csv",
+      "line": 418,
+      "text": "formal_seed30014_usable_only_fedavg_window__attempt1,30014:usable_only:fedavg_window,30014,usable_only,fedavg_window,1,1,1,2026-08-08T19:20:25.757438+00:00,2026-08-08T19:21:46.248633+00:00,0,logs/e2fr_e2fr_train_seed30014__usable_only__fedavg_window__attempt1.stdout.log,logs/e2fr_e2fr_train_seed30014__usable_only__fedavg_window__attempt1.stderr.log,87d43d0aba0a0ace857db43001f14e4fe91cf48f628361858ee0021d0f5d83d5,6bf1538c8c9e70fb1593805460068f9404fea43fbfc5aa896179c1bc30cb37fb,0,0,False,False,Fal"
+    },
+    {
+      "path": "C:\\Cursor\\raven.mcs\\artifacts\\e2_traffic_formal_results_analysis_r1\\LEDGER_ATTEMPT_AUDIT_FULL.json",
+      "line": 9989,
+      "text": "\"checkpoint_sha256\": \"87d43d0aba0a0ace857db43001f14e4fe91cf48f628361858ee0021d0f5d83d5\","
+    },
+    {
+      "path": "C:\\Cursor\\raven.mcs\\artifacts\\e2_traffic_formal_runs_r1\\checkpoint_hash_inventory.json",
+      "line": 2084,
+      "text": "\"sha256\": \"87d43d0aba0a0ace857db43001f14e4fe91cf48f628361858ee0021d0f5d83d5\","
+    },
+    {
+      "path": "C:\\Cursor\\raven.mcs\\artifacts\\e2_traffic_offline_metric_reconstruction_r1\\LEDGER_ATTEMPT_AUDIT_R2.csv",
+      "line": 418,
+      "text": "formal_seed30014_usable_only_fedavg_window__attempt1,30014:usable_only:fedavg_window,30014,usable_only,fedavg_window,1,1,1,2026-08-08T19:20:25.757438+00:00,2026-08-08T19:21:46.248633+00:00,0,logs/e2fr_e2fr_train_seed30014__usable_only__fedavg_window__attempt1.stdout.log,logs/e2fr_e2fr_train_seed30014__usable_only__fedavg_window__attempt1.stderr.log,87d43d0aba0a0ace857db43001f14e4fe91cf48f628361858ee0021d0f5d83d5,6bf1538c8c9e70fb1593805460068f9404fea43fbfc5aa896179c1bc30cb37fb,0,0,False,False,Fal"
+    },
+    {
+      "path": "C:\\Cursor\\raven.mcs\\artifacts\\e2_traffic_offline_metric_reconstruction_r1\\OFFLINE_METRIC_EVAL_LEDGER.jsonl",
+      "line": 1006,
+      "text": "{\"seed\": 30014, \"scenario\": \"usable_only\", \"method\": \"fedavg_window\", \"metric_name\": \"Delta_group\", \"source_checkpoint_path\": \"D:\\\\Cursor\\\\raven.mcs\\\\artifacts\\\\e2_traffic_formal_runs_r1\\\\runs\\\\30014\\\\usable_only\\\\fedavg_window\\\\checkpoints\\\\final.pt\", \"source_checkpoint_sha256\": \"87d43d0aba0a0ace857db43001f14e4fe91cf48f628361858ee0021d0f5d83d5\", \"source_data_hash\": \"db45a2ecc66c27abeaf58b0c03ce66de7bfaf6727f4523ea06ef226a9ce3de50\", \"source_registry_hash\": \"7d9b8292522b6fbcc15d83ebb065fc8a73b797"
+    },
+    {
+      "path": "C:\\Cursor\\raven.mcs\\ccf-review-report\\conditional_bundle_b0_20261012_223821\\Q_CALIBRATION_PLAN.md",
+      "line": 39,
+      "text": "使用Traffic训练划分、公开资源和事前目标目录；TEST标签不选策略或构造μ。拟用独立校准种子43001–43008：前2条拟合、后6条独立验证；这些种子**尚未完成污染审计**，批准后先审计，冲突即报批，不临时换种子。与开发41001–41003、确认42001–42020分离。"
+    },
+    {
+      "path": "C:\\Cursor\\raven.mcs\\logs\\E2_TRAFFIC_FORMAL_RUNS_R1_EXACT_COMMANDS.jsonl",
+      "line": 983,
+      "text": "{\"record_type\": \"FINISH\", \"run_id\": \"formal_seed30014_usable_only_fedavg_window__attempt1\", \"label\": \"e2fr_train_seed30014__usable_only__fedavg_window__attempt1\", \"command\": [\"D:\\\\Cursor\\\\raven.mcs\\\\.venv\\\\Scripts\\\\python.exe\", \"scripts/prepare_e2_traffic_formal_runs.py\", \"--run-one\", \"--seed\", \"30014\", \"--scenario\", \"usable_only\", \"--method\", \"fedavg_window\", \"--attempt\", \"1\"], \"cwd\": \"D:\\\\Cursor\\\\raven.mcs\", \"start_time_utc\": \"2026-08-08T19:20:25.757438+00:00\", \"end_time_utc\": \"2026-08-08T19:2"
+    },
+    {
+      "path": "C:\\Cursor\\raven.mcs\\paper_ready_r1\\00_index\\ALL_RELEVANT_SOURCE_PATHS.csv",
+      "line": 6115,
+      "text": "artifacts/e2_traffic_formal_runs_r1/runs/30014/usable_only/fedavg_window/checkpoints/final.pt,pt,126806,2026-08-08T19:21:45.681941+00:00,87d43d0aba0a0ace857db43001f14e4fe91cf48f628361858ee0021d0f5d83d5,E2,NSW-Traffic,fedavg_window,,VALID_CANDIDATE,FULL_ARCHIVE,"
+    },
+    {
+      "path": "C:\\Cursor\\raven.mcs\\paper_ready_r1\\00_index\\ALL_RELEVANT_SOURCE_PATHS.json",
+      "line": 85596,
+      "text": "\"sha256\": \"87d43d0aba0a0ace857db43001f14e4fe91cf48f628361858ee0021d0f5d83d5\","
+    },
+    {
+      "path": "C:\\Cursor\\raven.mcs\\paper_ready_r1\\03_raw_evidence\\e2\\analysis\\LEDGER_ATTEMPT_AUDIT.csv",
+      "line": 418,
+      "text": "formal_seed30014_usable_only_fedavg_window__attempt1,30014:usable_only:fedavg_window,30014,usable_only,fedavg_window,1,1,1,2026-08-08T19:20:25.757438+00:00,2026-08-08T19:21:46.248633+00:00,0,logs/e2fr_e2fr_train_seed30014__usable_only__fedavg_window__attempt1.stdout.log,logs/e2fr_e2fr_train_seed30014__usable_only__fedavg_window__attempt1.stderr.log,87d43d0aba0a0ace857db43001f14e4fe91cf48f628361858ee0021d0f5d83d5,6bf1538c8c9e70fb1593805460068f9404fea43fbfc5aa896179c1bc30cb37fb,0,0,False,False,Fal"
+    },
+    {
+      "path": "C:\\Cursor\\raven.mcs\\paper_ready_r1\\03_raw_evidence\\e2\\analysis\\LEDGER_ATTEMPT_AUDIT_FULL.json",
+      "line": 9989,
+      "text": "\"checkpoint_sha256\": \"87d43d0aba0a0ace857db43001f14e4fe91cf48f628361858ee0021d0f5d83d5\","
+    },
+    {
+      "path": "C:\\Cursor\\raven.mcs\\paper_ready_r1\\03_raw_evidence\\e2\\formal_runs\\checkpoint_hash_inventory.json",
+      "line": 2084,
+      "text": "\"sha256\": \"87d43d0aba0a0ace857db43001f14e4fe91cf48f628361858ee0021d0f5d83d5\","
+    },
+    {
+      "path": "C:\\Cursor\\raven.mcs\\paper_ready_r1\\03_raw_evidence\\e2\\offline_recon\\LEDGER_ATTEMPT_AUDIT_R2.csv",
+      "line": 418,
+      "text": "formal_seed30014_usable_only_fedavg_window__attempt1,30014:usable_only:fedavg_window,30014,usable_only,fedavg_window,1,1,1,2026-08-08T19:20:25.757438+00:00,2026-08-08T19:21:46.248633+00:00,0,logs/e2fr_e2fr_train_seed30014__usable_only__fedavg_window__attempt1.stdout.log,logs/e2fr_e2fr_train_seed30014__usable_only__fedavg_window__attempt1.stderr.log,87d43d0aba0a0ace857db43001f14e4fe91cf48f628361858ee0021d0f5d83d5,6bf1538c8c9e70fb1593805460068f9404fea43fbfc5aa896179c1bc30cb37fb,0,0,False,False,Fal"
+    },
+    {
+      "path": "C:\\Cursor\\raven.mcs\\paper_ready_r1\\05_provenance\\MULTIPLE_ATTEMPT_LEDGER.csv",
+      "line": 418,
+      "text": "formal_seed30014_usable_only_fedavg_window__attempt1,30014:usable_only:fedavg_window,30014,usable_only,fedavg_window,1,1,1,2026-08-08T19:20:25.757438+00:00,2026-08-08T19:21:46.248633+00:00,0,logs/e2fr_e2fr_train_seed30014__usable_only__fedavg_window__attempt1.stdout.log,logs/e2fr_e2fr_train_seed30014__usable_only__fedavg_window__attempt1.stderr.log,87d43d0aba0a0ace857db43001f14e4fe91cf48f628361858ee0021d0f5d83d5,6bf1538c8c9e70fb1593805460068f9404fea43fbfc5aa896179c1bc30cb37fb,0,0,False,False,Fal"
+    },
+    {
+      "path": "C:\\Cursor\\raven.mcs\\paper_ready_r2\\00_index\\ALL_RELEVANT_SOURCE_PATHS.csv",
+      "line": 6115,
+      "text": "artifacts/e2_traffic_formal_runs_r1/runs/30014/usable_only/fedavg_window/checkpoints/final.pt,pt,126806,2026-08-08T19:21:45.681941+00:00,87d43d0aba0a0ace857db43001f14e4fe91cf48f628361858ee0021d0f5d83d5,E2,NSW-Traffic,fedavg_window,,VALID_CANDIDATE,FULL_ARCHIVE,"
+    },
+    {
+      "path": "C:\\Cursor\\raven.mcs\\paper_ready_r2\\00_index\\ALL_RELEVANT_SOURCE_PATHS.json",
+      "line": 85596,
+      "text": "\"sha256\": \"87d43d0aba0a0ace857db43001f14e4fe91cf48f628361858ee0021d0f5d83d5\","
+    },
+    {
+      "path": "C:\\Cursor\\raven.mcs\\paper_ready_r2\\03_raw_evidence\\e2\\analysis\\LEDGER_ATTEMPT_AUDIT.csv",
+      "line": 418,
+      "text": "formal_seed30014_usable_only_fedavg_window__attempt1,30014:usable_only:fedavg_window,30014,usable_only,fedavg_window,1,1,1,2026-08-08T19:20:25.757438+00:00,2026-08-08T19:21:46.248633+00:00,0,logs/e2fr_e2fr_train_seed30014__usable_only__fedavg_window__attempt1.stdout.log,logs/e2fr_e2fr_train_seed30014__usable_only__fedavg_window__attempt1.stderr.log,87d43d0aba0a0ace857db43001f14e4fe91cf48f628361858ee0021d0f5d83d5,6bf1538c8c9e70fb1593805460068f9404fea43fbfc5aa896179c1bc30cb37fb,0,0,False,False,Fal"
+    },
+    {
+      "path": "C:\\Cursor\\raven.mcs\\paper_ready_r2\\03_raw_evidence\\e2\\analysis\\LEDGER_ATTEMPT_AUDIT_FULL.json",
+      "line": 9989,
+      "text": "\"checkpoint_sha256\": \"87d43d0aba0a0ace857db43001f14e4fe91cf48f628361858ee0021d0f5d83d5\","
+    },
+    {
+      "path": "C:\\Cursor\\raven.mcs\\paper_ready_r2\\03_raw_evidence\\e2\\formal_runs\\checkpoint_hash_inventory.json",
+      "line": 2084,
+      "text": "\"sha256\": \"87d43d0aba0a0ace857db43001f14e4fe91cf48f628361858ee0021d0f5d83d5\","
+    },
+    {
+      "path": "C:\\Cursor\\raven.mcs\\paper_ready_r2\\03_raw_evidence\\e2\\offline_recon\\LEDGER_ATTEMPT_AUDIT_R2.csv",
+      "line": 418,
+      "text": "formal_seed30014_usable_only_fedavg_window__attempt1,30014:usable_only:fedavg_window,30014,usable_only,fedavg_window,1,1,1,2026-08-08T19:20:25.757438+00:00,2026-08-08T19:21:46.248633+00:00,0,logs/e2fr_e2fr_train_seed30014__usable_only__fedavg_window__attempt1.stdout.log,logs/e2fr_e2fr_train_seed30014__usable_only__fedavg_window__attempt1.stderr.log,87d43d0aba0a0ace857db43001f14e4fe91cf48f628361858ee0021d0f5d83d5,6bf1538c8c9e70fb1593805460068f9404fea43fbfc5aa896179c1bc30cb37fb,0,0,False,False,Fal"
+    },
+    {
+      "path": "C:\\Cursor\\raven.mcs\\paper_ready_r2\\05_provenance\\MULTIPLE_ATTEMPT_LEDGER.csv",
+      "line": 418,
+      "text": "formal_seed30014_usable_only_fedavg_window__attempt1,30014:usable_only:fedavg_window,30014,usable_only,fedavg_window,1,1,1,2026-08-08T19:20:25.757438+00:00,2026-08-08T19:21:46.248633+00:00,0,logs/e2fr_e2fr_train_seed30014__usable_only__fedavg_window__attempt1.stdout.log,logs/e2fr_e2fr_train_seed30014__usable_only__fedavg_window__attempt1.stderr.log,87d43d0aba0a0ace857db43001f14e4fe91cf48f628361858ee0021d0f5d83d5,6bf1538c8c9e70fb1593805460068f9404fea43fbfc5aa896179c1bc30cb37fb,0,0,False,False,Fal"
+    },
+    {
+      "path": "C:\\Cursor\\raven.mcs\\RAVEN_MCS_FINAL_PAPER_DATA_ASSET_FREEZE_R1\\01_PAPER_CORE\\CLAIM_MAPS\\ALL_RELEVANT_SOURCE_PATHS.csv",
+      "line": 6115,
+      "text": "artifacts/e2_traffic_formal_runs_r1/runs/30014/usable_only/fedavg_window/checkpoints/final.pt,pt,126806,2026-08-08T19:21:45.681941+00:00,87d43d0aba0a0ace857db43001f14e4fe91cf48f628361858ee0021d0f5d83d5,E2,NSW-Traffic,fedavg_window,,VALID_CANDIDATE,FULL_ARCHIVE,"
+    },
+    {
+      "path": "C:\\Cursor\\raven.mcs\\RAVEN_MCS_FINAL_PAPER_DATA_ASSET_FREEZE_R1\\01_PAPER_CORE\\CLAIM_MAPS\\ALL_RELEVANT_SOURCE_PATHS.json",
+      "line": 85596,
+      "text": "\"sha256\": \"87d43d0aba0a0ace857db43001f14e4fe91cf48f628361858ee0021d0f5d83d5\","
+    },
+    {
+      "path": "C:\\Cursor\\raven.mcs\\RAVEN_MCS_FINAL_PAPER_DATA_ASSET_FREEZE_R1\\03_APPENDIX_CANDIDATES\\e2_raw_r2\\analysis\\LEDGER_ATTEMPT_AUDIT.csv",
+      "line": 418,
+      "text": "formal_seed30014_usable_only_fedavg_window__attempt1,30014:usable_only:fedavg_window,30014,usable_only,fedavg_window,1,1,1,2026-08-08T19:20:25.757438+00:00,2026-08-08T19:21:46.248633+00:00,0,logs/e2fr_e2fr_train_seed30014__usable_only__fedavg_window__attempt1.stdout.log,logs/e2fr_e2fr_train_seed30014__usable_only__fedavg_window__attempt1.stderr.log,87d43d0aba0a0ace857db43001f14e4fe91cf48f628361858ee0021d0f5d83d5,6bf1538c8c9e70fb1593805460068f9404fea43fbfc5aa896179c1bc30cb37fb,0,0,False,False,Fal"
+    },
+    {
+      "path": "C:\\Cursor\\raven.mcs\\RAVEN_MCS_FINAL_PAPER_DATA_ASSET_FREEZE_R1\\03_APPENDIX_CANDIDATES\\e2_raw_r2\\analysis\\LEDGER_ATTEMPT_AUDIT_FULL.json",
+      "line": 9989,
+      "text": "\"checkpoint_sha256\": \"87d43d0aba0a0ace857db43001f14e4fe91cf48f628361858ee0021d0f5d83d5\","
+    },
+    {
+      "path": "C:\\Cursor\\raven.mcs\\RAVEN_MCS_FINAL_PAPER_DATA_ASSET_FREEZE_R1\\03_APPENDIX_CANDIDATES\\e2_raw_r2\\formal_runs\\checkpoint_hash_inventory.json",
+      "line": 2084,
+      "text": "\"sha256\": \"87d43d0aba0a0ace857db43001f14e4fe91cf48f628361858ee0021d0f5d83d5\","
+    },
+    {
+      "path": "C:\\Cursor\\raven.mcs\\RAVEN_MCS_FINAL_PAPER_DATA_ASSET_FREEZE_R1\\03_APPENDIX_CANDIDATES\\e2_raw_r2\\offline_recon\\LEDGER_ATTEMPT_AUDIT_R2.csv",
+      "line": 418,
+      "text": "formal_seed30014_usable_only_fedavg_window__attempt1,30014:usable_only:fedavg_window,30014,usable_only,fedavg_window,1,1,1,2026-08-08T19:20:25.757438+00:00,2026-08-08T19:21:46.248633+00:00,0,logs/e2fr_e2fr_train_seed30014__usable_only__fedavg_window__attempt1.stdout.log,logs/e2fr_e2fr_train_seed30014__usable_only__fedavg_window__attempt1.stderr.log,87d43d0aba0a0ace857db43001f14e4fe91cf48f628361858ee0021d0f5d83d5,6bf1538c8c9e70fb1593805460068f9404fea43fbfc5aa896179c1bc30cb37fb,0,0,False,False,Fal"
+    },
+    {
+      "path": "C:\\Cursor\\raven.mcs\\RAVEN_MCS_FINAL_PAPER_DATA_ASSET_FREEZE_R1\\14_SOURCE_PROVENANCE\\r2_provenance\\MULTIPLE_ATTEMPT_LEDGER.csv",
+      "line": 418,
+      "text": "formal_seed30014_usable_only_fedavg_window__attempt1,30014:usable_only:fedavg_window,30014,usable_only,fedavg_window,1,1,1,2026-08-08T19:20:25.757438+00:00,2026-08-08T19:21:46.248633+00:00,0,logs/e2fr_e2fr_train_seed30014__usable_only__fedavg_window__attempt1.stdout.log,logs/e2fr_e2fr_train_seed30014__usable_only__fedavg_window__attempt1.stderr.log,87d43d0aba0a0ace857db43001f14e4fe91cf48f628361858ee0021d0f5d83d5,6bf1538c8c9e70fb1593805460068f9404fea43fbfc5aa896179c1bc30cb37fb,0,0,False,False,Fal"
+    },
+    {
+      "path": "C:\\Cursor\\raven.mcs\\results_conditional_bundle_b0_20261012_223821\\build_delivery.py",
+      "line": 156,
+      "text": "使用Traffic训练划分、公开资源和事前目标目录；TEST标签不选策略或构造μ。拟用独立校准种子43001–43008：前2条拟合、后6条独立验证；这些种子**尚未完成污染审计**，批准后先审计，冲突即报批，不临时换种子。与开发41001–41003、确认42001–42020分离。"
+    },
+    {
+      "path": "C:\\Cursor\\raven.mcs\\results_server_optimizer\\round_v1\\backup_pre_guard_change\\BACKUP_MANIFEST.json",
+      "line": 4685,
+      "text": "\"artifacts/e2_traffic_formal_runs_r1/runs/30014/usable_only/fedavg_window/checkpoints/final.pt\": \"87d43d0aba0a0ace857db43001f14e4fe91cf48f628361858ee0021d0f5d83d5\","
+    },
+    {
+      "path": "C:\\Cursor\\raven.mcs\\scripts\\audit_calibration_first.py",
+      "line": 14,
+      "text": "pattern=re.compile(r'(?<![\\d.])43001(?![\\d.])')"
+    },
+    {
+      "path": "C:\\Cursor\\raven.mcs\\scripts\\audit_calibration_first.py",
+      "line": 20,
+      "text": "if '43001' in name:names.append(str(f))"
+    },
+    {
+      "path": "C:\\Cursor\\raven.mcs\\scripts\\audit_calibration_first.py",
+      "line": 36,
+      "text": "if '43001' in m['text'] and ('calibration_only' in m['text'] or 'seed!=43001' in m['text'] or 'seed: int = 43001' in m['text']):continue"
+    },
+    {
+      "path": "C:\\Cursor\\raven.mcs\\scripts\\audit_calibration_first.py",
+      "line": 43,
+      "text": "report=dict(audited_at_utc=datetime.now(timezone.utc).isoformat(),seed=43001,scanned_text_files=scanned,"
+    },
+    {
+      "path": "C:\\Cursor\\raven.mcs\\scripts\\calibration_budget.py",
+      "line": 22,
+      "text": "max_local_sgd_steps=5000,authorized_seed=43001,target_T=100,"
+    },
+    {
+      "path": "C:\\Cursor\\raven.mcs\\src\\raven_mcs\\control\\lifecycle.py",
+      "line": 91,
+      "text": "if isolated_test or not probability_applicability or not clock_namespace or seed!=43001:"
+    },
+    {
+      "path": "C:\\Cursor\\raven.mcs\\src\\raven_mcs\\training\\dynamic_control.py",
+      "line": 33,
+      "text": "seed: int = 43001"
+    },
+    {
+      "path": "C:\\Cursor\\raven.mcs\\src\\raven_mcs\\training\\dynamic_control.py",
+      "line": 36,
+      "text": "if not self.source or self.seed!=43001 or self.max_steps!=5000:"
+    }
+  ],
+  "seed_named_assets": [],
+  "unreadable": [],
+  "review_required": [
+    {
+      "path": "C:\\Cursor\\raven.mcs\\artifacts\\e2_traffic_formal_results_analysis_r1\\LEDGER_ATTEMPT_AUDIT.csv",
+      "line": 418,
+      "text": "formal_seed30014_usable_only_fedavg_window__attempt1,30014:usable_only:fedavg_window,30014,usable_only,fedavg_window,1,1,1,2026-08-08T19:20:25.757438+00:00,2026-08-08T19:21:46.248633+00:00,0,logs/e2fr_e2fr_train_seed30014__usable_only__fedavg_window__attempt1.stdout.log,logs/e2fr_e2fr_train_seed30014__usable_only__fedavg_window__attempt1.stderr.log,87d43d0aba0a0ace857db43001f14e4fe91cf48f628361858ee0021d0f5d83d5,6bf1538c8c9e70fb1593805460068f9404fea43fbfc5aa896179c1bc30cb37fb,0,0,False,False,Fal"
+    },
+    {
+      "path": "C:\\Cursor\\raven.mcs\\artifacts\\e2_traffic_formal_results_analysis_r1\\LEDGER_ATTEMPT_AUDIT_FULL.json",
+      "line": 9989,
+      "text": "\"checkpoint_sha256\": \"87d43d0aba0a0ace857db43001f14e4fe91cf48f628361858ee0021d0f5d83d5\","
+    },
+    {
+      "path": "C:\\Cursor\\raven.mcs\\artifacts\\e2_traffic_formal_runs_r1\\checkpoint_hash_inventory.json",
+      "line": 2084,
+      "text": "\"sha256\": \"87d43d0aba0a0ace857db43001f14e4fe91cf48f628361858ee0021d0f5d83d5\","
+    },
+    {
+      "path": "C:\\Cursor\\raven.mcs\\artifacts\\e2_traffic_offline_metric_reconstruction_r1\\LEDGER_ATTEMPT_AUDIT_R2.csv",
+      "line": 418,
+      "text": "formal_seed30014_usable_only_fedavg_window__attempt1,30014:usable_only:fedavg_window,30014,usable_only,fedavg_window,1,1,1,2026-08-08T19:20:25.757438+00:00,2026-08-08T19:21:46.248633+00:00,0,logs/e2fr_e2fr_train_seed30014__usable_only__fedavg_window__attempt1.stdout.log,logs/e2fr_e2fr_train_seed30014__usable_only__fedavg_window__attempt1.stderr.log,87d43d0aba0a0ace857db43001f14e4fe91cf48f628361858ee0021d0f5d83d5,6bf1538c8c9e70fb1593805460068f9404fea43fbfc5aa896179c1bc30cb37fb,0,0,False,False,Fal"
+    },
+    {
+      "path": "C:\\Cursor\\raven.mcs\\artifacts\\e2_traffic_offline_metric_reconstruction_r1\\OFFLINE_METRIC_EVAL_LEDGER.jsonl",
+      "line": 1006,
+      "text": "{\"seed\": 30014, \"scenario\": \"usable_only\", \"method\": \"fedavg_window\", \"metric_name\": \"Delta_group\", \"source_checkpoint_path\": \"D:\\\\Cursor\\\\raven.mcs\\\\artifacts\\\\e2_traffic_formal_runs_r1\\\\runs\\\\30014\\\\usable_only\\\\fedavg_window\\\\checkpoints\\\\final.pt\", \"source_checkpoint_sha256\": \"87d43d0aba0a0ace857db43001f14e4fe91cf48f628361858ee0021d0f5d83d5\", \"source_data_hash\": \"db45a2ecc66c27abeaf58b0c03ce66de7bfaf6727f4523ea06ef226a9ce3de50\", \"source_registry_hash\": \"7d9b8292522b6fbcc15d83ebb065fc8a73b797"
+    },
+    {
+      "path": "C:\\Cursor\\raven.mcs\\logs\\E2_TRAFFIC_FORMAL_RUNS_R1_EXACT_COMMANDS.jsonl",
+      "line": 983,
+      "text": "{\"record_type\": \"FINISH\", \"run_id\": \"formal_seed30014_usable_only_fedavg_window__attempt1\", \"label\": \"e2fr_train_seed30014__usable_only__fedavg_window__attempt1\", \"command\": [\"D:\\\\Cursor\\\\raven.mcs\\\\.venv\\\\Scripts\\\\python.exe\", \"scripts/prepare_e2_traffic_formal_runs.py\", \"--run-one\", \"--seed\", \"30014\", \"--scenario\", \"usable_only\", \"--method\", \"fedavg_window\", \"--attempt\", \"1\"], \"cwd\": \"D:\\\\Cursor\\\\raven.mcs\", \"start_time_utc\": \"2026-08-08T19:20:25.757438+00:00\", \"end_time_utc\": \"2026-08-08T19:2"
+    },
+    {
+      "path": "C:\\Cursor\\raven.mcs\\paper_ready_r1\\00_index\\ALL_RELEVANT_SOURCE_PATHS.csv",
+      "line": 6115,
+      "text": "artifacts/e2_traffic_formal_runs_r1/runs/30014/usable_only/fedavg_window/checkpoints/final.pt,pt,126806,2026-08-08T19:21:45.681941+00:00,87d43d0aba0a0ace857db43001f14e4fe91cf48f628361858ee0021d0f5d83d5,E2,NSW-Traffic,fedavg_window,,VALID_CANDIDATE,FULL_ARCHIVE,"
+    },
+    {
+      "path": "C:\\Cursor\\raven.mcs\\paper_ready_r1\\00_index\\ALL_RELEVANT_SOURCE_PATHS.json",
+      "line": 85596,
+      "text": "\"sha256\": \"87d43d0aba0a0ace857db43001f14e4fe91cf48f628361858ee0021d0f5d83d5\","
+    },
+    {
+      "path": "C:\\Cursor\\raven.mcs\\paper_ready_r1\\03_raw_evidence\\e2\\analysis\\LEDGER_ATTEMPT_AUDIT.csv",
+      "line": 418,
+      "text": "formal_seed30014_usable_only_fedavg_window__attempt1,30014:usable_only:fedavg_window,30014,usable_only,fedavg_window,1,1,1,2026-08-08T19:20:25.757438+00:00,2026-08-08T19:21:46.248633+00:00,0,logs/e2fr_e2fr_train_seed30014__usable_only__fedavg_window__attempt1.stdout.log,logs/e2fr_e2fr_train_seed30014__usable_only__fedavg_window__attempt1.stderr.log,87d43d0aba0a0ace857db43001f14e4fe91cf48f628361858ee0021d0f5d83d5,6bf1538c8c9e70fb1593805460068f9404fea43fbfc5aa896179c1bc30cb37fb,0,0,False,False,Fal"
+    },
+    {
+      "path": "C:\\Cursor\\raven.mcs\\paper_ready_r1\\03_raw_evidence\\e2\\analysis\\LEDGER_ATTEMPT_AUDIT_FULL.json",
+      "line": 9989,
+      "text": "\"checkpoint_sha256\": \"87d43d0aba0a0ace857db43001f14e4fe91cf48f628361858ee0021d0f5d83d5\","
+    },
+    {
+      "path": "C:\\Cursor\\raven.mcs\\paper_ready_r1\\03_raw_evidence\\e2\\formal_runs\\checkpoint_hash_inventory.json",
+      "line": 2084,
+      "text": "\"sha256\": \"87d43d0aba0a0ace857db43001f14e4fe91cf48f628361858ee0021d0f5d83d5\","
+    },
+    {
+      "path": "C:\\Cursor\\raven.mcs\\paper_ready_r1\\03_raw_evidence\\e2\\offline_recon\\LEDGER_ATTEMPT_AUDIT_R2.csv",
+      "line": 418,
+      "text": "formal_seed30014_usable_only_fedavg_window__attempt1,30014:usable_only:fedavg_window,30014,usable_only,fedavg_window,1,1,1,2026-08-08T19:20:25.757438+00:00,2026-08-08T19:21:46.248633+00:00,0,logs/e2fr_e2fr_train_seed30014__usable_only__fedavg_window__attempt1.stdout.log,logs/e2fr_e2fr_train_seed30014__usable_only__fedavg_window__attempt1.stderr.log,87d43d0aba0a0ace857db43001f14e4fe91cf48f628361858ee0021d0f5d83d5,6bf1538c8c9e70fb1593805460068f9404fea43fbfc5aa896179c1bc30cb37fb,0,0,False,False,Fal"
+    },
+    {
+      "path": "C:\\Cursor\\raven.mcs\\paper_ready_r1\\05_provenance\\MULTIPLE_ATTEMPT_LEDGER.csv",
+      "line": 418,
+      "text": "formal_seed30014_usable_only_fedavg_window__attempt1,30014:usable_only:fedavg_window,30014,usable_only,fedavg_window,1,1,1,2026-08-08T19:20:25.757438+00:00,2026-08-08T19:21:46.248633+00:00,0,logs/e2fr_e2fr_train_seed30014__usable_only__fedavg_window__attempt1.stdout.log,logs/e2fr_e2fr_train_seed30014__usable_only__fedavg_window__attempt1.stderr.log,87d43d0aba0a0ace857db43001f14e4fe91cf48f628361858ee0021d0f5d83d5,6bf1538c8c9e70fb1593805460068f9404fea43fbfc5aa896179c1bc30cb37fb,0,0,False,False,Fal"
+    },
+    {
+      "path": "C:\\Cursor\\raven.mcs\\paper_ready_r2\\00_index\\ALL_RELEVANT_SOURCE_PATHS.csv",
+      "line": 6115,
+      "text": "artifacts/e2_traffic_formal_runs_r1/runs/30014/usable_only/fedavg_window/checkpoints/final.pt,pt,126806,2026-08-08T19:21:45.681941+00:00,87d43d0aba0a0ace857db43001f14e4fe91cf48f628361858ee0021d0f5d83d5,E2,NSW-Traffic,fedavg_window,,VALID_CANDIDATE,FULL_ARCHIVE,"
+    },
+    {
+      "path": "C:\\Cursor\\raven.mcs\\paper_ready_r2\\00_index\\ALL_RELEVANT_SOURCE_PATHS.json",
+      "line": 85596,
+      "text": "\"sha256\": \"87d43d0aba0a0ace857db43001f14e4fe91cf48f628361858ee0021d0f5d83d5\","
+    },
+    {
+      "path": "C:\\Cursor\\raven.mcs\\paper_ready_r2\\03_raw_evidence\\e2\\analysis\\LEDGER_ATTEMPT_AUDIT.csv",
+      "line": 418,
+      "text": "formal_seed30014_usable_only_fedavg_window__attempt1,30014:usable_only:fedavg_window,30014,usable_only,fedavg_window,1,1,1,2026-08-08T19:20:25.757438+00:00,2026-08-08T19:21:46.248633+00:00,0,logs/e2fr_e2fr_train_seed30014__usable_only__fedavg_window__attempt1.stdout.log,logs/e2fr_e2fr_train_seed30014__usable_only__fedavg_window__attempt1.stderr.log,87d43d0aba0a0ace857db43001f14e4fe91cf48f628361858ee0021d0f5d83d5,6bf1538c8c9e70fb1593805460068f9404fea43fbfc5aa896179c1bc30cb37fb,0,0,False,False,Fal"
+    },
+    {
+      "path": "C:\\Cursor\\raven.mcs\\paper_ready_r2\\03_raw_evidence\\e2\\analysis\\LEDGER_ATTEMPT_AUDIT_FULL.json",
+      "line": 9989,
+      "text": "\"checkpoint_sha256\": \"87d43d0aba0a0ace857db43001f14e4fe91cf48f628361858ee0021d0f5d83d5\","
+    },
+    {
+      "path": "C:\\Cursor\\raven.mcs\\paper_ready_r2\\03_raw_evidence\\e2\\formal_runs\\checkpoint_hash_inventory.json",
+      "line": 2084,
+      "text": "\"sha256\": \"87d43d0aba0a0ace857db43001f14e4fe91cf48f628361858ee0021d0f5d83d5\","
+    },
+    {
+      "path": "C:\\Cursor\\raven.mcs\\paper_ready_r2\\03_raw_evidence\\e2\\offline_recon\\LEDGER_ATTEMPT_AUDIT_R2.csv",
+      "line": 418,
+      "text": "formal_seed30014_usable_only_fedavg_window__attempt1,30014:usable_only:fedavg_window,30014,usable_only,fedavg_window,1,1,1,2026-08-08T19:20:25.757438+00:00,2026-08-08T19:21:46.248633+00:00,0,logs/e2fr_e2fr_train_seed30014__usable_only__fedavg_window__attempt1.stdout.log,logs/e2fr_e2fr_train_seed30014__usable_only__fedavg_window__attempt1.stderr.log,87d43d0aba0a0ace857db43001f14e4fe91cf48f628361858ee0021d0f5d83d5,6bf1538c8c9e70fb1593805460068f9404fea43fbfc5aa896179c1bc30cb37fb,0,0,False,False,Fal"
+    },
+    {
+      "path": "C:\\Cursor\\raven.mcs\\paper_ready_r2\\05_provenance\\MULTIPLE_ATTEMPT_LEDGER.csv",
+      "line": 418,
+      "text": "formal_seed30014_usable_only_fedavg_window__attempt1,30014:usable_only:fedavg_window,30014,usable_only,fedavg_window,1,1,1,2026-08-08T19:20:25.757438+00:00,2026-08-08T19:21:46.248633+00:00,0,logs/e2fr_e2fr_train_seed30014__usable_only__fedavg_window__attempt1.stdout.log,logs/e2fr_e2fr_train_seed30014__usable_only__fedavg_window__attempt1.stderr.log,87d43d0aba0a0ace857db43001f14e4fe91cf48f628361858ee0021d0f5d83d5,6bf1538c8c9e70fb1593805460068f9404fea43fbfc5aa896179c1bc30cb37fb,0,0,False,False,Fal"
+    },
+    {
+      "path": "C:\\Cursor\\raven.mcs\\RAVEN_MCS_FINAL_PAPER_DATA_ASSET_FREEZE_R1\\01_PAPER_CORE\\CLAIM_MAPS\\ALL_RELEVANT_SOURCE_PATHS.csv",
+      "line": 6115,
+      "text": "artifacts/e2_traffic_formal_runs_r1/runs/30014/usable_only/fedavg_window/checkpoints/final.pt,pt,126806,2026-08-08T19:21:45.681941+00:00,87d43d0aba0a0ace857db43001f14e4fe91cf48f628361858ee0021d0f5d83d5,E2,NSW-Traffic,fedavg_window,,VALID_CANDIDATE,FULL_ARCHIVE,"
+    },
+    {
+      "path": "C:\\Cursor\\raven.mcs\\RAVEN_MCS_FINAL_PAPER_DATA_ASSET_FREEZE_R1\\01_PAPER_CORE\\CLAIM_MAPS\\ALL_RELEVANT_SOURCE_PATHS.json",
+      "line": 85596,
+      "text": "\"sha256\": \"87d43d0aba0a0ace857db43001f14e4fe91cf48f628361858ee0021d0f5d83d5\","
+    },
+    {
+      "path": "C:\\Cursor\\raven.mcs\\RAVEN_MCS_FINAL_PAPER_DATA_ASSET_FREEZE_R1\\03_APPENDIX_CANDIDATES\\e2_raw_r2\\analysis\\LEDGER_ATTEMPT_AUDIT.csv",
+      "line": 418,
+      "text": "formal_seed30014_usable_only_fedavg_window__attempt1,30014:usable_only:fedavg_window,30014,usable_only,fedavg_window,1,1,1,2026-08-08T19:20:25.757438+00:00,2026-08-08T19:21:46.248633+00:00,0,logs/e2fr_e2fr_train_seed30014__usable_only__fedavg_window__attempt1.stdout.log,logs/e2fr_e2fr_train_seed30014__usable_only__fedavg_window__attempt1.stderr.log,87d43d0aba0a0ace857db43001f14e4fe91cf48f628361858ee0021d0f5d83d5,6bf1538c8c9e70fb1593805460068f9404fea43fbfc5aa896179c1bc30cb37fb,0,0,False,False,Fal"
+    },
+    {
+      "path": "C:\\Cursor\\raven.mcs\\RAVEN_MCS_FINAL_PAPER_DATA_ASSET_FREEZE_R1\\03_APPENDIX_CANDIDATES\\e2_raw_r2\\analysis\\LEDGER_ATTEMPT_AUDIT_FULL.json",
+      "line": 9989,
+      "text": "\"checkpoint_sha256\": \"87d43d0aba0a0ace857db43001f14e4fe91cf48f628361858ee0021d0f5d83d5\","
+    },
+    {
+      "path": "C:\\Cursor\\raven.mcs\\RAVEN_MCS_FINAL_PAPER_DATA_ASSET_FREEZE_R1\\03_APPENDIX_CANDIDATES\\e2_raw_r2\\formal_runs\\checkpoint_hash_inventory.json",
+      "line": 2084,
+      "text": "\"sha256\": \"87d43d0aba0a0ace857db43001f14e4fe91cf48f628361858ee0021d0f5d83d5\","
+    },
+    {
+      "path": "C:\\Cursor\\raven.mcs\\RAVEN_MCS_FINAL_PAPER_DATA_ASSET_FREEZE_R1\\03_APPENDIX_CANDIDATES\\e2_raw_r2\\offline_recon\\LEDGER_ATTEMPT_AUDIT_R2.csv",
+      "line": 418,
+      "text": "formal_seed30014_usable_only_fedavg_window__attempt1,30014:usable_only:fedavg_window,30014,usable_only,fedavg_window,1,1,1,2026-08-08T19:20:25.757438+00:00,2026-08-08T19:21:46.248633+00:00,0,logs/e2fr_e2fr_train_seed30014__usable_only__fedavg_window__attempt1.stdout.log,logs/e2fr_e2fr_train_seed30014__usable_only__fedavg_window__attempt1.stderr.log,87d43d0aba0a0ace857db43001f14e4fe91cf48f628361858ee0021d0f5d83d5,6bf1538c8c9e70fb1593805460068f9404fea43fbfc5aa896179c1bc30cb37fb,0,0,False,False,Fal"
+    },
+    {
+      "path": "C:\\Cursor\\raven.mcs\\RAVEN_MCS_FINAL_PAPER_DATA_ASSET_FREEZE_R1\\14_SOURCE_PROVENANCE\\r2_provenance\\MULTIPLE_ATTEMPT_LEDGER.csv",
+      "line": 418,
+      "text": "formal_seed30014_usable_only_fedavg_window__attempt1,30014:usable_only:fedavg_window,30014,usable_only,fedavg_window,1,1,1,2026-08-08T19:20:25.757438+00:00,2026-08-08T19:21:46.248633+00:00,0,logs/e2fr_e2fr_train_seed30014__usable_only__fedavg_window__attempt1.stdout.log,logs/e2fr_e2fr_train_seed30014__usable_only__fedavg_window__attempt1.stderr.log,87d43d0aba0a0ace857db43001f14e4fe91cf48f628361858ee0021d0f5d83d5,6bf1538c8c9e70fb1593805460068f9404fea43fbfc5aa896179c1bc30cb37fb,0,0,False,False,Fal"
+    },
+    {
+      "path": "C:\\Cursor\\raven.mcs\\results_conditional_bundle_b0_20261012_223821\\build_delivery.py",
+      "line": 156,
+      "text": "使用Traffic训练划分、公开资源和事前目标目录；TEST标签不选策略或构造μ。拟用独立校准种子43001–43008：前2条拟合、后6条独立验证；这些种子**尚未完成污染审计**，批准后先审计，冲突即报批，不临时换种子。与开发41001–41003、确认42001–42020分离。"
+    },
+    {
+      "path": "C:\\Cursor\\raven.mcs\\results_server_optimizer\\round_v1\\backup_pre_guard_change\\BACKUP_MANIFEST.json",
+      "line": 4685,
+      "text": "\"artifacts/e2_traffic_formal_runs_r1/runs/30014/usable_only/fedavg_window/checkpoints/final.pt\": \"87d43d0aba0a0ace857db43001f14e4fe91cf48f628361858ee0021d0f5d83d5\","
+    }
+  ],
+  "status": "REVIEW_REQUIRED",
+  "scope": [
+    "C:\\Cursor\\raven.mcs",
+    "C:\\Users\\szr\\Desktop\\record\\1"
+  ],
+  "exclusions": [
+    ".agents",
+    ".codex",
+    ".git",
+    ".venv",
+    ".venv_new",
+    ".venv_old",
+    "__pycache__",
+    "node_modules"
+  ],
+  "binary_limit": "binary filenames audited; seed identity checked in companion metadata, not binary byte-string search",
+  "public_catalogue": {
+    "path": "C:\\Cursor\\raven.mcs\\results_main_rebuild_r1\\data\\traffic\\atomic_units.parquet",
+    "columns": [
+      "unit_id",
+      "spatial_id",
+      "absolute_time",
+      "time_index",
+      "target_group",
+      "opportunity_stratum",
+      "split",
+      "support_flag"
+    ],
+    "rows": 30960,
+    "frozen_before_window_0": true,
+    "publication_at_utc": "2026-10-12T23:34:02.418864+00:00",
+    "role": "deployment target/support metadata only; no TEST values",
+    "identity": "af9322a98482940e8f56c99dd6d6dc7989f65e409c8a35af078bff2c5658a331",
+    "target_rule": "same frozen supported test spatial-by-TOD mass as historical target, now explicitly published before run",
+    "clients": 43,
+    "train_rows": 18576
+  }
+}

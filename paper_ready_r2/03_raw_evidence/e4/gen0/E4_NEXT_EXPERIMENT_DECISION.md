@@ -1,0 +1,5 @@
+# E4 next experiment decision
+
+`PROCEED_TO_E5_THEORY_REACHABILITY_VALIDATION`
+
+E4 identified mechanism-relevant components on the sealed structural endpoints; E5 can close the theory-to-experiment loop if still needed for the paper. Do not auto-schedule E6/E7.

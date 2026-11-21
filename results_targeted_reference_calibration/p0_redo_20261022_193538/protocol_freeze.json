@@ -1,0 +1,139 @@
+{
+  "version": "targeted-reference-calibration-P0-redo-20261022",
+  "fitted": false,
+  "P1": "NOT_RUN",
+  "thresholds_computed": false,
+  "source": "C:/Users/szr/Desktop/record/1/dataset_dense_reference_evidence/epa_purpleair_2021.zip",
+  "epa_cache": "C:/Cursor/raven.mcs/results_targeted_reference_calibration/source_cache_20261022",
+  "splits": {
+    "D_fit": [
+      "2019-01-26",
+      "2019-02-22"
+    ],
+    "D_tune": [
+      "2019-02-23",
+      "2019-03-08"
+    ],
+    "V": [
+      "2019-03-09",
+      "2019-04-05"
+    ],
+    "A": [
+      "2019-04-06",
+      "2019-05-03"
+    ],
+    "T": [
+      "2019-05-04",
+      "2019-06-28"
+    ]
+  },
+  "period_D": [
+    "2019-01-26",
+    "2019-03-08"
+  ],
+  "groups": [
+    "West",
+    "North"
+  ],
+  "features": [
+    "PM25cf1",
+    "RH",
+    "TempC"
+  ],
+  "target": "PM25FM",
+  "units": "ug/m3",
+  "missing_tokens": [
+    "NA",
+    ""
+  ],
+  "negative_reference": "retain",
+  "event_key": "AQS site + date + parameter 88101 + POC + method code + event type + native sample duration",
+  "link_requirements": [
+    "parameter 88101 only; 88502 cannot replace FRM/FEM",
+    "EPA Method Name exactly equals FEMorFRMtype",
+    "EPA Arithmetic Mean exactly equals PM25FM as a decimal; no tolerance; 1st Max Value is not used"
+  ],
+  "native_duration": {
+    "R & P Model 2025": "24 HOUR",
+    "BAM-1020": "1 HOUR",
+    "BAM-1022": "1 HOUR",
+    "T640_including_T640X": "1 HOUR"
+  },
+  "pollutant_standard_merge": "same POC, method, event type, native duration, and mean only",
+  "device_day": {
+    "one_event_key": "valid pair; reference is that key's mean",
+    "several_event_keys": "EXCLUDED_AMBIGUOUS_MONITOR",
+    "any_unresolved_row": "EXCLUDED_UNRESOLVED_ROW; linked siblings are not kept"
+  },
+  "named_unresolved_row": 8402,
+  "do_not_replace_8402_pm25fm": [
+    "13.3",
+    "14"
+  ],
+  "reference_type_order": [
+    "four_periods_covered_desc",
+    "unique_valid_dates_desc",
+    "FEMorFRMtype_lexical"
+  ],
+  "representative_order": [
+    "paired_dates_154_desc",
+    "ID_lexical"
+  ],
+  "no_replacement_after_support_failure": true,
+  "no_min_poc_no_first_row_no_average": true,
+  "site_support": {
+    "D": 20,
+    "V": 10,
+    "A": 10,
+    "T": 20,
+    "D_fit": 1,
+    "D_tune": 1
+  },
+  "panel_support": {
+    "sites": 10,
+    "each_group": 4,
+    "V_days": 20,
+    "T_days": 40,
+    "T_blocks": 7,
+    "day_group_required": "max(3, ceil(0.75 * fixed sites in that group))",
+    "T_block_definition": "floor((date - 2019-05-04).days / 7); a block counts if it contains at least one evaluable day"
+  },
+  "A_T": "linkage metadata only; reference numbers are not written; training reads are refused",
+  "models_defined_not_fit": {
+    "M0": "raw PM25cf1",
+    "M1": "intercept + beta x",
+    "M2": "M1 + b_site",
+    "M3": "M2 + d_site x1",
+    "M4": {
+      "n_estimators": 100,
+      "max_depth": 6,
+      "min_samples_leaf": 5,
+      "max_features": 1.0,
+      "bootstrap": false,
+      "criterion": "squared_error",
+      "n_jobs": 1,
+      "random_state": 20261022
+    }
+  },
+  "lambda": [
+    0.1,
+    1,
+    10
+  ],
+  "thresholds": {
+    "G_R": 0.05,
+    "H_C": 0.02,
+    "near_zero": 1e-08
+  },
+  "budgets": {
+    "inherited_cpu_s": 7.53125,
+    "inherited_not_deducted_from_cap": true,
+    "this_round_cpu_s": 300,
+    "this_round_wall_s": 900,
+    "rss_gib": 1.5,
+    "low_available_gib": 1.5,
+    "low_available_seconds": 30
+  },
+  "threads": 1,
+  "no_gpu": true
+}

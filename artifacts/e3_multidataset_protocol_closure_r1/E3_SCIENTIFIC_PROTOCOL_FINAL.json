@@ -1,0 +1,73 @@
+{
+  "central_references": [
+    "central_all",
+    "central_delivered"
+  ],
+  "controlled_reference": [
+    "raven_simoracle"
+  ],
+  "core_same_backbone_baselines": [
+    "fedavg_window",
+    "fedasync_window",
+    "flamf_timealign_adapted",
+    "local_hajek",
+    "twostage_hajek",
+    "inst_cal",
+    "debt_cal"
+  ],
+  "created_utc": "2026-08-09T16:45:59.410992+00:00",
+  "datasets": [
+    "sensorscope",
+    "uair",
+    "traffic"
+  ],
+  "experiment": "E3",
+  "external_baseline": {
+    "flamf_original": "EXCLUDED_WITH_REASON unless faithfully implemented"
+  },
+  "formal_repetition": 20,
+  "formal_seeds": [
+    30001,
+    30002,
+    30003,
+    30004,
+    30005,
+    30006,
+    30007,
+    30008,
+    30009,
+    30010,
+    30011,
+    30012,
+    30013,
+    30014,
+    30015,
+    30016,
+    30017,
+    30018,
+    30019,
+    30020
+  ],
+  "primary_method": "raven",
+  "primary_metrics": [
+    "RMSE_mu",
+    "MAE_mu",
+    "Tail_RMSE",
+    "Delta_group",
+    "Delta_pair",
+    "delta_ref",
+    "Q/S"
+  ],
+  "round": "E3-MULTIDATASET-PROTOCOL-CLOSURE-R1",
+  "rq": "RQ2",
+  "scenario": "complete_aligned",
+  "secondary_diagnostics": [
+    "Head_RMSE",
+    "RMSE_rho",
+    "solver_status",
+    "ESS",
+    "clip_rates",
+    "runtime"
+  ],
+  "title": "Main Performance Results"
+}

@@ -1,0 +1,19 @@
+{
+  "construction": {
+    "methods_hash": "0729a2d8435f6a81dec1b9724b9d01809d76c435e34a23ea704945baf6cf615d",
+    "proven": true,
+    "window_runner": "get_aggregator(method) with no kwargs",
+    "window_runner_hash": "f7bff5e30c76898f5ab3e3998021f9b09e52ccf73f135b44bc4e141d9e13c436"
+  },
+  "created_utc": "2026-08-12T15:08:30.948286+00:00",
+  "full_raven_p2_coefficients": {
+    "alpha_max": 0.5,
+    "e_min": 3.0,
+    "lambda_beta": 1.0,
+    "lambda_group": 1.0,
+    "lambda_s": 0.1,
+    "lambda_v": 0.1,
+    "max_server_learning_rate": 1.0
+  },
+  "one_factor_implication": "Final raven_wo_inst must keep lambda_beta/lambda_v/lambda_s/alpha bounds/ESS/debt identical to full RAVEN; only instantaneous calibration removed (lambda_group=0, instant_calibration=False)."
+}

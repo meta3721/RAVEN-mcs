@@ -1,0 +1,9 @@
+{
+  "identity": "A",
+  "joint_construction": "pi_opp_joint(k,s) = P(client opportunity = k) * P(s|k) materialized by build_joint_pi_opp on the same support as pi_tar",
+  "label": "normalized opportunity event mass over client×stratum",
+  "not": "pair inclusion probability",
+  "production_consumer": "FullWindowRunner._compute_zeta uses pi_opp_joint as zeta denominator",
+  "scale_match": "sum_{k,s} pi_opp_joint = 1 and sum_{k,s} pi_tar = 1",
+  "status": "FROZEN"
+}

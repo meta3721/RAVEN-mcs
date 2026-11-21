@@ -1,0 +1,131 @@
+{
+  "no_Q_cases": [
+    {
+      "time": 60.2,
+      "window": 83,
+      "action": "WAIT",
+      "reason": "FEEDBACK_WAIT",
+      "B": 0.019911041885110874,
+      "components": {
+        "quality": 0.005007803758847573,
+        "debt": -9.676187373691274e-05,
+        "patience": 0.015000000000000215,
+        "b": -0.0009676187373691273,
+        "c_minus": 0.9740356705462767,
+        "c": 0.9690278667874291
+      },
+      "shadow": {
+        "no_Q_stop": "CLOSE",
+        "fixed_time_0_5": "WAIT",
+        "fixed_time_2": "WAIT",
+        "forced": false,
+        "no_Q_B": 0.020007803758847788,
+        "P2_recomputed": false,
+        "legal_actions": [
+          "CLOSE",
+          "WAIT"
+        ]
+      },
+      "actual_request_root_upper": 0.035625000000000004
+    }
+  ],
+  "no_Q_fraction_all_regular": 0.0012515644555694619,
+  "no_Q_fraction_nonforced": 0.0016556291390728477,
+  "frozen_reference": "No feature, parameter, threshold, seed or gate changed using these outcomes",
+  "first_checkpoint_bytes": [
+    32700682,
+    4593467
+  ],
+  "final_checkpoint_bytes": [
+    179560368,
+    7493086
+  ],
+  "original_checkpoint_bytes": [
+    6301614,
+    4134777
+  ],
+  "queue_max": 24,
+  "P_max_at_checkpoints": 7,
+  "F_max_at_checkpoints": 20,
+  "P2_cache_cost_scope": "Full online root requests include solve/cache lookup, controller and actual apply; independent solver-only CPU not separately measured",
+  "source_of_support": "One linked device/network stratum per class; no independent cross-product support or calibration demonstrated",
+  "operation_breakdown": {
+    "initialization/restore_actual": {
+      "count": 1,
+      "root_difference": 5.5,
+      "root_upper_sum": 5.52,
+      "wall": 6.2353117000020575,
+      "max_root_upper": 5.52
+    },
+    "events/registration": {
+      "count": 4254,
+      "root_difference": 41.40625,
+      "root_upper_sum": 127.2206249999945,
+      "wall": 224.1668841998835,
+      "max_root_upper": 0.42625
+    },
+    "training/train": {
+      "count": 3249,
+      "root_difference": 28.359375,
+      "root_upper_sum": 93.91749999999901,
+      "wall": 172.58612630000425,
+      "max_root_upper": 0.316875
+    },
+    "events/queue": {
+      "count": 3249,
+      "root_difference": 16.6875,
+      "root_upper_sum": 82.35500000000059,
+      "wall": 172.41022769986012,
+      "max_root_upper": 0.0825
+    },
+    "events/finish": {
+      "count": 4254,
+      "root_difference": 20.984375,
+      "root_upper_sum": 106.79874999999667,
+      "wall": 221.84614349969343,
+      "max_root_upper": 0.0825
+    },
+    "events/notify": {
+      "count": 3242,
+      "root_difference": 17.3125,
+      "root_upper_sum": 82.79312500000052,
+      "wall": 169.3755187000279,
+      "max_root_upper": 0.191875
+    },
+    "events/pre": {
+      "count": 990,
+      "root_difference": 10.125,
+      "root_upper_sum": 30.15937499999963,
+      "wall": 51.74641049992351,
+      "max_root_upper": 0.066875
+    },
+    "online/<lambda>": {
+      "count": 990,
+      "root_difference": 17.921875,
+      "root_upper_sum": 37.90937500000014,
+      "wall": 58.44614189996355,
+      "max_root_upper": 0.36375
+    },
+    "events/diagnostics": {
+      "count": 990,
+      "root_difference": 14.671875,
+      "root_upper_sum": 34.61249999999985,
+      "wall": 58.88954470000317,
+      "max_root_upper": 0.223125
+    },
+    "save/<lambda>": {
+      "count": 20,
+      "root_difference": 124.109375,
+      "root_upper_sum": 124.52499999999996,
+      "wall": 135.53074309998192,
+      "max_root_upper": 9.73875
+    },
+    "events/summary": {
+      "count": 20,
+      "root_difference": 0.21875,
+      "root_upper_sum": 0.6187500000000002,
+      "wall": 1.0407753999897977,
+      "max_root_upper": 0.051250000000000004
+    }
+  }
+}

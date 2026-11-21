@@ -1,0 +1,16 @@
+Traceback (most recent call last):
+  File "C:\Cursor\raven.mcs\scripts\run_joint_ou_cs_p2.py", line 466, in train_one
+    window_metrics = runner.run()
+                     ^^^^^^^^^^^^
+  File "C:\Cursor\raven.mcs\src\raven_mcs\training\window_runner.py", line 591, in run
+    window_metrics = self._process_window(window_id, events)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Cursor\raven.mcs\scripts\run_joint_ou_cs_p2.py", line 452, in _pw
+    out = orig_pw(window_id, events)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Cursor\raven.mcs\src\raven_mcs\training\window_runner.py", line 696, in _process_window
+    zeta_d = self._compute_zeta(cid, rec.opportunity_strata)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Cursor\raven.mcs\src\raven_mcs\training\window_runner.py", line 286, in _compute_zeta
+    raise RuntimeError(f"pi target lacks opportunity support: {missing[:3]}")
+RuntimeError: pi target lacks opportunity support: [('g0018_0022', 'unknown')]

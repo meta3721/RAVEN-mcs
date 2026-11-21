@@ -1,0 +1,128 @@
+{
+  "hl_rel_diff": -0.00019218624106220883,
+  "ci95_lo": -0.018930121493932996,
+  "ci95_hi": 0.1227538472472683,
+  "wilcoxon_p": 0.921875,
+  "n_traces": 10,
+  "r": 3,
+  "reading": "inconclusive",
+  "dgroup_gain_retained_share": 1.01940619413722,
+  "contrast": "RMSE_mu(raven_ctrl)/RMSE_mu(raven_ctrl_floor) - 1, trace-level means over r = 3 model seeds",
+  "delta_CS": 0.02,
+  "ci_type": "percentile trace-cluster bootstrap",
+  "ci_basic_lo": -0.12313821972939272,
+  "ci_basic_hi": 0.01854574901180858,
+  "wilcoxon_inverted_lo": -0.016079369169102964,
+  "wilcoxon_inverted_hi": 0.11655791597793108,
+  "rel_mean": 0.03346713390270539,
+  "rel_median": -0.00042926158289502414,
+  "rel_sd": 0.10298101301631245,
+  "se": 0.03256545568829939,
+  "n_traces_arm_lower": 7,
+  "reading_robust_to_interval_type": {
+    "percentile": "inconclusive",
+    "basic": "inconclusive",
+    "wilcoxon_inverted": "inconclusive",
+    "note": "the preregistered primary interval is the percentile one"
+  },
+  "power_diagnostic": {
+    "sd_trace_level": 0.10298101301631245,
+    "se": 0.03256545568829939,
+    "n_traces": 10,
+    "delta_CS": 0.02,
+    "power_at_theta0_delta_CS": 0.15133937433856642,
+    "mde80": -0.0609731868904773,
+    "testable_power_ge_0.80": false,
+    "ci_width_percentile": 0.1416839687412013,
+    "ci_half_width_below": 0.018930121493932996,
+    "ci_half_width_above": 0.1227538472472683,
+    "formula": "power(theta) = Phi((delta - theta)/SE - z_0.95), SE = sd(d_t)/sqrt(n); MDE_80 = delta - (z_0.80 + z_0.95)*SE (A1 PREREG SS5)",
+    "role": "post hoc diagnostic required by B3 for the inconclusive row; not a decision"
+  },
+  "d_seed_paired_robustness": {
+    "hl": -0.00028017050028058177,
+    "mean": 0.03759299956742943,
+    "note": "declared robustness column; never a decision"
+  },
+  "structural_guardrail": {
+    "Delta_group_mean": {
+      "fedavg_window": 0.19533469300503956,
+      "raven_wo_design": 0.07362666172518723,
+      "raven_ctrl": 0.0706437764389591,
+      "raven_ctrl_floor": 0.06822400030492985,
+      "raven_M1mu": 0.07710748225356726,
+      "raven_M2mu": 0.0813164380890539
+    },
+    "Delta_c_s_mean": {
+      "fedavg_window": 0.8122597053721176,
+      "raven_wo_design": 0.7879929232284663,
+      "raven_ctrl": 0.5675784877619566,
+      "raven_ctrl_floor": 0.7892483122742053,
+      "raven_M1mu": 1.4060316073058874,
+      "raven_M2mu": 1.4347874930473432
+    },
+    "Delta_group_ctrl_floor_minus_ctrl": -0.0024197761340292445,
+    "Delta_c_s_ctrl_floor_minus_ctrl": 0.2216698245122487,
+    "rule": "retained = (mean_t Dg(fedavg) - mean_t Dg(floor)) / (mean_t Dg(fedavg) - mean_t Dg(ctrl))",
+    "dgroup_gain_fedavg_to_ctrl": 0.12469091656608046,
+    "dgroup_gain_fedavg_to_floor": 0.12711069270010972,
+    "dgroup_gain_retained_share": 1.01940619413722,
+    "per_trace_retained_share": [
+      0.9287754809122964,
+      0.9136392946314225,
+      1.2014716326253583,
+      0.9611139897150004,
+      1.2019749885131719,
+      0.8709229610433926,
+      0.8809594686586439,
+      1.3284904037073406,
+      0.9450022958930049,
+      1.1183297737661013
+    ]
+  },
+  "walsh": {
+    "n": 10,
+    "N_walsh": 55,
+    "c_lo": 10,
+    "c_hi": 44,
+    "critical_value_distribution": "exact null distribution of W+"
+  },
+  "provenance": {
+    "runs_csv_sha256": "2de0fdc1eb6d789a5630f193d233d1691a94c7b3f09159c162edb7740fcc8d71",
+    "n_runs": 180,
+    "traces": [
+      32001,
+      32002,
+      32003,
+      32004,
+      32005,
+      32006,
+      32007,
+      32008,
+      32009,
+      32010
+    ],
+    "arms": [
+      "fedavg_window",
+      "raven_M1mu",
+      "raven_M2mu",
+      "raven_ctrl",
+      "raven_ctrl_floor",
+      "raven_wo_design"
+    ],
+    "complete": {
+      "fedavg_window": true,
+      "raven_wo_design": true,
+      "raven_ctrl": true,
+      "raven_ctrl_floor": true,
+      "raven_M1mu": true,
+      "raven_M2mu": true
+    },
+    "bootstrap": {
+      "B": 10000,
+      "seed": 20261003,
+      "type": "trace-cluster, traces resampled with replacement and r model seeds within trace resampled with replacement; percentile interval"
+    },
+    "registered_in": "PREREG.md AMENDMENT 1 (t3), hashed in MANIFEST.sha256 before the first B1 run"
+  }
+}

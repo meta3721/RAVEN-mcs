@@ -1,0 +1,173 @@
+{
+  "clip_by_scenario": {
+    "balanced": {
+      "observation_lower_clip_rate": 0.0,
+      "observation_upper_clip_rate": 0.0,
+      "opportunity_lower_clip_rate": 0.0,
+      "opportunity_upper_clip_rate": 0.0,
+      "p_obs_max": 0.19999999999950827,
+      "p_obs_min": 0.19999999999950827,
+      "p_opp_max": 0.5499999999995426,
+      "p_opp_min": 0.5499999999995426,
+      "q_lower_clip_rate": 0.0,
+      "q_max": 0.600000000000572,
+      "q_min": 0.600000000000572,
+      "q_upper_clip_rate": 0.0
+    },
+    "complete_aligned": {
+      "observation_lower_clip_rate": 0.0,
+      "observation_upper_clip_rate": 0.0,
+      "opportunity_lower_clip_rate": 0.0,
+      "opportunity_upper_clip_rate": 0.0,
+      "p_obs_max": 0.2559990715911763,
+      "p_obs_min": 0.11235898154118192,
+      "p_opp_max": 0.6711574761047978,
+      "p_opp_min": 0.4288425238961375,
+      "q_lower_clip_rate": 0.0,
+      "q_max": 0.6666749084748345,
+      "q_min": 0.4238921724694042,
+      "q_upper_clip_rate": 0.0
+    },
+    "complete_counteracting": {
+      "observation_lower_clip_rate": 0.0,
+      "observation_upper_clip_rate": 0.0,
+      "opportunity_lower_clip_rate": 0.0,
+      "opportunity_upper_clip_rate": 0.0,
+      "p_obs_max": 0.2559990715911763,
+      "p_obs_min": 0.11235898154118192,
+      "p_opp_max": 0.6711574761047978,
+      "p_opp_min": 0.4288425238961375,
+      "q_lower_clip_rate": 0.0,
+      "q_max": 0.7607619163046413,
+      "q_min": 0.5391350957745559,
+      "q_upper_clip_rate": 0.0
+    },
+    "observation_only": {
+      "observation_lower_clip_rate": 0.0,
+      "observation_upper_clip_rate": 0.0,
+      "opportunity_lower_clip_rate": 0.0,
+      "opportunity_upper_clip_rate": 0.0,
+      "p_obs_max": 0.27665407497048183,
+      "p_obs_min": 0.1233459250293439,
+      "p_opp_max": 0.5499999999995426,
+      "p_opp_min": 0.5499999999995426,
+      "q_lower_clip_rate": 0.0,
+      "q_max": 0.600000000000572,
+      "q_min": 0.600000000000572,
+      "q_upper_clip_rate": 0.0
+    },
+    "opportunity_only": {
+      "observation_lower_clip_rate": 0.0,
+      "observation_upper_clip_rate": 0.0,
+      "opportunity_lower_clip_rate": 0.0,
+      "opportunity_upper_clip_rate": 0.0,
+      "p_obs_max": 0.19999999999950827,
+      "p_obs_min": 0.19999999999950827,
+      "p_opp_max": 0.6711574761047978,
+      "p_opp_min": 0.4288425238961375,
+      "q_lower_clip_rate": 0.0,
+      "q_max": 0.600000000000572,
+      "q_min": 0.600000000000572,
+      "q_upper_clip_rate": 0.0
+    },
+    "usable_only": {
+      "observation_lower_clip_rate": 0.0,
+      "observation_upper_clip_rate": 0.0,
+      "opportunity_lower_clip_rate": 0.0,
+      "opportunity_upper_clip_rate": 0.0,
+      "p_obs_max": 0.19999999999950827,
+      "p_obs_min": 0.19999999999950827,
+      "p_opp_max": 0.5499999999995426,
+      "p_opp_min": 0.5499999999995426,
+      "q_lower_clip_rate": 0.0,
+      "q_max": 0.717262451658265,
+      "q_min": 0.4827375483421506,
+      "q_upper_clip_rate": 0.0
+    }
+  },
+  "design_seeds": [
+    28201,
+    28202,
+    28203
+  ],
+  "direction_certificate_sha256": "c40c05e0327ce08d74e40ca50af274a9e1678877f9e37218e9fb6b1d68539332",
+  "e2_formal_runs": 0,
+  "e3_e9_status": "NOT_STARTED",
+  "exact_enumeration_window_count": 4300,
+  "failed_attempt_omission_count": 0,
+  "formal_seed_read_count": 0,
+  "generated_at_utc": "2026-08-06T13:22:29.177154+00:00",
+  "hard_trace_count": 18,
+  "hardcoded_pass_count": 0,
+  "next_authorized_round": "E2-TRAFFIC-REAL-RUNNER-CANARY-R1",
+  "other_strength_executed_count": 0,
+  "parameter_sets_per_scenario": 1,
+  "per_seed_intercept_solve_count": 0,
+  "probability_bounds": {
+    "obs": [
+      0.05,
+      0.95
+    ],
+    "opp": [
+      0.05,
+      0.95
+    ],
+    "q": [
+      0.05,
+      0.95
+    ]
+  },
+  "q_leakage_count": 0,
+  "registry_sha256": "7d9b8292522b6fbcc15d83ebb065fc8a73b79787ed643aea49c48f30596acbc7",
+  "runtime_commit": "e56687813f2bcb919a9208391f68a4db3488602e",
+  "scenario_pass_count": 6,
+  "scenario_results": {
+    "balanced": "PASS",
+    "complete_aligned": "PASS",
+    "complete_counteracting": "PASS",
+    "observation_only": "PASS",
+    "opportunity_only": "PASS",
+    "usable_only": "PASS"
+  },
+  "seed_29001_read_count": 0,
+  "selected_strength": "PROFILE-S1",
+  "selection_reason": "deterministic_support_fallback",
+  "status": "READY_FOR_TRAFFIC_REAL_RUNNER_CANARY",
+  "strength_grid_search_count": 0,
+  "support_minima": {
+    "balanced": {
+      "client_stratum": 3.167999999992598,
+      "group": 425.69999999900534,
+      "stratum": 31.679999999925982
+    },
+    "complete_aligned": {
+      "client_stratum": 0.9803976728144206,
+      "group": 131.74093728443776,
+      "stratum": 9.803976728144207
+    },
+    "complete_counteracting": {
+      "client_stratum": 1.759525796303171,
+      "group": 236.4362788782386,
+      "stratum": 17.59525796303171
+    },
+    "observation_only": {
+      "client_stratum": 1.9537994524650455,
+      "group": 262.5418014249905,
+      "stratum": 19.537994524650458
+    },
+    "opportunity_only": {
+      "client_stratum": 2.4701329376380317,
+      "group": 331.92411349511053,
+      "stratum": 24.70132937638032
+    },
+    "usable_only": {
+      "client_stratum": 2.5488542552381683,
+      "group": 342.50229054762883,
+      "stratum": 25.48854255238168
+    }
+  },
+  "target_leakage_count": 0,
+  "training_artifact_count": 0,
+  "unsupported_arrival_count": 0,
+  "validation_seed_read_count": 0
+}

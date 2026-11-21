@@ -1,0 +1,123 @@
+{
+  "charged_CPU": 183.46875,
+  "CPU_limit": 3600,
+  "caps": {
+    "setup": 180.0,
+    "initialization": 120.0,
+    "online": 1300.0,
+    "training": 900.0,
+    "events": 700.0,
+    "save": 300.0,
+    "repair": 100.0
+  },
+  "categories": {
+    "setup": 85.734375,
+    "initialization": 0.0,
+    "online": 0.0,
+    "training": 0.0,
+    "events": 0.0,
+    "save": 0.8125,
+    "repair": 96.921875
+  },
+  "measured_root_CPU": 153.46875,
+  "read_edit_delivery_conservative_CPU": 30,
+  "unmetered_actual_CPU": "UNKNOWN",
+  "prior_charged_CPU": 4765.234375,
+  "cumulative_charged_CPU": 4948.703125,
+  "nominal_5hour_remaining_CPU": 13051.296875,
+  "historical_actual_gap": "UNKNOWN",
+  "charges": [
+    {
+      "label": "seed_audit",
+      "root_CPU": 39.984375,
+      "job_CPU": 37.453125,
+      "driver_CPU": 2.53125,
+      "categories": {
+        "setup": 39.984375
+      },
+      "wall": 56.70382629999949,
+      "exit": 124,
+      "audit": true,
+      "limit": "cpu"
+    },
+    {
+      "label": "seed_audit_chunked",
+      "root_CPU": 35.0,
+      "job_CPU": 32.921875,
+      "driver_CPU": 2.078125,
+      "categories": {
+        "repair": 35.0
+      },
+      "wall": 45.08379199999763,
+      "exit": 124,
+      "audit": true,
+      "limit": "cpu"
+    },
+    {
+      "label": "seed_audit_literal_prefilter",
+      "root_CPU": 24.984375,
+      "job_CPU": 23.28125,
+      "driver_CPU": 1.703125,
+      "categories": {
+        "repair": 24.984375
+      },
+      "wall": 31.863869400000112,
+      "exit": 124,
+      "audit": true,
+      "limit": "cpu"
+    },
+    {
+      "label": "seed_metadata_fast",
+      "root_CPU": 9.59375,
+      "categories": {
+        "repair": 9.59375
+      },
+      "wall": 7.981973200003267,
+      "exit": "PermissionError(13, '\u62d2\u7edd\u8bbf\u95ee\u3002')",
+      "audit": false,
+      "actual_CPU": "UNKNOWN; conservative oneCPU job wall bound"
+    },
+    {
+      "label": "seed_metadata_fast_unique",
+      "root_CPU": 21.984375,
+      "job_CPU": 20.390625,
+      "driver_CPU": 1.59375,
+      "categories": {
+        "repair": 21.984375
+      },
+      "wall": 27.565526000002137,
+      "exit": 124,
+      "audit": true,
+      "limit": "cpu"
+    },
+    {
+      "label": "seed_metadata_fixed_strings",
+      "root_CPU": 5.359375,
+      "job_CPU": 5.03125,
+      "driver_CPU": 0.328125,
+      "categories": {
+        "repair": 5.359375
+      },
+      "wall": 6.222346599999582,
+      "exit": 124,
+      "audit": true,
+      "limit": "cpu"
+    },
+    {
+      "label": "sgd0_integration",
+      "root_CPU": 16.5625,
+      "job_CPU": 15.453125,
+      "driver_CPU": 1.109375,
+      "categories": {
+        "save": 0.8125,
+        "setup": 15.75
+      },
+      "wall": 20.89942130000054,
+      "exit": 0,
+      "audit": true,
+      "limit": null
+    }
+  ],
+  "wall_measured": 196.32075480000276,
+  "state": "WAITING_USER_REVIEW"
+}

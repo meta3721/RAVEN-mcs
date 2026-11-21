@@ -1,0 +1,582 @@
+{
+  "width_bp": 515.52,
+  "height_bp": 244.0128,
+  "labels": [
+    {
+      "group": "next-window-debt-feedback",
+      "text": "<b>Q</b><sub>r+1</sub>: next-window debt",
+      "ordinary_export_pt": 9.10752,
+      "x0": 882.16453,
+      "x1": 1137.83547,
+      "baseline": 568
+    },
+    {
+      "group": "next-window-history-feedback",
+      "text": "Updated histories → next window",
+      "ordinary_export_pt": 9.10752,
+      "x0": 449.17725,
+      "x1": 810.82275,
+      "baseline": 642
+    },
+    {
+      "group": "sensing-scene",
+      "text": "Opportunity <i>R</i>",
+      "ordinary_export_pt": 9.62304,
+      "x0": 4.931999999999988,
+      "x1": 183.068,
+      "baseline": 30
+    },
+    {
+      "group": "sensing-scene",
+      "text": "Mobile sensing",
+      "ordinary_export_pt": 9.10752,
+      "x0": 12.658249999999995,
+      "x1": 175.34175,
+      "baseline": 179
+    },
+    {
+      "group": "local-records",
+      "text": "Observation <i>O</i>",
+      "ordinary_export_pt": 9.62304,
+      "x0": 196.716,
+      "x1": 373.284,
+      "baseline": 30
+    },
+    {
+      "group": "local-records",
+      "text": "Local records",
+      "ordinary_export_pt": 9.10752,
+      "x0": 198.5225,
+      "x1": 343.47749999999996,
+      "baseline": 73
+    },
+    {
+      "group": "local-records",
+      "text": "i",
+      "ordinary_export_pt": 9.10752,
+      "x0": 212.3165,
+      "x1": 219.68349999999998,
+      "baseline": 101
+    },
+    {
+      "group": "local-records",
+      "text": "Z",
+      "ordinary_export_pt": 9.10752,
+      "x0": 253.891,
+      "x1": 270.109,
+      "baseline": 101
+    },
+    {
+      "group": "local-records",
+      "text": "…",
+      "ordinary_export_pt": 9.10752,
+      "x0": 295.75,
+      "x1": 322.25,
+      "baseline": 101
+    },
+    {
+      "group": "local-records",
+      "text": "…",
+      "ordinary_export_pt": 9.10752,
+      "x0": 202.75,
+      "x1": 229.25,
+      "baseline": 127
+    },
+    {
+      "group": "local-records",
+      "text": "…",
+      "ordinary_export_pt": 9.10752,
+      "x0": 248.75,
+      "x1": 275.25,
+      "baseline": 127
+    },
+    {
+      "group": "local-records",
+      "text": "…",
+      "ordinary_export_pt": 9.10752,
+      "x0": 295.75,
+      "x1": 322.25,
+      "baseline": 127
+    },
+    {
+      "group": "shared-correction",
+      "text": "Pre-outcome state",
+      "ordinary_export_pt": 9.62304,
+      "x0": 384.326,
+      "x1": 599.674,
+      "baseline": 61
+    },
+    {
+      "group": "shared-correction",
+      "text": "Selection / lagged",
+      "ordinary_export_pt": 9.10752,
+      "x0": 397.0505,
+      "x1": 586.9495,
+      "baseline": 86
+    },
+    {
+      "group": "shared-correction",
+      "text": "state",
+      "ordinary_export_pt": 9.10752,
+      "x0": 467.71275,
+      "x1": 516.2872500000001,
+      "baseline": 108
+    },
+    {
+      "group": "shared-correction",
+      "text": "π<sup>tar</sup>; fixed Design",
+      "ordinary_export_pt": 9.10752,
+      "x0": 400.22255,
+      "x1": 583.77745,
+      "baseline": 134
+    },
+    {
+      "group": "shared-correction",
+      "text": "R/O correction",
+      "ordinary_export_pt": 9.62304,
+      "x0": 420.19,
+      "x1": 599.81,
+      "baseline": 219
+    },
+    {
+      "group": "shared-correction",
+      "text": "Record weights a<sub>k,r,i</sub>",
+      "ordinary_export_pt": 9.10752,
+      "x0": 402.63631,
+      "x1": 617.3636899999999,
+      "baseline": 244
+    },
+    {
+      "group": "shared-correction",
+      "text": "ā",
+      "ordinary_export_pt": 9.10752,
+      "x0": 329.234,
+      "x1": 341.0,
+      "baseline": 278
+    },
+    {
+      "group": "shared-correction",
+      "text": "Mass m<sub>k,r</sub>",
+      "ordinary_export_pt": 9.10752,
+      "x0": 510,
+      "x1": 613.84714,
+      "baseline": 294
+    },
+    {
+      "group": "shared-correction",
+      "text": "pre-U",
+      "ordinary_export_pt": 9.10752,
+      "x0": 558.202,
+      "x1": 620.0,
+      "baseline": 323
+    },
+    {
+      "group": "local-training-and-window",
+      "text": "Local normalized",
+      "ordinary_export_pt": 9.62304,
+      "x0": 127.392,
+      "x1": 336.608,
+      "baseline": 316
+    },
+    {
+      "group": "local-training-and-window",
+      "text": "training",
+      "ordinary_export_pt": 9.62304,
+      "x0": 183.76999999999998,
+      "x1": 280.23,
+      "baseline": 340
+    },
+    {
+      "group": "local-training-and-window",
+      "text": "<b>u</b><sub>k,r</sub>",
+      "ordinary_export_pt": 9.10752,
+      "x0": 268.30118,
+      "x1": 303.69882,
+      "baseline": 414
+    },
+    {
+      "group": "local-training-and-window",
+      "text": "Usability <i>U</i>",
+      "ordinary_export_pt": 9.62304,
+      "x0": 52.715999999999994,
+      "x1": 187.284,
+      "baseline": 455
+    },
+    {
+      "group": "local-training-and-window",
+      "text": "Open",
+      "ordinary_export_pt": 9.10752,
+      "x0": 6.3004999999999995,
+      "x1": 63.6995,
+      "baseline": 540
+    },
+    {
+      "group": "local-training-and-window",
+      "text": "Close",
+      "ordinary_export_pt": 9.10752,
+      "x0": 229.8165,
+      "x1": 290.1835,
+      "baseline": 540
+    },
+    {
+      "group": "local-training-and-window",
+      "text": "Late",
+      "ordinary_export_pt": 9.10752,
+      "x0": 284.45475,
+      "x1": 331.54525,
+      "baseline": 565
+    },
+    {
+      "group": "local-training-and-window",
+      "text": "Usable clients",
+      "ordinary_export_pt": 9.10752,
+      "x0": 90.29650000000001,
+      "x1": 239.7035,
+      "baseline": 583
+    },
+    {
+      "group": "local-training-and-window",
+      "text": "Positive mass",
+      "ordinary_export_pt": 9.10752,
+      "x0": 92.4695,
+      "x1": 237.53050000000002,
+      "baseline": 608
+    },
+    {
+      "group": "reference-reconstruction",
+      "text": "Reference mass",
+      "ordinary_export_pt": 9.62304,
+      "x0": 417.096,
+      "x1": 602.904,
+      "baseline": 375
+    },
+    {
+      "group": "reference-reconstruction",
+      "text": "d<sub>k,r</sub>; β̂<sub>k,r</sub> ∝ m<sub>k,r</sub>d<sub>k,r</sub>",
+      "ordinary_export_pt": 9.10752,
+      "x0": 415.84497,
+      "x1": 604.1550299999999,
+      "baseline": 401
+    },
+    {
+      "group": "reference-reconstruction",
+      "text": "Reference",
+      "ordinary_export_pt": 9.62304,
+      "x0": 637.15,
+      "x1": 756.85,
+      "baseline": 317
+    },
+    {
+      "group": "reference-reconstruction",
+      "text": "<b>β̂</b><sub>r</sub>",
+      "ordinary_export_pt": 9.10752,
+      "x0": 686.45618,
+      "x1": 707.54382,
+      "baseline": 350
+    },
+    {
+      "group": "p2-inputs",
+      "text": "Active support",
+      "ordinary_export_pt": 9.62304,
+      "x0": 648.73,
+      "x1": 825.27,
+      "baseline": 59
+    },
+    {
+      "group": "p2-inputs",
+      "text": "A<sub>r</sub> ; M<sub>r</sub>",
+      "ordinary_export_pt": 9.10752,
+      "x0": 698.99211,
+      "x1": 775.00789,
+      "baseline": 83
+    },
+    {
+      "group": "p2-inputs",
+      "text": "Target",
+      "ordinary_export_pt": 9.62304,
+      "x0": 849.568,
+      "x1": 930.432,
+      "baseline": 59
+    },
+    {
+      "group": "p2-inputs",
+      "text": "<b>μ</b>",
+      "ordinary_export_pt": 9.10752,
+      "x0": 881.9175,
+      "x1": 898.0825,
+      "baseline": 83
+    },
+    {
+      "group": "p2-inputs",
+      "text": "Weight caps",
+      "ordinary_export_pt": 9.62304,
+      "x0": 978.5,
+      "x1": 1125.5,
+      "baseline": 57
+    },
+    {
+      "group": "p2-inputs",
+      "text": "Effective support",
+      "ordinary_export_pt": 9.10752,
+      "x0": 960.37625,
+      "x1": 1143.62375,
+      "baseline": 81
+    },
+    {
+      "group": "p2-inputs",
+      "text": "C<sub>r</sub>",
+      "ordinary_export_pt": 9.10752,
+      "x0": 1041.98543,
+      "x1": 1066.01457,
+      "baseline": 129
+    },
+    {
+      "group": "p2-inputs",
+      "text": "Current <b>Q</b><sub>r</sub>",
+      "ordinary_export_pt": 9.10752,
+      "x0": 674.72343,
+      "x1": 789.27657,
+      "baseline": 219
+    },
+    {
+      "group": "p2-inputs",
+      "text": "Lagged V<sub>r</sub>",
+      "ordinary_export_pt": 9.10752,
+      "x0": 996.20743,
+      "x1": 1107.79257,
+      "baseline": 210
+    },
+    {
+      "group": "p2-inputs",
+      "text": "Staleness",
+      "ordinary_export_pt": 9.10752,
+      "x0": 1002.6835,
+      "x1": 1101.3165,
+      "baseline": 234
+    },
+    {
+      "group": "single-p2-program",
+      "text": "Calibration",
+      "ordinary_export_pt": 9.62304,
+      "x0": 840.77,
+      "x1": 979.23,
+      "baseline": 329
+    },
+    {
+      "group": "single-p2-program",
+      "text": "Reference fidelity",
+      "ordinary_export_pt": 9.10752,
+      "x0": 814.706,
+      "x1": 1005.294,
+      "baseline": 359
+    },
+    {
+      "group": "single-p2-program",
+      "text": "Group alignment",
+      "ordinary_export_pt": 9.10752,
+      "x0": 819.83375,
+      "x1": 1000.16625,
+      "baseline": 383
+    },
+    {
+      "group": "single-p2-program",
+      "text": "Debt + state",
+      "ordinary_export_pt": 9.10752,
+      "x0": 844.2535,
+      "x1": 975.7465,
+      "baseline": 407
+    },
+    {
+      "group": "single-p2-program",
+      "text": "regularization",
+      "ordinary_export_pt": 9.10752,
+      "x0": 836.4095,
+      "x1": 983.5905,
+      "baseline": 431
+    },
+    {
+      "group": "single-weight-output",
+      "text": "Weights",
+      "ordinary_export_pt": 9.62304,
+      "x0": 1053.0,
+      "x1": 1151.0,
+      "baseline": 326
+    },
+    {
+      "group": "single-weight-output",
+      "text": "<b>α</b><sup>⋆</sup><sub>r</sub> ∈ C<sub>r</sub>",
+      "ordinary_export_pt": 9.10752,
+      "x0": 1059.07318,
+      "x1": 1144.9268200000001,
+      "baseline": 350
+    },
+    {
+      "group": "usable-update-stream",
+      "text": "Usable normalized model updates <b>u</b><sub>k,r</sub>",
+      "ordinary_export_pt": 9.10752,
+      "x0": 649.04043,
+      "x1": 1050.95957,
+      "baseline": 472
+    },
+    {
+      "group": "aggregation-and-model",
+      "text": "Weighted",
+      "ordinary_export_pt": 9.62304,
+      "x0": 1242.446,
+      "x1": 1357.5539999999999,
+      "baseline": 301
+    },
+    {
+      "group": "aggregation-and-model",
+      "text": "aggregation",
+      "ordinary_export_pt": 9.62304,
+      "x0": 1229.23,
+      "x1": 1370.77,
+      "baseline": 326
+    },
+    {
+      "group": "aggregation-and-model",
+      "text": "Updated",
+      "ordinary_export_pt": 9.62304,
+      "x0": 1390.662,
+      "x1": 1493.338,
+      "baseline": 301
+    },
+    {
+      "group": "aggregation-and-model",
+      "text": "model",
+      "ordinary_export_pt": 9.62304,
+      "x0": 1405.446,
+      "x1": 1478.5539999999999,
+      "baseline": 326
+    },
+    {
+      "group": "aggregation-and-model",
+      "text": "θ<sub>r+1</sub>",
+      "ordinary_export_pt": 9.10752,
+      "x0": 1420.9462800000001,
+      "x1": 1463.05372,
+      "baseline": 350
+    },
+    {
+      "group": "composition-and-post-aggregation-state",
+      "text": "<b>ω</b><sub>r</sub> = M<sub>r</sub><b>α</b><sup>⋆</sup><sub>r</sub>",
+      "ordinary_export_pt": 9.10752,
+      "x0": 1053.24261,
+      "x1": 1170.75739,
+      "baseline": 518
+    },
+    {
+      "group": "composition-and-post-aggregation-state",
+      "text": "After aggregation",
+      "ordinary_export_pt": 9.62304,
+      "x0": 1248.866,
+      "x1": 1461.134,
+      "baseline": 468
+    },
+    {
+      "group": "composition-and-post-aggregation-state",
+      "text": "g",
+      "ordinary_export_pt": 9.10752,
+      "x0": 1229.375,
+      "x1": 1242.625,
+      "baseline": 512
+    },
+    {
+      "group": "composition-and-post-aggregation-state",
+      "text": "…",
+      "ordinary_export_pt": 9.10752,
+      "x0": 1249.75,
+      "x1": 1276.25,
+      "baseline": 512
+    },
+    {
+      "group": "composition-and-post-aggregation-state",
+      "text": "g",
+      "ordinary_export_pt": 9.10752,
+      "x0": 1229.375,
+      "x1": 1242.625,
+      "baseline": 536
+    },
+    {
+      "group": "composition-and-post-aggregation-state",
+      "text": "…",
+      "ordinary_export_pt": 9.10752,
+      "x0": 1249.75,
+      "x1": 1276.25,
+      "baseline": 536
+    },
+    {
+      "group": "composition-and-post-aggregation-state",
+      "text": "Group debt",
+      "ordinary_export_pt": 9.62304,
+      "x0": 1312.378,
+      "x1": 1451.6219999999998,
+      "baseline": 508
+    },
+    {
+      "group": "composition-and-post-aggregation-state",
+      "text": "<b>Q</b><sub>r+1</sub> ← (<b>Q</b><sub>r</sub>, <b>μ</b> − <b>ω</b><sub>r</sub>)",
+      "ordinary_export_pt": 9.10752,
+      "x0": 1242.70764,
+      "x1": 1461.2923600000001,
+      "baseline": 566
+    },
+    {
+      "group": "composition-and-post-aggregation-state",
+      "text": "Updated histories",
+      "ordinary_export_pt": 9.62304,
+      "x0": 1246.608,
+      "x1": 1457.3919999999998,
+      "baseline": 603
+    },
+    {
+      "group": "composition-and-post-aggregation-state",
+      "text": "Selection / variance",
+      "ordinary_export_pt": 9.10752,
+      "x0": 1247.49725,
+      "x1": 1456.5027499999999,
+      "baseline": 632
+    },
+    {
+      "group": "legend-and-panel-labels",
+      "text": "Current window",
+      "ordinary_export_pt": 9.10752,
+      "x0": 95,
+      "x1": 267.9655,
+      "baseline": 635
+    },
+    {
+      "group": "legend-and-panel-labels",
+      "text": "Next-window feedback",
+      "ordinary_export_pt": 9.10752,
+      "x0": 95,
+      "x1": 342.98699999999997,
+      "baseline": 662
+    },
+    {
+      "group": "legend-and-panel-labels",
+      "text": "(a) Sensing + usable updates",
+      "ordinary_export_pt": 9.10752,
+      "x0": 17.661,
+      "x1": 342.339,
+      "baseline": 697
+    },
+    {
+      "group": "legend-and-panel-labels",
+      "text": "(b) Reference reconstruction and feasible calibration",
+      "ordinary_export_pt": 9.10752,
+      "x0": 472.28575,
+      "x1": 1067.71425,
+      "baseline": 697
+    },
+    {
+      "group": "legend-and-panel-labels",
+      "text": "(c) Aggregate + feedback",
+      "ordinary_export_pt": 9.10752,
+      "x0": 1201.5025,
+      "x1": 1488.4975,
+      "baseline": 697
+    }
+  ]
+}

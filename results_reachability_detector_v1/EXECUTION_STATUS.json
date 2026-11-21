@@ -1,0 +1,41 @@
+{
+  "status": "STOP_METHOD_IDENTITY_MISMATCH",
+  "stop_code_origin": "本协议0.2显式身份冲突条件的本地状态名；不是新增门槛",
+  "first_failure_stage": "G0",
+  "timestamp": "2026-10-12T19:46:57.450967+08:00",
+  "stages": {
+    "G0": "STOP",
+    "G1": "SKIPPED",
+    "G2": "SKIPPED",
+    "G3": "SKIPPED",
+    "G4": "SKIPPED",
+    "G5": "SKIPPED"
+  },
+  "terminal": true,
+  "cancelled_tasks": [
+    "G0剩余可识别性、样本需求、成本估计、近邻来源和基线实现核验",
+    "G1实际适用分支的T1/T1b/T2/T3/T4/T5/T6证明",
+    "G2检测器接口实现及四条关键路径核验",
+    "G3六类各200条合成轨迹，每条最多80次查看",
+    "G4 Traffic 41001→41002→41003、SensorScope/U-Air条件回放",
+    "G4正式确认42001–42020",
+    "G5 H=1、H=8、最大半径替换、移除未来外集合消融与影子预测核验"
+  ],
+  "budget": {
+    "new_training_runs": 0,
+    "detector_implementations": 0,
+    "synthetic_trajectories": 0,
+    "real_replays": 0,
+    "gpu_training_seconds": 0,
+    "extra_calibration_units": 0,
+    "extra_calibration_messages": 0,
+    "audit_process_cpu_seconds": 0.015625,
+    "audit_process_wall_seconds": 0.014671099999759463,
+    "measurement_scope": "本脚本截至停止文档生成前的只读核验；此前交互式文件读取CPU未单独计量，不冒充全会话总CPU。没有运行任何检测/训练实验。"
+  },
+  "historical_stop_state_preserved": "STOP_P1_NO_VALID_UNIFIED_BACKBONE",
+  "detection_gain": "NOT_EVALUATED",
+  "task_non_degradation": "NOT_VERIFIED",
+  "prediction_gain": "NO_EVIDENCE",
+  "new_RAVEN_gain_claim": false
+}

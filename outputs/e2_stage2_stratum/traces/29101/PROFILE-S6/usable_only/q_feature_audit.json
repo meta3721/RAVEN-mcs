@@ -1,0 +1,21 @@
+{
+  "allowed": [
+    "client_id",
+    "pre_outcome_risk_set_size",
+    "stage2_eligible",
+    "window_id",
+    "z_tail"
+  ],
+  "forbidden_feature_count": 0,
+  "forbidden_features_present": [],
+  "leakage_status": "PASS",
+  "q_input_schema_hash": "0aa9ec625cd98af652ac2c8cf5b3a65f853417630f108aaaac54b79bcf8b82d0",
+  "unregistered_feature_count": 0,
+  "used_q_features": [
+    "client_id",
+    "pre_outcome_risk_set_size",
+    "stage2_eligible",
+    "window_id",
+    "z_tail"
+  ]
+}

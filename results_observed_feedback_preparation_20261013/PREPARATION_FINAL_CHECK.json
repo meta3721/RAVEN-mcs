@@ -1,0 +1,30 @@
+{
+  "status": "PASS_PREPARATION_DELIVERY_ONLY",
+  "protected_files": 1185,
+  "changed_old_files": [],
+  "frozen_method_spec_unchanged": true,
+  "required_reports": [
+    "METHOD_PREPARATION.md",
+    "METHOD_SPEC_CANDIDATE.md",
+    "PROPERTY_LEDGER.md",
+    "MINIMAL_EVIDENCE_PLAN.md",
+    "NEXT_STAGE_REQUEST.md"
+  ],
+  "local_links_checked": 13,
+  "MD_only": true,
+  "specification": "SPEC_READY_FOR_LIMITED_IMPLEMENTATION",
+  "implementation": "NOT_IMPLEMENTED",
+  "q": "DEPENDENCY_PENDING",
+  "novelty": "needs-search",
+  "performance": "RESULTS_NOT_REVALIDATED",
+  "next_requested_CPU": 300,
+  "next_request_authorized": false,
+  "new_trajectories": 0,
+  "SGD": 0,
+  "GPU": 0,
+  "q_fit": 0,
+  "random_replay": 0,
+  "production_controller_implementation": 0,
+  "facility_retests": 0,
+  "final_state": "WAITING_USER_REVIEW"
+}

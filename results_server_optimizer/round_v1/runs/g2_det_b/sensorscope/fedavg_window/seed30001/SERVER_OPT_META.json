@@ -1,0 +1,81 @@
+{
+  "arm": "fedavg_window",
+  "block": "sensorscope",
+  "created_utc": "2026-10-08T08:34:31.411294+00:00",
+  "diag_first": [
+    {
+      "active": true,
+      "applied": true,
+      "g_norm": 1.3836474590848444,
+      "m_norm": 0.13836474590848444,
+      "opt_move_norm": 0.08937293577842058,
+      "sgd_move_norm": 0.013836474590848444,
+      "t": 1,
+      "v_norm": 0.00288064717770559,
+      "window_id": 0
+    },
+    {
+      "active": true,
+      "applied": true,
+      "g_norm": 0.9266012513508587,
+      "m_norm": 0.12160505314922093,
+      "opt_move_norm": 0.0637799181835029,
+      "sgd_move_norm": 0.009266012513508587,
+      "t": 2,
+      "v_norm": 0.00678732930525098,
+      "window_id": 1
+    },
+    {
+      "active": true,
+      "applied": true,
+      "g_norm": 0.6299182722826471,
+      "m_norm": 0.12963036341691975,
+      "opt_move_norm": 0.05239069747592796,
+      "sgd_move_norm": 0.00629918272282647,
+      "t": 3,
+      "v_norm": 0.007821414235253324,
+      "window_id": 2
+    }
+  ],
+  "diag_last": [
+    {
+      "active": true,
+      "applied": true,
+      "g_norm": 0.1497330448213658,
+      "m_norm": 0.4192968941593833,
+      "opt_move_norm": 0.022239960013572927,
+      "sgd_move_norm": 0.0014973304482136577,
+      "t": 96,
+      "v_norm": 0.40434857136342567,
+      "window_id": 97
+    },
+    {
+      "active": false,
+      "applied": false,
+      "window_id": 98
+    },
+    {
+      "active": true,
+      "applied": true,
+      "g_norm": 0.9223541714465788,
+      "m_norm": 0.4346103603767061,
+      "opt_move_norm": 0.025297918363714932,
+      "sgd_move_norm": 0.009223541714465789,
+      "t": 97,
+      "v_norm": 0.40171430289928256,
+      "window_id": 99
+    }
+  ],
+  "local_steps": 2,
+  "n_windows_optimizer_applied": 97,
+  "runtime_seconds": 20.0012107,
+  "seed": 30001,
+  "server_opt": {
+    "beta1": 0.9,
+    "beta2": 0.99,
+    "eta_s": 0.001,
+    "mode": "adam",
+    "tau": 0.001
+  },
+  "tag": "g2_det_b"
+}

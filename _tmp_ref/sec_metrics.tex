@@ -1,0 +1,53 @@
+Metrics and statistical policy}
+
+Prediction is measured on the supported test units by
+\[
+ \mathrm{RMSE}_{\mu}
+ =
+ \Bigl[\sum_{i\in\mathcal{I}_{\mathrm{test}}}
+ \frac{\mu^{\mathrm{eval}}_{h(i)}}{n_{h(i)}}
+ \bigl(\widehat Y_i-Y_i\bigr)^2\Bigr]^{1/2},
+\]
+where $n_g$ is the test-unit count in group $g$, $\boldsymbol\mu$ is the
+deployment-target marginal $\mu_g=\sum_{i:h(i)=g}\varpi_i^{\mathrm{tar}}$,
+$\boldsymbol\mu^{\mathrm{eval}}$ is the evaluation group mass normalized on
+the supported test units, and $\boldsymbol\mu^{\mathrm{blk}}$ aggregates
+$\boldsymbol\mu$ to the four UTC blocks.  On SensorScope and U-Air
+$\boldsymbol\mu^{\mathrm{eval}}$ is uniform on the supported test units, so
+$\mathrm{RMSE}_{\mu}$ is the unweighted pooled RMSE.
+$\mathrm{WorstGroupRMSE}$ is the largest of the four UTC-block scores, each
+restricting the same weights to its own test units and renormalizing them
+inside the block.  The four scores are in the per-group table of the
+supplemental material.  The under-served-block score uses the block whose
+$\mu^{\mathrm{blk}}_b$ most exceeds opportunity mass
+(Section~\ref{subsec:eval_underserved}).
+$\mathrm{Tail\_RMSE}$ applies that block functional to the frozen late-day
+blocks $2$ and $3$ ($12$--$24$~UTC), fixed before the runs, not ranked by
+error or arrival ratio.
+For the risk-interchangeability test only, $\mathrm{RMSE}_{\rho}$ replaces the
+evaluation weights by the atomic arrival weights of
+\eqref{eq:arrival_distribution}.  Structural
+alignment is $\Delta_{\mathrm{group}}(R)=\left\|\overline{\boldsymbol\omega}_R-\boldsymbol\mu\right\|_1$
+and $\Delta_{c\text{-}s}$ in \eqref{eq:delta_cs}.  Smaller is better.
+
+All formal method comparisons are paired by seed.  We use the paired
+Wilcoxon protocol~\cite{wilcoxon1945individual} and apply Holm
+correction~\cite{holm1979simple} within the predeclared comparison
+families at $\alpha=0.05$; absolute differences below
+$10^{-12}$ are treated as numerical ties.  Tables report
+mean $\pm$ standard deviation.  On four-block $\mathrm{WorstGroupRMSE}$,
+RAVEN-Design (SensorScope) and RAVEN-NoDesign (U-Air) are each compared with FedAU-Window and ObsUse-Window by a
+pre-specified $+0.5\%$ mean-relative point-estimate tolerance: the mean
+of the paired relative differences must be at most $+0.5\%$.
+That ranking prose uses TEST seeds $30011$--$30020$; Table~\ref{tab:main_effectiveness} reports 20-seed means.
+Holm tests versus those two comparators use the four 20-seed
+$\mathrm{WorstGroupRMSE}$ comparisons.
+This descriptive tolerance rule is not a formal non-inferiority test
+and carries no coverage guarantee.  The U-Air comparison is a fallback
+evaluation, not a target-mass claim.  A later under-served-block check uses the same
+$0.5\%$ mean-relative rule on validation only; a win would have required
+the table RAVEN configuration to beat both FedAU-Window and ObsUse-Window by at least $0.5\%$.
+For P2, warning-affected allocations satisfy
+the recorded feasibility constraints; the stored outputs do not
+support retrospective certification of exact numerical optimality.
+

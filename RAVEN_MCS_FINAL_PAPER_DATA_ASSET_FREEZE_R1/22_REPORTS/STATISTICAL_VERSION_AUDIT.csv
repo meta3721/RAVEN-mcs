@@ -1,0 +1,7 @@
+metric,dataset,comparison,version,generation,test,Holm_family,paper_eligible,superseded_by
+RMSE_mu,E1,raven vs windows,E1_R2_FINAL_SEALED,N_A_NOT_APPLICABLE,Wilcoxon+Holm,FAMILY_RMSE_MU,True,
+D_aligned,NSW-Traffic,sign/direction,E2_D_ALIGNED_SUMMARY,N_A_NOT_APPLICABLE,direction stability,n/a,True,
+RMSE_mu_phys,sensorscope/uair,raven_vs_*,E3_FORMAL_HOLM_RESULTS,N_A_NOT_APPLICABLE,paired Wilcoxon+Holm,primary_RMSE_mu_main_baselines,True,
+Delta_group/Delta_c_s/Tail,sensorscope/uair,vs baselines,E3_SECONDARY_HOLM,N_A_NOT_APPLICABLE,paired Wilcoxon+Holm,per dataset×metric,True,
+E4 component effects,SensorScope/U-Air,w/o-X vs RAVEN,E4_FINAL_STATISTICS_R2,2 for Inst,paired Wilcoxon+Holm,dataset×metric × 5 components,True,
+E4 old stats,SensorScope/U-Air,mixed/gen1,E4_FINAL_STATISTICS.csv,mixed,do not use,superseded,False,E4_FINAL_STATISTICS_R2.csv

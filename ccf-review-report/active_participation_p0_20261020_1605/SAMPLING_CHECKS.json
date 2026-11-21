@@ -1,0 +1,135 @@
+{
+  "tolerance": 1e-10,
+  "enumeration_clients_max": 5,
+  "method": "fixed-size systematic sampling; inclusion checked by exact piecewise measure, not by draw frequency",
+  "tests": [
+    {
+      "name": "select_all",
+      "sample_sizes": [
+        4
+      ],
+      "duplicate_selection": false,
+      "design_measure": 1.0,
+      "inclusion": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "inclusion_sum": 4.0,
+      "inclusion_gap": 0.0,
+      "probability_bounds_ok": true,
+      "inverse_probability_evaluated": true,
+      "ht_gap": 0.0,
+      "pass": true
+    },
+    {
+      "name": "zero_budget",
+      "sample_sizes": [
+        0
+      ],
+      "duplicate_selection": false,
+      "design_measure": 1.0,
+      "inclusion": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "inclusion_sum": 0.0,
+      "inclusion_gap": 0.0,
+      "probability_bounds_ok": true,
+      "inverse_probability_evaluated": false,
+      "ht_gap": null,
+      "pass": true
+    },
+    {
+      "name": "k1_select_all",
+      "sample_sizes": [
+        1
+      ],
+      "duplicate_selection": false,
+      "design_measure": 1.0,
+      "inclusion": [
+        1.0
+      ],
+      "inclusion_sum": 1.0,
+      "inclusion_gap": 0.0,
+      "probability_bounds_ok": true,
+      "inverse_probability_evaluated": true,
+      "ht_gap": 0.0,
+      "pass": true
+    },
+    {
+      "name": "saturated_nonuniform",
+      "sample_sizes": [
+        2
+      ],
+      "duplicate_selection": false,
+      "design_measure": 1.0,
+      "inclusion": [
+        0.23333333333333334,
+        0.3666666666666667,
+        0.5,
+        0.9
+      ],
+      "inclusion_sum": 2.0,
+      "inclusion_gap": 1.1102230246251565e-16,
+      "probability_bounds_ok": true,
+      "inverse_probability_evaluated": true,
+      "ht_gap": 8.881784197001252e-16,
+      "pass": true
+    },
+    {
+      "name": "group_quota_redistribution",
+      "sample_sizes": [
+        4
+      ],
+      "duplicate_selection": false,
+      "design_measure": 1.0,
+      "inclusion": [
+        1.0,
+        1.0,
+        0.5333333333333333,
+        0.5333333333333333,
+        0.9333333333333333
+      ],
+      "inclusion_sum": 4.0,
+      "inclusion_gap": 0.0,
+      "probability_bounds_ok": true,
+      "inverse_probability_evaluated": true,
+      "ht_gap": 0.0,
+      "group_count_mismatch_atoms": 0,
+      "pass": true
+    },
+    {
+      "name": "missing_group_fallback",
+      "sample_sizes": [
+        1
+      ],
+      "duplicate_selection": false,
+      "design_measure": 1.0,
+      "inclusion": [
+        0.3333333333333333,
+        0.3333333333333333,
+        0.3333333333333333
+      ],
+      "inclusion_sum": 1.0,
+      "inclusion_gap": 5.551115123125783e-17,
+      "probability_bounds_ok": true,
+      "inverse_probability_evaluated": true,
+      "ht_gap": 0.0,
+      "pass": true,
+      "quota_mode": "fallback_global_quality_pps",
+      "allocation": {
+        "region0": 0,
+        "region1": 0,
+        "region2": 0,
+        "region3": 0
+      },
+      "missing_target_mass": 0.25
+    }
+  ],
+  "max_inclusion_gap": 1.1102230246251565e-16,
+  "max_ht_gap": 8.881784197001252e-16,
+  "pass": true
+}

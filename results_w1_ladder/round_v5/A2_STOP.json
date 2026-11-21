@@ -1,0 +1,75 @@
+{
+  "stopped": true,
+  "at": "A2-G0",
+  "detail": {
+    "round": "round_v5",
+    "protocol": "A2-G0 (PROTOCOL.md A2, PREREG 2.6)",
+    "n_rows": 240,
+    "n_checkpoint": 240,
+    "n_frozen_record": 0,
+    "g0_pass_rows": 222,
+    "g0_fail_rows": 18,
+    "g0_fail_cells": {
+      "uair|fedavg_window": [
+        30007,
+        30016,
+        30018
+      ],
+      "uair|inst_cal": [
+        30007,
+        30016,
+        30018
+      ],
+      "uair|proj_beta": [
+        30007,
+        30016,
+        30018
+      ],
+      "uair|proj_beta_debt": [
+        30007,
+        30016,
+        30018
+      ],
+      "uair|raven": [
+        30007,
+        30016,
+        30018
+      ],
+      "uair|uniform_window": [
+        30007,
+        30016,
+        30018
+      ]
+    },
+    "g0_fail_seeds_uair": [
+      30007,
+      30016,
+      30018
+    ],
+    "g0_max_d_rmse": 0.0566103331617968,
+    "g0_max_d_head": 0.0536073569914488,
+    "g0_max_d_tail": 0.0594744267253062,
+    "g0_max_d_rmse_by_ds": {
+      "sensorscope": 0.0,
+      "uair": 0.0566103331617968
+    },
+    "g0_stored_wg_rows": 80,
+    "g0_stored_wg_pass": 7,
+    "g0_stored_wg_fail": 73,
+    "g0_stored_wg_max_diff": 2.3550741357070133e-09,
+    "agreement_with_published_checkpoint_table_max_d_rmse": 1.891718781621421e-09,
+    "agreement_with_published_checkpoint_table_max_d_wg": 2.3550741357070137e-09,
+    "agreement_with_published_checkpoint_table_max_d_rmse_uair": 1.8381907107567486e-09,
+    "g0_pass": false,
+    "stop_rule": "PROTOCOL.md A2-G0: 'One failure => stop A2 and report; do not fall back to retraining without asking.'",
+    "consequence": "A2 stopped before A2-score/A2-analysis: WORSTGROUP_PAIRED.csv, WORSTGROUP_NI.csv and the WorstGroupRMSE column of TRADEOFF_V5.csv are TBD. SensorScope passed 120/120 G0 rows; U-Air failed 18/120 (6 arms x seeds 30007/30016/30018)."
+  },
+  "files_written": [
+    "WORSTGROUP_V5.csv (G0 evidence only)",
+    "A2_G0_SUMMARY.json",
+    "A2_G0_FAILURES.csv",
+    "WORSTGROUP_PAIRED.csv (TBD stub)",
+    "WORSTGROUP_NI.csv (TBD stub)",
+    "TRADEOFF_V5.csv (v4 columns + empty WG column, TBD)"
+  ]
+}

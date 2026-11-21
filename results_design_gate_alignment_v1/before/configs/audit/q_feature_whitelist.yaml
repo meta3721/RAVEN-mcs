@@ -1,0 +1,104 @@
+entries:
+  - file: src/raven_mcs/simulation/usable_generator.py
+    symbol: generate_usable_events
+    reason: Arrival is simulator truth used to construct the U outcome label, never a q-model input.
+    allowed_role: simulator_truth
+  - file: src/raven_mcs/training/window_runner.py
+    symbol: FullWindowRunner._process_window
+    reason: Update norms are method diagnostics only; U labels update q after close and neither field is a q predictor.
+    allowed_role: diagnostics_and_lagged_label
+  - file: scripts/build_e2_usable_topology_fixture.py
+    symbol: main
+    reason: Synthetic E2 topology fixture builder; "arrival" refers to expected arrival mass diagnostics, not q-model features.
+    allowed_role: scenario_generator_tooling
+  - file: scripts/export_e2_usable_arrival_evidence.py
+    symbol: main
+    reason: Evidence packaging for E2 usable-arrival repair; narrative text only, not q-model inputs.
+    allowed_role: packaging_tooling
+  - file: scripts/prepare_e2_usable_arrival_repair.py
+    symbol: main
+    reason: Identity/topology materialization and report text; does not construct q features from outcomes.
+    allowed_role: scenario_generator_tooling
+  - file: scripts/run_e2_usable_arrival_repair.py
+    symbol: main
+    reason: Orchestration wrapper for E2 usable-arrival repair; no q-model feature construction.
+    allowed_role: orchestration_tooling
+  - file: scripts/check_e2_usable_arrival_gates.py
+    symbol: main
+    reason: Gate evaluation for E2 usable-arrival repair; audit-only references to arrival mass.
+    allowed_role: gate_tooling
+  - file: src/raven_mcs/e2/stage2/usable.py
+    symbol: generate_stage2_usable_events
+    reason: >
+      Stage-2 usable generator; denylist strings and hard-event activity audits
+      reference forbidden tokens only as rejected q inputs / server-window
+      activity from hard events, never as q-model predictors. z_tail remains
+      pre-outcome risk-set composition.
+    allowed_role: stage2_eligibility_and_denylist_audit
+  - file: src/raven_mcs/e2/stage2/sampler.py
+    symbol: generate_stage2_mother_trace
+    reason: >
+      Mother-trace orchestrator for stage2 eligibility; mentions hard-event
+      mass and diagnostics, not q-feature construction from post-outcome signals.
+    allowed_role: scenario_generator_tooling
+  - file: src/raven_mcs/e2/traffic_public_target/core.py
+    symbol: seal_q_features
+    reason: >
+      Traffic public-target q-feature seal; "update_norm" appears only inside the
+      forbidden-feature denylist constant, never as an allowed q-model predictor.
+    allowed_role: stage2_eligibility_and_denylist_audit
+  - file: src/raven_mcs/e2/traffic_profiles/__init__.py
+    symbol: run_hard_scenario_seed
+    reason: >
+      Traffic S1-S6 hard EventTrace orchestrator; "arrival" refers to hard arrival
+      event tables and expected arrival mass diagnostics, never q-model predictors.
+    allowed_role: scenario_generator_tooling
+  - file: scripts/prepare_e2_traffic_s1_s6_profile_freeze.py
+    symbol: main
+    reason: >
+      Traffic S1-S6 profile freeze prepare; mentions arrival mass and registry
+      diagnostics in report/audit text only, not as q-model feature construction.
+    allowed_role: scenario_generator_tooling
+  - file: src/raven_mcs/e2/traffic_profiles/runner_consistency.py
+    symbol: run_frozen_hard_trace
+    reason: >
+      Frozen-intercept hard EventTrace runner; "arrival" refers to hard arrival
+      event tables and exact expected arrival mass, never q-model predictors.
+    allowed_role: scenario_generator_tooling
+  - file: scripts/prepare_e2_traffic_profile_runner_consistency_hotfix.py
+    symbol: main
+    reason: >
+      Runner-consistency hotfix prepare; arrival mass and direction diagnostics
+      appear in audit/report text only, not as q-model feature construction.
+    allowed_role: scenario_generator_tooling
+  - file: scripts/prepare_e2_traffic_profile_s1_final_freeze.py
+    symbol: main
+    reason: >
+      PROFILE-S1 final freeze prepare; arrival mass and direction diagnostics
+      appear in audit/report text only, not as q-model feature construction.
+    allowed_role: scenario_generator_tooling
+  - file: src/raven_mcs/e3/semantic_alignment/stage2_usable.py
+    symbol: compute_usable_indicator
+    reason: >
+      E3 Stage-2 usable-outcome simulator truth (T_arr deadline semantics).
+      Tokens such as arrival refer to frozen EventTrace timing outcomes used to
+      construct U, never as q-model predictor features.
+    allowed_role: simulator_truth
+  - file: src/raven_mcs/e3/semantic_alignment/q_boundary.py
+    symbol: q_feature_boundary_payload
+    reason: >
+      Explicit denylist/allowlist documentation for q features; forbidden-token
+      names appear only as rejected predictors, not as model inputs.
+    allowed_role: stage2_eligibility_and_denylist_audit
+  - file: src/raven_mcs/e3/semantic_alignment/complete_aligned_r2.py
+    symbol: generate_complete_aligned_r2
+    reason: >
+      Complete-aligned EventTrace generator; arrival_time is simulator EventTrace
+      column materialization, not a q-model feature.
+    allowed_role: scenario_generator_tooling
+  - file: scripts/prepare_e3_semantic_alignment_and_runner_integration_closure.py
+    symbol: main
+    reason: >
+      Semantic closure prepare; registry text references realized U and future
+      leakage bans for audit documentation only.
+    allowed_role: scenario_generator_tooling

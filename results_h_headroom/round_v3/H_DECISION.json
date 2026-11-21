@@ -1,0 +1,149 @@
+{
+  "complete": true,
+  "rule": "go iff H_ci_lo > go_bar (both arms; round_v1 rule form)",
+  "metric": "H = (RMSE_mu(fedavg_window) - RMSE_mu(oracle)) / RMSE_mu(fedavg_window)",
+  "go_bar": 0.005,
+  "dataset": "uair",
+  "seeds": [
+    30001,
+    30002,
+    30003,
+    30004,
+    30005,
+    30006,
+    30007,
+    30008,
+    30009,
+    30010,
+    30011,
+    30012,
+    30013,
+    30014,
+    30015,
+    30016,
+    30017,
+    30018,
+    30019,
+    30020
+  ],
+  "fedavg_arm": "round_v3 rule: m_total = 0 when pi_tar = 0",
+  "cells": {
+    "C0_frozen|raven_simoracle": {
+      "H_mean": -0.0027343798826881356,
+      "ci_lo": -0.008021078189277237,
+      "ci_hi": 0.002552318423900967,
+      "n": 20,
+      "go": false,
+      "oracle_mean_RMSE_mu": 1.1914468071989643,
+      "fedavg_mean_RMSE_mu": 1.1882377206580421
+    },
+    "C0_frozen|raven_simoracle_nodesign": {
+      "H_mean": 0.061748090278882506,
+      "ci_lo": 0.04710373933341619,
+      "ci_hi": 0.07639244122434882,
+      "n": 20,
+      "go": true,
+      "oracle_mean_RMSE_mu": 1.114401259495584,
+      "fedavg_mean_RMSE_mu": 1.1882377206580421
+    },
+    "C1_tilt_strong|raven_simoracle": {
+      "H_mean": -0.0038509982860085966,
+      "ci_lo": -0.00850707327337292,
+      "ci_hi": 0.000805076701355727,
+      "n": 20,
+      "go": false,
+      "oracle_mean_RMSE_mu": 1.1801650447283085,
+      "fedavg_mean_RMSE_mu": 1.1756156195614147
+    },
+    "C1_tilt_strong|raven_simoracle_nodesign": {
+      "H_mean": 0.06124860186705237,
+      "ci_lo": 0.050263924562495926,
+      "ci_hi": 0.07223327917160881,
+      "n": 20,
+      "go": true,
+      "oracle_mean_RMSE_mu": 1.1037978413204674,
+      "fedavg_mean_RMSE_mu": 1.1756156195614147
+    },
+    "C2_tilt_extreme|raven_simoracle": {
+      "H_mean": -0.004063300421061008,
+      "ci_lo": -0.009488561921672863,
+      "ci_hi": 0.001361961079550846,
+      "n": 20,
+      "go": false,
+      "oracle_mean_RMSE_mu": 1.1843989931269676,
+      "fedavg_mean_RMSE_mu": 1.1797380009746352
+    },
+    "C2_tilt_extreme|raven_simoracle_nodesign": {
+      "H_mean": 0.05475209915792856,
+      "ci_lo": 0.04055426364888624,
+      "ci_hi": 0.06894993466697087,
+      "n": 20,
+      "go": true,
+      "oracle_mean_RMSE_mu": 1.1143601274690735,
+      "fedavg_mean_RMSE_mu": 1.1797380009746352
+    },
+    "C3_low_capacity|raven_simoracle": {
+      "H_mean": -0.0027784417055052536,
+      "ci_lo": -0.007950372541926735,
+      "ci_hi": 0.002393489130916228,
+      "n": 20,
+      "go": false,
+      "oracle_mean_RMSE_mu": 1.1912977737207646,
+      "fedavg_mean_RMSE_mu": 1.1880339425577437
+    },
+    "C3_low_capacity|raven_simoracle_nodesign": {
+      "H_mean": 0.06181416048642404,
+      "ci_lo": 0.04723720044096118,
+      "ci_hi": 0.0763911205318869,
+      "n": 20,
+      "go": true,
+      "oracle_mean_RMSE_mu": 1.1141238230397346,
+      "fedavg_mean_RMSE_mu": 1.1880339425577437
+    },
+    "C4_block_uniform|raven_simoracle": {
+      "H_mean": -0.005531676820459052,
+      "ci_lo": -0.010808043248657561,
+      "ci_hi": -0.0002553103922605434,
+      "n": 20,
+      "go": false,
+      "oracle_mean_RMSE_mu": 1.1947775780887198,
+      "fedavg_mean_RMSE_mu": 1.1882377206580421
+    },
+    "C4_block_uniform|raven_simoracle_nodesign": {
+      "H_mean": 0.05932950505019504,
+      "ci_lo": 0.044633244486321805,
+      "ci_hi": 0.07402576561406828,
+      "n": 20,
+      "go": true,
+      "oracle_mean_RMSE_mu": 1.1172783643476256,
+      "fedavg_mean_RMSE_mu": 1.1882377206580421
+    },
+    "C5_combined|raven_simoracle": {
+      "H_mean": -0.006784279092222784,
+      "ci_lo": -0.012300139958969432,
+      "ci_hi": -0.0012684182254761363,
+      "n": 20,
+      "go": false,
+      "oracle_mean_RMSE_mu": 1.1871901254645434,
+      "fedavg_mean_RMSE_mu": 1.1793222623731636
+    },
+    "C5_combined|raven_simoracle_nodesign": {
+      "H_mean": 0.052110132047506565,
+      "ci_lo": 0.0378840590514862,
+      "ci_hi": 0.06633620504352693,
+      "n": 20,
+      "go": true,
+      "oracle_mean_RMSE_mu": 1.1171017155287835,
+      "fedavg_mean_RMSE_mu": 1.1793222623731636
+    }
+  },
+  "go_cells": [
+    "C0_frozen|raven_simoracle_nodesign",
+    "C1_tilt_strong|raven_simoracle_nodesign",
+    "C2_tilt_extreme|raven_simoracle_nodesign",
+    "C3_low_capacity|raven_simoracle_nodesign",
+    "C4_block_uniform|raven_simoracle_nodesign",
+    "C5_combined|raven_simoracle_nodesign"
+  ],
+  "decision": "go"
+}

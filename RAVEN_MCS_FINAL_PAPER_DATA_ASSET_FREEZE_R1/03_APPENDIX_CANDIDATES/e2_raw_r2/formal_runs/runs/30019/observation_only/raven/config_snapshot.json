@@ -1,0 +1,25 @@
+{
+  "a_max": 40.0,
+  "learning_rate": 0.01,
+  "local_steps": 2,
+  "method": "raven",
+  "probability_bounds": {
+    "obs": [
+      0.05,
+      0.95
+    ],
+    "opp": [
+      0.05,
+      0.95
+    ],
+    "q": [
+      0.05,
+      0.95
+    ]
+  },
+  "profile_id": "PROFILE-S1",
+  "s_max": 5,
+  "scenario_id": "observation_only",
+  "seed": 30019,
+  "standardization": "train_split_zscore"
+}

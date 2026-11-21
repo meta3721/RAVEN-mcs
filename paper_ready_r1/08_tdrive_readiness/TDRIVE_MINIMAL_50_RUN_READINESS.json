@@ -1,0 +1,35 @@
+{
+  "advanced": {
+    "client_assignment": true,
+    "eventtrace_generation": false,
+    "formal_tdrive_runs_started": false,
+    "frozen_formal_config": true,
+    "opportunity_definition": false,
+    "seed_handling_frozen": false,
+    "spatial_grid": false,
+    "speed_target_construction": true,
+    "time_slot": false,
+    "train_val_test_split_frozen": false,
+    "validation_only_tuning_artifacts": false
+  },
+  "blockers": [
+    "Not ready: opportunity_definition",
+    "Not ready: eventtrace_generation",
+    "Not ready: train_val_test_split_frozen",
+    "EventTrace / split / opportunity freeze incomplete"
+  ],
+  "checks": {
+    "adapter_or_config": true,
+    "atomic_units": true,
+    "checksum_manifest": true,
+    "client_measurements": true,
+    "experiment_config_e9": true,
+    "interim": true,
+    "preprocessing_processed": true,
+    "raw_trajectory": true
+  },
+  "formal_tdrive_runs_authorized": false,
+  "formal_tdrive_runs_started": false,
+  "minimal_50_run_ready": false,
+  "status": "NOT_READY_OTHER"
+}

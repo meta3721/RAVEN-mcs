@@ -1,0 +1,5 @@
+dataset,method,certificate_version,n_warmup,pairwise_coverage,target_mass_weighted_coverage,window_joint_coverage,coverage_slides_over_time,C_cov_zero_fraction,mean_C_cov,median_C_cov,p25_C_cov,p75_C_cov,mean_C_point,point_zero_fraction,mean_C_real_support,median_q,median_q_over_pi_safe,not_run_reason
+sensorscope,R1d rolling + global max residual,R1D_ROLLING_GLOBAL_MAX_RESIDUAL,84.0,0.9999458874458875,,0.9761904761904762,False,0.9761904761904762,7.176424288723729e-05,0.0,0.0,0.0,0.1323157362118398,0.0,0.01833526799149408,0.046875,74.09065879812032,
+sensorscope,R1e Stage1 TOD rolling + global max residual,R1E_STAGE1_NOT_RUN,,,,,False,,,,,,,,,,,NO_LEGAL_PREWINDOW_CONTEXT_FOR_R1E
+uair,R1d rolling + global max residual,R1D_ROLLING_GLOBAL_MAX_RESIDUAL,64.0,1.0,,1.0,False,1.0,0.0,0.0,0.0,0.0,0.19526305379746844,0.0,0.02785908931082983,0.046875,33.677572180963786,
+uair,R1e Stage1 TOD rolling + global max residual,R1E_STAGE1_NOT_RUN,,,,,False,,,,,,,,,,,NO_LEGAL_PREWINDOW_CONTEXT_FOR_R1E

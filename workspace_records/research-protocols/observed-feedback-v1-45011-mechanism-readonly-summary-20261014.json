@@ -1,0 +1,31 @@
+{
+  "regular": 799,
+  "free": 604,
+  "threshold": 0.0200001,
+  "max_abs_debt": 0.0001902617575315059,
+  "max_debt_fraction_of_theta": 0.009513087876575295,
+  "margin_counts_free": {
+    "0.0001902617575315059": 5,
+    "0.001": 21,
+    "0.005": 81,
+    "0.01": 160
+  },
+  "no_Q_difference_times": [
+    60.2
+  ],
+  "fixed05_diff": 192,
+  "fixed2_diff": 126,
+  "fixed05_diff_by_direction": {
+    "CLOSE": 13,
+    "WAIT": 179
+  },
+  "fixed2_diff_by_direction": {
+    "CLOSE": 126,
+    "WAIT": 0
+  },
+  "quality_abs_larger_than_debt": 603,
+  "patience_abs_larger_than_debt": 604,
+  "CPU_local_analysis_seconds": 0.0625,
+  "source": "C:\\Cursor\\raven.mcs\\results_observed_feedback_rolling_45011_20261014_s2\\DECISION_METRICS.csv",
+  "role": "read_only_existing_rows_not_new_trajectory_not_root_metered_experiment"
+}

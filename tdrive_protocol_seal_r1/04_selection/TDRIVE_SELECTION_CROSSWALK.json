@@ -1,0 +1,37 @@
+{
+  "only_opportunity_guaranteed_real": true,
+  "pipeline": [
+    {
+      "class": "REAL_FROM_TDRIVE",
+      "stage": "real trajectory"
+    },
+    {
+      "class": "REAL_FROM_TDRIVE",
+      "stage": "R opportunity"
+    },
+    {
+      "class": "DETERMINISTIC_DATA_QUALITY",
+      "stage": "adapter valid speed/measurement"
+    },
+    {
+      "class": "CONTROLLED_EXPERIMENTAL",
+      "stage": "O observed (EventTrace p_obs)"
+    },
+    {
+      "class": "CONTROLLED_EXPERIMENTAL",
+      "stage": "E eligibility (compute/network/deadline/staleness/nonempty O)"
+    },
+    {
+      "class": "CONTROLLED_EXPERIMENTAL",
+      "stage": "U usable update"
+    },
+    {
+      "class": "MODEL_INTERNAL",
+      "stage": "local correction"
+    },
+    {
+      "class": "MODEL_INTERNAL",
+      "stage": "server aggregation"
+    }
+  ]
+}

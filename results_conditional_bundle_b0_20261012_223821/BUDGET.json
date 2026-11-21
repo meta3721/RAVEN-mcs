@@ -1,0 +1,463 @@
+{
+  "limit_cpu_seconds": 7200,
+  "runs": [
+    {
+      "command": [
+        "C:\\Cursor\\raven.mcs\\.venv_new\\Scripts\\python.exe",
+        "-X",
+        "faulthandler",
+        "-m",
+        "pytest",
+        "tests/control_b0",
+        "-ra",
+        "--junitxml=C:\\Cursor\\raven.mcs\\results_conditional_bundle_b0_20261012_223821\\development2.xml"
+      ],
+      "returncode": 1,
+      "process_tree_cpu_seconds": 15.75,
+      "monitor_cpu_seconds": 0.09375,
+      "wall_seconds": 18.682319799998368,
+      "limit_reason": null,
+      "log": "C:\\Cursor\\raven.mcs\\results_conditional_bundle_b0_20261012_223821\\development2.log"
+    },
+    {
+      "command": [
+        "C:\\Cursor\\raven.mcs\\.venv_new\\Scripts\\python.exe",
+        "-X",
+        "faulthandler",
+        "-m",
+        "pytest",
+        "tests/control_b0",
+        "-ra",
+        "--junitxml=C:\\Cursor\\raven.mcs\\results_conditional_bundle_b0_20261012_223821\\development3.xml"
+      ],
+      "returncode": 1,
+      "process_tree_cpu_seconds": 40.609375,
+      "monitor_cpu_seconds": 0.234375,
+      "wall_seconds": 40.367461800000456,
+      "limit_reason": null,
+      "log": "C:\\Cursor\\raven.mcs\\results_conditional_bundle_b0_20261012_223821\\development3.log"
+    },
+    {
+      "command": [
+        "C:\\Cursor\\raven.mcs\\.venv_new\\Scripts\\python.exe",
+        "-X",
+        "faulthandler",
+        "-m",
+        "pytest",
+        "tests/control_b0",
+        "-ra",
+        "--junitxml=C:\\Cursor\\raven.mcs\\results_conditional_bundle_b0_20261012_223821\\development4.xml",
+        "--basetemp=C:\\Cursor\\raven.mcs\\results_conditional_bundle_b0_20261012_223821\\development4-tmp"
+      ],
+      "returncode": 0,
+      "process_tree_cpu_seconds": 14.703125,
+      "monitor_cpu_seconds": 0.0625,
+      "wall_seconds": 22.64187039999888,
+      "limit_reason": null,
+      "log": "C:\\Cursor\\raven.mcs\\results_conditional_bundle_b0_20261012_223821\\development4.log"
+    },
+    {
+      "command": [
+        "C:\\Cursor\\raven.mcs\\.venv_new\\Scripts\\python.exe",
+        "-X",
+        "faulthandler",
+        "-c",
+        "from pathlib import Path; from raven_mcs.utils.manifest import _git_info; print(_git_info(Path.cwd()),flush=True)"
+      ],
+      "returncode": 124,
+      "process_tree_cpu_seconds": 43.640625,
+      "monitor_cpu_seconds": 0.359375,
+      "wall_seconds": 60.901151500000196,
+      "limit_reason": "wall",
+      "log": "C:\\Cursor\\raven.mcs\\results_conditional_bundle_b0_20261012_223821\\legacy-manifest-once.log"
+    },
+    {
+      "command": [
+        "C:\\Cursor\\raven.mcs\\.venv_new\\Scripts\\python.exe",
+        "-X",
+        "faulthandler",
+        "-m",
+        "pytest",
+        "tests/control_b0",
+        "-ra",
+        "--junitxml=C:\\Cursor\\raven.mcs\\results_conditional_bundle_b0_20261012_223821\\development5.xml",
+        "--basetemp=C:\\Cursor\\raven.mcs\\results_conditional_bundle_b0_20261012_223821\\development5-tmp"
+      ],
+      "returncode": 1,
+      "process_tree_cpu_seconds": 22.96875,
+      "monitor_cpu_seconds": 0.125,
+      "wall_seconds": 31.533907200000613,
+      "limit_reason": null,
+      "log": "C:\\Cursor\\raven.mcs\\results_conditional_bundle_b0_20261012_223821\\development5.log"
+    },
+    {
+      "command": [
+        "C:\\Cursor\\raven.mcs\\.venv_new\\Scripts\\python.exe",
+        "-X",
+        "faulthandler",
+        "-m",
+        "pytest",
+        "tests/control_b0",
+        "tests/unit/test_e0_p2_debt.py",
+        "tests/unit/test_e3_local_hajek_weight_and_p2_final_closure_core.py",
+        "tests/unit/test_manifest_complete.py::test_auditable_manifest_can_require_git",
+        "tests/unit/test_manifest_complete.py::test_manifest_rejects_seed_bundle_mismatch",
+        "-ra",
+        "--junitxml=C:\\Cursor\\raven.mcs\\results_conditional_bundle_b0_20261012_223821\\final.xml",
+        "--basetemp=C:\\Cursor\\raven.mcs\\results_conditional_bundle_b0_20261012_223821\\final-tmp"
+      ],
+      "returncode": 1,
+      "process_tree_cpu_seconds": 21.796875,
+      "monitor_cpu_seconds": 0.140625,
+      "wall_seconds": 23.381079799999497,
+      "limit_reason": null,
+      "log": "C:\\Cursor\\raven.mcs\\results_conditional_bundle_b0_20261012_223821\\final.log"
+    },
+    {
+      "command": [
+        "C:\\Cursor\\raven.mcs\\.venv_new\\Scripts\\python.exe",
+        "-c",
+        "import ast; from pathlib import Path; from raven_mcs.control.persistence import computational_sources; paths=list(computational_sources(Path.cwd()))+list(Path('tests/control_b0').glob('*.py'))+[Path('scripts/validate_conditional_bundle_b0.py')]; [ast.parse(p.read_text(encoding='utf-8'),filename=str(p)) for p in paths]; print('SYNTAX_OK',len(paths))"
+      ],
+      "returncode": 0,
+      "process_tree_cpu_seconds": 1.71875,
+      "monitor_cpu_seconds": 0.0,
+      "wall_seconds": 1.868059100001119,
+      "limit_reason": null,
+      "log": "C:\\Cursor\\raven.mcs\\results_conditional_bundle_b0_20261012_223821\\final-syntax.log"
+    },
+    {
+      "command": [
+        "C:\\Cursor\\raven.mcs\\.venv_new\\Scripts\\python.exe",
+        "scripts/verify_run.py",
+        "--check-environment"
+      ],
+      "returncode": 0,
+      "process_tree_cpu_seconds": 2.140625,
+      "monitor_cpu_seconds": 0.0,
+      "wall_seconds": 3.226314100000309,
+      "limit_reason": null,
+      "log": "C:\\Cursor\\raven.mcs\\results_conditional_bundle_b0_20261012_223821\\final-environment.log"
+    },
+    {
+      "command": [
+        "C:\\Cursor\\raven.mcs\\.venv_new\\Scripts\\python.exe",
+        "-X",
+        "faulthandler",
+        "-m",
+        "pytest",
+        "tests/control_b0",
+        "tests/unit/test_e0_p2_debt.py",
+        "tests/unit/test_e3_local_hajek_weight_and_p2_final_closure_core.py",
+        "tests/unit/test_manifest_complete.py::test_auditable_manifest_can_require_git",
+        "tests/unit/test_manifest_complete.py::test_manifest_rejects_seed_bundle_mismatch",
+        "-ra",
+        "--junitxml=C:\\Cursor\\raven.mcs\\results_conditional_bundle_b0_20261012_223821\\acceptance.xml",
+        "--basetemp=C:\\Cursor\\raven.mcs\\results_conditional_bundle_b0_20261012_223821\\acceptance-tmp"
+      ],
+      "returncode": 1,
+      "process_tree_cpu_seconds": 20.453125,
+      "monitor_cpu_seconds": 0.125,
+      "wall_seconds": 31.975970399998914,
+      "limit_reason": null,
+      "log": "C:\\Cursor\\raven.mcs\\results_conditional_bundle_b0_20261012_223821\\acceptance.log"
+    },
+    {
+      "command": [
+        "C:\\Cursor\\raven.mcs\\.venv_new\\Scripts\\python.exe",
+        "-c",
+        "import ast; from pathlib import Path; from raven_mcs.control.persistence import computational_sources; paths=list(computational_sources(Path.cwd()))+list(Path('tests/control_b0').glob('*.py'))+[Path('scripts/validate_conditional_bundle_b0.py')]; [ast.parse(p.read_text(encoding='utf-8'),filename=str(p)) for p in paths]; print('SYNTAX_OK',len(paths))"
+      ],
+      "returncode": 0,
+      "process_tree_cpu_seconds": 2.265625,
+      "monitor_cpu_seconds": 0.03125,
+      "wall_seconds": 2.571563600000445,
+      "limit_reason": null,
+      "log": "C:\\Cursor\\raven.mcs\\results_conditional_bundle_b0_20261012_223821\\acceptance-syntax.log"
+    },
+    {
+      "command": [
+        "C:\\Cursor\\raven.mcs\\.venv_new\\Scripts\\python.exe",
+        "scripts/verify_run.py",
+        "--check-environment"
+      ],
+      "returncode": 0,
+      "process_tree_cpu_seconds": 4.671875,
+      "monitor_cpu_seconds": 0.046875,
+      "wall_seconds": 9.086867199999688,
+      "limit_reason": null,
+      "log": "C:\\Cursor\\raven.mcs\\results_conditional_bundle_b0_20261012_223821\\acceptance-environment.log"
+    },
+    {
+      "command": [
+        "C:\\Cursor\\raven.mcs\\.venv_new\\Scripts\\python.exe",
+        "-X",
+        "faulthandler",
+        "-m",
+        "pytest",
+        "tests/control_b0",
+        "tests/unit/test_e0_p2_debt.py",
+        "tests/unit/test_e3_local_hajek_weight_and_p2_final_closure_core.py",
+        "tests/unit/test_manifest_complete.py::test_auditable_manifest_can_require_git",
+        "tests/unit/test_manifest_complete.py::test_manifest_rejects_seed_bundle_mismatch",
+        "-ra",
+        "--junitxml=C:\\Cursor\\raven.mcs\\results_conditional_bundle_b0_20261012_223821\\acceptance2.xml",
+        "--basetemp=C:\\Cursor\\raven.mcs\\results_conditional_bundle_b0_20261012_223821\\acceptance2-tmp"
+      ],
+      "returncode": 0,
+      "process_tree_cpu_seconds": 34.765625,
+      "monitor_cpu_seconds": 0.265625,
+      "wall_seconds": 54.64628559999983,
+      "limit_reason": null,
+      "log": "C:\\Cursor\\raven.mcs\\results_conditional_bundle_b0_20261012_223821\\acceptance2.log"
+    },
+    {
+      "command": [
+        "C:\\Cursor\\raven.mcs\\.venv_new\\Scripts\\python.exe",
+        "-c",
+        "import ast; from pathlib import Path; from raven_mcs.control.persistence import computational_sources; paths=list(computational_sources(Path.cwd()))+list(Path('tests/control_b0').glob('*.py'))+[Path('scripts/validate_conditional_bundle_b0.py')]; [ast.parse(p.read_text(encoding='utf-8'),filename=str(p)) for p in paths]; print('SYNTAX_OK',len(paths))"
+      ],
+      "returncode": 0,
+      "process_tree_cpu_seconds": 2.96875,
+      "monitor_cpu_seconds": 0.09375,
+      "wall_seconds": 11.800664399999732,
+      "limit_reason": null,
+      "log": "C:\\Cursor\\raven.mcs\\results_conditional_bundle_b0_20261012_223821\\acceptance2-syntax.log"
+    },
+    {
+      "command": [
+        "C:\\Cursor\\raven.mcs\\.venv_new\\Scripts\\python.exe",
+        "scripts/verify_run.py",
+        "--check-environment"
+      ],
+      "returncode": 0,
+      "process_tree_cpu_seconds": 2.765625,
+      "monitor_cpu_seconds": 0.0,
+      "wall_seconds": 4.007148300001063,
+      "limit_reason": null,
+      "log": "C:\\Cursor\\raven.mcs\\results_conditional_bundle_b0_20261012_223821\\acceptance2-environment.log"
+    },
+    {
+      "command": [
+        "C:\\Cursor\\raven.mcs\\.venv_new\\Scripts\\python.exe",
+        "-X",
+        "faulthandler",
+        "-m",
+        "pytest",
+        "tests/control_b0/test_persistence_and_full_connection.py",
+        "-ra",
+        "--junitxml=C:\\Cursor\\raven.mcs\\results_conditional_bundle_b0_20261012_223821\\session_acceptance.xml",
+        "--basetemp=C:\\Cursor\\raven.mcs\\results_conditional_bundle_b0_20261012_223821\\session_acceptance-tmp"
+      ],
+      "returncode": 0,
+      "process_tree_cpu_seconds": 30.078125,
+      "monitor_cpu_seconds": 0.15625,
+      "wall_seconds": 37.384856200000286,
+      "limit_reason": null,
+      "log": "C:\\Cursor\\raven.mcs\\results_conditional_bundle_b0_20261012_223821\\session_acceptance.log"
+    },
+    {
+      "command": [
+        "C:\\Cursor\\raven.mcs\\.venv_new\\Scripts\\python.exe",
+        "-c",
+        "import ast; from pathlib import Path; from raven_mcs.control.persistence import computational_sources; paths=list(computational_sources(Path.cwd()))+list(Path('tests/control_b0').glob('*.py'))+[Path('scripts/validate_conditional_bundle_b0.py')]; [ast.parse(p.read_text(encoding='utf-8'),filename=str(p)) for p in paths]; print('SYNTAX_OK',len(paths))"
+      ],
+      "returncode": 0,
+      "process_tree_cpu_seconds": 3.53125,
+      "monitor_cpu_seconds": 0.03125,
+      "wall_seconds": 7.001529399998617,
+      "limit_reason": null,
+      "log": "C:\\Cursor\\raven.mcs\\results_conditional_bundle_b0_20261012_223821\\session_acceptance-syntax.log"
+    },
+    {
+      "command": [
+        "C:\\Cursor\\raven.mcs\\.venv_new\\Scripts\\python.exe",
+        "scripts/verify_run.py",
+        "--check-environment"
+      ],
+      "returncode": 0,
+      "process_tree_cpu_seconds": 3.09375,
+      "monitor_cpu_seconds": 0.03125,
+      "wall_seconds": 6.198436800001218,
+      "limit_reason": null,
+      "log": "C:\\Cursor\\raven.mcs\\results_conditional_bundle_b0_20261012_223821\\session_acceptance-environment.log"
+    },
+    {
+      "command": [
+        "C:\\Cursor\\raven.mcs\\.venv_new\\Scripts\\python.exe",
+        "-X",
+        "faulthandler",
+        "-m",
+        "pytest",
+        "tests/control_b0",
+        "tests/unit/test_e0_p2_debt.py",
+        "tests/unit/test_e3_local_hajek_weight_and_p2_final_closure_core.py",
+        "tests/unit/test_manifest_complete.py::test_auditable_manifest_can_require_git",
+        "tests/unit/test_manifest_complete.py::test_manifest_rejects_seed_bundle_mismatch",
+        "-ra",
+        "--junitxml=C:\\Cursor\\raven.mcs\\results_conditional_bundle_b0_20261012_223821\\delivery_acceptance.xml",
+        "--basetemp=C:\\Cursor\\raven.mcs\\results_conditional_bundle_b0_20261012_223821\\delivery_acceptance-tmp"
+      ],
+      "returncode": 0,
+      "process_tree_cpu_seconds": 16.359375,
+      "monitor_cpu_seconds": 0.125,
+      "wall_seconds": 20.731334300000526,
+      "limit_reason": null,
+      "log": "C:\\Cursor\\raven.mcs\\results_conditional_bundle_b0_20261012_223821\\delivery_acceptance.log"
+    },
+    {
+      "command": [
+        "C:\\Cursor\\raven.mcs\\.venv_new\\Scripts\\python.exe",
+        "-c",
+        "import ast; from pathlib import Path; from raven_mcs.control.persistence import computational_sources; paths=list(computational_sources(Path.cwd()))+list(Path('tests/control_b0').glob('*.py'))+[Path('scripts/validate_conditional_bundle_b0.py')]; [ast.parse(p.read_text(encoding='utf-8'),filename=str(p)) for p in paths]; print('SYNTAX_OK',len(paths))"
+      ],
+      "returncode": 0,
+      "process_tree_cpu_seconds": 1.78125,
+      "monitor_cpu_seconds": 0.046875,
+      "wall_seconds": 2.732386600000609,
+      "limit_reason": null,
+      "log": "C:\\Cursor\\raven.mcs\\results_conditional_bundle_b0_20261012_223821\\delivery_acceptance-syntax.log"
+    },
+    {
+      "command": [
+        "C:\\Cursor\\raven.mcs\\.venv_new\\Scripts\\python.exe",
+        "scripts/verify_run.py",
+        "--check-environment"
+      ],
+      "returncode": 0,
+      "process_tree_cpu_seconds": 2.953125,
+      "monitor_cpu_seconds": 0.015625,
+      "wall_seconds": 3.202780999999959,
+      "limit_reason": null,
+      "log": "C:\\Cursor\\raven.mcs\\results_conditional_bundle_b0_20261012_223821\\delivery_acceptance-environment.log"
+    },
+    {
+      "command": [
+        "C:\\Cursor\\raven.mcs\\.venv_new\\Scripts\\python.exe",
+        "-X",
+        "faulthandler",
+        "-m",
+        "pytest",
+        "tests/control_b0",
+        "tests/unit/test_e0_p2_debt.py",
+        "tests/unit/test_e3_local_hajek_weight_and_p2_final_closure_core.py",
+        "tests/unit/test_manifest_complete.py::test_auditable_manifest_can_require_git",
+        "tests/unit/test_manifest_complete.py::test_manifest_rejects_seed_bundle_mismatch",
+        "-ra",
+        "--junitxml=C:\\Cursor\\raven.mcs\\results_conditional_bundle_b0_20261012_223821\\final_delivery.xml",
+        "--basetemp=C:\\Cursor\\raven.mcs\\results_conditional_bundle_b0_20261012_223821\\final_delivery-tmp"
+      ],
+      "returncode": 0,
+      "process_tree_cpu_seconds": 18.59375,
+      "monitor_cpu_seconds": 0.015625,
+      "wall_seconds": 19.71843440000157,
+      "limit_reason": null,
+      "log": "C:\\Cursor\\raven.mcs\\results_conditional_bundle_b0_20261012_223821\\final_delivery.log"
+    },
+    {
+      "command": [
+        "C:\\Cursor\\raven.mcs\\.venv_new\\Scripts\\python.exe",
+        "-c",
+        "import ast; from pathlib import Path; from raven_mcs.control.persistence import computational_sources; paths=list(computational_sources(Path.cwd()))+list(Path('tests/control_b0').glob('*.py'))+[Path('scripts/validate_conditional_bundle_b0.py')]; [ast.parse(p.read_text(encoding='utf-8'),filename=str(p)) for p in paths]; print('SYNTAX_OK',len(paths))"
+      ],
+      "returncode": 0,
+      "process_tree_cpu_seconds": 1.8125,
+      "monitor_cpu_seconds": 0.0,
+      "wall_seconds": 1.9101637000003393,
+      "limit_reason": null,
+      "log": "C:\\Cursor\\raven.mcs\\results_conditional_bundle_b0_20261012_223821\\final_delivery-syntax.log"
+    },
+    {
+      "command": [
+        "C:\\Cursor\\raven.mcs\\.venv_new\\Scripts\\python.exe",
+        "scripts/verify_run.py",
+        "--check-environment"
+      ],
+      "returncode": 0,
+      "process_tree_cpu_seconds": 2.546875,
+      "monitor_cpu_seconds": 0.015625,
+      "wall_seconds": 2.6301903999992646,
+      "limit_reason": null,
+      "log": "C:\\Cursor\\raven.mcs\\results_conditional_bundle_b0_20261012_223821\\final_delivery-environment.log"
+    },
+    {
+      "command": [
+        "C:\\Cursor\\raven.mcs\\.venv_new\\Scripts\\python.exe",
+        "-X",
+        "faulthandler",
+        "-m",
+        "pytest",
+        "tests/control_b0",
+        "tests/unit/test_e0_p2_debt.py",
+        "tests/unit/test_e3_local_hajek_weight_and_p2_final_closure_core.py",
+        "tests/unit/test_manifest_complete.py::test_auditable_manifest_can_require_git",
+        "tests/unit/test_manifest_complete.py::test_manifest_rejects_seed_bundle_mismatch",
+        "-ra",
+        "--junitxml=C:\\Cursor\\raven.mcs\\results_conditional_bundle_b0_20261012_223821\\audited_delivery.xml",
+        "--basetemp=C:\\Cursor\\raven.mcs\\results_conditional_bundle_b0_20261012_223821\\audited_delivery-tmp"
+      ],
+      "returncode": 0,
+      "process_tree_cpu_seconds": 23.34375,
+      "monitor_cpu_seconds": 0.140625,
+      "wall_seconds": 32.13399690000006,
+      "limit_reason": null,
+      "log": "C:\\Cursor\\raven.mcs\\results_conditional_bundle_b0_20261012_223821\\audited_delivery.log"
+    },
+    {
+      "command": [
+        "C:\\Cursor\\raven.mcs\\.venv_new\\Scripts\\python.exe",
+        "-c",
+        "import ast; from pathlib import Path; from raven_mcs.control.persistence import computational_sources; paths=list(computational_sources(Path.cwd()))+list(Path('tests/control_b0').glob('*.py'))+[Path('scripts/validate_conditional_bundle_b0.py')]; [ast.parse(p.read_text(encoding='utf-8'),filename=str(p)) for p in paths]; print('SYNTAX_OK',len(paths))"
+      ],
+      "returncode": 1,
+      "process_tree_cpu_seconds": 1.75,
+      "monitor_cpu_seconds": 0.015625,
+      "wall_seconds": 2.185230399998545,
+      "limit_reason": null,
+      "log": "C:\\Cursor\\raven.mcs\\results_conditional_bundle_b0_20261012_223821\\audited_delivery-syntax.log"
+    },
+    {
+      "command": [
+        "C:\\Cursor\\raven.mcs\\.venv_new\\Scripts\\python.exe",
+        "scripts/verify_run.py",
+        "--check-environment"
+      ],
+      "returncode": 0,
+      "process_tree_cpu_seconds": 3.21875,
+      "monitor_cpu_seconds": 0.046875,
+      "wall_seconds": 5.388545599998906,
+      "limit_reason": null,
+      "log": "C:\\Cursor\\raven.mcs\\results_conditional_bundle_b0_20261012_223821\\audited_delivery-environment.log"
+    },
+    {
+      "command": [
+        "C:\\Cursor\\raven.mcs\\.venv_new\\Scripts\\python.exe",
+        "-c",
+        "import ast; from pathlib import Path; from raven_mcs.control.persistence import computational_sources; paths=list(computational_sources(Path.cwd()))+list(Path('tests/control_b0').glob('*.py'))+[Path('scripts/validate_conditional_bundle_b0.py')]; paths=[p for p in paths if p.suffix=='.py']; [ast.parse(p.read_text(encoding='utf-8'),filename=str(p)) for p in paths]; print('SYNTAX_OK',len(paths))"
+      ],
+      "returncode": 0,
+      "process_tree_cpu_seconds": 2.9375,
+      "monitor_cpu_seconds": 0.015625,
+      "wall_seconds": 3.6254123999970034,
+      "limit_reason": null,
+      "log": "C:\\Cursor\\raven.mcs\\results_conditional_bundle_b0_20261012_223821\\final_facility-syntax.log"
+    },
+    {
+      "command": [
+        "C:\\Cursor\\raven.mcs\\.venv_new\\Scripts\\python.exe",
+        "scripts/verify_run.py",
+        "--check-environment"
+      ],
+      "returncode": 0,
+      "process_tree_cpu_seconds": 4.265625,
+      "monitor_cpu_seconds": 0.015625,
+      "wall_seconds": 6.614605999999185,
+      "limit_reason": null,
+      "log": "C:\\Cursor\\raven.mcs\\results_conditional_bundle_b0_20261012_223821\\final_facility-environment.log"
+    }
+  ],
+  "interactive_allowance_seconds": 300,
+  "training_steps": 0,
+  "synthetic_replays": 0,
+  "real_replays": 0
+}

@@ -1,0 +1,291 @@
+{
+  "batch": "user20261014_autonomous_pilot_45001",
+  "authority": "observed-feedback-v1-autonomous-pilot-instruction-20261014.md delivered by human",
+  "CPU_limit": 3000,
+  "wall_limit": 14400,
+  "charged_CPU": 2983.859375,
+  "remaining_CPU": 16.140625,
+  "wall_used": 14373.550642490387,
+  "remaining_wall": 26.449357509613037,
+  "job_wall_measured": 9461.1623751,
+  "active_since_batch_creation_wall": 13773.550642490387,
+  "preinitialize_wall_conservative": 600.0,
+  "wall_role": "active elapsed includes development/waits/execute/delivery;600 conservatively covers preinitialize preparation; no human approval wait in this batch",
+  "categories": {
+    "setup": 101.875,
+    "initialization": 51.296875,
+    "online": 23.390625,
+    "training": 47.59375,
+    "events": 232.53125,
+    "save": 139.171875,
+    "repair": 2388.0
+  },
+  "charges": [
+    {
+      "label": "autonomous_sgd0",
+      "arm": null,
+      "root_CPU": 12.8125,
+      "job_CPU": 12.09375,
+      "driver_CPU": 0.71875,
+      "categories": {
+        "setup": 12.8125
+      },
+      "wall": 18.489840899994306,
+      "exit": 1,
+      "audit": true,
+      "limit": null,
+      "root_feedback": "C:\\Cursor\\raven.mcs\\results_observed_feedback_autonomous_pilot_45001_20261014\\root_feedback_ybvtbfi6\\root.json",
+      "wall_cap_at_launch": 300
+    },
+    {
+      "label": "autonomous_sgd0_fixed_fixture",
+      "arm": null,
+      "root_CPU": 24.15625,
+      "job_CPU": 22.671875,
+      "driver_CPU": 1.484375,
+      "categories": {
+        "setup": 24.15625
+      },
+      "wall": 28.006941100000404,
+      "exit": 0,
+      "audit": true,
+      "limit": null,
+      "root_feedback": "C:\\Cursor\\raven.mcs\\results_observed_feedback_autonomous_pilot_45001_20261014\\root_feedback_nikardxd\\root.json",
+      "wall_cap_at_launch": 300
+    },
+    {
+      "label": "fixed05_run1",
+      "arm": "fixed05",
+      "root_CPU": 2388.0,
+      "categories": {
+        "repair": 2388.0
+      },
+      "wall": 6671.2,
+      "exit": "PROCESS_DISAPPEARED_FINAL_AUDIT_NOT_PUBLISHED",
+      "audit": false,
+      "actual_CPU": "UNKNOWN",
+      "limit": "RESOURCE_AUDIT_UNAVAILABLE",
+      "conservative_role": "entire allocated2380 CPU plus8 safety reserve retained; allocation reservation, not reconstructed actual root CPU or proved upper bound",
+      "wall_role": "conservative launch-to-first-observed-absence envelope; exact process exit time unknown",
+      "known_last_persisted": {
+        "now": 75,
+        "SGD": 2493,
+        "grid": 750
+      },
+      "cancelled": [
+        "fixed05 suffix resume",
+        "fixed2",
+        "noqstop"
+      ]
+    },
+    {
+      "label": "incomplete_pairing_readonly",
+      "arm": null,
+      "root_CPU": 2.796875,
+      "job_CPU": 2.59375,
+      "driver_CPU": 0.203125,
+      "categories": {
+        "setup": 2.796875
+      },
+      "wall": 3.08489709999958,
+      "exit": 0,
+      "audit": true,
+      "limit": null,
+      "root_feedback": "C:\\Cursor\\raven.mcs\\results_observed_feedback_autonomous_pilot_45001_20261014\\root_feedback_gha6gt59\\root.json",
+      "wall_cap_at_launch": 148.1026165485382
+    },
+    {
+      "label": "interruption_prefix_readonly",
+      "arm": null,
+      "root_CPU": 0.21875,
+      "job_CPU": 0.125,
+      "driver_CPU": 0.09375,
+      "categories": {
+        "setup": 0.21875
+      },
+      "wall": 0.18275900000026013,
+      "exit": 1,
+      "audit": true,
+      "limit": null,
+      "root_feedback": "C:\\Cursor\\raven.mcs\\results_observed_feedback_autonomous_pilot_45001_20261014\\root_feedback_h2a503yh\\root.json",
+      "wall_cap_at_launch": 230.06077218055725
+    },
+    {
+      "label": "interruption_prefix_readonly_fixed_import",
+      "arm": null,
+      "root_CPU": 4.171875,
+      "job_CPU": 3.78125,
+      "driver_CPU": 0.390625,
+      "categories": {
+        "setup": 4.171875
+      },
+      "wall": 9.426352000000406,
+      "exit": 0,
+      "audit": true,
+      "limit": null,
+      "root_feedback": "C:\\Cursor\\raven.mcs\\results_observed_feedback_autonomous_pilot_45001_20261014\\root_feedback_ye2sw_aw\\root.json",
+      "wall_cap_at_launch": 182.02324748039246
+    },
+    {
+      "label": "legacy_source_archive",
+      "arm": null,
+      "root_CPU": 0.609375,
+      "job_CPU": 0.453125,
+      "driver_CPU": 0.15625,
+      "categories": {
+        "setup": 0.609375
+      },
+      "wall": 1.2043802000043797,
+      "exit": 0,
+      "audit": true,
+      "limit": null,
+      "root_feedback": "C:\\Cursor\\raven.mcs\\results_observed_feedback_autonomous_pilot_45001_20261014\\root_feedback_qhpp5i3z\\root.json",
+      "wall_cap_at_launch": 300
+    },
+    {
+      "label": "metadata_hash_resolution",
+      "arm": null,
+      "root_CPU": 0.671875,
+      "job_CPU": 0.453125,
+      "driver_CPU": 0.21875,
+      "categories": {
+        "setup": 0.671875
+      },
+      "wall": 1.995337100001052,
+      "exit": 0,
+      "audit": true,
+      "limit": null,
+      "root_feedback": "C:\\Cursor\\raven.mcs\\results_observed_feedback_autonomous_pilot_45001_20261014\\root_feedback_zzfaizgp\\root.json",
+      "wall_cap_at_launch": 300
+    },
+    {
+      "label": "metadata_preparation",
+      "arm": null,
+      "root_CPU": 0.421875,
+      "job_CPU": 0.234375,
+      "driver_CPU": 0.1875,
+      "categories": {
+        "setup": 0.421875
+      },
+      "wall": 0.5233031999960076,
+      "exit": 1,
+      "audit": true,
+      "limit": null,
+      "root_feedback": "C:\\Cursor\\raven.mcs\\results_observed_feedback_autonomous_pilot_45001_20261014\\root_feedback_ze7lmh8t\\root.json",
+      "wall_cap_at_launch": 300
+    },
+    {
+      "label": "metadata_preparation_utf8",
+      "arm": null,
+      "root_CPU": 9.578125,
+      "job_CPU": 8.890625,
+      "driver_CPU": 0.6875,
+      "categories": {
+        "setup": 9.578125
+      },
+      "wall": 20.27423540000018,
+      "exit": 1,
+      "audit": true,
+      "limit": null,
+      "root_feedback": "C:\\Cursor\\raven.mcs\\results_observed_feedback_autonomous_pilot_45001_20261014\\root_feedback_x4cftt45\\root.json",
+      "wall_cap_at_launch": 300
+    },
+    {
+      "label": "of_resume1",
+      "arm": "of_resume1",
+      "root_CPU": 2.15625,
+      "categories": {
+        "setup": 2.15625
+      },
+      "wall": 0.48417889999836916,
+      "exit": "KeyError('events')",
+      "traceback": "Traceback (most recent call last):\n  File \"C:\\Cursor\\raven.mcs\\scripts\\observed_feedback_pilot_budget.py\", line 45, in <module>\n    if a.arm:cats['events']+=max(0,cost-sum(cats.values()))\n             ~~~~^^^^^^^^^^\nKeyError: 'events'\n",
+      "audit": false,
+      "actual_CPU": "UNKNOWN; singleCPUwall+driver conservative bound"
+    },
+    {
+      "label": "of_resume1_actual",
+      "arm": "of_resume1",
+      "root_CPU": 345.453125,
+      "job_CPU": 277.28125,
+      "driver_CPU": 68.171875,
+      "categories": {
+        "setup": 0.0,
+        "initialization": 30.6875,
+        "online": 16.484375,
+        "training": 31.21875,
+        "events": 156.421875,
+        "save": 110.640625,
+        "repair": 0.0
+      },
+      "wall": 1800.286011600001,
+      "exit": 0,
+      "audit": true,
+      "limit": null,
+      "root_feedback": "C:\\Cursor\\raven.mcs\\results_observed_feedback_autonomous_pilot_45001_20261014\\of_resume1\\root_feedback_hm9dflpt\\root.json",
+      "wall_cap_at_launch": 6310.724002200004
+    },
+    {
+      "label": "of_run1",
+      "arm": "of",
+      "root_CPU": 148.53125,
+      "job_CPU": 115.265625,
+      "driver_CPU": 33.265625,
+      "categories": {
+        "setup": 0.0,
+        "initialization": 20.609375,
+        "online": 6.90625,
+        "training": 16.375,
+        "events": 76.109375,
+        "save": 28.53125,
+        "repair": 0.0
+      },
+      "wall": 888.7918188999975,
+      "exit": 2,
+      "audit": true,
+      "limit": null,
+      "root_feedback": "C:\\Cursor\\raven.mcs\\results_observed_feedback_autonomous_pilot_45001_20261014\\of\\root_feedback_z33yspvj\\root.json",
+      "wall_cap_at_launch": 7200
+    },
+    {
+      "label": "partial_delivery",
+      "arm": null,
+      "root_CPU": 0.171875,
+      "job_CPU": 0.078125,
+      "driver_CPU": 0.09375,
+      "categories": {
+        "setup": 0.171875
+      },
+      "wall": 0.20712550000007468,
+      "exit": 0,
+      "audit": true,
+      "limit": null,
+      "root_feedback": "C:\\Cursor\\raven.mcs\\results_observed_feedback_autonomous_pilot_45001_20261014\\root_feedback_hrbpsaay\\root.json",
+      "wall_cap_at_launch": 26.67887854576111
+    },
+    {
+      "label": "verify_of",
+      "arm": null,
+      "root_CPU": 14.109375,
+      "job_CPU": 13.09375,
+      "driver_CPU": 1.015625,
+      "categories": {
+        "setup": 14.109375
+      },
+      "wall": 17.005194200006372,
+      "exit": 0,
+      "audit": true,
+      "limit": null,
+      "root_feedback": "C:\\Cursor\\raven.mcs\\results_observed_feedback_autonomous_pilot_45001_20261014\\root_feedback_dj7olje4\\root.json",
+      "wall_cap_at_launch": 300
+    }
+  ],
+  "actual_audited_CPU": 563.703125,
+  "conservative_CPU": 2420.15625,
+  "unmetered_actual_CPU": "UNKNOWN",
+  "historical45011_batch_charged_CPU": 757.375,
+  "historical_all_charged_CPU": 5522.609375,
+  "historical_plus_new_charged_CPU": 8506.46875,
+  "old_balance_role": "display only; not authority or duplicate debit",
+  "state": "WAITING_USER_REVIEW"
+}

@@ -1,0 +1,1125 @@
+{
+  "controller": {
+    "accounting": [
+      {
+        "previous_decision_cpu": 0.0
+      }
+    ]
+  },
+  "method": "reachability_stop/conditional-bundle-v2",
+  "schema": "conditional_bundle_checkpoint_v1",
+  "source_closure": {
+    "configs/control/conditional_bundle_v2.json": "7456d66b2609d4b4529ca802bb78405e8401a8cd1057bf739fb94a7404b4d350",
+    "src/raven_mcs/__init__.py": "a0a7476bfea991c274641f86ae3eaadbcc68b7e67e464e7fdbcd958d3ccd7d11",
+    "src/raven_mcs/aggregation/__init__.py": "4e697b9c84b802a43c290efb131e1e7c7c6351ddb231d1a63e29f17989207c0e",
+    "src/raven_mcs/aggregation/base.py": "c8c2a35f67948d219597ac5a90f6022c2f7b4a46c89f5b1a33b617a6e05fb5c6",
+    "src/raven_mcs/aggregation/debt.py": "e10ab25dbc8ae956f274535efcbb654b157dc5ef5e9351bbcdf79b1c92fb2d82",
+    "src/raven_mcs/aggregation/feasibility.py": "52c2ad2ca629f61ef59bc76cb1c787751aacc4ca188d3140fa778a86766cdc6c",
+    "src/raven_mcs/aggregation/method_policy.py": "e6566ad2bb64c23deae5c9a90576978f2f3a1a9186ca6baed0745487cd5e431a",
+    "src/raven_mcs/aggregation/methods.py": "6091b9435de2972d0d78963cea76a0abe03e0e4658579d60d0f597bcba4554d0",
+    "src/raven_mcs/aggregation/p2_cvxpy.py": "6fcd2da96872940c77aaa91719c85b721c384f00a055e687c91d69f36b59928e",
+    "src/raven_mcs/control/__init__.py": "a317ac9f6d50f42401af03f2895b97b955675bfa4c6cb030769c8f78bd78568c",
+    "src/raven_mcs/control/isolation.py": "2d562045c2d18ac6575636a40c3c124a5e71ea9d2590bf9f333dd2330ccc77b0",
+    "src/raven_mcs/control/lifecycle.py": "26971a27e749a24a5be3eb2adae0f8261dfcf19d4c1e52b8e81e2831f5da61b3",
+    "src/raven_mcs/control/persistence.py": "92156a9ab3db1923db04fa94d340b4bb667308d343009b81b4369bb89da16c27",
+    "src/raven_mcs/control/planner.py": "b4f332d7a84869d2e1f9d7e2eb9b2081f7fad00421937804222ffd1399597d5f",
+    "src/raven_mcs/control/predictor.py": "efe39d7683a0f14ef48a358384dd736f3b2040813cd1af478b0c3f2546e2804d",
+    "src/raven_mcs/control/preview.py": "bf42f8b05735a2c8ca8fd214c97880ac12525a5b45cd3bf5d27bd0bccc57b7d1",
+    "src/raven_mcs/control/probability.py": "ee2304ee97c4aaaf851adc92f544b25f7e7e2ff2874e201a40a910b54d323814",
+    "src/raven_mcs/control/process_budget.py": "0049ed42edc9c5cba62f43509120f01a7fef444153b1c4481da010650f2ba2b9",
+    "src/raven_mcs/control/schema.py": "729197a37470427f8202deeb49de8c22b48cfcb00a1a9d971df3463e2f7fcb2b",
+    "src/raven_mcs/control/stage1.py": "17c769d1a9e914a6912188f4523cdb044667a2e8562f9b69dbfecdbf81a4af87",
+    "src/raven_mcs/correction/__init__.py": "e94f021eb13e5014a2a5f65c5f9d95a1c4591b1c04a1d566d590291a20c7425b",
+    "src/raven_mcs/correction/design_ratio.py": "39050a04603a09748d589f931e570b39a12877e06eb1fedb8fab391aa9cebc80",
+    "src/raven_mcs/correction/effective_sample_size.py": "f23f172c9626c2798a27dbe9dd379efd55a6c10ae57c691f6c39864fd9551b16",
+    "src/raven_mcs/correction/hajek.py": "d68c45b6fae1fc1c02dbced3f6cf9e4eeb68464d5ec781659e4c3089c81589fb",
+    "src/raven_mcs/correction/ipw.py": "7a1b0ace36aad666a21d0b51ba1d5af363e3f5da7f9ec6704afa36a0bd5b1ad9",
+    "src/raven_mcs/correction/pi_target.py": "73838c4610115344d67f7dbdb3e123d731a1559fb63529308d9b48f6892800b5",
+    "src/raven_mcs/correction/second_stage.py": "ba733fdcb8990739509b3baa86a514fa7a8a86c51cf602749928f0b87c1f75d9",
+    "src/raven_mcs/correction/stage1.py": "43ee10d67ae54bd025c9c56ca85184330d0a022699c3aaa455bbc80f7153ee87",
+    "src/raven_mcs/data/__init__.py": "8a5bd4e0f6fc6148649724fd8f00c86449586af3fbd3843e5f8ad9d09c70178d",
+    "src/raven_mcs/data/audit.py": "ec70652af5e89cd70ce9374a18b8d3c8e5f783fc4d272a95fa17212eb16236af",
+    "src/raven_mcs/data/base.py": "ce12702d87a0833cde772cf348324c98bab95bf5e49908d9d3fd1b532c07b2f7",
+    "src/raven_mcs/data/cityscanner.py": "cd2b0e752922406527ac7a44b7620b657183dbeb13aff26371638873d1e83fb8",
+    "src/raven_mcs/data/cityscanner_eventtrace.py": "9d7316c17d5da8e2edebfb48178d9e29e8a7fae2fa67f7e76d3b667711195e59",
+    "src/raven_mcs/data/cityscanner_p2_measured_o.py": "30e69d898b9054be57102835f4b88b48b01a0327f1bf026d57ed478f683389ba",
+    "src/raven_mcs/data/cityscanner_p2_measured_o_eventtrace.py": "2394ebbf0e34226889434704aaaaa0b0c65eb90f7cdc2a2b5c6bfc5f042a123c",
+    "src/raven_mcs/data/cityscanner_p2_measured_o_no2.py": "0f983878bffa5cd257615bc8bd7a37f4fd37adeaef63f87ca49c3380efbe707d",
+    "src/raven_mcs/data/cityscanner_p2_measured_o_no2_eventtrace.py": "3aeb8dcb298ca72c49a3af11c6adebd6c88e20744fa607f504aadb4d7b3009e5",
+    "src/raven_mcs/data/controlled.py": "9ecf0a4bbebf0fb145c2a032fe88fbcb0cd9e4d830d35f3fa61df801e10e2aee",
+    "src/raven_mcs/data/download.py": "e53f2711cc9d0c8a769b5d01325598318c264d718614b784499b26875287f289",
+    "src/raven_mcs/data/fleet.py": "ce50b80a4ce9f9bee11f9a144c8bc3cf2dd7cce27f8a469053d8d6c47b957880",
+    "src/raven_mcs/data/manifest.py": "040917c1b57da1ee9fe80e6359daa0f9c38e6b50793503ff7201749e78b32de4",
+    "src/raven_mcs/data/matrix_adapter.py": "d310a6d8676b76ee1cdc5587c8fbeeffea397835f21c29e57f078d719305d644",
+    "src/raven_mcs/data/pipeline.py": "1626e7d1d8b626dcb316022ab3911d32884821bb336bf82b556cfa3ceb117131",
+    "src/raven_mcs/data/processed_dataset.py": "2a7053d2eb6559ee7673c2561f4c9dde496d4d8b6048b331ca284adb753a7489",
+    "src/raven_mcs/data/registry.py": "cf445ee4177d73036449627d1a165aa8e13f8857f1e088e04e27a38bd10472af",
+    "src/raven_mcs/data/scaling.py": "6af8ff931a92b4565d374234ad2c4be4da5a17e403f8eeb4bfb96a754cf28c1a",
+    "src/raven_mcs/data/schema.py": "bbf72d9126328ee54fd88b4a52ac2a23805f896ce2d2d54fbc2c79fb35fda66e",
+    "src/raven_mcs/data/sensorscope.py": "1dbaa0f565b9014dbece615bc4d00c1c109036285d926ad5a1620dcd294513f2",
+    "src/raven_mcs/data/split.py": "5a6670a9f206e162b93ced644e8d31271454dce51ad5b7e2cccc6a0170ee367b",
+    "src/raven_mcs/data/synthetic.py": "52577622634d50ab90965ab5bd79d51e7448d138bb64358a97cba2e96a3036de",
+    "src/raven_mcs/data/target.py": "39899d34ee4b10c2426c35bcf285f070a6c384cf9a55c60dea0fc59c167ff7e5",
+    "src/raven_mcs/data/tdrive.py": "1a3b9d5edd4672f403a859ebdc98db053a1ab44d9c421ef7d5f946837f4afd77",
+    "src/raven_mcs/data/traffic.py": "2138138747e6ddc24168c2f6dffe7f6b83428ca66b7adf56919e6722d58f436b",
+    "src/raven_mcs/data/uair.py": "bcf7c97b3bc52eb5977ab63bdeecd72da45467321ac949a4789b9561f077e182",
+    "src/raven_mcs/data/window_dataset.py": "7b28f65f0f5b42b3645891c3c0c643809c0bb98b9cc4e7abaff67bd1093794c9",
+    "src/raven_mcs/experiments/__init__.py": "1232054c09807913cf3a82b9590997f1891223862f2ba7cd2da835404d49d235",
+    "src/raven_mcs/experiments/conditional_bundle.py": "aa13b664fbc9b5c3cee3412b20e2b39817fe318cb6002a8f5ada92ea84a8305c",
+    "src/raven_mcs/experiments/e1_entry.py": "1edfe5a5dce039b3fd8c2543f9b3fab56718d23e5e61e1355db8996dd44abd60",
+    "src/raven_mcs/experiments/hard_gates.py": "82e0ebab8095ba31e14127d467aafcdeeee6d7e239708a46d5279319d6a65352",
+    "src/raven_mcs/experiments/legacy_coverage_freeze.py": "b528b9a91cb5b8bb9d25cc6e3a899b0cc1aadc7e89f0e93c6b606b8afa6421c6",
+    "src/raven_mcs/experiments/phase0_audit.py": "6061a19e9873707c368b6171cbbeeea60106b174d7b338e2bfe46170ecb73c10",
+    "src/raven_mcs/experiments/r1m_method_freeze.py": "5d64d2363c787c6ce9a45f1fc795f1ff75bf8fc7b2893a7e17fc234c2e579698",
+    "src/raven_mcs/experiments/registry.py": "0c152f7dbfde49d6b69a28c6c56d1e542a9a667b80156b487a204bb5055ff66e",
+    "src/raven_mcs/experiments/run_sag_g0.py": "fb8e0cbd11265a8aaa1e6c8eeca499f8858d4edcceb7368110ec22b3b5a302b9",
+    "src/raven_mcs/experiments/run_sag_g1.py": "6707856209e3c6ebc8e13b6410a352e786b517d10dff7951d820ca16f100ac26",
+    "src/raven_mcs/experiments/run_sag_g1_r1.py": "c9a62cdedab6f8211dc59297e4e2459fbb72583072eb059f549c203155985567",
+    "src/raven_mcs/experiments/run_sag_g1_r1b.py": "0fca689ff4b5d54c749155d587518d893d48db5bab6855b20b5d16a69c20d461",
+    "src/raven_mcs/experiments/run_sag_g1_r1c.py": "a72d063c55a491afc8431129709adfeb6ed9c5bd510d7dd51ac16eb93ac0bda2",
+    "src/raven_mcs/experiments/run_sag_g1_r1d.py": "c4d707993018593ebf748c2428463f601283e5f28a6f2125388af39874b8ce32",
+    "src/raven_mcs/experiments/run_sag_g1_r1e.py": "26b2ca1e8689446bee7fb8cd1de32f20ca5a3477d619c980b3e43b4f9e388572",
+    "src/raven_mcs/experiments/run_sag_g1_r1f.py": "87451cff6682449f2155bfeff4b72909256c16ead8e37f485ba90aa848c1464e",
+    "src/raven_mcs/experiments/run_sag_g1_r1g.py": "0cd173beb3351e03bf6ab890e372189661d4c6b57aacc98ba08e36b81b835377",
+    "src/raven_mcs/experiments/run_sag_g1_r1h.py": "fcb9fa05144f9b6310c217035f344d21d1edbe3910b91fa169c661a3e075b3ae",
+    "src/raven_mcs/experiments/run_sag_g1_r1i.py": "ef2d91a03e79354f1e00e52f0478d586e92b4774504093d0aaff443b0c3aa524",
+    "src/raven_mcs/experiments/run_sag_g1_r1j.py": "665626977ae1fd580ed06afddc69ae9a3a92637f76a295879adf6513d278f17c",
+    "src/raven_mcs/experiments/run_sag_g1_r1k.py": "fe9bddac24d611a5efc179588caf5fbddc6e86bcf47abbf61a0fbed1a034b1c6",
+    "src/raven_mcs/experiments/run_sag_g1_r1l.py": "4bdfe52c6a0e1f9d9227e51cdfbc95b7dcdfacda0c4b7d7aedb5a92ac88c023f",
+    "src/raven_mcs/experiments/run_sag_g1_r1l_v11.py": "9ba6ea8369856689a41fb56f5b315b5a15f7335bfd9bffc607e79e7a92f4c978",
+    "src/raven_mcs/experiments/run_sag_g1_r1l_v12.py": "a3f3bff8977752c03aa8d4881c15e3a34d566352ee7ec0a59fd067ad993249c6",
+    "src/raven_mcs/experiments/run_sag_g1_r1l_v13.py": "b439718a008cf77cb77f1e2a98f5f5d0b397cd2b9575aedea09086c9e0e2139c",
+    "src/raven_mcs/experiments/run_sag_g1_r1m.py": "e77fd78d18276326cbff1c0ad7bd0b546e141fb2cb55cced0ee7a996298609e8",
+    "src/raven_mcs/experiments/sag_runtime.py": "7b9442c87938c02e657b90c29dfd93da19ad64aeec27f4842ea19a0fa1eef3c7",
+    "src/raven_mcs/models/__init__.py": "3129f2f703db1dc1a269d615930b5aaa2106c375a70ac0bfd56f4ae719bec596",
+    "src/raven_mcs/models/common_ndmf.py": "959723c87af991b8999fb137648d108310b759677c0e4c891eddd1c168b4de38",
+    "src/raven_mcs/models/features.py": "115aad44a07d146f679d5ef4fdf3ad904ee60f084546a6f810972c200bd40cfc",
+    "src/raven_mcs/opportunities/__init__.py": "c3feb460d8591d079322af39ae3067c7418886cf148a223e6aea139a8e1d4be4",
+    "src/raven_mcs/opportunities/estimator.py": "931f9a55fd333cc408baf4d789c0bfb120a4ed72f8359ce6c466c4c87fe050ed",
+    "src/raven_mcs/opportunities/strata.py": "14080021e8c841e85fe7bf0547a059c622068b2c2973578530fb89f123ab5665",
+    "src/raven_mcs/propensity/__init__.py": "e2bbdfd301669ede18e4b0dda24ea719138f7efaf4c82e1584c2dfa101f4018e",
+    "src/raven_mcs/propensity/leakage.py": "e0e0940d7e5b915de0c33acbbd76008af4052f98c6170687b33b1f06589e93d2",
+    "src/raven_mcs/propensity/observation.py": "e1aef7d830b10ba500c712cc62597af9ac25b45065f434feab7fe9e5351b8a37",
+    "src/raven_mcs/propensity/usable.py": "f77c4d1c3fd024981db321d99224f7444d2c602643d0d299f01655cf347df338",
+    "src/raven_mcs/sag/__init__.py": "1fc390c054e0ddd56f8364dd372e06bfa8e3598648c3d2ce8e51a57d16610378",
+    "src/raven_mcs/sag/aggregate_certificate.py": "a84f9f71cda436c83f8bc832611a26c0db7d409e7c125364923c32991f03c946",
+    "src/raven_mcs/sag/availability_stress.py": "8963a35b462daf90a3024a9dc6b94385aa8a7dad11ae8fad0247583dffacd8a1",
+    "src/raven_mcs/sag/certificates.py": "78f5eb2751154852f19ef318e9794791bffe00c0f6dac23adc5a951465795fc1",
+    "src/raven_mcs/sag/cfm1.py": "0ae04f4cbc983e358d9a74e2a006029db5f916d6fad1302f0e45afac525f4920",
+    "src/raven_mcs/sag/counterfactual_audit.py": "2ee39bb7c2cc8bdbcf91cf1f60e12de01487b01b5294b28347a4024ad3b0775a",
+    "src/raven_mcs/sag/deployment_groups.py": "56e340fdf552c3c62310311d4d4d2c5d275f74cf6e509cd3fbced228d9eaffb3",
+    "src/raven_mcs/sag/dynamic_cov.py": "dbe4b15846340a6fdbe0832665a4bab9c3f4cd53fb23b7a219bfc8c9e93d0581",
+    "src/raven_mcs/sag/e3v1_root_cause.py": "ad65a87f1c485e85aaa1dad38fdf9d43de3bf0e36061d099651f2ae23332a7e8",
+    "src/raven_mcs/sag/evidence.py": "4588c2a95e62b3d4584e14fb534a2fb09cf77fcc1ae8472817ae275556e8b51d",
+    "src/raven_mcs/sag/gate.py": "379005ac5883785a4fad621d95c11d249dde2e50c347aafd56d4e44ca7fbbaee",
+    "src/raven_mcs/sag/oracle_ceiling.py": "67934e4e030d86d3b4899d9dfab91195776380554c5147ae49436cee9bd6528d",
+    "src/raven_mcs/sag/oracle_stress_builder.py": "160e56355027e4316dd055559c0011fef010ad2575a397516d7f5997c15655bb",
+    "src/raven_mcs/sag/r1j_calibration.py": "c8b63a4ae8c8a2e3be618b5d06dd758ff425ab7fde1179f8eef71d074c402c0b",
+    "src/raven_mcs/sag/r1j_eval.py": "c383c1833a4eb3bed72222bf4e6cc90f4c769222f5a9f0b3c49c23bd746d9be6",
+    "src/raven_mcs/sag/r1j_features.py": "66aadc6024a11b590a0cb006998d462df19a3955b080e25b6e3b7ff9b7253811",
+    "src/raven_mcs/sag/r1j_predictor.py": "30a2706ebb28b53b720a058279a53f31c49c772e26a86c3491393351419b0222",
+    "src/raven_mcs/sag/r1j_spec.py": "434e7ab87cf1168ff51062c97eec22c5154a4f871149ad16c852012c97931169",
+    "src/raven_mcs/sag/r1k_aggregate.py": "11a8758463ceb2736e97a919cf311e4b8d40ca741a40222191eccf3735327580",
+    "src/raven_mcs/sag/r1k_barrier.py": "90748cda7a473897d203ba51c87873cb78921a878e47ee2ec2fcba674affdcb6",
+    "src/raven_mcs/sag/r1k_eval.py": "0d9cd22bee39ddba270e04973f306463b8c996b4fd97157f51d4b0068f4a861c",
+    "src/raven_mcs/sag/r1k_scale.py": "a53accade19f946868bfdf773808661df3dc767b7bdcba82a382ae3e5f05dcd1",
+    "src/raven_mcs/sag/r1k_spec.py": "28eebd13e5c436260a5f45bd15f1791ca4307b3b5eb06f952d8cd65a73db00e0",
+    "src/raven_mcs/sag/r1l_block.py": "c281006b8ae607f521b61d6b2a206e8fbbb346ccab0c1a68e506342f0ec416f9",
+    "src/raven_mcs/sag/r1l_conformal.py": "cb17ab952d3eb68e5fcff12f0dd0ef9db09bc861d2a37e1b9be6edbca23030cd",
+    "src/raven_mcs/sag/r1l_design.py": "cc81b1b1a3f6513b8c1bad3cd3730627463d381af085b7ab831b0f6f175e510f",
+    "src/raven_mcs/sag/r1l_spec.py": "e2b34479f278676402def402609dfc8ff583d70c33ffb1ea820134749a3532e3",
+    "src/raven_mcs/sag/r1l_state.py": "8613c03dddf0ad8ed0804169ea44ffacac3b9d659586f50ff78a0d9191798574",
+    "src/raven_mcs/sag/r1l_theory.py": "0b226b393f00370c7505568a26f0464bf7e27ebe7d82732abe6fbe0a8445fc7c",
+    "src/raven_mcs/sag/r1m_eval.py": "1bde4b1264960008bb8d811cf3b2b0a1cfec0b42bfd4d7f4471542e61f59fe23",
+    "src/raven_mcs/sag/r1m_features.py": "22298dc76b3678bcd56b4e4192b04a1861273b41f2be9aaa92584c5ae70c0b54",
+    "src/raven_mcs/sag/r1m_predictor.py": "ceb7fcb06e079707b8dd44056cf740da769c16f7948a98ae9b68745322b038b6",
+    "src/raven_mcs/sag/r1m_reset.py": "49860457b48f56a9c63f258823d23d139660465663d6f3f35d53c91cfaeb4dbb",
+    "src/raven_mcs/sag/r1m_spec.py": "8410263d0870edddff700f13ec23f6e455c65dc6f9f6d229b98107974682cd1d",
+    "src/raven_mcs/sag/r1m_track.py": "9ac942a877abb0e01e026dc61bc9e4480a33e0486051c14bce7499adb998f18e",
+    "src/raven_mcs/sag/sag_state.py": "e78359e3f10efcdafc3da4b4b7787f568c44cfb9605de07887fa9cb56dd77050",
+    "src/raven_mcs/sag/stress_gate_builder.py": "9b4f50f46481970596482a063a678574ce183a4dbf3987799d89b073a13b34a4",
+    "src/raven_mcs/sag/stress_mask.py": "6f906a8aa807d5cb95b7531f3249050cb52b7626a1c6a3c963ec82aeeee4fd78",
+    "src/raven_mcs/sag/stress_summary.py": "2a88a8f59cb933c6b57b0967dda3069d8fccc69d6db0658a7b4c0c37182a1c6e",
+    "src/raven_mcs/sag/target_law.py": "660b96130690110aa5beb0667685f71c35344588f1ba07c1c94ae7c698788dc2",
+    "src/raven_mcs/sag/timing.py": "5447420a301dca55fbed3af0dd1e89b798b0715c6bed3b57980e5aa1b83b35d1",
+    "src/raven_mcs/sag/window_completeness.py": "19940a65c94d6381fb75b3c0d9c54a569fba192e91b09a246502b11f5fdc6cb0",
+    "src/raven_mcs/sag/window_context.py": "6bede846a7824022b3c4c23299923a03a13400f0650675aa2de5e3aea011f4e2",
+    "src/raven_mcs/simulation/__init__.py": "f8e7bf595867925a52cc7cf5b8aff895710860873c7f7e844e0176ccad2f5ae9",
+    "src/raven_mcs/simulation/event_trace.py": "39b87ea551c7b9637665779144d0e70a6bc9ecdafb3d63f057c4abd38d31e86b",
+    "src/raven_mcs/simulation/observation_generator.py": "8657e885cb84d39976ad726b7396afdc3812e343eb479e79ea4ee14b8f5f0c1d",
+    "src/raven_mcs/simulation/opportunity_generator.py": "aa7acc3c679f4aca7323f9a29dfd6d27d31756b1542880414e8e7a2a4cfa09a3",
+    "src/raven_mcs/simulation/replay.py": "9c7ce740d28e7995e26583534ca9dd4de70134078841ea047911d65ce42bd383",
+    "src/raven_mcs/simulation/usable_generator.py": "d1dd6badf9f1573041850461429669d6d651a198ed50e8934e2756eecfffad2e",
+    "src/raven_mcs/training/__init__.py": "8496287d6a86c2a1ac1f331faa04ac70615053e883e3ce3ef660045acc45636f",
+    "src/raven_mcs/training/cache_identity.py": "d71f69921e12e2eb47ea8a6be5ad48355728ae870507fd3a2fa6657a98da7214",
+    "src/raven_mcs/training/checkpoints.py": "c0159fa4d575039108f3ff7513c5e395026af10d2e9c7c6f9ddf538e4331d990",
+    "src/raven_mcs/training/client.py": "2881d6035c124a754ee14f8a84b38cebe5686196d7da8f322e1bf860158cb4a7",
+    "src/raven_mcs/training/dynamic_control.py": "5cb2d451d52c9d3c0dec87d0d909e8dfb86b61c1522ecffcadfa2074b6fa6241",
+    "src/raven_mcs/training/local_objective.py": "1feac1a6e20dcc223b183585cf3f9b8e78beba99bbca11b75b818c5a54dbfd81",
+    "src/raven_mcs/training/synthetic_gate_runner.py": "7e4a444feeb028b1d7418ee730338bf74c97fbbadb8ebcb116be85c7eb39b8c2",
+    "src/raven_mcs/training/window_runner.py": "4b22ad47309d5f10cb0c1ce94e5cf604091d007ea1da54b49ab3dc47d59f552a",
+    "src/raven_mcs/training/window_timing.py": "63cedc28b7c0da2165c11c9458145e9fbd038e6135c43630c2cac1bdf989a32d",
+    "src/raven_mcs/utils/__init__.py": "afebabd608a86be01a2048300f8dd4244424e0c50726fdc76f585a8b6a8c668b",
+    "src/raven_mcs/utils/cli.py": "b250a0d9885cdeba9c6ef039dd558981627c4780fd4827c133d7870c725763bd",
+    "src/raven_mcs/utils/config.py": "21de57cace2e63be8fcb35a8b114623f8cd9c40858ac3b9473a2410dd93ebd86",
+    "src/raven_mcs/utils/hashing.py": "02a2a08f99d17143754ae829189905dd0d68808b2866226df2add25aec1bca88",
+    "src/raven_mcs/utils/logging.py": "2b1c09a32dbec10c1dcd003a69312213d70562f0658240245efc96971a7e30c5",
+    "src/raven_mcs/utils/manifest.py": "cc02a31f57cb849bcbb39723512003c3c92421f05eedd826f25fa7f11783c159",
+    "src/raven_mcs/utils/paths.py": "e711a8d878e259c4763416d4af63fb5ebba20f0f0f31385becea3ff06d2a8283",
+    "src/raven_mcs/utils/run.py": "672401afade7b7594037097df8b68a8730700b321b835de113df19abd99a4f84",
+    "src/raven_mcs/utils/seed.py": "5b7293defcf4787b12691b5e3bb20dc86da1104a0ab1a1714750751d5d03d9a1",
+    "src/raven_mcs/utils/serialization.py": "d4bddcb2de0d9738770f232bce8fbe1c9b1ea254fc13f615ddcce1ab9f4b22cb",
+    "src/raven_mcs/utils/validation.py": "0f11939e6c9303d71111b3a9a6564fd7a746b1011c47fd8c9c2e28b9c274c86b"
+  },
+  "state": {
+    "attempts": {
+      "inflight": {
+        "accepted_at": null,
+        "completed_at": null,
+        "consumed": null,
+        "features": {
+          "as_of": 21.0,
+          "configuration_hash": "a565a33475c9bbe44b867ba751cc9aface90d7096584b6a5f4f0304cc66af064",
+          "device_class": "public_device",
+          "in_flight_count": 0,
+          "maximum_deadline_slack": 3.0,
+          "model_age": 0,
+          "network_class": "public_network",
+          "policy_version": "reachability_stop/conditional-bundle-v2",
+          "pool_count": 4
+        },
+        "physical_outcome": "pending",
+        "q": {
+          "evidence_id": "isolated_test_fixture",
+          "feature_hash": "7839be915a4e1d0c766eb1efc1496a2954107adf251ef7e7fe1ad06d87886a1c",
+          "frozen_at": 21.0,
+          "model_version": "B0_test_q_not_calibrated",
+          "policy_version": "reachability_stop/conditional-bundle-v2",
+          "role": "isolated_test_input",
+          "value": 0.4650570548417855
+        },
+        "registration": {
+          "client": "fifth",
+          "device_class": "public_device",
+          "downloaded_version": 0,
+          "key": "inflight",
+          "network_class": "public_network",
+          "registered_at": 21.0
+        },
+        "right_censored_at": null,
+        "terminal_at": null,
+        "terminal_reason": null
+      },
+      "key0": {
+        "accepted_at": 20.2,
+        "completed_at": 20.2,
+        "consumed": null,
+        "features": {
+          "as_of": 20.0,
+          "configuration_hash": "a565a33475c9bbe44b867ba751cc9aface90d7096584b6a5f4f0304cc66af064",
+          "device_class": "public_device",
+          "in_flight_count": 0,
+          "maximum_deadline_slack": 4.0,
+          "model_age": 0,
+          "network_class": "public_network",
+          "policy_version": "reachability_stop/conditional-bundle-v2",
+          "pool_count": 0
+        },
+        "physical_outcome": "completion",
+        "q": {
+          "evidence_id": "isolated_test_fixture",
+          "feature_hash": "3a37927b5d5ffff390a819cdcbd654df3d27722f55ac2a3af2698e5d583b67de",
+          "frozen_at": 20.0,
+          "model_version": "B0_test_q_not_calibrated",
+          "policy_version": "reachability_stop/conditional-bundle-v2",
+          "role": "isolated_test_input",
+          "value": 0.430453776060771
+        },
+        "registration": {
+          "client": "client0",
+          "device_class": "public_device",
+          "downloaded_version": 0,
+          "key": "key0",
+          "network_class": "public_network",
+          "registered_at": 20.0
+        },
+        "right_censored_at": null,
+        "terminal_at": null,
+        "terminal_reason": null
+      },
+      "key1": {
+        "accepted_at": 20.2,
+        "completed_at": 20.2,
+        "consumed": null,
+        "features": {
+          "as_of": 20.0,
+          "configuration_hash": "a565a33475c9bbe44b867ba751cc9aface90d7096584b6a5f4f0304cc66af064",
+          "device_class": "public_device",
+          "in_flight_count": 1,
+          "maximum_deadline_slack": 4.0,
+          "model_age": 0,
+          "network_class": "public_network",
+          "policy_version": "reachability_stop/conditional-bundle-v2",
+          "pool_count": 0
+        },
+        "physical_outcome": "completion",
+        "q": {
+          "evidence_id": "isolated_test_fixture",
+          "feature_hash": "6561121dfe338842b7d004984d759ce9d81c28fa6ecb6faac189155dd76030bb",
+          "frozen_at": 20.0,
+          "model_version": "B0_test_q_not_calibrated",
+          "policy_version": "reachability_stop/conditional-bundle-v2",
+          "role": "isolated_test_input",
+          "value": 0.42800386706848137
+        },
+        "registration": {
+          "client": "client1",
+          "device_class": "public_device",
+          "downloaded_version": 0,
+          "key": "key1",
+          "network_class": "public_network",
+          "registered_at": 20.0
+        },
+        "right_censored_at": null,
+        "terminal_at": null,
+        "terminal_reason": null
+      },
+      "key2": {
+        "accepted_at": 20.2,
+        "completed_at": 20.2,
+        "consumed": null,
+        "features": {
+          "as_of": 20.0,
+          "configuration_hash": "a565a33475c9bbe44b867ba751cc9aface90d7096584b6a5f4f0304cc66af064",
+          "device_class": "public_device",
+          "in_flight_count": 2,
+          "maximum_deadline_slack": 4.0,
+          "model_age": 0,
+          "network_class": "public_network",
+          "policy_version": "reachability_stop/conditional-bundle-v2",
+          "pool_count": 0
+        },
+        "physical_outcome": "completion",
+        "q": {
+          "evidence_id": "isolated_test_fixture",
+          "feature_hash": "e4432c1bcdab273f79a805612f9928d82668931a3765f8beb3b8e3788b5f513d",
+          "frozen_at": 20.0,
+          "model_version": "B0_test_q_not_calibrated",
+          "policy_version": "reachability_stop/conditional-bundle-v2",
+          "role": "isolated_test_input",
+          "value": 0.425557483188341
+        },
+        "registration": {
+          "client": "client2",
+          "device_class": "public_device",
+          "downloaded_version": 0,
+          "key": "key2",
+          "network_class": "public_network",
+          "registered_at": 20.0
+        },
+        "right_censored_at": null,
+        "terminal_at": null,
+        "terminal_reason": null
+      },
+      "key3": {
+        "accepted_at": 20.2,
+        "completed_at": 20.2,
+        "consumed": null,
+        "features": {
+          "as_of": 20.0,
+          "configuration_hash": "a565a33475c9bbe44b867ba751cc9aface90d7096584b6a5f4f0304cc66af064",
+          "device_class": "public_device",
+          "in_flight_count": 3,
+          "maximum_deadline_slack": 4.0,
+          "model_age": 0,
+          "network_class": "public_network",
+          "policy_version": "reachability_stop/conditional-bundle-v2",
+          "pool_count": 0
+        },
+        "physical_outcome": "completion",
+        "q": {
+          "evidence_id": "isolated_test_fixture",
+          "feature_hash": "627fabf339a0d8c66cd2be5e4b5bc005991f940cb7109e161df8049a9575b739",
+          "frozen_at": 20.0,
+          "model_version": "B0_test_q_not_calibrated",
+          "policy_version": "reachability_stop/conditional-bundle-v2",
+          "role": "isolated_test_input",
+          "value": 0.42311473886795364
+        },
+        "registration": {
+          "client": "client3",
+          "device_class": "public_device",
+          "downloaded_version": 0,
+          "key": "key3",
+          "network_class": "public_network",
+          "registered_at": 20.0
+        },
+        "right_censored_at": null,
+        "terminal_at": null,
+        "terminal_reason": null
+      }
+    },
+    "backend": {
+      "kind": "isolated_array_backend",
+      "local_optimizer_steps": 0,
+      "theta": [
+        1.0,
+        2.0,
+        3.0
+      ],
+      "updates": {
+        "key0": [
+          0.1,
+          0.2,
+          0.3
+        ],
+        "key1": [
+          0.1,
+          0.2,
+          0.3
+        ],
+        "key2": [
+          0.1,
+          0.2,
+          0.3
+        ],
+        "key3": [
+          0.1,
+          0.2,
+          0.3
+        ]
+      },
+      "versions": {
+        "0": [
+          1.0,
+          2.0,
+          3.0
+        ]
+      },
+      "work": {
+        "inflight": {
+          "downloaded_version": 0,
+          "training_started": false,
+          "weights": [
+            0.1,
+            0.2,
+            0.3,
+            0.4
+          ]
+        },
+        "key0": {
+          "downloaded_version": 0,
+          "training_started": false,
+          "weights": [
+            0.1,
+            0.2,
+            0.3,
+            0.4
+          ]
+        },
+        "key1": {
+          "downloaded_version": 0,
+          "training_started": false,
+          "weights": [
+            0.1,
+            0.2,
+            0.3,
+            0.4
+          ]
+        },
+        "key2": {
+          "downloaded_version": 0,
+          "training_started": false,
+          "weights": [
+            0.1,
+            0.2,
+            0.3,
+            0.4
+          ]
+        },
+        "key3": {
+          "downloaded_version": 0,
+          "training_started": false,
+          "weights": [
+            0.1,
+            0.2,
+            0.3,
+            0.4
+          ]
+        }
+      }
+    },
+    "closures": [],
+    "config": {
+      "age_max": 5,
+      "age_weight": 0.02,
+      "deadline": 4.0,
+      "design": {
+        "enabled": true,
+        "method_version": "configured-design-v1",
+        "source": "B0_explicit_fixture"
+      },
+      "grid": 0.1,
+      "horizon": 8.0,
+      "method_version": "reachability_stop/conditional-bundle-v2",
+      "minimum_clients": 3,
+      "minimum_risk": 5,
+      "planning_cpu_seconds": 2.0,
+      "scenarios": 4,
+      "scoring_tolerance": 1e-07,
+      "source": "B0_explicit_deterministic_fixture",
+      "tail_interval": 2.0,
+      "wait_weight": 0.2,
+      "warmup": 20.0
+    },
+    "consumed": [],
+    "data_identity": "01100a811a7f14490bec6a8acb8f4bfec14ecc6e79812f27fb53eec23bad848a",
+    "debt": [
+      0.0,
+      0.0
+    ],
+    "decisions": [],
+    "diagnostics": [],
+    "events": [
+      {
+        "downloaded_version": 0,
+        "key": "key0",
+        "kind": "registered",
+        "model_version": 0,
+        "q_model": "B0_test_q_not_calibrated",
+        "q_role": "isolated_test_input",
+        "stage1_hash": "2b8c27791068eeca9141cf503b71a178f8cd51f3e4246d6b2b9afe5fa190a9d2",
+        "time": 20.0,
+        "window": 0
+      },
+      {
+        "downloaded_version": 0,
+        "key": "key1",
+        "kind": "registered",
+        "model_version": 0,
+        "q_model": "B0_test_q_not_calibrated",
+        "q_role": "isolated_test_input",
+        "stage1_hash": "2046afe8cd7ae50e54f96025011de2a5f97c314c5884a50d40edecc6b75f4047",
+        "time": 20.0,
+        "window": 0
+      },
+      {
+        "downloaded_version": 0,
+        "key": "key2",
+        "kind": "registered",
+        "model_version": 0,
+        "q_model": "B0_test_q_not_calibrated",
+        "q_role": "isolated_test_input",
+        "stage1_hash": "2b8c27791068eeca9141cf503b71a178f8cd51f3e4246d6b2b9afe5fa190a9d2",
+        "time": 20.0,
+        "window": 0
+      },
+      {
+        "downloaded_version": 0,
+        "key": "key3",
+        "kind": "registered",
+        "model_version": 0,
+        "q_model": "B0_test_q_not_calibrated",
+        "q_role": "isolated_test_input",
+        "stage1_hash": "2046afe8cd7ae50e54f96025011de2a5f97c314c5884a50d40edecc6b75f4047",
+        "time": 20.0,
+        "window": 0
+      },
+      {
+        "key": "key0",
+        "kind": "physically_completed",
+        "model_version": 0,
+        "time": 20.2,
+        "window": 0
+      },
+      {
+        "key": "key0",
+        "kind": "accepted",
+        "model_version": 0,
+        "time": 20.2,
+        "window": 0
+      },
+      {
+        "key": "key1",
+        "kind": "physically_completed",
+        "model_version": 0,
+        "time": 20.2,
+        "window": 0
+      },
+      {
+        "key": "key1",
+        "kind": "accepted",
+        "model_version": 0,
+        "time": 20.2,
+        "window": 0
+      },
+      {
+        "key": "key2",
+        "kind": "physically_completed",
+        "model_version": 0,
+        "time": 20.2,
+        "window": 0
+      },
+      {
+        "key": "key2",
+        "kind": "accepted",
+        "model_version": 0,
+        "time": 20.2,
+        "window": 0
+      },
+      {
+        "key": "key3",
+        "kind": "physically_completed",
+        "model_version": 0,
+        "time": 20.2,
+        "window": 0
+      },
+      {
+        "key": "key3",
+        "kind": "accepted",
+        "model_version": 0,
+        "time": 20.2,
+        "window": 0
+      },
+      {
+        "downloaded_version": 0,
+        "key": "inflight",
+        "kind": "registered",
+        "model_version": 0,
+        "q_model": "B0_test_q_not_calibrated",
+        "q_role": "isolated_test_input",
+        "stage1_hash": "f1a193f6e517080181ee9454deaecac1da40bdab211f9acf4a396ce61e7d217e",
+        "time": 21.0,
+        "window": 0
+      }
+    ],
+    "experiment_end": 40.0,
+    "in_flight": {
+      "inflight": {
+        "q": {
+          "evidence_id": "isolated_test_fixture",
+          "feature_hash": "7839be915a4e1d0c766eb1efc1496a2954107adf251ef7e7fe1ad06d87886a1c",
+          "frozen_at": 21.0,
+          "model_version": "B0_test_q_not_calibrated",
+          "policy_version": "reachability_stop/conditional-bundle-v2",
+          "role": "isolated_test_input",
+          "value": 0.4650570548417855
+        },
+        "registration": {
+          "client": "fifth",
+          "device_class": "public_device",
+          "downloaded_version": 0,
+          "key": "inflight",
+          "network_class": "public_network",
+          "registered_at": 21.0
+        }
+      }
+    },
+    "isolated_test": true,
+    "last_release": null,
+    "model_version": 0,
+    "mu": [
+      0.5,
+      0.5
+    ],
+    "now": 21.0,
+    "pool": {
+      "client0": {
+        "completed_at": 20.2,
+        "q": {
+          "evidence_id": "isolated_test_fixture",
+          "feature_hash": "3a37927b5d5ffff390a819cdcbd654df3d27722f55ac2a3af2698e5d583b67de",
+          "frozen_at": 20.0,
+          "model_version": "B0_test_q_not_calibrated",
+          "policy_version": "reachability_stop/conditional-bundle-v2",
+          "role": "isolated_test_input",
+          "value": 0.430453776060771
+        },
+        "registration": {
+          "client": "client0",
+          "device_class": "public_device",
+          "downloaded_version": 0,
+          "key": "key0",
+          "network_class": "public_network",
+          "registered_at": 20.0
+        },
+        "summary": {
+          "design_enabled": true,
+          "design_source": "B0_explicit_fixture",
+          "effective_n": 3.333333333333333,
+          "estimator_version": "B0_lagged_fixture",
+          "frozen_at": 20.0,
+          "local_weights": [
+            0.1,
+            0.2,
+            0.3,
+            0.4
+          ],
+          "masses": [
+            4.0,
+            0.0
+          ],
+          "observed_count": 4,
+          "observed_positions": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "p_obs": [
+            0.5,
+            0.5,
+            0.5,
+            0.5
+          ],
+          "provenance": "isolated_valid_inputs",
+          "ratio": [
+            0.2,
+            0.4,
+            0.6,
+            0.8
+          ]
+        }
+      },
+      "client1": {
+        "completed_at": 20.2,
+        "q": {
+          "evidence_id": "isolated_test_fixture",
+          "feature_hash": "6561121dfe338842b7d004984d759ce9d81c28fa6ecb6faac189155dd76030bb",
+          "frozen_at": 20.0,
+          "model_version": "B0_test_q_not_calibrated",
+          "policy_version": "reachability_stop/conditional-bundle-v2",
+          "role": "isolated_test_input",
+          "value": 0.42800386706848137
+        },
+        "registration": {
+          "client": "client1",
+          "device_class": "public_device",
+          "downloaded_version": 0,
+          "key": "key1",
+          "network_class": "public_network",
+          "registered_at": 20.0
+        },
+        "summary": {
+          "design_enabled": true,
+          "design_source": "B0_explicit_fixture",
+          "effective_n": 3.333333333333333,
+          "estimator_version": "B0_lagged_fixture",
+          "frozen_at": 20.0,
+          "local_weights": [
+            0.1,
+            0.2,
+            0.3,
+            0.4
+          ],
+          "masses": [
+            0.0,
+            4.0
+          ],
+          "observed_count": 4,
+          "observed_positions": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "p_obs": [
+            0.5,
+            0.5,
+            0.5,
+            0.5
+          ],
+          "provenance": "isolated_valid_inputs",
+          "ratio": [
+            0.2,
+            0.4,
+            0.6,
+            0.8
+          ]
+        }
+      },
+      "client2": {
+        "completed_at": 20.2,
+        "q": {
+          "evidence_id": "isolated_test_fixture",
+          "feature_hash": "e4432c1bcdab273f79a805612f9928d82668931a3765f8beb3b8e3788b5f513d",
+          "frozen_at": 20.0,
+          "model_version": "B0_test_q_not_calibrated",
+          "policy_version": "reachability_stop/conditional-bundle-v2",
+          "role": "isolated_test_input",
+          "value": 0.425557483188341
+        },
+        "registration": {
+          "client": "client2",
+          "device_class": "public_device",
+          "downloaded_version": 0,
+          "key": "key2",
+          "network_class": "public_network",
+          "registered_at": 20.0
+        },
+        "summary": {
+          "design_enabled": true,
+          "design_source": "B0_explicit_fixture",
+          "effective_n": 3.333333333333333,
+          "estimator_version": "B0_lagged_fixture",
+          "frozen_at": 20.0,
+          "local_weights": [
+            0.1,
+            0.2,
+            0.3,
+            0.4
+          ],
+          "masses": [
+            4.0,
+            0.0
+          ],
+          "observed_count": 4,
+          "observed_positions": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "p_obs": [
+            0.5,
+            0.5,
+            0.5,
+            0.5
+          ],
+          "provenance": "isolated_valid_inputs",
+          "ratio": [
+            0.2,
+            0.4,
+            0.6,
+            0.8
+          ]
+        }
+      },
+      "client3": {
+        "completed_at": 20.2,
+        "q": {
+          "evidence_id": "isolated_test_fixture",
+          "feature_hash": "627fabf339a0d8c66cd2be5e4b5bc005991f940cb7109e161df8049a9575b739",
+          "frozen_at": 20.0,
+          "model_version": "B0_test_q_not_calibrated",
+          "policy_version": "reachability_stop/conditional-bundle-v2",
+          "role": "isolated_test_input",
+          "value": 0.42311473886795364
+        },
+        "registration": {
+          "client": "client3",
+          "device_class": "public_device",
+          "downloaded_version": 0,
+          "key": "key3",
+          "network_class": "public_network",
+          "registered_at": 20.0
+        },
+        "summary": {
+          "design_enabled": true,
+          "design_source": "B0_explicit_fixture",
+          "effective_n": 3.333333333333333,
+          "estimator_version": "B0_lagged_fixture",
+          "frozen_at": 20.0,
+          "local_weights": [
+            0.1,
+            0.2,
+            0.3,
+            0.4
+          ],
+          "masses": [
+            0.0,
+            4.0
+          ],
+          "observed_count": 4,
+          "observed_positions": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "p_obs": [
+            0.5,
+            0.5,
+            0.5,
+            0.5
+          ],
+          "provenance": "isolated_valid_inputs",
+          "ratio": [
+            0.2,
+            0.4,
+            0.6,
+            0.8
+          ]
+        }
+      }
+    },
+    "predictor": {
+      "as_of": 20.0,
+      "cells": [],
+      "grid": 0.1,
+      "marks": [],
+      "minimum_risk": 5,
+      "opportunities": [],
+      "opportunity_history": [],
+      "q_model": {
+        "as_of": 20.0,
+        "configuration_hash": "a565a33475c9bbe44b867ba751cc9aface90d7096584b6a5f4f0304cc66af064",
+        "evidence_id": "isolated_test_fixture",
+        "kind": "evidence_logistic",
+        "max_counts": 100,
+        "policy_version": "reachability_stop/conditional-bundle-v2",
+        "role": "isolated_test_input",
+        "strata": [
+          [
+            "public_device",
+            "public_network"
+          ]
+        ],
+        "version": "B0_test_q_not_calibrated",
+        "weights": [
+          -0.2,
+          0.1,
+          -0.02,
+          0.03,
+          -0.01
+        ]
+      },
+      "schedule_complete_until": 100.0,
+      "version": "B0_frozen_history"
+    },
+    "private_stage1": {
+      "inflight": {
+        "design_enabled": true,
+        "design_source": "B0_explicit_fixture",
+        "effective_n": 3.333333333333333,
+        "estimator_version": "B0_lagged_fixture",
+        "frozen_at": 21.0,
+        "local_weights": [
+          0.1,
+          0.2,
+          0.3,
+          0.4
+        ],
+        "masses": [
+          4.0,
+          0.0
+        ],
+        "observed_count": 4,
+        "observed_positions": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "p_obs": [
+          0.5,
+          0.5,
+          0.5,
+          0.5
+        ],
+        "provenance": "isolated_valid_inputs",
+        "ratio": [
+          0.2,
+          0.4,
+          0.6,
+          0.8
+        ]
+      },
+      "key0": {
+        "design_enabled": true,
+        "design_source": "B0_explicit_fixture",
+        "effective_n": 3.333333333333333,
+        "estimator_version": "B0_lagged_fixture",
+        "frozen_at": 20.0,
+        "local_weights": [
+          0.1,
+          0.2,
+          0.3,
+          0.4
+        ],
+        "masses": [
+          4.0,
+          0.0
+        ],
+        "observed_count": 4,
+        "observed_positions": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "p_obs": [
+          0.5,
+          0.5,
+          0.5,
+          0.5
+        ],
+        "provenance": "isolated_valid_inputs",
+        "ratio": [
+          0.2,
+          0.4,
+          0.6,
+          0.8
+        ]
+      },
+      "key1": {
+        "design_enabled": true,
+        "design_source": "B0_explicit_fixture",
+        "effective_n": 3.333333333333333,
+        "estimator_version": "B0_lagged_fixture",
+        "frozen_at": 20.0,
+        "local_weights": [
+          0.1,
+          0.2,
+          0.3,
+          0.4
+        ],
+        "masses": [
+          0.0,
+          4.0
+        ],
+        "observed_count": 4,
+        "observed_positions": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "p_obs": [
+          0.5,
+          0.5,
+          0.5,
+          0.5
+        ],
+        "provenance": "isolated_valid_inputs",
+        "ratio": [
+          0.2,
+          0.4,
+          0.6,
+          0.8
+        ]
+      },
+      "key2": {
+        "design_enabled": true,
+        "design_source": "B0_explicit_fixture",
+        "effective_n": 3.333333333333333,
+        "estimator_version": "B0_lagged_fixture",
+        "frozen_at": 20.0,
+        "local_weights": [
+          0.1,
+          0.2,
+          0.3,
+          0.4
+        ],
+        "masses": [
+          4.0,
+          0.0
+        ],
+        "observed_count": 4,
+        "observed_positions": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "p_obs": [
+          0.5,
+          0.5,
+          0.5,
+          0.5
+        ],
+        "provenance": "isolated_valid_inputs",
+        "ratio": [
+          0.2,
+          0.4,
+          0.6,
+          0.8
+        ]
+      },
+      "key3": {
+        "design_enabled": true,
+        "design_source": "B0_explicit_fixture",
+        "effective_n": 3.333333333333333,
+        "estimator_version": "B0_lagged_fixture",
+        "frozen_at": 20.0,
+        "local_weights": [
+          0.1,
+          0.2,
+          0.3,
+          0.4
+        ],
+        "masses": [
+          0.0,
+          4.0
+        ],
+        "observed_count": 4,
+        "observed_positions": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "p_obs": [
+          0.5,
+          0.5,
+          0.5,
+          0.5
+        ],
+        "provenance": "isolated_valid_inputs",
+        "ratio": [
+          0.2,
+          0.4,
+          0.6,
+          0.8
+        ]
+      }
+    },
+    "q_model": {
+      "as_of": 20.0,
+      "configuration_hash": "a565a33475c9bbe44b867ba751cc9aface90d7096584b6a5f4f0304cc66af064",
+      "evidence_id": "isolated_test_fixture",
+      "kind": "evidence_logistic",
+      "max_counts": 100,
+      "policy_version": "reachability_stop/conditional-bundle-v2",
+      "role": "isolated_test_input",
+      "strata": [
+        [
+          "public_device",
+          "public_network"
+        ]
+      ],
+      "version": "B0_test_q_not_calibrated",
+      "weights": [
+        -0.2,
+        0.1,
+        -0.02,
+        0.03,
+        -0.01
+      ]
+    },
+    "revision": 11,
+    "rng_state": {
+      "scheme": "SeedSequence[seed,tick,scenario,94031]",
+      "seed": 26004
+    },
+    "seed": 26004,
+    "settings": {
+      "alpha_max": 0.5,
+      "d_max": 10.0,
+      "e_min": 3.0,
+      "lambda_beta": 1.0,
+      "lambda_group": 1.0,
+      "lambda_staleness": 0.1,
+      "lambda_variance": 0.1,
+      "max_server_learning_rate": 1.0,
+      "q_min": 0.05,
+      "server_eta": 0.01,
+      "v_floor": 0.0001
+    },
+    "target_identity": "e2f8f70a28b53aadf0d15ba87db844c29814b1f2511f1fbedb4f15da3007c20e",
+    "variance": {},
+    "window_id": 0,
+    "window_open": 20.0
+  },
+  "state_hash": "6aa69f65b9f1b67243fa0ff1365685fdc54b14763c160748a0fdb60ff5a00de0"
+}

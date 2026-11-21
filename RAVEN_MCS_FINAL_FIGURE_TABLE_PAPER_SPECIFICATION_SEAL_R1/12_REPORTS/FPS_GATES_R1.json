@@ -1,0 +1,224 @@
+{
+  "all_pass": true,
+  "gates": {
+    "FPS-G1": {
+      "detail": "new scientific runs = 0",
+      "pass": true
+    },
+    "FPS-G10": {
+      "detail": "sections=['Appendix', 'I', 'II', 'III', 'IV', 'IX', 'V', 'VI', 'VII', 'VIII']",
+      "pass": true
+    },
+    "FPS-G11": {
+      "detail": "h!=s",
+      "pass": true
+    },
+    "FPS-G12": {
+      "detail": "blocks=['E1', 'E2', 'E3', 'E4', 'T-Drive', 'Traffic']",
+      "pass": true
+    },
+    "FPS-G13": {
+      "detail": "Traffic E3 NOT_COMPARABLE",
+      "pass": true
+    },
+    "FPS-G14": {
+      "detail": "T-Drive reviewer reserve",
+      "pass": true
+    },
+    "FPS-G15": {
+      "detail": "E4 w/o-Inst Gen2 only",
+      "pass": true
+    },
+    "FPS-G16": {
+      "detail": "Inst=ENDPOINT_TRADEOFF",
+      "pass": true
+    },
+    "FPS-G17": {
+      "detail": "Use=NO_CLEAR_EFFECT",
+      "pass": true
+    },
+    "FPS-G18": {
+      "detail": "Debt quantitatively small",
+      "pass": true
+    },
+    "FPS-G19": {
+      "detail": "FIG-C1 spec",
+      "pass": true
+    },
+    "FPS-G2": {
+      "detail": "T-Drive runs = 0",
+      "pass": true
+    },
+    "FPS-G20": {
+      "detail": "FIG-C2 spec",
+      "pass": true
+    },
+    "FPS-G21": {
+      "detail": "FIG-E1 frozen",
+      "pass": true
+    },
+    "FPS-G22": {
+      "detail": "FIG-E2 frozen",
+      "pass": true
+    },
+    "FPS-G23": {
+      "detail": "FIG-E3 frozen",
+      "pass": true
+    },
+    "FPS-G24": {
+      "detail": "FIG-E4 frozen",
+      "pass": true
+    },
+    "FPS-G25": {
+      "detail": "no selected figure requires new experiment",
+      "pass": true
+    },
+    "FPS-G26": {
+      "detail": "appendix fig statuses={'OPTIONAL_APPENDIX', 'APPENDIX_READY', 'INSUFFICIENT_EXISTING_DATA_DO_NOT_RUN', 'DROP_LOW_VALUE'}",
+      "pass": true
+    },
+    "FPS-G27": {
+      "detail": "Table I",
+      "pass": true
+    },
+    "FPS-G28": {
+      "detail": "Table II",
+      "pass": true
+    },
+    "FPS-G29": {
+      "detail": "Table III",
+      "pass": true
+    },
+    "FPS-G3": {
+      "detail": "original scientific data unchanged",
+      "pass": true
+    },
+    "FPS-G30": {
+      "detail": "n_app_tables=5",
+      "pass": true
+    },
+    "FPS-G31": {
+      "detail": "hashes ok=True []",
+      "pass": true
+    },
+    "FPS-G32": {
+      "detail": "no superseded E4 in identity audit",
+      "pass": true
+    },
+    "FPS-G33": {
+      "detail": "no canary",
+      "pass": true
+    },
+    "FPS-G34": {
+      "detail": "no T-Drive results",
+      "pass": true
+    },
+    "FPS-G35": {
+      "detail": "contribution-theory-evidence map",
+      "pass": true
+    },
+    "FPS-G36": {
+      "detail": "RQ-evidence map",
+      "pass": true
+    },
+    "FPS-G37": {
+      "detail": "Section III",
+      "pass": true
+    },
+    "FPS-G38": {
+      "detail": "Section IV",
+      "pass": true
+    },
+    "FPS-G39": {
+      "detail": "Section V",
+      "pass": true
+    },
+    "FPS-G4": {
+      "detail": "G52 documented; scientific_data_changed=false",
+      "pass": true
+    },
+    "FPS-G40": {
+      "detail": "Section VI theorems",
+      "pass": true
+    },
+    "FPS-G41": {
+      "detail": "Section VII",
+      "pass": true
+    },
+    "FPS-G42": {
+      "detail": "Section VIII",
+      "pass": true
+    },
+    "FPS-G43": {
+      "detail": "Intro wording",
+      "pass": true
+    },
+    "FPS-G44": {
+      "detail": "Abstract ceiling",
+      "pass": true
+    },
+    "FPS-G45": {
+      "detail": "Conclusion ceiling",
+      "pass": true
+    },
+    "FPS-G46": {
+      "detail": "Appendix structure",
+      "pass": true
+    },
+    "FPS-G47": {
+      "detail": "no CORE_BLOCKER",
+      "pass": true
+    },
+    "FPS-G48": {
+      "detail": "supporting gaps do not trigger experiments",
+      "pass": true
+    },
+    "FPS-G49": {
+      "detail": "reproducibility PASS",
+      "pass": true
+    },
+    "FPS-G5": {
+      "detail": "absolute path hits=0 []",
+      "pass": true
+    },
+    "FPS-G50": {
+      "detail": "numeric consistency PASS",
+      "pass": true
+    },
+    "FPS-G51": {
+      "detail": "FRAZEN master",
+      "pass": true
+    },
+    "FPS-G52": {
+      "detail": "figure-table registry",
+      "pass": true
+    },
+    "FPS-G53": {
+      "detail": "writing handoff",
+      "pass": true
+    },
+    "FPS-G54": {
+      "detail": "report new experiments required = false",
+      "pass": true
+    },
+    "FPS-G6": {
+      "detail": "FIG6=APPENDIX_READY sha=7d20004cb5cf",
+      "pass": true
+    },
+    "FPS-G7": {
+      "detail": "title frozen",
+      "pass": true
+    },
+    "FPS-G8": {
+      "detail": "n_contrib=3",
+      "pass": true
+    },
+    "FPS-G9": {
+      "detail": "n_rq=3",
+      "pass": true
+    }
+  },
+  "n_pass": 54,
+  "n_total": 54,
+  "status_if_pass": "RAVEN_MCS_PAPER_SPEC_R1_FINAL_SEALED_READY_TO_WRITE_SECTIONS_III_VI"
+}

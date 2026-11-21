@@ -1,0 +1,32 @@
+{
+  "protocol": "active-participation-feasibility-p0",
+  "status": "INTERRUPTED_P0_RESOURCE",
+  "dataset": "cityscanner_nyc_p2_measured_o",
+  "clients": "spatial grid logical nodes, not physical phones or vehicles",
+  "primary_scene": "real O, reliable delivery assumption U=1; server selection recorded separately as A",
+  "decision_time": "after a complete UTC day has ended and the inventory summary exists, before local training",
+  "training_inventory": "only that day's real O=1 unique legal cell-slots; unselected inventory does not roll to the next day",
+  "mu_g": [0.25, 0.25, 0.25, 0.25],
+  "mu_source": "frozen equal region weights; not the test occupancy share",
+  "participation_quota": "k=ceil(K/4); k=0 when K=0",
+  "audit_dates": "2021-09-23 through 2021-11-04, 43 complete UTC days",
+  "date_source": "prior metadata audit; not re-verified against parquet in this process",
+  "warmup_upper_bound_utc": "2021-09-22 23:00:00+00:00",
+  "denominator": "all calendar days in the frozen window, including zero-candidate days",
+  "selectivity_gate": "at least ceil(0.8*43)=35 days with K>=8, k<K, and k>=G_present",
+  "history_ema": 0.2,
+  "history_expiry_days": 7,
+  "history_clip_relative_to_prior": [0.5, 2.0],
+  "exploration_fraction": 0.2,
+  "prediction_thresholds": "none in P0",
+  "source_verification_executed": false,
+  "eligibility_scan_executed": false,
+  "sampling_checks_executed": false,
+  "training_started": false,
+  "resource": {
+    "free_bytes_first": 725303296,
+    "free_bytes_after_10s": 964870144,
+    "low_free_threshold_bytes": 2147483648,
+    "gate": "available memory stayed below 2 GiB for 10 seconds before the audit program started"
+  }
+}

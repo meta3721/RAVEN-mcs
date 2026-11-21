@@ -1,0 +1,34 @@
+{
+  "generated": "2026-09-27T05:23:11.040857+00:00",
+  "rows": [
+    {
+      "Delta_c_s_abs_diff": 0.0,
+      "Delta_c_s_frozen": 1.3070991212626155,
+      "Delta_c_s_rerun": 1.3070991212626155,
+      "Delta_group_abs_diff": 0.0,
+      "Delta_group_frozen": 1.0198421730673761,
+      "Delta_group_rerun": 1.0198421730673761,
+      "RMSE_mu_abs_diff": 0.0,
+      "RMSE_mu_frozen": 1.1607430909655934,
+      "RMSE_mu_rerun": 1.1607430909655934,
+      "all_bit_equal": true,
+      "frozen_path": "artifacts\\e4_core_mechanism_ablation_r1\\runs\\uair\\raven_wo_design\\seed30001\\final_metrics.json",
+      "seed": 30001
+    },
+    {
+      "Delta_c_s_abs_diff": 0.0,
+      "Delta_c_s_frozen": 1.3230857208272542,
+      "Delta_c_s_rerun": 1.3230857208272542,
+      "Delta_group_abs_diff": 0.0,
+      "Delta_group_frozen": 1.0293616477157368,
+      "Delta_group_rerun": 1.0293616477157368,
+      "RMSE_mu_abs_diff": 0.0,
+      "RMSE_mu_frozen": 1.0530689998749978,
+      "RMSE_mu_rerun": 1.0530689998749978,
+      "all_bit_equal": true,
+      "frozen_path": "artifacts\\e4_core_mechanism_ablation_r1\\runs\\uair\\raven_wo_design\\seed30002\\final_metrics.json",
+      "seed": 30002
+    }
+  ],
+  "verdict": "FROZEN raven_wo_design REPRODUCES BIT-EXACTLY: R1's cross-batch comparison is against a reproducible artifact"
+}

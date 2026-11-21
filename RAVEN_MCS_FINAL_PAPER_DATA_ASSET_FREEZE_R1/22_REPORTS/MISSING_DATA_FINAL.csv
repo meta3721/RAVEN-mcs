@@ -1,0 +1,9 @@
+item,scientific_role,importance,source_searched,exists,offline_reconstructable,requires_new_run,paper_impact,recommended_action
+Debt trajectory sealed series,mechanism visualization,SUPPORTING,window_metrics.json / final_metrics.json,False,False,True,no FIG5; limitation only,do not rerun; leave MISSING_NOT_RECORDED
+ESS trajectory,diagnostic,SUPPORTING,final_metrics.json ESS scalar only,PARTIAL_SCALAR_ONLY,False,True,appendix ESS scalar only,do not rerun
+P2-only runtime,system,OPTIONAL,final_metrics.json runtime_seconds is total run,False,False,True,none core,do not rerun
+SensorScope/U-Air sampling interval,dataset metadata,SUPPORTING,DATASET_METADATA_MASTER_R2,False,False,False,Table I notes MISSING_NOT_RECORDED,keep MISSING_NOT_RECORDED
+Row-level propensity distributions,selection process,SUPPORTING,sealed window_metrics keys,False,False,True,no new experiment,do not estimate new propensities
+Target composition trajectory (FIG5),mechanism figure,HIGH_SUPPORTING,R2 diagnostic extraction,False,False,True,FIG5 dropped,INSUFFICIENT_EXISTING_DATA_DO_NOT_RUN_NEW_EXPERIMENT
+T-Drive formal performance,external mobility,SUPPORTING,tdrive_protocol_seal_r1,False,False,True,reviewer reserve only; not CORE for current paper,DO_NOT_RUN_BEFORE_SUBMISSION
+E1 dataset checksum,reproducibility,SUPPORTING,FINAL_CONFIG_REGISTRY,PARTIAL_BUT_PAPER_SAFE,False,False,none,keep as recorded

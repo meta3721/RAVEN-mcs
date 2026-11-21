@@ -1,0 +1,26 @@
+{
+  "sensorscope": {
+    "dataset": "sensorscope",
+    "expected": "47581d5b04d3795b3fe663198ba32a53e83f35707718a82bd1ec0662daff88ce",
+    "got": "47581d5b04d3795b3fe663198ba32a53e83f35707718a82bd1ec0662daff88ce",
+    "match": true,
+    "path": "data/processed/sensorscope/atomic_units.parquet",
+    "status": "PASS"
+  },
+  "traffic": {
+    "dataset": "traffic",
+    "expected": "db45a2ecc66c27abeaf58b0c03ce66de7bfaf6727f4523ea06ef226a9ce3de50",
+    "got": "db45a2ecc66c27abeaf58b0c03ce66de7bfaf6727f4523ea06ef226a9ce3de50",
+    "match": true,
+    "path": "data/processed/traffic/atomic_units.parquet",
+    "status": "PASS"
+  },
+  "uair": {
+    "dataset": "uair",
+    "expected": "0d57445890f7e1a21038c17106a8e7f332e95fe13fe81713f24b8fd0ab254eed",
+    "got": "0d57445890f7e1a21038c17106a8e7f332e95fe13fe81713f24b8fd0ab254eed",
+    "match": true,
+    "path": "data/processed/uair/atomic_units.parquet",
+    "status": "PASS"
+  }
+}

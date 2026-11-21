@@ -1,0 +1,48 @@
+{
+  "status": "PASS",
+  "initial_values_identical": true,
+  "independent_run_ids": true,
+  "independent_UTC_origins": true,
+  "exogenous": {
+    "of": {
+      "exogenous_keys": 4300,
+      "draw_hash_mismatch": 0,
+      "R_mismatch": 0,
+      "E_difference": 0,
+      "download_version_difference": 0,
+      "actual_service_difference": 0,
+      "local_CPU_difference": 0,
+      "interpretation": "exogenous draws paired;CPU-floor/service,download age,models,consumption andlagged p may differ endogenously"
+    },
+    "fixed05": {
+      "exogenous_keys": 4300,
+      "draw_hash_mismatch": 0,
+      "R_mismatch": 0,
+      "E_difference": 0,
+      "download_version_difference": 3397,
+      "actual_service_difference": 1,
+      "local_CPU_difference": 970,
+      "interpretation": "exogenous draws paired;CPU-floor/service,download age,models,consumption andlagged p may differ endogenously"
+    },
+    "fixed2": {
+      "exogenous_keys": 4300,
+      "draw_hash_mismatch": 0,
+      "R_mismatch": 0,
+      "E_difference": 0,
+      "download_version_difference": 3397,
+      "actual_service_difference": 1,
+      "local_CPU_difference": 921,
+      "interpretation": "exogenous draws paired;CPU-floor/service,download age,models,consumption andlagged p may differ endogenously"
+    },
+    "noqstop": {
+      "exogenous_keys": 4300,
+      "draw_hash_mismatch": 0,
+      "R_mismatch": 0,
+      "E_difference": 0,
+      "download_version_difference": 0,
+      "actual_service_difference": 1,
+      "local_CPU_difference": 899,
+      "interpretation": "exogenous draws paired;CPU-floor/service,download age,models,consumption andlagged p may differ endogenously"
+    }
+  }
+}

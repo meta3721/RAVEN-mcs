@@ -1,0 +1,38 @@
+====================================================================================================
+PAIR figures/FIG_W1_DESIGN_GATE.csv  vs  TO_OVERLEAF_paper_tmc_r1_clean/figure_data/FIG_W1_DESIGN_GATE.csv
+  bundle   sha256 5462183b6858f4b486626ab35c2499e1705b6f60694d44723e2b3ae07ca19716  (275 B)
+  worktree sha256 050f595a42867bbf374f22fa596277d5489b141207cc9fef62763120be392250  (269 B)
+  header identical: True
+  rows: bundle=4 worktree=4
+  unique key columns: ['Delta_group_pct']
+  keys only in bundle: 0  []
+  keys only in worktree: 0  []
+  common keys: 4   DIFFERING ROWS: 2  (50.0%)
+    column 'RMSE_mu_pct': 2 differing cells
+      min abs diff = 0.3841845412900433 at ('7.498982753025233',)
+      max abs diff = 0.39659919360191864 at ('7.476232772036189',)
+        key=('7.476232772036189',)  bundle='7.1079118838817745'  worktree='7.504511077483693'
+        key=('7.498982753025233',)  bundle='7.072313349518344'  worktree='7.456497890808388'
+  non-key columns with NO differences: ['dataset', 'variant']
+====================================================================================================
+PAIR figures/FIG_E4_E4_COMPONENT_ABLATION.csv  vs  TO_OVERLEAF_paper_tmc_r1_clean/figure_data/FIG_E4_E4_COMPONENT_ABLATION.csv
+  bundle   sha256 c80f6dddabd7c8e76d01e88b33537b0490454bf673baeea7d1e79b4a550330a9  (5656 B)
+  worktree sha256 998cdac5982cc2b9900762d0d79e505da07c14a68ec506d5a4c84bf4e5f608c8  (5658 B)
+  header identical: True
+  rows: bundle=40 worktree=40
+  unique key columns: ['relative_change_percent']
+  keys only in bundle: 10  [('-0.0097196306106393',), ('-0.0102288937108689',), ('-6.553093815666225',), ('-6.875242584162889',), ('0.0007291917853553',)]
+  keys only in worktree: 10  [('-0.009782968291166629',), ('-0.010295794089172574',), ('-6.885463676716227',), ('-7.221248907329521',), ('0.0006719663837970082',)]
+  common keys: 30   DIFFERING ROWS: 0  (0.0%)
+  non-key columns with NO differences: ['dataset', 'component', 'metric', 'paired_mean_difference', 'Holm_p', 'holm_significant', 'direction', 'final_component_label', 'qualitative_magnitude', 'evidence_generation']
+====================================================================================================
+PAIR figures/FIG_E3_E3_PREDICTION_RISK.csv  vs  TO_OVERLEAF_paper_tmc_r1_clean/figure_data/FIG_E3_E3_PREDICTION_RISK.csv
+  bundle   sha256 8110240a5f88644b29e5d0aa85986d6d052a653a09ad9c7292c11ff2f71a9685  (54029 B)
+  worktree sha256 27b90460279afbec12d770e5a6d233753787904ef24351e3f4ef28d8e77c11f2  (53593 B)
+  header identical: True
+  rows: bundle=440 worktree=440
+  unique key columns: ['method', 'RMSE_mu']
+  keys only in bundle: 27  [('Debt-Cal', '1.1242410101389166'), ('Debt-Cal', '1.1443603420506454'), ('Debt-Cal', '1.1644618391293844'), ('FedAsync-Window', '1.1226655702758204'), ('FedAsync-Window', '1.1456207513485255')]
+  keys only in worktree: 27  [('Debt-Cal', '1.0565769811442463'), ('Debt-Cal', '1.0965638173228216'), ('Debt-Cal', '1.1018097912391154'), ('FedAsync-Window', '1.050898929877568'), ('FedAsync-Window', '1.098314489065717')]
+  common keys: 413   DIFFERING ROWS: 0  (0.0%)
+  non-key columns with NO differences: ['dataset', 'seed', 'MAE_mu', 'Tail_RMSE', 'RMSE_rho', 'comparison_class']

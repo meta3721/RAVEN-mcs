@@ -1,0 +1,22 @@
+{
+  "cf_id": "CF-M1",
+  "cross_time_fill": false,
+  "deficit_rule": "sample_count = min(cf0_budget, available_in_natural_hour); log deficit; do not steal from other hours",
+  "matched_inputs": [
+    "per_client_risk_set_size",
+    "client_set_from_cf0",
+    "candidate_budget_equals_risk_set_size",
+    "seed",
+    "target_law",
+    "pi_safe",
+    "tau_cov"
+  ],
+  "natural_hour_alignment": "train_natural_windows_sorted_by_time_index[window_id]",
+  "paired_with": "CF0_E3v1_logical_window",
+  "replacement_padding": false,
+  "rng_salt": 13,
+  "seed": 30001,
+  "tau_cov": 0.05,
+  "unique_change": "sample from same-natural-hour pool instead of global train pool",
+  "without_replacement": true
+}

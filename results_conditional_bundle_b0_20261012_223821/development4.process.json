@@ -1,0 +1,14 @@
+{
+  "pid": 31100,
+  "command": [
+    "C:\\Cursor\\raven.mcs\\.venv_new\\Scripts\\python.exe",
+    "-X",
+    "faulthandler",
+    "-m",
+    "pytest",
+    "tests/control_b0",
+    "-ra",
+    "--junitxml=C:\\Cursor\\raven.mcs\\results_conditional_bundle_b0_20261012_223821\\development4.xml",
+    "--basetemp=C:\\Cursor\\raven.mcs\\results_conditional_bundle_b0_20261012_223821\\development4-tmp"
+  ]
+}

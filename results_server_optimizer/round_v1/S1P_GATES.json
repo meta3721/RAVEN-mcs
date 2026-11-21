@@ -1,0 +1,385 @@
+{
+  "g0": {
+    "blocks_gated": [
+      "sensorscope",
+      "uair"
+    ],
+    "gate": "G0",
+    "pass": false,
+    "rows": [
+      {
+        "arm": "fedavg_window",
+        "baseline_dir": "results_server_optimizer/round_v1/runs/g0_baseline/sensorscope/fedavg_window/seed30001",
+        "bit_exact": false,
+        "block": "sensorscope",
+        "differences": [
+          "runtime_seconds: 15.694416199999978 vs 15.12775380000005"
+        ],
+        "frozen_artifact_diagnostic": {
+          "dir": "artifacts/e3_formal_runs_r1/runs/sensorscope/fedavg_window/seed30001",
+          "fields": {
+            "Delta_c_s": {
+              "abs_diff": 0.0,
+              "frozen": 1.2422979138143753,
+              "rerun": 1.2422979138143753
+            },
+            "Delta_group": {
+              "abs_diff": 0.0,
+              "frozen": 1.0433329926179937,
+              "rerun": 1.0433329926179937
+            },
+            "ESS": {
+              "abs_diff": 0.0,
+              "frozen": 1.715953307392996,
+              "rerun": 1.715953307392996
+            },
+            "Head_RMSE": {
+              "abs_diff": 0.0,
+              "frozen": 7.5148050228514345,
+              "rerun": 7.5148050228514345
+            },
+            "MAE_mu": {
+              "abs_diff": 0.0,
+              "frozen": 7.633722992619861,
+              "rerun": 7.633722992619861
+            },
+            "RMSE_mu": {
+              "abs_diff": 0.0,
+              "frozen": 7.914361980993586,
+              "rerun": 7.914361980993586
+            },
+            "RMSE_rho": {
+              "abs_diff": 0.0,
+              "frozen": 7.802312064846689,
+              "rerun": 7.802312064846689
+            },
+            "Tail_RMSE": {
+              "abs_diff": 0.0,
+              "frozen": 8.436411883047754,
+              "rerun": 8.436411883047754
+            },
+            "clip_rate_stage1": {
+              "abs_diff": 0.0014285714285714286,
+              "frozen": 0.0014285714285714286,
+              "rerun": 0.0
+            },
+            "clip_rate_stage2": {
+              "abs_diff": 0.0,
+              "frozen": 0.0,
+              "rerun": 0.0
+            },
+            "runtime_seconds": {
+              "abs_diff": 4.87493549998851,
+              "frozen": 20.00268929998856,
+              "rerun": 15.12775380000005
+            }
+          }
+        },
+        "identity_dir": "results_server_optimizer/round_v1/runs/g0_identity/sensorscope/fedavg_window/seed30001",
+        "seed": 30001
+      },
+      {
+        "arm": "raven",
+        "baseline_dir": "results_server_optimizer/round_v1/runs/g0_baseline/sensorscope/raven/seed30001",
+        "bit_exact": false,
+        "block": "sensorscope",
+        "differences": [
+          "runtime_seconds: 20.06011019999994 vs 21.010255500000085"
+        ],
+        "frozen_artifact_diagnostic": {
+          "dir": "artifacts/e3_formal_runs_r1/runs/sensorscope/raven/seed30001",
+          "fields": {
+            "Delta_c_s": {
+              "abs_diff": 0.0,
+              "frozen": 1.214493695326521,
+              "rerun": 1.214493695326521
+            },
+            "Delta_group": {
+              "abs_diff": 0.0,
+              "frozen": 0.9984597031193984,
+              "rerun": 0.9984597031193984
+            },
+            "ESS": {
+              "abs_diff": 0.0,
+              "frozen": 1.715953307392996,
+              "rerun": 1.715953307392996
+            },
+            "Head_RMSE": {
+              "abs_diff": 0.0,
+              "frozen": 7.514267663509899,
+              "rerun": 7.514267663509899
+            },
+            "MAE_mu": {
+              "abs_diff": 0.0,
+              "frozen": 7.633159593576259,
+              "rerun": 7.633159593576259
+            },
+            "Q_norm1_over_S": {
+              "abs_diff": 0.0,
+              "frozen": 0.6486880708504786,
+              "rerun": 0.6486880708504786
+            },
+            "Q_norm2_over_S": {
+              "abs_diff": 0.0,
+              "frozen": 0.04895135645827436,
+              "rerun": 0.04895135645827436
+            },
+            "RMSE_mu": {
+              "abs_diff": 0.0,
+              "frozen": 7.913791224192832,
+              "rerun": 7.913791224192832
+            },
+            "RMSE_rho": {
+              "abs_diff": 0.0,
+              "frozen": 7.801855666147338,
+              "rerun": 7.801855666147338
+            },
+            "Tail_RMSE": {
+              "abs_diff": 0.0,
+              "frozen": 8.435797825584572,
+              "rerun": 8.435797825584572
+            },
+            "clip_rate_stage1": {
+              "abs_diff": 0.0,
+              "frozen": 0.0014285714285714286,
+              "rerun": 0.0014285714285714286
+            },
+            "clip_rate_stage2": {
+              "abs_diff": 0.0,
+              "frozen": 0.0,
+              "rerun": 0.0
+            },
+            "delta_ref": {
+              "abs_diff": 0.0,
+              "frozen": 0.3664937156806245,
+              "rerun": 0.3664937156806245
+            },
+            "runtime_seconds": {
+              "abs_diff": 7.668656999977657,
+              "frozen": 28.67891249997774,
+              "rerun": 21.010255500000085
+            }
+          }
+        },
+        "identity_dir": "results_server_optimizer/round_v1/runs/g0_identity/sensorscope/raven/seed30001",
+        "seed": 30001
+      },
+      {
+        "arm": "fedavg_window",
+        "baseline_dir": "results_server_optimizer/round_v1/runs/g0_baseline/uair/fedavg_window/seed30001",
+        "bit_exact": false,
+        "block": "uair",
+        "differences": [
+          "runtime_seconds: 8.015443600000026 vs 7.752348100000063"
+        ],
+        "frozen_artifact_diagnostic": {
+          "dir": "artifacts/e3_formal_runs_r1/runs/uair/fedavg_window/seed30001",
+          "fields": {
+            "Delta_c_s": {
+              "abs_diff": 0.06744613395556787,
+              "frozen": 1.2480410574750196,
+              "rerun": 1.3154871914305875
+            },
+            "Delta_group": {
+              "abs_diff": 0.06639719847267012,
+              "frozen": 1.1131258678428484,
+              "rerun": 1.0467286693701783
+            },
+            "ESS": {
+              "abs_diff": 0.025672448466566022,
+              "frozen": 1.7516339869281046,
+              "rerun": 1.7259615384615385
+            },
+            "Head_RMSE": {
+              "abs_diff": 0.03729986195933721,
+              "frozen": 1.2013683736925316,
+              "rerun": 1.1640685117331944
+            },
+            "MAE_mu": {
+              "abs_diff": 0.039176831211861884,
+              "frozen": 1.1091418070484749,
+              "rerun": 1.069964975836613
+            },
+            "RMSE_mu": {
+              "abs_diff": 0.03958590311060117,
+              "frozen": 1.210848485707097,
+              "rerun": 1.1712625825964957
+            },
+            "RMSE_rho": {
+              "abs_diff": 0.0365108705069872,
+              "frozen": 1.1716900794124994,
+              "rerun": 1.1351792089055122
+            },
+            "Tail_RMSE": {
+              "abs_diff": 0.04175916653336631,
+              "frozen": 1.2199078552171159,
+              "rerun": 1.1781486886837496
+            },
+            "clip_rate_stage1": {
+              "abs_diff": 0.018958333333333334,
+              "frozen": 0.018958333333333334,
+              "rerun": 0.0
+            },
+            "clip_rate_stage2": {
+              "abs_diff": 0.0,
+              "frozen": 0.0,
+              "rerun": 0.0
+            },
+            "runtime_seconds": {
+              "abs_diff": 7.793804599971509,
+              "frozen": 15.546152699971572,
+              "rerun": 7.752348100000063
+            }
+          }
+        },
+        "identity_dir": "results_server_optimizer/round_v1/runs/g0_identity/uair/fedavg_window/seed30001",
+        "seed": 30001
+      },
+      {
+        "arm": "raven",
+        "baseline_dir": "results_server_optimizer/round_v1/runs/g0_baseline/uair/raven/seed30001",
+        "bit_exact": false,
+        "block": "uair",
+        "differences": [
+          "runtime_seconds: 7.000710900000058 vs 7.342877599999952"
+        ],
+        "frozen_artifact_diagnostic": {
+          "dir": "artifacts/e3_formal_runs_r1/runs/uair/raven/seed30001",
+          "fields": {
+            "Delta_c_s": {
+              "abs_diff": 0.0,
+              "frozen": 1.210200108193248,
+              "rerun": 1.210200108193248
+            },
+            "Delta_group": {
+              "abs_diff": 0.0,
+              "frozen": 1.0832400542605098,
+              "rerun": 1.0832400542605098
+            },
+            "ESS": {
+              "abs_diff": 0.0,
+              "frozen": 1.7516339869281046,
+              "rerun": 1.7516339869281046
+            },
+            "Head_RMSE": {
+              "abs_diff": 0.0,
+              "frozen": 1.1928102980862099,
+              "rerun": 1.1928102980862099
+            },
+            "MAE_mu": {
+              "abs_diff": 0.0,
+              "frozen": 1.1001194907714644,
+              "rerun": 1.1001194907714644
+            },
+            "Q_norm1_over_S": {
+              "abs_diff": 0.0,
+              "frozen": 0.6773626906141247,
+              "rerun": 0.6773626906141247
+            },
+            "Q_norm2_over_S": {
+              "abs_diff": 0.0,
+              "frozen": 0.06461076259681084,
+              "rerun": 0.06461076259681084
+            },
+            "RMSE_mu": {
+              "abs_diff": 0.0,
+              "frozen": 1.201716880706229,
+              "rerun": 1.201716880706229
+            },
+            "RMSE_rho": {
+              "abs_diff": 0.0,
+              "frozen": 1.1634696083146852,
+              "rerun": 1.1634696083146852
+            },
+            "Tail_RMSE": {
+              "abs_diff": 0.0,
+              "frozen": 1.2102316408991802,
+              "rerun": 1.2102316408991802
+            },
+            "clip_rate_stage1": {
+              "abs_diff": 0.0,
+              "frozen": 0.018958333333333334,
+              "rerun": 0.018958333333333334
+            },
+            "clip_rate_stage2": {
+              "abs_diff": 0.0,
+              "frozen": 0.0,
+              "rerun": 0.0
+            },
+            "delta_ref": {
+              "abs_diff": 0.0,
+              "frozen": 0.3610281159212617,
+              "rerun": 0.3610281159212617
+            },
+            "runtime_seconds": {
+              "abs_diff": 6.734015100046349,
+              "frozen": 14.0768927000463,
+              "rerun": 7.342877599999952
+            }
+          }
+        },
+        "identity_dir": "results_server_optimizer/round_v1/runs/g0_identity/uair/raven/seed30001",
+        "seed": 30001
+      }
+    ],
+    "rule": "subclass(SGD, eta_s=eta) vs unmodified FullWindowRunner, bit-exact",
+    "traffic_gated": false,
+    "traffic_note": "E3 traffic tree has no fedavg_window/raven arm (amendment A2)"
+  },
+  "g1": {
+    "final_metrics_has_hash_key": false,
+    "final_metrics_key_count": 32,
+    "findings": [
+      {
+        "code": "self.model.load_state_dict(self.theta); new_version = self.clock.apply_server_update(); self.model_versions[new_version] = copy.deepcopy(self.theta)",
+        "line": "L1170-L1172",
+        "sees_theta_new": true,
+        "why": "these are the writes the override re-does after the optimizer step; the override re-loads the model and re-registers the latest version with theta_new"
+      },
+      {
+        "code": "memmap flush/close of mm, mmap_obj",
+        "line": "L1173-L1190",
+        "sees_theta_new": "not_applicable",
+        "why": "touches no theta / model / model_versions"
+      },
+      {
+        "code": "debt update, self.scale += eta, self.omega_sum += eta*omega",
+        "line": "L1191-L1198",
+        "sees_theta_new": "not_applicable",
+        "why": "reads omega, self.mu, self.eta only"
+      },
+      {
+        "code": "self._update_lagged_estimators(window_slice, client_data); self._update_variance_state(local_updates, a_r_clients)",
+        "line": "L1200-L1202",
+        "sees_theta_new": "not_applicable",
+        "why": "both methods (L1289, L1384) take window/client arguments and contain no reference to self.theta, self.model or self.model_versions (verified by full-file scan)"
+      },
+      {
+        "code": "after_hash = self._theta_hash()",
+        "feeds_final_metrics": false,
+        "line": "L1204",
+        "sees_theta_new": false,
+        "why": "REAL FINDING: _theta_hash() (L253-L255) iterates sorted(self.theta.items()), so under the override it is computed BEFORE the optimizer step and therefore hashes theta_sgd, while the run continues from theta_new"
+      },
+      {
+        "code": "per-client 'global_model_hash': after_hash; 'model_hash_before'/'model_hash_after'",
+        "feeds_final_metrics": false,
+        "line": "L1231, L1236-L1237",
+        "sees_theta_new": false,
+        "why": "derived from the same stale after_hash"
+      },
+      {
+        "code": "return WindowMetrics(..., theta_hash_after=after_hash, ...)",
+        "feeds_final_metrics": false,
+        "line": "L1269-L1287",
+        "sees_theta_new": false,
+        "why": "WindowMetrics.theta_hash_after carries the pre-optimizer hash"
+      }
+    ],
+    "gate": "G1",
+    "rule": "list every line of _process_window after L1169 that reads self.theta / self.model / self.model_versions, and say whether the override makes it see theta_new",
+    "stop": false,
+    "stop_condition": "if such a metric feeds final_metrics.json, STOP"
+  },
+  "g2": null
+}

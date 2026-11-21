@@ -1,0 +1,4 @@
+{"stage":"P0_prior_inherited","cpu_s":3.40625,"note":"Metered CPU from p0_p1_20261022_161223. Not remeasured and not zeroed.","download":false}
+{"stage":"P0_identity_extract_and_match","cpu_s":3.96875,"wall_s":4.218,"min_available_bytes_during_epa_scan":1629421568,"epa_rows_scanned":891974,"epa_rows_kept":13461,"note":"process_time of extract_and_match_dfit.py. Peak RSS was not instrumented."}
+{"stage":"P0_identity_linkage_table","cpu_s":0.15625,"wall_s":0.156,"available_bytes_end":1960374272,"note":"process_time of build_linkage.py."}
+{"stage":"download_not_cpu","cpu_s":0,"wall_s":16.702,"note":"Single download of daily_88101_2019.zip and daily_88502_2019.zip. Not counted as model CPU."}

@@ -1,0 +1,19 @@
+{
+  "arm": "fedavg_window",
+  "block": "traffic",
+  "created_utc": "2026-10-08T11:05:32.859236+00:00",
+  "diag_first": [],
+  "diag_last": [],
+  "local_steps": 2,
+  "n_windows_optimizer_applied": 0,
+  "runtime_seconds": 38.31084440000086,
+  "seed": 30001,
+  "server_opt": {
+    "beta1": 0.9,
+    "beta2": 0.99,
+    "eta_s": null,
+    "mode": "off",
+    "tau": 0.001
+  },
+  "tag": "g0t_off"
+}

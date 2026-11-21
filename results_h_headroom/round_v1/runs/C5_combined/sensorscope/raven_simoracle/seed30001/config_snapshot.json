@@ -1,0 +1,16 @@
+{
+  "dataset": "sensorscope",
+  "local_steps": 2,
+  "method": "raven_simoracle",
+  "metric_schema_version": "E3_REAL_METRIC_OUTPUT_SCHEMA_V6",
+  "n_groups_frozen": 220,
+  "n_groups_runtime": 220,
+  "pair_state_schema_version": "E3_DELTA_CS_STATE_SCHEMA_V6",
+  "path": "REAL",
+  "pi_target_mode": "override",
+  "scenario": "complete_aligned",
+  "seed": 30001,
+  "target_artifact_path": "artifacts/e3_semantic_alignment_and_runner_integration_closure_r1/E3_SENSORSCOPE_TARGET_SEMANTICS_R2.json",
+  "target_artifact_sha256": "c6194f2aebffe38ee0feed7d83bbebf318e901d5aa788bfb102d01915b159ef6",
+  "uses_spatial_time_target": true
+}

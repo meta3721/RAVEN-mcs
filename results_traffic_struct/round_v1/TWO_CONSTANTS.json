@@ -1,0 +1,35 @@
+{
+  "sensorscope": {
+    "deployable_constant": 0.3005773489727914,
+    "deployable_constant_rmse": 7.647115745777104,
+    "frozen_fedavg_rmse": 7.914361980993586,
+    "frozen_vs_deployable_pct": 3.494732446858295,
+    "frozen_vs_oracle_pct": 279.08569694961506,
+    "n_test": 3410,
+    "oracle_constant_rmse": 2.0877500904618667,
+    "test_mean": 7.657185180649601,
+    "train_mean": 0.3005773489727914
+  },
+  "traffic": {
+    "deployable_constant": 6.349595937563342e-17,
+    "deployable_constant_rmse": 1.0066970463463054,
+    "frozen_fedavg_rmse": null,
+    "frozen_vs_deployable_pct": null,
+    "frozen_vs_oracle_pct": null,
+    "n_test": 6192,
+    "oracle_constant_rmse": 1.0066933864830503,
+    "test_mean": 0.0027145411515688053,
+    "train_mean": 6.349595937563342e-17
+  },
+  "uair": {
+    "deployable_constant": -3.99742748669536e-17,
+    "deployable_constant_rmse": 1.0537137345464347,
+    "frozen_fedavg_rmse": 1.210848485707097,
+    "frozen_vs_deployable_pct": 14.912470627356878,
+    "frozen_vs_oracle_pct": 78.57742437087578,
+    "n_test": 1908,
+    "oracle_constant_rmse": 0.6780523853857164,
+    "test_mean": -0.8065715077068707,
+    "train_mean": -3.99742748669536e-17
+  }
+}

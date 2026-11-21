@@ -1,0 +1,91 @@
+{
+  "gate": "G2",
+  "pass": true,
+  "rows": [
+    {
+      "abs_diff": {
+        "Delta_c_s": 1.9984014443252818e-15,
+        "Delta_group": 0.0,
+        "RMSE_mu": 0.0,
+        "Tail_RMSE": 0.0
+      },
+      "active_clients_identical": true,
+      "arm": "raven_wo_design",
+      "dataset": "sensorscope",
+      "level": "0",
+      "pass": true,
+      "rel_diff": {
+        "Delta_c_s": 1.6302908758403411e-15,
+        "Delta_group": 0.0,
+        "RMSE_mu": 0.0,
+        "Tail_RMSE": 0.0
+      },
+      "run_dir": "results_gate_dose/round_v2/runs/g2/sensorscope/raven_wo_design/seed30001",
+      "seed": 30001
+    },
+    {
+      "abs_diff": {
+        "Delta_c_s": 2.220446049250313e-15,
+        "Delta_group": 0.0,
+        "RMSE_mu": 0.0,
+        "Tail_RMSE": 0.0
+      },
+      "active_clients_identical": true,
+      "arm": "raven_wo_design",
+      "dataset": "sensorscope",
+      "level": "0",
+      "pass": true,
+      "rel_diff": {
+        "Delta_c_s": 1.781706538436502e-15,
+        "Delta_group": 0.0,
+        "RMSE_mu": 0.0,
+        "Tail_RMSE": 0.0
+      },
+      "run_dir": "results_gate_dose/round_v2/runs/g2/sensorscope/raven_wo_design/seed30002",
+      "seed": 30002
+    },
+    {
+      "abs_diff": {
+        "Delta_c_s": 2.220446049250313e-16,
+        "Delta_group": 0.0,
+        "RMSE_mu": 0.0,
+        "Tail_RMSE": 0.0
+      },
+      "active_clients_identical": true,
+      "arm": "raven_wo_design",
+      "dataset": "uair",
+      "level": "0",
+      "pass": true,
+      "rel_diff": {
+        "Delta_c_s": 1.6987587346133582e-16,
+        "Delta_group": 0.0,
+        "RMSE_mu": 0.0,
+        "Tail_RMSE": 0.0
+      },
+      "run_dir": "results_gate_dose/round_v2/runs/g2/uair/raven_wo_design/seed30001",
+      "seed": 30001
+    },
+    {
+      "abs_diff": {
+        "Delta_c_s": 0.0,
+        "Delta_group": 0.0,
+        "RMSE_mu": 0.0,
+        "Tail_RMSE": 0.0
+      },
+      "active_clients_identical": true,
+      "arm": "raven_wo_design",
+      "dataset": "uair",
+      "level": "0",
+      "pass": true,
+      "rel_diff": {
+        "Delta_c_s": 0.0,
+        "Delta_group": 0.0,
+        "RMSE_mu": 0.0,
+        "Tail_RMSE": 0.0
+      },
+      "run_dir": "results_gate_dose/round_v2/runs/g2/uair/raven_wo_design/seed30002",
+      "seed": 30002
+    }
+  ],
+  "tol_abs": 1e-09
+}

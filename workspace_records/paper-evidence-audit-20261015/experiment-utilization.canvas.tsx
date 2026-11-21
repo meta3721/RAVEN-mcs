@@ -1,0 +1,396 @@
+import { Stack, Row, Grid, H1, H2, Text, Pill, Table, Button, Divider, useState, useHostTheme, useCanvasAction } from "cursor/canvas";
+
+const evidence = [
+  {
+    "id": "A01",
+    "title": "NSW-Traffic部署目标集中度梯度",
+    "coverage": "未系统纳入",
+    "priority": "优先",
+    "scale": "Step 3为4臂×20种子=80条；Step 4为2臂×2新集中度×20种子=80条。κ=1基准复用已有运行，不另计新实验。",
+    "finding": "目标由近均匀到单区域，oracle相对control的RMSE改善依次约0.0013%、0.0225%、0.0454%、0.0970%；单区域绝对差区间[0.000685,0.001337]，换成相对control量级约[0.067%,0.130%]。后两级有可检测差异，幅度仍小。",
+    "paper": "正文VII-F/VII-G讨论目标稀释与headroom，却没有报告该集中度梯度；全文无single-region或0.097结果。附录也无对应表。",
+    "reuse": "优先补一个“目标集中度—可检测预测增益”小表/曲线，服务于权重类的适用边界，解释即使目标集中、可行域有自由度，预测增益仍有限。",
+    "limit": "不是RAVEN领先结果，也不是所有可行权重的严格最优上界。oracle是已评估的真概率配置；结论限于该骨干、原服务器更新和声明的目标。此处κ为目标集中度，非OF停止系数。",
+    "sources": [
+      "C:\\Cursor\\raven.mcs\\results_traffic_e2\\round_v1\\TE2_REPORT.md",
+      "C:\\Cursor\\raven.mcs\\results_traffic_e2\\round_v1\\TE2_STEP4_VERDICT.json",
+      "C:\\Cursor\\raven.mcs\\results_traffic_e2\\round_v1\\tables\\TE2_MAIN.csv",
+      "C:\\Cursor\\raven.mcs\\results_traffic_e2\\round_v1\\tables\\TE2_STEP4_MAIN.csv"
+    ]
+  },
+  {
+    "id": "A02",
+    "title": "人口与311需求构成的外生部署目标",
+    "coverage": "未系统纳入",
+    "priority": "优先",
+    "scale": "2张外生图（ACS人口、NYC 311）+原评估派生图；50个固定checkpoint，各按三套权重重评分；无新训练。",
+    "finding": "三套权重下五方法均值排序一致，RMSE移动不超过约0.21%；原键级ρ_delivered约14.35%，人口/311图约1.00%/0.98%。区域级零检查与键级零检查并非同一对象。",
+    "paper": "正文VII-E(b)及附录J已吸收“目标查找对象不同”的限定；没有系统呈现ACS/311来源、三图端点重评分与排序稳定性。",
+    "reuse": "可补“公共目标来源敏感性”表，给出外生需求与评估组成的区分；使用固定预测的重新加权结果支持评分敏感性讨论。",
+    "limit": "不能声称在外生目标下重新训练成功。后续endpoint-screen另一路径出现City Scanner重评分不一致，引用前须确认这50个权威checkpoint及正确loader；不能忽略争议或把两种ρ分母混合。当前论文对查找对象的限定已部分修复，旧报告首段“门不一致”不应不加区分照搬。",
+    "sources": [
+      "C:\\Cursor\\raven.mcs\\results_exogenous_target\\round_v1\\EXECUTION_REPORT.md",
+      "C:\\Cursor\\raven.mcs\\results_exogenous_target\\round_v1\\ENDPOINT_TABLE.csv",
+      "C:\\Cursor\\raven.mcs\\results_exogenous_target\\round_v1\\MAP_SUMMARY.csv",
+      "C:\\Cursor\\raven.mcs\\results_endpoint_screen\\round_v1\\EXECUTION_REPORT.md"
+    ]
+  },
+  {
+    "id": "A03",
+    "title": "机会过程漂移的完整五方法对比",
+    "coverage": "未系统纳入",
+    "priority": "优先",
+    "scale": "2数据集×5方法×20种子=200个final_metrics，200个对应final checkpoint均存在；另有现成summary/holm文件。",
+    "finding": "drift_period=50、drift_magnitude=.1。SensorScope的RAVEN Δgroup约1.0331，FedAU约1.0889；U-Air的RAVEN Δc-s约1.2291，FedAU约1.3303。原汇总显示结构对比3/4有利，U-Air预测仍显著落后于FedAU。",
+    "paper": "正文与补充材料没有该漂移实验表。理论中的任意漂移不可能性边界、RESET压力审计、INT-R均不是这200条运行的替代。",
+    "reuse": "可加入专门的漂移鲁棒性小表：同时展示结构收益和U-Air预测代价，使“随时间变化的机会”有实证对应。",
+    "limit": "200个保存终点存在不等于本次已重新认证全部运行；沿用其冻结旧版本，核对Design和终点评分身份。不把有限构造漂移说成任意漂移保证；有限Q/S亦不证明债务次线性。",
+    "sources": [
+      "C:\\Cursor\\raven.mcs\\artifacts\\e3_drifting_r1\\run_ledger.json",
+      "C:\\Cursor\\raven.mcs\\artifacts\\e3_drifting_r1\\trace_ledger.json",
+      "C:\\Cursor\\raven.mcs\\_paper_work\\drifting_window_results\\conclusion.txt",
+      "C:\\Cursor\\raven.mcs\\_paper_work\\drifting_window_results\\summary.csv",
+      "C:\\Cursor\\raven.mcs\\_paper_work\\drifting_window_results\\holm.csv"
+    ]
+  },
+  {
+    "id": "A04",
+    "title": "200遍训练的学习能力与简单基线",
+    "coverage": "未系统纳入",
+    "priority": "优先",
+    "scale": "112条真实训练：108条Central-delivered、1条Traffic均匀联邦、3条U-Air Central-all；每条达到200有效遍历。",
+    "finding": "Common-NDMF验证集相对最强适用简单基线：Traffic +47.01%、SensorScope +10.16%、U-Air −0.96%；历史残差升级未解决U-Air。Traffic单条Uniform改善33.70%，但100→200仍改善0.914%，未达预算平台。",
+    "paper": "正文VII-F/G讨论旧短预算学习弱与两个常数参考；没有这些200遍曲线、强简单基线、物理单位验证结果。",
+    "reuse": "可单列新的学习能力审计/附录，展示训练与验证曲线、简单基线、平台与失败数据集；帮助区分骨干能力、训练协议和聚合收益。",
+    "limit": "全部是新重建协议的开发验证结果，不是旧表III测试成绩，也不是RAVEN收益。不能用47.01%替换摘要算法收益或混入旧测试表。R2 CSV才是权威；旧seasonal-naive/float32汇总已被修正。",
+    "sources": [
+      "C:\\Cursor\\raven.mcs\\results_main_rebuild_r1\\EXECUTION_REPORT.md",
+      "C:\\Cursor\\raven.mcs\\results_main_rebuild_r1\\P1_CENTRAL_SELECTED_R2.csv",
+      "C:\\Cursor\\raven.mcs\\results_main_rebuild_r1\\P0_VALIDATION_BASELINES_R2.csv",
+      "C:\\Cursor\\raven.mcs\\results_main_rebuild_r1\\P1_SELECTED_TRAIN_VALIDATION_CURVES_R2.csv",
+      "C:\\Cursor\\raven.mcs\\results_main_rebuild_r1\\EXECUTION_QA.json"
+    ]
+  },
+  {
+    "id": "A05",
+    "title": "K/ESS/cap与实际可调组质量的几何诊断",
+    "coverage": "未系统纳入",
+    "priority": "优先",
+    "scale": "同一重建批次9条开发轨迹及多组K/ESS/cap诊断；与A04共用实验资产，不能重复计入训练总数。",
+    "finding": "新自然轨迹单点可行域比例：SensorScope80.57%、U-Air82.46%、Traffic4.33%。Traffic有183个K=8且rank≥1的筛选窗口，但平均可调整目标质量约4.65%；参考违反约束59.02%，纯投影L2修复距离均值约.067487。",
+    "paper": "正文VII-F已有旧种子的K≤3比例和稀释解释；没有这批新K/ESS/cap、rank、逐组min/max与可调质量证据。",
+    "reuse": "可将“客户端数足够”进一步分解为“权重有自由度、组成有自由度、可调目标质量足够”，补一组几何图支撑可实现性主题。",
+    "limit": "无标签几何诊断不是训练性能实验。K截取不是新的受控参与调度；不能据183窗口推出预测收益。旧Gate/Design接线身份另列，不能把其开启比例当作修复后方法证据。",
+    "sources": [
+      "C:\\Cursor\\raven.mcs\\results_main_rebuild_r1\\EXECUTION_REPORT.md",
+      "C:\\Cursor\\raven.mcs\\results_main_rebuild_r1\\P2_GEOMETRY_AUDIT.json",
+      "C:\\Cursor\\raven.mcs\\results_main_rebuild_r1\\P2_GEOMETRY_SUMMARY.csv",
+      "C:\\Cursor\\raven.mcs\\results_main_rebuild_r1\\P2_GEOMETRY_WINDOWS.csv",
+      "C:\\Cursor\\raven.mcs\\results_main_rebuild_r1\\P2_GEOMETRY_GROUP_RANGES.csv"
+    ]
+  },
+  {
+    "id": "A06",
+    "title": "E2六场景的完整风险语义矩阵",
+    "coverage": "未系统纳入",
+    "priority": "次优先",
+    "scale": "6场景×5方法×20种子=600条formal_results：balanced、R-only、O-only、U-only、complete-aligned、complete-counteracting。",
+    "finding": "当前稿突出complete-aligned的风险不互换；其余单层干预和counteracting的风险响应没有系统展示。最终claim矩阵明确：一些场景改变arrival risk，但不支持所有场景均恶化target risk、counteracting方向事件或RAVEN统一领先。",
+    "paper": "正文Fig.2/附录表VI为complete-aligned；附录表XVI对六场景仅汇总runtime，不能算科学结果矩阵已充分利用。",
+    "reuse": "可从已封存修正统计中整理“选择层×风险变化”的简表，直接回答R/O/U分别改变了什么，避免动机只靠一个同向场景。",
+    "limit": "使用numerical-tolerance最终修订统计；signed Gap_mis不能当绝对失配程度。该数据不提供RAVEN预测或公平性领先证据。",
+    "sources": [
+      "C:\\Cursor\\raven.mcs\\artifacts\\e2_traffic_formal_runs_r1\\formal_results.csv",
+      "C:\\Cursor\\raven.mcs\\artifacts\\e2_traffic_numerical_tolerance_and_final_claim_seal_r1\\E2_CLAIM_MATRIX_FINAL.md",
+      "C:\\Cursor\\raven.mcs\\artifacts\\e2_traffic_numerical_tolerance_and_final_claim_seal_r1\\paper_tables\\TABLE_E2_2_FINAL.csv"
+    ]
+  },
+  {
+    "id": "A07",
+    "title": "U-Air活跃支持A/B的跨条件机制与告警代价",
+    "coverage": "未系统纳入",
+    "priority": "次优先",
+    "scale": "6条件×2规则家族×20种子=240个成对比较单元；主要复用H轮运行，不把240对误称新增240次训练。另有12组决策端点重评分。",
+    "finding": "扩大支持的B方案在预测/组端点改善约5%—9%，同时Δc-s恶化约3.1%—4.8%，240/240对同方向。告警误差降低主要来自压掉假阳性，超标质量保留率下降到约0%—2.48%，不是更好的检测。",
+    "paper": "正文已报告U-Air Design-off取舍及774窗口溯源；未展示六条件、两家族支持干预，也没有对应告警TP/FP/FN证据。",
+    "reuse": "作为支持变化机制的补充表或应用边界：解释RMSE改善为何不自动等于告警效用改善。",
+    "limit": "规则家族并非当前RAVEN同一行；必须标明实际A/B语义。P2D含终窗inactive导致的重评分豁免和敏感性分析，需保留。协议equivalent_zero标签较粗，不能拿它抹去实测差异，也不能事后换带宽。",
+    "sources": [
+      "C:\\Cursor\\raven.mcs\\results_regime_b_endpoints\\round_v1\\P0_REPORT.md",
+      "C:\\Cursor\\raven.mcs\\results_regime_b_endpoints\\round_v1\\P1_REPORT.md",
+      "C:\\Cursor\\raven.mcs\\results_regime_b_endpoints\\round_v1\\P2D_REPORT.md",
+      "C:\\Cursor\\raven.mcs\\results_h_headroom\\round_v3\\EXECUTION_REPORT.md"
+    ]
+  },
+  {
+    "id": "A08",
+    "title": "部署总量误差与结构失配的直接联系",
+    "coverage": "未系统纳入",
+    "priority": "次优先",
+    "scale": "200次已有组成重建、40个闭式总量匹配floor；无神经训练，不使用预测ŷ。",
+    "finding": "SensorScope上结构差与标签总量误差的斜率约+.366，区间[.266,.472]；U-Air区间跨0。两数据集总量floor均为0；预注册aggregate_path因此仍closed。",
+    "paper": "正文讨论结构指标与预测敏感性；没有E=|(ω̄−μ)·m|这一标签总量端点的完整结果。",
+    "reuse": "可作为结构指标能否关联另一任务量的条件性诊断，说明只在SensorScope观察到联系。",
+    "limit": "m取测试组标签均值，仅离线分析，不能进入控制器；E不含ŷ，不是补全预测误差。先前两个错误floor已撤回，只能用最终闭式版本。不能称跨数据集任务收益成立。",
+    "sources": [
+      "C:\\Cursor\\raven.mcs\\results_aggregate_total\\round_v1\\EXECUTION_REPORT.md",
+      "C:\\Cursor\\raven.mcs\\results_aggregate_total\\round_v1\\TOTAL_DOSE.csv",
+      "C:\\Cursor\\raven.mcs\\results_aggregate_total\\round_v1\\TOTAL_DECISION.json"
+    ]
+  },
+  {
+    "id": "B01",
+    "title": "City Scanner Pilot2 NO₂实测观测对比",
+    "coverage": "独立或待修复",
+    "priority": "谨慎",
+    "scale": "5方法×10种子=50条；不同于稿内PM₂.₅实测O的50条。",
+    "finding": "RAVEN RMSE约.9597、WG约1.0837，TwoStage-Hajek约.9602/1.0862；FedAU约.9555/1.0693，更好。通过的是预定“至少一个端点胜Hajek”条件，不是最强方法领先。",
+    "paper": "正文和附录没有NO₂预测目标结果；稿内NO₂只用于PM₂.₅任务的GPS并集，不能算NO₂结果已报告。",
+    "reuse": "保留为跨污染物候选或独立补充资产，可解释与PM₂.₅结论的差异。",
+    "limit": "多份历史handoff明确“不摄入PATH_A NO2”；本轮审计不解除该边界。纳入前需核验污染物物理尺度、冻结目标和授权范围；不能改名并入PM₂.₅表。U仍为受控，非全实测R/O/U。",
+    "sources": [
+      "C:\\Cursor\\raven.mcs\\results_path_a_hajek\\round_v1\\PATH_A_HAJEK_REPORT.md",
+      "C:\\Cursor\\raven.mcs\\results_path_a_hajek\\round_v1\\tables\\PA_E3_SUMMARY.csv",
+      "C:\\Cursor\\raven.mcs\\post_review\\PATH_A_HAJEK\\DATA_GAP.md",
+      "C:\\Cursor\\raven.mcs\\ccfa-review-reports\\next-ai-handoff.md"
+    ]
+  },
+  {
+    "id": "B02",
+    "title": "可达性／OF新分支及完整自主负结果",
+    "coverage": "独立或待修复",
+    "priority": "谨慎",
+    "scale": "10月12—15日新方法分支；含完整45011成本采集和45001四臂自主T100，以及旧reachability/44001前缀和诊断。",
+    "finding": "OF对fixed.5的G改善1.42%但W增加18.80%；对fixed2等待缩短但质量保护失败；OF与no-Q-stop的最终G/W及关闭序列相同。当前状态为单种子效用未建立。",
+    "paper": "论文PDF/正文截止10月12日中午，未出现OF/B触发式、45011、45001或新四臂结果。",
+    "reuse": "适合独立研究记录、方法演进与未成功扩展说明；可提炼未来研究限制，不作为旧RAVEN正文的新增收益证据。",
+    "limit": "控制目标、事件语义和诊断q身份与原论文不同；不是原五组件消融。工程检查、SGD0和前缀不能计作完整比较，q=.5不构成校准概率。",
+    "sources": [
+      "C:\\Cursor\\raven.mcs\\ccf-review-report\\observed_feedback_rolling_45011_20261014_s2\\DEVELOPMENT_ACQUISITION_REPORT.md",
+      "C:\\Cursor\\raven.mcs\\ccf-review-report\\observed_feedback_autonomous_pilot_45001_recovery_20261015\\PILOT_COMPARISON.md",
+      "C:\\Cursor\\raven.mcs\\ccf-review-report\\observed_feedback_autonomous_pilot_45001_recovery_20261015\\NEXT_STAGE_READINESS.md",
+      "C:\\Cursor\\raven.mcs\\results_reachability_detector_v1\\STOP_REPORT.md"
+    ]
+  },
+  {
+    "id": "C01",
+    "title": "层内异质观测概率F-1试验",
+    "coverage": "已写但压缩",
+    "priority": "优先",
+    "scale": "2种观测构造×2概率配置×2数据集×20种子=160个新保存终点。",
+    "finding": "保持块均值的θO=1构造将每stratum的不同p值由1提升到约2.8个；oracle-p相对估计p的预测差为SensorScope +.104%、U-Air −.251%，总体幅度未达.5%。",
+    "paper": "正文VII-F只有“15—21倍、.104%/.251%”一句；无独立表，没有完整区分θO=0/1、oracle-p仅改p及U-Air为Design-on的身份。",
+    "reuse": "一张小表即可说明：原观测机制过于简单是否隐藏聚合增益，以及硬化选择为何仍未建立实质预测收益。",
+    "limit": "不能把U-Air负号删去或称oracle普遍更好；不是无偏性保证，也不是真实MNAR实测。原汇总的部分旧Design措辞已过时，引用时以当前配置定义为准。",
+    "sources": [
+      "C:\\Cursor\\raven.mcs\\ccfa-review-reports\\raven-mcs-f1-experiment-summary.md",
+      "C:\\Cursor\\raven.mcs\\artifacts\\e3_f1_score_dependent_r1\\f1_run_status.jsonl",
+      "C:\\Cursor\\raven.mcs\\artifacts\\e3_f1_theta1_r1\\f1_run_status.jsonl"
+    ]
+  },
+  {
+    "id": "C02",
+    "title": "实际训练的服务器权重规则与W1前沿",
+    "coverage": "已写但压缩",
+    "priority": "优先",
+    "scale": "论文已声明240条规则运行；另有离线同支持ladder/frontier/分解，不能把这些重建全部当新训练。",
+    "finding": "有uniform、投影、投影加债务等完整训练规则；SensorScope投影较uniform改善组质量+.768pp，而预测对比Holm后不显著。κ=1000为单独敏感性，不是标准配置。",
+    "paper": "正文VII-C/VII-E已有大量定量文字，补充K有κ=1000及εimpl；但主表III没有Uniform/Projection行，没有清晰的结构—预测—时间联合展示。",
+    "reuse": "优先整理现有规则的比较表或二维结构/预测图，让校正、约束投影、债务强度各自作用一眼可见。",
+    "limit": "此类证据已进入摘要和贡献，不能称完全未利用。W1各轮有修订/近似oracle判定，勿回收失败的“exact”声明或混用不同active-set标尺。",
+    "sources": [
+      "C:\\Cursor\\raven.mcs\\results_w1_ladder\\round_v4\\PART_B_REPORT.md",
+      "C:\\Cursor\\raven.mcs\\results_w1_ladder\\round_v5_1\\EXECUTION_REPORT.md",
+      "C:\\Cursor\\raven.mcs\\results_w1_ladder\\round_v5_1a\\EXECUTION_REPORT.md",
+      "C:\\Cursor\\raven.mcs\\RAVEN_MCS_PUBLIC_REPRO_R1\\w1\\PAPER_NUMBERS.csv"
+    ]
+  },
+  {
+    "id": "C03",
+    "title": "训练更新、参数位移与Adam替换诊断链",
+    "coverage": "已写但压缩",
+    "priority": "次优先",
+    "scale": "旧checkpoint位移审计、Traffic局部2/5/10/20步、服务器优化器筛选、15种子两臂确认及结构只读读出。",
+    "finding": "旧参数位移约.26%—.40%；单纯多本地步效果有限。Adam确认的oracle预测headroom −1.49%，区间[−5.42%,1.76%]，MDE约5.80%；同批结构差可分离。",
+    "paper": "正文VII-G已有数段文字和全部关键数字，缺少贯穿“本地预算—更新归一化—服务器更新—预测/结构”关系的表或曲线。",
+    "reuse": "作为学习协议诊断图，帮助解释结构改变但预测不变；同A04的200遍训练独立标识。",
+    "limit": "Adam仍未证明oracle预测领先，也不能把宽区间当成.5%效果已排除。短步中央参考与联邦的优化器/样本预算不完全相同。",
+    "sources": [
+      "C:\\Cursor\\raven.mcs\\results_new_block_traffic\\round_v1\\S1_REPORT.md",
+      "C:\\Cursor\\raven.mcs\\results_server_optimizer\\round_v1\\S1P_REPORT.md",
+      "C:\\Cursor\\raven.mcs\\results_traffic_e1\\round_v1\\TE1_REPORT.md",
+      "C:\\Cursor\\raven.mcs\\results_traffic_struct\\round_v1\\TS1_REPORT.md"
+    ]
+  },
+  {
+    "id": "C04",
+    "title": "零目标支持比例ρ的剂量反应",
+    "coverage": "已写但压缩",
+    "priority": "次优先",
+    "scale": "v2已完成多剂量Design on/off对比；v1只做准备后停止，不能重复计为已执行同一实验。",
+    "finding": "SensorScope的ρ可增至.388而预测代价仍不足.175%；U-Air的ρ约.354—.466时代价约6.6%—7.5%。主剂量斜率区间跨0，gate_law不支持。",
+    "paper": "正文VII-G以一小段吸收结论；没有跨剂量的预测/结构并列图，附录也没有完整剂量表。",
+    "reuse": "可作适用性图，明确零支持检查不能当预测代价大小的经验定律。",
+    "limit": "不包装成成功门控策略；保留G3授权修订和敏感性，不能回收未通过H1后不应报告的ρ*。",
+    "sources": [
+      "C:\\Cursor\\raven.mcs\\results_gate_dose\\round_v2\\PART_II_REPORT.md",
+      "C:\\Cursor\\raven.mcs\\results_gate_dose\\round_v2\\tables\\DOSE_SUMMARY.csv",
+      "C:\\Cursor\\raven.mcs\\results_gate_dose\\round_v1\\STOPPED.md"
+    ]
+  },
+  {
+    "id": "D01",
+    "title": "City Scanner PM₂.₅与Pilot2实测O",
+    "coverage": "已覆盖",
+    "priority": "无需优先扩写",
+    "scale": "两块各5方法×10种子；现有附录表XXII、XXIII。",
+    "finding": "真实占用R，Pilot2有实测O；RAVEN有结构优势及有限预测相对改善，但不同块最优预测方法分别仍为FedAvg/TwoStage。",
+    "paper": "正文VII-A/B/G明确介绍；附录J有数据构建与完整表。属于放在补充材料，不是遗漏实验。",
+    "reuse": "若强调真实数据适用性，可从现有附录提升一张表至正文；不需要以“新增实验”名义重做。",
+    "limit": "U仍受控，客户端是occupied cell而非车辆；不能升级为端到端实测移动联邦系统。",
+    "sources": [
+      "C:\\Cursor\\raven.mcs\\results_c1_cityscanner\\round_v1\\C1_KILL_REPORT.md",
+      "C:\\Cursor\\raven.mcs\\results_joint_ou\\round_v1\\JO_KILL_REPORT.md"
+    ]
+  },
+  {
+    "id": "D02",
+    "title": "INT-R间歇参与鲁棒性",
+    "coverage": "已覆盖",
+    "priority": "无需优先扩写",
+    "scale": "SensorScope/U-Air的20配对种子，同站点数据，协议参与Markov稀疏化。",
+    "finding": "T-Drive活跃率.425作为标量匹配；实际burstiness约.20，非.38。部分结构优势削弱，Design取舍方向仍在。",
+    "paper": "附录G及表XVII/XVIII已经完整解释，正文VII-C明确概括。",
+    "reuse": "保留现有呈现即可；需要版面调整时可提炼一幅小图。",
+    "limit": "不是实际GPS叠加，也不是独立移动数据集，不能重复计入跨城市泛化。",
+    "sources": [
+      "C:\\Cursor\\raven.mcs\\results_int_r\\round_v2\\EXECUTION_LOG.md"
+    ]
+  },
+  {
+    "id": "D03",
+    "title": "E3/E4主对比、五组件消融与Uniform归因",
+    "coverage": "已覆盖",
+    "priority": "无需优先扩写",
+    "scale": "正文表III/IV、Fig.4、附录完整方法表与消融图。",
+    "finding": "Uniform解释大部分FedAvg差异，投影/Design的结构贡献、U-Air端点取舍和债务微小作用均已明确。",
+    "paper": "摘要、引言贡献、方法、正文VII-C/E和结论重复使用，是当前稿最充分利用的证据。",
+    "reuse": "避免再把相同数据换图重复占版面；可用C02的新排布提升清晰度。",
+    "limit": "不能把统计显著但很小的Debt效应扩大成预测收益。",
+    "sources": [
+      "C:\\Cursor\\raven.mcs\\manuscript_evidence_closure_r1\\00_audit\\EXPERIMENT_ROLE_REGISTRY.md",
+      "C:\\Cursor\\raven.mcs\\artifacts\\e4_wo_inst_reference_penalty_final_correction_r1\\E4_INST_FINAL_STATS.csv"
+    ]
+  },
+  {
+    "id": "D04",
+    "title": "覆盖Gate压力、稳定区间理论与支持审计",
+    "coverage": "已覆盖",
+    "priority": "无需优先扩写",
+    "scale": "sag多个版本的修复轨迹；最终R1M等审计，附录表XIX/XX及Fig.9。",
+    "finding": "pooled CERTIFIED validity约.959，U-Air a=1为.750；A6a稳定器实际激活，保留εstab。",
+    "paper": "正文III/IV/V/VI及VII-G、附录H/I已有充分覆盖。",
+    "reuse": "保留诊断角色和失败单元，不把每次修复报告当独立实验增加数量。",
+    "limit": "旧候选Design:=Gate的数据不证明当前预配置Design方法收益；稳定区间定理也不证明任意自适应切换有效。",
+    "sources": [
+      "C:\\Cursor\\raven.mcs\\results_sag_g1\\round_r1m\\summary\\RAVEN_MCS_R1M_AGGREGATE_CERTIFICATE_FORMAL_AUDIT_REPORT.md",
+      "C:\\Cursor\\raven.mcs\\artifacts\\a5_a6_audit\\README.md"
+    ]
+  },
+  {
+    "id": "D05",
+    "title": "Local-Hajek退化、774窗口与求解器核验",
+    "coverage": "已覆盖",
+    "priority": "无需优先扩写",
+    "scale": "9666有效client-window、774窗口层级溯源、6438窗口数值可行性审计等。",
+    "finding": "协议内局部权重归一化消除常数，Design差异起于正质量/P2支持；可行性核验与最优性证明不同。",
+    "paper": "附录D/E/F和正文VII均有明确文字与表VII—IX。",
+    "reuse": "作为现有结果可信度的支撑，不另包装成性能增益。",
+    "limit": "778警告/85运行等计数描述旧封存人群，不能套到后续修复运行集合。",
+    "sources": [
+      "C:\\Cursor\\raven.mcs\\artifacts\\e3_local_hajek_weight_and_p2_certificate_final_closure_r1\\E3_LOCAL_HAJEK_FINAL_DECISION.md",
+      "C:\\Cursor\\raven.mcs\\artifacts\\e4_wo_inst_reference_penalty_final_correction_r1\\E4_WO_DESIGN_774_WINDOW_LAYER_SUMMARY.md"
+    ]
+  },
+  {
+    "id": "D06",
+    "title": "arrival与target验证选择的360格复核",
+    "coverage": "已覆盖",
+    "priority": "无需优先扩写",
+    "scale": "2数据集×9配置×20种子=360格的已有checkpoint重评分，无新训练。",
+    "finding": "arrival评分有偏移，但两种权重在全部20种子选择同配置；选择后悔量为0，诊断saturated。",
+    "paper": "正文VII-G已直接给出−4.11%至−4.12%及+.27%至+.62%、20种子选择一致。",
+    "reuse": "若补充材料有空间可留索引；核心发现已经被利用，不是新的正效用。",
+    "limit": "不能把风险数值不一致说成已造成模型选择损失。终窗checkpoint/内存镜像例外须保留。",
+    "sources": [
+      "C:\\Cursor\\raven.mcs\\results_estimand_selection\\round_v1\\PART_I_REPORT.md"
+    ]
+  }
+];
+const categories = ["全部", "未系统纳入", "已写但压缩", "独立或待修复", "已覆盖"];
+
+export default function EvidenceAudit() {
+  const theme = useHostTheme();
+  const open = useCanvasAction();
+  const [category, setCategory] = useState("全部");
+  const [selectedId, setSelectedId] = useState("A01");
+  const visible = category === "全部" ? evidence : evidence.filter(x => x.coverage === category);
+  const selected = visible.find(x => x.id === selectedId) || visible[0];
+  const counts = categories.slice(1).map(name => ({ name, count: evidence.filter(x => x.coverage === name).length }));
+  const report = "C:/Users/szr/Desktop/record/1/paper-evidence-audit-20261015/UNUSED_AND_UNDERUSED_EXPERIMENTS.md";
+  const paper = "C:/Cursor/raven.mcs/TO_OVERLEAF_paper_tmc_r1_clean/";
+  const openPath = (path: string) => open({ type: "openFile", path });
+
+  return <Stack gap={20} style={{ padding: 24, color: theme.text.primary, background: theme.bg.editor, maxWidth: 1400, margin: "0 auto" }}>
+    <Stack gap={8}>
+      <Text size="small" tone="secondary">RAVEN-MCS · 论文与已有实验对照 · 2026-10-15</Text>
+      <H1>已有结果，哪些还没有被充分利用？</H1>
+      <Text>对照10月12日clean版正文18页与补充材料16页，清点56个results根目录、35个artifacts一级目录，详细评价20组证据。本次只读整理，未训练、回放或修改论文。</Text>
+      <Text style={{ color: theme.accent.primary }} weight="semibold">优先整理目标集中度、外生目标、漂移、学习能力与几何诊断；保留负结果和方法身份，不能据此扩大预测收益主张。</Text>
+      <Row gap={8} wrap>
+        <Button onClick={() => openPath(report)}>打开完整审计报告</Button>
+        <Button variant="secondary" onClick={() => openPath(paper + "main.pdf")}>正文</Button>
+        <Button variant="secondary" onClick={() => openPath(paper + "supplemental.pdf")}>补充材料</Button>
+      </Row>
+    </Stack>
+
+    <Grid columns={4} gap={16}>
+      {counts.map(x => <Stack key={x.name} gap={4} style={{ borderTop: `1px solid ${theme.stroke.primary}`, paddingTop: 12 }}>
+        <H2>{x.count} 组</H2><Text size="small" tone="secondary">{x.name}</Text>
+      </Stack>)}
+    </Grid>
+
+    <Stack gap={10}>
+      <Row gap={8} wrap>{categories.map(name => <Pill key={name} active={category === name} onClick={() => setCategory(name)}>{name}</Pill>)}</Row>
+      <Text size="small" tone="secondary">点击实验名称查看完整发现、当前稿位置、利用方式与原始证据。组数是审计条目，不能相加当作独立训练次数。</Text>
+      <Table headers={["实验 / 优先级", "当前体现", "已有规模", "已有结果摘要"]}
+        rows={visible.map(x => [
+          <Stack key={x.id} gap={4}><Button variant="ghost" onClick={() => setSelectedId(x.id)} style={{ height: "auto", textAlign: "left", whiteSpace: "normal", justifyContent: "flex-start" }}>{x.id} · {x.title}</Button><Text size="small" tone="secondary">{x.priority}</Text></Stack>,
+          x.coverage,
+          <Text key={x.id+"s"} size="small">{x.scale}</Text>,
+          <Text key={x.id+"f"} size="small">{x.finding}</Text>
+        ])}
+        rowTone={visible.map(x => x.id === selected.id ? "info" : "neutral")}
+        stickyHeader striped style={{ maxHeight: 620 }} />
+    </Stack>
+
+    <Divider />
+    <Stack gap={14}>
+      <Row gap={10} wrap><Pill>{selected.coverage}</Pill><Text size="small" tone="secondary">{selected.priority}</Text></Row>
+      <H2>{selected.id} · {selected.title}</H2>
+      <Grid columns="minmax(0, 1.1fr) minmax(0, 1fr)" gap={28}>
+        <Stack gap={10}>
+          <Text weight="semibold">当前稿如何体现</Text><Text>{selected.paper}</Text>
+          <Text weight="semibold">可如何利用</Text><Text>{selected.reuse}</Text>
+        </Stack>
+        <Stack gap={10} style={{ background: theme.fill.quaternary, padding: 16 }}>
+          <Text weight="semibold">引用时必须保留的范围</Text><Text>{selected.limit}</Text>
+        </Stack>
+      </Grid>
+      <Text weight="semibold">已核实存在的证据文件</Text>
+      <Row gap={8} wrap>{selected.sources.map(path => <Button key={path} variant="secondary" onClick={() => openPath(path)}>{path.replaceAll("\\", "/").split("/").slice(-2).join("/")}</Button>)}</Row>
+    </Stack>
+    <Divider />
+    <Text size="small" tone="secondary">审计依据：完整PDF阅读、TeX结构/表图对照、有限目录清点与选定保存指标。没有逐行重验所有日志或重新认证所有模型。已撤回结果、近似oracle、不同协议及独立OF分支不能拼成统一领先证据。</Text>
+  </Stack>;
+}

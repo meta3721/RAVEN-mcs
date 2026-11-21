@@ -1,0 +1,15 @@
+{
+  "dataset": "fixture",
+  "local_steps": 2,
+  "method": "raven_simoracle",
+  "metric_schema_version": "E3_REAL_METRIC_OUTPUT_SCHEMA_V4",
+  "n_groups_frozen": 12,
+  "n_groups_runtime": 12,
+  "pair_state_schema_version": "E3_PAIR_STATE_SCHEMA_V4",
+  "path": "REAL",
+  "scenario": "complete_aligned",
+  "seed": 32999,
+  "target_artifact_path": "inline_fixture_freeze",
+  "target_artifact_sha256": "07f25945b669a4174c95fb8284d428469c83994e985313ab6225e52cf7cf1222",
+  "uses_spatial_time_target": true
+}

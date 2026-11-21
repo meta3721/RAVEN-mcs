@@ -1,0 +1,4 @@
+round,dataset,scenario,method,seed_range,hyperparameters,preprocessing_revision,source_revision,config_hash,EventTrace_policy,target_h_i,stratum_s_i,accepted_run_count
+E2,NSW-Traffic,PROFILE-S1 six scenarios,5 methods,30001-30020,FORMAL_RUN_CONFIG.json,,,,shared per seed x scenario,,,600
+E3,"SensorScope,U-Air",complete_aligned,all formal methods,30001-30020,E3 formal freeze,,,,per dataset x seed shared,,,440
+E4,"SensorScope,U-Air",ablation,6 configurations,30001-30020,matched E3 lambdas; wo_inst Gen2 one-factor,,,,shared with E3,,,240

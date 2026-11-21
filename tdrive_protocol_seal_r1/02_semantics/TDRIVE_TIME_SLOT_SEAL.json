@@ -1,0 +1,14 @@
+{
+  "day_boundary_rule": "calendar day of the processed timestamp (UTC-tagged hour/dow)",
+  "empty_slot_rule": "slots with no reference-fleet Y are absent; client measurements inner-join those slots",
+  "n_time_slots": 297,
+  "performance_tuned": false,
+  "slot_boundary_rule": "pandas floor to 30-minute bins of processed timestamps",
+  "slot_duration_minutes": 30,
+  "source_config_hash": "3d2c53b34f2e20ae3a10de98cd6dd1acc6059ed304063bbc789a70f0dfc30b76",
+  "status": "FROZEN",
+  "time_block_rule": "hour // 6 with 4 blocks (00-06, 06-12, 12-18, 18-24)",
+  "timezone": "Beijing local wall-clock coinciding with processed UTC-tagged timestamps",
+  "unique_slot_linked_to_processed": true,
+  "weekday_weekend_rule": "weekend iff dayofweek >= 5 on the processed timestamp"
+}

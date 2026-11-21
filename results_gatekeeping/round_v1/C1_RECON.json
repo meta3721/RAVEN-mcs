@@ -1,0 +1,520 @@
+{
+  "utc": "2026-10-03T09:08:21.318039+00:00",
+  "n_risk_keys_all_events": 959,
+  "risk_records": {
+    "u1_rows": 29189,
+    "u1_non_test_rows": 29189,
+    "split_counts": {
+      "train": 29189
+    }
+  },
+  "coverage": {
+    "fedavg_window": {
+      "map": "control",
+      "n_map_keys": 1164,
+      "n_risk_keys": 959,
+      "n_missing": 0,
+      "missing_examples": []
+    },
+    "raven_wo_design": {
+      "map": "control",
+      "n_map_keys": 1164,
+      "n_risk_keys": 959,
+      "n_missing": 0,
+      "missing_examples": []
+    },
+    "raven_ctrl": {
+      "map": "control",
+      "n_map_keys": 1164,
+      "n_risk_keys": 959,
+      "n_missing": 0,
+      "missing_examples": []
+    },
+    "raven_ctrl_floor": {
+      "map": "control_floor",
+      "n_map_keys": 1164,
+      "n_risk_keys": 959,
+      "n_missing": 0,
+      "missing_examples": []
+    },
+    "raven_M1mu": {
+      "map": "M1_mu",
+      "n_map_keys": 1164,
+      "n_risk_keys": 959,
+      "n_missing": 0,
+      "missing_examples": []
+    },
+    "raven_M2mu": {
+      "map": "M2_mu",
+      "n_map_keys": 1164,
+      "n_risk_keys": 959,
+      "n_missing": 0,
+      "missing_examples": []
+    }
+  },
+  "maps": {
+    "control_region_marginals": {
+      "region0": 0.23732057416267946,
+      "region1": 0.4746411483253583,
+      "region2": 0.0708133971291866,
+      "region3": 0.2172248803827749
+    },
+    "control_region_marginals_equal_mu": true,
+    "floor_region_marginals": {
+      "region0": 0.23845623707787023,
+      "region1": 0.4038594073052952,
+      "region2": 0.08890420399724075,
+      "region3": 0.26878015161956287
+    },
+    "mu": {
+      "region0": 0.23732057416267938,
+      "region1": 0.47464114832535875,
+      "region2": 0.07081339712918659,
+      "region3": 0.21722488038277507
+    },
+    "map_sums": {
+      "control": 0.9999999999999972,
+      "control_floor": 0.9999999999999801,
+      "M1_mu": 1.0000000000000007,
+      "M2_mu": 0.9999999999999997
+    },
+    "pi_floor": 0.00047846889952153106,
+    "n_zero_keys_control": 812,
+    "n_zero_keys_control_floor": 0,
+    "key_counts": {
+      "control": 1164,
+      "control_floor": 1164,
+      "M1_mu": 1164,
+      "M2_mu": 1164
+    },
+    "map_sha256": {
+      "control": "783ca56b209c09ee068d63f8495b9049c9148b7aef2c13f7e900e14c9b16ea88",
+      "control_floor": "86a3f8d048ba44ba35a7bfa355eca5b59aaf35439ff8b246d548d4add2be4d92",
+      "M1_mu": "f40b0f0374a0fb3cc31bcc4e271d8b1d6b51ed323d2617d33cb8914099514a6e",
+      "M2_mu": "58ec1cd429a2cd378ba999350a8b994777ea831be0a4bd3341642581ae5f94d1"
+    },
+    "n_positive_keys": {
+      "control": 352,
+      "control_floor": 1164,
+      "M1_mu": 1094,
+      "M2_mu": 1131
+    },
+    "control_vs_maps_key_level": {
+      "n_shared_keys": 1164,
+      "n_control_keys": 1164,
+      "max_abs_dev": 9.80118763926896e-17,
+      "all_control_keys_in_maps_key_level": true,
+      "agree_1e_15": true
+    },
+    "mu_source": "results_c1_cityscanner\\round_v1\\CS_PHI_DECISION.json"
+  },
+  "map_meta": {
+    "M1_mu": {
+      "source_column": "pi_M1",
+      "key_universe": "control map key set (build_pi_target(split='test'))",
+      "raw_region_marginal_on_support": {
+        "region0": 0.0786172383126375,
+        "region1": 0.15053833796042287,
+        "region2": 0.010254392145092953,
+        "region3": 0.11944405005800511
+      },
+      "region_scale_to_mu": {
+        "region0": 3.0186836787489995,
+        "region1": 3.1529586067978497,
+        "region2": 6.90566501916674,
+        "region3": 1.818632910365021
+      },
+      "rejected_alternative": {
+        "key_universe": "full MAPS_KEY_LEVEL.csv cross product (3568 keys)",
+        "raw_region_marginal": {
+          "region0": 0.3060781609339095,
+          "region1": 0.3676982210162341,
+          "region2": 0.06125064169087133,
+          "region3": 0.2649729763588651
+        },
+        "region_scale_to_mu": {
+          "region0": 0.7753593834939543,
+          "region1": 1.2908442880511055,
+          "region2": 1.1561249837443006,
+          "region3": 0.8198001296878571
+        },
+        "resulting_region_marginal_on_the_real_support": {
+          "region0": 0.16697981997479208,
+          "region1": 0.5323093955902675,
+          "region2": 0.03247565099430868,
+          "region3": 0.2682351334406346
+        },
+        "max_abs_dev_from_mu_on_real_support": 0.0703407541878873,
+        "why_rejected": "phantom (cell, stratum) combinations would carry mass and the real support's region marginal would not equal mu, so the arms would not be region-matched"
+      }
+    },
+    "M2_mu": {
+      "source_column": "pi_M2",
+      "key_universe": "control map key set (build_pi_target(split='test'))",
+      "raw_region_marginal_on_support": {
+        "region0": 0.08951120145595043,
+        "region1": 0.1963757641999329,
+        "region2": 0.012669843491168271,
+        "region3": 0.13515890081189844
+      },
+      "region_scale_to_mu": {
+        "region0": 2.651294701696835,
+        "region1": 2.4170047167435587,
+        "region2": 5.589129587792325,
+        "region3": 1.6071814662438577
+      },
+      "rejected_alternative": {
+        "key_universe": "full MAPS_KEY_LEVEL.csv cross product (3568 keys)",
+        "raw_region_marginal": {
+          "region0": 0.21684976820755403,
+          "region1": 0.39914688812501553,
+          "region2": 0.04379795668554057,
+          "region3": 0.34020538698180186
+        },
+        "region_scale_to_mu": {
+          "region0": 1.094400866204902,
+          "region1": 1.189139042408613,
+          "region2": 1.6168196529717307,
+          "region3": 0.6385109956956525
+        },
+        "resulting_region_marginal_on_the_real_support": {
+          "region0": 0.22352057202562062,
+          "region1": 0.5328245319000596,
+          "region2": 0.046740840246157905,
+          "region3": 0.19691405582816246
+        },
+        "max_abs_dev_from_mu_on_real_support": 0.058183383574700875,
+        "why_rejected": "phantom (cell, stratum) combinations would carry mass and the real support's region marginal would not equal mu, so the arms would not be region-matched"
+      }
+    }
+  },
+  "rho_per_arm_trace": {
+    "fedavg_window": {
+      "32001": {
+        "n_delivered": 2841,
+        "n_zero": 428,
+        "rho_delivered": 0.1506511791622668
+      },
+      "32002": {
+        "n_delivered": 3009,
+        "n_zero": 390,
+        "rho_delivered": 0.1296111665004985
+      },
+      "32003": {
+        "n_delivered": 2806,
+        "n_zero": 398,
+        "rho_delivered": 0.14183891660727013
+      },
+      "32004": {
+        "n_delivered": 3149,
+        "n_zero": 489,
+        "rho_delivered": 0.15528739282311846
+      },
+      "32005": {
+        "n_delivered": 3000,
+        "n_zero": 390,
+        "rho_delivered": 0.13
+      },
+      "32006": {
+        "n_delivered": 2897,
+        "n_zero": 449,
+        "rho_delivered": 0.154987918536417
+      },
+      "32007": {
+        "n_delivered": 2988,
+        "n_zero": 441,
+        "rho_delivered": 0.14759036144578314
+      },
+      "32008": {
+        "n_delivered": 2868,
+        "n_zero": 420,
+        "rho_delivered": 0.14644351464435146
+      },
+      "32009": {
+        "n_delivered": 2824,
+        "n_zero": 399,
+        "rho_delivered": 0.14128895184135978
+      },
+      "32010": {
+        "n_delivered": 2807,
+        "n_zero": 384,
+        "rho_delivered": 0.13680085500534378
+      }
+    },
+    "raven_wo_design": {
+      "32001": {
+        "n_delivered": 2841,
+        "n_zero": 428,
+        "rho_delivered": 0.1506511791622668
+      },
+      "32002": {
+        "n_delivered": 3009,
+        "n_zero": 390,
+        "rho_delivered": 0.1296111665004985
+      },
+      "32003": {
+        "n_delivered": 2806,
+        "n_zero": 398,
+        "rho_delivered": 0.14183891660727013
+      },
+      "32004": {
+        "n_delivered": 3149,
+        "n_zero": 489,
+        "rho_delivered": 0.15528739282311846
+      },
+      "32005": {
+        "n_delivered": 3000,
+        "n_zero": 390,
+        "rho_delivered": 0.13
+      },
+      "32006": {
+        "n_delivered": 2897,
+        "n_zero": 449,
+        "rho_delivered": 0.154987918536417
+      },
+      "32007": {
+        "n_delivered": 2988,
+        "n_zero": 441,
+        "rho_delivered": 0.14759036144578314
+      },
+      "32008": {
+        "n_delivered": 2868,
+        "n_zero": 420,
+        "rho_delivered": 0.14644351464435146
+      },
+      "32009": {
+        "n_delivered": 2824,
+        "n_zero": 399,
+        "rho_delivered": 0.14128895184135978
+      },
+      "32010": {
+        "n_delivered": 2807,
+        "n_zero": 384,
+        "rho_delivered": 0.13680085500534378
+      }
+    },
+    "raven_ctrl": {
+      "32001": {
+        "n_delivered": 2841,
+        "n_zero": 428,
+        "rho_delivered": 0.1506511791622668
+      },
+      "32002": {
+        "n_delivered": 3009,
+        "n_zero": 390,
+        "rho_delivered": 0.1296111665004985
+      },
+      "32003": {
+        "n_delivered": 2806,
+        "n_zero": 398,
+        "rho_delivered": 0.14183891660727013
+      },
+      "32004": {
+        "n_delivered": 3149,
+        "n_zero": 489,
+        "rho_delivered": 0.15528739282311846
+      },
+      "32005": {
+        "n_delivered": 3000,
+        "n_zero": 390,
+        "rho_delivered": 0.13
+      },
+      "32006": {
+        "n_delivered": 2897,
+        "n_zero": 449,
+        "rho_delivered": 0.154987918536417
+      },
+      "32007": {
+        "n_delivered": 2988,
+        "n_zero": 441,
+        "rho_delivered": 0.14759036144578314
+      },
+      "32008": {
+        "n_delivered": 2868,
+        "n_zero": 420,
+        "rho_delivered": 0.14644351464435146
+      },
+      "32009": {
+        "n_delivered": 2824,
+        "n_zero": 399,
+        "rho_delivered": 0.14128895184135978
+      },
+      "32010": {
+        "n_delivered": 2807,
+        "n_zero": 384,
+        "rho_delivered": 0.13680085500534378
+      }
+    },
+    "raven_ctrl_floor": {
+      "32001": {
+        "n_delivered": 2841,
+        "n_zero": 0,
+        "rho_delivered": 0.0
+      },
+      "32002": {
+        "n_delivered": 3009,
+        "n_zero": 0,
+        "rho_delivered": 0.0
+      },
+      "32003": {
+        "n_delivered": 2806,
+        "n_zero": 0,
+        "rho_delivered": 0.0
+      },
+      "32004": {
+        "n_delivered": 3149,
+        "n_zero": 0,
+        "rho_delivered": 0.0
+      },
+      "32005": {
+        "n_delivered": 3000,
+        "n_zero": 0,
+        "rho_delivered": 0.0
+      },
+      "32006": {
+        "n_delivered": 2897,
+        "n_zero": 0,
+        "rho_delivered": 0.0
+      },
+      "32007": {
+        "n_delivered": 2988,
+        "n_zero": 0,
+        "rho_delivered": 0.0
+      },
+      "32008": {
+        "n_delivered": 2868,
+        "n_zero": 0,
+        "rho_delivered": 0.0
+      },
+      "32009": {
+        "n_delivered": 2824,
+        "n_zero": 0,
+        "rho_delivered": 0.0
+      },
+      "32010": {
+        "n_delivered": 2807,
+        "n_zero": 0,
+        "rho_delivered": 0.0
+      }
+    },
+    "raven_M1mu": {
+      "32001": {
+        "n_delivered": 2841,
+        "n_zero": 41,
+        "rho_delivered": 0.014431538190777896
+      },
+      "32002": {
+        "n_delivered": 3009,
+        "n_zero": 29,
+        "rho_delivered": 0.009637753406447324
+      },
+      "32003": {
+        "n_delivered": 2806,
+        "n_zero": 28,
+        "rho_delivered": 0.009978617248752673
+      },
+      "32004": {
+        "n_delivered": 3149,
+        "n_zero": 24,
+        "rho_delivered": 0.007621467132422992
+      },
+      "32005": {
+        "n_delivered": 3000,
+        "n_zero": 24,
+        "rho_delivered": 0.008
+      },
+      "32006": {
+        "n_delivered": 2897,
+        "n_zero": 29,
+        "rho_delivered": 0.010010355540214014
+      },
+      "32007": {
+        "n_delivered": 2988,
+        "n_zero": 30,
+        "rho_delivered": 0.010040160642570281
+      },
+      "32008": {
+        "n_delivered": 2868,
+        "n_zero": 34,
+        "rho_delivered": 0.011854951185495118
+      },
+      "32009": {
+        "n_delivered": 2824,
+        "n_zero": 19,
+        "rho_delivered": 0.006728045325779037
+      },
+      "32010": {
+        "n_delivered": 2807,
+        "n_zero": 35,
+        "rho_delivered": 0.012468827930174564
+      }
+    },
+    "raven_M2mu": {
+      "32001": {
+        "n_delivered": 2841,
+        "n_zero": 28,
+        "rho_delivered": 0.009855684618092221
+      },
+      "32002": {
+        "n_delivered": 3009,
+        "n_zero": 29,
+        "rho_delivered": 0.009637753406447324
+      },
+      "32003": {
+        "n_delivered": 2806,
+        "n_zero": 30,
+        "rho_delivered": 0.010691375623663579
+      },
+      "32004": {
+        "n_delivered": 3149,
+        "n_zero": 36,
+        "rho_delivered": 0.011432200698634487
+      },
+      "32005": {
+        "n_delivered": 3000,
+        "n_zero": 13,
+        "rho_delivered": 0.004333333333333333
+      },
+      "32006": {
+        "n_delivered": 2897,
+        "n_zero": 28,
+        "rho_delivered": 0.009665170866413532
+      },
+      "32007": {
+        "n_delivered": 2988,
+        "n_zero": 33,
+        "rho_delivered": 0.01104417670682731
+      },
+      "32008": {
+        "n_delivered": 2868,
+        "n_zero": 26,
+        "rho_delivered": 0.00906555090655509
+      },
+      "32009": {
+        "n_delivered": 2824,
+        "n_zero": 22,
+        "rho_delivered": 0.007790368271954674
+      },
+      "32010": {
+        "n_delivered": 2807,
+        "n_zero": 42,
+        "rho_delivered": 0.014962593516209476
+      }
+    }
+  },
+  "setup_checks": {
+    "n_pi_target_keys": [
+      1164,
+      1164
+    ],
+    "n_pi_opp_keys": [
+      959,
+      959
+    ],
+    "mu_max_abs_diff": [
+      0.0,
+      0.0
+    ]
+  },
+  "b1_plan_n_runs": 150
+}

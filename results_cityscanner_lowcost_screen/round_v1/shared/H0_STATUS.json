@@ -1,0 +1,115 @@
+{
+  "step": "H0",
+  "step_2_authorized": false,
+  "identity_comparison": "Score eventtrace_hash is compared with trace_identity.json trace_hash. events_sha256 is compared only when trace_hash is absent, because the trace hash is computed from that file digest and is a different value.",
+  "blocks": {
+    "visit": {
+      "status": "ready",
+      "reason_flags": [],
+      "n_rows": 14723,
+      "unit_id_unique": true,
+      "n_duplicate_unit_id": 0,
+      "n_duplicate_spacetime_rows": 0,
+      "split_values": [
+        "test",
+        "train",
+        "validation"
+      ],
+      "n_nonfinite_target": 0,
+      "n_cross_split_spacetime_keys": 0,
+      "n_cross_split_unit_ids": 0,
+      "target_group_values": [
+        "region0",
+        "region1",
+        "region2",
+        "region3"
+      ],
+      "h_encoding_keys": [
+        "region0",
+        "region1",
+        "region2",
+        "region3"
+      ],
+      "target_group_missing": [],
+      "target_group_extra": [],
+      "splits": {
+        "train": {
+          "n_slots": 1666,
+          "n_qualified": null,
+          "n_spatial_id": 421,
+          "n_qualified_dates": null,
+          "threshold_met": null
+        },
+        "validation": {
+          "n_slots": 555,
+          "n_qualified": 114,
+          "n_spatial_id": 166,
+          "n_qualified_dates": 20,
+          "threshold_met": true
+        },
+        "test": {
+          "n_slots": 555,
+          "n_qualified": 59,
+          "n_spatial_id": 115,
+          "n_qualified_dates": 24,
+          "threshold_met": true
+        }
+      },
+      "asset_row_statuses": []
+    },
+    "measured-O": {
+      "status": "ready",
+      "reason_flags": [],
+      "n_rows": 13029,
+      "unit_id_unique": true,
+      "n_duplicate_unit_id": 0,
+      "n_duplicate_spacetime_rows": 0,
+      "split_values": [
+        "test",
+        "train",
+        "validation"
+      ],
+      "n_nonfinite_target": 0,
+      "n_cross_split_spacetime_keys": 0,
+      "n_cross_split_unit_ids": 0,
+      "target_group_values": [
+        "region0",
+        "region1",
+        "region2",
+        "region3"
+      ],
+      "h_encoding_keys": [
+        "region0",
+        "region1",
+        "region2",
+        "region3"
+      ],
+      "target_group_missing": [],
+      "target_group_extra": [],
+      "splits": {
+        "train": {
+          "n_slots": 1396,
+          "n_qualified": null,
+          "n_spatial_id": 322,
+          "n_qualified_dates": null,
+          "threshold_met": null
+        },
+        "validation": {
+          "n_slots": 430,
+          "n_qualified": 61,
+          "n_spatial_id": 157,
+          "n_qualified_dates": 14,
+          "threshold_met": true
+        },
+        "test": {
+          "n_slots": 443,
+          "n_qualified": 50,
+          "n_spatial_id": 121,
+          "n_qualified_dates": 20,
+          "threshold_met": true
+        }
+      },
+      "asset_row_statuses": []
+    }
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "blocker_if_fail": "PIOPP_PRODUCTION_CONSUMPTION_BLOCKED",
+  "design_ratio": "pi_tar / pi_opp_joint via FullWindowRunner._compute_zeta",
+  "error": 0.0,
+  "generator_joint_builder": "raven_mcs.e3.real_runner.generator_r3.build_joint_pi_opp",
+  "hand_c0_s0_a": 0.625,
+  "hand_conditional_c0_s0_a": 0.3125,
+  "path": "FullWindowRunner._compute_zeta(pi_opp_joint=...)",
+  "ratios_a": {
+    "c0|s0": 0.625,
+    "c0|s1": 2.5,
+    "c1|s0": 2.5,
+    "c1|s1": 0.625
+  },
+  "ratios_b": {
+    "c0|s0": 2.5,
+    "c0|s1": 0.625,
+    "c1|s0": 0.625,
+    "c1|s1": 2.5
+  },
+  "ratios_differ": true,
+  "reference_joint_from_builder": {
+    "('c0', 'c0::block0::weekday')": 0.3886499305873456,
+    "('c0', 'c0::block2::weekday')": 0.11135006941265443,
+    "('c1', 'c1::block0::weekday')": 0.3886499305873456,
+    "('c1', 'c1::block2::weekday')": 0.11135006941265443
+  },
+  "semantic": "normalized opportunity event mass over client×stratum (joint)",
+  "status": "PASS",
+  "sum_pi_opp_a": 1.0,
+  "sum_pi_tar": 1.0,
+  "uses_joint_not_conditional_only": true
+}

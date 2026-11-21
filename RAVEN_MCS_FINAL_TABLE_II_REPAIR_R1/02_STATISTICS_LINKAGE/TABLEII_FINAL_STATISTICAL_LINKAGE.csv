@@ -1,0 +1,57 @@
+dataset,method,metric,table_holm_flag,p_raw,p_holm,effect_size,n,paired_seed_family,test_name,holm_family,significance_status,numerical_best,statistics_changed
+SensorScope,FedAvg-Window,RMSE_mu,not_holm_sig,0.5705966949462891,1.0,,20,30001-30020,paired Wilcoxon (sealed),primary_RMSE_mu_main_baselines,not_significant,False,False
+SensorScope,FedAvg-Window,Tail_RMSE,not_holm_sig,0.5705966949462891,1.0,,20,30001-30020,paired Wilcoxon (sealed secondary Holm),sensorscope_Tail_RMSE_phys,not_significant,False,False
+SensorScope,FedAvg-Window,Delta_group,holm_sig_vs_RAVEN,1.9073486328125e-06,9.5367431640625e-06,,20,30001-30020,paired Wilcoxon (sealed secondary Holm),sensorscope_Delta_group,significant,False,False
+SensorScope,FedAvg-Window,Delta_c_s,holm_sig_vs_RAVEN,1.9073486328125e-06,9.5367431640625e-06,,20,30001-30020,paired Wilcoxon (sealed secondary Holm),sensorscope_Delta_c_s,significant,False,False
+SensorScope,FedAsync-Window,RMSE_mu,not_holm_sig,0.4523754119873047,1.0,,20,30001-30020,paired Wilcoxon (sealed),primary_RMSE_mu_main_baselines,not_significant,False,False
+SensorScope,FedAsync-Window,Tail_RMSE,not_holm_sig,0.4523754119873047,1.0,,20,30001-30020,paired Wilcoxon (sealed secondary Holm),sensorscope_Tail_RMSE_phys,not_significant,False,False
+SensorScope,FedAsync-Window,Delta_group,holm_sig_vs_RAVEN,1.9073486328125e-06,9.5367431640625e-06,,20,30001-30020,paired Wilcoxon (sealed secondary Holm),sensorscope_Delta_group,significant,False,False
+SensorScope,FedAsync-Window,Delta_c_s,holm_sig_vs_RAVEN,1.9073486328125e-06,9.5367431640625e-06,,20,30001-30020,paired Wilcoxon (sealed secondary Holm),sensorscope_Delta_c_s,significant,False,False
+SensorScope,TimeAlign-Agg,RMSE_mu,not_holm_sig,0.2454872131347656,0.9819488525390624,,20,30001-30020,paired Wilcoxon (sealed),primary_RMSE_mu_main_baselines,not_significant,False,False
+SensorScope,TimeAlign-Agg,Tail_RMSE,not_holm_sig,0.2161674499511718,0.8646697998046875,,20,30001-30020,paired Wilcoxon (sealed secondary Holm),sensorscope_Tail_RMSE_phys,not_significant,False,False
+SensorScope,TimeAlign-Agg,Delta_group,holm_sig_vs_RAVEN,1.9073486328125e-06,9.5367431640625e-06,,20,30001-30020,paired Wilcoxon (sealed secondary Holm),sensorscope_Delta_group,significant,False,False
+SensorScope,TimeAlign-Agg,Delta_c_s,holm_sig_vs_RAVEN,1.9073486328125e-06,9.5367431640625e-06,,20,30001-30020,paired Wilcoxon (sealed secondary Holm),sensorscope_Delta_c_s,significant,False,False
+SensorScope,Local-Hajek,RMSE_mu,not_holm_sig,0.5705966949462891,1.0,,20,30001-30020,paired Wilcoxon (sealed),primary_RMSE_mu_main_baselines,not_significant,False,False
+SensorScope,Local-Hajek,Tail_RMSE,not_holm_sig,0.5705966949462891,1.0,,20,30001-30020,paired Wilcoxon (sealed secondary Holm),sensorscope_Tail_RMSE_phys,not_significant,False,False
+SensorScope,Local-Hajek,Delta_group,holm_sig_vs_RAVEN,1.9073486328125e-06,9.5367431640625e-06,,20,30001-30020,paired Wilcoxon (sealed secondary Holm),sensorscope_Delta_group,significant,False,False
+SensorScope,Local-Hajek,Delta_c_s,holm_sig_vs_RAVEN,1.9073486328125e-06,9.5367431640625e-06,,20,30001-30020,paired Wilcoxon (sealed secondary Holm),sensorscope_Delta_c_s,significant,False,False
+SensorScope,TwoStage-Hajek,RMSE_mu,not_holm_sig,0.1327266693115234,0.6636333465576172,,20,30001-30020,paired Wilcoxon (sealed),primary_RMSE_mu_main_baselines,not_significant,True,False
+SensorScope,TwoStage-Hajek,Tail_RMSE,not_holm_sig,0.1327266693115234,0.6636333465576172,,20,30001-30020,paired Wilcoxon (sealed secondary Holm),sensorscope_Tail_RMSE_phys,not_significant,True,False
+SensorScope,TwoStage-Hajek,Delta_group,holm_sig_vs_RAVEN,3.814697265625e-06,9.5367431640625e-06,,20,30001-30020,paired Wilcoxon (sealed secondary Holm),sensorscope_Delta_group,significant,False,False
+SensorScope,TwoStage-Hajek,Delta_c_s,holm_sig_vs_RAVEN,1.9073486328125e-06,9.5367431640625e-06,,20,30001-30020,paired Wilcoxon (sealed secondary Holm),sensorscope_Delta_c_s,significant,False,False
+SensorScope,Inst-Cal,RMSE_mu,nan,,,,,30001-30020,,,not_significant,False,False
+SensorScope,Inst-Cal,Tail_RMSE,nan,,,,,30001-30020,,,not_significant,False,False
+SensorScope,Inst-Cal,Delta_group,nan,,,,,30001-30020,,,not_significant,False,False
+SensorScope,Inst-Cal,Delta_c_s,nan,,,,,30001-30020,,,not_significant,False,False
+SensorScope,Debt-Cal,RMSE_mu,nan,,,,,30001-30020,,,not_significant,False,False
+SensorScope,Debt-Cal,Tail_RMSE,nan,,,,,30001-30020,,,not_significant,False,False
+SensorScope,Debt-Cal,Delta_group,nan,,,,,30001-30020,,,not_significant,False,False
+SensorScope,Debt-Cal,Delta_c_s,nan,,,,,30001-30020,,,not_significant,False,False
+U-Air,FedAvg-Window,RMSE_mu,not_holm_sig,0.388376235961914,1.0,,20,30001-30020,paired Wilcoxon (sealed),primary_RMSE_mu_main_baselines,not_significant,True,False
+U-Air,FedAvg-Window,Tail_RMSE,not_holm_sig,0.388376235961914,1.0,,20,30001-30020,paired Wilcoxon (sealed secondary Holm),uair_Tail_RMSE_phys,not_significant,True,False
+U-Air,FedAvg-Window,Delta_group,holm_sig_vs_RAVEN,1.9073486328125e-06,9.5367431640625e-06,,20,30001-30020,paired Wilcoxon (sealed secondary Holm),uair_Delta_group,significant,False,False
+U-Air,FedAvg-Window,Delta_c_s,holm_sig_vs_RAVEN,1.9073486328125e-06,9.5367431640625e-06,,20,30001-30020,paired Wilcoxon (sealed secondary Holm),uair_Delta_c_s,significant,False,False
+U-Air,FedAsync-Window,RMSE_mu,not_holm_sig,0.3488101959228515,1.0,,20,30001-30020,paired Wilcoxon (sealed),primary_RMSE_mu_main_baselines,not_significant,False,False
+U-Air,FedAsync-Window,Tail_RMSE,not_holm_sig,0.3682765960693359,1.0,,20,30001-30020,paired Wilcoxon (sealed secondary Holm),uair_Tail_RMSE_phys,not_significant,False,False
+U-Air,FedAsync-Window,Delta_group,holm_sig_vs_RAVEN,1.9073486328125e-06,9.5367431640625e-06,,20,30001-30020,paired Wilcoxon (sealed secondary Holm),uair_Delta_group,significant,False,False
+U-Air,FedAsync-Window,Delta_c_s,holm_sig_vs_RAVEN,3.814697265625e-06,9.5367431640625e-06,,20,30001-30020,paired Wilcoxon (sealed secondary Holm),uair_Delta_c_s,significant,False,False
+U-Air,TimeAlign-Agg,RMSE_mu,not_holm_sig,0.4304332733154297,1.0,,20,30001-30020,paired Wilcoxon (sealed),primary_RMSE_mu_main_baselines,not_significant,False,False
+U-Air,TimeAlign-Agg,Tail_RMSE,not_holm_sig,0.4749050140380859,1.0,,20,30001-30020,paired Wilcoxon (sealed secondary Holm),uair_Tail_RMSE_phys,not_significant,False,False
+U-Air,TimeAlign-Agg,Delta_group,holm_sig_vs_RAVEN,1.9073486328125e-06,9.5367431640625e-06,,20,30001-30020,paired Wilcoxon (sealed secondary Holm),uair_Delta_group,significant,False,False
+U-Air,TimeAlign-Agg,Delta_c_s,holm_sig_vs_RAVEN,1.9073486328125e-06,9.5367431640625e-06,,20,30001-30020,paired Wilcoxon (sealed secondary Holm),uair_Delta_c_s,significant,False,False
+U-Air,Local-Hajek,RMSE_mu,not_holm_sig,0.388376235961914,1.0,,20,30001-30020,paired Wilcoxon (sealed),primary_RMSE_mu_main_baselines,not_significant,True,False
+U-Air,Local-Hajek,Tail_RMSE,not_holm_sig,0.388376235961914,1.0,,20,30001-30020,paired Wilcoxon (sealed secondary Holm),uair_Tail_RMSE_phys,not_significant,True,False
+U-Air,Local-Hajek,Delta_group,holm_sig_vs_RAVEN,1.9073486328125e-06,9.5367431640625e-06,,20,30001-30020,paired Wilcoxon (sealed secondary Holm),uair_Delta_group,significant,False,False
+U-Air,Local-Hajek,Delta_c_s,holm_sig_vs_RAVEN,1.9073486328125e-06,9.5367431640625e-06,,20,30001-30020,paired Wilcoxon (sealed secondary Holm),uair_Delta_c_s,significant,False,False
+U-Air,TwoStage-Hajek,RMSE_mu,holm_sig_vs_RAVEN,1.9073486328125e-06,9.5367431640625e-06,,20,30001-30020,paired Wilcoxon (sealed),primary_RMSE_mu_main_baselines,significant,False,False
+U-Air,TwoStage-Hajek,Tail_RMSE,holm_sig_vs_RAVEN,1.9073486328125e-06,9.5367431640625e-06,,20,30001-30020,paired Wilcoxon (sealed secondary Holm),uair_Tail_RMSE_phys,significant,False,False
+U-Air,TwoStage-Hajek,Delta_group,holm_sig_vs_RAVEN,2.6702880859375e-05,2.6702880859375e-05,,20,30001-30020,paired Wilcoxon (sealed secondary Holm),uair_Delta_group,significant,False,False
+U-Air,TwoStage-Hajek,Delta_c_s,holm_sig_vs_RAVEN,0.0106887817382812,0.0106887817382812,,20,30001-30020,paired Wilcoxon (sealed secondary Holm),uair_Delta_c_s,significant,False,False
+U-Air,Inst-Cal,RMSE_mu,nan,,,,,30001-30020,,,not_significant,False,False
+U-Air,Inst-Cal,Tail_RMSE,nan,,,,,30001-30020,,,not_significant,False,False
+U-Air,Inst-Cal,Delta_group,nan,,,,,30001-30020,,,not_significant,False,False
+U-Air,Inst-Cal,Delta_c_s,nan,,,,,30001-30020,,,not_significant,False,False
+U-Air,Debt-Cal,RMSE_mu,nan,,,,,30001-30020,,,not_significant,False,False
+U-Air,Debt-Cal,Tail_RMSE,nan,,,,,30001-30020,,,not_significant,False,False
+U-Air,Debt-Cal,Delta_group,nan,,,,,30001-30020,,,not_significant,False,False
+U-Air,Debt-Cal,Delta_c_s,nan,,,,,30001-30020,,,not_significant,False,False

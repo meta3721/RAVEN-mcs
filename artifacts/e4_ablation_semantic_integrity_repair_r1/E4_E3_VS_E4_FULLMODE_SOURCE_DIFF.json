@@ -1,0 +1,21 @@
+{
+  "equivalence_argument": "E3 window_runner hash f7bff5e... always called compute_server_weights. E4 pre-repair 3d44cecb... gated that call on uses_instant_calibration; for method=raven that flag is True, so the gate is a no-op and full-mode matches E3. Other ablation policy flips are False only on the ablated factor and do not execute under full RAVEN.",
+  "method_policy": {
+    "hash": "1b5150c8a610d5ea331a5af9154d083634485f2db064779c11e04b144b080493",
+    "note": "Adds one-factor raven_wo_* policies; raven policy flags unchanged (all True)."
+  },
+  "methods": {
+    "hash": "b73ae7795156df96c2c50973894f3caa1f5746cd02721eb8ad227687f569442e",
+    "note": "Registers ablation aggregators; full raven still RavenAggregator. raven_wo_inst uses RavenWoInstAggregator (P2 with λ_g=0, λ_β=1e-8)."
+  },
+  "window_runner": {
+    "classification": "FULL_MODE_EQUIVALENT_NOOP_GATES",
+    "current_hash": "77f579719a73b80b69e09ebd00017bd9d507d77af8cfa5b3d0b5f216f007a676",
+    "e3_hash": "f7bff5e30c76898f5ab3e3998021f9b09e52ccf73f135b44bc4e141d9e13c436",
+    "e4_pre_repair_hash": "3d44cecb6fb08d843f582f41799da99c590ee2676effdd9e7ec5a8c11004144e",
+    "file": "src/raven_mcs/training/window_runner.py",
+    "full_mode_path": "When method=raven and all policy flags True, uses_instant_calibration is True, so the E4 pre-repair gate took the compute_server_weights branch identical to E3's unconditional call. Ablation-only gates (zeta/p/q/debt policy flips) are no-ops under full RAVEN.",
+    "post_repair_always_calls_aggregator": true,
+    "pre_repair_gated_p2_skip_still_present": false
+  }
+}

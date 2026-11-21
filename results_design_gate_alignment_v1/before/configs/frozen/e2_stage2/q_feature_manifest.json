@@ -1,0 +1,28 @@
+{
+  "protocol": "E2-STAGE2-ELIGIBILITY-AND-TRUE-STRATUM-REFREEZE-R1",
+  "allowed_features": [
+    "client_id",
+    "window_id",
+    "pre_outcome_risk_set_composition",
+    "z_tail",
+    "pre_outcome_risk_set_size",
+    "stage2_eligible",
+    "historical_pre_outcome_state",
+    "frozen_delay_predictors",
+    "frozen_resource_predictors"
+  ],
+  "forbidden_features": [
+    "observed_count_as_q_numeric_feature",
+    "current_local_loss",
+    "current_update_norm",
+    "model_delta",
+    "current_arrival",
+    "future_information",
+    "test_label",
+    "prediction_error"
+  ],
+  "notes": [
+    "stage2_eligible may gate whether q is drawn, but observed_count magnitude must not enter q logits",
+    "z_tail is computed from pre-outcome opportunity risk-set composition only"
+  ]
+}

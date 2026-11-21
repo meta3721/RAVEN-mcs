@@ -1,0 +1,57 @@
+{
+  "status": "PASS_SPEC_ALGEBRA_ONLY",
+  "exact_fraction_arithmetic": true,
+  "history_effect": true,
+  "actual_P2_execution": false,
+  "production_controller": false,
+  "Traffic_empirical_evidence": false,
+  "generic_analytic_singleton_feasible_set": true,
+  "random_replay": 0,
+  "SGD": 0,
+  "q_fit": 0,
+  "new_trajectories": 0,
+  "rows": [
+    {
+      "Q": [
+        "3/10",
+        "0"
+      ],
+      "ell": "3/10",
+      "c": "77/250",
+      "b": "9/130",
+      "B_exact": "57/2600",
+      "B": 0.021923076923076924,
+      "threshold": 0.0200001,
+      "inequality_holds": true,
+      "without_Q_B": "3/200",
+      "without_Q_inequality": false,
+      "next_Q": [
+        "297/1000",
+        "3/1000"
+      ],
+      "drift": "-891/1000000",
+      "drift_upper": "-891/1000000"
+    },
+    {
+      "Q": [
+        "0",
+        "3/10"
+      ],
+      "ell": "3/10",
+      "c": "77/250",
+      "b": "-9/130",
+      "B_exact": "21/2600",
+      "B": 0.008076923076923077,
+      "threshold": 0.0200001,
+      "inequality_holds": false,
+      "without_Q_B": "3/200",
+      "without_Q_inequality": false,
+      "next_Q": [
+        "0",
+        "303/1000"
+      ],
+      "drift": "1809/2000000",
+      "drift_upper": "909/1000000"
+    }
+  ]
+}

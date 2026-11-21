@@ -1,0 +1,116 @@
+{
+  "command": [
+    "C:/Users/szr/AppData/Local/Programs/Python/Python311/python.exe",
+    "scripts/audit_seed45011_metadata_fast.py"
+  ],
+  "returncode": 124,
+  "process_tree_cpu_seconds": 5.03125,
+  "monitor_cpu_seconds": 0.21875,
+  "wall_seconds": 6.222346599999582,
+  "limit_reason": "cpu",
+  "log": "C:\\Cursor\\raven.mcs\\results_observed_feedback_acquisition_45011_20261014\\seed_metadata_fixed_strings.log",
+  "pids": [
+    {
+      "pid": 23656,
+      "joined_observed_wall": 0.011805099999037338,
+      "root_job_member": true,
+      "image": "C:\\Users\\szr\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+      "initial_cpu": 0.0,
+      "created_filetime": 13436435084.073042,
+      "exited_filetime": 13436435090.282621,
+      "kernel_cpu": 0.1875,
+      "user_cpu": 0.296875,
+      "cpu_seconds": 0.484375,
+      "exit_code": 124,
+      "exit_observed_wall": 6.220929999999498
+    },
+    {
+      "pid": 19492,
+      "joined_observed_wall": 0.01897580000149901,
+      "root_job_member": true,
+      "image": "C:\\Windows\\System32\\conhost.exe",
+      "initial_cpu": 0.0,
+      "created_filetime": 13436435084.086329,
+      "exited_filetime": 13436435090.286238,
+      "kernel_cpu": 0.0,
+      "user_cpu": 0.03125,
+      "cpu_seconds": 0.03125,
+      "exit_code": 124,
+      "exit_observed_wall": 6.222310799999832
+    },
+    {
+      "pid": 23384,
+      "joined_observed_wall": 0.134777800001757,
+      "root_job_member": true,
+      "image": "C:\\Users\\szr\\AppData\\Local\\OpenAI\\Codex\\bin\\77fbd4d52e601e0a\\rg.exe",
+      "initial_cpu": 0.0,
+      "created_filetime": 13436435084.201372,
+      "exited_filetime": 13436435088.43867,
+      "kernel_cpu": 2.71875,
+      "user_cpu": 0.5,
+      "cpu_seconds": 3.21875,
+      "exit_code": 0,
+      "exit_observed_wall": 6.222319000000425
+    },
+    {
+      "pid": 12000,
+      "joined_observed_wall": 4.764417099999264,
+      "root_job_member": true,
+      "image": "C:\\Users\\szr\\AppData\\Local\\OpenAI\\Codex\\bin\\77fbd4d52e601e0a\\rg.exe",
+      "initial_cpu": 0.0,
+      "created_filetime": 13436435088.833036,
+      "exited_filetime": 13436435090.283602,
+      "kernel_cpu": 1.171875,
+      "user_cpu": 0.140625,
+      "cpu_seconds": 1.3125,
+      "exit_code": 124,
+      "exit_observed_wall": 6.2223268000016105
+    }
+  ],
+  "notifications": [
+    {
+      "message": 6,
+      "pid": 23656,
+      "wall": 0.012561799998366041
+    },
+    {
+      "message": 6,
+      "pid": 19492,
+      "wall": 0.01894940000056522
+    },
+    {
+      "message": 6,
+      "pid": 23384,
+      "wall": 0.13474779999887687
+    },
+    {
+      "message": 7,
+      "pid": 23384,
+      "wall": 4.372380799999519
+    },
+    {
+      "message": 6,
+      "pid": 12000,
+      "wall": 4.764393800000107
+    }
+  ],
+  "errors": [],
+  "job_total_processes": 4,
+  "job_active_processes": 0,
+  "independent_pid_CPU_sum": 5.046875,
+  "difference_seconds": -0.015625,
+  "predeclared_tolerance_seconds": 0.135,
+  "audit_passed": true,
+  "CPU_limit": 5.4,
+  "single_CPU_affinity": 1,
+  "mutually_exclusive_costs": [
+    "process_tree_cpu_seconds",
+    "monitor_cpu_seconds"
+  ],
+  "included_not_additive": [
+    "independent_pid_CPU_sum",
+    "individual_PID_CPU",
+    "inner_job_CPU"
+  ],
+  "cpu_scope": "creation through process exit; root created suspended, descendants inherit before execution"
+}

@@ -604,6 +604,8 @@ def run_official_method(
     evaluation_split: str = "test",
     weight_safety: dict[str, float] | None = None,
     formal: bool = False,
+    design: str | None = None,
+    design_source: str = "explicit_api",
 ) -> Path:
     if method not in E1_METHODS:
         raise ValueError(f"method is not in frozen E1 registry: {method}")
@@ -667,6 +669,7 @@ def run_official_method(
         pi_min=float(weight_safety.get("pi_min", 1e-6)),
         d_max=float(weight_safety.get("d_max", 10.0)),
         q_min=float(weight_safety.get("q_min", 0.05)),
+        design=design, design_source=design_source,
     )
     initial_model_hash = runner._theta_hash()
     metrics = runner.run()
@@ -852,6 +855,11 @@ def run_official_method(
                 bool(solver_df.iloc[item.window_id]["fallback_used"])
                 if item.window_id < len(solver_df) else False
             ),
+            "configured_design": item.configured_design,
+            "actual_design": item.actual_design,
+            "coverage_gate": item.coverage_gate,
+            "configuration_source": item.configuration_source,
+            "method_version": item.method_version,
             "model_hash_before": item.theta_hash_before,
             "model_hash_after": item.theta_hash_after,
         })
@@ -1017,6 +1025,10 @@ def run_official_method(
         "experiment": "E1_balanced",
         "dataset": "sensorscope",
         "method": method,
+        "method_version": runner.policy.method_version,
+        "design_control": runner.policy.design_control,
+        "design_configuration": runner.design_configuration.to_dict() if runner.design_configuration else None,
+        "coverage_role": "diagnostic_only" if runner.policy.design_control == "configured" else "legacy_policy",
         "scenario": "balanced",
         "seed": int(seed),
         "num_windows": int(num_windows),

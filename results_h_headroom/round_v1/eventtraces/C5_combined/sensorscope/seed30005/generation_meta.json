@@ -1,0 +1,20 @@
+{
+  "audit": {
+    "drift_magnitude": 0.0,
+    "drift_period": null,
+    "generator_version": "e3-complete-aligned-r3-v1",
+    "n_client_windows": 800,
+    "n_event_rows": 800,
+    "n_pairs": 440,
+    "occupancy": null,
+    "staleness_gt_smax_rate": 0.2025,
+    "sum_pi_opp_joint": 0.999999999999996
+  },
+  "condition": "C5_combined",
+  "m_mc": 2000,
+  "model": "diurnal_blind",
+  "num_windows": 100,
+  "tail_scale": 0.1,
+  "target": "block_uniform",
+  "theta": 4.0
+}

@@ -1,0 +1,13 @@
+method,production_target_wiring,real_training,pair_support,alpha_w_binding,head_tail,rmse_rho,metric_applicability,status
+fedavg_window,True,True,True,True,True,True,True,READY_FOR_REAL_CANARY
+fedasync_window,True,True,True,True,True,True,True,READY_FOR_REAL_CANARY
+flamf_timealign_adapted,True,True,True,True,True,True,True,READY_FOR_REAL_CANARY
+local_hajek,True,True,True,True,True,True,True,READY_FOR_REAL_CANARY
+twostage_hajek,True,True,True,True,True,True,True,READY_FOR_REAL_CANARY
+inst_cal,True,True,True,True,True,True,True,READY_FOR_REAL_CANARY
+debt_cal,True,True,True,True,True,True,True,READY_FOR_REAL_CANARY
+raven,True,True,True,True,True,True,True,READY_FOR_REAL_CANARY
+raven_simoracle,True,True,True,True,True,True,True,READY_FOR_REAL_CANARY
+central_all,True,True,False,False,True,True,True,READY_FOR_REAL_CANARY
+central_delivered,True,True,False,False,True,True,True,READY_FOR_REAL_CANARY
+flamf_original,,,,,,,,EXCLUDED_WITH_REASON

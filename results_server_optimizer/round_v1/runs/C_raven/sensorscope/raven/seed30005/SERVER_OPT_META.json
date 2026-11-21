@@ -1,0 +1,87 @@
+{
+  "arm": "raven",
+  "block": "sensorscope",
+  "created_utc": "2026-10-08T08:52:15.741283+00:00",
+  "diag_first": [
+    {
+      "active": true,
+      "applied": true,
+      "g_norm": 7.2443009311881985,
+      "m_norm": 0.7244300931188198,
+      "opt_move_norm": 0.8753747968539002,
+      "sgd_move_norm": 0.072443009311882,
+      "t": 1,
+      "v_norm": 0.3789374659300117,
+      "window_id": 0
+    },
+    {
+      "active": true,
+      "applied": true,
+      "g_norm": 0.7368360116960138,
+      "m_norm": 0.7123165488493782,
+      "opt_move_norm": 0.6491021252019882,
+      "sgd_move_norm": 0.007368360116960138,
+      "t": 2,
+      "v_norm": 0.37808538209770554,
+      "window_id": 1
+    },
+    {
+      "active": true,
+      "applied": true,
+      "g_norm": 0.1366155935794523,
+      "m_norm": 0.6415247878111963,
+      "opt_move_norm": 0.49267255763521306,
+      "sgd_move_norm": 0.001366155935794523,
+      "t": 3,
+      "v_norm": 0.37430571038526933,
+      "window_id": 2
+    }
+  ],
+  "diag_last": [
+    {
+      "active": true,
+      "applied": true,
+      "g_norm": 0.1596740440669363,
+      "m_norm": 0.46139017077021965,
+      "opt_move_norm": 0.03746401121117222,
+      "sgd_move_norm": 0.0015967404406693631,
+      "t": 93,
+      "v_norm": 0.8545609222347238,
+      "window_id": 97
+    },
+    {
+      "active": true,
+      "applied": true,
+      "g_norm": 0.4814677561638081,
+      "m_norm": 0.46307814561300786,
+      "opt_move_norm": 0.035161137492565865,
+      "sgd_move_norm": 0.0048146775616380805,
+      "t": 94,
+      "v_norm": 0.8472359650754695,
+      "window_id": 98
+    },
+    {
+      "active": true,
+      "applied": true,
+      "g_norm": 0.46188753675958283,
+      "m_norm": 0.4625660517448651,
+      "opt_move_norm": 0.03368071177359822,
+      "sgd_move_norm": 0.004618875367595828,
+      "t": 95,
+      "v_norm": 0.8398985115461025,
+      "window_id": 99
+    }
+  ],
+  "local_steps": 2,
+  "n_windows_optimizer_applied": 95,
+  "runtime_seconds": 20.163358600000038,
+  "seed": 30005,
+  "server_opt": {
+    "beta1": 0.9,
+    "beta2": 0.99,
+    "eta_s": 0.01,
+    "mode": "adam",
+    "tau": 0.001
+  },
+  "tag": "C_raven"
+}

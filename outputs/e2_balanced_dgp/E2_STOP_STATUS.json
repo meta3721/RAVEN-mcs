@@ -1,0 +1,81 @@
+{
+  "antithetic_used_for_selection": false,
+  "antithetic_used_for_validation": false,
+  "cert_selection": "BLOCKED_SINGLE_ARM_CERTIFICATION_INFEASIBLE",
+  "max_risk_set_used": 66,
+  "non_balanced_trace_count": 0,
+  "pre_gate": "NOT_RUN",
+  "profile_selection": "NOT_STARTED",
+  "selection": {
+    "feasibility": {
+      "CERT-L16": {
+        "P95_D_TV_cert": 0.06827286031842007,
+        "P95_abs_head_dev": 0.10749153898203566,
+        "P95_abs_tail_dev": 0.13175993746746137,
+        "cell_count": 16,
+        "feasible": false,
+        "minimum_expected_arrivals_per_positive_cell": 52.83058064516157,
+        "zero_arrival_positive_cert_cell_rate": 0.0
+      },
+      "CERT-L32": {
+        "P95_D_TV_cert": 0.08745903444116176,
+        "P95_abs_head_dev": 0.10749153898203566,
+        "P95_abs_tail_dev": 0.13175993746746137,
+        "cell_count": 32,
+        "feasible": false,
+        "minimum_expected_arrivals_per_positive_cell": 26.4152903225807,
+        "zero_arrival_positive_cert_cell_rate": 0.0
+      },
+      "CERT-L8": {
+        "P95_D_TV_cert": 0.055088155582896564,
+        "P95_abs_head_dev": 0.10749153898203566,
+        "P95_abs_tail_dev": 0.13175993746746137,
+        "cell_count": 8,
+        "feasible": false,
+        "minimum_expected_arrivals_per_positive_cell": 135.85006451612833,
+        "zero_arrival_positive_cert_cell_rate": 0.0
+      }
+    },
+    "finest_feasible_level": null,
+    "identity": {
+      "antithetic_used_for_selection": false,
+      "audit_registry_hash": "8f3e6c85bcacb99bee3b70c369745eaa5ac38c467db32d5330bf7751c61cb743",
+      "feasibility": {
+        "CERT-L16": {
+          "P95_D_TV_cert": 0.06827286031842007,
+          "P95_abs_head_dev": 0.10749153898203566,
+          "P95_abs_tail_dev": 0.13175993746746137,
+          "cell_count": 16,
+          "feasible": false,
+          "minimum_expected_arrivals_per_positive_cell": 52.83058064516157,
+          "zero_arrival_positive_cert_cell_rate": 0.0
+        },
+        "CERT-L32": {
+          "P95_D_TV_cert": 0.08745903444116176,
+          "P95_abs_head_dev": 0.10749153898203566,
+          "P95_abs_tail_dev": 0.13175993746746137,
+          "cell_count": 32,
+          "feasible": false,
+          "minimum_expected_arrivals_per_positive_cell": 26.4152903225807,
+          "zero_arrival_positive_cert_cell_rate": 0.0
+        },
+        "CERT-L8": {
+          "P95_D_TV_cert": 0.055088155582896564,
+          "P95_abs_head_dev": 0.10749153898203566,
+          "P95_abs_tail_dev": 0.13175993746746137,
+          "cell_count": 8,
+          "feasible": false,
+          "minimum_expected_arrivals_per_positive_cell": 135.85006451612833,
+          "zero_arrival_positive_cert_cell_rate": 0.0
+        }
+      },
+      "finest_feasible_level": null,
+      "selected_level": null,
+      "status": "BLOCKED_SINGLE_ARM_CERTIFICATION_INFEASIBLE"
+    },
+    "selected_level": null,
+    "status": "BLOCKED_SINGLE_ARM_CERTIFICATION_INFEASIBLE"
+  },
+  "soft_status": "PASS",
+  "status": "BLOCKED_SINGLE_ARM_CERTIFICATION_INFEASIBLE"
+}

@@ -1,0 +1,34 @@
+{
+  "created_utc": "2026-08-09T15:41:08.383797+00:00",
+  "e2_lesson": "Traffic formal never materialized Pi_hat; post-hoc reconstruction failed",
+  "e3_requirement_before_training": [
+    "runner must write pair-level sufficient stats each run",
+    "schema tests must pass",
+    "no information-boundary violation"
+  ],
+  "formula": "Delta_pair = ||Pi_hat - pi_tar||_1 ; Delta_c-s = sum |Pi_hat_ks - pi_tar_ks|",
+  "formula_sources": [
+    "src/raven_mcs/metrics/distribution.py::delta_pair",
+    "src/raven_mcs/metrics/distribution.py::delta_c_s"
+  ],
+  "output_schema_draft": {
+    "pair_metrics.json": [
+      "Delta_pair",
+      "Delta_c_s",
+      "pair_support_size",
+      "pi_hat_hash",
+      "pi_tar_hash"
+    ],
+    "pi_hat_snapshot.parquet": [
+      "pair_id",
+      "pi_hat",
+      "pi_tar"
+    ]
+  },
+  "status": "PAIR_METRIC_NOT_READY_BLOCK_E3_PAIR_CLAIMS",
+  "sufficient_statistics_required": [
+    "Pi_hat over frozen pair support",
+    "pi_tar over same support",
+    "optional client-stratum Pi_hat_ks for Delta_c-s"
+  ]
+}

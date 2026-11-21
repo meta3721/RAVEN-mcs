@@ -1,0 +1,19 @@
+Traceback (most recent call last):
+  File "C:\Cursor\raven.mcs\scripts\run_c1_cityscanner.py", line 448, in train_one
+    window_metrics = runner.run()
+                     ^^^^^^^^^^^^
+  File "C:\Cursor\raven.mcs\src\raven_mcs\training\window_runner.py", line 591, in run
+    window_metrics = self._process_window(window_id, events)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Cursor\raven.mcs\scripts\run_c1_cityscanner.py", line 434, in _pw
+    out = orig_pw(window_id, events)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Cursor\raven.mcs\src\raven_mcs\training\window_runner.py", line 1146, in _process_window
+    alpha = self.aggregator.compute_server_weights(payload)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Cursor\raven.mcs\src\raven_mcs\aggregation\methods.py", line 566, in compute_server_weights
+    return _normalize(result.alpha)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Cursor\raven.mcs\src\raven_mcs\aggregation\methods.py", line 37, in _normalize
+    raise ValueError("server weights must be nonnegative")
+ValueError: server weights must be nonnegative

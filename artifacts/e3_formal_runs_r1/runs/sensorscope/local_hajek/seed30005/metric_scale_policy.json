@@ -1,0 +1,15 @@
+{
+  "RMSE_rho_status": "APPLICABLE",
+  "conversion": "IDENTITY_RAW_PHYSICAL",
+  "dataset": "sensorscope",
+  "primary_domain": "physical",
+  "sigma": null,
+  "status": "RAW_PHYSICAL",
+  "store_fields": [
+    "RMSE_mu_std",
+    "RMSE_mu_phys",
+    "MAE_mu_std",
+    "MAE_mu_phys"
+  ],
+  "zscore_applied": false
+}

@@ -1,0 +1,16 @@
+{
+  "solves": 40,
+  "statuses": [
+    "optimal"
+  ],
+  "max_feasibility_violation": 1.8266044232717604e-10,
+  "projections_checked": 848,
+  "max_projection_violation": 4.440892098500626e-16,
+  "max_projection_KKT_residual": 1.1796119636642288e-16,
+  "projection_solver_amendment": "Initial CLARABEL projection attempt returned optimal_inaccurate; no incomplete result accepted. Recomputed all projections with exact KKT dual form.",
+  "K16_natural_supply": 0,
+  "K16_note": "No natural development payload has 16 active clients; controlled K16 schedule was not generated after P1 stop.",
+  "distinct_range_problems": 46,
+  "seconds": 6.84400000000096,
+  "evidence_scope": "geometry and pure projection only; no update differences or forecasts"
+}

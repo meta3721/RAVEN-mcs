@@ -1,0 +1,22 @@
+{
+  "implementation": {
+    "cpu_seconds": 7.703125,
+    "wall_seconds": 100.66775280001457,
+    "source": "B0-B1 ledger plus two E0 plan processes",
+    "categories": {
+      "runtime_check": 1.734375,
+      "plan": 0.21875,
+      "reference_preparation": 2.34375
+    }
+  },
+  "training": {
+    "cpu_seconds": 457.53125,
+    "wall_seconds": 487.97337070008507,
+    "categories": {
+      "running": 145.078125,
+      "deploy": 0.0625,
+      "restore": 3.890625,
+      "monitor": 308.5
+    }
+  }
+}

@@ -1,0 +1,120 @@
+% Supplemental material (separate PDF). Compile after main.tex so xr can read main.aux.
+\documentclass[letterpaper,journal]{IEEEtran}
+%\usepackage{ctex}
+\usepackage{amsmath,amsfonts}
+\usepackage{amsthm}
+\usepackage{algorithmic}
+\usepackage{algorithm}
+\usepackage{array}
+\usepackage[caption=false,font=normalsize,labelfont=sf,textfont=sf]{subfig}
+\usepackage{textcomp}
+\usepackage{stfloats}
+\usepackage{url}
+\usepackage{verbatim}
+\usepackage{graphicx}
+\usepackage{epsfig}
+% \usepackage{subfigure}
+\usepackage{epstopdf}
+\usepackage[nocompress]{cite}
+\usepackage{booktabs}
+\usepackage{multirow} 
+\usepackage{amssymb} 
+\newtheorem{definition}{Definition}  
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}{Proposition}
+\newtheorem*{proposition*}{Proposition}
+
+\newtheorem{assumption}{Assumption}
+\newtheorem{lemma}{Lemma}
+\newtheorem{corollary}{Corollary}
+\newtheorem{remark}{Remark}
+
+% Unnumbered inline restatements preserve the original theorem counters.
+\newenvironment{restated}[2]{\par\noindent\textbf{#1~\ref{#2} (restated).}\ \itshape\ignorespaces}{\par}
+
+% End-of-proof marker. \qed ends the paragraph and sets the box flush right on
+% its own line, so the sentence that follows a proof starts as a new paragraph.
+% (amsthm defines \qedhere but not a top-level \qed.)
+\providecommand{\qed}{\hfill$\square$\par}
+%\usepackage{appendix}
+\usepackage{placeins}
+\graphicspath{{./figures/}{./images/}}
+\hyphenation{op-tical net-works semi-conduc-tor IEEE-Xplore}
+
+\makeatletter
+\newcommand{\rmnum}[1]{\romannumeral #1}
+\newcommand{\Rmnum}[1]{\expandafter\@slowromancap\romannumeral #1@}
+\makeatother
+
+\renewcommand{\topfraction}{0.99}
+\renewcommand{\bottomfraction}{0.99}
+\renewcommand{\textfraction}{0.01}
+\renewcommand{\floatpagefraction}{0.99}
+\renewcommand{\dbltopfraction}{0.9}
+\renewcommand{\dblfloatpagefraction}{0.9}
+\setlength{\dbltextfloatsep}{8pt plus 2pt}
+\setcounter{topnumber}{5}
+\setcounter{bottomnumber}{5}
+\setcounter{totalnumber}{10}
+
+
+\usepackage{xr}
+\usepackage[unicode,hidelinks,bookmarksnumbered=true,bookmarksopen=true,bookmarksdepth=3]{hyperref}
+\input{appendix-navigation}
+\externaldocument[][nocite]{main}[main.pdf]
+\hypersetup{pdfauthor={Zuru Shi, Tian Wang, Houbing Herbert Song, and Anfeng Liu}}
+
+\begin{document}
+
+
+\title{Supplemental Material for\\
+RAVEN-MCS: Target-Mass Calibration for Windowed Federated Data Completion in Mobile Crowdsensing}
+
+\author{Zuru Shi, Tian Wang, Houbing Herbert Song,~\IEEEmembership{Fellow,~IEEE}, and Anfeng Liu,~\IEEEmembership{Member,~IEEE}}
+
+\maketitle
+
+\noindent\textit{This file is supplemental material for the companion main paper
+and provides its proofs and supporting analyses.}
+
+% Continue figure/table/equation numbers from the companion main paper.
+% Main has 4 figures, 7 tables, 1 algorithm and 41 numbered equations.
+% The development-geometry summary now lives in this file.
+% Offline configuration and retrospective results are in Appendix F.
+% Numbered statements in main: four propositions, two theorems, one assumption.
+\setcounter{figure}{4}
+\setcounter{table}{7}
+\setcounter{algorithm}{1}
+\setcounter{equation}{41}
+\setcounter{proposition}{4}
+\setcounter{theorem}{2}
+\setcounter{corollary}{0}
+\setcounter{assumption}{1}
+
+\noindent\textbf{Reading guide.} Linked codes (pages in parentheses);
+PDF bookmarks list all subsections.
+\naventry{app:complete_proofs}{models/proofs};
+\naventry{app:agg_coverage_proofs}{coverage};
+\naventry{app:experimental_protocols}{protocols};
+\naventry{app:rq1_results}{alignment};
+\naventry{app:rq2_details}{mechanisms}:
+\naventry{app:p2_diagnostics}{calibration numerics},
+\naventry{app:kappa_probe}{debt projection};
+\naventry{app:rq3_details}{support}:
+\naventry{app:a5_a6_audit}{stabilization},
+\naventry{app:reference_sensitivity}{reference sensitivity};
+\naventry{app:certificate_audit}{coverage variant};
+\naventry{app:development_details}{development}:
+\naventry{app:learning_capacity}{learning},
+\naventry{app:formal_prediction_references}{formal references},
+\naventry{app:update_rule_sensitivity}{update rules}.
+
+
+
+\input{appendix}
+
+% Each PDF has its own bibliography. xr imports cross-references without bibcite.
+\bibliographystyle{IEEEtran}
+\bibliography{reference}
+
+\end{document}

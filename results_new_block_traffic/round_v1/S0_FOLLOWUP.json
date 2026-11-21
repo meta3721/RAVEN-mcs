@@ -1,0 +1,204 @@
+{
+  "created_utc": "2026-10-07",
+  "crosschecks_section_0": {
+    "N1_debt_cal": {
+      "active_windows": 1990,
+      "max_Ar": 29,
+      "mean_Ar": 12.08,
+      "share_le2": 0.0683
+    },
+    "central_all": {
+      "clause_0_says": -5.2,
+      "pct_vs_federated_mean": -4.95,
+      "value": 0.95383
+    },
+    "central_delivered": {
+      "clause_0_says": -2.9,
+      "pct_vs_federated_mean": -2.79,
+      "value": 0.97543
+    },
+    "federated_arms_RMSE_mu_mean": {
+      "debt_cal": 1.00348,
+      "inst_cal": 1.00348,
+      "local_hajek": 1.00349,
+      "raven_simoracle": 1.00348
+    },
+    "no_frozen_raven_or_fedavg": true
+  },
+  "design_gate_condition": {
+    "consequence": "S2 runs 15 cells; raven_simoracle_nodesign is NOT used",
+    "design": "on",
+    "family": "e3_complete_aligned",
+    "phi_train_unit": 0.0,
+    "pi_tar_keys": 344,
+    "positive_keys": 344,
+    "rho_zero": true,
+    "train_atoms": 18576,
+    "zero_keys": 0,
+    "zero_target_train_atoms": 0
+  },
+  "go_d_pre_forecast": {
+    "expected_failed_list": [
+      "recall",
+      "F1_direction"
+    ],
+    "f1_direction_fails": true,
+    "recall_band_violated": true
+  },
+  "go_h_pre_forecast": {
+    "binding_risk": "power clause, not the H level",
+    "break_even_sd_H": 0.006395,
+    "smallest_plausible_measurable_H": 0.013
+  },
+  "instruction_sha256": "25f580aa4e2824daa931addab39eadee67319a24fc89c11ce7f2cf9aa552bb36",
+  "outputs_referenced": [
+    "S0_REPORT.md \u00a78",
+    "scripts/new_block_traffic_stages.py"
+  ],
+  "purpose": "S0 follow-up: \u00a78 wall-time projection and \u00a70 cross-checks (read-only, no training)",
+  "runtime_from_frozen_artifacts": {
+    "federated_family_n_runs": 80,
+    "max_seconds": 73.7,
+    "mean_seconds": 67.6,
+    "min_seconds": 61.9,
+    "per_arm_mean_seconds": {
+      "debt_cal": 68.1,
+      "inst_cal": 68.1,
+      "local_hajek": 66.1,
+      "raven_simoracle": 67.9
+    },
+    "projected": {
+      "F_120_runs_hours_mean_baseline": 22.52,
+      "F_120_runs_hours_slowest_run": 24.56,
+      "S1_12_runs_hours": 2.25,
+      "S2_15_runs_hours": 2.82,
+      "fits_24h_on_mean_baseline": true,
+      "fits_24h_on_slowest_run": false
+    },
+    "worst_case_ls20_seconds_per_run": 675.7
+  },
+  "s2_decision_endpoint_feasibility": {
+    "alert_share_any_arm_seed": 0.0,
+    "alert_threshold_tau": 1.343869,
+    "base_rate_mu": 0.099,
+    "best_constant_predictor_test_RMSE": 1.0067,
+    "conditional": "measured at local_steps=2; S1 raises the budget to L*, so only S2 settles it. The gap is 4.5x.",
+    "f1_mu": 0.0,
+    "factor": 4.51,
+    "finding": "no frozen arm can raise a single alert, so GO-D fails structurally",
+    "max_prediction_any_arm_seed": 0.2978,
+    "measured_central_all_RMSE_mu": 0.95383,
+    "measured_central_delivered_RMSE_mu": 0.97543,
+    "measured_federated_RMSE_mu": 1.00348,
+    "reading": "the federated arms beat the best constant predictor by 0.3 %, i.e. they are constant predictors; a constant cannot exceed tau",
+    "recall_mu": 0.0,
+    "target_scale": {
+      "test": {
+        "max": 6.9659,
+        "mean": 0.00271,
+        "min": -0.96,
+        "n": 6192,
+        "sd": 1.00669
+      },
+      "train": {
+        "max": 7.9454,
+        "mean": 0.0,
+        "min": -0.9608,
+        "n": 18576,
+        "sd": 1.0
+      }
+    }
+  },
+  "s2_path_validation": {
+    "arms": [
+      "central_all",
+      "central_delivered",
+      "debt_cal",
+      "inst_cal",
+      "local_hajek",
+      "raven_simoracle"
+    ],
+    "cells": 18,
+    "method": "scripts/new_block_traffic_stages.py::score_checkpoint applied to every frozen traffic arm",
+    "seeds": [
+      30001,
+      30002,
+      30003
+    ],
+    "tau_train_q90": 1.343869,
+    "tau_validation_q90": 1.3832076236472097,
+    "verdict": "the S2 scoring path reproduces the stored RMSE_mu exactly",
+    "worst_relative_reproduction_error": 0.0
+  },
+  "s2_power_forecast": {
+    "break_even_sd_H": 0.006395,
+    "coefficient": 0.777912,
+    "comparison_effects": {
+      "UAir_design_removal": 0.0689,
+      "UAir_fixed_class_H": 0.0034,
+      "traffic_target_mass_reach": 0.0089
+    },
+    "frozen_arm_RMSE_mu_dispersion_20seeds": {
+      "central_all": {
+        "mean": 0.953832,
+        "sd": 0.013224
+      },
+      "central_delivered": {
+        "mean": 0.975425,
+        "sd": 0.016986
+      },
+      "debt_cal": {
+        "mean": 1.003476,
+        "sd": 0.002516
+      },
+      "inst_cal": {
+        "mean": 1.003481,
+        "sd": 0.002458
+      },
+      "local_hajek": {
+        "mean": 1.003491,
+        "sd": 0.002422
+      },
+      "raven_simoracle": {
+        "mean": 1.003478,
+        "sd": 0.002459
+      }
+    },
+    "reading": "GO-H combines mean H >= 1.0 % with MDE80 < 0.5 * mean H. The power clause alone forces mean H > 2*MDE80, so once sd(H) exceeds ~0.0064 the clause demands more than the 1.0 % bar it accompanies, and enough of the effect must also be stable across 5 seeds that sd(H) stays low. The smallest plausible effect this design could measure is ~0.013 (MDE80 at sd_H = 0.017).",
+    "required_mean_H_by_sd": [
+      {
+        "basis": "federated arms own sd",
+        "mde80": 0.001918,
+        "required_mean_H": 0.003836,
+        "sd_H": 0.002466
+      },
+      {
+        "basis": "hypothetical",
+        "mde80": 0.00389,
+        "required_mean_H": 0.007781,
+        "sd_H": 0.005
+      },
+      {
+        "basis": "break-even with the 1.0 % bar",
+        "mde80": 0.004974,
+        "required_mean_H": 0.009948,
+        "sd_H": 0.006395
+      },
+      {
+        "basis": "hypothetical",
+        "mde80": 0.007779,
+        "required_mean_H": 0.015558,
+        "sd_H": 0.01
+      },
+      {
+        "basis": "central_delivered own sd",
+        "mde80": 0.013213,
+        "required_mean_H": 0.026426,
+        "sd_H": 0.016986
+      }
+    ],
+    "rule": "MDE80 = (t_{0.975,14} + t_{0.80,14}) * sd(H) / sqrt(15) < 0.5 * mean H",
+    "status": "forecast from artifacts, not a measurement; S2 at L* settles it",
+    "t_sum": 3.012841
+  }
+}

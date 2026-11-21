@@ -1,0 +1,32 @@
+{
+  "clip_support_audit_sha256": "db86d417763b544bacd2ffe860898c303edf41e1edc9a122160df8c769e3d759",
+  "design_seeds": [
+    28201,
+    28202,
+    28203
+  ],
+  "direction_certificate_sha256": "1ae710ac95ce3fb277c9495271ea5a0e9035c429fd3a1661d67609a3474efceb",
+  "exact_expected_mass_audit_sha256": "27b645b75b14f36967026b271fc009c2828797a7f498da091a7e0c89d88160af",
+  "freeze_commit": "e56687813f2bcb919a9208391f68a4db3488602e",
+  "frozen_at_utc": "2026-08-06T11:21:21.540705+00:00",
+  "no_per_seed_intercept_recalibration": true,
+  "parameter_consistency_audit_sha256": "cf35801e5e16a59cf5795e0edd7a1d9b85e84f4bb8315fe8bc4e47a11b19fa20",
+  "probability_bounds": {
+    "obs": [
+      0.05,
+      0.95
+    ],
+    "opp": [
+      0.05,
+      0.95
+    ],
+    "q": [
+      0.05,
+      0.95
+    ]
+  },
+  "protocol": "E2_TRAFFIC_PROFILE_RUNNER_CONSISTENCY_HOTFIX_R1",
+  "registry_sha256": "fb38b52f8830e4f50913363e8c5af7b8855d5810d1c5321dafd2b6142b854a22",
+  "selected_strength": "PROFILE-S2",
+  "status": "NOT_FROZEN"
+}

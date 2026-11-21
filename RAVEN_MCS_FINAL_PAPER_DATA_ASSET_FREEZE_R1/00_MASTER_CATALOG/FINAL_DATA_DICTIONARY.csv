@@ -1,0 +1,18 @@
+name,symbol,definition,unit,lower_or_higher_better,granularity,valid_datasets,valid_rounds,comparability_notes,paper_claim_usage
+RMSE_mu,RMSE_μ,deployment-target weighted RMSE,physical units,lower,run,E1/E2/E3/E4 as recorded,E1-E4,not universal superiority,C4 companion
+MAE_mu,MAE_μ,deployment-target weighted MAE,physical units,lower,run,when VALID,E3/E4,often MISSING_NOT_RECORDED in E1/E2/E4,supporting
+Tail_RMSE,Tail RMSE,tail-group RMSE companion,physical units,lower,run,E1/E3/E4,E1-E4,,C4 companion
+RMSE_rho,RMSE_ρ,usable-update/arrival risk RMSE,physical units,lower,run,E2 primary; E3 when VALID,E1-E3,E4 often MISSING_NOT_RECORDED,C2 via D_aligned
+Delta_group,Δ_group,group-mass structural mismatch vs target h(i),dimensionless,lower,run,"SensorScope,U-Air",E3/E4,Central N/A,C3 primary
+Delta_c_s,"Δ_{c,s}",stratum structural mismatch vs s(i),dimensionless,lower,run,"SensorScope,U-Air",E3/E4,Central N/A,C3 primary
+D_aligned,D_aligned,Delta RMSE_mu - Delta RMSE_rho on complete-aligned vs balanced,RMSE units,sign/stability not ranking,seed×method,NSW-Traffic E2,E2,not a superiority metric,C1/C2
+ESS,ESS,effective sample size scalar if recorded,count,context,run,E3 supporting,E3,trajectory MISSING_NOT_RECORDED,diagnostic only
+n_eff,n_eff,effective sample mass if recorded,count,context,run,when recorded,E3,often MISSING_NOT_RECORDED,diagnostic
+P2 residual,P2 residual,feasibility residual of P2 solve when reconstructable,solver,lower,window/run,P2-using,E3/E4,exact optimality NOT reconstructable,C10
+runtime,t,wall-clock run runtime_seconds,s,n/a,run,when recorded,E1-E4,not a scalability study,appendix
+R,R,opportunity indicator,binary,n/a,atomic,EventTrace,E2-E4,row-level not in CORE ZIP,model
+O,O,observation indicator,binary,n/a,atomic,EventTrace,E2-E4,,model
+U,U,usable-update indicator; delivered iff U=1,binary,n/a,atomic,EventTrace,E2-E4,,model
+h(i),h(i),deployment-target group,group id,n/a,atomic,SS/U-Air/Traffic,all,h ≠ s,setup
+s(i),s(i),opportunity stratum,stratum id,n/a,atomic,SS/U-Air/Traffic,all,h ≠ s,setup
+mu,μ,public deployment-target distribution / target masses,probability,n/a,dataset split,SS/U-Air/Traffic,all,train-split mass; no test labels,model

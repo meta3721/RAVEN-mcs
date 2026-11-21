@@ -1,0 +1,1564 @@
+================================================================================
+RAVEN-MCS Cursor 下一轮实验指令
+SAG-G1-R1e: Dynamic C_cov Non-Vacuity Attribution + Single Context Repair Audit
+Version: v1.0
+Date: 2026-08-30
+================================================================================
+
+【0. 本轮定位：这是 R1d 的直接下一轮，不重新立项】
+
+本轮严格承接上一轮：
+
+  SAG-G1-R1d — Target-Semantics Freeze + Dynamic Coverage Certificate Audit
+
+上一轮正式 verdict：
+
+  DYNAMIC_COV_TOO_CONSERVATIVE
+
+已确认的 R1d 事实：
+
+1. TARGET_LAW_RULE_V1 已冻结；
+2. target compatibility max_abs_error = 1.0547118733938987e-14；
+3. SensorScope warm-up：
+     n = 84
+     pairwise coverage = 0.9999458874458875
+     joint-window coverage = 0.9761904761904762
+     C_cov zero fraction = 0.9761904761904762
+     mean C_cov = 7.176424288723729e-05
+4. U-Air warm-up：
+     n = 64
+     pairwise coverage = 1.0
+     joint-window coverage = 1.0
+     C_cov zero fraction = 1.0
+     mean C_cov = 0.0
+5. R1d 没有运行 SAG；
+6. R1d 没有进入 5-seed；
+7. R1d 没有重新证明 U-Air 为 unsafe；
+8. A8b 仍为 A8B_NOT_FINAL_CLOSED。
+
+因此，本轮唯一主线是：
+
+  先解释为什么 dynamic C_cov 几乎恒为 0，
+  再只允许一个预注册、低维、可解释、F_{r-}-measurable 的 predictor repair，
+  必要时只允许一个预注册的 context-conditioned calibration repair，
+  用同一 1-seed development protocol 判断 certificate 是否同时满足：
+
+      calibration 不崩
+      +
+      non-vacuity 不崩。
+
+本轮不是：
+
+  - 5-seed main experiment；
+  - SAG performance experiment；
+  - threshold tuning；
+  - model zoo；
+  - synthetic stress sweep；
+  - target-law redesign。
+
+================================================================================
+一、Authority / Freeze Order
+================================================================================
+
+Cursor 开始工作前，必须把以下文件视为 authority，按优先级读取：
+
+A1.
+  authority/RAVEN_MCS_Support_Aware_Gate_Spec_v1.2_Final_Closure.txt
+
+A2.
+  authority/RAVEN_MCS_v2_Sections_III_VI_PostAudit_Final.txt
+
+A3.
+  authority/RAVEN_MCS_Cursor_SAG_G1_R1d_Target_Semantics_Dynamic_Cov_Audit_Instruction_v1.0.txt
+
+A4.
+  report/R1D_TARGET_DYNAMIC_COV_REPORT.md
+
+A5.
+  report/R1D_VERDICT.json
+
+A6.
+  r1d/configs/dynamic_cov_config.json
+  r1d/configs/target_rule_hash.json
+  r1d/configs/thresholds_frozen_copy.json
+
+A7.
+  r1d/target/TARGET_LAW_RULE_FROZEN.json
+  r1d/target/TARGET_COMPATIBILITY_R1D.csv
+
+A8.
+  r1d/dynamic_cov/DYNAMIC_COV_PREDICTION.csv
+  r1d/dynamic_cov/DYNAMIC_COV_CALIBRATION.csv
+  r1d/dynamic_cov/C_COV_DYNAMIC_WINDOW.csv
+  r1d/dynamic_cov/CURRENT_WINDOW_OPP_REALIZED.csv
+
+若本指令与 A1/A2 的最终理论定义冲突：
+  以 A1/A2 为准；
+  不允许 Cursor 自行“修理论”；
+  输出 AUTHORITY_CONFLICT.md 后 STOP。
+
+本轮所有新增文件必须写入新目录：
+
+  outputs/sag_g1_r1e/
+
+禁止覆盖：
+
+  outputs/sag_g1_r1d/
+  或上一轮提交包中的任何 R1d artifact。
+
+================================================================================
+二、绝对冻结：本轮禁止修改
+================================================================================
+
+以下对象全部冻结：
+
+1. dataset：
+     SensorScope
+     U-Air
+
+2. development seed：
+     30001
+
+3. TARGET_LAW_RULE_V1：
+     rule_id = TARGET_LAW_RULE_V1
+     hash = 86fd55f7e0bf8499944433de16324bd4687befd5568892613ee87acacad3ad07
+
+4. deployment population semantics：
+     public evaluation/deployment-supported atoms
+     = test split AND support_flag
+     public covariates only
+
+5. group masses：
+     mu_g from frozen train-split TOD occupancy
+
+6. atomic target law：
+
+     varpi_i
+     =
+     mu_{h(i)} /
+     |{j in I_dep : h(j)=h(i)}|
+
+7. pi_tar：
+     从同一个 varpi 通过 frozen station->client xi pushforward 得到。
+
+8. threshold file 的全部数值：
+
+     tau_cov = 0.05
+     tau_ret = 0.05
+     tau_ESS = 1.0
+     tau_clip = 0.95
+     tau_A = 0.35
+     tau_safe = 4.0
+     delta_cal = 0.05
+     lookback_min = 8
+     lookback_max = 32
+     quantile_level = 0.95
+     lambda_group = 1.0
+     lambda_beta = 1.0
+     lambda_variance = 0.1
+     coverage_target = 0.95
+
+9. dynamic C_cov 定义：
+
+     C_cov_LCB(r)
+     =
+     sum_{k,s} pi_tar(k,s)
+       * 1{ lower_pi_opp(k,s,r) >= pi_safe }
+
+   不得改。
+
+10. delta_cal = 0.05 不得改。
+
+11. 原 R1d status rule 不得改：
+
+    若 warm-up 后：
+
+      window-joint coverage < 0.90
+
+    或 coverage 随时间显著持续下滑：
+
+      DYNAMIC_COV_NOT_CALIBRATED
+
+    若：
+
+      joint coverage >= 0.90
+      且 C_cov zero fraction >= 0.90
+
+    则：
+
+      DYNAMIC_COV_TOO_CONSERVATIVE
+
+12. 不得因为 R1e 结果不好看而：
+
+    - 改 tau_cov；
+    - 改 pi_safe quantile；
+    - 改 delta；
+    - 改 L=8；
+    - 换 seed；
+    - 改 target law；
+    - 改 dataset；
+    - 用 outcome 选择 predictor；
+    - 用 RMSE 选择 calibration；
+    - 扫多个模型挑最好结果。
+
+================================================================================
+三、本轮首先建立 immutable R1d provenance
+================================================================================
+
+创建：
+
+  outputs/sag_g1_r1e/provenance/
+
+至少输出：
+
+  R1D_INPUT_SHA256SUMS.txt
+  R1D_INPUT_MANIFEST.json
+  R1E_FREEZE_AUDIT.json
+  R1E_FREEZE_AUDIT.md
+
+要求：
+
+1. 对所有被 R1e 使用的 R1d artifacts 计算 SHA256；
+2. 记录 source path；
+3. 记录本轮使用的 git commit / source hash（若 repo 有 git）；
+4. 复制 frozen threshold JSON 到：
+
+     outputs/sag_g1_r1e/configs/thresholds_frozen_copy.json
+
+5. 验证复制内容 byte-equivalent 或 semantic-equivalent；
+6. 验证 TARGET_LAW_RULE_V1 hash 与 R1d 一致；
+7. 若不一致：
+
+     R1E_TARGET_FREEZE_FAILURE
+     STOP。
+
+================================================================================
+四、先修一个明确的 evidence-builder 语义 bug
+================================================================================
+
+R1d 源码中存在类似：
+
+  certified = float(
+      cov_info.get("target_mass_certified") or float("nan")
+  )
+
+这里真实数值：
+
+  target_mass_certified = 0.0
+
+会因为 Python truthiness 被错误转换为 NaN。
+
+这是 evidence serialization bug，
+不是算法结果变化。
+
+必须修复为显式 None/finite 逻辑，例如：
+
+  raw_certified = cov_info.get("target_mass_certified")
+  if raw_certified is None:
+      certified = float("nan")
+  else:
+      certified = float(raw_certified)
+
+要求：
+
+- 0.0 必须保留为 0.0；
+- missing 才能是 NaN；
+- 不改变 C_cov_LCB 本身；
+- 不重写 R1d artifact；
+- R1e 新 artifact 使用修正 builder。
+
+新增测试：
+
+  tests/test_r1e_zero_certified_mass_not_nan.py
+
+至少覆盖：
+
+  0.0 -> 0.0
+  None -> NaN
+  positive -> positive
+
+并生成：
+
+  diagnostic/EVIDENCE_ZERO_NAN_REPAIR_AUDIT.md
+
+================================================================================
+五、正式封口 PI_SAFE_RULE_V1 provenance
+================================================================================
+
+当前源码已经定义：
+
+  PI_SAFE_RULE_V1
+  quantile = 0.10
+  data_source = public_pi_opp_joint_on_target_positive_pairs
+
+本轮不得重新比较 q05/q10/q25 后挑最好结果。
+
+唯一允许规则：
+
+  q10 / 0.10
+
+并且 source 必须与现有理论一致：
+
+  frozen public opportunity law
+  ×
+  {pi_tar > 0}
+
+禁止：
+
+  - current-window R/O/U；
+  - test labels；
+  - test residuals；
+  - RMSE；
+  - Gate ON/OFF；
+  - current-window realized opportunity；
+  - dataset performance。
+
+实现：
+
+  freeze_pi_safe_rule_v1(...)
+
+输出：
+
+  configs/PI_SAFE_RULE_FROZEN.json
+  configs/PI_SAFE_PROVENANCE_AUDIT.md
+  configs/PI_SAFE_R1D_R1E_COMPATIBILITY.csv
+
+PI_SAFE_R1D_R1E_COMPATIBILITY.csv 至少：
+
+  dataset
+  r1d_reconstructed_pi_safe
+  r1e_frozen_pi_safe
+  abs_diff
+  rule_id
+  rule_hash
+  quantile
+  n_positive_target_pairs
+  pass
+
+要求：
+
+  abs_diff <= 1e-12
+
+否则：
+
+  R1E_PI_SAFE_FREEZE_FAILURE
+  STOP。
+
+注意：
+
+R1e 只是把 R1d 已经实际使用的 q10 rule 正式 artifact-freeze，
+不得借此改变 pi_safe。
+
+================================================================================
+六、R1e-A：对 R1d 的 vacuity 做四层归因，先不改 predictor
+================================================================================
+
+这是本轮最重要的 diagnostic。
+
+使用 R1d 原始：
+
+  DYNAMIC_COV_PREDICTION.csv
+  CURRENT_WINDOW_OPP_REALIZED.csv
+  frozen pi_tar
+  frozen pi_safe
+
+对每个 post-warmup window 计算四层对象。
+
+---------------------------------------------------------------------
+A. realized support coverage diagnostic
+---------------------------------------------------------------------
+
+定义：
+
+  C_real_support(r)
+  =
+  [sum_{k,s} pi_tar(k,s)
+     1{ pi_opp_realized(k,s,r) > 0 }]
+  /
+  [sum_{k,s} pi_tar(k,s)]
+
+注意：
+
+- 这是 post-hoc development diagnostic；
+- current-window realized opportunity 绝对不能进入同一 window Gate；
+- 不得把它命名为 certificate。
+
+另外保留：
+
+  realized_opp_event_mass_total(r)
+  = sum_{target-positive pairs} pi_opp_realized(k,s,r)
+
+不要混淆：
+
+  realized opportunity event mass
+
+与：
+
+  target mass whose pair is realized-supported。
+
+---------------------------------------------------------------------
+B. point-predictor support
+---------------------------------------------------------------------
+
+定义：
+
+  C_point(r)
+  =
+  [sum pi_tar(k,s)
+     1{ pi_hat_opp(k,s,r) >= pi_safe }]
+  /
+  [sum pi_tar(k,s)]
+
+这个对象不减 conformal q。
+
+它只用于回答：
+
+  “certificate 变 0 是 predictor 本身就预测不出来，
+   还是 calibration penalty 把它压成 0？”
+
+---------------------------------------------------------------------
+C. calibration penalty
+---------------------------------------------------------------------
+
+每个 window 至少记录：
+
+  q_max_residual
+  max_pi_hat
+  mean_pi_hat
+  median_positive_pi_hat
+  p90_positive_pi_hat
+  pi_safe
+  q_over_pi_safe
+  q_over_median_positive_hat
+  fraction_hat_positive
+  fraction_hat_gt_q
+  fraction_hat_ge_pi_safe
+  fraction_lower_positive
+  fraction_lower_ge_pi_safe
+
+若 denominator = 0 或不存在 positive hat：
+  明确 NaN；
+  不填 0 假装有定义。
+
+---------------------------------------------------------------------
+D. formal LCB certificate
+---------------------------------------------------------------------
+
+继续使用：
+
+  C_lcb(r) = C_cov_LCB(r)
+
+并记录：
+
+  C_real_support
+  -> C_point
+  -> C_lcb
+
+三层变化。
+
+输出：
+
+  diagnostic/R1D_NONVACUITY_ATTRIBUTION_BY_WINDOW.csv
+  diagnostic/R1D_NONVACUITY_ATTRIBUTION_SUMMARY.csv
+  diagnostic/R1D_NONVACUITY_ATTRIBUTION.md
+
+SUMMARY 按 dataset 至少包括：
+
+  n_warmup
+  mean_C_real_support
+  median_C_real_support
+  mean_C_point
+  median_C_point
+  point_zero_fraction
+  mean_C_lcb
+  lcb_zero_fraction
+  mean_q
+  median_q
+  mean_median_positive_hat
+  median_q_over_pi_safe
+  median_q_over_median_positive_hat
+  mean_fraction_hat_gt_q
+  mean_fraction_lower_positive
+  joint_coverage
+
+这里：
+
+  point_zero_fraction
+  = fraction of warm-up windows with C_point <= 1e-15
+
+  lcb_zero_fraction
+  = fraction with C_lcb <= 1e-15
+
+================================================================================
+七、R1e-A 可视化：只做直接支撑主线的三张诊断图
+================================================================================
+
+输出：
+
+  figures/R1D_C_REAL_C_POINT_C_LCB_BY_TIME.png
+  figures/R1D_Q_VS_PREDICTION_SCALE.png
+  figures/R1D_POINT_TO_LCB_SHRINKAGE.png
+
+要求：
+
+Figure 1：
+  每个 dataset 分别展示：
+    C_real_support(r)
+    C_point(r)
+    C_lcb(r)
+
+Figure 2：
+  展示：
+    q_r
+    median_positive_pi_hat(r)
+    pi_safe
+
+Figure 3：
+  x = C_point
+  y = C_lcb
+  仅作为 calibration shrinkage diagnostic。
+
+不要制作与论文主线无关的大量图。
+
+================================================================================
+八、R1e-B：唯一 predictor repair —— TOD-conditioned rolling predictor
+================================================================================
+
+本轮只允许一个 predictor repair。
+
+禁止：
+
+  - 同时跑 ridge / logistic / multinomial / random forest / NN；
+  - 扫 L；
+  - 扫 time-block 数；
+  - 按结果挑模型。
+
+唯一 predictor：
+
+  TOD_CONDITIONED_ROLLING_V1
+
+---------------------------------------------------------------------
+B.1 current-window context 的合法来源
+---------------------------------------------------------------------
+
+current-window context 只能来自：
+
+  public clock / fixed window schedule
+
+使用与论文 deployment group 相同的 UTC 6-hour block：
+
+  H1: 00-06
+  H2: 06-12
+  H3: 12-18
+  H4: 18-24
+
+即：
+
+  RepeatableTimeOfDayMapper_UTC_hour_floordiv_6
+
+非常重要：
+
+不得通过“当前 window 第一条 EventTrace event 的时间”来推断当前 block，
+如果该第一条 event 的存在本身依赖当前 R/O/U。
+
+必须找到 pre-window 已知的：
+
+  window schedule / window boundary / public timestamp mapping。
+
+新增：
+
+  R1E_WINDOW_CONTEXT_PROVENANCE.md
+
+说明：
+
+  window_id -> public window timestamp -> TOD block
+
+是如何在当前 window opportunity/outcome 被观察前得到的。
+
+如果 repo 中根本不存在合法 pre-window schedule，
+且必须读取 current-window event 才知道 block：
+
+  verdict = NO_LEGAL_PREWINDOW_CONTEXT_FOR_R1E
+  STOP。
+
+绝对不允许为了继续实验而偷偷使用 current R/O/U。
+
+---------------------------------------------------------------------
+B.2 predictor 定义，预注册且固定
+---------------------------------------------------------------------
+
+对 pair j=(k,s)，当前 window r，current public TOD block = h_r。
+
+设：
+
+  H_same(r)
+  = strictly prior completed windows t<r
+    with h_t = h_r
+
+取 H_same(r) 中最近最多 L=8 个 completed windows。
+
+如果 H_same 非空：
+
+  pi_hat_ctx(j,r)
+  = mean_{t in last-8 same-block prior windows}
+      pi_opp_realized(j,t)
+
+注意：
+  zero opportunity mass 必须作为 0 进入均值；
+  不能只平均 positive windows。
+
+如果 H_same 为空：
+
+  fallback 到 R1d frozen global rolling rule：
+
+  pi_hat_ctx(j,r)
+  = mean of last L=8 strictly prior completed windows。
+
+如果连 global prior history 也不足以满足现有 cold-start protocol：
+  fail closed。
+
+本轮不引入额外可调 alpha / decay / regularizer。
+
+不做 weighted tuning。
+
+---------------------------------------------------------------------
+B.3 必须保留的信息边界
+---------------------------------------------------------------------
+
+TOD_CONDITIONED_ROLLING_V1 可以使用：
+
+  - t<r completed pi_opp masses；
+  - current public TOD block from fixed schedule；
+  - frozen pi_tar；
+  - frozen pi_safe。
+
+不得使用：
+
+  - current R；
+  - current O；
+  - current U；
+  - current labels；
+  - current residual；
+  - current realized pi_opp；
+  - current Gate result；
+  - dataset name as a predictor feature；
+  - RMSE；
+  - future windows。
+
+================================================================================
+九、R1e-C Stage 1：新 predictor + 原 R1d global max-residual calibration
+================================================================================
+
+先不要同时改 predictor 和 calibration。
+
+Stage 1 必须：
+
+  predictor = TOD_CONDITIONED_ROLLING_V1
+
+  calibration = 原 R1d：
+
+    R_t
+    =
+    max_{(k,s): pi_tar>0}
+      [ pi_hat_ctx(k,s,t) - pi_opp_realized(k,s,t) ]
+
+    q_r
+    =
+    one-sided conformal 1-delta quantile
+    of strictly prior valid R_t
+
+    delta = 0.05
+
+    lower_pi_opp
+    = max(0, pi_hat_ctx - q_r)
+
+Calibration unit 仍然是 window。
+
+不得把 pair/event 当 iid calibration samples。
+
+输出：
+
+  dynamic_cov/stage1_global/
+    DYNAMIC_COV_PREDICTION.csv
+    DYNAMIC_COV_CALIBRATION.csv
+    DYNAMIC_COV_COVERAGE_BY_TIME.csv
+    C_COV_DYNAMIC_WINDOW.csv
+    NONVACUITY_ATTRIBUTION_BY_WINDOW.csv
+    NONVACUITY_SUMMARY.csv
+    STAGE1_VERDICT.json
+
+STAGE1_VERDICT 仍按原 R1d hard rule：
+
+A.
+  joint coverage < 0.90
+  或 coverage slides：
+
+    DYNAMIC_COV_NOT_CALIBRATED
+    STOP，本轮不得再通过降低 q 来救结果。
+
+B.
+  joint coverage >= 0.90
+  且 C_cov zero fraction < 0.90：
+
+    STAGE1_DYNAMIC_COV_CALIBRATED_NONVACUOUS
+
+    不运行 Stage 2。
+
+C.
+  joint coverage >= 0.90
+  且 C_cov zero fraction >= 0.90：
+
+    进入下面 bottleneck attribution。
+
+================================================================================
+十、Stage 1 bottleneck attribution：决定是否允许唯一 calibration repair
+================================================================================
+
+只在 Stage 1 = DYNAMIC_COV_TOO_CONSERVATIVE 时执行。
+
+计算：
+
+  point_zero_fraction
+
+规则固定如下：
+
+1. 如果：
+
+     point_zero_fraction >= 0.90
+
+   则说明：
+
+     即使不减 conformal q，point predictor 本身也几乎无法覆盖 pi_safe。
+
+   verdict：
+
+     R1E_POINT_PREDICTOR_NONVACUITY_NOT_ACHIEVED
+
+   STOP。
+
+   禁止再换第二个 predictor。
+
+2. 如果：
+
+     point_zero_fraction < 0.90
+     但 formal C_cov zero fraction >= 0.90
+
+   则允许判为：
+
+     GLOBAL_CALIBRATION_DOMINATES_NONVACUITY
+
+   才允许进入 Stage 2。
+
+这里使用 0.90 是沿用 R1d 的“almost all windows” hard boundary，
+不是重新调出来的新阈值。
+
+================================================================================
+十一、R1e-C Stage 2：唯一允许的 calibration repair
+================================================================================
+
+Stage 2 只在：
+
+  predictor point certificate 已经 non-vacuous
+  但 global max-residual q 把 formal certificate 压成 vacuous
+
+时运行。
+
+唯一 calibration repair：
+
+  TOD_BLOCK_CONDITIONED_MAX_RESIDUAL_V1
+
+不允许再比较多个 calibration 方法。
+
+---------------------------------------------------------------------
+C.1 residual 定义不变
+---------------------------------------------------------------------
+
+每个 completed window t：
+
+  R_t
+  =
+  max_{target-positive pairs}
+    [ pi_hat_ctx(j,t) - pi_opp_realized(j,t) ]
+
+---------------------------------------------------------------------
+C.2 q_r 只允许按 public TOD block 条件化
+---------------------------------------------------------------------
+
+current block = h_r。
+
+取 strictly prior：
+
+  { R_t : t<r, h_t=h_r }
+
+如果同 block prior residual 数量 >= 8：
+
+  q_r
+  = conformal_upper_residual(
+      same-block prior residuals,
+      delta=0.05
+    )
+
+如果 same-block prior residual 数量 < 8，
+但全局 prior valid residual >= 8：
+
+  fallback 到 global prior residual conformal q。
+
+如果 global prior valid residual < 8：
+
+  cold start / fail closed。
+
+不得：
+
+  - 降 delta；
+  - 手工缩放 q；
+  - q *= 0.5；
+  - clip q 到 pi_safe；
+  - outcome-conditioned q；
+  - dataset-conditioned q；
+  - performance-selected q。
+
+---------------------------------------------------------------------
+C.3 Stage 2 输出
+---------------------------------------------------------------------
+
+  dynamic_cov/stage2_context_cal/
+    DYNAMIC_COV_PREDICTION.csv
+    DYNAMIC_COV_CALIBRATION.csv
+    DYNAMIC_COV_COVERAGE_BY_TIME.csv
+    C_COV_DYNAMIC_WINDOW.csv
+    NONVACUITY_ATTRIBUTION_BY_WINDOW.csv
+    NONVACUITY_SUMMARY.csv
+    STAGE2_VERDICT.json
+
+Stage 2 仍使用完全相同的 R1d hard status rule。
+
+如果：
+
+  joint coverage < 0.90
+  或 coverage slides：
+
+    DYNAMIC_COV_NOT_CALIBRATED
+
+如果：
+
+  joint coverage >= 0.90
+  且 C_cov zero fraction >= 0.90：
+
+    DYNAMIC_COV_NONVACUITY_NOT_ACHIEVED
+
+如果：
+
+  joint coverage >= 0.90
+  且 C_cov zero fraction < 0.90
+  且 no leakage tests PASS：
+
+    R1E_DYNAMIC_COV_CLOSED_1SEED_DEVELOPMENT
+
+注意：
+
+这个状态只表示 1-seed development certificate closure，
+不等于论文 main result，
+不等于 5-seed 已通过。
+
+================================================================================
+十二、R1d vs R1e 必须 apples-to-apples 对比
+================================================================================
+
+对完全相同：
+
+  dataset
+  seed=30001
+  target law
+  pi_safe
+  windows
+  thresholds
+
+输出：
+
+  comparison/R1D_VS_R1E_DYNAMIC_COV.csv
+  comparison/R1D_VS_R1E_DYNAMIC_COV.md
+
+每 dataset 至少报告：
+
+  method/certificate_version
+  n_warmup
+  pairwise_coverage
+  target_mass_weighted_coverage
+  window_joint_coverage
+  coverage_slides_over_time
+  C_cov_zero_fraction
+  mean_C_cov
+  median_C_cov
+  p25_C_cov
+  p75_C_cov
+  mean_C_point
+  point_zero_fraction
+  mean_C_real_support
+  median_q
+  median_q_over_pi_safe
+
+版本必须至少包含：
+
+  R1d rolling + global max residual
+  R1e Stage1 TOD rolling + global max residual
+
+若 Stage2 被 protocol 允许并实际执行，再加入：
+
+  R1e Stage2 TOD rolling + TOD-conditioned max residual
+
+不得因为 Stage2 更好而删除 Stage1。
+
+================================================================================
+十三、如果 dynamic C_cov closure 成功：只做 1-seed Always-Design vs No-Design re-audit
+================================================================================
+
+只有最终 dynamic C_cov 状态为：
+
+  R1E_DYNAMIC_COV_CLOSED_1SEED_DEVELOPMENT
+
+才允许进入本节。
+
+仍然只用：
+
+  SensorScope seed 30001
+  U-Air seed 30001
+
+只跑：
+
+  Always-Design
+  No-Design
+
+对应现有实现可保持：
+
+  raven
+  raven_wo_design
+
+但报告中必须用清楚的人类可读标签。
+
+本轮仍然：
+
+  不跑 SAG。
+
+记录：
+
+  active-set mismatch
+  RMSE_mu
+  WorstGroupRMSE
+  Delta_group
+  Delta_c-s
+  ESS diagnostic
+  clipping diagnostic
+  support-zero diagnostic
+
+输出：
+
+  unsafe_audit/ALWAYS_D_VS_NO_D_1SEED.csv
+  unsafe_audit/U_AIR_UNSAFE_REAUDIT.md
+  unsafe_audit/U_AIR_UNSAFE_REAUDIT.json
+
+unsafe candidate 不允许只看某一个结果。
+
+沿用 R1d 规则：至少满足以下某一类机制性 evidence：
+
+A. active-set mismatch 高；
+B. Full Design 在 prediction-risk budget 下明显伤害；
+C. Full Design 显著恶化 deployment-group alignment；
+D. severe support-zero / ESS / clipping collapse。
+
+必须报告 A-D 全部条件，
+不能只挑支持某结论的一项。
+
+如果 U-Air 在正确 target + closed dynamic certificate 下不再 unsafe：
+
+  U_AIR_NO_LONGER_UNSAFE_UNDER_CORRECT_TARGET
+
+不得强行让 Gate OFF。
+
+================================================================================
+十四、若 U-Air 不再 unsafe：只生成 natural unsafe candidate，不执行 stress
+================================================================================
+
+只有上一节得到：
+
+  U_AIR_NO_LONGER_UNSAFE_UNDER_CORRECT_TARGET
+
+才执行 candidate discovery。
+
+候选只能依据 support statistics：
+
+  low opportunity overlap
+  sparse temporal block
+  high target-zero mass
+  high active-set mismatch
+  low ESS
+  high clipping
+
+禁止依据：
+
+  RMSE
+  WorstGroupRMSE
+  Delta performance gain
+  SAG result
+
+选 block。
+
+输出：
+
+  unsafe_audit/NATURAL_UNSAFE_BLOCK_CANDIDATES.csv
+
+字段至少：
+
+  dataset
+  block_id
+  time_range
+  target_support_mass
+  realized_opportunity_support_mass
+  overlap
+  active_set_mismatch
+  ESS
+  clipping
+  selection_uses_performance = false
+
+如果没有自然 candidate：
+
+仅输出：
+
+  unsafe_audit/PRE_REGISTERED_SUPPORT_STRESS_PLAN.md
+
+只设计一条：
+
+  opportunity-support thinning
+
+但本轮绝对不运行 stress。
+
+================================================================================
+十五、本轮严禁运行 SAG 与 5-seed
+================================================================================
+
+即使 R1e dynamic C_cov 成功，
+本轮也只允许完成：
+
+  certificate closure
+  +
+  conditional Always-D vs No-D re-audit
+
+禁止本轮运行：
+
+  SAG 1-seed
+  SAG 5-seed
+  G1-R2 5-seed
+  final paper-scale sweep
+  synthetic support stress
+
+本轮输出下一轮 readiness flag 即可。
+
+================================================================================
+十六、必须新增的 tests
+================================================================================
+
+至少新增：
+
+1. test_r1e_target_rule_hash_unchanged.py
+2. test_r1e_thresholds_unchanged.py
+3. test_r1e_pi_safe_rule_q10_frozen.py
+4. test_r1e_pi_safe_no_outcome_selection.py
+5. test_r1e_zero_certified_mass_not_nan.py
+6. test_r1e_nonvacuity_attribution_identity.py
+7. test_r1e_real_support_is_diagnostic_only.py
+8. test_r1e_tod_context_pre_window_only.py
+9. test_r1e_tod_context_not_from_current_event_presence.py
+10. test_r1e_tod_predictor_no_current_window.py
+11. test_r1e_tod_predictor_dataset_name_forbidden.py
+12. test_r1e_tod_predictor_strictly_prior.py
+13. test_r1e_tod_predictor_same_block_selection.py
+14. test_r1e_tod_predictor_global_fallback.py
+15. test_r1e_zero_mass_included_in_mean.py
+16. test_r1e_global_max_residual_window_unit.py
+17. test_r1e_stage1_stop_rules.py
+18. test_r1e_stage2_trigger_requires_calibration_bottleneck.py
+19. test_r1e_stage2_context_quantile_prior_only.py
+20. test_r1e_stage2_fallback_global_when_context_short.py
+21. test_r1e_stage2_no_q_manual_shrink.py
+22. test_r1e_coverage_metric_same_as_r1d.py
+23. test_r1e_c_cov_formula_unchanged.py
+24. test_r1e_no_sag_execution.py
+25. test_r1e_no_5seed_execution.py
+26. test_r1e_no_threshold_tuning.py
+27. test_r1e_r1d_artifacts_immutable.py
+
+同时必须重跑 R1d 原 12 项测试，至少包括：
+
+  test_dynamic_cov_history_only.py
+  test_dynamic_cov_joint_coverage_metric.py
+  test_dynamic_cov_monotonic_history.py
+  test_dynamic_cov_no_current_window.py
+  test_dynamic_cov_window_block_calibration.py
+  test_mu_pi_same_target_law.py
+  test_target_law_rule_frozen.py
+  test_target_no_outcome_selection.py
+  test_thresholds_unchanged.py
+  test_uair_not_hardcoded_unsafe.py
+
+以及上一轮实际 test suite 中其余测试。
+
+输出：
+
+  tests/pytest_r1e.xml
+  tests/pytest_full.xml
+  tests/TEST_SUMMARY.json
+  tests/TEST_SUMMARY.md
+
+TEST_SUMMARY 必须 machine-derived，
+禁止 hard-code passed count。
+
+================================================================================
+十七、必须增加 anti-post-hoc 审计
+================================================================================
+
+输出：
+
+  audit/ANTI_POSTHOC_AUDIT.md
+  audit/ANTI_POSTHOC_AUDIT.json
+
+逐项回答：
+
+1. 是否改 tau_cov？必须 false。
+2. 是否改 delta_cal？必须 false。
+3. 是否改 pi_safe q10 rule？必须 false。
+4. 是否扫 L？必须 false。
+5. 是否比较多个 predictor 后挑最好？必须 false。
+6. 是否使用 current R/O/U？必须 false。
+7. 是否使用 dataset name 做 predictor/Gate feature？必须 false。
+8. 是否根据 RMSE 选择 predictor/calibration？必须 false。
+9. Stage2 是否只有在预注册 bottleneck trigger 下运行？
+10. 是否运行 SAG？必须 false。
+11. 是否运行 5-seed？必须 false。
+12. 是否执行 synthetic stress？必须 false。
+13. 是否改 TARGET_LAW_RULE_V1？必须 false。
+14. 是否重写 R1d 原 artifacts？必须 false。
+
+任何关键项违反：
+
+  R1E_PROTOCOL_VIOLATION
+  STOP。
+
+================================================================================
+十八、最终 verdict：只能来自下列状态集合
+================================================================================
+
+最终 report 不允许自由发挥新的 PASS 名称。
+
+允许状态：
+
+A.
+  R1E_TARGET_FREEZE_FAILURE
+
+B.
+  R1E_PI_SAFE_FREEZE_FAILURE
+
+C.
+  R1E_EVIDENCE_REPAIR_FAILURE
+
+D.
+  NO_LEGAL_PREWINDOW_CONTEXT_FOR_R1E
+
+E.
+  DYNAMIC_COV_NOT_CALIBRATED
+
+F.
+  R1E_POINT_PREDICTOR_NONVACUITY_NOT_ACHIEVED
+
+G.
+  DYNAMIC_COV_NONVACUITY_NOT_ACHIEVED
+
+H.
+  R1E_DYNAMIC_COV_CLOSED_1SEED_DEVELOPMENT
+
+I.
+  R1E_PROTOCOL_VIOLATION
+
+如果 dynamic C_cov 成功，额外输出 unsafe re-audit substatus：
+
+  U_AIR_UNSAFE_CANDIDATE_RECONFIRMED
+
+或：
+
+  U_AIR_NO_LONGER_UNSAFE_UNDER_CORRECT_TARGET
+
+但 executive verdict 仍应保留 R1e certificate closure 状态，
+不要把 unsafe substatus 当作 certificate status。
+
+================================================================================
+十九、下一轮 readiness flag
+================================================================================
+
+生成：
+
+  report/NEXT_ROUND_READINESS.json
+
+只允许：
+
+1.
+  READY_FOR_SAG_1SEED_CONTRAST_AUDIT
+
+条件：
+
+  - dynamic C_cov closed；
+  - no leakage；
+  - tests PASS；
+  - legal natural safe/unsafe contrast 已确认；
+  - thresholds unchanged。
+
+2.
+  READY_FOR_NATURAL_UNSAFE_BLOCK_PROTOCOL
+
+条件：
+
+  - dynamic C_cov closed；
+  - U-Air no longer naturally unsafe；
+  - natural support block candidates 已生成。
+
+3.
+  READY_FOR_PREREGISTERED_SINGLE_STRESS_DESIGN_ONLY
+
+条件：
+
+  - dynamic C_cov closed；
+  - 无自然 unsafe block；
+  - 只生成了单一 stress plan；
+  - 本轮未执行 stress。
+
+4.
+  NOT_READY_DYNAMIC_COV
+
+用于所有 certificate 未封口状态。
+
+无论哪个 flag：
+
+  five_seed_started = false
+  sag_started = false
+
+================================================================================
+二十、最终输出目录
+================================================================================
+
+必须整理为：
+
+outputs/sag_g1_r1e/
+  provenance/
+    R1D_INPUT_SHA256SUMS.txt
+    R1D_INPUT_MANIFEST.json
+    R1E_FREEZE_AUDIT.json
+    R1E_FREEZE_AUDIT.md
+
+  configs/
+    thresholds_frozen_copy.json
+    PI_SAFE_RULE_FROZEN.json
+    PI_SAFE_PROVENANCE_AUDIT.md
+    PI_SAFE_R1D_R1E_COMPATIBILITY.csv
+    r1e_dynamic_cov_config.json
+    source_hashes.json
+
+  diagnostic/
+    EVIDENCE_ZERO_NAN_REPAIR_AUDIT.md
+    R1D_NONVACUITY_ATTRIBUTION_BY_WINDOW.csv
+    R1D_NONVACUITY_ATTRIBUTION_SUMMARY.csv
+    R1D_NONVACUITY_ATTRIBUTION.md
+    R1E_WINDOW_CONTEXT_PROVENANCE.md
+
+  dynamic_cov/
+    stage1_global/
+      DYNAMIC_COV_PREDICTION.csv
+      DYNAMIC_COV_CALIBRATION.csv
+      DYNAMIC_COV_COVERAGE_BY_TIME.csv
+      C_COV_DYNAMIC_WINDOW.csv
+      NONVACUITY_ATTRIBUTION_BY_WINDOW.csv
+      NONVACUITY_SUMMARY.csv
+      STAGE1_VERDICT.json
+
+    stage2_context_cal/   # only if protocol trigger allows
+      DYNAMIC_COV_PREDICTION.csv
+      DYNAMIC_COV_CALIBRATION.csv
+      DYNAMIC_COV_COVERAGE_BY_TIME.csv
+      C_COV_DYNAMIC_WINDOW.csv
+      NONVACUITY_ATTRIBUTION_BY_WINDOW.csv
+      NONVACUITY_SUMMARY.csv
+      STAGE2_VERDICT.json
+
+  comparison/
+    R1D_VS_R1E_DYNAMIC_COV.csv
+    R1D_VS_R1E_DYNAMIC_COV.md
+
+  unsafe_audit/
+    ALWAYS_D_VS_NO_D_1SEED.csv                # conditional
+    U_AIR_UNSAFE_REAUDIT.md                   # conditional
+    U_AIR_UNSAFE_REAUDIT.json                 # conditional
+    NATURAL_UNSAFE_BLOCK_CANDIDATES.csv       # conditional
+    PRE_REGISTERED_SUPPORT_STRESS_PLAN.md      # conditional, plan only
+
+  figures/
+    R1D_C_REAL_C_POINT_C_LCB_BY_TIME.png
+    R1D_Q_VS_PREDICTION_SCALE.png
+    R1D_POINT_TO_LCB_SHRINKAGE.png
+    R1D_VS_R1E_C_COV_BY_TIME.png
+
+  tests/
+    pytest_r1e.xml
+    pytest_full.xml
+    TEST_SUMMARY.json
+    TEST_SUMMARY.md
+
+  audit/
+    ANTI_POSTHOC_AUDIT.md
+    ANTI_POSTHOC_AUDIT.json
+
+  report/
+    R1E_VERDICT.json
+    NEXT_ROUND_READINESS.json
+    SAG_G1_R1E_DYNAMIC_COV_NONVACUITY_REPAIR_REPORT.md
+
+  MANIFEST.json
+  SHA256SUMS.txt
+
+最终再打包：
+
+  TO_SUBMIT_SAG_G1_R1E_DYNAMIC_COV_NONVACUITY_REPAIR_AUDIT.zip
+
+================================================================================
+二十一、r1e_dynamic_cov_config.json 必须明确记录 protocol
+================================================================================
+
+至少记录：
+
+  round = SAG_G1_R1E
+  seed = 30001
+  datasets = [sensorscope, uair]
+  target_rule_id = TARGET_LAW_RULE_V1
+  target_rule_hash
+  pi_safe_rule_id = PI_SAFE_RULE_V1
+  pi_safe_quantile = 0.10
+  delta = 0.05
+  lookback_L = 8
+  min_calib = 8
+  predictor = TOD_CONDITIONED_ROLLING_V1
+  stage1_calibration = WINDOW_GLOBAL_MAX_RESIDUAL_V1
+  stage2_calibration = TOD_BLOCK_CONDITIONED_MAX_RESIDUAL_V1
+  stage2_trigger = GLOBAL_CALIBRATION_DOMINATES_NONVACUITY
+  joint_coverage_stop = 0.90
+  zero_fraction_stop = 0.90
+  sag_allowed = false
+  five_seed_allowed = false
+  stress_execution_allowed = false
+
+注意：
+
+这些记录是 protocol manifest，
+不能跑完后根据结果再修改。
+
+================================================================================
+二十二、最终报告必须回答的 36 个问题
+================================================================================
+
+生成：
+
+  report/SAG_G1_R1E_DYNAMIC_COV_NONVACUITY_REPAIR_REPORT.md
+
+至少逐项回答：
+
+1. R1d executive verdict 是什么？
+2. R1d input hashes 是否冻结？
+3. TARGET_LAW_RULE_V1 hash 是否完全一致？
+4. threshold JSON 是否完全一致？
+5. pi_safe 是否正式按 q10 rule freeze？
+6. R1d vs R1e pi_safe diff 是多少？
+7. zero-certified-mass->NaN bug 是否修复？
+8. 修复是否只影响 evidence serialization，而不改算法？
+9. SensorScope R1d mean C_real_support？
+10. U-Air R1d mean C_real_support？
+11. SensorScope R1d mean C_point？
+12. U-Air R1d mean C_point？
+13. 两数据集 R1d point_zero_fraction？
+14. 两数据集 R1d formal C_cov zero fraction？
+15. q/pi_safe 的中位数？
+16. q/median_positive_hat 的中位数？
+17. R1d vacuity 主要来自 point predictor 还是 calibration penalty？
+18. TOD current context 是否严格来自 pre-window public schedule？
+19. 是否存在 current R/O/U leakage？
+20. R1e Stage1 joint coverage？
+21. R1e Stage1 C_cov zero fraction？
+22. R1e Stage1 point_zero_fraction？
+23. Stage1 是否已直接 closed？
+24. 若未 closed，Stage2 trigger 是否满足预注册条件？
+25. Stage2 是否按 protocol 运行，而不是 post-hoc 选择？
+26. 若 Stage2 运行，其 joint coverage？
+27. 若 Stage2 运行，其 C_cov zero fraction？
+28. coverage 是否随时间下滑？
+29. R1e 相对 R1d 是“更有信息且仍校准”还是仅仅“更激进”？
+30. dynamic C_cov 是否真正达到 1-seed development closure？
+31. 若 closed，Always-D vs No-D 是否运行？
+32. 正确 target 下 U-Air 是否仍自然 unsafe？
+33. 若不 unsafe，是否只生成 natural block candidates / stress plan，而未执行 stress？
+34. R1e + full regression tests 是否全部 PASS？
+35. 本轮是否运行 SAG？答案必须 NO。
+36. 本轮是否启动 5-seed？答案必须 NO。
+
+================================================================================
+二十三、科学解释边界
+================================================================================
+
+如果成功：
+
+允许写：
+
+  “Under the frozen target semantics and a pre-window public-context
+   predictor, the 1-seed development audit obtains an empirically calibrated
+   and non-vacuous dynamic C_cov certificate.”
+
+不允许写：
+
+  “RAVEN-MCS is validated over 5 seeds.”
+
+不允许写：
+
+  “95% simultaneous coverage is theoretically proven”
+
+除非论文理论确实给出了对应严格证明。
+
+本轮 empirical joint-window coverage 只是 development calibration audit。
+
+如果失败：
+
+必须如实输出：
+
+  - predictor non-vacuity failure；
+  或
+  - calibration failure；
+  或
+  - certificate remains too conservative。
+
+不得继续换模型直到跑出正结果。
+
+================================================================================
+二十四、推荐 Cursor 执行顺序
+================================================================================
+
+STEP 0
+  读取 authority + R1d artifacts。
+
+STEP 1
+  建立 immutable hashes / manifest。
+
+STEP 2
+  验证 TARGET_LAW_RULE_V1 与 thresholds freeze。
+  fail -> STOP。
+
+STEP 3
+  修 zero-certified-mass serialization bug + unit test。
+
+STEP 4
+  正式 freeze PI_SAFE_RULE_V1(q10) provenance。
+  compatibility fail -> STOP。
+
+STEP 5
+  不改 predictor，先从 R1d artifacts 生成四层 non-vacuity attribution。
+
+STEP 6
+  生成三张 R1d mechanism diagnostic figures。
+
+STEP 7
+  查清 pre-window public window context provenance。
+  若无法合法获得 -> STOP。
+
+STEP 8
+  实现唯一 TOD_CONDITIONED_ROLLING_V1。
+
+STEP 9
+  Stage1：TOD predictor + 原 global max-residual calibration。
+
+STEP 10
+  按原 status rule 判定：
+    NOT_CALIBRATED -> STOP；
+    CALIBRATED+NONVACUOUS -> skip Stage2；
+    TOO_CONSERVATIVE -> 做 bottleneck attribution。
+
+STEP 11
+  如果 point_zero_fraction >= 0.90：
+    STOP，不换第二 predictor。
+
+STEP 12
+  只有 global calibration bottleneck trigger 成立时，
+  实现 Stage2 TOD-block-conditioned max-residual。
+
+STEP 13
+  Stage2 重新做 coverage + non-vacuity audit。
+
+STEP 14
+  生成 R1d vs R1e apples-to-apples comparison。
+
+STEP 15
+  只有 dynamic C_cov closed 时：
+    跑 Always-Design vs No-Design，仍不跑 SAG。
+
+STEP 16
+  若 U-Air 不再 unsafe：
+    只生成 natural unsafe candidate；
+    无 candidate 才生成单一预注册 stress plan；
+    不执行 stress。
+
+STEP 17
+  跑 R1e tests + full regression tests。
+
+STEP 18
+  生成 anti-post-hoc audit。
+
+STEP 19
+  生成 R1E_VERDICT + NEXT_ROUND_READINESS。
+
+STEP 20
+  生成最终报告、MANIFEST、SHA256SUMS、提交 ZIP。
+
+STEP 21
+  STOP。
+
+绝对不要自动进入：
+
+  SAG 1-seed
+  5-seed
+  stress experiment
+
+================================================================================
+二十五、最关键的禁止事项（再次强调）
+================================================================================
+
+禁止：
+
+- 修改 target law；
+- 修改 threshold；
+- 修改 pi_safe quantile；
+- 修改 delta；
+- 扫 lookback；
+- 扫 predictor；
+- 用 current opportunity 作为 predictor input；
+- 从 current EventTrace event existence 反推 pre-window context；
+- 用 dataset name 做 Gate/predictor feature；
+- 用 RMSE 选择 certificate；
+- 把 realized support diagnostic 塞回 Gate；
+- 用 pair-level iid calibration 假装 window-independent；
+- 手工缩小 q；
+- 删除失败版本；
+- 只报告最好 stage；
+- 运行 SAG；
+- 运行 5-seed；
+- 执行 stress；
+- 因结果“不漂亮”继续迭代多个模型。
+
+本轮的科学目标不是“把 C_cov 做成正数”，
+而是判断：
+
+  在 frozen deployment target、合法 F_{r-} 信息和固定 calibration confidence 下，
+  是否存在一个简单、预注册、可解释的 current-window support certificate，
+  它既不失校准，也不是 vacuous。
+
+================================================================================
+END OF RAVEN-MCS SAG-G1-R1e CURSOR INSTRUCTION v1.0
+================================================================================

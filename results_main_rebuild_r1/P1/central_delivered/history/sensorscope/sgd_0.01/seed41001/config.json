@@ -1,0 +1,16 @@
+{
+  "dataset": "sensorscope",
+  "seed": 41001,
+  "model": "history",
+  "optimizer": "sgd",
+  "lr": 0.01,
+  "scaler_mean": 0.033422583123437224,
+  "scaler_std": 1.0750082475077052,
+  "trace_hash": "7b7f778beaf7bb0150ae27a9bdb4609bb3f479aa0a707f2dfafa17791f4f37bc",
+  "train_unique": 398,
+  "information": "train_delivered_only",
+  "budget": 200,
+  "train_input_meaning": "observed client measurements",
+  "validation_input_meaning": "frozen target labels",
+  "test_access": false
+}

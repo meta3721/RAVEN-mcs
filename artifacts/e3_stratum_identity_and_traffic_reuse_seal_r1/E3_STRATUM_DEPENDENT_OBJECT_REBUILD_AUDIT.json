@@ -1,0 +1,39 @@
+{
+  "no_formal_training": true,
+  "no_model_checkpoint_touched": true,
+  "objects": [
+    {
+      "mapping_only": true,
+      "new_hash": "a6705de35e9d72aed2a70e8263316c04cef9abc73289940fd48ad1ed9778e46f",
+      "no_training": true,
+      "object": "opportunity_stratum_traffic",
+      "old_hash": "27636a79644f88ad158175da216687e606e298cab403ea06e55f7318bc9718e9",
+      "reason_changed": "station-level 344 → frozen 4-region ≤32"
+    },
+    {
+      "mapping_only": true,
+      "new_hash": "8ec13978857895562af07879f69e7112a1ac02eef41770aae9b02d8d932d8271",
+      "no_training": true,
+      "object": "pi_tar_k_s_traffic",
+      "old_hash": "8b2d671b571a7cd5ed9e4f8acb6f445ae6f2fb651278e062deae5743b648e116",
+      "reason_changed": "reindexed onto region×time×day with multi-client lambda_{k|s}"
+    },
+    {
+      "mapping_only": true,
+      "new_hash": "client×region-stratum (sealed)",
+      "no_training": true,
+      "object": "Delta_c_s_support",
+      "old_hash": "client×station-stratum (pre-seal Traffic)",
+      "reason_changed": "s(i) identity seal"
+    },
+    {
+      "mapping_only": true,
+      "new_hash": "indexed by sealed region-level s for Traffic",
+      "no_training": true,
+      "object": "atomic_rho_s_index",
+      "old_hash": "indexed by station-level s",
+      "reason_changed": "s(i) identity seal"
+    }
+  ],
+  "status": "REBUILT_MAPPING_ONLY"
+}

@@ -1,0 +1,12 @@
+method,status,local_optimizer_steps,n_local_updates,n_delivered_updates,aggregation_invoked,P2_invoked,checkpoint_written,metric_computation_invoked,placeholder_fields,RMSE_mu_is_none,solver_status,Delta_pair,no_performance_claim
+fedavg_window,REAL_PATH_EXECUTED,2,1,1,True,False,True,True,[],False,OK,2.0,True
+fedasync_window,REAL_PATH_EXECUTED,2,1,1,True,False,True,True,[],False,OK,2.0,True
+flamf_timealign_adapted,REAL_PATH_EXECUTED,2,1,1,True,False,True,True,[],False,OK,2.0,True
+local_hajek,REAL_PATH_EXECUTED,2,1,1,True,False,True,True,[],False,OK,2.0,True
+twostage_hajek,REAL_PATH_EXECUTED,2,1,1,True,False,True,True,[],False,OK,2.0,True
+inst_cal,REAL_PATH_EXECUTED,2,1,1,True,True,True,True,[],False,OK,2.0,True
+debt_cal,REAL_PATH_EXECUTED,2,1,1,True,True,True,True,[],False,OK,2.0,True
+raven,REAL_PATH_EXECUTED,2,1,1,True,True,True,True,[],False,OK,2.0,True
+raven_simoracle,REAL_PATH_EXECUTED,2,1,1,True,True,True,True,[],False,OK,2.0,True
+central_all,REAL_PATH_EXECUTED,20,8,8,False,False,True,True,[],False,CENTRAL_NO_P2,0.0,True
+central_delivered,REAL_PATH_EXECUTED,20,1,1,False,False,True,True,[],False,CENTRAL_NO_P2,0.0,True

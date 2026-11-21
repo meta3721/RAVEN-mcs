@@ -1,0 +1,31 @@
+{
+  "A_GRID": [
+    1.0,
+    0.8,
+    0.6,
+    0.4,
+    0.2
+  ],
+  "alpha": 0.05,
+  "assumption_A": "local_score_exchangeability_within_certified_stable_regime",
+  "certification_object": "aggregate_realized_coverage_C_t",
+  "clip_k_to_n_forbidden": true,
+  "corollary_1": "availability_induced_barrier",
+  "corollary_2": "false_safe_gate_bound",
+  "formal_cov_mode": "aggregate_stable_regime",
+  "n_min": 19,
+  "next_experiment": "R1m_aggregate_certificate_implementation",
+  "optional_bounded_drift_extension": false,
+  "pairwise_formal_core": false,
+  "proposition_1": "positive_pairwise_lcb_barrier",
+  "proposition_2": "arbitrary_drift_applicability_boundary",
+  "sag_after": "only_if_R1m_passes",
+  "states": [
+    "WARMUP",
+    "CERTIFIED",
+    "RESET"
+  ],
+  "tau_cov": 0.05,
+  "theorem_1": "stable_regime_aggregate_lower_coverage",
+  "warmup_n_equals_8_forbidden_for_nominal_95": true
+}

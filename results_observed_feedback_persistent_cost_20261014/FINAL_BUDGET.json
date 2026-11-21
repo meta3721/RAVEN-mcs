@@ -1,0 +1,40 @@
+{
+  "charged_CPU": 35.1875,
+  "CPU_limit": 90,
+  "measured_root_CPU": 5.1875,
+  "conservative_read_edit_delivery_CPU": 30,
+  "unmetered_actual_CPU": "UNKNOWN; within charged reserve",
+  "prior_charged_CPU": 4730.046875,
+  "cumulative_charged_CPU": 4765.234375,
+  "nominal_5hour_remaining_CPU": 13234.765625,
+  "historical_actual_gap": "UNKNOWN",
+  "wall_invocations": 6.545970099999977,
+  "charges": [
+    {
+      "label": "charge_evidence_audit",
+      "charged_CPU": 1.40625,
+      "job_CPU": 1.25,
+      "driver_CPU": 0.15625,
+      "wall": 1.879182700000456,
+      "exit": 0,
+      "audit": true,
+      "limit_reason": null
+    },
+    {
+      "label": "charge_persistent_A_B",
+      "charged_CPU": 3.78125,
+      "job_CPU": 3.5,
+      "driver_CPU": 0.28125,
+      "wall": 4.666787399999521,
+      "exit": 0,
+      "audit": true,
+      "limit_reason": null
+    }
+  ],
+  "SGD": 0,
+  "GPU": 0,
+  "q_fit": 0,
+  "real_random_trajectories": 0,
+  "control_replay": 0,
+  "state": "WAITING_USER_REVIEW"
+}

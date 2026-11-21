@@ -1,0 +1,194 @@
+{
+  "limit_cpu_seconds": 3600,
+  "interactive_allowance_seconds": 120,
+  "charged_to": "original_5_CPU_hour_calibration_application",
+  "runs": [
+    {
+      "command": [
+        ".venv_new/Scripts/python.exe",
+        "-c",
+        "import pandas as pd; from pathlib import Path; import json; d=Path('results_main_rebuild_r1/data/traffic'); a=pd.read_parquet(d/'atomic_units.parquet'); c=pd.read_parquet(d/'client_measurements.parquet'); print(a.columns.tolist(),len(a),a['split'].value_counts().to_dict()); print(c.columns.tolist(),len(c),c['client_id'].nunique()); print(a[['unit_id','spatial_id','opportunity_stratum','target_group','timestamp']].head().to_string()); print(c.head().to_string())"
+      ],
+      "returncode": 1,
+      "process_tree_cpu_seconds": 1.078125,
+      "monitor_cpu_seconds": 0.015625,
+      "wall_seconds": 1.27914549999997,
+      "limit_reason": null,
+      "log": "C:\\Cursor\\raven.mcs\\results_calibration_first_20261013\\input-audit.log"
+    },
+    {
+      "command": [
+        ".venv_new/Scripts/python.exe",
+        "scripts/audit_calibration_first.py"
+      ],
+      "returncode": 0,
+      "process_tree_cpu_seconds": 63.515625,
+      "monitor_cpu_seconds": 0.3125,
+      "wall_seconds": 72.6828314,
+      "limit_reason": null,
+      "log": "C:\\Cursor\\raven.mcs\\results_calibration_first_20261013\\seed-public-audit.log"
+    },
+    {
+      "command": [
+        ".venv_new/Scripts/python.exe",
+        "scripts/review_first_seed_audit.py"
+      ],
+      "returncode": 0,
+      "process_tree_cpu_seconds": 0.046875,
+      "monitor_cpu_seconds": 0.015625,
+      "wall_seconds": 0.11123699999996006,
+      "limit_reason": null,
+      "log": "C:\\Cursor\\raven.mcs\\results_calibration_first_20261013\\seed-review.log"
+    },
+    {
+      "command": [
+        ".venv_new/Scripts/python.exe",
+        "-m",
+        "pytest",
+        "tests/control_b0",
+        "-ra",
+        "--junitxml=results_calibration_first_20261013/new-path-tests.xml"
+      ],
+      "returncode": 1,
+      "process_tree_cpu_seconds": 23.46875,
+      "monitor_cpu_seconds": 0.125,
+      "wall_seconds": 24.87749890000009,
+      "limit_reason": null,
+      "log": "C:\\Cursor\\raven.mcs\\results_calibration_first_20261013\\new-path-tests.log"
+    },
+    {
+      "command": [
+        ".venv_new/Scripts/python.exe",
+        "-m",
+        "pytest",
+        "tests/control_b0",
+        "-ra",
+        "--junitxml=results_calibration_first_20261013/new-path-tests-fixed-temp.xml",
+        "--basetemp=results_calibration_first_20261013/pytest-temp"
+      ],
+      "returncode": 0,
+      "process_tree_cpu_seconds": 15.09375,
+      "monitor_cpu_seconds": 0.0625,
+      "wall_seconds": 15.206891199999973,
+      "limit_reason": null,
+      "log": "C:\\Cursor\\raven.mcs\\results_calibration_first_20261013\\new-path-tests-fixed-temp.log"
+    },
+    {
+      "command": [
+        ".venv_new/Scripts/python.exe",
+        "scripts/run_calibration_first.py",
+        "--mode",
+        "calibration_only",
+        "--out",
+        "results_calibration_first_20261013"
+      ],
+      "returncode": 1,
+      "process_tree_cpu_seconds": 5.234375,
+      "monitor_cpu_seconds": 0.03125,
+      "wall_seconds": 5.428365499999927,
+      "limit_reason": null,
+      "log": "C:\\Cursor\\raven.mcs\\results_calibration_first_20261013\\first-acquisition.log"
+    },
+    {
+      "command": [
+        ".venv_new/Scripts/python.exe",
+        "-c",
+        "from pathlib import Path; from raven_mcs.experiments.calibration_first import load_inputs; i=load_inputs(Path.cwd(),Path('results_calibration_first_20261013')); print('INPUT_VALID',len(i.clients),len(i.groups),len(i.pi),sum(i.mu),min(i.pi.values()),i.target_id)"
+      ],
+      "returncode": 0,
+      "process_tree_cpu_seconds": 5.375,
+      "monitor_cpu_seconds": 0.0,
+      "wall_seconds": 5.54883099999995,
+      "limit_reason": null,
+      "log": "C:\\Cursor\\raven.mcs\\results_calibration_first_20261013\\corrected-input-check.log"
+    },
+    {
+      "command": [
+        ".venv_new/Scripts/python.exe",
+        "scripts/run_calibration_first.py",
+        "--mode",
+        "calibration_only",
+        "--out",
+        "results_calibration_first_20261013"
+      ],
+      "returncode": 1,
+      "process_tree_cpu_seconds": 23.203125,
+      "monitor_cpu_seconds": 0.234375,
+      "wall_seconds": 24.603565799999956,
+      "limit_reason": null,
+      "log": "C:\\Cursor\\raven.mcs\\results_calibration_first_20261013\\first-acquisition-start.log"
+    },
+    {
+      "command": [
+        ".venv_new/Scripts/python.exe",
+        "scripts/check_first_prefix_planner.py"
+      ],
+      "returncode": 0,
+      "process_tree_cpu_seconds": 17.28125,
+      "monitor_cpu_seconds": 0.078125,
+      "wall_seconds": 17.673181599999907,
+      "limit_reason": null,
+      "log": "C:\\Cursor\\raven.mcs\\results_calibration_first_20261013\\prefix-planner-check.log"
+    },
+    {
+      "command": [
+        ".venv_new/Scripts/python.exe",
+        "scripts/resume_calibration_first.py",
+        "--mode",
+        "calibration_only",
+        "--out",
+        "results_calibration_first_20261013"
+      ],
+      "returncode": 0,
+      "process_tree_cpu_seconds": 0.0,
+      "monitor_cpu_seconds": 6.3125,
+      "wall_seconds": 1374.3390967999999,
+      "limit_reason": null,
+      "log": "C:\\Cursor\\raven.mcs\\results_calibration_first_20261013\\resume-first-same-spec.log"
+    },
+    {
+      "command": [
+        ".venv_new/Scripts/python.exe",
+        "scripts/summarize_calibration_first.py"
+      ],
+      "returncode": 0,
+      "process_tree_cpu_seconds": 6.90625,
+      "monitor_cpu_seconds": 0.015625,
+      "wall_seconds": 7.27061859999958,
+      "limit_reason": null,
+      "log": "C:\\Cursor\\raven.mcs\\results_calibration_first_20261013\\final-evidence-check.log"
+    },
+    {
+      "command": [
+        ".venv_new/Scripts/python.exe",
+        "-c",
+        "import ast,sys; from pathlib import Path; import torch,numpy,cvxpy; paths=list(Path('src/raven_mcs').rglob('*.py'))+list(Path('tests/control_b0').glob('*.py'))+[Path('scripts')/s for s in ['calibration_budget.py','audit_calibration_first.py','review_first_seed_audit.py','run_calibration_first.py','resume_calibration_first.py','check_first_prefix_planner.py','summarize_calibration_first.py','reconcile_first_budget.py']]; [ast.parse(p.read_text(encoding='utf-8'),filename=str(p)) for p in paths]; print('SYNTAX_OK',len(paths),sys.version,torch.__version__,numpy.__version__,cvxpy.__version__)"
+      ],
+      "returncode": 0,
+      "process_tree_cpu_seconds": 6.375,
+      "monitor_cpu_seconds": 0.03125,
+      "wall_seconds": 6.4780295999999,
+      "limit_reason": null,
+      "log": "C:\\Cursor\\raven.mcs\\results_calibration_first_20261013\\final-syntax-environment.log"
+    }
+  ],
+  "gpu": 0,
+  "max_local_sgd_steps": 5000,
+  "authorized_seed": 43001,
+  "target_T": 100,
+  "remaining_seven_authorized": false,
+  "B1_authorized": false,
+  "formal_authorized": false,
+  "supplemental_charges": [
+    {
+      "reason": "raw outer Job=0 after self-owned inner Job; substitute persisted inner measurement, preserve raw record",
+      "source": "FIRST_ACQUISITION_RESULT.json/resumed_segment_process_tree_cpu_seconds",
+      "measured_cpu_seconds": 1345.828125,
+      "unmeasured_startup_tail_reserve_seconds": 120.0,
+      "charged_cpu_seconds": 1465.828125,
+      "actual_full_lifecycle_CPU": "NOT_EXACTLY_RECONSTRUCTABLE",
+      "budget_gate": "ACCOUNTING_BOUNDARY_PENDING_REVIEW",
+      "reserve_is_not_actual_CPU": true
+    }
+  ]
+}

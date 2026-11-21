@@ -1,0 +1,395 @@
+{
+  "baseline_run_count": 24,
+  "illegal_count": 0,
+  "raven_policy_reference": {
+    "uses_debt": true,
+    "uses_instant_calibration": true
+  },
+  "rows": [
+    {
+      "config_fallback": false,
+      "method": "fedavg_window",
+      "policy": {
+        "uses_debt": false,
+        "uses_design_ratio": false,
+        "uses_instant_calibration": false,
+        "uses_observation_ipw": false,
+        "uses_staleness_penalty": false,
+        "uses_usable_ipw": false
+      },
+      "reads_raven_only_information": false,
+      "same_eventtrace": true,
+      "scenario": "balanced",
+      "status": "PASS"
+    },
+    {
+      "config_fallback": false,
+      "method": "fedasync_window",
+      "policy": {
+        "uses_debt": false,
+        "uses_design_ratio": false,
+        "uses_instant_calibration": false,
+        "uses_observation_ipw": false,
+        "uses_staleness_penalty": true,
+        "uses_usable_ipw": false
+      },
+      "reads_raven_only_information": false,
+      "same_eventtrace": true,
+      "scenario": "balanced",
+      "status": "PASS"
+    },
+    {
+      "config_fallback": false,
+      "method": "flamf_timealign_adapted",
+      "policy": {
+        "uses_debt": false,
+        "uses_design_ratio": false,
+        "uses_instant_calibration": false,
+        "uses_observation_ipw": false,
+        "uses_staleness_penalty": false,
+        "uses_usable_ipw": false
+      },
+      "reads_raven_only_information": false,
+      "same_eventtrace": true,
+      "scenario": "balanced",
+      "status": "PASS"
+    },
+    {
+      "config_fallback": false,
+      "method": "twostage_hajek",
+      "policy": {
+        "uses_debt": false,
+        "uses_design_ratio": true,
+        "uses_instant_calibration": false,
+        "uses_observation_ipw": true,
+        "uses_staleness_penalty": false,
+        "uses_usable_ipw": true
+      },
+      "reads_raven_only_information": false,
+      "same_eventtrace": true,
+      "scenario": "balanced",
+      "status": "PASS"
+    },
+    {
+      "config_fallback": false,
+      "method": "fedavg_window",
+      "policy": {
+        "uses_debt": false,
+        "uses_design_ratio": false,
+        "uses_instant_calibration": false,
+        "uses_observation_ipw": false,
+        "uses_staleness_penalty": false,
+        "uses_usable_ipw": false
+      },
+      "reads_raven_only_information": false,
+      "same_eventtrace": true,
+      "scenario": "opportunity_only",
+      "status": "PASS"
+    },
+    {
+      "config_fallback": false,
+      "method": "fedasync_window",
+      "policy": {
+        "uses_debt": false,
+        "uses_design_ratio": false,
+        "uses_instant_calibration": false,
+        "uses_observation_ipw": false,
+        "uses_staleness_penalty": true,
+        "uses_usable_ipw": false
+      },
+      "reads_raven_only_information": false,
+      "same_eventtrace": true,
+      "scenario": "opportunity_only",
+      "status": "PASS"
+    },
+    {
+      "config_fallback": false,
+      "method": "flamf_timealign_adapted",
+      "policy": {
+        "uses_debt": false,
+        "uses_design_ratio": false,
+        "uses_instant_calibration": false,
+        "uses_observation_ipw": false,
+        "uses_staleness_penalty": false,
+        "uses_usable_ipw": false
+      },
+      "reads_raven_only_information": false,
+      "same_eventtrace": true,
+      "scenario": "opportunity_only",
+      "status": "PASS"
+    },
+    {
+      "config_fallback": false,
+      "method": "twostage_hajek",
+      "policy": {
+        "uses_debt": false,
+        "uses_design_ratio": true,
+        "uses_instant_calibration": false,
+        "uses_observation_ipw": true,
+        "uses_staleness_penalty": false,
+        "uses_usable_ipw": true
+      },
+      "reads_raven_only_information": false,
+      "same_eventtrace": true,
+      "scenario": "opportunity_only",
+      "status": "PASS"
+    },
+    {
+      "config_fallback": false,
+      "method": "fedavg_window",
+      "policy": {
+        "uses_debt": false,
+        "uses_design_ratio": false,
+        "uses_instant_calibration": false,
+        "uses_observation_ipw": false,
+        "uses_staleness_penalty": false,
+        "uses_usable_ipw": false
+      },
+      "reads_raven_only_information": false,
+      "same_eventtrace": true,
+      "scenario": "observation_only",
+      "status": "PASS"
+    },
+    {
+      "config_fallback": false,
+      "method": "fedasync_window",
+      "policy": {
+        "uses_debt": false,
+        "uses_design_ratio": false,
+        "uses_instant_calibration": false,
+        "uses_observation_ipw": false,
+        "uses_staleness_penalty": true,
+        "uses_usable_ipw": false
+      },
+      "reads_raven_only_information": false,
+      "same_eventtrace": true,
+      "scenario": "observation_only",
+      "status": "PASS"
+    },
+    {
+      "config_fallback": false,
+      "method": "flamf_timealign_adapted",
+      "policy": {
+        "uses_debt": false,
+        "uses_design_ratio": false,
+        "uses_instant_calibration": false,
+        "uses_observation_ipw": false,
+        "uses_staleness_penalty": false,
+        "uses_usable_ipw": false
+      },
+      "reads_raven_only_information": false,
+      "same_eventtrace": true,
+      "scenario": "observation_only",
+      "status": "PASS"
+    },
+    {
+      "config_fallback": false,
+      "method": "twostage_hajek",
+      "policy": {
+        "uses_debt": false,
+        "uses_design_ratio": true,
+        "uses_instant_calibration": false,
+        "uses_observation_ipw": true,
+        "uses_staleness_penalty": false,
+        "uses_usable_ipw": true
+      },
+      "reads_raven_only_information": false,
+      "same_eventtrace": true,
+      "scenario": "observation_only",
+      "status": "PASS"
+    },
+    {
+      "config_fallback": false,
+      "method": "fedavg_window",
+      "policy": {
+        "uses_debt": false,
+        "uses_design_ratio": false,
+        "uses_instant_calibration": false,
+        "uses_observation_ipw": false,
+        "uses_staleness_penalty": false,
+        "uses_usable_ipw": false
+      },
+      "reads_raven_only_information": false,
+      "same_eventtrace": true,
+      "scenario": "usable_only",
+      "status": "PASS"
+    },
+    {
+      "config_fallback": false,
+      "method": "fedasync_window",
+      "policy": {
+        "uses_debt": false,
+        "uses_design_ratio": false,
+        "uses_instant_calibration": false,
+        "uses_observation_ipw": false,
+        "uses_staleness_penalty": true,
+        "uses_usable_ipw": false
+      },
+      "reads_raven_only_information": false,
+      "same_eventtrace": true,
+      "scenario": "usable_only",
+      "status": "PASS"
+    },
+    {
+      "config_fallback": false,
+      "method": "flamf_timealign_adapted",
+      "policy": {
+        "uses_debt": false,
+        "uses_design_ratio": false,
+        "uses_instant_calibration": false,
+        "uses_observation_ipw": false,
+        "uses_staleness_penalty": false,
+        "uses_usable_ipw": false
+      },
+      "reads_raven_only_information": false,
+      "same_eventtrace": true,
+      "scenario": "usable_only",
+      "status": "PASS"
+    },
+    {
+      "config_fallback": false,
+      "method": "twostage_hajek",
+      "policy": {
+        "uses_debt": false,
+        "uses_design_ratio": true,
+        "uses_instant_calibration": false,
+        "uses_observation_ipw": true,
+        "uses_staleness_penalty": false,
+        "uses_usable_ipw": true
+      },
+      "reads_raven_only_information": false,
+      "same_eventtrace": true,
+      "scenario": "usable_only",
+      "status": "PASS"
+    },
+    {
+      "config_fallback": false,
+      "method": "fedavg_window",
+      "policy": {
+        "uses_debt": false,
+        "uses_design_ratio": false,
+        "uses_instant_calibration": false,
+        "uses_observation_ipw": false,
+        "uses_staleness_penalty": false,
+        "uses_usable_ipw": false
+      },
+      "reads_raven_only_information": false,
+      "same_eventtrace": true,
+      "scenario": "complete_aligned",
+      "status": "PASS"
+    },
+    {
+      "config_fallback": false,
+      "method": "fedasync_window",
+      "policy": {
+        "uses_debt": false,
+        "uses_design_ratio": false,
+        "uses_instant_calibration": false,
+        "uses_observation_ipw": false,
+        "uses_staleness_penalty": true,
+        "uses_usable_ipw": false
+      },
+      "reads_raven_only_information": false,
+      "same_eventtrace": true,
+      "scenario": "complete_aligned",
+      "status": "PASS"
+    },
+    {
+      "config_fallback": false,
+      "method": "flamf_timealign_adapted",
+      "policy": {
+        "uses_debt": false,
+        "uses_design_ratio": false,
+        "uses_instant_calibration": false,
+        "uses_observation_ipw": false,
+        "uses_staleness_penalty": false,
+        "uses_usable_ipw": false
+      },
+      "reads_raven_only_information": false,
+      "same_eventtrace": true,
+      "scenario": "complete_aligned",
+      "status": "PASS"
+    },
+    {
+      "config_fallback": false,
+      "method": "twostage_hajek",
+      "policy": {
+        "uses_debt": false,
+        "uses_design_ratio": true,
+        "uses_instant_calibration": false,
+        "uses_observation_ipw": true,
+        "uses_staleness_penalty": false,
+        "uses_usable_ipw": true
+      },
+      "reads_raven_only_information": false,
+      "same_eventtrace": true,
+      "scenario": "complete_aligned",
+      "status": "PASS"
+    },
+    {
+      "config_fallback": false,
+      "method": "fedavg_window",
+      "policy": {
+        "uses_debt": false,
+        "uses_design_ratio": false,
+        "uses_instant_calibration": false,
+        "uses_observation_ipw": false,
+        "uses_staleness_penalty": false,
+        "uses_usable_ipw": false
+      },
+      "reads_raven_only_information": false,
+      "same_eventtrace": true,
+      "scenario": "complete_counteracting",
+      "status": "PASS"
+    },
+    {
+      "config_fallback": false,
+      "method": "fedasync_window",
+      "policy": {
+        "uses_debt": false,
+        "uses_design_ratio": false,
+        "uses_instant_calibration": false,
+        "uses_observation_ipw": false,
+        "uses_staleness_penalty": true,
+        "uses_usable_ipw": false
+      },
+      "reads_raven_only_information": false,
+      "same_eventtrace": true,
+      "scenario": "complete_counteracting",
+      "status": "PASS"
+    },
+    {
+      "config_fallback": false,
+      "method": "flamf_timealign_adapted",
+      "policy": {
+        "uses_debt": false,
+        "uses_design_ratio": false,
+        "uses_instant_calibration": false,
+        "uses_observation_ipw": false,
+        "uses_staleness_penalty": false,
+        "uses_usable_ipw": false
+      },
+      "reads_raven_only_information": false,
+      "same_eventtrace": true,
+      "scenario": "complete_counteracting",
+      "status": "PASS"
+    },
+    {
+      "config_fallback": false,
+      "method": "twostage_hajek",
+      "policy": {
+        "uses_debt": false,
+        "uses_design_ratio": true,
+        "uses_instant_calibration": false,
+        "uses_observation_ipw": true,
+        "uses_staleness_penalty": false,
+        "uses_usable_ipw": true
+      },
+      "reads_raven_only_information": false,
+      "same_eventtrace": true,
+      "scenario": "complete_counteracting",
+      "status": "PASS"
+    }
+  ],
+  "status": "PASS"
+}

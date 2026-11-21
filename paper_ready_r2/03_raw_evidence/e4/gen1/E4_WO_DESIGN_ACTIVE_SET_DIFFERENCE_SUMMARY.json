@@ -1,0 +1,127 @@
+{
+  "audit": {
+    "classifications": [
+      {
+        "any_difference": false,
+        "classification": "IDENTICAL_ACTIVE_SET",
+        "dataset": "sensorscope",
+        "explanation": "a_r_size matches raven on all windows",
+        "mean_a_r_size_diff_vs_raven": 0.0,
+        "method": "raven_wo_design",
+        "windows_equal": 2000,
+        "windows_expanded": 0,
+        "windows_shrunk": 0
+      },
+      {
+        "any_difference": false,
+        "classification": "IDENTICAL_ACTIVE_SET",
+        "dataset": "sensorscope",
+        "explanation": "a_r_size matches raven on all windows",
+        "mean_a_r_size_diff_vs_raven": 0.0,
+        "method": "raven_wo_obs",
+        "windows_equal": 2000,
+        "windows_expanded": 0,
+        "windows_shrunk": 0
+      },
+      {
+        "any_difference": false,
+        "classification": "IDENTICAL_ACTIVE_SET",
+        "dataset": "sensorscope",
+        "explanation": "a_r_size matches raven on all windows",
+        "mean_a_r_size_diff_vs_raven": 0.0,
+        "method": "raven_wo_use",
+        "windows_equal": 2000,
+        "windows_expanded": 0,
+        "windows_shrunk": 0
+      },
+      {
+        "any_difference": false,
+        "classification": "IDENTICAL_ACTIVE_SET",
+        "dataset": "sensorscope",
+        "explanation": "a_r_size matches raven on all windows",
+        "mean_a_r_size_diff_vs_raven": 0.0,
+        "method": "raven_wo_inst",
+        "windows_equal": 2000,
+        "windows_expanded": 0,
+        "windows_shrunk": 0
+      },
+      {
+        "any_difference": false,
+        "classification": "IDENTICAL_ACTIVE_SET",
+        "dataset": "sensorscope",
+        "explanation": "a_r_size matches raven on all windows",
+        "mean_a_r_size_diff_vs_raven": 0.0,
+        "method": "raven_wo_debt",
+        "windows_equal": 2000,
+        "windows_expanded": 0,
+        "windows_shrunk": 0
+      },
+      {
+        "any_difference": true,
+        "classification": "VALID_WEIGHT_SUPPORT_EFFECT",
+        "dataset": "uair",
+        "explanation": "uses_design_ratio=False forces zeta_hat=1 for all risk-set units. With positive observation weights this yields m_total>0 for clients that otherwise had zeta=0 (pi_tar support holes), expanding E_r and therefore A_r. This is a weight-support effect of the Design ablation, not EventTrace leakage.",
+        "mean_a_r_size_diff_vs_raven": 0.623125,
+        "method": "raven_wo_design",
+        "windows_equal": 826,
+        "windows_expanded": 774,
+        "windows_shrunk": 0
+      },
+      {
+        "any_difference": false,
+        "classification": "IDENTICAL_ACTIVE_SET",
+        "dataset": "uair",
+        "explanation": "a_r_size matches raven on all windows",
+        "mean_a_r_size_diff_vs_raven": 0.0,
+        "method": "raven_wo_obs",
+        "windows_equal": 1600,
+        "windows_expanded": 0,
+        "windows_shrunk": 0
+      },
+      {
+        "any_difference": false,
+        "classification": "IDENTICAL_ACTIVE_SET",
+        "dataset": "uair",
+        "explanation": "a_r_size matches raven on all windows",
+        "mean_a_r_size_diff_vs_raven": 0.0,
+        "method": "raven_wo_use",
+        "windows_equal": 1600,
+        "windows_expanded": 0,
+        "windows_shrunk": 0
+      },
+      {
+        "any_difference": false,
+        "classification": "IDENTICAL_ACTIVE_SET",
+        "dataset": "uair",
+        "explanation": "a_r_size matches raven on all windows",
+        "mean_a_r_size_diff_vs_raven": 0.0,
+        "method": "raven_wo_inst",
+        "windows_equal": 1600,
+        "windows_expanded": 0,
+        "windows_shrunk": 0
+      },
+      {
+        "any_difference": false,
+        "classification": "IDENTICAL_ACTIVE_SET",
+        "dataset": "uair",
+        "explanation": "a_r_size matches raven on all windows",
+        "mean_a_r_size_diff_vs_raven": 0.0,
+        "method": "raven_wo_debt",
+        "windows_equal": 1600,
+        "windows_expanded": 0,
+        "windows_shrunk": 0
+      }
+    ],
+    "created_utc": "2026-08-12T11:58:11.663933+00:00",
+    "design_explanation": {
+      "mechanism": "uses_design_ratio=False forces zeta_hat=1 for all risk-set units. With positive observation weights this yields m_total>0 for clients that otherwise had zeta=0 (pi_tar support holes), expanding E_r and therefore A_r. This is a weight-support effect of the Design ablation, not EventTrace leakage.",
+      "subset_rate": 1.0,
+      "uair_seed30001_comparable_windows": 74,
+      "uair_seed30001_raven_active_subset_of_design": 74
+    },
+    "unexplained": 0
+  },
+  "decision": "WO_DESIGN_ACTIVE_SET_DIFFERENCE_IS_VALID_WEIGHT_SUPPORT_EFFECT",
+  "interpretation": "Differences are valid weight-support effects from design-ratio zeroing (zeta=ones expands positive-mass support), not EventTrace/opportunity/registration leakage.",
+  "unexplained_difference": 0
+}

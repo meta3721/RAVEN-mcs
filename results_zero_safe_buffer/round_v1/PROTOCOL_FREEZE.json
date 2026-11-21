@@ -1,0 +1,45 @@
+{
+  "protocol": "zero-safe-buffer-v1",
+  "based_on": "support-consumption-v1",
+  "main_block": "measured-O",
+  "seeds": [
+    33001,
+    33002,
+    33003
+  ],
+  "arms": [
+    "I-Proj-ZS",
+    "F1-Proj-ZS",
+    "F2-Proj-ZS",
+    "TwoStage-Hájek",
+    "FedAvg-Window"
+  ],
+  "only_rule_change": "m==0 is REFERENCE_ZERO_EXCLUDED and never enters pending",
+  "unchanged_positive_replacement": "latest positive message per client; older positive becomes SUPERSEDED_POSITIVE",
+  "s_max": 5,
+  "residence_h": 2,
+  "pool_cap": 64,
+  "alpha_max": 0.5,
+  "e_min": 3.0,
+  "mu": [
+    0.6496975806451613,
+    0.1350806451612903,
+    0.07258064516129033,
+    0.14264112903225806
+  ],
+  "encoding": {
+    "region0": 0,
+    "region1": 1,
+    "region2": 2,
+    "region3": 3
+  },
+  "setup_mu_max_abs_diff": 0.0,
+  "n_pi_target_keys": 1192,
+  "n_pi_opp_keys": 942,
+  "local_steps": 2,
+  "server_lr": 0.01,
+  "backbone": "CommonNDMF",
+  "server_optimizer": "one_weighted_sgd_step",
+  "training_authorized": false,
+  "old_s_status": "NO_STRUCTURAL_ADVANTAGE"
+}

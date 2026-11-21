@@ -1,0 +1,78 @@
+{
+  "attribution": [
+    {
+      "dataset": "sensorscope",
+      "joint_coverage": 0.9761904761904762,
+      "lcb_zero_fraction": 0.9761904761904762,
+      "mean_C_lcb": 7.176424288723723e-05,
+      "mean_C_point": 0.1323157362118398,
+      "mean_C_real_support": 0.01833526799149408,
+      "mean_fraction_hat_gt_q": 5.411255411255411e-05,
+      "mean_fraction_lower_positive": 5.411255411255411e-05,
+      "mean_median_positive_hat": 0.015625,
+      "mean_q": 0.05431547619047619,
+      "median_C_point": 0.13207167164386385,
+      "median_C_real_support": 0.018181818181818132,
+      "median_q": 0.046875,
+      "median_q_over_median_positive_hat": 3.0,
+      "median_q_over_pi_safe": 74.09065879812032,
+      "n_warmup": 84,
+      "point_zero_fraction": 0.0
+    },
+    {
+      "dataset": "uair",
+      "joint_coverage": 1.0,
+      "lcb_zero_fraction": 1.0,
+      "mean_C_lcb": 0.0,
+      "mean_C_point": 0.19526305379746844,
+      "mean_C_real_support": 0.02785908931082983,
+      "mean_fraction_hat_gt_q": 0.0,
+      "mean_fraction_lower_positive": 0.0,
+      "mean_median_positive_hat": 0.015625,
+      "mean_q": 0.046875,
+      "median_C_point": 0.19504219409282703,
+      "median_C_real_support": 0.02784810126582283,
+      "median_q": 0.046875,
+      "median_q_over_median_positive_hat": 3.0,
+      "median_q_over_pi_safe": 33.677572180963786,
+      "n_warmup": 64,
+      "point_zero_fraction": 0.0
+    }
+  ],
+  "executive_verdict": "NO_LEGAL_PREWINDOW_CONTEXT_FOR_R1E",
+  "five_seed_started": false,
+  "pi_safe": {
+    "sensorscope": 0.0006326708489355371,
+    "uair": 0.0013918758676581813
+  },
+  "r1d_artifacts_rewritten": false,
+  "sag_started": false,
+  "stage1_ran": false,
+  "stage2_ran": false,
+  "stress_executed": false,
+  "window_context": {
+    "e2_continuous_schedule_reusable_for_e3": false,
+    "e3_generator_samples_train_pool_independent_of_wall_clock": true,
+    "e3_generator_uses_abstract_window_index_clock": true,
+    "eventtrace_metadata_has_utc_schedule": false,
+    "eventtrace_metadata_has_window_timestamps": false,
+    "eventtrace_metadata_keys": [
+      "dataset",
+      "generator",
+      "notes",
+      "num_clients",
+      "num_windows",
+      "s_max",
+      "seed"
+    ],
+    "generator_version": "e3-complete-aligned-r3-v1",
+    "legal": false,
+    "mapper_required": "RepeatableTimeOfDayMapper_UTC_hour_floordiv_6",
+    "metadata_path": "D:/Cursor/raven.mcs/artifacts/e3_formal_runs_r1/eventtraces/sensorscope/seed30001/training_eventtrace/metadata.json",
+    "must_read_current_event_to_invent_utc": true,
+    "reason": "Sealed E3 EventTrace metadata stores only dataset/seed/num_windows/num_clients/s_max/generator. The complete-aligned R3 generator clocks windows as abstract index time (deadline = window_id + 1.0), not UTC. Risk sets are sampled from the train pool independently of dataset absolute_time. RepeatableTimeOfDayMapper requires a UTC datetime; raw window_id is not a legal input. Reusing the E2 300-window SensorScope schedule would invent a mapping that is not the sealed E3 protocol. No frozen window_id -> UTC timestamp table exists. Inferring the block from the current window's first EventTrace row would use current-window event presence and is forbidden.",
+    "repeatable_mapper_accepts_raw_window_id": false,
+    "verdict": "NO_LEGAL_PREWINDOW_CONTEXT_FOR_R1E",
+    "window_duration_constant": 1.0
+  }
+}

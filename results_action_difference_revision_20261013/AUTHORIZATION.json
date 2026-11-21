@@ -1,0 +1,19 @@
+{
+  "CPU_limit": 300,
+  "facility_limit": 120,
+  "mechanism_limit": 180,
+  "reserve_by_phase": 15,
+  "prior_application_charged_CPU": 4475.578125,
+  "SGD": 0,
+  "GPU": 0,
+  "q_fit": 0,
+  "new_trajectories": 0,
+  "v3_collection_paused": true,
+  "stages": [
+    "A",
+    "B",
+    "C",
+    "D_only_if_C_passes",
+    "E"
+  ]
+}

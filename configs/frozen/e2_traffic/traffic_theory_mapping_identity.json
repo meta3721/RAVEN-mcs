@@ -1,0 +1,24 @@
+{
+  "Lambda_mass_sum": 14337325.5,
+  "atomic_target_sha256": "0227be4bab9bf3c820cecbcd7c9545d2753311d2320323d149a0d90294a881ce",
+  "atomic_unit_definition": "i = (station_id, hourly timestamp)",
+  "client_definition": "client k = traffic counting station (spatial_id)",
+  "client_stratum_sha256": "b9abfaca69bca09eae9a2046327bad2d18cc23682dd44341170ba3c7a2d7877d",
+  "group_count": 4,
+  "group_definition": "time-of-day block0..block3 from hour//6",
+  "mu_g_sum": 1.0000000000000002,
+  "normalization": {
+    "fitting_population": "none",
+    "inverse_transform": "identity",
+    "leakage_boundary": "no fit on validation/formal; identity transform",
+    "params": {},
+    "type": "identity"
+  },
+  "pi_mass_sum": 1.0,
+  "status": "PASS",
+  "stratum_count": 32,
+  "stratum_definition": "spatial_region × time_block × day_type",
+  "target_field": "target_value",
+  "varpi_sum": 1.0,
+  "yaml_sha256": "d4cb1cbba9fe3241220aafb15959b59444ce70a07ed112b584e88d07ece002ca"
+}

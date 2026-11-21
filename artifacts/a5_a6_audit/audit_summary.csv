@@ -1,0 +1,19 @@
+dataset,sub_condition,reading,verdict,note
+sensorscope,P1 min pi_opp_true > 0,0.000633,PASS,opportunity positivity
+sensorscope,P2 min p_obs_true >= p_min,0.1925,PASS,observation floor p_min=0.05
+sensorscope,P2b min p_obs_true >= 1/a_max,0.1925 vs 1/20=0.050 and 1/40=0.025,PASS,A6 clause; verdict identical at a_max=20 and 40
+sensorscope,P3 min q_use_true >= 1/d_max,"0 (41.5% below, 22.8% exactly 0)",FAIL,1/d_max=0.10
+sensorscope,P3b min q_use_true among O=1,0.0055,PASS,positivity restricted to the active support
+sensorscope,P4 min window mass 1^T b > 0,5.521 (per-client min 2.917),PASS,B_min; 2000 active windows
+sensorscope,P5 q_min floor inactive,5.22% of observed windows below q_min,FAIL,A6 clause
+sensorscope,P5b d_max ceiling inactive,41.52% of records have q_use_true < 1/d_max,FAIL,A6 clause
+sensorscope,P6 ideal/practical share A_r,not recoverable from released logs,N/A,p2_invocation_states.json carries no active-set list
+uair,P1 min pi_opp_true > 0,0.00139,PASS,opportunity positivity
+uair,P2 min p_obs_true >= p_min,0.1925,PASS,observation floor p_min=0.05
+uair,P2b min p_obs_true >= 1/a_max,0.1925 vs 1/20=0.050 and 1/40=0.025,PASS,A6 clause; verdict identical at a_max=20 and 40
+uair,P3 min q_use_true >= 1/d_max,"0 (41.9% below, 23.8% exactly 0)",FAIL,1/d_max=0.10
+uair,P3b min q_use_true among O=1,0.0055,PASS,positivity restricted to the active support
+uair,P4 min window mass 1^T b > 0,16.89 (per-client min 2.917),PASS,B_min; 1600 active windows
+uair,P5 q_min floor inactive,5.18% of observed windows below q_min,FAIL,A6 clause
+uair,P5b d_max ceiling inactive,41.86% of records have q_use_true < 1/d_max,FAIL,A6 clause
+uair,P6 ideal/practical share A_r,not recoverable from released logs,N/A,p2_invocation_states.json carries no active-set list

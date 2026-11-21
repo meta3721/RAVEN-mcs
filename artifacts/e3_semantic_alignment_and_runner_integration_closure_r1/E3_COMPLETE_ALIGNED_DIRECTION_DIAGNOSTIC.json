@@ -1,0 +1,77 @@
+{
+  "rows": [
+    {
+      "dataset": "sensorscope",
+      "direction_pass": true,
+      "no_method_comparison": true,
+      "no_model_training": true,
+      "no_rmse_analysis": true,
+      "observed_mass": {
+        "head": 0.8976377952755905,
+        "tail": 0.10236220472440945
+      },
+      "opportunity_selected_mass": {
+        "head": 0.8125,
+        "tail": 0.1875
+      },
+      "seed": 31001,
+      "target_mass": {
+        "head": 0.580645161290321,
+        "tail": 0.4193548387096776
+      },
+      "three_stage_audit": {
+        "checks": {
+          "directions_align_complete_aligned": true,
+          "methods_share_exogenous_trace": true,
+          "observation_layer_exists": true,
+          "opportunity_layer_exists": true,
+          "probability_objects_not_aliased": true,
+          "usable_update_layer_exists": true
+        },
+        "generator_version": "e3-complete-aligned-r2-v1",
+        "status": "PASS"
+      },
+      "usable_mass": {
+        "head": 0.98,
+        "tail": 0.02
+      }
+    },
+    {
+      "dataset": "uair",
+      "direction_pass": true,
+      "no_method_comparison": true,
+      "no_model_training": true,
+      "no_rmse_analysis": true,
+      "observed_mass": {
+        "head": 0.8633093525179856,
+        "tail": 0.1366906474820144
+      },
+      "opportunity_selected_mass": {
+        "head": 0.7708333333333334,
+        "tail": 0.22916666666666666
+      },
+      "seed": 31001,
+      "target_mass": {
+        "head": 0.4905660377358492,
+        "tail": 0.5094339622641509
+      },
+      "three_stage_audit": {
+        "checks": {
+          "directions_align_complete_aligned": true,
+          "methods_share_exogenous_trace": true,
+          "observation_layer_exists": true,
+          "opportunity_layer_exists": true,
+          "probability_objects_not_aliased": true,
+          "usable_update_layer_exists": true
+        },
+        "generator_version": "e3-complete-aligned-r2-v1",
+        "status": "PASS"
+      },
+      "usable_mass": {
+        "head": 0.9423076923076923,
+        "tail": 0.057692307692307696
+      }
+    }
+  ],
+  "status": "PASS"
+}

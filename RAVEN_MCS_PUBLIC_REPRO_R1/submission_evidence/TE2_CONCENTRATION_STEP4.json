@@ -1,0 +1,92 @@
+{
+  "arms": {
+    "control": "local_hajek",
+    "oracle": "raven_simoracle"
+  },
+  "artifact_shas_recorded_by_runner": [
+    "901ac914bf9e998c84166df73a8203022f971613e162abea2822d80111b37be6",
+    "e58a08cbaf8995abfa8de40d6d5d665b5f26176b266c15c41fa7250cddaf9552"
+  ],
+  "ceiling_ladder": [
+    {
+      "MDE80": 0.00019697473826498331,
+      "boot_hi": 0.00014799459933496377,
+      "boot_lo": -9.87272283229279e-05,
+      "control_mean": 1.0034909552448132,
+      "interval_excludes_zero": false,
+      "mean_gap": 1.3390377569855171e-05,
+      "n": 20,
+      "pct_of_control": 0.0013343794978788257,
+      "rung": "kappa=1 (frozen uniform target, existing runs)",
+      "sd": 0.0002982076446516078
+    },
+    {
+      "MDE80": 0.0002894846413624627,
+      "boot_hi": 0.0004224701795087893,
+      "boot_lo": 5.549878523198798e-05,
+      "control_mean": 1.0143959689383426,
+      "interval_excludes_zero": true,
+      "mean_gap": 0.00022790024119848651,
+      "n": 20,
+      "pct_of_control": 0.022466595705915984,
+      "rung": "kappa=5 (step 3, target top-1 0.6322)",
+      "sd": 0.0004382619508669345
+    },
+    {
+      "MDE80": 0.00036724065138394745,
+      "boot_hi": 0.0007076431924789678,
+      "boot_lo": 0.00024134197246564876,
+      "control_mean": 1.018489812277102,
+      "interval_excludes_zero": true,
+      "kr_le3_share_mean": 0.1477506699649557,
+      "mean_gap": 0.0004623803769537527,
+      "n": 20,
+      "pct_of_control": 0.04539862562984107,
+      "rung": "kappa10 (target top-1 0.7746)",
+      "sd": 0.0005559797699652421
+    },
+    {
+      "MDE80": 0.0005114338770516282,
+      "boot_hi": 0.001337282261549485,
+      "boot_lo": 0.0006846792451552581,
+      "control_mean": 1.0249284346385568,
+      "interval_excludes_zero": true,
+      "kr_le3_share_mean": 0.1477506699649557,
+      "mean_gap": 0.0009942687785944205,
+      "n": 20,
+      "pct_of_control": 0.09700860518569293,
+      "rung": "single_region (target top-1 1.0000)",
+      "sd": 0.0007742794493039756
+    }
+  ],
+  "created_utc": "2026-10-10T15:58:50.319393+00:00",
+  "round": "TE2",
+  "settings": [
+    {
+      "kappa": 10.0,
+      "name": "kappa10",
+      "region_share": {
+        "region0": 0.07042253521126757,
+        "region1": 0.7746478873239431,
+        "region2": 0.07746478873239432,
+        "region3": 0.07746478873239432
+      },
+      "tag": "K10",
+      "top1": 0.7746478873239431
+    },
+    {
+      "kappa": null,
+      "name": "single_region",
+      "region_share": {
+        "region0": 0.0,
+        "region1": 0.9999999999999993,
+        "region2": 0.0,
+        "region3": 0.0
+      },
+      "tag": "KLIM",
+      "top1": 0.9999999999999993
+    }
+  ],
+  "single_region_fallback": null,
+  "step": "4 (alternate: ceiling ladder)"
+}

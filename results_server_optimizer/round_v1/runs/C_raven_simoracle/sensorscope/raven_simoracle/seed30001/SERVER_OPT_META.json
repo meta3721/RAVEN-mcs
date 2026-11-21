@@ -1,0 +1,81 @@
+{
+  "arm": "raven_simoracle",
+  "block": "sensorscope",
+  "created_utc": "2026-10-08T08:49:04.351011+00:00",
+  "diag_first": [
+    {
+      "active": true,
+      "applied": true,
+      "g_norm": 1.2732955229057257,
+      "m_norm": 0.12732955229057255,
+      "opt_move_norm": 0.9151633370224357,
+      "sgd_move_norm": 0.012732955229057256,
+      "t": 1,
+      "v_norm": 0.0008797131187923145,
+      "window_id": 0
+    },
+    {
+      "active": true,
+      "applied": true,
+      "g_norm": 1.2033656300967166,
+      "m_norm": 0.14559379136726508,
+      "opt_move_norm": 0.6577224937851378,
+      "sgd_move_norm": 0.012033656300967166,
+      "t": 2,
+      "v_norm": 0.007476165071026241,
+      "window_id": 1
+    },
+    {
+      "active": true,
+      "applied": true,
+      "g_norm": 0.6553781230325015,
+      "m_norm": 0.16159872560864535,
+      "opt_move_norm": 0.5489349081670933,
+      "sgd_move_norm": 0.006553781230325016,
+      "t": 3,
+      "v_norm": 0.0084369997117602,
+      "window_id": 2
+    }
+  ],
+  "diag_last": [
+    {
+      "active": true,
+      "applied": true,
+      "g_norm": 0.10668924849144723,
+      "m_norm": 0.4713712927107239,
+      "opt_move_norm": 0.060094576171229035,
+      "sgd_move_norm": 0.0010668924849144721,
+      "t": 96,
+      "v_norm": 0.543767651526176,
+      "window_id": 97
+    },
+    {
+      "active": false,
+      "applied": false,
+      "window_id": 98
+    },
+    {
+      "active": true,
+      "applied": true,
+      "g_norm": 0.8468044542685493,
+      "m_norm": 0.5029182700560045,
+      "opt_move_norm": 0.057428927494782366,
+      "sgd_move_norm": 0.008468044542685493,
+      "t": 97,
+      "v_norm": 0.54372266121179,
+      "window_id": 99
+    }
+  ],
+  "local_steps": 2,
+  "n_windows_optimizer_applied": 97,
+  "runtime_seconds": 24.576759000000038,
+  "seed": 30001,
+  "server_opt": {
+    "beta1": 0.9,
+    "beta2": 0.99,
+    "eta_s": 0.01,
+    "mode": "adam",
+    "tau": 0.001
+  },
+  "tag": "C_raven_simoracle"
+}

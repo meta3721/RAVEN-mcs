@@ -40,6 +40,8 @@ INTERNAL_CONFIG_KEYS = (
     "_method_cfg",
     "_scenario_cfg",
 )
+DESIGN_CONFIG_KEYS = {"design", "design_source", "design_configuration", "method_version", "coverage_role"}
+METHOD_IDENTITY_KEYS = {"method_version", "design_control", "design_required", "coverage_diagnostic", "coverage_role", "gate_mode", "legacy_only"}
 
 BLOCK_KEYS = {
     "clients": {"K", "local_steps", "risk_set_mean"},
@@ -152,7 +154,7 @@ def _validate_named_slices(raw: Mapping[str, Any], errors: list[str]) -> None:
         if not isinstance(value, Mapping):
             errors.append(f"{slice_name} must be a mapping")
             continue
-        _reject_unknown(value, allowed, f"{slice_name}.", errors)
+        _reject_unknown(value, allowed | (METHOD_IDENTITY_KEYS if slice_name == "_method_cfg" else set()), f"{slice_name}.", errors)
         name = value.get("name")
         if not isinstance(name, str) or not name.strip():
             errors.append(f"{slice_name}.name must be a non-empty string")
@@ -256,10 +258,21 @@ def validate_config(config: Mapping[str, Any]) -> ValidatedConfig:
     _require_keys(raw, REQUIRED_TOP_LEVEL, "", errors)
     _reject_unknown(
         raw,
-        set(REQUIRED_TOP_LEVEL) | set(INTERNAL_CONFIG_KEYS),
+        set(REQUIRED_TOP_LEVEL) | set(INTERNAL_CONFIG_KEYS) | DESIGN_CONFIG_KEYS,
         "",
         errors,
     )
+
+    if raw.get("method") in {"raven_mcs", "raven_mcs_formal", "raven_formal"}:
+        from raven_mcs.sag.r1l_design import DesignConfiguration
+        try:
+            configuration = DesignConfiguration.from_dict(raw.get("design_configuration") or {})
+            if raw.get("design") != ("on" if configuration.enabled else "off"):
+                errors.append("design and serialized design_configuration disagree")
+            if raw.get("method_version") != configuration.method_version or raw.get("coverage_role") != "diagnostic_only":
+                errors.append("configured method identity mismatch")
+        except (TypeError, ValueError) as exc:
+            errors.append(f"invalid explicit Design configuration: {exc}")
 
     for key in ("experiment", "dataset", "method", "scenario", "device", "output_dir"):
         value = raw.get(key)

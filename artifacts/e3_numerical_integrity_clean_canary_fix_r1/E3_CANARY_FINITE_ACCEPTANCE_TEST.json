@@ -1,0 +1,33 @@
+{
+  "rows": [
+    {
+      "accepted": true,
+      "case": "finite",
+      "is_finite": true,
+      "status": "OK",
+      "value": 1.0
+    },
+    {
+      "accepted": false,
+      "case": "nan",
+      "is_finite": false,
+      "status": "NONFINITE",
+      "value": NaN
+    },
+    {
+      "accepted": false,
+      "case": "inf",
+      "is_finite": false,
+      "status": "NONFINITE",
+      "value": Infinity
+    },
+    {
+      "accepted": false,
+      "case": "missing",
+      "is_finite": false,
+      "status": "MISSING",
+      "value": null
+    }
+  ],
+  "status": "PASS"
+}

@@ -1,0 +1,112 @@
+{
+  "experiment_id": "C1-KILL-TD-SPATIAL",
+  "gate_unused": true,
+  "generated_utc": "2026-09-10T07:56:18.650373+00:00",
+  "git_commit": "44261d66c0b906c6b26e8936388f121c5ba0ba43",
+  "o_layer": "CONTROLLED_EXPERIMENTAL p_obs=0.35",
+  "r_layer": "REAL_FROM_TDRIVE",
+  "rows": [
+    {
+      "elapsed_sec": 583.2880828999987,
+      "n_clients": 5837,
+      "n_event_rows": 441898,
+      "n_windows": 178,
+      "path": "artifacts/e3_c1_tdrive_spatial_eventtraces_v1/tdrive_spatial_h/seed31001/training_eventtrace",
+      "seed": 31001,
+      "status": "CREATED",
+      "trace_hash": "7cd34cbc7485ebf465f6e760f2f019dbd641a16acbf8b740adad7269e81cc51f"
+    },
+    {
+      "elapsed_sec": 308.2039616000002,
+      "n_clients": 5837,
+      "n_event_rows": 441898,
+      "n_windows": 178,
+      "path": "artifacts/e3_c1_tdrive_spatial_eventtraces_v1/tdrive_spatial_h/seed31002/training_eventtrace",
+      "seed": 31002,
+      "status": "CREATED",
+      "trace_hash": "ce518e6aba184d8fcf53b46cf566aabe9c4a83afeb7aea3170e40235955d0125"
+    },
+    {
+      "elapsed_sec": 314.68344380000053,
+      "n_clients": 5837,
+      "n_event_rows": 441898,
+      "n_windows": 178,
+      "path": "artifacts/e3_c1_tdrive_spatial_eventtraces_v1/tdrive_spatial_h/seed31003/training_eventtrace",
+      "seed": 31003,
+      "status": "CREATED",
+      "trace_hash": "e27aa33cd23d6c88d5e52cbefcf289bedd2634e4bbda082fc2cde496da7a8563"
+    },
+    {
+      "elapsed_sec": 319.5277676000005,
+      "n_clients": 5837,
+      "n_event_rows": 441898,
+      "n_windows": 178,
+      "path": "artifacts/e3_c1_tdrive_spatial_eventtraces_v1/tdrive_spatial_h/seed31004/training_eventtrace",
+      "seed": 31004,
+      "status": "CREATED",
+      "trace_hash": "1710829b4e0de404707dc75765a527092f8b9ff4bdb29c87b8680731522661dd"
+    },
+    {
+      "elapsed_sec": 318.5192500000012,
+      "n_clients": 5837,
+      "n_event_rows": 441898,
+      "n_windows": 178,
+      "path": "artifacts/e3_c1_tdrive_spatial_eventtraces_v1/tdrive_spatial_h/seed31005/training_eventtrace",
+      "seed": 31005,
+      "status": "CREATED",
+      "trace_hash": "06bd145c735df79b39eaf76f3ff6b10a2e4d91edc3957b62f166c354359cb01c"
+    },
+    {
+      "elapsed_sec": 313.64716169999883,
+      "n_clients": 5837,
+      "n_event_rows": 441898,
+      "n_windows": 178,
+      "path": "artifacts/e3_c1_tdrive_spatial_eventtraces_v1/tdrive_spatial_h/seed31006/training_eventtrace",
+      "seed": 31006,
+      "status": "CREATED",
+      "trace_hash": "1bab63ee66caef563250bd8171a2880d2ae4e72355f662509be6405a555bfbfe"
+    },
+    {
+      "elapsed_sec": 325.15937669999767,
+      "n_clients": 5837,
+      "n_event_rows": 441898,
+      "n_windows": 178,
+      "path": "artifacts/e3_c1_tdrive_spatial_eventtraces_v1/tdrive_spatial_h/seed31007/training_eventtrace",
+      "seed": 31007,
+      "status": "CREATED",
+      "trace_hash": "f357f82f9f99df709faa82e2ee66913f88c77b83a6fd0d4a98755d0981a8c72c"
+    },
+    {
+      "elapsed_sec": 327.6234891999993,
+      "n_clients": 5837,
+      "n_event_rows": 441898,
+      "n_windows": 178,
+      "path": "artifacts/e3_c1_tdrive_spatial_eventtraces_v1/tdrive_spatial_h/seed31008/training_eventtrace",
+      "seed": 31008,
+      "status": "CREATED",
+      "trace_hash": "220ded89079feb991c9b93e25f11a647c2ee4e5aeac9437ad3b2649956fba5c5"
+    },
+    {
+      "elapsed_sec": 320.8767337999998,
+      "n_clients": 5837,
+      "n_event_rows": 441898,
+      "n_windows": 178,
+      "path": "artifacts/e3_c1_tdrive_spatial_eventtraces_v1/tdrive_spatial_h/seed31009/training_eventtrace",
+      "seed": 31009,
+      "status": "CREATED",
+      "trace_hash": "8e21194d174ab0151da18d189a841c9b0b158743884e3925ec9e9369330d9efe"
+    },
+    {
+      "elapsed_sec": 320.51426029999857,
+      "n_clients": 5837,
+      "n_event_rows": 441898,
+      "n_windows": 178,
+      "path": "artifacts/e3_c1_tdrive_spatial_eventtraces_v1/tdrive_spatial_h/seed31010/training_eventtrace",
+      "seed": 31010,
+      "status": "CREATED",
+      "trace_hash": "806ea3e349104445ce789e55b7ada216991866c04e9f4516315a7b0fec64b87a"
+    }
+  ],
+  "trace_root": "artifacts/e3_c1_tdrive_spatial_eventtraces_v1/",
+  "u_layer": "CONTROLLED_EXPERIMENTAL compute_usable_r3 s_max=5"
+}

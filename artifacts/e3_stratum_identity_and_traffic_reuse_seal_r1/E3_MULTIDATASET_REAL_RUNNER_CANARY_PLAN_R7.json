@@ -1,0 +1,16 @@
+{
+  "canary_seed": 31001,
+  "execute_in_this_round": false,
+  "no_performance_conclusion": true,
+  "round": "E3-MULTIDATASET-REAL-RUNNER-CANARY-R1",
+  "status": "PLAN_READY_NOT_EXECUTED",
+  "traffic_sealed_five_methods": "REUSE_ONLY_NO_RERUN",
+  "uses": [
+    "frozen h(i)",
+    "sealed s(i) (Traffic 4-region)",
+    "Delta_c_s",
+    "atomic rho_i^arr",
+    "Traffic reuse metric policy",
+    "existing method list only"
+  ]
+}

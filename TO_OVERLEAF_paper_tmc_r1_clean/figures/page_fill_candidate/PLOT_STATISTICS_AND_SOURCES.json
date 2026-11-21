@@ -1,0 +1,321 @@
+{
+  "fig_w1_design_gate": {
+    "source": "figure_data/FIG_W1_DESIGN_GATE.csv",
+    "rows": [
+      {
+        "dataset": "SensorScope",
+        "variant": "Estimated",
+        "Delta_group_pct": -1.228434133650586,
+        "RMSE_mu_pct": -0.005309736559435988
+      },
+      {
+        "dataset": "SensorScope",
+        "variant": "Oracle",
+        "Delta_group_pct": -1.0345888345453522,
+        "RMSE_mu_pct": -0.013228562650964629
+      },
+      {
+        "dataset": "U-Air",
+        "variant": "Estimated",
+        "Delta_group_pct": 7.498982753025233,
+        "RMSE_mu_pct": 7.456497890808388
+      },
+      {
+        "dataset": "U-Air",
+        "variant": "Oracle",
+        "Delta_group_pct": 7.476232772036189,
+        "RMSE_mu_pct": 7.504511077483693
+      }
+    ],
+    "labels": [
+      {
+        "metric": "Delta_group_pct",
+        "value": -1.228434133650586,
+        "text": "-1.228"
+      },
+      {
+        "metric": "Delta_group_pct",
+        "value": 7.498982753025233,
+        "text": "+7.499"
+      },
+      {
+        "metric": "Delta_group_pct",
+        "value": -1.0345888345453522,
+        "text": "-1.035"
+      },
+      {
+        "metric": "Delta_group_pct",
+        "value": 7.476232772036189,
+        "text": "+7.476"
+      },
+      {
+        "metric": "RMSE_mu_pct",
+        "value": -0.005309736559435988,
+        "text": "-0.005"
+      },
+      {
+        "metric": "RMSE_mu_pct",
+        "value": 7.456497890808388,
+        "text": "+7.456"
+      },
+      {
+        "metric": "RMSE_mu_pct",
+        "value": -0.013228562650964629,
+        "text": "-0.013"
+      },
+      {
+        "metric": "RMSE_mu_pct",
+        "value": 7.504511077483693,
+        "text": "+7.505"
+      }
+    ],
+    "denominator": "No-Design",
+    "label_bbox_check": "within axes; no numeric-label overlap",
+    "size_inches": [
+      3.5,
+      2.05
+    ],
+    "axis_labels": [
+      {
+        "x": "",
+        "y": "Change (%)"
+      },
+      {
+        "x": "",
+        "y": "Change (%)"
+      }
+    ]
+  },
+  "fig_g3_tdrive_h_mass": {
+    "sources": [
+      "FIG_G3_TDRIVE_H_MASS.csv",
+      "FIG_G3_TDRIVE_TV.csv"
+    ],
+    "masses": [
+      {
+        "h_id": "H1",
+        "mu_test_seal": 0.08786493046708417,
+        "pi_opp_real_R": 0.0975302587687774,
+        "pi_opp_balanced_unit": 0.17157519980116154
+      },
+      {
+        "h_id": "H2",
+        "mu_test_seal": 0.1622524105191165,
+        "pi_opp_real_R": 0.15070725108626712,
+        "pi_opp_balanced_unit": 0.18942515376725397
+      },
+      {
+        "h_id": "H3",
+        "mu_test_seal": 0.514396062707023,
+        "pi_opp_real_R": 0.3843641476763789,
+        "pi_opp_balanced_unit": 0.3075415092820461
+      },
+      {
+        "h_id": "H4",
+        "mu_test_seal": 0.23548659630677626,
+        "pi_opp_real_R": 0.3673983424685766,
+        "pi_opp_balanced_unit": 0.3314581371495384
+      }
+    ],
+    "tv": [
+      {
+        "source": "T-Drive real R",
+        "tv_opp_vs_mu": 0.14157707446349355,
+        "mean_active_frac": 0.4253166067685224
+      },
+      {
+        "source": "SensorScope protocol",
+        "tv_opp_vs_mu": 0.1918548387096774,
+        "mean_active_frac": 1.0
+      },
+      {
+        "source": "U-Air protocol",
+        "tv_opp_vs_mu": 0.278183962264151,
+        "mean_active_frac": 1.0
+      }
+    ],
+    "threshold": 0.05,
+    "threshold_source": "post_review/G3_mobility_replay/PROTOCOL.md RQ1",
+    "size_inches": [
+      3.5,
+      2.02
+    ],
+    "axis_labels": [
+      {
+        "x": "",
+        "y": "Group mass"
+      },
+      {
+        "x": "",
+        "y": "TV$(\\pi^{\\mathrm{opp}},\\mu)$"
+      }
+    ]
+  },
+  "fig2_e2_risk_noninterchangeability": {
+    "source": "TO_OVERLEAF_paper_tmc_r1_clean\\figure_data\\FIG_E1_E2_RISK_NONINTERCHANGEABILITY.csv",
+    "stats": [
+      {
+        "method": "FedAvg-Window",
+        "n": 20,
+        "mean": -0.021146250698333084,
+        "sample_sd": 0.023807178424078715,
+        "seeds": [
+          30001,
+          30002,
+          30003,
+          30004,
+          30005,
+          30006,
+          30007,
+          30008,
+          30009,
+          30010,
+          30011,
+          30012,
+          30013,
+          30014,
+          30015,
+          30016,
+          30017,
+          30018,
+          30019,
+          30020
+        ]
+      },
+      {
+        "method": "FedAsync-Window",
+        "n": 20,
+        "mean": -0.021154462654937412,
+        "sample_sd": 0.0237824026744214,
+        "seeds": [
+          30001,
+          30002,
+          30003,
+          30004,
+          30005,
+          30006,
+          30007,
+          30008,
+          30009,
+          30010,
+          30011,
+          30012,
+          30013,
+          30014,
+          30015,
+          30016,
+          30017,
+          30018,
+          30019,
+          30020
+        ]
+      },
+      {
+        "method": "TimeAlign-Agg",
+        "n": 20,
+        "mean": -0.021373233066974553,
+        "sample_sd": 0.02390276022471395,
+        "seeds": [
+          30001,
+          30002,
+          30003,
+          30004,
+          30005,
+          30006,
+          30007,
+          30008,
+          30009,
+          30010,
+          30011,
+          30012,
+          30013,
+          30014,
+          30015,
+          30016,
+          30017,
+          30018,
+          30019,
+          30020
+        ]
+      },
+      {
+        "method": "TwoStage-Hajek",
+        "n": 20,
+        "mean": -0.02120463772175343,
+        "sample_sd": 0.02392202144434573,
+        "seeds": [
+          30001,
+          30002,
+          30003,
+          30004,
+          30005,
+          30006,
+          30007,
+          30008,
+          30009,
+          30010,
+          30011,
+          30012,
+          30013,
+          30014,
+          30015,
+          30016,
+          30017,
+          30018,
+          30019,
+          30020
+        ]
+      },
+      {
+        "method": "RAVEN-MCS",
+        "n": 20,
+        "mean": -0.020877650319064266,
+        "sample_sd": 0.02382936943136219,
+        "seeds": [
+          30001,
+          30002,
+          30003,
+          30004,
+          30005,
+          30006,
+          30007,
+          30008,
+          30009,
+          30010,
+          30011,
+          30012,
+          30013,
+          30014,
+          30015,
+          30016,
+          30017,
+          30018,
+          30019,
+          30020
+        ]
+      }
+    ],
+    "negative_counts": [
+      18,
+      18,
+      17,
+      17,
+      17
+    ],
+    "negative_denominator": 20,
+    "size_inches": [
+      3.5,
+      1.85
+    ],
+    "axis_labels": [
+      {
+        "x": "$D_{\\mathrm{aligned}}$",
+        "y": ""
+      },
+      {
+        "x": "Seeds with $D<0$",
+        "y": ""
+      }
+    ]
+  }
+}

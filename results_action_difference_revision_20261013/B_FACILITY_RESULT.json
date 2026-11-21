@@ -1,0 +1,39 @@
+{
+  "status": "PASS",
+  "one_deterministic_case": true,
+  "training": 0,
+  "SGD": 0,
+  "new_collection": 0,
+  "legacy_sizes": [
+    44534030,
+    14639710
+  ],
+  "measured_pair_CPU": 2.734375,
+  "measured_pair_wall": 2.990260299999136,
+  "save_reserve_CPU": 5.96875,
+  "reserve_status": "measurement-based engineering margin, not a universal worst-case guarantee",
+  "root_admission_before_save": {
+    "schema": "root_disjoint_CPU_v1",
+    "root_id": "758dd37a36844853b2fe34908da31566",
+    "sequence": 81,
+    "wall_stamp": 6749.252472,
+    "tree_CPU": 3.71875,
+    "driver_CPU": 0.203125,
+    "command_used": 3.921875,
+    "batch_used": 40.0625,
+    "phase_used": 23.328125,
+    "remaining": 76.078125,
+    "finished": false,
+    "maximum_CPU_rate": 2.0,
+    "feedback_interval": 0.05,
+    "cost_rule": "tree + driver only; PID / inner job are included, never added",
+    "effective_remaining": 75.95545939999938
+  },
+  "modelled_external_growth_prevents_new_plan": true,
+  "save_before_stop": "C:\\Cursor\\raven.mcs\\results_action_difference_revision_20261013\\facility_pairs_rename\\02_before_stop.complete.json",
+  "incomplete_pair_rejected": true,
+  "old_complete_pair_readable": true,
+  "normal_checkpoint_interval": 50,
+  "near_budget_interval": 10,
+  "actual_root_costs_not_modelled_inputs": true
+}

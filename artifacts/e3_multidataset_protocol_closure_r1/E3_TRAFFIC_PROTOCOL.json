@@ -1,0 +1,161 @@
+{
+  "blocker_if_any": null,
+  "complete_aligned_generator": {
+    "module": "raven_mcs.e3.protocol_closure.complete_aligned",
+    "probe": {
+      "dataset": "traffic",
+      "status": "REUSE_E2_EVENTTRACE"
+    },
+    "status": "READY_REUSE_E2"
+  },
+  "created_utc": "2026-08-09T16:46:02.677143+00:00",
+  "data_identity": {
+    "client_measurements_hash": "f80ff849be57f8513b7122e67ffe78ece1f3ddfa00f7efd274a73672bbc60787",
+    "common_timestamps": 720,
+    "interpolation_imputation_policy": "none beyond processed pipeline",
+    "legal_time_horizon": {
+      "chosen_E3_formal_windows": 100,
+      "common_timestamps": 720,
+      "dataset": "traffic",
+      "justification": "Preserve sealed E2 Traffic 100-window identity for reused block and new Traffic methods.",
+      "legal_evaluation_windows": 144,
+      "legal_training_windows": 345,
+      "matches_sealed_traffic_e2_if_traffic": true,
+      "same_across_methods": true,
+      "spatial_units": 43,
+      "split_boundaries": {
+        "test": {
+          "n_atomic": 6192,
+          "n_timestamps": 144,
+          "time_max": 719,
+          "time_min": 576
+        },
+        "train": {
+          "n_atomic": 18576,
+          "n_timestamps": 432,
+          "time_max": 431,
+          "time_min": 0
+        },
+        "validation": {
+          "n_atomic": 6192,
+          "n_timestamps": 144,
+          "time_max": 575,
+          "time_min": 432
+        }
+      },
+      "warmup_atomic_units": 3741
+    },
+    "missingness_policy": "processed support_flag / physical filters from dataset yaml",
+    "n_clients": 8,
+    "processed_hash": "db45a2ecc66c27abeaf58b0c03ce66de7bfaf6727f4523ea06ef226a9ce3de50",
+    "processed_path": "D:\\Cursor\\raven.mcs\\data\\processed\\traffic\\atomic_units.parquet",
+    "raw_hash": null,
+    "raw_path": null,
+    "spatial_units": 43,
+    "standardization_policy": "runner/model-local as in Common-NDMF path",
+    "train_validation_test_split": {
+      "test": 6192,
+      "train": 18576,
+      "validation": 6192
+    }
+  },
+  "dataset": "traffic",
+  "formal_horizon": {
+    "chosen_E3_formal_windows": 100,
+    "common_timestamps": 720,
+    "dataset": "traffic",
+    "justification": "Preserve sealed E2 Traffic 100-window identity for reused block and new Traffic methods.",
+    "legal_evaluation_windows": 144,
+    "legal_training_windows": 345,
+    "matches_sealed_traffic_e2_if_traffic": true,
+    "same_across_methods": true,
+    "spatial_units": 43,
+    "split_boundaries": {
+      "test": {
+        "n_atomic": 6192,
+        "n_timestamps": 144,
+        "time_max": 719,
+        "time_min": 576
+      },
+      "train": {
+        "n_atomic": 18576,
+        "n_timestamps": 432,
+        "time_max": 431,
+        "time_min": 0
+      },
+      "validation": {
+        "n_atomic": 6192,
+        "n_timestamps": 144,
+        "time_max": 575,
+        "time_min": 432
+      }
+    },
+    "warmup_atomic_units": 3741
+  },
+  "opportunity_strata": {
+    "dataset": "traffic",
+    "definition": "processed opportunity_stratum = spatial_id::time_block::weekday_flag",
+    "deterministic_construction": true,
+    "n_strata": 344,
+    "no_target_leakage": true,
+    "note": "Stratum labels come from processed public features only; not model residuals.",
+    "support_hash_n": 344
+  },
+  "public_target": {
+    "construction": "train_split_utc_block_mass_only_no_test_labels",
+    "dataset": "traffic",
+    "group_definition": "repeatable_utc_time_of_day_4",
+    "group_ids": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "group_names": [
+      "UTC_00_06",
+      "UTC_06_12",
+      "UTC_12_18",
+      "UTC_18_24"
+    ],
+    "head_groups": [
+      0,
+      1
+    ],
+    "mu": {
+      "0": 0.25,
+      "1": 0.25,
+      "2": 0.25,
+      "3": 0.25
+    },
+    "n_train_atomic": 18576,
+    "tail_groups": [
+      2,
+      3
+    ]
+  },
+  "q_feature_boundary": {
+    "allowed_features": [
+      "hour_sin",
+      "hour_cos",
+      "time_block",
+      "weekday",
+      "spatial_public_block"
+    ],
+    "fixed_prestate": true,
+    "forbidden": [
+      "future_labels",
+      "realized_target",
+      "post_delivery_private_state",
+      "test_outcomes"
+    ]
+  },
+  "readiness_status": "READY_FOR_E3_CANARY",
+  "stage2_eligibility": {
+    "delivered_semantics": "delivered iff U=1",
+    "eligibility_rule": "U=1 requires compute_success and network_success and tau<=s_max and nonempty observations",
+    "failed_attempt_semantics": "O may be nonempty while U=0",
+    "observability_boundary": "no test labels; risk sets from train units only in generator",
+    "s_max": 5,
+    "stage1_stage2_timing": "opportunity then observation then usable within window"
+  }
+}

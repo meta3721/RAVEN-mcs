@@ -1,0 +1,51 @@
+{
+  "aggregate_status": "PASS",
+  "experiment": "E1_R2",
+  "failed_runs": 0,
+  "hard_gate_pass": true,
+  "legacy_macro_clip_is_diagnostic_only": true,
+  "mean_metrics": {
+    "fedasync_window": {
+      "Gap_mis": 0.5935536374017933,
+      "RMSE_mu": 7.722198453627863,
+      "RMSE_rho": 7.128644816226069
+    },
+    "fedavg_window": {
+      "Gap_mis": 0.5935447306049084,
+      "RMSE_mu": 7.722019532038151,
+      "RMSE_rho": 7.128474801433242
+    },
+    "flamf_timealign_adapted": {
+      "Gap_mis": 0.5933860377444231,
+      "RMSE_mu": 7.710762975490482,
+      "RMSE_rho": 7.117376937746057
+    },
+    "raven": {
+      "Gap_mis": 0.5934361651515454,
+      "RMSE_mu": 7.715395303792991,
+      "RMSE_rho": 7.121959138641445
+    },
+    "twostage_hajek": {
+      "Gap_mis": 0.5935742526959471,
+      "RMSE_mu": 7.7261664426204515,
+      "RMSE_rho": 7.1325921899245035
+    }
+  },
+  "methods": [
+    "fedasync_window",
+    "fedavg_window",
+    "flamf_timealign_adapted",
+    "raven",
+    "twostage_hajek"
+  ],
+  "mode": "formal",
+  "protocol_version": "E1-R2",
+  "seeds": [
+    28001,
+    28002,
+    28003,
+    28004,
+    28005
+  ],
+  "successful_runs": 25
+}

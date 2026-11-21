@@ -1,0 +1,80 @@
+{
+  "attempt": 1,
+  "completed_windows": 100,
+  "end_time_utc": "2026-08-08T17:57:23.404997+00:00",
+  "eventtrace_dir": "artifacts/e2_traffic_formal_runs_r1/eventtraces/30012/observation_only/training_eventtrace",
+  "eventtrace_events_sha256": "3534ab019c340aefd9b292ded3a485f4941d22dfdaf840eb4ac4785401b3a6d6",
+  "eventtrace_identity": {
+    "events_sha256": "3534ab019c340aefd9b292ded3a485f4941d22dfdaf840eb4ac4785401b3a6d6",
+    "metadata": {
+      "dataset": "traffic",
+      "generator": "traffic-profile-s1-hard-aou-bridge-v1",
+      "notes": [
+        "scenario=observation_only",
+        "PROFILE-S1",
+        "station=client"
+      ],
+      "num_clients": 43,
+      "num_windows": 100,
+      "s_max": 5,
+      "seed": 30012
+    },
+    "metadata_sha256": "f2df11a693353456c35636b12c9e899dea23b95f2f4f6fd0991d7ac62cf01460",
+    "trace_hash": "7aca2e53ce47bf4f38cb06fac0325b11b3d8650ec43260d85627f5605d4809e4"
+  },
+  "exit_code": 0,
+  "failure_reason": null,
+  "final_metrics": {
+    "Gap_mis": -0.012398034863560836,
+    "P2_solver_failure_count": 0,
+    "RMSE_mu": 1.0044193456945842,
+    "RMSE_rho": 1.016817380558145,
+    "active_window_count": 100,
+    "arrival_weight_sum": 1.0000000000000002,
+    "clip_rate_stage1": 0.021111111111111112,
+    "clip_rate_stage2": 0.0,
+    "completed_windows": 100,
+    "denominator_zero_count": 0,
+    "effective_sample_size_mean": 1.37517764092847,
+    "empirical_risk_objective": 1.016817380558145,
+    "failed_attempt_count": 860,
+    "group_rmse": {
+      "block0": 0.8899674242512786,
+      "block1": 1.1645773724559103,
+      "block2": 1.1489718880127715,
+      "block3": 0.7530033306126517
+    },
+    "hard_arrival_count": 1698,
+    "nonfinite_loss_count": 0,
+    "nonfinite_model_parameter_count": 0,
+    "policy": {
+      "uses_debt": true,
+      "uses_design_ratio": true,
+      "uses_hajek_local_loss": true,
+      "uses_instant_calibration": true,
+      "uses_observation_ipw": true,
+      "uses_staleness_penalty": true,
+      "uses_usable_ipw": true,
+      "uses_variance_penalty": true
+    },
+    "stale_update_count": 1040,
+    "target_risk_objective": 1.0044193456945842,
+    "target_weight_sum": 1.0
+  },
+  "local_steps": 2,
+  "method": "raven",
+  "method_display": "RAVEN",
+  "n_groups": 4,
+  "peak_memory_mb": null,
+  "profile_id": "PROFILE-S1",
+  "retry_count": 0,
+  "runtime_seconds": 71.25999320000119,
+  "s_max": 5,
+  "scenario": "observation_only",
+  "scenario_label": "S3",
+  "seed": 30012,
+  "seed_replacement_count": 0,
+  "start_time_utc": "2026-08-08T17:56:12.133647+00:00",
+  "status": "PASS",
+  "warnings": []
+}

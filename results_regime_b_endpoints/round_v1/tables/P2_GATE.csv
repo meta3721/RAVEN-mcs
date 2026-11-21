@@ -1,0 +1,13 @@
+pair,condition,n,A_fail,B_fail,A_max,B_max,gate
+fedavg_rule,C0_frozen,17,0,0,0.0,0.0,pass
+fedavg_rule,C1_tilt_strong,17,1,0,0.0457696336554451,0.0,fail
+fedavg_rule,C2_tilt_extreme,17,1,0,0.0837860627723978,0.0,fail
+fedavg_rule,C3_low_capacity,17,17,17,0.0003286911872937,0.0003779521005082,fail
+fedavg_rule,C4_block_uniform,17,0,17,0.0,0.0032210036988586,fail
+fedavg_rule,C5_combined,17,17,17,0.0845311845158784,0.0032231468521766,fail
+oracle_design,C0_frozen,17,0,0,0.0,0.0,pass
+oracle_design,C1_tilt_strong,17,1,0,0.0452388971637203,0.0,fail
+oracle_design,C2_tilt_extreme,17,1,0,0.0908889994422703,0.0,fail
+oracle_design,C3_low_capacity,17,0,17,0.0,0.000408638731326,fail
+oracle_design,C4_block_uniform,17,0,17,0.0,0.0032553580936864,fail
+oracle_design,C5_combined,17,17,17,0.088539554742381,0.0032181914070585,fail

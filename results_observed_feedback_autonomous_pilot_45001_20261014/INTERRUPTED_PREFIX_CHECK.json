@@ -1,0 +1,54 @@
+{
+  "status": "PREFIX_PAIR_READABLE_SOURCE_AND_HISTORY_UNCHANGED",
+  "full_T100": false,
+  "marker": "C:\\Cursor\\raven.mcs\\results_observed_feedback_autonomous_pilot_45001_20261014\\fixed05\\trajectory\\tick0750.complete.json",
+  "now": 75,
+  "grid": 750,
+  "next_grid": 751,
+  "registrations": 3225,
+  "logical_SGD": 2493,
+  "model_version": 128,
+  "source_files_checked": 457,
+  "protected_history_files_checked": 9,
+  "model_private_sizes": [
+    133258380,
+    4690540
+  ],
+  "private_next_clock": 75,
+  "private_next_client": 0,
+  "private_active_registration": null,
+  "prefix_exogenous_keys_paired": 3225,
+  "invalid_tail_exogenous_lines": 0,
+  "damaged_files": [
+    {
+      "path": "C:\\Cursor\\raven.mcs\\results_observed_feedback_autonomous_pilot_45001_20261014\\fixed05\\CATEGORY_LIVE.json",
+      "bytes": 400,
+      "all_null": true,
+      "hash": "7a12e561363385e9dfeeab326368731c030ed4b374e7f5897ac819159d2884c5",
+      "mtime": 1791984553.4451368
+    },
+    {
+      "path": "C:\\Cursor\\raven.mcs\\results_observed_feedback_autonomous_pilot_45001_20261014\\fixed05\\root_feedback_lgdpze5u\\root.json",
+      "bytes": 431,
+      "all_null": true,
+      "hash": "be9ceb4464b22203feffd3700c5570b7d6d44c5d0d357148e1e6d5be5e694376",
+      "mtime": 1791984553.8761451
+    },
+    {
+      "path": "C:\\Cursor\\raven.mcs\\results_observed_feedback_autonomous_pilot_45001_20261014\\fixed05_run1.log",
+      "bytes": 0,
+      "all_null": false,
+      "hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "mtime": 1791982511.4317207
+    }
+  ],
+  "unpersisted_suffix": "after t75 until unknown process termination; not restored from logs",
+  "physical_SGD_lower": 2493,
+  "physical_SGD_upper": 5000,
+  "physical_upper_role": "authorization and frozen per-operation guard; exact lost suffix UNKNOWN; not measured physical steps",
+  "full_online_maximum_and_PID_audit": "UNKNOWN for interrupted suffix",
+  "training": 0,
+  "replay": 0,
+  "q_fit": 0,
+  "checked_at": 1791989424.9388125
+}

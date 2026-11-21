@@ -1,0 +1,61 @@
+{
+  "verdict": "G2_VAL_NONINFERIOR",
+  "checks": [
+    {
+      "rule": "sensorscope_gated_finite_val",
+      "n": 10,
+      "pass": true
+    },
+    {
+      "rule": "sensorscope_vs_fedau_window_ni",
+      "mean_pct": 0.05247937242310567,
+      "pass": true
+    },
+    {
+      "rule": "sensorscope_vs_obsuse_window_ni",
+      "mean_pct": 0.15050459259634918,
+      "pass": true
+    },
+    {
+      "rule": "uair_gated_finite_val",
+      "n": 10,
+      "pass": true
+    },
+    {
+      "rule": "uair_vs_fedau_window_ni",
+      "mean_pct": -0.4733184846640571,
+      "pass": true
+    },
+    {
+      "rule": "uair_vs_obsuse_window_ni",
+      "mean_pct": -0.2923423490278981,
+      "pass": true
+    }
+  ],
+  "local_hajek": [
+    {
+      "split": "val",
+      "dataset": "sensorscope",
+      "mean_rmse_local_hajek_vs_fedavg_pct": 0.0,
+      "demote": true
+    },
+    {
+      "split": "test",
+      "dataset": "sensorscope",
+      "mean_rmse_local_hajek_vs_fedavg_pct": 0.0,
+      "demote": true
+    },
+    {
+      "split": "val",
+      "dataset": "uair",
+      "mean_rmse_local_hajek_vs_fedavg_pct": 0.0,
+      "demote": true
+    },
+    {
+      "split": "test",
+      "dataset": "uair",
+      "mean_rmse_local_hajek_vs_fedavg_pct": 0.0,
+      "demote": true
+    }
+  ]
+}

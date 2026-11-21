@@ -1,0 +1,8 @@
+{
+  "pid": 12432,
+  "command": [
+    ".venv_new/Scripts/python.exe",
+    "-c",
+    "from pathlib import Path; from raven_mcs.experiments.calibration_first import load_inputs; i=load_inputs(Path.cwd(),Path('results_calibration_first_20261013')); print('INPUT_VALID',len(i.clients),len(i.groups),len(i.pi),sum(i.mu),min(i.pi.values()),i.target_id)"
+  ]
+}

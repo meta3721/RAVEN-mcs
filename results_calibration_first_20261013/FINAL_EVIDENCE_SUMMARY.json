@@ -1,0 +1,223 @@
+{
+  "charged_cpu_before_this_summary": 281.484375,
+  "checks": {
+    "actual_optimizer_matches": true,
+    "actual_steps_match_positive_attempts": true,
+    "all_consumption_labels_mature": true,
+    "all_q_diagnostic_prior": true,
+    "all_q_registration_frozen": true,
+    "all_record_namespaces": true,
+    "all_stage1_configured_on": true,
+    "applicability_matches": true,
+    "clock_namespace_matches": true,
+    "current_core_sources_match": true,
+    "finite_model": true,
+    "no_duplicate_consumption": true,
+    "no_extra_seed_trajectory": true,
+    "no_future_service_fit": true,
+    "parameter_hash_matches": true,
+    "state_content_hash": true,
+    "target_T_unchanged": true
+  },
+  "client_counts": {
+    "clients": 43,
+    "max": 87,
+    "min": 70
+  },
+  "empirical_service_fit_exposures": {
+    "completion": 503,
+    "notified_failure": 155,
+    "right_censored": 23
+  },
+  "first_run_fit_eligibility": "requires user review of recorded engineering interruption; not automatically calibration evidence",
+  "fit": "NOT_EXECUTED",
+  "formal_calibration_statistics": "NOT_COMPUTED",
+  "old_failed_planning_accounting": {
+    "child_terminated": true,
+    "child_tree_cpu_seconds": 4.375,
+    "exitcode": 124,
+    "parent_cpu_seconds": 0.140625,
+    "status": "cpu_timeout",
+    "total_cpu_seconds": 4.515625,
+    "training_steps": 0,
+    "wall_seconds": 4.705738999999994
+  },
+  "realized_service_kernel": "c54a8cb87e8274dc2aef083b8c1c989659fbd3855f40dbabff0b9a2f95f80ff0",
+  "result": {
+    "B1_executed": false,
+    "T_observed": 100.0,
+    "T_target": 100,
+    "age_support": {
+      "0": 509,
+      "1": 443,
+      "2": 429,
+      "3": 462,
+      "4": 400,
+      "5": 428,
+      "6": 210,
+      "7": 204,
+      "8": 220
+    },
+    "censored": 0,
+    "checkpoint": "C:\\Cursor\\raven.mcs\\results_calibration_first_20261013\\trajectory\\COMPLETE_T100_tick1000.json",
+    "client_support": 43,
+    "consumed": 1493,
+    "decision_reasons": {
+      "UNSUPPORTED_PREDICTION/fixed_time_2/INSUFFICIENT_RISK:('tier-0', 'net-tier-0'):22": 117,
+      "UNSUPPORTED_PREDICTION/fixed_time_2/INSUFFICIENT_RISK:('tier-1', 'net-tier-1'):15": 171,
+      "UNSUPPORTED_PREDICTION/fixed_time_2/INSUFFICIENT_RISK:('tier-1', 'net-tier-1'):16": 3,
+      "UNSUPPORTED_PREDICTION/fixed_time_2/INSUFFICIENT_RISK:('tier-2', 'net-tier-2'):9": 91,
+      "UNSUPPORTED_PREDICTION/fixed_time_2/NO_COMPATIBLE_MARK:56602": 103,
+      "UNSUPPORTED_PREDICTION/fixed_time_2/NO_COMPATIBLE_MARK:56602:('tier-0', 'net-tier-0')": 191,
+      "UNSUPPORTED_PREDICTION/fixed_time_2/NO_COMPATIBLE_MARK:56975": 41,
+      "UNSUPPORTED_PREDICTION/fixed_time_2/NO_COMPATIBLE_MARK:56975:('tier-2', 'net-tier-2')": 31,
+      "UNSUPPORTED_PREDICTION/fixed_time_2/NO_COMPATIBLE_MARK:57051": 1,
+      "UNSUPPORTED_PREDICTION/fixed_time_2/NO_COMPATIBLE_MARK:57051:('tier-2', 'net-tier-2')": 27,
+      "UNSUPPORTED_PREDICTION/fixed_time_2/NO_COMPATIBLE_MARK:57106:('tier-2', 'net-tier-2')": 16,
+      "common_warmup": 200,
+      "conditional_bundle": 7,
+      "experiment_end": 1
+    },
+    "fallback_calls": 792,
+    "fallback_proportion": 0.792,
+    "feature_support": {
+      "in_flight_count": {
+        "max": 41,
+        "min": 0
+      },
+      "maximum_deadline_slack": {
+        "max": 3.950000000000003,
+        "min": 2.5299999999999976
+      },
+      "pool_count": {
+        "max": 30,
+        "min": 0
+      }
+    },
+    "formal_executed": false,
+    "gpu": 0,
+    "historical_failed_planning_calls": 1,
+    "local_sgd_steps": 3305,
+    "mature": 3305,
+    "max_actual_weight_residual": 2.220446049250313e-16,
+    "max_successful_planning_CPU": 1.640625,
+    "next_status": "WAITING_USER_REVIEW",
+    "observed_target_groups": 172,
+    "physical_pending": 23,
+    "planner_cpu_seconds": 1044.171875,
+    "planner_wall_seconds": 1072.6889088000048,
+    "planning_calls": 1000,
+    "positive_observation_attempts": 3305,
+    "post_warmup_fallback_proportion": 0.99,
+    "predictor_supported_cells": 43,
+    "predictor_total_cells": 51,
+    "q_calibration_pass": "NOT_COMPUTED",
+    "q_fitted": false,
+    "q_role": "diagnostic_prior",
+    "registrations": 4300,
+    "remaining_trajectories_executed": 0,
+    "resumed_segment_process_tree_cpu_seconds": 1345.828125,
+    "resumed_segment_wall_seconds": 1364.4451016,
+    "status": "COMPLETE_T100",
+    "support": {
+      "tier-0/net-tier-0": {
+        "R1": 1023,
+        "censored": 0,
+        "consumed": 268,
+        "mature": 1023
+      },
+      "tier-1/net-tier-1": {
+        "R1": 1600,
+        "censored": 0,
+        "consumed": 752,
+        "mature": 1600
+      },
+      "tier-2/net-tier-2": {
+        "R1": 682,
+        "censored": 0,
+        "consumed": 473,
+        "mature": 682
+      }
+    },
+    "target_groups": 172,
+    "terminal_reasons": {
+      "compute_failure": 411,
+      "consumed": 1493,
+      "expired": 792,
+      "horizon_unconsumed": 16,
+      "network_failure": 202,
+      "no_observations": 995,
+      "superseded": 391
+    },
+    "training_cpu_seconds": 8.015625,
+    "training_wall_seconds": 9.35744790000706
+  },
+  "runtime": {
+    "CPU_only": true,
+    "GPU_steps": 0,
+    "OMP_threads": 1,
+    "cvxpy": "1.9.2",
+    "model_device": "cpu",
+    "platform": "Windows-10-10.0.26200-SP0",
+    "python": "3.11.9 (tags/v3.11.9:de54cf5, Apr  2 2024, 10:12:12) [MSC v.1938 64 bit (AMD64)]",
+    "torch": "2.13.0+cu130"
+  },
+  "storage_bytes": 1000578202,
+  "support_age": {
+    "0": {
+      "R1": 509,
+      "censored": 0,
+      "consumed": 292,
+      "mature": 509
+    },
+    "1": {
+      "R1": 443,
+      "censored": 0,
+      "consumed": 239,
+      "mature": 443
+    },
+    "2": {
+      "R1": 429,
+      "censored": 0,
+      "consumed": 258,
+      "mature": 429
+    },
+    "3": {
+      "R1": 462,
+      "censored": 0,
+      "consumed": 284,
+      "mature": 462
+    },
+    "4": {
+      "R1": 400,
+      "censored": 0,
+      "consumed": 238,
+      "mature": 400
+    },
+    "5": {
+      "R1": 428,
+      "censored": 0,
+      "consumed": 182,
+      "mature": 428
+    },
+    "6": {
+      "R1": 210,
+      "censored": 0,
+      "consumed": 0,
+      "mature": 210
+    },
+    "7": {
+      "R1": 204,
+      "censored": 0,
+      "consumed": 0,
+      "mature": 204
+    },
+    "8": {
+      "R1": 220,
+      "censored": 0,
+      "consumed": 0,
+      "mature": 220
+    }
+  },
+  "support_note": "registration age>5 structurally cannot be consumed; clipping/prior cannot create support"
+}

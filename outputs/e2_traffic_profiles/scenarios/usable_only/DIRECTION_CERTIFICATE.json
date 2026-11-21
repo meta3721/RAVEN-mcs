@@ -1,0 +1,70 @@
+{
+  "directions": {
+    "d_opp": 0,
+    "d_p": 0,
+    "d_q": -1
+  },
+  "display_name": "Usable-only",
+  "expected": {
+    "D_arr": 0.18288711607707037,
+    "D_obs": 1.748276003132876e-16,
+    "D_opp": 8.74138001566438e-17,
+    "checks": {
+      "arr_underrepresent_tail": true,
+      "hard_same_sign_as_expected": "True",
+      "obs_near_balanced": true,
+      "opp_near_balanced": true
+    },
+    "expected_status": "PASS",
+    "head_mass_ratio": 1.3657742321540762,
+    "signed": {
+      "arr": 0.36577423215407623,
+      "obs": 0.0,
+      "opp": 0.0
+    },
+    "tail_mass_ratio": 0.6342257678459238
+  },
+  "expected_direction": "underrepresent_tail_via_usable",
+  "grid_search_count": 0,
+  "hard_direction_pass": true,
+  "hard_pooled": {
+    "D_TV": 0.8180620155041425,
+    "antithetic_average": false,
+    "head_mass_ratio": 1.3729216152018406,
+    "pooled_arrival_mass": 5052.0,
+    "seed_count": 3,
+    "signed_head_minus_tail": 0.3729216152018712,
+    "tail_mass_ratio": 0.6270783847980982
+  },
+  "intercepts": {
+    "obs": -1.386294361122964,
+    "opp": 0.20067069546030325,
+    "q": 0.5127239094065317
+  },
+  "label": "S4",
+  "parameter_set_count": 1,
+  "profile_id": "PROFILE-S2",
+  "rates": {
+    "mean_observation": 0.20149435674015923,
+    "mean_opportunity": 0.5506459948320414,
+    "mean_usable": 0.5914943982110169,
+    "rate_pass": true,
+    "soft_mean_p_obs": 0.19999999999950838,
+    "soft_mean_p_opp": 0.5499999999995425,
+    "soft_mean_q": 0.6000000000000185
+  },
+  "scenario_id": "usable_only",
+  "seeds": [
+    28201,
+    28202,
+    28203
+  ],
+  "status": "PASS",
+  "strength": {
+    "kappa_opp": 1.0,
+    "kappa_p": 1.0,
+    "kappa_q": 1.0
+  },
+  "structural_pass": true,
+  "trace_count": 3
+}

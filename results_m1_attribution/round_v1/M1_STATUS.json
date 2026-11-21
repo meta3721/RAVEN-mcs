@@ -1,0 +1,49 @@
+{
+  "void_windows": 0,
+  "estimate": "blocked",
+  "estimate_reason": "列名和三份侧车文件里没有与窗口客户端行对齐的组向量。oracle_p 与 oracle_q 是标量，没有当作参考。没有打开 provenance 指向的源目录，没有拟合 q。",
+  "City Scanner 访问占用": {
+    "status": "blocked",
+    "geometry": "blocked",
+    "estimate": "blocked",
+    "void_windows": 0,
+    "reason": "opportunity_features 没有组字段（没有 stratum、hour_block 或 target_group）。s_max=5 在 generation_meta 里。没有使用冻结 mu 文件"
+  },
+  "City Scanner Pilot 2": {
+    "status": "blocked",
+    "geometry": "blocked",
+    "estimate": "blocked",
+    "void_windows": 0,
+    "reason": "存在 target_group_by_unit，元数据里有 s_max=5，但没有 region0-3 的冻结 mu。没有假定均匀 0.25"
+  },
+  "T-Drive": {
+    "status": "blocked",
+    "geometry": "blocked",
+    "estimate": "blocked",
+    "void_windows": 0,
+    "reason": "opportunity_features 没有组字段。没有使用微型夹具。没有套用冻结 mu 文件"
+  },
+  "NSW-Traffic": {
+    "status": "complete",
+    "geometry": "complete",
+    "estimate": "blocked",
+    "void_windows": 0,
+    "reason": "列名和三份侧车文件里没有与窗口客户端行对齐的组向量。oracle_p 与 oracle_q 是标量，没有当作参考。没有打开 provenance 指向的源目录，没有拟合 q。"
+  },
+  "SensorScope": {
+    "status": "complete",
+    "geometry": "complete",
+    "estimate": "blocked",
+    "void_windows": 0,
+    "reason": "列名和三份侧车文件里没有与窗口客户端行对齐的组向量。oracle_p 与 oracle_q 是标量，没有当作参考。没有打开 provenance 指向的源目录，没有拟合 q。"
+  },
+  "U-Air": {
+    "status": "complete",
+    "geometry": "complete",
+    "estimate": "blocked",
+    "void_windows": 0,
+    "reason": "列名和三份侧车文件里没有与窗口客户端行对齐的组向量。oracle_p 与 oracle_q 是标量，没有当作参考。没有打开 provenance 指向的源目录，没有拟合 q。"
+  },
+  "align_max_abs": 6.938893903907228e-18,
+  "round": "complete"
+}

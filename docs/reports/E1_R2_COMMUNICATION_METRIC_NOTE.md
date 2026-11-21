@@ -1,6 +1,6 @@
 # E1-R2 Communication Metric Note
 
-Generated: 2026-08-03T14:23:48.620551+00:00
+Generated: 2026-10-12T12:46:40.850623+00:00
 
 The formal E1-R2 runs record **communication as an update count**, not bytes.
 
@@ -10,4 +10,4 @@ The formal E1-R2 runs record **communication as an update count**, not bytes.
 
 Do **not** describe this metric as communication bytes unless a separate serialized-byte counter with evidence is introduced.
 
-Audit status: **PASS** over 25 formal runs.
+Audit status: **PASS** over 0 formal runs.

@@ -1,0 +1,33 @@
+U-Air 20-seed mean RMSE_mu: bundle FIG_E3 vs worktree FIG_E3 vs bundle TABLE_E3 vs bundle TABLE_II
+
+method                     bundleFIG         wtFIG    TABLE_E3    TABLE_II  verdict
+Central-All                 1.055571      1.055571     1.05557              E3: bundleFIG=MATCH wtFIG=MATCH
+Central-Delivered           1.178155      1.178155     1.17816              E3: bundleFIG=MATCH wtFIG=MATCH
+Debt-Cal                    1.189318      1.180413     1.18932              E3: bundleFIG=MATCH wtFIG=NO
+FedAsync-Window             1.188279      1.179098     1.18828              E3: bundleFIG=MATCH wtFIG=NO
+FedAvg-Window               1.188238      1.178988     1.18824     1.18824  E3: bundleFIG=MATCH wtFIG=NO
+Inst-Cal                    1.191123      1.195374     1.19112              E3: bundleFIG=MATCH wtFIG=NO
+Local-Hajek                 1.188238      1.192251     1.18824              E3: bundleFIG=MATCH wtFIG=NO
+RAVEN-MCS                   1.191114      1.195366                          
+RAVEN-SimOracle             1.191447      1.195830     1.19145              E3: bundleFIG=MATCH wtFIG=NO
+TimeAlign-Agg               1.188435      1.179107     1.18843              E3: bundleFIG=MATCH wtFIG=NO
+TwoStage-Hajek              1.215961      1.220198     1.21596     1.21596  E3: bundleFIG=MATCH wtFIG=NO
+
+Also for comparison, printed Table II values in the manuscript (rounded to 5dp):
+  U-Air FedAvg-Window 1.18824, FedAU-Window 1.11281, ObsUse-Window 1.11203,
+  RAVEN-MCS-SCD 1.11306, TwoStage-Hajek 1.21596, RAVEN-MCS-Full-Design 1.19111
+---
+SensorScope means identical between the two FIG_E3 versions? True
+
+Difference in U-Air per-method means (bundleFIG - wtFIG):
+  Central-All           +0.000000
+  Central-Delivered     +0.000000
+  Debt-Cal              +0.008906
+  FedAsync-Window       +0.009181
+  FedAvg-Window         +0.009249
+  Inst-Cal              -0.004251
+  Local-Hajek           -0.004013
+  RAVEN-MCS             -0.004252
+  RAVEN-SimOracle       -0.004383
+  TimeAlign-Agg         +0.009328
+  TwoStage-Hajek        -0.004237

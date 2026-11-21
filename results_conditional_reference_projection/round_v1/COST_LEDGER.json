@@ -1,0 +1,74 @@
+{
+  "historical": [
+    {
+      "id": "formula_probe_1",
+      "stage": "S1",
+      "wall_seconds": 14.414,
+      "import_cpu_seconds": 2.922,
+      "window_cpu_seconds": "UNKNOWN",
+      "contains": [],
+      "included_in": null,
+      "note": "Failed the server-update check. No official arm."
+    },
+    {
+      "id": "formula_probe_2",
+      "stage": "S1",
+      "wall_seconds": 6.164,
+      "import_cpu_seconds": 2.078,
+      "window_cpu_seconds": "UNKNOWN",
+      "contains": [],
+      "included_in": null,
+      "note": "Diagnostic probe. No official arm."
+    },
+    {
+      "id": "four_arm_process",
+      "stage": "first_seed",
+      "wall_seconds": 141.517,
+      "cpu_before_F_seconds": 123.2,
+      "partial_F_cpu_seconds": "UNKNOWN",
+      "contains": [
+        "FedAvg-Window",
+        "TwoStage-Hajek",
+        "U_matched_uniform",
+        "P_reference_projection",
+        "partial F"
+      ],
+      "included_in": null,
+      "note": "Process total already contains the four completed arm rows. Do not add those rows again. Peak RSS is UNMEASURED_FULL_RUN."
+    },
+    {
+      "id": "F_rerun_process",
+      "stage": "first_seed",
+      "wall_seconds": 36.866,
+      "process_cpu_seconds": "UNKNOWN",
+      "included_components": {
+        "s1_cpu_seconds": 3.375,
+        "s1_wall_seconds": 3.497,
+        "F_deploy_cpu_seconds": 30.125,
+        "F_deploy_wall_seconds": 30.502
+      },
+      "contains": [
+        "F_full_raven_design"
+      ],
+      "included_in": null,
+      "note": "The arm row is inside this process. Peak RSS is UNMEASURED_FULL_RUN."
+    },
+    {
+      "id": "first_seed_budget_reservation",
+      "cpu_seconds": 400,
+      "wall_seconds": 600,
+      "measured_spend": false,
+      "note": "Reservation used to size the continuation cap. Not a measured cost and not an upper bound that has been proved."
+    }
+  ],
+  "historical_peak_rss": "UNMEASURED_FULL_RUN",
+  "continuation_limit_cpu": 600.0,
+  "continuation_limit_wall": 900.0,
+  "continuation_spent_cpu": 370.4375,
+  "continuation_spent_wall": 383.55491869998514,
+  "sampled_min_free": 4425453568,
+  "sampled_peak_rss": "UNMEASURED_SAMPLER_HANDLE",
+  "memory_samples": 2373,
+  "sample_interval_seconds": 1,
+  "note": "Historical rows with UNKNOWN stay unknown. Arm rows inside a listed process are not added again. Continuation figures are this authorized batch only."
+}

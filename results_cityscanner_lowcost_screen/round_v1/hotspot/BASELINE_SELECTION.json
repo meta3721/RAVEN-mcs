@@ -1,0 +1,50 @@
+{
+  "experiment": "hotspot",
+  "selection_split": "validation",
+  "budget": "0.2",
+  "blocks": {
+    "visit": {
+      "b_H": "Delivered-SpatialMean",
+      "J": 0.050883217505507304,
+      "tie_break_applied": false,
+      "tied_methods": [
+        "Delivered-SpatialMean"
+      ],
+      "validation_J": {
+        "Delivered-CellBlockMean": 0.05096155247601627,
+        "Delivered-SpatialMean": 0.050883217505507304,
+        "Fixed-Ensemble": 0.052641500407635065,
+        "fedau_window": 0.052550148986701885,
+        "fedavg_window": 0.05254433674500254,
+        "obsuse_window": 0.05311003051299632,
+        "raven": 0.05325921945904492,
+        "twostage_hajek": 0.052973657048165056
+      },
+      "unavailable_non_raven": [],
+      "unavailable_rows": [],
+      "fixed_ensemble_deployment_inferences": 2
+    },
+    "measured-O": {
+      "b_H": "Delivered-CellBlockMean",
+      "J": 0.25824526889117344,
+      "tie_break_applied": false,
+      "tied_methods": [
+        "Delivered-CellBlockMean"
+      ],
+      "validation_J": {
+        "Delivered-CellBlockMean": 0.25824526889117344,
+        "Delivered-SpatialMean": 0.28186623791056886,
+        "Fixed-Ensemble": 0.27860526793057994,
+        "fedau_window": 0.2813167282110984,
+        "fedavg_window": 0.2782175897797875,
+        "obsuse_window": 0.2811235694147779,
+        "raven": 0.2773770469360617,
+        "twostage_hajek": 0.27599862345511156
+      },
+      "unavailable_non_raven": [],
+      "unavailable_rows": [],
+      "fixed_ensemble_deployment_inferences": 2
+    }
+  },
+  "frozen_utc": "2026-10-19T00:36:26.806869+00:00"
+}

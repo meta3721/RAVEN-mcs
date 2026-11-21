@@ -1,0 +1,18 @@
+{
+  "events_sha256": "196ce23442b4622d8174acf9f86c823598594824fc5626e4f82f1e4f8919752d",
+  "metadata": {
+    "dataset": "uair",
+    "generator": "e3-complete-aligned-v1",
+    "notes": [
+      "E3 Complete-aligned controlled generator",
+      "deterministic given seed+dataset+num_windows",
+      "no test outcomes used"
+    ],
+    "num_clients": 8,
+    "num_windows": 3,
+    "s_max": 5,
+    "seed": 31001
+  },
+  "metadata_sha256": "26b0aa65dac0cee10264dedb5a6d34179843925465e377321a7819c853161b45",
+  "trace_hash": "b2b11c3dce5284c985a4558cd3762a8c4fe52ee439ba51489ac6ca3cbd25deb5"
+}

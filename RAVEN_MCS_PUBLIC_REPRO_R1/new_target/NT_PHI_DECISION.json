@@ -1,0 +1,67 @@
+{
+  "created_utc": "2026-09-10T05:25:42.732615+00:00",
+  "dataset": "traffic",
+  "design_on": true,
+  "experiment_id": "P2-NT-E3",
+  "gate_unused": true,
+  "git_commit": "44261d66c0b906c6b26e8936388f121c5ba0ba43",
+  "h_definition": "spatial_4_region",
+  "mu": {
+    "region0": 0.23255813953488372,
+    "region1": 0.2558139534883721,
+    "region2": 0.2558139534883721,
+    "region3": 0.2558139534883721
+  },
+  "mu_split": "test_units_region_share_no_Y",
+  "n_train_units": 18576,
+  "n_train_zero": 0,
+  "phi_definition": "phi_train_unit",
+  "phi_train_unit": 0.0,
+  "rule": "Design_ON iff phi_train_unit == 0",
+  "scd_method": "raven",
+  "spec": {
+    "chosen_option": "A_TRAFFIC_SPATIAL",
+    "dataset_id": "traffic",
+    "do_not_edit_table_ii": true,
+    "do_not_reuse_traffic_cross_vintage_e3": true,
+    "experiment_id": "P2-NT-E3",
+    "h_definition": "spatial_4_region",
+    "human_signoff": "Execute P2_NEW_TARGET_INSTRUCTION.md; Option A is the in-repo locked target.",
+    "not_utc_h1h4_copy_of_table_ii": true,
+    "num_windows": 100,
+    "o_layer": "CONTROLLED_EXPERIMENTAL p_obs=0.35",
+    "pi_target_builder": "build_pi_target",
+    "public_source": "TfNSW Open Data Hub; paper cite tfnsw2024traffic",
+    "r_layer": "PROTOCOL_COMPLETE_ALIGNED",
+    "seeds_formal": [
+      30001,
+      30002,
+      30003,
+      30004,
+      30005,
+      30006,
+      30007,
+      30008,
+      30009,
+      30010
+    ],
+    "seeds_test": null,
+    "status": "LOCKED",
+    "support_compatible_mixture": false,
+    "u_layer": "CONTROLLED_EXPERIMENTAL compute_usable_r3 s_max=5",
+    "why_new": "NSW-Traffic method ranking under a frozen 4-region deployment map, not UTC H1-H4; not mixed into Table II; fresh EventTraces."
+  },
+  "stratum_meta": {
+    "n_unique_strata": 32,
+    "region_ids": [
+      "region0",
+      "region1",
+      "region2",
+      "region3"
+    ],
+    "spatial_rule": "frozen 4 real regions (E2 public-target label-free)"
+  },
+  "train_full_design_extra": false,
+  "used_support_compatible": false,
+  "used_y_or_rmse": false
+}

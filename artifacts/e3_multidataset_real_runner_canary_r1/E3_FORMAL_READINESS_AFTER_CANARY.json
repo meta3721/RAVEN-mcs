@@ -1,0 +1,44 @@
+{
+  "canary_seed": 31001,
+  "formal_seeds": [
+    30001,
+    30002,
+    30003,
+    30004,
+    30005,
+    30006,
+    30007,
+    30008,
+    30009,
+    30010,
+    30011,
+    30012,
+    30013,
+    30014,
+    30015,
+    30016,
+    30017,
+    30018,
+    30019,
+    30020
+  ],
+  "ledger_status": "PASS",
+  "n_accepted": 28,
+  "next_authorized_round": "E3-FORMAL-RUNS-R1",
+  "no_performance_tuning": true,
+  "status": "READY_FOR_E3_FORMAL_RUNS",
+  "test_rcs": {
+    "full": 0,
+    "integ": 0,
+    "pip": 0,
+    "unit": 0
+  },
+  "traffic_reused_methods": [
+    "fedavg_window",
+    "fedasync_window",
+    "flamf_timealign_adapted",
+    "twostage_hajek",
+    "raven"
+  ],
+  "updated_utc": "2026-08-11T00:35:46.350367+00:00"
+}

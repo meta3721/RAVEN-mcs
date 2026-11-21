@@ -1,0 +1,58 @@
+{
+  "bug": "raven_wo_inst skipped P2 via window_runner uses_instant_calibration gate",
+  "control_flow": {
+    "accidental_disable_site": "Pre-repair window_runner gated aggregator.compute_server_weights on policy.uses_instant_calibration; raven_wo_inst has that flag False, so alpha was set to normalized beta and P2 never ran.",
+    "aggregator_type": "RavenWoInstAggregator",
+    "correct_semantics": "RavenWoInstAggregator always solve_p2 with instant_calibration=False, lambda_group=0, lambda_beta=1e-8; debt/variance/staleness unchanged.",
+    "no_instant_gate_skip": true,
+    "post_repair_always_calls_aggregator": true,
+    "runner_lists_wo_inst_as_p2_method": true
+  },
+  "created_utc": "2026-08-12T11:58:10.624707+00:00",
+  "fix": {
+    "aggregator": "RavenWoInstAggregator(lambda_group=0, lambda_beta=1e-8, instant_calibration=False)",
+    "runner_p2_methods": "include raven_wo_inst",
+    "validate_p2_lambdas": "instant_calibration=False allows lambda_group=0 (ablation only)",
+    "window_runner": "always call aggregator.compute_server_weights"
+  },
+  "one_factor_regression": {
+    "after_fix": {
+      "alpha_equals_beta": false,
+      "alpha_sum": 1.0,
+      "debt_term_active": true,
+      "design_obs_use_unchanged": true,
+      "instant_calibration": false,
+      "lambdas": {
+        "beta": 1e-08,
+        "group": 0.0,
+        "staleness": 0.1,
+        "variance": 0.1
+      },
+      "p2_invoked": true,
+      "path": "RavenWoInstAggregator.compute_server_weights → solve_p2"
+    },
+    "before_fix": {
+      "alpha_equals_beta": true,
+      "debt_term_active": false,
+      "design_obs_use_unchanged": true,
+      "p2_invoked": false,
+      "path": "window_runner else-branch alpha=beta (no aggregator call)"
+    },
+    "full_raven_rejects_lambda_group_zero": true,
+    "full_raven_still_invokes_p2": true,
+    "passes": true
+  },
+  "parent_audit": {
+    "all_p2_false": true,
+    "n_runs": 40
+  },
+  "unchanged": [
+    "design_ratio",
+    "observation_ipw",
+    "usable_ipw",
+    "debt_update",
+    "variance",
+    "staleness",
+    "constraints"
+  ]
+}

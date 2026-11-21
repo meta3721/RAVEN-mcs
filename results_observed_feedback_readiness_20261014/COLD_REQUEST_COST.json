@@ -1,0 +1,29 @@
+{
+  "status": "FAIL",
+  "numeric_pass": true,
+  "conservative_root_upper_CPU": 2.55125,
+  "root_sample": {
+    "schema": "root_disjoint_CPU_v1",
+    "root_id": "cda7e194b0d24ab9bd10a470d1d45ce9",
+    "sequence": 63,
+    "wall_stamp": 22587.773709,
+    "tree_CPU": 2.375,
+    "driver_CPU": 0.0625,
+    "command_used": 2.4375,
+    "batch_used": 33.421875,
+    "phase_used": 33.421875,
+    "remaining": 42.5625,
+    "finished": false,
+    "maximum_CPU_rate": 2.0,
+    "feedback_interval": 0.05,
+    "cost_rule": "tree + driver only; PID / inner job are included, never added",
+    "effective_remaining": 42.49405920000136
+  },
+  "launcher_bootstrap_CPU": 0.09375,
+  "worker_process_CPU": 2.34375,
+  "request_wall": 3.139083699999901,
+  "error": null,
+  "decision_accepted": true,
+  "first_request_includes_startup": true,
+  "request_count": 1
+}

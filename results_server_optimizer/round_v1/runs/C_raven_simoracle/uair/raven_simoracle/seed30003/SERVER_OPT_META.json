@@ -1,0 +1,87 @@
+{
+  "arm": "raven_simoracle",
+  "block": "uair",
+  "created_utc": "2026-10-08T08:52:54.260218+00:00",
+  "diag_first": [
+    {
+      "active": true,
+      "applied": true,
+      "g_norm": 0.5719883669231591,
+      "m_norm": 0.057198836692315916,
+      "opt_move_norm": 0.1842889707416191,
+      "sgd_move_norm": 0.005719883669231592,
+      "t": 1,
+      "v_norm": 0.0015061513908020895,
+      "window_id": 0
+    },
+    {
+      "active": true,
+      "applied": true,
+      "g_norm": 0.1305860902157395,
+      "m_norm": 0.05347538606801072,
+      "opt_move_norm": 0.12653115907221904,
+      "sgd_move_norm": 0.0013058609021573948,
+      "t": 2,
+      "v_norm": 0.001493176071121103,
+      "window_id": 1
+    },
+    {
+      "active": true,
+      "applied": true,
+      "g_norm": 0.4928975134034028,
+      "m_norm": 0.08289622710141685,
+      "opt_move_norm": 0.14203693603694378,
+      "sgd_move_norm": 0.004928975134034028,
+      "t": 3,
+      "v_norm": 0.0017917891991647635,
+      "window_id": 2
+    }
+  ],
+  "diag_last": [
+    {
+      "active": true,
+      "applied": true,
+      "g_norm": 0.09741501022167272,
+      "m_norm": 0.1531672064863751,
+      "opt_move_norm": 0.04884902418716181,
+      "sgd_move_norm": 0.0009741501022167272,
+      "t": 69,
+      "v_norm": 0.2173064379506503,
+      "window_id": 77
+    },
+    {
+      "active": true,
+      "applied": true,
+      "g_norm": 2.913230222064343,
+      "m_norm": 0.28257283521213494,
+      "opt_move_norm": 0.07514044057300831,
+      "sgd_move_norm": 0.029132302220643426,
+      "t": 70,
+      "v_norm": 0.23381178466439467,
+      "window_id": 78
+    },
+    {
+      "active": true,
+      "applied": true,
+      "g_norm": 0.980595390343509,
+      "m_norm": 0.3184449035779558,
+      "opt_move_norm": 0.07706333892951124,
+      "sgd_move_norm": 0.00980595390343509,
+      "t": 71,
+      "v_norm": 0.2341053387340207,
+      "window_id": 79
+    }
+  ],
+  "local_steps": 2,
+  "n_windows_optimizer_applied": 71,
+  "runtime_seconds": 13.521665200000143,
+  "seed": 30003,
+  "server_opt": {
+    "beta1": 0.9,
+    "beta2": 0.99,
+    "eta_s": 0.003,
+    "mode": "adam",
+    "tau": 0.001
+  },
+  "tag": "C_raven_simoracle"
+}

@@ -1,0 +1,63 @@
+{
+  "candidates": [
+    {
+      "candidate": "e1_frozen_region_cluster",
+      "note": "spatial_partition=none",
+      "path": "configs/frozen/e1_sensorscope_groups.yaml",
+      "usable": false
+    },
+    {
+      "candidate": "sensorscope_archive_member",
+      "note": "inspect_for_coordinates",
+      "path": "data/raw/sensorscope/Sensorscope.zip::Sensorscope/Plain_Morte_locations.txt",
+      "usable": false
+    },
+    {
+      "candidate": "sensorscope_archive_member",
+      "note": "inspect_for_coordinates",
+      "path": "data/raw/sensorscope/Sensorscope.zip::Sensorscope/stbernard-location.zip",
+      "usable": false
+    },
+    {
+      "candidate": "traffic_station_reference",
+      "note": "header=the_geom,cartodb_id,the_geom_webmercator,record_id,station_key,station_id,name,road_name,full_name,common_road_name,secondary_name,road_name_base,road_name_type,intersection,distance_to_intersection,r",
+      "path": "data/raw/traffic/road_traffic_counts_station_reference.csv",
+      "usable": true
+    }
+  ],
+  "client_id_derived_region_count": 0,
+  "coordinate_source": null,
+  "coordinate_validity": "FAIL",
+  "e1_spatial_partition": "none",
+  "mapped_coordinate_row_count": 0,
+  "missing_coordinate_count": 55,
+  "missing_stations_sample": [
+    "s103",
+    "s104",
+    "s106",
+    "s107",
+    "s11",
+    "s12",
+    "s13",
+    "s14",
+    "s17",
+    "s18",
+    "s19",
+    "s23",
+    "s24",
+    "s25",
+    "s26",
+    "s3",
+    "s30",
+    "s32",
+    "s33",
+    "s34"
+  ],
+  "note": "Location sidecar files exist in Sensorscope.zip (Plain_Morte / StBernard), but they do not provide a complete lat/lon map for the E1 Luce sNN station set. E1 spatial_partition=none.",
+  "selected_station_count": 55,
+  "source_traceable": false,
+  "station_id_rank_coordinate_count": 0,
+  "station_symmetric_difference": 55,
+  "status": "SPATIAL_METADATA_NOT_RECOVERED",
+  "synthetic_usage_count": 0
+}

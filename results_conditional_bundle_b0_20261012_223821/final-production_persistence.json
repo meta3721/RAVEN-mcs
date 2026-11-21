@@ -1,0 +1,504 @@
+{
+  "manifest": {
+    "run_id": "dynamic_new_run",
+    "experiment": "conditional_bundle_control",
+    "dataset": "explicit_data_identity",
+    "method": "reachability_stop/conditional-bundle-v2",
+    "scenario": "isolated_deterministic_B0",
+    "seed": 26004,
+    "run_hash": "d3f8ab33210b923ee32b626168a85175cd265e9c77ef56d865f9ef746bdfed5b",
+    "git_commit": "ee53a45267f40dc6d8896f1158073e7c511895b5",
+    "git_dirty": true,
+    "git_state_hash": "d52da9ec14889b85b11d332fde1aba00cbb10b074d8daa8994d81d0d140dabd3",
+    "config_hash": "ffce4a71e0b4892a12f95f53c844bfc16902b80ff35c56dc29b0bff202715d87",
+    "data_hash": "01100a811a7f14490bec6a8acb8f4bfec14ecc6e79812f27fb53eec23bad848a",
+    "event_trace_hash": "142eeecdb5b73145a72c306f91409120785e5fe71180a5397da21c20049a8c29",
+    "environment_hash": "56345b2af56f55c9c2d7380bc6fab74ce2318a87e23e4ba1f9ad6406947d9bd8",
+    "hostname": "LAPTOP-4349UTOC",
+    "device": "cpu",
+    "start_time": "2026-10-12T15:26:29+00:00",
+    "end_time": null,
+    "solver": "CLARABEL",
+    "hard_gate_status": "PENDING",
+    "failure_reason": null,
+    "seeds": {
+      "master": 26004,
+      "data": 1994589523,
+      "opportunity": 1498648934,
+      "observation": 1505471554,
+      "event": 1978286624,
+      "model": 662049791,
+      "solver": 2120948521,
+      "bootstrap": 1344069672,
+      "mc_oracle": 1153072862
+    },
+    "environment": {
+      "python_version": "3.11.9 (tags/v3.11.9:de54cf5, Apr  2 2024, 10:12:12) [MSC v.1938 64 bit (AMD64)]",
+      "python_version_info": [
+        3,
+        11,
+        9
+      ],
+      "platform": "Windows-10-10.0.26200-SP0",
+      "machine": "AMD64",
+      "processor": "Intel64 Family 6 Model 198 Stepping 2, GenuineIntel",
+      "executable": "C:\\Cursor\\raven.mcs\\.venv_new\\Scripts\\python.exe",
+      "packages": [
+        {
+          "name": "antlr4-python3-runtime",
+          "version": "4.9.3"
+        },
+        {
+          "name": "cffi",
+          "version": "2.1.1"
+        },
+        {
+          "name": "clarabel",
+          "version": "0.11.1"
+        },
+        {
+          "name": "colorama",
+          "version": "0.4.6"
+        },
+        {
+          "name": "contourpy",
+          "version": "1.3.3"
+        },
+        {
+          "name": "cvxpy",
+          "version": "1.9.2"
+        },
+        {
+          "name": "cycler",
+          "version": "0.12.1"
+        },
+        {
+          "name": "filelock",
+          "version": "3.32.4"
+        },
+        {
+          "name": "fonttools",
+          "version": "4.63.0"
+        },
+        {
+          "name": "fsspec",
+          "version": "2026.7.0"
+        },
+        {
+          "name": "highspy",
+          "version": "1.15.1"
+        },
+        {
+          "name": "hydra-core",
+          "version": "1.3.6"
+        },
+        {
+          "name": "iniconfig",
+          "version": "2.3.0"
+        },
+        {
+          "name": "jinja2",
+          "version": "3.1.6"
+        },
+        {
+          "name": "joblib",
+          "version": "1.5.3"
+        },
+        {
+          "name": "kiwisolver",
+          "version": "1.5.1"
+        },
+        {
+          "name": "markupsafe",
+          "version": "3.0.3"
+        },
+        {
+          "name": "matplotlib",
+          "version": "3.11.1"
+        },
+        {
+          "name": "mpmath",
+          "version": "1.3.0"
+        },
+        {
+          "name": "narwhals",
+          "version": "2.25.0"
+        },
+        {
+          "name": "networkx",
+          "version": "3.6.1"
+        },
+        {
+          "name": "numpy",
+          "version": "2.4.6"
+        },
+        {
+          "name": "omegaconf",
+          "version": "2.3.1"
+        },
+        {
+          "name": "osqp",
+          "version": "1.1.3"
+        },
+        {
+          "name": "packaging",
+          "version": "26.3"
+        },
+        {
+          "name": "pandas",
+          "version": "3.0.5"
+        },
+        {
+          "name": "pillow",
+          "version": "12.3.0"
+        },
+        {
+          "name": "pip",
+          "version": "24.0"
+        },
+        {
+          "name": "pluggy",
+          "version": "1.6.0"
+        },
+        {
+          "name": "pyarrow",
+          "version": "25.0.1"
+        },
+        {
+          "name": "pycparser",
+          "version": "3.0"
+        },
+        {
+          "name": "pygments",
+          "version": "2.21.0"
+        },
+        {
+          "name": "pymupdf",
+          "version": "1.28.2"
+        },
+        {
+          "name": "pyparsing",
+          "version": "3.3.2"
+        },
+        {
+          "name": "pyshp",
+          "version": "3.1.6"
+        },
+        {
+          "name": "pytest",
+          "version": "9.1.1"
+        },
+        {
+          "name": "python-dateutil",
+          "version": "2.9.0.post0"
+        },
+        {
+          "name": "pyyaml",
+          "version": "6.0.3"
+        },
+        {
+          "name": "qdldl",
+          "version": "0.1.9.post1"
+        },
+        {
+          "name": "raven-mcs",
+          "version": "0.4.0"
+        },
+        {
+          "name": "raven-mcs",
+          "version": "0.4.0"
+        },
+        {
+          "name": "raven-mcs",
+          "version": "0.4.0"
+        },
+        {
+          "name": "scikit-learn",
+          "version": "1.9.0"
+        },
+        {
+          "name": "scipy",
+          "version": "1.17.1"
+        },
+        {
+          "name": "scs",
+          "version": "3.2.11"
+        },
+        {
+          "name": "setuptools",
+          "version": "84.0.0"
+        },
+        {
+          "name": "six",
+          "version": "1.17.0"
+        },
+        {
+          "name": "sparsediffpy",
+          "version": "0.3.0"
+        },
+        {
+          "name": "sympy",
+          "version": "1.14.0"
+        },
+        {
+          "name": "threadpoolctl",
+          "version": "3.6.0"
+        },
+        {
+          "name": "torch",
+          "version": "2.13.0+cu130"
+        },
+        {
+          "name": "typing_extensions",
+          "version": "4.16.0"
+        },
+        {
+          "name": "tzdata",
+          "version": "2026.3"
+        }
+      ]
+    },
+    "phase": "1",
+    "constitution_version": "V2.3",
+    "git_state_scope": "explicit_computational_source_closure",
+    "source_files": [
+      "C:\\Cursor\\raven.mcs\\configs\\control\\conditional_bundle_v2.json",
+      "C:\\Cursor\\raven.mcs\\src\\raven_mcs\\__init__.py",
+      "C:\\Cursor\\raven.mcs\\src\\raven_mcs\\aggregation\\__init__.py",
+      "C:\\Cursor\\raven.mcs\\src\\raven_mcs\\aggregation\\base.py",
+      "C:\\Cursor\\raven.mcs\\src\\raven_mcs\\aggregation\\debt.py",
+      "C:\\Cursor\\raven.mcs\\src\\raven_mcs\\aggregation\\feasibility.py",
+      "C:\\Cursor\\raven.mcs\\src\\raven_mcs\\aggregation\\method_policy.py",
+      "C:\\Cursor\\raven.mcs\\src\\raven_mcs\\aggregation\\methods.py",
+      "C:\\Cursor\\raven.mcs\\src\\raven_mcs\\aggregation\\p2_cvxpy.py",
+      "C:\\Cursor\\raven.mcs\\src\\raven_mcs\\control\\__init__.py",
+      "C:\\Cursor\\raven.mcs\\src\\raven_mcs\\control\\isolation.py",
+      "C:\\Cursor\\raven.mcs\\src\\raven_mcs\\control\\lifecycle.py",
+      "C:\\Cursor\\raven.mcs\\src\\raven_mcs\\control\\persistence.py",
+      "C:\\Cursor\\raven.mcs\\src\\raven_mcs\\control\\planner.py",
+      "C:\\Cursor\\raven.mcs\\src\\raven_mcs\\control\\predictor.py",
+      "C:\\Cursor\\raven.mcs\\src\\raven_mcs\\control\\preview.py",
+      "C:\\Cursor\\raven.mcs\\src\\raven_mcs\\control\\probability.py",
+      "C:\\Cursor\\raven.mcs\\src\\raven_mcs\\control\\process_budget.py",
+      "C:\\Cursor\\raven.mcs\\src\\raven_mcs\\control\\schema.py",
+      "C:\\Cursor\\raven.mcs\\src\\raven_mcs\\control\\stage1.py",
+      "C:\\Cursor\\raven.mcs\\src\\raven_mcs\\correction\\__init__.py",
+      "C:\\Cursor\\raven.mcs\\src\\raven_mcs\\correction\\design_ratio.py",
+      "C:\\Cursor\\raven.mcs\\src\\raven_mcs\\correction\\effective_sample_size.py",
+      "C:\\Cursor\\raven.mcs\\src\\raven_mcs\\correction\\hajek.py",
+      "C:\\Cursor\\raven.mcs\\src\\raven_mcs\\correction\\ipw.py",
+      "C:\\Cursor\\raven.mcs\\src\\raven_mcs\\correction\\pi_target.py",
+      "C:\\Cursor\\raven.mcs\\src\\raven_mcs\\correction\\second_stage.py",
+      "C:\\Cursor\\raven.mcs\\src\\raven_mcs\\correction\\stage1.py",
+      "C:\\Cursor\\raven.mcs\\src\\raven_mcs\\data\\__init__.py",
+      "C:\\Cursor\\raven.mcs\\src\\raven_mcs\\data\\audit.py",
+      "C:\\Cursor\\raven.mcs\\src\\raven_mcs\\data\\base.py",
+      "C:\\Cursor\\raven.mcs\\src\\raven_mcs\\data\\cityscanner.py",
+      "C:\\Cursor\\raven.mcs\\src\\raven_mcs\\data\\cityscanner_eventtrace.py",
+      "C:\\Cursor\\raven.mcs\\src\\raven_mcs\\data\\cityscanner_p2_measured_o.py",
+      "C:\\Cursor\\raven.mcs\\src\\raven_mcs\\data\\cityscanner_p2_measured_o_eventtrace.py",
+      "C:\\Cursor\\raven.mcs\\src\\raven_mcs\\data\\cityscanner_p2_measured_o_no2.py",
+      "C:\\Cursor\\raven.mcs\\src\\raven_mcs\\data\\cityscanner_p2_measured_o_no2_eventtrace.py",
+      "C:\\Cursor\\raven.mcs\\src\\raven_mcs\\data\\controlled.py",
+      "C:\\Cursor\\raven.mcs\\src\\raven_mcs\\data\\download.py",
+      "C:\\Cursor\\raven.mcs\\src\\raven_mcs\\data\\fleet.py",
+      "C:\\Cursor\\raven.mcs\\src\\raven_mcs\\data\\manifest.py",
+      "C:\\Cursor\\raven.mcs\\src\\raven_mcs\\data\\matrix_adapter.py",
+      "C:\\Cursor\\raven.mcs\\src\\raven_mcs\\data\\pipeline.py",
+      "C:\\Cursor\\raven.mcs\\src\\raven_mcs\\data\\processed_dataset.py",
+      "C:\\Cursor\\raven.mcs\\src\\raven_mcs\\data\\registry.py",
+      "C:\\Cursor\\raven.mcs\\src\\raven_mcs\\data\\scaling.py",
+      "C:\\Cursor\\raven.mcs\\src\\raven_mcs\\data\\schema.py",
+      "C:\\Cursor\\raven.mcs\\src\\raven_mcs\\data\\sensorscope.py",
+      "C:\\Cursor\\raven.mcs\\src\\raven_mcs\\data\\split.py",
+      "C:\\Cursor\\raven.mcs\\src\\raven_mcs\\data\\synthetic.py",
+      "C:\\Cursor\\raven.mcs\\src\\raven_mcs\\data\\target.py",
+      "C:\\Cursor\\raven.mcs\\src\\raven_mcs\\data\\tdrive.py",
+      "C:\\Cursor\\raven.mcs\\src\\raven_mcs\\data\\traffic.py",
+      "C:\\Cursor\\raven.mcs\\src\\raven_mcs\\data\\uair.py",
+      "C:\\Cursor\\raven.mcs\\src\\raven_mcs\\data\\window_dataset.py",
+      "C:\\Cursor\\raven.mcs\\src\\raven_mcs\\experiments\\__init__.py",
+      "C:\\Cursor\\raven.mcs\\src\\raven_mcs\\experiments\\conditional_bundle.py",
+      "C:\\Cursor\\raven.mcs\\src\\raven_mcs\\experiments\\e1_entry.py",
+      "C:\\Cursor\\raven.mcs\\src\\raven_mcs\\experiments\\hard_gates.py",
+      "C:\\Cursor\\raven.mcs\\src\\raven_mcs\\experiments\\legacy_coverage_freeze.py",
+      "C:\\Cursor\\raven.mcs\\src\\raven_mcs\\experiments\\phase0_audit.py",
+      "C:\\Cursor\\raven.mcs\\src\\raven_mcs\\experiments\\r1m_method_freeze.py",
+      "C:\\Cursor\\raven.mcs\\src\\raven_mcs\\experiments\\registry.py",
+      "C:\\Cursor\\raven.mcs\\src\\raven_mcs\\experiments\\run_sag_g0.py",
+      "C:\\Cursor\\raven.mcs\\src\\raven_mcs\\experiments\\run_sag_g1.py",
+      "C:\\Cursor\\raven.mcs\\src\\raven_mcs\\experiments\\run_sag_g1_r1.py",
+      "C:\\Cursor\\raven.mcs\\src\\raven_mcs\\experiments\\run_sag_g1_r1b.py",
+      "C:\\Cursor\\raven.mcs\\src\\raven_mcs\\experiments\\run_sag_g1_r1c.py",
+      "C:\\Cursor\\raven.mcs\\src\\raven_mcs\\experiments\\run_sag_g1_r1d.py",
+      "C:\\Cursor\\raven.mcs\\src\\raven_mcs\\experiments\\run_sag_g1_r1e.py",
+      "C:\\Cursor\\raven.mcs\\src\\raven_mcs\\experiments\\run_sag_g1_r1f.py",
+      "C:\\Cursor\\raven.mcs\\src\\raven_mcs\\experiments\\run_sag_g1_r1g.py",
+      "C:\\Cursor\\raven.mcs\\src\\raven_mcs\\experiments\\run_sag_g1_r1h.py",
+      "C:\\Cursor\\raven.mcs\\src\\raven_mcs\\experiments\\run_sag_g1_r1i.py",
+      "C:\\Cursor\\raven.mcs\\src\\raven_mcs\\experiments\\run_sag_g1_r1j.py",
+      "C:\\Cursor\\raven.mcs\\src\\raven_mcs\\experiments\\run_sag_g1_r1k.py",
+      "C:\\Cursor\\raven.mcs\\src\\raven_mcs\\experiments\\run_sag_g1_r1l.py",
+      "C:\\Cursor\\raven.mcs\\src\\raven_mcs\\experiments\\run_sag_g1_r1l_v11.py",
+      "C:\\Cursor\\raven.mcs\\src\\raven_mcs\\experiments\\run_sag_g1_r1l_v12.py",
+      "C:\\Cursor\\raven.mcs\\src\\raven_mcs\\experiments\\run_sag_g1_r1l_v13.py",
+      "C:\\Cursor\\raven.mcs\\src\\raven_mcs\\experiments\\run_sag_g1_r1m.py",
+      "C:\\Cursor\\raven.mcs\\src\\raven_mcs\\experiments\\sag_runtime.py",
+      "C:\\Cursor\\raven.mcs\\src\\raven_mcs\\models\\__init__.py",
+      "C:\\Cursor\\raven.mcs\\src\\raven_mcs\\models\\common_ndmf.py",
+      "C:\\Cursor\\raven.mcs\\src\\raven_mcs\\models\\features.py",
+      "C:\\Cursor\\raven.mcs\\src\\raven_mcs\\opportunities\\__init__.py",
+      "C:\\Cursor\\raven.mcs\\src\\raven_mcs\\opportunities\\estimator.py",
+      "C:\\Cursor\\raven.mcs\\src\\raven_mcs\\opportunities\\strata.py",
+      "C:\\Cursor\\raven.mcs\\src\\raven_mcs\\propensity\\__init__.py",
+      "C:\\Cursor\\raven.mcs\\src\\raven_mcs\\propensity\\leakage.py",
+      "C:\\Cursor\\raven.mcs\\src\\raven_mcs\\propensity\\observation.py",
+      "C:\\Cursor\\raven.mcs\\src\\raven_mcs\\propensity\\usable.py",
+      "C:\\Cursor\\raven.mcs\\src\\raven_mcs\\sag\\__init__.py",
+      "C:\\Cursor\\raven.mcs\\src\\raven_mcs\\sag\\aggregate_certificate.py",
+      "C:\\Cursor\\raven.mcs\\src\\raven_mcs\\sag\\availability_stress.py",
+      "C:\\Cursor\\raven.mcs\\src\\raven_mcs\\sag\\certificates.py",
+      "C:\\Cursor\\raven.mcs\\src\\raven_mcs\\sag\\cfm1.py",
+      "C:\\Cursor\\raven.mcs\\src\\raven_mcs\\sag\\counterfactual_audit.py",
+      "C:\\Cursor\\raven.mcs\\src\\raven_mcs\\sag\\deployment_groups.py",
+      "C:\\Cursor\\raven.mcs\\src\\raven_mcs\\sag\\dynamic_cov.py",
+      "C:\\Cursor\\raven.mcs\\src\\raven_mcs\\sag\\e3v1_root_cause.py",
+      "C:\\Cursor\\raven.mcs\\src\\raven_mcs\\sag\\evidence.py",
+      "C:\\Cursor\\raven.mcs\\src\\raven_mcs\\sag\\gate.py",
+      "C:\\Cursor\\raven.mcs\\src\\raven_mcs\\sag\\oracle_ceiling.py",
+      "C:\\Cursor\\raven.mcs\\src\\raven_mcs\\sag\\oracle_stress_builder.py",
+      "C:\\Cursor\\raven.mcs\\src\\raven_mcs\\sag\\r1j_calibration.py",
+      "C:\\Cursor\\raven.mcs\\src\\raven_mcs\\sag\\r1j_eval.py",
+      "C:\\Cursor\\raven.mcs\\src\\raven_mcs\\sag\\r1j_features.py",
+      "C:\\Cursor\\raven.mcs\\src\\raven_mcs\\sag\\r1j_predictor.py",
+      "C:\\Cursor\\raven.mcs\\src\\raven_mcs\\sag\\r1j_spec.py",
+      "C:\\Cursor\\raven.mcs\\src\\raven_mcs\\sag\\r1k_aggregate.py",
+      "C:\\Cursor\\raven.mcs\\src\\raven_mcs\\sag\\r1k_barrier.py",
+      "C:\\Cursor\\raven.mcs\\src\\raven_mcs\\sag\\r1k_eval.py",
+      "C:\\Cursor\\raven.mcs\\src\\raven_mcs\\sag\\r1k_scale.py",
+      "C:\\Cursor\\raven.mcs\\src\\raven_mcs\\sag\\r1k_spec.py",
+      "C:\\Cursor\\raven.mcs\\src\\raven_mcs\\sag\\r1l_block.py",
+      "C:\\Cursor\\raven.mcs\\src\\raven_mcs\\sag\\r1l_conformal.py",
+      "C:\\Cursor\\raven.mcs\\src\\raven_mcs\\sag\\r1l_design.py",
+      "C:\\Cursor\\raven.mcs\\src\\raven_mcs\\sag\\r1l_spec.py",
+      "C:\\Cursor\\raven.mcs\\src\\raven_mcs\\sag\\r1l_state.py",
+      "C:\\Cursor\\raven.mcs\\src\\raven_mcs\\sag\\r1l_theory.py",
+      "C:\\Cursor\\raven.mcs\\src\\raven_mcs\\sag\\r1m_eval.py",
+      "C:\\Cursor\\raven.mcs\\src\\raven_mcs\\sag\\r1m_features.py",
+      "C:\\Cursor\\raven.mcs\\src\\raven_mcs\\sag\\r1m_predictor.py",
+      "C:\\Cursor\\raven.mcs\\src\\raven_mcs\\sag\\r1m_reset.py",
+      "C:\\Cursor\\raven.mcs\\src\\raven_mcs\\sag\\r1m_spec.py",
+      "C:\\Cursor\\raven.mcs\\src\\raven_mcs\\sag\\r1m_track.py",
+      "C:\\Cursor\\raven.mcs\\src\\raven_mcs\\sag\\sag_state.py",
+      "C:\\Cursor\\raven.mcs\\src\\raven_mcs\\sag\\stress_gate_builder.py",
+      "C:\\Cursor\\raven.mcs\\src\\raven_mcs\\sag\\stress_mask.py",
+      "C:\\Cursor\\raven.mcs\\src\\raven_mcs\\sag\\stress_summary.py",
+      "C:\\Cursor\\raven.mcs\\src\\raven_mcs\\sag\\target_law.py",
+      "C:\\Cursor\\raven.mcs\\src\\raven_mcs\\sag\\timing.py",
+      "C:\\Cursor\\raven.mcs\\src\\raven_mcs\\sag\\window_completeness.py",
+      "C:\\Cursor\\raven.mcs\\src\\raven_mcs\\sag\\window_context.py",
+      "C:\\Cursor\\raven.mcs\\src\\raven_mcs\\simulation\\__init__.py",
+      "C:\\Cursor\\raven.mcs\\src\\raven_mcs\\simulation\\event_trace.py",
+      "C:\\Cursor\\raven.mcs\\src\\raven_mcs\\simulation\\observation_generator.py",
+      "C:\\Cursor\\raven.mcs\\src\\raven_mcs\\simulation\\opportunity_generator.py",
+      "C:\\Cursor\\raven.mcs\\src\\raven_mcs\\simulation\\replay.py",
+      "C:\\Cursor\\raven.mcs\\src\\raven_mcs\\simulation\\usable_generator.py",
+      "C:\\Cursor\\raven.mcs\\src\\raven_mcs\\training\\__init__.py",
+      "C:\\Cursor\\raven.mcs\\src\\raven_mcs\\training\\cache_identity.py",
+      "C:\\Cursor\\raven.mcs\\src\\raven_mcs\\training\\checkpoints.py",
+      "C:\\Cursor\\raven.mcs\\src\\raven_mcs\\training\\client.py",
+      "C:\\Cursor\\raven.mcs\\src\\raven_mcs\\training\\dynamic_control.py",
+      "C:\\Cursor\\raven.mcs\\src\\raven_mcs\\training\\local_objective.py",
+      "C:\\Cursor\\raven.mcs\\src\\raven_mcs\\training\\synthetic_gate_runner.py",
+      "C:\\Cursor\\raven.mcs\\src\\raven_mcs\\training\\window_runner.py",
+      "C:\\Cursor\\raven.mcs\\src\\raven_mcs\\training\\window_timing.py",
+      "C:\\Cursor\\raven.mcs\\src\\raven_mcs\\utils\\__init__.py",
+      "C:\\Cursor\\raven.mcs\\src\\raven_mcs\\utils\\cli.py",
+      "C:\\Cursor\\raven.mcs\\src\\raven_mcs\\utils\\config.py",
+      "C:\\Cursor\\raven.mcs\\src\\raven_mcs\\utils\\hashing.py",
+      "C:\\Cursor\\raven.mcs\\src\\raven_mcs\\utils\\logging.py",
+      "C:\\Cursor\\raven.mcs\\src\\raven_mcs\\utils\\manifest.py",
+      "C:\\Cursor\\raven.mcs\\src\\raven_mcs\\utils\\paths.py",
+      "C:\\Cursor\\raven.mcs\\src\\raven_mcs\\utils\\run.py",
+      "C:\\Cursor\\raven.mcs\\src\\raven_mcs\\utils\\seed.py",
+      "C:\\Cursor\\raven.mcs\\src\\raven_mcs\\utils\\serialization.py",
+      "C:\\Cursor\\raven.mcs\\src\\raven_mcs\\utils\\validation.py"
+    ]
+  },
+  "identical_suffix": true,
+  "restored_pool_keys": [],
+  "restored_model_version": 1,
+  "actions": [
+    {
+      "action": "CLOSE",
+      "reason": "conditional_bundle",
+      "selected_offset": 0.0,
+      "plan_scores": [
+        [
+          0.0,
+          0.12773693732093713
+        ],
+        [
+          0.1,
+          0.1327369373209369
+        ],
+        [
+          0.5,
+          0.19510009045488988
+        ],
+        [
+          1.0,
+          0.27024153187233135
+        ],
+        [
+          2.0,
+          0.41114941470721467
+        ]
+      ],
+      "p2_solves": 2,
+      "cache_hits": 19,
+      "scenario_digest": "210e130878aabaf46f1fe72749a263f9eb71c6a262b80f13882ed08d472c0ecd",
+      "control_cpu_seconds": 0.0,
+      "wall_seconds": 0.0,
+      "forecast_only": true,
+      "evidence_role": "deterministic_interface_or_empirical_planning",
+      "variance_transition": "zero_unknown_gradient_increment"
+    },
+    {
+      "action": "CLOSE",
+      "reason": "conditional_bundle",
+      "selected_offset": 0.0,
+      "plan_scores": [
+        [
+          0.0,
+          0.12773693732093713
+        ],
+        [
+          0.1,
+          0.1327369373209369
+        ],
+        [
+          0.5,
+          0.19510009045488988
+        ],
+        [
+          1.0,
+          0.27024153187233135
+        ],
+        [
+          2.0,
+          0.41114941470721467
+        ]
+      ],
+      "p2_solves": 2,
+      "cache_hits": 19,
+      "scenario_digest": "210e130878aabaf46f1fe72749a263f9eb71c6a262b80f13882ed08d472c0ecd",
+      "control_cpu_seconds": 0.0,
+      "wall_seconds": 0.0,
+      "forecast_only": true,
+      "evidence_role": "deterministic_interface_or_empirical_planning",
+      "variance_transition": "zero_unknown_gradient_increment"
+    }
+  ],
+  "training_steps": 0
+}

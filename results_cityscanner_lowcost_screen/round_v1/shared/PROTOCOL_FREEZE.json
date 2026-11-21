@@ -1,0 +1,197 @@
+{
+  "step": "H0",
+  "written_before_slot_counts": true,
+  "date": "2026-10-18",
+  "methods": [
+    "fedavg_window",
+    "twostage_hajek",
+    "fedau_window",
+    "obsuse_window",
+    "raven"
+  ],
+  "directory_name_raven_unchanged": true,
+  "excluded": [
+    "results_gatekeeping six-arm runs",
+    "raven_wo_design",
+    "other method variants"
+  ],
+  "blocks": {
+    "visit": {
+      "dataset": "cityscanner_nyc_pm25",
+      "atomic_units": "data/processed/cityscanner_nyc_pm25/atomic_units.parquet",
+      "result_root": "results_c1_cityscanner/round_v1",
+      "setup": "results_c1_cityscanner/round_v1/CS_TRAIN_SETUP.json",
+      "score_name": "CS_ACCEPTED.json",
+      "trace_manifest": "results_c1_cityscanner/round_v1/CS_TRACE_MANIFEST.json",
+      "seeds": [
+        32001,
+        32002,
+        32003,
+        32004,
+        32005,
+        32006,
+        32007,
+        32008,
+        32009,
+        32010
+      ],
+      "trace_root": "artifacts/e3_c1_cityscanner_eventtraces_v1/cityscanner_nyc_pm25",
+      "h_encoding": {
+        "region0": 0,
+        "region1": 1,
+        "region2": 2,
+        "region3": 3
+      },
+      "mu": [
+        0.23732057416267938,
+        0.47464114832535875,
+        0.07081339712918659,
+        0.21722488038277507
+      ]
+    },
+    "measured-O": {
+      "dataset": "cityscanner_nyc_p2_measured_o",
+      "atomic_units": "data/processed/cityscanner_nyc_p2_measured_o/atomic_units.parquet",
+      "result_root": "results_joint_ou/round_v1",
+      "setup": "results_joint_ou/round_v1/JO_TRAIN_SETUP.json",
+      "score_name": "JO_ACCEPTED.json",
+      "trace_manifest": "results_joint_ou/round_v1/JO_TRACE_MANIFEST.json",
+      "seeds": [
+        33001,
+        33002,
+        33003,
+        33004,
+        33005,
+        33006,
+        33007,
+        33008,
+        33009,
+        33010
+      ],
+      "trace_root": "artifacts/e3_joint_ou_cs_p2_eventtraces_v1/cityscanner_nyc_p2_measured_o",
+      "h_encoding": {
+        "region0": 0,
+        "region1": 1,
+        "region2": 2,
+        "region3": 3
+      },
+      "mu": [
+        0.6496975806451613,
+        0.1350806451612903,
+        0.07258064516129033,
+        0.14264112903225806
+      ]
+    }
+  },
+  "mu_not_interchangeable_across_blocks": true,
+  "budget": {
+    "primary_fraction": 0.2,
+    "k": "ceil(0.20 * N)",
+    "N": "distinct spatial_id in the slot",
+    "sensitivity_fractions": [
+      0.1,
+      0.3
+    ],
+    "sensitivity_cannot_replace_primary": true
+  },
+  "prediction_tie_break": "spatial_id lexicographic order; labels are not used",
+  "J": "(sum_{i in T} y_i - sum_{i in S} y_i) / (k * sigma)",
+  "J_smaller_is_better": true,
+  "T": "k grids with the highest labels",
+  "S": "k grids selected by the method",
+  "sigma": "population standard deviation (ddof=0) of the block train target",
+  "physical_loss": "numerator / k, same unit as target_value",
+  "aggregation": "equal weight of slots within a day, equal weight of days, equal weight of 10 seeds; blocks stay separate",
+  "non_raven_tie_order_unicode": [
+    "Delivered-CellBlockMean",
+    "Delivered-SpatialMean",
+    "Fixed-Ensemble",
+    "fedau_window",
+    "fedavg_window",
+    "obsuse_window",
+    "twostage_hajek"
+  ],
+  "b_H": {
+    "count_per_block": 1,
+    "shared_by_all_seeds": true,
+    "not_chosen_per_test_day": true,
+    "selection_split": "validation",
+    "selected_in_this_step": false
+  },
+  "Delivered-CellBlockMean": {
+    "clock": "UTC six-hour blocks",
+    "minimum_distinct_units": 3,
+    "fallback": "Delivered-SpatialMean",
+    "search_bucket_count_or_minimum": false
+  },
+  "Fixed-Ensemble": {
+    "members": [
+      "fedavg_window",
+      "twostage_hajek"
+    ],
+    "weights": [
+      0.5,
+      0.5
+    ],
+    "same_seed": true,
+    "fitted_mixture": false
+  },
+  "pass_screen_all_required": [
+    "Asset and score checks pass, with all 10 paired seeds and the required support.",
+    "Relative to b_H, J improves by at least 10 percent and D is at least 0.01 training standard deviations.",
+    "The one-sided 98.75 percent lower bound of D is greater than 0.",
+    "The capture-rate point estimate does not fall by more than 2 percentage points.",
+    "Full-test RMSE_mu and WorstGroupRMSE relative costs are each at most 5 percent. This is a screening guard, not a proof of non-inferiority.",
+    "The test J point estimate is below the other six non-RAVEN candidates. Beating only the validation-selected candidate is BEATS_SELECTED_ONLY and is not a pass.",
+    "The median of D under 7-day block resampling is positive. Budgets of 10 percent and 30 percent cannot rescue the 20 percent result."
+  ],
+  "thresholds_are_screening_rules_not_a_deployment_contract": true,
+  "bootstrap": {
+    "draws": 10000,
+    "seed": 2026101801,
+    "primary_block_length_days": 3,
+    "primary_block": "circular moving block",
+    "seven_day_block": "report only; it does not replace the 3-day block",
+    "predeclared_comparisons": "two plans times two blocks",
+    "second_plan_defined_here": false,
+    "unused_comparison_share_reclaimed": false,
+    "drawn_in_this_step": false
+  },
+  "future_decisions_keep": "P2_VS_PROJECTION_UNRESOLVED",
+  "projection_model_trained_in_this_step": false,
+  "of_v1_resumed": false,
+  "candidate_slots": {
+    "splits": [
+      "validation",
+      "test"
+    ],
+    "split_name_is_validation_not_val": true,
+    "slot_key": "absolute_time",
+    "minimum_distinct_spatial_id": 10,
+    "test_minimum_qualified_slots": 40,
+    "test_minimum_qualified_utc_dates": 20,
+    "validation_minimum_qualified_slots": 20,
+    "validation_minimum_qualified_utc_dates": 10,
+    "below_threshold": "INSUFFICIENT_SUPPORT",
+    "do_not_collapse_slots_into_days": true,
+    "do_not_lower_the_10_grid_floor": true,
+    "do_not_drop_slots_by_label_or_model": true
+  },
+  "filters_not_applied_this_step": [
+    "is_warmup",
+    "support_flag"
+  ],
+  "prior_metadata_not_measured_here": {
+    "note": "Old plan metadata. Not a count from this step and not written into POOL_MANIFEST.csv.",
+    "visit_test": {
+      "slots": 59,
+      "units": 790,
+      "utc_days": 24
+    },
+    "measured_o_test": {
+      "slots": 50,
+      "units": 650,
+      "utc_days": 20
+    }
+  }
+}

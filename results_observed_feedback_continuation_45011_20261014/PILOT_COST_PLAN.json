@@ -1,0 +1,24 @@
+{
+  "time": 1.07,
+  "actual_SGD": 32,
+  "remaining_registrations": 4254,
+  "remaining_grids": 990,
+  "maximum_observed_local_SGD_CPU": 0.078125,
+  "root_maxima": {
+    "initialization": 0.535625,
+    "save": 1.035625,
+    "events": 0.066875,
+    "training": 0.254375,
+    "online": 0.0825
+  },
+  "estimated_remaining_CPU": {
+    "training": 2164.2225000000003,
+    "online": 534.6,
+    "events": 1839.3300000000002,
+    "save": 124.27499999999999
+  },
+  "available_root_CPU": 3359.8169907999936,
+  "save_reserve": 5.96875,
+  "allowed": false,
+  "limitations": "32 steps/60 root CPU warmup prefix; later solver, queue and history growth unobserved; 3x save-growth planning allowance is not a bound"
+}

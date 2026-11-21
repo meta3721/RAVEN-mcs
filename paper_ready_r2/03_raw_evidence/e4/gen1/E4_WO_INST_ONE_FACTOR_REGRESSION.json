@@ -1,0 +1,27 @@
+{
+  "after_fix": {
+    "alpha_equals_beta": false,
+    "alpha_sum": 1.0,
+    "debt_term_active": true,
+    "design_obs_use_unchanged": true,
+    "instant_calibration": false,
+    "lambdas": {
+      "beta": 1e-08,
+      "group": 0.0,
+      "staleness": 0.1,
+      "variance": 0.1
+    },
+    "p2_invoked": true,
+    "path": "RavenWoInstAggregator.compute_server_weights → solve_p2"
+  },
+  "before_fix": {
+    "alpha_equals_beta": true,
+    "debt_term_active": false,
+    "design_obs_use_unchanged": true,
+    "p2_invoked": false,
+    "path": "window_runner else-branch alpha=beta (no aggregator call)"
+  },
+  "full_raven_rejects_lambda_group_zero": true,
+  "full_raven_still_invokes_p2": true,
+  "passes": true
+}

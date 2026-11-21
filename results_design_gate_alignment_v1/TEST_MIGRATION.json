@@ -1,0 +1,142 @@
+[
+  {
+    "file": "tests\\unit\\test_formal_policy_unique.py",
+    "reason": "新版方法身份由design_control/configured版本核验，独立legacy注册保留；原别名及唯一paper断言保留"
+  },
+  {
+    "file": "tests\\unit\\test_legacy_raven_isolated.py",
+    "reason": "新版方法身份由design_control/configured版本核验，独立legacy注册保留；原别名及唯一paper断言保留"
+  },
+  {
+    "file": "tests\\unit\\test_r1m_no_legacy_gate_bypass.py",
+    "reason": "新版方法身份由design_control/configured版本核验，独立legacy注册保留；原别名及唯一paper断言保留"
+  },
+  {
+    "file": "tests\\unit\\test_raven_mcs_resolves_to_formal_policy.py",
+    "reason": "新版方法身份由design_control/configured版本核验，独立legacy注册保留；原别名及唯一paper断言保留"
+  },
+  {
+    "file": "tests\\unit\\test_raven_mcs_not_legacy_static_gate.py",
+    "reason": "新版方法身份由design_control/configured版本核验，独立legacy注册保留；原别名及唯一paper断言保留"
+  },
+  {
+    "file": "tests\\unit\\test_raven_mcs_resolves_to_aggregate_coverage.py",
+    "reason": "新版方法身份由design_control/configured版本核验，独立legacy注册保留；原别名及唯一paper断言保留"
+  },
+  {
+    "file": "tests\\unit\\test_r1m_raven_mcs_formal_alias.py",
+    "reason": "新版方法身份由design_control/configured版本核验，独立legacy注册保留；原别名及唯一paper断言保留"
+  },
+  {
+    "file": "tests\\unit\\test_certified_above_tau_design_on.py",
+    "reason": "Gate强制Design、忽略静态配置及WARMUP/RESET关闭Design只属于legacy；断言保留并使用显式legacy函数/注册"
+  },
+  {
+    "file": "tests\\unit\\test_certified_below_tau_design_off.py",
+    "reason": "Gate强制Design、忽略静态配置及WARMUP/RESET关闭Design只属于legacy；断言保留并使用显式legacy函数/注册"
+  },
+  {
+    "file": "tests\\unit\\test_current_mask_cannot_control_design.py",
+    "reason": "Gate强制Design、忽略静态配置及WARMUP/RESET关闭Design只属于legacy；断言保留并使用显式legacy函数/注册"
+  },
+  {
+    "file": "tests\\unit\\test_dataset_name_cannot_control_design.py",
+    "reason": "Gate强制Design、忽略静态配置及WARMUP/RESET关闭Design只属于legacy；断言保留并使用显式legacy函数/注册"
+  },
+  {
+    "file": "tests\\unit\\test_design_t_equals_gate_t.py",
+    "reason": "Gate强制Design、忽略静态配置及WARMUP/RESET关闭Design只属于legacy；断言保留并使用显式legacy函数/注册"
+  },
+  {
+    "file": "tests\\unit\\test_formal_runner_no_static_gate_lookup.py",
+    "reason": "Gate强制Design、忽略静态配置及WARMUP/RESET关闭Design只属于legacy；断言保留并使用显式legacy函数/注册"
+  },
+  {
+    "file": "tests\\unit\\test_gate_t_controls_design_t.py",
+    "reason": "Gate强制Design、忽略静态配置及WARMUP/RESET关闭Design只属于legacy；断言保留并使用显式legacy函数/注册"
+  },
+  {
+    "file": "tests\\unit\\test_gate_t_is_unique_design_authority.py",
+    "reason": "Gate强制Design、忽略静态配置及WARMUP/RESET关闭Design只属于legacy；断言保留并使用显式legacy函数/注册"
+  },
+  {
+    "file": "tests\\unit\\test_no_dataset_gate_override.py",
+    "reason": "Gate强制Design、忽略静态配置及WARMUP/RESET关闭Design只属于legacy；断言保留并使用显式legacy函数/注册"
+  },
+  {
+    "file": "tests\\unit\\test_no_static_gate_override.py",
+    "reason": "Gate强制Design、忽略静态配置及WARMUP/RESET关闭Design只属于legacy；断言保留并使用显式legacy函数/注册"
+  },
+  {
+    "file": "tests\\unit\\test_oracle_cannot_control_current_design.py",
+    "reason": "Gate强制Design、忽略静态配置及WARMUP/RESET关闭Design只属于legacy；断言保留并使用显式legacy函数/注册"
+  },
+  {
+    "file": "tests\\unit\\test_r1l_v12_mock_gate_design_cases.py",
+    "reason": "Gate强制Design、忽略静态配置及WARMUP/RESET关闭Design只属于legacy；断言保留并使用显式legacy函数/注册"
+  },
+  {
+    "file": "tests\\unit\\test_r1l_v13_mock_raven_mcs_cases.py",
+    "reason": "Gate强制Design、忽略静态配置及WARMUP/RESET关闭Design只属于legacy；断言保留并使用显式legacy函数/注册"
+  },
+  {
+    "file": "tests\\unit\\test_reset_design_off.py",
+    "reason": "Gate强制Design、忽略静态配置及WARMUP/RESET关闭Design只属于legacy；断言保留并使用显式legacy函数/注册"
+  },
+  {
+    "file": "tests\\unit\\test_source_snapshot_contains_window_runner.py",
+    "reason": "保留历史快照存在性及旧formal_decide符号断言；历史文件不随新legacy符号重命名，不修改快照"
+  },
+  {
+    "file": "tests\\unit\\test_warmup_design_off.py",
+    "reason": "Gate强制Design、忽略静态配置及WARMUP/RESET关闭Design只属于legacy；断言保留并使用显式legacy函数/注册"
+  },
+  {
+    "file": "tests\\unit\\test_window_close_receives_gate_t.py",
+    "reason": "Gate强制Design、忽略静态配置及WARMUP/RESET关闭Design只属于legacy；断言保留并使用显式legacy函数/注册"
+  },
+  {
+    "file": "tests\\unit\\test_window_runner_calls_compute_certificates.py",
+    "reason": "Gate强制Design、忽略静态配置及WARMUP/RESET关闭Design只属于legacy；断言保留并使用显式legacy函数/注册"
+  },
+  {
+    "file": "tests\\unit\\test_design_t_controls_window_close.py",
+    "reason": "旧论文源码字符串断言与当前规范冲突，替换为冻结Design消费和独立Gate的行为断言；真实计算链另由集成测试覆盖"
+  },
+  {
+    "file": "tests\\unit\\test_window_close_receives_gate_t.py",
+    "reason": "旧论文源码字符串断言与当前规范冲突，替换为冻结Design消费和独立Gate的行为断言；真实计算链另由集成测试覆盖"
+  },
+  {
+    "file": "tests/unit/test_no_oracle_current_gate_leakage.py",
+    "reason": "保留特征无oracle检查，将Design=Gate源码字符串断言改为配置不受当前/隐藏结果影响的行为断言"
+  },
+  {
+    "file": "tests\\unit\\test_abstract_has_no_old_dataset_gate_claim.py",
+    "reason": "保留禁止数据集硬编码的断言；移除要求论文随Gate关闭Design的旧规范断言，核验当前论文明确的预配置定义；论文原文未修改"
+  },
+  {
+    "file": "tests\\unit\\test_intro_has_no_old_dataset_gate_claim.py",
+    "reason": "保留禁止数据集硬编码的断言；移除要求论文随Gate关闭Design的旧规范断言，核验当前论文明确的预配置定义；论文原文未修改"
+  },
+  {
+    "file": "tests\\unit\\test_conclusion_has_no_old_dataset_gate_claim.py",
+    "reason": "保留禁止数据集硬编码的断言；移除要求论文随Gate关闭Design的旧规范断言，核验当前论文明确的预配置定义；论文原文未修改"
+  },
+  {
+    "file": "tests\\unit\\test_gate_uses_lcb_only.py",
+    "reason": "以实际Gate阈值及诊断状态行为替换旧理论文件源码子串要求；阈值保持0.05"
+  },
+  {
+    "file": "tests\\unit\\test_e1_entry_r3_opportunity.py",
+    "reason": "调整因预计算全部客户端比率而改变的赋值变量名；保留计算必须先于lagged estimator更新的顺序检查，并增加真实runner行为测试"
+  },
+  {
+    "file": "tests/unit/test_raven_mcs_formal_alias_same_policy.py",
+    "reason": "旧aggregate gate_mode断言迁移为configured Design身份；保留别名与规范键完全相同policy断言"
+  },
+  {
+    "file": "tests/unit/test_c_cov_semantics.py",
+    "reason": "原诊断测试没有event_count_cp所需的历史事件计数，NaN相等断言错误；补充真实格式历史计数并断言有限诊断，不改变阈值或诊断规则"
+  }
+]

@@ -1,0 +1,66 @@
+{
+  "command": [
+    "C:\\Cursor\\raven.mcs\\.venv_new\\Scripts\\python.exe",
+    "scripts/diagnostic_meter_workload.py",
+    "--mode",
+    "legacy"
+  ],
+  "returncode": 0,
+  "process_tree_cpu_seconds": 0.0,
+  "monitor_cpu_seconds": 0.0,
+  "wall_seconds": 1.2118630000004487,
+  "limit_reason": null,
+  "log": "C:\\Cursor\\raven.mcs\\results_calibration_diagnostic_20261013_122013\\D1_legacy_delayed_attach.log",
+  "pids": [
+    {
+      "pid": 13680,
+      "joined_observed_wall": 0.2500651000009384,
+      "root_job_member": true,
+      "image": "C:\\Cursor\\raven.mcs\\.venv_new\\Scripts\\python.exe",
+      "initial_cpu": 0.0,
+      "created_filetime": 13436339344.945671,
+      "exited_filetime": 13436339346.151537,
+      "kernel_cpu": 0.0,
+      "user_cpu": 0.0,
+      "cpu_seconds": 0.0,
+      "exit_code": 0,
+      "exit_observed_wall": 1.2118398000002344
+    }
+  ],
+  "notifications": [
+    {
+      "message": 6,
+      "pid": 13680,
+      "wall": 0.2512793000005331
+    },
+    {
+      "message": 7,
+      "pid": 13680,
+      "wall": 1.2117816000009043
+    },
+    {
+      "message": 4,
+      "pid": 0,
+      "wall": 1.2117880000005243
+    }
+  ],
+  "errors": [],
+  "job_total_processes": 1,
+  "job_active_processes": 0,
+  "independent_pid_CPU_sum": 0.0,
+  "difference_seconds": 0.0,
+  "predeclared_tolerance_seconds": 0.04125,
+  "audit_passed": true,
+  "CPU_limit": 5,
+  "single_CPU_affinity": 1,
+  "mutually_exclusive_costs": [
+    "process_tree_cpu_seconds",
+    "monitor_cpu_seconds"
+  ],
+  "included_not_additive": [
+    "independent_pid_CPU_sum",
+    "individual_PID_CPU",
+    "inner_job_CPU"
+  ],
+  "cpu_scope": "legacy delayed assignment, diagnostic only"
+}

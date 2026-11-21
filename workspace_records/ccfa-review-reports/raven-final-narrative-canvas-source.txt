@@ -1,0 +1,47 @@
+import { Stack, Row, H1, H2, Text, Table, Button, useState, useHostTheme } from "cursor/canvas";
+
+const base = "C:/Cursor/raven.mcs/TO_OVERLEAF_paper_tmc_r1_clean/";
+const findings = [
+  {group:"含义修正", name:"截断触发率被标为未触发率", where:"补充第 11 页 · Table XXV", file:"appendix.tex", line:1477, evidence:"floor inactive: 5.22% / 5.18%；ceiling inactive: 24.22% / 23.75%。解释段说这些数值表示触发。", action:"核对统计字段，统一行名与分母；保留数值。"},
+  {group:"含义修正", name:"A5 holds 超过已检查范围", where:"补充第 9–10 页", file:"appendix.tex", line:1487, evidence:"标题宣称 A5 成立；后文又把共享 active support、M、C 留作比较假设。", action:"将结论限定到已核验的正边际和正质量条件。"},
+  {group:"含义修正", name:"A6a 的充分性被写成必要性", where:"补充第 9 页；正文第 7 页", file:"appendix.tex", line:1438, evidence:"also needs A6a 与正文 sufficient but not necessary 不一致。", action:"统一命题、重述和解释中的逻辑方向。"},
+  {group:"内部叙述", name:"脚本名与开发代号", where:"补充第 9、12、14 页", file:"appendix.tex", line:1447, evidence:"build_full_runner / run_e3_real / E1-R2 / E2 traffic runner；raven_ctrl；OF-v1 / GAP20。", action:"改用实验设置、表中正式方法名和机制名称；参数与结果保留。"},
+  {group:"内部叙述", name:"审计式标题与列名", where:"补充第 6、8–10 页；正文第 11–12 页", file:"appendix.tex", line:847, evidence:"provenance audit / Support-Hypothesis Audit / Frozen result / audited active windows。", action:"围绕权重抵消、可行性、支持条件与覆盖分析命名，重组段落。"},
+  {group:"内部叙述", name:"历史候选与当前方法混叙", where:"正文第 13 页；补充第 10、12 页", file:"appendix.tex", line:1549, evidence:"historical coverage-controlled candidate 使用 Design=Gate；主方法预配置 Design。", action:"按机制定义比较变体，保持对象和证据归属清楚。"},
+  {group:"内部叙述", name:"核验裁决代替科学解释", where:"补充第 5、6、8、10 页", file:"appendix.tex", line:962, evidence:"headlines / proposed directional event / checks do not all pass / not selection-trace leakage。", action:"直接给出端点、诊断量、共享事件与科学含义。"},
+  {group:"表达润色", name:"范围声明重复且打断流程", where:"正文第 1、5–6、8–10、13 页", file:"main.tex", line:102, evidence:"cannot create missing support；does not establish；not a non-inferiority proof。", action:"在假设和统计设置中集中定义，结果处保留必要事实与区间。"},
+  {group:"表达润色", name:"末窗口修正缺清楚定义", where:"正文第 11 页", file:"main.tex", line:1502, evidence:"Prediction scores use saved model parameters with the terminal-window correction. 本轮未检查评分代码。", action:"核对后说明最终模型时点、末窗口处理及各臂统一评分规则。"},
+  {group:"表达润色", name:"摘要四部分顺序尚未完全落实", where:"正文第 1 页", file:"main.tex", line:72, evidence:"缺独立的现有研究概括句；理论后分散补充数字、观测方式与范围。", action:"按用户既定顺序重组，保留方法连接与 25.8% / 23.3% 组失配证据。"},
+  {group:"表达润色", name:"Although 连接的是并列方向", where:"正文第 1 页", file:"main.tex", line:89, evidence:"异步更新与参与校正不是该句所写的让步关系。", action:"保留文献综述逻辑，在真正的研究缺口处使用转折。"},
+  {group:"表达润色", name:"复现声明仍在描述内部验收", where:"正文第 13 页", file:"main.tex", line:1776, evidence:"have not been verified as a complete package。材料完整性和公开入口尚需事实核对。", action:"先确认交付范围，再陈述实际内容与获取方式。"},
+];
+
+export default function FinalNarrativeReview() {
+  const theme = useHostTheme();
+  const [category, setCategory] = useState("全部");
+  const selected = findings.filter(x => category === "全部" || category === x.group);
+  return <Stack gap={20} style={{padding:24,background:theme.bg.editor,color:theme.text.primary}}>
+    <H1>RAVEN-MCS · 最终叙事与导师要求对照</H1>
+    <Text tone="secondary">2026-10-30 · 正文 17:11 / 附录 16:59 源文件与对应 PDF · 仅审查，未修改论文，实验保持暂停</Text>
+    <div style={{background:theme.fill.tertiary,padding:16}}>
+      <H2>先修三处含义，再清理内部过程叙述</H2>
+      <Text>现稿适合定点润色。附录的问题更集中：表头含义、假设范围、内部代号和审计式标题。重复限定可以合并，实际比较结果与理论条件应准确保留。</Text>
+    </div>
+    <Row gap={24} wrap>
+      <Stack gap={4}><H2>14 / 14 页</H2><Text tone="secondary">正文 / 补充；pypdf 读取当前 PDF</Text></Stack>
+      <Stack gap={4}><H2>32.6%</H2><Text tone="secondary">引言前三部分：157 / 481 归一化词元</Text></Stack>
+      <Stack gap={4}><H2>3 项优先修复</H2><Text tone="secondary">表头反义、A5 范围、A6a 条件方向</Text></Stack>
+    </Row>
+    <H2>逐项定位</H2>
+    <Row gap={8} wrap>{["全部","含义修正","内部叙述","表达润色"].map(x=><Button key={x} onClick={()=>setCategory(x)}>{x}{category===x?" · 当前":""}</Button>)}</Row>
+    <Table headers={["问题与位置","当前证据","处理方向"]} rows={selected.map(x=>[
+      <Stack key={x.name} gap={4}><Text weight="semibold">{x.name}</Text><Text tone="secondary">{x.group} · {x.where}</Text><a href={base+x.file+":"+x.line} style={{color:theme.text.link}}>源文件第 {x.line} 行</a></Stack>,x.evidence,x.action
+    ])} striped/>
+    <H2>已经落实，继续保留</H2>
+    <Text>图 1 已在第三节介绍。引言前三部分约占三分之一，贡献点均以 We 开头。当前源文件未检出 Proof sketch，正文使用正式 Proof 并给出附录指向，附录包含对应重述。</Text>
+    <H2>精简时的语义边界</H2>
+    <Text>Gate、P2、A1–A6 和状态名是正式对象；historical calibration scores 表示时序条件。不能把这些当内部代号全局删除。应保留六臂非劣上界、投影比较、U-Air 排序变化、共享状态和次线性债务条件。</Text>
+    <Text tone="secondary">依据：导师文档第 119–156、399–416 段及四张截图；当前 main.tex / appendix.tex / supplemental.tex 和两份 PDF 文本。本轮未重新核验文献、评分代码或数学证明，也未进行视觉排版审查。</Text>
+    <a href="C:/Users/szr/Desktop/record/1/ccfa-review-reports/raven-final-narrative-review.md" style={{color:theme.text.link}}>完整审查记录：原句、源文件定位、处理边界与修改顺序</a>
+  </Stack>;
+}

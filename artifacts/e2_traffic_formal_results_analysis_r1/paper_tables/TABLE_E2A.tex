@@ -1,0 +1,40 @@
+\begin{table}
+\caption{Per-scenario mean ± std}
+\label{tab:table_e2a}
+\begin{tabular}{lllrrrrrr}
+\toprule
+scenario & scenario_label & method & RMSE_mu_mean & RMSE_mu_std & RMSE_rho_mean & RMSE_rho_std & Gap_mis_mean & Gap_mis_std \\
+\midrule
+balanced & S1 & fedavg_window & 1.004 & 0.00245 & 1.008 & 0.02445 & -0.004236 & 0.02466 \\
+balanced & S1 & fedasync_window & 1.004 & 0.002454 & 1.008 & 0.02443 & -0.004236 & 0.02465 \\
+balanced & S1 & flamf_timealign_adapted & 1.004 & 0.002514 & 1.008 & 0.02462 & -0.004219 & 0.02476 \\
+balanced & S1 & twostage_hajek & 1.004 & 0.002354 & 1.009 & 0.02449 & -0.004364 & 0.0247 \\
+balanced & S1 & raven & 1.004 & 0.002421 & 1.009 & 0.0243 & -0.004489 & 0.02451 \\
+opportunity_only & S2 & fedavg_window & 1.004 & 0.002444 & 1.014 & 0.02211 & -0.009938 & 0.02235 \\
+opportunity_only & S2 & fedasync_window & 1.004 & 0.002448 & 1.014 & 0.02211 & -0.00994 & 0.02236 \\
+opportunity_only & S2 & flamf_timealign_adapted & 1.004 & 0.002536 & 1.014 & 0.02216 & -0.0101 & 0.02224 \\
+opportunity_only & S2 & twostage_hajek & 1.004 & 0.002414 & 1.014 & 0.02209 & -0.01008 & 0.02225 \\
+opportunity_only & S2 & raven & 1.004 & 0.002469 & 1.014 & 0.02211 & -0.01012 & 0.02232 \\
+observation_only & S3 & fedavg_window & 1.004 & 0.002363 & 1.02 & 0.02372 & -0.01522 & 0.02425 \\
+observation_only & S3 & fedasync_window & 1.004 & 0.002361 & 1.02 & 0.02373 & -0.01523 & 0.02426 \\
+observation_only & S3 & flamf_timealign_adapted & 1.004 & 0.002495 & 1.02 & 0.0235 & -0.01524 & 0.02406 \\
+observation_only & S3 & twostage_hajek & 1.004 & 0.002349 & 1.02 & 0.02352 & -0.01529 & 0.02409 \\
+observation_only & S3 & raven & 1.004 & 0.002339 & 1.02 & 0.0236 & -0.01535 & 0.02412 \\
+usable_only & S4 & fedavg_window & 1.004 & 0.002408 & 1.014 & 0.02351 & -0.009526 & 0.02407 \\
+usable_only & S4 & fedasync_window & 1.004 & 0.002412 & 1.014 & 0.02349 & -0.009542 & 0.02404 \\
+usable_only & S4 & flamf_timealign_adapted & 1.004 & 0.00253 & 1.014 & 0.02364 & -0.00949 & 0.02421 \\
+usable_only & S4 & twostage_hajek & 1.004 & 0.002345 & 1.014 & 0.02369 & -0.009685 & 0.02415 \\
+usable_only & S4 & raven & 1.004 & 0.002395 & 1.014 & 0.02347 & -0.00985 & 0.02387 \\
+complete_aligned & S5 & fedavg_window & 1.005 & 0.002235 & 1.03 & 0.0204 & -0.02538 & 0.02069 \\
+complete_aligned & S5 & fedasync_window & 1.005 & 0.002232 & 1.03 & 0.02037 & -0.02539 & 0.02067 \\
+complete_aligned & S5 & flamf_timealign_adapted & 1.005 & 0.002237 & 1.031 & 0.02028 & -0.02559 & 0.02046 \\
+complete_aligned & S5 & twostage_hajek & 1.005 & 0.00233 & 1.031 & 0.02047 & -0.02557 & 0.02053 \\
+complete_aligned & S5 & raven & 1.005 & 0.002383 & 1.03 & 0.02055 & -0.02537 & 0.02075 \\
+complete_counteracting & S6 & fedavg_window & 1.004 & 0.002672 & 1.021 & 0.02226 & -0.01671 & 0.02289 \\
+complete_counteracting & S6 & fedasync_window & 1.004 & 0.002671 & 1.021 & 0.02225 & -0.01672 & 0.02289 \\
+complete_counteracting & S6 & flamf_timealign_adapted & 1.004 & 0.002605 & 1.021 & 0.02181 & -0.01681 & 0.02247 \\
+complete_counteracting & S6 & twostage_hajek & 1.004 & 0.00264 & 1.021 & 0.02214 & -0.01686 & 0.02271 \\
+complete_counteracting & S6 & raven & 1.004 & 0.002617 & 1.021 & 0.02217 & -0.01688 & 0.02281 \\
+\bottomrule
+\end{tabular}
+\end{table}

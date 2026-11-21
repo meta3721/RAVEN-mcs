@@ -1,0 +1,277 @@
+{
+  "gates": [
+    {
+      "description": "input freeze",
+      "evidence_file": "R1K_INPUT_FREEZE_MANIFEST.csv",
+      "expected": "0",
+      "gate_id": "R1K-S0",
+      "metric": "missing",
+      "observed": "0",
+      "pass": true
+    },
+    {
+      "description": "R1i oracle unchanged",
+      "evidence_file": "freeze/R1K_THEORY_AND_ORACLE_HASHES.json",
+      "expected": "82444e4f495344856de94b0d72ab4a46843780c232e2f299b300fcafa8c4b4a1",
+      "gate_id": "R1K-S1",
+      "metric": "sha",
+      "observed": "82444e4f495344856de94b0d72ab4a46843780c232e2f299b300fcafa8c4b4a1",
+      "pass": true
+    },
+    {
+      "description": "R1j pairwise unchanged",
+      "evidence_file": "legacy_refs",
+      "expected": "adc25c9138311287df6198521968c77dc7e5fc5a7cc9f741e8f43cc36f837d5d",
+      "gate_id": "R1K-S2",
+      "metric": "sha",
+      "observed": "adc25c9138311287df6198521968c77dc7e5fc5a7cc9f741e8f43cc36f837d5d",
+      "pass": true
+    },
+    {
+      "description": "barrier derivation",
+      "evidence_file": "pairwise_barrier/PAIRWISE_POSITIVE_LCB_BARRIER_DERIVATION.md",
+      "expected": "true",
+      "gate_id": "R1K-S3",
+      "metric": "exists",
+      "observed": "true",
+      "pass": true
+    },
+    {
+      "description": "availability barrier audit",
+      "evidence_file": "pairwise_barrier/R1K_PAIRWISE_BARRIER_BY_LEVEL.csv",
+      "expected": "10",
+      "gate_id": "R1K-S4",
+      "metric": "n",
+      "observed": "10",
+      "pass": true
+    },
+    {
+      "description": "a=1 presence audit",
+      "evidence_file": "pairwise_barrier/R1K_A100_PAIR_PRESENCE_AUDIT.csv",
+      "expected": ">0",
+      "gate_id": "R1K-S5",
+      "metric": "n",
+      "observed": "656",
+      "pass": true
+    },
+    {
+      "description": "simultaneous multiplicity",
+      "evidence_file": "pairwise_barrier/R1K_SIMULTANEOUS_MULTIPLICITY_AUDIT.md",
+      "expected": "true",
+      "gate_id": "R1K-S6",
+      "metric": "exists",
+      "observed": "true",
+      "pass": true
+    },
+    {
+      "description": "pairwise barrier conservative",
+      "evidence_file": "pairwise_barrier/R1K_PAIRWISE_BARRIER_VERDICT.json",
+      "expected": "STRUCTURAL_PAIRWISE_NONVACUITY_BARRIER_CONFIRMED",
+      "gate_id": "R1K-S7",
+      "metric": "v",
+      "observed": "STRUCTURAL_PAIRWISE_NONVACUITY_BARRIER_CONFIRMED",
+      "pass": true
+    },
+    {
+      "description": "old scale mapping",
+      "evidence_file": "predictor_scale/R1K_PREDICTOR_SCALE_BY_WINDOW_PAIR.csv",
+      "expected": ">0",
+      "gate_id": "R1K-S8",
+      "metric": "n",
+      "observed": "193640",
+      "pass": true
+    },
+    {
+      "description": "cond-positive scale",
+      "evidence_file": "predictor_scale/R1K_PREDICTOR_SCALE_SUMMARY.csv",
+      "expected": "10",
+      "gate_id": "R1K-S9",
+      "metric": "n",
+      "observed": "10",
+      "pass": true
+    },
+    {
+      "description": "scale verdict",
+      "evidence_file": "predictor_scale/R1K_SCALE_VERDICT.json",
+      "expected": "PREDICTOR_SCALE_DEFECT_PARTIAL",
+      "gate_id": "R1K-S10",
+      "metric": "v",
+      "observed": "PREDICTOR_SCALE_DEFECT_PARTIAL",
+      "pass": true
+    },
+    {
+      "description": "aggregate predictor frozen",
+      "evidence_file": "aggregate_certificate/R1K_AGGREGATE_PREDICTOR_SPEC.json",
+      "expected": "AGGREGATE_COVERAGE_LINEAR_V1",
+      "gate_id": "R1K-S11",
+      "metric": "id",
+      "observed": "AGGREGATE_COVERAGE_LINEAR_V1",
+      "pass": true
+    },
+    {
+      "description": "aggregate calibration frozen",
+      "evidence_file": "aggregate_certificate/R1K_AGGREGATE_CALIBRATION_SPEC.json",
+      "expected": "AGGREGATE_SCALAR_SAME_A_CONFORMAL_V1",
+      "gate_id": "R1K-S12",
+      "metric": "id",
+      "observed": "AGGREGATE_SCALAR_SAME_A_CONFORMAL_V1",
+      "pass": true
+    },
+    {
+      "description": "no current-window leakage",
+      "evidence_file": "src/raven_mcs/sag/r1k_aggregate.py",
+      "expected": "windows<r",
+      "gate_id": "R1K-S13",
+      "metric": "hist",
+      "observed": "windows<r",
+      "pass": true
+    },
+    {
+      "description": "aggregate validity",
+      "evidence_file": "aggregate_certificate/R1K_AGGREGATE_VALIDITY_BY_WINDOW.csv",
+      "expected": "575",
+      "gate_id": "R1K-S14",
+      "metric": "n",
+      "observed": "575",
+      "pass": true
+    },
+    {
+      "description": "aggregate gate confusion",
+      "evidence_file": "aggregate_eval/R1K_AGGREGATE_GATE_CONFUSION.csv",
+      "expected": ">0",
+      "gate_id": "R1K-S15",
+      "metric": "n_elig",
+      "observed": "485",
+      "pass": true
+    },
+    {
+      "description": "SS a=0.4 architecture",
+      "evidence_file": "aggregate_eval/R1K_SENSOR_A040_ARCHITECTURE_AUDIT.csv",
+      "expected": ">0",
+      "gate_id": "R1K-S16",
+      "metric": "n",
+      "observed": "53",
+      "pass": true
+    },
+    {
+      "description": "U-Air a=0.2 architecture",
+      "evidence_file": "aggregate_eval/R1K_UAIR_A020_ARCHITECTURE_AUDIT.csv",
+      "expected": ">0",
+      "gate_id": "R1K-S17",
+      "metric": "n",
+      "observed": "44",
+      "pass": true
+    },
+    {
+      "description": "pairwise vs aggregate",
+      "evidence_file": "aggregate_eval/R1K_PAIRWISE_VS_AGGREGATE_SUMMARY.csv",
+      "expected": "10",
+      "gate_id": "R1K-S18",
+      "metric": "n",
+      "observed": "10",
+      "pass": true
+    },
+    {
+      "description": "TARGET_LAW unchanged",
+      "evidence_file": "audit",
+      "expected": "86fd55f7e0bf8499944433de16324bd4687befd5568892613ee87acacad3ad07",
+      "gate_id": "R1K-S19",
+      "metric": "hash",
+      "observed": "86fd55f7e0bf8499944433de16324bd4687befd5568892613ee87acacad3ad07",
+      "pass": true
+    },
+    {
+      "description": "PI_SAFE unchanged",
+      "evidence_file": "outputs/sag_g1_r1e/configs/PI_SAFE_RULE_FROZEN.json",
+      "expected": "aa574c33b577965a78a9e6eb7d14877ac78add0fee4ab3e9c95deb47926891c7",
+      "gate_id": "R1K-S20",
+      "metric": "hash",
+      "observed": "aa574c33b577965a78a9e6eb7d14877ac78add0fee4ab3e9c95deb47926891c7",
+      "pass": true
+    },
+    {
+      "description": "tau_cov unchanged",
+      "evidence_file": "configs/sag_g0/thresholds.json",
+      "expected": "0.05",
+      "gate_id": "R1K-S21",
+      "metric": "tau",
+      "observed": "0.05",
+      "pass": true
+    },
+    {
+      "description": "delta unchanged",
+      "evidence_file": "configs/sag_g0/thresholds.json",
+      "expected": "0.05",
+      "gate_id": "R1K-S22",
+      "metric": "delta",
+      "observed": "0.05",
+      "pass": true
+    },
+    {
+      "description": "stress unchanged",
+      "evidence_file": "legacy_refs",
+      "expected": "b87cf615ab34b447e87bf447d79b9e4183a6e16fcef6223c57fad7be4aec6502",
+      "gate_id": "R1K-S23",
+      "metric": "mask",
+      "observed": "b87cf615ab34b447e87bf447d79b9e4183a6e16fcef6223c57fad7be4aec6502",
+      "pass": true
+    },
+    {
+      "description": "no SAG",
+      "evidence_file": "summary/R1K_VERDICT.json",
+      "expected": "false",
+      "gate_id": "R1K-S24",
+      "metric": "sag",
+      "observed": "False",
+      "pass": true
+    },
+    {
+      "description": "no 5-seed",
+      "evidence_file": "summary/R1K_VERDICT.json",
+      "expected": "false",
+      "gate_id": "R1K-S25",
+      "metric": "five",
+      "observed": "False",
+      "pass": true
+    },
+    {
+      "description": "no theory file modified",
+      "evidence_file": "freeze/R1K_THEORY_AND_ORACLE_HASHES.json",
+      "expected": "match",
+      "gate_id": "R1K-S26",
+      "metric": "tex",
+      "observed": "match",
+      "pass": true
+    },
+    {
+      "description": "source snapshot",
+      "evidence_file": "source_snapshot/R1K_SOURCE_SNAPSHOT_MANIFEST.csv",
+      "expected": "0",
+      "gate_id": "R1K-S27",
+      "metric": "missing",
+      "observed": "0",
+      "pass": true
+    },
+    {
+      "description": "theory decision artifact-derived",
+      "evidence_file": "theory_boundary/R1K_THEORY_CHANGE_DECISION.md",
+      "expected": "THEORY_DECISION_INCONCLUSIVE",
+      "gate_id": "R1K-S28",
+      "metric": "d",
+      "observed": "THEORY_DECISION_INCONCLUSIVE",
+      "pass": true
+    },
+    {
+      "description": "final verdict artifact-derived",
+      "evidence_file": "summary/R1K_VERDICT.json",
+      "expected": "R1K_ARCHITECTURE_AUDIT_INCONCLUSIVE",
+      "gate_id": "R1K-S29",
+      "metric": "v",
+      "observed": "R1K_ARCHITECTURE_AUDIT_INCONCLUSIVE",
+      "pass": true
+    }
+  ],
+  "n_fail": 0,
+  "n_pass": 30,
+  "verdict": "R1K_ARCHITECTURE_AUDIT_INCONCLUSIVE"
+}

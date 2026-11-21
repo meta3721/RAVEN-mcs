@@ -1,0 +1,78 @@
+{
+  "completed_windows": 100,
+  "end_time_utc": "2026-08-06T16:26:00.831475+00:00",
+  "eventtrace_dir": "outputs/e2_traffic_real_runner_canary/eventtraces/opportunity_only/training_eventtrace",
+  "eventtrace_identity": {
+    "events_sha256": "ca563142ed58519d5928fe9dc789b8d0b6c438edf54d0872c47fbf122b33715d",
+    "metadata": {
+      "dataset": "traffic",
+      "generator": "traffic-profile-s1-hard-aou-bridge-v1",
+      "notes": [
+        "scenario=opportunity_only",
+        "PROFILE-S1",
+        "station=client"
+      ],
+      "num_clients": 43,
+      "num_windows": 100,
+      "s_max": 5,
+      "seed": 29001
+    },
+    "metadata_sha256": "c99b19378ac5957c55676b94a0df53ed6e0d1733bd33c0449df421f394a3a8bf",
+    "trace_hash": "d2e6adfc4611cd5bc681c46dc06b5945c5365821359946edf1f854e72343dc11"
+  },
+  "exit_code": 0,
+  "failure_reason": null,
+  "final_metrics": {
+    "Gap_mis": -0.015084449027812363,
+    "P2_solver_failure_count": 0,
+    "RMSE_mu": 1.0036277262099877,
+    "RMSE_rho": 1.0187121752378,
+    "active_window_count": 100,
+    "arrival_weight_sum": 1.0,
+    "clip_rate_stage1": 0.030364200070082427,
+    "clip_rate_stage2": 0.0,
+    "completed_windows": 100,
+    "denominator_zero_count": 0,
+    "effective_sample_size_mean": 1.3365338454152664,
+    "empirical_risk_objective": 1.0187121752378,
+    "failed_attempt_count": 815,
+    "group_rmse": {
+      "block0": 0.868358499044405,
+      "block1": 1.1744034361530988,
+      "block2": 1.1590229920294908,
+      "block3": 0.743283419366979
+    },
+    "hard_arrival_count": 1703,
+    "nonfinite_loss_count": 0,
+    "nonfinite_model_parameter_count": 0,
+    "policy": {
+      "uses_debt": false,
+      "uses_design_ratio": false,
+      "uses_hajek_local_loss": false,
+      "uses_instant_calibration": false,
+      "uses_observation_ipw": false,
+      "uses_staleness_penalty": false,
+      "uses_usable_ipw": false,
+      "uses_variance_penalty": false
+    },
+    "stale_update_count": 1033,
+    "target_risk_objective": 1.0036277262099877,
+    "target_weight_sum": 1.0
+  },
+  "local_steps": 2,
+  "method": "flamf_timealign_adapted",
+  "method_display": "TimeAlign",
+  "n_groups": 4,
+  "peak_memory_mb": null,
+  "profile_id": "PROFILE-S1",
+  "retry_count": 0,
+  "runtime_seconds": 86.64095090000046,
+  "s_max": 5,
+  "scenario": "opportunity_only",
+  "scenario_label": "S2",
+  "seed": 29001,
+  "seed_replacement_count": 0,
+  "start_time_utc": "2026-08-06T16:24:34.178700+00:00",
+  "status": "PASS",
+  "warnings": []
+}

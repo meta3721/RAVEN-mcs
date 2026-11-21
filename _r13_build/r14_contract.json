@@ -1,0 +1,138 @@
+{
+  "contract": {
+    "id": "TMC-J-R4",
+    "venue": "IEEE TMC journal revision; method-plus-measurement paper; page budget treated as TMC regular 12 pp with a project MOPC allowance up to 18 pp",
+    "scale": "dimensions anchored 1-5; overall 1-10",
+    "dimensions": ["Originality", "Soundness", "Evidence", "Clarity", "Reproducibility", "Significance", "Related work", "Terminology"],
+    "weights": {"Originality": 0.10, "Soundness": 0.20, "Evidence": 0.25, "Clarity": 0.15, "Reproducibility": 0.10, "Significance": 0.10, "Related work": 0.05, "Terminology": 0.05},
+    "reviewer_roles": ["Best-justified", "Critical", "Method / soundness", "Reproducibility auditor", "Writing and presentation"],
+    "thresholds": {"progress_unchanged_when_abs_weighted_delta_lt": 0.05, "acceptance_overall": 4, "current_stance": 4},
+    "evidence_standard": "manuscript text at a stated sha256 plus named repository artifacts; no author promise substitutes for manuscript evidence"
+  },
+  "relative_progress_scorecard": {
+    "historical": {"Originality": 2, "Soundness": 5, "Evidence": 3, "Clarity": 4, "Reproducibility": 2, "Significance": 2, "Related work": 3, "Terminology": 4},
+    "current": {"Originality": 2, "Soundness": 5, "Evidence": 3, "Clarity": 4, "Reproducibility": 2, "Significance": 2, "Related work": 3, "Terminology": 4},
+    "deltas": {"Originality": 0, "Soundness": 0, "Evidence": 0, "Clarity": 0, "Reproducibility": 0, "Significance": 0, "Related work": 0, "Terminology": 0},
+    "weighted_delta": 0.0,
+    "classification": "unchanged",
+    "note": "Text-only comparison: the historical scorecard is round 13's assessment of 68D9B44F, and the current column is the same manuscript scored as text after the 22:57 edit. The edit fixed one of round 13's three clarity deductions (the 'for every local budget from 2 to 20 steps' overstatement) and introduced one comparable presentation problem (the ambiguous 'the centralized reference'), so Clarity is 4 on both sides and no dimension moves. The Soundness reduction that appears in the readiness card is charged to newly revealed evidence, not to this edit, because the contradicted sentence pre-dates it."
+  },
+  "absolute_readiness_scorecard": {
+    "current_dimension_scores": {"Originality": 2, "Soundness": 4, "Evidence": 3, "Clarity": 4, "Reproducibility": 2, "Significance": 2, "Related work": 3, "Terminology": 4},
+    "scale": "dimensions anchored 1-5; weighted overall 1-10",
+    "overall_score": 3.1,
+    "stance": "4/10 lean reject; round 13 reported 5/10 borderline at 3.30, and that 3.30 was too generous by 0.20 on Soundness for a defect that already existed in 68D9B44F - the drop is a correction of the earlier assessment and of newly available evidence, not a regression of the manuscript",
+    "threshold": "4/10 acceptance threshold under frozen contract TMC-J-R4",
+    "evidence_standard": "manuscript text at a stated sha256 plus named repository artifacts; no author promise substitutes for manuscript evidence"
+  },
+  "confidence_and_comparability": "Comparability is high. Both versions are byte-verified: current sha256 D4FB164DF90F59484BFE901B117399536CD727F4CB01FCA6A3E09CB902486E60, 116806 B, mtime 2026-10-07 22:57:02; historical sha256 68D9B44F17A4E48D7D010C5BB83EFC4C0951B60BC3EED39A6529B56AC4FC700B, 116379 B, reconstructed from the current file by removing the single +8/-2 hunk and hash-verified against the value round 13 recorded. Same frozen contract, same five roles, same evidence standard, no external standard change; the diff is one hunk, fully enumerated. Confidence in the relative-progress card is high (the changed lines were read in full and every number in them was recomputed from named artifacts). Confidence in the readiness card is high on Soundness, Evidence and Clarity, medium on Originality and Related work (proofs were not re-derived and no literature search was run in either round). Round 13's own historical column was itself derived by reconstructing 02447BFE from the then-current file, so the chain 02447BFE -> 68D9B44F -> D4FB164D is byte-verifiable end to end.",
+  "issues": [
+    {
+      "id": "R14-1",
+      "first_seen_version": "round 14 (this comparison)",
+      "status": "unresolved",
+      "origin": "newly_revealed_by_evidence",
+      "applies_to": "current",
+      "affected_dimensions": ["Soundness"],
+      "evidence": "main.tex L2220-L2221 asserts that 'the federated learner, not the weighting, therefore limits the prediction endpoint', and the 22:57 edit supplies the frozen arms' 0.26-0.40 % total-norm movement against the Adam-trained centralized reference's 12 % first-layer movement as support. The movement contrast is produced by an optimizer and step-count asymmetry the sentence itself names: the federated server step is one step-normalized update per window (training/window_runner.py L1155-L1167 with training/client.py L104-L107) while the centralized reference takes max(local_steps*10, 20) = 20 Adam minibatch steps (e3/real_runner/central_real.py L106 and L111-L117, invoked from e3/real_runner/runner.py). The S1' round then measured the same pipeline with only the server step replaced: the federated arm's test RMSE_mu improves 0.81 % (SensorScope), 15.73 % (U-Air) and, against the frozen central_delivered reference on the same seeds, reaches ratio_to_c 0.986505 / 0.832921 / 0.857589. The sentence is therefore a non sequitur in the current version even though it pre-dates it.",
+      "score_effect": {"historical": 0, "current": -1},
+      "note": "The claim itself pre-dates this revision, so the text-only progress card is unaffected; the decrease is charged here because the evidence that contradicts it is new. Round 13 should have charged it too, which is why the historical 5 is recorded as too generous rather than as a prior stance worth defending."
+    },
+    {
+      "id": "R14-2",
+      "first_seen_version": "round 14 (this comparison)",
+      "status": "unresolved",
+      "origin": "previously_undetected",
+      "applies_to": "both",
+      "affected_dimensions": ["Evidence", "Clarity"],
+      "evidence": "The target location moves across splits and this is nowhere disclosed: SensorScope train mean +0.3006 (sd 1.1554), validation +2.0186 (2.8301), test +7.6572 (2.0878); U-Air train -0.0000 (1.0000, standardised), validation -0.1456 (1.2596), test -0.8066 (0.6781); NSW-Traffic train +0.0000 (1.0000), validation +0.0088 (0.9945), test +0.0027 (1.0067). On SensorScope the level gap accounts for 58.279 of the reported MSE 62.638, i.e. 93.0 %, against 7.0 % from the target's own spread. A recursive search of main.tex, supplemental.tex and appendix.tex for naive, persistence, constant predictor, mean predictor or unconditional returns zero matches, so a reader cannot tell whether an absolute RMSE_mu of 7.91 reflects predictive quality or a level extrapolation.",
+      "score_effect": {"historical": 0, "current": 0},
+      "note": "Recorded as a reporting gap rather than a validity defect: the shift is common to every arm on a block, so the Holm family, H and the paired-difference MDEs are unaffected by it. Charging zero to both sides is deliberate - this cannot be used to lower only the current version."
+    },
+    {
+      "id": "R14-3",
+      "first_seen_version": "round 13 (NEW-r13-1)",
+      "status": "partially_resolved",
+      "origin": "revision_regression",
+      "applies_to": "current",
+      "affected_dimensions": ["Clarity"],
+      "evidence": "Round 13 charged Clarity 5 -> 4 on a composite of three defects in the 17:05 revision. The 22:57 edit removed the first one entirely: 'for every local budget from 2 to 20 steps' is gone, replaced by a mechanism sentence that is accurate and by the statement that raising the budget from 2 to 20 leaves the gap unchanged. The other two remain: L2160-L2162 still calls +0.768/+0.286 pp 'the small margin' against L1834's 'above the 0.5 pp practical line' and L2092's p_Holm = 2.7e-5, and L2207 still states a 0.17 % bound that its own source crosses (largest SensorScope level mean 0.1747 %).",
+      "score_effect": {"historical": 0, "current": 0},
+      "note": "Rounded to no net movement because the edit also introduced R14-4."
+    },
+    {
+      "id": "R14-4",
+      "first_seen_version": "round 14 (this comparison)",
+      "status": "unresolved",
+      "origin": "revision_regression",
+      "applies_to": "current",
+      "affected_dimensions": ["Clarity"],
+      "evidence": "The 22:57 edit's new sentence 'the centralized reference, trained with Adam, moves its first layer by 12 %' does not say which reference. The measured values differ: central_all moves head.0.weight by 12.1524 % on SensorScope, central_delivered by 11.1986 %. The 12 % matches central_all; the paper's comparison reference elsewhere is central_delivered. The training is 20 Adam minibatch steps of 32 units at lr 1e-3, which the text does not state either.",
+      "score_effect": {"historical": 0, "current": 0},
+      "note": "Offset by the fix in R14-3, so Clarity is 4 on both sides of the comparison."
+    },
+    {
+      "id": "E1",
+      "first_seen_version": "round 9",
+      "status": "unresolved",
+      "origin": "inherited",
+      "applies_to": "both",
+      "affected_dimensions": ["Evidence", "Significance"],
+      "evidence": "main.tex L2100-L2105 (no Holm survivor in the prediction family) and the Recoverable-Gain Ceiling subsection L2113-L2128; unchanged by the 22:57 edit, which touched only L2214-L2221. Round 13's grounds stand: no pre-registered endpoint with headroom above its detectable effect.",
+      "score_effect": {"historical": 0, "current": 0}
+    },
+    {
+      "id": "R14-5",
+      "first_seen_version": "round 14 (this comparison)",
+      "status": "unresolved",
+      "origin": "previously_undetected",
+      "applies_to": "both",
+      "affected_dimensions": ["Evidence"],
+      "evidence": "The ceiling's H cannot be tested on SensorScope or U-Air with the current evidence: the train-to-test level shift (R14-2) and the shared windowed server step sit between the arms and the endpoint, so H near 0 there cannot separate 'no recoverable gain' from 'the members do not differ'. On NSW-Traffic, the one block with neither problem, the S1' round's H has mean -0.0807 but 4 of 5 seeds are positive (+0.0208, +0.0091, +0.0061, +0.0174, -0.4570), median +0.0091, and dropping the single outlier gives +0.0134 with CI [+0.0076, +0.0191], slightly above the 0.5 % bar. Round 13's own reading of H was not challenged on this ground and both versions share it.",
+      "score_effect": {"historical": 0, "current": 0},
+      "note": "Recorded for both versions; it narrows what the ceiling can claim without moving a score."
+    },
+    {
+      "id": "NEW-r13-2",
+      "first_seen_version": "round 13",
+      "status": "unresolved",
+      "origin": "revision_regression",
+      "applies_to": "current",
+      "affected_dimensions": ["Reproducibility"],
+      "evidence": "Unchanged from round 13: the two passages added at 17:05 print about ten numbers whose sources are absent from the released bundle, and the 22:57 edit adds three more (0.26-0.40 %, head.8.bias, 12 %) that are equally unindexed; w1/PAPER_NUMBERS.csv still has zero of them among its 83 rows.",
+      "score_effect": {"historical": 0, "current": 0},
+      "note": "Already charged in round 13 as the Reproducibility 3 -> 2 decrease; carried forward at 2 on both sides of this comparison so it is not charged twice."
+    },
+    {
+      "id": "NEW-r13-3",
+      "first_seen_version": "round 13",
+      "status": "unresolved",
+      "origin": "previously_undetected",
+      "applies_to": "both",
+      "affected_dimensions": ["Reproducibility"],
+      "evidence": "Unchanged: 3 of 9 figure-data files differ between the Overleaf tree and the released bundle; BUNDLE_SUMMARY.json reports file_count 2117 against 2118 files present.",
+      "score_effect": {"historical": 0, "current": 0}
+    },
+    {
+      "id": "NEW-r13-4",
+      "first_seen_version": "round 13",
+      "status": "unresolved",
+      "origin": "previously_undetected",
+      "applies_to": "both",
+      "affected_dimensions": ["Reproducibility"],
+      "evidence": "Unchanged: three bundle scripts are 2-byte stubs with no surviving generator, while README.md presents their output subtrees as reproducibility artifacts.",
+      "score_effect": {"historical": 0, "current": 0}
+    },
+    {
+      "id": "R14-6",
+      "first_seen_version": "round 14 (this comparison)",
+      "status": "unresolved",
+      "origin": "previously_undetected",
+      "applies_to": "both",
+      "affected_dimensions": ["Reproducibility"],
+      "evidence": "The shipped TO_OVERLEAF_paper_tmc_r1_clean/main.pdf is the 2026-10-06 20:45 artifact, 890040 B, 17 pp, which predates both the 17:05 and the 22:57 revisions; rebuilding the current source in fixed order gives 18 pp, 893440 B, with 0 errors, 0 undefined, 0 multiply-defined and 0 Overfull, and supplemental.pdf 16 pp with 1 Overfull \\vbox.",
+      "score_effect": {"historical": 0, "current": 0},
+      "note": "Stale in both versions, so it carries no delta; it is recorded because a reader who opens the PDF sees neither revision."
+    }
+  ]
+}

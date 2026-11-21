@@ -1,0 +1,24 @@
+{
+  "allowed": {
+    "C1": "Two-stage non-random selection can induce deployment-target mismatch.",
+    "C10": "P2 feasibility is auditable where reconstructable; exact experimental post-hoc optimality is not universally reconstructable.",
+    "C2": "Arrival/usable-update risk is not generally interchangeable with deployment-target risk.",
+    "C3": "On scientifically comparable SensorScope and U-Air E3 blocks, RAVEN-MCS consistently reduces structural target mismatch.",
+    "C4": "RAVEN-MCS maintains competitive deployment-target prediction risk with selective significant gains.",
+    "C5": "Core components have endpoint- and dataset-dependent roles.",
+    "C6": "Use has NO_CLEAR_EFFECT in current E4.",
+    "C7": "Debt has a statistically consistent but quantitatively small structural effect.",
+    "C8": "Inst is ENDPOINT_TRADEOFF.",
+    "C9": "Traffic E3 cross-vintage inference is NOT_COMPARABLE."
+  },
+  "forbidden": [
+    "universal RMSE superiority",
+    "all baselines significantly beaten",
+    "every component is necessary",
+    "Use is indispensable",
+    "Debt has a large effect",
+    "all P2 outputs are exactly optimal",
+    "three-dataset homogeneous E3 superiority",
+    "comprehensive robustness/scalability validation"
+  ]
+}

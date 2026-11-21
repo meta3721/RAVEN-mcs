@@ -1,0 +1,16 @@
+{
+  "dataset": "traffic",
+  "seed": 41002,
+  "model": "ndmf",
+  "optimizer": "adam",
+  "lr": 0.0003,
+  "scaler_mean": 464.7914389799636,
+  "scaler_std": 536.3452190228697,
+  "trace_hash": "34d8c35d0bcbfcd1aeb5eacaec974a21864e6b03a2ef5ef0c07a607479d8b64f",
+  "train_unique": 1281,
+  "information": "train_delivered_only",
+  "budget": 200,
+  "train_input_meaning": "observed client measurements",
+  "validation_input_meaning": "frozen target labels",
+  "test_access": false
+}

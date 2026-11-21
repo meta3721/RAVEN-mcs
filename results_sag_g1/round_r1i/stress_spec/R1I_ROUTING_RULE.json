@@ -1,0 +1,32 @@
+{
+  "BOUNDARY_NEAR": {
+    "abs_margin_max": 0.01,
+    "role": "visualization / subgroup audit only; next round must still use the full track"
+  },
+  "BOUNDARY_RICH": {
+    "fraction_safe_hi": 0.8,
+    "fraction_safe_lo": 0.2,
+    "n_safe_min": 5,
+    "n_unsafe_min": 5,
+    "not_all_on_split_edge": true,
+    "not_all_partial": true,
+    "not_single_tiny_cluster_max": 3,
+    "note": "20/80 is an internal routing rule, not a paper theorem"
+  },
+  "MILD_SAFE_EXISTS": {
+    "a_in": [
+      1.0,
+      0.8
+    ],
+    "fraction_safe_min": 0.8
+  },
+  "MIN_CROSSING_WINDOWS": 5,
+  "SEVERE_UNSAFE_EXISTS": {
+    "a_in": [
+      0.4,
+      0.2
+    ],
+    "fraction_safe_max": 0.2
+  },
+  "frozen_before_oracle_summary": true
+}

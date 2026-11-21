@@ -1,0 +1,21 @@
+{
+  "created_utc": "2026-08-08T10:19:16.854317+00:00",
+  "files": {
+    "configs/frozen/e2_traffic_profiles_s1/traffic_s1_s6_profile_registry.json": "7d9b8292522b6fbcc15d83ebb065fc8a73b79787ed643aea49c48f30596acbc7",
+    "configs/frozen/e2_traffic_profiles_s1/traffic_s1_s6_runner_identity.json": "71705bb7bbf76b598a56bf4b40495bc48f5aa89eb7a0992a8c7693345db183fb",
+    "configs/frozen/e2_traffic_public_target/atomic_public_target.parquet": "b32fee4dd3e82e5894b27739b1ad0440ae12573ac877c7fccb565f646b54c374",
+    "data/processed/traffic/atomic_units.parquet": "db45a2ecc66c27abeaf58b0c03ce66de7bfaf6727f4523ea06ef226a9ce3de50",
+    "scripts/_run_e2fr_ledger_sequence.py": "1fcd85bd72ba81f69acdf2d5ee3d98b4f5429e8375ff1df17b186c43e0e57117",
+    "scripts/check_e2_traffic_formal_runs_gates.py": "a43d210191d34142c8d3ede74540375b7b8422722aae846b389ede366a167796",
+    "scripts/prepare_e2_traffic_formal_runs.py": "47009ff8411a211cf6573107374a661e96486729062e7f7921f573117d6595a9",
+    "scripts/run_and_log.py": "512fd713fb9c93b75858ba5808639494bfe4f63b4b47c7db1e7e54716cdd7369",
+    "src/raven_mcs/aggregation/method_policy.py": "4e381b684b83de0c529ee39be1cffd98bbf08342f2d99f85e9c22f878cb3d22f",
+    "src/raven_mcs/e2/traffic_formal_runs/__init__.py": "0feabeda2d403be4bac1c8918d5cab46ca86374e1cfd72eee19fda8927376ba2",
+    "src/raven_mcs/e2/traffic_formal_runs/stats.py": "59eef80b68634e8169d51a64ca5321bd0440953f380fb4d5edfd1c75f3a98375",
+    "src/raven_mcs/e2/traffic_profiles/runner_consistency.py": "020bc01f685a1ed2ed01b006ab0c6ead832fdf1ad129e62a82a4b5def81d6286",
+    "src/raven_mcs/e2/traffic_real_runner/__init__.py": "db008120132d37afea122e7d5f799154dd96a6f483853a5b401ce28041c5097a",
+    "src/raven_mcs/metrics/accuracy.py": "18c5dc9636673e68bd48210297b6c8bdb11c759ab466fef4501837f50b091ba9",
+    "src/raven_mcs/training/client.py": "2881d6035c124a754ee14f8a84b38cebe5686196d7da8f322e1bf860158cb4a7",
+    "src/raven_mcs/training/window_runner.py": "cfe678e7216b0e0366a0055314180d6afec52e1c0fe248a9077d9e79660413bf"
+  }
+}

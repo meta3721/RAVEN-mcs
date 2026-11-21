@@ -1,0 +1,124 @@
+{
+  "created_at": "2026-07-31T03:20:27+00:00",
+  "data_hash": "7a0e197eeb8ba5230b364ae08d66b53ffbfdb82fc9caf5458a8c5557004387e8",
+  "dataset": "tdrive_speed",
+  "manifest_version": "1.0",
+  "preparation_identity": {
+    "adapter": "TDriveSpeedAdapter",
+    "adapter_version": "0.1.0",
+    "seed": 26001
+  },
+  "stages": {
+    "interim": {
+      "files": [
+        {
+          "relative_path": "audit_report.json",
+          "sha256": "2198c7f7199007a4cf246da5570a6ec34892df596167f09a02a5695759fc388b",
+          "size_bytes": 600
+        },
+        {
+          "relative_path": "fleet_assignments.parquet",
+          "sha256": "31266f2f07e20869843c928f8101c32dcc4c3bdfdb7658d0b58a9877e62487a6",
+          "size_bytes": 77854
+        },
+        {
+          "relative_path": "metadata.json",
+          "sha256": "63f2a972f1ba26421a9f161baca7e1a99d0d7a1e98856c5b08d1d75a89f15f88",
+          "size_bytes": 744
+        },
+        {
+          "relative_path": "physical_anomalies.parquet",
+          "sha256": "abefb0b413cd69aab6033ce07aee2ef368118b21504c502f68736f5d0bc5dd14",
+          "size_bytes": 2837
+        },
+        {
+          "relative_path": "scaling.json",
+          "sha256": "9ba4fa57acbed8095899e6717bdac3a86364761e4b552b83ead2a685739723fe",
+          "size_bytes": 320
+        },
+        {
+          "relative_path": "target_source_trace_ids.parquet",
+          "sha256": "fd6f05bd688b707789cbab73a0b921e9fa08e64e8f7bb0007a9d1c8823f45a39",
+          "size_bytes": 8464231
+        }
+      ],
+      "stage": "interim",
+      "stage_hash": "809c36e5dd7a23b8ca9ed576b1218ab219d52ae66f716c9be5a7fd61283869fa",
+      "virtual_inputs": {}
+    },
+    "processed": {
+      "files": [
+        {
+          "relative_path": "atomic_units.parquet",
+          "sha256": "949cd8c7210941b066d300e7cec327c485c5cc6aa6110ce790fdbf0db8a1e414",
+          "size_bytes": 9863499
+        },
+        {
+          "relative_path": "client_measurements.parquet",
+          "sha256": "6744a86dc97ec497295fedf3dd7efa2756680742b05320497cdc2c96ed049bb5",
+          "size_bytes": 75402983
+        }
+      ],
+      "stage": "processed",
+      "stage_hash": "05fe5a9928f9d0fc9ea3e0822bf94b9f6af4d879958994dd5c6ded830b407511",
+      "virtual_inputs": {}
+    },
+    "raw": {
+      "files": [
+        {
+          "relative_path": "010.zip",
+          "sha256": "8bff58bcd51710033ba6acfecd80d4c8e19060ef64eb1a974f2e7db50cdcd213",
+          "size_bytes": 10732764
+        },
+        {
+          "relative_path": "011.zip",
+          "sha256": "09b1d794a5da3709b89d76a1ca24e6bd6d4f5f159b41af1d054cf49372382cc1",
+          "size_bytes": 10330098
+        },
+        {
+          "relative_path": "012.zip",
+          "sha256": "f41cf0f047cb86575092504739ce4da99416f6fc8b9206bc66793403d652f2b2",
+          "size_bytes": 8765021
+        },
+        {
+          "relative_path": "013.zip",
+          "sha256": "92cfbc6aa4c88d6301b0b6e5d971fe3f9cc936d8db0443f6cce14f27a8359702",
+          "size_bytes": 7511662
+        },
+        {
+          "relative_path": "014.zip",
+          "sha256": "c13d36bd0c891213d33c9cfe37213bb6b3ed2e498270a0a6c765419a3cecf95e",
+          "size_bytes": 1786189
+        },
+        {
+          "relative_path": "06.zip",
+          "sha256": "594eb4c9dd505c1a0b8c299321578602fd54a803632d654a8add8248c4156874",
+          "size_bytes": 7827329
+        },
+        {
+          "relative_path": "07.zip",
+          "sha256": "7c7943fb1c97bd0334aedeabad71ccfa263e0a2a696940a57a73d98cfa883feb",
+          "size_bytes": 11720280
+        },
+        {
+          "relative_path": "08.zip",
+          "sha256": "09c519b3dd984a132c418bca299721d1e6b05185e864e856d2b0012426d64844",
+          "size_bytes": 13519832
+        },
+        {
+          "relative_path": "09.zip",
+          "sha256": "68aa8cdbc2daa6722a531ce74585afe9f19e60c63bfa773412881f401b81cecc",
+          "size_bytes": 11771101
+        },
+        {
+          "relative_path": "provenance.json",
+          "sha256": "098f5f45e51cb7e495df4da5209f0b8bacb94f7e8b41d98c664d5b5b433881dc",
+          "size_bytes": 3457
+        }
+      ],
+      "stage": "raw",
+      "stage_hash": "1e80ad548200e49db2fb3efc9336fcd8a4bf7944744e9556c8cd33eb6331e585",
+      "virtual_inputs": {}
+    }
+  }
+}

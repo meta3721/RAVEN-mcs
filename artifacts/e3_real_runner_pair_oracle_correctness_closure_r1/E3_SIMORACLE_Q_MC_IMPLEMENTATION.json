@@ -1,0 +1,32 @@
+{
+  "M_MC": 2000,
+  "M_MC_CHECK": 10000,
+  "U_function": "compute_usable_r3",
+  "diagnostic_2000_vs_10000": {
+    "M_MC": 2000,
+    "M_MC_CHECK": 10000,
+    "abs_diff": 0.0009000000000000119,
+    "prestate_hash": "4f28b3e76e99078cd151c7a0cd6913d333c4e33dc138e1455718a1168dad40b3",
+    "q_m10000": 0.5404,
+    "q_m2000": 0.5395
+  },
+  "example_q": {
+    "M_MC": 2000,
+    "mc_seed": 31999,
+    "prestate_hash": "4f28b3e76e99078cd151c7a0cd6913d333c4e33dc138e1455718a1168dad40b3",
+    "q_se": 0.011145397031958978,
+    "q_true": 0.5395
+  },
+  "implementation": "raven_mcs.e3.real_runner.simoracle_q.estimate_q_true_mc",
+  "no_realized_future_from_actual_run": true,
+  "no_test_labels": true,
+  "randomness_sources": [
+    "compute_success",
+    "t_cmp",
+    "network_success",
+    "t_net",
+    "staleness tau"
+  ],
+  "replay_rng_seed_policy": "master seed -> per-replay seeds; prestate frozen",
+  "status": "SIMORACLE_MC_READY"
+}

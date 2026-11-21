@@ -1,0 +1,87 @@
+{
+  "status": "P0_INCOMPLETE_NOT_COMPARISON_READY",
+  "A_layer": [
+    {
+      "policy": "fixed_wait",
+      "parameters": {
+        "deadline_candidates": [
+          1,
+          2,
+          4
+        ],
+        "time_unit": null
+      },
+      "aggregator": "raven_mcs/configured-design-v1, Design=on",
+      "status": "PLANNED_NOT_INTEGRATED"
+    },
+    {
+      "policy": "count_timeout",
+      "parameters": {
+        "K_candidates": [
+          4,
+          8
+        ],
+        "deadline_rule": null
+      },
+      "aggregator": "raven_mcs/configured-design-v1, Design=on",
+      "status": "PLANNED_NOT_INTEGRATED"
+    },
+    {
+      "policy": "age_count",
+      "parameters": {
+        "rule": null
+      },
+      "aggregator": "raven_mcs/configured-design-v1, Design=on",
+      "status": "PLANNED_NOT_INTEGRATED"
+    },
+    {
+      "policy": "reachability_stop",
+      "parameters": {
+        "version": null
+      },
+      "aggregator": "raven_mcs/configured-design-v1, Design=on",
+      "status": "PLANNED_NOT_INTEGRATED"
+    }
+  ],
+  "fixed_search_configurations_max": 6,
+  "B_layer": [
+    {
+      "name": "FedBuff",
+      "source_from_user_protocol": "https://proceedings.mlr.press/v151/nguyen22b.html",
+      "actual_complete_implementation": null,
+      "status": "NOT_VERIFIED_AFTER_FIRST_P0_FAILURE; fixed-K common-RAVEN is not a substitute"
+    },
+    {
+      "name": "FADAS",
+      "source_from_user_protocol": "https://proceedings.mlr.press/v235/wang24bv.html",
+      "variant": null,
+      "actual_complete_implementation": null,
+      "status": "NOT_VERIFIED_AFTER_FIRST_P0_FAILURE"
+    },
+    {
+      "name": "FedJoint",
+      "source_from_user_protocol": "https://doi.org/10.1016/j.infsof.2026.108177",
+      "status": "OPTIONAL_UNVERIFIED; selection track would need separate matching"
+    }
+  ],
+  "learning_diagnostics": [
+    "training mean",
+    "spatial mean",
+    "applicable legal persistence/seasonality",
+    "central-delivered conditional matched dependency",
+    "central-all privileged reference"
+  ],
+  "history": [
+    {
+      "method": "target_gain_stop/v1",
+      "dataset": "traffic",
+      "seed": 41001,
+      "metric": "old geometry/wait J, not prediction",
+      "value": 0.9756027357,
+      "paired_baseline": "fixed_wait_2",
+      "baseline_value": 0.9406627743,
+      "worse_relative": 0.03714398225868009,
+      "evidence_status": "USER_PROTOCOL_REPORTED; no local original run/source located, not independently re-scored"
+    }
+  ]
+}

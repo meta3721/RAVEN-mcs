@@ -1,0 +1,118 @@
+{
+  "status": "WAITING_USER_REVIEW",
+  "charged_CPU": 59.515625,
+  "measured_disjoint_CPU": 28.515625,
+  "conservative_failed_import_CPU": 1.0,
+  "inspection_and_delivery_reserve_CPU": 30.0,
+  "facility_charged_CPU": 33.78125,
+  "mechanism_charged_CPU": 25.734375,
+  "limits": {
+    "batch": 300,
+    "facility": 120,
+    "mechanism": 180
+  },
+  "prior_application_charged_CPU": 4475.578125,
+  "cumulative_application_charged_CPU": 4535.09375,
+  "nominal_5_hour_remaining_CPU": 13464.90625,
+  "historical_unmetered_actual_CPU": "UNKNOWN",
+  "unmetered_current_inspection_actual_CPU": "UNKNOWN; conservatively charged reserve",
+  "summed_metered_invocation_wall_seconds": 32.73086609999807,
+  "training": 0,
+  "SGD": 0,
+  "GPU": 0,
+  "q_fit": 0,
+  "new_trajectories": 0,
+  "charges": [
+    {
+      "label": "A_review",
+      "phase": "mechanism",
+      "charged_CPU": 1.734375,
+      "job_CPU": 1.65625,
+      "driver_CPU": 0.078125,
+      "wall": 2.179747399999542,
+      "exit": 0,
+      "audit": true
+    },
+    {
+      "label": "B_admission_contract",
+      "phase": "facility",
+      "charged_CPU": 1.109375,
+      "job_CPU": 0.984375,
+      "driver_CPU": 0.125,
+      "wall": 1.2786566999993738,
+      "exit": 0,
+      "audit": true
+    },
+    {
+      "label": "B_case_fixed",
+      "phase": "facility",
+      "charged_CPU": 3.140625,
+      "job_CPU": 2.90625,
+      "driver_CPU": 0.234375,
+      "wall": 3.462570799999412,
+      "exit": 1,
+      "audit": true
+    },
+    {
+      "label": "B_case_rename",
+      "phase": "facility",
+      "charged_CPU": 12.015625,
+      "job_CPU": 11.3125,
+      "driver_CPU": 0.703125,
+      "wall": 12.460219899999174,
+      "exit": 0,
+      "audit": true
+    },
+    {
+      "label": "B_import_failure",
+      "phase": "facility",
+      "charged_CPU": 1.0,
+      "job_CPU": 0,
+      "driver_CPU": null,
+      "driver_measurement": "not retained; conservative 1-second charge for pre-launch import failure",
+      "wall": 0.4864792,
+      "exit": 1,
+      "audit": "no child started; failed before Job creation"
+    },
+    {
+      "label": "B_pair_identity",
+      "phase": "facility",
+      "charged_CPU": 1.375,
+      "job_CPU": 1.265625,
+      "driver_CPU": 0.109375,
+      "wall": 1.6075660999995307,
+      "exit": 0,
+      "audit": true
+    },
+    {
+      "label": "B_prepare",
+      "phase": "facility",
+      "charged_CPU": 0.140625,
+      "job_CPU": 0.046875,
+      "driver_CPU": 0.09375,
+      "wall": 0.11610340000061115,
+      "exit": 0,
+      "audit": true
+    },
+    {
+      "label": "C_frozen_case",
+      "phase": "mechanism",
+      "charged_CPU": 7.34375,
+      "job_CPU": 7.109375,
+      "driver_CPU": 0.234375,
+      "wall": 8.919305299999905,
+      "exit": 0,
+      "audit": true
+    },
+    {
+      "label": "E_finalize",
+      "phase": "mechanism",
+      "charged_CPU": 1.65625,
+      "job_CPU": 1.546875,
+      "driver_CPU": 0.109375,
+      "wall": 2.220217300000513,
+      "exit": 0,
+      "audit": true
+    }
+  ]
+}

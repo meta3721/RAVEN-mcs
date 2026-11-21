@@ -1,0 +1,47 @@
+{
+  "rows": [
+    {
+      "dataset": "sensorscope",
+      "measurement_index_consistent": true,
+      "note": "SensorScope remains unscaled: temperature target scale is small and stable.",
+      "processed_max": 11.917479674796747,
+      "processed_mean": 2.10938028538739,
+      "processed_min": -2.3086178861788618,
+      "processed_std": 3.3709044116716487,
+      "raw_max": 11.917479674796747,
+      "raw_mean": 2.10938028538739,
+      "raw_min": -2.3086178861788618,
+      "raw_std": 3.3709044116716487,
+      "zscore_applied": false
+    },
+    {
+      "dataset": "uair",
+      "measurement_index_consistent": true,
+      "note": "Train-only target and measurement z-score applied.",
+      "processed_max": 10.302851485638817,
+      "processed_mean": -0.19115188740077402,
+      "processed_min": -1.7340647227119184,
+      "processed_std": 1.052497728339376,
+      "raw_max": 210.0,
+      "raw_mean": 27.789983164983166,
+      "raw_min": 1.0,
+      "raw_std": 18.27478246216734,
+      "zscore_applied": true
+    },
+    {
+      "dataset": "traffic",
+      "measurement_index_consistent": true,
+      "note": "Train-only target and measurement z-score applied.",
+      "processed_max": 7.945399596383868,
+      "processed_mean": 0.0022984264049239213,
+      "processed_min": -0.9608479551117808,
+      "processed_std": 1.000265485878474,
+      "raw_max": 5129.0,
+      "raw_mean": 555.5561827088717,
+      "raw_min": 1.0,
+      "raw_std": 575.9284571787346,
+      "zscore_applied": true
+    }
+  ],
+  "status": "PASS"
+}

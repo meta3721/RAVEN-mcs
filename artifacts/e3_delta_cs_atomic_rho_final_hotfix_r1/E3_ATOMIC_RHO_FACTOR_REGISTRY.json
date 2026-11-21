@@ -1,0 +1,27 @@
+{
+  "factors": {
+    "nu_hat_k_i_given_s": {
+      "frozen_ref": "e1_entry._arrival_weights nu construction",
+      "meaning": "within-stratum atomic allocation of target mass",
+      "production_source": "atom_mass_i / Lambda_s on TEST support (uniform atoms → 1/n_s)"
+    },
+    "p_obs_hat_k_i": {
+      "forbidden": "mean oracle_p substitution for atomic correction",
+      "meaning": "atomic observation probability",
+      "non_oracle": "obs_propensity.predict when runner available; else EventTrace controlled truth for Complete-aligned eval",
+      "simoracle": "EventTrace opportunity_features.p_obs_true_by_unit / atomic_p_obs_true"
+    },
+    "pi_opp_hat_k_s": {
+      "meaning": "joint opportunity event mass over client×stratum",
+      "production_source": "pi_opp_joint from build_joint_pi_opp / runner.pi_opp_joint",
+      "scale": "sum_{k,s}=1"
+    },
+    "q_use_hat_k_s": {
+      "meaning": "usable probability at client×stratum",
+      "non_oracle": "usable_propensity.predict when runner available; else EventTrace controlled truth",
+      "simoracle": "EventTrace opportunity_features.q_use_true"
+    }
+  },
+  "schema_version": "E3_ATOMIC_RHO_FACTOR_REGISTRY",
+  "status": "FROZEN"
+}

@@ -1,0 +1,11 @@
+{
+  "rows": 20,
+  "verdict_changes": 0,
+  "changed_rows": [],
+  "max_abs_d_pp": 0.0006178899593323184,
+  "max_abs_d_pp_by_endpoint": {
+    "Delta_group": 0.0006178899593323184,
+    "Delta_c_s": 0.00033764233328398285
+  },
+  "note": "Oracle endpoints replace the trained ones for the three Part B arms (uniform_window is analytic and identical in both); the three frozen arms retain the round-v4 endpoints, exactly as in the trained comparison."
+}

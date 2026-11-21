@@ -1,0 +1,125 @@
+{
+  "atomic_hard_tv_primary_gate": false,
+  "by_scenario": {
+    "balanced": {
+      "checks": {
+        "arr_near_balanced": true,
+        "obs_near_balanced": true,
+        "opp_near_balanced": true
+      },
+      "expected_signed": {
+        "arr": 0.0,
+        "obs": 0.0,
+        "opp": 0.0
+      },
+      "hard_signed": {
+        "arr": 0.005667383232362655,
+        "obs": -0.00465766185374944,
+        "opp": -0.003425621773815113
+      },
+      "status": "PASS"
+    },
+    "complete_aligned": {
+      "checks": {
+        "accumulation": true,
+        "same_sign": true
+      },
+      "expected_signed": {
+        "arr": 0.9524121211799603,
+        "obs": 0.8536957501671709,
+        "opp": 0.4147830006695987
+      },
+      "hard_signed": {
+        "arr": 0.9531456640846402,
+        "obs": 0.8540299906279287,
+        "opp": 0.41538678978611143
+      },
+      "status": "PASS"
+    },
+    "complete_counteracting": {
+      "checks": {
+        "cancellation": true,
+        "not_balanced": true,
+        "obs_direction": true,
+        "opp_direction": true
+      },
+      "expected_signed": {
+        "arr": 0.7745896039063368,
+        "obs": 0.8536957501671709,
+        "opp": 0.4147830006695987
+      },
+      "hard_signed": {
+        "arr": 0.7753120665742026,
+        "obs": 0.8540299906279287,
+        "opp": 0.41538678978611143
+      },
+      "status": "PASS"
+    },
+    "observation_only": {
+      "checks": {
+        "arr_follows_obs": true,
+        "obs_direction": true,
+        "opp_near_balanced": true
+      },
+      "expected_signed": {
+        "arr": 0.6796311681865919,
+        "obs": 0.6796311681865919,
+        "opp": 0.0
+      },
+      "hard_signed": {
+        "arr": 0.6810916179337232,
+        "obs": 0.675548773330203,
+        "opp": -0.003425621773815113
+      },
+      "status": "PASS"
+    },
+    "opportunity_only": {
+      "checks": {
+        "arr_follows_opp": true,
+        "no_new_opposite": true,
+        "obs_follows_opp": true,
+        "opp_direction": true
+      },
+      "expected_signed": {
+        "arr": 0.4147830006695984,
+        "obs": 0.41478300066959883,
+        "opp": 0.4147830006695987
+      },
+      "hard_signed": {
+        "arr": 0.4199764058198978,
+        "obs": 0.416489988221437,
+        "opp": 0.41538678978611143
+      },
+      "status": "PASS"
+    },
+    "usable_only": {
+      "checks": {
+        "arr_direction": true,
+        "obs_near_balanced": true,
+        "opp_near_balanced": true
+      },
+      "expected_signed": {
+        "arr": 0.36577423215407634,
+        "obs": 0.0,
+        "opp": 0.0
+      },
+      "hard_signed": {
+        "arr": 0.37561942517343905,
+        "obs": -0.00465766185374944,
+        "opp": -0.003425621773815113
+      },
+      "status": "PASS"
+    }
+  },
+  "hardcoded_pass_count": 0,
+  "pass_count": 6,
+  "scenarios": {
+    "balanced": "PASS",
+    "complete_aligned": "PASS",
+    "complete_counteracting": "PASS",
+    "observation_only": "PASS",
+    "opportunity_only": "PASS",
+    "usable_only": "PASS"
+  },
+  "status": "PASS"
+}

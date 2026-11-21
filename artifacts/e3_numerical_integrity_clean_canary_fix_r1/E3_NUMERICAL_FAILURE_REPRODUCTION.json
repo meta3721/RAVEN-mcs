@@ -1,0 +1,9 @@
+{
+  "classification": "CORRECTNESS_ONLY_NOT_PERFORMANCE_TUNING",
+  "pre_fix_failure_chain": [
+    "U-Air fedavg_window and raven produced NaN metrics.",
+    "Traffic local_hajek showed extreme values before measurement-index synchronization.",
+    "Acceptance used is not None and therefore accepted NaN."
+  ],
+  "status": "DOCUMENTED_PRE_FIX"
+}

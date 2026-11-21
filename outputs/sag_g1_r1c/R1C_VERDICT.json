@@ -1,0 +1,97 @@
+{
+  "a8b_note": "A8B_CALIBRATION_NOT_YET_CLOSED",
+  "c_cov_new_zero_fraction": 0.011111111111111112,
+  "c_cov_old_zero_fraction": 0.9888888888888889,
+  "executive_verdict": "TARGET_COMPATIBILITY_BUG_FIXED",
+  "g1_r2_5seed_started": false,
+  "max_abs_error": 1.7208456881689926e-13,
+  "old_bug": "TARGET_COMPATIBILITY_BUG_FIXED",
+  "passrate": [
+    {
+      "Gate_ON_rate": 0.89,
+      "all_fail": "{\"C_cov\": 11, \"C_ret\": 8, \"C_ESS\": 8, \"C_clip\": 8, \"delta_A\": 8, \"B_tot\": 8}",
+      "dataset": "sensorscope",
+      "first_fail": "{\"ON\": 89, \"OFF_COLD_START\": 8, \"OFF_LOW_COVERAGE\": 3}",
+      "n": 100,
+      "pass_rate_ALL": 0.89,
+      "pass_rate_B_tot": 0.92,
+      "pass_rate_C_ESS": 0.92,
+      "pass_rate_C_clip": 0.92,
+      "pass_rate_C_cov": 0.89,
+      "pass_rate_C_ret": 0.92,
+      "pass_rate_delta_A": 0.92,
+      "seed": 30001
+    },
+    {
+      "Gate_ON_rate": 0.875,
+      "all_fail": "{\"C_cov\": 10, \"C_ret\": 8, \"C_ESS\": 8, \"C_clip\": 8, \"delta_A\": 8, \"B_tot\": 8}",
+      "dataset": "uair",
+      "first_fail": "{\"ON\": 70, \"OFF_COLD_START\": 8, \"OFF_LOW_COVERAGE\": 2}",
+      "n": 80,
+      "pass_rate_ALL": 0.875,
+      "pass_rate_B_tot": 0.9,
+      "pass_rate_C_ESS": 0.9,
+      "pass_rate_C_clip": 0.9,
+      "pass_rate_C_cov": 0.875,
+      "pass_rate_C_ret": 0.9,
+      "pass_rate_delta_A": 0.9,
+      "seed": 30001
+    }
+  ],
+  "pi_safe": {
+    "data_source": "public_pi_opp_joint_on_target_positive_pairs",
+    "excludes": [
+      "labels",
+      "test_outcomes",
+      "test_prediction_residuals",
+      "current_window_events",
+      "gate_ON_OFF"
+    ],
+    "fit_scope": "frozen public opportunity law × {pi_tar>0}",
+    "frozen": true,
+    "hash": "aa574c33b577965a78a9e6eb7d14877ac78add0fee4ab3e9c95deb47926891c7",
+    "n_positive_target_pairs_SensorScope": 440,
+    "n_positive_target_pairs_UAir": 288,
+    "note": "Rule frozen; environment-specific values follow the same q10 protocol.",
+    "quantile": 0.1,
+    "rule_id": "PI_SAFE_RULE_V1",
+    "status": "FROZEN_DEVELOPMENT_PROTOCOL",
+    "value_SensorScope": 0.0006326708489355371,
+    "value_UAir": 0.0013918758676581813
+  },
+  "sensorscope_gate": {
+    "ALL": 0.89,
+    "B_tot": 0.92,
+    "C_ESS": 0.92,
+    "C_clip": 0.92,
+    "C_cov": 0.89,
+    "C_ret": 0.92,
+    "delta_A": 0.92,
+    "n": 100,
+    "on": 89,
+    "on_rate": 0.89,
+    "reasons": {
+      "OFF_COLD_START": 8,
+      "OFF_LOW_COVERAGE": 3,
+      "ON": 89
+    }
+  },
+  "target_compatibility_pass": true,
+  "uair_gate": {
+    "ALL": 0.875,
+    "B_tot": 0.9,
+    "C_ESS": 0.9,
+    "C_clip": 0.9,
+    "C_cov": 0.875,
+    "C_ret": 0.9,
+    "delta_A": 0.9,
+    "n": 80,
+    "on": 70,
+    "on_rate": 0.875,
+    "reasons": {
+      "OFF_COLD_START": 8,
+      "OFF_LOW_COVERAGE": 2,
+      "ON": 70
+    }
+  }
+}

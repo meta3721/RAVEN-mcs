@@ -1,0 +1,29 @@
+{
+  "experiment_id": "SCD-PHI-SS-UA",
+  "status": "PASS",
+  "reason": null,
+  "checks": {
+    "wiring": true,
+    "ss_positivity": true,
+    "ua_signal": true,
+    "rule_recovers_table_sign": true
+  },
+  "phi_et_occ": {
+    "sensorscope": 0.0,
+    "uair": 0.2546875
+  },
+  "phi_train_unit": {
+    "sensorscope": 0.0,
+    "uair": 0.35443037974683544
+  },
+  "uair_phi_train_unit_percent_one_decimal": 35.4,
+  "uair_phi_et_occ_percent_one_decimal": 25.5,
+  "uair_train_percent_matches_paper_25_5": false,
+  "rule_preview_not_applied": "Design_ON iff phi_scd == 0",
+  "algorithm_2_rewritten": true,
+  "phi_scd": {
+    "definition": "phi_train_unit",
+    "sensorscope": 0.0,
+    "uair": 0.35443037974683544
+  }
+}

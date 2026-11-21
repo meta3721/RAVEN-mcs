@@ -1,0 +1,137 @@
+{
+  "allowed_features": [
+    {
+      "allowed": true,
+      "justification": "intercept",
+      "name": "bias",
+      "prestate_poststate": "prestate",
+      "source": "constant",
+      "timestamp_availability": "registration"
+    },
+    {
+      "allowed": true,
+      "justification": "staleness known at download",
+      "name": "model_age",
+      "prestate_poststate": "prestate",
+      "source": "EventTrace.tau at registration",
+      "timestamp_availability": "registration"
+    },
+    {
+      "allowed": true,
+      "justification": "device state at attempt",
+      "name": "device_class",
+      "prestate_poststate": "prestate",
+      "source": "device_profile encoding",
+      "timestamp_availability": "registration"
+    },
+    {
+      "allowed": true,
+      "justification": "bandwidth/energy proxy at registration",
+      "name": "network_budget",
+      "prestate_poststate": "prestate",
+      "source": "network_profile encoding",
+      "timestamp_availability": "registration"
+    },
+    {
+      "allowed": true,
+      "justification": "expected remaining window time before outcomes",
+      "name": "deadline_slack_pre",
+      "prestate_poststate": "prestate",
+      "source": "propensity.usable.deadline_slack_pre",
+      "timestamp_availability": "registration"
+    },
+    {
+      "allowed": true,
+      "justification": "expected compute time prior, not realized delay",
+      "name": "expected_compute_time_prior",
+      "prestate_poststate": "prestate",
+      "source": "device tier prior",
+      "timestamp_availability": "registration"
+    },
+    {
+      "allowed": true,
+      "justification": "expected network budget prior, not realized delay",
+      "name": "expected_net_budget_prior",
+      "prestate_poststate": "prestate",
+      "source": "network tier prior",
+      "timestamp_availability": "registration"
+    },
+    {
+      "allowed": true,
+      "justification": "sample size known at registration",
+      "name": "local_workload_m",
+      "prestate_poststate": "prestate",
+      "source": "raw_workload / risk-set size",
+      "timestamp_availability": "registration"
+    },
+    {
+      "allowed": true,
+      "justification": "one-window-lagged only",
+      "name": "historical_success_rate",
+      "prestate_poststate": "prestate",
+      "source": "lagged U history",
+      "timestamp_availability": "pre-window"
+    }
+  ],
+  "allowed_names": [
+    "bias",
+    "model_age",
+    "device_class",
+    "network_budget",
+    "deadline_slack_pre",
+    "expected_compute_time_prior",
+    "expected_net_budget_prior",
+    "local_workload_m",
+    "historical_success_rate"
+  ],
+  "forbidden_features": [
+    {
+      "allowed": false,
+      "justification": "target leakage",
+      "name": "future_target_values"
+    },
+    {
+      "allowed": false,
+      "justification": "poststate label",
+      "name": "realized_delivery_U"
+    },
+    {
+      "allowed": false,
+      "justification": "poststate",
+      "name": "future_latency"
+    },
+    {
+      "allowed": false,
+      "justification": "downstream",
+      "name": "post_update_loss"
+    },
+    {
+      "allowed": false,
+      "justification": "test leakage",
+      "name": "test_labels"
+    },
+    {
+      "allowed": false,
+      "justification": "outcome leakage",
+      "name": "realized_target_group_performance"
+    },
+    {
+      "allowed": false,
+      "justification": "too close to opportunity/observation geography; not Stage-2 usability",
+      "name": "hour_sin_as_q_proxy_for_geography"
+    },
+    {
+      "allowed": false,
+      "justification": "opportunity/target geography; not registration compute/network state",
+      "name": "time_block_as_q_feature"
+    }
+  ],
+  "runner_core_feature_names": [
+    "bias",
+    "model_age",
+    "device_class",
+    "network_budget",
+    "deadline_slack_pre"
+  ],
+  "status": "Q_FEATURE_BOUNDARY_READY"
+}

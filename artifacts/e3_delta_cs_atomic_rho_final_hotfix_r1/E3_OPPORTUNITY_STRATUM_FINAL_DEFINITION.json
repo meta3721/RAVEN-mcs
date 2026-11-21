@@ -1,0 +1,48 @@
+{
+  "code_sources": [
+    "src/raven_mcs/data/matrix_adapter.py",
+    "src/raven_mcs/data/controlled.py",
+    "src/raven_mcs/data/tdrive.py",
+    "configs/frozen/e3_multidataset_protocol_closure/*/opportunity_strata.json"
+  ],
+  "datasets": {
+    "sensorscope": {
+      "config_path": "configs/frozen/e3_multidataset_protocol_closure/sensorscope/opportunity_strata.json",
+      "definition": "processed opportunity_stratum = spatial_id::time_block::weekday_flag",
+      "n_legal_opportunity_strata": 440,
+      "nonempty_strata": 440,
+      "source_hash": "a6bb3935f8968aa18512adb8a57e6b780ad06afeb9c04f4b7229b6b03232ef7d",
+      "stratum_support_hash": "a6bb3935f8968aa18512adb8a57e6b780ad06afeb9c04f4b7229b6b03232ef7d"
+    },
+    "traffic": {
+      "config_path": "configs/frozen/e3_multidataset_protocol_closure/traffic/opportunity_strata.json",
+      "definition": "processed opportunity_stratum = spatial_id::time_block::weekday_flag",
+      "n_legal_opportunity_strata": 344,
+      "nonempty_strata": 344,
+      "source_hash": "f5726fc00e0b916d16dc8bbdf8339ee2ae29376726077204246f8836efc2d7ce",
+      "stratum_support_hash": "f5726fc00e0b916d16dc8bbdf8339ee2ae29376726077204246f8836efc2d7ce"
+    },
+    "uair": {
+      "config_path": "configs/frozen/e3_multidataset_protocol_closure/uair/opportunity_strata.json",
+      "definition": "processed opportunity_stratum = spatial_id::time_block::weekday_flag",
+      "n_legal_opportunity_strata": 288,
+      "nonempty_strata": 288,
+      "source_hash": "fb5b6f40db00dafd9677f0b502c9c85f62a67f5d7a0be941321d79340c92be4c",
+      "stratum_support_hash": "fb5b6f40db00dafd9677f0b502c9c85f62a67f5d7a0be941321d79340c92be4c"
+    }
+  },
+  "deterministic_mapping_function": "s(i) = f\"{spatial_id}::block{time_of_day_block(t)}::{weekday_label(t)}\"",
+  "distinct_from_target_group_h": true,
+  "h_definition": "h(i)=(spatial_unit, time_of_day_block) → spatial_id::block{k} (no day-type)",
+  "independent_of_performance_outcomes": true,
+  "s_definition": "s(i)=(spatial_id, time_of_day_block, weekday|weekend)",
+  "spatial_coarsening_rule": "E3 processed: no further coarsening; spatial_id is the station/node id",
+  "status": "RECOVERED",
+  "stratum_dimensions": [
+    "coarse spatial region (= spatial_id / station for E3 processed)",
+    "time-of-day block (UTC hour//6 → block0..block3)",
+    "weekday/weekend"
+  ],
+  "time_block_rule": "time_of_day_block(timestamp, blocks=4) = UTC.hour // 6",
+  "weekday_weekend_rule": "weekday_label: weekend if UTC.dayofweek>=5 else weekday"
+}

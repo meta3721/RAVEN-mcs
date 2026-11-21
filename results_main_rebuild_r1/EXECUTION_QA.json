@@ -1,0 +1,687 @@
+{
+  "passed": true,
+  "trajectories_checked": 112,
+  "central_delivered_trajectories": 108,
+  "max_saved_score_difference": 4.6944143150540185e-07,
+  "all_curves_200_passes": true,
+  "all_checkpoints_present": true,
+  "source_data_unchanged": true,
+  "strict_recent_history_excludes_query_timestamp": true,
+  "multistep_seasonal_baseline_checked": true,
+  "pandas_time_resolution_guard": "all actual source and delivered timestamps ns; explicitly normalize us inputs to ns; no fitted input changes",
+  "no_test_forecasts_or_scores": true,
+  "details": [
+    {
+      "run": "P1\\central_all\\ndmf\\uair\\sgd_0.03\\seed41001",
+      "saved_prediction_score_difference": 0.0,
+      "budget_complete": true,
+      "curve_best_matches_summary": true
+    },
+    {
+      "run": "P1\\central_all\\ndmf\\uair\\sgd_0.03\\seed41002",
+      "saved_prediction_score_difference": 0.0,
+      "budget_complete": true,
+      "curve_best_matches_summary": true
+    },
+    {
+      "run": "P1\\central_all\\ndmf\\uair\\sgd_0.03\\seed41003",
+      "saved_prediction_score_difference": 0.0,
+      "budget_complete": true,
+      "curve_best_matches_summary": true
+    },
+    {
+      "run": "P1\\central_delivered\\history\\sensorscope\\adam_0.0003\\seed41001",
+      "saved_prediction_score_difference": 1.3770495854714682e-10,
+      "budget_complete": true,
+      "curve_best_matches_summary": true
+    },
+    {
+      "run": "P1\\central_delivered\\history\\sensorscope\\adam_0.0003\\seed41002",
+      "saved_prediction_score_difference": 5.207749786961813e-10,
+      "budget_complete": true,
+      "curve_best_matches_summary": true
+    },
+    {
+      "run": "P1\\central_delivered\\history\\sensorscope\\adam_0.0003\\seed41003",
+      "saved_prediction_score_difference": 2.7707613980965107e-11,
+      "budget_complete": true,
+      "curve_best_matches_summary": true
+    },
+    {
+      "run": "P1\\central_delivered\\history\\sensorscope\\adam_0.001\\seed41001",
+      "saved_prediction_score_difference": 1.7815571240475947e-10,
+      "budget_complete": true,
+      "curve_best_matches_summary": true
+    },
+    {
+      "run": "P1\\central_delivered\\history\\sensorscope\\adam_0.001\\seed41002",
+      "saved_prediction_score_difference": 2.980962143794841e-10,
+      "budget_complete": true,
+      "curve_best_matches_summary": true
+    },
+    {
+      "run": "P1\\central_delivered\\history\\sensorscope\\adam_0.001\\seed41003",
+      "saved_prediction_score_difference": 1.922861869729786e-11,
+      "budget_complete": true,
+      "curve_best_matches_summary": true
+    },
+    {
+      "run": "P1\\central_delivered\\history\\sensorscope\\adam_0.003\\seed41001",
+      "saved_prediction_score_difference": 2.603144366730703e-10,
+      "budget_complete": true,
+      "curve_best_matches_summary": true
+    },
+    {
+      "run": "P1\\central_delivered\\history\\sensorscope\\adam_0.003\\seed41002",
+      "saved_prediction_score_difference": 3.115840918610502e-10,
+      "budget_complete": true,
+      "curve_best_matches_summary": true
+    },
+    {
+      "run": "P1\\central_delivered\\history\\sensorscope\\adam_0.003\\seed41003",
+      "saved_prediction_score_difference": 1.325961562770317e-11,
+      "budget_complete": true,
+      "curve_best_matches_summary": true
+    },
+    {
+      "run": "P1\\central_delivered\\history\\sensorscope\\sgd_0.001\\seed41001",
+      "saved_prediction_score_difference": 3.161551020980369e-10,
+      "budget_complete": true,
+      "curve_best_matches_summary": true
+    },
+    {
+      "run": "P1\\central_delivered\\history\\sensorscope\\sgd_0.001\\seed41002",
+      "saved_prediction_score_difference": 5.286970861106965e-10,
+      "budget_complete": true,
+      "curve_best_matches_summary": true
+    },
+    {
+      "run": "P1\\central_delivered\\history\\sensorscope\\sgd_0.001\\seed41003",
+      "saved_prediction_score_difference": 1.390043635751681e-11,
+      "budget_complete": true,
+      "curve_best_matches_summary": true
+    },
+    {
+      "run": "P1\\central_delivered\\history\\sensorscope\\sgd_0.01\\seed41001",
+      "saved_prediction_score_difference": 3.153517447174181e-10,
+      "budget_complete": true,
+      "curve_best_matches_summary": true
+    },
+    {
+      "run": "P1\\central_delivered\\history\\sensorscope\\sgd_0.01\\seed41002",
+      "saved_prediction_score_difference": 5.232299038482324e-10,
+      "budget_complete": true,
+      "curve_best_matches_summary": true
+    },
+    {
+      "run": "P1\\central_delivered\\history\\sensorscope\\sgd_0.01\\seed41003",
+      "saved_prediction_score_difference": 1.4624745858782262e-11,
+      "budget_complete": true,
+      "curve_best_matches_summary": true
+    },
+    {
+      "run": "P1\\central_delivered\\history\\sensorscope\\sgd_0.03\\seed41001",
+      "saved_prediction_score_difference": 2.726303627298421e-10,
+      "budget_complete": true,
+      "curve_best_matches_summary": true
+    },
+    {
+      "run": "P1\\central_delivered\\history\\sensorscope\\sgd_0.03\\seed41002",
+      "saved_prediction_score_difference": 5.133720115679807e-10,
+      "budget_complete": true,
+      "curve_best_matches_summary": true
+    },
+    {
+      "run": "P1\\central_delivered\\history\\sensorscope\\sgd_0.03\\seed41003",
+      "saved_prediction_score_difference": 3.4092728640189307e-12,
+      "budget_complete": true,
+      "curve_best_matches_summary": true
+    },
+    {
+      "run": "P1\\central_delivered\\history\\traffic\\adam_0.0003\\seed41001",
+      "saved_prediction_score_difference": 4.2797540800165734e-07,
+      "budget_complete": true,
+      "curve_best_matches_summary": true
+    },
+    {
+      "run": "P1\\central_delivered\\history\\traffic\\adam_0.0003\\seed41002",
+      "saved_prediction_score_difference": 1.9637178638731712e-07,
+      "budget_complete": true,
+      "curve_best_matches_summary": true
+    },
+    {
+      "run": "P1\\central_delivered\\history\\traffic\\adam_0.0003\\seed41003",
+      "saved_prediction_score_difference": 2.724158889577666e-07,
+      "budget_complete": true,
+      "curve_best_matches_summary": true
+    },
+    {
+      "run": "P1\\central_delivered\\history\\traffic\\adam_0.001\\seed41001",
+      "saved_prediction_score_difference": 4.336636152402207e-07,
+      "budget_complete": true,
+      "curve_best_matches_summary": true
+    },
+    {
+      "run": "P1\\central_delivered\\history\\traffic\\adam_0.001\\seed41002",
+      "saved_prediction_score_difference": 2.1138453121238854e-07,
+      "budget_complete": true,
+      "curve_best_matches_summary": true
+    },
+    {
+      "run": "P1\\central_delivered\\history\\traffic\\adam_0.001\\seed41003",
+      "saved_prediction_score_difference": 2.635724740684964e-07,
+      "budget_complete": true,
+      "curve_best_matches_summary": true
+    },
+    {
+      "run": "P1\\central_delivered\\history\\traffic\\adam_0.003\\seed41001",
+      "saved_prediction_score_difference": 4.377642426334205e-07,
+      "budget_complete": true,
+      "curve_best_matches_summary": true
+    },
+    {
+      "run": "P1\\central_delivered\\history\\traffic\\adam_0.003\\seed41002",
+      "saved_prediction_score_difference": 1.9047507748837234e-07,
+      "budget_complete": true,
+      "curve_best_matches_summary": true
+    },
+    {
+      "run": "P1\\central_delivered\\history\\traffic\\adam_0.003\\seed41003",
+      "saved_prediction_score_difference": 2.9650016131199664e-07,
+      "budget_complete": true,
+      "curve_best_matches_summary": true
+    },
+    {
+      "run": "P1\\central_delivered\\history\\traffic\\sgd_0.001\\seed41001",
+      "saved_prediction_score_difference": 4.545211140793981e-07,
+      "budget_complete": true,
+      "curve_best_matches_summary": true
+    },
+    {
+      "run": "P1\\central_delivered\\history\\traffic\\sgd_0.001\\seed41002",
+      "saved_prediction_score_difference": 3.307169436084223e-07,
+      "budget_complete": true,
+      "curve_best_matches_summary": true
+    },
+    {
+      "run": "P1\\central_delivered\\history\\traffic\\sgd_0.001\\seed41003",
+      "saved_prediction_score_difference": 3.237381065446243e-07,
+      "budget_complete": true,
+      "curve_best_matches_summary": true
+    },
+    {
+      "run": "P1\\central_delivered\\history\\traffic\\sgd_0.01\\seed41001",
+      "saved_prediction_score_difference": 4.6944143150540185e-07,
+      "budget_complete": true,
+      "curve_best_matches_summary": true
+    },
+    {
+      "run": "P1\\central_delivered\\history\\traffic\\sgd_0.01\\seed41002",
+      "saved_prediction_score_difference": 3.4152481021010317e-07,
+      "budget_complete": true,
+      "curve_best_matches_summary": true
+    },
+    {
+      "run": "P1\\central_delivered\\history\\traffic\\sgd_0.01\\seed41003",
+      "saved_prediction_score_difference": 3.3558609402462025e-07,
+      "budget_complete": true,
+      "curve_best_matches_summary": true
+    },
+    {
+      "run": "P1\\central_delivered\\history\\traffic\\sgd_0.03\\seed41001",
+      "saved_prediction_score_difference": 4.6817103793728165e-07,
+      "budget_complete": true,
+      "curve_best_matches_summary": true
+    },
+    {
+      "run": "P1\\central_delivered\\history\\traffic\\sgd_0.03\\seed41002",
+      "saved_prediction_score_difference": 3.4164185080953757e-07,
+      "budget_complete": true,
+      "curve_best_matches_summary": true
+    },
+    {
+      "run": "P1\\central_delivered\\history\\traffic\\sgd_0.03\\seed41003",
+      "saved_prediction_score_difference": 3.2967096785796457e-07,
+      "budget_complete": true,
+      "curve_best_matches_summary": true
+    },
+    {
+      "run": "P1\\central_delivered\\history\\uair\\adam_0.0003\\seed41001",
+      "saved_prediction_score_difference": 0.0,
+      "budget_complete": true,
+      "curve_best_matches_summary": true
+    },
+    {
+      "run": "P1\\central_delivered\\history\\uair\\adam_0.0003\\seed41002",
+      "saved_prediction_score_difference": 0.0,
+      "budget_complete": true,
+      "curve_best_matches_summary": true
+    },
+    {
+      "run": "P1\\central_delivered\\history\\uair\\adam_0.0003\\seed41003",
+      "saved_prediction_score_difference": 3.552713678800501e-15,
+      "budget_complete": true,
+      "curve_best_matches_summary": true
+    },
+    {
+      "run": "P1\\central_delivered\\history\\uair\\adam_0.001\\seed41001",
+      "saved_prediction_score_difference": 3.552713678800501e-15,
+      "budget_complete": true,
+      "curve_best_matches_summary": true
+    },
+    {
+      "run": "P1\\central_delivered\\history\\uair\\adam_0.001\\seed41002",
+      "saved_prediction_score_difference": 3.552713678800501e-15,
+      "budget_complete": true,
+      "curve_best_matches_summary": true
+    },
+    {
+      "run": "P1\\central_delivered\\history\\uair\\adam_0.001\\seed41003",
+      "saved_prediction_score_difference": 0.0,
+      "budget_complete": true,
+      "curve_best_matches_summary": true
+    },
+    {
+      "run": "P1\\central_delivered\\history\\uair\\adam_0.003\\seed41001",
+      "saved_prediction_score_difference": 0.0,
+      "budget_complete": true,
+      "curve_best_matches_summary": true
+    },
+    {
+      "run": "P1\\central_delivered\\history\\uair\\adam_0.003\\seed41002",
+      "saved_prediction_score_difference": 0.0,
+      "budget_complete": true,
+      "curve_best_matches_summary": true
+    },
+    {
+      "run": "P1\\central_delivered\\history\\uair\\adam_0.003\\seed41003",
+      "saved_prediction_score_difference": 3.552713678800501e-15,
+      "budget_complete": true,
+      "curve_best_matches_summary": true
+    },
+    {
+      "run": "P1\\central_delivered\\history\\uair\\sgd_0.001\\seed41001",
+      "saved_prediction_score_difference": 0.0,
+      "budget_complete": true,
+      "curve_best_matches_summary": true
+    },
+    {
+      "run": "P1\\central_delivered\\history\\uair\\sgd_0.001\\seed41002",
+      "saved_prediction_score_difference": 0.0,
+      "budget_complete": true,
+      "curve_best_matches_summary": true
+    },
+    {
+      "run": "P1\\central_delivered\\history\\uair\\sgd_0.001\\seed41003",
+      "saved_prediction_score_difference": 0.0,
+      "budget_complete": true,
+      "curve_best_matches_summary": true
+    },
+    {
+      "run": "P1\\central_delivered\\history\\uair\\sgd_0.01\\seed41001",
+      "saved_prediction_score_difference": 0.0,
+      "budget_complete": true,
+      "curve_best_matches_summary": true
+    },
+    {
+      "run": "P1\\central_delivered\\history\\uair\\sgd_0.01\\seed41002",
+      "saved_prediction_score_difference": 0.0,
+      "budget_complete": true,
+      "curve_best_matches_summary": true
+    },
+    {
+      "run": "P1\\central_delivered\\history\\uair\\sgd_0.01\\seed41003",
+      "saved_prediction_score_difference": 0.0,
+      "budget_complete": true,
+      "curve_best_matches_summary": true
+    },
+    {
+      "run": "P1\\central_delivered\\history\\uair\\sgd_0.03\\seed41001",
+      "saved_prediction_score_difference": 3.552713678800501e-15,
+      "budget_complete": true,
+      "curve_best_matches_summary": true
+    },
+    {
+      "run": "P1\\central_delivered\\history\\uair\\sgd_0.03\\seed41002",
+      "saved_prediction_score_difference": 0.0,
+      "budget_complete": true,
+      "curve_best_matches_summary": true
+    },
+    {
+      "run": "P1\\central_delivered\\history\\uair\\sgd_0.03\\seed41003",
+      "saved_prediction_score_difference": 3.552713678800501e-15,
+      "budget_complete": true,
+      "curve_best_matches_summary": true
+    },
+    {
+      "run": "P1\\central_delivered\\ndmf\\sensorscope\\adam_0.0003\\seed41001",
+      "saved_prediction_score_difference": 1.2275558347596416e-10,
+      "budget_complete": true,
+      "curve_best_matches_summary": true
+    },
+    {
+      "run": "P1\\central_delivered\\ndmf\\sensorscope\\adam_0.0003\\seed41002",
+      "saved_prediction_score_difference": 5.398970159831151e-10,
+      "budget_complete": true,
+      "curve_best_matches_summary": true
+    },
+    {
+      "run": "P1\\central_delivered\\ndmf\\sensorscope\\adam_0.0003\\seed41003",
+      "saved_prediction_score_difference": 3.922195901395753e-11,
+      "budget_complete": true,
+      "curve_best_matches_summary": true
+    },
+    {
+      "run": "P1\\central_delivered\\ndmf\\sensorscope\\adam_0.001\\seed41001",
+      "saved_prediction_score_difference": 3.1076963225018517e-10,
+      "budget_complete": true,
+      "curve_best_matches_summary": true
+    },
+    {
+      "run": "P1\\central_delivered\\ndmf\\sensorscope\\adam_0.001\\seed41002",
+      "saved_prediction_score_difference": 4.960853949853572e-10,
+      "budget_complete": true,
+      "curve_best_matches_summary": true
+    },
+    {
+      "run": "P1\\central_delivered\\ndmf\\sensorscope\\adam_0.001\\seed41003",
+      "saved_prediction_score_difference": 7.378320177053865e-11,
+      "budget_complete": true,
+      "curve_best_matches_summary": true
+    },
+    {
+      "run": "P1\\central_delivered\\ndmf\\sensorscope\\adam_0.003\\seed41001",
+      "saved_prediction_score_difference": 4.010893839279106e-10,
+      "budget_complete": true,
+      "curve_best_matches_summary": true
+    },
+    {
+      "run": "P1\\central_delivered\\ndmf\\sensorscope\\adam_0.003\\seed41002",
+      "saved_prediction_score_difference": 4.5362114065028436e-10,
+      "budget_complete": true,
+      "curve_best_matches_summary": true
+    },
+    {
+      "run": "P1\\central_delivered\\ndmf\\sensorscope\\adam_0.003\\seed41003",
+      "saved_prediction_score_difference": 3.2294611429506404e-11,
+      "budget_complete": true,
+      "curve_best_matches_summary": true
+    },
+    {
+      "run": "P1\\central_delivered\\ndmf\\sensorscope\\sgd_0.001\\seed41001",
+      "saved_prediction_score_difference": 3.8899550247606385e-11,
+      "budget_complete": true,
+      "curve_best_matches_summary": true
+    },
+    {
+      "run": "P1\\central_delivered\\ndmf\\sensorscope\\sgd_0.001\\seed41002",
+      "saved_prediction_score_difference": 3.1800784228153134e-11,
+      "budget_complete": true,
+      "curve_best_matches_summary": true
+    },
+    {
+      "run": "P1\\central_delivered\\ndmf\\sensorscope\\sgd_0.001\\seed41003",
+      "saved_prediction_score_difference": 3.3154368139776125e-11,
+      "budget_complete": true,
+      "curve_best_matches_summary": true
+    },
+    {
+      "run": "P1\\central_delivered\\ndmf\\sensorscope\\sgd_0.01\\seed41001",
+      "saved_prediction_score_difference": 1.8039836291450229e-10,
+      "budget_complete": true,
+      "curve_best_matches_summary": true
+    },
+    {
+      "run": "P1\\central_delivered\\ndmf\\sensorscope\\sgd_0.01\\seed41002",
+      "saved_prediction_score_difference": 6.764149240723327e-10,
+      "budget_complete": true,
+      "curve_best_matches_summary": true
+    },
+    {
+      "run": "P1\\central_delivered\\ndmf\\sensorscope\\sgd_0.01\\seed41003",
+      "saved_prediction_score_difference": 9.64028856742516e-12,
+      "budget_complete": true,
+      "curve_best_matches_summary": true
+    },
+    {
+      "run": "P1\\central_delivered\\ndmf\\sensorscope\\sgd_0.03\\seed41001",
+      "saved_prediction_score_difference": 3.604765375087027e-10,
+      "budget_complete": true,
+      "curve_best_matches_summary": true
+    },
+    {
+      "run": "P1\\central_delivered\\ndmf\\sensorscope\\sgd_0.03\\seed41002",
+      "saved_prediction_score_difference": 6.047482514759395e-10,
+      "budget_complete": true,
+      "curve_best_matches_summary": true
+    },
+    {
+      "run": "P1\\central_delivered\\ndmf\\sensorscope\\sgd_0.03\\seed41003",
+      "saved_prediction_score_difference": 5.909051026264933e-12,
+      "budget_complete": true,
+      "curve_best_matches_summary": true
+    },
+    {
+      "run": "P1\\central_delivered\\ndmf\\traffic\\adam_0.0003\\seed41001",
+      "saved_prediction_score_difference": 1.6851379314175574e-07,
+      "budget_complete": true,
+      "curve_best_matches_summary": true
+    },
+    {
+      "run": "P1\\central_delivered\\ndmf\\traffic\\adam_0.0003\\seed41002",
+      "saved_prediction_score_difference": 2.4909658691285586e-07,
+      "budget_complete": true,
+      "curve_best_matches_summary": true
+    },
+    {
+      "run": "P1\\central_delivered\\ndmf\\traffic\\adam_0.0003\\seed41003",
+      "saved_prediction_score_difference": 7.628449338881182e-08,
+      "budget_complete": true,
+      "curve_best_matches_summary": true
+    },
+    {
+      "run": "P1\\central_delivered\\ndmf\\traffic\\adam_0.001\\seed41001",
+      "saved_prediction_score_difference": 1.781558580660203e-07,
+      "budget_complete": true,
+      "curve_best_matches_summary": true
+    },
+    {
+      "run": "P1\\central_delivered\\ndmf\\traffic\\adam_0.001\\seed41002",
+      "saved_prediction_score_difference": 2.1046028564342123e-07,
+      "budget_complete": true,
+      "curve_best_matches_summary": true
+    },
+    {
+      "run": "P1\\central_delivered\\ndmf\\traffic\\adam_0.001\\seed41003",
+      "saved_prediction_score_difference": 1.0394469995844702e-07,
+      "budget_complete": true,
+      "curve_best_matches_summary": true
+    },
+    {
+      "run": "P1\\central_delivered\\ndmf\\traffic\\adam_0.003\\seed41001",
+      "saved_prediction_score_difference": 2.250594377528614e-07,
+      "budget_complete": true,
+      "curve_best_matches_summary": true
+    },
+    {
+      "run": "P1\\central_delivered\\ndmf\\traffic\\adam_0.003\\seed41002",
+      "saved_prediction_score_difference": 3.087753839281504e-07,
+      "budget_complete": true,
+      "curve_best_matches_summary": true
+    },
+    {
+      "run": "P1\\central_delivered\\ndmf\\traffic\\adam_0.003\\seed41003",
+      "saved_prediction_score_difference": 1.2668127169490617e-07,
+      "budget_complete": true,
+      "curve_best_matches_summary": true
+    },
+    {
+      "run": "P1\\central_delivered\\ndmf\\traffic\\sgd_0.001\\seed41001",
+      "saved_prediction_score_difference": 3.365685188327916e-07,
+      "budget_complete": true,
+      "curve_best_matches_summary": true
+    },
+    {
+      "run": "P1\\central_delivered\\ndmf\\traffic\\sgd_0.001\\seed41002",
+      "saved_prediction_score_difference": 2.913999423981295e-07,
+      "budget_complete": true,
+      "curve_best_matches_summary": true
+    },
+    {
+      "run": "P1\\central_delivered\\ndmf\\traffic\\sgd_0.001\\seed41003",
+      "saved_prediction_score_difference": 2.7433117111286265e-07,
+      "budget_complete": true,
+      "curve_best_matches_summary": true
+    },
+    {
+      "run": "P1\\central_delivered\\ndmf\\traffic\\sgd_0.01\\seed41001",
+      "saved_prediction_score_difference": 3.7310286415959126e-07,
+      "budget_complete": true,
+      "curve_best_matches_summary": true
+    },
+    {
+      "run": "P1\\central_delivered\\ndmf\\traffic\\sgd_0.01\\seed41002",
+      "saved_prediction_score_difference": 3.040208014226664e-07,
+      "budget_complete": true,
+      "curve_best_matches_summary": true
+    },
+    {
+      "run": "P1\\central_delivered\\ndmf\\traffic\\sgd_0.01\\seed41003",
+      "saved_prediction_score_difference": 4.987646207155194e-08,
+      "budget_complete": true,
+      "curve_best_matches_summary": true
+    },
+    {
+      "run": "P1\\central_delivered\\ndmf\\traffic\\sgd_0.03\\seed41001",
+      "saved_prediction_score_difference": 2.9544776225520764e-07,
+      "budget_complete": true,
+      "curve_best_matches_summary": true
+    },
+    {
+      "run": "P1\\central_delivered\\ndmf\\traffic\\sgd_0.03\\seed41002",
+      "saved_prediction_score_difference": 3.3736381510607316e-07,
+      "budget_complete": true,
+      "curve_best_matches_summary": true
+    },
+    {
+      "run": "P1\\central_delivered\\ndmf\\traffic\\sgd_0.03\\seed41003",
+      "saved_prediction_score_difference": 1.4773056022931996e-07,
+      "budget_complete": true,
+      "curve_best_matches_summary": true
+    },
+    {
+      "run": "P1\\central_delivered\\ndmf\\uair\\adam_0.0003\\seed41001",
+      "saved_prediction_score_difference": 0.0,
+      "budget_complete": true,
+      "curve_best_matches_summary": true
+    },
+    {
+      "run": "P1\\central_delivered\\ndmf\\uair\\adam_0.0003\\seed41002",
+      "saved_prediction_score_difference": 0.0,
+      "budget_complete": true,
+      "curve_best_matches_summary": true
+    },
+    {
+      "run": "P1\\central_delivered\\ndmf\\uair\\adam_0.0003\\seed41003",
+      "saved_prediction_score_difference": 0.0,
+      "budget_complete": true,
+      "curve_best_matches_summary": true
+    },
+    {
+      "run": "P1\\central_delivered\\ndmf\\uair\\adam_0.001\\seed41001",
+      "saved_prediction_score_difference": 3.552713678800501e-15,
+      "budget_complete": true,
+      "curve_best_matches_summary": true
+    },
+    {
+      "run": "P1\\central_delivered\\ndmf\\uair\\adam_0.001\\seed41002",
+      "saved_prediction_score_difference": 3.552713678800501e-15,
+      "budget_complete": true,
+      "curve_best_matches_summary": true
+    },
+    {
+      "run": "P1\\central_delivered\\ndmf\\uair\\adam_0.001\\seed41003",
+      "saved_prediction_score_difference": 0.0,
+      "budget_complete": true,
+      "curve_best_matches_summary": true
+    },
+    {
+      "run": "P1\\central_delivered\\ndmf\\uair\\adam_0.003\\seed41001",
+      "saved_prediction_score_difference": 0.0,
+      "budget_complete": true,
+      "curve_best_matches_summary": true
+    },
+    {
+      "run": "P1\\central_delivered\\ndmf\\uair\\adam_0.003\\seed41002",
+      "saved_prediction_score_difference": 3.552713678800501e-15,
+      "budget_complete": true,
+      "curve_best_matches_summary": true
+    },
+    {
+      "run": "P1\\central_delivered\\ndmf\\uair\\adam_0.003\\seed41003",
+      "saved_prediction_score_difference": 3.552713678800501e-15,
+      "budget_complete": true,
+      "curve_best_matches_summary": true
+    },
+    {
+      "run": "P1\\central_delivered\\ndmf\\uair\\sgd_0.001\\seed41001",
+      "saved_prediction_score_difference": 0.0,
+      "budget_complete": true,
+      "curve_best_matches_summary": true
+    },
+    {
+      "run": "P1\\central_delivered\\ndmf\\uair\\sgd_0.001\\seed41002",
+      "saved_prediction_score_difference": 3.552713678800501e-15,
+      "budget_complete": true,
+      "curve_best_matches_summary": true
+    },
+    {
+      "run": "P1\\central_delivered\\ndmf\\uair\\sgd_0.001\\seed41003",
+      "saved_prediction_score_difference": 0.0,
+      "budget_complete": true,
+      "curve_best_matches_summary": true
+    },
+    {
+      "run": "P1\\central_delivered\\ndmf\\uair\\sgd_0.01\\seed41001",
+      "saved_prediction_score_difference": 0.0,
+      "budget_complete": true,
+      "curve_best_matches_summary": true
+    },
+    {
+      "run": "P1\\central_delivered\\ndmf\\uair\\sgd_0.01\\seed41002",
+      "saved_prediction_score_difference": 0.0,
+      "budget_complete": true,
+      "curve_best_matches_summary": true
+    },
+    {
+      "run": "P1\\central_delivered\\ndmf\\uair\\sgd_0.01\\seed41003",
+      "saved_prediction_score_difference": 3.552713678800501e-15,
+      "budget_complete": true,
+      "curve_best_matches_summary": true
+    },
+    {
+      "run": "P1\\central_delivered\\ndmf\\uair\\sgd_0.03\\seed41001",
+      "saved_prediction_score_difference": 0.0,
+      "budget_complete": true,
+      "curve_best_matches_summary": true
+    },
+    {
+      "run": "P1\\central_delivered\\ndmf\\uair\\sgd_0.03\\seed41002",
+      "saved_prediction_score_difference": 3.552713678800501e-15,
+      "budget_complete": true,
+      "curve_best_matches_summary": true
+    },
+    {
+      "run": "P1\\central_delivered\\ndmf\\uair\\sgd_0.03\\seed41003",
+      "saved_prediction_score_difference": 3.552713678800501e-15,
+      "budget_complete": true,
+      "curve_best_matches_summary": true
+    },
+    {
+      "run": "P1\\uniform\\ndmf\\traffic\\adam_0.003_rho0.5\\seed41001",
+      "saved_prediction_score_difference": 2.842170943040401e-14,
+      "budget_complete": true,
+      "curve_best_matches_summary": true
+    }
+  ]
+}

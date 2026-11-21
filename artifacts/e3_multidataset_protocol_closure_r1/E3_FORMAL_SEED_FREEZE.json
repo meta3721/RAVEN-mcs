@@ -1,0 +1,32 @@
+{
+  "canary_reason": "Outside E1/E2 formal seeds and prior tuning/profile seed blocks; reserved for integrity canary only",
+  "canary_seed": 31001,
+  "disjoint_proof": {
+    "not_in_e1_formal_example": true,
+    "not_in_formal_30001_30020": true,
+    "not_in_legacy_e3_yaml": true
+  },
+  "execute_canary_this_round": false,
+  "formal_seeds": [
+    30001,
+    30002,
+    30003,
+    30004,
+    30005,
+    30006,
+    30007,
+    30008,
+    30009,
+    30010,
+    30011,
+    30012,
+    30013,
+    30014,
+    30015,
+    30016,
+    30017,
+    30018,
+    30019,
+    30020
+  ]
+}

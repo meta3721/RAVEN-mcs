@@ -1,0 +1,337 @@
+--- a/TO_OVERLEAF_paper_tmc_r1_clean/main.tex
++++ b/TO_OVERLEAF_paper_tmc_r1_clean/main.tex
+@@ -72,9 +72,10 @@
+ Mobile crowdsensing completion learns from updates selected by opportunity,
+ observation, and usable-update delivery.  These mechanisms shape an arrival law
+ that can differ from the public deployment target.  RAVEN-MCS reconstructs a
+-selection-corrected reference from pre-outcome histories and calibrates it within
++selection-corrected reference with a preconfigured opportunity Design factor
++from pre-outcome histories and calibrates it within
+ the feasible aggregation set of each asynchronous window.  We distinguish
+-deployment-target risk from arrival-weighted risk, establish ideal target-moment
++deployment-target risk from arrival-weighted risk, establish ideal Design-on target-moment
+ and group-mass recovery under support and identification conditions, and prove
+ unique solvability and plug-in stability of the calibration program.  Paired
+ component comparisons isolate the roles of correction and feasibility: on
+@@ -147,8 +148,8 @@
+ from the arrival/usable-update law, then factors the opportunity, observation,
+ and usable-update layers under their legal pre-outcome information boundaries
+ (selection-time covariates, not outcome or test labels).  RAVEN-Design uses the
+-lagged target-mass opportunity ratio; when a frozen zero-target heuristic is
+-positive, RAVEN-NoDesign fixes that factor at one, retaining the arrival
++lagged target-mass opportunity ratio with Design configured on before the
++window opens; RAVEN-NoDesign configures that factor at one, retaining the arrival
+ opportunity law.  The resulting statistical reference may still be unattainable in a
+ particular mobile window, so RAVEN-MCS maps the corrected reference to a feasible
+ aggregation decision through instantaneous target calibration, a strongly convex
+@@ -166,6 +167,8 @@
+ (b)~RAVEN-Design forms a selection-corrected target-mass reference and
+ calibrates it in the current feasible support.  RAVEN-NoDesign uses
+ $\widehat\zeta=1$ and is not target-mass reconstruction.
++The Design setting is fixed before the window opens and held throughout it;
++the coverage Gate is a separate diagnostic.
+ (P2) is the per-window calibration program that maps this reference onto the
+ feasible aggregation set; it is defined in Section~\ref{sec:calibration}.}
+ \label{fig:raven_overview}
+@@ -201,9 +204,9 @@
+     reconstruction is RAVEN-Design, the setting that turns the Design factor on;
+     with the factor off, RAVEN-NoDesign fixes the opportunity factor at one.
+     The factor is an explicit
+-    configuration that the deployment fixes before the window opens, by the
+-    support gate of \eqref{eq:design_gate} when it needs one setting, and both
+-    settings are reported.  A finite-sample coverage bound is audited as an
++    configuration that the deployment fixes before the window opens and holds
++    throughout it.  Both settings are reported; \eqref{eq:design_gate}
++    describes a block-level target-support check.  A finite-sample coverage bound is audited as an
+     empirical diagnostic in the supplemental material.
+ 
+     \item \textbf{Feasibility-aware instantaneous and long-term target
+@@ -460,6 +463,10 @@
+ The unit lookup used by the target-coverage statistic, and the pair opportunity
+ mass used by $C_t$, are constructed in the supplemental material.
+ All target quantities are frozen before test-label evaluation.
++The window configuration $D_t\in\{\mathrm{on},\mathrm{off}\}$ is recorded
++before window $t$ opens and remains fixed during local training and
++window-close aggregation.  The reported on/off arms keep the same setting
++across all windows of a run.
+ 
+ \subsection{Aggregate Coverage Certification Object}
+ \label{subsec:agg_coverage_object}
+@@ -682,8 +689,8 @@
+ which is RAVEN-Design; with the factor off,
+ Algorithm~\ref{alg:window_close} runs RAVEN-NoDesign and sets
+ $\widehat\zeta^{o}_{k,r,i}=1$ on observed pairs.  The factor is a configuration of
+-the deployment, supplied before the window opens rather than computed from the
+-data.  The off setting retains the opportunity layer's arrival law
++the deployment, supplied before the window opens and held fixed within it.
++The off setting retains the opportunity layer's arrival law
+ $\pi^{\mathrm{opp}}$.
+ 
+ \subsection{Observation Correction and Local H\'ajek Normalization}
+@@ -1004,11 +1011,13 @@
+ \end{equation}
+ so $\mathrm{Gate}_t=\mathbf{1}\{C^{\mathrm{LCB}}_t\ge\tau_{\mathrm{cov}}\}$ with
+ $\tau_{\mathrm{cov}}=0.05$.  WARMUP and RESET force the Gate off.  It does
+-not switch Design.
++not switch Design.  The predictor and calibration scores use completed past
++windows; the current window's realized $C_t$ is used after completion to
++audit the bound and update the diagnostic state for subsequent windows.
+ 
+ Let $D_t\in\{\mathrm{on},\mathrm{off}\}$ be the Design factor of window $t$:
+-a configuration of the deployment, fixed before the window opens and recorded
+-with it.  The implemented opportunity/design factor is
++a configuration of the deployment, fixed before the window opens, recorded
++with it, and held constant through its close.  The opportunity/design factor is
+ \begin{equation}
+ \widehat\zeta^{o}_{k,t,i}
+ =
+@@ -1025,12 +1034,12 @@
+ and the result is not target-mass reconstruction.
+ \eqref{eq:design_factor} is the only place the two settings differ: the
+ observation, usable-update, calibration, and debt steps are identical.
+-We report both settings rather than a single selected one, because the choice
+-trades off across endpoints; a deployment that needs one setting fixes it by the
+-support gate of \eqref{eq:design_gate}, which reads only public pre-window
+-information.  The supplemental material reports the share of training risk units
+-whose attached client--stratum carries zero public target mass, the input of that
+-gate and nothing more.
++The Design-on/off experiments fix $D_t$ to on/off, respectively, for the
++entire run.  Equation~\eqref{eq:design_gate} describes a block-level support
++check on a specified training-unit catalogue.  It can supply a pre-window
++configuration only when that catalogue and its public target lookup are
++already available.  The supplemental material reports the catalogue counts
++separately from the coverage diagnostic.
+ 
+ \begin{algorithm}[t]
+ \caption{Window-close RAVEN-MCS with the Design factor as an explicit configuration}
+@@ -1039,6 +1048,7 @@
+ \REQUIRE window $t$; recorded $R_{k,t,i}$, $O_{k,t,i}$, $U_{k,t}$;
+ public $\boldsymbol\mu$; debt $\mathbf{Q}_t$; model $\theta_t$;
+ frozen public $\pi^{\mathrm{tar}}$; Design factor $D_t\in\{\mathrm{on},\mathrm{off}\}$
++recorded before window opening and held fixed within the window
+ \ENSURE $\theta_{t+1}$, $\mathbf{Q}_{t+1}$
+ \STATE Form $\mathcal{E}_t$ and
+ $\mathcal{U}_t=\{k\in\mathcal{E}_t:U_{k,t}=1\}$.
+@@ -1077,6 +1087,9 @@
+ recovers compatible target moments or group mass under A1--A3 for the ideal
+ Design-on sequential estimator.  The calibration results then establish
+ existence, uniqueness, and stability on the current feasible client support.
++These statements condition on the configured Design setting.  The
++block-level zero-target check of \eqref{eq:design_gate} does not establish
++the positivity and identification assumptions below.
+ 
+ \subsection{Assumptions}
+ \label{subsec:assumptions}
+@@ -1537,6 +1550,8 @@
+ and window-close protocol.  Inst-Cal and Debt-Cal expose
+ the transition from reconstruction to calibration in the appendix.
+ Central-All, Central-Delivered, and RAVEN-SimOracle are reference-only methods.
++The Design-on/off comparisons use a fixed setting throughout each run;
++the coverage-certificate audit is reported separately in the supplemental material.
+ 
+ Design is
+ worth $1.237\%$ of
+@@ -1889,7 +1904,8 @@
+ reduces $\Delta_{\mathrm{group}}$ ($-1.23\%$ estimated, $-1.03\%$
+ oracle) with a flat RMSE.  On U-Air, estimated and oracle Design both
+ worsen $\Delta_{\mathrm{group}}$ and $\mathrm{RMSE}_{\mu}$ by about
+-$7.5\%$.  Algorithm~\ref{alg:window_close} runs RAVEN-NoDesign on U-Air;
++$7.5\%$.  The U-Air Design-off arm runs
++Algorithm~\ref{alg:window_close} with $D_t=\mathrm{off}$;
+ this figure diagnoses the reversal, not the
+ selection rule.  The U-Air Design-on $\Delta_{c\text{-}s}$ gain remains in
+ Table~\ref{tab:e4_ablation}.}
+@@ -1934,7 +1950,8 @@
+ \subsection{What the Correction and Calibration Components Do}
+ \label{subsec:eval_rq3}
+ 
+-The component-removal ablation drops Design, Obs, Use, Inst, or Debt under the
++The component-removal ablation starts from the fixed Design-on arm on both
++datasets and drops Design, Obs, Use, Inst, or Debt under the
+ same Complete-aligned selection trace and paired seeds.
+ Table~\ref{tab:e4_ablation} reports the relative change
+ $\delta_{\mathrm{remove}}(M)
+@@ -1977,8 +1994,8 @@
+ Removing Design worsens $\Delta_{c\text{-}s}$ by $0.597\%$ on SensorScope and
+ $4.990\%$ on U-Air, both Holm-significant.  On U-Air the same ablation
+ improves $\Delta_{\mathrm{group}}$ by $6.943\%$ and
+-$\mathrm{RMSE}_{\mu}$ by $6.885\%$.  The U-Air ranking uses the Design-off
+-setting according to this endpoint trade-off
++$\mathrm{RMSE}_{\mu}$ by $6.885\%$.  The U-Air ranking reports the fixed Design-off
++setting alongside Design on, with this endpoint trade-off
+ (Fig.~\ref{fig:w1_design_gate}).  The $25.5\%$ figure is the realized always-on
+ EventTrace occurrence share ($13040$ of $51200$ appearances), not an
+ input of Algorithm~\ref{alg:window_close}, and is reported with the $\mathcal{A}_r$ overlap
+@@ -1989,29 +2006,32 @@
+ (supplemental material).
+ 
+ \paragraph{Setting the Design factor.}
+-A deployment that needs one setting rather than the full factorial can fix it
+-before the window opens from public information, in two steps.  The first is a
+-support gate: writing $n^{\mathrm{zero}}_r$ for the delivered training risk units
+-of block $r$ whose attached client--stratum carries zero public target mass and
+-$n_r$ for all delivered units, define
++The target-support gate is a block-level configuration rule evaluated on a
++specified training-unit catalogue.  Here $r$ indexes the experimental block,
++not the arriving window.  Write $n^{\mathrm{zero}}_r$ for catalogue units
++whose attached client--stratum carries zero public target mass and $n_r$ for
++all catalogue units.  The rule is
+ \begin{equation}
+ \rho_r=\frac{n^{\mathrm{zero}}_r}{n_r},
+ \qquad
+ D_r=\mathrm{on}\iff\rho_r=0 .
+ \label{eq:design_gate}
+ \end{equation}
+-Design is on exactly when no delivered unit sits on a stratum that the public
+-target map declares empty.  On SensorScope, U-Air, and T-Drive that map is the
+-client--stratum or stratum lookup, and the gate returns on for SensorScope and
++The rule returns on exactly when no catalogue unit sits on a stratum that the
++public target map declares empty.  Applying it before a window opens requires
++the catalogue and lookup to have been frozen and made available by then;
++current-window delivered units become available only after delivery.
++For the offline counts reported here, SensorScope, U-Air, and T-Drive use the
++client--stratum or stratum lookup.  The rule returns on for SensorScope and
+ off for U-Air ($35.4\%$) and T-Drive ($47.4\%$), the settings those rankings use.
+ NSW-Traffic and both City Scanner rankings are on because their public targets
+ are four-region shares with every region positive.  That is a different lookup
+ from the client--stratum statistic, and a zero on one map is not a zero on the
+-other (supplemental material).  The gate is
+-a stopping condition rather than a preference between endpoints, withholding the
+-factor where the ablation measures its largest effect, the $6.943\%$ of
++other (supplemental material).  These offline rule outputs coincide with the
++settings displayed in the rankings.  The U-Air ablation measures $6.943\%$ of
+ $\Delta_{\mathrm{group}}$ and $6.885\%$ of $\mathrm{RMSE}_{\mu}$ that Design costs
+-on U-Air (Section~\ref{subsec:eval_rq2}).  The second step is the switch point.
++on U-Air (Section~\ref{subsec:eval_rq2}).  Separately, an endpoint trade-off
++chart summarizes the measured on/off contrasts.
+ Writing $M_{e,r}(D)$ for endpoint
+ $e\in\mathcal{E}=\{\Delta_{\mathrm{group}},\Delta_{c\text{-}s},
+ \mathrm{RMSE}_{\mu},\mathrm{Tail}\}$ under setting $D$, and weighting the four
+@@ -2023,13 +2043,14 @@
+ \end{aligned}
+ \label{eq:design_switch}
+ \end{equation}
+-the two settings are indifferent when
++In this measured trade-off chart, the two settings are indifferent when
+ $w_c\,4.990=w_g\,6.943+w_\mu\,6.885+w_t\,7.221$, so a deployment that reads
+ structure only keeps Design on if and only if $w_c/w_g>1.39$, one that reads
+ $\mathrm{RMSE}_{\mu}$ alone keeps it off, and on SensorScope all four terms move
+ the same way, so Design on is optimal for every weight vector.  The switch point
+-is a decision chart for this U-Air ablation row, and
+-Table~\ref{tab:e4_ablation} records what the gate forgoes on U-Air, the $4.990\%$
++is a retrospective decision chart for this U-Air ablation row, not a step
++that sets $D_t$ during the reported runs.  Table~\ref{tab:e4_ablation}
++records the Design-off trade-off on U-Air, the $4.990\%$
+ $\Delta_{c\text{-}s}$ gain.  Proposition~\ref{prop:group_decomposition} supplies
+ the block decomposition behind the $\mathrm{RMSE}_{\mu}$ entries of this
+ trade-off, so a deployment can read the prediction side of the switch from the
+@@ -2174,8 +2195,9 @@
+ oracle, pooled CERTIFIED validity is $0.959$ and U-Air $a=1.00$ is $0.750$.
+ The stable-regime theorem assumes exchangeability within a certified regime;
+ coverage across adaptive RESET/CERTIFIED transitions requires separate
+-validation.  Design follows the support rule of \eqref{eq:design_gate}, while
+-the coverage Gate is evaluated as a diagnostic.
++validation.  Design is fixed by configuration, while the coverage Gate is
++evaluated as a diagnostic.  Equation~\eqref{eq:design_gate} reports the
++separate offline target-support rule.
+ 
+ Three measurements characterize the relationship between aggregation and prediction.
+ Arrival-weighted validation misstates deployment risk, by $-4.11\%$ to
+@@ -2188,7 +2210,7 @@
+ the deployment target, raises $\rho_r$ of \eqref{eq:design_gate} from $0$ to
+ $0.388$ without a prediction cost of Design above $0.175\%$, while on U-Air the
+ cost stays at $6.6\%$--$7.5\%$ for $\rho_r$ between $0.354$ and $0.466$.  The
+-statistic is therefore a support condition for the gate, not a predictor of the
++statistic is therefore a zero-target support check for the rule, not a predictor of the
+ size of its cost.
+ 
+ On NSW-Traffic a window carries $12.1$ active clients on
+@@ -2230,7 +2252,7 @@
+ windowed-asynchronous sensing.  The sequential reconstruction represents the
+ opportunity, observation, and usable-update layers explicitly, while calibration
+ maps the corrected reference into the mixtures available at window closure.
+-Under A1--A3, the ideal correction recovers compatible target moments and group
++With Design configured on, the ideal correction under A1--A3 recovers compatible target moments and group
+ mass.  The calibration program has a unique minimizer, and the clipped plug-in
+ admits a stability bound on shared target support.
+ 
+--- a/TO_OVERLEAF_paper_tmc_r1_clean/appendix.tex
++++ b/TO_OVERLEAF_paper_tmc_r1_clean/appendix.tex
+@@ -71,8 +71,9 @@
+ Table~\ref{tab:scd_phi_freeze} is the train-unit
+ fraction of those zeros, not $\#\{i:\varpi_i^{\mathrm{tar}}=0\}$, and
+ not a positivity check on target-positive pairs.  It is the input of the
+-support gate (42) that sets the Design factor of (32); the factor itself
+-remains a configuration, and both of its settings are reported.
++block-level support rule (42).  This catalogue statistic can inform the
++Design configuration of (32) only if its inputs are available before the
++window opens; both fixed on/off settings are reported.
+ The pair opportunity mass $\pi^{\mathrm{opp}}_{k,s,t}$ is
+ $F_{t-}$-measurable on the same client--stratum key.
+ Because $\sum_{k,s}\pi^{\mathrm{tar}}_{k,s}=1$, (6) equals
+@@ -2321,7 +2322,12 @@
+ The main paper reports pooled CERTIFIED validity $0.959$ and zero
+ false-safe openings.  Those rates are empirical.  The adaptive
+ RESET/CERTIFIED switching is not given a validity proof.
+-Design is set by configuration, not by this Gate.
++In the main method, Design is set by configuration.  The stress-audit
++records belong to a coverage-controlled candidate with
++$\mathrm{Design}_t=\mathrm{Gate}_t$; the tables and figure here report its
++certificate quantities $C_t$, $C^{\mathrm{LCB}}_t$, and $\mathrm{Gate}_t$.
++They are an audit of the coverage diagnostic, separate from the fixed
++Design-on/off prediction comparisons.
+ 
+ \begin{table*}[t]
+ \centering
+@@ -2372,13 +2378,14 @@
+ \section{Target-Coverage Statistic and City Scanner Hybrid Rankings}
+ \label{app:cityscanner_phi}
+ 
+-Table~\ref{tab:scd_phi_freeze} collects, as a pre-window statistic, the
+-train-unit zero-target fraction of each block, together with the Design
+-factor setting returned by the support gate (42) of the main paper for that
+-block.  The gate reads this statistic and nothing else, so the setting is a
+-deployment configuration fixed before the window opens rather than a quantity
+-estimated from the evaluation.  The same factor leaves both of its settings
+-reported on the blocks where the trade-off is material.
++Table~\ref{tab:scd_phi_freeze} collects the offline train-unit zero-target
++fraction of each block, together with the setting returned by the support
++rule (42).  The SensorScope/U-Air counts enumerate unique units in the full
++training split, not the current window's delivered updates.  The rule outputs
++coincide with the settings displayed in the rankings.  Use as a pre-window
++configuration requires this catalogue and the frozen target lookup to be
++available at that time.  Both fixed Design settings are reported on the
++blocks where the trade-off is material.
+ The statistic does not verify positivity on
+ target-positive pairs, and none of these counts uses $Y$ or RMSE.
+ The U-Air EventTrace occurrence share
+@@ -2387,14 +2394,14 @@
+ 
+ \begin{table}[t]
+ \centering
+-\caption{Target-coverage statistic per block, and the Design
+-factor setting the support gate (42) returns for that block's ranking.
++\caption{Offline target-support statistic per block, and the Design
++setting returned by the support rule (42).
+ Zero test: frozen $\pi^{\mathrm{tar}}(k(i),s(i))$ for the occupancy-attached
+ client; a missing key is $0$.
+ The gate sets Design on exactly when this statistic is zero, and it does not
+ verify positivity on target-positive pairs.
+-The setting is a configuration fixed before the window opens, reported together
+-with the ranking it produced.
++The rule outputs coincide with the settings displayed in the rankings;
++the counts alone do not establish when their inputs became available.
+ U-Air $25.5\%$ is EventTrace occurrence, not this statistic.}
+ \label{tab:scd_phi_freeze}
+ \scriptsize
+--- a/TO_OVERLEAF_paper_tmc_r1_clean/supplemental.tex
++++ b/TO_OVERLEAF_paper_tmc_r1_clean/supplemental.tex
+@@ -70,7 +70,7 @@
+ and must be uploaded as a separate PDF. It is not a standalone submission.}
+ 
+ % Continue figure/table/equation numbers from the companion main paper.
+-% Main now has 4 figures, 4 tables, 1 algorithm (window-close Design rule) and
++% Main now has 4 figures, 4 tables, 1 algorithm (window-close configured Design) and
+ % the support-gate / switch-point equations (42)-(43).
+ % Numbered statements in main: Prop. 1--3, Thm. 1--2, Assumption 1.
+ \setcounter{figure}{4}

@@ -1,0 +1,26 @@
+name: P10_R1_SMOKE
+description: Chronological SensorScope smoke with atomic arrival-risk metrics
+datasets:
+- sensorscope
+methods:
+- fedavg_window
+- twostage_hajek
+- raven
+scenarios:
+- complete_aligned
+seeds:
+- 26001
+num_windows: 20
+clients: 10
+local_steps: 2
+target_groups: 4
+dataset: sensorscope
+freeze_timestamp: '2026-08-01T10:20:29.044044+00:00'
+freeze_git_commit: b4f1661944e100b86295da6583d6449106e7c8af
+group_mapping_hash: 21682c7adef8e7e8661a1fa6251d49fc13dcef8715f101f3cea14a1380afce65
+event_trace_hash: cf222dd992429c268b7f3baab03f1634b7ef4217f2b961166c87a88fd7a2a215
+data_hash: 44081beb40e019ad999dc997162e7c7be9c0eb4cf562cddfb4f570ec1f7cca03
+validation_summary:
+  experiment_config_exists: true
+  dataset: sensorscope
+  group_mapping_frozen: true

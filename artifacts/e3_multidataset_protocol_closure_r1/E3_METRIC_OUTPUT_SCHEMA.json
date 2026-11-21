@@ -1,0 +1,159 @@
+{
+  "created_utc": "2026-08-09T16:46:02.733535+00:00",
+  "metrics": [
+    {
+      "MAIN_TABLE": true,
+      "aggregation": "atomic",
+      "available_for_central": true,
+      "formula_source": "metrics/accuracy.py",
+      "method_applicability": "all",
+      "metric": "RMSE_mu",
+      "orientation": "smaller_better",
+      "output_field": "RMSE_mu",
+      "per_window_or_final": "final"
+    },
+    {
+      "MAIN_TABLE": true,
+      "aggregation": "atomic",
+      "available_for_central": true,
+      "formula_source": "metrics/accuracy.py",
+      "method_applicability": "all",
+      "metric": "MAE_mu",
+      "orientation": "smaller_better",
+      "output_field": "MAE_mu",
+      "per_window_or_final": "final"
+    },
+    {
+      "MAIN_TABLE": true,
+      "aggregation": "group",
+      "available_for_central": true,
+      "formula_source": "metrics/accuracy.py + frozen Tail groups",
+      "method_applicability": "all",
+      "metric": "Tail_RMSE",
+      "orientation": "smaller_better",
+      "output_field": "Tail_RMSE",
+      "per_window_or_final": "final"
+    },
+    {
+      "MAIN_TABLE": false,
+      "aggregation": "group",
+      "available_for_central": true,
+      "formula_source": "metrics/accuracy.py + frozen Head groups",
+      "method_applicability": "all",
+      "metric": "Head_RMSE",
+      "orientation": "smaller_better",
+      "output_field": "Head_RMSE",
+      "per_window_or_final": "final"
+    },
+    {
+      "MAIN_TABLE": true,
+      "aggregation": "group",
+      "available_for_central": true,
+      "formula_source": "metrics/distribution.py::delta_group",
+      "method_applicability": "all trained",
+      "metric": "Delta_group",
+      "orientation": "smaller_better",
+      "output_field": "Delta_group",
+      "per_window_or_final": "both"
+    },
+    {
+      "MAIN_TABLE": true,
+      "aggregation": "pair",
+      "available_for_central": true,
+      "formula_source": "metrics/distribution.py::delta_pair",
+      "method_applicability": "all trained",
+      "metric": "Delta_pair",
+      "orientation": "smaller_better",
+      "output_field": "Delta_pair",
+      "per_window_or_final": "final"
+    },
+    {
+      "MAIN_TABLE": true,
+      "aggregation": "window",
+      "available_for_central": false,
+      "formula_source": "metrics/distribution.py::avg_delta_ref",
+      "method_applicability": "methods with alpha/beta",
+      "metric": "delta_ref",
+      "orientation": "smaller_better",
+      "output_field": "delta_ref",
+      "per_window_or_final": "final"
+    },
+    {
+      "MAIN_TABLE": true,
+      "aggregation": "window",
+      "available_for_central": false,
+      "formula_source": "metrics/debt.py",
+      "method_applicability": "debt methods",
+      "metric": "Q_norm1_over_S",
+      "orientation": "smaller_better",
+      "output_field": "Q_norm1_over_S",
+      "per_window_or_final": "final"
+    },
+    {
+      "MAIN_TABLE": false,
+      "aggregation": "window",
+      "available_for_central": false,
+      "formula_source": "metrics/debt.py",
+      "method_applicability": "debt methods",
+      "metric": "Q_norm2_over_S",
+      "orientation": "smaller_better",
+      "output_field": "Q_norm2_over_S",
+      "per_window_or_final": "final"
+    },
+    {
+      "MAIN_TABLE": false,
+      "aggregation": "atomic",
+      "available_for_central": true,
+      "formula_source": "metrics/accuracy.py",
+      "method_applicability": "all",
+      "metric": "RMSE_rho",
+      "orientation": "smaller_better",
+      "output_field": "RMSE_rho",
+      "per_window_or_final": "final"
+    },
+    {
+      "MAIN_TABLE": false,
+      "aggregation": "run",
+      "available_for_central": false,
+      "formula_source": "runner diagnostics",
+      "method_applicability": "P2 methods",
+      "metric": "solver_status",
+      "orientation": "diagnostic",
+      "output_field": "P2_solver_failure_count",
+      "per_window_or_final": "final"
+    },
+    {
+      "MAIN_TABLE": false,
+      "aggregation": "client-window",
+      "available_for_central": false,
+      "formula_source": "hajek n_eff",
+      "method_applicability": "IPW methods",
+      "metric": "ESS",
+      "orientation": "diagnostic",
+      "output_field": "n_eff",
+      "per_window_or_final": "both"
+    },
+    {
+      "MAIN_TABLE": false,
+      "aggregation": "run",
+      "available_for_central": false,
+      "formula_source": "runner",
+      "method_applicability": "IPW methods",
+      "metric": "clip_rates",
+      "orientation": "diagnostic",
+      "output_field": "clip_rate_stage*",
+      "per_window_or_final": "final"
+    },
+    {
+      "MAIN_TABLE": false,
+      "aggregation": "run",
+      "available_for_central": true,
+      "formula_source": "wall clock",
+      "method_applicability": "all",
+      "metric": "runtime",
+      "orientation": "smaller_better",
+      "output_field": "runtime_seconds",
+      "per_window_or_final": "final"
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "canary_seed_excluded": 31001,
+  "execute_in_this_round": false,
+  "note": "Execute only in the next authorized formal round.",
+  "seeds": [
+    30001,
+    30002,
+    30003,
+    30004,
+    30005,
+    30006,
+    30007,
+    30008,
+    30009,
+    30010,
+    30011,
+    30012,
+    30013,
+    30014,
+    30015,
+    30016,
+    30017,
+    30018,
+    30019,
+    30020
+  ],
+  "traffic_sealed_five_reuse": [
+    "fedavg_window",
+    "fedasync_window",
+    "flamf_timealign_adapted",
+    "twostage_hajek",
+    "raven"
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "status": "PASS",
+  "checks": {
+    "failed_content_hash": true,
+    "final_content_hash": true,
+    "failed_private_pair": true,
+    "final_private_pair": true,
+    "resume_parent": true,
+    "same_sources": true,
+    "current_sources_match": true,
+    "same_core_identity": true,
+    "failed_clock_and_steps": true,
+    "complete_T100_steps": true,
+    "no_repeat_registrations": true,
+    "immutable_prefix_attempt_inputs": true,
+    "mature_prefix_labels_preserved": true,
+    "prefix_decisions_unchanged": true,
+    "prefix_events_unchanged": true,
+    "prefix_stage1_unchanged": true,
+    "steps_equal_R1": true,
+    "consumption_endpoint_mature": true
+  },
+  "evidence_role": "observed_development_diagnostic_and_original_pi_boot_fit_candidate_only",
+  "resume_evidence": {
+    "failed_model_hash": "712fa3589dea0a62d7e71209a30bb3521a66209dc21992232056ff0811c347d9",
+    "failed_producer_rng_hash": "94ba2aa5e3dc5e75df0a46d9d3b323d1119225bf3f81343aa26b57649824955c",
+    "failed_torch_rng_hash": "70b26c4380b62f439245c019275243bb412624479d28fddc56d367539546e18e",
+    "driver_hash": "281426ea1ba0eac775748c076c31c7c0037bcffdc561a8479987405131629201",
+    "limitations": "No separately saved immediate-after-restore snapshot; continuity supported by verified checkpoints, restore source and immutable prefix. No counterfactual uninterrupted numerical equivalence claim."
+  },
+  "original_budget": {
+    "measured_CPU_lower_bound_seconds": 1520.640625,
+    "exact_full_lifecycle_CPU": null,
+    "conservative_charged_CPU_seconds": 1760.640625,
+    "charged_CPU_hours": 0.4890668402777778,
+    "reserve_seconds_not_measured": 240.0,
+    "original5h_application_remaining_seconds": 16239.359375,
+    "BATCH_limit_seconds": 3600,
+    "budget_gate": "ACCOUNTING_BOUNDARY_PENDING_REVIEW",
+    "raw_records_preserved": true,
+    "no_unmeasured_value_called_actual": true,
+    "state": "WAITING_USER_REVIEW"
+  },
+  "bootstrap_process_cpu": 2.84375,
+  "bootstrap_wall": 3.0307595000012952,
+  "seed": 43001,
+  "training_steps": 0,
+  "q_fits": 0
+}

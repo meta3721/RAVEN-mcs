@@ -1,0 +1,44 @@
+{
+  "checks": {
+    "atomic_rho": true,
+    "delta_cs": true,
+    "h_s_separation": true,
+    "no_pobs_piopp_qs_regression": true,
+    "s_mapping": true,
+    "traffic_4_region": true
+  },
+  "debug_seed": 32999,
+  "no_ranking": true,
+  "rows": [
+    {
+      "Delta_c_s": 1.0,
+      "Q_norm1_over_S": null,
+      "RMSE_rho": 1.7396922679358446,
+      "method": "fedavg_window",
+      "status": "REAL_PATH_EXECUTED",
+      "stratum_identity": {
+        "dataset": "fixture",
+        "n_unique_strata": 12,
+        "remapped": false,
+        "spatial_rule": "station/node spatial_id (no coarsening)",
+        "status": "FROZEN_IDENTITY_CONFIRMED"
+      }
+    },
+    {
+      "Delta_c_s": 1.0000000009622003,
+      "Q_norm1_over_S": 0.6458333333333333,
+      "RMSE_rho": 1.7396922859509836,
+      "method": "raven",
+      "status": "REAL_PATH_EXECUTED",
+      "stratum_identity": {
+        "dataset": "fixture",
+        "n_unique_strata": 12,
+        "remapped": false,
+        "spatial_rule": "station/node spatial_id (no coarsening)",
+        "status": "FROZEN_IDENTITY_CONFIRMED"
+      }
+    }
+  ],
+  "status": "PASS",
+  "traffic_n_strata": 32
+}

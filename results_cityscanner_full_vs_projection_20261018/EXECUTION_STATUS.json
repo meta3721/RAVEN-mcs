@@ -1,0 +1,15 @@
+{
+  "status": "STOPPED",
+  "reason": "RuntimeError('LOW_AVAILABLE_MEMORY_SAVE_AND_STOP')",
+  "traceback": "Traceback (most recent call last):\n  File \"C:\\Users\\szr\\Desktop\\record\\1\\ccfa-review-reports\\cityscanner_full_vs_projection_driver.py\", line 206, in <module>\n    run_one(block,setup,seed,arm)\n  File \"C:\\Users\\szr\\Desktop\\record\\1\\ccfa-review-reports\\cityscanner_full_vs_projection_driver.py\", line 155, in run_one\n    try:wms=r.run()\n            ^^^^^^^\n  File \"C:\\Cursor\\raven.mcs\\src\\raven_mcs\\training\\window_runner.py\", line 647, in run\n    window_metrics = self._process_window(window_id, events)\n                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\szr\\Desktop\\record\\1\\ccfa-review-reports\\cityscanner_full_vs_projection_driver.py\", line 143, in process\n    guard();wm=orig(w,events)\n               ^^^^^^^^^^^^^^\n  File \"C:\\Cursor\\raven.mcs\\src\\raven_mcs\\training\\window_runner.py\", line 1224, in _process_window\n    alpha = self.aggregator.compute_server_weights(payload)\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\szr\\Desktop\\record\\1\\ccfa-review-reports\\cityscanner_full_vs_projection_driver.py\", line 97, in compute_server_weights\n    guard();K=len(p.client_ids);ab=min(1.,max(.5,1./K));eb=min(3.,K)\n    ^^^^^^^\n  File \"C:\\Users\\szr\\Desktop\\record\\1\\ccfa-review-reports\\cityscanner_full_vs_projection_driver.py\", line 39, in guard\n    elif time.perf_counter()-LOW_SINCE>=30:raise RuntimeError('LOW_AVAILABLE_MEMORY_SAVE_AND_STOP')\n                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nRuntimeError: LOW_AVAILABLE_MEMORY_SAVE_AND_STOP\n",
+  "current": {
+    "block": "cityscanner",
+    "seed": 32001,
+    "arm": "full_p2",
+    "window": 66,
+    "path": "C:\\Cursor\\raven.mcs\\results_cityscanner_full_vs_projection_20261018\\runs\\cityscanner\\seed32001\\full_p2"
+  },
+  "worker_CPU": 30.28125,
+  "wall": 42.756000500012306,
+  "utc": "2026-10-18T12:50:47.311565+00:00"
+}

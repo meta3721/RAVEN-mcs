@@ -1,0 +1,8 @@
+{
+  "accidental_disable_site": "Pre-repair window_runner gated aggregator.compute_server_weights on policy.uses_instant_calibration; raven_wo_inst has that flag False, so alpha was set to normalized beta and P2 never ran.",
+  "aggregator_type": "RavenWoInstAggregator",
+  "correct_semantics": "RavenWoInstAggregator always solve_p2 with instant_calibration=False, lambda_group=0, lambda_beta=1e-8; debt/variance/staleness unchanged.",
+  "no_instant_gate_skip": true,
+  "post_repair_always_calls_aggregator": true,
+  "runner_lists_wo_inst_as_p2_method": true
+}

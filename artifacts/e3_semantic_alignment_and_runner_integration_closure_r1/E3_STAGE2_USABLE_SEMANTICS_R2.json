@@ -1,0 +1,13 @@
+{
+  "deadline_rule": "strict_less_than_next_window",
+  "formula": "T_arr = T_reg + T_cmp + T_net; U = 1{cs & ns & T_arr < T_{r+1} & tau <= S_max}",
+  "not_sufficient_alone": [
+    "compute_success",
+    "network_success",
+    "Bernoulli(p_use)",
+    "tau <= s_max"
+  ],
+  "requires_arrival_deadline_test": true,
+  "s_max": 5,
+  "window_duration": 1.0
+}

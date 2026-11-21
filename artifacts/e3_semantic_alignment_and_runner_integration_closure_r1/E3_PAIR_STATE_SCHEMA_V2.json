@@ -1,0 +1,30 @@
+{
+  "formula": {
+    "Delta_pair": "||Pi_hat - pi_tar||_1",
+    "code": "raven_mcs.metrics.distribution.delta_pair"
+  },
+  "outputs": [
+    "pair_state.parquet",
+    "pair_metric_summary.json"
+  ],
+  "required_columns": [
+    "dataset",
+    "seed",
+    "scenario",
+    "method",
+    "window",
+    "pair_id",
+    "source_group",
+    "target_group",
+    "observed_pair_mass",
+    "estimated_pair_mass",
+    "target_pair_mass",
+    "support_mask",
+    "normalization_denominator",
+    "validity_mask",
+    "eventtrace_hash",
+    "config_hash",
+    "schema_version"
+  ],
+  "schema_version": "E3_PAIR_STATE_SCHEMA_V2"
+}

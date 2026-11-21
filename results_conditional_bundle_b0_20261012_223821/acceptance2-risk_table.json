@@ -1,0 +1,286 @@
+{
+  "version": "history",
+  "as_of": 20.0,
+  "cells": [
+    {
+      "stratum": [
+        "public_device",
+        "public_network"
+      ],
+      "age_bin": 1,
+      "risk": 10,
+      "completions": 0,
+      "failures": 3
+    },
+    {
+      "stratum": [
+        "public_device",
+        "public_network"
+      ],
+      "age_bin": 2,
+      "risk": 5,
+      "completions": 5,
+      "failures": 0
+    }
+  ],
+  "marks": [
+    {
+      "client": "c0",
+      "stratum": [
+        "public_device",
+        "public_network"
+      ],
+      "summary": {
+        "masses": [
+          4.0,
+          0.0
+        ],
+        "local_weights": [
+          0.1,
+          0.2,
+          0.3,
+          0.4
+        ],
+        "effective_n": 3.333333333333333,
+        "observed_count": 4,
+        "design_enabled": true,
+        "design_source": "B0_explicit_fixture",
+        "frozen_at": 19.0,
+        "estimator_version": "B0_lagged_fixture",
+        "ratio": [
+          0.2,
+          0.4,
+          0.6,
+          0.8
+        ],
+        "p_obs": [
+          0.5,
+          0.5,
+          0.5,
+          0.5
+        ],
+        "provenance": "isolated_valid_inputs",
+        "observed_positions": [
+          0,
+          1,
+          2,
+          3
+        ]
+      },
+      "observed_at": 19.2,
+      "downloaded_age": 0
+    },
+    {
+      "client": "c1",
+      "stratum": [
+        "public_device",
+        "public_network"
+      ],
+      "summary": {
+        "masses": [
+          0.0,
+          4.0
+        ],
+        "local_weights": [
+          0.1,
+          0.2,
+          0.3,
+          0.4
+        ],
+        "effective_n": 3.333333333333333,
+        "observed_count": 4,
+        "design_enabled": true,
+        "design_source": "B0_explicit_fixture",
+        "frozen_at": 19.0,
+        "estimator_version": "B0_lagged_fixture",
+        "ratio": [
+          0.2,
+          0.4,
+          0.6,
+          0.8
+        ],
+        "p_obs": [
+          0.5,
+          0.5,
+          0.5,
+          0.5
+        ],
+        "provenance": "isolated_valid_inputs",
+        "observed_positions": [
+          0,
+          1,
+          2,
+          3
+        ]
+      },
+      "observed_at": 19.2,
+      "downloaded_age": 0
+    },
+    {
+      "client": "c2",
+      "stratum": [
+        "public_device",
+        "public_network"
+      ],
+      "summary": {
+        "masses": [
+          4.0,
+          0.0
+        ],
+        "local_weights": [
+          0.1,
+          0.2,
+          0.3,
+          0.4
+        ],
+        "effective_n": 3.333333333333333,
+        "observed_count": 4,
+        "design_enabled": true,
+        "design_source": "B0_explicit_fixture",
+        "frozen_at": 19.0,
+        "estimator_version": "B0_lagged_fixture",
+        "ratio": [
+          0.2,
+          0.4,
+          0.6,
+          0.8
+        ],
+        "p_obs": [
+          0.5,
+          0.5,
+          0.5,
+          0.5
+        ],
+        "provenance": "isolated_valid_inputs",
+        "observed_positions": [
+          0,
+          1,
+          2,
+          3
+        ]
+      },
+      "observed_at": 19.2,
+      "downloaded_age": 0
+    },
+    {
+      "client": "c3",
+      "stratum": [
+        "public_device",
+        "public_network"
+      ],
+      "summary": {
+        "masses": [
+          0.0,
+          4.0
+        ],
+        "local_weights": [
+          0.1,
+          0.2,
+          0.3,
+          0.4
+        ],
+        "effective_n": 3.333333333333333,
+        "observed_count": 4,
+        "design_enabled": true,
+        "design_source": "B0_explicit_fixture",
+        "frozen_at": 19.0,
+        "estimator_version": "B0_lagged_fixture",
+        "ratio": [
+          0.2,
+          0.4,
+          0.6,
+          0.8
+        ],
+        "p_obs": [
+          0.5,
+          0.5,
+          0.5,
+          0.5
+        ],
+        "provenance": "isolated_valid_inputs",
+        "observed_positions": [
+          0,
+          1,
+          2,
+          3
+        ]
+      },
+      "observed_at": 19.2,
+      "downloaded_age": 0
+    },
+    {
+      "client": "c4",
+      "stratum": [
+        "public_device",
+        "public_network"
+      ],
+      "summary": {
+        "masses": [
+          4.0,
+          0.0
+        ],
+        "local_weights": [
+          0.1,
+          0.2,
+          0.3,
+          0.4
+        ],
+        "effective_n": 3.333333333333333,
+        "observed_count": 4,
+        "design_enabled": true,
+        "design_source": "B0_explicit_fixture",
+        "frozen_at": 19.0,
+        "estimator_version": "B0_lagged_fixture",
+        "ratio": [
+          0.2,
+          0.4,
+          0.6,
+          0.8
+        ],
+        "p_obs": [
+          0.5,
+          0.5,
+          0.5,
+          0.5
+        ],
+        "provenance": "isolated_valid_inputs",
+        "observed_positions": [
+          0,
+          1,
+          2,
+          3
+        ]
+      },
+      "observed_at": 19.2,
+      "downloaded_age": 0
+    }
+  ],
+  "q_model": {
+    "kind": "evidence_logistic",
+    "version": "B0_test_q_not_calibrated",
+    "as_of": 20.0,
+    "evidence_id": "isolated_test_fixture",
+    "weights": [
+      -0.2,
+      0.1,
+      -0.02,
+      0.03,
+      -0.01
+    ],
+    "strata": [
+      [
+        "public_device",
+        "public_network"
+      ]
+    ],
+    "max_counts": 100,
+    "configuration_hash": "a565a33475c9bbe44b867ba751cc9aface90d7096584b6a5f4f0304cc66af064",
+    "policy_version": "reachability_stop/conditional-bundle-v2",
+    "role": "isolated_test_input"
+  },
+  "opportunities": [],
+  "opportunity_history": [],
+  "schedule_complete_until": 40.0,
+  "grid": 0.1,
+  "minimum_risk": 5
+}

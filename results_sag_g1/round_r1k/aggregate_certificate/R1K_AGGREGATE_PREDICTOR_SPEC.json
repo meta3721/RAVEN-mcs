@@ -1,0 +1,23 @@
+{
+  "alpha": 1.0,
+  "feasibility_audit_only": true,
+  "features": [
+    "lag1_C",
+    "lag2_C",
+    "rolling_mean_C_L8",
+    "rolling_trend_C_L8",
+    "hour_of_day_unit",
+    "weekend_flag",
+    "availability_level",
+    "rolling_mean_times_a"
+  ],
+  "implementation": "sklearn.linear_model.Ridge",
+  "lookback_L": 8,
+  "model_id": "AGGREGATE_COVERAGE_LINEAR_V1",
+  "model_zoo": false,
+  "not_a_paper_method_replacement": true,
+  "seed": 30001,
+  "target": "historical C_oracle_safe same-a windows strictly before r",
+  "uses_current_mask": false,
+  "uses_current_oracle": false
+}

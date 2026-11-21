@@ -1,0 +1,13 @@
+{
+  "aggregation": "none",
+  "filters": "copy only; SensorScope/U-Air already applied in source where required",
+  "input_assets": [
+    "RAVEN_MCS_FINAL_PAPER_DATA_ASSET_FREEZE_R1/11_RUNTIME_SYSTEM/RUNTIME_SUMMARY_EXISTING.csv"
+  ],
+  "input_hashes": [
+    "ec43bf3f90e6ca67d372363e44140392d5116474b0a0f5cc3e66b8c52ab0e46f"
+  ],
+  "output_hash": "ec43bf3f90e6ca67d372363e44140392d5116474b0a0f5cc3e66b8c52ab0e46f",
+  "scientific_semantics_changed": false,
+  "statistical_protocol": "unchanged sealed protocol"
+}

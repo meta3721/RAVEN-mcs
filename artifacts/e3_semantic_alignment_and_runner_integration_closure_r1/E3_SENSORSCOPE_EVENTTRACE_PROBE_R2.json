@@ -1,0 +1,37 @@
+{
+  "dataset": "sensorscope",
+  "identity": {
+    "events_sha256": "27c7d24a0331ba2424337015563c6c9d3116a417a38c75353ac22c6e33a5bfe3",
+    "metadata": {
+      "dataset": "sensorscope",
+      "generator": "e3-complete-aligned-r2-v1",
+      "notes": [
+        "E3 Complete-aligned R2 three-stage generator",
+        "pi_opp sampled (not cyclic)",
+        "p_obs and q/U distinct",
+        "U enforces deadline"
+      ],
+      "num_clients": 8,
+      "num_windows": 6,
+      "s_max": 5,
+      "seed": 31001
+    },
+    "metadata_sha256": "09df908aa7b0f9fdb89d467b5b9baf2ddb6d0662130a05e1ab417d1f212f130f",
+    "trace_hash": "237853a059243a75f6d171868d4d42e6e04499a9303d7ca75a818b66f3f31a61"
+  },
+  "num_windows": 6,
+  "seed": 31001,
+  "status": "EVENTTRACE_R2_READY",
+  "three_stage_audit": {
+    "checks": {
+      "directions_align_complete_aligned": true,
+      "methods_share_exogenous_trace": true,
+      "observation_layer_exists": true,
+      "opportunity_layer_exists": true,
+      "probability_objects_not_aliased": true,
+      "usable_update_layer_exists": true
+    },
+    "generator_version": "e3-complete-aligned-r2-v1",
+    "status": "PASS"
+  }
+}

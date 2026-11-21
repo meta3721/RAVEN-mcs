@@ -1,0 +1,136 @@
+{
+  "aligned_min_adv": 0.2430536412864348,
+  "balanced_max_dtv": 1.1441043425153286e-16,
+  "cancel_range": [
+    0.09706875673792675,
+    0.09706875673792681
+  ],
+  "kappas": {
+    "kappa_opp": 1.0,
+    "kappa_p": 1.0,
+    "kappa_q": 1.0
+  },
+  "max_exp_emp": 0.0,
+  "obs_rate_range": [
+    0.14647673314339982,
+    0.20129154795821463
+  ],
+  "parent_audit": {
+    "e1_files_modified": 0,
+    "e1_formal_commit": "e8bd1fc777431c2609def257a04fba093f0daf24",
+    "e2_numeric_parent_files_modified": 0,
+    "generated_at_utc": "2026-08-04T08:30:28.089932+00:00",
+    "parent_commit": "af226e9623cd82ff0b9c1a25d7e70ffe7948ab7b",
+    "parent_file_hashes": {
+      "configs/e2_numeric/scenario_direction_registry.yaml": "04dd956c80930242ea32bcef743b9227abb808be968fc540e4ddc4dc17815f30",
+      "configs/e2_numeric/strength_profile_registry.yaml": "0bb4d3d48611a4cdf58e2312ddda7072790a5f5ede343732ffd8a07af80c5196",
+      "configs/frozen/e2_numeric/e1_target_identity.json": "8eb70074b4255046b047ae0918638dcf5206b6ae84ea16744ad0feaf5037f6a1",
+      "src/raven_mcs/e2/arrival_integration.py": "46174baec3aecc9014b38ae87362f4e06345205770ad900a31a66f7ab0228e77",
+      "src/raven_mcs/e2/generators.py": "0ca9ff685df4220cecca363bea8b13fabd0d0219adf481054e9d32dbe7ca80f5",
+      "src/raven_mcs/e2/scenario_generator.py": "b7c3f6b33bcd7248f8035f0db430f14b8489f50fdbf794358fc331f720c9478e"
+    },
+    "parent_gates": {
+      "E2UA-G1": "PASS",
+      "E2UA-G10": "PASS",
+      "E2UA-G2": "PASS",
+      "E2UA-G3": "PASS",
+      "E2UA-G4": "PASS",
+      "E2UA-G5": "PASS",
+      "E2UA-G6": "PASS",
+      "E2UA-G7": "PASS",
+      "E2UA-G8": "PASS",
+      "E2UA-G9": "PASS"
+    },
+    "parent_hash_mismatch_count": 0,
+    "parent_hash_mismatches": {},
+    "status": "PASS"
+  },
+  "profile_summary": [
+    {
+      "kappa_sum": 1.5,
+      "max_seed_aligned_dtv": 0.30222230390546545,
+      "profile_id": "PROFILE-S1",
+      "profile_valid": false
+    },
+    {
+      "kappa_sum": 3.0,
+      "max_seed_aligned_dtv": 0.5260494803903442,
+      "profile_id": "PROFILE-S2",
+      "profile_valid": true
+    },
+    {
+      "kappa_sum": 4.5,
+      "max_seed_aligned_dtv": 0.6367530769804726,
+      "profile_id": "PROFILE-S3",
+      "profile_valid": true
+    },
+    {
+      "kappa_sum": 3.5,
+      "max_seed_aligned_dtv": 0.5388295133488095,
+      "profile_id": "PROFILE-S4",
+      "profile_valid": true
+    },
+    {
+      "kappa_sum": 4.0,
+      "max_seed_aligned_dtv": 0.5463051277301916,
+      "profile_id": "PROFILE-S5",
+      "profile_valid": true
+    },
+    {
+      "kappa_sum": 5.0,
+      "max_seed_aligned_dtv": 0.6403048689788592,
+      "profile_id": "PROFILE-S6",
+      "profile_valid": true
+    }
+  ],
+  "runtime": {
+    "e1_runtime_per_100_windows_sec": {
+      "fedasync_window": 42.3753,
+      "fedavg_window": 43.7399,
+      "flamf_timealign_adapted": 41.5501
+    },
+    "estimated_baselines": {
+      "local_hajek": {
+        "seconds_per_100": 35.0,
+        "source": "ESTIMATED_FROM_E1_ORDER"
+      },
+      "twostage_hajek": {
+        "seconds_per_100": 38.0,
+        "source": "ESTIMATED_FROM_E1_ORDER"
+      }
+    },
+    "estimated_disk_gb": 4.03125,
+    "extended_diagnostic_runs": 40,
+    "extended_serial_cpu_hours": 1.1482026666666667,
+    "no_runs_executed_this_round": true,
+    "result_storage_gb": 1.953125,
+    "safety_margin": 0.2,
+    "selected_windows": 200,
+    "strict_primary_runs": 360,
+    "strict_serial_cpu_hours": 10.213223999999999,
+    "total_runs": 400,
+    "total_serial_cpu_hours": 11.361426666666667,
+    "trace_storage_gb": 1.40625,
+    "wall_hours_2_workers": 5.680713333333333,
+    "wall_hours_4_workers": 2.8403566666666666,
+    "wall_hours_8_workers": 1.4201783333333333
+  },
+  "selected_profile": "PROFILE-S2",
+  "selected_windows": 200,
+  "single_dtv_range": [
+    0.08882416296076137,
+    0.2829958391039093
+  ],
+  "status": "PASS",
+  "trace_count": 180,
+  "trace_failures": 0,
+  "use_rate_range": [
+    0.5791666666666667,
+    0.61
+  ],
+  "window_status": {
+    "100": "FAIL",
+    "200": "PASS",
+    "300": "PASS"
+  }
+}

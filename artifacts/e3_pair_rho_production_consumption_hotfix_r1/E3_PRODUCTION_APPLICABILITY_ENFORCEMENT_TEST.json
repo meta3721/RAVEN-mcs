@@ -1,0 +1,23 @@
+{
+  "rows": [
+    {
+      "fake_zero_raises": true,
+      "method": "fedavg_window",
+      "metric": "Q_norm1_over_S",
+      "null_ok": true
+    },
+    {
+      "fake_zero_raises": true,
+      "method": "central_all",
+      "metric": "Delta_c_s",
+      "null_ok": true
+    },
+    {
+      "fake_zero_raises": true,
+      "method": "raven",
+      "metric": "Delta_pair",
+      "null_ok": true
+    }
+  ],
+  "status": "PASS"
+}

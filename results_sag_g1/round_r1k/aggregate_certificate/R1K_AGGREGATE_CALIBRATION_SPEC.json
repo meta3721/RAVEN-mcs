@@ -1,0 +1,13 @@
+{
+  "C_LCB": "max(0, C_hat - qC)",
+  "calibration_id": "AGGREGATE_SCALAR_SAME_A_CONFORMAL_V1",
+  "delta_cal": 0.05,
+  "feasibility_audit_only": true,
+  "lookback_min": 8,
+  "no_cross_a_borrow": true,
+  "quantile": "conformal_upper_residual from dynamic_cov.py",
+  "residual": "C_hat - C_oracle",
+  "same_a_only": true,
+  "stratum": "availability_level a",
+  "tau_cov": 0.05
+}

@@ -1,0 +1,14 @@
+{
+  "csv_relative": "D:/Cursor/raven.mcs/paper_ready_r1/06_table_sources/TABLE_E4_COMPONENT_EFFECTS.csv",
+  "csv_sha256": "13f9d1a466b46b17db6597bd45fd9fda624f602b106062ad6e50080c9ebd52ad",
+  "excluded_rows": "",
+  "filters": "all components",
+  "included_seeds": [],
+  "metric_definitions": {},
+  "source_files": [
+    "01_core_data/e4/E4_COMPONENT_EFFECT_MASTER.csv"
+  ],
+  "statistical_method": "paired Holm from sealed claim matrix",
+  "transformations": "copy of sealed R3 numerical cells + means",
+  "version": "R1"
+}

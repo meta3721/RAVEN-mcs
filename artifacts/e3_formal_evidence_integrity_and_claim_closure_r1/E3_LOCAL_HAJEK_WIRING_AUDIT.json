@@ -1,0 +1,16 @@
+{
+  "checkpoint_identity": {
+    "sensorscope": "20/20 bit-identical",
+    "uair": "20/20 bit-identical"
+  },
+  "classification": "LOCAL_HAJEK_IMPLEMENTATION_VALID",
+  "collapse_explanation": "Under formal data/configuration, a_bar is uniform within each client-window, making the correctly wired local objective identical to FedAvg.",
+  "gradient_fixture_status": "PASS",
+  "source_trace": [
+    "WindowRunner computes a_bar from observed atomic records.",
+    "uses_hajek_local_loss preserves a_bar; FedAvg replaces it with uniform 1/n.",
+    "ClientTrainer passes a_bar to local_hajek_loss before backward().",
+    "local_hajek_loss is differentiable weighted SSE.",
+    "LocalHajekAggregator uses raw-count server aggregation."
+  ]
+}

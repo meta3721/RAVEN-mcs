@@ -1,0 +1,27 @@
+{
+  "all_gate_status": "PASS",
+  "formal": false,
+  "frozen_at_commit": "e56687813f2bcb919a9208391f68a4db3488602e",
+  "kappa_opp": 1.0,
+  "kappa_p": 1.0,
+  "kappa_q": 1.0,
+  "prior_soft_PROFILE_S2_not_reused_without_revalidation": true,
+  "profile_registry_hash": "471c418ccd60e2daa059e0edec1c5de81a4d49db5fa001be35190a04dcad3dcc",
+  "revalidated_on_hard_empirical": true,
+  "selected_payload_hash": "94f70f76b9f41940f5d1adb3296f95303bb3c5f9bf551807abf05fe35503a24a",
+  "selected_profile_id": "PROFILE-S2",
+  "selection_rule": [
+    "min max_seed D_TV_group(complete_aligned)",
+    "min kappa_opp+kappa_p+kappa_q",
+    "min std_seed cancellation_group_TV(complete_counteracting)",
+    "profile_id lexicographic"
+  ],
+  "selection_status": "REFROZEN",
+  "validation_seed_list": [
+    29101,
+    29102,
+    29103,
+    29104,
+    29105
+  ]
+}

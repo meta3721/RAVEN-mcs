@@ -1,0 +1,14 @@
+method,method_display,required_by_E3,already_frozen_in_E2,exact_semantic_match,reusable_run_count,missing_formal_run_count,action
+fedavg_window,FedAvg-Window,True,True,True,20,0,REUSE_E2_COMPLETE_ALIGNED
+fedasync_window,FedAsync-Window,True,True,True,20,0,REUSE_E2_COMPLETE_ALIGNED
+flamf_timealign_adapted,TimeAlign-Agg,True,True,True,20,0,REUSE_E2_COMPLETE_ALIGNED
+twostage_hajek,TwoStage-Hajek,True,True,True,20,0,REUSE_E2_COMPLETE_ALIGNED
+raven,RAVEN-MCS,True,True,True,20,0,REUSE_E2_COMPLETE_ALIGNED
+local_hajek,Local-Hajek,True,False,POLICY_EXISTS_NOT_IN_E2_BLOCK,0,20,SCHEDULE_NEW_TRAFFIC_COMPLETE_ALIGNED_RUNS
+inst_cal,Inst-Cal,True,False,POLICY_EXISTS_NOT_IN_E2_BLOCK,0,20,SCHEDULE_NEW_TRAFFIC_COMPLETE_ALIGNED_RUNS
+debt_cal,Debt-Cal,True,False,POLICY_EXISTS_NOT_IN_E2_BLOCK,0,20,SCHEDULE_NEW_TRAFFIC_COMPLETE_ALIGNED_RUNS
+timealign_agg,TimeAlign-Agg,False,True,ALIAS_TO_FROZEN_flamf_timealign_adapted,20,0,USE_ALIAS_TO_flamf_timealign_adapted_FOR_TRAFFIC_REUSE; do not duplicate
+central_all,Central-All,False,False,False,0,0,REFERENCE_ONLY_BLOCKED_UNTIL_CENTRAL_RUNNER
+central_delivered,Central-Delivered,False,False,False,0,0,REFERENCE_ONLY_BLOCKED_UNTIL_CENTRAL_RUNNER
+flamf_original,FLAMF-Original,False,False,False,0,0,EXCLUDED_OR_SECONDARY_UNTIL_FAITHFUL_REPLICATION
+raven_simoracle,RAVEN-SimOracle,True,False,POLICY_EXISTS_NOT_IN_E2_BLOCK,0,20,NEW_FORMAL_RUNS_IF_ORACLE_VALIDATED

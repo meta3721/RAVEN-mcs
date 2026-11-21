@@ -1,0 +1,141 @@
+{
+  "model": "CommonNDMF",
+  "backend": "full_window_runner_common_ndmf",
+  "configured_method": "configured-design-v1",
+  "preview": {
+    "fingerprint": "4b9c826938927a4acd737ea1079f594732790645bd03c218e83cc1e9efcced0c",
+    "keys": [
+      "full0",
+      "full1",
+      "full2",
+      "full3"
+    ],
+    "alpha": [
+      0.2483791887208828,
+      0.2488382366811065,
+      0.25114785056184297,
+      0.2516347240361676
+    ],
+    "beta": [
+      0.24785758739483915,
+      0.2492763328289048,
+      0.25070933689163266,
+      0.2521567428846232
+    ],
+    "masses": [
+      4.0,
+      4.0,
+      4.0,
+      4.0
+    ],
+    "M": [
+      [
+        1.0,
+        0.0,
+        1.0,
+        0.0
+      ],
+      [
+        0.0,
+        1.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "omega": [
+      0.4995270392827258,
+      0.5004729607172741
+    ],
+    "ell": 0.00047296071727415123,
+    "age": 0.0,
+    "solver": {
+      "solver": "CLARABEL",
+      "status": "optimal",
+      "primary_status": "optimal",
+      "objective": 0.003752057627822679,
+      "alpha": [
+        0.24837918872088313,
+        0.24883823668110683,
+        0.2511478505618433,
+        0.25163472403616793
+      ],
+      "M": [
+        [
+          1.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "mu": [
+        0.5,
+        0.5
+      ],
+      "beta": [
+        0.24785758739483915,
+        0.2492763328289048,
+        0.25070933689163266,
+        0.2521567428846232
+      ],
+      "debt": [
+        0.0,
+        0.0
+      ],
+      "variance": [
+        0.30010000000000003,
+        0.30010000000000003,
+        0.30010000000000003,
+        0.30010000000000003
+      ],
+      "staleness": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "lambdas": {
+        "group": 1.0,
+        "beta": 1.0,
+        "variance": 0.1,
+        "staleness": 0.1
+      },
+      "instant_calibration": true,
+      "residuals": {
+        "primal": 1.3322676295501878e-15,
+        "constraint": 1.3322676295501878e-15,
+        "simplex": 1.3322676295501878e-15,
+        "nonnegative": 0.0,
+        "upper_bound": 0.0,
+        "ess_l2": 0.0
+      },
+      "warning": false,
+      "fallback_used": false,
+      "feasibility_repair_used": false,
+      "normalized_weight_residual": 1.1102230246251565e-16
+    },
+    "reachability": {
+      "d": 6.661338147750939e-16,
+      "alpha": [
+        0.24999999999926148,
+        0.24999999999947412,
+        0.2500000000007392,
+        0.2500000000005265
+      ],
+      "status": "independently_checked",
+      "residual": 1.3322676295501878e-15,
+      "lower_bound": 0.0,
+      "upper_bound": 6.661338147750939e-16,
+      "bound_source": "simplex-relaxed dual + independent SCS",
+      "secondary_value": 1.2005174632179205e-11
+    }
+  },
+  "model_version": 1,
+  "actual_local_training_steps": 0,
+  "update_tensor_origin": "hand_authored"
+}

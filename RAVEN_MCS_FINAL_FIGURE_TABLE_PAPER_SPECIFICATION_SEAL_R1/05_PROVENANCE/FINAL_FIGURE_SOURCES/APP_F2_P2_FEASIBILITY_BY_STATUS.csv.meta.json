@@ -1,0 +1,13 @@
+{
+  "aggregation": "groupby dataset×certificate_status count/mean/min/max n_windows",
+  "filters": "Traffic excluded",
+  "input_assets": [
+    "RAVEN_MCS_FINAL_PAPER_DATA_ASSET_FREEZE_R1/09_P2_SOLVER/r2_solver/E3_P2_CERTIFICATE_SUMMARY.csv"
+  ],
+  "input_hashes": [
+    "76595fec0367aad5dee27fe2ef38fd6000dad3428950edf2b349d733dcfb47c4"
+  ],
+  "output_hash": "151747773017437b073ccd4d51b9e86b6459e2ea5005ae8d8028c89990214637",
+  "scientific_semantics_changed": false,
+  "statistical_protocol": "deterministic summary"
+}

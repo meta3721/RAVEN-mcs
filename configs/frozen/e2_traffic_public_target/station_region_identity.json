@@ -1,0 +1,29 @@
+{
+  "coordinate_source": "configs/frozen/e2_traffic/station_spatial_identity.parquet",
+  "coordinate_source_hash": "d4b4805b9e115672e0409f4c25711cf37b3f79457ff665c4bc54148820bd27a0",
+  "first_split_axis": "latitude",
+  "first_split_threshold": -33.774441,
+  "latitude_span": 6.343705999999997,
+  "longitude_span": 5.323974000000021,
+  "mapping_hash": "490dc6130eb05731d81b170a3ace501c7e33d150bc2949506c7a5378054a343f",
+  "missing_station_count": 0,
+  "multiply_assigned_station_count": 0,
+  "region_count": 4,
+  "second_split_thresholds": {
+    "latitude_high": 151.1287995,
+    "latitude_low": 151.030533
+  },
+  "sha256": "9626f110ebc27ef8b21aa868ed7b238840e7fa2f80b47a1a97e286e54199c842",
+  "station_count": 43,
+  "station_count_per_region": {
+    "region0": 10,
+    "region1": 11,
+    "region2": 11,
+    "region3": 11
+  },
+  "status": "PASS",
+  "synthetic_coordinate_usage_count": 0,
+  "target_value_dependency_count": 0,
+  "tie_break_rule": "station_id lexicographic within axis sort",
+  "weighting": "station_equal_weight"
+}

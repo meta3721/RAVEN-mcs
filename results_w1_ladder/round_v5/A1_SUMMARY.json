@@ -1,0 +1,36 @@
+{
+  "a1_g_self_rows": 120,
+  "a1_g_self_pass": 118,
+  "a1_g_self_fail_cells": {
+    "uair|proj_beta": 37
+  },
+  "a1_g_xref_rows": 120,
+  "a1_g_xref_pass": 0,
+  "tau_x": {
+    "sensorscope|proj_beta": 5.7780828421893915e-05,
+    "sensorscope|proj_beta_debt": 0.0012889350863842797,
+    "sensorscope|uniform_window": 0.0,
+    "uair|proj_beta": 6.191165651703301e-05,
+    "uair|proj_beta_debt": 0.0006459939016001393,
+    "uair|uniform_window": 0.0
+  },
+  "tau_x_le_5e-6": {
+    "sensorscope|proj_beta": false,
+    "sensorscope|proj_beta_debt": false,
+    "sensorscope|uniform_window": true,
+    "uair|proj_beta": false,
+    "uair|proj_beta_debt": false,
+    "uair|uniform_window": true
+  },
+  "b_g1_mismatch_total": 0,
+  "misaligned_or_missing": [
+    [],
+    [],
+    [],
+    [],
+    [],
+    []
+  ],
+  "ref_impl_linf_max": 3.3402465626775075e-08,
+  "n_runs_gself": 120
+}

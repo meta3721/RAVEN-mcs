@@ -1,0 +1,20 @@
+{
+  "dataset": "uair",
+  "seed": 41001,
+  "model": "ndmf",
+  "optimizer": "sgd",
+  "lr": 0.01,
+  "RMSE_mu": 20.18790764132255,
+  "best_pass": 21,
+  "best_at_100": 20.18790764132255,
+  "improvement_100_to_200": 0.0,
+  "plateau_pass": true,
+  "strongest_baseline": "spatial_mean",
+  "baseline_RMSE": 20.12969701961108,
+  "relative_gain": -0.0028917783340086903,
+  "meaningful_validation_pass": false,
+  "elapsed_seconds": 3.389999999999418,
+  "samples_processed": 61000,
+  "optimizer_steps": 1000,
+  "run": "P1\\central_delivered\\ndmf\\uair\\sgd_0.01\\seed41001"
+}

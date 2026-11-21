@@ -1,0 +1,14 @@
+\begin{table}
+\caption{Head/Tail/group disparity availability}
+\label{tab:table_e2e}
+\begin{tabular}{lll}
+\toprule
+metric & status & reason \\
+\midrule
+Head_RMSE & MISSING_EVIDENCE & tail_head_rmse was never written to formal final_metrics; R_g ranking inputs unavailable in frozen outputs; no retraining/re-eval performed \\
+Tail_RMSE & MISSING_EVIDENCE & same as Head_RMSE \\
+Delta_group & MISSING_EVIDENCE & protocol Delta_group=||omega_hat - mu||_1 requires weight vectors not stored in formal aggregates \\
+Delta_pair & MISSING_EVIDENCE & protocol Delta_pair=||Pi_hat - pi_tar||_1 not stored in formal aggregates \\
+\bottomrule
+\end{tabular}
+\end{table}

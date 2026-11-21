@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="12" time="3.997" timestamp="2026-10-12T20:30:11.068603+08:00" hostname="LAPTOP-4349UTOC"><testcase classname="tests.integration.test_configured_design_runner" name="test_four_combinations_and_gate_parity" time="0.357"><failure message="AssertionError: &#10;Not equal to tolerance rtol=1e-07, atol=1e-13&#10;&#10;Mismatched elements: 2 / 2 (100%)&#10;Mismatch at indices:&#10; [0]: 24.0 (ACTUAL), 9.6 (DESIRED)&#10; [1]: 16.0 (ACTUAL), 6.4 (DESIRED)&#10;Max absolute difference among violations: 14.4&#10;Max relative difference among violations: 1.5&#10; ACTUAL: array([24., 16.])&#10; DESIRED: array([9.6, 6.4])">context = (&lt;raven_mcs.data.processed_dataset.ProcessedDataset object at 0x0000015CCD231750&gt;, EventTrace(events=   window_id   cl...lock1::weekday'): 0.08, ('client-000', 'n0::block2::weekday'): 0.16, ('client-000', 'n0::block3::weekday'): 0.32, ...})
+tmp_path = WindowsPath('C:/Users/szr/AppData/Local/Temp/pytest-of-szr/pytest-0/test_four_combinations_and_gat0')
+
+    def test_four_combinations_and_gate_parity(context, tmp_path):
+        evidence=[]
+        for design in (True,False):
+            paired=[]
+            for gate in (0,1):
+                r,m=execute(context,design,gate)
+                payload=r.aggregator.payloads[0]
+                expected_ratios=[np.array([.32,.64,1.28,2.56]),np.array([.16,.48,.96,1.60])]
+                for i,(diag,actual_weights) in enumerate(zip(r.diagnostics,r.observed_trainer_inputs)):
+                    ratio=expected_ratios[i] if design else np.ones(4)
+                    np.testing.assert_allclose(diag['zeta_hat'],ratio,rtol=0,atol=1e-14)
+                    np.testing.assert_allclose(actual_weights,ratio/ratio.sum(),rtol=0,atol=1e-14)
+                    col=payload.compositions[:,i]
+                    observed=np.flatnonzero(col)
+                    np.testing.assert_allclose(col[observed],ratio/ratio.sum(),rtol=0,atol=1e-14)
+&gt;               np.testing.assert_allclose(payload.total_masses,[9.6,6.4] if design else [8,8],atol=1e-13)
+E               AssertionError: 
+E               Not equal to tolerance rtol=1e-07, atol=1e-13
+E               
+E               Mismatched elements: 2 / 2 (100%)
+E               Mismatch at indices:
+E                [0]: 24.0 (ACTUAL), 9.6 (DESIRED)
+E                [1]: 16.0 (ACTUAL), 6.4 (DESIRED)
+E               Max absolute difference among violations: 14.4
+E               Max relative difference among violations: 1.5
+E                ACTUAL: array([24., 16.])
+E                DESIRED: array([9.6, 6.4])
+
+tests\integration\test_configured_design_runner.py:104: AssertionError</failure></testcase><testcase classname="tests.integration.test_configured_design_runner" name="test_diagnostic_state_does_not_close_design[WARMUP]" time="0.058" /><testcase classname="tests.integration.test_configured_design_runner" name="test_diagnostic_state_does_not_close_design[RESET]" time="0.053" /><testcase classname="tests.integration.test_configured_design_runner" name="test_configuration_frozen_before_diagnostic_and_changes_next_window" time="0.134" /><testcase classname="tests.integration.test_configured_design_runner" name="test_legacy_full_runner_still_uses_gate[0]" time="0.046" /><testcase classname="tests.integration.test_configured_design_runner" name="test_legacy_full_runner_still_uses_gate[1]" time="0.056" /><testcase classname="tests.integration.test_configured_design_runner" name="test_missing_invalid_design_inputs_are_errors_even_when_gate_off[None]" time="0.006" /><testcase classname="tests.integration.test_configured_design_runner" name="test_missing_invalid_design_inputs_are_errors_even_when_gate_off[nan]" time="0.006" /><testcase classname="tests.integration.test_configured_design_runner" name="test_missing_invalid_design_inputs_are_errors_even_when_gate_off[-1.0]" time="0.005" /><testcase classname="tests.unit.test_configured_design_configuration" name="test_configuration_roundtrip_and_explicit_cli" time="0.002" /><testcase classname="tests.unit.test_configured_design_configuration" name="test_diagnostic_and_configuration_have_distinct_authority" time="0.000" /><testcase classname="tests.unit.test_configured_design_configuration" name="test_design_dependent_cache_rejects_legacy_and_changed_configuration" time="0.000" /></testsuite></testsuites>

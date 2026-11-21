@@ -1,0 +1,39 @@
+{
+  "completed_windows": 100,
+  "end_time_utc": "2026-08-06T15:51:24.132576+00:00",
+  "eventtrace_dir": "outputs/e2_traffic_real_runner_canary/_smoke/balanced/training_eventtrace",
+  "exit_code": 0,
+  "failure_reason": null,
+  "final_metrics": {
+    "Gap_mis": NaN,
+    "P2_solver_failure_count": 0,
+    "RMSE_mu": NaN,
+    "RMSE_rho": NaN,
+    "active_window_count": 100,
+    "completed_windows": 100,
+    "denominator_zero_count": 0,
+    "group_rmse": {
+      "block0": NaN,
+      "block1": NaN,
+      "block2": NaN,
+      "block3": NaN
+    },
+    "hard_arrival_proxy_count": 100,
+    "nonfinite_loss_count": 2036,
+    "nonfinite_model_parameter_count": 30715
+  },
+  "local_steps": 2,
+  "method": "fedavg_window",
+  "method_display": "FedAvg",
+  "n_groups": 4,
+  "profile_id": "PROFILE-S1",
+  "retry_count": 0,
+  "runtime_seconds": 67.54065410000476,
+  "s_max": 5,
+  "scenario": "balanced",
+  "scenario_label": "S1",
+  "seed": 29001,
+  "seed_replacement_count": 0,
+  "start_time_utc": "2026-08-06T15:50:16.587972+00:00",
+  "status": "FAIL"
+}

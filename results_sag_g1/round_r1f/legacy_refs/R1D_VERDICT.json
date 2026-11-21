@@ -1,0 +1,91 @@
+{
+  "a8b_note": "A8B_NOT_FINAL_CLOSED",
+  "dynamic_cov": {
+    "sensorscope": {
+      "c_cov_zero_fraction_warmup": 0.9761904761904762,
+      "coverage_slides_over_time": false,
+      "mean_c_cov": 7.176424288723729e-05,
+      "n_warmup": 84,
+      "pairwise_coverage": 0.9999458874458875,
+      "status": "DYNAMIC_COV_TOO_CONSERVATIVE",
+      "window_joint_coverage": 0.9761904761904762
+    },
+    "uair": {
+      "c_cov_zero_fraction_warmup": 1.0,
+      "coverage_slides_over_time": false,
+      "mean_c_cov": 0.0,
+      "n_warmup": 64,
+      "pairwise_coverage": 1.0,
+      "status": "DYNAMIC_COV_TOO_CONSERVATIVE",
+      "window_joint_coverage": 1.0
+    }
+  },
+  "executive_verdict": "DYNAMIC_COV_TOO_CONSERVATIVE",
+  "g1_r2_5seed_started": false,
+  "max_abs_error": 1.0547118733938987e-14,
+  "r1c_vs_r1d": [
+    {
+      "dataset": "sensorscope",
+      "mass_overlap_atom": 0.0,
+      "mass_overlap_pi": 0.8571428571428558,
+      "n_pos_pairs_r1c": 440,
+      "n_pos_pairs_r1d": 440,
+      "opportunity_support_overlap": 1.0000000000000036,
+      "pi_pos_jaccard": 1.0,
+      "support_size_r1c": 10285,
+      "support_size_r1d": 3410,
+      "target_zero_mass_r1d_on_r1c_support": 1.000000000000172,
+      "train_support_overlap_atoms": 0.0,
+      "tv_atom": 0.9999999999998466,
+      "tv_pi": 0.142857142857143
+    },
+    {
+      "dataset": "uair",
+      "mass_overlap_atom": 0.0,
+      "mass_overlap_pi": 0.3873417721518974,
+      "n_pos_pairs_r1c": 288,
+      "n_pos_pairs_r1d": 216,
+      "opportunity_support_overlap": 1.0000000000000029,
+      "pi_pos_jaccard": 0.75,
+      "support_size_r1c": 5688,
+      "support_size_r1d": 1908,
+      "target_zero_mass_r1d_on_r1c_support": 0.9999999999998752,
+      "train_support_overlap_atoms": 0.0,
+      "tv_atom": 0.9999999999999076,
+      "tv_pi": 0.6126582278481011
+    }
+  ],
+  "sag_ran": false,
+  "target_rule": {
+    "allowed_metadata": [
+      "unit_id",
+      "split",
+      "support_flag",
+      "spatial_id",
+      "absolute_time",
+      "opportunity_stratum",
+      "frozen_client_map",
+      "frozen_h_map"
+    ],
+    "atomic_mass_construction": "mu_g from train-split TOD occupancy; varpi_i = mu_h(i) / n_{I_dep, h(i)} on I_dep",
+    "atomic_support": "test_split AND support_flag, public covariates only",
+    "forbidden_outcome_information": [
+      "labels",
+      "test_Y",
+      "test_predictions",
+      "test_residuals",
+      "RMSE",
+      "Delta_group",
+      "gate_ON_OFF",
+      "current_window_R_O_U"
+    ],
+    "frozen": true,
+    "group_mass_source": "train_split_supported_atomic_uniform_then_h_marginal",
+    "hash": "86fd55f7e0bf8499944433de16324bd4687befd5568892613ee87acacad3ad07",
+    "rule_id": "TARGET_LAW_RULE_V1",
+    "scientific_population": "public_evaluation_deployment_supported_atoms",
+    "status": "FROZEN",
+    "train_val_test_relation": "mu_g frozen on train public support; I_dep is test public support; val unused"
+  },
+  "uair_unsafe_candidate": null
+}

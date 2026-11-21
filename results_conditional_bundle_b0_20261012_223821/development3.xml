@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="17" time="34.612" timestamp="2026-10-12T23:08:40.312961+08:00" hostname="LAPTOP-4349UTOC"><testcase classname="tests.control_b0.test_lifecycle_preview" name="test_corrected_preview_application_and_stale_rejection" time="0.041" /><testcase classname="tests.control_b0.test_lifecycle_preview" name="test_missing_q_not_silently_replaced" time="0.001" /><testcase classname="tests.control_b0.test_lifecycle_preview" name="test_replacement_out_of_order_and_physical_outcome" time="0.002" /><testcase classname="tests.control_b0.test_lifecycle_preview" name="test_inflight_expiry_empty_close_and_mature_labels" time="0.042" /><testcase classname="tests.control_b0.test_lifecycle_preview" name="test_future_checkpoint_invalid_tensor_and_stale_snapshot" time="0.014" /><testcase classname="tests.control_b0.test_lifecycle_preview" name="test_design_freeze_and_gate_has_no_computation_effect" time="0.026" /><testcase classname="tests.control_b0.test_lifecycle_preview" name="test_probability_frozen_per_attempt_and_failure_censoring" time="0.001" /><testcase classname="tests.control_b0.test_persistence_and_full_connection" name="test_production_save_restore_same_suffix_and_no_overwrite" time="3.269"><failure message="PermissionError: [WinError 5] 拒绝访问。: 'C:\\Users\\szr\\AppData\\Local\\Packages\\sandbox.{d5e5ebf6-1c42-43c1-a6c6-868b4184131a}\\AC\\Temp\\pytest-of-szr\\pytest-0\\test_production_save_restore_s0\\dynamic_new_run\\.manifest.json.xy8mcrjl' -&gt; 'C:\\Users\\szr\\AppData\\Local\\Packages\\sandbox.{d5e5ebf6-1c42-43c1-a6c6-868b4184131a}\\AC\\Temp\\pytest-of-szr\\pytest-0\\test_production_save_restore_s0\\dynamic_new_run\\manifest.json'">populated = &lt;raven_mcs.control.lifecycle.DynamicWindowRunner object at 0x00000283CEC98890&gt;
+tmp_path = WindowsPath('C:/Users/szr/AppData/Local/Packages/sandbox.{d5e5ebf6-1c42-43c1-a6c6-868b4184131a}/AC/Temp/pytest-of-szr/pytest-0/test_production_save_restore_s0')
+
+    def test_production_save_restore_same_suffix_and_no_overwrite(populated,tmp_path):
+        r=populated;register(r,'inflight','fifth',21.)
+        out=tmp_path/'dynamic_new_run'
+&gt;       manifest=initialize_control_run(r,out,repo_root=ROOT)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\control_b0\test_persistence_and_full_connection.py:33: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+src\raven_mcs\control\persistence.py:61: in initialize_control_run
+    write_manifest(manifest,run_dir);write_resolved_config(config,run_dir)
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+src\raven_mcs\utils\manifest.py:317: in write_manifest
+    dump_json(manifest.to_dict(), path)
+src\raven_mcs\utils\serialization.py:43: in dump_json
+    atomic_write_text(path, text + "\n")
+src\raven_mcs\utils\serialization.py:54: in atomic_write_text
+    Path(tmp_name).replace(path)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = WindowsPath('C:/Users/szr/AppData/Local/Packages/sandbox.{d5e5ebf6-1c42-43c1-a6c6-868b4184131a}/AC/Temp/pytest-of-szr/pytest-0/test_production_save_restore_s0/dynamic_new_run/.manifest.json.xy8mcrjl')
+target = WindowsPath('C:/Users/szr/AppData/Local/Packages/sandbox.{d5e5ebf6-1c42-43c1-a6c6-868b4184131a}/AC/Temp/pytest-of-szr/pytest-0/test_production_save_restore_s0/dynamic_new_run/manifest.json')
+
+    def replace(self, target):
+        """
+        Rename this path to the target path, overwriting if that path exists.
+    
+        The target path may be absolute or relative. Relative paths are
+        interpreted relative to the current working directory, *not* the
+        directory of the Path object.
+    
+        Returns the new Path instance pointing to the target path.
+        """
+&gt;       os.replace(self, target)
+E       PermissionError: [WinError 5] 拒绝访问。: 'C:\\Users\\szr\\AppData\\Local\\Packages\\sandbox.{d5e5ebf6-1c42-43c1-a6c6-868b4184131a}\\AC\\Temp\\pytest-of-szr\\pytest-0\\test_production_save_restore_s0\\dynamic_new_run\\.manifest.json.xy8mcrjl' -&gt; 'C:\\Users\\szr\\AppData\\Local\\Packages\\sandbox.{d5e5ebf6-1c42-43c1-a6c6-868b4184131a}\\AC\\Temp\\pytest-of-szr\\pytest-0\\test_production_save_restore_s0\\dynamic_new_run\\manifest.json'
+
+C:\Users\szr\AppData\Local\Programs\Python\Python311\Lib\pathlib.py:1188: PermissionError</failure></testcase><testcase classname="tests.control_b0.test_persistence_and_full_connection" name="test_real_model_and_existing_trainer_connected_but_no_sgd" time="0.148" /><testcase classname="tests.control_b0.test_persistence_and_full_connection" name="test_shared_stage1_exact_existing_formulas_and_legal_clipping" time="0.001" /><testcase classname="tests.control_b0.test_persistence_and_full_connection" name="test_invalid_numeric_inputs_not_prediction_fallback" time="0.001" /><testcase classname="tests.control_b0.test_predictor_planner" name="test_competing_risk_and_censoring_arithmetic" time="0.002" /><testcase classname="tests.control_b0.test_predictor_planner" name="test_client_marks_not_reassigned_and_frozen_download" time="0.003" /><testcase classname="tests.control_b0.test_predictor_planner" name="test_joint_support_uses_multistep_path_and_no_real_mutation" time="0.049" /><testcase classname="tests.control_b0.test_predictor_planner" name="test_snapshot_does_not_accept_future_or_hidden_fields" time="0.055" /><testcase classname="tests.control_b0.test_predictor_planner" name="test_unsupported_prediction_fallback_and_hard_deadline" time="0.028" /><testcase classname="tests.control_b0.test_predictor_planner" name="test_isolated_normal_and_controlled_cpu_timeout" time="4.678" /></testsuite></testsuites>

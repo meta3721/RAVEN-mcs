@@ -1,0 +1,113 @@
+{
+  "command": [
+    "C:\\Cursor\\raven.mcs\\.venv_new\\Scripts\\python.exe",
+    "scripts/diagnostic_meter_workload.py",
+    "--mode",
+    "timeout"
+  ],
+  "returncode": 124,
+  "process_tree_cpu_seconds": 1.859375,
+  "monitor_cpu_seconds": 0.0,
+  "wall_seconds": 1.9972956000001432,
+  "limit_reason": "cpu",
+  "log": "C:\\Cursor\\raven.mcs\\results_calibration_diagnostic_20261013_122013\\D1_timeout.log",
+  "pids": [
+    {
+      "pid": 2552,
+      "joined_observed_wall": 0.0080857000011747,
+      "root_job_member": true,
+      "image": "C:\\Cursor\\raven.mcs\\.venv_new\\Scripts\\python.exe",
+      "initial_cpu": 0.0,
+      "created_filetime": 13436339298.968355,
+      "exited_filetime": 13436339300.955494,
+      "kernel_cpu": 0.0,
+      "user_cpu": 0.0,
+      "cpu_seconds": 0.0,
+      "exit_code": 124,
+      "exit_observed_wall": 1.994555200000832
+    },
+    {
+      "pid": 12500,
+      "joined_observed_wall": 0.019739600000320934,
+      "root_job_member": true,
+      "image": "C:\\Windows\\System32\\conhost.exe",
+      "initial_cpu": 0.0,
+      "created_filetime": 13436339298.986511,
+      "exited_filetime": 13436339300.956594,
+      "kernel_cpu": 0.0,
+      "user_cpu": 0.015625,
+      "cpu_seconds": 0.015625,
+      "exit_code": 124,
+      "exit_observed_wall": 1.9972637999999279
+    },
+    {
+      "pid": 2816,
+      "joined_observed_wall": 0.0470898000003217,
+      "root_job_member": true,
+      "image": "C:\\Users\\szr\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+      "initial_cpu": 0.0,
+      "created_filetime": 13436339299.012424,
+      "exited_filetime": 13436339300.955317,
+      "kernel_cpu": 0.078125,
+      "user_cpu": 0.03125,
+      "cpu_seconds": 0.109375,
+      "exit_code": 124,
+      "exit_observed_wall": 1.9972713999995904
+    },
+    {
+      "pid": 5416,
+      "joined_observed_wall": 0.1618797999999515,
+      "root_job_member": true,
+      "image": "C:\\Users\\szr\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+      "initial_cpu": 0.0,
+      "created_filetime": 13436339299.124859,
+      "exited_filetime": 13436339300.954945,
+      "kernel_cpu": 0.171875,
+      "user_cpu": 1.5625,
+      "cpu_seconds": 1.734375,
+      "exit_code": 124,
+      "exit_observed_wall": 1.997276399999464
+    }
+  ],
+  "notifications": [
+    {
+      "message": 6,
+      "pid": 2552,
+      "wall": 0.008990300000732532
+    },
+    {
+      "message": 6,
+      "pid": 12500,
+      "wall": 0.01970650000112073
+    },
+    {
+      "message": 6,
+      "pid": 2816,
+      "wall": 0.047057900001163944
+    },
+    {
+      "message": 6,
+      "pid": 5416,
+      "wall": 0.16185890000087966
+    }
+  ],
+  "errors": [],
+  "job_total_processes": 4,
+  "job_active_processes": 0,
+  "independent_pid_CPU_sum": 1.859375,
+  "difference_seconds": 0.0,
+  "predeclared_tolerance_seconds": 0.135,
+  "audit_passed": true,
+  "CPU_limit": 2,
+  "single_CPU_affinity": 1,
+  "mutually_exclusive_costs": [
+    "process_tree_cpu_seconds",
+    "monitor_cpu_seconds"
+  ],
+  "included_not_additive": [
+    "independent_pid_CPU_sum",
+    "individual_PID_CPU",
+    "inner_job_CPU"
+  ],
+  "cpu_scope": "creation through process exit; root created suspended, descendants inherit before execution"
+}

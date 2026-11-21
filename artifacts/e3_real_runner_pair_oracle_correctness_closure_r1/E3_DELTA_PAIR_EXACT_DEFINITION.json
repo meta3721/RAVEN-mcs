@@ -1,0 +1,30 @@
+{
+  "formula": {
+    "Delta_pair": "||Pi_hat - pi_tar||_1",
+    "Pi_hat_k_i": "(1/S_R) sum_r eta_r I_r alpha_{k,r}^{(m)} w_{k,r,i}^{(m)}",
+    "code": "raven_mcs.metrics.distribution.delta_pair"
+  },
+  "method_dependence": [
+    "alpha_method",
+    "w_method"
+  ],
+  "pair_identity": "(client_id, atomic_unit_id)",
+  "status": "DELTA_PAIR_EXACT_READY",
+  "toy_exactness": {
+    "Delta_pair_A": 0.6000000000000001,
+    "Delta_pair_B": 0.6000000000000001,
+    "contrib_a": {
+      "(c0,u0)": 0.8,
+      "(c0,u1)": 0.2
+    },
+    "contrib_b": {
+      "(c0,u0)": 0.2,
+      "(c0,u1)": 0.8
+    },
+    "exact_match_A": true,
+    "exact_match_B": true,
+    "hand_A": 0.6,
+    "hand_B": 0.6,
+    "methods_differ": true
+  }
+}

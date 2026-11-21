@@ -1,0 +1,232 @@
+{
+  "status": "PASS",
+  "full_T100": true,
+  "paired_asset_readable": true,
+  "source_packages_unchanged": true,
+  "parent_prefix_rows_preserved": 10,
+  "suffix_rows": 990,
+  "total_grid_rows": 1000,
+  "now": 100.0,
+  "logical_SGD": 3281,
+  "total_physical_SGD_lower": 3302,
+  "total_physical_SGD_upper": 3303,
+  "registrations": 4300,
+  "R1": 3281,
+  "R0": 1019,
+  "E0": 778,
+  "eligible_R1_E1": 2685,
+  "consumed": 1581,
+  "unmatured": 0,
+  "physical_pending_R1": 23,
+  "label_terminal_reasons": {
+    "no_observations": 1019,
+    "consumed": 1581,
+    "superseded": 60,
+    "compute_failure": 422,
+    "network_failure": 174,
+    "expired": 1031,
+    "horizon_unconsumed": 13
+  },
+  "closures": 147,
+  "empty_closures": 0,
+  "post20_closures": 127,
+  "model_version": 147,
+  "regular_grid_rows": 799,
+  "nonforced_rows": 604,
+  "regular_reason_counts": {
+    "MIN_CLIENTS": 195,
+    "FEEDBACK_WAIT": 478,
+    "FEEDBACK_TRIGGER": 126
+  },
+  "no_Q_difference": 1,
+  "fixed_0_5_difference": 192,
+  "fixed_2_difference": 126,
+  "nonforced_no_Q_difference": 1,
+  "legal_both_actions": 604,
+  "debt_terms": {
+    "positive_debt": 48,
+    "negative_debt": 556,
+    "nonzero_debt": 604,
+    "quality_only_threshold_close": 5,
+    "quality_plus_patience_threshold_close": 127
+  },
+  "component_ranges": {
+    "quality": {
+      "minimum": -0.09830635661425902,
+      "maximum": 0.036630708864413886,
+      "mean": -0.02332847120046829
+    },
+    "debt": {
+      "minimum": -0.0001902617575315059,
+      "maximum": 0.00010077404579981581,
+      "mean": -7.299440354023847e-05
+    },
+    "patience": {
+      "minimum": 0.0049999999999997165,
+      "maximum": 0.05,
+      "mean": 0.02248344370860928
+    },
+    "b": {
+      "minimum": -0.0019026175753150587,
+      "maximum": 0.001007740457998158,
+      "mean": -0.0007299440354023852
+    },
+    "c_minus": {
+      "minimum": 0.8936414921269416,
+      "maximum": 0.9790282033657737,
+      "mean": 0.9514267913497956
+    },
+    "c": {
+      "minimum": 0.9088248259951611,
+      "maximum": 1.0012248062015505,
+      "mean": 0.9747552625502638
+    }
+  },
+  "G_800": 0.9411409883720916,
+  "G_fallback_count": 0,
+  "W_mean_post20_including_empty": 0.6299212598425197,
+  "J_mean_nonempty_post20": 0.9861585683583262,
+  "P2_calculations": 520,
+  "cache_hits": 105,
+  "preview_status_counts": {
+    "optimal": 542,
+    "full_P2_exact_singleton": 83
+  },
+  "solver_kind_counts": {
+    "CLARABEL": 542,
+    "exact_singleton": 83
+  },
+  "max_weight_residual": 4.440892098500626e-16,
+  "max_binding_error": 0.0,
+  "max_actual_request_root_upper": 0.36375,
+  "consumed_delay_mean": 1.1049652118912092,
+  "consumed_delay_max": 2.58,
+  "max_public_F_at_registration": 38,
+  "encoding_missing": 0,
+  "eligible_feature_cells": [
+    {
+      "age": 0,
+      "device": "tier-0",
+      "network": "net-tier-0",
+      "count": 123
+    },
+    {
+      "age": 0,
+      "device": "tier-1",
+      "network": "net-tier-1",
+      "count": 248
+    },
+    {
+      "age": 0,
+      "device": "tier-2",
+      "network": "net-tier-2",
+      "count": 86
+    },
+    {
+      "age": 1,
+      "device": "tier-0",
+      "network": "net-tier-0",
+      "count": 139
+    },
+    {
+      "age": 1,
+      "device": "tier-1",
+      "network": "net-tier-1",
+      "count": 260
+    },
+    {
+      "age": 1,
+      "device": "tier-2",
+      "network": "net-tier-2",
+      "count": 88
+    },
+    {
+      "age": 2,
+      "device": "tier-0",
+      "network": "net-tier-0",
+      "count": 146
+    },
+    {
+      "age": 2,
+      "device": "tier-1",
+      "network": "net-tier-1",
+      "count": 219
+    },
+    {
+      "age": 2,
+      "device": "tier-2",
+      "network": "net-tier-2",
+      "count": 93
+    },
+    {
+      "age": 3,
+      "device": "tier-0",
+      "network": "net-tier-0",
+      "count": 150
+    },
+    {
+      "age": 3,
+      "device": "tier-1",
+      "network": "net-tier-1",
+      "count": 225
+    },
+    {
+      "age": 3,
+      "device": "tier-2",
+      "network": "net-tier-2",
+      "count": 100
+    },
+    {
+      "age": 4,
+      "device": "tier-0",
+      "network": "net-tier-0",
+      "count": 117
+    },
+    {
+      "age": 4,
+      "device": "tier-1",
+      "network": "net-tier-1",
+      "count": 210
+    },
+    {
+      "age": 4,
+      "device": "tier-2",
+      "network": "net-tier-2",
+      "count": 76
+    },
+    {
+      "age": 5,
+      "device": "tier-0",
+      "network": "net-tier-0",
+      "count": 127
+    },
+    {
+      "age": 5,
+      "device": "tier-1",
+      "network": "net-tier-1",
+      "count": 199
+    },
+    {
+      "age": 5,
+      "device": "tier-2",
+      "network": "net-tier-2",
+      "count": 79
+    }
+  ],
+  "final_checkpoint_sizes": [
+    179560368,
+    7493086
+  ],
+  "max_save_upper": 9.73875,
+  "final_save_reserve": 34.80886700230746,
+  "final_complete_marker": "C:\\Cursor\\raven.mcs\\results_observed_feedback_rolling_45011_20261014_s2\\trajectory\\tick1000.complete.json",
+  "protected_assets_checked": 1769,
+  "changed_history": [],
+  "root_publication_partial_attempts": "S1 preserved, not merged into final causal grid; SGD/cost accounted separately",
+  "evidence_roles": {
+    "q": "diagnostic_prior_not_calibrated",
+    "shadows": "same_state_actions_only_no_independent_model",
+    "performance": "RESULTS_NOT_REVALIDATED",
+    "state": "WAITING_USER_REVIEW"
+  }
+}

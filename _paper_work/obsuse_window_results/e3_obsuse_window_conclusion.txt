@@ -1,0 +1,11 @@
+ObsUse-Window is a windowed observation+usable inverse-weighting baseline, not an official reproduction.
+n=20 paired formal seeds 30001-30020. Holm family = 4 metrics within each (dataset, comparison).
+Lower is better.
+
+Delta_c_s chain means (FedAvg -> FedAU -> ObsUse -> TwoStage -> RAVEN)
+- SensorScope: 1.2903, 1.3057, 1.3062, 1.2910, 1.2644. NOT monotone. ObsUse vs FedAU not significant (p_holm=0.452).
+- U-Air: 1.2621, 1.3291, 1.3235, 1.2406, 1.2334. NOT monotone from FedAvg. ObsUse slightly better than FedAU (p_holm=0.00145) but both worse than FedAvg. TwoStage and RAVEN then drop.
+
+RAVEN vs ObsUse Delta_c_s: Holm-significant on both datasets (p_holm=7.63e-06).
+Do not claim a monotone layered improvement FedAU -> ObsUse -> TwoStage -> RAVEN.
+The design/Hájek layer plus RAVEN calibration is where the consistent Delta_c_s reduction appears.

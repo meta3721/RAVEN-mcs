@@ -1,0 +1,22 @@
+{
+  "informative_without_rmse_win": true,
+  "primary_predictive": [
+    "RMSE_mu"
+  ],
+  "primary_structural": [
+    "Delta_group",
+    "Delta_c_s"
+  ],
+  "secondary_do_not_expand_claim": true,
+  "secondary_if_valid": [
+    "Tail_RMSE",
+    "MAE_mu",
+    "RMSE_rho",
+    "ESS",
+    "n_eff",
+    "runtime",
+    "P2_warning_counts",
+    "active_delivered_opportunity_counts"
+  ],
+  "status": "FROZEN"
+}

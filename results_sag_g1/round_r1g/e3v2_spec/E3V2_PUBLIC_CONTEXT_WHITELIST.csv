@@ -1,0 +1,14 @@
+feature,source,available_time,public_or_private,lag,allowed,reason
+window_start_utc,atomic.absolute_time UTC hour floor,before_window_start,public,0,True,calendar clock known before any current-window event
+window_end_utc,window_start_utc + 1h,before_window_start,public,0,True,deterministic from public start
+hour_of_day,window_start_utc.hour,before_window_start,public,0,True,"TOD from public UTC, RepeatableTimeOfDayMapper-compatible"
+weekday,window_start_utc.weekday,before_window_start,public,0,True,"calendar, not event presence"
+weekend_flag,"weekday in {5,6}",before_window_start,public,0,True,"calendar, not event presence"
+lagged_public_event_count,completed prior windows only,F_r_minus,public,1,True,history of completed windows; not current R/O/U
+current_R,current EventTrace risk set,current_window,private,0,False,current-window leakage
+current_O,current observations,current_window,private,0,False,current-window leakage
+current_U,current usable mark,current_window,private,0,False,current-window leakage
+current_realized_opportunity,current risk-set occupancy,current_window,private,0,False,oracle diagnostic only; not a Gate feature
+current_label,current target_value,current_window,private,0,False,outcome leakage
+current_gate_outcome,Gate ON/OFF,post_window,private,0,False,post-hoc
+dataset_name,dataset identifier,any,public,0,False,dataset-name hard-coded Gate is forbidden

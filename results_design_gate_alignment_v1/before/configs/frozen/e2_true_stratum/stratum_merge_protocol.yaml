@@ -1,0 +1,23 @@
+protocol: E2-TRUE-STRATUM-AND-NONWRAP-SCHEDULE-REPAIR-R1
+source_rule: spatial_region_or_station × time_block × weekday_or_weekend
+region_definition: sensorscope_station
+region_rationale: >
+  Reuse E1 opportunity_stratum identity from atomic_units / pi target:
+  station (spatial_id) × UTC 6-hour block × weekday/weekend.
+  Do not coarsen to sensorscope_campus or fold day_type to all_days at construction.
+time_of_day_bins: [block0, block1, block2, block3]
+day_types: [weekday, weekend]
+day_type_construction: preserve_weekday_weekend_from_e1
+lambda_stratum_min: 1.0e-4
+min_expected_opportunity_events_300: 20
+min_expected_arrival_events_300: 5
+merge_order:
+  - same_spatial_region_same_day_type_adjacent_time_block
+  - same_spatial_region_merge_weekday_weekend
+cross_region_merge_allowed: false
+tie_break: lexicographic_stratum_id
+role_substitution_forbidden: true
+forbidden_stratum_ids: [head, neutral, tail]
+notes: >
+  Merge only when pre-outcome mass/exposure gates fail. Never substitute
+  head/neutral/tail. Never delete spatial dimension before merge.

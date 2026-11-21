@@ -1,0 +1,59 @@
+repair cells (numerically distinct): 17
+  [ 0] Table III (UA) | TwoStage-Hajek | RMSE_mu | 1.216 -> 1.2202
+  [ 1] Table III (UA) | RAVEN-Design | RMSE_mu | 1.1911 -> 1.1954
+  [ 2] appendix tab:app_e3_uair | Local-Hajek | RMSE_mu | 1.1882 -> 1.1923
+  [ 3] appendix tab:app_e3_uair | TwoStage-Hajek | RMSE_mu | 1.216 -> 1.2202
+  [ 4] appendix tab:app_e3_uair | Inst-Cal | RMSE_mu | 1.1911 -> 1.1954
+  [ 5] appendix tab:app_e3_uair | RAVEN-Design | RMSE_mu | 1.1911 -> 1.1954
+  [ 6] appendix tab:app_e3_uair | RAVEN-SimOracle | RMSE_mu | 1.1914 -> 1.1958
+  [ 7] Table IV (UA) | Design | RMSE_mu | -6.553094 -> -6.885464
+  [ 8] Table IV (UA) | Design | Tail_RMSE | -6.875243 -> -7.221249
+  [ 9] Table IV (UA) | Obs | RMSE_mu | -0.00972 -> -0.009783
+  [10] Table IV (UA) | Obs | Tail_RMSE | -0.010229 -> -0.010296
+  [11] Table IV (UA) | Use | RMSE_mu | 0.023974 -> 0.025271
+  [12] Table IV (UA) | Use | Tail_RMSE | 0.025218 -> 0.026450
+  [13] Table IV (UA) | Inst | RMSE_mu | 0.130684 -> 0.142931
+  [14] Table IV (UA) | Inst | Tail_RMSE | 0.136375 -> 0.149029
+  [15] Table IV (UA) | Debt | RMSE_mu | 0.000729 -> 0.000672
+  [16] Table IV (UA) | Debt | Tail_RMSE | 0.000775 -> 0.000715
+
+BUNDLE CSV FILES holding superseded value(s) with corrected value absent:
+  figures/FIG_E1_E2_RISK_NONINTERCHANGEABILITY.csv: cells [16]  (1)
+  figures/FIG_E3_E3_PREDICTION_RISK.csv: cells [0, 1, 3, 4, 5]  (5)
+  figures/FIG_E4_E4_COMPONENT_ABLATION.csv: cells [7, 8, 9, 10, 11, 12, 13, 14, 15, 16]  (10)
+  tables/E4_ABLATION_RELATIVE_CHANGE.csv: cells [0, 3, 15]  (3)
+  tables/PAPER_EVIDENCE_MASTER_LONG.csv: cells [0, 1, 3, 4, 5, 9]  (6)
+  tables/TABLE_E3_FULL_METHODS_SUPPLEMENT.csv: cells [0, 3]  (2)
+  tables/TABLE_E3_MAIN_EFFECTIVENESS.csv: cells [0, 1, 2, 3, 4, 5, 6]  (7)
+  tables/TABLE_E4_COMPONENT_EFFECTS.csv: cells [1, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]  (14)
+  tables/TABLE_E4_CORE_ABLATION.csv: cells [1, 4, 5, 6]  (4)
+  tables/TABLE_II_MAIN_EFFECTIVENESS.csv: cells [0, 1, 2, 3, 4, 5]  (6)
+  tables/TABLE_II_WORSTGROUP_PER_SEED.csv: cells [0, 2, 3]  (3)
+  w1/audit_v5/round_v5/R1A_TOST.csv: cells [2]  (1)
+  w1/audit_v5/round_v5_1/TRADEOFF_V51.csv: cells [6]  (1)
+  w1/audit_v5/round_v5_1/WORSTGROUP_V51.csv: cells [6]  (1)
+  w1/exogenous/MAPS_KEY_LEVEL.csv: cells [16]  (1)
+  w1/frontier/FRONTIER.csv: cells [0, 3, 6]  (3)
+  w1/frontier/FRONTIER_ARMS.csv: cells [0, 3]  (2)
+  w1/frontier/LADDER.csv: cells [6]  (1)
+  w1/frontier/LADDER_REPORT_SEEDS.csv: cells [6]  (1)
+  w1/ladder_v3/SOURCE_LADDER.csv: cells [0, 3]  (2)
+
+====================================================================================================
+Presence matrix for the 17 repair cells (o=old only, n=new only, B=both, .=neither)
+====================================================================================================
+  artifact                                      0  1  2  3  4  5  6  7  8  9  10 11 12 13 14 15 16 
+  tables/TABLE_II_MAIN_EFFECTIVENESS.csv        o  o  o  o  o  o  .  .  .  .  .  .  .  .  .  .  .  
+  tables/TABLE_II_FREEZE.json <not csv>
+  tables/TABLE_II_WORSTGROUP_PER_SEED.csv       o  .  o  o  .  .  n  .  .  .  .  .  .  .  .  .  .  
+  tables/TABLE_E3_MAIN_EFFECTIVENESS.csv        o  o  o  o  o  o  o  .  .  .  .  .  .  .  .  .  .  
+  tables/TABLE_E3_FULL_METHODS_SUPPLEMENT.csv   o  .  .  o  .  .  .  .  .  .  .  .  .  .  .  .  .  
+  tables/TABLE_E4_CORE_ABLATION.csv             .  o  .  .  o  o  o  .  .  .  .  .  .  .  .  .  .  
+  tables/TABLE_E4_COMPONENT_EFFECTS.csv         .  o  .  .  o  o  o  o  o  o  o  o  o  o  o  o  o  
+  tables/E4_ABLATION_RELATIVE_CHANGE.csv        o  .  .  o  .  .  .  .  .  .  .  .  .  .  .  o  .  
+  tables/E4_ABLATION_HOLM_RESULTS.csv           .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+  tables/PAPER_EVIDENCE_MASTER_LONG.csv         o  o  .  o  o  o  .  .  .  o  .  .  .  .  .  .  .  
+  tables/SCD_PHI.csv                            .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+  figures/FIG_E3_E3_PREDICTION_RISK.csv         o  o  .  o  o  o  .  .  .  .  .  .  .  .  .  .  .  
+  figures/FIG_E4_E4_COMPONENT_ABLATION.csv      .  .  .  .  .  .  .  o  o  o  o  o  o  o  o  o  o  
+  figures/FIG_W1_DESIGN_GATE.csv                .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  

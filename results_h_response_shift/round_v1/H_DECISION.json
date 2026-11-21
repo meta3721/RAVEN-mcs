@@ -1,0 +1,52 @@
+{
+  "stage_A": {
+    "sensorscope": {
+      "median_l1_conditional": 0.5674959215286464,
+      "median_l1_all_groups": 0.7538033132685085,
+      "median_mu_mass_on_absent_groups": 0.19706744868035175,
+      "median_l1_conditional_riskset": 0.4314605445791271,
+      "stage_B": "allowed",
+      "l1_definition": "primary = observed-unit union, renormalized onto the groups present in the trace (amendment A-H2(i))",
+      "l1_companion_riskset": "risk-set union, same renormalization (amendment A-H1)"
+    },
+    "uair": {
+      "median_l1_conditional": 0.6014716062615842,
+      "median_l1_all_groups": 0.7989878144654088,
+      "median_mu_mass_on_absent_groups": 0.16352201257861632,
+      "median_l1_conditional_riskset": 0.4392638165339656,
+      "stage_B": "allowed",
+      "l1_definition": "primary = observed-unit union, renormalized onto the groups present in the trace (amendment A-H2(i))",
+      "l1_companion_riskset": "risk-set union, same renormalization (amendment A-H1)"
+    }
+  },
+  "stage_B_ran": true,
+  "decision": "STOP",
+  "winning_cells": [],
+  "c0_stop_triggered": false,
+  "grid": {
+    "c": [
+      0.0,
+      0.5,
+      1.0,
+      2.0
+    ],
+    "seeds": [
+      30001,
+      30002,
+      30003,
+      30004,
+      30005
+    ],
+    "arms": [
+      "fedavg_window",
+      "raven_simoracle"
+    ],
+    "datasets": [
+      "sensorscope",
+      "uair"
+    ],
+    "backbone": "feature_blind",
+    "traces": "frozen C0 (theta=1.25, tail_scale=0.55)"
+  },
+  "cost": "80 training runs"
+}

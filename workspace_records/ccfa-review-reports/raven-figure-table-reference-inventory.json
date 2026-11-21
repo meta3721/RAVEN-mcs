@@ -1,0 +1,385 @@
+{
+  "fig:raven_overview": {
+    "number": "1",
+    "page": "3",
+    "doc": "main.aux",
+    "owner": "main.tex",
+    "refs": [
+      162
+    ],
+    "caption": "\\caption{RAVEN-MCS workflow. (a)~Opportunity/observation correction supplies normalized\nlocal weights and reference mass; raw records remain local.\n(b)~Pre-$U$ correction forms $\\widehat{\\boldsymbol\\beta}_r$; P2 produces\nfeasible $\\boldsymbol\\alpha_r^\\star$ from current support, composition, target,\nand state. Exact target matching need not be feasible.\n(c)~Weighted updates are aggregated before debt/history updates.\nSolid/dashed arrows denote cu"
+  },
+  "tab:datasets": {
+    "number": "I",
+    "page": "8",
+    "doc": "main.aux",
+    "owner": "main.tex",
+    "refs": [
+      1088,
+      1789
+    ],
+    "caption": "\\caption{Datasets and their evaluation protocols.}"
+  },
+  "tab:cityscanner_real": {
+    "number": "II",
+    "page": "9",
+    "doc": "main.aux",
+    "owner": "main.tex",
+    "refs": [
+      1174,
+      1246
+    ],
+    "caption": "\\caption{City Scanner completion under two sensing protocols.\nMean $\\pm$ SD over ten paired seeds per protocol; lower is better.\nPrediction uses each protocol's training-only $z$-score scale, not physical\nconcentration or a shared scale. WorstGroupRMSE uses four coordinate\nquadrants; bold marks each protocol's endpoint minima.}"
+  },
+  "tab:cityscanner_hybrid": {
+    "number": "II",
+    "page": "9",
+    "doc": "main.aux",
+    "owner": "main.tex",
+    "refs": [],
+    "caption": "\\caption{City Scanner completion under two sensing protocols.\nMean $\\pm$ SD over ten paired seeds per protocol; lower is better.\nPrediction uses each protocol's training-only $z$-score scale, not physical\nconcentration or a shared scale. WorstGroupRMSE uses four coordinate\nquadrants; bold marks each protocol's endpoint minima.}\n\\label{tab:cityscanner_real}"
+  },
+  "tab:cityscanner_p2_measured_o": {
+    "number": "II",
+    "page": "9",
+    "doc": "main.aux",
+    "owner": "main.tex",
+    "refs": [],
+    "caption": "\\caption{City Scanner completion under two sensing protocols.\nMean $\\pm$ SD over ten paired seeds per protocol; lower is better.\nPrediction uses each protocol's training-only $z$-score scale, not physical\nconcentration or a shared scale. WorstGroupRMSE uses four coordinate\nquadrants; bold marks each protocol's endpoint minima.}\n\\label{tab:cityscanner_real}\n\\label{tab:cityscanner_hybrid}"
+  },
+  "fig:risk_noninterchangeability": {
+    "number": "2",
+    "page": "10",
+    "doc": "main.aux",
+    "owner": "main.tex",
+    "refs": [
+      1311
+    ],
+    "caption": "\\caption{Target and arrival-risk changes on NSW-Traffic.\nComplete-aligned selection: (a)~mean $\\pm$ sample SD over 20 paired seeds of\n$D_{\\mathrm{aligned}}=\\Delta\\mathrm{RMSE}_{\\mu}-\\Delta\\mathrm{RMSE}_{\\rho}$;\nzero denotes equal changes. Negative $D$ means a larger arrival-risk change.\n(b)~Negative-seed counts; dotted line: 10/20. Counts describe direction,\nnot significance or performance ranking.}"
+  },
+  "fig:g3_tdrive": {
+    "number": "3",
+    "page": "10",
+    "doc": "main.aux",
+    "owner": "main.tex",
+    "refs": [
+      1337
+    ],
+    "caption": "\\caption{T-Drive opportunity and target mismatch.\n(a)~Deployment target $\\boldsymbol\\mu$, real taxi $R$, and unit-balanced\nreference. (b)~Four-block $\\mathrm{TV}(\\pi^{\\mathrm{opp}},\\boldsymbol\\mu)$;\nSS/UA denote the Complete-aligned SensorScope/U-Air protocols. The dotted $0.05$\nline is the pre-specified mismatch-diagnostic threshold.}"
+  },
+  "tab:tdrive_hybrid": {
+    "number": "III",
+    "page": "10",
+    "doc": "main.aux",
+    "owner": "main.tex",
+    "refs": [
+      1337
+    ],
+    "caption": "\\caption{T-Drive comparison under real sensing opportunities.\nReal taxi $R$, controlled $O/U$; mean $\\pm$ SD over ten seeds; 178 windows;\nlower is better. WorstGroupRMSE uses UTC H1--H4.\nFedAvg, FedAU and ObsUse are Window variants.}"
+  },
+  "tab:trained_rules": {
+    "number": "IV",
+    "page": "11",
+    "doc": "main.aux",
+    "owner": "main.tex",
+    "refs": [
+      1400,
+      1454
+    ],
+    "caption": "\\caption{Trained aggregation rules on matched Design-on support.\nMeans over 20 paired seeds per dataset; lower is better.\nWall is wall-clock seconds per run. U-Air Count uses RAVEN-Design support,\nunlike unrestricted FedAvg in Table~\\ref{tab:main_effectiveness}.\n}"
+  },
+  "tab:main_effectiveness": {
+    "number": "V",
+    "page": "11",
+    "doc": "main.aux",
+    "owner": "main.tex",
+    "refs": [
+      1403,
+      1411,
+      1473
+    ],
+    "caption": "\\caption{Controlled station-protocol comparison.\nAlways-on protocol $R$ with constructed $O/U$; mean $\\pm$ SD over 20 paired\nseeds, lower is better. FedAvg, FedAU and ObsUse are Window variants;\nboth fixed Design settings are shown.}"
+  },
+  "fig:w1_design_gate": {
+    "number": "4",
+    "page": "11",
+    "doc": "main.aux",
+    "owner": "main.tex",
+    "refs": [
+      1480
+    ],
+    "caption": "\\caption{Design sensitivity under estimated and oracle propensities.\n(a)~Group mismatch; (b)~target RMSE. Bars show\n$100(M_{\\mathrm{Design}}-M_{\\mathrm{NoDesign}})/M_{\\mathrm{NoDesign}}$\nover 20 seeds; positive means Design is worse.}"
+  },
+  "tab:e4_ablation": {
+    "number": "VI",
+    "page": "12",
+    "doc": "main.aux",
+    "owner": "main.tex",
+    "refs": [
+      1548
+    ],
+    "caption": "\\caption{Component-removal effects.\nRelative changes (\\%) from full RAVEN: positive worsens, negative improves.\n$^\\ast$: Holm-adjusted $p<0.05$.}"
+  },
+  "tab:cityscanner_sixarm": {
+    "number": "VII",
+    "page": "13",
+    "doc": "main.aux",
+    "owner": "main.tex",
+    "refs": [
+      1620
+    ],
+    "caption": "\\caption{City Scanner visit-occupancy target-map variants.\nMean $\\pm$ SD over ten trace means, each averaging three model seeds.\nPredictions share region weights and a training-standardized scale.\n$\\rho$ is the percentage of non-test delivered units assigned zero mass\n(zero with Design off). Group gaps use the common public region target;\nbold marks endpoint minima.}"
+  },
+  "tab:target_concentration": {
+    "number": "VIII",
+    "page": "13",
+    "doc": "main.aux",
+    "owner": "main.tex",
+    "refs": [
+      1731
+    ],
+    "caption": "\\caption{Target-concentration sensitivity on NSW-Traffic.\n$D$ is control minus oracle test RMSE in the original standardized units;\nrelative gain is $100\\overline D/\\overline{\\mathrm{RMSE}}_{\\mathrm{control}}$.\nIntervals and MDE use seed-paired analysis.}"
+  },
+  "tab:app_e1_balanced": {
+    "number": "IX",
+    "page": "5",
+    "doc": "supplemental.aux",
+    "owner": "appendix.tex",
+    "refs": [],
+    "caption": "\\caption{Balanced control over the five pre-specified paired seeds.}"
+  },
+  "tab:app_e2_daligned": {
+    "number": "X",
+    "page": "5",
+    "doc": "supplemental.aux",
+    "owner": "appendix.tex",
+    "refs": [],
+    "caption": "\\caption{Complete-aligned risk non-interchangeability statistics.\nCI denotes the 95\\% interval; $p$ is the paired Wilcoxon test of\n$D_{\\mathrm{aligned}}$ against zero.}"
+  },
+  "tab:e2_layer_matrix": {
+    "number": "XI",
+    "page": "6",
+    "doc": "supplemental.aux",
+    "owner": "appendix.tex",
+    "refs": [],
+    "caption": "\\caption{Risk responses to controlled selection layers on NSW-Traffic.\nChanges use the original standardized RMSE units; $\\times10^{-3}$ applies to\nboth range columns. Counts are Holm-significant methods out of five.}"
+  },
+  "tab:app_local_hajek": {
+    "number": "XII",
+    "page": "6",
+    "doc": "supplemental.aux",
+    "owner": "appendix.tex",
+    "refs": [],
+    "caption": "\\caption{Within-client weight constancy.}"
+  },
+  "tab:f1_mechanism": {
+    "number": "XIII",
+    "page": "6",
+    "doc": "supplemental.aux",
+    "owner": "appendix.tex",
+    "refs": [
+      1598
+    ],
+    "caption": "\\caption{Within-stratum observation-probability diversity. Distinct probabilities are\ncounted per opportunity stratum; entries are stratum means. The block marginal\nis preserved by construction.}"
+  },
+  "tab:app_p2_coverage": {
+    "number": "XIV",
+    "page": "6",
+    "doc": "supplemental.aux",
+    "owner": "appendix.tex",
+    "refs": [],
+    "caption": "\\caption{P2 feasibility-certificate coverage in the formal protocol blocks.}"
+  },
+  "tab:app_p2_warning_audit": {
+    "number": "XV",
+    "page": "6",
+    "doc": "supplemental.aux",
+    "owner": "appendix.tex",
+    "refs": [],
+    "caption": "\\caption{Numerical feasibility of warning-affected P2 allocations.}"
+  },
+  "tab:nearest_neighbor": {
+    "number": "XVI",
+    "page": "7",
+    "doc": "supplemental.aux",
+    "owner": "appendix.tex",
+    "refs": [
+      1144
+    ],
+    "caption": "\\caption{Selection mechanisms and their information requirements.}"
+  },
+  "tab:underserved_block": {
+    "number": "XVII",
+    "page": "7",
+    "doc": "supplemental.aux",
+    "owner": "appendix.tex",
+    "refs": [
+      1544
+    ],
+    "caption": "\\caption{Validation RMSE in under-served UTC blocks.\nRelative changes (\\%) over ten paired validation seeds versus\nFedAU-Window/ObsUse-Window; negative favors RAVEN.\nDesign is on for SensorScope and off for U-Air.\nImprovement/no-harm thresholds are $\\le-0.5\\%$/$\\le+0.5\\%$.}"
+  },
+  "fig:e3_structural": {
+    "number": "5",
+    "page": "7",
+    "doc": "supplemental.aux",
+    "owner": "appendix.tex",
+    "refs": [],
+    "caption": "\\caption{Structural mismatch under the frozen station protocols.\nMean $\\pm$ sample SD over 20 paired seeds; lower is better.\n(a)(b)~SensorScope group/client--stratum mismatch; (c)(d)~U-Air counterparts.\nRAVEN-Design is on in both datasets; some active sets differ from\nTable~\\ref{tab:app_e3_uair}, precluding a matched-support comparison.}"
+  },
+  "fig:e3_prediction": {
+    "number": "6",
+    "page": "8",
+    "doc": "supplemental.aux",
+    "owner": "appendix.tex",
+    "refs": [],
+    "caption": "\\caption{Prediction error under the frozen station protocols.\nMean $\\pm$ sample SD over 20 paired seeds; lower is better.\n(a)(b)~SensorScope target/Tail RMSE; (c)(d)~U-Air counterparts.\nRAVEN-Design is on; support identities follow Fig.~\\ref{fig:e3_structural}.}"
+  },
+  "tab:app_e3_sensorscope": {
+    "number": "XVIII",
+    "page": "8",
+    "doc": "supplemental.aux",
+    "owner": "appendix.tex",
+    "refs": [],
+    "caption": "\\caption{SensorScope method comparison.\nMean $\\pm$ SD over 20 seeds; lower is better.\n$^\\dagger$ denotes reference-only context.}"
+  },
+  "tab:app_e3_uair": {
+    "number": "XIX",
+    "page": "9",
+    "doc": "supplemental.aux",
+    "owner": "appendix.tex",
+    "refs": [],
+    "caption": "\\caption{U-Air method comparison.\nMean $\\pm$ SD over 20 seeds; lower is better.\n$^\\dagger$ denotes reference-only context. Rows reading $\\pi^{\\mathrm{tar}}$\nrestrict support; others, including FedAvg, retain all delivered clients.\nThat FedAvg support differs from Figs.~\\ref{fig:e3_structural}\nand~\\ref{fig:e3_prediction}. RAVEN uses Design on.}"
+  },
+  "tab:traffic_four_region": {
+    "number": "XX",
+    "page": "9",
+    "doc": "supplemental.aux",
+    "owner": "appendix.tex",
+    "refs": [],
+    "caption": "\\caption{NSW-Traffic comparison under a four-region target.\nMean $\\pm$ SD over ten seeds; 100 windows; lower is better.\nBold marks endpoint minima.}"
+  },
+  "tab:app_block_rmse": {
+    "number": "XXI",
+    "page": "10",
+    "doc": "supplemental.aux",
+    "owner": "appendix.tex",
+    "refs": [],
+    "caption": "\\caption{Per-group RMSE across four UTC blocks.\nMean $\\pm$ SD over 20 paired seeds; lower is better.\nWG denotes $\\max_g\\mathrm{RMSE}_g$. Both fixed Design settings are shown.}"
+  },
+  "tab:app_runtime": {
+    "number": "XXII",
+    "page": "10",
+    "doc": "supplemental.aux",
+    "owner": "appendix.tex",
+    "refs": [],
+    "caption": "\\caption{Runtime on the risk-semantic workloads.\nWall-clock seconds per run, mean $\\pm$ SD.}"
+  },
+  "tab:int_r_occ": {
+    "number": "XXIII",
+    "page": "10",
+    "doc": "supplemental.aux",
+    "owner": "appendix.tex",
+    "refs": [],
+    "caption": "\\caption{INT-R occupancy on shared event traces.\nEight logical clients; burstiness is Goh--Barab\\'asi on pooled inter-active\ngaps. $\\mathrm{TV}$ uses $A=1$ risk sets and training units only.}"
+  },
+  "fig:certificate_audit": {
+    "number": "7",
+    "page": "10",
+    "doc": "supplemental.aux",
+    "owner": "appendix.tex",
+    "refs": [],
+    "caption": "\\caption{Coverage-controlled Design diagnostics.\n(a)~CERTIFIED $C_t$ versus $C_t^{\\mathrm{LCB}}$: crosses show miscoverage,\ndashed $y=x$, dotted $\\tau_{\\mathrm{cov}}=0.05$.\n(b)~SensorScope $a=0.40$: gray WARMUP, warm RESET; the cross triggers\nnext-window RESET. This Gate diagnostic is separate from configured Design.}"
+  },
+  "tab:int_r_e3": {
+    "number": "XXIV",
+    "page": "11",
+    "doc": "supplemental.aux",
+    "owner": "appendix.tex",
+    "refs": [],
+    "caption": "\\caption{Station-protocol comparison under intermittent opportunities.\nMean $\\pm$ SD over 20 paired seeds; lower is better.\nRAVEN's fixed Design settings are listed per row.}"
+  },
+  "tab:app_a5_a6_audit": {
+    "number": "XXV",
+    "page": "11",
+    "doc": "supplemental.aux",
+    "owner": "appendix.tex",
+    "refs": [
+      1704
+    ],
+    "caption": "\\caption{Support and stabilization on station traces.\nFloor/ceiling activation percentages use observed client-windows.\nThe mass minimum omits opportunity correction. Composite ceilings and\n$\\varepsilon_{\\mathrm{stab}}$ use true margins on active support over 20\nDesign-on runs; the latter reports median/p95/max.}"
+  },
+  "tab:certificate_stress": {
+    "number": "XXVI",
+    "page": "12",
+    "doc": "supplemental.aux",
+    "owner": "appendix.tex",
+    "refs": [],
+    "caption": "\\caption{Coverage-controlled Design under availability stress.\nValidity is the CERTIFIED fraction with $C^{\\mathrm{LCB}}\\le C$;\nFSR is the false-safe rate among CERTIFIED windows with $C<\\tau_{\\mathrm{cov}}$.\nDuty and Gate ON are the CERTIFIED and Gate-on fractions of all windows,\nrespectively.}"
+  },
+  "tab:scd_phi_freeze": {
+    "number": "XXVII",
+    "page": "12",
+    "doc": "supplemental.aux",
+    "owner": "appendix.tex",
+    "refs": [],
+    "caption": "\\caption{Offline zero-target counts for attached clients.\nFrozen $\\pi^{\\mathrm{tar}}(k(i),s(i))$; missing keys count as zero.\nDesign uses rule~\\eqref{eq:design_gate}.}"
+  },
+  "tab:cityscanner_sixarm_cs": {
+    "number": "XXVIII",
+    "page": "12",
+    "doc": "supplemental.aux",
+    "owner": "appendix.tex",
+    "refs": [
+      1669
+    ],
+    "caption": "\\caption{Client--stratum gaps across City Scanner target maps.\nMean $\\pm$ SD over ten trace means, each using three model seeds.\nTargets are arm-specific, so gaps do not rank common-target alignment.}"
+  },
+  "tab:learning_capacity": {
+    "number": "XXIX",
+    "page": "13",
+    "doc": "supplemental.aux",
+    "owner": "appendix.tex",
+    "refs": [],
+    "caption": "\\caption{Central-delivered Common-NDMF validation against simple baselines.\nThree development seeds; physical units. Gains are mean seed-paired relative\nimprovements over the strongest applicable simple baseline.}"
+  },
+  "fig:learning_capacity": {
+    "number": "8",
+    "page": "13",
+    "doc": "supplemental.aux",
+    "owner": "appendix.tex",
+    "refs": [],
+    "caption": "\\caption{Centralized learning curves across datasets.\nCentral-delivered seeds 41001--41003; training/validation RMSE by row,\nphysical units by column. Lines/shading show means/seed min--max;\ndotted validation baselines are seed means. The log axis counts effective\npasses.}"
+  },
+  "tab:arrival_support": {
+    "number": "XXX",
+    "page": "14",
+    "doc": "supplemental.aux",
+    "owner": "appendix.tex",
+    "refs": [],
+    "caption": "\\caption{Arrival-log geometry. Masses are percentages of positive target\nmass. L1 is the shared minimum $\\ell_1$ distance on $M^{\\mathrm{arr}}$.}"
+  },
+  "tab:development_geometry": {
+    "number": "XXXI",
+    "page": "14",
+    "doc": "supplemental.aux",
+    "owner": "appendix.tex",
+    "refs": [],
+    "caption": "\\caption{Natural-window geometry under the separate development protocol.\nSeeds 41001--41003, cap .5, ESS minimum 3.}"
+  },
+  "tab:geometry_sensitivity": {
+    "number": "XXXII",
+    "page": "14",
+    "doc": "supplemental.aux",
+    "owner": "appendix.tex",
+    "refs": [],
+    "caption": "\\caption{NSW-Traffic geometry under cap and ESS changes.\n183 fixed-$K=8$ subsets. $E$: minimum ESS; cap: maximum weight;\nrepair: mean $\\|\\operatorname{Proj}_{\\mathcal C}(\\widehat\\beta)-\\widehat\\beta\\|_2$.\nAdjustable mass remains $4.651\\%$.}"
+  },
+  "tab:release_timing": {
+    "number": "XXXIII",
+    "page": "14",
+    "doc": "supplemental.aux",
+    "owner": "appendix.tex",
+    "refs": [],
+    "caption": "\\caption{Traffic release-control diagnostics.\nOne development seed; $G$, $W$, and $J$: lower is better.}"
+  }
+}

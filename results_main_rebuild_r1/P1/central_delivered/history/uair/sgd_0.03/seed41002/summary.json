@@ -1,0 +1,20 @@
+{
+  "dataset": "uair",
+  "seed": 41002,
+  "model": "history",
+  "optimizer": "sgd",
+  "lr": 0.03,
+  "RMSE_mu": 21.161180598902117,
+  "best_pass": 1,
+  "best_at_100": 21.161180598902117,
+  "improvement_100_to_200": 0.0,
+  "plateau_pass": true,
+  "strongest_baseline": "spatial_mean",
+  "baseline_RMSE": 20.3891640803476,
+  "relative_gain": -0.03786405933623513,
+  "meaningful_validation_pass": false,
+  "elapsed_seconds": 3.9840000000003783,
+  "samples_processed": 60000,
+  "optimizer_steps": 1000,
+  "run": "P1\\central_delivered\\history\\uair\\sgd_0.03\\seed41002"
+}

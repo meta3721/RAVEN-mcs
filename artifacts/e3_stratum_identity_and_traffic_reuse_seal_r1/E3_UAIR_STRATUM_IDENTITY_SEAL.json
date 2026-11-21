@@ -1,0 +1,22 @@
+{
+  "coarse_spatial_region_rule": "spatial_id itself (no further coarsening)",
+  "current_mapping_hash": "82daff8e78703319675b18ac22ac614d9d406abab909d4bd1fda83ba9cf4101b",
+  "dataset": "uair",
+  "equality_compatibility": "MATCHES_PRIOR_FROZEN_STATION_LEVEL",
+  "exact_s_mapping": "spatial_id::block{k}::{weekday|weekend}",
+  "identity_status": "FROZEN_IDENTITY_CONFIRMED",
+  "no_new_clustering": true,
+  "nonempty_stratum_cardinality": 288,
+  "previous_frozen_artifact": "configs/frozen/e3_multidataset_protocol_closure/uair/opportunity_strata.json",
+  "raw_spatial_unit": "station/node spatial_id",
+  "source_files": [
+    "configs/frozen/e3_multidataset_protocol_closure/uair/opportunity_strata.json",
+    "src/raven_mcs/data/matrix_adapter.py"
+  ],
+  "source_hashes": {
+    "opportunity_strata.json": "fb5b6f40db00dafd9677f0b502c9c85f62a67f5d7a0be941321d79340c92be4c"
+  },
+  "time_block_rule": "UTC hour//6 → block0..3",
+  "total_raw_stratum_cardinality": 288,
+  "weekday_weekend_rule": "weekday_label"
+}

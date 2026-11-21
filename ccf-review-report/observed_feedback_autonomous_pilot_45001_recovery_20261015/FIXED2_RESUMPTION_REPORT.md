@@ -1,0 +1,5 @@
+# fixed2普通设施暂停与真实恢复
+
+{"status": "PASS", "original_state_hash_equal_before_any_SGD_or_events": true, "producer_RNG_hash_equal": true, "restored_now": 5, "restored_logical_SGD": 170, "next_grid": 51, "original_clock": {"run_id": "OF-v1/P1_autonomous_P3_pre_pilot/45001/fixed_time_2/fixed2", "origin_utc": "2026-10-15T07:52:28.677546+00:00", "unit": "controlled_service_unit", "UTC_bridge": "actual notice UTC; logical service units are not elapsed UTC"}, "actual_resume_UTC": "2026-10-15T08:08:05.604089+00:00", "parent_marker": "C:\\Cursor\\raven.mcs\\results_observed_feedback_autonomous_pilot_45001_recovery_20261015\\fixed2\\trajectory\\tick0050.complete.json", "known_prior_physical_steps": 266, "known_discarded_SGD": 96, "physical_guard": "S+96+1<=5000", "fresh_model_initialization": false}
+
+原t8.11暂停点/完整费用保留；恢复t5有完整训练帧与私有抽样上下文，50原始行逐字节保留、950新成功行独立拼接。未重建初值，不依据效用选择恢复点。原物理266−保存170=96已知重做，最终物理为逻辑S+96；原费用和274.534386秒不回退，后续恢复仍扣剩余7200及阶段9000。SESSION通用offset字段是守卫保守偏移，终审将这96明确归为已知重做，非未知失联工作。

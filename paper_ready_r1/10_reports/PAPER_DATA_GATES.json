@@ -1,0 +1,128 @@
+{
+  "all_pass": true,
+  "gates": {
+    "G1": {
+      "detail": "no training invoked by packaging pipeline",
+      "pass": true
+    },
+    "G10": {
+      "detail": "wo_inst gens in core={'2'} n=40",
+      "pass": true
+    },
+    "G11": {
+      "detail": "gen0/gen1 archive present=True/True",
+      "pass": true
+    },
+    "G12": {
+      "detail": "design audit rows=774",
+      "pass": true
+    },
+    "G13": {
+      "detail": "suspicious missing->zero status hits=0",
+      "pass": true
+    },
+    "G14": {
+      "detail": "suspicious N/A->zero status hits=0",
+      "pass": true
+    },
+    "G15": {
+      "detail": "traffic rows in main E3 table=0",
+      "pass": true
+    },
+    "G16": {
+      "detail": "missing_meta=[]",
+      "pass": true
+    },
+    "G17": {
+      "detail": "missing_meta=[]",
+      "pass": true
+    },
+    "G18": {
+      "detail": "claim ids=['C1', 'C2', 'C3', 'C4', 'C5', 'C6', 'C7', 'C8', 'C9']",
+      "pass": true
+    },
+    "G19": {
+      "detail": "comparability rows=6",
+      "pass": true
+    },
+    "G2": {
+      "detail": "pipeline writes only under paper_ready_r1/ and deliverables/; sealed artifacts read-only",
+      "pass": true
+    },
+    "G20": {
+      "detail": "canonical mapping present",
+      "pass": true
+    },
+    "G21": {
+      "detail": "attempt ledger rows=1160",
+      "pass": true
+    },
+    "G22": {
+      "detail": "hash registry rows=7",
+      "pass": true
+    },
+    "G23": {
+      "detail": "core=True full=True",
+      "pass": true
+    },
+    "G24": {
+      "detail": "{'extra': [], 'mismatch': [], 'missing': [], 'n_manifest': 101, 'pass': True, 'zip': 'D:\\\\Cursor\\\\raven.mcs\\\\deliverables\\\\RAVEN_MCS_PAPER_DATA_CORE_R1.zip'}",
+      "pass": true
+    },
+    "G25": {
+      "detail": "{'extra': [], 'mismatch': [], 'missing': [], 'n_manifest': 4753, 'pass': True, 'zip': 'D:\\\\Cursor\\\\raven.mcs\\\\deliverables\\\\RAVEN_MCS_PAPER_DATA_FULL_EVIDENCE_R1.zip'}",
+      "pass": true
+    },
+    "G26": {
+      "detail": "tdrive status=NOT_READY_OTHER; formal_started=False",
+      "pass": true
+    },
+    "G27": {
+      "detail": "no E5/E6/E7/E8 started by packaging",
+      "pass": true
+    },
+    "G28": {
+      "detail": "no new seed/dataset/baseline/metric created",
+      "pass": true
+    },
+    "G29": {
+      "detail": "missing report present=True",
+      "pass": true
+    },
+    "G3": {
+      "detail": "E1 runs=25; missing_report=False",
+      "pass": true
+    },
+    "G30": {
+      "detail": "extra data report present=True",
+      "pass": true
+    },
+    "G4": {
+      "detail": "E2 accepted-run count=600",
+      "pass": true
+    },
+    "G5": {
+      "detail": "E2 EventTrace index=120",
+      "pass": true
+    },
+    "G6": {
+      "detail": "E3 evidence index rows=660",
+      "pass": true
+    },
+    "G7": {
+      "detail": "main comparable datasets=['SensorScope', 'U-Air']",
+      "pass": true
+    },
+    "G8": {
+      "detail": "traffic not-comparable rows=220",
+      "pass": true
+    },
+    "G9": {
+      "detail": "E4 core cells=240",
+      "pass": true
+    }
+  },
+  "n_fail": 0,
+  "n_gates": 30,
+  "n_pass": 30
+}

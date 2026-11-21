@@ -1,0 +1,9 @@
+{
+  "construction": "P(client)*P(stratum|client) normalized to sum_{k,s}=1",
+  "design_ratio": "zeta = pi_tar / max(pi_opp_joint, pi_min)",
+  "scale": "JOINT_CLIENT_STRATUM",
+  "status": "JOINT_SCALE_READY",
+  "sum_pi_opp_joint": 1.0000000000000002,
+  "sum_pi_tar": 1.0,
+  "unsupported_positive_target_detected": false
+}

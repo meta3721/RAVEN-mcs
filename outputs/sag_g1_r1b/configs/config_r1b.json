@@ -1,0 +1,64 @@
+{
+  "datasets": [
+    "sensorscope",
+    "uair"
+  ],
+  "g0_config_hash": "9da4ad35491687faebb25defab39f9b655fe8128cb005904879dde9802d8be6a",
+  "git_commit": "a7f02f08cba2c7038d60d41d24042fbc57c402fd",
+  "local_steps": 2,
+  "methods": [
+    "raven",
+    "raven_wo_design",
+    "raven_sag"
+  ],
+  "mode": "g1_r1b_1seed",
+  "paper_n_groups": 4,
+  "pi_safe": {
+    "fitted_on": "public opportunity joint × target-positive pairs",
+    "per_dataset": {
+      "sensorscope": {
+        "candidates": {
+          "q05": 0.0006326708489355371,
+          "q10": 0.0006326708489355371,
+          "q25": 0.000773264370921212
+        },
+        "fitted_on": "public_pi_opp_joint × pi_target support; no labels, no test Y, no ON/OFF",
+        "n_positive_target_pairs": 440,
+        "rule": "q10 of public pi_opp_joint on {pi_tar>0} pairs (R1 provisional, not reselected)",
+        "source": "public_pi_opp_joint_quantile_on_target_positive_pairs",
+        "status": "PROVISIONAL_REQUIRES_LATER_FREEZE",
+        "uses_labels": false,
+        "uses_test": false,
+        "value": 0.0006326708489355371
+      },
+      "uair": {
+        "candidates": {
+          "q05": 0.0013918758676581813,
+          "q10": 0.0013918758676581813,
+          "q25": 0.0013918758676581813
+        },
+        "fitted_on": "public_pi_opp_joint × pi_target support; no labels, no test Y, no ON/OFF",
+        "n_positive_target_pairs": 216,
+        "rule": "q10 of public pi_opp_joint on {pi_tar>0} pairs (R1 provisional, not reselected)",
+        "source": "public_pi_opp_joint_quantile_on_target_positive_pairs",
+        "status": "PROVISIONAL_REQUIRES_LATER_FREEZE",
+        "uses_labels": false,
+        "uses_test": false,
+        "value": 0.0013918758676581813
+      }
+    },
+    "rule": "q10 of public pi_opp_joint on {pi_tar>0} (R1 provisional reused)",
+    "source": "provisional_pi_safe_from_public_opp",
+    "status": "PROVISIONAL_REQUIRES_LATER_FREEZE",
+    "uses_labels": false,
+    "uses_test": false,
+    "value_SensorScope": 0.0006326708489355371,
+    "value_UAir": 0.0013918758676581813
+  },
+  "seeds": [
+    30001
+  ],
+  "tau_unchanged": true,
+  "threshold_hash": "526343535887e2f1094916be22d0403032fab0b905e74ac588f2b1bc6613510e",
+  "timestamp": "2026-08-29T08:57:15.745926+00:00"
+}

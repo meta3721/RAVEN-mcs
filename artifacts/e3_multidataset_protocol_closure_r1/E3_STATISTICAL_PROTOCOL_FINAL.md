@@ -1,0 +1,5 @@
+# E3_STATISTICAL_PROTOCOL_FINAL
+
+EPS_ZERO = `1e-12`
+
+Primary metric: RMSE_mu

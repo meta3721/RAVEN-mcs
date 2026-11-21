@@ -1,0 +1,17 @@
+{
+  "label": "support_reserve",
+  "arm": null,
+  "root_CPU": 60.0,
+  "categories": {
+    "setup": 60.0
+  },
+  "wall": 0.0,
+  "wall_role": "included in stage activity interval; not separately measured",
+  "exit": "CONSERVATIVE_SUPPORT_ALLOWANCE",
+  "audit": false,
+  "actual_CPU": "UNKNOWN",
+  "scope": "PowerShell read/monitor/status helpers and delivery outside the measured experiment root; original30 preparation reserve remains; no duplicate charge of measured root driver or PID totals",
+  "planning_evidence": "latest status-only PowerShell process CPU0.5sec, not a root audit; allowance is not a measured total or proved upper bound",
+  "phase_limit_unchanged": 1800,
+  "actual_experiment_jobs_remain_metered": true
+}

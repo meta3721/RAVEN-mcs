@@ -1,0 +1,9 @@
+{
+  "causes": {
+    "ACCEPTANCE_GATE_FIX": "is not None accepted NaN.",
+    "PREPROCESSING_CONSISTENCY_FIX": "Evaluation used raw time_index while training used extract_features.",
+    "SOURCE_PROVENANCE_FIX": "Mid-canary code changes require a source freeze before execution.",
+    "UNIT_SCALE_FIX_PREPROCESSING": "Traffic measurement index was stale after z-score; U-Air raw PM2.5 with lr=0.01 was unstable."
+  },
+  "classification": "CORRECTNESS_ONLY_NOT_PERFORMANCE_TUNING"
+}

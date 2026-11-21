@@ -1,0 +1,139 @@
+{
+  "note": "exploratory only; the preregistered R1A_TOST.csv / R1A_DOSE.csv and the A3 decision are unchanged",
+  "tost": [
+    {
+      "variant": "stored_round_v4",
+      "contrast": "proj_beta - uniform_window",
+      "mean_diff": 0.003119870677760339,
+      "rel_diff": 0.002623156450639557,
+      "ci90_lo": 0.0011813788502901812,
+      "ci90_hi": 0.0050371627506787175,
+      "margin": 0.0059467872703507195,
+      "verdict": "equivalent",
+      "sd_pair": 0.0054039486763483285,
+      "mde_n20": 0.004035107681227329,
+      "n_for_0.25pct": 37,
+      "n_for_0.5pct": 10,
+      "comp_mean": 1.189357454070144
+    },
+    {
+      "variant": "stored_round_v4",
+      "contrast": "proj_beta - fedavg_window",
+      "mean_diff": 0.004239604089862081,
+      "rel_diff": 0.003567976353683001,
+      "ci90_lo": 5.111072868631226e-05,
+      "ci90_hi": 0.008773391957289014,
+      "margin": 0.00594118860329021,
+      "verdict": "harm",
+      "sd_pair": 0.012226630371370312,
+      "mde_n20": 0.009129577847949126,
+      "n_for_0.25pct": 189,
+      "n_for_0.5pct": 48,
+      "comp_mean": 1.1882377206580421
+    },
+    {
+      "variant": "stored_round_v4",
+      "contrast": "raven - proj_beta",
+      "mean_diff": -0.0013634001469183476,
+      "rel_diff": -0.001143334232545325,
+      "ci90_lo": -0.002335512117758279,
+      "ci90_hi": -0.00042050191895222805,
+      "margin": 0.005962386623739522,
+      "verdict": "equivalent",
+      "sd_pair": 0.0026948805684511583,
+      "mde_n20": 0.0020122569500596447,
+      "n_for_0.25pct": 10,
+      "n_for_0.5pct": 3,
+      "comp_mean": 1.1924773247479044
+    },
+    {
+      "variant": "stored_round_v4",
+      "contrast": "proj_beta_debt - proj_beta",
+      "mean_diff": -0.0021027541416645534,
+      "rel_diff": -0.0017633493719547968,
+      "ci90_lo": -0.0038851700561699978,
+      "ci90_hi": -0.0003237596619953751,
+      "margin": 0.005962386623739522,
+      "verdict": "equivalent",
+      "sd_pair": 0.005051326780633653,
+      "mde_n20": 0.003771806268651975,
+      "n_for_0.25pct": 33,
+      "n_for_0.5pct": 9,
+      "comp_mean": 1.1924773247479044
+    },
+    {
+      "variant": "checkpoint_recomputed",
+      "contrast": "proj_beta - uniform_window",
+      "mean_diff": 0.003418298273016496,
+      "rel_diff": 0.0028641174166651904,
+      "ci90_lo": 0.0012897411699453294,
+      "ci90_hi": 0.005511896740049807,
+      "margin": 0.005967454848615391,
+      "verdict": "equivalent",
+      "sd_pair": 0.00591502912169687,
+      "mde_n20": 0.00441672948303625,
+      "n_for_0.25pct": 44,
+      "n_for_0.5pct": 11,
+      "comp_mean": 1.1934909697230782
+    },
+    {
+      "variant": "checkpoint_recomputed",
+      "contrast": "proj_beta - fedavg_window",
+      "mean_diff": 0.00465834563981804,
+      "rel_diff": 0.003907185603691235,
+      "ci90_lo": 0.0003469851791676809,
+      "ci90_hi": 0.009319213282060439,
+      "margin": 0.005961254611781383,
+      "verdict": "harm",
+      "sd_pair": 0.01250368200000188,
+      "mde_n20": 0.009336451232902,
+      "n_for_0.25pct": 197,
+      "n_for_0.5pct": 50,
+      "comp_mean": 1.1922509223562767
+    },
+    {
+      "variant": "checkpoint_recomputed",
+      "contrast": "raven - proj_beta",
+      "mean_diff": -0.0015436939185989097,
+      "rel_diff": -0.0012897334492057307,
+      "ci90_lo": -0.0025911482354589763,
+      "ci90_hi": -0.000518101519915465,
+      "margin": 0.005984546339980475,
+      "verdict": "equivalent",
+      "sd_pair": 0.002911678475349194,
+      "mde_n20": 0.0021741391128616444,
+      "n_for_0.25pct": 11,
+      "n_for_0.5pct": 3,
+      "comp_mean": 1.1969092679960949
+    },
+    {
+      "variant": "checkpoint_recomputed",
+      "contrast": "proj_beta_debt - proj_beta",
+      "mean_diff": -0.0022121304203478465,
+      "rel_diff": -0.001848202265198822,
+      "ci90_lo": -0.003978200407206882,
+      "ci90_hi": -0.00045740271102274424,
+      "margin": 0.005984546339980475,
+      "verdict": "equivalent",
+      "sd_pair": 0.004998490322853591,
+      "mde_n20": 0.0037323534889521425,
+      "n_for_0.25pct": 32,
+      "n_for_0.5pct": 8,
+      "comp_mean": 1.1969092679960949
+    }
+  ],
+  "dose": [
+    {
+      "variant": "stored_round_v4",
+      "slope": -0.10787514725263585,
+      "implied_at_max_gain": 0.005813751931188343,
+      "max_dgroup_gain": -0.053893339469312185
+    },
+    {
+      "variant": "checkpoint_recomputed",
+      "slope": -0.12235317794017829,
+      "implied_at_max_gain": 0.0065940213538791875,
+      "max_dgroup_gain": -0.053893339469312185
+    }
+  ]
+}

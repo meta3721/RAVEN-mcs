@@ -1,0 +1,9 @@
+{
+  "Delta_c_s": "sum |Pi_hat_ks - pi_tar_ks| via delta_c_s",
+  "Delta_pair": "||Pi_hat - pi_tar||_1 via raven_mcs.metrics.distribution.delta_pair",
+  "created_utc": "2026-08-09T16:46:02.716360+00:00",
+  "emission_module": "raven_mcs.e3.protocol_closure.pair_state",
+  "required_before_canary": true,
+  "schema_version": "E3_PAIR_STATE_SCHEMA_V1",
+  "status": "PAIR_METRIC_READY"
+}

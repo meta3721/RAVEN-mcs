@@ -1,0 +1,9 @@
+# 保留的根账发布错误
+
+four_paths_attempt3在已运行的同一worker中出现PermissionError WinError5：原子替换ROOT_BUDGET_LIVE.pending→ROOT_BUDGET_LIVE.json时被读取句柄阻止。外层meter异常退出并在finally终止所属Job，没有完成最终Job/PID审计文件；不能补写实际CPU或audit=true。
+
+该调用工具报告全调用墙钟9.592474秒。Job固定一个CPU，外层监视最多一个CPU，按2×(ceil(9.592474)+1)=22 CPU秒保守计费；实耗未知。日志和当时部分用例证据保留。这22秒与本批30秒阅读/编辑保守费用分开，不伪装成实际测量。
+
+新OF-v1根账客户端使用Windows FILE_SHARE_DELETE，保留原schema、root_id、stale≤1秒、finished拒绝和剩余额度扣减。attempt4仍出现相同替换错误，锁句柄持有方未识别，不能把读取句柄认定为唯一根因；该调用墙钟9.3169056秒，另保守计22 CPU秒，实耗未知。
+
+随后在本批启动器绑定新的AtomicPublisher子类，仅对原子rename的暂态PermissionError最多重试10次、间隔5毫秒；保留首次实际测量的timestamp/cost，不把延迟后的旧CPU值标成新值，reader仍按年龄扣减。未改旧设施源码或重跑设施基准。外层meter异常的费用记录也补齐保守墙钟界，不能缺账。下一次同四用例完整执行必须重新提供有效最终根审计。

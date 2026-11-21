@@ -1,0 +1,75 @@
+{
+  "chosen_family": "e3_complete_aligned",
+  "chosen_mean_tv": 0.35637800170171524,
+  "created_utc": "2026-10-07T07:25:48.892429+00:00",
+  "eligibility": [
+    {
+      "family": "e3_complete_aligned",
+      "mean_share_le2": 0.0669078947368421,
+      "mean_tv": 0.35637800170171524,
+      "n_screen_seeds": 5,
+      "passes_le2_bar": true,
+      "passes_tv_bar": true
+    },
+    {
+      "family": "balanced",
+      "mean_share_le2": 0.0,
+      "mean_tv": 0.13150147172001012,
+      "n_screen_seeds": 5,
+      "passes_le2_bar": true,
+      "passes_tv_bar": true
+    },
+    {
+      "family": "complete_aligned",
+      "mean_share_le2": 0.0669078947368421,
+      "mean_tv": 0.35637800170171524,
+      "n_screen_seeds": 5,
+      "passes_le2_bar": true,
+      "passes_tv_bar": true
+    },
+    {
+      "family": "complete_counteracting",
+      "mean_share_le2": 0.0,
+      "mean_tv": 0.23416817334986528,
+      "n_screen_seeds": 5,
+      "passes_le2_bar": true,
+      "passes_tv_bar": true
+    },
+    {
+      "family": "observation_only",
+      "mean_share_le2": 0.0020833333333333333,
+      "mean_tv": 0.18389765511917527,
+      "n_screen_seeds": 5,
+      "passes_le2_bar": true,
+      "passes_tv_bar": true
+    },
+    {
+      "family": "opportunity_only",
+      "mean_share_le2": 0.0,
+      "mean_tv": 0.19330731994406192,
+      "n_screen_seeds": 5,
+      "passes_le2_bar": true,
+      "passes_tv_bar": true
+    },
+    {
+      "family": "usable_only",
+      "mean_share_le2": 0.0,
+      "mean_tv": 0.1571224933388876,
+      "n_screen_seeds": 5,
+      "passes_le2_bar": true,
+      "passes_tv_bar": true
+    }
+  ],
+  "go": true,
+  "instruction_sha256": "25f580aa4e2824daa931addab39eadee67319a24fc89c11ce7f2cf9aa552bb36",
+  "le2_share_bar": 0.25,
+  "needs_central_delivered_on_chosen_family": false,
+  "screen_seeds": [
+    30001,
+    30002,
+    30003,
+    30004,
+    30005
+  ],
+  "tv_bar": 0.1
+}

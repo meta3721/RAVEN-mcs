@@ -1,0 +1,24 @@
+{
+  "audit": {
+    "E1_real_region_cluster_available": false,
+    "client_id_derived_region_count": 0,
+    "coordinate_file_found": null,
+    "coordinate_source": null,
+    "e1_spatial_partition": "none",
+    "groups_config_hash": "11f5974839e18716fa53f69c44b570106a944dcd50ccfebc3ff1b4f25399c579",
+    "missing_coordinate_count": 55,
+    "note": "No SensorScope lat/lon registry in-repo; E1 spatial_partition=none; client-id folding rejected as non-true spatial identity.",
+    "rejected_client_id_fold": {
+      "method": "e1_frozen_client_region_mapping_v1",
+      "reason": "client-id-derived regions are forbidden in this round",
+      "rejected": true
+    },
+    "source_hash": null,
+    "station_count": 55,
+    "station_identity_symmetric_difference": 0,
+    "status": "BLOCKED_NO_VALID_SPATIAL_IDENTITY",
+    "synthetic_usage_count": 0
+  },
+  "station_count": 55,
+  "status": "BLOCKED_NO_VALID_SPATIAL_IDENTITY"
+}

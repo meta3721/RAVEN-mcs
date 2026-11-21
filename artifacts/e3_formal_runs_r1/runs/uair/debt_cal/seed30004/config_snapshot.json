@@ -1,0 +1,15 @@
+{
+  "dataset": "uair",
+  "local_steps": 2,
+  "method": "debt_cal",
+  "metric_schema_version": "E3_REAL_METRIC_OUTPUT_SCHEMA_V6",
+  "n_groups_frozen": 144,
+  "n_groups_runtime": 144,
+  "pair_state_schema_version": "E3_DELTA_CS_STATE_SCHEMA_V6",
+  "path": "REAL",
+  "scenario": "complete_aligned",
+  "seed": 30004,
+  "target_artifact_path": "artifacts/e3_semantic_alignment_and_runner_integration_closure_r1/E3_UAIR_TARGET_SEMANTICS_R2.json",
+  "target_artifact_sha256": "c158ec34582e1124e3b7f72e6ac55dd1b2130a5cf9f030a5ac231e81e8ac39b8",
+  "uses_spatial_time_target": true
+}

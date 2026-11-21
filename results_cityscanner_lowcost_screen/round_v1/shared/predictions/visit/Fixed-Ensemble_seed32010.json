@@ -1,0 +1,18 @@
+{
+  "block": "visit",
+  "method": "Fixed-Ensemble",
+  "seed": 32010,
+  "rule": "equal-average-v1",
+  "members": [
+    "fedavg_window",
+    "twostage_hajek"
+  ],
+  "weights": [
+    0.5,
+    0.5
+  ],
+  "deployment_inferences": 2,
+  "fitted_mixture": false,
+  "reproduction_pass": true,
+  "created_utc": "2026-10-19T00:36:05.079832+00:00"
+}

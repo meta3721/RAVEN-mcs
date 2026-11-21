@@ -1,0 +1,9 @@
+dataset,scd_method,comparator,metric,slice,n,seeds,mean_rel_pct
+sensorscope,raven,fedau_window,WorstGroupRMSE,ALL20,20,30001-30020,0.01895651523304511
+sensorscope,raven,fedau_window,WorstGroupRMSE,TEST10,10,30011-30020,-0.014566341957015453
+sensorscope,raven,obsuse_window,WorstGroupRMSE,ALL20,20,30001-30020,0.10262607233589187
+sensorscope,raven,obsuse_window,WorstGroupRMSE,TEST10,10,30011-30020,0.05474755207543449
+uair,raven_wo_design,fedau_window,WorstGroupRMSE,ALL20,20,30001-30020,0.002448245595786317
+uair,raven_wo_design,fedau_window,WorstGroupRMSE,TEST10,10,30011-30020,0.4782149758556299
+uair,raven_wo_design,obsuse_window,WorstGroupRMSE,ALL20,20,30001-30020,0.07533460121622045
+uair,raven_wo_design,obsuse_window,WorstGroupRMSE,TEST10,10,30011-30020,0.4430115514603389

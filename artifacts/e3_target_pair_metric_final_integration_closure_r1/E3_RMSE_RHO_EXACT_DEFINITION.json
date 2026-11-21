@@ -1,0 +1,16 @@
+{
+  "RMSE_mu": 0.7071067811865476,
+  "RMSE_rho": 0.8944271909999159,
+  "definition": {
+    "RMSE_mu": "target-weighted risk under mu (deployment support)",
+    "RMSE_rho": "delivered-observation group frequency mapped to test units",
+    "orientation": "y_pred vs y_true on test support",
+    "sample_support": "frozen TEST atomic units"
+  },
+  "differ": true,
+  "error_mu": 0.0,
+  "error_rho": 0.0,
+  "hand_mu": 0.7071067811865476,
+  "hand_rho": 0.8944271909999159,
+  "status": "PASS"
+}

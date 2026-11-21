@@ -1,0 +1,13 @@
+{
+  "label": "of_resume1",
+  "arm": "of_resume1",
+  "root_CPU": 2.15625,
+  "categories": {
+    "setup": 2.15625
+  },
+  "wall": 0.48417889999836916,
+  "exit": "KeyError('events')",
+  "traceback": "Traceback (most recent call last):\n  File \"C:\\Cursor\\raven.mcs\\scripts\\observed_feedback_pilot_budget.py\", line 45, in <module>\n    if a.arm:cats['events']+=max(0,cost-sum(cats.values()))\n             ~~~~^^^^^^^^^^\nKeyError: 'events'\n",
+  "audit": false,
+  "actual_CPU": "UNKNOWN; singleCPUwall+driver conservative bound"
+}

@@ -1,0 +1,65 @@
+{
+  "criterion": "RMSE_mu (deployment-target risk), paired over 20 seeds",
+  "class": "aggregation weights in C_r selected by (P2)",
+  "sign_convention": "positive = the first arm has larger RMSE_mu, i.e. the oracle arm is better",
+  "sensorscope": {
+    "source": "artifacts/e3_formal_runs_r1/runs/sensorscope/*/seed*/final_metrics.json",
+    "oracle_arm": "raven_simoracle (true p and q)",
+    "vs_oracle": {
+      "raven": {
+        "n": 20,
+        "mean_pct": 0.007967266552967766,
+        "ci_lo_pct": -0.024919326623796874,
+        "ci_hi_pct": 0.040853859729732406
+      },
+      "inst_cal": {
+        "n": 20,
+        "mean_pct": 0.007991199656112178,
+        "ci_lo_pct": -0.024942090818655525,
+        "ci_hi_pct": 0.04092449013087988
+      },
+      "local_hajek": {
+        "n": 20,
+        "mean_pct": 0.019507204508186396,
+        "ci_lo_pct": -0.03453439560151954,
+        "ci_hi_pct": 0.07354880461789233
+      },
+      "twostage_hajek": {
+        "n": 20,
+        "mean_pct": -0.08208870881157573,
+        "ci_lo_pct": -0.1973012751823332,
+        "ci_hi_pct": 0.03312385755918175
+      }
+    }
+  },
+  "uair_rebuilt": {
+    "source": "results_active_set_repair/round_v1/E2_UAIR_CELLS.csv",
+    "oracle_arm": "raven_simoracle (true p and q)",
+    "vs_oracle": {
+      "raven": {
+        "n": 20,
+        "mean_pct": -0.04024251916500836,
+        "ci_lo_pct": -0.17052715667135862,
+        "ci_hi_pct": 0.0900421183413419
+      },
+      "inst_cal": {
+        "n": 20,
+        "mean_pct": -0.03957547454316882,
+        "ci_lo_pct": -0.17067524701524786,
+        "ci_hi_pct": 0.0915242979289102
+      },
+      "local_hajek": {
+        "n": 20,
+        "mean_pct": -0.2925083928359885,
+        "ci_lo_pct": -0.8219303570831414,
+        "ci_hi_pct": 0.23691357141116445
+      },
+      "twostage_hajek": {
+        "n": 20,
+        "mean_pct": 2.037134617135863,
+        "ci_lo_pct": 1.3282551239238498,
+        "ci_hi_pct": 2.7460141103478755
+      }
+    }
+  }
+}

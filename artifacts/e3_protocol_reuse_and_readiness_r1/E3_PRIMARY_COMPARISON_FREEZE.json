@@ -1,0 +1,20 @@
+{
+  "EPS_ZERO": 1e-12,
+  "comparison_rule": {
+    "A": "paired RAVEN-vs-each-main-baseline on same seed/dataset/EventTrace",
+    "B": "no post-hoc strongest-baseline selection from E3 test outcomes",
+    "baseline_family": [
+      "fedavg_window",
+      "fedasync_window",
+      "flamf_timealign_adapted",
+      "local_hajek",
+      "twostage_hajek"
+    ],
+    "multiplicity": "Holm across scenario×baseline family declared before outcomes; primary family for Traffic Complee-aligned is RAVEN vs each MAIN_TABLE baseline (5).",
+    "strongest_baseline_rule": "NOT_SELECTED_FROM_E3_TEST; if needed use validation-only or report all-baseline Holm family"
+  },
+  "created_utc": "2026-08-09T15:41:08.371796+00:00",
+  "primary_method": "raven",
+  "primary_metric": "RMSE_mu",
+  "primary_scenario": "complete_aligned"
+}

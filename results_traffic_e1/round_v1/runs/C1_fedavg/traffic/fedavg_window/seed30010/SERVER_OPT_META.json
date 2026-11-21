@@ -1,0 +1,90 @@
+{
+  "arm": "fedavg_window",
+  "block": "traffic",
+  "created_utc": "2026-10-09T09:01:45.992916+00:00",
+  "diag_first": [
+    {
+      "active": true,
+      "applied": true,
+      "g_norm": 3.2994479936581294,
+      "m_norm": 0.3299447993658129,
+      "opt_move_norm": 0.2732260665031733,
+      "sgd_move_norm": 0.03299447993658129,
+      "t": 1,
+      "v_norm": 0.06825569410773331,
+      "window_id": 0
+    },
+    {
+      "active": true,
+      "applied": true,
+      "g_norm": 0.26895172616846036,
+      "m_norm": 0.27652835978981527,
+      "opt_move_norm": 0.1669807846338148,
+      "sgd_move_norm": 0.0026895172616846034,
+      "t": 2,
+      "v_norm": 0.06790758946604367,
+      "window_id": 1
+    },
+    {
+      "active": true,
+      "applied": true,
+      "g_norm": 0.6702033546714948,
+      "m_norm": 0.19373205761643034,
+      "opt_move_norm": 0.11882225502566689,
+      "sgd_move_norm": 0.006702033546714948,
+      "t": 3,
+      "v_norm": 0.06985865682549941,
+      "window_id": 2
+    }
+  ],
+  "diag_last": [
+    {
+      "active": true,
+      "applied": true,
+      "g_norm": 1.8986432992397366,
+      "m_norm": 0.30646710241428265,
+      "opt_move_norm": 0.09701178528191977,
+      "sgd_move_norm": 0.018986432992397367,
+      "t": 97,
+      "v_norm": 0.25188039564937137,
+      "window_id": 97
+    },
+    {
+      "active": true,
+      "applied": true,
+      "g_norm": 2.1518440750159944,
+      "m_norm": 0.4432645955477007,
+      "opt_move_norm": 0.11733224561221431,
+      "sgd_move_norm": 0.02151844075015994,
+      "t": 98,
+      "v_norm": 0.2575952563530417,
+      "window_id": 98
+    },
+    {
+      "active": true,
+      "applied": true,
+      "g_norm": 1.455840804925838,
+      "m_norm": 0.39606285974909244,
+      "opt_move_norm": 0.11114620748777418,
+      "sgd_move_norm": 0.01455840804925838,
+      "t": 99,
+      "v_norm": 0.25534748091833354,
+      "window_id": 99
+    }
+  ],
+  "local_steps": 2,
+  "n_windows_optimizer_applied": 99,
+  "reuse_guard_code_default": "DUPLICATE_REUSED_TRAFFIC_RUN_BLOCKED",
+  "reuse_guard_exemption": true,
+  "reuse_guard_ledger_part": "Part IX item 65",
+  "runtime_seconds": 39.638277100006235,
+  "seed": 30010,
+  "server_opt": {
+    "beta1": 0.9,
+    "beta2": 0.99,
+    "eta_s": 0.003,
+    "mode": "adam",
+    "tau": 0.001
+  },
+  "tag": "C1_fedavg"
+}

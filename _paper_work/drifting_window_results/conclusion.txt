@@ -1,0 +1,36 @@
+DRIFTING STRESS TEST CONCLUSION
+================================
+Protocol: E3 R3 traces with optional opportunity-weight drift
+  (drift_period=50, drift_magnitude=0.1 from configs/scenario/drifting.yaml).
+Traces: artifacts/e3_drifting_r1/eventtraces/{dataset}/seed{seed}/
+Runs:   artifacts/e3_drifting_r1/runs/{dataset}/{method}/seed{seed}/
+Methods: fedavg_window, fedau_window, obsuse_window, twostage_hajek, raven
+Seeds: 30001-30020 (n=20 paired). Missing cells: 0.
+
+AUTHOR VERDICT (honest; do not overclaim)
+-----------------------------------------
+RAVEN does NOT uniformly win structural endpoints vs FedAU-Window
+(3/4 dataset-metric Holm-significant RAVEN-lower):
+  SensorScope Delta_group: RAVEN lower, Holm-sig, 20/20
+  SensorScope Delta_c-s:   RAVEN lower, Holm-sig, 20/20
+  U-Air Delta_group:       FedAU lower, Holm-sig (RAVEN 5/20)
+  U-Air Delta_c-s:         RAVEN lower, Holm-sig, 20/20
+
+Delta_c-s vs FedAvg-Window / ObsUse-Window: RAVEN Holm-sig lower on both datasets.
+Delta_c-s vs TwoStage-Hajek: Holm-sig on SensorScope; NOT significant on U-Air
+  (p_holm=0.2024, 13/20).
+
+FedAU-Window still beats RAVEN on U-Air prediction RMSE/Tail (Holm-sig, 0/20).
+SensorScope prediction vs FedAU is not significant.
+
+Debt diagnostic Q_norm1_over_S is finite on all 20 seeds
+  (SS 0.670 +/- 0.013; U-Air 0.704 +/- 0.017). This is compatible with a
+  finite realized intensity but does NOT empirically establish ||Q_R||_1=o(S_R).
+
+Paper backfill policy:
+  YES, short mixed-result paragraph in Section VI-B plus a limitation
+  sentence in Evidence and Reproducibility Boundaries.
+  Do NOT use the instruction's full-win sentence
+  ("sustains the structural gain, whereas participation reweighting does not
+  track the drifting target").
+  Do NOT claim that drift is where RAVEN most clearly wins.

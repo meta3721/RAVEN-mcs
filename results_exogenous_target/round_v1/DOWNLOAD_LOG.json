@@ -1,0 +1,490 @@
+{
+  "stamp_utc": "2026-10-02T05:50:03.962633+00:00",
+  "network_probe_conclusion": "all HTTPS blocked in-sandbox; sources landed manually (see prereg \u00a710)",
+  "landed_files": {
+    "acs2021_b01003_bg_36005.json": {
+      "sha256": "a371958a60c0f50f630e5cbe74c088d3e58c8f1375a86bbe2c6a5f80bd6bf51d",
+      "bytes": 117702
+    },
+    "acs2021_b01003_bg_36047.json": {
+      "sha256": "6972d925f568a0ecbc1b75115c2d98dcb44b46df17183be49de053f94d26bddb",
+      "bytes": 214744
+    },
+    "acs2021_b01003_bg_36061.json": {
+      "sha256": "610ba04070d68ca889f69ee7bdbcff1818e290d16e6c3898a4cd19c149a3c37c",
+      "bytes": 132400
+    },
+    "acs2021_b01003_bg_36081.json": {
+      "sha256": "81550f8a5446267e039e44d57cc2319f0605426fed9312a159c8208bdc0bd1a7",
+      "bytes": 181417
+    },
+    "acs2021_b01003_bg_36085.json": {
+      "sha256": "f3ad474885951a943a141c796cd4b6e8db16761c8b4e3cde66200417714db029",
+      "bytes": 38359
+    },
+    "tl_2021_36005_bg.zip": {
+      "sha256": "1fb17a2b939b01567a1d7fe5e943f4c1030790aa243d2cb138afd81a17c3d036",
+      "bytes": 257937
+    },
+    "tl_2021_36047_bg.zip": {
+      "sha256": "234811cfebe4432f1ad5caf34765f7c6ac587472a92aa4d49b383685209a0d71",
+      "bytes": 407404
+    },
+    "tl_2021_36061_bg.zip": {
+      "sha256": "34fc29450bc109de474c39123f617c50ed40a429711df6c5604d2c18bf8b1b06",
+      "bytes": 229494
+    },
+    "tl_2021_36081_bg.zip": {
+      "sha256": "2a59dd7e4296863f474e8daeed4e24a7a0c0b885fd9e3d9dfd41a74d8b582c69",
+      "bytes": 627270
+    },
+    "tl_2021_36085_bg.zip": {
+      "sha256": "25e9f5cd0ce3c973ea129f6a6586dfe82b8f47e493ca013cfbadb6db355568ee",
+      "bytes": 171214
+    },
+    "nyc311_2020_2021.csv": {
+      "sha256": "df7ef2d0692fc1a367fa0d84426e20dffb8295f0efd6e779af785d3c80efc778",
+      "bytes": 475132502
+    }
+  },
+  "notes_txt_sha256": "20d61ebf75f57875b8de73f54f9337daa2cd6fffc2f8c9a9b6ea10dd62e3f701",
+  "raw_pm_hashes": {
+    "NYC_Pilot1_PM.csv": "345cc717a178aeafd0e1b865de1405c475adc95cf3b3d1927d90fb43d8666c44",
+    "NYC_Pilot2_PM_Part1.csv": "68c2d7d1440e0721bd143ae3045760270541a7eb81c76eb3c6f9d54eb8f3da3b",
+    "NYC_Pilot2_PM_Part2.csv": "ad3faeab2cc162c95f2dc9d71e8d8884fd93bc46ca241b04db62b05502852be0",
+    "NYC_Pilot2_PM_Part3.csv": "bc83f6c0d8172d22d36f1d7c732614660a276b3185ece527d9b957ad80b74765"
+  },
+  "preregistration": "ccfa-review-reports/raven-mcs-exogenous-target-preregistration.md",
+  "preregistration_sha256": "42ad3f9ef79da7ab68a8a539d306c79a779bc1cc23987eeb2dd8357177df5a29",
+  "grid_alignment": {
+    "n_cells_recomputed": 446,
+    "n_cells_stored": 446,
+    "cells_equal": true,
+    "cells_missing_from_recompute": [],
+    "cells_extra_in_recompute": [],
+    "stored_xy_matches_spatial_id": true,
+    "bbox": {
+      "lon_min": -74.009636,
+      "lon_max": -73.733231,
+      "lat_min": 40.008129,
+      "lat_max": 40.913586
+    }
+  },
+  "stratum_vocabulary": [
+    "region0::block0::weekday",
+    "region0::block0::weekend",
+    "region0::block1::weekday",
+    "region0::block1::weekend",
+    "region0::block2::weekday",
+    "region0::block2::weekend",
+    "region0::block3::weekday",
+    "region0::block3::weekend",
+    "region1::block0::weekday",
+    "region1::block0::weekend",
+    "region1::block1::weekday",
+    "region1::block1::weekend",
+    "region1::block2::weekday",
+    "region1::block2::weekend",
+    "region1::block3::weekday",
+    "region1::block3::weekend",
+    "region2::block0::weekday",
+    "region2::block0::weekend",
+    "region2::block1::weekday",
+    "region2::block1::weekend",
+    "region2::block2::weekday",
+    "region2::block2::weekend",
+    "region2::block3::weekday",
+    "region2::block3::weekend",
+    "region3::block0::weekday",
+    "region3::block0::weekend",
+    "region3::block1::weekday",
+    "region3::block1::weekend",
+    "region3::block2::weekday",
+    "region3::block2::weekend",
+    "region3::block3::weekday",
+    "region3::block3::weekend"
+  ],
+  "observed_strata_equal_vocabulary": true,
+  "trace_meta": {
+    "seed32001": {
+      "events": 3556
+    },
+    "seed32002": {
+      "events": 3556
+    },
+    "seed32003": {
+      "events": 3556
+    },
+    "seed32004": {
+      "events": 3556
+    },
+    "seed32005": {
+      "events": 3556
+    },
+    "seed32006": {
+      "events": 3556
+    },
+    "seed32007": {
+      "events": 3556
+    },
+    "seed32008": {
+      "events": 3556
+    },
+    "seed32009": {
+      "events": 3556
+    },
+    "seed32010": {
+      "events": 3556
+    }
+  },
+  "control_sensitivity": [
+    {
+      "pi_target_split": "test",
+      "delivered_definition": "delivered_U1_train",
+      "n_rows": 29189,
+      "n_zero": 4188,
+      "rho": 0.14347870773236493,
+      "gate": "off"
+    },
+    {
+      "pi_target_split": "test",
+      "delivered_definition": "delivered_all_events_train",
+      "n_rows": 93430,
+      "n_zero": 18810,
+      "rho": 0.2013271968318527,
+      "gate": "off"
+    },
+    {
+      "pi_target_split": "train",
+      "delivered_definition": "delivered_U1_train",
+      "n_rows": 29189,
+      "n_zero": 0,
+      "rho": 0.0,
+      "gate": "on"
+    },
+    {
+      "pi_target_split": "train",
+      "delivered_definition": "delivered_all_events_train",
+      "n_rows": 93430,
+      "n_zero": 0,
+      "rho": 0.0,
+      "gate": "on"
+    },
+    {
+      "pi_target_split": "validation",
+      "delivered_definition": "delivered_U1_train",
+      "n_rows": 29189,
+      "n_zero": 2671,
+      "rho": 0.09150707458289081,
+      "gate": "off"
+    },
+    {
+      "pi_target_split": "validation",
+      "delivered_definition": "delivered_all_events_train",
+      "n_rows": 93430,
+      "n_zero": 12200,
+      "rho": 0.13057904313389704,
+      "gate": "off"
+    }
+  ],
+  "control_rho": {
+    "n_delivered": 29189,
+    "n_zero": 4188,
+    "rho_delivered": 0.14347870773236493,
+    "gate": "off"
+  },
+  "m1_rho": {
+    "n_delivered": 29189,
+    "n_zero": 293,
+    "rho_delivered": 0.010038028024255713,
+    "gate": "off"
+  },
+  "m2_rho": {
+    "n_delivered": 29189,
+    "n_zero": 287,
+    "rho_delivered": 0.009832471136386994,
+    "gate": "off"
+  },
+  "m1_stats": {
+    "n_bg_polygons": 6807,
+    "n_bg_without_pop": 416,
+    "pop_total": 8736047.0,
+    "pop_apportioned_to_stored_cells": 1417569.9881110277,
+    "pop_outside_stored_cells": 7318477.011888926,
+    "n_clip_ops": 21891,
+    "n_cells_with_population": 408,
+    "n_stored_cells_with_zero_population": 38,
+    "pi_sum": 0.9999999999999999,
+    "n_cells_with_positive_population": 408
+  },
+  "m2_stats": {
+    "n_rows_read": 6162906,
+    "n_rows_kept": 1174758,
+    "n_rows_no_coords": 150062,
+    "n_rows_outside_bbox": 469105,
+    "n_rows_outside_stored_cells": 4368981,
+    "n_rows_bad_time": 0,
+    "t_min_utc": "2020-01-01 05:00:00+00:00",
+    "t_max_utc": "2022-01-01 04:59:36+00:00",
+    "n_rows_dst_ambiguous": 1546,
+    "pi_sum": 1.0,
+    "n_nonzero_keys": 3369
+  },
+  "gate_reading": null,
+  "map_detail": {
+    "control_evaluation_derived": {
+      "n_zero_keys": 3216,
+      "zero_key_share": 0.9013452914798207,
+      "rho_delivered_numerator": 4188,
+      "rho_delivered_denominator": 29189,
+      "rho_delivered": 0.14347870773236493,
+      "gate": "off",
+      "rho_all_events": 0.2013271968318527,
+      "gate_all_events": "off",
+      "per_seed": [
+        {
+          "seed": "seed32001",
+          "n_delivered": 2841,
+          "n_zero": 428,
+          "rho_delivered": 0.1506511791622668,
+          "gate": "off"
+        },
+        {
+          "seed": "seed32002",
+          "n_delivered": 3009,
+          "n_zero": 390,
+          "rho_delivered": 0.1296111665004985,
+          "gate": "off"
+        },
+        {
+          "seed": "seed32003",
+          "n_delivered": 2806,
+          "n_zero": 398,
+          "rho_delivered": 0.14183891660727013,
+          "gate": "off"
+        },
+        {
+          "seed": "seed32004",
+          "n_delivered": 3149,
+          "n_zero": 489,
+          "rho_delivered": 0.15528739282311846,
+          "gate": "off"
+        },
+        {
+          "seed": "seed32005",
+          "n_delivered": 3000,
+          "n_zero": 390,
+          "rho_delivered": 0.13,
+          "gate": "off"
+        },
+        {
+          "seed": "seed32006",
+          "n_delivered": 2897,
+          "n_zero": 449,
+          "rho_delivered": 0.154987918536417,
+          "gate": "off"
+        },
+        {
+          "seed": "seed32007",
+          "n_delivered": 2988,
+          "n_zero": 441,
+          "rho_delivered": 0.14759036144578314,
+          "gate": "off"
+        },
+        {
+          "seed": "seed32008",
+          "n_delivered": 2868,
+          "n_zero": 420,
+          "rho_delivered": 0.14644351464435146,
+          "gate": "off"
+        },
+        {
+          "seed": "seed32009",
+          "n_delivered": 2824,
+          "n_zero": 399,
+          "rho_delivered": 0.14128895184135978,
+          "gate": "off"
+        },
+        {
+          "seed": "seed32010",
+          "n_delivered": 2807,
+          "n_zero": 384,
+          "rho_delivered": 0.13680085500534378,
+          "gate": "off"
+        }
+      ],
+      "map_sha256": "fe615ff489ad9c137e2c5e49ce95288ecf473fe948d28acfd27b7a67b31508ef",
+      "pi_sum": 1.0
+    },
+    "M1_spatial_population_ACS2021_B01003": {
+      "n_zero_keys": 304,
+      "zero_key_share": 0.08520179372197309,
+      "rho_delivered_numerator": 293,
+      "rho_delivered_denominator": 29189,
+      "rho_delivered": 0.010038028024255713,
+      "gate": "off",
+      "rho_all_events": 0.017767312426415497,
+      "gate_all_events": "off",
+      "per_seed": [
+        {
+          "seed": "seed32001",
+          "n_delivered": 2841,
+          "n_zero": 41,
+          "rho_delivered": 0.014431538190777896,
+          "gate": "off"
+        },
+        {
+          "seed": "seed32002",
+          "n_delivered": 3009,
+          "n_zero": 29,
+          "rho_delivered": 0.009637753406447324,
+          "gate": "off"
+        },
+        {
+          "seed": "seed32003",
+          "n_delivered": 2806,
+          "n_zero": 28,
+          "rho_delivered": 0.009978617248752673,
+          "gate": "off"
+        },
+        {
+          "seed": "seed32004",
+          "n_delivered": 3149,
+          "n_zero": 24,
+          "rho_delivered": 0.007621467132422992,
+          "gate": "off"
+        },
+        {
+          "seed": "seed32005",
+          "n_delivered": 3000,
+          "n_zero": 24,
+          "rho_delivered": 0.008,
+          "gate": "off"
+        },
+        {
+          "seed": "seed32006",
+          "n_delivered": 2897,
+          "n_zero": 29,
+          "rho_delivered": 0.010010355540214014,
+          "gate": "off"
+        },
+        {
+          "seed": "seed32007",
+          "n_delivered": 2988,
+          "n_zero": 30,
+          "rho_delivered": 0.010040160642570281,
+          "gate": "off"
+        },
+        {
+          "seed": "seed32008",
+          "n_delivered": 2868,
+          "n_zero": 34,
+          "rho_delivered": 0.011854951185495118,
+          "gate": "off"
+        },
+        {
+          "seed": "seed32009",
+          "n_delivered": 2824,
+          "n_zero": 19,
+          "rho_delivered": 0.006728045325779037,
+          "gate": "off"
+        },
+        {
+          "seed": "seed32010",
+          "n_delivered": 2807,
+          "n_zero": 35,
+          "rho_delivered": 0.012468827930174564,
+          "gate": "off"
+        }
+      ],
+      "map_sha256": "d7b906fd711d0211da2f36faddc545d5fff8703f99f789c5c703459ab24e4fc1",
+      "pi_sum": 0.9999999999999999
+    },
+    "M2_temporal_demand_NYC311": {
+      "n_zero_keys": 199,
+      "zero_key_share": 0.05577354260089686,
+      "rho_delivered_numerator": 287,
+      "rho_delivered_denominator": 29189,
+      "rho_delivered": 0.009832471136386994,
+      "gate": "off",
+      "rho_all_events": 0.011131328267151878,
+      "gate_all_events": "off",
+      "per_seed": [
+        {
+          "seed": "seed32001",
+          "n_delivered": 2841,
+          "n_zero": 28,
+          "rho_delivered": 0.009855684618092221,
+          "gate": "off"
+        },
+        {
+          "seed": "seed32002",
+          "n_delivered": 3009,
+          "n_zero": 29,
+          "rho_delivered": 0.009637753406447324,
+          "gate": "off"
+        },
+        {
+          "seed": "seed32003",
+          "n_delivered": 2806,
+          "n_zero": 30,
+          "rho_delivered": 0.010691375623663579,
+          "gate": "off"
+        },
+        {
+          "seed": "seed32004",
+          "n_delivered": 3149,
+          "n_zero": 36,
+          "rho_delivered": 0.011432200698634487,
+          "gate": "off"
+        },
+        {
+          "seed": "seed32005",
+          "n_delivered": 3000,
+          "n_zero": 13,
+          "rho_delivered": 0.004333333333333333,
+          "gate": "off"
+        },
+        {
+          "seed": "seed32006",
+          "n_delivered": 2897,
+          "n_zero": 28,
+          "rho_delivered": 0.009665170866413532,
+          "gate": "off"
+        },
+        {
+          "seed": "seed32007",
+          "n_delivered": 2988,
+          "n_zero": 33,
+          "rho_delivered": 0.01104417670682731,
+          "gate": "off"
+        },
+        {
+          "seed": "seed32008",
+          "n_delivered": 2868,
+          "n_zero": 26,
+          "rho_delivered": 0.00906555090655509,
+          "gate": "off"
+        },
+        {
+          "seed": "seed32009",
+          "n_delivered": 2824,
+          "n_zero": 22,
+          "rho_delivered": 0.007790368271954674,
+          "gate": "off"
+        },
+        {
+          "seed": "seed32010",
+          "n_delivered": 2807,
+          "n_zero": 42,
+          "rho_delivered": 0.014962593516209476,
+          "gate": "off"
+        }
+      ],
+      "map_sha256": "14dae5d400715c48aafdde9cec8e90646035926dc7dd4a549f6a647d70ea9e7d",
+      "pi_sum": 1.0
+    }
+  },
+  "n_checkpoints": 50,
+  "removed_mass_share_note": "no stored per-key Design-on weight: the City Scanner run dirs hold only checkpoints and CS_ACCEPTED.json, so it is TBD per protocol"
+}

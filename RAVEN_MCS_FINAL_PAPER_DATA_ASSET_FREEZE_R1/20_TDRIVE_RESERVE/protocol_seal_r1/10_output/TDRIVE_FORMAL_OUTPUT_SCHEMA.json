@@ -1,0 +1,30 @@
+{
+  "collect_if_available": [
+    "Tail_RMSE",
+    "MAE_mu",
+    "RMSE_rho",
+    "ESS",
+    "n_eff",
+    "runtime",
+    "solver_warnings"
+  ],
+  "mandatory_files": [
+    "run_manifest.json",
+    "resolved_config.json",
+    "final_metrics.json",
+    "eventtrace_hash_or_reference",
+    "source_revision",
+    "config_hash",
+    "dataset_hash",
+    "checkpoint_hash_if_produced",
+    "P2_summary_if_applicable",
+    "warning_summary",
+    "runtime_summary"
+  ],
+  "mandatory_metrics": [
+    "Delta_group",
+    "Delta_c_s",
+    "RMSE_mu"
+  ],
+  "status": "PRE_REGISTERED"
+}

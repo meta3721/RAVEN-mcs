@@ -1,0 +1,13 @@
+{
+  "date": "2026-10-12",
+  "reason": "Seasonal-naive must repeat last legally available same-season value across multi-step horizon, rather than seek only t-period.",
+  "information_track": "offline train-delivered only",
+  "daily_period_hours": 24,
+  "weekly_period_hours": 168,
+  "weekly_applicability": "at least two weeks of training time span; otherwise diagnostic only",
+  "model_training_changes": false,
+  "history_feature_changes": false,
+  "test_access": false,
+  "originals_preserved": true,
+  "authoritative_file": "P0_VALIDATION_BASELINES_R2.csv"
+}

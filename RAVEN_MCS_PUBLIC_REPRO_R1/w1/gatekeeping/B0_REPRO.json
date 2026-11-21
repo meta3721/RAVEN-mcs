@@ -1,0 +1,77 @@
+{
+  "stage": "B0-a driver reproduction (hard gate)",
+  "utc": "2026-10-03T09:10:56.633439+00:00",
+  "block": "cityscanner",
+  "r": 3,
+  "driver": "scripts/c1_deletion_driver.py imports build_setup and train_one from scripts/run_nodesign_supplement.py and replaces only setup['pi_target']",
+  "tolerance": 1e-12,
+  "endpoints": [
+    "RMSE_mu",
+    "WorstGroupRMSE",
+    "Delta_group",
+    "Delta_c_s"
+  ],
+  "arms": {
+    "raven_ctrl": {
+      "method": "raven",
+      "trace_seed": 32001,
+      "model_seed": 32001,
+      "frozen_source": "results_c1_cityscanner\\round_v1\\runs\\cityscanner_nyc_pm25\\raven\\seed32001\\CS_ACCEPTED.json",
+      "frozen": {
+        "RMSE_mu": 0.3640887382754061,
+        "WorstGroupRMSE": 0.38698378721310384,
+        "Delta_group": 0.05490366930013694,
+        "Delta_c_s": 0.6032874844741689
+      },
+      "rerun": {
+        "RMSE_mu": 0.3640887382754061,
+        "WorstGroupRMSE": 0.38698378721310384,
+        "Delta_group": 0.05490366930013694,
+        "Delta_c_s": 0.6032874844741689
+      },
+      "abs_diff": {
+        "RMSE_mu": 0.0,
+        "WorstGroupRMSE": 0.0,
+        "Delta_group": 0.0,
+        "Delta_c_s": 0.0
+      },
+      "max_abs_diff": 0.0,
+      "tolerance": 1e-12,
+      "eventtrace_hash_match": true,
+      "wall_s_this_call": 32.6392385000363,
+      "pass": true
+    },
+    "raven_wo_design": {
+      "method": "raven_wo_design",
+      "trace_seed": 32001,
+      "model_seed": 32001,
+      "frozen_source": "results_nodesign_supplement\\round_v1\\runs\\cityscanner_nyc_pm25\\raven_wo_design\\seed32001\\ACCEPTED.json",
+      "frozen": {
+        "RMSE_mu": 0.36722021263758886,
+        "WorstGroupRMSE": 0.3946359257625973,
+        "Delta_group": 0.07089974367065534,
+        "Delta_c_s": 0.8021415247948038
+      },
+      "rerun": {
+        "RMSE_mu": 0.36722021263758886,
+        "WorstGroupRMSE": 0.3946359257625973,
+        "Delta_group": 0.07089974367065534,
+        "Delta_c_s": 0.8021415247948038
+      },
+      "abs_diff": {
+        "RMSE_mu": 0.0,
+        "WorstGroupRMSE": 0.0,
+        "Delta_group": 0.0,
+        "Delta_c_s": 0.0
+      },
+      "max_abs_diff": 0.0,
+      "tolerance": 1e-12,
+      "eventtrace_hash_match": true,
+      "wall_s_this_call": 39.70751029998064,
+      "pass": true
+    }
+  },
+  "pass": true,
+  "threads_note": "torch default thread count",
+  "verdict": "PASS: the rebuilt driver reproduces both frozen seed-32001 rows bit-exactly"
+}

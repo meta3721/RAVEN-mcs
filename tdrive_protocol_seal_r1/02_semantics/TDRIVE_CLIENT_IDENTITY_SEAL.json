@@ -1,0 +1,16 @@
+{
+  "client_key": "vehicle::{vehicle_id}",
+  "fleet_split": {
+    "n_client_vehicles": 5877,
+    "n_reference_vehicles": 2518,
+    "reference_fraction": 0.3,
+    "seed": 26001,
+    "stratification": "trajectory length"
+  },
+  "hash": "37d8072903a41c6397268b0d436d53930cb2229ad11f55616f7d00a0f3d8d8cb",
+  "mapping_rule": "federated client = client-fleet taxi; reference-fleet taxis construct Y only and are not clients",
+  "number_clients": 5867,
+  "status": "FROZEN",
+  "whether_any_remapping_is_applied": false,
+  "whether_identity_is_real_vehicle": true
+}

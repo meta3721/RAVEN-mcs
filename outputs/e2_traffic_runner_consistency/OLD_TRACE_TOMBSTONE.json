@@ -1,0 +1,25 @@
+{
+  "invalid_due_to_seed_specific_intercept_recalibration": true,
+  "paths": [
+    "outputs/e2_traffic_profiles/scenarios/balanced/traces/28201/TOMBSTONE.json",
+    "outputs/e2_traffic_profiles/scenarios/balanced/traces/28202/TOMBSTONE.json",
+    "outputs/e2_traffic_profiles/scenarios/balanced/traces/28203/TOMBSTONE.json",
+    "outputs/e2_traffic_profiles/scenarios/opportunity_only/traces/28201/TOMBSTONE.json",
+    "outputs/e2_traffic_profiles/scenarios/opportunity_only/traces/28202/TOMBSTONE.json",
+    "outputs/e2_traffic_profiles/scenarios/opportunity_only/traces/28203/TOMBSTONE.json",
+    "outputs/e2_traffic_profiles/scenarios/observation_only/traces/28201/TOMBSTONE.json",
+    "outputs/e2_traffic_profiles/scenarios/observation_only/traces/28202/TOMBSTONE.json",
+    "outputs/e2_traffic_profiles/scenarios/observation_only/traces/28203/TOMBSTONE.json",
+    "outputs/e2_traffic_profiles/scenarios/usable_only/traces/28201/TOMBSTONE.json",
+    "outputs/e2_traffic_profiles/scenarios/usable_only/traces/28202/TOMBSTONE.json",
+    "outputs/e2_traffic_profiles/scenarios/usable_only/traces/28203/TOMBSTONE.json",
+    "outputs/e2_traffic_profiles/scenarios/complete_aligned/traces/28201/TOMBSTONE.json",
+    "outputs/e2_traffic_profiles/scenarios/complete_aligned/traces/28202/TOMBSTONE.json",
+    "outputs/e2_traffic_profiles/scenarios/complete_aligned/traces/28203/TOMBSTONE.json",
+    "outputs/e2_traffic_profiles/scenarios/complete_counteracting/traces/28201/TOMBSTONE.json",
+    "outputs/e2_traffic_profiles/scenarios/complete_counteracting/traces/28202/TOMBSTONE.json",
+    "outputs/e2_traffic_profiles/scenarios/complete_counteracting/traces/28203/TOMBSTONE.json"
+  ],
+  "reason": "Prior traces re-solved a_opp/a_obs/a_q per seed; superseded by frozen-registry runner.",
+  "tombstoned_at_utc": "2026-08-06T11:18:24.823074+00:00"
+}

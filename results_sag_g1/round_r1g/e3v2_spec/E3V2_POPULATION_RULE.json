@@ -1,0 +1,14 @@
+{
+  "candidate_set": "identical to risk_set in E3-v2 (no extra candidate sampler)",
+  "cross_time_resample": false,
+  "deployment_entities": "spatial_id mapped through frozen E3 spatial_to_client (SensorScope E1 map; U-Air client-i%8)",
+  "protocol_version": "e3-v2-time-aligned-v1",
+  "risk_set": "all_units_present_in_the_real_hour_for_that_client_no_global_resample",
+  "seed": 30001,
+  "subsampling": "none_protocol_level_full_natural_cooccurrence",
+  "tau_cov": 0.05,
+  "test_deployment_records": "atomic.split == test (I_dep / public evaluation support)",
+  "train_records": "atomic.split == train (frozen processed split / horizon.json time_index bounds)",
+  "uses_current_R_O_U_for_membership": false,
+  "validation_records": "atomic.split == validation"
+}

@@ -1,0 +1,40 @@
+{
+  "starting_charged_CPU": 247.625,
+  "charged_CPU": 311.046875,
+  "CPU_limit": 3600,
+  "remaining_CPU": 3288.953125,
+  "categories": {
+    "setup": 167.875,
+    "initialization": 38.265625,
+    "online": 0.140625,
+    "training": 0.6875,
+    "events": 2.578125,
+    "save": 4.578125,
+    "repair": 96.921875
+  },
+  "new_audited_CPU": 0,
+  "new_conservative_failed_CPU": 33.421875,
+  "new_read_edit_delivery_conservative_CPU": 30,
+  "prior_known_audited_CPU": 178.03125,
+  "prior_conservative_CPU": 69.59375,
+  "actual_unmetered_CPU": "UNKNOWN",
+  "cumulative_original5h_charged_CPU": 5076.28125,
+  "nominal_original5h_remaining_CPU": 12923.71875,
+  "historical_actual_gap": "UNKNOWN",
+  "charges": [
+    {
+      "label": "resume_s1",
+      "root_CPU": 33.421875,
+      "categories": {
+        "initialization": 33.421875
+      },
+      "wall": 30.400250999999116,
+      "exit": "PermissionError(13, '\u62d2\u7edd\u8bbf\u95ee\u3002')",
+      "audit": false,
+      "actual_CPU": "UNKNOWN; conservative single-job CPU wall + driver bound"
+    }
+  ],
+  "wall_measured": 30.400250999999116,
+  "category_role": "transferable planning categories, not stopping caps",
+  "state": "WAITING_USER_REVIEW"
+}

@@ -1,0 +1,165 @@
+{
+  "experiment": "hotspot",
+  "blocks": {
+    "visit": {
+      "b_H": "Delivered-SpatialMean",
+      "J_raven": 0.0307498776147979,
+      "J_bH": 0.032267809804675876,
+      "H_raven": 0.2530750483063596,
+      "H_bH": 0.22793251212522048,
+      "D": 0.0015179321898779775,
+      "G": 0.04704168640717649,
+      "relative_defined": true,
+      "delta_h": 0.025142536181139097,
+      "rmse_raven": 0.25490333569182233,
+      "rmse_bH": 0.3144483905183496,
+      "rmse_cost": -0.18936352235217602,
+      "worst_raven": 0.26705367005648784,
+      "worst_bH": 0.45761308090047653,
+      "worst_cost": -0.4164203751977804,
+      "beats": {
+        "fedavg_window": false,
+        "twostage_hajek": false,
+        "fedau_window": false,
+        "obsuse_window": false,
+        "Delivered-SpatialMean": true,
+        "Delivered-CellBlockMean": true,
+        "Fixed-Ensemble": false
+      },
+      "beats_all_six": false,
+      "beats_selected": true,
+      "unavailable": [],
+      "assets_and_support": true,
+      "practical_line": false,
+      "lower_9875": -0.001620293090265379,
+      "ci95": [
+        -0.001244874940632731,
+        0.004571783803301305
+      ],
+      "lower_bound_positive": false,
+      "redraw_rate_3": 0.0,
+      "redraws_3": 0,
+      "attempts_3": 10000,
+      "confidence_paused": false,
+      "median_7": 0.0014860655526238442,
+      "ci95_7": [
+        -0.0012271363628974866,
+        0.004325157274995275
+      ],
+      "redraw_rate_7": 0.0,
+      "calendar_days": 30,
+      "qualified_dates": 24,
+      "random_J": 0.030429313902999744,
+      "validation_J": {
+        "Delivered-CellBlockMean": 0.05096155247601627,
+        "Delivered-SpatialMean": 0.050883217505507304,
+        "Fixed-Ensemble": 0.052641500407635065,
+        "fedau_window": 0.052550148986701885,
+        "fedavg_window": 0.05254433674500254,
+        "obsuse_window": 0.05311003051299632,
+        "raven": 0.05325921945904492,
+        "twostage_hajek": 0.052973657048165056
+      },
+      "judgment": {
+        "status": "FAIL_SCREEN",
+        "failed_gates": [
+          "practical_line",
+          "lower_bound",
+          "beats_all_six"
+        ],
+        "gates": {
+          "assets_and_support": true,
+          "practical_line": false,
+          "lower_bound": false,
+          "capture": true,
+          "prediction_cost": true,
+          "beats_all_six": false,
+          "seven_day_median": true
+        },
+        "fail_kind": "small gain"
+      }
+    },
+    "measured-O": {
+      "b_H": "Delivered-CellBlockMean",
+      "J_raven": 0.1499364794478665,
+      "J_bH": 0.1564764829673088,
+      "H_raven": 0.22956597222222222,
+      "H_bH": 0.25213690476190476,
+      "D": 0.006540003519442283,
+      "G": 0.041795440410100644,
+      "relative_defined": true,
+      "delta_h": -0.022570932539682537,
+      "rmse_raven": 0.7135115291043658,
+      "rmse_bH": 0.9312728279660037,
+      "rmse_cost": -0.23383190438107293,
+      "worst_raven": 0.7311130928357731,
+      "worst_bH": 1.0048470484218759,
+      "worst_cost": -0.2724135538995762,
+      "beats": {
+        "fedavg_window": false,
+        "twostage_hajek": false,
+        "fedau_window": true,
+        "obsuse_window": true,
+        "Delivered-SpatialMean": false,
+        "Delivered-CellBlockMean": true,
+        "Fixed-Ensemble": false
+      },
+      "beats_all_six": false,
+      "beats_selected": true,
+      "unavailable": [],
+      "assets_and_support": true,
+      "practical_line": false,
+      "lower_9875": -0.021453382849521994,
+      "ci95": [
+        -0.017740314499680353,
+        0.032355492905882
+      ],
+      "lower_bound_positive": false,
+      "redraw_rate_3": 0.0,
+      "redraws_3": 0,
+      "attempts_3": 10000,
+      "confidence_paused": false,
+      "median_7": 0.006353182951275169,
+      "ci95_7": [
+        -0.017154681553586112,
+        0.028580555994464952
+      ],
+      "redraw_rate_7": 0.0,
+      "calendar_days": 25,
+      "qualified_dates": 20,
+      "random_J": 0.15568305499839297,
+      "validation_J": {
+        "Delivered-CellBlockMean": 0.25824526889117344,
+        "Delivered-SpatialMean": 0.28186623791056886,
+        "Fixed-Ensemble": 0.27860526793057994,
+        "fedau_window": 0.2813167282110984,
+        "fedavg_window": 0.2782175897797875,
+        "obsuse_window": 0.2811235694147779,
+        "raven": 0.2773770469360617,
+        "twostage_hajek": 0.27599862345511156
+      },
+      "judgment": {
+        "status": "FAIL_SCREEN",
+        "failed_gates": [
+          "practical_line",
+          "lower_bound",
+          "capture",
+          "beats_all_six"
+        ],
+        "gates": {
+          "assets_and_support": true,
+          "practical_line": false,
+          "lower_bound": false,
+          "capture": false,
+          "prediction_cost": true,
+          "beats_all_six": false,
+          "seven_day_median": true
+        },
+        "fail_kind": "small gain"
+      }
+    }
+  },
+  "P2_VS_PROJECTION_UNRESOLVED": true,
+  "protocol_status": "NO_PROTOCOL_PASS",
+  "ended": "2026-10-19T00:38:55.503055+00:00"
+}

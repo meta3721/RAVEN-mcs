@@ -1,0 +1,105 @@
+====================================================================================================
+PAIR figures/FIG_W1_DESIGN_GATE.csv
+  bundle   sha256 5462183b6858f4b486626ab35c2499e1705b6f60694d44723e2b3ae07ca19716  275 B
+  worktree TO_OVERLEAF_paper_tmc_r1_clean/figure_data/FIG_W1_DESIGN_GATE.csv
+           sha256 050f595a42867bbf374f22fa596277d5489b141207cc9fef62763120be392250  269 B
+  header identical: True
+  rows: bundle=4 worktree=4
+  key: ['dataset', 'variant']
+  duplicate keys: bundle=0 worktree=0
+  keys only in bundle (0): []
+  keys only in worktree (0): []
+  common keys: 4   DIFFERING ROWS: 2 (50.0%)
+    column 'Delta_group_pct': identical in all 4 common rows
+    column 'RMSE_mu_pct': 2 differing cells
+      min|diff| = 0.3841845412900433  (key ('U-Air', 'Estimated'))
+      max|diff| = 0.39659919360191864  (key ('U-Air', 'Oracle'))
+        ('U-Air', 'Estimated'): bundle='7.072313349518344' worktree='7.456497890808388'
+        ('U-Air', 'Oracle'): bundle='7.1079118838817745' worktree='7.504511077483693'
+====================================================================================================
+PAIR figures/FIG_E4_E4_COMPONENT_ABLATION.csv
+  bundle   sha256 c80f6dddabd7c8e76d01e88b33537b0490454bf673baeea7d1e79b4a550330a9  5656 B
+  worktree TO_OVERLEAF_paper_tmc_r1_clean/figure_data/FIG_E4_E4_COMPONENT_ABLATION.csv
+           sha256 998cdac5982cc2b9900762d0d79e505da07c14a68ec506d5a4c84bf4e5f608c8  5658 B
+  header identical: True
+  rows: bundle=40 worktree=40
+  key: ['dataset', 'component', 'metric']
+  duplicate keys: bundle=0 worktree=0
+  keys only in bundle (0): []
+  keys only in worktree (0): []
+  common keys: 40   DIFFERING ROWS: 10 (25.0%)
+    column 'relative_change_percent': 10 differing cells
+      min|diff| = 5.722540155829177e-05  (key ('U-Air', 'Debt', 'RMSE_mu'))
+      max|diff| = 0.34600632316663216  (key ('U-Air', 'Design', 'Tail_RMSE'))
+        ('U-Air', 'Debt', 'RMSE_mu'): bundle='0.0007291917853553' worktree='0.0006719663837970082'
+        ('U-Air', 'Debt', 'Tail_RMSE'): bundle='0.000775232954355' worktree='0.000715240505846325'
+        ('U-Air', 'Design', 'RMSE_mu'): bundle='-6.553093815666225' worktree='-6.885463676716227'
+        ('U-Air', 'Design', 'Tail_RMSE'): bundle='-6.875242584162889' worktree='-7.221248907329521'
+        ('U-Air', 'Inst', 'RMSE_mu'): bundle='0.1306837550913353' worktree='0.14293076988935038'
+        ('U-Air', 'Inst', 'Tail_RMSE'): bundle='0.1363753990751629' worktree='0.14902918597946535'
+        ('U-Air', 'Obs', 'RMSE_mu'): bundle='-0.0097196306106393' worktree='-0.009782968291166629'
+        ('U-Air', 'Obs', 'Tail_RMSE'): bundle='-0.0102288937108689' worktree='-0.010295794089172574'
+        ('U-Air', 'Use', 'RMSE_mu'): bundle='0.023973670577847' worktree='0.02527079699465602'
+        ('U-Air', 'Use', 'Tail_RMSE'): bundle='0.0252184289979606' worktree='0.026449615882742403'
+    column 'paired_mean_difference': 10 differing cells
+      min|diff| = 6.530500709978057e-07  (key ('U-Air', 'Debt', 'RMSE_mu'))
+      max|diff| = 0.0044747132054164945  (key ('U-Air', 'Design', 'Tail_RMSE'))
+        ('U-Air', 'Debt', 'RMSE_mu'): bundle='8.685504892624873e-06' worktree='8.032454821627067e-06'
+        ('U-Air', 'Debt', 'Tail_RMSE'): bundle='9.301691211272e-06' worktree='8.613872243445898e-06'
+        ('U-Air', 'Design', 'RMSE_mu'): bundle='-0.0780548129305664' worktree='-0.08230646240707637'
+        ('U-Air', 'Design', 'Tail_RMSE'): bundle='-0.0824931179217944' worktree='-0.08696783112721089'
+        ('U-Air', 'Inst', 'RMSE_mu'): bundle='0.0015565924040846' worktree='0.0017085452180211735'
+        ('U-Air', 'Inst', 'Tail_RMSE'): bundle='0.0016363105359298' worktree='0.0017948065834059613'
+        ('U-Air', 'Obs', 'RMSE_mu'): bundle='-0.0001157718736232' worktree='-0.00011694223507565659'
+        ('U-Air', 'Obs', 'Tail_RMSE'): bundle='-0.0001227321545052' worktree='-0.00012399557100964965'
+        ('U-Air', 'Use', 'RMSE_mu'): bundle='0.0002855537284908' worktree='0.00030207840756915074'
+        ('U-Air', 'Use', 'Tail_RMSE'): bundle='0.0003025852268721' worktree='0.00031854126024305485'
+    column 'Holm_p': identical in all 40 common rows
+    column 'holm_significant': identical in all 40 common rows
+    column 'direction': identical in all 40 common rows
+    column 'final_component_label': identical in all 40 common rows
+    column 'qualitative_magnitude': identical in all 40 common rows
+    column 'evidence_generation': identical in all 40 common rows
+====================================================================================================
+PAIR figures/FIG_E3_E3_PREDICTION_RISK.csv
+  bundle   sha256 8110240a5f88644b29e5d0aa85986d6d052a653a09ad9c7292c11ff2f71a9685  54029 B
+  worktree TO_OVERLEAF_paper_tmc_r1_clean/figure_data/FIG_E3_E3_PREDICTION_RISK.csv
+           sha256 27b90460279afbec12d770e5a6d233753787904ef24351e3f4ef28d8e77c11f2  53593 B
+  header identical: True
+  rows: bundle=440 worktree=440
+  key: ['dataset', 'method', 'seed']
+  duplicate keys: bundle=0 worktree=0
+  keys only in bundle (0): []
+  keys only in worktree (0): []
+  common keys: 440   DIFFERING ROWS: 27 (6.1%)
+    column 'RMSE_mu': 27 differing cells
+      min|diff| = 0.015693113569754003  (key ('U-Air', 'TwoStage-Hajek', '30016'))
+      max|diff| = 0.11727230896148355  (key ('U-Air', 'TimeAlign-Agg', '30016'))
+        ('U-Air', 'Debt-Cal', '30007'): bundle='1.1443603420506454' worktree='1.0965638173228216'
+        ('U-Air', 'Debt-Cal', '30016'): bundle='1.1644618391293844' worktree='1.0565769811442463'
+        ('U-Air', 'Debt-Cal', '30018'): bundle='1.1242410101389166' worktree='1.1018097912391154'
+        ('U-Air', 'FedAsync-Window', '30007'): bundle='1.1456207513485255' worktree='1.098314489065717'
+        ('U-Air', 'FedAsync-Window', '30016'): bundle='1.1669128570592848' worktree='1.050898929877568'
+        ('U-Air', 'FedAsync-Window', '30018'): bundle='1.1226655702758204' worktree='1.1023651142052584'
+        ('U-Air', 'FedAvg-Window', '30007'): bundle='1.145169945124245' worktree='1.0968939027932232'
+        ('U-Air', 'FedAvg-Window', '30016'): bundle='1.1675261739713565' worktree='1.0512611630180884'
+        ('U-Air', 'FedAvg-Window', '30018'): bundle='1.1236196178023923' worktree='1.103172167786481'
+        ('U-Air', 'Inst-Cal', '30007'): bundle='1.1424862016576702' worktree='1.1894117529158204'
+        ... 17 more
+    column 'MAE_mu': identical in all 440 common rows
+    column 'Tail_RMSE': 27 differing cells
+      min|diff| = 0.016373192407852954  (key ('U-Air', 'TwoStage-Hajek', '30016'))
+      max|diff| = 0.060681630846306955  (key ('U-Air', 'TwoStage-Hajek', '30018'))
+        ('U-Air', 'Debt-Cal', '30007'): bundle='1.150491661850634' worktree='1.2007494342119287'
+        ('U-Air', 'Debt-Cal', '30016'): bundle='1.1709105995398508' worktree='1.1484368882310827'
+        ('U-Air', 'Debt-Cal', '30018'): bundle='1.12839459745299' worktree='1.187389412428721'
+        ('U-Air', 'FedAsync-Window', '30007'): bundle='1.1518503116737995' worktree='1.203125290932226'
+        ('U-Air', 'FedAsync-Window', '30016'): bundle='1.1734536281096266' worktree='1.1491311400599815'
+        ('U-Air', 'FedAsync-Window', '30018'): bundle='1.1267221365655633' worktree='1.1845890204179612'
+        ('U-Air', 'FedAvg-Window', '30007'): bundle='1.151381581481573' worktree='1.2023354750333046'
+        ('U-Air', 'FedAvg-Window', '30016'): bundle='1.17410427051784' worktree='1.1496375966869146'
+        ('U-Air', 'FedAvg-Window', '30018'): bundle='1.1277295095078366' worktree='1.1856913183547613'
+        ('U-Air', 'Inst-Cal', '30007'): bundle='1.1484842669097735' worktree='1.1978644231321414'
+        ... 17 more
+    column 'RMSE_rho': identical in all 440 common rows
+    column 'comparison_class': identical in all 440 common rows

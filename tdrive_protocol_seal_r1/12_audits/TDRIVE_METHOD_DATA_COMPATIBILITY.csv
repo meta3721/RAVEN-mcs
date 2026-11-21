@@ -1,0 +1,6 @@
+method,display,input_schema,atomic_unit,split,client_ids,eventtrace,target_h,opportunity_s,metric_evaluator,classification,notes
+fedavg_window,FedAvg-Window,COMPATIBLE,COMPATIBLE,COMPATIBLE,COMPATIBLE,COMPATIBLE,COMPATIBLE,COMPATIBLE,COMPATIBLE,COMPATIBLE,offline schema/identity check only; no training
+fedasync_window,FedAsync-Window,COMPATIBLE,COMPATIBLE,COMPATIBLE,COMPATIBLE,COMPATIBLE,COMPATIBLE,COMPATIBLE,COMPATIBLE,COMPATIBLE,offline schema/identity check only; no training
+flamf_timealign_adapted,TimeAlign-Agg,COMPATIBLE,COMPATIBLE,COMPATIBLE,COMPATIBLE,COMPATIBLE,COMPATIBLE,COMPATIBLE,COMPATIBLE,COMPATIBLE,offline schema/identity check only; no training
+twostage_hajek,TwoStage-Hajek,COMPATIBLE,COMPATIBLE,COMPATIBLE,COMPATIBLE,COMPATIBLE,COMPATIBLE,COMPATIBLE,COMPATIBLE,COMPATIBLE,offline schema/identity check only; no training
+raven,RAVEN-MCS,COMPATIBLE,COMPATIBLE,COMPATIBLE,COMPATIBLE,COMPATIBLE,COMPATIBLE,COMPATIBLE,COMPATIBLE,COMPATIBLE,offline schema/identity check only; no training

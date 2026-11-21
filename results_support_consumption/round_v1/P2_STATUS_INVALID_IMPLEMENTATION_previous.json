@@ -1,0 +1,23 @@
+{
+  "stage": "P2",
+  "status": "INVALID_IMPLEMENTATION",
+  "detail": "'NoneType' object has no attribute 'strip'",
+  "evidence": {},
+  "sample": {
+    "cpu_seconds": 2.125,
+    "wall_seconds": 2.385370600008173,
+    "remaining_cpu": 297.875,
+    "remaining_wall": 897.6146293999918,
+    "rss_bytes": 204414976,
+    "peak_rss_bytes": 219344896,
+    "available_bytes": 5121413120,
+    "min_available_bytes": 5091192832,
+    "descendant_count": 0,
+    "complete": true
+  },
+  "scope": "P2 checks",
+  "cancelled": "P3 P4",
+  "waiting_user_review": true,
+  "training": false,
+  "prediction_gain": false
+}

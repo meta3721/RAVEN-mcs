@@ -1,0 +1,11 @@
+{
+  "Delta_c_s_source_field": "opportunity_stratum_id",
+  "failure_code": "DELTA_CS_USES_TARGET_GROUP_ERROR",
+  "forbidden_for_stratum_mass": [
+    "target_group",
+    "target_group_id",
+    "h(i)"
+  ],
+  "hard_test": "flip h labels while holding s fixed → Delta_c_s unchanged",
+  "status": "AUDITED"
+}

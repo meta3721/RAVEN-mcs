@@ -1,0 +1,87 @@
+{
+  "arm": "fedavg_window",
+  "block": "traffic",
+  "created_utc": "2026-10-08T11:06:11.816341+00:00",
+  "diag_first": [
+    {
+      "active": true,
+      "applied": true,
+      "g_norm": 3.409658134514027,
+      "m_norm": NaN,
+      "opt_move_norm": 0.03409658134514027,
+      "sgd_move_norm": 0.03409658134514027,
+      "t": 0,
+      "v_norm": NaN,
+      "window_id": 0
+    },
+    {
+      "active": true,
+      "applied": true,
+      "g_norm": 0.3581419378331993,
+      "m_norm": NaN,
+      "opt_move_norm": 0.003581419378331993,
+      "sgd_move_norm": 0.003581419378331993,
+      "t": 0,
+      "v_norm": NaN,
+      "window_id": 1
+    },
+    {
+      "active": true,
+      "applied": true,
+      "g_norm": 1.478624252491002,
+      "m_norm": NaN,
+      "opt_move_norm": 0.014786242524910018,
+      "sgd_move_norm": 0.014786242524910018,
+      "t": 0,
+      "v_norm": NaN,
+      "window_id": 2
+    }
+  ],
+  "diag_last": [
+    {
+      "active": true,
+      "applied": true,
+      "g_norm": 0.6092412670161246,
+      "m_norm": NaN,
+      "opt_move_norm": 0.006092412670161245,
+      "sgd_move_norm": 0.006092412670161245,
+      "t": 0,
+      "v_norm": NaN,
+      "window_id": 97
+    },
+    {
+      "active": true,
+      "applied": true,
+      "g_norm": 1.345657081017437,
+      "m_norm": NaN,
+      "opt_move_norm": 0.013456570810174371,
+      "sgd_move_norm": 0.013456570810174371,
+      "t": 0,
+      "v_norm": NaN,
+      "window_id": 98
+    },
+    {
+      "active": true,
+      "applied": true,
+      "g_norm": 0.6537126397677362,
+      "m_norm": NaN,
+      "opt_move_norm": 0.006537126397677362,
+      "sgd_move_norm": 0.006537126397677362,
+      "t": 0,
+      "v_norm": NaN,
+      "window_id": 99
+    }
+  ],
+  "local_steps": 2,
+  "n_windows_optimizer_applied": 99,
+  "runtime_seconds": 38.953625699999975,
+  "seed": 30001,
+  "server_opt": {
+    "beta1": 0.9,
+    "beta2": 0.99,
+    "eta_s": 0.01,
+    "mode": "sgd",
+    "tau": 0.001
+  },
+  "tag": "g0t_sgd"
+}

@@ -1,0 +1,14 @@
+seed: 29103
+profile_id: PROFILE-S1
+scenario_id: observation_only
+arrival_mass_mode: event_mass
+stage2_eligibility_rule: observed_count > 0
+nonwrap_schedule: true
+kappas:
+  kappa_opp: 0.0
+  kappa_p: 0.5
+  kappa_q: 0.0
+directions:
+  d_opp: 0
+  d_p: -1
+  d_q: 0

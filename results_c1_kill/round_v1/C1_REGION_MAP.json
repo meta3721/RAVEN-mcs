@@ -1,0 +1,13 @@
+{
+  "counts": {
+    "region0": 2595,
+    "region1": 2368,
+    "region2": 2300,
+    "region3": 2731
+  },
+  "median_gx": 71.0,
+  "median_gy": 67.0,
+  "n_cells": 9994,
+  "rule": "region = (gx>=median)<<1 | (gy>=median); medians over all cells",
+  "used_y": false
+}

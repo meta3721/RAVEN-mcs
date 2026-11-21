@@ -1,0 +1,10 @@
+figure_id,all_source_data_present,statistics_present,provenance_complete,new_experiment_required,main_text_value,appendix_value,recommended_final_status
+FIG1_E2_RISK_NONINTERCHANGEABILITY,True,True,True,False,main,optional,MAIN_FIGURE_READY
+FIG2_E3_STRUCTURAL_MISMATCH,True,True,True,False,main,optional,MAIN_FIGURE_READY
+FIG3_E3_PREDICTION_RISK,True,True,True,False,main_or_appendix,yes,MAIN_FIGURE_READY
+FIG4_E4_COMPONENT_ABLATION,True,True,True,False,main,optional,MAIN_FIGURE_READY
+FIG5_SELECTION_TARGET_COMPOSITION,False,False,True,False,none,optional,INSUFFICIENT_EXISTING_DATA_DO_NOT_RUN_NEW_EXPERIMENT
+FIG6_P2_FEASIBILITY_OR_ESS,True,True,True,False,appendix,yes,APPENDIX_FIGURE_READY
+FIG7_RUNTIME_DIAGNOSTIC,True,True,True,False,appendix,yes,SOURCE_READY_OPTIONAL
+FIG8_LOCAL_HAJEK_PROVENANCE,True,True,True,False,appendix,yes,APPENDIX_FIGURE_READY
+FIG9_DATASET_SUPPORT_CONTEXT,True,False,True,False,table_preferred,optional,DROP_LOW_VALUE

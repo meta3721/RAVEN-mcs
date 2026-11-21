@@ -1,0 +1,50 @@
+{
+  "coverage_target": 0.95,
+  "datasets": [
+    "sensorscope",
+    "uair"
+  ],
+  "g0_config_hash": "9da4ad35491687faebb25defab39f9b655fe8128cb005904879dde9802d8be6a",
+  "git_commit": "a7f02f08cba2c7038d60d41d24042fbc57c402fd",
+  "local_steps": 2,
+  "methods": [
+    "raven",
+    "raven_wo_design",
+    "raven_sag"
+  ],
+  "mode": "g1_r1_1seed",
+  "pi_safe": {
+    "sensorscope": {
+      "candidates": {
+        "q05": 0.0006326708489355371,
+        "q10": 0.0006326708489355371,
+        "q25": 0.000773264370921212
+      },
+      "frozen": false,
+      "n_positive_target_pairs": 440,
+      "pi_safe": 0.0006326708489355371,
+      "quantile": 0.1,
+      "source": "public_pi_opp_joint_quantile_on_target_positive_pairs",
+      "status": "PI_SAFE_REQUIRES_FREEZE_DECISION"
+    },
+    "uair": {
+      "candidates": {
+        "q05": 0.0013918758676581813,
+        "q10": 0.0013918758676581813,
+        "q25": 0.0013918758676581813
+      },
+      "frozen": false,
+      "n_positive_target_pairs": 216,
+      "pi_safe": 0.0013918758676581813,
+      "quantile": 0.1,
+      "source": "public_pi_opp_joint_quantile_on_target_positive_pairs",
+      "status": "PI_SAFE_REQUIRES_FREEZE_DECISION"
+    }
+  },
+  "seeds": [
+    30001
+  ],
+  "tau_unchanged": true,
+  "threshold_hash": "526343535887e2f1094916be22d0403032fab0b905e74ac588f2b1bc6613510e",
+  "timestamp": "2026-08-29T07:15:27.077958+00:00"
+}

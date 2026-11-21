@@ -1,0 +1,33 @@
+{
+  "protocol": "cross-window-reachability-main-experiment-protocol/v2",
+  "run_id": "reachability_v2_p0_20261012_215621",
+  "status": "WAITING_USER_REVIEW",
+  "active_stage": "P0",
+  "stages": {
+    "P0": "WAITING_USER_REVIEW",
+    "P1": "PENDING",
+    "P2": "PENDING",
+    "P3": "PENDING",
+    "P4": "PENDING",
+    "P5": "PENDING",
+    "P6": "PENDING",
+    "P7": "PENDING"
+  },
+  "events": [
+    {
+      "time": "2026-10-12T21:56:21.566330+08:00",
+      "state": "RUNNING",
+      "activity": "compile completed read-only P0 inventory; no training authorization consumed"
+    },
+    {
+      "time": "2026-10-12T21:56:21.566330+08:00",
+      "state": "WAITING_USER_REVIEW",
+      "condition": "candidate not uniquely specified/executable"
+    }
+  ],
+  "resume_authorized": false,
+  "large_scale_ready": false,
+  "old_states_modified": false,
+  "pending_tasks_deleted": false,
+  "code_changed": false
+}

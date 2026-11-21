@@ -1,0 +1,36 @@
+{
+  "method": "target_gain_stop",
+  "version": "v1",
+  "stage": "G2_geometry",
+  "dataset": "traffic",
+  "seeds": [
+    41001,
+    41002,
+    41003
+  ],
+  "grid": 0.1,
+  "warmup": 20.0,
+  "horizon": 100.0,
+  "deadline": 4.0,
+  "ess": 3.0,
+  "cap": 0.5,
+  "age_max": 5,
+  "age_weight": 0.02,
+  "wait_weight": 0.2,
+  "scenarios": 4,
+  "minimum_distinct_clients": 3,
+  "minimum_gain": 0.02,
+  "scoring_tolerance": 1e-07,
+  "cpu_budget_seconds": 3600,
+  "neural_training": false,
+  "old_U_used": false,
+  "baselines": [
+    "fixed_time_1",
+    "fixed_time_2",
+    "fixed_time_4",
+    "fixed_K8_timeout4",
+    "age_count_trigger"
+  ],
+  "composition": "empirical observed group proportions; not corrected RAVEN",
+  "scope": "controlled geometry and waiting proxy, no prediction evidence"
+}

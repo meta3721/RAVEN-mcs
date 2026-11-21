@@ -1,0 +1,11 @@
+{
+  "CPU": 21.984375,
+  "checkpoint": "C:\\Cursor\\raven.mcs\\results_calibration_first_20261013\\trajectory\\FAILED_tick0201.json",
+  "error": "planning CPU hard budget exceeded: 4.515625",
+  "now": 20.1,
+  "status": "WAITING_USER_REVIEW",
+  "tick": 201,
+  "trace": "Traceback (most recent call last):\n  File \"C:\\Cursor\\raven.mcs\\src\\raven_mcs\\experiments\\calibration_first.py\", line 235, in acquire_first\n    decision=session.decide()\n             ^^^^^^^^^^^^^^^^\n  File \"C:\\Cursor\\raven.mcs\\src\\raven_mcs\\experiments\\conditional_bundle.py\", line 59, in decide\n    decision=self.controller.decide(self.runner.snapshot(),self.runner.predictor)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Cursor\\raven.mcs\\src\\raven_mcs\\control\\isolation.py\", line 101, in decide\n    if error is not None:raise error\n                         ^^^^^^^^^^^\nraven_mcs.control.schema.InputError: planning CPU hard budget exceeded: 4.515625\n",
+  "training_steps": 686,
+  "wall": 16.643430299999977
+}

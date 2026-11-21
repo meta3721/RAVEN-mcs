@@ -1,0 +1,196 @@
+# MANIFEST.sha256 -- results_gatekeeping/round_v1 -- PART A ONLY
+# Written BEFORE any A1 number was computed (protocol SS4).
+# sha256 of the executable protocol and of the preregistration:
+916b55766f24b4b5685e59418fe2140ad1e74e2c178ed0f75ba375c7feb8324e  PROTOCOL.md
+c30ea27366df3217008aa26796c553d5d908c31b71b072728cd657e9f43e76d8  PREREG.md
+# Inputs were read-only. No training was run in this round.
+# generated_utc 2026-10-03T08:50:40.907451+00:00
+
+# REGISTRATION TIMELINE
+#  t0  PROTOCOL.md copied byte-identical; PREREG.md written; both hashed into this
+#      file BEFORE any A1 number was computed:
+#        PREREG.md sha256 c30ea27366df3217008aa26796c553d5d908c31b71b072728cd657e9f43e76d8
+#  t1  PREREG.md amended TWICE, still before any A1 value was read or reported:
+#      (a) Wilcoxon-inverted bound corrected to the preregistered estimator form
+#          (L = W_norm[c_lo], U = W_norm[c_hi], exact null CDF) and named primary,
+#          basic bootstrap and normal bound demoted to secondary;
+#      (b) City Scanner within-trace variance scenarios restated as the admissible
+#          range S0/S1/S2 with sigma_W defined as the within-trace paired-difference SD.
+#      Both amendments came from reviewing estimator definitions (pre-existing
+#      protocol text) and from failing internal consistency checks, NOT from any
+#      A1 result. The locked rules (H1/H2/H3 order, delta, delta_CS, sensitivity
+#      rule, arm list, seed sets, bootstrap B/seed) were NOT changed at t1.
+#      PREREG.md as executed: sha256 4165f0dcab38e0711523f8bdc8da6eca350f32b28b68271be5c5cca3fc3fe572
+
+# REGISTRATION TIMELINE
+#  t0  PROTOCOL.md copied byte-identical; PREREG.md written; both hashed into this
+#      file BEFORE any A1 number was computed:
+#        PREREG.md sha256 c30ea27366df3217008aa26796c553d5d908c31b71b072728cd657e9f43e76d8
+#  t1  PREREG.md amended TWICE, still before any A1 value was read or reported:
+#      (a) Wilcoxon-inverted bound corrected to the preregistered estimator form
+#          (L = W_norm[c_lo], U = W_norm[c_hi], exact null CDF) and named primary,
+#          basic bootstrap and normal bound demoted to secondary;
+#      (b) City Scanner within-trace variance scenarios restated as the admissible
+#          range S0/S1/S2 with sigma_W defined as the within-trace paired-difference SD.
+#      Both amendments came from reviewing estimator definitions (pre-existing
+#      protocol text) and from failing internal consistency checks, NOT from any
+#      A1 result. The locked rules (H1/H2/H3 order, delta, delta_CS, sensitivity
+#      rule, arm list, seed sets, bootstrap B/seed) were NOT changed at t1.
+#  t2  registration timeline (SS0 of PREREG.md) added; this is the operative
+#      registration. It changed no rule either.
+#      PREREG.md as executed (sha256, re-read at finalisation):
+#        1e1816cd3431a1c49c92f2806ab83b981b4392d216906af1323425c819f7719e
+
+# REGISTRATION TIMELINE
+#  t0  PROTOCOL.md copied byte-identical; PREREG.md written; both hashed into this
+#      file BEFORE any A1 number was computed:
+#        PREREG.md sha256 c30ea27366df3217008aa26796c553d5d908c31b71b072728cd657e9f43e76d8
+#  t1  PREREG.md amended TWICE, still before any A1 value was read or reported:
+#      (a) Wilcoxon-inverted bound corrected to the preregistered estimator form
+#          (L = W_norm[c_lo], U = W_norm[c_hi], exact null CDF) and named primary,
+#          basic bootstrap and normal bound demoted to secondary;
+#      (b) City Scanner within-trace variance scenarios restated as the admissible
+#          range S0/S1/S2 with sigma_W defined as the within-trace paired-difference SD.
+#      Both amendments came from reviewing estimator definitions (pre-existing
+#      protocol text) and from failing internal consistency checks, NOT from any
+#      A1 result. The locked rules (H1/H2/H3 order, delta, delta_CS, sensitivity
+#      rule, arm list, seed sets, bootstrap B/seed) were NOT changed at t1.
+#  t2  registration timeline (SS0 of PREREG.md) added; this is the operative
+#      registration. It changed no rule either.
+#      PREREG.md as executed (sha256, re-read at finalisation):
+#        1e1816cd3431a1c49c92f2806ab83b981b4392d216906af1323425c819f7719e
+
+# REGISTRATION TIMELINE
+#  t0  PROTOCOL.md copied byte-identical; PREREG.md written; both hashed into this
+#      file BEFORE any A1 number was computed:
+#        PREREG.md sha256 c30ea27366df3217008aa26796c553d5d908c31b71b072728cd657e9f43e76d8
+#  t1  PREREG.md amended TWICE, still before any A1 value was read or reported:
+#      (a) Wilcoxon-inverted bound corrected to the preregistered estimator form
+#          (L = W_norm[c_lo], U = W_norm[c_hi], exact null CDF) and named primary,
+#          basic bootstrap and normal bound demoted to secondary;
+#      (b) City Scanner within-trace variance scenarios restated as the admissible
+#          range S0/S1/S2 with sigma_W defined as the within-trace paired-difference SD.
+#      Both amendments came from reviewing estimator definitions (pre-existing
+#      protocol text) and from failing internal consistency checks, NOT from any
+#      A1 result. The locked rules (H1/H2/H3 order, delta, delta_CS, sensitivity
+#      rule, arm list, seed sets, bootstrap B/seed) were NOT changed at t1.
+#  t2  registration timeline (SS0 of PREREG.md) added; this is the operative
+#      registration. It changed no rule either.
+#      PREREG.md as executed (sha256, re-read at finalisation):
+#        1e1816cd3431a1c49c92f2806ab83b981b4392d216906af1323425c819f7719e
+
+# REGISTRATION TIMELINE
+#  t0  PROTOCOL.md copied byte-identical; PREREG.md written; both hashed into this
+#      file BEFORE any A1 number was computed:
+#        PREREG.md sha256 c30ea27366df3217008aa26796c553d5d908c31b71b072728cd657e9f43e76d8
+#  t1  PREREG.md amended TWICE, still before any A1 value was read or reported:
+#      (a) Wilcoxon-inverted bound corrected to the preregistered estimator form
+#          (L = W_norm[c_lo], U = W_norm[c_hi], exact null CDF) and named primary,
+#          basic bootstrap and normal bound demoted to secondary;
+#      (b) City Scanner within-trace variance scenarios restated as the admissible
+#          range S0/S1/S2 with sigma_W defined as the within-trace paired-difference SD.
+#      Both amendments came from reviewing estimator definitions (pre-existing
+#      protocol text) and from failing internal consistency checks, NOT from any
+#      A1 result. The locked rules (H1/H2/H3 order, delta, delta_CS, sensitivity
+#      rule, arm list, seed sets, bootstrap B/seed) were NOT changed at t1.
+#  t2  registration timeline (SS0 of PREREG.md) added; this is the operative
+#      registration. It changed no rule either.
+#      PREREG.md as executed (sha256, re-read at finalisation):
+#        1e1816cd3431a1c49c92f2806ab83b981b4392d216906af1323425c819f7719e
+
+# REGISTRATION TIMELINE
+#  t0  PROTOCOL.md copied byte-identical; PREREG.md written; both hashed into this
+#      file BEFORE any A1 number was computed:
+#        PREREG.md sha256 c30ea27366df3217008aa26796c553d5d908c31b71b072728cd657e9f43e76d8
+#  t1  PREREG.md amended TWICE, still before any A1 value was read or reported:
+#      (a) Wilcoxon-inverted bound corrected to the preregistered estimator form
+#          (L = W_norm[c_lo], U = W_norm[c_hi], exact null CDF) and named primary,
+#          basic bootstrap and normal bound demoted to secondary;
+#      (b) City Scanner within-trace variance scenarios restated as the admissible
+#          range S0/S1/S2 with sigma_W defined as the within-trace paired-difference SD.
+#      Both amendments came from reviewing estimator definitions (pre-existing
+#      protocol text) and from failing internal consistency checks, NOT from any
+#      A1 result. The locked rules (H1/H2/H3 order, delta, delta_CS, sensitivity
+#      rule, arm list, seed sets, bootstrap B/seed) were NOT changed at t1.
+#  t2  registration timeline (SS0 of PREREG.md) added; this is the operative
+#      registration. It changed no rule either.
+#      PREREG.md as executed (sha256, re-read at finalisation):
+#        1e1816cd3431a1c49c92f2806ab83b981b4392d216906af1323425c819f7719e
+
+# post-computation artefact hashes
+# appended by A1_ANALYSIS.py --write-manifest after computing; hashes are
+# given for tamper-evidence and are NOT anchors for files that this
+# script itself writes (A1_ANALYSIS.py is rewritten by editing, so its own
+# hash here lags one edit by construction). The registration block and the
+# input list above are the immutable parts.
+30d43fb0446c7a1ec12b0aef193de3faba6d3befaa7e3eade9d7e1cf75a15cda  A1_ANALYSIS.py
+95f146f062b70f24b87a0d0344dba8c44e93b6f5287cbc7b585162278344aee4  A1_DESCRIPTIVE.csv
+4809b3c5f5e4746bb7f51da9d3f4d5a6c152a17d5feee099fd3e0f4ca3bd2e10  A1_DESCRIPTIVE_DETAIL.csv
+c2f419f8c6564509a7c0c169b3e526f4bedd3de210c6564a095f479cfd11a847  A1_POWER.csv
+ef68761522a69faffdbe5b6bf172e56da9ba68f556427fb74c9441003192b7e0  A1_SENSITIVITY_NO32005.csv
+139b7fb5b47b1af8bb25584468f3d6f14b3b2a594dc9fc905423a8aad0640668  A1_PROVENANCE.json
+aeae1eb51c34e81d0f64678efed912d2e2b08408a53c29811ab3e768843d06ad  EXECUTION_REPORT.md
+a0004a55770a044b17ab54a62daa54dac19a0f8f381ceef2e106e13bb96a86a6  ERRATA_FOR_PAPER.md
+
+# read-only inputs (sha256 as read by this round)
+# a66eb2e46c874c1cc068541b5b1c8aab0ed44c204dd4f53df5bcac4ea1fcbf09  tradeoff_v51  results_w1_ladder\round_v5_1\TRADEOFF_V51.csv
+# 6b2c10c04b649c92274d8d648643d89808c5a2f4f754e6b76cf2d6a205d022ec  tradeoff_v4  results_w1_ladder\round_v4\TRADEOFF.csv
+# 8f5374ed4e5df2dfe3bb78db01695b1f5b830093f93a96270673935f91bcab6f  tradeoff_paired_v4  results_w1_ladder\round_v4\TRADEOFF_PAIRED.csv
+# 8cbb81134ab2822b7d0e0da623b1cd1be51f8fb229300d381142304c26ffee09  cs_e3  results_c1_cityscanner\round_v1\tables\CS_E3.csv
+# 037220d32bb1fe11f687a75dd2cb80f2bb0a2daf3606b6e6b82fa56f87427870  cs_seed_rows  results_nodesign_supplement\round_v1\tables\cityscanner_seed_rows.csv
+# cfd4c4a9da618832e80d9397301a3c6aa6700ced12843c1e0d89562bb0f84040  cs_train_setup  results_c1_cityscanner\round_v1\CS_TRAIN_SETUP.json
+# c7407b6d8100701c73a7b22c2ba071b4c34979c91c79000fc5bcff76b1f8f61e  cs_phi_decision  results_c1_cityscanner\round_v1\CS_PHI_DECISION.json
+# b9e3ed9c4e4f769077efe6c6ec04cfe0d70a9a9151c0c4f92e96a947e4e3dbe4  maps_key_level  results_exogenous_target\round_v1\MAPS_KEY_LEVEL.csv
+# 067aca156f66237b4df24372c5afc8f8689674b042930a5d644817725f21704e  cs_train_ledger  results_c1_cityscanner\round_v1\CS_TRAIN_LEDGER.json
+# 557c9965e6567d5a55bdba019e2283314746d719bc463314394a3f2d66ead1c3  cs_trace_manifest  results_c1_cityscanner\round_v1\CS_TRACE_MANIFEST.json
+# 480e5c8e3fd9121532e438d90458ec2897a3cb3dc9f0497b6fc1682ec6b446d8  script_run_nodesign_supplement  scripts\run_nodesign_supplement.py
+# 2b8a2d0f7a4b13ed49af4276f1157d1a610a2b674377e782731b07c4a1a7f3c0  script_w1_replay  scripts\w1_replay.py
+# c51db8c64edb5b45394de81f7dc10108e792d50578d905d8f415d42f369130b4  script_exogenous_target_cityscanner  scripts\exogenous_target_cityscanner.py
+# ---------------------------------------------------------------------------
+# AMENDMENT 1 -- PART B (C1 training), r = 3 -- registration t3
+# Written and hashed BEFORE any B1 run started and BEFORE any C1 RMSE existed.
+# authorization (verbatim, as received through the delegating agent): 授权C1训练，r=3
+# Protocol SS2 (Part B) only; Part C remains out of scope.  The Part-A blocks
+# above are unchanged (PREREG.md was extended append-only).
+#   PREREG.md as executed for Part A (t2, bytes unchanged by the amendment):
+#     1e1816cd3431a1c49c92f2806ab83b981b4392d216906af1323425c819f7719e
+#   PROTOCOL.md (unchanged): 916b55766f24b4b5685e59418fe2140ad1e74e2c178ed0f75ba375c7feb8324e
+#   PREREG.md INCLUDING AMENDMENT 1 (t3, the operative Part-B preregistration):
+d44558d959c70d08c045940128cbf0df85a1a6d60e5eaf42a67520030c07ffe7  PREREG.md
+# r = 3 fixed (model seeds {s, s+100000, s+200000}); 150 new training runs registered.
+# Locked before running: arm list, map construction + key universe, pi_floor rule,
+# delta_CS = 2 %, primary H_mech estimator + percentile trace-cluster bootstrap
+# (B = 10000, seed 20261003), structural guardrail rule, secondary Holm family,
+# K = 3 graphical-alpha A1 chains, no-32005 sensitivity rule.
+# PART B (C1) artefact hashes -- appended after the runs completed
+# tamper-evidence for the files this round wrote; MANIFEST.sha256 cannot
+# contain its own final hash. The AMENDMENT 1 block above is the
+# registration anchor and was written before the first run.
+# NOTE: the Part-A 'post-computation artefact hashes' block above lists
+# pre-Part-B hashes for PREREG.md, EXECUTION_REPORT.md and
+# ERRATA_FOR_PAPER.md. Part B appended to those three files, so those three
+# Part-A lines no longer match on purpose; the hashes below are operative.
+# The registration anchors (PROTOCOL.md and the t0 PREREG.md hash) are
+# unaffected and still verify.
+
+4d0277d4c940f94968293d9d953ec72f8de9e0cb8ea28edec9150cb9b4046ee1  B0_REPRO.json
+7d07fd20e17f428628d91eeb09990bda0cf6ee35c67f67b0d37d862a909c9e4d  B0_REPRO__b0a_t1.json
+23e9c1fc88257459608cf5611bdc3647579c740be317366a0a9b6b3db17f23c9  B0_SEED32005_PROBE.csv
+7b93c85d3aa36d1a3887f43cceecd7b8f4a787d7a9110cae0d397561a0ac7a32  B0_SEED32005_PROBE.json
+87543ca37fc224fc660e7d7a212c50094983bb0b681fc4dc906cc812746a9f3b  C1_MAPS.json
+2de0fdc1eb6d789a5630f193d233d1691a94c7b3f09159c162edb7740fcc8d71  C1_RUNS.csv
+a1ef0e71fa88564a28c8f3f18656b7db543965bb479ecff25cf927d41746945b  C1_PRIMARY.json
+d240ec785c9e371058c9278ccdd588caa66f81d50f6983f1c7b41844fb77c600  C1_SECONDARY.csv
+31010e60cc26c91ff617a97728236c936e0086d0c611ee15ec433a3e2ab98f30  C1_A1_CHAINS.csv
+e1f4146e1c9dbbd095892eec14f48a790863fff5c70c3022800b5764d2bb947d  C1_SENSITIVITY_NO32005.csv
+76422efd56326dafd15a7ab26bd187ef0585024c5551a1624f31447eb3d0f9f5  C1_PER_SEED.csv
+79901b7ea14217902831e1715105d6df49167a8aa88f3e98c4e04837f2e716c9  C1_ARM_SUMMARY.csv
+820cc8ea6b901bfd4e4ee6bb7d834b16baaa21c48f48adcec592873be86a0fe5  C1_ANALYSIS_PROVENANCE.json
+b32ab7b2b5345ee476b004cf2aea597353fd3b79f4190fb0075ec8a0ea8c95f2  C1_RECON.json
+992ee8e6c72557fbf53d2a9df063093f33be022e87211681d97c49eb0518e167  C1_EXECUTION_LOG.md
+97af33b1bb85e7b9b781641fc225e64154c23a2df1c9751ceb0a443652b4e47b  EXECUTION_REPORT.md
+01d993709464a9e46f6bb2b159da9411a374c61a657fee946fb7c6a18ce308b9  ERRATA_FOR_PAPER.md
+d44558d959c70d08c045940128cbf0df85a1a6d60e5eaf42a67520030c07ffe7  PREREG.md
+87c22b5b9ea2bc1c7af2e716902717fe58186d03a99cafb7369efc31ddf32a28  scripts/c1_deletion_driver.py
+ec2992dff96a47596e6c5988ba8c224e117c0b1a076b5920113ff35577b4c5de  scripts/c1_analysis.py
+0ad9157811ebed721a07027d9f7faaa2e31ecf4dbedb468b4be08c0aea5abc4b  scripts/c1_registration.py

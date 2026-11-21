@@ -1,0 +1,13 @@
+{
+  "accepted": false,
+  "attempt_count": 1,
+  "attempt_id": "e3::uair::complete_aligned::raven_oracle_p::seed30001__attempt1",
+  "dataset": "uair",
+  "error": "KeyError: \"Unknown aggregator: raven_oracle_p (available: ['central_all', 'central_delivered', 'centralall', 'centraldelivered', 'debt_cal', 'debt_calibration', 'fedasync', 'fedasync_window', 'fedau', 'fedau_window', 'fedavg', 'fedavg_window', 'flamf', 'flamf_original', 'flamf_timealign_adapted', 'inst_cal', 'instant_calibration', 'local_hajek', 'obsuse', 'obsuse_window', 'raven', 'raven_full_design_legacy', 'raven_legacy_always_on', 'raven_mcs', 'raven_mcs_formal', 'raven_sag', 'raven_simoracle', 'raven_wo_debt', 'raven_wo_design', 'raven_wo_inst', 'raven_wo_obs', 'raven_wo_use', 'sag', 'sag_raven', 'simoracle', 'time_align', 'time_align_agg', 'timealign', 'timealign_agg', 'two_stage_hajek', 'twostage_hajek'])\"",
+  "execution_status": "FAILED",
+  "finished_utc": "2026-09-23T15:31:57.232443+00:00",
+  "logical_run_id": "e3::uair::complete_aligned::raven_oracle_p::seed30001",
+  "method": "raven_oracle_p",
+  "seed": 30001,
+  "traceback": "Traceback (most recent call last):\n  File \"C:\\Cursor\\raven.mcs\\src\\raven_mcs\\e3\\canary\\execute.py\", line 133, in run_logical\n    result = run_e3_real(\n             ^^^^^^^^^^^^\n  File \"C:\\Cursor\\raven.mcs\\src\\raven_mcs\\e3\\real_runner\\runner.py\", line 471, in run_e3_real\n    runner = build_full_runner(\n             ^^^^^^^^^^^^^^^^^^\n  File \"C:\\Cursor\\raven.mcs\\src\\raven_mcs\\training\\window_runner.py\", line 1493, in build_full_runner\n    aggregator = get_aggregator(method)\n                 ^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Cursor\\raven.mcs\\src\\raven_mcs\\aggregation\\methods.py\", line 733, in get_aggregator\n    raise KeyError(f\"Unknown aggregator: {name} (available: {sorted(set(mapping.keys()))})\")\nKeyError: \"Unknown aggregator: raven_oracle_p (available: ['central_all', 'central_delivered', 'centralall', 'centraldelivered', 'debt_cal', 'debt_calibration', 'fedasync', 'fedasync_window', 'fedau', 'fedau_window', 'fedavg', 'fedavg_window', 'flamf', 'flamf_original', 'flamf_timealign_adapted', 'inst_cal', 'instant_calibration', 'local_hajek', 'obsuse', 'obsuse_window', 'raven', 'raven_full_design_legacy', 'raven_legacy_always_on', 'raven_mcs', 'raven_mcs_formal', 'raven_sag', 'raven_simoracle', 'raven_wo_debt', 'raven_wo_design', 'raven_wo_inst', 'raven_wo_obs', 'raven_wo_use', 'sag', 'sag_raven', 'simoracle', 'time_align', 'time_align_agg', 'timealign', 'timealign_agg', 'two_stage_hajek', 'twostage_hajek'])\"\n"
+}

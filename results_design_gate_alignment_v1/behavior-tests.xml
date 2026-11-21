@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="9" failures="0" skipped="0" tests="12" time="10.817" timestamp="2026-10-12T20:29:28.013999+08:00" hostname="LAPTOP-4349UTOC"><testcase classname="tests.integration.test_configured_design_runner" name="test_four_combinations_and_gate_parity" time="0.059"><error message="failed on setup with &quot;PermissionError: [WinError 5] 拒绝访问。: 'C:\\Users\\szr\\AppData\\Local\\Packages\\sandbox.{b415ed6c-5687-48cf-bb4c-5a58a448e790}\\AC\\Temp\\pytest-of-szr\\pytest-0\\design_data0\\.spatial_to_client.json.e9brgegb' -&gt; 'C:\\Users\\szr\\AppData\\Local\\Packages\\sandbox.{b415ed6c-5687-48cf-bb4c-5a58a448e790}\\AC\\Temp\\pytest-of-szr\\pytest-0\\design_data0\\spatial_to_client.json'&quot;">tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=&lt;pluggy._tracing.TagTracerSub object at 0x000001E3F274C790&gt;, _basetemp=Wi...x.{b415ed6c-5687-48cf-bb4c-5a58a448e790}/AC/Temp/pytest-of-szr/pytest-0'), _retention_count=3, _retention_policy='all')
+
+    @pytest.fixture(scope="module")
+    def context(tmp_path_factory):
+        torch.set_num_threads(1)
+&gt;       fx = build_correctness_fixture(tmp_path_factory.mktemp('design_data'))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\integration\test_configured_design_runner.py:34: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+src\raven_mcs\e3\real_runner\fixture.py:106: in build_correctness_fixture
+    dump_json(mapping, out_dir / "spatial_to_client.json")
+src\raven_mcs\utils\serialization.py:43: in dump_json
+    atomic_write_text(path, text + "\n")
+src\raven_mcs\utils\serialization.py:54: in atomic_write_text
+    Path(tmp_name).replace(path)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = WindowsPath('C:/Users/szr/AppData/Local/Packages/sandbox.{b415ed6c-5687-48cf-bb4c-5a58a448e790}/AC/Temp/pytest-of-szr/pytest-0/design_data0/.spatial_to_client.json.e9brgegb')
+target = WindowsPath('C:/Users/szr/AppData/Local/Packages/sandbox.{b415ed6c-5687-48cf-bb4c-5a58a448e790}/AC/Temp/pytest-of-szr/pytest-0/design_data0/spatial_to_client.json')
+
+    def replace(self, target):
+        """
+        Rename this path to the target path, overwriting if that path exists.
+    
+        The target path may be absolute or relative. Relative paths are
+        interpreted relative to the current working directory, *not* the
+        directory of the Path object.
+    
+        Returns the new Path instance pointing to the target path.
+        """
+&gt;       os.replace(self, target)
+E       PermissionError: [WinError 5] 拒绝访问。: 'C:\\Users\\szr\\AppData\\Local\\Packages\\sandbox.{b415ed6c-5687-48cf-bb4c-5a58a448e790}\\AC\\Temp\\pytest-of-szr\\pytest-0\\design_data0\\.spatial_to_client.json.e9brgegb' -&gt; 'C:\\Users\\szr\\AppData\\Local\\Packages\\sandbox.{b415ed6c-5687-48cf-bb4c-5a58a448e790}\\AC\\Temp\\pytest-of-szr\\pytest-0\\design_data0\\spatial_to_client.json'
+
+C:\Users\szr\AppData\Local\Programs\Python\Python311\Lib\pathlib.py:1188: PermissionError</error></testcase><testcase classname="tests.integration.test_configured_design_runner" name="test_diagnostic_state_does_not_close_design[WARMUP]" time="0.000"><error message="failed on setup with &quot;PermissionError: [WinError 5] 拒绝访问。: 'C:\\Users\\szr\\AppData\\Local\\Packages\\sandbox.{b415ed6c-5687-48cf-bb4c-5a58a448e790}\\AC\\Temp\\pytest-of-szr\\pytest-0\\design_data0\\.spatial_to_client.json.e9brgegb' -&gt; 'C:\\Users\\szr\\AppData\\Local\\Packages\\sandbox.{b415ed6c-5687-48cf-bb4c-5a58a448e790}\\AC\\Temp\\pytest-of-szr\\pytest-0\\design_data0\\spatial_to_client.json'&quot;">tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=&lt;pluggy._tracing.TagTracerSub object at 0x000001E3F274C790&gt;, _basetemp=Wi...x.{b415ed6c-5687-48cf-bb4c-5a58a448e790}/AC/Temp/pytest-of-szr/pytest-0'), _retention_count=3, _retention_policy='all')
+
+    @pytest.fixture(scope="module")
+    def context(tmp_path_factory):
+        torch.set_num_threads(1)
+&gt;       fx = build_correctness_fixture(tmp_path_factory.mktemp('design_data'))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\integration\test_configured_design_runner.py:34: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+src\raven_mcs\e3\real_runner\fixture.py:106: in build_correctness_fixture
+    dump_json(mapping, out_dir / "spatial_to_client.json")
+src\raven_mcs\utils\serialization.py:43: in dump_json
+    atomic_write_text(path, text + "\n")
+src\raven_mcs\utils\serialization.py:54: in atomic_write_text
+    Path(tmp_name).replace(path)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = WindowsPath('C:/Users/szr/AppData/Local/Packages/sandbox.{b415ed6c-5687-48cf-bb4c-5a58a448e790}/AC/Temp/pytest-of-szr/pytest-0/design_data0/.spatial_to_client.json.e9brgegb')
+target = WindowsPath('C:/Users/szr/AppData/Local/Packages/sandbox.{b415ed6c-5687-48cf-bb4c-5a58a448e790}/AC/Temp/pytest-of-szr/pytest-0/design_data0/spatial_to_client.json')
+
+    def replace(self, target):
+        """
+        Rename this path to the target path, overwriting if that path exists.
+    
+        The target path may be absolute or relative. Relative paths are
+        interpreted relative to the current working directory, *not* the
+        directory of the Path object.
+    
+        Returns the new Path instance pointing to the target path.
+        """
+&gt;       os.replace(self, target)
+E       PermissionError: [WinError 5] 拒绝访问。: 'C:\\Users\\szr\\AppData\\Local\\Packages\\sandbox.{b415ed6c-5687-48cf-bb4c-5a58a448e790}\\AC\\Temp\\pytest-of-szr\\pytest-0\\design_data0\\.spatial_to_client.json.e9brgegb' -&gt; 'C:\\Users\\szr\\AppData\\Local\\Packages\\sandbox.{b415ed6c-5687-48cf-bb4c-5a58a448e790}\\AC\\Temp\\pytest-of-szr\\pytest-0\\design_data0\\spatial_to_client.json'
+
+C:\Users\szr\AppData\Local\Programs\Python\Python311\Lib\pathlib.py:1188: PermissionError</error></testcase><testcase classname="tests.integration.test_configured_design_runner" name="test_diagnostic_state_does_not_close_design[RESET]" time="0.000"><error message="failed on setup with &quot;PermissionError: [WinError 5] 拒绝访问。: 'C:\\Users\\szr\\AppData\\Local\\Packages\\sandbox.{b415ed6c-5687-48cf-bb4c-5a58a448e790}\\AC\\Temp\\pytest-of-szr\\pytest-0\\design_data0\\.spatial_to_client.json.e9brgegb' -&gt; 'C:\\Users\\szr\\AppData\\Local\\Packages\\sandbox.{b415ed6c-5687-48cf-bb4c-5a58a448e790}\\AC\\Temp\\pytest-of-szr\\pytest-0\\design_data0\\spatial_to_client.json'&quot;">tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=&lt;pluggy._tracing.TagTracerSub object at 0x000001E3F274C790&gt;, _basetemp=Wi...x.{b415ed6c-5687-48cf-bb4c-5a58a448e790}/AC/Temp/pytest-of-szr/pytest-0'), _retention_count=3, _retention_policy='all')
+
+    @pytest.fixture(scope="module")
+    def context(tmp_path_factory):
+        torch.set_num_threads(1)
+&gt;       fx = build_correctness_fixture(tmp_path_factory.mktemp('design_data'))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\integration\test_configured_design_runner.py:34: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+src\raven_mcs\e3\real_runner\fixture.py:106: in build_correctness_fixture
+    dump_json(mapping, out_dir / "spatial_to_client.json")
+src\raven_mcs\utils\serialization.py:43: in dump_json
+    atomic_write_text(path, text + "\n")
+src\raven_mcs\utils\serialization.py:54: in atomic_write_text
+    Path(tmp_name).replace(path)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = WindowsPath('C:/Users/szr/AppData/Local/Packages/sandbox.{b415ed6c-5687-48cf-bb4c-5a58a448e790}/AC/Temp/pytest-of-szr/pytest-0/design_data0/.spatial_to_client.json.e9brgegb')
+target = WindowsPath('C:/Users/szr/AppData/Local/Packages/sandbox.{b415ed6c-5687-48cf-bb4c-5a58a448e790}/AC/Temp/pytest-of-szr/pytest-0/design_data0/spatial_to_client.json')
+
+    def replace(self, target):
+        """
+        Rename this path to the target path, overwriting if that path exists.
+    
+        The target path may be absolute or relative. Relative paths are
+        interpreted relative to the current working directory, *not* the
+        directory of the Path object.
+    
+        Returns the new Path instance pointing to the target path.
+        """
+&gt;       os.replace(self, target)
+E       PermissionError: [WinError 5] 拒绝访问。: 'C:\\Users\\szr\\AppData\\Local\\Packages\\sandbox.{b415ed6c-5687-48cf-bb4c-5a58a448e790}\\AC\\Temp\\pytest-of-szr\\pytest-0\\design_data0\\.spatial_to_client.json.e9brgegb' -&gt; 'C:\\Users\\szr\\AppData\\Local\\Packages\\sandbox.{b415ed6c-5687-48cf-bb4c-5a58a448e790}\\AC\\Temp\\pytest-of-szr\\pytest-0\\design_data0\\spatial_to_client.json'
+
+C:\Users\szr\AppData\Local\Programs\Python\Python311\Lib\pathlib.py:1188: PermissionError</error></testcase><testcase classname="tests.integration.test_configured_design_runner" name="test_configuration_frozen_before_diagnostic_and_changes_next_window" time="0.000"><error message="failed on setup with &quot;PermissionError: [WinError 5] 拒绝访问。: 'C:\\Users\\szr\\AppData\\Local\\Packages\\sandbox.{b415ed6c-5687-48cf-bb4c-5a58a448e790}\\AC\\Temp\\pytest-of-szr\\pytest-0\\design_data0\\.spatial_to_client.json.e9brgegb' -&gt; 'C:\\Users\\szr\\AppData\\Local\\Packages\\sandbox.{b415ed6c-5687-48cf-bb4c-5a58a448e790}\\AC\\Temp\\pytest-of-szr\\pytest-0\\design_data0\\spatial_to_client.json'&quot;">tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=&lt;pluggy._tracing.TagTracerSub object at 0x000001E3F274C790&gt;, _basetemp=Wi...x.{b415ed6c-5687-48cf-bb4c-5a58a448e790}/AC/Temp/pytest-of-szr/pytest-0'), _retention_count=3, _retention_policy='all')
+
+    @pytest.fixture(scope="module")
+    def context(tmp_path_factory):
+        torch.set_num_threads(1)
+&gt;       fx = build_correctness_fixture(tmp_path_factory.mktemp('design_data'))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\integration\test_configured_design_runner.py:34: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+src\raven_mcs\e3\real_runner\fixture.py:106: in build_correctness_fixture
+    dump_json(mapping, out_dir / "spatial_to_client.json")
+src\raven_mcs\utils\serialization.py:43: in dump_json
+    atomic_write_text(path, text + "\n")
+src\raven_mcs\utils\serialization.py:54: in atomic_write_text
+    Path(tmp_name).replace(path)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = WindowsPath('C:/Users/szr/AppData/Local/Packages/sandbox.{b415ed6c-5687-48cf-bb4c-5a58a448e790}/AC/Temp/pytest-of-szr/pytest-0/design_data0/.spatial_to_client.json.e9brgegb')
+target = WindowsPath('C:/Users/szr/AppData/Local/Packages/sandbox.{b415ed6c-5687-48cf-bb4c-5a58a448e790}/AC/Temp/pytest-of-szr/pytest-0/design_data0/spatial_to_client.json')
+
+    def replace(self, target):
+        """
+        Rename this path to the target path, overwriting if that path exists.
+    
+        The target path may be absolute or relative. Relative paths are
+        interpreted relative to the current working directory, *not* the
+        directory of the Path object.
+    
+        Returns the new Path instance pointing to the target path.
+        """
+&gt;       os.replace(self, target)
+E       PermissionError: [WinError 5] 拒绝访问。: 'C:\\Users\\szr\\AppData\\Local\\Packages\\sandbox.{b415ed6c-5687-48cf-bb4c-5a58a448e790}\\AC\\Temp\\pytest-of-szr\\pytest-0\\design_data0\\.spatial_to_client.json.e9brgegb' -&gt; 'C:\\Users\\szr\\AppData\\Local\\Packages\\sandbox.{b415ed6c-5687-48cf-bb4c-5a58a448e790}\\AC\\Temp\\pytest-of-szr\\pytest-0\\design_data0\\spatial_to_client.json'
+
+C:\Users\szr\AppData\Local\Programs\Python\Python311\Lib\pathlib.py:1188: PermissionError</error></testcase><testcase classname="tests.integration.test_configured_design_runner" name="test_legacy_full_runner_still_uses_gate[0]" time="0.001"><error message="failed on setup with &quot;PermissionError: [WinError 5] 拒绝访问。: 'C:\\Users\\szr\\AppData\\Local\\Packages\\sandbox.{b415ed6c-5687-48cf-bb4c-5a58a448e790}\\AC\\Temp\\pytest-of-szr\\pytest-0\\design_data0\\.spatial_to_client.json.e9brgegb' -&gt; 'C:\\Users\\szr\\AppData\\Local\\Packages\\sandbox.{b415ed6c-5687-48cf-bb4c-5a58a448e790}\\AC\\Temp\\pytest-of-szr\\pytest-0\\design_data0\\spatial_to_client.json'&quot;">tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=&lt;pluggy._tracing.TagTracerSub object at 0x000001E3F274C790&gt;, _basetemp=Wi...x.{b415ed6c-5687-48cf-bb4c-5a58a448e790}/AC/Temp/pytest-of-szr/pytest-0'), _retention_count=3, _retention_policy='all')
+
+    @pytest.fixture(scope="module")
+    def context(tmp_path_factory):
+        torch.set_num_threads(1)
+&gt;       fx = build_correctness_fixture(tmp_path_factory.mktemp('design_data'))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\integration\test_configured_design_runner.py:34: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+src\raven_mcs\e3\real_runner\fixture.py:106: in build_correctness_fixture
+    dump_json(mapping, out_dir / "spatial_to_client.json")
+src\raven_mcs\utils\serialization.py:43: in dump_json
+    atomic_write_text(path, text + "\n")
+src\raven_mcs\utils\serialization.py:54: in atomic_write_text
+    Path(tmp_name).replace(path)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = WindowsPath('C:/Users/szr/AppData/Local/Packages/sandbox.{b415ed6c-5687-48cf-bb4c-5a58a448e790}/AC/Temp/pytest-of-szr/pytest-0/design_data0/.spatial_to_client.json.e9brgegb')
+target = WindowsPath('C:/Users/szr/AppData/Local/Packages/sandbox.{b415ed6c-5687-48cf-bb4c-5a58a448e790}/AC/Temp/pytest-of-szr/pytest-0/design_data0/spatial_to_client.json')
+
+    def replace(self, target):
+        """
+        Rename this path to the target path, overwriting if that path exists.
+    
+        The target path may be absolute or relative. Relative paths are
+        interpreted relative to the current working directory, *not* the
+        directory of the Path object.
+    
+        Returns the new Path instance pointing to the target path.
+        """
+&gt;       os.replace(self, target)
+E       PermissionError: [WinError 5] 拒绝访问。: 'C:\\Users\\szr\\AppData\\Local\\Packages\\sandbox.{b415ed6c-5687-48cf-bb4c-5a58a448e790}\\AC\\Temp\\pytest-of-szr\\pytest-0\\design_data0\\.spatial_to_client.json.e9brgegb' -&gt; 'C:\\Users\\szr\\AppData\\Local\\Packages\\sandbox.{b415ed6c-5687-48cf-bb4c-5a58a448e790}\\AC\\Temp\\pytest-of-szr\\pytest-0\\design_data0\\spatial_to_client.json'
+
+C:\Users\szr\AppData\Local\Programs\Python\Python311\Lib\pathlib.py:1188: PermissionError</error></testcase><testcase classname="tests.integration.test_configured_design_runner" name="test_legacy_full_runner_still_uses_gate[1]" time="0.001"><error message="failed on setup with &quot;PermissionError: [WinError 5] 拒绝访问。: 'C:\\Users\\szr\\AppData\\Local\\Packages\\sandbox.{b415ed6c-5687-48cf-bb4c-5a58a448e790}\\AC\\Temp\\pytest-of-szr\\pytest-0\\design_data0\\.spatial_to_client.json.e9brgegb' -&gt; 'C:\\Users\\szr\\AppData\\Local\\Packages\\sandbox.{b415ed6c-5687-48cf-bb4c-5a58a448e790}\\AC\\Temp\\pytest-of-szr\\pytest-0\\design_data0\\spatial_to_client.json'&quot;">tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=&lt;pluggy._tracing.TagTracerSub object at 0x000001E3F274C790&gt;, _basetemp=Wi...x.{b415ed6c-5687-48cf-bb4c-5a58a448e790}/AC/Temp/pytest-of-szr/pytest-0'), _retention_count=3, _retention_policy='all')
+
+    @pytest.fixture(scope="module")
+    def context(tmp_path_factory):
+        torch.set_num_threads(1)
+&gt;       fx = build_correctness_fixture(tmp_path_factory.mktemp('design_data'))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\integration\test_configured_design_runner.py:34: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+src\raven_mcs\e3\real_runner\fixture.py:106: in build_correctness_fixture
+    dump_json(mapping, out_dir / "spatial_to_client.json")
+src\raven_mcs\utils\serialization.py:43: in dump_json
+    atomic_write_text(path, text + "\n")
+src\raven_mcs\utils\serialization.py:54: in atomic_write_text
+    Path(tmp_name).replace(path)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = WindowsPath('C:/Users/szr/AppData/Local/Packages/sandbox.{b415ed6c-5687-48cf-bb4c-5a58a448e790}/AC/Temp/pytest-of-szr/pytest-0/design_data0/.spatial_to_client.json.e9brgegb')
+target = WindowsPath('C:/Users/szr/AppData/Local/Packages/sandbox.{b415ed6c-5687-48cf-bb4c-5a58a448e790}/AC/Temp/pytest-of-szr/pytest-0/design_data0/spatial_to_client.json')
+
+    def replace(self, target):
+        """
+        Rename this path to the target path, overwriting if that path exists.
+    
+        The target path may be absolute or relative. Relative paths are
+        interpreted relative to the current working directory, *not* the
+        directory of the Path object.
+    
+        Returns the new Path instance pointing to the target path.
+        """
+&gt;       os.replace(self, target)
+E       PermissionError: [WinError 5] 拒绝访问。: 'C:\\Users\\szr\\AppData\\Local\\Packages\\sandbox.{b415ed6c-5687-48cf-bb4c-5a58a448e790}\\AC\\Temp\\pytest-of-szr\\pytest-0\\design_data0\\.spatial_to_client.json.e9brgegb' -&gt; 'C:\\Users\\szr\\AppData\\Local\\Packages\\sandbox.{b415ed6c-5687-48cf-bb4c-5a58a448e790}\\AC\\Temp\\pytest-of-szr\\pytest-0\\design_data0\\spatial_to_client.json'
+
+C:\Users\szr\AppData\Local\Programs\Python\Python311\Lib\pathlib.py:1188: PermissionError</error></testcase><testcase classname="tests.integration.test_configured_design_runner" name="test_missing_invalid_design_inputs_are_errors_even_when_gate_off[None]" time="0.001"><error message="failed on setup with &quot;PermissionError: [WinError 5] 拒绝访问。: 'C:\\Users\\szr\\AppData\\Local\\Packages\\sandbox.{b415ed6c-5687-48cf-bb4c-5a58a448e790}\\AC\\Temp\\pytest-of-szr\\pytest-0\\design_data0\\.spatial_to_client.json.e9brgegb' -&gt; 'C:\\Users\\szr\\AppData\\Local\\Packages\\sandbox.{b415ed6c-5687-48cf-bb4c-5a58a448e790}\\AC\\Temp\\pytest-of-szr\\pytest-0\\design_data0\\spatial_to_client.json'&quot;">tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=&lt;pluggy._tracing.TagTracerSub object at 0x000001E3F274C790&gt;, _basetemp=Wi...x.{b415ed6c-5687-48cf-bb4c-5a58a448e790}/AC/Temp/pytest-of-szr/pytest-0'), _retention_count=3, _retention_policy='all')
+
+    @pytest.fixture(scope="module")
+    def context(tmp_path_factory):
+        torch.set_num_threads(1)
+&gt;       fx = build_correctness_fixture(tmp_path_factory.mktemp('design_data'))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\integration\test_configured_design_runner.py:34: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+src\raven_mcs\e3\real_runner\fixture.py:106: in build_correctness_fixture
+    dump_json(mapping, out_dir / "spatial_to_client.json")
+src\raven_mcs\utils\serialization.py:43: in dump_json
+    atomic_write_text(path, text + "\n")
+src\raven_mcs\utils\serialization.py:54: in atomic_write_text
+    Path(tmp_name).replace(path)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = WindowsPath('C:/Users/szr/AppData/Local/Packages/sandbox.{b415ed6c-5687-48cf-bb4c-5a58a448e790}/AC/Temp/pytest-of-szr/pytest-0/design_data0/.spatial_to_client.json.e9brgegb')
+target = WindowsPath('C:/Users/szr/AppData/Local/Packages/sandbox.{b415ed6c-5687-48cf-bb4c-5a58a448e790}/AC/Temp/pytest-of-szr/pytest-0/design_data0/spatial_to_client.json')
+
+    def replace(self, target):
+        """
+        Rename this path to the target path, overwriting if that path exists.
+    
+        The target path may be absolute or relative. Relative paths are
+        interpreted relative to the current working directory, *not* the
+        directory of the Path object.
+    
+        Returns the new Path instance pointing to the target path.
+        """
+&gt;       os.replace(self, target)
+E       PermissionError: [WinError 5] 拒绝访问。: 'C:\\Users\\szr\\AppData\\Local\\Packages\\sandbox.{b415ed6c-5687-48cf-bb4c-5a58a448e790}\\AC\\Temp\\pytest-of-szr\\pytest-0\\design_data0\\.spatial_to_client.json.e9brgegb' -&gt; 'C:\\Users\\szr\\AppData\\Local\\Packages\\sandbox.{b415ed6c-5687-48cf-bb4c-5a58a448e790}\\AC\\Temp\\pytest-of-szr\\pytest-0\\design_data0\\spatial_to_client.json'
+
+C:\Users\szr\AppData\Local\Programs\Python\Python311\Lib\pathlib.py:1188: PermissionError</error></testcase><testcase classname="tests.integration.test_configured_design_runner" name="test_missing_invalid_design_inputs_are_errors_even_when_gate_off[nan]" time="0.001"><error message="failed on setup with &quot;PermissionError: [WinError 5] 拒绝访问。: 'C:\\Users\\szr\\AppData\\Local\\Packages\\sandbox.{b415ed6c-5687-48cf-bb4c-5a58a448e790}\\AC\\Temp\\pytest-of-szr\\pytest-0\\design_data0\\.spatial_to_client.json.e9brgegb' -&gt; 'C:\\Users\\szr\\AppData\\Local\\Packages\\sandbox.{b415ed6c-5687-48cf-bb4c-5a58a448e790}\\AC\\Temp\\pytest-of-szr\\pytest-0\\design_data0\\spatial_to_client.json'&quot;">tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=&lt;pluggy._tracing.TagTracerSub object at 0x000001E3F274C790&gt;, _basetemp=Wi...x.{b415ed6c-5687-48cf-bb4c-5a58a448e790}/AC/Temp/pytest-of-szr/pytest-0'), _retention_count=3, _retention_policy='all')
+
+    @pytest.fixture(scope="module")
+    def context(tmp_path_factory):
+        torch.set_num_threads(1)
+&gt;       fx = build_correctness_fixture(tmp_path_factory.mktemp('design_data'))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\integration\test_configured_design_runner.py:34: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+src\raven_mcs\e3\real_runner\fixture.py:106: in build_correctness_fixture
+    dump_json(mapping, out_dir / "spatial_to_client.json")
+src\raven_mcs\utils\serialization.py:43: in dump_json
+    atomic_write_text(path, text + "\n")
+src\raven_mcs\utils\serialization.py:54: in atomic_write_text
+    Path(tmp_name).replace(path)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = WindowsPath('C:/Users/szr/AppData/Local/Packages/sandbox.{b415ed6c-5687-48cf-bb4c-5a58a448e790}/AC/Temp/pytest-of-szr/pytest-0/design_data0/.spatial_to_client.json.e9brgegb')
+target = WindowsPath('C:/Users/szr/AppData/Local/Packages/sandbox.{b415ed6c-5687-48cf-bb4c-5a58a448e790}/AC/Temp/pytest-of-szr/pytest-0/design_data0/spatial_to_client.json')
+
+    def replace(self, target):
+        """
+        Rename this path to the target path, overwriting if that path exists.
+    
+        The target path may be absolute or relative. Relative paths are
+        interpreted relative to the current working directory, *not* the
+        directory of the Path object.
+    
+        Returns the new Path instance pointing to the target path.
+        """
+&gt;       os.replace(self, target)
+E       PermissionError: [WinError 5] 拒绝访问。: 'C:\\Users\\szr\\AppData\\Local\\Packages\\sandbox.{b415ed6c-5687-48cf-bb4c-5a58a448e790}\\AC\\Temp\\pytest-of-szr\\pytest-0\\design_data0\\.spatial_to_client.json.e9brgegb' -&gt; 'C:\\Users\\szr\\AppData\\Local\\Packages\\sandbox.{b415ed6c-5687-48cf-bb4c-5a58a448e790}\\AC\\Temp\\pytest-of-szr\\pytest-0\\design_data0\\spatial_to_client.json'
+
+C:\Users\szr\AppData\Local\Programs\Python\Python311\Lib\pathlib.py:1188: PermissionError</error></testcase><testcase classname="tests.integration.test_configured_design_runner" name="test_missing_invalid_design_inputs_are_errors_even_when_gate_off[-1.0]" time="0.001"><error message="failed on setup with &quot;PermissionError: [WinError 5] 拒绝访问。: 'C:\\Users\\szr\\AppData\\Local\\Packages\\sandbox.{b415ed6c-5687-48cf-bb4c-5a58a448e790}\\AC\\Temp\\pytest-of-szr\\pytest-0\\design_data0\\.spatial_to_client.json.e9brgegb' -&gt; 'C:\\Users\\szr\\AppData\\Local\\Packages\\sandbox.{b415ed6c-5687-48cf-bb4c-5a58a448e790}\\AC\\Temp\\pytest-of-szr\\pytest-0\\design_data0\\spatial_to_client.json'&quot;">tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=&lt;pluggy._tracing.TagTracerSub object at 0x000001E3F274C790&gt;, _basetemp=Wi...x.{b415ed6c-5687-48cf-bb4c-5a58a448e790}/AC/Temp/pytest-of-szr/pytest-0'), _retention_count=3, _retention_policy='all')
+
+    @pytest.fixture(scope="module")
+    def context(tmp_path_factory):
+        torch.set_num_threads(1)
+&gt;       fx = build_correctness_fixture(tmp_path_factory.mktemp('design_data'))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\integration\test_configured_design_runner.py:34: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+src\raven_mcs\e3\real_runner\fixture.py:106: in build_correctness_fixture
+    dump_json(mapping, out_dir / "spatial_to_client.json")
+src\raven_mcs\utils\serialization.py:43: in dump_json
+    atomic_write_text(path, text + "\n")
+src\raven_mcs\utils\serialization.py:54: in atomic_write_text
+    Path(tmp_name).replace(path)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = WindowsPath('C:/Users/szr/AppData/Local/Packages/sandbox.{b415ed6c-5687-48cf-bb4c-5a58a448e790}/AC/Temp/pytest-of-szr/pytest-0/design_data0/.spatial_to_client.json.e9brgegb')
+target = WindowsPath('C:/Users/szr/AppData/Local/Packages/sandbox.{b415ed6c-5687-48cf-bb4c-5a58a448e790}/AC/Temp/pytest-of-szr/pytest-0/design_data0/spatial_to_client.json')
+
+    def replace(self, target):
+        """
+        Rename this path to the target path, overwriting if that path exists.
+    
+        The target path may be absolute or relative. Relative paths are
+        interpreted relative to the current working directory, *not* the
+        directory of the Path object.
+    
+        Returns the new Path instance pointing to the target path.
+        """
+&gt;       os.replace(self, target)
+E       PermissionError: [WinError 5] 拒绝访问。: 'C:\\Users\\szr\\AppData\\Local\\Packages\\sandbox.{b415ed6c-5687-48cf-bb4c-5a58a448e790}\\AC\\Temp\\pytest-of-szr\\pytest-0\\design_data0\\.spatial_to_client.json.e9brgegb' -&gt; 'C:\\Users\\szr\\AppData\\Local\\Packages\\sandbox.{b415ed6c-5687-48cf-bb4c-5a58a448e790}\\AC\\Temp\\pytest-of-szr\\pytest-0\\design_data0\\spatial_to_client.json'
+
+C:\Users\szr\AppData\Local\Programs\Python\Python311\Lib\pathlib.py:1188: PermissionError</error></testcase><testcase classname="tests.unit.test_configured_design_configuration" name="test_configuration_roundtrip_and_explicit_cli" time="0.016" /><testcase classname="tests.unit.test_configured_design_configuration" name="test_diagnostic_and_configuration_have_distinct_authority" time="0.003" /><testcase classname="tests.unit.test_configured_design_configuration" name="test_design_dependent_cache_rejects_legacy_and_changed_configuration" time="0.002" /></testsuite></testsuites>

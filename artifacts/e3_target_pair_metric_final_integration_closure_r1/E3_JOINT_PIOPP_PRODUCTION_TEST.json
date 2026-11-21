@@ -1,0 +1,13 @@
+{
+  "design_ratio": "pi_tar / pi_opp_joint",
+  "ratios": {
+    "c0|c0::block0::weekday": 0.643252398430095,
+    "c0|c0::block2::weekday": 2.2451714787309207,
+    "c1|c1::block0::weekday": 0.643252398430095,
+    "c1|c1::block2::weekday": 2.2451714787309207
+  },
+  "status": "PASS",
+  "sum_pi_opp_joint": 1.0,
+  "sum_pi_tar": 1.0,
+  "uses_joint_not_conditional_only": true
+}

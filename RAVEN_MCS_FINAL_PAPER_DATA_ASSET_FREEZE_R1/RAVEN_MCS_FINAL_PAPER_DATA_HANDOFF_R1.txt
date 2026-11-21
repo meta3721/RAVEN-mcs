@@ -1,0 +1,24 @@
+RAVEN-MCS FINAL PAPER DATA HANDOFF R1
+Round: RAVEN-MCS-FINAL-PAPER-DATA-ASSET-FREEZE-R1
+Status: B. RAVEN_MCS_FINAL_DATA_R1_FROZEN_CORE_READY_SUPPORTING_GAPS_REMAIN
+
+1. MASTER_DATA_CATALOG: D:/Cursor/raven.mcs/RAVEN_MCS_FINAL_PAPER_DATA_ASSET_FREEZE_R1/00_MASTER_CATALOG/MASTER_DATA_CATALOG.csv
+2. Run-level master: D:/Cursor/raven.mcs/RAVEN_MCS_FINAL_PAPER_DATA_ASSET_FREEZE_R1/04_ALL_RUN_METRICS/ALL_VALID_RUNS_MASTER.csv (.parquet)
+3. Long-format master: D:/Cursor/raven.mcs/RAVEN_MCS_FINAL_PAPER_DATA_ASSET_FREEZE_R1/04_ALL_RUN_METRICS/ALL_VALID_METRICS_LONG.csv (.parquet)
+4. Final statistics: D:/Cursor/raven.mcs/RAVEN_MCS_FINAL_PAPER_DATA_ASSET_FREEZE_R1/01_PAPER_CORE/STATISTICS/FINAL_STATISTICS_MASTER.csv
+5. Dataset metadata: D:/Cursor/raven.mcs/RAVEN_MCS_FINAL_PAPER_DATA_ASSET_FREEZE_R1/01_PAPER_CORE/DATASET_METADATA/DATASET_METADATA_FINAL.csv
+6. Config master: D:/Cursor/raven.mcs/RAVEN_MCS_FINAL_PAPER_DATA_ASSET_FREEZE_R1/13_CONFIGS/FINAL_CONFIG_MASTER.csv
+7. Valid E4 w/o-Inst generation: 2 ONLY
+8. Final E4 labels: Design/Obs/Inst=ENDPOINT_TRADEOFF; Use=NO_CLEAR_EFFECT; Debt=STRUCTURAL_ONLY_SUPPORTED (quantitatively small)
+9. Traffic: E2 usable; E3 cross-vintage NOT_COMPARABLE; do not mix as one performance block
+10. P2: feasibility audited where reconstructable; exact post-hoc optimality NOT reconstructable
+11. T-Drive: PROTOCOL_SEALED, FORMAL_NOT_RUN, REVIEWER_RESERVE; default DO_NOT_RUN_BEFORE_SUBMISSION
+12. Main figure sources: 15_FIGURE_SOURCES FIG1 E2 D_aligned; FIG2 E3 structural; FIG4 E4 ablation (plus FIG3 prediction source)
+13. Optional figure sources: FIG6 ESS/P2; FIG7 runtime; FIG8 Local-Hajek. FIG5 NOT available without new run — do not run.
+14. Main table sources: TABLE_I datasets; TABLE_II E3; TABLE_III E4; TABLE_E1 appendix
+15. Missing CORE data: none
+16. Missing supporting: debt/ESS trajectories, P2-only runtime, sampling interval, row-level propensities, FIG5 composition, T-Drive performance
+17. Next action: STOP DATA EXPERIMENT WORK. Freeze figure/table set and write the manuscript from these assets. Do not activate T-Drive.
+
+CORE ZIP: D:\Cursor\raven.mcs\RAVEN_MCS_FINAL_PAPER_DATA_ASSET_FREEZE_R1\RAVEN_MCS_FINAL_PAPER_DATA_CORE_R1.zip
+FULL ZIP: D:\Cursor\raven.mcs\RAVEN_MCS_FINAL_PAPER_DATA_ASSET_FREEZE_R1\RAVEN_MCS_FINAL_PAPER_DATA_FULL_R1.zip

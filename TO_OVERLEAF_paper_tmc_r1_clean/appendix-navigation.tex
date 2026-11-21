@@ -1,0 +1,34 @@
+% Shared navigation metadata; original scientific labels and counters are retained.
+% Load after hyperref and before externaldocument, in both documents.
+\newcommand{\NavSubName}{subsection}
+\newcommand{\NavSubSubName}{subsubsection}
+\newcommand{\NavAppendixName}{Appendix}
+\DeclareRobustCommand{\NavLocation}[3]{#1\if\relax\detokenize{#2}\relax\else, \NavSubName~#2\fi\if\relax\detokenize{#3}\relax\else, \NavSubSubName~#3\fi}
+\newcommand{\NavCode}[3]{#1\if\relax\detokenize{#2}\relax\else-#2\fi\if\relax\detokenize{#3}\relax\else#3\fi}
+\newcommand{\appreffull}[1]{\hyperref[#1]{\NavAppendixName~\ref*{nav:#1}}}
+\newcommand{\appref}[1]{\begingroup\edef\NavCurrentSub{\getrefnumber{navsub:#1}}\if\relax\NavCurrentSub\relax\else\renewcommand{\NavAppendixName}{App.}\fi\renewcommand{\NavSubName}{subsec.}\renewcommand{\NavSubSubName}{subsubsec.}\appreffull{#1}\endgroup}
+\newcommand{\apprefs}[2]{App.~\hyperref[#1]{\ref*{navparent:#1}}, subsecs.~\hyperref[#1]{\ref*{navsub:#1}} and~\hyperref[#2]{\ref*{navsub:#2}}}
+\newcommand{\naventry}[2]{\hyperref[#1]{\ref*{navcode:#1}~#2 (\pageref*{#1})}}
+\newcommand{\navrange}[3]{\hyperref[#1]{\ref*{navcode:#1}}--\hyperref[#2]{\ref*{navcode:#2}~#3 (pp.~\pageref*{#1}--\pageref*{#2})}}
+\makeatletter
+\newcommand{\AppNavLabel}[1]{%
+  \@bsphack%
+  \label{#1}%
+  \begingroup%
+  \edef\NavParent{\thesection}%
+  \def\NavSub{}\def\NavSubSub{}%
+  \ifnum\value{subsection}>0 \edef\NavSub{\Alph{subsection}}\fi%
+  \ifnum\value{subsubsection}>0 \edef\NavSubSub{\arabic{subsubsection}}\fi%
+  \protected@edef\@currentlabel{\noexpand\NavLocation{\NavParent}{\NavSub}{\NavSubSub}}%
+  \label{nav:#1}%
+  \protected@edef\@currentlabel{\noexpand\NavCode{\NavParent}{\NavSub}{\NavSubSub}}%
+  \label{navcode:#1}%
+  \protected@edef\@currentlabel{\NavParent}\label{navparent:#1}%
+  \protected@edef\@currentlabel{\NavSub}\label{navsub:#1}%
+  \endgroup%
+  \@esphack}%
+\makeatother
+\pdfstringdefDisableCommands{%
+  \def\mbox#1{#1}% IEEEtran's reference-number wrapper
+  \def\NavCode#1#2#3{#1-#2#3}%
+}

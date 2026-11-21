@@ -1,0 +1,33 @@
+{
+  "none_fields_off": [
+    "Delta_pair",
+    "Q_norm1_over_S",
+    "Q_norm2_over_S",
+    "delta_ref"
+  ],
+  "none_fields_sgd": [
+    "Delta_pair",
+    "Q_norm1_over_S",
+    "Q_norm2_over_S",
+    "delta_ref"
+  ],
+  "traffic_identity": {
+    "all_differences": [
+      "runtime_seconds: 36.704817199999525 vs 37.42309340000065"
+    ],
+    "deterministic_differences": [],
+    "deterministic_equal": true,
+    "final_theta_byte_identical": true,
+    "theta_sha256": {
+      "off": "15de443736271d971e066258029fdb125a8c4a3cc2dab35d231b7a56560fd816",
+      "sgd": "15de443736271d971e066258029fdb125a8c4a3cc2dab35d231b7a56560fd816"
+    },
+    "wall_clock_values": {
+      "runtime_seconds": [
+        36.704817199999525,
+        37.42309340000065
+      ]
+    }
+  },
+  "traffic_path_produces_none_fields": true
+}

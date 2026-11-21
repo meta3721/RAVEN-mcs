@@ -1,0 +1,125 @@
+{
+  "version": "targeted-reference-calibration-P0-P1-20261022-v1",
+  "source": "C:/Users/szr/Desktop/record/1/dataset_dense_reference_evidence/epa_purpleair_2021.zip",
+  "splits": {
+    "D_fit": [
+      "2019-01-26",
+      "2019-02-22"
+    ],
+    "D_tune": [
+      "2019-02-23",
+      "2019-03-08"
+    ],
+    "V": [
+      "2019-03-09",
+      "2019-04-05"
+    ],
+    "A": [
+      "2019-04-06",
+      "2019-05-03"
+    ],
+    "T": [
+      "2019-05-04",
+      "2019-06-28"
+    ]
+  },
+  "groups": [
+    "West",
+    "North"
+  ],
+  "features": [
+    "PM25cf1",
+    "RH",
+    "TempC"
+  ],
+  "target": "PM25FM",
+  "units": "ug/m3",
+  "missing_tokens": [
+    "NA",
+    ""
+  ],
+  "negative_reference": "retain",
+  "reference_type_order": [
+    "four_periods_covered_desc",
+    "unique_valid_dates_desc",
+    "FEMorFRMtype_lexical"
+  ],
+  "representative_order": [
+    "paired_dates_154_desc",
+    "ID_lexical"
+  ],
+  "no_replacement_after_support_failure": true,
+  "site_support": {
+    "D": 20,
+    "V": 10,
+    "A": 10,
+    "T": 20,
+    "D_fit": 1,
+    "D_tune": 1
+  },
+  "panel_support": {
+    "sites": 10,
+    "each_group": 4,
+    "V_days": 20,
+    "T_days": 40,
+    "T_blocks": 7,
+    "day_group_required": "max(3,ceil(0.75*S_group))"
+  },
+  "Dtune_panel": "all valid pairs of frozen sites in D_tune; site-equal RMSE",
+  "lambda": [
+    0.1,
+    1,
+    10
+  ],
+  "tie_tolerance": 1e-10,
+  "lambda_tie": "largest",
+  "candidate_tie": "M2",
+  "C_primary": "M2 or M3 minimum D_tune RMSE_eq; no V selection",
+  "B_strong": "min V RMSE_eq among M1,M4",
+  "models": {
+    "M0": "raw PM25cf1",
+    "M1": "intercept + beta*x",
+    "M2": "M1+b_site",
+    "M3": "M2+d_site*x1",
+    "M4": {
+      "n_estimators": 100,
+      "max_depth": 6,
+      "min_samples_leaf": 5,
+      "max_features": 1.0,
+      "bootstrap": false,
+      "criterion": "squared_error",
+      "n_jobs": 1,
+      "random_state": 20261022
+    }
+  },
+  "ridge_objective": "sum(w*(z-yhat)^2)+lambda*(||beta||^2+||b||^2+||d||^2); unpenalized global intercept",
+  "row_weight": "N/(S*n_s)",
+  "zero_sum": "orthonormal Helmert contrasts for b and d",
+  "preprocessing": "D_fit medians, population mean/std, frozen for D refit",
+  "bootstrap": {
+    "blocks": 4,
+    "days": 7,
+    "replicates": 1000,
+    "seed": 20261022,
+    "paired": true,
+    "baseline_reselected_each_replicate": true
+  },
+  "thresholds": {
+    "G_R": 0.05,
+    "H_C": 0.02,
+    "near_zero": 1e-08
+  },
+  "budgets": {
+    "P0_cpu": 300,
+    "P0_wall": 900,
+    "P1_cpu": 600,
+    "P1_wall": 1800,
+    "rss_gib": 1.5,
+    "low_available_gib": 1.5,
+    "low_available_seconds": 30
+  },
+  "scope_end": "P1",
+  "no_gpu": true,
+  "threads": 1,
+  "A_T": "metadata preparation only; training/scoring access denied"
+}

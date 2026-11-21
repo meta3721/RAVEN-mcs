@@ -1,0 +1,60 @@
+[
+  {
+    "dataset": "sensorscope",
+    "a5_holds": true,
+    "frac_pi_tar_zero": 0.0,
+    "pi_opp_min_global": 0.0006326708489355371,
+    "pi_min_from_zeta_max": 0.2696759493587727,
+    "p_true_min": 0.1925,
+    "clip_on_mean": 0.0465,
+    "ess_ratio_on_mean": 0.771625,
+    "mean_abs_a_on_minus_oracle": 1.7418739045443694,
+    "C1_times_Bmin_global_pi_min": {
+      "C1": 999319455.7238809,
+      "C_pi": 999319455.7238809,
+      "C_p": 3284365.134600658,
+      "C_q": 15999.999999999996,
+      "C_clip": 60.0,
+      "defined": 1.0,
+      "scale": 2.0
+    },
+    "C1_times_Bmin_zeta_floor": {
+      "C1": 15999.999999999996,
+      "C_pi": 5500.162981598746,
+      "C_p": 7705.255447743479,
+      "C_q": 15999.999999999996,
+      "C_clip": 60.0,
+      "defined": 1.0,
+      "scale": 2.0
+    }
+  },
+  {
+    "dataset": "uair",
+    "a5_holds": false,
+    "frac_pi_tar_zero": 0.2546875,
+    "pi_opp_min_global": 0.0013918758676581813,
+    "pi_min_from_zeta_max": 0.2213082629576508,
+    "p_true_min": 0.1925,
+    "clip_on_mean": 0.05703125,
+    "ess_ratio_on_mean": 0.56875,
+    "mean_abs_a_on_minus_oracle": 1.1445249329853728,
+    "C1_times_Bmin_global_pi_min": {
+      "C1": Infinity,
+      "C_pi": 206470961.92642176,
+      "C_p": 1492893.2430002994,
+      "C_q": 15999.999999999996,
+      "C_clip": 60.0,
+      "defined": 0.0,
+      "scale": 2.0
+    },
+    "C1_times_Bmin_zeta_floor": {
+      "C1": Infinity,
+      "C_pi": 8167.040936925827,
+      "C_p": 9389.265679247166,
+      "C_q": 15999.999999999996,
+      "C_clip": 60.0,
+      "defined": 0.0,
+      "scale": 2.0
+    }
+  }
+]

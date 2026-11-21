@@ -1,0 +1,13 @@
+{
+  "csv_sha256": "1aa0706f6479b1cac7504e3cffba8eb6a3df7bf9a2a378cc1a689603b49fad86",
+  "excluded_evidence": "E3 Traffic NOT_COMPARABLE",
+  "filters": "SensorScope and U-Air only; Traffic E3 excluded",
+  "note": "numerical_best is not a significance mark",
+  "source_files": [
+    "paper_ready_r2/04_statistics/E3_FINAL_STATISTICS.csv",
+    "paper_ready_r2/04_statistics/E3_FORMAL_HOLM_RESULTS.csv",
+    "paper_ready_r2/03_raw_evidence/e3/e3_formal_evidence_integrity_and_claim_closure_r1/E3_SECONDARY_HOLM_RESULTS.csv"
+  ],
+  "statistical_method": "mean±std over seeds 30001–30020; paired Wilcoxon + Holm vs RAVEN (R2 sealed families)",
+  "version": "manuscript_evidence_closure_r1"
+}

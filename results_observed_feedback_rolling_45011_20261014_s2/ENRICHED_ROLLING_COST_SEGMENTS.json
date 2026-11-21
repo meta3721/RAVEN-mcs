@@ -1,0 +1,822 @@
+[
+  {
+    "time": 6.1,
+    "registrations": 218,
+    "R1": 149,
+    "SGD": 149,
+    "notices": 148,
+    "grids": 51,
+    "P2_calculations": 6,
+    "root_categories": {
+      "setup": 0.0,
+      "initialization": 13.46875,
+      "online": 0.875,
+      "training": 2.453125,
+      "events": 11.59375,
+      "save": 2.875,
+      "repair": 0.0
+    },
+    "monitor_CPU": 5.96875,
+    "monitor_role": "part of root, not additive",
+    "operation_wall": 71.35551469981874,
+    "online_max_upper": 0.098125,
+    "save_max_upper": 2.566875,
+    "checkpoint_bytes": [
+      32700682,
+      4593467
+    ],
+    "private_queue": 17,
+    "forecast_warning": false,
+    "proposed_remaining_CPU": 665.7478244738262,
+    "actual_registration_branch_counts": {
+      "restore_actual": 1,
+      "registration": 218,
+      "train": 149,
+      "queue": 149,
+      "finish": 218,
+      "notify": 148,
+      "pre": 51,
+      "<lambda>": 52,
+      "diagnostics": 51
+    }
+  },
+  {
+    "time": 11.1,
+    "registrations": 215,
+    "R1": 167,
+    "SGD": 167,
+    "notices": 165,
+    "grids": 50,
+    "P2_calculations": 5,
+    "root_categories": {
+      "setup": 0.0,
+      "initialization": 0.0,
+      "online": 0.734375,
+      "training": 2.296875,
+      "events": 10.453125,
+      "save": 3.203125,
+      "repair": 0.0
+    },
+    "monitor_CPU": 3.671875,
+    "monitor_role": "part of root, not additive",
+    "operation_wall": 59.47948129980796,
+    "online_max_upper": 0.0825,
+    "save_max_upper": 2.9575,
+    "checkpoint_bytes": [
+      41788180,
+      3865344
+    ],
+    "private_queue": 19,
+    "forecast_warning": false,
+    "proposed_remaining_CPU": 608.7058685660713,
+    "actual_registration_branch_counts": {
+      "summary": 1,
+      "registration": 215,
+      "finish": 215,
+      "notify": 165,
+      "train": 167,
+      "queue": 167,
+      "pre": 50,
+      "<lambda>": 51,
+      "diagnostics": 50
+    }
+  },
+  {
+    "time": 16.1,
+    "registrations": 215,
+    "R1": 165,
+    "SGD": 165,
+    "notices": 166,
+    "grids": 50,
+    "P2_calculations": 5,
+    "root_categories": {
+      "setup": 0.0,
+      "initialization": 0.0,
+      "online": 0.78125,
+      "training": 2.15625,
+      "events": 11.21875,
+      "save": 3.78125,
+      "repair": 0.0
+    },
+    "monitor_CPU": 4.375,
+    "monitor_role": "part of root, not additive",
+    "operation_wall": 59.49603309991653,
+    "online_max_upper": 0.0825,
+    "save_max_upper": 3.441875,
+    "checkpoint_bytes": [
+      49229009,
+      5160881
+    ],
+    "private_queue": 18,
+    "forecast_warning": false,
+    "proposed_remaining_CPU": 596.7776100508524,
+    "actual_registration_branch_counts": {
+      "summary": 1,
+      "registration": 215,
+      "train": 165,
+      "queue": 165,
+      "finish": 215,
+      "notify": 166,
+      "pre": 50,
+      "<lambda>": 51,
+      "diagnostics": 50
+    }
+  },
+  {
+    "time": 21.1,
+    "registrations": 215,
+    "R1": 181,
+    "SGD": 181,
+    "notices": 175,
+    "grids": 50,
+    "P2_calculations": 11,
+    "root_categories": {
+      "setup": 0.0,
+      "initialization": 0.0,
+      "online": 0.859375,
+      "training": 2.59375,
+      "events": 11.34375,
+      "save": 3.984375,
+      "repair": 0.0
+    },
+    "monitor_CPU": 4.671875,
+    "monitor_role": "part of root, not additive",
+    "operation_wall": 61.8929423000518,
+    "online_max_upper": 0.098125,
+    "save_max_upper": 3.67625,
+    "checkpoint_bytes": [
+      57887503,
+      6168510
+    ],
+    "private_queue": 24,
+    "forecast_warning": false,
+    "proposed_remaining_CPU": 584.4089680232559,
+    "actual_registration_branch_counts": {
+      "summary": 1,
+      "registration": 215,
+      "train": 181,
+      "queue": 181,
+      "finish": 215,
+      "notify": 175,
+      "pre": 50,
+      "<lambda>": 51,
+      "diagnostics": 50
+    }
+  },
+  {
+    "time": 26.1,
+    "registrations": 215,
+    "R1": 165,
+    "SGD": 165,
+    "notices": 170,
+    "grids": 50,
+    "P2_calculations": 34,
+    "root_categories": {
+      "setup": 0.0,
+      "initialization": 0.0,
+      "online": 1.140625,
+      "training": 2.265625,
+      "events": 11.1875,
+      "save": 4.390625,
+      "repair": 0.0
+    },
+    "monitor_CPU": 4.234375,
+    "monitor_role": "part of root, not additive",
+    "operation_wall": 60.60169529975974,
+    "online_max_upper": 0.0825,
+    "save_max_upper": 4.129375,
+    "checkpoint_bytes": [
+      65816994,
+      4581791
+    ],
+    "private_queue": 19,
+    "forecast_warning": false,
+    "proposed_remaining_CPU": 557.4513965623247,
+    "actual_registration_branch_counts": {
+      "summary": 1,
+      "registration": 215,
+      "train": 165,
+      "queue": 165,
+      "finish": 215,
+      "notify": 170,
+      "pre": 50,
+      "<lambda>": 51,
+      "diagnostics": 50
+    }
+  },
+  {
+    "time": 31.1,
+    "registrations": 215,
+    "R1": 165,
+    "SGD": 165,
+    "notices": 166,
+    "grids": 50,
+    "P2_calculations": 32,
+    "root_categories": {
+      "setup": 0.0,
+      "initialization": 0.0,
+      "online": 1.296875,
+      "training": 1.984375,
+      "events": 10.34375,
+      "save": 4.90625,
+      "repair": 0.0
+    },
+    "monitor_CPU": 3.703125,
+    "monitor_role": "part of root, not additive",
+    "operation_wall": 60.94268559994089,
+    "online_max_upper": 0.066875,
+    "save_max_upper": 4.5825,
+    "checkpoint_bytes": [
+      78557734,
+      4125843
+    ],
+    "private_queue": 18,
+    "forecast_warning": false,
+    "proposed_remaining_CPU": 529.9546447215778,
+    "actual_registration_branch_counts": {
+      "summary": 1,
+      "registration": 215,
+      "train": 165,
+      "queue": 165,
+      "finish": 215,
+      "notify": 166,
+      "pre": 50,
+      "<lambda>": 51,
+      "diagnostics": 50
+    }
+  },
+  {
+    "time": 36.1,
+    "registrations": 215,
+    "R1": 162,
+    "SGD": 162,
+    "notices": 156,
+    "grids": 50,
+    "P2_calculations": 25,
+    "root_categories": {
+      "setup": 0.0,
+      "initialization": 0.0,
+      "online": 1.0,
+      "training": 2.515625,
+      "events": 10.78125,
+      "save": 5.265625,
+      "repair": 0.0
+    },
+    "monitor_CPU": 4.28125,
+    "monitor_role": "part of root, not additive",
+    "operation_wall": 60.66512639991561,
+    "online_max_upper": 0.066875,
+    "save_max_upper": 4.92625,
+    "checkpoint_bytes": [
+      82507208,
+      5286006
+    ],
+    "private_queue": 24,
+    "forecast_warning": false,
+    "proposed_remaining_CPU": 498.04462452192956,
+    "actual_registration_branch_counts": {
+      "summary": 1,
+      "registration": 215,
+      "finish": 215,
+      "notify": 156,
+      "train": 162,
+      "queue": 162,
+      "pre": 50,
+      "<lambda>": 51,
+      "diagnostics": 50
+    }
+  },
+  {
+    "time": 41.1,
+    "registrations": 215,
+    "R1": 170,
+    "SGD": 170,
+    "notices": 170,
+    "grids": 50,
+    "P2_calculations": 33,
+    "root_categories": {
+      "setup": 0.0,
+      "initialization": 0.0,
+      "online": 1.4375,
+      "training": 2.34375,
+      "events": 10.515625,
+      "save": 5.8125,
+      "repair": 0.0
+    },
+    "monitor_CPU": 4.234375,
+    "monitor_role": "part of root, not additive",
+    "operation_wall": 62.497817699972074,
+    "online_max_upper": 0.285625,
+    "save_max_upper": 5.504375,
+    "checkpoint_bytes": [
+      92573969,
+      5775533
+    ],
+    "private_queue": 24,
+    "forecast_warning": false,
+    "proposed_remaining_CPU": 478.03673102619825,
+    "actual_registration_branch_counts": {
+      "summary": 1,
+      "notify": 170,
+      "registration": 215,
+      "train": 170,
+      "queue": 170,
+      "finish": 215,
+      "pre": 50,
+      "<lambda>": 51,
+      "diagnostics": 50
+    }
+  },
+  {
+    "time": 46.1,
+    "registrations": 215,
+    "R1": 182,
+    "SGD": 182,
+    "notices": 182,
+    "grids": 50,
+    "P2_calculations": 35,
+    "root_categories": {
+      "setup": 0.0,
+      "initialization": 0.0,
+      "online": 1.375,
+      "training": 2.484375,
+      "events": 11.6875,
+      "save": 6.28125,
+      "repair": 0.0
+    },
+    "monitor_CPU": 4.78125,
+    "monitor_role": "part of root, not additive",
+    "operation_wall": 65.47297910000634,
+    "online_max_upper": 0.0825,
+    "save_max_upper": 5.973125,
+    "checkpoint_bytes": [
+      100084261,
+      7479210
+    ],
+    "private_queue": 24,
+    "forecast_warning": false,
+    "proposed_remaining_CPU": 466.3752616279069,
+    "actual_registration_branch_counts": {
+      "summary": 1,
+      "registration": 215,
+      "finish": 215,
+      "train": 182,
+      "queue": 182,
+      "notify": 182,
+      "pre": 50,
+      "<lambda>": 51,
+      "diagnostics": 50
+    }
+  },
+  {
+    "time": 51.1,
+    "registrations": 215,
+    "R1": 170,
+    "SGD": 170,
+    "notices": 177,
+    "grids": 50,
+    "P2_calculations": 35,
+    "root_categories": {
+      "setup": 0.0,
+      "initialization": 0.0,
+      "online": 1.34375,
+      "training": 2.34375,
+      "events": 10.9375,
+      "save": 6.671875,
+      "repair": 0.0
+    },
+    "monitor_CPU": 4.8125,
+    "monitor_role": "part of root, not additive",
+    "operation_wall": 64.51467559985758,
+    "online_max_upper": 0.0825,
+    "save_max_upper": 6.27,
+    "checkpoint_bytes": [
+      106571434,
+      5005342
+    ],
+    "private_queue": 17,
+    "forecast_warning": false,
+    "proposed_remaining_CPU": 412.29890097916376,
+    "actual_registration_branch_counts": {
+      "summary": 1,
+      "registration": 215,
+      "finish": 215,
+      "train": 170,
+      "queue": 170,
+      "notify": 177,
+      "pre": 50,
+      "<lambda>": 51,
+      "diagnostics": 50
+    }
+  },
+  {
+    "time": 56.1,
+    "registrations": 215,
+    "R1": 166,
+    "SGD": 166,
+    "notices": 162,
+    "grids": 50,
+    "P2_calculations": 36,
+    "root_categories": {
+      "setup": 0.0,
+      "initialization": 0.0,
+      "online": 1.515625,
+      "training": 2.234375,
+      "events": 10.625,
+      "save": 6.640625,
+      "repair": 0.0
+    },
+    "monitor_CPU": 4.203125,
+    "monitor_role": "part of root, not additive",
+    "operation_wall": 63.04754450000473,
+    "online_max_upper": 0.285625,
+    "save_max_upper": 6.23875,
+    "checkpoint_bytes": [
+      115094952,
+      5885945
+    ],
+    "private_queue": 21,
+    "forecast_warning": false,
+    "proposed_remaining_CPU": 372.61101456925667,
+    "actual_registration_branch_counts": {
+      "summary": 1,
+      "registration": 215,
+      "train": 166,
+      "queue": 166,
+      "finish": 215,
+      "notify": 162,
+      "pre": 50,
+      "<lambda>": 51,
+      "diagnostics": 50
+    }
+  },
+  {
+    "time": 61.1,
+    "registrations": 215,
+    "R1": 157,
+    "SGD": 157,
+    "notices": 159,
+    "grids": 50,
+    "P2_calculations": 31,
+    "root_categories": {
+      "setup": 0.0,
+      "initialization": 0.0,
+      "online": 1.484375,
+      "training": 2.421875,
+      "events": 10.4375,
+      "save": 6.921875,
+      "repair": 0.0
+    },
+    "monitor_CPU": 4.453125,
+    "monitor_role": "part of root, not additive",
+    "operation_wall": 63.75792730005196,
+    "online_max_upper": 0.254375,
+    "save_max_upper": 6.566875,
+    "checkpoint_bytes": [
+      122975437,
+      4451651
+    ],
+    "private_queue": 19,
+    "forecast_warning": false,
+    "proposed_remaining_CPU": 335.46829320625017,
+    "actual_registration_branch_counts": {
+      "summary": 1,
+      "notify": 159,
+      "registration": 215,
+      "train": 157,
+      "queue": 157,
+      "finish": 215,
+      "pre": 50,
+      "<lambda>": 51,
+      "diagnostics": 50
+    }
+  },
+  {
+    "time": 66.1,
+    "registrations": 215,
+    "R1": 160,
+    "SGD": 160,
+    "notices": 155,
+    "grids": 50,
+    "P2_calculations": 28,
+    "root_categories": {
+      "setup": 0.0,
+      "initialization": 0.0,
+      "online": 1.125,
+      "training": 2.09375,
+      "events": 10.203125,
+      "save": 7.578125,
+      "repair": 0.0
+    },
+    "monitor_CPU": 3.921875,
+    "monitor_role": "part of root, not additive",
+    "operation_wall": 63.00873270000011,
+    "online_max_upper": 0.066875,
+    "save_max_upper": 7.23875,
+    "checkpoint_bytes": [
+      130887455,
+      7368237
+    ],
+    "private_queue": 24,
+    "forecast_warning": false,
+    "proposed_remaining_CPU": 295.43582641320495,
+    "actual_registration_branch_counts": {
+      "summary": 1,
+      "registration": 215,
+      "train": 160,
+      "queue": 160,
+      "finish": 215,
+      "notify": 155,
+      "pre": 50,
+      "<lambda>": 51,
+      "diagnostics": 50
+    }
+  },
+  {
+    "time": 71.1,
+    "registrations": 215,
+    "R1": 167,
+    "SGD": 167,
+    "notices": 172,
+    "grids": 50,
+    "P2_calculations": 34,
+    "root_categories": {
+      "setup": 0.0,
+      "initialization": 0.0,
+      "online": 1.140625,
+      "training": 2.28125,
+      "events": 10.859375,
+      "save": 7.46875,
+      "repair": 0.0
+    },
+    "monitor_CPU": 3.96875,
+    "monitor_role": "part of root, not additive",
+    "operation_wall": 65.19019149996893,
+    "online_max_upper": 0.066875,
+    "save_max_upper": 7.17625,
+    "checkpoint_bytes": [
+      138633442,
+      6418449
+    ],
+    "private_queue": 19,
+    "forecast_warning": false,
+    "proposed_remaining_CPU": 252.26087969784282,
+    "actual_registration_branch_counts": {
+      "summary": 1,
+      "notify": 172,
+      "registration": 215,
+      "train": 167,
+      "queue": 167,
+      "finish": 215,
+      "pre": 50,
+      "<lambda>": 51,
+      "diagnostics": 50
+    }
+  },
+  {
+    "time": 76.1,
+    "registrations": 215,
+    "R1": 159,
+    "SGD": 159,
+    "notices": 157,
+    "grids": 50,
+    "P2_calculations": 28,
+    "root_categories": {
+      "setup": 0.0,
+      "initialization": 0.0,
+      "online": 1.21875,
+      "training": 2.328125,
+      "events": 9.796875,
+      "save": 8.03125,
+      "repair": 0.0
+    },
+    "monitor_CPU": 3.984375,
+    "monitor_role": "part of root, not additive",
+    "operation_wall": 64.02438570000231,
+    "online_max_upper": 0.066875,
+    "save_max_upper": 7.7075,
+    "checkpoint_bytes": [
+      146039487,
+      5999495
+    ],
+    "private_queue": 21,
+    "forecast_warning": false,
+    "proposed_remaining_CPU": 213.91778815812222,
+    "actual_registration_branch_counts": {
+      "summary": 1,
+      "registration": 215,
+      "train": 159,
+      "queue": 159,
+      "finish": 215,
+      "notify": 157,
+      "pre": 50,
+      "<lambda>": 51,
+      "diagnostics": 50
+    }
+  },
+  {
+    "time": 81.1,
+    "registrations": 215,
+    "R1": 157,
+    "SGD": 157,
+    "notices": 158,
+    "grids": 50,
+    "P2_calculations": 26,
+    "root_categories": {
+      "setup": 0.0,
+      "initialization": 0.0,
+      "online": 0.9375,
+      "training": 1.921875,
+      "events": 11.140625,
+      "save": 8.984375,
+      "repair": 0.0
+    },
+    "monitor_CPU": 4.4375,
+    "monitor_role": "part of root, not additive",
+    "operation_wall": 65.96475160012051,
+    "online_max_upper": 0.066875,
+    "save_max_upper": 8.535625,
+    "checkpoint_bytes": [
+      152546821,
+      6096068
+    ],
+    "private_queue": 20,
+    "forecast_warning": false,
+    "proposed_remaining_CPU": 178.24991274032337,
+    "actual_registration_branch_counts": {
+      "summary": 1,
+      "notify": 158,
+      "registration": 215,
+      "train": 157,
+      "queue": 157,
+      "finish": 215,
+      "pre": 50,
+      "<lambda>": 51,
+      "diagnostics": 50
+    }
+  },
+  {
+    "time": 86.1,
+    "registrations": 215,
+    "R1": 166,
+    "SGD": 166,
+    "notices": 170,
+    "grids": 50,
+    "P2_calculations": 30,
+    "root_categories": {
+      "setup": 0.0,
+      "initialization": 0.0,
+      "online": 1.171875,
+      "training": 2.5625,
+      "events": 11.1875,
+      "save": 9.1875,
+      "repair": 0.0
+    },
+    "monitor_CPU": 4.78125,
+    "monitor_role": "part of root, not additive",
+    "operation_wall": 68.48692840009608,
+    "online_max_upper": 0.0825,
+    "save_max_upper": 8.8325,
+    "checkpoint_bytes": [
+      161654954,
+      4868766
+    ],
+    "private_queue": 16,
+    "forecast_warning": false,
+    "proposed_remaining_CPU": 135.74318313953486,
+    "actual_registration_branch_counts": {
+      "summary": 1,
+      "registration": 215,
+      "finish": 215,
+      "notify": 170,
+      "train": 166,
+      "queue": 166,
+      "pre": 50,
+      "<lambda>": 51,
+      "diagnostics": 50
+    }
+  },
+  {
+    "time": 91.1,
+    "registrations": 215,
+    "R1": 144,
+    "SGD": 144,
+    "notices": 146,
+    "grids": 50,
+    "P2_calculations": 26,
+    "root_categories": {
+      "setup": 0.0,
+      "initialization": 0.0,
+      "online": 1.15625,
+      "training": 2.265625,
+      "events": 12.140625,
+      "save": 9.46875,
+      "repair": 0.0
+    },
+    "monitor_CPU": 4.953125,
+    "monitor_role": "part of root, not additive",
+    "operation_wall": 68.68114289999357,
+    "online_max_upper": 0.098125,
+    "save_max_upper": 9.0825,
+    "checkpoint_bytes": [
+      169661533,
+      4772638
+    ],
+    "private_queue": 14,
+    "forecast_warning": false,
+    "proposed_remaining_CPU": 91.64909460396663,
+    "actual_registration_branch_counts": {
+      "summary": 1,
+      "notify": 146,
+      "registration": 215,
+      "finish": 215,
+      "train": 144,
+      "queue": 144,
+      "pre": 50,
+      "<lambda>": 51,
+      "diagnostics": 50
+    }
+  },
+  {
+    "time": 96.1,
+    "registrations": 215,
+    "R1": 164,
+    "SGD": 164,
+    "notices": 160,
+    "grids": 50,
+    "P2_calculations": 33,
+    "root_categories": {
+      "setup": 0.0,
+      "initialization": 0.0,
+      "online": 1.28125,
+      "training": 2.421875,
+      "events": 10.671875,
+      "save": 10.171875,
+      "repair": 0.0
+    },
+    "monitor_CPU": 4.375,
+    "monitor_role": "part of root, not additive",
+    "operation_wall": 67.70354560009582,
+    "online_max_upper": 0.0825,
+    "save_max_upper": 9.73875,
+    "checkpoint_bytes": [
+      174157037,
+      6199390
+    ],
+    "private_queue": 18,
+    "forecast_warning": false,
+    "proposed_remaining_CPU": 42.037381843626264,
+    "actual_registration_branch_counts": {
+      "summary": 1,
+      "registration": 215,
+      "train": 164,
+      "queue": 164,
+      "finish": 215,
+      "notify": 160,
+      "pre": 50,
+      "<lambda>": 51,
+      "diagnostics": 50
+    }
+  },
+  {
+    "time": 100.0,
+    "registrations": 166,
+    "R1": 133,
+    "SGD": 133,
+    "notices": 128,
+    "grids": 39,
+    "P2_calculations": 28,
+    "root_categories": {
+      "setup": 0.0,
+      "initialization": 0.0,
+      "online": 1.3125,
+      "training": 1.828125,
+      "events": 8.984375,
+      "save": 9.796875,
+      "repair": 0.0
+    },
+    "monitor_CPU": 3.890625,
+    "monitor_role": "part of root, not additive",
+    "operation_wall": 55.43461619995651,
+    "online_max_upper": 0.36375,
+    "save_max_upper": 9.379375,
+    "checkpoint_bytes": [
+      179560368,
+      7493086
+    ],
+    "private_queue": 23,
+    "forecast_warning": false,
+    "proposed_remaining_CPU": 19.4775,
+    "actual_registration_branch_counts": {
+      "summary": 1,
+      "registration": 166,
+      "finish": 166,
+      "train": 133,
+      "queue": 133,
+      "notify": 128,
+      "pre": 39,
+      "<lambda>": 40,
+      "diagnostics": 39
+    }
+  }
+]

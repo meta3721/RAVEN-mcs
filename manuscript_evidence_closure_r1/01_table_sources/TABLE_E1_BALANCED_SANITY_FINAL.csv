@@ -1,0 +1,6 @@
+method,paired_seeds,n,primary_metric,RMSE_mu_mean,diff_vs_RAVEN,holm_significant_vs_RAVEN,role,paper_conclusion
+FedAsync-Window,28001–28005,5,RMSE_mu,7.7222,0.006800000000000139,False,balanced_no_harm_sanity,No-harm / no significant degradation under balanced selection; statistical superiority not established
+FedAvg-Window,28001–28005,5,RMSE_mu,7.72202,0.006619999999999848,False,balanced_no_harm_sanity,No-harm / no significant degradation under balanced selection; statistical superiority not established
+RAVEN-MCS,28001–28005,5,RMSE_mu,7.7154,0.0,False,balanced_no_harm_sanity,No-harm / no significant degradation under balanced selection; statistical superiority not established
+TimeAlign-Agg,28001–28005,5,RMSE_mu,7.71076,-0.0046400000000001995,False,balanced_no_harm_sanity,No-harm / no significant degradation under balanced selection; statistical superiority not established
+TwoStage-Hajek,28001–28005,5,RMSE_mu,7.72617,0.010769999999999946,False,balanced_no_harm_sanity,No-harm / no significant degradation under balanced selection; statistical superiority not established

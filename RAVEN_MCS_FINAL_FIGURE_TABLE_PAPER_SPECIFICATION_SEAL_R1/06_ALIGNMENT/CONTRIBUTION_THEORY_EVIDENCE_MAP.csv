@@ -1,0 +1,4 @@
+contribution_id,problem_statement,technical_mechanism,theorem_or_proposition,algorithm_section,empirical_rq,primary_figure,primary_table,supporting_appendix,claim_strength,remaining_gap
+C1,usable-update vs deployment-target risk,h≠s; μ vs usable mass,P1 target-vs-arrival risk (definitional),III,RQ1,FIG-E1,APP-T1,none required,supported,no T-Drive performance (reserve)
+C2,staged selection requires layer-aware reconstruction,R/O/U weights + Hajek normalization,P2 reconstruction under positivity/support,IV,RQ2,FIG-E2,TABLE-II,APP-F1 Local-Hajek,supported_selective_prediction,Traffic E3 NOT_COMPARABLE by design
+C3,calibration must remain feasible and can accumulate residual,instantaneous P2 + debt,T-P2 uniqueness under stated convex assumptions (theory-only empirically),V–VI,RQ3,FIG-E4,TABLE-III,APP-F2 P2 feasibility,trade-offs; Use null; Debt small,exact experimental P2 optimality not reconstructable (C10)

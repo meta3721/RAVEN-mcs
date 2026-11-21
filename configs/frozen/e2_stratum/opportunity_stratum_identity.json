@@ -1,0 +1,26 @@
+{
+  "empty_stratum_count": 0,
+  "lambda_stratum_min": 0.05,
+  "mapping_hash": "02b7204d7340a25373980507d327012a4bfd31368fd8bee854eecc18b1ee067b",
+  "protocol_hash": "464594920ff39876ded2598dab1ad1705a0be16fcafd7a1db87710a4b78a5f16",
+  "role_substitution": false,
+  "source_file": "data/processed/sensorscope/atomic_units.parquet",
+  "source_hash": "47581d5b04d3795b3fe663198ba32a53e83f35707718a82bd1ec0662daff88ce",
+  "source_rule": "region × coarse_time_of_day × day_type",
+  "stratum_count_merged": 4,
+  "stratum_count_raw": 4,
+  "stratum_ids": [
+    "sensorscope_campus::block0::all_days",
+    "sensorscope_campus::block1::all_days",
+    "sensorscope_campus::block2::all_days",
+    "sensorscope_campus::block3::all_days"
+  ],
+  "stratum_target_mass": {
+    "sensorscope_campus::block0::all_days": 0.29032258064516125,
+    "sensorscope_campus::block1::all_days": 0.29032258064516125,
+    "sensorscope_campus::block2::all_days": 0.22580645161290322,
+    "sensorscope_campus::block3::all_days": 0.1935483870967742
+  },
+  "target_mass_sum": 1.0,
+  "unsupported_unit_count": 0
+}

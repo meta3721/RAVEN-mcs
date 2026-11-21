@@ -1,0 +1,10 @@
+item,round,dataset,method,seed,importance,source_searched,offline_reconstructable,requires_new_run,recommended_action
+E4_MAE_mu_in_240_csv,E4,"SensorScope,U-Air",all,30001-30020,OPTIONAL,E4_FINAL_VALID_EVIDENCE_240.csv,yes_from_sealed_final_metrics_json,False,Use supporting RUNLEVEL_SEALED_SCALARS_R2.csv; do not treat as core 240-cell metric
+E4_RMSE_rho_in_240_csv,E4,"SensorScope,U-Air",all,30001-30020,OPTIONAL,E4_FINAL_VALID_EVIDENCE_240.csv,yes_from_sealed_final_metrics_json,False,supporting extraction only
+Debt_trajectory_sealed_series,E3/E4,"SensorScope,U-Air",raven,,SUPPORTING,window_metrics.json keys,False,True,Leave MISSING_NOT_RECORDED
+ESS_trajectory_sealed_series,E3/E4,"SensorScope,U-Air",raven,,SUPPORTING,window_metrics.json; final_metrics ESS scalar only,False,True,Use run-level ESS scalar as supporting
+P2_runtime_only,E3/E4,"SensorScope,U-Air",P2 methods,,SUPPORTING,final_metrics.runtime_seconds is total run not P2-only,False,True,Leave P2-only runtime MISSING_NOT_RECORDED
+SensorScope_sampling_interval,meta,SensorScope,,,SUPPORTING,"horizon.json, provenance.json",False,False,MISSING_NOT_RECORDED
+UAir_sampling_interval,meta,U-Air,,,SUPPORTING,"horizon.json, provenance.json",False,False,MISSING_NOT_RECORDED
+TDrive_opportunity_EventTrace_split_freeze,T-Drive,T-Drive-Speed,,,CORE for a future T-Drive block; not CORE for current E1-E4 paper,"configs/dataset/tdrive_speed.yaml, processed parquet",False,False,Protocol seal before any formal T-Drive runs
+E1_dataset_checksum,E1,Balanced,all,28001-28005,SUPPORTING,outputs/aggregate/E1_R2/identity_audit.json,False,False,PARTIAL_BUT_PAPER_SAFE

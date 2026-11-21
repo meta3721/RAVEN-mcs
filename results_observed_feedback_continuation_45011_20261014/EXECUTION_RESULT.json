@@ -1,0 +1,59 @@
+{
+  "status": "STARTED_PREFIX_INCOMPLETE",
+  "failure": {
+    "error": "BudgetStop('PILOT_REMAINING_COST_PLAN_EXCEEDS_AVAILABLE_TOTAL')",
+    "traceback": "Traceback (most recent call last):\n  File \"C:\\Cursor\\raven.mcs\\src\\raven_mcs_observed_feedback\\execution.py\", line 69, in run\n    if not pilot_plan['allowed']:raise BudgetStop('PILOT_REMAINING_COST_PLAN_EXCEEDS_AVAILABLE_TOTAL')\n                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nraven_mcs_observed_feedback.accounting.BudgetStop: PILOT_REMAINING_COST_PLAN_EXCEEDS_AVAILABLE_TOTAL\n",
+    "logical_time": 1.07,
+    "root_used": 238.234375
+  },
+  "actual_SGD": 32,
+  "GPU": 0,
+  "q_fit": 0,
+  "now": 1.07,
+  "next_grid_tick": 11,
+  "pilot": true,
+  "pilot_plan": {
+    "time": 1.07,
+    "actual_SGD": 32,
+    "remaining_registrations": 4254,
+    "remaining_grids": 990,
+    "maximum_observed_local_SGD_CPU": 0.078125,
+    "root_maxima": {
+      "initialization": 0.535625,
+      "save": 1.035625,
+      "events": 0.066875,
+      "training": 0.254375,
+      "online": 0.0825
+    },
+    "estimated_remaining_CPU": {
+      "training": 2164.2225000000003,
+      "online": 534.6,
+      "events": 1839.3300000000002,
+      "save": 124.27499999999999
+    },
+    "available_root_CPU": 3359.8169907999936,
+    "save_reserve": 5.96875,
+    "allowed": false,
+    "limitations": "32 steps/60 root CPU warmup prefix; later solver, queue and history growth unobserved; 3x save-growth planning allowance is not a bound"
+  },
+  "last_complete_marker": "C:\\Cursor\\raven.mcs\\results_observed_feedback_continuation_45011_20261014\\trajectory\\stopped_0011_0206.complete.json",
+  "last_saved_logical_time": 1.07,
+  "spent": {
+    "setup": 0.0,
+    "initialization": 4.84375,
+    "online": 0.140625,
+    "training": 0.6875,
+    "events": 1.765625,
+    "save": 3.765625,
+    "repair": 0.0
+  },
+  "maxima": {
+    "initialization": 0.535625,
+    "save": 1.035625,
+    "events": 0.066875,
+    "training": 0.254375,
+    "online": 0.0825
+  },
+  "worker_PID": 24612,
+  "state": "WAITING_USER_REVIEW"
+}

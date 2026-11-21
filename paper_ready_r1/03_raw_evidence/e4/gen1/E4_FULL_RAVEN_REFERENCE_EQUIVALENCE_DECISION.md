@@ -1,0 +1,7 @@
+# Full-RAVEN reference equivalence
+
+`E4_FULLMODE_EQUIVALENT_TO_E3_RAVEN`
+
+E3 window_runner hash f7bff5e... always called compute_server_weights. E4 pre-repair 3d44cecb... gated that call on uses_instant_calibration; for method=raven that flag is True, so the gate is a no-op and full-mode matches E3. Other ablation policy flips are False only on the ablated factor and do not execute under full RAVEN.
+
+Do not rerun the 40 E3 RAVEN references.

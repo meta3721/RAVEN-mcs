@@ -1,0 +1,58 @@
+{
+  "alpha": 0.05,
+  "baseline_method": "flamf_timealign_adapted",
+  "baseline_source": "D:\\Cursor\\raven.mcs\\configs\\frozen\\e1_r2_selected_baseline.yaml",
+  "experiment": "E1_R2",
+  "formal_no_harm_conclusion": true,
+  "formal_no_harm_conclusion_source": "no_harm_tests.raven.no_harm_pass",
+  "holm_correction": {
+    "corrected_alpha": 0.05,
+    "method_order": [
+      "raven"
+    ],
+    "n_tests": 1,
+    "significant_indices": []
+  },
+  "method_statistics": {
+    "flamf_timealign_adapted": {
+      "ci_lower": 7.6897152609215285,
+      "ci_upper": 7.731506298446061,
+      "mean": 7.710762975490482,
+      "n": 5,
+      "std": 0.02723049359033539
+    },
+    "raven": {
+      "ci_lower": 7.689381114375147,
+      "ci_upper": 7.7410369270853865,
+      "mean": 7.715395303792991,
+      "n": 5,
+      "std": 0.033716295108851504
+    }
+  },
+  "metric": "RMSE_mu",
+  "no_harm_tests": {
+    "raven": {
+      "baseline_mean": 7.710762975490482,
+      "baseline_median": 7.707563391460687,
+      "baseline_n": 5,
+      "candidate_mean": 7.715395303792991,
+      "candidate_median": 7.716196771218803,
+      "candidate_n": 5,
+      "cohens_d": 0.5013373802905581,
+      "no_harm_pass": true,
+      "one_sided_upper_bound": 0.0013401489716825862,
+      "paired_median_diff": 0.00863337975811529,
+      "relative_degradation_ci_lower": -0.00034393461001287274,
+      "relative_degradation_ci_upper": 0.0014368612971785897,
+      "relative_degradation_mean": 0.0005986836044764027,
+      "threshold": 0.03,
+      "wilcoxon_p_value": 0.4375,
+      "wilcoxon_statistic": 4.0
+    }
+  },
+  "no_harm_threshold": 0.03,
+  "protocol_version": "E1-R2",
+  "selected_baseline_hash": "cfe0c6ce28080df52c23f34c24fcb2486af33c167870adc1f3a0ef30a90060b9",
+  "status": "FORMAL",
+  "threshold": 0.03
+}

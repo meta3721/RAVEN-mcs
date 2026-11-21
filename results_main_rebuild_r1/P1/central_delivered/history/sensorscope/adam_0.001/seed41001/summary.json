@@ -1,0 +1,20 @@
+{
+  "dataset": "sensorscope",
+  "seed": 41001,
+  "model": "history",
+  "optimizer": "adam",
+  "lr": 0.001,
+  "RMSE_mu": 2.9623166352576527,
+  "best_pass": 38,
+  "best_at_100": 2.9623166352576527,
+  "improvement_100_to_200": 0.0,
+  "plateau_pass": true,
+  "strongest_baseline": "train_mean",
+  "baseline_RMSE": 2.965253341579932,
+  "relative_gain": 0.0009903728228208182,
+  "meaningful_validation_pass": false,
+  "elapsed_seconds": 6.015999999999622,
+  "samples_processed": 79600,
+  "optimizer_steps": 1400,
+  "run": "P1\\central_delivered\\history\\sensorscope\\adam_0.001\\seed41001"
+}

@@ -1,0 +1,14 @@
+{
+  "hashing_rule": "raven_mcs.simulation.event_trace.freeze_event_trace / compute_trace_hash",
+  "mean_observation_rate": 0.35,
+  "method_argument_ignored": true,
+  "method_independence_canary": true,
+  "n_clients": 5837,
+  "n_event_rows": 441898,
+  "n_long_rows": 1751641,
+  "n_windows": 178,
+  "o_source": "controlled Bernoulli p_obs on R=1",
+  "r_source": "client_measurements inner-joined to train atomic units",
+  "s_max": 5,
+  "u_source": "e3.real_runner.stage2_r3.compute_usable_r3"
+}

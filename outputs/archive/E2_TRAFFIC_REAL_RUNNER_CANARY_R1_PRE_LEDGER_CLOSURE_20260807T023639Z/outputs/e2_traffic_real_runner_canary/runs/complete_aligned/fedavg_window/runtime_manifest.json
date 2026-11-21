@@ -1,0 +1,78 @@
+{
+  "completed_windows": 100,
+  "end_time_utc": "2026-08-06T16:44:24.098127+00:00",
+  "eventtrace_dir": "outputs/e2_traffic_real_runner_canary/eventtraces/complete_aligned/training_eventtrace",
+  "eventtrace_identity": {
+    "events_sha256": "b46b6b9605b825d2dd4282802d4bd2be9325ab67780228be5502ced8064ca987",
+    "metadata": {
+      "dataset": "traffic",
+      "generator": "traffic-profile-s1-hard-aou-bridge-v1",
+      "notes": [
+        "scenario=complete_aligned",
+        "PROFILE-S1",
+        "station=client"
+      ],
+      "num_clients": 43,
+      "num_windows": 100,
+      "s_max": 5,
+      "seed": 29001
+    },
+    "metadata_sha256": "ab6f383a99886aef66a7cbf839e57fb4064624ea01dc6e0012cff48c9083cbb1",
+    "trace_hash": "43057f1ed2ae0b0bc2765b9f646675d522eea00fcf5f3a908855536329fba243"
+  },
+  "exit_code": 0,
+  "failure_reason": null,
+  "final_metrics": {
+    "Gap_mis": -0.029208944066181797,
+    "P2_solver_failure_count": 0,
+    "RMSE_mu": 1.0039792933749419,
+    "RMSE_rho": 1.0331882374411236,
+    "active_window_count": 99,
+    "arrival_weight_sum": 1.0000000000000004,
+    "clip_rate_stage1": 0.033175613897596656,
+    "clip_rate_stage2": 0.0,
+    "completed_windows": 100,
+    "denominator_zero_count": 0,
+    "effective_sample_size_mean": 1.4389489953632149,
+    "empirical_risk_objective": 1.0331882374411236,
+    "failed_attempt_count": 771,
+    "group_rmse": {
+      "block0": 0.8978450494194654,
+      "block1": 1.159868088016021,
+      "block2": 1.1431464361957107,
+      "block3": 0.7574260341120138
+    },
+    "hard_arrival_count": 1734,
+    "nonfinite_loss_count": 0,
+    "nonfinite_model_parameter_count": 0,
+    "policy": {
+      "uses_debt": false,
+      "uses_design_ratio": false,
+      "uses_hajek_local_loss": false,
+      "uses_instant_calibration": false,
+      "uses_observation_ipw": false,
+      "uses_staleness_penalty": false,
+      "uses_usable_ipw": false,
+      "uses_variance_penalty": false
+    },
+    "stale_update_count": 951,
+    "target_risk_objective": 1.0039792933749419,
+    "target_weight_sum": 1.0
+  },
+  "local_steps": 2,
+  "method": "fedavg_window",
+  "method_display": "FedAvg",
+  "n_groups": 4,
+  "peak_memory_mb": null,
+  "profile_id": "PROFILE-S1",
+  "retry_count": 0,
+  "runtime_seconds": 80.69249500000296,
+  "s_max": 5,
+  "scenario": "complete_aligned",
+  "scenario_label": "S5",
+  "seed": 29001,
+  "seed_replacement_count": 0,
+  "start_time_utc": "2026-08-06T16:43:03.395050+00:00",
+  "status": "PASS",
+  "warnings": []
+}

@@ -1,0 +1,15 @@
+{
+  "Pi_hat": "(1/S_R) sum eta I alpha_client w_atomic mapped to canonical pair",
+  "map_test_unit": "same canonical pair id client::target_group",
+  "map_train_eventtrace_unit": "unit -> (client via spatial_to_client, target_group string)",
+  "method_dependence": [
+    "alpha_client",
+    "w_atomic"
+  ],
+  "normalization": "Pi_hat probability-normalized for L1 vs pi_tar",
+  "pair_domain": "client × target_group (spatial×time)",
+  "pi_tar": "uniform TEST atoms aggregated onto client×target_group",
+  "proof_same_support": "both keyed by client::spatial::blockK",
+  "protocol_reference": "src/raven_mcs/e3/target_pair/pair_state_v4.py",
+  "status": "COMMON_SUPPORT_READY"
+}

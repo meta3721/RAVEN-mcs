@@ -1,0 +1,346 @@
+{
+  "issues": [],
+  "n_logical_success": 28,
+  "rows": [
+    {
+      "accepted": true,
+      "attempt_ids": [
+        "e3::sensorscope::complete_aligned::central_all::seed31001__attempt1"
+      ],
+      "dataset": "sensorscope",
+      "duplicate_finish": false,
+      "method": "central_all",
+      "n_finish": 1,
+      "n_start": 1,
+      "orphan_start": false
+    },
+    {
+      "accepted": true,
+      "attempt_ids": [
+        "e3::sensorscope::complete_aligned::central_delivered::seed31001__attempt1"
+      ],
+      "dataset": "sensorscope",
+      "duplicate_finish": false,
+      "method": "central_delivered",
+      "n_finish": 1,
+      "n_start": 1,
+      "orphan_start": false
+    },
+    {
+      "accepted": true,
+      "attempt_ids": [
+        "e3::sensorscope::complete_aligned::debt_cal::seed31001__attempt1"
+      ],
+      "dataset": "sensorscope",
+      "duplicate_finish": false,
+      "method": "debt_cal",
+      "n_finish": 1,
+      "n_start": 1,
+      "orphan_start": false
+    },
+    {
+      "accepted": true,
+      "attempt_ids": [
+        "e3::sensorscope::complete_aligned::fedasync_window::seed31001__attempt1"
+      ],
+      "dataset": "sensorscope",
+      "duplicate_finish": false,
+      "method": "fedasync_window",
+      "n_finish": 1,
+      "n_start": 1,
+      "orphan_start": false
+    },
+    {
+      "accepted": true,
+      "attempt_ids": [
+        "e3::sensorscope::complete_aligned::fedavg_window::seed31001__attempt1"
+      ],
+      "dataset": "sensorscope",
+      "duplicate_finish": false,
+      "method": "fedavg_window",
+      "n_finish": 1,
+      "n_start": 1,
+      "orphan_start": false
+    },
+    {
+      "accepted": true,
+      "attempt_ids": [
+        "e3::sensorscope::complete_aligned::flamf_timealign_adapted::seed31001__attempt1"
+      ],
+      "dataset": "sensorscope",
+      "duplicate_finish": false,
+      "method": "flamf_timealign_adapted",
+      "n_finish": 1,
+      "n_start": 1,
+      "orphan_start": false
+    },
+    {
+      "accepted": true,
+      "attempt_ids": [
+        "e3::sensorscope::complete_aligned::inst_cal::seed31001__attempt1"
+      ],
+      "dataset": "sensorscope",
+      "duplicate_finish": false,
+      "method": "inst_cal",
+      "n_finish": 1,
+      "n_start": 1,
+      "orphan_start": false
+    },
+    {
+      "accepted": true,
+      "attempt_ids": [
+        "e3::sensorscope::complete_aligned::local_hajek::seed31001__attempt1"
+      ],
+      "dataset": "sensorscope",
+      "duplicate_finish": false,
+      "method": "local_hajek",
+      "n_finish": 1,
+      "n_start": 1,
+      "orphan_start": false
+    },
+    {
+      "accepted": true,
+      "attempt_ids": [
+        "e3::sensorscope::complete_aligned::raven::seed31001__attempt1"
+      ],
+      "dataset": "sensorscope",
+      "duplicate_finish": false,
+      "method": "raven",
+      "n_finish": 1,
+      "n_start": 1,
+      "orphan_start": false
+    },
+    {
+      "accepted": true,
+      "attempt_ids": [
+        "e3::sensorscope::complete_aligned::raven_simoracle::seed31001__attempt1"
+      ],
+      "dataset": "sensorscope",
+      "duplicate_finish": false,
+      "method": "raven_simoracle",
+      "n_finish": 1,
+      "n_start": 1,
+      "orphan_start": false
+    },
+    {
+      "accepted": true,
+      "attempt_ids": [
+        "e3::sensorscope::complete_aligned::twostage_hajek::seed31001__attempt1"
+      ],
+      "dataset": "sensorscope",
+      "duplicate_finish": false,
+      "method": "twostage_hajek",
+      "n_finish": 1,
+      "n_start": 1,
+      "orphan_start": false
+    },
+    {
+      "accepted": true,
+      "attempt_ids": [
+        "e3::traffic::complete_aligned::central_all::seed31001__attempt1"
+      ],
+      "dataset": "traffic",
+      "duplicate_finish": false,
+      "method": "central_all",
+      "n_finish": 1,
+      "n_start": 1,
+      "orphan_start": false
+    },
+    {
+      "accepted": true,
+      "attempt_ids": [
+        "e3::traffic::complete_aligned::central_delivered::seed31001__attempt1"
+      ],
+      "dataset": "traffic",
+      "duplicate_finish": false,
+      "method": "central_delivered",
+      "n_finish": 1,
+      "n_start": 1,
+      "orphan_start": false
+    },
+    {
+      "accepted": true,
+      "attempt_ids": [
+        "e3::traffic::complete_aligned::debt_cal::seed31001__attempt1"
+      ],
+      "dataset": "traffic",
+      "duplicate_finish": false,
+      "method": "debt_cal",
+      "n_finish": 1,
+      "n_start": 1,
+      "orphan_start": false
+    },
+    {
+      "accepted": true,
+      "attempt_ids": [
+        "e3::traffic::complete_aligned::inst_cal::seed31001__attempt1"
+      ],
+      "dataset": "traffic",
+      "duplicate_finish": false,
+      "method": "inst_cal",
+      "n_finish": 1,
+      "n_start": 1,
+      "orphan_start": false
+    },
+    {
+      "accepted": true,
+      "attempt_ids": [
+        "e3::traffic::complete_aligned::local_hajek::seed31001__attempt1",
+        "e3::traffic::complete_aligned::local_hajek::seed31001__attempt2"
+      ],
+      "dataset": "traffic",
+      "duplicate_finish": false,
+      "method": "local_hajek",
+      "n_finish": 2,
+      "n_start": 2,
+      "orphan_start": false
+    },
+    {
+      "accepted": true,
+      "attempt_ids": [
+        "e3::traffic::complete_aligned::raven_simoracle::seed31001__attempt1"
+      ],
+      "dataset": "traffic",
+      "duplicate_finish": false,
+      "method": "raven_simoracle",
+      "n_finish": 1,
+      "n_start": 1,
+      "orphan_start": false
+    },
+    {
+      "accepted": true,
+      "attempt_ids": [
+        "e3::uair::complete_aligned::central_all::seed31001__attempt1"
+      ],
+      "dataset": "uair",
+      "duplicate_finish": false,
+      "method": "central_all",
+      "n_finish": 1,
+      "n_start": 1,
+      "orphan_start": false
+    },
+    {
+      "accepted": true,
+      "attempt_ids": [
+        "e3::uair::complete_aligned::central_delivered::seed31001__attempt1"
+      ],
+      "dataset": "uair",
+      "duplicate_finish": false,
+      "method": "central_delivered",
+      "n_finish": 1,
+      "n_start": 1,
+      "orphan_start": false
+    },
+    {
+      "accepted": true,
+      "attempt_ids": [
+        "e3::uair::complete_aligned::debt_cal::seed31001__attempt1"
+      ],
+      "dataset": "uair",
+      "duplicate_finish": false,
+      "method": "debt_cal",
+      "n_finish": 1,
+      "n_start": 1,
+      "orphan_start": false
+    },
+    {
+      "accepted": true,
+      "attempt_ids": [
+        "e3::uair::complete_aligned::fedasync_window::seed31001__attempt1"
+      ],
+      "dataset": "uair",
+      "duplicate_finish": false,
+      "method": "fedasync_window",
+      "n_finish": 1,
+      "n_start": 1,
+      "orphan_start": false
+    },
+    {
+      "accepted": true,
+      "attempt_ids": [
+        "e3::uair::complete_aligned::fedavg_window::seed31001__attempt1",
+        "e3::uair::complete_aligned::fedavg_window::seed31001__attempt2"
+      ],
+      "dataset": "uair",
+      "duplicate_finish": false,
+      "method": "fedavg_window",
+      "n_finish": 2,
+      "n_start": 2,
+      "orphan_start": false
+    },
+    {
+      "accepted": true,
+      "attempt_ids": [
+        "e3::uair::complete_aligned::flamf_timealign_adapted::seed31001__attempt1"
+      ],
+      "dataset": "uair",
+      "duplicate_finish": false,
+      "method": "flamf_timealign_adapted",
+      "n_finish": 1,
+      "n_start": 1,
+      "orphan_start": false
+    },
+    {
+      "accepted": true,
+      "attempt_ids": [
+        "e3::uair::complete_aligned::inst_cal::seed31001__attempt1"
+      ],
+      "dataset": "uair",
+      "duplicate_finish": false,
+      "method": "inst_cal",
+      "n_finish": 1,
+      "n_start": 1,
+      "orphan_start": false
+    },
+    {
+      "accepted": true,
+      "attempt_ids": [
+        "e3::uair::complete_aligned::local_hajek::seed31001__attempt1"
+      ],
+      "dataset": "uair",
+      "duplicate_finish": false,
+      "method": "local_hajek",
+      "n_finish": 1,
+      "n_start": 1,
+      "orphan_start": false
+    },
+    {
+      "accepted": true,
+      "attempt_ids": [
+        "e3::uair::complete_aligned::raven::seed31001__attempt1",
+        "e3::uair::complete_aligned::raven::seed31001__attempt2"
+      ],
+      "dataset": "uair",
+      "duplicate_finish": false,
+      "method": "raven",
+      "n_finish": 2,
+      "n_start": 2,
+      "orphan_start": false
+    },
+    {
+      "accepted": true,
+      "attempt_ids": [
+        "e3::uair::complete_aligned::raven_simoracle::seed31001__attempt1"
+      ],
+      "dataset": "uair",
+      "duplicate_finish": false,
+      "method": "raven_simoracle",
+      "n_finish": 1,
+      "n_start": 1,
+      "orphan_start": false
+    },
+    {
+      "accepted": true,
+      "attempt_ids": [
+        "e3::uair::complete_aligned::twostage_hajek::seed31001__attempt1"
+      ],
+      "dataset": "uair",
+      "duplicate_finish": false,
+      "method": "twostage_hajek",
+      "n_finish": 1,
+      "n_start": 1,
+      "orphan_start": false
+    }
+  ],
+  "status": "PASS"
+}

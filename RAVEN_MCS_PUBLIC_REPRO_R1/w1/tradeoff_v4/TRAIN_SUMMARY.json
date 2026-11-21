@@ -1,0 +1,91 @@
+{
+  "gates_rows": 120,
+  "B-G1_pass": 120,
+  "B-G2_3_pass": 40,
+  "B-G2_3_evaluated": 120,
+  "max_err_group": 3.767094300988205e-05,
+  "max_err_cs": 3.72423875216743e-05,
+  "arms_present": [
+    "fedavg_window",
+    "inst_cal",
+    "proj_beta",
+    "proj_beta_debt",
+    "raven",
+    "uniform_window"
+  ],
+  "n_runs": 240,
+  "means": {
+    "sensorscope|fedavg_window": {
+      "RMSE_mu": 7.93889,
+      "Delta_group": 1.05577,
+      "Delta_c_s": 1.29032,
+      "runtime_seconds": 20.54622
+    },
+    "sensorscope|inst_cal": {
+      "RMSE_mu": 7.93799,
+      "Delta_group": 1.01409,
+      "Delta_c_s": 1.26443,
+      "runtime_seconds": 26.20673
+    },
+    "sensorscope|proj_beta": {
+      "RMSE_mu": 7.93725,
+      "Delta_group": 1.01158,
+      "Delta_c_s": 1.26903,
+      "runtime_seconds": 19.88959
+    },
+    "sensorscope|proj_beta_debt": {
+      "RMSE_mu": 7.93842,
+      "Delta_group": 0.98464,
+      "Delta_c_s": 1.26659,
+      "runtime_seconds": 18.52643
+    },
+    "sensorscope|raven": {
+      "RMSE_mu": 7.93799,
+      "Delta_group": 1.01394,
+      "Delta_c_s": 1.26438,
+      "runtime_seconds": 27.08431
+    },
+    "sensorscope|uniform_window": {
+      "RMSE_mu": 7.93931,
+      "Delta_group": 1.02693,
+      "Delta_c_s": 1.27069,
+      "runtime_seconds": 19.95913
+    },
+    "uair|fedavg_window": {
+      "RMSE_mu": 1.18824,
+      "Delta_group": 1.12176,
+      "Delta_c_s": 1.26213,
+      "runtime_seconds": 11.96418
+    },
+    "uair|inst_cal": {
+      "RMSE_mu": 1.19112,
+      "Delta_group": 1.09241,
+      "Delta_c_s": 1.23342,
+      "runtime_seconds": 15.11148
+    },
+    "uair|proj_beta": {
+      "RMSE_mu": 1.19248,
+      "Delta_group": 1.09162,
+      "Delta_c_s": 1.23265,
+      "runtime_seconds": 8.79509
+    },
+    "uair|proj_beta_debt": {
+      "RMSE_mu": 1.19037,
+      "Delta_group": 1.08001,
+      "Delta_c_s": 1.22623,
+      "runtime_seconds": 9.02218
+    },
+    "uair|raven": {
+      "RMSE_mu": 1.19111,
+      "Delta_group": 1.09236,
+      "Delta_c_s": 1.23339,
+      "runtime_seconds": 15.28923
+    },
+    "uair|uniform_window": {
+      "RMSE_mu": 1.18936,
+      "Delta_group": 1.09734,
+      "Delta_c_s": 1.24065,
+      "runtime_seconds": 8.45037
+    }
+  }
+}

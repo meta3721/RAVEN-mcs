@@ -1,0 +1,14 @@
+seed: 29101
+profile_id: PROFILE-S2
+scenario_id: complete_counteracting
+arrival_mass_mode: event_mass
+stage2_eligibility_rule: observed_count > 0
+nonwrap_schedule: true
+kappas:
+  kappa_opp: 1.0
+  kappa_p: 1.0
+  kappa_q: 1.0
+directions:
+  d_opp: -1
+  d_p: -1
+  d_q: 1

@@ -1,0 +1,11 @@
+{
+  "aggregation_across_h": "weights induce group mu; RMSE_mu is not a separate per-group average unless later secondary",
+  "empty_missing_units": "absent from processed atomic_units; not imputed",
+  "evaluation_support": "test atomic units with non-missing Y",
+  "formula": "RMSE_mu = sqrt(sum_i varpi_i^tar (Yhat_i - Y_i)^2)",
+  "inverse_transformation": "evaluate in km/h original units; if runner uses train-only scaler, invert before RMSE_mu",
+  "source_hash": "18c5dc9636673e68bd48210297b6c8bdb11c759ab466fef4501837f50b091ba9",
+  "status": "FROZEN",
+  "target_weights": "atomic test-support weights consistent with frozen mu over h(i); implementation src/raven_mcs/metrics/accuracy.py::rmse_mu",
+  "test_set_tuned": false
+}

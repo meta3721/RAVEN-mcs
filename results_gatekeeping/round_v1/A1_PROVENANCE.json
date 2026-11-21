@@ -1,0 +1,365 @@
+{
+  "round": "results_gatekeeping/round_v1",
+  "part": "A only",
+  "generated_by": "A1_ANALYSIS.py",
+  "prereg_sha256": {
+    "PREREG.md": "1e1816cd3431a1c49c92f2806ab83b981b4392d216906af1323425c819f7719e",
+    "PROTOCOL.md": "916b55766f24b4b5685e59418fe2140ad1e74e2c178ed0f75ba375c7feb8324e"
+  },
+  "inputs": {
+    "tradeoff_v51": {
+      "path": "results_w1_ladder\\round_v5_1\\TRADEOFF_V51.csv",
+      "sha256": "a66eb2e46c874c1cc068541b5b1c8aab0ed44c204dd4f53df5bcac4ea1fcbf09",
+      "bytes": 54413
+    },
+    "tradeoff_v4": {
+      "path": "results_w1_ladder\\round_v4\\TRADEOFF.csv",
+      "sha256": "6b2c10c04b649c92274d8d648643d89808c5a2f4f754e6b76cf2d6a205d022ec",
+      "bytes": 46597
+    },
+    "tradeoff_paired_v4": {
+      "path": "results_w1_ladder\\round_v4\\TRADEOFF_PAIRED.csv",
+      "sha256": "8f5374ed4e5df2dfe3bb78db01695b1f5b830093f93a96270673935f91bcab6f",
+      "bytes": 9952
+    },
+    "cs_e3": {
+      "path": "results_c1_cityscanner\\round_v1\\tables\\CS_E3.csv",
+      "sha256": "8cbb81134ab2822b7d0e0da623b1cd1be51f8fb229300d381142304c26ffee09",
+      "bytes": 10194
+    },
+    "cs_seed_rows": {
+      "path": "results_nodesign_supplement\\round_v1\\tables\\cityscanner_seed_rows.csv",
+      "sha256": "037220d32bb1fe11f687a75dd2cb80f2bb0a2daf3606b6e6b82fa56f87427870",
+      "bytes": 6387
+    },
+    "cs_train_setup": {
+      "path": "results_c1_cityscanner\\round_v1\\CS_TRAIN_SETUP.json",
+      "sha256": "cfd4c4a9da618832e80d9397301a3c6aa6700ced12843c1e0d89562bb0f84040",
+      "bytes": 421
+    },
+    "cs_phi_decision": {
+      "path": "results_c1_cityscanner\\round_v1\\CS_PHI_DECISION.json",
+      "sha256": "c7407b6d8100701c73a7b22c2ba071b4c34979c91c79000fc5bcff76b1f8f61e",
+      "bytes": 1180
+    },
+    "maps_key_level": {
+      "path": "results_exogenous_target\\round_v1\\MAPS_KEY_LEVEL.csv",
+      "sha256": "b9e3ed9c4e4f769077efe6c6ec04cfe0d70a9a9151c0c4f92e96a947e4e3dbe4",
+      "bytes": 366884
+    },
+    "cs_train_ledger": {
+      "path": "results_c1_cityscanner\\round_v1\\CS_TRAIN_LEDGER.json",
+      "sha256": "067aca156f66237b4df24372c5afc8f8689674b042930a5d644817725f21704e",
+      "bytes": 44405
+    },
+    "cs_trace_manifest": {
+      "path": "results_c1_cityscanner\\round_v1\\CS_TRACE_MANIFEST.json",
+      "sha256": "557c9965e6567d5a55bdba019e2283314746d719bc463314394a3f2d66ead1c3",
+      "bytes": 4599
+    },
+    "script_run_nodesign_supplement": {
+      "path": "scripts\\run_nodesign_supplement.py",
+      "sha256": "480e5c8e3fd9121532e438d90458ec2897a3cb3dc9f0497b6fc1682ec6b446d8",
+      "bytes": 16060
+    },
+    "script_w1_replay": {
+      "path": "scripts\\w1_replay.py",
+      "sha256": "2b8a2d0f7a4b13ed49af4276f1157d1a610a2b674377e782731b07c4a1a7f3c0",
+      "bytes": 33409
+    },
+    "script_exogenous_target_cityscanner": {
+      "path": "scripts\\exogenous_target_cityscanner.py",
+      "sha256": "c51db8c64edb5b45394de81f7dc10108e792d50578d905d8f415d42f369130b4",
+      "bytes": 25653
+    }
+  },
+  "training_runs": 0,
+  "build_calls": 0,
+  "bootstrap": {
+    "B": 10000,
+    "seed": 20261003,
+    "type": "basic/reflection on HL",
+    "role": "secondary bound; H2/H3 decisions use the Wilcoxon-inverted distribution-free bound"
+  },
+  "wilcoxon_inversion_checks": {
+    "sensorscope|raven": {
+      "ub_vs_signedrank_less_agree": false,
+      "lb_vs_signedrank_greater_agree": true,
+      "walsh": {
+        "n": 20,
+        "N_walsh": 210,
+        "c_lo": 60,
+        "c_hi": 149,
+        "critical_value_distribution": "exact null distribution of W+"
+      }
+    },
+    "sensorscope|proj_beta": {
+      "ub_vs_signedrank_less_agree": false,
+      "lb_vs_signedrank_greater_agree": true,
+      "walsh": {
+        "n": 20,
+        "N_walsh": 210,
+        "c_lo": 60,
+        "c_hi": 149,
+        "critical_value_distribution": "exact null distribution of W+"
+      }
+    },
+    "uair|raven": {
+      "ub_vs_signedrank_less_agree": true,
+      "lb_vs_signedrank_greater_agree": true,
+      "walsh": {
+        "n": 20,
+        "N_walsh": 210,
+        "c_lo": 60,
+        "c_hi": 149,
+        "critical_value_distribution": "exact null distribution of W+"
+      }
+    },
+    "uair|proj_beta": {
+      "ub_vs_signedrank_less_agree": true,
+      "lb_vs_signedrank_greater_agree": true,
+      "walsh": {
+        "n": 20,
+        "N_walsh": 210,
+        "c_lo": 60,
+        "c_hi": 149,
+        "critical_value_distribution": "exact null distribution of W+"
+      }
+    },
+    "cityscanner_nyc_pm25|raven": {
+      "ub_vs_signedrank_less_agree": true,
+      "lb_vs_signedrank_greater_agree": true,
+      "walsh": {
+        "n": 10,
+        "N_walsh": 55,
+        "c_lo": 10,
+        "c_hi": 44,
+        "critical_value_distribution": "exact null distribution of W+"
+      }
+    }
+  },
+  "wilcoxon_inversion_simulation": {
+    "n=20": {
+      "two_sided_90_coverage": 0.90375,
+      "one_sided_lower_coverage": 0.95135,
+      "one_sided_upper_coverage": 0.9524,
+      "targets": {
+        "two_sided": 0.9,
+        "one_sided": 0.95
+      },
+      "replications": 20000,
+      "seed": 4242,
+      "true_shift": 0.3,
+      "note": "simulation only; not part of any A1 decision"
+    },
+    "n=10": {
+      "two_sided_90_coverage": 0.9124,
+      "one_sided_lower_coverage": 0.95475,
+      "one_sided_upper_coverage": 0.95765,
+      "targets": {
+        "two_sided": 0.9,
+        "one_sided": 0.95
+      },
+      "replications": 20000,
+      "seed": 4242,
+      "true_shift": 0.3,
+      "note": "simulation only; not part of any A1 decision"
+    }
+  },
+  "graphical_holm": {
+    "sensorscope": {
+      "history": [
+        {
+          "chain": "proj_beta",
+          "step": "H1",
+          "p": 9.5367431640625e-07,
+          "alpha_allocated": 0.025,
+          "rejected": true
+        },
+        {
+          "chain": "raven",
+          "step": "H1",
+          "p": 9.5367431640625e-07,
+          "alpha_allocated": 0.05,
+          "rejected": true
+        },
+        {
+          "chain": "proj_beta",
+          "step": "H2",
+          "p": 1.2860562857505647e-56,
+          "alpha_allocated": 0.05,
+          "rejected": true
+        },
+        {
+          "chain": "raven",
+          "step": "H2",
+          "p": 1.2246569206930331e-119,
+          "alpha_allocated": 0.05,
+          "rejected": true
+        },
+        {
+          "chain": "raven",
+          "step": "H3",
+          "p": 0.7391633987426758,
+          "alpha_allocated": 0.0,
+          "rejected": false
+        },
+        {
+          "chain": "proj_beta",
+          "step": "H3",
+          "p": 0.7847833633422852,
+          "alpha_allocated": 0.05,
+          "rejected": false
+        }
+      ],
+      "final_weights": {
+        "raven": 0.0,
+        "proj_beta": 1.0
+      }
+    },
+    "uair": {
+      "history": [
+        {
+          "chain": "proj_beta",
+          "step": "H1",
+          "p": 9.5367431640625e-07,
+          "alpha_allocated": 0.025,
+          "rejected": true
+        },
+        {
+          "chain": "raven",
+          "step": "H1",
+          "p": 9.5367431640625e-07,
+          "alpha_allocated": 0.05,
+          "rejected": true
+        },
+        {
+          "chain": "raven",
+          "step": "H2",
+          "p": 0.09296657661463503,
+          "alpha_allocated": 0.0,
+          "rejected": false
+        },
+        {
+          "chain": "raven",
+          "step": "H3",
+          "p": 0.17440509796142578,
+          "alpha_allocated": 0.0,
+          "rejected": false
+        },
+        {
+          "chain": "proj_beta",
+          "step": "H2",
+          "p": 0.2402669461535758,
+          "alpha_allocated": 0.05,
+          "rejected": false
+        },
+        {
+          "chain": "proj_beta",
+          "step": "H3",
+          "p": 0.06636333465576172,
+          "alpha_allocated": 0.05,
+          "rejected": false
+        }
+      ],
+      "final_weights": {
+        "raven": 0.0,
+        "proj_beta": 1.0
+      }
+    },
+    "cityscanner_nyc_pm25": {
+      "history": [
+        {
+          "chain": "raven",
+          "step": "H1",
+          "p": 0.0009765625,
+          "alpha_allocated": 0.05,
+          "rejected": true
+        },
+        {
+          "chain": "raven",
+          "step": "H2",
+          "p": 0.5190620546596086,
+          "alpha_allocated": 0.0,
+          "rejected": false
+        },
+        {
+          "chain": "raven",
+          "step": "H3",
+          "p": 0.2158203125,
+          "alpha_allocated": 0.0,
+          "rejected": false
+        }
+      ],
+      "final_weights": {
+        "raven": 0.0
+      }
+    }
+  },
+  "protocol_SS0_checks": {
+    "computed": {
+      "rel_mean": 0.05589074503361474,
+      "rel_median": 0.002696331128634988,
+      "rel_sd": 0.1342437167303158,
+      "seeds_first_arm_lower": 5,
+      "n": 10,
+      "seed32005_rel_ratio": 1.3924969493306059
+    },
+    "protocol_SS0": {
+      "rel_mean": 0.0559,
+      "rel_median": 0.0027,
+      "rel_sd": 0.134,
+      "seeds_first_arm_lower": "5/10",
+      "seed32005": "raven 0.4092 vs fedavg_window 0.2938 (+39%)"
+    },
+    "agrees": {
+      "mean": true,
+      "median": true,
+      "sd": true,
+      "seeds": true
+    }
+  },
+  "cs_within_trace_proxy": {
+    "proxy_definition": "SD across the 10 traces of RMSE_mu(raven_wo_design)/RMSE_mu(raven)-1; the second arm shares raven's traces and model seeds and differs only in its pi^tar support, so the contrast removes the between-trace effect and its scatter estimates the within-trace scale",
+    "n_traces": 10,
+    "mean_rel_diff_wo_vs_raven": -0.011980209103316541,
+    "sd_rel_diff_wo_vs_raven": 0.0979908789292992,
+    "sigma_w": 0.0979908789292992,
+    "source": "results_nodesign_supplement/round_v1/tables/cityscanner_seed_rows.csv",
+    "status": "proxy -- Part B B0-b did not run: the authorization phrase was not given",
+    "warning": "estimates the within-trace scale from an arm contrast, not from model-seed replicates of one arm; it is the most optimistic of the admissible readings, and is replaced by the B0-b estimate once B0 exists"
+  },
+  "cityscanner_power_scenarios": {
+    "total_paired_sd_r1": 0.1342437167303158,
+    "sigma_within_pilot_proxy": 0.0979908789292992,
+    "scenario_sigmas": {
+      "S0_sigmaW_zero": {
+        "sigma_between": 0.1342437167303158,
+        "sigma_within": 0.0,
+        "source": "Part B B0-b not run (no authorization): sigma_W = 0 -- floor scenario, r is irrelevant"
+      },
+      "S1_neutral": {
+        "sigma_between": 0.09492464243169227,
+        "sigma_within": 0.09492464243169227,
+        "source": "Part B B0-b not run (no authorization): sigma_W = sigma_B (neutral)"
+      },
+      "S2_pilot_within_trace": {
+        "sigma_between": 0.09175599777798013,
+        "sigma_within": 0.0979908789292992,
+        "source": "Part B B0-b not run (no authorization): sigma_W = pilot within-trace scale, SD of raven_wo_design/raven-1 across the 10 traces (upper/optimistic reading)"
+      }
+    },
+    "power_theta0_by_scenario_r": {
+      "S0_sigmaW_zero|r=1": 0.142,
+      "S1_neutral|r=1": 0.142,
+      "S2_pilot_within_trace|r=1": 0.142,
+      "S0_sigmaW_zero|r=3": 0.142,
+      "S1_neutral|r=3": 0.165,
+      "S2_pilot_within_trace|r=3": 0.16775,
+      "S0_sigmaW_zero|r=5": 0.142,
+      "S1_neutral|r=5": 0.173,
+      "S2_pilot_within_trace|r=5": 0.176
+    }
+  },
+  "sensitivity_rule": "drop unit 32005; sensitivity only, never primary"
+}

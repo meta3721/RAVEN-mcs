@@ -1,0 +1,19 @@
+{
+  "EPS_ZERO": 1e-12,
+  "alpha": 0.05,
+  "applied_to_metrics": [
+    "Head_RMSE",
+    "Tail_RMSE",
+    "Delta_group"
+  ],
+  "applies_before": [
+    "win_tie_loss",
+    "wilcoxon_signed_rank",
+    "sign_counting",
+    "effect_direction",
+    "significance_classification"
+  ],
+  "implementation_location": "src/raven_mcs/e2/traffic_final_seal/__init__.py::apply_eps_zero",
+  "rationale": "Paired Delta_group differences of order 1e-16..1e-17 are floating-point noise, not scientific effects. Zeroing abs(d)<=1e-12 before inference prevents Wilcoxon pseudo-significance from all-ties machine-epsilon vectors.",
+  "raw_metric_values_modified": false
+}

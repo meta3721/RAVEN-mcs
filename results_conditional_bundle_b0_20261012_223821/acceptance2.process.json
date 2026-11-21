@@ -1,0 +1,18 @@
+{
+  "pid": 26476,
+  "command": [
+    "C:\\Cursor\\raven.mcs\\.venv_new\\Scripts\\python.exe",
+    "-X",
+    "faulthandler",
+    "-m",
+    "pytest",
+    "tests/control_b0",
+    "tests/unit/test_e0_p2_debt.py",
+    "tests/unit/test_e3_local_hajek_weight_and_p2_final_closure_core.py",
+    "tests/unit/test_manifest_complete.py::test_auditable_manifest_can_require_git",
+    "tests/unit/test_manifest_complete.py::test_manifest_rejects_seed_bundle_mismatch",
+    "-ra",
+    "--junitxml=C:\\Cursor\\raven.mcs\\results_conditional_bundle_b0_20261012_223821\\acceptance2.xml",
+    "--basetemp=C:\\Cursor\\raven.mcs\\results_conditional_bundle_b0_20261012_223821\\acceptance2-tmp"
+  ]
+}

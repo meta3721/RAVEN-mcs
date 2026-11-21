@@ -1,0 +1,24 @@
+{
+  "datasets": [
+    "sensorscope",
+    "uair"
+  ],
+  "delta": 0.05,
+  "five_seed_allowed": false,
+  "joint_coverage_stop": 0.9,
+  "lookback_L": 8,
+  "min_calib": 8,
+  "pi_safe_quantile": 0.1,
+  "pi_safe_rule_id": "PI_SAFE_RULE_V1",
+  "predictor": "TOD_CONDITIONED_ROLLING_V1",
+  "round": "SAG_G1_R1E",
+  "sag_allowed": false,
+  "seed": 30001,
+  "stage1_calibration": "WINDOW_GLOBAL_MAX_RESIDUAL_V1",
+  "stage2_calibration": "TOD_BLOCK_CONDITIONED_MAX_RESIDUAL_V1",
+  "stage2_trigger": "GLOBAL_CALIBRATION_DOMINATES_NONVACUITY",
+  "stress_execution_allowed": false,
+  "target_rule_hash": "86fd55f7e0bf8499944433de16324bd4687befd5568892613ee87acacad3ad07",
+  "target_rule_id": "TARGET_LAW_RULE_V1",
+  "zero_fraction_stop": 0.9
+}

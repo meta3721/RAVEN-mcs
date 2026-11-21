@@ -1,0 +1,113 @@
+{
+  "blocks": {
+    "sensorscope": {
+      "FedAdam_fedavg_vs_central_relative": -0.013495477615056206,
+      "H": {
+        "MDE80_n5": 0.04353306527915816,
+        "boot_hi": 0.0015476025402279957,
+        "boot_lo": -0.03904500909863876,
+        "mean_H": -0.01874870327920538,
+        "verdict": "NO-GO-H"
+      },
+      "central_delivered_test_RMSE_mu_frozen": 7.952597152468874,
+      "central_movement_by_arm": {
+        "central_all": {
+          "head_0_weight": 0.12152376358165068,
+          "overall": 0.026301745737005663
+        },
+        "central_delivered": {
+          "head_0_weight": 0.11198555690561526,
+          "overall": 0.023078983028323216
+        }
+      },
+      "eta_s_star": 0.01,
+      "fedavg_test_RMSE_mu_FedAdam": 7.84527305561617,
+      "fedavg_test_RMSE_mu_frozen": 7.908941521700865,
+      "frozen_fedavg_movement_from_section0": 0.002618899601741062,
+      "frozen_fedavg_vs_central_relative": -0.005489480974709693,
+      "kr_clause_excluded_from_GO": true,
+      "kr_le3_share": 0.7525773195876289,
+      "mean_overall_movement_by_eta_s": {
+        "0.001": 0.02491123436670419,
+        "0.003": 0.06108247603267523,
+        "0.01": 0.18366235088213123
+      },
+      "relative_change_vs_frozen": -0.008050187994183444
+    },
+    "traffic": {
+      "FedAdam_fedavg_vs_central_relative": -0.1424104923113284,
+      "H": {
+        "MDE80_n5": 0.3498351784878961,
+        "boot_hi": 0.017193684596708753,
+        "boot_lo": -0.2688773807318074,
+        "mean_H": -0.08070010962298278,
+        "verdict": "NO-GO-H"
+      },
+      "central_delivered_test_RMSE_mu_frozen": 0.9737694569747332,
+      "central_movement_by_arm": {
+        "central_all": {
+          "head_0_weight": 0.12567152956943986,
+          "overall": 0.02911458198732299
+        },
+        "central_delivered": {
+          "head_0_weight": 0.1337988257860158,
+          "overall": 0.0323466036286142
+        }
+      },
+      "eta_s_star": 0.003,
+      "fedavg_test_RMSE_mu_FedAdam": 0.8350944692092265,
+      "fedavg_test_RMSE_mu_frozen": null,
+      "frozen_fedavg_movement_from_section0": null,
+      "frozen_fedavg_vs_central_relative": null,
+      "kr_clause_excluded_from_GO": false,
+      "kr_le3_share": 0.1111111111111111,
+      "mean_overall_movement_by_eta_s": {
+        "0.001": 0.040489601030484136,
+        "0.003": 0.0915118402082705,
+        "0.01": 0.22023934885460247
+      },
+      "relative_change_vs_frozen": null
+    },
+    "uair": {
+      "FedAdam_fedavg_vs_central_relative": -0.16707905350158214,
+      "H": {
+        "MDE80_n5": 0.20504009186460395,
+        "boot_hi": -0.05927121105926649,
+        "boot_lo": -0.24780742755288623,
+        "mean_H": -0.163332508677479,
+        "verdict": "NO-GO-H"
+      },
+      "central_delivered_test_RMSE_mu_frozen": 1.1735735654775155,
+      "central_movement_by_arm": {
+        "central_all": {
+          "head_0_weight": 0.12425371934143764,
+          "overall": 0.030351830017435435
+        },
+        "central_delivered": {
+          "head_0_weight": 0.13478682390677815,
+          "overall": 0.03326476420318206
+        }
+      },
+      "eta_s_star": 0.003,
+      "fedavg_test_RMSE_mu_FedAdam": 0.9774940049430552,
+      "fedavg_test_RMSE_mu_frozen": 1.1599245853724733,
+      "frozen_fedavg_movement_from_section0": 0.004268886904213089,
+      "frozen_fedavg_vs_central_relative": -0.011630272278234655,
+      "kr_clause_excluded_from_GO": true,
+      "kr_le3_share": 0.6621621621621622,
+      "mean_overall_movement_by_eta_s": {
+        "0.001": 0.027998729901768788,
+        "0.003": 0.07311323714929771,
+        "0.01": 0.22055365924192594
+      },
+      "relative_change_vs_frozen": -0.15727796680060568
+    }
+  },
+  "optimizer_asymmetry": {
+    "centralized_reference": "torch.optim.Adam(lr=1e-3) with local_steps = max(local_steps*10, 20) = 20 minibatch steps of 32 units (central_real.py L106, L111-L117; runner.py central branch)",
+    "consequence": "the paper's federated-vs-centralized statements compare two differently-optimized and both severely undertrained models",
+    "federated_effective_global_step": "one client-sized gradient step per window, independent of local_steps",
+    "federated_server_step": "theta <- theta - eta * sum_i alpha_i u_i, u_i = (theta_before - theta_after)/(client_lr * local_steps); window_runner.py L1155-L1167, client.py L104-L107"
+  },
+  "purpose": "frozen-pipeline vs FedAdam contrast, and the optimizer confound"
+}

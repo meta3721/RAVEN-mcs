@@ -1,0 +1,30 @@
+{
+  "status": "PASS",
+  "model_and_control_state_hash_equal": true,
+  "producer_and_RNG_state_hash_equal": true,
+  "source_closure_equal": true,
+  "data_identity_equal": true,
+  "target_identity_equal": true,
+  "restored_now": 33.29,
+  "restored_SGD": 1134,
+  "model_version": 38,
+  "next_grid_tick": 333,
+  "next_clock": 33,
+  "next_client": 25,
+  "no_new_SGD_or_notices_before_equality": true,
+  "model_construction": "meta shape allocation populated directly with saved actual tensors; no45001 initialization or RNG draws",
+  "parent_run_id": "OF-v1/P1_autonomous_P3_pre_pilot/45001/OF-v1/of",
+  "parent_checkpoint": "C:\\Cursor\\raven.mcs\\results_observed_feedback_autonomous_pilot_45001_20261014\\of\\trajectory\\stopped_0333_07272.complete.json",
+  "decision_start_tick": 333,
+  "session_id": "of_resume1",
+  "worker_PID": 13456,
+  "root_id": "21e6d60053e74e35b064cefea73a9135",
+  "restore_UTC": "2026-10-14T12:19:07.802147+00:00",
+  "original_clock_namespace": {
+    "run_id": "OF-v1/P1_autonomous_P3_pre_pilot/45001/OF-v1/of",
+    "origin_utc": "2026-10-14T11:49:58.416160+00:00",
+    "unit": "controlled_service_unit",
+    "UTC_bridge": "actual notice UTC; logical service units are not elapsed UTC"
+  },
+  "wall_continuity": "manual downtime excluded; continuation is logical/service trajectory only"
+}

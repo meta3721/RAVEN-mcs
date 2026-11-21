@@ -1,0 +1,41 @@
+{
+  "EPS_ZERO": 1e-12,
+  "all_ties_rows": 24,
+  "claim_statuses": {
+    "C1": "SUPPORTED_WITH_SCENARIO_QUALIFICATION",
+    "C10": "PARTIALLY_SUPPORTED",
+    "C2": "PARTIALLY_SUPPORTED",
+    "C3": "SUPPORTED",
+    "C4": "UNSUPPORTED",
+    "C5": "UNSUPPORTED",
+    "C6": "UNSUPPORTED",
+    "C7": "UNSUPPORTED",
+    "C8": "UNSUPPORTED",
+    "C9": "UNSUPPORTED"
+  },
+  "claim_validation": "PASS",
+  "delta_group_holm_sig": 0,
+  "ledger": {
+    "accepted_logical_run_count": 600,
+    "duplicate_start_event_count": 1,
+    "duplicate_start_run_id": "formal_seed30001_observation_only_raven__attempt1",
+    "ledger_rewritten": false,
+    "missing_accepted_logical_run": 0,
+    "note": "Historical ledger unchanged. Report must state interrupted/orphan START event count = 1 (duplicate START on one run_id with later successful FINISH), not 0.",
+    "orphan_or_interrupted_start_event_count": 1,
+    "prior_audit_interrupted_start_event_count": 1,
+    "scientific_result_loss": 0,
+    "training_finish_event_count": 600,
+    "training_start_event_count": 601
+  },
+  "stop": {
+    "EPS_ZERO": 1e-12,
+    "c9": "UNSUPPORTED",
+    "created_utc": "2026-08-09T13:55:35.798873+00:00",
+    "delta_group_holm_sig_count": 0,
+    "ledger_interrupted_start": 1,
+    "no_training": true,
+    "status": "E2_TRAFFIC_SCIENTIFICALLY_SEALED"
+  },
+  "verification": "PASS"
+}

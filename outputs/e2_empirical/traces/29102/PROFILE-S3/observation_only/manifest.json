@@ -1,0 +1,63 @@
+{
+  "arr_audit": {
+    "empirical_from_A_O_U": true,
+    "expected_alias_used": false,
+    "hard_arrival_event_count": 3134,
+    "total_hard_arrival_mass": 0.9190615835777127
+  },
+  "arrival_mass_mode": "event_mass",
+  "base_random_stream_hash": "dcef6aee12e43c0303d6e64a6d34099ca47155b92b75e520c64d929de002c46e",
+  "formal": false,
+  "generated_at": "2026-08-04T14:12:05.878341+00:00",
+  "generator_source_hash": "1bed372c63ccfc947edcdb9b337fa4dde041538cdf21c63370d32a1f91af9e36",
+  "head_tail_mapping_hash": "3729cce5a731f22093d6ecd177e6c3a7e70c7fd1f1a2fec512c5930644da901d",
+  "model_training": false,
+  "obs_audit": {
+    "actual_O_events_saved": 26432,
+    "expected_observation_rate": 0.2,
+    "exposure_event_count": 26432,
+    "observation_intercept": -1.857253755019883,
+    "realized_observation_rate": 0.19771489104116222
+  },
+  "opp_audit": {
+    "base_opportunity_uniforms_used_count": 48000,
+    "duplicate_unit_id_within_window_count": 0,
+    "expected_opportunity_rate": 0.55,
+    "opportunity_intercept": 0.20067069546030325,
+    "selected_event_count": 26432,
+    "unknown_unit_count": 0,
+    "unsupported_selected_count": 0
+  },
+  "opportunity_uniforms_used_count": 48000,
+  "parent_soft_round_commit": "e56687813f2bcb919a9208391f68a4db3488602e",
+  "performance_claim": false,
+  "profile_id": "PROFILE-S3",
+  "rmse_computed": false,
+  "scenario_id": "observation_only",
+  "schedule_audit": {
+    "block_0_99_hash": "8feb03ec64f7f3fdfdbcec8697e91175830d8480cb8a6fcac6654d6e04098137",
+    "block_100_199_hash": "1f3bd86852f76e766ba0691dd6ae4cc28c4c9aff200c7bbc2e22e02e640dcfec",
+    "block_200_299_hash": "7e93fba671ad17dac3c5ad4b9c7972b2700dab99fd763304f902e87780e70aca",
+    "block_hashes_all_equal": false,
+    "chronological_order_status": "PASS",
+    "duplicate_window_payload_count": 0,
+    "schedule_uniforms_used_count": 2400,
+    "seed": 29102,
+    "status": "PASS",
+    "unique_window_payload_ratio": 1.0
+  },
+  "schedule_hash": "064a54f327eede891323a860db026572c48e626edaacd1aa7ceeef7af10802f2",
+  "schedule_uniforms_used_count": 2400,
+  "seed": 29102,
+  "supported_test_hash": "d67e5c9e3aa132c9aac214d0977fce3499935446e29672116e7c9d38dccccf0f",
+  "target_weight_hash": "413ad5dab72149c4753668e32a4675a1fab00bb286adb9a9e1e58978a1cc81c5",
+  "use_audit": {
+    "actual_U_events_saved": 2400,
+    "expected_usable_rate": 0.6,
+    "failed_attempt_omission_count": 0,
+    "q_leakage_count": 0,
+    "realized_usable_rate": 0.59625,
+    "usable_intercept": 0.4054651081105476
+  },
+  "windows": 300
+}

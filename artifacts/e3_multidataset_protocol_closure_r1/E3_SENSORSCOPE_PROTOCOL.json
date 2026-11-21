@@ -1,0 +1,182 @@
+{
+  "blocker_if_any": null,
+  "complete_aligned_generator": {
+    "module": "raven_mcs.e3.protocol_closure.complete_aligned",
+    "probe": {
+      "dataset": "sensorscope",
+      "identity": {
+        "events_sha256": "f13e62cb2e32727e7f66a748cfb3bf1d2190650a281f6937dc815a12d7ddec62",
+        "metadata": {
+          "dataset": "sensorscope",
+          "generator": "e3-complete-aligned-v1",
+          "notes": [
+            "E3 Complete-aligned controlled generator",
+            "deterministic given seed+dataset+num_windows",
+            "no test outcomes used"
+          ],
+          "num_clients": 8,
+          "num_windows": 3,
+          "s_max": 5,
+          "seed": 31001
+        },
+        "metadata_sha256": "e0f7522b89b00e751639ce4c2c98ad37595f94ea781cc6cc003d959fd8556daa",
+        "trace_hash": "412aaecb5d3aa4a35224aa9c652f6eaa76d6e71ded74200d2d8b136a9f0f1bbe"
+      },
+      "n_event_rows": 24,
+      "num_windows": 3,
+      "seed": 31001,
+      "status": "EVENTTRACE_PATH_READY"
+    },
+    "status": "READY"
+  },
+  "created_utc": "2026-08-09T16:46:01.807361+00:00",
+  "data_identity": {
+    "client_measurements_hash": "292524d4c9679bb76de760fd45c7b7c797a6edba1a9d38d40da9eb83bb1aa295",
+    "common_timestamps": 312,
+    "interpolation_imputation_policy": "none beyond processed pipeline",
+    "legal_time_horizon": {
+      "chosen_E3_formal_windows": 100,
+      "common_timestamps": 312,
+      "dataset": "sensorscope",
+      "justification": "Train timestamps=187; legal~149. Choose 100 windows within support (matches E1 fair horizon practice; not forced globally).",
+      "legal_evaluation_windows": 62,
+      "legal_training_windows": 149,
+      "matches_sealed_traffic_e2_if_traffic": false,
+      "same_across_methods": true,
+      "spatial_units": 55,
+      "split_boundaries": {
+        "test": {
+          "n_atomic": 3410,
+          "n_timestamps": 62,
+          "time_max": 311,
+          "time_min": 250
+        },
+        "train": {
+          "n_atomic": 10285,
+          "n_timestamps": 187,
+          "time_max": 186,
+          "time_min": 0
+        },
+        "validation": {
+          "n_atomic": 3465,
+          "n_timestamps": 63,
+          "time_max": 249,
+          "time_min": 187
+        }
+      },
+      "warmup_atomic_units": 2090
+    },
+    "missingness_policy": "processed support_flag / physical filters from dataset yaml",
+    "n_clients": 8,
+    "processed_hash": "47581d5b04d3795b3fe663198ba32a53e83f35707718a82bd1ec0662daff88ce",
+    "processed_path": "D:\\Cursor\\raven.mcs\\data\\processed\\sensorscope\\atomic_units.parquet",
+    "raw_hash": "c4d1b0d27064f166aaa70ef8b0a87621cd5b4478b215aedba53604b6109a6e20",
+    "raw_path": "D:\\Cursor\\raven.mcs\\data\\raw\\sensorscope\\Sensorscope.zip",
+    "spatial_units": 55,
+    "standardization_policy": "runner/model-local as in Common-NDMF path",
+    "train_validation_test_split": {
+      "test": 3410,
+      "train": 10285,
+      "validation": 3465
+    }
+  },
+  "dataset": "sensorscope",
+  "formal_horizon": {
+    "chosen_E3_formal_windows": 100,
+    "common_timestamps": 312,
+    "dataset": "sensorscope",
+    "justification": "Train timestamps=187; legal~149. Choose 100 windows within support (matches E1 fair horizon practice; not forced globally).",
+    "legal_evaluation_windows": 62,
+    "legal_training_windows": 149,
+    "matches_sealed_traffic_e2_if_traffic": false,
+    "same_across_methods": true,
+    "spatial_units": 55,
+    "split_boundaries": {
+      "test": {
+        "n_atomic": 3410,
+        "n_timestamps": 62,
+        "time_max": 311,
+        "time_min": 250
+      },
+      "train": {
+        "n_atomic": 10285,
+        "n_timestamps": 187,
+        "time_max": 186,
+        "time_min": 0
+      },
+      "validation": {
+        "n_atomic": 3465,
+        "n_timestamps": 63,
+        "time_max": 249,
+        "time_min": 187
+      }
+    },
+    "warmup_atomic_units": 2090
+  },
+  "opportunity_strata": {
+    "dataset": "sensorscope",
+    "definition": "processed opportunity_stratum = spatial_id::time_block::weekday_flag",
+    "deterministic_construction": true,
+    "n_strata": 440,
+    "no_target_leakage": true,
+    "note": "Stratum labels come from processed public features only; not model residuals.",
+    "support_hash_n": 440
+  },
+  "public_target": {
+    "construction": "train_split_utc_block_mass_only_no_test_labels",
+    "dataset": "sensorscope",
+    "group_definition": "repeatable_utc_time_of_day_4",
+    "group_ids": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "group_names": [
+      "UTC_00_06",
+      "UTC_06_12",
+      "UTC_12_18",
+      "UTC_18_24"
+    ],
+    "head_groups": [
+      0,
+      3
+    ],
+    "mu": {
+      "0": 0.25668449197860965,
+      "1": 0.24064171122994651,
+      "2": 0.24598930481283424,
+      "3": 0.25668449197860965
+    },
+    "n_train_atomic": 10285,
+    "tail_groups": [
+      1,
+      2
+    ]
+  },
+  "q_feature_boundary": {
+    "allowed_features": [
+      "hour_sin",
+      "hour_cos",
+      "time_block",
+      "weekday",
+      "spatial_public_block"
+    ],
+    "fixed_prestate": true,
+    "forbidden": [
+      "future_labels",
+      "realized_target",
+      "post_delivery_private_state",
+      "test_outcomes"
+    ]
+  },
+  "readiness_status": "READY_FOR_E3_CANARY",
+  "stage2_eligibility": {
+    "delivered_semantics": "delivered iff U=1",
+    "eligibility_rule": "U=1 requires compute_success and network_success and tau<=s_max and nonempty observations",
+    "failed_attempt_semantics": "O may be nonempty while U=0",
+    "observability_boundary": "no test labels; risk sets from train units only in generator",
+    "s_max": 5,
+    "stage1_stage2_timing": "opportunity then observation then usable within window"
+  }
+}

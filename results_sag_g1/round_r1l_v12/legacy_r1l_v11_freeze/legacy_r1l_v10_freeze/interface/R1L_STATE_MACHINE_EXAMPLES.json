@@ -1,0 +1,31 @@
+{
+  "certified_n19": {
+    "C_LCB": 0.07,
+    "C_hat": 0.08,
+    "Gate": true,
+    "Gate_label": "ON",
+    "certificate_state": "CERTIFIED",
+    "n_cal": 19,
+    "q": 0.01
+  },
+  "k_n_18": 19,
+  "k_n_19": 19,
+  "reset": {
+    "C_LCB": 0.0,
+    "C_hat": 0.2,
+    "Gate": false,
+    "Gate_label": "OFF",
+    "certificate_state": "RESET",
+    "n_cal": 30,
+    "q": NaN
+  },
+  "warmup_n8": {
+    "C_LCB": 0.0,
+    "C_hat": 0.2,
+    "Gate": false,
+    "Gate_label": "OFF",
+    "certificate_state": "WARMUP",
+    "n_cal": 8,
+    "q": NaN
+  }
+}

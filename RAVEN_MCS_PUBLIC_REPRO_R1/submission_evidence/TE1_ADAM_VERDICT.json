@@ -1,0 +1,96 @@
+{
+  "H_per_seed": {
+    "30006": 0.03216335541780368,
+    "30007": -0.23661138644057633,
+    "30008": 0.04219108055454525,
+    "30009": -0.00288519535956204,
+    "30010": -0.016578758846136195,
+    "30011": 0.05865897627920852,
+    "30012": -0.020300613527341128,
+    "30013": 0.07133950829635409,
+    "30014": 0.006694436996762884,
+    "30015": -0.05607694919134266,
+    "30016": 0.02762386082024371,
+    "30017": -0.09081981948637384,
+    "30018": -0.031310740120701654,
+    "30019": -0.003608972283343388,
+    "30020": -0.004296458379509475
+  },
+  "MDE80": 0.05802695298194278,
+  "analysis_seeds": [
+    30006,
+    30007,
+    30008,
+    30009,
+    30010,
+    30011,
+    30012,
+    30013,
+    30014,
+    30015,
+    30016,
+    30017,
+    30018,
+    30019,
+    30020
+  ],
+  "bootstrap": {
+    "draws": 10000,
+    "lower": -0.0542302207818337,
+    "rng": 20261007,
+    "upper": 0.0175677080705695
+  },
+  "conditions": {
+    "H_ge_0.01": false,
+    "boot_lower_gt_0.005": false,
+    "kr_le3_share_le_0.25": true,
+    "mde80_lt_half_H": false
+  },
+  "config_check": {
+    "constants": {
+      "BETA1": 0.9,
+      "BETA2": 0.99,
+      "TAU": 0.001
+    },
+    "local_steps": 2,
+    "local_steps_in_s1p_frozen_run": 2,
+    "s1p_frozen_server_opt": {
+      "beta1": 0.9,
+      "beta2": 0.99,
+      "eta_s": 0.003,
+      "mode": "adam",
+      "tau": 0.001
+    },
+    "server_opt_match": true,
+    "would_install": {
+      "beta1": 0.9,
+      "beta2": 0.99,
+      "eta_s": 0.003,
+      "mode": "adam",
+      "tau": 0.001
+    }
+  },
+  "created_utc": "2026-10-09T09:17:51.139411+00:00",
+  "driver_sha256": "46e46328a78053d187595f76a035fc69d499fbe818aef331abe083c2a011640f",
+  "frozen_const": {
+    "c_val": 0.994486828129759,
+    "divergence_ceiling": 1.988973656259518,
+    "n": 6192,
+    "weight_sha256": "31b71588621220f666498199fd239eccf66b0c46a17d20ea3864b14410d890ad",
+    "weighted_mean": 0.008777590873050613
+  },
+  "instruction_sha256": "2ffb1fb006f5e45e01bfccaa43936a63bf0225d87f9bf604f0bd728f064a70cb",
+  "kr_le3_share_basis": "mean over the analysis-set fedavg_window runs; the simoracle mean is reported alongside",
+  "kr_le3_share_confirm_fedavg": 0.15081907510478937,
+  "kr_le3_share_confirm_simoracle": 0.15081907510478937,
+  "mean_H": -0.014921178351331239,
+  "n": 15,
+  "n_analysis": 15,
+  "n_confirm_pairs": 15,
+  "n_stability_failures": 0,
+  "screen_mean_H_for_reference": -0.0807,
+  "sd_H": 0.07459317883372397,
+  "t_lower": 2.144786687917804,
+  "t_upper": 0.8680547815574207,
+  "verdict": "NO-GO-H"
+}

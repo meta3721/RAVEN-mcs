@@ -1,0 +1,49 @@
+1 
+ 
+1 Performance statistics equations 
+RMSE = √ 1
+𝑁 ∑(𝑥d - Rd
+𝑁
+𝑑=1
+)2 
+Eq. S1 
+MBE = 1
+𝑁 ∑(𝑥d )
+𝑁
+𝑑=1
+− 1
+𝑁 ∑( Rd
+𝑁
+𝑑=1
+) 
+Eq. S2 
+MAE=
+1
+𝑁 ∑ abs(𝑥d - Rd
+𝑁
+𝑑=1 ) 
+Eq. S3 
+where: 
+RMSE = root mean square error (µg m-3) 
+MBE= mean bias error (µg m-3) 
+MAE= mean absolute error (µg m-3) 
+M = number of identical sensors operated simultaneously during a field test 
+N = number of 24-hour periods during which all identical instruments are operating and returning valid averages 
+over the duration of the field test 
+xd = valid 24-hour averaged sensor PM2.5 concentration for day d (µg/m3) 
+Rd = valid 24-hour averaged FRM or FEM PM2.5 concentration for day d (µg m-3) 
+ 
+2 Discussion of state by state performance 
+Uncorrected PurpleAir sensors in this work overestimate PM2.5 in every state on average except for Florida 
+(Figure S4); this typical overprediction is indicated by MBE greater than 0 µg m -3. Figure S4 shows the state-by-
+state performance before and after correction. The MBE after correction is within 3 µg m-3 in each state with 24-hr 
+RMSE ≤ 3.7 µg m-3, showing large improvements from the initial dataset. The RMSE is reduced and the MBE 
+moves closer to zero across all states except Alaska and Arizona where R MSE improves but MBE moves slightly 
+further from 0 (AK MBEraw=0.8 µg m-3, MBEcorrected=-1.0 µg m-3; AZ MBEraw=0.4 µg m-3, MBEcorrected=-0.5 µg m-3) 
+and Florida where correction slightly increases RMSE and increases underprediction (MBE raw=-0.3 µg m-3, 
+MBEcorrected=-3.7 µg m-3). It is important to note that the reported performance may not accurately summarize state-
+wide performance in states with less than a year of data (indicated in Figure S4 by states with white background 
+labels) and in states with a single PurpleAir collocated at a single site. To illustrate, Florida is represented by a 
+single PurpleAir sensor located at a single site for less than a year; the performance in Florida may be influenced by 
+a different aerosol composition in Sarasota, Florida (e.g., higher sea salt contribution) or may be an issue unique to 
+the FEM and PurpleAir running at the site.  

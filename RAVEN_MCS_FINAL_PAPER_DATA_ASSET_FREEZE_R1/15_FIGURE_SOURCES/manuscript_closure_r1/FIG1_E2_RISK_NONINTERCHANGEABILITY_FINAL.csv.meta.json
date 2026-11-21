@@ -1,0 +1,11 @@
+{
+  "claim_ceiling": "C1/C2 only",
+  "csv_sha256": "28605d1ebf874c5f2c1ad7e780790a68c02bcd7ea2c12d1636f49755628b6511",
+  "filters": "complete_aligned; five formal E2 methods",
+  "lower_is_not_better_note": "D_aligned = Delta RMSE_mu - Delta RMSE_rho (aligned vs balanced). A stable negative sign supports risk non-interchangeability, not method ranking.",
+  "original_evidence": "paper_ready_r2/01_core_data/e2/E2_D_ALIGNED_PER_SEED.csv",
+  "source_files": [
+    "paper_ready_r2/07_figure_sources/FIG1_E2_RISK_NONINTERCHANGEABILITY.csv"
+  ],
+  "visual_message": "D_aligned has a stable nonzero (negative) direction; not a RAVEN-superiority figure"
+}

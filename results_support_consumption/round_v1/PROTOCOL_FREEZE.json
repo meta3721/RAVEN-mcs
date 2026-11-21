@@ -1,0 +1,153 @@
+{
+  "protocol": "support-consumption-v1",
+  "main_block": "measured-O",
+  "review_block": "visit",
+  "s_max": 5,
+  "residence_h": 2,
+  "pool_cap": 64,
+  "complement_margin": 0.01,
+  "alpha_max": 0.5,
+  "e_min": 3.0,
+  "cap": "min(1, max(alpha_max, 1/K))",
+  "ess": "min(E_min, K)",
+  "a_max": 20.0,
+  "p_min": 0.05,
+  "pi_min": 1e-06,
+  "local_steps": 2,
+  "builder_local_steps_default_not_used": 5,
+  "server_lr": 0.01,
+  "server_optimizer": "one_weighted_sgd_step",
+  "backbone": "CommonNDMF",
+  "num_windows": 100,
+  "num_groups": 4,
+  "design": "frozen_on",
+  "gate_controls_design": false,
+  "reference": "stage1(zeta_hat_stratum(pi_target, pi_opp), lagged observation propensity)",
+  "q_use_in_reference": false,
+  "downloaded_version_role": "audit_only",
+  "per_seed_complement_min": 0.05,
+  "pooled_complement_min": 0.1,
+  "cross_close_commit_min": 0.1,
+  "mean_d_improvement_min": 0.005,
+  "residence_quantile": 0.95,
+  "age_definition": "close_index - arrival_close; arrival close has age 0",
+  "source_checks": {
+    "checks": {
+      "s_max": true,
+      "window_duration": true,
+      "u_includes_staleness": true,
+      "alpha_max": true,
+      "e_min": true,
+      "cap_formula": true,
+      "ess_formula": true,
+      "server_lr": true,
+      "builder_local_steps_default": true,
+      "a_max": true,
+      "p_min": true,
+      "pi_min": true,
+      "backbone": true,
+      "server_step": true,
+      "operative_local_steps": true,
+      "operative_s_max": true,
+      "joint_passes_local_steps": true,
+      "visit_passes_local_steps": true,
+      "visit_passes_s_max": true
+    },
+    "failed": []
+  },
+  "blocks": {
+    "measured-O": {
+      "dataset": "cityscanner_nyc_p2_measured_o",
+      "mu": [
+        0.6496975806451613,
+        0.1350806451612903,
+        0.07258064516129033,
+        0.14264112903225806
+      ],
+      "setup_checks": {
+        "n_pi_target_keys": [
+          1192,
+          1192
+        ],
+        "n_pi_opp_keys": [
+          942,
+          942
+        ],
+        "mu_max_abs_diff": 0.0
+      },
+      "encoding": {
+        "region0": 0,
+        "region1": 1,
+        "region2": 2,
+        "region3": 3
+      }
+    },
+    "visit": {
+      "dataset": "cityscanner_nyc_pm25",
+      "mu": [
+        0.23732057416267938,
+        0.47464114832535875,
+        0.07081339712918659,
+        0.21722488038277507
+      ],
+      "setup_checks": {
+        "n_pi_target_keys": [
+          1164,
+          1164
+        ],
+        "n_pi_opp_keys": [
+          959,
+          959
+        ],
+        "mu_max_abs_diff": 0.0
+      },
+      "encoding": {
+        "region0": 0,
+        "region1": 1,
+        "region2": 2,
+        "region3": 3
+      }
+    }
+  },
+  "fixtures": {
+    "hold_complement_deadline_expiry": {
+      "first_reason": "HOLD_NO_COMPLEMENT",
+      "complement_reason": "COMPLEMENTARY_RELEASE",
+      "complement_distances": {
+        "H": 0.5,
+        "A": 0.5,
+        "P": 0.0
+      },
+      "deadline_reason": "DEADLINE_RELEASE",
+      "expired_state": "expired"
+    },
+    "replacement_endpoint_reentry": {
+      "superseded": "a|0|0",
+      "committed": [
+        "a|1|0"
+      ],
+      "endpoint_state": "endpoint_unconsumed"
+    },
+    "solver_empty_pool_design": {
+      "distance": 6.938893903907228e-16,
+      "alpha_max": 0.2500000000000004,
+      "ess_square": 0.25000000000000067,
+      "empty_solver_calls": 0,
+      "design_t": 1,
+      "gate_t": 0,
+      "configured_zeta": [
+        2.0,
+        0.5
+      ]
+    },
+    "save_restore": {
+      "version": 1,
+      "optimizer_steps": 1,
+      "ledger_rows": 2,
+      "releases": 1
+    },
+    "status": "PASS"
+  },
+  "implementation_hash": "e60ff4680c28a06d47edf868cb78af7ed5d2367817ca824733973432acb9d767",
+  "training": false
+}

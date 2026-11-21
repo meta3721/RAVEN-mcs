@@ -1,0 +1,13 @@
+{
+  "forbidden_support": "client × target_group h(i)",
+  "formula": "Delta_c_s = sum_{k,s} |Pi_hat_ks - pi_tar_ks|",
+  "h_s_identity_check": "h=H1-H4 TOD; s=spatial×block×weekday; not swapped",
+  "pi_tar_source": "raven_mcs.correction.pi_target.build_pi_target on test support / E3 delta_cs_v6",
+  "source_hashes": {
+    "delta_cs_v6": "580bd1d6d2d0c4c178b16ab9a9ee5f16541fcec617f0551a568fdbcc875398d3",
+    "distribution": "23178fb519cacb6f746b1fb10f748191b582dd8ec48d65c15ac0ca7916e5c8c8"
+  },
+  "source_implementation": "src/raven_mcs/e3/delta_cs_rho/delta_cs_v6.py and src/raven_mcs/metrics/distribution.py::delta_c_s",
+  "status": "FROZEN",
+  "support": "client × opportunity_stratum s(i)"
+}

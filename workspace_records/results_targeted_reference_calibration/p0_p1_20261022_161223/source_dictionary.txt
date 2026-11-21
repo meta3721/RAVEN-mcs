@@ -1,0 +1,148 @@
+Development of a United States Wide Correction for PM
+2.5
+ 
+Data Collected with the PurpleAir Sensor
+Figure data (7 files)
+Associated publication: 
+Barkjohn, K. K., Gantt, B., and Clements, A. L.: Development and Application of a United States wide correction for PM2.5 data collected with the PurpleAir sensor, Atmos. Meas. Tech.
+, 
+https://doi.org/10.5194/amt-2020-413, 202
+1
+.
+Full24hrdataset.csv (24-hr averaged dataset)
+contains data for 
+Figures 
+3, 5, 6, S2, S3, S5-10
+Date: Year-month-day example: 2019-08-22
+ID: State number ID (e.g. AK1, NC1) as used throughout the paper
+Region: Regions as defined in the text
+FEMorFRM
+: Is the measurement a federal equivalent 
+method (FEM) 
+or federal reference method
+ (FRM)
+PM25FM: FEM or FRM PM2.5 in ug/m3
+PM25cfatm: AB channel averaged lower 
+cf
+ PM2.5 in ug/m3
+PM25cf1: AB channel averaged higher 
+cf
+ PM2.5 in ug/m3
+b0.3um
+…b10um
+: PurpleAir particle count >0.3 
+µ
+m
+ …> 10
+ 
+µ
+m
+b0.3to0.5 … b5to10: PurpleAir particle count between 0.3 and 0.5 
+µ
+m … between 5 and 10 
+µ
+m
+Calculated by subtracting the raw PurpleAir binned data
+TempC
+: Temperature in 
+Celcius
+ as measured by PurpleAir
+RH: Relative Humidity in Percent as measured by PurpleAir
+Dewpoint: Dewpoint in Celsius calculated from the PurpleAir temperature and RH
+PM25PAlinearcor
+: PurpleAir PM2.5 corrected using a linear correction built over the full dataset
+PM25PARHcor
+: PurpleAir PM2.5 corrected using a correction with RH built over the full dataset (eq. 10 U.S-wide correction)
+ratioPARHcor_FM
+: PM25PARHcor divided by the FEM or FRM. Set to NA if FEM or FRM is <1
+diffPARHcor_FM
+: difference between the FEM or FRM and PM25PARHcor
+ratiocfatm_FM
+: PurpleAir 
+cf_atm
+ data divided by the FEM or FRM
+diffcfatm_FM
+: difference between PurpleAir 
+cf_atm
+ data and the FEM or FRM
+ratiocf1_FM
+: PurpleAir cf_1 data divided by the FEM or FRM
+diffcf1_FM
+: difference between the PurpleAir cf_1 data and the FEM or FRM
+Fig1
+.csv
+ (24-hr averaged dataset)
+Contains data for Figure 1
+PM25cf1a:
+ 
+A channel higher 
+cf
+ PM2.5 in ug/m3
+PM25cf1b: B channel higher 
+cf
+ PM2.5 in ug/m3
+ID: State number ID (e.g. AK1, NC1) as used throughout the paper
+Diff: categorical 
+“within 2sd”
+: Meets the AB QA requirements (both percent and absolute ug/m3 
+criteria
+)
+“
+>
+abs(2sd)”
+: Does not meet AB QA requirements and will be excluded from the dataset moving forward.
+Fig4.csv
+ 
+Type:
+LOBD: Leave out by date
+LO
+SO: Leave one state out
+Modelnum
+: 0raw-
+ 
+7PM*RH*D*T
+ 
+models tested as described in the paper
+Variable:
+MBE: Mean bias error 
+MAE: Mean absolute error 
+Value: MAE or MBE in ug/m3
+Withheldfinaldataset_
+Fig7.csv
+Date: Year-month-day example: 2019-08-22
+ID: State number ID (e.g. AK1, NC1) as used throughout the paper
+State: 2 letter state abbreviation (e.g. AK)
+PM25FM: FEM or FRM PM2.5 in ug/m3
+AQIcategory
+: AQI category based on the corrected PurpleAir data using LOSO (next column)
+PM25PAcor_withholding
+: Data corrected using 
+leaving one state out (
+LOSO
+)
+ withholding
+RH: Relative Humidity in Percent as measured by PurpleAir
+PM25cf1: 
+PurpleAir higher 
+cf
+ PM2.5 data (ug/m3)
+Fig
+S
+1_IA
+ (24-hr averaged dataset)
+PM25: PurpleAir higher 
+cf
+ PM2.5 data (ug/m3)
+Temperature: in 
+o
+C
+ as measured by PurpleAir
+Humidity: RH in %
+ as measured by PurpleAir
+Grp: 
+IASubset
+: Subset of Iowa dataset used in model development 
+IA: Full dataset from Iowa
+Note: Data for Figures 2
+ and S4 
+are included in the tables in the SI.

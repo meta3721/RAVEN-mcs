@@ -1,0 +1,16 @@
+{
+  "formula": "copy sealed JSON fields; n_active_clients = len(active_clients)",
+  "n_runlevel_rows": 280,
+  "n_window_rows": 25200,
+  "no_new_stochastic_process": true,
+  "no_training": true,
+  "note": "Debt/ESS/P2-runtime trajectories remain MISSING_NOT_RECORDED as time series. Do not promote to paper claims.",
+  "sample_window_keys": [
+    "a_r_size",
+    "active",
+    "active_clients",
+    "alpha",
+    "beta_hat",
+    "window_id"
+  ]
+}

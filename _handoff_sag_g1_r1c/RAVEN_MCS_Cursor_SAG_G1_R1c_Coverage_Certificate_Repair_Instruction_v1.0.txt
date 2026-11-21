@@ -1,0 +1,970 @@
+RAVEN-MCS v2.0
+Cursor 下一轮实验指令
+SAG-G1-R1c Target-Compatibility + Coverage-Certificate Repair
+============================================================
+版本：v1.0
+目标：
+  在不修改 SAG 理论、不放宽 Gate 阈值、不进入 5-seed 的前提下，
+  完成两个尚未封口的问题：
+
+  (1) target compatibility：
+      证明并保证 mu 与 pi^{tar} 来自同一个 frozen atomic deployment law；
+
+  (2) C_cov certificate：
+      替换当前在 lookback<=32 下退化为全零的 opportunity-mass LCB，
+      构造真正可用、严格 pre-window、one-sided、可复算的 coverage certificate。
+
+本轮完成后只运行：
+  SensorScope seed 30001
+  U-Air seed 30001
+
+然后 STOP。
+
+本轮最终只回答一个核心问题：
+
+  SensorScope 是否终于出现“全部 Gate 条件合法通过”的 ON windows，
+  同时 U-Air 是否仍主要被 active-set-risk certificate 拦截？
+
+============================================================
+一、必须先阅读的权威材料
+============================================================
+
+Cursor 开始前必须完整阅读：
+
+1. RAVEN_MCS_Support_Aware_Gate_Spec_v1.2_Final_Closure.txt
+2. RAVEN_MCS_v2_Sections_III_VI_PostAudit_Final.txt
+3. RAVEN_MCS_Cursor_SAG_G0_G1_Experiment_Instruction_v1.0.txt
+4. RAVEN_MCS_Cursor_SAG_G1_R1_Certificate_Repair_Instruction_v1.0.txt
+5. RAVEN_MCS_Cursor_SAG_G1_R1b_Semantic_Alignment_Repair_Instruction_v1.0.txt
+6. 最新 R1b evidence package：
+   - R1B_SEMANTIC_REPAIR_REPORT.md
+   - R1B_VERDICT.json
+   - GROUP_MAPPING_SOURCE_AUDIT.md
+   - PAPER_H_MAPPING_SPEC.md
+   - GROUP_MAPPING_COMPARISON.csv
+   - OPPORTUNITY_EVENT_COUNT_WINDOW.csv
+   - OPPORTUNITY_EVENT_MASS_WINDOW.csv
+   - C_COV_EVENT_MASS_WINDOW.csv
+   - C_COV_PAIR_DIAGNOSTIC.csv
+   - PI_SAFE_PROVENANCE.json
+   - ESS_VARIANCE_COUNTERFACTUAL_AUDIT.csv
+   - B_TOT_OLD_VS_R1B.csv
+   - B_TOT_DECOMPOSITION_R1B.csv
+   - R1B_GATE_WINDOW_LOG.csv
+   - R1B_GATE_PASSRATE.csv
+   - 当前源码快照 / commit hash
+
+authority 顺序：
+
+  SAG v1.2 Final Spec
+    ->
+  Sections III--VI PostAudit Final
+    ->
+  R1/R1b 修复指令
+    ->
+  本 R1c 指令
+
+若旧代码与论文冲突，以 PostAudit Final 为准。
+
+============================================================
+二、当前已确认事实：本轮不得反复重做
+============================================================
+
+A. G0：
+  timing / leakage / EventTrace / B_r-A_r 已 PASS。
+
+B. Counterfactual metrics：
+  Delta_beta / Delta_M / Delta_V / service_diff
+  已经过独立重算和 synthetic unit tests。
+  本轮只做 regression check。
+
+C. deployment-group semantics：
+  R1b 已把论文 h(i) 对齐到 application-level deployment groups。
+  SensorScope 的 |G| 已从旧 fine-group 220 对齐为 4。
+  U-Air 同样使用论文一致的 deployment-group mapping。
+  本轮不得为了改变 B_tot 再修改 h(i)。
+
+D. Event-mass semantics：
+  已从 unique-pair presence 修为真实 opportunity-event counts/mass。
+  本轮不得回退。
+
+E. B_tot：
+  修正 deployment groups 后，SensorScope 的 B_tot 已不再是主要 blocker：
+    median 约 2.5；
+    p95 约 3.9；
+    tau_safe = 4.0。
+  U-Air 仍受 delta_A / B_tot 等安全约束。
+
+F. 当前真正 blocker：
+  C_cov_LCB = 0，
+  不是因为 target support 已被证明不存在，
+  而是当前 per-window-mass empirical-Bernstein LCB 在：
+    n <= 32，
+    per-pair mass <= about 0.125
+  的尺度下发生数学退化。
+
+G. 当前阈值继续冻结：
+
+  tau_cov  = 0.05
+  tau_ret  = 0.05
+  tau_ESS  = 1.0
+  tau_clip = 0.95
+  tau_A    = 0.35
+  tau_safe = 4.0
+  delta_cal = 0.05
+  coverage_target = 0.95
+
+本轮不得修改以上任何值。
+
+============================================================
+三、本轮唯一任务
+============================================================
+
+R1c-A：
+  Target Compatibility Audit + 修复
+
+R1c-B：
+  Freeze pi_safe RULE
+
+R1c-C：
+  Rebuild opportunity-support LCB / C_cov
+
+R1c-D：
+  Re-check 95% common-support certificate calibration
+
+R1c-E：
+  1-seed re-diagnostic
+
+不做任何额外扩展。
+
+============================================================
+四、绝对禁止事项
+============================================================
+
+1. 不得降低 tau_cov。
+2. 不得提高 tau_safe。
+3. 不得提高 tau_A。
+4. 不得通过更改 h(i) 让 B_tot 变小。
+5. 不得用 dataset name 直接决定 Gate。
+6. 不得使用 current R/O/U/Z/loss/update/test outcome 构造同窗口 C_cov。
+7. 不得使用 test labels / test prediction error 构造 pi_tar、mu 或 pi_safe。
+8. 不得用 Gate ON rate 反向选择 pi_safe。
+9. 不得使用 current-window realized opportunity counts更新 current Gate。
+10. 不得为了非零 LCB 直接乘人为常数或减小置信水平。
+11. 不得把 C_cov 变成 heuristic score 后仍声称是 one-sided certificate。
+12. 不得自动跑 5-seed。
+13. 不得自动跑 E1--E5。
+14. 不得新增 baseline。
+15. 不得修改 Theorem 3 / 4。
+
+============================================================
+五、R1c-A：Target Compatibility Audit
+============================================================
+
+这是本轮第一优先级。
+在重新做 C_cov 前，先确认 deployment target 本身是一致的。
+
+------------------------------------------------------------
+R1c-A.1 找出 mu 和 pi_tar 的真实来源
+------------------------------------------------------------
+
+搜索：
+
+  build_pi_target
+  build_mu
+  target_mu
+  pi_target
+  pi_tar
+  atomic_target
+  varpi_tar
+  target_map
+  split="train"
+  split="val"
+  split="test"
+  target construction
+  marginalize
+
+输出：
+
+  outputs/sag_g1_r1c/target/
+    TARGET_SOURCE_AUDIT.md
+
+必须逐项列出：
+
+  object:
+    varpi_tar
+    mu
+    pi_tar
+
+  source file/function
+  source split
+  whether uses:
+    train metadata
+    val metadata
+    test metadata
+    labels
+    outcomes
+    public deployment metadata
+
+特别核查当前源码是否存在：
+
+  build_pi_target(..., split="test")
+
+以及 mu 是否来自：
+
+  train_split_supported_atomic_uniform_then_marginalize
+
+如果二者来自不同 target law，
+标记：
+
+  TARGET_COMPATIBILITY_BUG_CONFIRMED
+
+------------------------------------------------------------
+R1c-A.2 建立唯一 frozen atomic target law
+------------------------------------------------------------
+
+论文要求：
+
+  varpi_i^{tar}
+
+是唯一 atomic deployment law。
+
+然后所有 target object 必须从它派生：
+
+  mu_g
+  =
+  sum_{i:h(i)=g} varpi_i^{tar}
+
+以及 client-stratum target：
+
+  pi^{tar}_{k,s}
+  =
+  sum_{i:s(i)=s}
+    xi_{k|i}^{tar}
+    varpi_i^{tar}
+
+若当前方法存在 frozen/public client allocation rule xi，
+使用已有规则。
+
+如果 pi_tar 的定义不是上述分解形式，
+应按照 PostAudit Sections III--VI 的正式定义实现，
+但不得引入 test outcome。
+
+要求：
+  varpi_tar 的来源必须是 public/frozen target specification，
+  不能通过 test Y / test prediction residual 得到。
+
+------------------------------------------------------------
+R1c-A.3 兼容性等式必须数值验证
+------------------------------------------------------------
+
+实现：
+
+  TARGET_COMPATIBILITY_CHECK.csv
+
+至少检查：
+
+A. 总质量：
+  sum_i varpi_tar(i) = 1
+
+B. group marginal：
+  for every g:
+    mu_g
+    ==
+    sum_{i:h(i)=g} varpi_tar(i)
+
+C. client-stratum total：
+  sum_{k,s} pi_tar(k,s) = 1
+
+D. group bridge：
+  对每个 g：
+
+    mu_from_pi(g)
+    =
+    sum_{k,s}
+      pi_tar(k,s)
+      * 1{ h(s) = g }
+
+  如果 stratum s 与 group g 不是一一直接映射，
+  使用冻结的 s->atomic->h marginalization，
+  不得猜映射。
+
+要求：
+
+  max_abs_error <= 1e-10
+
+若浮点/normalization 流程使 1e-10 不合理，
+最多允许 1e-8，
+并解释原因。
+
+如果无法满足：
+  STOP，
+  不做 R1c-E。
+
+------------------------------------------------------------
+R1c-A.4 split leakage audit
+------------------------------------------------------------
+
+新增单元测试：
+
+  test_target_no_test_outcome_leakage.py
+
+改变：
+  test labels
+  test predictions
+  test residuals
+
+保持 public target specification 不变。
+
+必须：
+  varpi_tar 不变
+  mu 不变
+  pi_tar 不变
+
+如果 target 的定义允许使用 test-side PUBLIC covariates / deployment map，
+可以使用；
+但必须在报告中明确：
+  public deployment metadata
+  != test outcome。
+
+============================================================
+六、R1c-B：Freeze pi_safe RULE
+============================================================
+
+上一轮 provisional rule 是：
+
+  pi_safe
+  =
+  Q_0.10(
+    pi_opp_public(k,s)
+    |
+    pi_tar(k,s)>0
+  )
+
+本轮不要依据 ON/OFF 调整 q。
+
+如果 authority 文件中没有另一个已冻结规则，
+则把当前 q=0.10 规则正式冻结为 development protocol：
+
+  PI_SAFE_RULE_V1:
+    quantile = 0.10
+    source = public/training-only frozen opportunity law
+    conditioned_on = pi_tar > 0
+    excludes = labels/test outcomes/current-window events
+
+实际 pi_safe 数值允许随 environment 的 frozen public opportunity law 不同，
+但“规则”必须相同。
+
+输出：
+
+  outputs/sag_g1_r1c/target/
+    PI_SAFE_RULE_FROZEN.json
+
+字段：
+  rule_id
+  quantile
+  data_source
+  fit_scope
+  excludes
+  value_SensorScope
+  value_UAir
+  hash
+
+若现有项目已有更早冻结的 pi_safe rule，
+使用更早规则，并在报告解释 provenance。
+
+============================================================
+七、R1c-C：重新构造 opportunity-support LCB
+============================================================
+
+当前失败的 estimator：
+  对 window-level normalized pair mass x_t 使用 EB：
+
+    x_bar
+    -
+    sqrt(2 v log(1/delta)/n)
+    -
+    3 log(1/delta)/n
+
+在 n<=32 时下界几乎必然截为 0。
+
+禁止继续用这个退化 estimator 作为主 C_cov certifier。
+
+本轮优先采用：
+  COMPLETED EVENT-COUNT AGGREGATION
+  + one-sided lower confidence bound。
+
+------------------------------------------------------------
+R1c-C.1 累积 completed opportunity counts
+------------------------------------------------------------
+
+对 current window r，
+只使用 t<r 的 completed windows。
+
+对每个 (k,s)：
+
+  C_{k,s,r}^{opp}
+  =
+  sum_{t in H_r}
+    N_{k,s,t}^{opp}
+
+总 completed events：
+
+  C_{r}^{tot}
+  =
+  sum_{k,s}
+    C_{k,s,r}^{opp}
+
+其中 H_r 是冻结的 lookback policy。
+
+先不要自动限制为旧的 32 个 normalized-mass samples。
+要审计：
+  32 windows 内一共有多少 opportunity EVENTS。
+
+如果每 window 有大量 events，
+event-count sample size 可以远大于 32。
+
+输出：
+
+  EVENT_COUNT_EFFECTIVE_SAMPLE.csv
+
+字段：
+  dataset
+  seed
+  window
+  history_windows
+  total_completed_events
+  target_positive_pairs
+  min_pair_count
+  median_pair_count
+  max_pair_count
+
+------------------------------------------------------------
+R1c-C.2 主推荐方案：count-based one-sided bound
+------------------------------------------------------------
+
+如果当前 opportunity model 可把 completed opportunity events
+作为对 frozen event-mark law 的可交换/条件 multinomial samples，
+则对每个 pair 使用 one-sided binomial marginal lower bound。
+
+优先实现：
+
+  one-sided Clopper-Pearson lower bound
+
+对于：
+
+  x = C_{k,s,r}^{opp}
+  n = C_r^{tot}
+
+求：
+
+  lower_pi_opp(k,s,r)
+
+满足 one-sided confidence level。
+
+重要：
+  若需要 simultaneous multi-pair coverage，
+  不得把 per-pair 95% 直接称为 family-wise 95%。
+
+可选择：
+
+A. Bonferroni-adjusted pairwise one-sided bounds：
+   delta_pair = delta_cov / m_target_positive
+
+或
+
+B. 先做开发 calibration，
+   将 pairwise nominal level 校准到 empirical joint coverage。
+
+优先 A，简单且可复算。
+
+但如果 m 很大导致 A 又全部归零，
+不要私自换成宽松 nominal level；
+先输出诊断。
+
+------------------------------------------------------------
+R1c-C.3 若 event independence/exchangeability 不成立
+------------------------------------------------------------
+
+如果代码/数据生成机制无法支持 event-level multinomial/binomial解释，
+禁止硬用 Clopper-Pearson 并声称 exact。
+
+此时采用：
+
+  completed-window BLOCK calibration
+
+例如：
+  - block bootstrap one-sided lower quantile；
+  - conformal/calibrated lower bound；
+  - window-cluster conservative bound。
+
+但必须：
+
+  strictly t<r；
+  不用 current R；
+  可复算；
+  报 empirical held-out coverage；
+  不声称 exact iid confidence bound。
+
+报告必须明确选了哪条路线以及适用假设。
+
+------------------------------------------------------------
+R1c-C.4 C_cov 定义保持不变
+------------------------------------------------------------
+
+无论用何种 lower_pi：
+
+  C_cov_LCB(r)
+  =
+  sum_{k,s}
+    pi_tar(k,s)
+    1{
+      lower_pi_opp(k,s,r) >= pi_safe
+    }
+
+不得改公式。
+
+------------------------------------------------------------
+R1c-C.5 support certificate calibration
+------------------------------------------------------------
+
+post-window 仅用于 audit：
+
+定义 realized/reference opportunity mass：
+
+  pi_opp_ref(k,s,r)
+
+必须由合法 held-out/completed audit protocol构造，
+不能用于 current Gate。
+
+检查：
+
+  pair_covered
+  =
+  1{
+    lower_pi_opp(k,s,r)
+    <=
+    pi_opp_ref(k,s,r)
+  }
+
+报告：
+
+  pairwise coverage
+  target-mass-weighted coverage
+  joint-window coverage
+  mean/median LCB slack
+  certified target mass
+
+注意：
+  C_cov diagnostics 不是 Theorem 4 的唯一安全依据，
+  但必须证明它不是严重 anti-conservative。
+
+============================================================
+八、R1c-D：重新检查 A8b 95% calibration
+============================================================
+
+本轮同时把上一轮未达到 95% 的 common-support certificate 再检查一次。
+
+仅在：
+
+  A_D = A_0 != empty
+
+计算：
+
+  Delta_beta
+  Delta_M
+  Delta_V
+
+以及：
+
+  cover_beta
+  cover_M
+  cover_V
+  cover_joint
+
+目标：
+  nominal / frozen target = 0.95
+
+必须同时报告 bound width：
+
+  width_beta
+  width_M
+  width_V
+
+和：
+  UCB / actual ratio
+  actual-zero rate
+
+不要为了达到 95% 盲目放大。
+
+若 SensorScope 仍约 93.75%：
+  输出：
+    A8B_CALIBRATION_NOT_YET_CLOSED
+
+但这不一定阻止本轮诊断 Gate，
+前提是报告明确 development-only status。
+
+============================================================
+九、R1c-E：只做 1-seed re-diagnostic
+============================================================
+
+只有 R1c-A compatibility PASS 后才能运行。
+
+运行：
+
+  SensorScope seed 30001
+  U-Air seed 30001
+
+使用：
+  同一 sealed EventTrace；
+  同一 h-map；
+  同一 pi_safe rule；
+  同一 thresholds。
+
+方法：
+  Always-Design
+  No-Design
+  SAG-R1c
+
+本轮不比较新 baseline。
+
+------------------------------------------------------------
+R1c-E.1 每个 Gate 条件 pass rate
+------------------------------------------------------------
+
+分别报告：
+
+  C_cov pass rate
+  C_ret pass rate
+  C_ESS pass rate
+  C_clip pass rate
+  delta_A pass rate
+  B_tot pass rate
+  ALL pass rate
+  Gate ON rate
+
+并报告：
+
+  first-fail reason
+  all-fail reasons
+
+------------------------------------------------------------
+R1c-E.2 关键 discrimination
+------------------------------------------------------------
+
+SensorScope：
+  重点观察：
+    C_cov 是否不再恒为 0；
+    是否出现 ALL-pass windows；
+    Gate ON rate 是否 > 0。
+
+U-Air：
+  重点观察：
+    即使 C_cov 修复，
+    delta_A 是否仍阻止 support-unsafe windows。
+
+------------------------------------------------------------
+R1c-E.3 不设置人为 ON-rate 目标
+------------------------------------------------------------
+
+本轮不要求：
+  ON > 5%
+  ON > 15%
+
+只要求：
+  是否出现真实、合法、全部条件通过的 ON windows。
+
+不要为了达到某个 ON rate 再调参数。
+
+============================================================
+十、必须新增的单元测试
+============================================================
+
+1. test_target_compatibility.py
+   检查：
+     sum varpi = 1
+     mu marginal
+     pi_tar total
+     group bridge
+
+2. test_target_no_test_outcome_leakage.py
+
+3. test_pi_safe_rule_frozen.py
+
+4. test_event_count_lcb_no_current_window.py
+   改 current R，
+   lower_pi / C_cov 不变。
+
+5. test_event_count_mass.py
+   A有20 events, B有1 event：
+     empirical mass =20/21,1/21。
+
+6. test_lcb_monotonicity.py
+   固定 n，
+   count x 增大，
+   lower bound 不应下降。
+
+7. test_lcb_sample_size_behavior.py
+   固定真实比例的 synthetic sequence，
+   completed event count 增大时，
+   LCB 应逐步收紧而非长期恒 0。
+
+8. test_c_cov_formula.py
+
+9. test_thresholds_unchanged.py
+   assert：
+     tau_cov == 0.05
+     tau_A == 0.35
+     tau_safe == 4.0
+
+============================================================
+十一、输出目录
+============================================================
+
+新建：
+
+outputs/sag_g1_r1c/
+
+必须包含：
+
+R1C_COVERAGE_REPAIR_REPORT.md
+R1C_VERDICT.json
+
+target/
+  TARGET_SOURCE_AUDIT.md
+  TARGET_COMPATIBILITY_CHECK.csv
+  TARGET_ATOMIC_LAW.csv
+  PI_SAFE_RULE_FROZEN.json
+
+coverage/
+  EVENT_COUNT_EFFECTIVE_SAMPLE.csv
+  OPPORTUNITY_LCB_PAIR.csv
+  C_COV_WINDOW.csv
+  C_COV_CALIBRATION.csv
+  C_COV_OLD_VS_NEW.csv
+
+calibration/
+  A8B_CERTIFICATE_COVERAGE_R1C.csv
+  A8B_CERTIFICATE_WIDTH_R1C.csv
+
+diagnostic/
+  R1C_GATE_WINDOW_LOG.csv
+  R1C_GATE_PASSRATE.csv
+  R1C_METHOD_DIAGNOSTIC.csv
+
+tests/
+  TEST_SUMMARY.json
+
+configs/
+  thresholds_frozen_copy.json
+  config_r1c.json
+  source_hashes.json
+
+============================================================
+十二、R1C_COVERAGE_REPAIR_REPORT.md 模板
+============================================================
+
+# 1. Executive Verdict
+
+只能选：
+
+  READY_FOR_G1_R2_5SEED
+  NEEDS_MORE_COV_CERTIFICATE_REPAIR
+  TARGET_COMPATIBILITY_BUG_FIXED
+  TARGET_COMPATIBILITY_NOT_CLOSED
+  COV_CERTIFICATE_STILL_DEGENERATE
+
+# 2. Target Compatibility
+
+必须回答：
+
+  varpi_tar 来自哪里？
+  mu 来自哪里？
+  pi_tar 来自哪里？
+  是否来自同一个 frozen target law？
+
+给：
+
+  max compatibility error
+
+要求：
+  <=1e-10（或说明为何采用1e-8）。
+
+如果旧代码存在 train/test target-law 混用：
+  明确写 BUG_CONFIRMED / FIXED。
+
+# 3. pi_safe Freeze
+
+写明：
+
+  rule
+  quantile
+  source
+  excludes
+  environment-specific values
+  hash
+
+# 4. Old C_cov Failure Mechanism
+
+必须定量写出：
+
+  old n
+  old empirical-Bernstein penalty
+  typical pair mass
+  why LCB collapsed to 0
+
+不要只写“too conservative”。
+
+# 5. New Opportunity LCB
+
+说明：
+
+  event-count or block-based?
+  assumptions
+  history size
+  total completed events
+  confidence handling
+  simultaneous correction
+
+# 6. C_cov Results
+
+分别 SensorScope/U-Air：
+
+  median/p05/p95 C_cov
+  pass rate
+  number of certified target-positive pairs
+  certified target mass
+  calibration coverage
+
+# 7. A8b 95% Calibration
+
+  beta coverage
+  M coverage
+  V coverage
+  joint coverage
+  widths
+
+# 8. Gate Re-Diagnostic
+
+表：
+
+  Dataset | Ccov | Cret | CESS | Cclip | deltaA | Btot | ALL | ON
+
+# 9. Scientific Interpretation
+
+必须回答：
+
+  SensorScope 是否出现合法 ON windows？
+  U-Air 是否仍主要被 delta_A 拦住？
+
+# 10. Next Decision
+
+若：
+  SensorScope ON > 0，
+  且 U-Air unsafe 大多 OFF，
+  且 target compatibility 已闭合，
+
+输出：
+  READY_FOR_G1_R2_5SEED
+
+否则不要自动进入 5-seed。
+
+============================================================
+十三、最终判定标准
+============================================================
+
+A. READY_FOR_G1_R2_5SEED
+
+必须满足：
+
+1. target compatibility PASS；
+2. C_cov 不再数学退化为全零；
+3. C_cov strictly pre-window；
+4. pi_safe rule 已冻结；
+5. SensorScope 至少出现合法 ALL-pass / ON windows；
+6. U-Air support-unsafe windows 仍主要被 delta_A 或其他合法安全条件挡住；
+7. tau_cov/tau_A/tau_safe 未改；
+8. 没有新增 leakage。
+
+A8b 95% calibration 如果略低于 target，
+可以标记：
+  READY_WITH_A8B_CALIBRATION_REPAIR
+但不得声称最终 theorem calibration 已封口。
+
+B. NEEDS_MORE_COV_CERTIFICATE_REPAIR
+
+如果：
+  target compatibility 已正确，
+  但新 LCB 仍全零或几乎全零，
+  且属于 statistical certificate construction 问题。
+
+C. TARGET_COMPATIBILITY_NOT_CLOSED
+
+如果：
+  mu 与 pi_tar 仍无法证明来自同一 target law。
+
+D. COV_CERTIFICATE_STILL_DEGENERATE
+
+如果：
+  event-count sample 已明显增大，
+  合法 one-sided method 仍不能给任何 target-positive pair 非零 lower bound。
+
+============================================================
+十四、Cursor 严格执行顺序
+============================================================
+
+1. 阅读全部 authority + R1b evidence。
+2. 输出：
+     SAG_G1_R1C_REPAIR_PLAN.md
+3. 先做 Target Source Audit。
+4. 先做 Target Compatibility Check。
+5. compatibility 不过：
+     修 target pipeline；
+     重测；
+     未闭合则 STOP。
+6. 冻结 pi_safe RULE。
+7. 分析 completed event counts。
+8. 实现新的 opportunity LCB。
+9. 跑 LCB synthetic tests。
+10. 生成 C_cov calibration。
+11. 重查 A8b 95% calibration。
+12. 跑所有 unit tests。
+13. 只运行：
+      SensorScope 30001
+      U-Air 30001
+14. 生成 R1C report。
+15. STOP。
+16. 不自动 5-seed。
+
+============================================================
+十五、本轮最重要的科学判断
+============================================================
+
+不要问：
+
+  “怎样让 C_cov 变大？”
+
+而要问：
+
+  “在严格 pre-window、同一 frozen target law、
+   正确 opportunity-event mass 的前提下，
+   我们能否对 target-positive support 给出非退化的 one-sided evidence？”
+
+如果可以，并且：
+
+  SensorScope：
+    C_cov PASS
+    delta_A PASS
+    B_tot PASS
+    -> 合法 ON
+
+同时：
+
+  U-Air：
+    delta_A FAIL
+    -> OFF
+
+那么 SAG 第一个完整的机制级 discrimination 就成立，
+下一轮才值得进入真正的 5-seed G1-R2。
+
+END OF CURSOR INSTRUCTION

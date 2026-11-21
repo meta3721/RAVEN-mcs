@@ -1,0 +1,4 @@
+dataset,raw_min,raw_max,raw_mean,raw_std,processed_min,processed_max,processed_mean,processed_std,zscore_applied,measurement_index_consistent,note
+sensorscope,-2.3086178861788618,11.917479674796747,2.10938028538739,3.3709044116716487,-2.3086178861788618,11.917479674796747,2.10938028538739,3.3709044116716487,False,True,SensorScope remains unscaled: temperature target scale is small and stable.
+uair,1.0,210.0,27.789983164983166,18.27478246216734,-1.7340647227119184,10.302851485638817,-0.19115188740077402,1.052497728339376,True,True,Train-only target and measurement z-score applied.
+traffic,1.0,5129.0,555.5561827088717,575.9284571787346,-0.9608479551117808,7.945399596383868,0.0022984264049239213,1.000265485878474,True,True,Train-only target and measurement z-score applied.

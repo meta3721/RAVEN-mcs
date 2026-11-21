@@ -1,0 +1,65 @@
+% Paste-ready fragment for a later writing pass. Do not insert in this gate.
+% Intended location: after Proposition~2 / before or after Theorem~1.
+% Label numbers are placeholders.
+
+\begin{proposition}[Practical plug-in perturbation]
+\label{prop:practical_plugin}
+Assume A1, A4, and the quantitative positivity A5 of the G4 note
+(target-supported margins $\pi_{\min}$, $p_{\min}^{\mathrm{true}}$,
+$q_{\min}^{\mathrm{true}}$; uniform plug-in errors
+$\varepsilon_\pi,\varepsilon_p,\varepsilon_q$; clipping residual
+$\varepsilon_{\mathrm{clip}}$; H\'ajek denominator floor $B_{\min}$;
+and a common active set $\mathcal A_r$, composition $M_r$, and feasible
+set $\mathcal C_r$).
+Let $\boldsymbol\beta_r^\star$ be the same-window ideal untruncated
+reference and $\widehat{\boldsymbol\beta}_r$ the implemented clipped
+plug-in.  Let $\boldsymbol\alpha^\star(\boldsymbol\beta)$ denote the unique
+P2 minimizer at that fixed window state.  Then
+\begin{align}
+\bigl\|\widehat{\boldsymbol\beta}_r-\boldsymbol\beta_r^\star\bigr\|_1
+&\le
+C_1\bigl(\varepsilon_\pi+\varepsilon_p+\varepsilon_q+\varepsilon_{\mathrm{clip}}\bigr),
+\label{eq:g4_beta}\\
+\bigl\|\widehat{\boldsymbol\alpha}_r-\boldsymbol\alpha_r^\star\bigr\|_2
+&\le
+\bigl\|\widehat{\boldsymbol\beta}_r-\boldsymbol\beta_r^\star\bigr\|_2,
+\label{eq:g4_alpha}\\
+\bigl\|M_r(\widehat{\boldsymbol\alpha}_r-\boldsymbol\alpha_r^\star)\bigr\|_2
+&\le
+\|M_r\|_2\,
+\bigl\|\widehat{\boldsymbol\beta}_r-\boldsymbol\beta_r^\star\bigr\|_2,
+\label{eq:g4_comp}
+\end{align}
+where
+\begin{equation}
+C_1
+=
+\frac{2K_r n_r}{B_{\min}}
+\max\Biggl\{
+\frac{d_{\max}}{\pi_{\min}^2 p_{\min}},\;
+\frac{d_{\max}}{\pi_{\min}p_{\min}p_{\min}^{\mathrm{true}}},\;
+\frac{a_{\max}}{q_{\min}q_{\min}^{\mathrm{true}}},\;
+a_{\max}+d_{\max}
+\Biggr\}.
+\label{eq:g4_c1}
+\end{equation}
+The result is a stability bound.  It does not assert unbiasedness of the
+practical estimator, identification on $\{\pi^{\mathrm{tar}}=0\}$, or
+robustness to a change of $\mathcal A_r$.
+\end{proposition}
+
+\noindent\emph{Proof sketch.}
+Decompose $a-\widetilde a= -(\widetilde a-a_{\max})_+$ and likewise for
+$d$; these residuals are $\varepsilon_{\mathrm{clip}}$ and are not
+neglected.  On target support the unclipped maps
+$(\widehat\zeta,\widehat p)\mapsto\widetilde a$ and
+$\widehat q\mapsto\widetilde d$ are Lipschitz with the displayed
+margins.  The unnormalized masses $b=md$ therefore move by at most
+$K_r n_r$ times a linear form in
+$(\varepsilon_\pi,\varepsilon_p,\varepsilon_q,\varepsilon_{\mathrm{clip}})$.
+The H\'ajek map $b\mapsto b/(\mathbf 1^\top b)$ is $2/B_{\min}$-Lipschitz
+in $\ell_1$ on $\{b\ge0:\mathbf 1^\top b\ge B_{\min}\}$.
+The P2 map $\boldsymbol\beta\mapsto\boldsymbol\alpha^\star(\boldsymbol\beta)$
+is non-expansive in $\ell_2$ on a fixed convex $\mathcal C_r$
+(appendix reference-stability argument).
+\hfill$\square$

@@ -1,0 +1,11 @@
+protocol: E2-LEGAL-HORIZON-AND-BALANCED-OPPORTUNITY-CALIBRATION-R1
+selected_legal_windows: 100
+maximum_legal_continuous_windows: 105
+safety_margin_windows: 5
+window_selection_mode: LEGALITY_FREEZE
+statistical_window_selection: NOT_APPLICABLE
+candidate_200: ILLEGAL
+candidate_300: ILLEGAL
+source_reuse_allowed: false
+wraparound_allowed: false
+modulo_allowed: false

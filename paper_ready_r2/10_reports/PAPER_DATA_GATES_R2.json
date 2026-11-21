@@ -1,0 +1,127 @@
+{
+  "all_pass": true,
+  "gates": {
+    "R2-G1": {
+      "detail": "no-training attestation",
+      "pass": true
+    },
+    "R2-G10": {
+      "detail": "protocol frozen",
+      "pass": true
+    },
+    "R2-G11": {
+      "detail": "datasets=4 provenance_rows=112",
+      "pass": true
+    },
+    "R2-G12": {
+      "detail": "guessed=0",
+      "pass": true
+    },
+    "R2-G13": {
+      "detail": "config_rows=7",
+      "pass": true
+    },
+    "R2-G14": {
+      "detail": "h(i) and s(i) recorded for E3/E4",
+      "pass": true
+    },
+    "R2-G15": {
+      "detail": "traffic boundary",
+      "pass": true
+    },
+    "R2-G16": {
+      "detail": "P2 boundary",
+      "pass": true
+    },
+    "R2-G17": {
+      "detail": "mae_zero_cells=0",
+      "pass": true
+    },
+    "R2-G18": {
+      "detail": "diagnostics attestation",
+      "pass": true
+    },
+    "R2-G19": {
+      "detail": "tdrive runs=0",
+      "pass": true
+    },
+    "R2-G2": {
+      "detail": "pipeline writes only under paper_ready_r2/ and deliverables/; R1 and sealed artifacts read-only",
+      "pass": true
+    },
+    "R2-G20": {
+      "detail": "tdrive status=NOT_READY_OPPORTUNITY_UNFROZEN",
+      "pass": true
+    },
+    "R2-G21": {
+      "detail": "claim map",
+      "pass": true
+    },
+    "R2-G22": {
+      "detail": "fig/table map",
+      "pass": true
+    },
+    "R2-G23": {
+      "detail": "runlevel=1305",
+      "pass": true
+    },
+    "R2-G24": {
+      "detail": "long=7350",
+      "pass": true
+    },
+    "R2-G25": {
+      "detail": "conflicts=0",
+      "pass": true
+    },
+    "R2-G26": {
+      "detail": "True",
+      "pass": true
+    },
+    "R2-G27": {
+      "detail": "True",
+      "pass": true
+    },
+    "R2-G28": {
+      "detail": "pipeline n_core=140 zip=140",
+      "pass": true
+    },
+    "R2-G29": {
+      "detail": "missing report",
+      "pass": true
+    },
+    "R2-G3": {
+      "detail": "n_cells=240",
+      "pass": true
+    },
+    "R2-G30": {
+      "detail": "final report freeze statement",
+      "pass": true
+    },
+    "R2-G4": {
+      "detail": "wo_inst gens={'2'} n=40",
+      "pass": true
+    },
+    "R2-G5": {
+      "detail": "Inst=ENDPOINT_TRADEOFF",
+      "pass": true
+    },
+    "R2-G6": {
+      "detail": "bad_inst_labels=[]",
+      "pass": true
+    },
+    "R2-G7": {
+      "detail": "n_stat_rows=40",
+      "pass": true
+    },
+    "R2-G8": {
+      "detail": "missing_ablation_mean=0",
+      "pass": true
+    },
+    "R2-G9": {
+      "detail": "n_pairs={20}",
+      "pass": true
+    }
+  },
+  "n_pass": 30,
+  "n_total": 30
+}

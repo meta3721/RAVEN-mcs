@@ -1,0 +1,11 @@
+record,identity,dataset_or_protocol,seeds,status,substitutes_this_round_P,evidence,note
+station_proj_beta,trained reference projection on matched Design-on support,SensorScope and U-Air,30001-30020,COMPLETED_TRAINING,no,results_w1_ladder/round_v5_1/A2P_RESCORE.csv,20-seed RMSE recomputed here; not City Scanner
+station_uniform,matched-support Uniform,SensorScope and U-Air,30001-30020,COMPLETED_TRAINING,no,results_w1_ladder/round_v5_1/A2P_RESCORE.csv,same support family as proj_beta and raven
+station_raven,full RAVEN-Design,SensorScope and U-Air,30001-30020,COMPLETED_TRAINING,no,results_w1_ladder/round_v5_1/A2P_RESCORE.csv,historical F on stations
+station_runtime,wall means of the trained rules,SensorScope and U-Air,30001-30020,SUMMARY_ONLY,no,RAVEN_MCS_PUBLIC_REPRO_R1/w1/tradeoff_v4/TRAIN_SUMMARY.json,U-Air RMSE in this file is not the paper RMSE
+station_oracle,structural replay against projection oracle,SensorScope and U-Air,20 seeds,STRUCTURAL_REPLAY_APPROXIMATE,no,results_w1_ladder/round_v5_1/ERRATA_FOR_PAPER.md,eps_impl above 5e-6; not a new prediction result
+cityscanner_visit_partial,full_p2 only,visit occupancy,32001,INCOMPLETE_TRAINING,no,results_cityscanner_full_vs_projection_20261018/EXECUTION_STATUS.json,windows 0-66 saved; stopped before window 67 aggregate; 0 complete pairs
+zero_safe_I,I-Proj-ZS,measured-O zero-safe cache,33001-33003,COMPLETED_DIFFERENT_PROTOCOL,no,results_zero_safe_buffer/round_v1/backend_pilot/training_run_v1/DECISION_REPORT.md,different local loss and reference; screen failed prediction guard
+joint_measured_o,FedAvg TwoStage FedAU ObsUse RAVEN,measured-O,33001-33010,COMPLETED_HISTORICAL,no,results_joint_ou/round_v1/tables/JO_E3_SUMMARY.csv,10-seed published ranking; scoring renormalizes unit weights
+cheap_mean,Delivered-SpatialMean and Delivered-CellBlockMean,measured-O,33001-33003 files exist,PREDICTION_CACHE,no,results_cityscanner_lowcost_screen/round_v1/shared/predictions/measured-O,hotspot screen itself failed; cache is not a pass
+hotspot,fixed-budget hotspot,visit and measured-O,development seeds,FAIL_SCREEN,no,results_cityscanner_lowcost_screen/round_v1/hotspot/DECISION_REPORT.md,P2_VS_PROJECTION_UNRESOLVED remains

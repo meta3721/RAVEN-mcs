@@ -1,0 +1,13 @@
+pair,condition,n,A_fail,B_fail,exempt,exempt_seeds,hard_cells,gate
+fedavg_rule,C0_frozen,17,0,0,0,[],[],pass
+fedavg_rule,C1_tilt_strong,17,1,0,0,[],[30014],fail
+fedavg_rule,C2_tilt_extreme,17,1,0,1,[30002],[],pass
+fedavg_rule,C3_low_capacity,17,0,0,0,[],[],pass
+fedavg_rule,C4_block_uniform,17,0,0,0,[],[],pass
+fedavg_rule,C5_combined,17,1,0,1,[30002],[],pass
+oracle_design,C0_frozen,17,0,0,0,[],[],pass
+oracle_design,C1_tilt_strong,17,1,0,1,[30014],[],pass
+oracle_design,C2_tilt_extreme,17,1,0,1,[30002],[],pass
+oracle_design,C3_low_capacity,17,0,0,0,[],[],pass
+oracle_design,C4_block_uniform,17,0,0,0,[],[],pass
+oracle_design,C5_combined,17,1,0,1,[30002],[],pass

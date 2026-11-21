@@ -1,0 +1,8 @@
+check,pass,detail
+no_atomic_key_overlap,True,n_overlap=0
+no_time_slot_overlap,True,n_overlap=0
+no_future_in_training,True,"train_max=177 val=[178,237] test_min=238"
+scaling_fitted_on_train_only,True,data/interim/tdrive_speed/scaling.json fitted_split=train
+h_does_not_use_test_outcomes,True,fallback h(i) uses wall-clock hour only
+q_features_prestate_only,True,U/q from controlled device/network/deadline/staleness; no Y
+later_model_selection_val_only,True,pre-registered; no T-Drive test tuning in R1

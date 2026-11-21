@@ -1,0 +1,39 @@
+{
+  "status": "INSUFFICIENT_DATA",
+  "P1": "NOT_RUN",
+  "panel": "WRITTEN",
+  "training": false,
+  "prediction_invariance": "NOT_RUN",
+  "unresolved_source_rows": [
+    8402
+  ],
+  "review_matches_section_3": true,
+  "same_value_multi_monitor_rows": 16,
+  "zero_identity_rows": [
+    8402
+  ],
+  "excluded_ambiguous_monitor_days": 421,
+  "excluded_unresolved_days": 1,
+  "named_unresolved_row_only": true,
+  "screened": true,
+  "failures": [
+    "fixed_sites=8 < 10",
+    "North_sites=2 < 4",
+    "V_evaluable_days=0 < 20",
+    "T_evaluable_days=0 < 40",
+    "T_blocks=0 < 7"
+  ],
+  "fixed_sites": 8,
+  "West_sites": 6,
+  "North_sites": 2,
+  "V_evaluable_days": 0,
+  "T_evaluable_days": 0,
+  "T_blocks": 0,
+  "T_block_indices": [],
+  "isolation_passed": true,
+  "this_round_cpu_s": 8.734375,
+  "this_round_wall_s": 22.07930889999261,
+  "inherited_cpu_s": 12.765625,
+  "peak_rss_bytes": 232947712,
+  "min_available_bytes": 1033367552
+}

@@ -1,0 +1,49 @@
+{
+  "aggregation": "hourly mean ambient temperature per station",
+  "answers": {
+    "artificially_truncated": true,
+    "longer_raw_source_exists": true,
+    "note": "62 timestamps are not a raw download bug; they are the test-split slice of a deliberately selected ~55×312 hourly dense window. Even the full 312h processed matrix yields only floor(311/6)=51 non-overlapping 6h windows (<100).",
+    "only_test_split": true,
+    "preprocessing_error_lost_time": false,
+    "timezone_dedup_compressed_to_62": false,
+    "unused_train_validation_exists": true,
+    "where_62_timestamps_from": "E1 supported-test identity = chronological test split of the 55×312 dense processed matrix"
+  },
+  "cache_file": "data/processed/sensorscope/atomic_units.parquet",
+  "configured_matrix": {
+    "spatial_count": 55,
+    "time_count": 312,
+    "time_unit": "hour"
+  },
+  "date_range_filter": "implicit via dense-window selection, not hard-coded calendar bounds",
+  "dense_window_selector": "src/raven_mcs/data/matrix_adapter.py:select_dense_window",
+  "evidence_snippets": {
+    "adapter_targets_55x312": true,
+    "sensorscope_yaml_has_time_count_312": true
+  },
+  "filter_conditions": [
+    "non_finite_temperature drop",
+    "temperature in [-40, 60]",
+    "dense contiguous window selection"
+  ],
+  "final_frozen_supported_test_identity": "E1 supported-test units (test split)",
+  "preprocessing_script": "src/raven_mcs/data/sensorscope.py",
+  "processed_all_max_6h_windows": 51,
+  "processed_all_span_hours": 311.0,
+  "processed_all_unique_timestamps": 312,
+  "raw_source_file": "data/raw/sensorscope/Sensorscope.zip",
+  "raw_source_hash": "c4d1b0d27064f166aaa70ef8b0a87621cd5b4478b215aedba53604b6109a6e20",
+  "sampling": "none beyond dense-window selection and hourly aggregation",
+  "station_filter": "prefer stations with contiguous coverage in selected horizon",
+  "status": "TEST_SLICE_CONFIRMED",
+  "supported_test_max_6h_windows": 10,
+  "supported_test_span_hours": 61.0,
+  "supported_test_unique_timestamps": 62,
+  "supported_test_unit_count": 3410,
+  "train_validation_test_split": {
+    "test": 0.2,
+    "train": 0.6,
+    "validation": 0.2
+  }
+}

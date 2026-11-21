@@ -1,0 +1,24 @@
+{
+  "formal": false,
+  "frozen_at_commit": "e56687813f2bcb919a9208391f68a4db3488602e",
+  "kappa_opp": 1.0,
+  "kappa_p": 1.0,
+  "kappa_q": 1.5,
+  "profile_registry_hash": "471c418ccd60e2daa059e0edec1c5de81a4d49db5fa001be35190a04dcad3dcc",
+  "revalidated_on_stage2_and_true_stratum": true,
+  "selected_profile_id": "PROFILE-S4",
+  "selection_rule": [
+    "min max_seed D_TV_group(complete_aligned)",
+    "min kappa_opp+kappa_p+kappa_q",
+    "min std_seed cancellation_group_TV(complete_counteracting)",
+    "profile_id lexicographic"
+  ],
+  "selection_status": "REFROZEN",
+  "validation_seed_list": [
+    29101,
+    29102,
+    29103,
+    29104,
+    29105
+  ]
+}

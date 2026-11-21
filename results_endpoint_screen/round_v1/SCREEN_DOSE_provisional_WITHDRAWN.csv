@@ -1,0 +1,10 @@
+ds,endpoint,n_obs,slope,ci_lo,ci_hi,label,in_decision,note
+sensorscope,E_mix,80,0.033403837009486265,-0.10064170358979609,0.15843967194876152,null,yes,
+sensorscope,E_group,80,0.033403837009486265,-0.10064170358979609,0.15843967194876152,null,yes,
+sensorscope,E_dec,0,,,,inapplicable,yes,no_threshold_on_this_dataset
+cityscanner_nyc_pm25,E_mix,10,0.22894608606632771,-0.2721659626055604,0.590398702644368,null,no,
+cityscanner_nyc_pm25,E_group,10,0.22894608606632771,-0.2721659626055604,0.590398702644368,null,no,
+cityscanner_nyc_pm25,E_dec,0,,,,inapplicable,no,
+uair,E_mix,80,-0.1476083730690326,-0.3214806353909118,0.047817371975017,null,yes,
+uair,E_group,80,-0.13101762847794657,-0.2829196273636501,0.04392649261857966,null,yes,
+uair,E_dec,0,,,,inapplicable,yes,

@@ -1,0 +1,20 @@
+{
+  "c_val": 0.994486828129759,
+  "cross_check_c_val": 0.994486828129759,
+  "cross_check_checkpoint": "results_traffic_e1\\round_v1\\runs\\G0_simoracle\\traffic\\raven_simoracle\\seed30001\\checkpoints\\final.pt",
+  "cross_check_weight_sha256": "31b71588621220f666498199fd239eccf66b0c46a17d20ea3864b14410d890ad",
+  "divergence_ceiling": 1.988973656259518,
+  "frozen_utc": "2026-10-09T08:55:34.902730+00:00",
+  "mu_weight_sha256": "8b928baee5be94a694265255112c34ffcd86cf1527d144c94ef80fcb1f622d70",
+  "n": 6192,
+  "note": "weighted standard deviation on the validation split through the scoring path (runner._mu_weights_for_test + metrics.rmse_mu weights); frozen before any confirm test prediction",
+  "prompt_unweighted_check": {
+    "mean": 0.00878,
+    "sd": 0.99457
+  },
+  "source_checkpoint": "results_server_optimizer\\round_v1\\runs\\C_raven_simoracle\\traffic\\raven_simoracle\\seed30001\\checkpoints\\final.pt",
+  "source_checkpoint_sha256": "1f6dde56f14f4f88935257f32568abd166e2dd163b777fc0c5ca9ce7da78109c",
+  "weight_sha256": "31b71588621220f666498199fd239eccf66b0c46a17d20ea3864b14410d890ad",
+  "weight_vector_stable": true,
+  "weighted_mean": 0.008777590873050613
+}

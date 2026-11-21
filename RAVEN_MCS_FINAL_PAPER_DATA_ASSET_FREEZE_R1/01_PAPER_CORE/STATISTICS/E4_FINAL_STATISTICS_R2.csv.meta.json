@@ -1,0 +1,50 @@
+{
+  "component_labels": {
+    "Debt": "STRUCTURAL_ONLY_SUPPORTED",
+    "Design": "ENDPOINT_TRADEOFF",
+    "Inst": "ENDPOINT_TRADEOFF",
+    "Obs": "ENDPOINT_TRADEOFF",
+    "Use": "NO_CLEAR_EFFECT"
+  },
+  "csv_relative": "D:/Cursor/raven.mcs/paper_ready_r2/04_statistics/E4_FINAL_STATISTICS_R2.csv",
+  "csv_sha256": "b65d2fa4c3dcf57531cc5086e5ef2f9eca482c1a403248e4dd340f627c2ee999",
+  "excluded_rows": "w/o-Inst Generation 0 INVALID_P2_OFF; Generation 1 SUPERSEDED_REFERENCE_PENALTY_MISMATCH; NSW-Traffic not in E4",
+  "filters": "E4 final valid 240 cells; w/o-Inst Generation 2 only; SensorScope and U-Air; seeds 30001-30020",
+  "included_seeds": [
+    "30001",
+    "30002",
+    "30003",
+    "30004",
+    "30005",
+    "30006",
+    "30007",
+    "30008",
+    "30009",
+    "30010",
+    "30011",
+    "30012",
+    "30013",
+    "30014",
+    "30015",
+    "30016",
+    "30017",
+    "30018",
+    "30019",
+    "30020"
+  ],
+  "input_sha256": "36dfedb95bf1990009f80e02fe739f64d19ec3633dad357beaa5c840da02224c",
+  "metric_definitions": {
+    "Holm_p": "Holm step-down within (dataset, metric) across 5 ablations",
+    "ci": "mean ± 1.96 * sd/sqrt(n)",
+    "effect_size": "Cohen dz = mean(d)/std(d, ddof=1)",
+    "paired_mean_difference": "ablation - full_RAVEN, same seed"
+  },
+  "output_sha256": "b65d2fa4c3dcf57531cc5086e5ef2f9eca482c1a403248e4dd340f627c2ee999",
+  "source_files": [
+    "D:/Cursor/raven.mcs/paper_ready_r1/01_core_data/e4/E4_FINAL_VALID_EVIDENCE_240.csv"
+  ],
+  "statistical_method": "paired Wilcoxon signed-rank + Holm family per (dataset, metric) × 5 components; alpha=0.05; EPS_ZERO=1e-12",
+  "statistical_protocol": "04_statistics/E4_STATISTICAL_PROTOCOL_R2.json",
+  "transformations": "same as component-effect master",
+  "version": "R2"
+}

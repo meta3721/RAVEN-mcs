@@ -1,0 +1,342 @@
+{
+  "Debt": {
+    "cells": {
+      "SensorScope_Delta_c_s": {
+        "direction": "worsened",
+        "holm_significant": true,
+        "mean_paired_diff": 5.0872461271656014e-05,
+        "p_holm": 9.5367431640625e-06,
+        "relative_change": 4.023511598981176e-05
+      },
+      "SensorScope_Delta_group": {
+        "direction": "worsened",
+        "holm_significant": true,
+        "mean_paired_diff": 0.00014270410565384584,
+        "p_holm": 9.5367431640625e-06,
+        "relative_change": 0.00014074168098249498
+      },
+      "SensorScope_RMSE_mu": {
+        "direction": "worsened",
+        "holm_significant": false,
+        "mean_paired_diff": 1.7198904466830812e-06,
+        "p_holm": 0.9047508239746094,
+        "relative_change": 2.1666576746360238e-07
+      },
+      "SensorScope_Tail_RMSE": {
+        "direction": "worsened",
+        "holm_significant": false,
+        "mean_paired_diff": 1.6052795229981599e-06,
+        "p_holm": 0.9047508239746094,
+        "relative_change": 1.8974825498275071e-07
+      },
+      "UAir_Delta_c_s": {
+        "direction": "worsened",
+        "holm_significant": true,
+        "mean_paired_diff": 2.9473676549240933e-05,
+        "p_holm": 3.814697265625e-05,
+        "relative_change": 2.3896482868883214e-05
+      },
+      "UAir_Delta_group": {
+        "direction": "worsened",
+        "holm_significant": true,
+        "mean_paired_diff": 4.70414207876968e-05,
+        "p_holm": 9.5367431640625e-06,
+        "relative_change": 4.30639513493454e-05
+      },
+      "UAir_RMSE_mu": {
+        "direction": "worsened",
+        "holm_significant": false,
+        "mean_paired_diff": 8.685504892624873e-06,
+        "p_holm": 1.0,
+        "relative_change": 7.291917853553351e-06
+      },
+      "UAir_Tail_RMSE": {
+        "direction": "worsened",
+        "holm_significant": false,
+        "mean_paired_diff": 9.301691211272e-06,
+        "p_holm": 1.0,
+        "relative_change": 7.752329543550361e-06
+      }
+    },
+    "component": "Debt",
+    "method": "raven_wo_debt",
+    "paper_safe_wording": "Debt shows structural evidence without robust prediction degradation.",
+    "sensorscope_prediction": false,
+    "sensorscope_structural": true,
+    "status": "STRUCTURAL_ONLY_SUPPORTED",
+    "uair_prediction": false,
+    "uair_structural": true
+  },
+  "Design": {
+    "cells": {
+      "SensorScope_Delta_c_s": {
+        "direction": "worsened",
+        "holm_significant": true,
+        "mean_paired_diff": 0.007552676100960021,
+        "p_holm": 9.5367431640625e-06,
+        "relative_change": 0.005973424350963066
+      },
+      "SensorScope_Delta_group": {
+        "direction": "worsened",
+        "holm_significant": true,
+        "mean_paired_diff": 0.012545145744105724,
+        "p_holm": 9.5367431640625e-06,
+        "relative_change": 0.012372628608746338
+      },
+      "SensorScope_RMSE_mu": {
+        "direction": "worsened",
+        "holm_significant": false,
+        "mean_paired_diff": 0.00042032078006748463,
+        "p_holm": 0.9047508239746094,
+        "relative_change": 5.2950537985118374e-05
+      },
+      "SensorScope_Tail_RMSE": {
+        "direction": "worsened",
+        "holm_significant": false,
+        "mean_paired_diff": 0.0004393570647795997,
+        "p_holm": 0.9047508239746094,
+        "relative_change": 5.1933158821552005e-05
+      },
+      "UAir_Delta_c_s": {
+        "direction": "worsened",
+        "holm_significant": true,
+        "mean_paired_diff": 0.0615441131617234,
+        "p_holm": 9.5367431640625e-06,
+        "relative_change": 0.04989835059721997
+      },
+      "UAir_Delta_group": {
+        "direction": "improved",
+        "holm_significant": true,
+        "mean_paired_diff": -0.07584671374778382,
+        "p_holm": 9.5367431640625e-06,
+        "relative_change": -0.06943368495586542
+      },
+      "UAir_RMSE_mu": {
+        "direction": "improved",
+        "holm_significant": true,
+        "mean_paired_diff": -0.0780548129305664,
+        "p_holm": 9.5367431640625e-06,
+        "relative_change": -0.06553093815666225
+      },
+      "UAir_Tail_RMSE": {
+        "direction": "improved",
+        "holm_significant": true,
+        "mean_paired_diff": -0.08249311792179445,
+        "p_holm": 9.5367431640625e-06,
+        "relative_change": -0.06875242584162888
+      }
+    },
+    "component": "Design",
+    "method": "raven_wo_design",
+    "paper_safe_wording": "Design removal improves structural metrics in a manner that contradicts the mechanism claim.",
+    "sensorscope_prediction": false,
+    "sensorscope_structural": true,
+    "status": "COUNTEREVIDENCE",
+    "uair_prediction": false,
+    "uair_structural": true
+  },
+  "Inst": {
+    "cells": {
+      "SensorScope_Delta_c_s": {
+        "direction": "worsened",
+        "holm_significant": true,
+        "mean_paired_diff": 0.026612628643994773,
+        "p_holm": 9.5367431640625e-06,
+        "relative_change": 0.021047973176683193
+      },
+      "SensorScope_Delta_group": {
+        "direction": "worsened",
+        "holm_significant": true,
+        "mean_paired_diff": 0.02139020593187587,
+        "p_holm": 1.1444091796875e-05,
+        "relative_change": 0.02109605414381468
+      },
+      "SensorScope_RMSE_mu": {
+        "direction": "improved",
+        "holm_significant": false,
+        "mean_paired_diff": -0.007126892742085822,
+        "p_holm": 0.3981800079345703,
+        "relative_change": -0.0008978209566376962
+      },
+      "SensorScope_Tail_RMSE": {
+        "direction": "improved",
+        "holm_significant": false,
+        "mean_paired_diff": -0.007226722003833341,
+        "p_holm": 0.3981800079345703,
+        "relative_change": -0.0008542175184381623
+      },
+      "UAir_Delta_c_s": {
+        "direction": "worsened",
+        "holm_significant": true,
+        "mean_paired_diff": 0.007198136757452988,
+        "p_holm": 0.03206634521484375,
+        "relative_change": 0.005836060235790667
+      },
+      "UAir_Delta_group": {
+        "direction": "worsened",
+        "holm_significant": true,
+        "mean_paired_diff": 0.027244547143196674,
+        "p_holm": 5.7220458984375e-05,
+        "relative_change": 0.024940952740503106
+      },
+      "UAir_RMSE_mu": {
+        "direction": "worsened",
+        "holm_significant": true,
+        "mean_paired_diff": 0.024847278264065388,
+        "p_holm": 9.5367431640625e-06,
+        "relative_change": 0.020860538820741778
+      },
+      "UAir_Tail_RMSE": {
+        "direction": "worsened",
+        "holm_significant": true,
+        "mean_paired_diff": 0.02610948365472122,
+        "p_holm": 9.5367431640625e-06,
+        "relative_change": 0.021760486013345123
+      }
+    },
+    "component": "Inst",
+    "method": "raven_wo_inst",
+    "paper_safe_wording": "Inst removal worsens structural mismatch consistently across SensorScope and U-Air.",
+    "sensorscope_prediction": false,
+    "sensorscope_structural": true,
+    "status": "CORE_MECHANISM_SUPPORTED",
+    "uair_prediction": true,
+    "uair_structural": true
+  },
+  "Obs": {
+    "cells": {
+      "SensorScope_Delta_c_s": {
+        "direction": "improved",
+        "holm_significant": true,
+        "mean_paired_diff": -0.0008882689369927643,
+        "p_holm": 0.000125885009765625,
+        "relative_change": -0.0007025334103448782
+      },
+      "SensorScope_Delta_group": {
+        "direction": "worsened",
+        "holm_significant": true,
+        "mean_paired_diff": 0.0009767601572533923,
+        "p_holm": 0.0384674072265625,
+        "relative_change": 0.0009633280403454523
+      },
+      "SensorScope_RMSE_mu": {
+        "direction": "worsened",
+        "holm_significant": false,
+        "mean_paired_diff": 0.0009453979049329764,
+        "p_holm": 0.1065673828125,
+        "relative_change": 0.0001190979129512704
+      },
+      "SensorScope_Tail_RMSE": {
+        "direction": "worsened",
+        "holm_significant": false,
+        "mean_paired_diff": 0.0009616801441985068,
+        "p_holm": 0.1065673828125,
+        "relative_change": 0.00011367311844451276
+      },
+      "UAir_Delta_c_s": {
+        "direction": "worsened",
+        "holm_significant": false,
+        "mean_paired_diff": 0.00027132663877117437,
+        "p_holm": 0.07246780395507812,
+        "relative_change": 0.00021998451277032108
+      },
+      "UAir_Delta_group": {
+        "direction": "worsened",
+        "holm_significant": true,
+        "mean_paired_diff": 0.0013445097647822202,
+        "p_holm": 5.7220458984375e-05,
+        "relative_change": 0.0012308281112666894
+      },
+      "UAir_RMSE_mu": {
+        "direction": "improved",
+        "holm_significant": false,
+        "mean_paired_diff": -0.00011577187362324937,
+        "p_holm": 1.0,
+        "relative_change": -9.71963061063934e-05
+      },
+      "UAir_Tail_RMSE": {
+        "direction": "improved",
+        "holm_significant": false,
+        "mean_paired_diff": -0.0001227321545052562,
+        "p_holm": 1.0,
+        "relative_change": -0.00010228893710868986
+      }
+    },
+    "component": "Obs",
+    "method": "raven_wo_obs",
+    "paper_safe_wording": "Obs removal improves structural metrics in a manner that contradicts the mechanism claim.",
+    "sensorscope_prediction": false,
+    "sensorscope_structural": true,
+    "status": "COUNTEREVIDENCE",
+    "uair_prediction": false,
+    "uair_structural": true
+  },
+  "Use": {
+    "cells": {
+      "SensorScope_Delta_c_s": {
+        "direction": "worsened",
+        "holm_significant": false,
+        "mean_paired_diff": 0.00033040187239097296,
+        "p_holm": 0.34881019592285156,
+        "relative_change": 0.00026131540182063295
+      },
+      "SensorScope_Delta_group": {
+        "direction": "worsened",
+        "holm_significant": false,
+        "mean_paired_diff": 0.00026414124959380224,
+        "p_holm": 0.7011814117431641,
+        "relative_change": 0.0002605088572215452
+      },
+      "SensorScope_RMSE_mu": {
+        "direction": "worsened",
+        "holm_significant": false,
+        "mean_paired_diff": 0.0009912367649365095,
+        "p_holm": 0.06039619445800781,
+        "relative_change": 0.00012487253179697329
+      },
+      "SensorScope_Tail_RMSE": {
+        "direction": "worsened",
+        "holm_significant": false,
+        "mean_paired_diff": 0.0010078940557148642,
+        "p_holm": 0.06039619445800781,
+        "relative_change": 0.00011913572414514457
+      },
+      "UAir_Delta_c_s": {
+        "direction": "improved",
+        "holm_significant": false,
+        "mean_paired_diff": -0.00016725395708978575,
+        "p_holm": 0.24548721313476562,
+        "relative_change": -0.00013560511575979873
+      },
+      "UAir_Delta_group": {
+        "direction": "worsened",
+        "holm_significant": false,
+        "mean_paired_diff": 0.00015067957203213078,
+        "p_holm": 0.49800872802734375,
+        "relative_change": 0.00013793923845600246
+      },
+      "UAir_RMSE_mu": {
+        "direction": "worsened",
+        "holm_significant": false,
+        "mean_paired_diff": 0.00028555372849086157,
+        "p_holm": 0.8827571868896484,
+        "relative_change": 0.0002397367057784707
+      },
+      "UAir_Tail_RMSE": {
+        "direction": "worsened",
+        "holm_significant": false,
+        "mean_paired_diff": 0.00030258522687218734,
+        "p_holm": 0.8827571868896484,
+        "relative_change": 0.0002521842899796069
+      }
+    },
+    "component": "Use",
+    "method": "raven_wo_use",
+    "paper_safe_wording": "Use shows no clear sealed E4 effect under the pre-registered Holm families.",
+    "sensorscope_prediction": false,
+    "sensorscope_structural": false,
+    "status": "NO_CLEAR_EFFECT",
+    "uair_prediction": false,
+    "uair_structural": false
+  }
+}

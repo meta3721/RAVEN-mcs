@@ -1,0 +1,140 @@
+{
+  "files": [
+    {
+      "path": "src\\raven_mcs\\metrics\\reachability_optimization.py",
+      "sha256": "dea46fe1fd458c44ea50e92beda825ebb6d2aa9b99bd01c5060e8fd7ddd9ac71",
+      "observations": [
+        {
+          "line": 27,
+          "text": "def solve_epsilon_reach("
+        },
+        {
+          "line": 33,
+          "text": "e_min: float = 3.0,"
+        },
+        {
+          "line": 43,
+          "text": "e_min: Minimum effective sample size."
+        },
+        {
+          "line": 54,
+          "text": "epsilon_reach=0.0,"
+        },
+        {
+          "line": 83,
+          "text": "objective = cp.Minimize(cp.norm2(cumulative) / max(total_eta, 1e-10))"
+        }
+      ]
+    },
+    {
+      "path": "src\\raven_mcs\\metrics\\reachability.py",
+      "sha256": "8d5cca0edc18698d7f1d2408441e31c533b8b4dda918e489d4594e6fa437c99b",
+      "observations": [
+        {
+          "line": 8,
+          "text": "def realized_block_group_deviation("
+        }
+      ]
+    },
+    {
+      "path": "src\\raven_mcs\\training\\window_runner.py",
+      "sha256": "8f5268877fb67982beda57d6cc37e45d32d3173b2d50dec3d029d16f58864705",
+      "observations": [
+        {
+          "line": 643,
+          "text": "for window_id in range(int(self.trace.metadata.num_windows)):"
+        },
+        {
+          "line": 874,
+          "text": "downloaded_version = rec.downloaded_version"
+        },
+        {
+          "line": 1009,
+          "text": "if rec.U == 1 and rec.client_id in e_r_clients"
+        },
+        {
+          "line": 1012,
+          "text": "rec.client_id for rec in window_slice.records if rec.U == 1"
+        }
+      ]
+    },
+    {
+      "path": "src\\raven_mcs\\simulation\\event_trace.py",
+      "sha256": "39b87ea551c7b9637665779144d0e70a6bc9ecdafb3d63f057c4abd38d31e86b",
+      "observations": [
+        {
+          "line": 42,
+          "text": "class EventTraceError(ValueError):"
+        },
+        {
+          "line": 47,
+          "text": "class EventTraceMetadata:"
+        },
+        {
+          "line": 58,
+          "text": "class EventTrace:"
+        },
+        {
+          "line": 111,
+          "text": "for window_id in range(int(num_windows)):"
+        }
+      ]
+    },
+    {
+      "path": "src\\raven_mcs\\aggregation\\method_policy.py",
+      "sha256": "e6566ad2bb64c23deae5c9a90576978f2f3a1a9186ca6baed0745487cd5e431a",
+      "observations": [
+        {
+          "line": 126,
+          "text": "\"raven_mcs\": MethodPolicy("
+        },
+        {
+          "line": 128,
+          "text": "design_control=\"configured\","
+        }
+      ]
+    },
+    {
+      "path": "data\\interim\\traffic\\metadata.json",
+      "sha256": "47f2488152a869bdacc131daf31671e27968cbae70ac6fb14ce99e7f0a037146",
+      "observations": [
+        {
+          "line": 17,
+          "text": "\"target_name\": \"traffic_volume\","
+        },
+        {
+          "line": 18,
+          "text": "\"target_unit\": \"vehicles_per_hour\","
+        }
+      ]
+    },
+    {
+      "path": "data\\interim\\sensorscope\\metadata.json",
+      "sha256": "1c87a04782f4ae7d240fb74cba68a5cf1d8aabfec3b08d0277ffadeedd217bf9",
+      "observations": [
+        {
+          "line": 17,
+          "text": "\"target_name\": \"ambient_temperature\","
+        },
+        {
+          "line": 18,
+          "text": "\"target_unit\": \"degree_Celsius\","
+        }
+      ]
+    },
+    {
+      "path": "configs\\dataset\\traffic.yaml",
+      "sha256": "ccc247d58733a3f2ba9de1556fd6ca31fc073dfa2445f130eb7e6cd71ab42c60",
+      "observations": []
+    },
+    {
+      "path": "configs\\dataset\\sensorscope.yaml",
+      "sha256": "24705db9494f9d886a9f0271d3b2b3ee78ef956849f3ff23d66785b295625649",
+      "observations": []
+    }
+  ],
+  "live_python_files_read": 928,
+  "explicit_stop_or_external_baseline_symbol_hits": [],
+  "scope": "live src/scripts; historical bundles and out-of-tree code are not presumed absent",
+  "training_executed": false
+}

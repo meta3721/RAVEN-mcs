@@ -1,0 +1,11 @@
+asset_id,claim_id,rq,contribution,section,figure_id,table_id,claim_strength,required_or_optional
+E2_D_ALIGNED,C1,RQ1,1,VII-B,FIG1,,supported,required
+E2_D_ALIGNED,C2,RQ1,1,VII-B,FIG1,,supported,required
+E3_STRUCTURAL,C3,RQ2,2,VII-C,FIG2,TABLE_II,supported,required
+E3_PREDICTION,C4,RQ2,2,VII-C,FIG3,TABLE_II,supported_selective,required
+E4_240,C5,RQ3,3,VII-D,FIG4,TABLE_III,supported,required
+E4_USE,C6,RQ3,3,VII-D,FIG4,TABLE_III,NO_CLEAR_EFFECT,required
+E4_DEBT,C7,RQ3,3,VII-D,FIG4,TABLE_III,STRUCTURAL_ONLY_SUPPORTED_small,required
+E4_INST_GEN2,C8,RQ3,3,VII-D,FIG4,TABLE_III,ENDPOINT_TRADEOFF,required
+TRAFFIC_E3,C9,RQ2,n/a,VIII,,,NOT_COMPARABLE,required_limitation
+P2_BOUNDARY,C10,n/a,3,VI/VIII,,,feasibility_not_exact_optimality,required_limitation

@@ -1,0 +1,20 @@
+{
+  "canary_seed": 31001,
+  "dataset_statuses": {
+    "sensorscope": "NOT_READY_EVENTTRACE",
+    "traffic": "REUSE_EXISTING_E2_BLOCK",
+    "uair": "NOT_READY_TARGET_SUPPORT"
+  },
+  "failed_gates": [],
+  "new_runs": 80,
+  "pair_status": "PAIR_METRIC_NOT_READY_BLOCK_E3_PAIR_CLAIMS",
+  "reuse_count": 100,
+  "stop": {
+    "created_utc": "2026-08-09T15:41:08.461222+00:00",
+    "new_runs_needed_ready_scope": 80,
+    "next_authorized_round": "E3-REAL-RUNNER-CANARY-R1",
+    "no_training": true,
+    "reusable_traffic_runs": 100,
+    "status": "E3_READY_WITH_REDUCED_DATASET_SCOPE_PENDING_TEACHER_AUTHORIZATION"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "dataset": "sensorscope",
+  "seed": 41003,
+  "model": "ndmf",
+  "optimizer": "adam",
+  "lr": 0.0003,
+  "RMSE_mu": 2.690819920995754,
+  "best_pass": 61,
+  "best_at_100": 2.690819920995754,
+  "improvement_100_to_200": 0.0,
+  "plateau_pass": true,
+  "strongest_baseline": "train_mean",
+  "baseline_RMSE": 2.939139907812361,
+  "relative_gain": 0.08448729717035973,
+  "meaningful_validation_pass": true,
+  "elapsed_seconds": 6.46900000000096,
+  "samples_processed": 66600,
+  "optimizer_steps": 1200,
+  "run": "P1\\central_delivered\\ndmf\\sensorscope\\adam_0.0003\\seed41003"
+}

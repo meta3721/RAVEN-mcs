@@ -1,0 +1,14 @@
+{
+  "pid": 10660,
+  "command": [
+    "C:\\Cursor\\raven.mcs\\.venv_new\\Scripts\\python.exe",
+    "-X",
+    "faulthandler",
+    "-m",
+    "pytest",
+    "tests/control_b0/test_persistence_and_full_connection.py",
+    "-ra",
+    "--junitxml=C:\\Cursor\\raven.mcs\\results_conditional_bundle_b0_20261012_223821\\session_acceptance.xml",
+    "--basetemp=C:\\Cursor\\raven.mcs\\results_conditional_bundle_b0_20261012_223821\\session_acceptance-tmp"
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "datasets": [
+    "sensorscope",
+    "uair"
+  ],
+  "g0_config_hash": "9da4ad35491687faebb25defab39f9b655fe8128cb005904879dde9802d8be6a",
+  "git_commit": "a7f02f08cba2c7038d60d41d24042fbc57c402fd",
+  "local_steps": 2,
+  "max_abs_error": 1.7208456881689926e-13,
+  "methods": [
+    "raven",
+    "raven_wo_design",
+    "raven_sag"
+  ],
+  "mode": "g1_r1c_1seed",
+  "paper_n_groups": 4,
+  "pi_safe_rule": {
+    "data_source": "public_pi_opp_joint_on_target_positive_pairs",
+    "excludes": [
+      "labels",
+      "test_outcomes",
+      "test_prediction_residuals",
+      "current_window_events",
+      "gate_ON_OFF"
+    ],
+    "fit_scope": "frozen public opportunity law × {pi_tar>0}",
+    "frozen": true,
+    "hash": "aa574c33b577965a78a9e6eb7d14877ac78add0fee4ab3e9c95deb47926891c7",
+    "n_positive_target_pairs_SensorScope": 440,
+    "n_positive_target_pairs_UAir": 288,
+    "note": "Rule frozen; environment-specific values follow the same q10 protocol.",
+    "quantile": 0.1,
+    "rule_id": "PI_SAFE_RULE_V1",
+    "status": "FROZEN_DEVELOPMENT_PROTOCOL",
+    "value_SensorScope": 0.0006326708489355371,
+    "value_UAir": 0.0013918758676581813
+  },
+  "seeds": [
+    30001
+  ],
+  "target_compatibility_pass": true,
+  "tau_unchanged": true,
+  "threshold_hash": "526343535887e2f1094916be22d0403032fab0b905e74ac588f2b1bc6613510e",
+  "timestamp": "2026-08-29T10:10:06.449291+00:00"
+}

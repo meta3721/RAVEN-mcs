@@ -1,0 +1,25 @@
+{
+  "status": "PASS",
+  "real_backend": "CommonNDMF/ClientTrainer",
+  "calibration_only": true,
+  "isolated_test": false,
+  "authorization_rejected": [
+    "production_prior",
+    "43001",
+    "44001",
+    "fitted_not_validated"
+  ],
+  "accepted_intercepted": 2,
+  "R0_no_training": true,
+  "E0_work_retained": true,
+  "private_visibility": true,
+  "visible_completion": true,
+  "all_inflight_keys": true,
+  "encoding_columns": 37,
+  "raw_F_over43": 46,
+  "queue_RNG_pair_restore": true,
+  "shadow_readonly": true,
+  "SGD": 0,
+  "save_marker": "C:\\Cursor\\raven.mcs\\results_observed_feedback_acquisition_45011_20261014\\SGD0_PAIR\\SGD0_queue.complete.json",
+  "save_upper_CPU": 0.8325
+}

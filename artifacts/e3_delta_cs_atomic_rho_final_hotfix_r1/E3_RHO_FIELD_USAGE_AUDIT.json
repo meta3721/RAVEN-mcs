@@ -1,0 +1,10 @@
+{
+  "diagnostic_only": [
+    "group_arrival_mass_diagnostic_only",
+    "build_rho_weights (rho_g/n_g)",
+    "delivered_group_counts_from_events"
+  ],
+  "failure_if_group_marginal": "E3_RHO_USES_GROUP_MARGINAL_ERROR",
+  "scientific_RMSE_rho_must_consume": "rho_atomic from build_atomic_arrival_rho",
+  "status": "AUDITED"
+}

@@ -1,0 +1,50 @@
+{
+  "config_files": {
+    "07_methods/TDRIVE_RAVEN_CONFIG_SEAL.json": "088ca383201c1220dfab19d9a43c08eefd47f9658dbd94089d1a790f1ec42a61",
+    "configs/dataset/tdrive_speed.yaml": "3d2c53b34f2e20ae3a10de98cd6dd1acc6059ed304063bbc789a70f0dfc30b76"
+  },
+  "dataset_files": {
+    "atomic_units.parquet": "949cd8c7210941b066d300e7cec327c485c5cc6aa6110ce790fdbf0db8a1e414",
+    "client_measurements.parquet": "6744a86dc97ec497295fedf3dd7efa2756680742b05320497cdc2c96ed049bb5",
+    "data_hash": "7a0e197eeb8ba5230b364ae08d66b53ffbfdb82fc9caf5458a8c5557004387e8"
+  },
+  "eventtrace_generator_hash": "8ddb2fe0c5526100e64ea231d62a04c6148bdc6aaf18f9201d3b50e31145782d",
+  "method_adapter_hashes": {
+    "fedasync_window": "776bba8d5ec01f7afa21f6d816e216742167910932cab972e9a85a79568c4f7b",
+    "fedavg_window": "776bba8d5ec01f7afa21f6d816e216742167910932cab972e9a85a79568c4f7b",
+    "flamf_timealign_adapted": "776bba8d5ec01f7afa21f6d816e216742167910932cab972e9a85a79568c4f7b",
+    "raven": "d93edf5415b5f6e79931d4b893aadcd5c59720ba05146f37d561b0ac43f6512f",
+    "twostage_hajek": "a95f9c790d5aeab55dce240a60d8e4a7c31520d9e0d014f769b1e905b2d9fc18"
+  },
+  "metric_evaluator_hashes": {
+    "accuracy.py": "18c5dc9636673e68bd48210297b6c8bdb11c759ab466fef4501837f50b091ba9",
+    "delta_cs_v6.py": "580bd1d6d2d0c4c178b16ab9a9ee5f16541fcec617f0551a568fdbcc875398d3",
+    "distribution.py": "23178fb519cacb6f746b1fb10f748191b582dd8ec48d65c15ac0ca7916e5c8c8"
+  },
+  "mu_file_hash": "091e8aead9d1857a36857e8be2eda403fbbff40fd3ad3e579f41c991fa3319a1",
+  "protocol_id": "TDRIVE_REAL_MOBILITY_PROTOCOL_R1",
+  "round": "RAVEN-MCS-TDRIVE-REAL-MOBILITY-PROTOCOL-SEAL-R1",
+  "source_files": {
+    "configs/dataset/tdrive_speed.yaml": "3d2c53b34f2e20ae3a10de98cd6dd1acc6059ed304063bbc789a70f0dfc30b76",
+    "data/manifests/tdrive_speed_manifest.json": "31f4a212b316ff0c2e2ba3d6c30a2a1886e35f650c7be4de5032502ff78f1dd1",
+    "data/processed/tdrive_speed/atomic_units.parquet": "949cd8c7210941b066d300e7cec327c485c5cc6aa6110ce790fdbf0db8a1e414",
+    "data/processed/tdrive_speed/client_measurements.parquet": "6744a86dc97ec497295fedf3dd7efa2756680742b05320497cdc2c96ed049bb5",
+    "src/raven_mcs/data/controlled.py": "9ecf0a4bbebf0fb145c2a032fe88fbcb0cd9e4d830d35f3fa61df801e10e2aee",
+    "src/raven_mcs/data/split.py": "5a6670a9f206e162b93ced644e8d31271454dce51ad5b7e2cccc6a0170ee367b",
+    "src/raven_mcs/data/tdrive.py": "1a3b9d5edd4672f403a859ebdc98db053a1ab44d9c421ef7d5f946837f4afd77",
+    "src/raven_mcs/e3/delta_cs_rho/delta_cs_v6.py": "580bd1d6d2d0c4c178b16ab9a9ee5f16541fcec617f0551a568fdbcc875398d3",
+    "src/raven_mcs/e3/formal/stats.py": "c1e9685c62649628eec0847bd4d29a4da621c6f66c4775fd05513c8e599e4673",
+    "src/raven_mcs/e3/real_runner/stage2_r3.py": "60194a3048c90def6a0430f62f535b722a7445ee809cf317b6b7f2a0e3102c4a",
+    "src/raven_mcs/metrics/accuracy.py": "18c5dc9636673e68bd48210297b6c8bdb11c759ab466fef4501837f50b091ba9",
+    "src/raven_mcs/metrics/distribution.py": "23178fb519cacb6f746b1fb10f748191b582dd8ec48d65c15ac0ca7916e5c8c8",
+    "src/raven_mcs/simulation/event_trace.py": "39b87ea551c7b9637665779144d0e70a6bc9ecdafb3d63f057c4abd38d31e86b",
+    "src/raven_mcs/tdrive_protocol_seal_r1/constants.py": "e169eeb2ebe0ac8a38a49e9d987207ed478b299ebbc238ccaa45e943a9bade64",
+    "src/raven_mcs/tdrive_protocol_seal_r1/eventtrace_generator.py": "8ddb2fe0c5526100e64ea231d62a04c6148bdc6aaf18f9201d3b50e31145782d",
+    "src/raven_mcs/tdrive_protocol_seal_r1/pipeline.py": "64028057b4f93de31c58a1812e6167c225cbbfee903ddb8f73d5b352b0eeb314"
+  },
+  "source_revision": "b01db69e8554a33446c438c060ac464dcfadac24",
+  "split_file_hash": "6c9ae4faccdcc6c88aa54f1b72aab363d735dec91f2360f4ca350546a0fc0368",
+  "status": "FROZEN",
+  "stratum_file_hash": "8aa73701c1aa6caf283a7b5da133f1e6e48b86dab28e2e0e73b85f1e1e6440fb",
+  "target_file_hash": "ae2fbb05ba56f17fe129d9e53a7abb4db4317edb8c84b87ee838f50c53cbaf97"
+}

@@ -1,0 +1,114 @@
+{
+  "experiment_id": "SCD-PHI-SS-UA",
+  "eventtrace_root": "artifacts/e3_formal_runs_r1/eventtraces",
+  "pi_target_builder": "raven_mcs.correction.pi_target.build_pi_target",
+  "pi_target_split": "test",
+  "zero_test": "pi <= 0.0",
+  "seeds": [
+    30001,
+    30002,
+    30003,
+    30004,
+    30005,
+    30006,
+    30007,
+    30008,
+    30009,
+    30010,
+    30011,
+    30012,
+    30013,
+    30014,
+    30015,
+    30016,
+    30017,
+    30018,
+    30019,
+    30020
+  ],
+  "atomic_hashes": [
+    {
+      "dataset": "sensorscope",
+      "path": "data/processed/sensorscope/atomic_units.parquet",
+      "expected": "47581d5b04d3795b3fe663198ba32a53e83f35707718a82bd1ec0662daff88ce",
+      "got": "47581d5b04d3795b3fe663198ba32a53e83f35707718a82bd1ec0662daff88ce",
+      "match": true,
+      "status": "PASS"
+    },
+    {
+      "dataset": "uair",
+      "path": "data/processed/uair/atomic_units.parquet",
+      "expected": "0d57445890f7e1a21038c17106a8e7f332e95fe13fe81713f24b8fd0ab254eed",
+      "got": "0d57445890f7e1a21038c17106a8e7f332e95fe13fe81713f24b8fd0ab254eed",
+      "match": true,
+      "status": "PASS"
+    }
+  ],
+  "rows": [
+    {
+      "dataset": "sensorscope",
+      "n_train_units": 10285,
+      "n_train_zero": 0,
+      "phi_train_unit": 0.0,
+      "n_train_pairs": 440,
+      "n_train_pairs_zero": 0,
+      "phi_train_pair": 0.0,
+      "n_et_appearances": 64000,
+      "n_et_appearances_zero": 0,
+      "phi_et_occ": 0.0,
+      "n_et_unique_units": 9429,
+      "n_et_unique_zero": 0,
+      "phi_et_unique": 0.0,
+      "g1_phi_et_occ_expected": 0.0,
+      "phi_et_occ_matches_g1": true,
+      "atomic_hash_ok": true
+    },
+    {
+      "dataset": "uair",
+      "n_train_units": 5688,
+      "n_train_zero": 2016,
+      "phi_train_unit": 0.35443037974683544,
+      "n_train_pairs": 288,
+      "n_train_pairs_zero": 72,
+      "phi_train_pair": 0.25,
+      "n_et_appearances": 51200,
+      "n_et_appearances_zero": 13040,
+      "phi_et_occ": 0.2546875,
+      "n_et_unique_units": 5610,
+      "n_et_unique_zero": 1973,
+      "phi_et_unique": 0.3516934046345811,
+      "g1_phi_et_occ_expected": 0.2546875,
+      "phi_et_occ_matches_g1": true,
+      "atomic_hash_ok": true
+    }
+  ],
+  "decision": {
+    "experiment_id": "SCD-PHI-SS-UA",
+    "status": "PASS",
+    "reason": null,
+    "checks": {
+      "wiring": true,
+      "ss_positivity": true,
+      "ua_signal": true,
+      "rule_recovers_table_sign": true
+    },
+    "phi_et_occ": {
+      "sensorscope": 0.0,
+      "uair": 0.2546875
+    },
+    "phi_train_unit": {
+      "sensorscope": 0.0,
+      "uair": 0.35443037974683544
+    },
+    "uair_phi_train_unit_percent_one_decimal": 35.4,
+    "uair_phi_et_occ_percent_one_decimal": 25.5,
+    "uair_train_percent_matches_paper_25_5": false,
+    "rule_preview_not_applied": "Design_ON iff phi_scd == 0",
+    "algorithm_2_rewritten": false,
+    "phi_scd": {
+      "definition": "phi_train_unit",
+      "sensorscope": 0.0,
+      "uair": 0.35443037974683544
+    }
+  }
+}

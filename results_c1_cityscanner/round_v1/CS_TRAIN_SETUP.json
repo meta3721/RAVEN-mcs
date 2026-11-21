@@ -1,0 +1,25 @@
+{
+  "device": "cpu",
+  "gate_unused": true,
+  "h_encoding": {
+    "region0": 0,
+    "region1": 1,
+    "region2": 2,
+    "region3": 3
+  },
+  "methods": [
+    "fedavg_window",
+    "twostage_hajek",
+    "fedau_window",
+    "obsuse_window",
+    "raven"
+  ],
+  "mu": [
+    0.23732057416267938,
+    0.47464114832535875,
+    0.07081339712918659,
+    0.21722488038277507
+  ],
+  "n_pi_opp_keys": 959,
+  "n_pi_target_keys": 1164
+}

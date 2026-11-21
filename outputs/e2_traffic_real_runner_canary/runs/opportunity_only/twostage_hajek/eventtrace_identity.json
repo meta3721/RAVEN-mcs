@@ -1,0 +1,21 @@
+{
+  "eventtrace_dir": "outputs/e2_traffic_real_runner_canary/eventtraces/opportunity_only/training_eventtrace",
+  "identity": {
+    "events_sha256": "e3759d96e612b0984c443d7948a3efae79ca952c51432f0f72681d58c20b9130",
+    "metadata": {
+      "dataset": "traffic",
+      "generator": "traffic-profile-s1-hard-aou-bridge-v1",
+      "notes": [
+        "scenario=opportunity_only",
+        "PROFILE-S1",
+        "station=client"
+      ],
+      "num_clients": 43,
+      "num_windows": 100,
+      "s_max": 5,
+      "seed": 29001
+    },
+    "metadata_sha256": "c99b19378ac5957c55676b94a0df53ed6e0d1733bd33c0449df421f394a3a8bf",
+    "trace_hash": "499ae9cc12ca13c41f724f56ce9640165ef9865706eef0d94c79db78b3d0eb5d"
+  }
+}

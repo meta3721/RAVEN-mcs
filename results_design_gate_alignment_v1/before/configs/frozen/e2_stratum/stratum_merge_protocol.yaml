@@ -1,0 +1,22 @@
+protocol: E2-STAGE2-ELIGIBILITY-AND-TRUE-STRATUM-REFREEZE-R1
+source_rule: region × coarse_time_of_day × day_type
+region_definition: sensorscope_campus
+region_rationale: >
+  SensorScope is a single outdoor campus deployment; spatial_id identifies
+  stations within one region. Region is therefore fixed to sensorscope_campus
+  so strata are campus × UTC time-of-day block × weekday/weekend.
+time_of_day_bins: [block0, block1, block2, block3]
+day_types: [all_days]
+day_type_construction: fold_weekday_weekend_into_all_days
+lambda_stratum_min: 0.05
+minimum_expected_events_per_300_windows: 5.0
+merge_order:
+  - same_region_same_day_type_adjacent_time_bin
+cross_region_merge_allowed: false
+tie_break: lexicographic_stratum_id
+role_substitution_forbidden: true
+forbidden_stratum_ids: [head, neutral, tail]
+notes: >
+  SensorScope campus is one region. Weekday/weekend are folded at construction
+  into all_days so strata are region × coarse_time_of_day × day_type with
+  day_type=all_days (deterministic pre-merge). No head/neutral/tail roles.

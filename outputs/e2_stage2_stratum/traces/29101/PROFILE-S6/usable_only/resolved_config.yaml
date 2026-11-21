@@ -1,0 +1,13 @@
+seed: 29101
+profile_id: PROFILE-S6
+scenario_id: usable_only
+arrival_mass_mode: event_mass
+stage2_eligibility_rule: observed_count > 0
+kappas:
+  kappa_opp: 0.0
+  kappa_p: 0.0
+  kappa_q: 2.0
+directions:
+  d_opp: 0
+  d_p: 0
+  d_q: -1

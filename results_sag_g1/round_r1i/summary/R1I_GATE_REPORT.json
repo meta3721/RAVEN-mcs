@@ -1,0 +1,232 @@
+{
+  "gates": [
+    {
+      "description": "input freeze",
+      "evidence_file": "R1I_INPUT_FREEZE_MANIFEST.csv",
+      "expected": "0",
+      "gate_id": "R1I-S0",
+      "metric": "missing",
+      "observed": "0",
+      "pass": true
+    },
+    {
+      "description": "natural E3-v2 unchanged",
+      "evidence_file": "legacy_refs",
+      "expected": "a37f9bc5a16cb8b91ad81ab7a0d5b27d7f8594c01cefcd378337b8ce604fe993",
+      "gate_id": "R1I-S1",
+      "metric": "identity_hash",
+      "observed": "a37f9bc5a16cb8b91ad81ab7a0d5b27d7f8594c01cefcd378337b8ce604fe993",
+      "pass": true
+    },
+    {
+      "description": "stress mechanism frozen",
+      "evidence_file": "stress_spec/R1I_STRESS_LEVEL_FREEZE.md",
+      "expected": "3d1646e198498032516f0ed348e82eddb53a28d1c964652c4cd631ed14951c85",
+      "gate_id": "R1I-S2",
+      "metric": "hash",
+      "observed": "3d1646e198498032516f0ed348e82eddb53a28d1c964652c4cd631ed14951c85",
+      "pass": true
+    },
+    {
+      "description": "stress levels frozen",
+      "evidence_file": "stress_spec/R1I_STRESS_LEVEL.json",
+      "expected": "[1.0, 0.8, 0.6, 0.4, 0.2]",
+      "gate_id": "R1I-S3",
+      "metric": "grid",
+      "observed": "[1.0, 0.8, 0.6, 0.4, 0.2]",
+      "pass": true
+    },
+    {
+      "description": "nested mask deterministic",
+      "evidence_file": "stress_masks/R1I_AVAILABILITY_MASK_HASH.txt",
+      "expected": "b87cf615ab34b447e87bf447d79b9e4183a6e16fcef6223c57fad7be4aec6502",
+      "gate_id": "R1I-S4",
+      "metric": "hash",
+      "observed": "b87cf615ab34b447e87bf447d79b9e4183a6e16fcef6223c57fad7be4aec6502",
+      "pass": true
+    },
+    {
+      "description": "mask outcome-independent",
+      "evidence_file": "stress_masks/R1I_AVAILABILITY_MASK_RULE.json",
+      "expected": "listed",
+      "gate_id": "R1I-S5",
+      "metric": "forbidden",
+      "observed": "listed",
+      "pass": true
+    },
+    {
+      "description": "entity-level thinning",
+      "evidence_file": "src/raven_mcs/sag/stress_mask.py",
+      "expected": "spatial_id",
+      "gate_id": "R1I-S6",
+      "metric": "entity_id",
+      "observed": "spatial_id",
+      "pass": true
+    },
+    {
+      "description": "a=1.00 reproduces natural",
+      "evidence_file": "oracle_stress/R1I_BASELINE_REPRODUCTION_AUDIT.csv",
+      "expected": "<=1e-10",
+      "gate_id": "R1I-S7",
+      "metric": "max_diff",
+      "observed": "8.326672684688674e-17",
+      "pass": true
+    },
+    {
+      "description": "oracle monotonicity",
+      "evidence_file": "oracle_stress/R1I_MONOTONICITY_AUDIT.csv",
+      "expected": "0",
+      "gate_id": "R1I-S8",
+      "metric": "violations",
+      "observed": "0",
+      "pass": true
+    },
+    {
+      "description": "TARGET_LAW unchanged",
+      "evidence_file": "audit/R1I_FREEZE_AUDIT.json",
+      "expected": "86fd55f7e0bf8499944433de16324bd4687befd5568892613ee87acacad3ad07",
+      "gate_id": "R1I-S9",
+      "metric": "hash",
+      "observed": "86fd55f7e0bf8499944433de16324bd4687befd5568892613ee87acacad3ad07",
+      "pass": true
+    },
+    {
+      "description": "PI_SAFE unchanged",
+      "evidence_file": "outputs/sag_g1_r1e/configs/PI_SAFE_RULE_FROZEN.json",
+      "expected": "aa574c33b577965a78a9e6eb7d14877ac78add0fee4ab3e9c95deb47926891c7",
+      "gate_id": "R1I-S10",
+      "metric": "hash",
+      "observed": "aa574c33b577965a78a9e6eb7d14877ac78add0fee4ab3e9c95deb47926891c7",
+      "pass": true
+    },
+    {
+      "description": "tau_cov unchanged",
+      "evidence_file": "configs/sag_g0/thresholds.json",
+      "expected": "0.05",
+      "gate_id": "R1I-S11",
+      "metric": "tau",
+      "observed": "0.05",
+      "pass": true
+    },
+    {
+      "description": "stress summary complete",
+      "evidence_file": "oracle_stress/R1I_ORACLE_STRESS_SUMMARY.csv",
+      "expected": "10",
+      "gate_id": "R1I-S12",
+      "metric": "n_rows",
+      "observed": "10",
+      "pass": true
+    },
+    {
+      "description": "crossing brackets complete",
+      "evidence_file": "boundary_analysis/R1I_WINDOW_CROSSING_BRACKETS.csv",
+      "expected": "115",
+      "gate_id": "R1I-S13",
+      "metric": "n",
+      "observed": "115",
+      "pass": true
+    },
+    {
+      "description": "boundary-rich artifact-derived",
+      "evidence_file": "boundary_analysis/R1I_BOUNDARY_RICH_LEVELS.csv",
+      "expected": "10",
+      "gate_id": "R1I-S14",
+      "metric": "n",
+      "observed": "10",
+      "pass": true
+    },
+    {
+      "description": "boundary-near artifact-derived",
+      "evidence_file": "boundary_analysis/R1I_BOUNDARY_NEAR_WINDOWS.csv",
+      "expected": "0.01",
+      "gate_id": "R1I-S15",
+      "metric": "margin",
+      "observed": "0.01",
+      "pass": true
+    },
+    {
+      "description": "natural/stress tracks separated",
+      "evidence_file": "summary/R1I_VERDICT.json",
+      "expected": "E3V2_AVAIL_STRESS_V1",
+      "gate_id": "R1I-S16",
+      "metric": "protocol",
+      "observed": "E3V2_AVAIL_STRESS_V1",
+      "pass": true
+    },
+    {
+      "description": "no adaptive stress tuning",
+      "evidence_file": "stress_spec/R1I_STRESS_LEVEL.json",
+      "expected": "[1.0, 0.8, 0.6, 0.4, 0.2]",
+      "gate_id": "R1I-S17",
+      "metric": "A_GRID",
+      "observed": "[1.0, 0.8, 0.6, 0.4, 0.2]",
+      "pass": true
+    },
+    {
+      "description": "no predictor",
+      "evidence_file": "summary/R1I_VERDICT.json",
+      "expected": "false",
+      "gate_id": "R1I-S18",
+      "metric": "predictor_run",
+      "observed": "False",
+      "pass": true
+    },
+    {
+      "description": "no calibration",
+      "evidence_file": "summary/R1I_VERDICT.json",
+      "expected": "false",
+      "gate_id": "R1I-S19",
+      "metric": "calibration_run",
+      "observed": "False",
+      "pass": true
+    },
+    {
+      "description": "no dynamic C_cov",
+      "evidence_file": "summary/R1I_VERDICT.json",
+      "expected": "false",
+      "gate_id": "R1I-S20",
+      "metric": "dynamic_cov_run",
+      "observed": "False",
+      "pass": true
+    },
+    {
+      "description": "no SAG",
+      "evidence_file": "summary/R1I_VERDICT.json",
+      "expected": "false",
+      "gate_id": "R1I-S21",
+      "metric": "sag_started",
+      "observed": "False",
+      "pass": true
+    },
+    {
+      "description": "no 5-seed",
+      "evidence_file": "summary/R1I_VERDICT.json",
+      "expected": "false",
+      "gate_id": "R1I-S22",
+      "metric": "five_seed_started",
+      "observed": "False",
+      "pass": true
+    },
+    {
+      "description": "source snapshot complete",
+      "evidence_file": "source_snapshot/R1I_SOURCE_SNAPSHOT_MANIFEST.csv",
+      "expected": "0",
+      "gate_id": "R1I-S23",
+      "metric": "missing",
+      "observed": "0",
+      "pass": true
+    },
+    {
+      "description": "final verdict artifact-derived",
+      "evidence_file": "summary/R1I_VERDICT.json",
+      "expected": "READY_FOR_LIMITED_DYNAMIC_CERTIFICATE_STRESS_AUDIT",
+      "gate_id": "R1I-S24",
+      "metric": "verdict",
+      "observed": "READY_FOR_LIMITED_DYNAMIC_CERTIFICATE_STRESS_AUDIT",
+      "pass": true
+    }
+  ],
+  "n_fail": 0,
+  "n_pass": 25,
+  "verdict": "READY_FOR_LIMITED_DYNAMIC_CERTIFICATE_STRESS_AUDIT"
+}

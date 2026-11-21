@@ -1,0 +1,13 @@
+{
+  "aggregation": "none",
+  "filters": "copy only; SensorScope/U-Air already applied in source where required",
+  "input_assets": [
+    "RAVEN_MCS_FINAL_PAPER_DATA_ASSET_FREEZE_R1/01_PAPER_CORE/E3/E3_PREDICTION_METRICS_MASTER.csv"
+  ],
+  "input_hashes": [
+    "8110240a5f88644b29e5d0aa85986d6d052a653a09ad9c7292c11ff2f71a9685"
+  ],
+  "output_hash": "8110240a5f88644b29e5d0aa85986d6d052a653a09ad9c7292c11ff2f71a9685",
+  "scientific_semantics_changed": false,
+  "statistical_protocol": "unchanged sealed protocol"
+}

@@ -1,0 +1,14 @@
+{
+  "accepted": false,
+  "attempt_count": 1,
+  "attempt_id": "e3::traffic::complete_aligned::local_hajek::seed31001__attempt1",
+  "dataset": "traffic",
+  "error": "RuntimeError: traffic: target_group is not spatial×time (block0)",
+  "execution_status": "FAILED",
+  "finished_utc": "2026-08-10T14:54:00.420368+00:00",
+  "logical_run_id": "e3::traffic::complete_aligned::local_hajek::seed31001",
+  "method": "local_hajek",
+  "phase": 1,
+  "seed": 31001,
+  "traceback": "Traceback (most recent call last):\n  File \"D:\\Cursor\\raven.mcs\\src\\raven_mcs\\e3\\canary\\execute.py\", line 117, in run_logical\n    result = run_e3_real(\n             ^^^^^^^^^^^^\n  File \"D:\\Cursor\\raven.mcs\\src\\raven_mcs\\e3\\real_runner\\runner.py\", line 212, in run_e3_real\n    bundle = production_target_bundle(\n             ^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"D:\\Cursor\\raven.mcs\\src\\raven_mcs\\e3\\target_pair\\target_wiring.py\", line 146, in production_target_bundle\n    artifact = freeze_fixture_target(dataset.atomic_df, dataset=name)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"D:\\Cursor\\raven.mcs\\src\\raven_mcs\\e3\\target_pair\\target_wiring.py\", line 56, in freeze_fixture_target\n    return freeze_target_semantics(atomic, dataset=dataset)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"D:\\Cursor\\raven.mcs\\src\\raven_mcs\\e3\\semantic_alignment\\target_semantics.py\", line 43, in freeze_target_semantics\n    raise RuntimeError(f\"{dataset}: target_group is not spatial×time ({sample})\")\nRuntimeError: traffic: target_group is not spatial×time (block0)\n"
+}

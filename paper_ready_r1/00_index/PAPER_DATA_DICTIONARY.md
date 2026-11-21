@@ -1,0 +1,16 @@
+# Paper data dictionary
+
+- **RMSE_mu**: Deployment-target RMSE under target measure mu (empty value + status)
+- **RMSE_rho**: Arrival/usable-update risk under sampling measure rho (NOT_COMPARABLE on Traffic E3 cross-vintage)
+- **MAE_mu**: Mean absolute error under target measure (MISSING_NOT_RECORDED if absent)
+- **Tail_RMSE**: Tail-group RMSE (MISSING_NOT_RECORDED if absent)
+- **Delta_group**: Structural group disparity / mismatch (empty+status)
+- **Delta_c_s**: Structural stratum mismatch (empty+status)
+- **Delta_pair**: Paired target metric delta (MISSING_NOT_RECORDED)
+- **D_aligned**: Delta RMSE_mu - Delta RMSE_rho on Complete-aligned (n/a)
+- **ESS**: Effective sample size (MISSING_NOT_RECORDED)
+- **n_eff**: Effective update count / ESS proxy (MISSING_NOT_RECORDED)
+- **debt_norm**: Debt norm / normalized debt (MISSING_NOT_RECORDED)
+- **calibration_residual**: Instant calibration residual (MISSING_NOT_RECORDED)
+- **runtime**: Wall-clock runtime (MISSING_NOT_RECORDED)
+- **P2_residual**: P2 feasibility residual (optimality not reconstructable)

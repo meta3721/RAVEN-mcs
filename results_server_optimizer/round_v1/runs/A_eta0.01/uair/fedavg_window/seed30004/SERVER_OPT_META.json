@@ -1,0 +1,81 @@
+{
+  "arm": "fedavg_window",
+  "block": "uair",
+  "created_utc": "2026-10-08T08:45:14.372419+00:00",
+  "diag_first": [
+    {
+      "active": true,
+      "applied": true,
+      "g_norm": 1.8078236545115454,
+      "m_norm": 0.1807823654511545,
+      "opt_move_norm": 0.823118980164661,
+      "sgd_move_norm": 0.01807823654511545,
+      "t": 1,
+      "v_norm": 0.01577843192025785,
+      "window_id": 0
+    },
+    {
+      "active": true,
+      "applied": true,
+      "g_norm": 0.3680729714481677,
+      "m_norm": 0.1370682012402054,
+      "opt_move_norm": 0.5234828267228058,
+      "sgd_move_norm": 0.0036807297144816763,
+      "t": 2,
+      "v_norm": 0.016216936551796915,
+      "window_id": 1
+    },
+    {
+      "active": true,
+      "applied": true,
+      "g_norm": 0.165093835980417,
+      "m_norm": 0.12925688645402272,
+      "opt_move_norm": 0.4130458734801398,
+      "sgd_move_norm": 0.00165093835980417,
+      "t": 3,
+      "v_norm": 0.016081973601936264,
+      "window_id": 2
+    }
+  ],
+  "diag_last": [
+    {
+      "active": true,
+      "applied": true,
+      "g_norm": 0.27795588178755404,
+      "m_norm": 0.5074072098336636,
+      "opt_move_norm": 0.21761225379762542,
+      "sgd_move_norm": 0.00277955881787554,
+      "t": 72,
+      "v_norm": 0.2927022789238869,
+      "window_id": 77
+    },
+    {
+      "active": false,
+      "applied": false,
+      "window_id": 78
+    },
+    {
+      "active": true,
+      "applied": true,
+      "g_norm": 0.39160870891608235,
+      "m_norm": 0.43028559941438055,
+      "opt_move_norm": 0.192788998227211,
+      "sgd_move_norm": 0.003916087089160823,
+      "t": 73,
+      "v_norm": 0.2901947020019244,
+      "window_id": 79
+    }
+  ],
+  "local_steps": 2,
+  "n_windows_optimizer_applied": 73,
+  "runtime_seconds": 11.968032799999946,
+  "seed": 30004,
+  "server_opt": {
+    "beta1": 0.9,
+    "beta2": 0.99,
+    "eta_s": 0.01,
+    "mode": "adam",
+    "tau": 0.001
+  },
+  "tag": "A_eta0.01"
+}

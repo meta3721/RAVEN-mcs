@@ -1,0 +1,457 @@
+{
+  "na_emission": "null + applicability code; never numeric 0 for NOT_APPLICABLE",
+  "paper_table_render": "N/A",
+  "rows": [
+    {
+      "applicability": "APPLICABLE",
+      "method": "central_all",
+      "metric": "RMSE_mu"
+    },
+    {
+      "applicability": "APPLICABLE",
+      "method": "central_all",
+      "metric": "MAE_mu"
+    },
+    {
+      "applicability": "APPLICABLE",
+      "method": "central_all",
+      "metric": "Head_RMSE"
+    },
+    {
+      "applicability": "APPLICABLE",
+      "method": "central_all",
+      "metric": "Tail_RMSE"
+    },
+    {
+      "applicability": "APPLICABLE",
+      "method": "central_all",
+      "metric": "RMSE_rho"
+    },
+    {
+      "applicability": "NOT_APPLICABLE",
+      "method": "central_all",
+      "metric": "Delta_group"
+    },
+    {
+      "applicability": "NOT_APPLICABLE",
+      "method": "central_all",
+      "metric": "Delta_pair"
+    },
+    {
+      "applicability": "NOT_APPLICABLE",
+      "method": "central_all",
+      "metric": "delta_ref"
+    },
+    {
+      "applicability": "NOT_APPLICABLE",
+      "method": "central_all",
+      "metric": "Q_norm1_over_S"
+    },
+    {
+      "applicability": "NOT_APPLICABLE",
+      "method": "central_all",
+      "metric": "Q_norm2_over_S"
+    },
+    {
+      "applicability": "NOT_APPLICABLE",
+      "method": "central_all",
+      "metric": "ESS"
+    },
+    {
+      "applicability": "NOT_APPLICABLE",
+      "method": "central_all",
+      "metric": "clip_rate_stage1"
+    },
+    {
+      "applicability": "NOT_APPLICABLE",
+      "method": "central_all",
+      "metric": "clip_rate_stage2"
+    },
+    {
+      "applicability": "APPLICABLE",
+      "method": "central_all",
+      "metric": "solver_status"
+    },
+    {
+      "applicability": "APPLICABLE",
+      "method": "central_all",
+      "metric": "runtime_seconds"
+    },
+    {
+      "applicability": "APPLICABLE",
+      "method": "central_delivered",
+      "metric": "RMSE_mu"
+    },
+    {
+      "applicability": "APPLICABLE",
+      "method": "central_delivered",
+      "metric": "MAE_mu"
+    },
+    {
+      "applicability": "APPLICABLE",
+      "method": "central_delivered",
+      "metric": "Head_RMSE"
+    },
+    {
+      "applicability": "APPLICABLE",
+      "method": "central_delivered",
+      "metric": "Tail_RMSE"
+    },
+    {
+      "applicability": "APPLICABLE",
+      "method": "central_delivered",
+      "metric": "RMSE_rho"
+    },
+    {
+      "applicability": "NOT_APPLICABLE",
+      "method": "central_delivered",
+      "metric": "Delta_group"
+    },
+    {
+      "applicability": "NOT_APPLICABLE",
+      "method": "central_delivered",
+      "metric": "Delta_pair"
+    },
+    {
+      "applicability": "NOT_APPLICABLE",
+      "method": "central_delivered",
+      "metric": "delta_ref"
+    },
+    {
+      "applicability": "NOT_APPLICABLE",
+      "method": "central_delivered",
+      "metric": "Q_norm1_over_S"
+    },
+    {
+      "applicability": "NOT_APPLICABLE",
+      "method": "central_delivered",
+      "metric": "Q_norm2_over_S"
+    },
+    {
+      "applicability": "NOT_APPLICABLE",
+      "method": "central_delivered",
+      "metric": "ESS"
+    },
+    {
+      "applicability": "NOT_APPLICABLE",
+      "method": "central_delivered",
+      "metric": "clip_rate_stage1"
+    },
+    {
+      "applicability": "NOT_APPLICABLE",
+      "method": "central_delivered",
+      "metric": "clip_rate_stage2"
+    },
+    {
+      "applicability": "APPLICABLE",
+      "method": "central_delivered",
+      "metric": "solver_status"
+    },
+    {
+      "applicability": "APPLICABLE",
+      "method": "central_delivered",
+      "metric": "runtime_seconds"
+    },
+    {
+      "applicability": "APPLICABLE",
+      "method": "fedavg_window",
+      "metric": "RMSE_mu"
+    },
+    {
+      "applicability": "APPLICABLE",
+      "method": "fedavg_window",
+      "metric": "MAE_mu"
+    },
+    {
+      "applicability": "APPLICABLE",
+      "method": "fedavg_window",
+      "metric": "Head_RMSE"
+    },
+    {
+      "applicability": "APPLICABLE",
+      "method": "fedavg_window",
+      "metric": "Tail_RMSE"
+    },
+    {
+      "applicability": "APPLICABLE",
+      "method": "fedavg_window",
+      "metric": "RMSE_rho"
+    },
+    {
+      "applicability": "APPLICABLE",
+      "method": "fedavg_window",
+      "metric": "Delta_group"
+    },
+    {
+      "applicability": "APPLICABLE",
+      "method": "fedavg_window",
+      "metric": "Delta_pair"
+    },
+    {
+      "applicability": "APPLICABLE",
+      "method": "fedavg_window",
+      "metric": "delta_ref"
+    },
+    {
+      "applicability": "APPLICABLE",
+      "method": "fedavg_window",
+      "metric": "Q_norm1_over_S"
+    },
+    {
+      "applicability": "APPLICABLE",
+      "method": "fedavg_window",
+      "metric": "Q_norm2_over_S"
+    },
+    {
+      "applicability": "APPLICABLE",
+      "method": "fedavg_window",
+      "metric": "ESS"
+    },
+    {
+      "applicability": "APPLICABLE",
+      "method": "fedavg_window",
+      "metric": "clip_rate_stage1"
+    },
+    {
+      "applicability": "APPLICABLE",
+      "method": "fedavg_window",
+      "metric": "clip_rate_stage2"
+    },
+    {
+      "applicability": "APPLICABLE",
+      "method": "fedavg_window",
+      "metric": "solver_status"
+    },
+    {
+      "applicability": "APPLICABLE",
+      "method": "fedavg_window",
+      "metric": "runtime_seconds"
+    },
+    {
+      "applicability": "APPLICABLE",
+      "method": "raven",
+      "metric": "RMSE_mu"
+    },
+    {
+      "applicability": "APPLICABLE",
+      "method": "raven",
+      "metric": "MAE_mu"
+    },
+    {
+      "applicability": "APPLICABLE",
+      "method": "raven",
+      "metric": "Head_RMSE"
+    },
+    {
+      "applicability": "APPLICABLE",
+      "method": "raven",
+      "metric": "Tail_RMSE"
+    },
+    {
+      "applicability": "APPLICABLE",
+      "method": "raven",
+      "metric": "RMSE_rho"
+    },
+    {
+      "applicability": "APPLICABLE",
+      "method": "raven",
+      "metric": "Delta_group"
+    },
+    {
+      "applicability": "APPLICABLE",
+      "method": "raven",
+      "metric": "Delta_pair"
+    },
+    {
+      "applicability": "APPLICABLE",
+      "method": "raven",
+      "metric": "delta_ref"
+    },
+    {
+      "applicability": "APPLICABLE",
+      "method": "raven",
+      "metric": "Q_norm1_over_S"
+    },
+    {
+      "applicability": "APPLICABLE",
+      "method": "raven",
+      "metric": "Q_norm2_over_S"
+    },
+    {
+      "applicability": "APPLICABLE",
+      "method": "raven",
+      "metric": "ESS"
+    },
+    {
+      "applicability": "APPLICABLE",
+      "method": "raven",
+      "metric": "clip_rate_stage1"
+    },
+    {
+      "applicability": "APPLICABLE",
+      "method": "raven",
+      "metric": "clip_rate_stage2"
+    },
+    {
+      "applicability": "APPLICABLE",
+      "method": "raven",
+      "metric": "solver_status"
+    },
+    {
+      "applicability": "APPLICABLE",
+      "method": "raven",
+      "metric": "runtime_seconds"
+    },
+    {
+      "applicability": "APPLICABLE",
+      "method": "raven_simoracle",
+      "metric": "RMSE_mu"
+    },
+    {
+      "applicability": "APPLICABLE",
+      "method": "raven_simoracle",
+      "metric": "MAE_mu"
+    },
+    {
+      "applicability": "APPLICABLE",
+      "method": "raven_simoracle",
+      "metric": "Head_RMSE"
+    },
+    {
+      "applicability": "APPLICABLE",
+      "method": "raven_simoracle",
+      "metric": "Tail_RMSE"
+    },
+    {
+      "applicability": "APPLICABLE",
+      "method": "raven_simoracle",
+      "metric": "RMSE_rho"
+    },
+    {
+      "applicability": "APPLICABLE",
+      "method": "raven_simoracle",
+      "metric": "Delta_group"
+    },
+    {
+      "applicability": "APPLICABLE",
+      "method": "raven_simoracle",
+      "metric": "Delta_pair"
+    },
+    {
+      "applicability": "APPLICABLE",
+      "method": "raven_simoracle",
+      "metric": "delta_ref"
+    },
+    {
+      "applicability": "APPLICABLE",
+      "method": "raven_simoracle",
+      "metric": "Q_norm1_over_S"
+    },
+    {
+      "applicability": "APPLICABLE",
+      "method": "raven_simoracle",
+      "metric": "Q_norm2_over_S"
+    },
+    {
+      "applicability": "APPLICABLE",
+      "method": "raven_simoracle",
+      "metric": "ESS"
+    },
+    {
+      "applicability": "APPLICABLE",
+      "method": "raven_simoracle",
+      "metric": "clip_rate_stage1"
+    },
+    {
+      "applicability": "APPLICABLE",
+      "method": "raven_simoracle",
+      "metric": "clip_rate_stage2"
+    },
+    {
+      "applicability": "APPLICABLE",
+      "method": "raven_simoracle",
+      "metric": "solver_status"
+    },
+    {
+      "applicability": "APPLICABLE",
+      "method": "raven_simoracle",
+      "metric": "runtime_seconds"
+    },
+    {
+      "applicability": "APPLICABLE",
+      "method": "twostage_hajek",
+      "metric": "RMSE_mu"
+    },
+    {
+      "applicability": "APPLICABLE",
+      "method": "twostage_hajek",
+      "metric": "MAE_mu"
+    },
+    {
+      "applicability": "APPLICABLE",
+      "method": "twostage_hajek",
+      "metric": "Head_RMSE"
+    },
+    {
+      "applicability": "APPLICABLE",
+      "method": "twostage_hajek",
+      "metric": "Tail_RMSE"
+    },
+    {
+      "applicability": "APPLICABLE",
+      "method": "twostage_hajek",
+      "metric": "RMSE_rho"
+    },
+    {
+      "applicability": "APPLICABLE",
+      "method": "twostage_hajek",
+      "metric": "Delta_group"
+    },
+    {
+      "applicability": "APPLICABLE",
+      "method": "twostage_hajek",
+      "metric": "Delta_pair"
+    },
+    {
+      "applicability": "APPLICABLE",
+      "method": "twostage_hajek",
+      "metric": "delta_ref"
+    },
+    {
+      "applicability": "APPLICABLE",
+      "method": "twostage_hajek",
+      "metric": "Q_norm1_over_S"
+    },
+    {
+      "applicability": "APPLICABLE",
+      "method": "twostage_hajek",
+      "metric": "Q_norm2_over_S"
+    },
+    {
+      "applicability": "APPLICABLE",
+      "method": "twostage_hajek",
+      "metric": "ESS"
+    },
+    {
+      "applicability": "APPLICABLE",
+      "method": "twostage_hajek",
+      "metric": "clip_rate_stage1"
+    },
+    {
+      "applicability": "APPLICABLE",
+      "method": "twostage_hajek",
+      "metric": "clip_rate_stage2"
+    },
+    {
+      "applicability": "APPLICABLE",
+      "method": "twostage_hajek",
+      "metric": "solver_status"
+    },
+    {
+      "applicability": "APPLICABLE",
+      "method": "twostage_hajek",
+      "metric": "runtime_seconds"
+    }
+  ],
+  "schema_version": "E3_METRIC_APPLICABILITY_MATRIX"
+}

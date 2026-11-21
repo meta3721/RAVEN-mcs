@@ -1,0 +1,295 @@
+{
+  "design_seeds": [
+    28201,
+    28202,
+    28203
+  ],
+  "kappa_obs": 0.5,
+  "kappa_opp": 0.5,
+  "kappa_q": 0.5,
+  "no_per_seed_intercept_recalibration": true,
+  "probability_bounds": {
+    "obs": [
+      0.05,
+      0.95
+    ],
+    "opp": [
+      0.05,
+      0.95
+    ],
+    "q": [
+      0.05,
+      0.95
+    ]
+  },
+  "protocol": "E2_TRAFFIC_PROFILE_S1_FINAL_FREEZE_R1",
+  "rate_targets": {
+    "observation": 0.2,
+    "opportunity": 0.55,
+    "usable": 0.6
+  },
+  "scenarios": {
+    "balanced": {
+      "a_obs": -1.386294361122964,
+      "a_opp": 0.20067069546030325,
+      "a_q": 0.4054651081105476,
+      "d_opp": 0,
+      "d_p": 0,
+      "d_q": 0,
+      "direction_status": "PASS",
+      "display_name": "Balanced",
+      "exact_expected_signed": {
+        "arr": 0.0,
+        "obs": 0.0,
+        "opp": 0.0
+      },
+      "intercept_obs": -1.386294361122964,
+      "intercept_opp": 0.20067069546030325,
+      "intercept_q": 0.4054651081105476,
+      "intercept_solve_count": 1,
+      "kappa_obs": 0.5,
+      "kappa_opp": 0.5,
+      "kappa_q": 0.5,
+      "label": "S1",
+      "pooled_hard_signed": {
+        "arr": 0.005667383232362655,
+        "obs": -0.00465766185374944,
+        "opp": -0.003425621773815113
+      },
+      "probability_bounds": {
+        "obs": [
+          0.05,
+          0.95
+        ],
+        "opp": [
+          0.05,
+          0.95
+        ],
+        "q": [
+          0.05,
+          0.95
+        ]
+      },
+      "scenario_id": "balanced"
+    },
+    "complete_aligned": {
+      "a_obs": -1.5668684648176168,
+      "a_opp": 0.21342481271631186,
+      "a_q": 0.19318426892596108,
+      "d_opp": -1,
+      "d_p": -1,
+      "d_q": -1,
+      "direction_status": "PASS",
+      "display_name": "Complete-aligned",
+      "exact_expected_signed": {
+        "arr": 0.6973412301017547,
+        "obs": 0.5619608252150979,
+        "opp": 0.22028632018950411
+      },
+      "intercept_obs": -1.5668684648176168,
+      "intercept_opp": 0.21342481271631186,
+      "intercept_q": 0.19318426892596108,
+      "intercept_solve_count": 1,
+      "kappa_obs": 0.5,
+      "kappa_opp": 0.5,
+      "kappa_q": 0.5,
+      "label": "S5",
+      "pooled_hard_signed": {
+        "arr": 0.7038167938931297,
+        "obs": 0.5627700572229359,
+        "opp": 0.2186653475608319
+      },
+      "probability_bounds": {
+        "obs": [
+          0.05,
+          0.95
+        ],
+        "opp": [
+          0.05,
+          0.95
+        ],
+        "q": [
+          0.05,
+          0.95
+        ]
+      },
+      "scenario_id": "complete_aligned"
+    },
+    "complete_counteracting": {
+      "a_obs": -1.5668684648176168,
+      "a_opp": 0.21342481271631186,
+      "a_q": 0.656861230368122,
+      "d_opp": -1,
+      "d_p": -1,
+      "d_q": 1,
+      "direction_status": "PASS",
+      "display_name": "Complete-counteracting",
+      "exact_expected_signed": {
+        "arr": 0.43294657914805923,
+        "obs": 0.5619608252150979,
+        "opp": 0.22028632018950411
+      },
+      "intercept_obs": -1.5668684648176168,
+      "intercept_opp": 0.21342481271631186,
+      "intercept_q": 0.656861230368122,
+      "intercept_solve_count": 1,
+      "kappa_obs": 0.5,
+      "kappa_opp": 0.5,
+      "kappa_q": 0.5,
+      "label": "S6",
+      "pooled_hard_signed": {
+        "arr": 0.4331235247836349,
+        "obs": 0.5627700572229359,
+        "opp": 0.2186653475608319
+      },
+      "probability_bounds": {
+        "obs": [
+          0.05,
+          0.95
+        ],
+        "opp": [
+          0.05,
+          0.95
+        ],
+        "q": [
+          0.05,
+          0.95
+        ]
+      },
+      "scenario_id": "complete_counteracting"
+    },
+    "observation_only": {
+      "a_obs": -1.4611196666578508,
+      "a_opp": 0.20067069546030325,
+      "a_q": 0.4054651081105476,
+      "d_opp": 0,
+      "d_p": -1,
+      "d_q": 0,
+      "direction_status": "PASS",
+      "display_name": "Observation-only",
+      "exact_expected_signed": {
+        "arr": 0.38327037485301163,
+        "obs": 0.38327037485301174,
+        "opp": 0.0
+      },
+      "intercept_obs": -1.4611196666578508,
+      "intercept_opp": 0.20067069546030325,
+      "intercept_q": 0.4054651081105476,
+      "intercept_solve_count": 1,
+      "kappa_obs": 0.5,
+      "kappa_opp": 0.5,
+      "kappa_q": 0.5,
+      "label": "S3",
+      "pooled_hard_signed": {
+        "arr": 0.3870967741935485,
+        "obs": 0.3803967327887982,
+        "opp": -0.003425621773815113
+      },
+      "probability_bounds": {
+        "obs": [
+          0.05,
+          0.95
+        ],
+        "opp": [
+          0.05,
+          0.95
+        ],
+        "q": [
+          0.05,
+          0.95
+        ]
+      },
+      "scenario_id": "observation_only"
+    },
+    "opportunity_only": {
+      "a_obs": -1.386294361122964,
+      "a_opp": 0.21342481271631186,
+      "a_q": 0.4054651081105476,
+      "d_opp": -1,
+      "d_p": 0,
+      "d_q": 0,
+      "direction_status": "PASS",
+      "display_name": "Opportunity-only",
+      "exact_expected_signed": {
+        "arr": 0.22028632018950423,
+        "obs": 0.22028632018950367,
+        "opp": 0.22028632018950411
+      },
+      "intercept_obs": -1.386294361122964,
+      "intercept_opp": 0.21342481271631186,
+      "intercept_q": 0.4054651081105476,
+      "intercept_solve_count": 1,
+      "kappa_obs": 0.5,
+      "kappa_opp": 0.5,
+      "kappa_q": 0.5,
+      "label": "S2",
+      "pooled_hard_signed": {
+        "arr": 0.22500000000000003,
+        "obs": 0.2186915887850467,
+        "opp": 0.2186653475608319
+      },
+      "probability_bounds": {
+        "obs": [
+          0.05,
+          0.95
+        ],
+        "opp": [
+          0.05,
+          0.95
+        ],
+        "q": [
+          0.05,
+          0.95
+        ]
+      },
+      "scenario_id": "opportunity_only"
+    },
+    "usable_only": {
+      "a_obs": -1.386294361122964,
+      "a_opp": 0.20067069546030325,
+      "a_q": 0.4309227386556813,
+      "d_opp": 0,
+      "d_p": 0,
+      "d_q": -1,
+      "direction_status": "PASS",
+      "display_name": "Usable-only",
+      "exact_expected_signed": {
+        "arr": 0.19543741943002801,
+        "obs": 0.0,
+        "opp": 0.0
+      },
+      "intercept_obs": -1.386294361122964,
+      "intercept_opp": 0.20067069546030325,
+      "intercept_q": 0.4309227386556813,
+      "intercept_solve_count": 1,
+      "kappa_obs": 0.5,
+      "kappa_opp": 0.5,
+      "kappa_q": 0.5,
+      "label": "S4",
+      "pooled_hard_signed": {
+        "arr": 0.20252415697101167,
+        "obs": -0.00465766185374944,
+        "opp": -0.003425621773815113
+      },
+      "probability_bounds": {
+        "obs": [
+          0.05,
+          0.95
+        ],
+        "opp": [
+          0.05,
+          0.95
+        ],
+        "q": [
+          0.05,
+          0.95
+        ]
+      },
+      "scenario_id": "usable_only"
+    }
+  },
+  "selected_strength": "PROFILE-S1",
+  "selection_reason": "deterministic_support_fallback",
+  "status": "CANDIDATE",
+  "strength_grid_search_count": 0
+}

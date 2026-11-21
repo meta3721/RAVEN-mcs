@@ -1,0 +1,32 @@
+{
+  "E0_role": "structural_zero",
+  "R0_role": "outside_R",
+  "SGD": 0,
+  "TRAIN_reader_only": true,
+  "actual_tensor_submission_consumed": true,
+  "authorization": {
+    "max_steps": 5000,
+    "method": "reachability_stop/conditional-bundle-RE-interval-v3",
+    "role": "development_activation_cost_only",
+    "seed": 44001,
+    "source": "user_20261013_RE_interval_v3_single_development"
+  },
+  "backend_type": "raven_mcs_re_interval.training_backend",
+  "diagnostic_prior_production_rejected": true,
+  "intercept_at_real_trainer_before_SGD": [
+    {
+      "steps": 1,
+      "weights": [
+        1.0
+      ]
+    }
+  ],
+  "new_controller_type": "raven_mcs_re_interval.interval_isolation",
+  "new_runner_type": "raven_mcs_re_interval.lifecycle",
+  "old_source_closure_unchanged": true,
+  "original_43001_guard_preserved": true,
+  "real_trainer_type": "raven_mcs.training.client",
+  "save_restore_identical": true,
+  "status": "PASS",
+  "synthetic_or_real_replay": 0
+}

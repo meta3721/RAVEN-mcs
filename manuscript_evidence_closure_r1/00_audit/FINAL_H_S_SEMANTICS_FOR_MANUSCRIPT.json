@@ -1,0 +1,19 @@
+{
+  "NSW-Traffic": {
+    "e3_performance": "NOT_COMPARABLE cross-vintage; do not use as homogeneous E3 block",
+    "h(i)": "repeatable UTC time-of-day 4-block; train-split mass only",
+    "s(i)": "frozen real_region_id × time_block × weekday_flag (E2 public-target 4 regions)"
+  },
+  "SensorScope": {
+    "h(i)": "four UTC time-of-day groups H1:00–06, H2:06–12, H3:12–18, H4:18–24; train-split UTC block mass; no test labels",
+    "s(i)": "spatial_id × four time blocks × weekday/weekend (processed opportunity_stratum)"
+  },
+  "T-Drive": "protocol-only reserve; not current manuscript evidence",
+  "U-Air": {
+    "h(i)": "four UTC time-of-day groups H1:00–06, H2:06–12, H3:12–18, H4:18–24; train-split UTC block mass; no test labels",
+    "s(i)": "spatial_id × four time blocks × weekday/weekend (processed opportunity_stratum)"
+  },
+  "authority": "paper_ready_r2 TABLE_DATASET_SUMMARY_R2 + dataset metadata",
+  "forbidden": "do not describe SensorScope/U-Air h(i) as spatial × time",
+  "h_equals_s": false
+}

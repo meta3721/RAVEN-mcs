@@ -1,0 +1,50 @@
+{
+  "charged_CPU": 34.78125,
+  "CPU_limit": 120,
+  "measured_CPU": 4.78125,
+  "conservative_read_edit_delivery_CPU": 30,
+  "actual_unmetered_CPU": "UNKNOWN",
+  "historical_actual_gap": "UNKNOWN",
+  "prior_charged_CPU": 4695.265625,
+  "cumulative_charged_CPU": 4730.046875,
+  "nominal_5hour_remaining_CPU": 13269.953125,
+  "wall_invocations": 5.7422200000000885,
+  "charges": [
+    {
+      "label": "charge_cold_K43_once",
+      "charged_CPU": 2.671875,
+      "job_CPU": 2.515625,
+      "driver_CPU": 0.15625,
+      "wall": 3.3982324999997218,
+      "exit": 0,
+      "audit": true,
+      "limit_reason": null
+    },
+    {
+      "label": "charge_delivery_audit",
+      "charged_CPU": 1.21875,
+      "job_CPU": 1.078125,
+      "driver_CPU": 0.140625,
+      "wall": 1.5270309999978053,
+      "exit": 0,
+      "audit": true,
+      "limit_reason": null
+    },
+    {
+      "label": "charge_freeze_input",
+      "charged_CPU": 0.890625,
+      "job_CPU": 0.75,
+      "driver_CPU": 0.140625,
+      "wall": 0.8169565000025614,
+      "exit": 0,
+      "audit": true,
+      "limit_reason": null
+    }
+  ],
+  "SGD": 0,
+  "GPU": 0,
+  "q_fit": 0,
+  "real_random_trajectories": 0,
+  "control_replay": 0,
+  "status": "WAITING_USER_REVIEW"
+}

@@ -1,0 +1,488 @@
+{
+  "gate": "G3",
+  "note": "original frozen bound; verdict preserved for audit and NOT used as the stop condition once GATE_AMENDMENT.md is in force",
+  "pass": false,
+  "rows": [
+    {
+      "active_clients_identical": true,
+      "dataset": "sensorscope",
+      "pass": true,
+      "rel_diff": {
+        "Delta_c_s": 3.812576850129302e-09,
+        "Delta_group": 9.816213152810462e-11,
+        "RMSE_mu": 5.308101744173269e-08,
+        "Tail_RMSE": 5.0916435602195884e-08
+      },
+      "seed": 30001
+    },
+    {
+      "active_clients_identical": true,
+      "dataset": "sensorscope",
+      "pass": true,
+      "rel_diff": {
+        "Delta_c_s": 8.076698862800937e-09,
+        "Delta_group": 1.8606977132970195e-08,
+        "RMSE_mu": 2.2792756698657497e-08,
+        "Tail_RMSE": 2.1799043290348097e-08
+      },
+      "seed": 30002
+    },
+    {
+      "active_clients_identical": true,
+      "dataset": "sensorscope",
+      "pass": false,
+      "rel_diff": {
+        "Delta_c_s": 1.6279753193740966e-15,
+        "Delta_group": 1.0228010113186186e-06,
+        "RMSE_mu": 6.186543746025443e-08,
+        "Tail_RMSE": 5.8094987207845286e-08
+      },
+      "seed": 30003
+    },
+    {
+      "active_clients_identical": true,
+      "dataset": "sensorscope",
+      "pass": true,
+      "rel_diff": {
+        "Delta_c_s": 3.4755968432840704e-16,
+        "Delta_group": 7.989239381467781e-09,
+        "RMSE_mu": 8.130559273388558e-10,
+        "Tail_RMSE": 7.977939964203665e-10
+      },
+      "seed": 30004
+    },
+    {
+      "active_clients_identical": true,
+      "dataset": "sensorscope",
+      "pass": true,
+      "rel_diff": {
+        "Delta_c_s": 4.394551055922013e-09,
+        "Delta_group": 1.0588319105743727e-08,
+        "RMSE_mu": 1.7951164005152566e-09,
+        "Tail_RMSE": 1.7479583764212228e-09
+      },
+      "seed": 30005
+    },
+    {
+      "active_clients_identical": true,
+      "dataset": "sensorscope",
+      "pass": true,
+      "rel_diff": {
+        "Delta_c_s": 2.832562206546313e-08,
+        "Delta_group": 5.784794877899976e-09,
+        "RMSE_mu": 9.968642936022951e-10,
+        "Tail_RMSE": 9.331316987114644e-10
+      },
+      "seed": 30006
+    },
+    {
+      "active_clients_identical": true,
+      "dataset": "sensorscope",
+      "pass": true,
+      "rel_diff": {
+        "Delta_c_s": 6.6502803839234656e-15,
+        "Delta_group": 2.222052524659324e-07,
+        "RMSE_mu": 7.848675695669897e-08,
+        "Tail_RMSE": 7.519378331884584e-08
+      },
+      "seed": 30007
+    },
+    {
+      "active_clients_identical": true,
+      "dataset": "sensorscope",
+      "pass": true,
+      "rel_diff": {
+        "Delta_c_s": 6.591968519288805e-09,
+        "Delta_group": 3.9344951177637e-09,
+        "RMSE_mu": 1.3514737969768512e-09,
+        "Tail_RMSE": 1.3084220093519604e-09
+      },
+      "seed": 30008
+    },
+    {
+      "active_clients_identical": true,
+      "dataset": "sensorscope",
+      "pass": true,
+      "rel_diff": {
+        "Delta_c_s": 1.7065353892860024e-09,
+        "Delta_group": 1.2147697688624394e-08,
+        "RMSE_mu": 1.8560801190472906e-09,
+        "Tail_RMSE": 1.7781745929053725e-09
+      },
+      "seed": 30009
+    },
+    {
+      "active_clients_identical": true,
+      "dataset": "sensorscope",
+      "pass": true,
+      "rel_diff": {
+        "Delta_c_s": 2.9781923731578586e-14,
+        "Delta_group": 9.004101355385163e-09,
+        "RMSE_mu": 3.7441212612749025e-10,
+        "Tail_RMSE": 3.73672540077726e-10
+      },
+      "seed": 30010
+    },
+    {
+      "active_clients_identical": true,
+      "dataset": "sensorscope",
+      "pass": true,
+      "rel_diff": {
+        "Delta_c_s": 1.5539750515494938e-15,
+        "Delta_group": 4.190371257272112e-09,
+        "RMSE_mu": 2.717115318658036e-09,
+        "Tail_RMSE": 2.5602654676461684e-09
+      },
+      "seed": 30011
+    },
+    {
+      "active_clients_identical": true,
+      "dataset": "sensorscope",
+      "pass": true,
+      "rel_diff": {
+        "Delta_c_s": 1.3899631022734394e-15,
+        "Delta_group": 2.5336580218318783e-09,
+        "RMSE_mu": 2.0090283267193325e-09,
+        "Tail_RMSE": 1.951848134746951e-09
+      },
+      "seed": 30012
+    },
+    {
+      "active_clients_identical": true,
+      "dataset": "sensorscope",
+      "pass": true,
+      "rel_diff": {
+        "Delta_c_s": 1.2381939436732107e-15,
+        "Delta_group": 5.830513120870086e-09,
+        "RMSE_mu": 1.5016730597553847e-09,
+        "Tail_RMSE": 1.3822955808254717e-09
+      },
+      "seed": 30013
+    },
+    {
+      "active_clients_identical": true,
+      "dataset": "sensorscope",
+      "pass": true,
+      "rel_diff": {
+        "Delta_c_s": 1.7276163948538411e-15,
+        "Delta_group": 1.5237451330244154e-08,
+        "RMSE_mu": 7.886108068783179e-10,
+        "Tail_RMSE": 7.624135330489589e-10
+      },
+      "seed": 30014
+    },
+    {
+      "active_clients_identical": true,
+      "dataset": "sensorscope",
+      "pass": true,
+      "rel_diff": {
+        "Delta_c_s": 1.5845145479711444e-15,
+        "Delta_group": 4.605086104653864e-08,
+        "RMSE_mu": 2.496244112824436e-10,
+        "Tail_RMSE": 2.9343067629815316e-10
+      },
+      "seed": 30015
+    },
+    {
+      "active_clients_identical": true,
+      "dataset": "sensorscope",
+      "pass": true,
+      "rel_diff": {
+        "Delta_c_s": 1.4006249503681547e-12,
+        "Delta_group": 1.3015100336792846e-08,
+        "RMSE_mu": 8.786542152466287e-10,
+        "Tail_RMSE": 8.291967364775453e-10
+      },
+      "seed": 30016
+    },
+    {
+      "active_clients_identical": true,
+      "dataset": "sensorscope",
+      "pass": true,
+      "rel_diff": {
+        "Delta_c_s": 1.6036551482136436e-15,
+        "Delta_group": 1.604651374273518e-08,
+        "RMSE_mu": 1.0571252999972988e-09,
+        "Tail_RMSE": 9.666854789842458e-10
+      },
+      "seed": 30017
+    },
+    {
+      "active_clients_identical": true,
+      "dataset": "sensorscope",
+      "pass": true,
+      "rel_diff": {
+        "Delta_c_s": 1.8624309094460573e-08,
+        "Delta_group": 1.59950973816062e-09,
+        "RMSE_mu": 5.634673044962456e-09,
+        "Tail_RMSE": 5.351603581445479e-09
+      },
+      "seed": 30018
+    },
+    {
+      "active_clients_identical": true,
+      "dataset": "sensorscope",
+      "pass": false,
+      "rel_diff": {
+        "Delta_c_s": 2.364700014399697e-09,
+        "Delta_group": 1.5160179425244538e-06,
+        "RMSE_mu": 1.2289632687306985e-07,
+        "Tail_RMSE": 1.1697322246120877e-07
+      },
+      "seed": 30019
+    },
+    {
+      "active_clients_identical": true,
+      "dataset": "sensorscope",
+      "pass": true,
+      "rel_diff": {
+        "Delta_c_s": 1.458106803498083e-09,
+        "Delta_group": 1.163943813845125e-08,
+        "RMSE_mu": 1.095915751630165e-10,
+        "Tail_RMSE": 1.0455504728835525e-10
+      },
+      "seed": 30020
+    },
+    {
+      "active_clients_identical": true,
+      "dataset": "uair",
+      "pass": true,
+      "rel_diff": {
+        "Delta_c_s": 6.876003585824027e-09,
+        "Delta_group": 3.97244099954676e-09,
+        "RMSE_mu": 3.1468139914673226e-10,
+        "Tail_RMSE": 3.9939316242065676e-10
+      },
+      "seed": 30001
+    },
+    {
+      "active_clients_identical": true,
+      "dataset": "uair",
+      "pass": false,
+      "rel_diff": {
+        "Delta_c_s": 1.3284899301352773e-09,
+        "Delta_group": 8.409806838544595e-09,
+        "RMSE_mu": 2.1311588006458724e-06,
+        "Tail_RMSE": 2.2291126039915512e-06
+      },
+      "seed": 30002
+    },
+    {
+      "active_clients_identical": true,
+      "dataset": "uair",
+      "pass": true,
+      "rel_diff": {
+        "Delta_c_s": 8.526877923447887e-09,
+        "Delta_group": 1.0716082333060212e-08,
+        "RMSE_mu": 8.271136685321515e-10,
+        "Tail_RMSE": 7.292872465036233e-10
+      },
+      "seed": 30003
+    },
+    {
+      "active_clients_identical": true,
+      "dataset": "uair",
+      "pass": true,
+      "rel_diff": {
+        "Delta_c_s": 4.400746626471556e-09,
+        "Delta_group": 1.9302767139048303e-09,
+        "RMSE_mu": 5.4126631663625296e-09,
+        "Tail_RMSE": 5.741707770844635e-09
+      },
+      "seed": 30004
+    },
+    {
+      "active_clients_identical": true,
+      "dataset": "uair",
+      "pass": true,
+      "rel_diff": {
+        "Delta_c_s": 9.889648316775704e-09,
+        "Delta_group": 1.927455332789979e-08,
+        "RMSE_mu": 1.082837803591915e-08,
+        "Tail_RMSE": 1.155759611216757e-08
+      },
+      "seed": 30005
+    },
+    {
+      "active_clients_identical": true,
+      "dataset": "uair",
+      "pass": true,
+      "rel_diff": {
+        "Delta_c_s": 4.131750120015777e-09,
+        "Delta_group": 2.129119328489389e-09,
+        "RMSE_mu": 1.8361171438437095e-09,
+        "Tail_RMSE": 1.8710966367904828e-09
+      },
+      "seed": 30006
+    },
+    {
+      "active_clients_identical": true,
+      "dataset": "uair",
+      "pass": true,
+      "rel_diff": {
+        "Delta_c_s": 1.8277345236270601e-09,
+        "Delta_group": 6.822936645772866e-09,
+        "RMSE_mu": 5.678488896705268e-09,
+        "Tail_RMSE": 6.163867166240928e-09
+      },
+      "seed": 30007
+    },
+    {
+      "active_clients_identical": true,
+      "dataset": "uair",
+      "pass": true,
+      "rel_diff": {
+        "Delta_c_s": 9.739036873264514e-09,
+        "Delta_group": 1.5704711810619654e-08,
+        "RMSE_mu": 1.1399939019048126e-08,
+        "Tail_RMSE": 1.1569015693084788e-08
+      },
+      "seed": 30008
+    },
+    {
+      "active_clients_identical": true,
+      "dataset": "uair",
+      "pass": true,
+      "rel_diff": {
+        "Delta_c_s": 9.507958125940084e-10,
+        "Delta_group": 2.245805517694371e-09,
+        "RMSE_mu": 3.5147342660757966e-09,
+        "Tail_RMSE": 3.4848267679027544e-09
+      },
+      "seed": 30009
+    },
+    {
+      "active_clients_identical": true,
+      "dataset": "uair",
+      "pass": true,
+      "rel_diff": {
+        "Delta_c_s": 1.665383241848688e-10,
+        "Delta_group": 5.543244149436217e-11,
+        "RMSE_mu": 2.37223523896443e-09,
+        "Tail_RMSE": 2.2951151965826124e-09
+      },
+      "seed": 30010
+    },
+    {
+      "active_clients_identical": true,
+      "dataset": "uair",
+      "pass": true,
+      "rel_diff": {
+        "Delta_c_s": 4.92925828112055e-09,
+        "Delta_group": 1.6866409541111604e-09,
+        "RMSE_mu": 4.684234119773644e-09,
+        "Tail_RMSE": 4.592130593270617e-09
+      },
+      "seed": 30011
+    },
+    {
+      "active_clients_identical": true,
+      "dataset": "uair",
+      "pass": true,
+      "rel_diff": {
+        "Delta_c_s": 7.886998189834002e-10,
+        "Delta_group": 2.7578988665213755e-10,
+        "RMSE_mu": 8.095018023358319e-10,
+        "Tail_RMSE": 7.260548415490799e-10
+      },
+      "seed": 30012
+    },
+    {
+      "active_clients_identical": true,
+      "dataset": "uair",
+      "pass": true,
+      "rel_diff": {
+        "Delta_c_s": 1.4947878958542942e-08,
+        "Delta_group": 3.223193412855318e-08,
+        "RMSE_mu": 8.765187064953029e-10,
+        "Tail_RMSE": 8.961278626288791e-10
+      },
+      "seed": 30013
+    },
+    {
+      "active_clients_identical": true,
+      "dataset": "uair",
+      "pass": true,
+      "rel_diff": {
+        "Delta_c_s": 3.888776458547755e-09,
+        "Delta_group": 7.26028684653144e-09,
+        "RMSE_mu": 8.265091796984873e-09,
+        "Tail_RMSE": 8.670694721987035e-09
+      },
+      "seed": 30014
+    },
+    {
+      "active_clients_identical": true,
+      "dataset": "uair",
+      "pass": true,
+      "rel_diff": {
+        "Delta_c_s": 2.2358106642777327e-09,
+        "Delta_group": 1.9343569300960556e-08,
+        "RMSE_mu": 1.0988558362033432e-08,
+        "Tail_RMSE": 1.1504780397905245e-08
+      },
+      "seed": 30015
+    },
+    {
+      "active_clients_identical": true,
+      "dataset": "uair",
+      "pass": true,
+      "rel_diff": {
+        "Delta_c_s": 2.0020652440967347e-08,
+        "Delta_group": 1.9402966740494206e-08,
+        "RMSE_mu": 2.0578974144272343e-08,
+        "Tail_RMSE": 2.1417981269116493e-08
+      },
+      "seed": 30016
+    },
+    {
+      "active_clients_identical": true,
+      "dataset": "uair",
+      "pass": true,
+      "rel_diff": {
+        "Delta_c_s": 3.3145248604203442e-09,
+        "Delta_group": 1.0476267254193818e-08,
+        "RMSE_mu": 9.493003595511255e-09,
+        "Tail_RMSE": 1.0070004905926384e-08
+      },
+      "seed": 30017
+    },
+    {
+      "active_clients_identical": true,
+      "dataset": "uair",
+      "pass": true,
+      "rel_diff": {
+        "Delta_c_s": 1.3304876985490477e-08,
+        "Delta_group": 1.595461527191322e-08,
+        "RMSE_mu": 1.013510425832676e-08,
+        "Tail_RMSE": 1.0879858465760702e-08
+      },
+      "seed": 30018
+    },
+    {
+      "active_clients_identical": true,
+      "dataset": "uair",
+      "pass": true,
+      "rel_diff": {
+        "Delta_c_s": 8.888125063645664e-09,
+        "Delta_group": 1.3576860370270856e-08,
+        "RMSE_mu": 1.4074552723677162e-08,
+        "Tail_RMSE": 1.4479567700869495e-08
+      },
+      "seed": 30019
+    },
+    {
+      "active_clients_identical": true,
+      "dataset": "uair",
+      "pass": true,
+      "rel_diff": {
+        "Delta_c_s": 3.606635209059196e-09,
+        "Delta_group": 8.418956955755914e-09,
+        "RMSE_mu": 1.2639795156960276e-09,
+        "Tail_RMSE": 1.2437680553106949e-09
+      },
+      "seed": 30020
+    }
+  ],
+  "tol_rel": 1e-06
+}

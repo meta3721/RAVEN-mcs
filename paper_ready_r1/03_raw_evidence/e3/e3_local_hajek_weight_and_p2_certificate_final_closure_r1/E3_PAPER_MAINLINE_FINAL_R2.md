@@ -1,0 +1,3 @@
+# E3 final paper mainline
+
+STOP_E3_EXPERIMENTS_PROCEED_TO_PAPER_WRITING

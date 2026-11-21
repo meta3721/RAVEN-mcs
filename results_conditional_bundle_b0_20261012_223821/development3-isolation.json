@@ -1,0 +1,77 @@
+{
+  "normal": {
+    "action": "CLOSE",
+    "reason": "conditional_bundle",
+    "selected_offset": 0.0,
+    "plan_scores": [
+      [
+        0.0,
+        0.050472960717274216
+      ],
+      [
+        0.1,
+        0.055472960717274214
+      ],
+      [
+        0.5,
+        0.12169931268141046
+      ],
+      [
+        1.0,
+        0.2016697526365811
+      ],
+      [
+        2.0,
+        0.35223563254692103
+      ],
+      [
+        3.0,
+        0.49030151245726383
+      ]
+    ],
+    "p2_solves": 2,
+    "cache_hits": 23,
+    "scenario_digest": "210e130878aabaf46f1fe72749a263f9eb71c6a262b80f13882ed08d472c0ecd",
+    "control_cpu_seconds": 1.546875,
+    "wall_seconds": 2.3448391999991145,
+    "forecast_only": true,
+    "evidence_role": "deterministic_interface_or_empirical_planning",
+    "variance_transition": "zero_unknown_gradient_increment"
+  },
+  "timeout": {
+    "action": "CLOSE",
+    "reason": "CPU_TIMEOUT/fixed_time_2",
+    "selected_offset": 0.0,
+    "plan_scores": [],
+    "p2_solves": 0,
+    "cache_hits": 0,
+    "scenario_digest": "",
+    "control_cpu_seconds": 1.921875,
+    "wall_seconds": 2.3287614999990183,
+    "forecast_only": true,
+    "evidence_role": "deterministic_interface_or_empirical_planning",
+    "variance_transition": "zero_unknown_gradient_increment"
+  },
+  "accounting": [
+    {
+      "status": "message",
+      "child_tree_cpu_seconds": 1.515625,
+      "parent_cpu_seconds": 0.03125,
+      "total_cpu_seconds": 1.546875,
+      "wall_seconds": 2.3448391999991145,
+      "exitcode": 0,
+      "child_terminated": false,
+      "training_steps": 0
+    },
+    {
+      "status": "cpu_timeout",
+      "child_tree_cpu_seconds": 1.90625,
+      "parent_cpu_seconds": 0.015625,
+      "total_cpu_seconds": 1.921875,
+      "wall_seconds": 2.3287614999990183,
+      "exitcode": 124,
+      "child_terminated": true,
+      "training_steps": 0
+    }
+  ]
+}

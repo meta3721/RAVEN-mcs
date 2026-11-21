@@ -1,0 +1,20 @@
+RAVEN-MCS WRITING HANDOFF R1
+
+1. Title: RAVEN-MCS: Target-Risk-Calibrated Asynchronous Federated Data Completion for Mobile Crowdsensing under Two-Stage Non-Random Selection
+2. Journal: IEEE Transactions on Mobile Computing (TMC)
+3. Contributions: C1 risk semantics; C2 layer-aware reconstruction; C3 feasibility-aware calibration.
+4. RQs: RQ1, RQ2, RQ3.
+5. Structure: I Introduction; II Related Work; III Model; IV Reconstruction; V Calibration; VI Theory; VII Evaluation; VIII Discussion; IX Conclusion; Appendix A–E.
+6. h(i)/s(i): SS/U-Air h = four UTC TOD groups (train mass, no test labels); s = spatial × time-block × weekday; h≠s.
+7. Main figures: FIG-C, FIG-E1, FIG-E2, FIG-E3, FIG-E4.
+8. Main tables: TABLE-I, TABLE-II, TABLE-III.
+9. Appendix figures/tables: APP-F1 Local-Hajek; APP-F2 P2 feasibility; APP-T1 E1; APP-T2 stats; APP-T3 full methods; APP-T4 P2; APP-T5 runtime optional. FIG5 do not run.
+10. Exact sources: 05_PROVENANCE/FINAL_FIGURE_SOURCES/ and FINAL_TABLE_SOURCES/ (hashes in 11_FINAL registries).
+11. E4 w/o-Inst: Generation 2 ONLY.
+12. Traffic: E2 OK; E3 cross-vintage NOT_COMPARABLE; not in Table II or FIG-E2/E3.
+13. P2: feasibility auditable; exact experimental optimality not reconstructable.
+14. Use: NO_CLEAR_EFFECT in current E4.
+15. Debt: statistically consistent but quantitatively small.
+16. T-Drive: PROTOCOL_SEALED, FORMAL_NOT_RUN, REVIEWER_RESERVE; do not run before submission.
+17. Noncore gaps: debt/ESS trajectories, sampling interval, row-level propensities, FIG5 composition — do not experiment.
+18. Next writing step: WRITE SECTION III–VI USING FROZEN SPECIFICATION

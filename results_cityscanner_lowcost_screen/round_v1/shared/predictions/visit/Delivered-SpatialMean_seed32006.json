@@ -1,0 +1,13 @@
+{
+  "block": "visit",
+  "method": "Delivered-SpatialMean",
+  "seed": 32006,
+  "rule": "delivered-history-v1",
+  "events": "artifacts/e3_c1_cityscanner_eventtraces_v1/cityscanner_nyc_pm25/seed32006/training_eventtrace/events.parquet",
+  "n_pairs": 1367,
+  "n_units": 1367,
+  "n_grids": 184,
+  "n_enabled_buckets": 122,
+  "reproduction_pass": true,
+  "created_utc": "2026-10-19T00:36:04.508192+00:00"
+}

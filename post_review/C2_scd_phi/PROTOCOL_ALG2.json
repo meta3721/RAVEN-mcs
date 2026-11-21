@@ -1,0 +1,41 @@
+{
+  "experiment_id": "SCD-ALG2-E3-SETUP",
+  "manuscript": "TO_OVERLEAF_paper_tmc_r1_clean/main.tex",
+  "phi_source": "post_review/C2_scd_phi/SCD_PHI.json",
+  "phi_definition": "phi_train_unit",
+  "rule": "Design_ON iff phi == 0",
+  "numbers": {
+    "sensorscope": {
+      "n_train_units": 10285,
+      "n_train_zero": 0,
+      "phi_train_unit": 0.0,
+      "percent_one_decimal": 0.0
+    },
+    "uair": {
+      "n_train_units": 5688,
+      "n_train_zero": 2016,
+      "phi_train_unit": 0.35443037974683544,
+      "percent_one_decimal": 35.4,
+      "phi_et_occ": 0.2546875,
+      "phi_et_occ_percent_one_decimal": 25.5,
+      "n_et_appearances": 51200,
+      "n_et_appearances_zero": 13040
+    }
+  },
+  "keep_unmodified": [
+    "Table II numeric cells",
+    "A_r overlap 51.6%",
+    "method keys raven / raven_wo_design",
+    "Gate_t not the Design switch"
+  ],
+  "forbidden": [
+    "tau from RMSE",
+    "Design_t := Gate_t",
+    "third-city ranking",
+    "em dash",
+    "lab-round names in prose",
+    "SHA hashes in manuscript",
+    "confirmed / publication-ready",
+    "xref app from main.tex"
+  ]
+}

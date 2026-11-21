@@ -1,0 +1,156 @@
+{
+  "files": [
+    {
+      "bytes": 499,
+      "path": "audit/ANTI_POSTHOC_AUDIT.json",
+      "sha256": "ddbd9c243aca28f5d225aeaae9f6048fcc2c13722968c038772811424721ae1f"
+    },
+    {
+      "bytes": 917,
+      "path": "audit/ANTI_POSTHOC_AUDIT.md",
+      "sha256": "a2f1d7ccb35d7c4d6f9317444fcd6c9d19f46e36018106ba8099746686df30aa"
+    },
+    {
+      "bytes": 999,
+      "path": "comparison/R1D_VS_R1E_DYNAMIC_COV.csv",
+      "sha256": "81159fc94de3d24bccc65c4366745ce1a49c878c15731b83210e7166a553bb0b"
+    },
+    {
+      "bytes": 266,
+      "path": "comparison/R1D_VS_R1E_DYNAMIC_COV.md",
+      "sha256": "5f3cb9d3e2069f35f318d59274fdfa4c55faede2fb30aecc1cf678105eaebfd3"
+    },
+    {
+      "bytes": 355,
+      "path": "configs/PI_SAFE_PROVENANCE_AUDIT.md",
+      "sha256": "58ac109aa5e1a0c3f512467000ce1da9938aa8f814f70a90bd3e5424fd78141f"
+    },
+    {
+      "bytes": 422,
+      "path": "configs/PI_SAFE_R1D_R1E_COMPATIBILITY.csv",
+      "sha256": "9e00a33bc9438b24820ea856a43f72ea5ce36505732df77eedb7502af4f824dc"
+    },
+    {
+      "bytes": 710,
+      "path": "configs/PI_SAFE_RULE_FROZEN.json",
+      "sha256": "663ab617739a1403ab481fc638842d44a9dcd5f978df6896d9c1892e7e61b265"
+    },
+    {
+      "bytes": 729,
+      "path": "configs/r1e_dynamic_cov_config.json",
+      "sha256": "4f7b93b3ce7f7a1c55bd328f67e1a20afec28f3b56677b0a5bb693aa5556fd23"
+    },
+    {
+      "bytes": 871,
+      "path": "configs/source_hashes.json",
+      "sha256": "a1b7940690c71049c289d43f631148550727504f175a046711a7b546cd9b6a21"
+    },
+    {
+      "bytes": 380,
+      "path": "configs/thresholds_frozen_copy.json",
+      "sha256": "526343535887e2f1094916be22d0403032fab0b905e74ac588f2b1bc6613510e"
+    },
+    {
+      "bytes": 502,
+      "path": "diagnostic/EVIDENCE_ZERO_NAN_REPAIR_AUDIT.md",
+      "sha256": "0efbae3db94e84734ce6289d3c7912e105d4c5b17f80f5cce03ef3b3a847303f"
+    },
+    {
+      "bytes": 997,
+      "path": "diagnostic/R1D_NONVACUITY_ATTRIBUTION.md",
+      "sha256": "da7d7380185dbf9e65a75dd26640d03eee5412cbbf8988e148ea2425062dbf5f"
+    },
+    {
+      "bytes": 33698,
+      "path": "diagnostic/R1D_NONVACUITY_ATTRIBUTION_BY_WINDOW.csv",
+      "sha256": "765471c6692f669b722fa9dabda036289352069937944e13f0f2ca13db2526d9"
+    },
+    {
+      "bytes": 728,
+      "path": "diagnostic/R1D_NONVACUITY_ATTRIBUTION_SUMMARY.csv",
+      "sha256": "46462279ecbbd8d1047a9dd8dc688aaf5155744be85555749abe7ff0ae435c07"
+    },
+    {
+      "bytes": 1389,
+      "path": "diagnostic/R1E_WINDOW_CONTEXT_PROVENANCE.md",
+      "sha256": "1790815ec8713847c81e04f2b3a5b926b232dd5768c760a5e62b47bda96cde64"
+    },
+    {
+      "bytes": 78099,
+      "path": "figures/R1D_C_REAL_C_POINT_C_LCB_BY_TIME.png",
+      "sha256": "b0507e7ba3111e435669723a35367e7ac709b9a8f82022017adedc9328f707f4"
+    },
+    {
+      "bytes": 36038,
+      "path": "figures/R1D_POINT_TO_LCB_SHRINKAGE.png",
+      "sha256": "9ba40c2f874340699af986d6679d2456c6ba5cab51d343df46b6693c116d2682"
+    },
+    {
+      "bytes": 44401,
+      "path": "figures/R1D_Q_VS_PREDICTION_SCALE.png",
+      "sha256": "b2c49f6e705af734fc6fbbaaaeda4752fb9a7aa98800c4c0e00d7fee4a2489c7"
+    },
+    {
+      "bytes": 48810,
+      "path": "figures/R1D_VS_R1E_C_COV_BY_TIME.png",
+      "sha256": "f706ec7bd764a7126e1d7c661cc9f2f412742a8a18472f100ea17bc42b08456a"
+    },
+    {
+      "bytes": 1819,
+      "path": "provenance/R1D_INPUT_MANIFEST.json",
+      "sha256": "63db1f800df4979dfbe14f35703f0992ded5a67b92dbdfeac13cad7fc9e09bc2"
+    },
+    {
+      "bytes": 1554,
+      "path": "provenance/R1D_INPUT_SHA256SUMS.txt",
+      "sha256": "cc8866fe1fcb347db4f4eff257e4e69b5d97364f432523126823e29f5beff86a"
+    },
+    {
+      "bytes": 2319,
+      "path": "provenance/R1E_FREEZE_AUDIT.json",
+      "sha256": "f8d7f344eb6d1b79c37b8a4ee1c946770d3b710085cf95e4f1f6beceaa86cf51"
+    },
+    {
+      "bytes": 392,
+      "path": "provenance/R1E_FREEZE_AUDIT.md",
+      "sha256": "c75c5d1498e4d1956d3d6576db4a1a58697de68b2028e506eab6cc80c05b6a32"
+    },
+    {
+      "bytes": 123,
+      "path": "report/NEXT_ROUND_READINESS.json",
+      "sha256": "f38a094494b34f9ce85631b2c022049cf4fd6d640097ba3f2bca6ab40f0a69f8"
+    },
+    {
+      "bytes": 3374,
+      "path": "report/R1E_VERDICT.json",
+      "sha256": "b18512bc645440ca81b61781a08aef5d20b2c1ef97131b46001fa381fa0950aa"
+    },
+    {
+      "bytes": 3284,
+      "path": "report/SAG_G1_R1E_DYNAMIC_COV_NONVACUITY_REPAIR_REPORT.md",
+      "sha256": "c3759746b7cc4a95d91e57bf382b5db38bcd37b1007e5033cfb23fb25f1884c8"
+    },
+    {
+      "bytes": 5199,
+      "path": "tests/pytest_full.xml",
+      "sha256": "1b65edf80a4c43bb3ede02acc632006a1da6e74360ce30b656fabe0518aa400a"
+    },
+    {
+      "bytes": 3797,
+      "path": "tests/pytest_r1e.xml",
+      "sha256": "7326c4dc29298b62ea31d9e3416b4bb2306eb1b55aafddd3f4e846e128ebac13"
+    },
+    {
+      "bytes": 4973,
+      "path": "tests/TEST_SUMMARY.json",
+      "sha256": "e433a8f69e30a83c6f044eb18a077f21aecd36a3cfef05295b5132e9ff3ac385"
+    },
+    {
+      "bytes": 2296,
+      "path": "tests/TEST_SUMMARY.md",
+      "sha256": "f20e6afa2ff0b00b9eda41e9781545a3c8f9153c4806eda8003d8cbc78483a07"
+    }
+  ],
+  "n_files": 30,
+  "round": "SAG_G1_R1E"
+}

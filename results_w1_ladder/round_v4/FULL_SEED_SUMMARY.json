@@ -1,0 +1,43 @@
+{
+  "replay_check": [
+    {
+      "ds": "sensorscope",
+      "rung": "L5",
+      "seed": 30011,
+      "err_group": 0.0,
+      "err_cs": 0.0
+    },
+    {
+      "ds": "sensorscope",
+      "rung": "L6",
+      "seed": 30011,
+      "err_group": 0.0,
+      "err_cs": 1.1102230246251565e-15
+    },
+    {
+      "ds": "uair",
+      "rung": "L5",
+      "seed": 30011,
+      "err_group": 0.0,
+      "err_cs": 4.440892098500626e-16
+    },
+    {
+      "ds": "uair",
+      "rung": "L6",
+      "seed": 30011,
+      "err_group": 0.0,
+      "err_cs": 2.220446049250313e-16
+    }
+  ],
+  "replay_max_err": 1.1102230246251565e-15,
+  "replay_pass": true,
+  "split_unstable_rows": [
+    "B2:raven - B1:raven",
+    "B3:raven - B2:raven",
+    "B1:raven - B1:raven_wo_use",
+    "B1:raven - B1:uniform",
+    "B3:raven - B2:raven"
+  ],
+  "n_level_rows": 186,
+  "n_decision_rows": 15
+}

@@ -1,0 +1,133 @@
+{
+  "accepted": 10,
+  "eventtraces": {
+    "sensorscope": {
+      "note": "SMOKE_ONLY EventTrace generated for software precheck; not formal E3/E4 evidence.",
+      "paper_evidence": false,
+      "path": "D:\\Cursor\\raven.mcs\\artifacts\\e4_core_mechanism_ablation_r1\\smoke_only\\eventtraces\\sensorscope\\seed32001\\training_eventtrace",
+      "status": "READY"
+    },
+    "uair": {
+      "note": "SMOKE_ONLY EventTrace generated for software precheck; not formal E3/E4 evidence.",
+      "paper_evidence": false,
+      "path": "D:\\Cursor\\raven.mcs\\artifacts\\e4_core_mechanism_ablation_r1\\smoke_only\\eventtraces\\uair\\seed32001\\training_eventtrace",
+      "status": "READY"
+    }
+  },
+  "n": 10,
+  "paper_evidence": false,
+  "rows": [
+    {
+      "accepted": true,
+      "completed_windows": 100,
+      "dataset": "sensorscope",
+      "execution_status": "REAL_PATH_EXECUTED",
+      "finished_utc": "2026-08-12T09:25:08.837369+00:00",
+      "logical_run_id": "e4::sensorscope::complete_aligned::raven_wo_design::seed32001",
+      "method": "raven_wo_design",
+      "scenario": "complete_aligned",
+      "seed": 32001
+    },
+    {
+      "accepted": true,
+      "completed_windows": 100,
+      "dataset": "sensorscope",
+      "execution_status": "REAL_PATH_EXECUTED",
+      "finished_utc": "2026-08-12T09:25:43.649167+00:00",
+      "logical_run_id": "e4::sensorscope::complete_aligned::raven_wo_obs::seed32001",
+      "method": "raven_wo_obs",
+      "scenario": "complete_aligned",
+      "seed": 32001
+    },
+    {
+      "accepted": true,
+      "completed_windows": 100,
+      "dataset": "sensorscope",
+      "execution_status": "REAL_PATH_EXECUTED",
+      "finished_utc": "2026-08-12T09:26:17.198293+00:00",
+      "logical_run_id": "e4::sensorscope::complete_aligned::raven_wo_use::seed32001",
+      "method": "raven_wo_use",
+      "scenario": "complete_aligned",
+      "seed": 32001
+    },
+    {
+      "accepted": true,
+      "completed_windows": 100,
+      "dataset": "sensorscope",
+      "execution_status": "REAL_PATH_EXECUTED",
+      "finished_utc": "2026-08-12T09:26:44.101239+00:00",
+      "logical_run_id": "e4::sensorscope::complete_aligned::raven_wo_inst::seed32001",
+      "method": "raven_wo_inst",
+      "scenario": "complete_aligned",
+      "seed": 32001
+    },
+    {
+      "accepted": true,
+      "completed_windows": 100,
+      "dataset": "sensorscope",
+      "execution_status": "REAL_PATH_EXECUTED",
+      "finished_utc": "2026-08-12T09:27:18.562180+00:00",
+      "logical_run_id": "e4::sensorscope::complete_aligned::raven_wo_debt::seed32001",
+      "method": "raven_wo_debt",
+      "scenario": "complete_aligned",
+      "seed": 32001
+    },
+    {
+      "accepted": true,
+      "completed_windows": 80,
+      "dataset": "uair",
+      "execution_status": "REAL_PATH_EXECUTED",
+      "finished_utc": "2026-08-12T09:28:13.526410+00:00",
+      "logical_run_id": "e4::uair::complete_aligned::raven_wo_design::seed32001",
+      "method": "raven_wo_design",
+      "scenario": "complete_aligned",
+      "seed": 32001
+    },
+    {
+      "accepted": true,
+      "completed_windows": 80,
+      "dataset": "uair",
+      "execution_status": "REAL_PATH_EXECUTED",
+      "finished_utc": "2026-08-12T09:28:35.239245+00:00",
+      "logical_run_id": "e4::uair::complete_aligned::raven_wo_obs::seed32001",
+      "method": "raven_wo_obs",
+      "scenario": "complete_aligned",
+      "seed": 32001
+    },
+    {
+      "accepted": true,
+      "completed_windows": 80,
+      "dataset": "uair",
+      "execution_status": "REAL_PATH_EXECUTED",
+      "finished_utc": "2026-08-12T09:28:57.824891+00:00",
+      "logical_run_id": "e4::uair::complete_aligned::raven_wo_use::seed32001",
+      "method": "raven_wo_use",
+      "scenario": "complete_aligned",
+      "seed": 32001
+    },
+    {
+      "accepted": true,
+      "completed_windows": 80,
+      "dataset": "uair",
+      "execution_status": "REAL_PATH_EXECUTED",
+      "finished_utc": "2026-08-12T09:29:17.502784+00:00",
+      "logical_run_id": "e4::uair::complete_aligned::raven_wo_inst::seed32001",
+      "method": "raven_wo_inst",
+      "scenario": "complete_aligned",
+      "seed": 32001
+    },
+    {
+      "accepted": true,
+      "completed_windows": 80,
+      "dataset": "uair",
+      "execution_status": "REAL_PATH_EXECUTED",
+      "finished_utc": "2026-08-12T09:29:40.067633+00:00",
+      "logical_run_id": "e4::uair::complete_aligned::raven_wo_debt::seed32001",
+      "method": "raven_wo_debt",
+      "scenario": "complete_aligned",
+      "seed": 32001
+    }
+  ],
+  "seed": 32001,
+  "status": "PASS"
+}

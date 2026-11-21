@@ -1,0 +1,26 @@
+{
+  "assertion": "h, s, and rho_atomic are separate data objects and separate code paths",
+  "code_paths": {
+    "h": "production_target_bundle / target_semantics",
+    "rho": "build_atomic_arrival_rho",
+    "s": "accumulate_delta_cs_v6 / build_pi_target"
+  },
+  "h_objects": [
+    "target_group",
+    "mu",
+    "Head/Tail",
+    "Delta_group",
+    "debt calibration target"
+  ],
+  "rho_objects": [
+    "atomic rho_i^arr",
+    "RMSE_rho"
+  ],
+  "s_objects": [
+    "opportunity_stratum",
+    "pi_tar(k,s)",
+    "pi_opp_joint",
+    "Delta_c_s state V6"
+  ],
+  "status": "PASS"
+}

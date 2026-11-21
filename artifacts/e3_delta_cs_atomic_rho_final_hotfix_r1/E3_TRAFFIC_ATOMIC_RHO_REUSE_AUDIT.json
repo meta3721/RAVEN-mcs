@@ -1,0 +1,8 @@
+{
+  "e2_rmse_rho_definition": "E2 Traffic sealed under its own protocol (not this E3 atomic rebuild)",
+  "note": "Do not launder E2 group-marginal or E2 region-stratum RMSE_rho as the new E3 atomic rho_i^arr. For Traffic sealed five methods: keep sealed E2 RMSE_rho values as-is; for new E3 methods on Traffic, compute atomic rho_i^arr under this hotfix.",
+  "offline_reconstructable_atomic_from_sealed_outputs": false,
+  "outcome": "REUSE_RMSE_RHO_AS_ALREADY_SEALED",
+  "sealed_block_rerun": false,
+  "status": "AUDITED"
+}

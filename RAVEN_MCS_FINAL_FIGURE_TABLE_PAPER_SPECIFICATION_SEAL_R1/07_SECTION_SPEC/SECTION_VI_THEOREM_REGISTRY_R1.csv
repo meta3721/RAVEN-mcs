@@ -1,0 +1,4 @@
+theorem_name,assumptions,exact_claim,dependency,proof_location,empirical_validation_needed,notes
+P1 Target-vs-arrival risk,two-stage selection; μ ≠ usable-update law in general,deployment-target risk is not identical to arrival/usable-update risk,definitions in III,Appendix A (short),False,E2 illustrates; not a substitute definition
+P2 Normalized reconstruction,positivity/support on used layers; known or estimated propensities as specified,normalized/Hajek reconstruction targets μ under the stated sampling model,IV,Appendix A,False,"Local-Hajek collapse is a support diagnostic, not a disproof of the theorem's assumptions"
+T-P2 Feasible calibration uniqueness,"stated convex program, feasible set, uniqueness conditions in the method paper",the mathematical P2 program has a unique minimizer under those assumptions,V,Appendix A,False,C10: experimental windows are not retrospectively certified exactly optimal

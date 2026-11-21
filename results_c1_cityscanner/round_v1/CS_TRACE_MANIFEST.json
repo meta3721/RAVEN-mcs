@@ -1,0 +1,122 @@
+{
+  "experiment_id": "C1-KILL-CITYSCANNER-NYC",
+  "gate_unused": true,
+  "generated_utc": "2026-09-11T01:36:59.414897+00:00",
+  "git_commit": "2e47464c2c15d7dae4ceb059592782b9542de625",
+  "hybrid": true,
+  "method_independent": true,
+  "num_windows": 100,
+  "o_layer": "CONTROLLED_EXPERIMENTAL p_obs=0.35",
+  "r_layer": "REAL_FROM_CITYSCANNER_VISITS",
+  "rows": [
+    {
+      "n_windows": 100,
+      "path": "artifacts/e3_c1_cityscanner_eventtraces_v1/cityscanner_nyc_pm25/seed32001/training_eventtrace",
+      "seed": 32001,
+      "status": "REUSED",
+      "trace_hash": "0178b5fe84ce98afb5511ae10320402bf3759e8455d0809be01436e96b106386"
+    },
+    {
+      "elapsed_sec": 0.42463360000692774,
+      "method_independence_canary": false,
+      "n_clients": 421,
+      "n_event_rows": 3556,
+      "n_windows": 100,
+      "path": "artifacts/e3_c1_cityscanner_eventtraces_v1/cityscanner_nyc_pm25/seed32002/training_eventtrace",
+      "seed": 32002,
+      "status": "CREATED",
+      "trace_hash": "de22e11ff042b08936ae8af877942111b51e149213e9f799d6c8db4df5b66f68"
+    },
+    {
+      "elapsed_sec": 0.4331106000026921,
+      "method_independence_canary": false,
+      "n_clients": 421,
+      "n_event_rows": 3556,
+      "n_windows": 100,
+      "path": "artifacts/e3_c1_cityscanner_eventtraces_v1/cityscanner_nyc_pm25/seed32003/training_eventtrace",
+      "seed": 32003,
+      "status": "CREATED",
+      "trace_hash": "422234fc3ace906139786128d7a42f5e22897cf25b0e23a66241356f485b2292"
+    },
+    {
+      "elapsed_sec": 0.4574825999879977,
+      "method_independence_canary": false,
+      "n_clients": 421,
+      "n_event_rows": 3556,
+      "n_windows": 100,
+      "path": "artifacts/e3_c1_cityscanner_eventtraces_v1/cityscanner_nyc_pm25/seed32004/training_eventtrace",
+      "seed": 32004,
+      "status": "CREATED",
+      "trace_hash": "13807a85c74cf900a316948fcf5c08611999654d8610cdbbbb0fc80d1c13895a"
+    },
+    {
+      "elapsed_sec": 0.45348259998718277,
+      "method_independence_canary": false,
+      "n_clients": 421,
+      "n_event_rows": 3556,
+      "n_windows": 100,
+      "path": "artifacts/e3_c1_cityscanner_eventtraces_v1/cityscanner_nyc_pm25/seed32005/training_eventtrace",
+      "seed": 32005,
+      "status": "CREATED",
+      "trace_hash": "15c5b1e713508ed4bfcf66910c602052296fa57521f681fb303e0e14b602c119"
+    },
+    {
+      "elapsed_sec": 0.33480939999572,
+      "method_independence_canary": false,
+      "n_clients": 421,
+      "n_event_rows": 3556,
+      "n_windows": 100,
+      "path": "artifacts/e3_c1_cityscanner_eventtraces_v1/cityscanner_nyc_pm25/seed32006/training_eventtrace",
+      "seed": 32006,
+      "status": "CREATED",
+      "trace_hash": "2d893b66bb12a69c37767836951cc67f838e818db35f5889a7678f48c95339bc"
+    },
+    {
+      "elapsed_sec": 0.4305859000014607,
+      "method_independence_canary": false,
+      "n_clients": 421,
+      "n_event_rows": 3556,
+      "n_windows": 100,
+      "path": "artifacts/e3_c1_cityscanner_eventtraces_v1/cityscanner_nyc_pm25/seed32007/training_eventtrace",
+      "seed": 32007,
+      "status": "CREATED",
+      "trace_hash": "acebd21177c4dd4bd025a0cd053b4c11dbf3970cfb6482ffb16e59ef738d7247"
+    },
+    {
+      "elapsed_sec": 0.4447123999998439,
+      "method_independence_canary": false,
+      "n_clients": 421,
+      "n_event_rows": 3556,
+      "n_windows": 100,
+      "path": "artifacts/e3_c1_cityscanner_eventtraces_v1/cityscanner_nyc_pm25/seed32008/training_eventtrace",
+      "seed": 32008,
+      "status": "CREATED",
+      "trace_hash": "3dd00e1aa691d12eaa780505785b5fc0117fe978c33aa571f44657c441ce7f23"
+    },
+    {
+      "elapsed_sec": 0.33437539999431465,
+      "method_independence_canary": false,
+      "n_clients": 421,
+      "n_event_rows": 3556,
+      "n_windows": 100,
+      "path": "artifacts/e3_c1_cityscanner_eventtraces_v1/cityscanner_nyc_pm25/seed32009/training_eventtrace",
+      "seed": 32009,
+      "status": "CREATED",
+      "trace_hash": "ee90dd52b481bfedbb104223cfbb24d06fb482b016f96d3b36fd77936c14a94c"
+    },
+    {
+      "elapsed_sec": 0.43000140000367537,
+      "method_independence_canary": false,
+      "n_clients": 421,
+      "n_event_rows": 3556,
+      "n_windows": 100,
+      "path": "artifacts/e3_c1_cityscanner_eventtraces_v1/cityscanner_nyc_pm25/seed32010/training_eventtrace",
+      "seed": 32010,
+      "status": "CREATED",
+      "trace_hash": "4041cb6a435d0b72898c12d8ea5553e7e0741ee6c2eb836c13decceafa974f4e"
+    }
+  ],
+  "trace_root": "artifacts/e3_c1_cityscanner_eventtraces_v1/",
+  "u_layer": "CONTROLLED_EXPERIMENTAL compute_usable_r3 s_max=5",
+  "window_map": "rank(time_index)*100//1666"
+}

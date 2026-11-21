@@ -1,0 +1,11 @@
+section,title,core_question,main_symbols,main_theory,main_algorithm,main_evidence,planned_figures,planned_tables,appendix_dependency,page_priority
+I,Introduction,Why target-risk calibration under two-stage MCS selection?,"μ, h(i), s(i), R,O,U",positioning,none,preview C1–C4,FIG-C (framework),none,none,high
+II,Related Work,How is this distinct from FL/imputation/MCS?,n/a,positioning,none,none new,none,none,none,compact
+III,System Model and Target-Risk Formulation,What is deployment-target risk?,"k, i, Y_i, h(i), s(i), R,O,U, μ",target vs arrival risk,none,E2 motivates,FIG-C panel A,none,A if defs expanded,high
+IV,Selection-Layer-Aware Target Reconstruction,How to reconstruct toward μ from R/O/U?,"π, ν, q, Hajek weights",positivity/support; normalized reconstruction,layer-wise correction,E3,FIG-C panel B,none,C Local-Hajek,high
+V,Feasibility-Aware Target Calibration,How to stay feasible and accumulate long-term mismatch?,"α, P2, debt e",P2 uniqueness under assumptions,inst + debt + aggregate,E4,FIG-C panel B,none,D P2,high
+VI,Theoretical Analysis,What is guaranteed vs empirically bounded?,"P2, positivity",selected propositions only,none,not a substitute for E2–E4,none,none,A proofs,moderate/high
+VII,Evaluation,RQ1–RQ3,"Δ_group, Δ_{c,s}, RMSE_μ, D_aligned",none new,none,E1–E4,FIG-E1–E4,I–III,B–E,high
+VIII,Discussion and Limitations,What must not be overclaimed?,n/a,C10,none,limitations,none,none,none,compact
+IX,Conclusion,Claim-safe close,n/a,none,none,C1–C8 only,none,none,none,compact
+Appendix,Proofs and supporting evidence,Complete proofs + diagnostics,as in VI,proofs,none,"E1, Local-Hajek, P2, full tables","APP-F1, APP-F2",APP-T1–T4 optional T5,self,supporting

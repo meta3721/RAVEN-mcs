@@ -1,0 +1,66 @@
+{
+  "multistep": {
+    "action": "WAIT",
+    "reason": "conditional_bundle",
+    "selected_offset": 1.0,
+    "plan_scores": [
+      [
+        0.0,
+        0.503675000000001
+      ],
+      [
+        0.1,
+        0.5084166666666678
+      ],
+      [
+        0.5,
+        0.6915499999999989
+      ],
+      [
+        1.0,
+        0.29161681878128454
+      ],
+      [
+        2.0,
+        0.4295140978261739
+      ],
+      [
+        3.0,
+        0.5549113768710621
+      ]
+    ],
+    "p2_solves": 5,
+    "cache_hits": 31,
+    "scenario_digest": "fbf55a12f20f0a5725655a282c21a7d4a4ec2be2aef5c728a011443e1a5173ba",
+    "control_cpu_seconds": 0.0,
+    "wall_seconds": 0.0,
+    "forecast_only": true,
+    "evidence_role": "deterministic_interface_or_empirical_planning",
+    "variance_transition": "zero_unknown_gradient_increment"
+  },
+  "one_step": {
+    "action": "CLOSE",
+    "reason": "conditional_bundle",
+    "selected_offset": 0.0,
+    "plan_scores": [
+      [
+        0.0,
+        0.7166666666666667
+      ],
+      [
+        0.1,
+        0.7216666666666667
+      ]
+    ],
+    "p2_solves": 1,
+    "cache_hits": 7,
+    "scenario_digest": "fbf55a12f20f0a5725655a282c21a7d4a4ec2be2aef5c728a011443e1a5173ba",
+    "control_cpu_seconds": 0.0,
+    "wall_seconds": 0.0,
+    "forecast_only": true,
+    "evidence_role": "deterministic_interface_or_empirical_planning",
+    "variance_transition": "zero_unknown_gradient_increment"
+  },
+  "local_optimizer_steps": 0,
+  "evidence_role": "mechanism_fixture_not_performance"
+}

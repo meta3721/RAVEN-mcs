@@ -1,0 +1,10 @@
+{
+  "oracle_p_source": "EventTrace opportunity_features.p_obs_true_by_unit + oracle_p",
+  "oracle_q_source": "EventTrace opportunity_features.q_use_true + oracle_q",
+  "oracle_pi_opp": "production Design already uses frozen generator joint pi_opp; not online EMA",
+  "misspecified_1": "weight-level p_hat x0.8/x1.2 only; no retrain",
+  "misspecified_2": "not run (would require omitted-covariate retrain or estimator replay with dropped hour_block)",
+  "clip_grid_on_val": "not run; needs new training or val-only protocol",
+  "lambda_pareto": "not run; needs P2 re-solve / retrain on val",
+  "g1b_gating": "not implemented; wait for decision tree"
+}

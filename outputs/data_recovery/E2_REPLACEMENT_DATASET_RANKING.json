@@ -1,0 +1,24 @@
+{
+  "ranking": [
+    {
+      "dataset": "traffic",
+      "hard_fail_reasons": "",
+      "score": 0.767,
+      "status": "PASS"
+    },
+    {
+      "dataset": "uair",
+      "hard_fail_reasons": "common_time_span_lt_600h|cannot_build_100_nonoverlap_6h_windows|no_valid_spatial_identity",
+      "score": 0.0,
+      "status": "HARD_FAIL"
+    },
+    {
+      "dataset": "tdrive_speed",
+      "hard_fail_reasons": "common_time_span_lt_600h|cannot_build_100_nonoverlap_6h_windows|no_valid_spatial_identity",
+      "score": 0.0,
+      "status": "HARD_FAIL"
+    }
+  ],
+  "selected_dataset": "traffic",
+  "status": "READY_WITH_REPLACEMENT_DATASET"
+}

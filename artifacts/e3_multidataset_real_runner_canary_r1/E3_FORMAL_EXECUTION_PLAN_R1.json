@@ -1,0 +1,52 @@
+{
+  "canary_seed_excluded": 31001,
+  "datasets": {
+    "sensorscope": {
+      "methods": 11,
+      "new_runs": 220
+    },
+    "traffic": {
+      "new_methods": [
+        "local_hajek",
+        "inst_cal",
+        "debt_cal",
+        "raven_simoracle",
+        "central_all",
+        "central_delivered"
+      ],
+      "new_runs": 120,
+      "reused_block": 100
+    },
+    "uair": {
+      "methods": 11,
+      "new_runs": 220
+    }
+  },
+  "execute_in_this_round": false,
+  "max_workers": 1,
+  "resume_policy": "attempt-aware Ledger; skip accepted logical run_ids",
+  "reused_traffic_runs": 100,
+  "seeds": [
+    30001,
+    30002,
+    30003,
+    30004,
+    30005,
+    30006,
+    30007,
+    30008,
+    30009,
+    30010,
+    30011,
+    30012,
+    30013,
+    30014,
+    30015,
+    30016,
+    30017,
+    30018,
+    30019,
+    30020
+  ],
+  "total_new_runs": 560
+}

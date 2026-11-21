@@ -1,0 +1,232 @@
+{
+  "gates": [
+    {
+      "description": "R1f input freeze",
+      "evidence_file": "legacy_refs/R1F_VERDICT.json",
+      "expected": "present",
+      "gate_id": "R1G-S0",
+      "metric": "r1f_verdict",
+      "observed": "E3_THRESHOLD_INCOMPATIBLE",
+      "pass": true
+    },
+    {
+      "description": "E3-v1 source snapshot complete",
+      "evidence_file": "e3v1_root_cause/E3V1_SOURCE_SNAPSHOT_MANIFEST.csv",
+      "expected": "0",
+      "gate_id": "R1G-S1",
+      "metric": "missing",
+      "observed": "0",
+      "pass": true
+    },
+    {
+      "description": "generation DAG complete",
+      "evidence_file": "e3v1_root_cause/E3V1_GENERATION_DAG.md",
+      "expected": "present",
+      "gate_id": "R1G-S2",
+      "metric": "file",
+      "observed": "present",
+      "pass": true
+    },
+    {
+      "description": "E3-v1 EventTrace unchanged",
+      "evidence_file": "legacy_refs",
+      "expected": "sealed",
+      "gate_id": "R1G-S3",
+      "metric": "trace_hash",
+      "observed": "{'sensorscope': '782df964fa2024cbc6b152c071d2ccd17b1cc2c210441710fe2c22fceb7058ef', 'uair': '67ce562381f755abc360b013ecf70561c9aa8d7d2108dfc45072d807f8bf228f'}",
+      "pass": true
+    },
+    {
+      "description": "temporal retention quantified",
+      "evidence_file": "e3v1_root_cause/E3V1_TEMPORAL_RETENTION_SUMMARY.csv",
+      "expected": "computed",
+      "gate_id": "R1G-S4",
+      "metric": "lag1_jaccard",
+      "observed": "computed",
+      "pass": true
+    },
+    {
+      "description": "co-occurrence quantified",
+      "evidence_file": "e3v1_root_cause/E3V1_COOCCURRENCE_RETENTION.csv",
+      "expected": ">0",
+      "gate_id": "R1G-S5",
+      "metric": "rows",
+      "observed": "525",
+      "pass": true
+    },
+    {
+      "description": "sampling distortion quantified",
+      "evidence_file": "e3v1_root_cause/E3V1_SAMPLING_DISTORTION_SUMMARY.csv",
+      "expected": ">0",
+      "gate_id": "R1G-S6",
+      "metric": "rows",
+      "observed": "2",
+      "pass": true
+    },
+    {
+      "description": "target-opportunity mismatch quantified",
+      "evidence_file": "e3v1_root_cause/E3V1_TARGET_OPPORTUNITY_MISMATCH_SUMMARY.csv",
+      "expected": "computed",
+      "gate_id": "R1G-S7",
+      "metric": "tv",
+      "observed": "computed",
+      "pass": true
+    },
+    {
+      "description": "CF definitions frozen",
+      "evidence_file": "e3v1_counterfactual_diagnostics/E3V1_ROOT_CAUSE_COUNTERFACTUAL_SUMMARY.csv",
+      "expected": "CF0,CF1,CF2",
+      "gate_id": "R1G-S8",
+      "metric": "cf_ids",
+      "observed": "['CF0', 'CF1', 'CF2']",
+      "pass": true
+    },
+    {
+      "description": "CF diagnostic complete",
+      "evidence_file": "e3v1_counterfactual_diagnostics/E3V1_ROOT_CAUSE_COUNTERFACTUAL.csv",
+      "expected": ">0",
+      "gate_id": "R1G-S9",
+      "metric": "n",
+      "observed": "508",
+      "pass": true
+    },
+    {
+      "description": "root-cause artifact-derived",
+      "evidence_file": "e3v1_root_cause/E3V1_ROOT_CAUSE_ATTRIBUTION.json",
+      "expected": "not hardcoded RC-F unless evidence",
+      "gate_id": "R1G-S10",
+      "metric": "primary",
+      "observed": "RC-A+RC-B+RC-C+RC-D",
+      "pass": true
+    },
+    {
+      "description": "E3-v2 window rule frozen",
+      "evidence_file": "e3v2_spec/E3V2_WINDOW_RULE_HASH.txt",
+      "expected": "078eb96bfe869489edd75a17950537cd191babc37f38235fe1260680a9e3299f",
+      "gate_id": "R1G-S11",
+      "metric": "hash",
+      "observed": "078eb96bfe869489edd75a17950537cd191babc37f38235fe1260680a9e3299f",
+      "pass": true
+    },
+    {
+      "description": "E3-v2 population rule frozen",
+      "evidence_file": "e3v2_spec/E3V2_POPULATION_RULE_HASH.txt",
+      "expected": "e11381db4d55a036f1728bfad03549161ad74cd0bac6235c04bb2823ee363732",
+      "gate_id": "R1G-S12",
+      "metric": "hash",
+      "observed": "e11381db4d55a036f1728bfad03549161ad74cd0bac6235c04bb2823ee363732",
+      "pass": true
+    },
+    {
+      "description": "public context whitelist frozen",
+      "evidence_file": "e3v2_spec/E3V2_PUBLIC_CONTEXT_WHITELIST.csv",
+      "expected": "present",
+      "gate_id": "R1G-S13",
+      "metric": "file",
+      "observed": "present",
+      "pass": true
+    },
+    {
+      "description": "no current-window leakage",
+      "evidence_file": "e3v2_spec/E3V2_CONTEXT_LEAKAGE_AUDIT.md",
+      "expected": "true",
+      "gate_id": "R1G-S14",
+      "metric": "leak_ok",
+      "observed": "True",
+      "pass": true
+    },
+    {
+      "description": "E3-v2 schema frozen",
+      "evidence_file": "e3v2_spec/E3V2_EVENTTRACE_SCHEMA.md",
+      "expected": "20",
+      "gate_id": "R1G-S15",
+      "metric": "fields",
+      "observed": "20",
+      "pass": true
+    },
+    {
+      "description": "TARGET_LAW unchanged",
+      "evidence_file": "audit/R1G_FREEZE_AUDIT.json",
+      "expected": "86fd55f7e0bf8499944433de16324bd4687befd5568892613ee87acacad3ad07",
+      "gate_id": "R1G-S16",
+      "metric": "hash",
+      "observed": "86fd55f7e0bf8499944433de16324bd4687befd5568892613ee87acacad3ad07",
+      "pass": true
+    },
+    {
+      "description": "PI_SAFE unchanged",
+      "evidence_file": "summary/R1G_VERDICT.json",
+      "expected": "0.10",
+      "gate_id": "R1G-S17",
+      "metric": "q10",
+      "observed": "0.10",
+      "pass": true
+    },
+    {
+      "description": "tau_cov unchanged",
+      "evidence_file": "configs/sag_g0/thresholds.json",
+      "expected": "0.05",
+      "gate_id": "R1G-S18",
+      "metric": "tau_cov",
+      "observed": "0.05",
+      "pass": true
+    },
+    {
+      "description": "no predictor repair",
+      "evidence_file": "summary/R1G_VERDICT.json",
+      "expected": "false",
+      "gate_id": "R1G-S19",
+      "metric": "predictor_repair_executed",
+      "observed": "false",
+      "pass": true
+    },
+    {
+      "description": "no calibration repair",
+      "evidence_file": "summary/R1G_VERDICT.json",
+      "expected": "false",
+      "gate_id": "R1G-S20",
+      "metric": "calibration_repair_executed",
+      "observed": "false",
+      "pass": true
+    },
+    {
+      "description": "no SAG",
+      "evidence_file": "summary/R1G_VERDICT.json",
+      "expected": "false",
+      "gate_id": "R1G-S21",
+      "metric": "sag_started",
+      "observed": "false",
+      "pass": true
+    },
+    {
+      "description": "no 5-seed",
+      "evidence_file": "summary/R1G_VERDICT.json",
+      "expected": "false",
+      "gate_id": "R1G-S22",
+      "metric": "five_seed_started",
+      "observed": "false",
+      "pass": true
+    },
+    {
+      "description": "E3-v2 oracle precheck artifact-derived",
+      "evidence_file": "e3v2_oracle_precheck/E3V2_ORACLE_PRECHECK_SUMMARY.csv",
+      "expected": "from csv",
+      "gate_id": "R1G-S23",
+      "metric": "routing",
+      "observed": "{'sensorscope': 'E3V2_ORACLE_ALL_SAFE', 'uair': 'E3V2_ORACLE_ALL_SAFE'}",
+      "pass": true
+    },
+    {
+      "description": "final verdict artifact-derived",
+      "evidence_file": "summary/R1G_VERDICT.json",
+      "expected": "derived",
+      "gate_id": "R1G-S24",
+      "metric": "verdict",
+      "observed": "E3V2_ORACLE_REGIME_NOT_USABLE",
+      "pass": true
+    }
+  ],
+  "n_fail": 0,
+  "n_pass": 25,
+  "verdict": "E3V2_ORACLE_REGIME_NOT_USABLE"
+}

@@ -1,0 +1,13 @@
+{
+  "accepted": false,
+  "attempt_count": 1,
+  "attempt_id": "e3::uair::complete_aligned::fedavg_window::seed31001__attempt1",
+  "dataset": "uair",
+  "error": "RuntimeError: E_r must equal the frozen attempted set",
+  "execution_status": "FAILED",
+  "finished_utc": "2026-08-10T13:59:47.792610+00:00",
+  "logical_run_id": "e3::uair::complete_aligned::fedavg_window::seed31001",
+  "method": "fedavg_window",
+  "seed": 31001,
+  "traceback": "Traceback (most recent call last):\n  File \"D:\\Cursor\\raven.mcs\\src\\raven_mcs\\e3\\canary\\execute.py\", line 117, in run_logical\n    result = run_e3_real(\n             ^^^^^^^^^^^^\n  File \"D:\\Cursor\\raven.mcs\\src\\raven_mcs\\e3\\real_runner\\runner.py\", line 424, in run_e3_real\n    window_metrics = runner.run()\n                     ^^^^^^^^^^^^\n  File \"D:\\Cursor\\raven.mcs\\src\\raven_mcs\\training\\window_runner.py\", line 255, in run\n    window_metrics = self._process_window(window_id, events)\n                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"D:\\Cursor\\raven.mcs\\src\\raven_mcs\\training\\window_runner.py\", line 377, in _process_window\n    raise RuntimeError(\"E_r must equal the frozen attempted set\")\nRuntimeError: E_r must equal the frozen attempted set\n"
+}

@@ -1,0 +1,12 @@
+{
+  "pid": 17640,
+  "command": [
+    ".venv_new/Scripts/python.exe",
+    "-m",
+    "pytest",
+    "tests/control_b0",
+    "-ra",
+    "--junitxml=results_calibration_first_20261013/new-path-tests-fixed-temp.xml",
+    "--basetemp=results_calibration_first_20261013/pytest-temp"
+  ]
+}

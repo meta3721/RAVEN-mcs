@@ -1,0 +1,13 @@
+ scripts/_launch_e2fr_resume.cmd                    |   4 +
+ scripts/_run_e2fr_ledger_sequence.py               | 268 ++++++++
+ scripts/check_e2_traffic_formal_runs_gates.py      | 148 +++++
+ scripts/export_e2_traffic_formal_runs_evidence.py  | 216 +++++++
+ scripts/prepare_e2_traffic_formal_runs.py          | 491 ++++++++++++++
+ scripts/run_and_log.py                             | 129 +++-
+ src/raven_mcs/e2/traffic_formal_runs/__init__.py   |  30 +
+ src/raven_mcs/e2/traffic_formal_runs/stats.py      |  89 +++
+ src/raven_mcs/e2/traffic_real_runner/__init__.py   | 704 +++++++++++++++++++++
+ src/raven_mcs/e2/traffic_real_runner/ledger_g9.py  | 296 +++++++++
+ tests/unit/test_e2_traffic_formal_runs_core.py     |  68 ++
+ .../unit/test_e2_traffic_real_runner_ledger_g9.py  | 230 +++++++
+ 12 files changed, 2654 insertions(+), 19 deletions(-)

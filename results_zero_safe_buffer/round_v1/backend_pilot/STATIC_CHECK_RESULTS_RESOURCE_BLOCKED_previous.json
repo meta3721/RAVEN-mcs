@@ -1,0 +1,52 @@
+{
+  "training_executed": false,
+  "historical_z2_cpu_seconds": 0.03125,
+  "historical_z2_wall_seconds": 0.1175537999952212,
+  "historical_z2_note": "incremental snapshots from RESOURCE_LEDGER.jsonl; not re-run",
+  "pure_checks": {
+    "pass": true,
+    "server_step": [
+      0.99875,
+      0.99625
+    ],
+    "server_step_pass": true,
+    "rmse_formula": 0.7071067811865476,
+    "rmse_formula_pass": true,
+    "worst_group_pass": true,
+    "hold_pass": true,
+    "training_call_denied": true,
+    "attempt_seed_stable": true,
+    "weight_rules_pass": true,
+    "checkpoint_roundtrip_pass": true,
+    "step_count_only_rejected": true,
+    "compiled": [
+      "update_semantics.py",
+      "checkpoint_store.py",
+      "five_arm_backend.py",
+      "static_check.py",
+      "zero_safe_scheduler.py"
+    ],
+    "neural_training": "UNRUN"
+  },
+  "available_bytes_at_gate": 1194737664,
+  "available_bytes_after_wait": 1225330688,
+  "status": "RESOURCE_BLOCKED",
+  "heavy": {
+    "status": "UNRUN",
+    "reason": "available memory below 2.5 GiB before heavy imports",
+    "available_bytes": 1225330688
+  },
+  "resource": {
+    "cpu_seconds": 0.046875,
+    "wall_seconds": 30.081341200013412,
+    "rss_bytes": 22413312,
+    "peak_rss_bytes": 23048192,
+    "available_bytes": 1236160512,
+    "min_available_bytes": 1201000448,
+    "cpu_budget_seconds": 599.96875,
+    "wall_budget_seconds": 1199.8824462000048,
+    "cpu_with_historical_z2": 0.078125,
+    "wall_with_historical_z2": 30.198895000008633
+  },
+  "exit_code": 2
+}

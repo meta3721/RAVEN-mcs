@@ -1,0 +1,24 @@
+{
+  "A_GRID": [
+    1.0,
+    0.8,
+    0.6,
+    0.4,
+    0.2
+  ],
+  "BALANCED_ACC_MIN": 0.7,
+  "BOUNDARY_NEAR_MARGIN": 0.01,
+  "FALSE_SAFE_MAX": 0.05,
+  "NONVACUOUS_ZERO_MAX": 0.8,
+  "SCALE_LIFT_MIN": 1.2,
+  "VALIDITY_MIN": 0.95,
+  "note": "internal routing; not a paper theorem; aggregate is a feasibility candidate only",
+  "primary_boundary": {
+    "availability_level": 0.4,
+    "dataset": "sensorscope"
+  },
+  "secondary_boundary": {
+    "availability_level": 0.2,
+    "dataset": "uair"
+  }
+}

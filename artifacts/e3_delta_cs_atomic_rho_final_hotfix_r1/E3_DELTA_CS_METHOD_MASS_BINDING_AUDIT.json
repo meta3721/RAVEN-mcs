@@ -1,0 +1,103 @@
+{
+  "rows": [
+    {
+      "alpha_key_type": "client_id",
+      "alpha_source": "WindowMetrics.alpha aligned to active_clients",
+      "atomic_to_stratum_mapping": "atomic.opportunity_stratum (NOT target_group)",
+      "method": "debt_cal",
+      "normalization": "(1/S_R) then probability-normalize Pi_hat for L1",
+      "production_function": "accumulate_delta_cs_v6",
+      "status": "READY",
+      "w_key_type": "atomic_unit_id",
+      "w_source": "diagnostics.a_bar keyed by observed_unit_ids"
+    },
+    {
+      "alpha_key_type": "client_id",
+      "alpha_source": "WindowMetrics.alpha aligned to active_clients",
+      "atomic_to_stratum_mapping": "atomic.opportunity_stratum (NOT target_group)",
+      "method": "fedasync_window",
+      "normalization": "(1/S_R) then probability-normalize Pi_hat for L1",
+      "production_function": "accumulate_delta_cs_v6",
+      "status": "READY",
+      "w_key_type": "atomic_unit_id",
+      "w_source": "equal local weights (frozen non-Hajek baseline)"
+    },
+    {
+      "alpha_key_type": "client_id",
+      "alpha_source": "WindowMetrics.alpha aligned to active_clients",
+      "atomic_to_stratum_mapping": "atomic.opportunity_stratum (NOT target_group)",
+      "method": "fedavg_window",
+      "normalization": "(1/S_R) then probability-normalize Pi_hat for L1",
+      "production_function": "accumulate_delta_cs_v6",
+      "status": "READY",
+      "w_key_type": "atomic_unit_id",
+      "w_source": "equal local weights (frozen non-Hajek baseline)"
+    },
+    {
+      "alpha_key_type": "client_id",
+      "alpha_source": "WindowMetrics.alpha aligned to active_clients",
+      "atomic_to_stratum_mapping": "atomic.opportunity_stratum (NOT target_group)",
+      "method": "flamf_timealign_adapted",
+      "normalization": "(1/S_R) then probability-normalize Pi_hat for L1",
+      "production_function": "accumulate_delta_cs_v6",
+      "status": "READY",
+      "w_key_type": "atomic_unit_id",
+      "w_source": "equal local weights (frozen non-Hajek baseline)"
+    },
+    {
+      "alpha_key_type": "client_id",
+      "alpha_source": "WindowMetrics.alpha aligned to active_clients",
+      "atomic_to_stratum_mapping": "atomic.opportunity_stratum (NOT target_group)",
+      "method": "inst_cal",
+      "normalization": "(1/S_R) then probability-normalize Pi_hat for L1",
+      "production_function": "accumulate_delta_cs_v6",
+      "status": "READY",
+      "w_key_type": "atomic_unit_id",
+      "w_source": "diagnostics.a_bar keyed by observed_unit_ids"
+    },
+    {
+      "alpha_key_type": "client_id",
+      "alpha_source": "WindowMetrics.alpha aligned to active_clients",
+      "atomic_to_stratum_mapping": "atomic.opportunity_stratum (NOT target_group)",
+      "method": "local_hajek",
+      "normalization": "(1/S_R) then probability-normalize Pi_hat for L1",
+      "production_function": "accumulate_delta_cs_v6",
+      "status": "READY",
+      "w_key_type": "atomic_unit_id",
+      "w_source": "diagnostics.a_bar keyed by observed_unit_ids"
+    },
+    {
+      "alpha_key_type": "client_id",
+      "alpha_source": "WindowMetrics.alpha aligned to active_clients",
+      "atomic_to_stratum_mapping": "atomic.opportunity_stratum (NOT target_group)",
+      "method": "raven",
+      "normalization": "(1/S_R) then probability-normalize Pi_hat for L1",
+      "production_function": "accumulate_delta_cs_v6",
+      "status": "READY",
+      "w_key_type": "atomic_unit_id",
+      "w_source": "diagnostics.a_bar keyed by observed_unit_ids"
+    },
+    {
+      "alpha_key_type": "client_id",
+      "alpha_source": "WindowMetrics.alpha aligned to active_clients",
+      "atomic_to_stratum_mapping": "atomic.opportunity_stratum (NOT target_group)",
+      "method": "raven_simoracle",
+      "normalization": "(1/S_R) then probability-normalize Pi_hat for L1",
+      "production_function": "accumulate_delta_cs_v6",
+      "status": "READY",
+      "w_key_type": "atomic_unit_id",
+      "w_source": "diagnostics.a_bar keyed by observed_unit_ids"
+    },
+    {
+      "alpha_key_type": "client_id",
+      "alpha_source": "WindowMetrics.alpha aligned to active_clients",
+      "atomic_to_stratum_mapping": "atomic.opportunity_stratum (NOT target_group)",
+      "method": "twostage_hajek",
+      "normalization": "(1/S_R) then probability-normalize Pi_hat for L1",
+      "production_function": "accumulate_delta_cs_v6",
+      "status": "READY",
+      "w_key_type": "atomic_unit_id",
+      "w_source": "diagnostics.a_bar keyed by observed_unit_ids"
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "p2_executed_in_r1": false,
+  "required_per_p2_invocation": [
+    "seed",
+    "window",
+    "solver",
+    "native_solver_status",
+    "warning",
+    "lambda_group",
+    "lambda_beta",
+    "lambda_v",
+    "lambda_s",
+    "full_relevant_p2_inputs",
+    "constraints_bounds",
+    "returned_alpha",
+    "objective_value_if_available",
+    "feasibility_residuals",
+    "solver_tolerances"
+  ],
+  "status": "PRE_REGISTERED"
+}

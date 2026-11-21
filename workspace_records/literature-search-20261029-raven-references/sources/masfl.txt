@@ -1,0 +1,6214 @@
+
+=== PAGE 1 ===
+Momentum-Driven Adaptivity: Towards Tuning-Free Asynchronous Federated
+Learning
+Wenjing Yan1 Xiangyu Zhong 1 Xiaolu Wang 2 Ying-Jun Angela Zhang 1
+Abstract
+Asynchronous federated learning (AFL) has
+emerged as a promising solution to address sys-
+tem heterogeneity and improve the training effi-
+ciency of federated learning. However, existing
+AFL methods face two critical limitations: 1) they
+rely on strong assumptions about bounded data
+heterogeneity across clients, and 2) they require
+meticulous tuning of learning rates based on un-
+known system parameters. In this paper, we tackle
+these challenges by leveraging momentum-based
+optimization and adaptive learning strategies. We
+first propose MasFL, a novel momentum-driven
+AFL framework that successfully eliminates the
+need for data heterogeneity bounds by effec-
+tively utilizing historical descent directions across
+clients and iterations. By mitigating the staleness
+accumulation caused by asynchronous updates,
+we prove that MasFL achieves state-of-the-art
+convergence rates with linear speedup in both
+the number of participating clients and local up-
+dates. Building on this foundation, we further
+introduce AdaMasFL, an adaptive variant that
+incorporates gradient normalization into local up-
+dates. Remarkably, this integration removes all de-
+pendencies on problem-specific parameters, yield-
+ing a fully problem-parameter-free AFL approach
+while retaining theoretical guarantees. Extensive
+experiments demonstrate that AdaMasFL consis-
+tently outperforms state-of-the-art AFL methods
+in runtime efficiency and exhibits exceptional ro-
+bustness across diverse learning rate configura-
+tions and system conditions.
+1Department of Information Engineering, The Chinese Uni-
+versity of Hong Kong, Hong Kong SAR; 2Software Engineering
+Institute, East China Normal University, China. Correspondence
+to: Xiangyu Zhong <xyzhong@ie.cuhk.edu.hk>, Xiaolu Wang
+<xiaoluwang@sei.ecnu.edu.cn>.
+Proceedings of the 42 st International Conference on Machine
+Learning, Vancouver, Canada. PMLR 267, 2025. Copyright 2025
+by the author(s).
+1. Introduction
+Recent years have witnessed an explosive growth in edge
+computing and mobile applications, leading to massive
+amounts of data being generated on distributed devices.
+Federated learning (FL) has emerged as a transformative
+paradigm that enables model training across these decentral-
+ized data sources while preserving privacy and addressing
+data sovereignty concerns (McMahan et al., 2017; Kairouz
+et al., 2021; Li et al., 2020). By keeping data locally and
+sharing only model updates, FL has become increasingly
+crucial in numerous applications, from mobile services to
+smart cities (Abreha et al., 2022; Pandya et al., 2023).
+However, the practical deployment of FL faces significant
+challenges due to system heterogeneity among participat-
+ing clients. Devices vary substantially in their computing
+capabilities, network conditions, and availability patterns
+(Assran et al., 2020; Zhong et al., 2022). Traditional syn-
+chronous FL protocols, such as the well-known FedAvg
+(McMahan et al., 2017; Karimireddy et al., 2020b), which re-
+quire all clients to complete their updates before proceeding
+to the next round, suffer from the “straggler effect” where
+the system’s progress is bottlenecked by the slowest par-
+ticipants. This synchronization barrier severely impacts
+training efficiency and system scalability.
+Asynchronous federated learning (AFL) has emerged as a
+promising solution to address the system heterogeneity chal-
+lenge by allowing clients to communicate with the server
+independently of other participants (Xie et al., 2019; Chen
+et al., 2020; Zakerinia et al., 2022; Nguyen et al., 2022;
+Wang et al., 2023; Fraboni et al., 2023; Wang et al., 2024c;a;
+Leconte et al., 2024a;b). Despite its effectiveness in miti-
+gating the straggler effect, existing AFL approaches face
+two critical challenges: 1) Data Heterogeneity: In AFL,
+faster clients contribute updates more frequently than slower
+ones, resulting in a biased global model dominated by the
+data distributions of those faster clients. This bias is exac-
+erbated by local training, where clients perform multiple
+updates before communicating with the server, leading to
+the phenomenon of “client drift” (Karimireddy et al., 2020b).
+To address this issue, existing AFL methods often rely on
+strong assumptions of bounded data heterogeneity, restrict-
+ing their applicability in real-world scenarios with highly
+1
+
+=== PAGE 2 ===
+Momentum-Driven Adaptivity: Towards Tuning-Free Asynchronous Federated Learning
+diverse and arbitrary client distributions. 2) Algorithm Tun-
+ing: The theoretical convergence of AFL algorithms relies
+heavily on the correct selection of hyperparameters, such
+as learning rates. However, in existing AFL approaches,
+these hyperparameters are often functions of multiple un-
+known parameters, including problem-specific constants
+(e.g., smoothness constants), algorithmic variables (e.g.,
+initial suboptimality gap, gradient variance bounds), and
+system-dependent factors (e.g., client staleness). Since these
+parameters are typically unavailable a priori, tuning learn-
+ing rates becomes a highly challenging task. Furthermore,
+the problem-specific learning rate configurations limit the
+adaptability of these approaches to diverse and dynamic
+AFL environments.
+In light of the key challenges associated with AFL, it is
+crucial to address the following questions:
+(i) Can we design an AFL algorithm that removes the re-
+strictive bounded heterogeneity assumption while preserv-
+ing theoretical convergence guarantees?
+(ii) Building upon such a framework, can we further elimi-
+nate the need for manual hyperparameter tuning by intro-
+ducing adaptive mechanisms that automatically adjust to
+diverse system characteristics and data distributions?
+These questions form the foundation of our systematic effort
+to develop more robust and practical AFL methods.
+1.1. Main Contributions
+In this paper, we provide affirmative answers to the above
+two questions by exploring the effects of momentum-based
+optimization and adaptive learning strategies. Our main
+contributions are summarized as follows:
+• We develop two novel training approaches for AFL:
+MasFL and AdaMasFL. MasFL incorporates a two-
+level (both client- and server-side) momentum into the
+AFL framework to mitigate client drift and accelerate
+convergence, effectively addressing the challenges posed
+by data heterogeneity. Building on this, AdaMasFL fur-
+ther integrates local gradient normalization with local
+momentum, enabling automatic adaptation to diverse sys-
+tem characteristics and data distributions without manual
+hyperparameter tuning.
+• We establish strong theoretical guarantees for both al-
+gorithms, achieving state-of-the-art convergence rates
+with linear speedup with respect to the number of par-
+ticipating clients and local updates per round. Notably,
+MasFL eliminates the restrictive bounded data hetero-
+geneity assumption commonly required in existing AFL
+approaches, making it applicable to scenarios with arbi-
+trarily heterogeneous data distributions. Beyond this the-
+oretical advancement, AdaMasFL achieves convergence
+without relying on any unknown system or algorithmic
+parameters, eliminating the need for tedious hyperparam-
+eter tuning.
+• We conduct comprehensive empirical evaluations on deep
+learning tasks using real-world datasets. The numerical
+results demonstrate that our approaches consistently out-
+perform state-of-the-art AFL algorithms in runtime effi-
+ciency, even when their hyperparameters are well-tuned.
+This improvement can be attributed to the acceleration
+provided by our two-level momentum mechanism and
+the per-step adaptation of our effective stepsizes. No-
+tably, AdaMasFL exhibits exceptional robustness across
+a wide range of learning rates and asynchrony levels,
+maintaining nearly consistent performance despite vary-
+ing degrees of delays. In contrast, the performance of
+state-of-the-art baselines deteriorates significantly under
+the same conditions.
+1.2. Related Work
+Our approaches extend the buffered asynchronous aggre-
+gation mechanism introduced by FedBuff (Nguyen et al.,
+2022) to enhance training efficiency and mitigate the adverse
+effects of outdated gradients. To address the “client drift”
+problem caused by data heterogeneity in FedBuff, Wang
+et al. (2023) proposed CA2FL, which maintains cached up-
+dates for each client to calibrate global aggregation. These
+cached updates function similarly to the control variates in
+our methods. However, CA2FL still relies on the bounded
+data heterogeneity assumption to ensure convergence. To
+accommodate arbitrary heterogeneous data in asynchronous
+learning, a recent study (Wang et al., 2024b) proposed
+DuDe-ASGD, which reuses the most recent gradients from
+all clients in each round of global aggregation. While ef-
+fective, DuDe-ASGD does not account for multiple local
+updates. In contrast, our MasFL framework eliminates the
+need for data heterogeneity bounds while achieving the best-
+known communication efficiency, demonstrating an efficient
+utilization of distributed resources.
+Yu et al. (2024) identified that asynchrony introduces im-
+plicit bias in momentum updates and proposed momentum
+approximation for AFL, which optimally weights histori-
+cal model updates to approximate synchronous momentum
+behavior. FedAC (Zang et al., 2024) addresses both model
+staleness and client drift through adaptive server updates
+and corrective client training. Although these works demon-
+strate empirical improvements, their algorithms lack theoret-
+ical convergence guarantees. FADAS (Wang et al., 2024c)
+introduces a global adaptive AFL framework by applying
+adaptive optimization techniques at the server-side aggre-
+gation while supporting asynchronous client updates. How-
+ever, FADAS relies on stringent assumptions on bounded
+data heterogeneity and bounded gradient norms. Moreover,
+it still requires careful hyperparameter tuning. In contrast,
+2
+
+=== PAGE 3 ===
+Momentum-Driven Adaptivity: Towards Tuning-Free Asynchronous Federated Learning
+our method AdaMasFL integrates adaptive stepsizes with a
+two-level momentum, eliminating these constraints while
+maintaining theoretical convergence guarantees without
+problem-specific hyperparameter tuning. Recent progress
+in parameter-free FL algorithms has been marked by the
+development of PAdaMFed (Yan et al., 2025), a pioneer-
+ing algorithm that eliminates the need for manual tuning of
+problem-specific parameters. While PAdaMFed represents a
+significant breakthrough, it is designed for the synchronous
+setting and cannot be directly extended to address the AFL
+problem studied in this work. A comprehensive literature
+review is presented in Appendix A.
+2. Problem Setup
+Consider a distributed learning system consisting of N
+clients (edge devices) jointly optimizing a model param-
+eterized by θ ∈ Rd under the coordination of a central
+server. Each client i maintains a local dataset character-
+ized by a distribution Di, from which samples ξi are drawn.
+The local objective at client i is defined as the expected
+loss: fi(θ) := Eξi∼Di [F (θ; ξi)]. The global optimization
+problem is formulated as:
+min
+θ∈Rd
+f(θ) := 1
+N
+NX
+i=1
+fi(θ),
+where each client’s raw data remains localized, inherently
+preserving data privacy.
+In real-world federated learning (FL) environments, clients’
+data distributions often exhibit significant heterogeneity
+(Di ̸= Dj for i ̸= j) due to factors such as diverse user be-
+haviors, geographical disparities, and device-specific char-
+acteristics. This heterogeneity manifests across multiple
+dimensions, including feature distributions, label spaces,
+and variations in local dataset sizes and qualities, leading
+to substantially different optimization landscapes across
+clients. Conventional approaches handle this heterogeneity
+by imposing the following gradient dissimilarity bounds:
+1
+N
+NX
+i=1
+∥∇fi(θ)∥2 ≤ B∥∇f(θ)∥2 + σ2
+g. (1)
+However, such bounded heterogeneity assumptions are of-
+ten restrictive and fail to capture real-world scenarios. In
+practice, client gradient norms can vary significantly, and
+the degree of heterogeneity may fluctuate unpredictably dur-
+ing training. Moreover, existing nonconvex FL methods rely
+on precise knowledge of system parameters (e.g., L, σ2, B,
+σ2
+g) for stepsize tuning. Accurate estimation of these param-
+eters, especially smoothness constants and heterogeneity
+bounds, requires global data access—a process that contra-
+dicts the fundamental privacy principles of FL and becomes
+increasingly intractable as data distributions evolve.
+In this paper, we aim to address these challenges by lever-
+aging momentum-based optimization and adaptive learning
+strategies. Our theoretical analysis relies only on the follow-
+ing assumptions.
+Assumption 2.1 (L-Smoothness). For any i ∈ {1, · · · , N},
+the local loss function fi is L-smooth that
+∇fi (θ) − ∇fi
+ 
+θ′ ≤ L∥θ − θ′∥, ∀θ, θ′ ∈ Rd.
+Assumption 2.2 (Stochastic Gradient). The stochastic gra-
+dients are unbiased estimators with bounded variance σ2,
+such that
+Eξi∼Di [∇F (θ; ξi)] = ∇fi(θ),
+Eξi∼Di ∥∇F (θ; ξi) − ∇fi(θ)∥2 ≤ σ2, ∀i.
+Assumption 2.3 (Bounded Delay) . Let τ t
+i represent the
+delay of client i at the tth global round. Specifically, τ t
+i is
+defined as the time interval between the current global round
+t and the global round when client i began its local updates.
+We assume that the maximum update delay is bounded, i.e.,
+τmax := max i,t τ t
+i < ∞. Correspondingly, the average
+delay is also bounded, i.e., ¯τ := 1
+N T
+P
+i,t τ t
+i < ∞.
+3. Momentum-Driven AFL
+3.1. Algorithm Design
+Momentum techniques have demonstrated remarkable effec-
+tiveness in mitigating data heterogeneity and accelerating
+convergence in synchronous FL. In the synchronous set-
+ting, (Cheng et al., 2024) showed that momentum helps
+remove data heterogeneity bounds (i.e., bound gradient dis-
+similarity) for nonconvex FL, marking a first in the liter-
+ature. However, integrating momentum into AFL poses
+significant challenges due to fundamental conflicts between
+momentum’s historical gradient accumulation and the in-
+herent staleness of asynchronous updates. In asynchronous
+settings, clients’ delayed updates compromise the integrity
+of momentum calculations, as stale gradients introduce bi-
+ases into the optimization trajectory, as demonstrated in
+Yu et al. (2024). This issue is further exacerbated by the
+heterogeneity of client data distributions, where the global
+model may become biased toward the data distributions
+of faster clients. Moreover, asynchronous updates disrupt
+the maintenance of a coherent global momentum across all
+clients, making it challenging to accurately capture the true
+collective optimization trajectory of the distributed system.
+To unlock the potential of momentum in asynchronous envi-
+ronments, we propose a Momentum-driven asynchronous
+Federated Learning (MasFL) framework, which effectively
+harnesses the benefits of momentum while systematically
+managing staleness accumulation. The complete server-
+side and client-side procedures of MasFL are presented in
+3
+
+=== PAGE 4 ===
+Momentum-Driven Adaptivity: Towards Tuning-Free Asynchronous Federated Learning
+Algorithm 1 MasFL: Procedures at Central Server
+1: Require: Initial model θ0, control variates c0
+i =
+1
+K
+PK−1
+k=0 ∇F
+
+θ0; ξ−1,k
+i
+
+for any i, c0 = 1
+N
+P
+i c0
+i ,
+momentum g0 = c0, global learning rate γ, local learn-
+ing rate η, and momentum parameter β
+2: for t = 0, · · · , T − 1 do
+3: Randomly selected a set of clients St
+4: Update
+ct+1
+i =
+(
+ect+1
+i , if i ∈ S t
+ct
+i, otherwise (2)
+5: Aggregate momentum
+gt+1 = β
+ 
+1
+S
+X
+i∈St
+ 
+ct+1
+i − ct
+i
+
++ ct
+!
++ (1 − β)gt
+6: Update global model θt+1 = θt − γgt+1
+7: Aggregate control variate
+ct+1 = ct + 1
+N
+X
+i∈St
+ 
+ct+1
+i − ct
+i
+
+8: Send θt+1 and βct+1 + (1 − β)gt+1 to all clients
+9: end for
+Algorithms 1 and 2, respectively. To address system asyn-
+chrony and data heterogeneity, MasFL introduces several
+key innovations, described as follows.
+Asynchronous Local Training. Unlike synchronous FL
+where the system waits for all participating clients to com-
+plete their local updates before proceeding to the next round,
+MasFL allows the server and clients operate asynchronously,
+with the server maintaining a buffer for each client to store
+their latest updates. At each global round t, the server ran-
+domly selects a subset of clients, St, to participate in global
+model aggregation. The aggregation uses the buffered up-
+dates, ensuring that it is independent of the current progress
+of the selected clients. Simultaneously, all clients performs
+local updates at their own pace. Upon completing K local
+iterations, clients send their updates,ect+1
+i , to the server and
+immediately begin the next round of local updates based on
+the latest global model. This design naturally accommodates
+variations in client computational speeds and communica-
+tion delays while maintaining overall learning efficiency.
+Our asynchronous training is inspired by the FedBuff
+scheme proposed in (Nguyen et al., 2022), where the server
+randomly selects an active client set of size Mc to perform
+local updates simultaneously and accumulates the fastest S
+clients for the global model update. This scheme assumes
+uniform arrivals of gradient computation to ensure equal
+Algorithm 2 MasFL: Procedures at Client i
+1: Receive θt−τ t
+i and βct−τ t
+i + (1− β)gt−τ t
+i from server.
+Set θt,0
+i = θt−τ t
+i
+2: for k = 0, · · · , K − 1 do
+3: Compute
+gt,k
+i = β
+
+∇F
+
+θt,k
+i ; ξt,k
+i
+
+−ect
+i+ct−τ t
+i
+
++(1−β)gt−τ t
+i
+4: Update local model θt,k+1
+i = θt,k
+i − ηgt,k
+i
+5: end for
+6: Sendect+1
+i = 1
+K
+PK−1
+k=0 ∇F
+
+θt,k
+i ; ξt,k
+i
+
+to the server
+chances of client participation. In contrast, our scheme
+maximally leverages clients’ parallel computing capabil-
+ities while maintaining the uniformity of client selection.
+When Mc = N and the uniform arrival assumption holds,
+both schemes achieve equivalent effects. Nevertheless, we
+emphasize that our asynchronous algorithm design is com-
+patible with both buffer schemes.
+Stale Control Variates. MasFL adopts a local control vari-
+ate ct
+i to track the gradient information of each client i. At
+each round t, if client i is selected for global aggregation,
+ct+1
+i is updated using its latest buffered valueect+1
+i ; Other-
+wise, it retains its previous value. The global control variate,
+ct+1, is computed as the aggregation of all local control vari-
+ates (Line 7, Algorithm 1), ensuring ct+1 = 1
+N
+PN
+i=1 ct+1
+i
+throughout the algorithm iteration. The difference between
+global and local variates, ct
+i − ct (Line 5, Algorithm 1),
+serves as a correction term to mitigate “client drift” caused
+by data heterogeneity. This design extends the control vari-
+ate mechanism introduced in SCAFFOLD (Karimireddy
+et al., 2020b), but it is specifically adapted for asynchronous
+settings. On the client side, this correction term becomes
+ect
+i − ct−τ t
+i , where the global control variate ct−τ t
+i is out-
+dated due to system asynchrony. This inconsistency between
+the client- and server-side quantities introduces additional
+challenges in our theoretical analysis.
+Two-Level Momentum. MasFL employs both global and
+local momentum to effectively handle asynchronous up-
+dates: i) Global Momentum (Line 5, Algorithm 1). The
+server maintains a momentumgt+1, which aggregates client
+updates with a parameter β. This term stabilizes the global
+optimization trajectory by incorporating historical informa-
+tion. The difference in control variates, ct+1
+i − ct
+i, captures
+the progress of each client i. Since the participating clients
+at each round are selected uniformly, for any t, we have
+ESt
+"
+1
+S
+X
+i∈St
+ 
+ct+1
+i − ct
+i
+
++ ct
+#
+= 1
+N
+NX
+i=1
+ct+1
+i = ct+1.
+Thus, gt+1 represents a weighted average of the global
+4
+
+=== PAGE 5 ===
+Momentum-Driven Adaptivity: Towards Tuning-Free Asynchronous Federated Learning
+Algorithm 3 AdaMasFL: Procedures at Central Server
+1: Require: Initial model θ0, control variates c0
+i =
+1
+K
+PK−1
+k=0 ∇F
+
+θ0; ξ−1,k
+i
+
+for any i, c0 = 1
+N
+P
+i c0
+i ,
+momentum g0 = c0, global learning rate γ, local learn-
+ing rate η, and momentum parameter β.
+2: for t = 0, · · · , T − 1 do
+3: Randomly selected a set of clients St
+4: Update
+ct+1
+i =
+(
+ect+1
+i , if i ∈ S t
+ct
+i, otherwise (3)
+5: Aggregate local updates gt = 1
+S
+P
+i∈St
+∆t
+i
+6: Update global model θt+1 = θt − γgt
+7: Aggregate momentum
+gt+1 = β
+ 
+1
+S
+X
+i∈St
+ 
+ct+1
+i − ct
+i
+
++ ct
+!
++ (1 − β)gt
+8: Aggregate control variate
+ct+1 = ct + 1
+N
+X
+i∈St
+ 
+ct+1
+i − ct
+i
+
+9: Download θt+1 and βct+1+(1−β)gt+1 to all clients
+10: end for
+control variate ct+1 and its previous value gt. ii) Local
+Momentum (Line 3, Algorithm 2). Each client computes its
+local momentum gt,k
+i at every step of its local training. This
+local momentum combines the client’s current gradient with
+the control variate correction, mitigating client drift and pro-
+moting alignment with the global objective. This two-level
+structure isolates all staleness representations on the client
+side, ensuring that the global momentum is computed based
+on the latest accumulators (ct and gt), which is critical for
+our theoretical analysis.
+3.2. Theoretical Analysis of MasFL
+The following Theorem 3.1 presents the convergence rate
+of MasFL, whose proof is deferred to Appendix C.
+Theorem 3.1. Suppose that Assumptions 2.2 and 2.1 holds.
+Let {θt}T
+t=1 be the global iterates generated by MasFL. Set
+β =
+q
+SK
+T and γ = 1
+4L
+q
+SK
+T . Define a := τ 2
+maxβ2 +
+20e2η2K2L2. If the condition 1 − 4a −
+q
+SK
+T ≥ 0 is
+Algorithm 4 AdaMasFL: Procedures at Client i
+1: Receive θt−τ t
+i and βct−τ t
+i + (1− β)gt−τ t
+i from server.
+Set θt,0
+i = θt−τ t
+i
+2: for k = 0, · · · , K − 1 do
+3: Compute
+gt,k
+i = β
+
+∇F
+
+θt,k
+i ; ξt,k
+i
+
+−ect
+i+ct−τ t
+i
+
++(1−β)gt−τ t
+i
+4: Update local model
+θt,k+1
+i = θt,k
+i − η gt,k
+i
+∥gt,k
+i ∥
+5: end for
+6: Send ∆t
+i = 1
+ηK
+
+θt−τ t
+i − θt,K
+i
+
+and ect+1
+i =
+1
+K
+PK−1
+k=0 ∇F
+
+θt,k
+i ; ξt,k
+i
+
+to the server
+satisfied, i.e., η ≤
+√
+T −
+√
+SKT −4SKτ 2max
+4
+√
+5eKL
+√
+T , then it holds that
+1
+T
+T −1X
+t=0
+E∥∇f(θt)∥2 ≤O
+ L∆ + σ2
+√
+SKT
++ σ2
+T + L2σ2
+N KT
+
+for sufficiently largeT , where e denotes Euler’s number and
+∆ := f(θ0) − f ∗ represents the initial optimality gap with
+f ∗ = minθ f(θ) > −∞.
+Theorem 3.1 demonstrates that MasFL achieves a conver-
+gence rate of O
+
+1√
+SKT
+
+in terms of E∥∇f (θ) ∥2 for suf-
+ficiently large T . This rate matches the convergence rates
+of traditional synchronous FL baselines (Karimireddy et al.,
+2020b), demonstrating that the delays inherent in asyn-
+chronous training do not degrade the asymptotic conver-
+gence guarantees.
+To maintain the convergence order of O
+
+1√
+T
+
+as in the
+synchronous case, MasFL requires the number of global
+rounds to satisfy T ≥ O (τ 2
+max). This condition is less re-
+strictive than that required by CA2FL (Wang et al., 2023)
+and FADAS (Wang et al., 2024c), which impose T ≥
+O(τ 4
+max) (since the convergence rates of both papers are
+O( 1√
+T + τmax¯τ
+T )).
+Following the standard definition (Arjevani et al., 2023), a
+point θ ∈ Rd is said to be anϵ-stationary point of a function
+f : Rd → R if ∥∇f (θ)∥ ≤ ϵ. Under this definition, MasFL
+finds an ϵ-stationary point in expectation within O
+  1
+SKϵ 4
+
+global rounds, indicating linear speedup with respect to both
+the number of participating clientsS and the number of local
+steps K. Notably, this convergence guarantee holds with-
+out requiring bounded gradient dissimilarity assumptions,
+such as (1), benefit from the carefully designed two-level
+momentum structure.
+5
+
+=== PAGE 6 ===
+Momentum-Driven Adaptivity: Towards Tuning-Free Asynchronous Federated Learning
+4. Adaptive Momentum-Driven AFL
+Although MasFL effectively leverages momentum in AFL
+to accelerate convergence while eliminating data heterogene-
+ity bounds, it requires careful tuning of the learning rates
+that are theoretically dependent on the unkonwn smooth-
+ness parameter L and delay bound τmax.Estimating these
+parameters poses significant challenges and compromises
+the fundamental privacy guarantees of FL. To address this
+limitation, we further propose Adaptive Momentum-driven
+asynchronous Federated Learning (AdaMasFL), which pre-
+serves the benefits of MasFL while achieving problem-
+parameter-free convergence.
+4.1. Algorithm Design
+AdaMasFL builds upon the framework of MasFL by seam-
+lessly integrating momentum with adaptive learning rates.
+The complete procedures of AdaMasFL are presented in Al-
+gorithms 3 and 4. Compared to MasFL, the key innovation
+of AdaMasFL lies in its adoption of momentum-driven gra-
+dient normalization with a different server-side aggregation.
+Momentum-Driven Adaptivity. AdaMasFL retains the
+momentum design of MasFL while introducing normalized
+gradients for local model updates (Line 4, Algorithm 4).
+This gradient normalization mitigates sensitivity to learning
+rate choices by automatically adjusting the effective step-
+sizes based on local optimization landscape. Normalized
+gradients ensure constant-magnitude updates regardless of
+gradient scales, satisfying
+η gt,k
+i
+∥gt,k
+i ∥
+ = η, ∀i, k, t.
+By adapting the stepsize to gradient magnitudes, AdaMasFL
+eliminates the need for problem-dependent tuning based on
+unknown quantities such as the smoothness constant L.
+However, gradient normalization alone is insufficient to
+achieve convergence in stochastic optimization, as it dis-
+cards magnitude information. Recent studies (Hazan et al.,
+2015; Yang et al., 2023) have shown that normalized gra-
+dients can hinder convergence due to the randomness of
+stochastic gradient directions, even in simpler centralized
+convex settings. This issue is further exacerbated in AFL,
+where clients face heterogeneous gradient noise and delays.
+To address this, the momentum term plays a critical role by
+preserving consistent descent directions across clients and
+iterations.
+Server-Side Aggregation. Unlike MasFL, where the server
+updates the global model based on the momentum gt+1
+(Line 6, Algorithm 1), AdaMasFL updates the global model
+using the aggregation of local update directions (Line 6,
+Algorithm 3) that gt = 1
+ηSK
+P
+i∈St
+
+θt−τ t
+i − θt,K
+i
+
+. This
+formulation ensures bounded global progress that
+∥γgt∥ =
+
+γ
+S
+X
+i∈St
+∆t
+i
+ =
+
+γ
+SK
+X
+i∈St,k
+gt,k
+igt,k
+i
+
+
+≤ γ.
+Nevertheless, the global momentum is still retained in
+AdaMasFL to accelerate local model updates. These
+designs collectively enable AdaMasFL to achieve both
+normalization-induced stability and momentum-driven ac-
+celeration.
+4.2. Theoretical Analysis of AdaMasFL
+The following Theorem 4.1 presents the convergence rate
+of AdaMasFL, whose proof is deferred to Appendix D.
+Theorem 4.1. Suppose that Assumptions 2.1 and 2.2 holds.
+Let {θt}T
+t=1 be the global iterates generated by AdaMasFL.
+Set γ = (SK)1/4
+T 3/4 , η = 1
+K
+√
+T , and β =
+q
+SK
+T , then it holds
+that
+1
+T
+T −1X
+t=0
+E
+∇f(θt)
+
+≤ O
+ 
+∆ + L + σ +
+√
+Lσ
+(SKT )
+1
+4
++ σ
+r
+SK
+T +
+√Lστmax
+T
+3
+8 (SK)
+1
+8
++¯τ σ
+r
+S
+T + τmaxL(SK)
+1
+4
+T
+3
+4
++ ¯τ
+p
+Lστmax
+(SK)
+3
+8
+T
+7
+8
+!
+for sufficiently large T .
+Theorem 4.1 demonstrates that AdaMasFL achieves a con-
+vergence rate of O
+
+1
+(SKT )1/4
+
+in terms of E ∥∇f (θ)∥.
+Under the definition of ϵ-stationarity, AdaMasFL finds an
+ϵ-stationary point within O
+  1
+SKϵ 4
+
+global rounds, which
+aligns with the communication complexity of MasFL. No-
+tably, Theorem 4.1 explicitly determines all hyperparam-
+eters, η, γ, and β based solely on algorithm-specific con-
+stants: the number of participating clients S, local update
+iterations K, and communication rounds T . This eliminates
+the need for trial-and-error tuning or problem-parameter es-
+timation, resulting in a completely problem-parameter-free
+AFL approach.
+5. Comparisons with Existing AFL Methods
+We now compare MasFL and AdaMasFL with several rep-
+resentative AFL approaches using various metrics, as listed
+in Table 1. Prior AFL algorithms face different theoretical
+and practical limitations. FedBuff (Nguyen et al., 2022),
+CA2FL (Wang et al., 2023), and DeFedAvg-nIID (Wang
+et al., 2024a) all require careful stepsize tuning based on the
+maximum delay τmax. While CA2FL and DeFedAvg-nIID
+improve upon FedBuff by achieving a better convergence
+6
+
+=== PAGE 7 ===
+Momentum-Driven Adaptivity: Towards Tuning-Free Asynchronous Federated Learning
+Table 1: Comparisons of AFL algorithms for handling heterogeneous data.
+(Convergence Rate = The convergence rate of different algorithms in terms of 1
+T
+PT −1
+t=0 E
+∇f(θt)
+; Additional Assump-
+tions = Additional assumptions aside from Assumptions 2.1–2.3; BDH = Bounded data heterogeneity define in (1); BG =
+Bounded gradient that ∥∇fi(θ)∥ ≤ G, ∀i, θ.)
+Algorithms
+Convergence
+Rate1
+Additional
+Assumptions
+Stepsize Restrictions
+Stepsize-related
+Problem-Parameters
+FedBuff
+(Nguyen et al., 2022)
+O
+
+K1/4σg
+(ST )1/4 +
+q
+τmax¯τ
+T
+
+BDH ηγ ≤ 1
+4Kτ 3/2
+max
+τmax
+CA2FL
+(Wang et al., 2023)
+O
+
+1
+(SKT )1/4 +
+q
+τmax
+T
+
+BDH ηγ ≤ S
+36Kτ 2maxL2 , η ≤ 1
+36K√τmaxL τmax, L
+DeFedAvg-nIID
+(Wang et al., 2024a)
+O
+
+1
+(SKT )1/4 + 1√
+KT
+
+BDH, BG ηγ ≤ 1
+4LKτmax
+, η ≤ 1
+4
+√
+3LK τmax, L
+FADAS
+(Wang et al., 2024c)
+O
+
+1
+(ST )1/4 +
+q
+τmax¯τ
+T
+
+BDH, BG
+ηγ ≤ min
+
+ϵ2S(N −1)
+180C2
+GN(N −S)τ 2maxKL ,
+√
+ϵ3S(N −1)
+12
+√
+CGN(N −S)τ 2maxKL
+
+, η ≤
+√ϵ√
+360CGτ 2maxKL
+2
+τmax, L, G
+MasFL O
+ √κ
+(SKT )1/4 +
+q
+κ
+T
+
+3 – β =
+q
+SK
+T , γ = β
+4L , η ≤
+q
+T −
+√
+SKT −4SKτ 2max
+4
+√
+5eKL
+√
+T τmax, L
+AdaMasFL O
+
+1
+(SKT )1/4 +
+√τmax
+T 3/8
+
+– β =
+q
+SK
+T , γ = (SK)1/4
+T 3/4 , η = 1
+K
+√
+T –
+1 For the convergence rate defined in terms of 1
+T
+PT −1
+t=0 ∥∇f (θt)∥2, we can readily obtained the corresponding rate with respect to
+1
+T
+PT −1
+t=0 ∥∇f (θt)∥ by taking square root on both sides of the associated bound. This operator is verified by the following fact:
+1
+T
+PT −1
+t=0 E∥∇f (θt)∥ = 1
+T
+PT −1
+t=0 E
+p
+∥∇f (θt)∥2 ≤ 1
+T
+PT −1
+t=0
+p
+E∥∇f (θt)∥2 ≤
+q
+1
+T
+PT −1
+t=0 E∥∇f (θt)∥2, where the first and
+second inequalities utilizes Jensen’s inequality as the square root function is concave.
+2 CG := ηKG + ϵ and ϵ > 0 is an adaptive optimization parameter.
+3 κ := 3−4a
+1−4a−
+√
+SK/T
+and a := τ2
+maxβ2 + 20e2η2K2L2.
+rate of O
+
+1
+(SKT )1/4
+
+and linear speedup with respect to
+S and K, they still rely on bounded data heterogeneity as-
+sumptions and knowledge of the smoothness parameter L.
+FADAS (Wang et al., 2024c) employs the AMSGrad opti-
+mizer at the server-side to enable adaptive stepsize in AFL.
+However, its convergence guarantee relies on both bounded
+gradients and bounded data heterogeneity assumptions, and
+fails to achieve linear speedup with respect to local steps K.
+In contrast, our algorithms achieve substantial improve-
+ments over existing approaches. Specifically, MasFL elimi-
+nates the bounded data heterogeneity assumption while at-
+taining state-of-the-art communication efficiency. Building
+on this foundation, AdaMasFL maintains the best-known
+communication complexity while operating in a completely
+problem-parameter-free manner, with all learning rates ex-
+plicitly determined by algorithm-specific constants S, K,
+and T . Collectively, these advancements mark a significant
+step forward in achieving robust and adaptive AFL.
+6. Numerical Experiments
+We evaluate the performance of our algorithms on the image
+classification task using two real-world datasets: CIFAR-10
+(Li et al., 2017) and FMNIST (Xiao et al., 2017). For FM-
+NIST, we utilize a convolutional neural network (CNN) con-
+sisting of three convolutional layers and two fully connected
+layers. For CIFAR-10, we adopt a ResNet-18 architecture
+(He et al., 2016). We compare our algorithms against two
+state-of-the-art AFL baselines: CA2FL (Wang et al., 2023)
+and FADAS (Wang et al., 2024c). We simulate the practical
+asynchronous conditions using FedBuff’s delay mechanism.
+Specifically, at any given time, there are a total ofMc clients
+performing local updates concurrently. The execution times
+of all clients are sampled randomly from a uniform dis-
+tribution. These varying execution times naturally create
+different delays in global aggregation participation. Detailed
+experimental setups and additional simulation results are
+provided in Appendix E.
+Figure 1 compares the test accuracy of various algorithms
+versus the number of communication rounds on both the
+CIFAR-10 and FMNIST datasets. For both datasets, we pro-
+7
+
+=== PAGE 8 ===
+Momentum-Driven Adaptivity: Towards Tuning-Free Asynchronous Federated Learning
+0 100 200 300 400 500 600
+Communication round
+0.1
+0.2
+0.3
+0.4
+0.5
+0.6
+0.7
+0.8
+0.9Accuracy
+CA2FL
+FADAS
+MasFL
+AdaMasFL
+(a) I.i.d. CIFAR10
+0 100 200 300 400 500 600
+Communication round
+0.1
+0.2
+0.3
+0.4
+0.5
+0.6
+0.7
+0.8
+0.9Accuracy
+CA2FL
+FADAS
+MasFL
+AdaMasFL (b) Non-i.i.d. CIFAR10
+0 100 200 300 400 500 600
+Communication round
+0.1
+0.2
+0.3
+0.4
+0.5
+0.6
+0.7
+0.8
+0.9Accuracy
+CA2FL
+FADAS
+MasFL
+AdaMasFL (c) I.i.d. FMNIST
+0 100 200 300 400 500 600
+Communication round
+0.1
+0.2
+0.3
+0.4
+0.5
+0.6
+0.7
+0.8
+0.9Accuracy
+CA2FL
+FADAS
+MasFL
+AdaMasFL (d) Non-i.i.d. FMNIST
+Figure 1: Test accuracy versus communication round on different datasets with i.i.d./non-i.i.d. data (Mc = 20).
+0 100 200 300 400 500 600
+Communication round
+0.1
+0.2
+0.3
+0.4
+0.5
+0.6
+0.7
+0.8
+0.9Accuracy
+CA2FL
+FADAS
+MasFL
+AdaMasFL
+(a) Mc = 30
+0 100 200 300 400 500 600
+Communication round
+0.1
+0.2
+0.3
+0.4
+0.5
+0.6
+0.7
+0.8
+0.9Accuracy
+CA2FL
+FADAS
+MasFL
+AdaMasFL (b) Mc = 40
+0 100 200 300 400 500 600
+Communication round
+0.1
+0.2
+0.3
+0.4
+0.5
+0.6
+0.7
+0.8
+0.9Accuracy
+CA2FL
+FADAS
+MasFL
+AdaMasFL (c) Mc = 60
+0 100 200 300 400 500 600
+Communication round
+0.1
+0.2
+0.3
+0.4
+0.5
+0.6
+0.7
+0.8
+0.9Accuracy
+CA2FL
+FADAS
+MasFL
+AdaMasFL (d) Mc = 100
+Figure 2: Test accuracy on the non-i.i.d. FMNIST dataset under varying levels of asynchrony.
+10−3 10−2 10−1 100
+Learning Rate
+0.4
+0.5
+0.6
+0.7
+0.8
+0.9Accuracy
+CA2FL
+FADAS
+AdaMasFL
+(a) Non-i.i.d. CIFAR-10
+10−3 10−2 10−1
+Learning Rate
+0.0
+0.1
+0.2
+0.3
+0.4
+0.5
+0.6
+0.7
+0.8
+0.9Accuracy
+CA2FL
+FADAS
+AdaMasFL
+(b) Non-i.i.d. FMNIST
+Figure 3: Test accuracy versus learning rate with non-i.i.d.
+data.
+vide results for i.i.d. and non-i.i.d. data distributions. The
+learning rates of our algorithms, MasFL and AdaMasFL,
+are derived based on the theoretical guidance provided in
+Theorem 3.1 and Theorem 4.1, respectively. To ensure fair
+comparisons, the hyperparameters of the baseline methods,
+CA2FL and FADAS, are optimally selected according to
+the recommendations in their respective papers. The results
+show that our proposed methods, MasFL and AdaMasFL,
+significantly outperform the baselines, CA2FL and FADAS,
+in both convergence speed and test accuracy. This im-
+provement can be attributed to our two-level momentum
+design, which accelerates optimization progress at each up-
+date. Additionally, the momentum mechanism stabilizes
+the optimization trajectory by accumulating historical gra-
+dients, as evidenced by the results in the non-i.i.d. setting.
+Notably, the advantages of our algorithms are particularly
+pronounced in the more challenging task, CIFAR-10 with
+non-i.i.d. data, as shown in Figure 1b.
+Figure 2 illustrates the test accuracy of various algorithms
+on the non-i.i.d. FMNIST dataset under different asyn-
+chronous settings. Here, Mc denotes the number of clients
+performing local updates concurrently. Since the server
+updates the global model only after collecting a total of S
+client updates, a larger Mc enables more frequent global
+aggregations, resulting in greater asynchronous delays. In
+Figure 2, we fix the learning rate settings of all algorithms
+to those used in Figure 1d and evaluate their performance as
+Mc increases. We observe that AdaMasFL demonstrates ex-
+ceptional robustness to varying levels of asynchrony, main-
+taining nearly consistent performance despite increasing
+8
+
+=== PAGE 9 ===
+Momentum-Driven Adaptivity: Towards Tuning-Free Asynchronous Federated Learning
+delays. In contrast, the performance of other algorithms
+deteriorates significantly, requiring reconfiguration to adapt
+to changing environments. Similarly, Figure 3 illustrates
+the test accuracy of various algorithms versus learning rate
+on both the CIFAR-10 and FMNIST datasets with non-i.i.d.
+data distributions. It is evident that AdaMasFL consistently
+outperforms the baselines, CA2FL and FADAS, across the
+displayed learning rate regions.
+7. Conclusions
+This paper proposed two novel training approaches for AFL:
+MasFL and AdaMasFL. Specifically, MasFL introduced
+a two-level momentum mechanism that eliminates the re-
+quirement for data heterogeneity bounds in non-i.i.d. set-
+tings while achieving the best-known communication effi-
+ciency. Building on this foundation, AdaMasFL incorpo-
+rated momentum-driven gradient normalization, removing
+all dependencies on problem-specific parameters in algo-
+rithm tuning while preserving the theoretical guarantees. Ex-
+tensive numerical experiments demonstrated that our meth-
+ods consistently outperform state-of-the-art AFL algorithms
+in runtime efficiency and exhibit exceptional robustness
+across a wide range of learning rates and asynchrony levels.
+Impact Statement
+This paper presents work whose goal is to advance the field
+of Machine Learning. There are many potential societal
+consequences of our work, none which we feel must be
+specifically highlighted here.
+References
+Abreha, H. G., Hayajneh, M., and Serhani, M. A. Federated
+learning in edge computing: a systematic survey. Sensors,
+22(2):450, 2022.
+Arjevani, Y ., Carmon, Y ., Duchi, J. C., Foster, D. J., Srebro,
+N., and Woodworth, B. Lower bounds for non-convex
+stochastic optimization. Mathematical Programming, 199
+(1):165–214, 2023.
+Assran, M., Aytekin, A., Feyzmahdavian, H. R., Johansson,
+M., and Rabbat, M. G. Advances in asynchronous parallel
+and distributed optimization. Proceedings of the IEEE,
+108(11):2013–2031, 2020.
+Chen, Y ., Ning, Y ., Slawski, M., and Rangwala, H. Asyn-
+chronous online federated learning for edge devices with
+non-IID data. In Proceedings of the 2020 IEEE Interna-
+tional Conference on Big Data, pp. 15–24. IEEE, 2020.
+Cheng, Z., Huang, X., and Yuan, K. Momentum benefits
+non-IID federated learning simply and provably. In Pro-
+ceedings of the 12th International Conference on Learn-
+ing Representations., 2024.
+Cutkosky, A. and Mehta, H. Momentum improves normal-
+ized SGD. In Proceedings of the 37th International Con-
+ference on Machine Learning , pp. 2260–2268. PMLR,
+2020.
+Duchi, J., Hazan, E., and Singer, Y . Adaptive subgradient
+methods for online learning and stochastic optimization.
+Journal of Machine Learning Research, 12(7), 2011.
+Even, M., Koloskova, A., and Massoulié, L. Asynchronous
+SGD on graphs: A unified framework for asynchronous
+decentralized and federated optimization. In Proceed-
+ings of the 27th International Conference on Artificial
+Intelligence and Statistics, pp. 64–72. PMLR, 2024.
+Fraboni, Y ., Vidal, R., Kameni, L., and Lorenzi, M. A gen-
+eral theory for federated optimization with asynchronous
+and heterogeneous clients updates. Journal of Machine
+Learning Research, 24(110):1–43, 2023.
+Hazan, E., Levy, K., and Shalev-Shwartz, S. Beyond con-
+vexity: Stochastic quasi-convex optimization. Advances
+in Neural Information Processing Systems 28, 2015.
+He, K., Zhang, X., Ren, S., and Sun, J. Deep residual learn-
+ing for image recognition. In Proceedings of the IEEE
+conference on computer vision and pattern recognition,
+pp. 770–778, 2016.
+Hsu, T.-M. H., Qi, H., and Brown, M. Measuring the effects
+of non-identical data distribution for federated visual clas-
+sification. arXiv preprint arXiv:1909.06335, 2019.
+Kairouz, P., McMahan, H. B., Avent, B., Bellet, A., Bennis,
+M., Bhagoji, A. N., Bonawitz, K., Charles, Z., Cormode,
+G., Cummings, R., et al. Advances and open problems in
+federated learning. Foundations and Trends® in Machine
+Learning, 14(1–2):1–210, 2021.
+Karimireddy, S. P., Jaggi, M., Kale, S., Mohri, M., Reddi,
+S. J., Stich, S. U., and Suresh, A. T. Mime: Mimicking
+centralized stochastic algorithms in federated learning.
+arXiv preprint arXiv:2008.03606, 2020a.
+Karimireddy, S. P., Kale, S., Mohri, M., Reddi, S., Stich,
+S., and Suresh, A. T. Scaffold: Stochastic controlled
+averaging for federated learning. In Proceedings of the
+37th International Conference on Machine Learning, pp.
+5132–5143. PMLR, 2020b.
+Koloskova, A., Stich, S. U., and Jaggi, M. Sharper conver-
+gence guarantees for asynchronous SGD for distributed
+and federated learning. In Advances in Neural Informa-
+tion Processing Systems 35, pp. 17202–17215, 2022.
+9
+
+=== PAGE 10 ===
+Momentum-Driven Adaptivity: Towards Tuning-Free Asynchronous Federated Learning
+Leconte, L., Nguyen, V . M., and Moulines, E. FA V ANO:
+Federated averaging with asynchronous nodes. arXiv
+preprint arXiv:2305.16099, 2023.
+Leconte, L., Jonckheere, M., Samsonov, S., and Moulines,
+E. Queuing dynamics of asynchronous federated learn-
+ing. In Proceedings of the 27th International Conference
+on Artificial Intelligence and Statistics, pp. 1711–1719.
+PMLR, 2024a.
+Leconte, L., Moulines, E., et al. FA V ANO: Federated averag-
+ing with asynchronous nodes. In Proceedings of the 2024
+IEEE International Conference on Acoustics, Speech and
+Signal Processing, pp. 5665–5669. IEEE, 2024b.
+Li, H., Liu, H., Ji, X., Li, G., and Shi, L. Cifar10-dvs: an
+event-stream dataset for object classification. Frontiers
+in neuroscience, 11:309, 2017.
+Li, J., Huang, F., and Huang, H. Fedda: Faster framework
+of local adaptive gradient methods via restarted dual av-
+eraging. arXiv preprint arXiv:2302.06103, 2023.
+Li, T., Sahu, A. K., Talwalkar, A., and Smith, V . Feder-
+ated learning: Challenges, methods, and future directions.
+IEEE Signal Processing Magazine, 37(3):50–60, 2020.
+McMahan, B., Moore, E., Ramage, D., Hampson, S., and
+y Arcas, B. A. Communication-efficient learning of deep
+networks from decentralized data. In Proceedings of the
+20th International Conference on Artificial Intelligence
+and Statistics, pp. 1273–1282. PMLR, 2017.
+Mishchenko, K., Bach, F., Even, M., and Woodworth, B. E.
+Asynchronous SGD beats minibatch SGD under arbitrary
+delays. In Advances in Neural Information Processing
+Systems 35, pp. 420–433, 2022.
+Nguyen, J., Malik, K., Zhan, H., Yousefpour, A., Rabbat,
+M., Malek, M., and Huba, D. Federated learning with
+buffered asynchronous aggregation. InProceedings of the
+25th International Conference on Artificial Intelligence
+and Statistics, pp. 3581–3607. PMLR, 2022.
+Pandya, S., Srivastava, G., Jhaveri, R., Babu, M. R., Bhat-
+tacharya, S., Maddikunta, P. K. R., Mastorakis, S., Piran,
+M. J., and Gadekallu, T. R. Federated learning for smart
+cities: A comprehensive survey. Sustainable Energy Tech-
+nologies and Assessments, 55:102987, 2023.
+Reddi, S., Charles, Z., Zaheer, M., Garrett, Z., Rush, K.,
+Koneˇcn`y, J., Kumar, S., and McMahan, H. B. Adaptive
+federated optimization. arXiv preprint arXiv:2003.00295,
+2020.
+Reddi, S. J., Kale, S., and Kumar, S. On the convergence
+of Adam and beyond. In Proceedings of the 6th Interna-
+tional Conference on Learning Representations, 2018.
+Sohom Mukherjee, Nicolas Loizou, S. U. S. Locally adap-
+tive federated learning. arXiv preprint arXiv:2307.06306,
+2024.
+Wang, S., Tuor, T., Salonidis, T., Leung, K. K., Makaya,
+C., He, T., and Chan, K. Adaptive federated learning
+in resource constrained edge computing systems. IEEE
+Journal on Selected Areas in Communications , 37(6):
+1205–1221, 2019.
+Wang, X., Li, Z., Jin, S., and Zhang, J. Achieving linear
+speedup in asynchronous federated learning with hetero-
+geneous clients. IEEE Transactions on Mobile Comput-
+ing, 24(1):435–448, 2024a.
+Wang, X., Sun, Y ., Wai, H.-T., and Zhang, J. Dual-
+delayed asynchronous sgd for arbitrarily heterogeneous
+data. arXiv preprint arXiv:2405.16966, 2024b.
+Wang, Y ., Cao, Y ., Wu, J., Chen, R., and Chen, J. Tackling
+the data heterogeneity in asynchronous federated learning
+with cached update calibration. InProceedings of the 12th
+International Conference on Learning Representations,
+2023.
+Wang, Y ., Wang, S., Lu, S., and Chen, J. FADAS: Towards
+federated adaptive asynchronous optimization. In Pro-
+ceedings of the 41st International Conference on Machine
+Learning, 2024c.
+Wu, X., Huang, F., Hu, Z., and Huang, H. Faster adaptive
+federated learning. In Proceedings of the AAAI Confer-
+ence on Artificial Intelligence , volume 37, pp. 10379–
+10387, 2023.
+Xiao, H., Rasul, K., and V ollgraf, R. Fashion-mnist: a
+novel image dataset for benchmarking machine learning
+algorithms. arXiv preprint arXiv:1708.07747, 2017.
+Xie, C., Koyejo, S., and Gupta, I. Asynchronous federated
+optimization. arXiv preprint arXiv:1903.03934, 2019.
+Yan, W., Zhang, K., Wang, X., and Cao, X. Problem-
+parameter-free federated learning. In The Thirteenth
+International Conference on Learning Representations,
+2025.
+Yang, J., Li, X., Fatkhullin, I., and He, N. Two sides of one
+coin: the limits of untuned SGD and the power of adaptive
+methods. Advances in Neural Information Processing
+Systems 36, 2023.
+Yu, T., Song, C., Wang, J., and Chitnis, M. Momentum
+approximation in asynchronous private federated learning.
+arXiv preprint arXiv:2402.09247, 2024.
+Zakerinia, H., Talaei, S., Nadiradze, G., and Alistarh,
+D. QuAFL: Federated averaging can be both asyn-
+chronous and communication-efficient. arXiv preprint
+arXiv:2206.10032, 2022.
+10
+
+=== PAGE 11 ===
+Momentum-Driven Adaptivity: Towards Tuning-Free Asynchronous Federated Learning
+Zang, Y ., Xue, Z., Ou, S., Chu, L., Du, J., and Long, Y . Effi-
+cient asynchronous federated learning with prospective
+momentum aggregation and fine-grained correction. In
+Proceedings of the AAAI Conference on Artificial Intelli-
+gence, volume 38, pp. 16642–16650, 2024.
+Zhong, L., Chen, X., Xu, C., Ma, Y ., Wang, M., Zhao, Y .,
+and Muntean, G.-M. A multi-user cost-efficient crowd-
+assisted VR content delivery solution in 5G-and-beyond
+heterogeneous networks. IEEE Transactions on Mobile
+Computing, 22(8):4405–4421, 2022.
+11
+
+=== PAGE 12 ===
+Momentum-Driven Adaptivity: Towards Tuning-Free Asynchronous Federated Learning
+A. Related Works
+Our work draws inspiration from and contributes to several active research areas in FL, including asynchronous optimization,
+momentum techniques, and adaptive stepsize methods.
+Asynchronous Training Paradigms. Traditional asynchronous SGD methods (Mishchenko et al., 2022; Koloskova et al.,
+2022; Even et al., 2024) have established theoretical foundations for distributed optimization, particularly in addressing
+client synchronization challenges. While these methods have demonstrated linear speedup convergence under independent
+and indentically distributed (iid) settings and various objective functions, their effectiveness in non-iid scenarios has
+been limited. Moreover, these approaches typically focus on immediate gradient computation without local iterations,
+leading to increased communication overhead. Our work extends beyond these limitations by incorporating local training
+while maintaining theoretical guarantees in non-iid settings. Recent AFL frameworks like FedBuff (Nguyen et al., 2022),
+DeFedAvg-nIID (Wang et al., 2024a), and DuDe-ASGD (Wang et al., 2024b) have shown promising empirical results
+in handling heterogeneous data distributions. Methods such as QuAFL (Zakerinia et al., 2022) and FA V ANO (Leconte
+et al., 2023) have explored different asynchrony models, including client interruption strategies, but face limitations in
+theoretical guarantees or practical implementation. Our framework distinguishes itself by achieving linear speedup without
+requiring bounded heterogeneity assumptions, while simultaneously providing robust performance across diverse learning
+rate configurations.
+Momentum-Based Techniques. Momentum has emerged as a powerful technique for addressing data heterogeneity in FL.
+Various approaches, such as FedAvgM (Hsu et al., 2019) and SlowMo (Wang et al., 2019), have incorporated server-side
+momentum to enhance convergence rates. More sophisticated methods like MIME (Karimireddy et al., 2020a) and FAFED
+(Wu et al., 2023) have explored the combination of client- and server-side momentum with adaptive techniques. While these
+methods have achieved improved convergence properties, they generally require careful tuning of multiple hyperparameters.
+Recent work like FedSPS (Sohom Mukherjee, 2024) has attempted to minimize hyperparameter dependence but still
+relies on restrictive assumptions about gradient bounds and data heterogeneity. Yu et al. (2024) identify that asynchrony
+introduces implicit bias in momentum updates and propose momentum approximation for AFL, which finds optimal weights
+for historical model updates to approximate synchronous momentum behavior. FedAC (Zang et al., 2024) addresses
+both model staleness and client drift issues through adaptive server updates and corrective client training, though its
+empirical improvements lack theoretical convergence guarantees. Our approach advances this line of research by providing
+a fully adaptive framework that operates asynchronously without bounded heterogeneity assumptions or the need for
+problem-specific parameter tuning.
+Adaptive Learning Schemes. Adaptive learning rates have been extensively studied and proven highly successful in
+single-machine learning scenarios (Duchi et al., 2011; Hazan et al., 2015; Reddi et al., 2018; Cutkosky & Mehta, 2020;
+Yang et al., 2023), where they effectively address the challenges of learning rate tuning and gradient scaling. In recent
+years, the critical need for hyperparameter-efficient training in federated learning has led to growing interest in extending
+these adaptive methods to FL settings. Server-side adaptive methods, such as FedOpt (Reddi et al., 2020) and its variants
+(FedAdaGrad, FedAdam, and FedYogi), have demonstrated enhanced convergence properties compared to traditional fixed
+learning rate approaches. Recent developments in local adaptive methods, including FAFED (Wu et al., 2023) and FedDA
+(Li et al., 2023), have explored client-side adaptation strategies. FADAS (Wang et al., 2024c) introduces a global adaptive
+AFL framework that applies adaptive optimization techniques at the server-side aggregation while supporting asynchronous
+client updates, and further proposes a delay-adaptive learning rate adjustment strategy to enhance resilience against large
+client delays. While these approaches have shown promise, they typically require bounded data heterogeneity assumptions
+and careful calibration of various hyperparameters. In contrast, our method integrates adaptive stepsizes with client-side
+momentum in an asynchronous setting, eliminating these restrictions while maintaining theoretical convergence guarantees.
+B. Technical Lemmas
+Throughout the analysis, we use the following notation for summations:
+•P
+i denotes summation over all clients i ∈ {1, . . . , N};
+•P
+i∈St denotes summation over selected clients in multiset St;
+•P
+k denotes summation over local steps k ∈ {0, . . . , K − 1};
+•P
+t denotes summation over global rounds t ∈ {0, . . . , T − 1}.
+12
+
+=== PAGE 13 ===
+Momentum-Driven Adaptivity: Towards Tuning-Free Asynchronous Federated Learning
+Lemma B.1. Given vectors ω1, · · · , ωN ∈ Rd and ω = 1
+N
+PN
+i=1 ωi, if we sample S ⊂ { 1, · · · , N} uniformly randomly
+such that |S| = S, then it holds that
+E
+
+
+
+1
+S
+X
+i∈S
+ωi
+
+2
+ ≤ ∥ω∥2 + 1
+SN
+NX
+i=1
+∥ωi − ω∥2 .
+Proof. Letting 1 {i ∈ S} be the indicator for the event i ∈ S , we prove this lemma by direct calculation as follows:
+E
+
+
+
+1
+S
+X
+i∈S
+ωi
+
+2
+ = E
+
+
+
+1
+S
+NX
+i=1
+ωi1 {i ∈ S}
+
+2
+
+= 1
+S2 E
+
+
+
+X
+i
+∥ωi∥2 1 {i ∈ S} + 2
+X
+i<j
+ω⊤
+i ωj1 {i, j ∈ S}
+
+
+
+
+= 1
+SN
+NX
+i=1
+∥ωi∥2 + 1
+S2
+S(S − 1)
+N(N − 1)2
+X
+i<j
+ω⊤
+i ωj
+= 1
+SN
+NX
+i=1
+∥ωi∥2 + 1
+S2
+S(S − 1)
+N(N − 1)
+
+
+
+NX
+i=1
+ωi
+
+2
+−
+NX
+i=1
+∥ωi∥2
+
+
+= N − S
+S(N − 1)
+1
+N
+NX
+i=1
+∥ωi∥2 + N(S − 1)
+S(N − 1) ∥ω∥2
+= N − S
+S(N − 1)
+1
+N
+NX
+i=1
+∥ωi − ω∥2 + ∥ω∥2
+≤ 1
+SN
+NX
+i=1
+∥ωi − ω∥2 + ∥ω∥2,
+where the last inequality uses the fact that N −S
+N −1 ≤ 1 for any nonempty set S.
+Lemma B.2. For any i, t, define ϕt
+i := E
+∇fi
+
+θt−τ t
+i
+
+− ct+1
+i
+
+2
+, ϕt := 1
+N
+P
+i ϕt
+i, ωt
+i := 1
+K
+P
+k E
+θt,k
+i − θt−τ t
+i
+
+2
+, and
+ωt := 1
+N
+P
+i ωt
+i. We have
+1
+T
+T −1X
+t=0
+ϕt ≤4N σ2
+SKT + 4L2ω0
+T + 4σ2
+K + 4L2
+T
+T −1X
+t=0
+ωt
++ 4N2γ2L2
+S2T
+T −1X
+t=0
+
+E
+E t2
++ E
+∇f
+ 
+θt2
+.
+where E t := ∇f(θt) − gt+1.
+Proof. Since for any t, the S elements in St are uniformly sampled from {1, · · · , N}, we have
+ct+1
+i =
+(
+ct
+i if i ∈ S t (w.p. 1 − S
+N )
+1
+K
+P
+k ∇F
+
+θt,k
+i ; ξt,k
+i
+
+if i /∈ S t (w.p. S
+N ).
+13
+
+=== PAGE 14 ===
+Momentum-Driven Adaptivity: Towards Tuning-Free Asynchronous Federated Learning
+Using Young’s inequality repeatedly, we have
+ϕt
+i =
+
+1 − S
+N
+
+E
+∇fi
+
+θt−τ t
+i
+
+− ct
+i
+
+2
++ S
+N E
+∇fi
+
+θt−τ t
+i
+
+− 1
+K
+X
+k
+∇F
+
+θt,k
+i ; ξt,k
+i
+
+2
+≤
+
+1 − S
+N
+
+E
+∇fi
+
+θt−τ t
+i
+
+∓ ∇fi
+
+θt−τ t
+i −1
+
+− ct
+i
+
+2
++ 2S
+N
+ σ2
+K + L2ωt
+i
+
+≤
+
+1 − S
+N
+
+E
+
+1 + S
+2N
+
+ϕt−1
+i +
+
+1 + 2N
+S
+
+L2
+θt−τ t
+i − θt−τ t
+i −1
+
+2
++ 2S
+N
+ σ2
+K + L2ωt
+i
+
+≤
+
+1 − S
+2N
+
+ϕt−1
+i + 4N
+S γ2L2
+
+E
+E t−τ t
+i −1
+
+2
++ E
+∇f
+
+θt−τ t
+i −1
+
+2
++ 2S
+N
+ σ2
+K + L2ωt
+i
+
+.
+Summing up the above inequality over i and t yields
+S
+2N
+1
+T
+T −1X
+t=0
+ϕt ≤ ϕ0
+T + 4N γ2L2
+ST
+T −1X
+t=0
+
+E
+E t2
++ E
+∇f
+ 
+θt2
++ 2Sσ2
+N K + 2SL2
+N T
+T −1X
+t=0
+ωt. (4)
+Since for any i, c0
+i = 1
+K
+PK−1
+k=0 ∇F
+
+θ0; ξ−1,k
+i
+
+and c1
+i = 1
+K
+PK−1
+k=0 ∇F
+
+θ0,k
+i ; ξ0,k
+i
+
+. Then, we have
+ϕ0
+i =
+
+1 − S
+N
+
+E
+∇fi
+ 
+θ0
+− c0
+i
+2
++ S
+N E
+∇fi
+ 
+θ0
+− c1
+i
+2
+≤ 2σ2
+K + 2S
+N L2ω0
+i , ∀i.
+Thus, ϕ0 = 1
+N
+P
+i ϕ0
+i ≤ 2σ2
+K + 2S
+N L2ω0. Plugging this inequality into (4) completes the proof.
+Lemma B.3. For any i, t, k, define ωt
+i := 1
+K
+P
+k
+θt,k
+i − θt−τ t
+i
+
+2
+, ωt := 1
+N
+P
+i ωt
+i, ϕt
+i := E
+∇fi
+
+θt−τ t
+i
+
+− ct+1
+i
+
+2
+,
+ϕt := 1
+N
+P
+i ϕt
+i, and ζt,k
+i := E[θt,k+1
+i − θt,k
+i |F t,k
+i ] = −η
+
+β
+
+∇fi
+
+θt,k
+i
+
+−ect
+i + ct−τ t
+i
+
++ (1 − β)gt−τ t
+i
+
+. We have
+1
+T
+T −1X
+t=0
+ωt ≤5η2K2e2ηβKL 
+2β2γ2L2(1 + 2τ 2
+max) + 1
+ 1
+T
+T −1X
+t=0
+
+E∥E t∥2 + E
+∇f(θt)
+2
++ 10η2β2K2e2ηβKL 1
+T
+T −1X
+t=0
+ 
+L2ωt + ϕt
++ (10e2ηβKL + 1)Kη2β2σ2
++ (1 + ηβL)K3η3β3Lσ2 + ω0
+T ,
+where ω0 ≤ 3η2K2e2ηβKL∇f
+ 
+θ02
++
+ 
+3e2ηβKL 
+β2 + 1
+N
+
++ β2
+Kη2σ2 + (1 + ηβL)K3η3β3Lσ2.
+Proof. From the definition of ζt,k
+i , we have
+E
+ζt,k
+i − ζt,k−1
+i
+
+2
+= η2β2E
+∇fi
+
+θt,k
+i
+
+− ∇fi
+
+θt,k−1
+i
+
+2
+≤ η2β2L2E
+θt,k
+i − θt,k−1
+i
+
+2
+= η2β2L2
+
+E
+ζt,k−1
+i
+
+2
++ η2β2E
+∇fi
+
+θt,k
+i
+
+− ∇F
+
+θt,k
+i ; ξk,t
+i
+
+2
+≤ η2β2L2
+
+E
+ζt,k−1
+i
+
+2
++ η2β2σ2
+
+.
+14
+
+=== PAGE 15 ===
+Momentum-Driven Adaptivity: Towards Tuning-Free Asynchronous Federated Learning
+E
+ζt,j
+i
+
+2
+≤
+
+1 + 1
+ηβL
+
+E
+ζt,j
+i − ζt,j−1
+i
+
+2
++ (1 + ηβL)E
+ζt,j−1
+i
+
+2
+≤ ηβL (1 + ηβL) E
+ζt,j−1
+i
+
+2
++ (1 + ηβL)E
+ζt,j−1
+i
+
+2
++ (1 + ηβL)η3β3Lσ2
+= (1 + ηβL)2 E
+ζt,j−1
+i
+
+2
++ (1 + ηβL)η3β3Lσ2
+≤ (1 + ηβL)2j E
+ζt,0
+i
+
+2
++ j(1 + ηβL)η3β3Lσ2
+≤ e2jηβL E
+ζt,0
+i
+
+2
++ j(1 + ηβL)η3β3Lσ2,
+where we use (1 + ηβL)
+1
+ηβL ≤ e. Then, we have
+E
+θt,k
+i − θt−τ t
+i
+
+2
+≤ 2E
+
+k−1X
+j=0
+ζt,j
+i
+
+2
++ 2kη2β2σ2
+≤ 2k
+k−1X
+j=0
+E
+ζt,j
+i
+
+2
++ 2kη2β2σ2
+≤ 2k
+k−1X
+j=0
+
+e2jηβL E
+ζt,0
+i
+
+2
++ j(1 + ηβL)η3β3Lσ2
+
++ 2kη2β2σ2
+≤ 2k2e2ηβKL E
+ζt,0
+i
+
+2
++ k3(1 + ηβL)η3β3Lσ2 + 2kη2β2σ2.
+Summing up the above inequality over k yields
+1
+K
+X
+k
+E
+θt,k
+i − θt−τ t
+i
+
+2
+≤ K2e2ηβKL E
+ζt,0
+i
+
+2
++ (1 + ηβL)K3η3β3Lσ2 + Kη2β2σ2. (5)
+Based on the definitation of ζt,k
+i , ζt,0
+i = −η
+
+β
+
+∇fi
+
+θt−τ t
+i
+
+−ect
+i + ct−τ t
+i
+
++ (1 − β)gt−τ t
+i
+
+. Then, we have
+E
+ζt,0
+i
+
+2
+=η2E
+β
+
+∇fi
+
+θt−τ t
+i
+
+∓ ∇fi
+
+θt−τ t
+i −1
+
+−ect
+i
+
++ β
+
+ct−τ t
+i − ∇f
+
+θt−τ t
+i −1
+
++(1 − β)
+
+gt−τ t
+i − ∇f
+
+θt−τ t
+i −1
+
++ ∇f
+
+θt−τ t
+i −1
+
+2
+≤5η2β2
+
+L2E
+θt−τ t
+i − θt−τ t
+i −1
+
+2
++ E
+∇fi
+
+θt−τ t
+i −1
+
+−ect
+i
+
+2
++ E
+∇f
+
+θt−τ t
+i −1
+
+− ct−τ t
+i
+
+2
++ 5η2(1 − β)2E
+E t−τ t
+i −1
+
+2
++ 5η2E
+∇f
+
+θt−τ t
+i −1
+
+2
+. (6)
+We know that E
+θt−τ t
+i − θt−τ t
+i −1
+
+2
+≤ 2γ2
+
+E
+E t−τ t
+i −1
+
+2
++ E
+∇f
+
+θt−τ t
+i −1
+
+2
+. Additionally, for any i, t, we have
+E
+∇fi
+
+θt−τ t
+i
+
+−ect+1
+i
+
+2
+= E
+∇fi
+
+θt−τ t
+i
+
+∓ 1
+K
+X
+k
+∇F
+
+θt,k
+i
+
+− 1
+K
+X
+k
+∇F
+
+θt,k
+i ; ξt,k
+i
+
+2
+≤ 2L2ωt
+i + 2σ2
+K .
+15
+
+=== PAGE 16 ===
+Momentum-Driven Adaptivity: Towards Tuning-Free Asynchronous Federated Learning
+Further, for any t, we have
+E
+∇f
+ 
+θt
+− ct+12
+= E
+∇f(θt) ∓ 1
+N
+X
+i
+∇fi
+
+θt−τ t
+i
+
+− 1
+N
+X
+i
+ct+1
+i
+
+2
+≤ 2 1
+N
+X
+i
+E
+∇fi
+ 
+θt
+− ∇fi
+
+θt−τ t
+i
+
+2
++ 2ϕt
+≤ 2L2
+N
+X
+i
+τ t
+i
+t−1X
+d=t−τ t
+i
+E
+θd+1 − θd
+
+2
++ 2ϕt
+≤ 4γ2L2τmax
+t−1X
+d=t−τmax
+
+E∥E d∥2 + E
+∇f
+
+θd
+
+2
++ 2ϕt.
+Plugging the above results into (6), we have
+E
+ζt,0
+i
+
+2
+≤5η2β2
+
+2γ2L2
+
+E
+E t−τ t
+i −1
+
+2
++ E
+∇f
+
+θt−τ t
+i −1
+
+2
++ 2L2ωt−1
+i + 2σ2
+K
+
++ 20η2β2γ2L2 τmax
+N
+X
+i
+t−τ t
+i −1−1X
+d=t−τ t
+i −1−τmax
+
+E∥E d∥2 + E
+∇f
+
+θd
+
+2
++ 10η2β2ϕt
++ 5η2E
+E t−τ t
+i −1
+
+2
++ 5η2E
+∇f
+
+θt−τ t
+i −1
+
+2
+.
+Plugging the above inequality into (5) and summing over i, t yields
+1
+T
+T −1X
+t=0
+ωt ≤5η2K2e2ηβKL 
+2β2γ2L2(1 + 2τ 2
+max) + 1
+ 1
+T
+T −1X
+t=0
+
+E∥E t∥2 + E
+∇f(θt)
+2
++ 10η2β2K2e2ηβKL 1
+T
+T −1X
+t=0
+ 
+L2ωt + ϕt
++ (10e2ηβKL + 1)Kη2β2σ2
++ (1 + ηβL)K3η3β3Lσ2 + ω0
+T .
+Since c0
+i = 1
+K
+PK−1
+k=0 ∇F
+
+θ0; ξ−1,k
+i
+
+for any i, c0 = 1
+N
+P
+i c0
+i , and g0 = c0, we have
+E
+ζ0,0
+i
+
+2
+= η2E
+β
+ 
+∇fi
+ 
+θ0
+− c0
+i + c0
++ (1 − β)g02
+= η2E
+
+β
+ 
+∇fi
+ 
+θ0
+− 1
+K
+X
+k
+∇F
+
+θ0; ξ−1,k
+i
+!
++ 1
+N K
+X
+i,k
+∇F
+
+θ0; ξ−1,k
+i
+
+∓ ∇f
+ 
+θ0
+
+2
+≤ 3η2
+ β2σ2
+K + σ2
+N K +
+∇f
+ 
+θ02
+
+.
+ω0
+i ≤ K2e2ηβKL 1
+N
+X
+i
+E
+ζ0,0
+i
+
+2
++ (1 + ηβL)K3η3β3Lσ2 + Kη2β2σ2
+≤ 3η2K2e2ηβKL∇f
+ 
+θ02
++
+
+3e2ηβKL
+
+β2 + 1
+N
+
++ β2
+
+Kη2σ2 + (1 + ηβL)K3η3β3Lσ2.
+16
+
+=== PAGE 17 ===
+Momentum-Driven Adaptivity: Towards Tuning-Free Asynchronous Federated Learning
+C. Proof of Theorem 3.1
+Based on the L-smoothness of f(·) in Assumption 2.1 and Line 6 in Algorithm 1, we have
+f(θt+1) − f(θt) ≤
+
+∇f(θt), θt+1 − θt
++ L
+2
+θt+1 − θt2
+= −γ∥∇f(θt)∥2 + γ
+
+∇f(θt), ∇f(θt) − gt+1
++ γ2L
+2
+gt+1 ∓ ∇f(θt)
+2
+≤ − γ
+2 ∥∇f(θt)∥2 + γ
+2
+∇f(θt) − gt+12
++ Lγ2∇f(θt) − gt+12
++ γ2L∥∇f(θt)∥2
+= − γ
+2 (1 − 2γL)∥∇f(θt)∥2 + γ
+2 (1 + 2γL)∥∇f(θt) − gt+1∥2.
+Define E t := ∇f(θt)−gt+1 and ∆ := f(θ0)−f ∗, where f ∗ := minθ f(θ) > −∞. Then, f(θ0)−f(θT ) ≤ f(θ0)−f ∗ =
+∆. Summing the above inequality over t = 0, 1, . . . , T − 1 yields
+1
+T
+T −1X
+t=0
+∥∇f(θt)∥2 ≤ 2∆
+γ(1 − 2γL)T + 1 + 2γL
+1 − 2γL
+1
+T
+T −1X
+t=0
+E t2
+. (7)
+From the update rule of gt+1 given in Line 5 in Algorithm 1, we have
+E∥E t∥2 = E
+
+(1 − β)
+ 
+∇f(θt) − gt
++ β
+ 
+∇f(θt) − ct − 1
+S
+X
+i∈St
+ 
+ct+1
+i − ct
+i
+
+!
+| {z }
+=:vt
+
+2
+= (1 − β)2E
+∇f(θt) − gt2
++ β2E∥vt∥2 + 2βE
+
+(1 − β)
+ 
+∇f(θt) − gt
+, vt
+(a)
+= (1 − β)2E
+∇f(θt) − gt2
++ β2E∥vt∥2 + 2βE
+*
+(1 − β)
+ 
+∇f(θt) − gt
+, ∇f(θt) − 1
+N K
+X
+i,k
+∇fi
+
+θt,k
+i
+
+| {z }
+=:ψt
++
+≤ (1 − β)2
+
+1 + β
+2
+
+E
+∇f(θt) − gt2
++ β2E∥vt∥2 + 2βE
+ψt2
+, (8)
+where (a) is based on the fact that
+E[vt|F t] = E{ξt,k
+i }∀i,k,St
+[vt]
+= E{ξt,k
+i }∀i,k
+
+∇f(θt) − ct − 1
+N K
+X
+i,k
+
+∇F
+
+θt,k
+i ; ξt,k
+i
+
+− ct
+i
+
+
+
+= ∇f(θt) − 1
+N K
+X
+i,k
+∇fi
+
+θt,k
+i
+
+=: ψt.
+17
+
+=== PAGE 18 ===
+Momentum-Driven Adaptivity: Towards Tuning-Free Asynchronous Federated Learning
+To upper bound (1 − β)2
+
+1 + β
+2
+
+E
+∇f(θt) − gt2
+in (8), we have
+(1 − β)2
+
+1 + β
+2
+
+E
+∇f(θt) − gt2
+≤ (1 − β)2
+
+1 + β
+2
+
+E
+
+1 + β
+2
+E t−12
++
+
+1 + 2
+β
+∇f(θt) − ∇f
+ 
+θt−12
+
+≤ (1 − β)E
+E t−12
++ 2L2
+β
+θt − θt−12
+≤ (1 − β)E
+E t−12
++ 4L2γ2
+β
+
+E
+E t−12
++
+∇f
+ 
+θt−12
+=
+
+1 − β + 4L2γ2
+β
+
+E
+E t−12
++ 4L2γ2
+β E
+∇f
+ 
+θt−12
+.
+Define ϕt
+i := E
+∇fi
+
+θt−τ t
+i
+
+− ct+1
+i
+
+2
+, ϕt := 1
+N
+P
+i ϕt
+i, ωt
+i := 1
+K
+P
+k E
+θt,k
+i − θt−τ t
+i
+
+2
+, and ωt := 1
+N
+P
+i ωt
+i. To
+upper bound E∥vt∥2 in (8), it follows from Lemma B.1 that
+E∥vt∥2
+≤ E
+∇f(θt) − 1
+N
+X
+i
+ct+1
+i
+
+2
++ 1
+S
+1
+N
+X
+i
+E
+
+ 
+ct+1
+i − ct
+i
+
+−
+X
+i′
+ 
+ct+1
+i′ − ct
+i′
+
+
+2
+≤ E
+
+∇f(θt) − 1
+N K
+X
+i,k
+∇F
+
+θt,k
+i ; ξt,k
+i
+
+
+2
++ 1
+S
+1
+N
+X
+i
+E
+
+1
+K
+X
+k
+∇F
+
+θt,k
+i ; ξt,k
+i
+
+− ct
+i
+
+2
+≤ 2E
+ψt2
++ 2σ2
+N K + 1
+SN
+X
+i
+E
+
+1
+K
+X
+k
+
+∇F
+
+θt,k
+i ; ξt,k
+i
+
+∓ ∇fi
+
+θt,k
+i
+
+∓ ∇fi
+
+θt−τ t
+i
+
+∓ ∇fi
+
+θt−τ t
+i −1
+
+− ct
+i
+
+2
+≤ 2E
+ψt2
++ 6σ2
+SK + 4L2
+S ωt + 4L2
+SN
+X
+i
+θt−τ t
+i − θt−τ t
+i −1
+
+2
++ 4
+S ϕt−1
+≤ E
+ψt2
++ 6σ2
+SK + 4L2
+S ωt + 8γ2L2
+SN
+X
+i
+
+E
+E t−τ t
+i −1
+
+2
++ E
+∇f
+
+θt−τ t
+i −1
+
+2
++ 4
+S ϕt−1.
+Plugging the above results into (8), we have
+E∥E t∥2 ≤
+
+1 − β + 4L2γ2
+β
+
+E
+E t−12
++ 4L2γ2
+β E
+∇f
+ 
+θt−12
++ 2β(β + 1)E
+ψt2
++ 6β2σ2
+SK
++ 4β2L2
+S ωt + 8β2γ2L2
+SN
+X
+i
+
+E
+E t−τ t
+i −1
+
+2
++ E
+∇f
+
+θt−τ t
+i −1
+
+2
++ 4β2
+S ϕt−1.
+Additionally, for any t, we have
+E
+ψt2
+= E
+
+∇f(θt) ∓ 1
+N
+X
+i
+∇fi
+
+θt−τ t
+i
+
+− 1
+N K
+X
+i,k
+∇fi
+
+θt,k
+i
+
+
+2
+≤ 2E
+
+1
+N
+X
+i
+
+∇fi(θt) − ∇fi
+
+θt−τ t
+i
+
+2
++ 2L2ωt
+≤ 2L2 1
+N
+X
+i
+τ t
+i
+t−1X
+d=t−τ t
+i
+E
+θd+1 − θd
+
+2
++ 2L2ωt
+≤ 4τmaxγ2L2
+t−1X
+d=t−τmax
+
+E∥E d∥2 + E
+∇f
+
+θd
+
+2
++ 2L2ωt.
+18
+
+=== PAGE 19 ===
+Momentum-Driven Adaptivity: Towards Tuning-Free Asynchronous Federated Learning
+Thus,
+E∥E t∥2 ≤
+
+1 − β + 4L2γ2
+β
+
+E
+E t−12
++ 4L2γ2
+β E
+∇f
+ 
+θt−12
++ 4βL2
+
+1 + β + β
+S
+
+ωt
++ 8β2γ2L2
+SN
+X
+i
+
+E
+E t−τ t
+i −1
+
+2
++ E
+∇f
+
+θt−τ t
+i −1
+
+2
++ 4β2
+S ϕt−1
++ 16τmaxβγ2L2
+t−1X
+d=t−τmax
+
+E∥E d∥2 + E
+∇f
+
+θd
+
+2
++ 6β2σ2
+SK .
+Summing up the above inequality over t yields
+
+1 − 4L2γ2
+β2
+ 1
+T
+T −1X
+t=0
+E∥E t∥2
+≤ E∥E0∥2
+βT + 4L2γ2
+β2T
+T −1X
+t=0
+E
+∇f(θt)
+2
++ 4L2 1 + β + β
+S
+T
+T −1X
+t=0
+ωt + 4β
+ST
+T −1X
+t=0
+ϕt
++ 8γ2L2
+
+2τ 2
+max + β
+S
+ 1
+T
+T −1X
+t=0
+
+E
+E t2
++ E
+∇f
+ 
+θt2
++ 6βσ2
+SK . (9)
+From Lemma B.2, we know that
+1
+T
+T −1X
+t=0
+ϕt ≤4N σ2
+SKT + 4L2ω0
+T + 4σ2
+K + 4L2
+T
+T −1X
+t=0
+ωt
++ 4N2γ2L2
+S2T
+T −1X
+t=0
+
+E
+E t2
++ E
+∇f
+ 
+θt2
+.
+From Lemma B.3, we know that
+1
+T
+T −1X
+t=0
+ωt ≤5η2K2e2ηβKL 
+2β2γ2L2(1 + 2τ 2
+max) + 1
+ 1
+T
+T −1X
+t=0
+
+E∥E t∥2 + E
+∇f(θt)
+2
++ 10η2β2K2e2ηβKL 1
+T
+T −1X
+t=0
+ 
+L2ωt + ϕt
++ (10e2ηβKL + 1)Kη2β2σ2
++ (1 + ηβL)K3η3β3Lσ2 + ω0
+T .
+Plugging the bound of 1
+T
+PT −1
+t=0 ϕt into 1
+T
+PT −1
+t=0 ωt yields
+1
+T
+T −1X
+t=0
+ωt ≤5η2K2e2ηβKL
+
+2β2γ2L2
+
+1 + 2τ 2
+max + 4N2
+S2
+
++ 1
+ 1
+T
+T −1X
+t=0
+
+E∥E t∥2 + E
+∇f(θt)
+2
++ 50η2β2K2L2e2ηβKL 1
+T
+T −1X
+t=0
+ωt + (50e2ηβKL + 1)Kη2β2σ2
++ (1 + ηβL)K3η3β3Lσ2 + ω0
+T + 10η2β2K2e2ηβKL
+4N σ2
+SKT + 4L2ω0
+T
+
+.
+Set β = O
+
+1√
+T
+
+, γ = β
+4L, and ηKL ≤ O (1). Then, e2ηβKL ≤ e2. Thus, we have
+1
+T
+T −1X
+t=0
+ωt ≲5η2K2e2 1
+T
+T −1X
+t=0
+
+E∥E t∥2 + E
+∇f(θt)
+2
++ 50e2Kη2β2σ2 + ω0
+T .
+19
+
+=== PAGE 20 ===
+Momentum-Driven Adaptivity: Towards Tuning-Free Asynchronous Federated Learning
+where ≲ means “less than or asymptotically equal to” in order sense.
+Similarly, plugging the above bound back into 1
+T
+PT −1
+t=0 ϕt, we have
+1
+T
+T −1X
+t=0
+ϕt ≲8L2ω0
+T + 4σ2
+K + 4L2
+
+5η2K2e2 + N2
+S2 γ2
+ 1
+T
+T −1X
+t=0
+
+E
+E t2
++ E
+∇f
+ 
+θt2
+.
+Plugging the above bounds on 1
+T
+PT −1
+t=0 ωt and 1
+T
+PT −1
+t=0 ϕt into (9), we have
+3
+4
+1
+T
+T −1X
+t=0
+E∥E t∥2 ≲ E∥E0∥2
+βT + 1
+4T
+T −1X
+t=0
+E
+∇f(θt)
+2
++ 22βσ2
+SK + 200e2Kη2β2L2σ2 + 4L2ω0
+T
++
+ 
+τ 2
+maxβ2 + 20η2K2L2e2 1
+T
+T −1X
+t=0
+
+E
+E t2
++ E
+∇f
+ 
+θt2
+.
+Since c0
+i = 1
+K
+PK−1
+k=0 ∇F
+
+θ0; ξ−1,k
+i
+
+for any i, c0 = 1
+N
+P
+i c0
+i , and g0 = c0, we have
+E
+E02
+= E
+∇f(θ0) − β
+ 
+1
+S
+X
+i∈S0
+ 
+c1
+i − c0
+i
+
++ c0
+!
+− (1 − β)g0
+
+2
+= E
+
+∇f(θ0) − 1
+N K
+X
+i,k
+∇F
+
+θ0; ξ−1,k
+i
+
++ β
+SK
+X
+i∈S0,k
+
+∇F
+
+θ0
+i ; ξ−1,k
+i
+
+∓ ∇fi
+ 
+θ0
+i
+
+∓ ∇fi
+
+θ0,k
+i
+
+− ∇F
+
+θ0,k
+i ; ξ0,k
+i
+
+
+2
+≤ 4σ2
+N K + 8β2σ2
+SK + β2
+S
+X
+i∈S0
+ω0
+i .
+From Lemma B.3, we know that, for any i,
+ω0
+i ≤ 3η2K2e2ηβKL∇f
+ 
+θ02
++
+
+3e2ηβKL
+
+β2 + 1
+N
+
++ β2
+
+Kη2σ2 + (1 + ηβL)K3η3β3Lσ2
+≲ 3η2K2e2∇f
+ 
+θ02
++ 3e2Kη2σ2
+N .
+Thus, we have
+1
+T
+T −1X
+t=0
+E∥E t∥2 ≲ 1
+3T
+T −1X
+t=0
+E
+∇f(θt)
+2
++
+ 2
+βT + 11β
+ 8σ2
+3SK + 800e2β2σ2
+3K + 64L2σ2
+3N KT
++ 4
+3
+ 
+τ 2
+maxβ2 + 20η2K2L2e2 1
+T
+T −1X
+t=0
+
+E
+E t2
++ E
+∇f
+ 
+θt2
+.
+Denote by a := τ 2
+maxβ2 + 20η2K2L2e2, We require a < 1
+4. Then, we have
+1
+T
+T −1X
+t=0
+E∥E t∥2 ≲ 1 + 4a
+3 − 4a
+1
+T
+T −1X
+t=0
+E
+∇f
+ 
+θt2
++
+ 2
+βT + 11β
+ 4σ2
+SK + 400e2β2σ2
+K + 16L2σ2
+N KT .
+where we use 3 − 4a ≥ 2. Plugging the above bound into (7) yields
+1
+T
+T −1X
+t=0
+E∥∇f(θt)∥2 ≲ 2∆
+γ(1 − 2γL)T + 1 + 2γL
+1 − 2γL
+1 + 4a
+3 − 4a
+1
+T
+T −1X
+t=0
+E
+∇f
+ 
+θt2
++ 1 + 2γL
+1 − 2γL
+ 2
+βT + 11β
+ 4σ2
+SK + 400e2β2σ2
+K + 16L2σ2
+N KT
+
+.
+20
+
+=== PAGE 21 ===
+Momentum-Driven Adaptivity: Towards Tuning-Free Asynchronous Federated Learning
+
+1 − (1 + 2γL)(1 + 4a)
+(1 − 2γL)(3 − 4a)
+ 1
+T
+T −1X
+t=0
+E∥∇f(θt)∥2 ≲ 2∆
+γ(1 − 2γL)T + 1 + 2γL
+1 − 2γL
+ 2
+βT + 11β
+ 4σ2
+SK
++ 1 + 2γL
+1 − 2γL
+400e2β2σ2
+K + 16L2σ2
+N KT
+
+.
+When 2 − 8a − 8γL ≥ 0 holds, let β =
+q
+SK
+T and γ = β
+4L = 1
+4L
+q
+SK
+T . Then, we have
+1
+T
+T −1X
+t=0
+E∥∇f(θt)∥2 ≲ (3 − 4a)(4L∆ + 26σ2)
+1 − 4a −
+q
+SK
+T
+ √
+SKT
++ 3 − 4a
+1 − 4a −
+q
+SK
+T
+200e2Sσ2
+T + 8L2σ2
+N KT
+
+.
+Note that we require 1 − 4a −
+q
+SK
+T ≥ 0, i.e., a := SK
+T τ 2
+max + 20η2K2L2e2 ≤ 1
+4
+
+1 −
+q
+SK
+T
+
+.
+D. Proof of Theorem 4.1
+We first present the following inequalities that are frequently used in our analysis.
+Lemma D.1. For any i, t, we have
+1
+K
+X
+k
+θt,k
+i − θt−τ t
+i
+
+2
+≤ 1
+3 η2K2 and 1
+K
+X
+k
+θt,k
+i − θt−τ t
+i
+ ≤ 1
+2 ηK.
+Proof. From the update rule of local model, for any i, k and t, we have
+θt,k+1
+i − θt,k
+i
+ = η
+
+gt,k
+igt,k
+i
+
+
+≤ η.
+Then,
+θt,k
+i − θt−τ t
+i
+
+2
+=
+
+k−1X
+j=0
+
+θt,j+1
+i − θt,j
+i
+
+
+2
+≤ k
+k−1X
+j=0
+θt,j+1
+i − θt,j
+i
+
+2
+≤ η2k2.
+Summing the above inequality over i and k yields
+1
+K
+X
+k
+θt,k
+i − θt−τ t
+i
+
+2
+≤ η2
+K
+K−1X
+k=0
+k2 ≤ η2
+6K (K − 1)K(2K − 1) ≤ 1
+3 η2K2.
+Similarly, we have
+1
+K
+X
+k
+θt,k
+i − θt−τ t
+i
+ = 1
+K
+X
+k
+θt,k
+i − θt
+
+2 1
+2
+≤ η
+K
+K−1X
+k=0
+k ≤ 1
+2 ηK.
+Moreover, we have
+θt − θt−1 =
+
+γ
+SK
+X
+i∈St,k
+gt,k
+igt,k
+i
+
+
+≤ γ
+SK
+X
+i∈St,k
+
+gt,k
+igt,k
+i
+
+
+≤ γ,
+and correspondingly ∥θt − θt−τ t
+i ∥ ≤Pt
+τ=t−τ t
+i +1 ∥θτ − θτ −1∥ ≤ τ t
+i γ.
+21
+
+=== PAGE 22 ===
+Momentum-Driven Adaptivity: Towards Tuning-Free Asynchronous Federated Learning
+From the L-smoothness of f(·) in Assumption 2.1, we have
+f(θt+1) − f(θt)
+≤ ∇f(θt)⊤ 
+θt+1 − θt
++ L
+2
+θt+1 − θt2
+(10)
+= −γ∇f(θt)⊤
+
+ 1
+SK
+X
+i∈St,k
+gt,k
+igt,k
+i
+
+
+ + γ2L
+2
+= −γ
+ 
+∇f(θt) − gt+1⊤
+
+ 1
+SK
+X
+i∈St,k
+gt,k
+igt,k
+i
+
+
+ − γ
+ 
+gt+1⊤
+
+ 1
+SK
+X
+i∈St,k
+gt,k
+igt,k
+i
+
+
+ + γ2L
+2
+≤ γ
+∇f(θt) − gt+1 − γ
+ 
+gt+1⊤
+
+ 1
+SK
+X
+i∈St,k
+gt,k
+igt,k
+i
+
+− gt+1
+∥gt+1∥
+
+ − γ
+gt+1 + γ2L
+2
+(a)
+≤ 2γ
+∇f(θt) − gt+1 − γ
+∇f(θt)
+ + γ
+gt+1
+
+1
+SK
+X
+i∈St,k
+gt,k
+igt,k
+i
+
+− gt+1
+∥gt+1∥
+
++ γ2L
+2
+(b)
+≤ 2γ
+∇f(θt) − gt+1 − γ
+∇f(θt)
+ + 2γ
+SK
+X
+i∈St,k
+gt,k
+i − gt+1
+ + γ2L
+2 . (11)
+where (a) is based on γ
+∇f(θt)
+ − γ
+gt+1 ≤ γ
+∇f(θt) − gt+1 and (b) is based on the following result.
+gt+1
+
+1
+SK
+X
+i∈St,k
+gt,k
+igt,k
+i
+
+− gt+1
+∥gt+1∥
+
+=
+gt+1
+
+1
+SK
+X
+i∈St,k
+
+ gt,k
+igt,k
+i
+
+∓ gt,k
+i
+∥gt+1∥
+
+ − gt+1
+∥gt+1∥
+
+≤
+gt+1
+SK
+
+X
+i∈St,k
+gt,k
+igt,k
+i
+
+− gt,k
+i
+∥gt+1∥
+
++
+gt+1
+
+1
+SK
+X
+i∈St,k
+gt,k
+i
+∥gt+1∥ − gt+1
+∥gt+1∥
+
+=
+gt+1
+SK
+
+X
+i∈St,k
+gt+1 −
+gt,k
+i
+
+∥gt+1∥
+gt,k
+i
+
+gt,k
+i
+
++
+
+1
+SK
+X
+i∈St,k
+gt,k
+i − gt+1
+
+≤
+gt+1
+SK
+X
+i∈St,k
+
+gt+1 −
+gt,k
+i
+
+
+∥gt∥
+gt,k
+i
+
+gt,k
+i
+ + 1
+SK
+X
+i∈St,k
+gt,k
+i − gt+1
+
+≤ 2
+SK
+X
+i∈St,k
+gt,k
+i − gt+1
+ .
+Summing up (11) over t yields
+1
+T
+T −1X
+t=0
+E
+∇f(θt)
+ ≤ ∆
+γT + 2
+T
+T −1X
+t=0
+E
+∇f(θt) − gt+1
++ 2
+SKT
+T −1X
+t=0
+E
+
+ X
+i∈St,k
+gt,k
+i − gt+1
+
+
+ + γL
+2 .
+22
+
+=== PAGE 23 ===
+Momentum-Driven Adaptivity: Towards Tuning-Free Asynchronous Federated Learning
+D.1. Analysis of 1
+T
+PT −1
+t=0 E
+∇f(θt) − gt+1
+Define E t := ∇f(θt) − gt+1. ut := ∇f
+ 
+θt
+− ∇f
+ 
+θt−1
+and vt :=
+ 
+∇f(θt) − ct − 1
+S
+P
+i∈St
+ 
+ct+1
+i − ct
+i
+
+. From the
+update rule of gt+1 given in Step 9 of Algorithm 3, we have
+E t =(1 − β)
+ 
+∇f(θt) − gt
++ β
+ 
+∇f(θt) − ct − 1
+S
+X
+i∈St
+ 
+ct+1
+i − ct
+i
+
+!
+=(1 − β)E t−1 + (1 − β)ut + βvt
+=(1 − β)tE0 +
+tX
+d=1
+ud(1 − β)t+1−d +
+tX
+d=1
+βvd(1 − β)t−d.
+Based on the triangle inequality of ℓ2 norm and the concavity of the square root (·)
+1
+2 , we have
+E
+E t ≤(1 − β)tE
+E0 +
+tX
+d=1
+E
+ud (1 − β)t+1−d +
+
+E
+
+tX
+d=1
+βvd(1 − β)t−d
+
+2
+
+1
+2
+. (12)
+Since c0
+i = 1
+K
+PK−1
+k=0 ∇F
+
+θ0; ξ−1,k
+i
+
+for any i, c0 = 1
+N
+P
+i c0
+i , and g0 = c0, we have
+E
+E0 = E
+
+∇f(θ0) − 1
+N K
+X
+i,k
+∇F
+
+θ0; ξ−1,k
+i
+
++ β
+SK
+X
+i∈S0,k
+
+∇F
+
+θ0
+i ; ξ−1,k
+i
+
+− ∇F
+
+θ0,k
+i ; ξ0,k
+i
+
+
+≤ σ√
+N K
++ E
+
+β
+SK
+X
+i∈S0,k
+
+∇F
+
+θ0
+i ; ξ−1,k
+i
+
+∓ ∇fi
+ 
+θ0
+i
+
+∓ ∇fi
+
+θ0,k
+i
+
+− ∇F
+
+θ0,k
+i ; ξ0,k
+i
+
+
+≤ σ√
+N K
++ βσ√
+SK
++ β
+SK E
+
+ X
+i∈S0,k
+∇fi
+ 
+θ0
+− ∇fi
+
+θ0,k
+i
+
+
+ + βσ√
+SK
+≤ βL
+N K
+X
+i,k
+E
+θ0,k
+i − θ0
+ + 3σ√
+SK
+≤ 1
+2 ηβKL + 3σ√
+SK
+. (13)
+Additionally, for any t, we have
+ut =
+∇f(θt+1) − ∇f(θt)
+ ≤ L
+θt+1 − θt ≤ γL
+
+1
+SK
+X
+i∈St,k
+gt,k
+i
+∥gt,k
+i ∥
+
+≤ γL. (14)
+Further, we have
+E
+
+tX
+d=1
+βvd(1 − β)t−d
+
+2
+=
+tX
+d=1
+β2E
+vd2
+(1 − β)2(t−d)
++
+X
+1≤d1,d2≤t,d1̸=d2
+E
+
+βvd1(1 − β)t−d1 , βvd2(1 − β)t−d2
+
+.
+23
+
+=== PAGE 24 ===
+Momentum-Driven Adaptivity: Towards Tuning-Free Asynchronous Federated Learning
+Since ct+1
+i = 1
+K
+PK
+k=1 ∇F
+
+θt,k
+i ; ξt,k
+i
+
+for i ∈ S t and ct = 1
+N
+PN
+i=1 ct
+i, for any t, we have
+E[vt|F t] = E{ξt,k
+i }∀i,k,St
+[vt]
+= E{ξt,k
+i }∀i,k
+
+∇f(θt) − ct − 1
+N K
+X
+i,k
+
+∇F
+
+θt,k
+i ; ξt,k
+i
+
+− ct
+i
+
+
+
+= ∇f(θt) − 1
+N K
+X
+i,k
+∇fi
+
+θt,k
+i
+
+:= ψt.
+E
+ψt = 1
+N
+X
+i
+E
+
+∇f(θt) ∓ ∇f
+
+θt−τ t
+i
+
+− 1
+N K
+X
+i,k
+∇fi
+
+θt,k
+i
+
+
+≤ L
+N
+X
+i
+E
+θt − θt−τ t
+i
+ + L
+N K
+X
+i,k
+E
+θt−τ t
+i − θt,k
+i
+
+≤ γL
+N
+X
+i
+τ t
+i + 1
+2 ηKL
+≤ γτmaxL + 1
+2 ηKL.
+We also have
+E
+
+∇f(θt) − 1
+SK
+X
+i∈St,k
+∇fi
+
+θt,k
+i
+
+
+2
+≤ 2
+S
+X
+i∈St
+E
+∇f(θt) − ∇f
+
+θt−τ t
+i
+
+2
++ 2L2
+SK
+X
+i∈St,k
+E
+θt−τ t
+i − θt,k
+i
+
+2
+≤ 2γ2τ 2
+maxL2 + η2K2L2.
+Similarly, we have E
+ψt2
+= E
+∇f(θt) − 1
+N K
+P
+i,k ∇fi
+
+θt,k
+i
+
+2
+≤ 2γ2τ 2
+maxL2 + η2K2L2.
+For any 0 ≤ t1 < t2 ≤ T − 1, we have
+E
+
+vt1 , vt2
+
+= E
+
+vt1 , E
+
+vt2 |F t2
+
+= E
+*
+∇f
+ 
+θt1
+
+− 1
+SK
+X
+i∈St,k
+∇fi
+
+θt1,k
+i
+
+, ψt2
++
++ E
+*
+ESt
+"
+ct − 1
+S
+X
+i∈St
+ct
+i
+#
+, ψt2
++
++ E
+*
+1
+SK
+X
+i∈St,k
+
+∇fi
+
+θt1,k
+i
+
+− ∇F
+
+θt1,k
+i ; ξt1,k
+i
+
+, ψt2
++
+≤ 1
+2 E
+
+∇f
+ 
+θt1
+
+− 1
+SK
+X
+i∈St1 ,k
+∇fi
+
+θt1,k
+i
+
+
+2
++ 1
+2 E
+ψt2
+2
++ σ√
+SK
+E
+ψt2
+
+≤ 2γ2τ 2
+maxL2 + η2K2L2 + Lσ√
+SK
+
+γτmax + 1
+2 ηK
+
+.
+24
+
+=== PAGE 25 ===
+Momentum-Driven Adaptivity: Towards Tuning-Free Asynchronous Federated Learning
+Further, based on Lemma B.1, we have
+E
+vt2
+=E
+∇f(θt) − ct − 1
+S
+X
+i∈St
+ 
+ct+1
+i − ct
+i
+
+
+2
+≤E
+∇f(θt) − 1
+N
+X
+i
+ct+1
+i
+
+2
++ 1
+S
+1
+N
+X
+i
+E
+
+ 
+ct+1
+i − ct
+i
+
+− 1
+N
+X
+i
+ 
+ct+1
+i − ct
+i
+
+
+2
+≤E
+∇f(θt) − 1
+N
+X
+i
+ct+1
+i
+
+2
++ 1
+S
+1
+N
+X
+i
+E
+ct+1
+i − ct
+i
+2
+.
+Note that ct+1
+i = 1
+K
+P
+k ∇F
+
+θt,k
+i ; ξt,k
+i
+
+, i.e., client i is selected in the tth round. We have
+E
+
+∇f(θt) − 1
+N K
+X
+i,k
+∇F
+
+θt,k
+i ; ξt,k
+i
+
+
+2
+= E
+
+1
+N K
+X
+i,k
+
+∇fi
+ 
+θt
+∓ ∇fi
+
+θt−τ t
+i
+
+∓ ∇fi
+
+θt,k
+i
+
+− ∇F
+
+θt,k
+i ; ξt,k
+i
+
+
+2
+≤ 3L2E
+θt − θt−τmax
+2
++ 3L2
+N K
+X
+i,k
+E
+θt,k
+i − θt−τ t
+i
+
+2
++ 3σ2
+N K
+≤ 3γ2τ 2
+maxL2 + η2K2L2 + 3σ2
+N K , ∀t.
+From Lemma D.2, we know that
+E
+ct+1
+i − ct
+i
+2
+≤ 28σ2
+K + 28
+3 η2K2L2 + 4γ2L2
+
+1 + 4N2
+S2
+
+.
+Thus, we have
+E∥vt∥2 ≤ 3γ2τ 2
+maxL2 + η2K2L2 + 3σ2
+N K + 28σ2
+SK + 28
+3S η2K2L2 + 4γ2L2
+S
+
+1 + 4N2
+S2
+
+≤ γ2L2
+
+3τ 2
+max + 4
+S + 4N3
+S3
+
++ 31σ2
+SK +
+
+1 + 28
+3S
+
+η2K2L2.
+Then, we have
+E
+
+tX
+d=1
+βvd(1 − β)t−d
+
+2
+≤βE∥vd∥2 +
+
+vd1 , vd2
+
+≤β
+
+γ2L2
+
+3τ 2
+max + 4
+S + 4N3
+S3
+
++ 31σ2
+SK +
+
+1 + 28
+3S
+
+η2K2L2
+
++ 2γ2τ 2
+maxL2 + η2K2L2 + Lσ√
+SK
+
+γτmax + 1
+2 ηK
+
+.
+
+E
+
+tX
+d=1
+βvd(1 − β)t−d
+
+2
+
+1
+2
+≤γL
+ 
+(
+√
+2 +
+p
+3β)τmax + 2
+r
+β
+S
+ 
+1 + N
+√
+N
+S
+!!
++
+r
+31βσ2
+SK
++ ηKL
+ 
+1 +
+p
+β +
+r
+28β
+3S
+!
++
+s
+Lσ(2γτmax + ηK)
+2
+√
+SK
+. (15)
+25
+
+=== PAGE 26 ===
+Momentum-Driven Adaptivity: Towards Tuning-Free Asynchronous Federated Learning
+Plugging (13), (14) and (15) into (12), we have
+E
+E t ≤(1 − β)t
+1
+2 ηβKL + 3σ√
+SK
+
++ γL
+β + γL
+ 
+(
+√
+2 +
+p
+3β)τmax + 2
+r
+β
+S
+ 
+1 + N
+√
+N
+S
+!!
++
+r
+31βσ2
+SK + ηKL
+ 
+1 +
+p
+β +
+r
+28β
+3S
+!
++
+s
+Lσ(2γτmax + ηK)
+2
+√
+SK
+. (16)
+Summing up the above inequality over t yields
+1
+T
+T −1X
+t=0
+E
+E t ≤ ηKL
+2T + 3σ
+βT
+√
+SK
++ γL
+β + γL
+ 
+(
+√
+2 +
+p
+3β)τmax + 2
+r
+β
+S
+ 
+1 + N
+√
+N
+S
+!!
++
+r
+31βσ2
+SK + ηKL
+ 
+1 +
+p
+β +
+r
+28β
+3S
+!
++
+s
+Lσ(2γτmax + ηK)
+2
+√
+SK
+.
+D.2. Analysis of 1
+SKT E
+hP
+i∈St,k,t
+gt,k
+i − gt+1
+
+i
+Recall that gt,k
+i and gt+1 are respectively updated by gt,k
+i = β
+
+∇F
+
+θt,k
+i ; ξt,k
+i
+
+−ect
+i + ct−τ t
+i
+
++ (1 − β)gt−τ t
+i and
+gt+1 = β
+  1
+S
+P
+i∈St
+ 
+ct+1
+i − ct
+i
+
++ ct
++ (1 − β)gt. Then, we have
+gt,k
+i − gt+1 =β
+
+∇F
+
+θt,k
+i ; ξt,k
+i
+
+−ect
+i
+
+− β
+S
+X
+i∈St
+ 
+ct+1
+i − ct
+i
+
++ β
+
+ct−τ t
+i − ct
+
++ (1 − β)
+
+gt−τ t
+i − gt
+
+.
+gt,k
+i − gt+1
+ ≤β
+∇F
+
+θt,k
+i ; ξt,k
+i
+
+−ect
+i
+ + β
+S
+X
+i∈St
+ct+1
+i − ct
+i
+
++ β
+ct−τ t
+i − ct
+ + (1 − β)
+gt−τ t
+i − gt
+
+≤β
+∇F
+
+θt,k
+i ; ξt,k
+i
+
+−ect
+i
+ + β
+S
+X
+i∈St
+ct+1
+i − ct
+i
+
++ β
+N
+X
+i
+t−1X
+d=t−τ t
+i
+cd+1
+i − cd
+i
+ +
+t−1X
+d=t−τ t
+i
+gd+1 − gd . (17)
+For any i, t, we have
+1
+K
+X
+k
+E
+∇F
+
+θt,k
+i ; ξt,k
+i
+
+−ect
+i
+
+= 1
+K
+X
+k
+E
+∇F
+
+θt,k
+i ; ξt,k
+i
+
+∓ fi
+
+θt,k
+i
+
+∓ fi
+
+θt−τ t
+i
+
+∓ fi
+
+θt−τ t
+i −1−τ
+t−τ t
+i −1
+i
+
+∓ 1
+K
+X
+k
+∇F
+
+θt−τ t
+i −1,k
+i
+
+− 1
+K
+X
+k
+∇F
+
+θt−τ t
+i −1,k
+i ; ξt−τ t
+i −1,k
+i
+
+≤ σ + L
+K
+X
+k
+θt,k
+i − θt−τ t
+i
+ + (τmax + 1)γL + L
+K
+X
+k
+θt−τ t
+i −1,k
+i − θt−τ t
+i −1−τ
+t−τ t
+i −1
+i
+ + σ√
+K
+≤ 2σ + ηKL + (τmax + 1)γL. (18)
+26
+
+=== PAGE 27 ===
+Momentum-Driven Adaptivity: Towards Tuning-Free Asynchronous Federated Learning
+Moreover, we have
+E
+gt+1 − gt = βE
+
+1
+S
+X
+i∈St
+ 
+ct+1
+i − ct
+i
+
++ ct ∓ ∇f
+ 
+θt−1
+− gt
+
+≤ β
+S
+X
+i∈St
+E
+ct+1
+i − ct
+i
+ + βE
+∇f
+ 
+θt−1
+− ct + βE∥E t−1∥. (19)
+From Lemma D.2, for any t, i ∈ S t, we have
+E
+ct+1
+i − ct
+i
+ ≤ 2σ
+r
+7
+K + 2
+r
+7
+3 ηKL + 2γL
+
+1 + 2N
+S
+
+(20)
+E
+∇f
+ 
+θt
+− ct+1 ≤ 2σ
+r
+6
+K + 2γL
+ X
+i
+τ t
+i
+N + 2N
+S
+!
++ 2
+√
+2ηKL. (21)
+Plugging (18), (19), (20), and (21) into (17), we have
+1
+K
+X
+k
+E
+gt,k
+i − gt+1
+ ≤β(2σ + ηKL + γ(τmax + 1)L)
++ (1 + 2τ t
+i )β
+ 
+2
+r
+7
+K σ + 2
+r
+7
+3 ηKL + 2γL
+
+1 + 2N
+S
+!
++ βτ t
+i
+ 
+2σ
+r
+6
+K + 2γL
+ X
+i
+τ t
+i
+N + 2N
+S
+!
++ 2
+√
+2ηKL
+!
++ βτ t
+i E∥E t−1∥.
+1
+SKT E
+
+ X
+i∈St,k,t
+gt,k
+i − gt+1
+
+
+
+≤ β(2σ + ηKL + γ(τmax + 1)L) + (1 + 2¯τ)β
+ 
+2
+r
+7
+K σ + 2
+r
+7
+3 ηKL + 2γL
+
+1 + 2N
+S
+!
++ β¯τ
+ 
+2σ
+r
+6
+K + 2γL
+
+τmax + 2N
+S
+
++ 2
+√
+2ηKL
+!
++ β
+N T
+X
+i,t
+τ t
+i E∥E t−1∥.
+where ¯τ := 1
+N T
+P
+i,t τ t
+i .
+From (16), we have
+β
+N T
+X
+i,t
+τ t
+i E
+E t−1 ≤ βτmax
+T
+X
+t
+(1 − β)t
+1
+2 ηβKL + 3σ√
+SK
+
++ βγ ¯τ L
+ 
+(
+√
+2 +
+p
+3β)τmax + 2
+r
+β
+S
+ 
+1 + N
+√
+N
+S
+!!
++ γ¯τ L+ β¯τ
+r
+31βσ2
+SK + βη ¯τ KL
+ 
+1 +
+p
+β +
+r
+28β
+3S
+!
++ β¯τ
+s
+Lσ(2γτmax + ηK)
+2
+√
+SK
+≤ τmax
+2 βηKL + 3τmaxσ
+T
+√
+SK
++ γβ ¯τ L
+ 
+(
+√
+2 +
+p
+3β)τmax + 2
+r
+β
+S
+ 
+1 + N
+√
+N
+S
+!!
++ γ¯τ L+ β¯τ
+r
+31βσ2
+SK + βη ¯τ KL
+ 
+1 +
+p
+β +
+r
+28β
+3S
+!
++ β¯τ
+s
+Lσ(2γτmax + ηK)
+2
+√
+SK
+.
+27
+
+=== PAGE 28 ===
+Momentum-Driven Adaptivity: Towards Tuning-Free Asynchronous Federated Learning
+D.3. Combination
+Let β =
+q
+SK
+T , γ = (SK)
+1
+4
+T
+3
+4
+and η = 1
+K
+√
+T , we have
+1
+T
+T −1X
+t=0
+E
+E t ≲ γL
+β +
+√
+2τmaxγL +
+r
+31βσ2
+SK +
+s
+Lσ(2γτmax + ηK)
+2
+√
+SK
+≲ L
+(SKT )
+1
+4
++ τmaxL(SK)
+1
+4
+T
+3
+4
++ σ
+(SKT )
+1
+4
++
+√Lστmax
+T
+3
+8 (SK)
+1
+8
++
+√
+Lσ
+(SKT )
+1
+4
+.
+Similarly, we have
+1
+SKT E
+
+ X
+i∈St,k,t
+gt,k
+i − gt
+
+
+
+≲ βσ
+
+1 + ¯τ√
+K
+
++ β
+N T
+X
+i,t
+τ t
+i E
+E t
+≲
+
+1 + ¯τ√
+K
+
+σ
+r
+SK
+T + ¯τ τmaxL(SK)
+3
+4
+T
+5
+4
++
+
+σ +
+√
+Lσ
+ ¯τ(SK)
+1
+4
+T
+3
+4
++ ¯τ
+p
+Lστmax
+(SK)
+3
+8
+T
+7
+8
+.
+Then, we have
+1
+T
+T −1X
+t=0
+E
+∇f(θt)
+ ≤ ∆
+γT + 2
+T
+T −1X
+t=0
+E
+E t + 2
+SKT
+T −1X
+t=0
+E
+
+ X
+i∈St,k
+gt,k
+i − gt+1
+
+
+ + γL
+2
+≲∆ + L + σ +
+√
+Lσ
+(SKT )
+1
+4
++ σ
+r
+SK
+T +
+√Lστmax
+T
+3
+8 (SK)
+1
+8
++ ¯τ σ
+r
+S
+T
++ τmaxL(SK)
+1
+4
+T
+3
+4
++ ¯τ
+p
+Lστmax
+(SK)
+3
+8
+T
+7
+8
++ ¯τ τmaxL(SK)
+3
+4
+T
+5
+4
+.
+Lemma D.2. Assume that the delay of client i at the tth round is τ t
+i . For any t, i ∈ S t, we have
+i) E
+ct+1
+i − ct
+i
+2
+≤ 28σ2
+K + 28
+3 η2K2L2 + 4γ2L2
+
+1 + 4N 2
+S2
+
+;
+ii) E
+ct+1
+i − ct
+i
+ ≤ 2
+q
+7
+K σ + 2
+q
+7
+3 ηKL + 2γL
+ 
+1 + 2N
+S
+
+;
+iii) E
+∇f
+ 
+θt
+− ct+1 ≤ 2σ
+q
+6
+K + 2γL
+P
+i
+τ t
+i
+N + 2N
+S
+
++ 2
+√
+2ηKL.
+Proof. Define ϕt
+i := E
+∇fi
+
+θt−τ t
+i
+
+− ct+1
+i
+
+2
+. Since for any t, the S elements in St are uniformly sampled from
+{1, · · · , N}, we have
+ct+1
+i =
+(
+ct
+i if i ∈ S t (w.p. 1 − S
+N )
+1
+K
+P
+k ∇F
+
+θt,k
+i ; ξt,k
+i
+
+if i /∈ S t (w.p. S
+N ).
+28
+
+=== PAGE 29 ===
+Momentum-Driven Adaptivity: Towards Tuning-Free Asynchronous Federated Learning
+Using Young’s inequality repeatedly, we have
+ϕt
+i =
+
+1 − S
+N
+
+E
+∇fi
+
+θt−τ t
+i
+
+− ct
+i
+
+2
++ S
+N E
+
+1
+K
+X
+k
+
+∇fi
+
+θt−τ t
+i
+
+− ∇F
+
+θt,k
+i ; ξt,k
+i
+
+2
+≤
+
+1 − S
+N
+
+E
+∇fi
+
+θt−τ t
+i
+
+∓ ∇fi
+
+θt−τ t
+i −1
+
+− ct
+i
+
+2
++ S
+N
+ 
+2σ2
+K + 2L2
+K
+X
+k
+E
+θt,k
+i − θt−τ t
+i
+
+2
+!
+≤
+
+1 − S
+N
+
+E
+
+1 + S
+2N
+
+ϕt−1
+i +
+
+1 + 2N
+S
+
+γ2L2
+
++ 2S
+N
+ σ2
+K + 1
+3 η2K2L2
+
+≤
+
+1 − S
+2N
+
+ϕt−1
+i + 2N
+S γ2L2 + 2S
+N
+ σ2
+K + 1
+3 η2K2L2
+
+≤
+
+1 − S
+2N
+t
+ϕ0
+i +
+2N
+S γ2L2 + 2S
+N
+ σ2
+K + 1
+3 η2K2L2
+ t−1X
+τ=0
+
+1 − S
+2N
+τ
+≤
+
+1 − S
+2N
+t
+ϕ0
+i + 4
+ N2
+S2 γ2L2 + σ2
+K + 1
+3 η2K2L2
+
+.
+Since c0
+i = 1
+K
+PK−1
+k=0 ∇F
+
+θ0; ξ−1,k
+i
+
+, we have
+ϕ0
+i =
+
+1 − S
+N
+
+E
+∇fi
+ 
+θ0
+− c0
+i
+2
++ S
+N E
+∇fi
+ 
+θ0
+− 1
+K
+X
+k
+∇F
+
+θ0,k
+i ; ξ0,k
+i
+
+2
+≤
+
+1 − S
+N
+ σ2
+K + 2S
+N
+
+L2E
+θ0 − θ0,k
+i
+ + σ2
+K
+
+≤
+
+1 + S
+N
+ σ2
+K + 2S
+3N η2K2L2
+≤ 2σ2
+K + 2S
+3N η2K2L2.
+Then, we have
+ϕt
+i ≤
+2σ2
+K + 2S
+3N η2K2L2
+
+1 − S
+2N
+t
++ 4
+ N2
+S2 γ2L2 + σ2
+K + 1
+3 η2K2L2
+
+≤6σ2
+K + 2η2K2L2 + 4N2
+S2 γ2L2, ∀i, t. (22)
+Since i ∈ S t, we have ct+1
+i = 1
+K
+P
+k ∇F
+
+θt,k
+i ; ξt,k
+i
+
+. Then,
+E
+ct+1
+i − ct
+i
+2
+= E
+
+1
+K
+X
+k
+∇F
+
+θt,k
+i ; ξt,k
+i
+
+∓ ∇fi
+
+θt,k
+i
+
+∓ ∇fi
+
+θt−τ t
+i
+
+∓ ∇fi
+
+θt−τ t
+i −1
+
+− ct
+i
+
+2
+≤ 4σ2
+K + 4L2
+K
+X
+k
+E
+θt,k
+i − θt−τ t
+i
+
+2
++ 4L2E
+θt−τ t
+i − θt−τ t
+i −1
+
+2
++ 4E
+∇fi
+
+θt−τ t
+i −1
+
+− ct
+i
+
+2
+≤ 4σ2
+K + 4
+3 η2K2L2 + 4γ2L2 + 4ϕt−1
+i . (23)
+Plugging (22) into (23), we have
+E
+
+1
+K
+X
+k
+∇F
+
+θt,k
+i ; ξt,k
+i
+
+− ct
+i
+
+2
+≤ 28σ2
+K + 28
+3 η2K2L2 + 4γ2L2
+
+1 + 4N2
+S2
+
+,
+29
+
+=== PAGE 30 ===
+Momentum-Driven Adaptivity: Towards Tuning-Free Asynchronous Federated Learning
+which proves i). Moreover, based on the concavity of function (·)
+1
+2 , taking square root on the both sides of i) directly yields
+ii) that
+E
+
+1
+K
+X
+k
+∇F
+
+θt,k
+i ; ξt,k
+i
+
+− ct
+i
+ ≤
+
+E
+
+1
+K
+X
+k
+∇F
+
+θt,k
+i ; ξt,k
+i
+
+− ct
+i
+
+2
+
+1
+2
+≤ 2
+r
+7
+K σ + 2
+r
+7
+3 ηKL + 2γL
+
+1 + 2N
+S
+
+.
+Further, we have
+E
+∇f
+ 
+θt
+− ct+1 ≤ 1
+N
+X
+i
+E
+∇fi
+ 
+θt
+− ct+1
+i
+
+≤ 2
+N
+X
+i
+E
+∇fi
+ 
+θt
+− ∇fi
+
+θt−τ t
+i
+ + 2
+N
+X
+i
+E
+∇fi
+
+θt−τ t
+i
+
+− ct+1
+i
+
+≤ 2
+N
+X
+i
+τ t
+i γL + 2
+N
+X
+i
+q
+ϕt
+i
+≤ 2σ
+r
+6
+K + 2γL
+ X
+i
+τ t
+i
+N + 2N
+S
+!
++ 2
+√
+2ηKL.
+E. Additional Numerical Results
+E.1. Simulation Setup
+Tasks and Networks. We evaluate the performance of our algorithms on the image classification task with two real-world
+dateset: CIFAR-10 (Li et al., 2017) and FMNIST (Xiao et al., 2017). For FMNIST, we utilize a convolutional neural network
+(CNN) consisting of three convolutional layers and two fully connected layers. For CIFAR-10, we adopt a ResNet-18
+architecture.
+Federated Setting. Our experiments consider a federated learning system with N = 100 clients cooperating to train a
+shared model. At each global communication round, a fraction of 0.1 clients are randomly selected to participate, resulting
+in S = 10 active clients per round. Each selected client trains locally for 2 epochs with a batch size of 100 using stochastic
+gradient descent (SGD) as the optimization algorithm. These settings are consistent across all experiments unless otherwise
+stated.
+Data Heterogeneity. To evaluate the robustness of our algorithms under varying data distributions, we consider both i.i.d.
+and non-i.i.d. data settings. For the i.i.d. case, data samples are uniformly distributed across the clients. For the non-i.i.d.
+case, we simulate realistic data heterogeneity using a Dirichlet distribution Dir(α). Specifically, we set α = 0.5, where
+smaller α values correspond to higher degrees of non-i.i.d. distribution.
+Asynchronous Setting. We simulate asynchronous environments using FedBuff (Nguyen et al., 2022) as the baseline
+framework. The concurrency level is set to Mc = 20, meaning that the server can aggregate results from up to 20 clients
+concurrently. The delay time for each client is sampled from a uniform distribution U(0, Tmax), where Tmax = 20 seconds
+by default. The delayed communication round τ correlates with the concurrency Mc. Specifically, when Mc = 20, the
+average delay τavg = 0.9184, and the maximum delay τmax = 4, as analyzed in CA2FL. We run all experiments for a total of
+T = 600 global communication rounds.
+Baselines. We compare our proposed algorithms against two state-of-the-art asynchronous federated learning baselines:
+CA2FL (Wang et al., 2023) and FADAS (Wang et al., 2024c). For the main results, we adopt the hyperparameter settings
+recommended by their respective papers. In cases where these settings fail under challenging asynchronous conditions, we
+adjust them appropriately to ensure functionality.
+E.2. Additional Results
+30
+
+=== PAGE 31 ===
+Momentum-Driven Adaptivity: Towards Tuning-Free Asynchronous Federated Learning
+0 100 200 300 400 500 600
+Communication round
+0.0
+0.5
+1.0
+1.5
+2.0
+2.5Loss
+CA2FL
+FADAS
+MasFL
+AdaMasFL
+(a) I.i.d. CIFAR-10 dataset
+0 100 200 300 400 500 600
+Communication round
+0.0
+0.5
+1.0
+1.5
+2.0
+2.5Loss
+CA2FL
+FADAS
+MasFL
+AdaMasFL (b) Non-i.i.d. CIFAR-10 dataset
+0 100 200 300 400 500 600
+Communication round
+0.0
+0.5
+1.0
+1.5
+2.0
+2.5Loss
+CA2FL
+FADAS
+MasFL
+AdaMasFL
+(c) I.i.d. FMNIST dataset
+0 100 200 300 400 500 600
+Communication round
+0.0
+0.5
+1.0
+1.5
+2.0
+2.5Loss
+CA2FL
+FADAS
+MasFL
+AdaMasFL (d) Non-i.i.d. FMNIST dataset
+Figure 4: Test loss versus communication round on different datasets with i.i.d./non-i.i.d. data.
+0 100 200 300 400 500 600
+Communication round
+0.0
+0.5
+1.0
+1.5
+2.0
+2.5Loss
+CA2FL
+FADAS
+MasFL
+AdaMasFL
+(a) Mc = 30
+0 100 200 300 400 500 600
+Communication round
+0.0
+0.5
+1.0
+1.5
+2.0
+2.5Loss
+CA2FL
+FADAS
+MasFL
+AdaMasFL (b) Mc = 40
+0 100 200 300 400 500 600
+Communication round
+0.0
+0.5
+1.0
+1.5
+2.0
+2.5Loss
+CA2FL
+FADAS
+MasFL
+AdaMasFL
+(c) Mc = 60
+0 100 200 300 400 500 600
+Communication round
+0.0
+0.5
+1.0
+1.5
+2.0
+2.5Loss
+CA2FL
+FADAS
+MasFL
+AdaMasFL (d) Mc = 100
+Figure 5: Test loss versus communication round on non-i.i.d. FMNIST dataset under varying levels of asynchrony.
+31
+
+=== PAGE 32 ===
+Momentum-Driven Adaptivity: Towards Tuning-Free Asynchronous Federated Learning
+0 100 200 300 400 500 600
+Communication round
+0.1
+0.2
+0.3
+0.4
+0.5
+0.6
+0.7
+0.8
+0.9Accuracy
+AdaMasFL
+MasFL (AdaMasFL w/o norm)
+AdaMasFL w/o control variate
+MasFL w/o control variate
+MasFL w/o momentum
+(a) CIFAR-10 dataset
+0 100 200 300 400 500 600
+Communication round
+0.1
+0.2
+0.3
+0.4
+0.5
+0.6
+0.7
+0.8
+0.9Accuracy
+AdaMasFL
+MasFL (AdaMasFL w/o norm)
+AdaMasFL w/o control variate
+MasFL w/o control variate
+MasFL w/o momentum (b) FMNIST dataset
+Figure 6: Test accuracy versus communication round for ablation studies on non-i.i.d. CIFAR-10/FMNIST dataset.
+0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9
+Momentum parameter β
+0.60
+0.65
+0.70
+0.75
+0.80
+0.85
+0.90
+0.95Accuracy
+FADAS
+AdaMasFL
+(a) Non-i.i.d. CIFAR-10 dataset
+0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9
+Momentum parameter β
+0.60
+0.65
+0.70
+0.75
+0.80
+0.85
+0.90
+0.95Accuracy
+FADAS
+AdaMasFL (b) Non-i.i.d. FMNIST dataset
+Figure 7: Test accuracy compared with baselines using momentum under different momentum parameter β.
+32

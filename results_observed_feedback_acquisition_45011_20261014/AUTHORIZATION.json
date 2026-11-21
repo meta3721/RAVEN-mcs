@@ -1,0 +1,20 @@
+{
+  "method": "reachability_stop/observed-feedback-v1",
+  "seed": 45011,
+  "T": 100,
+  "role": "development_cost_and_bootstrap_fit_candidate",
+  "CPU_limit": 3600,
+  "caps": {
+    "setup": 180.0,
+    "initialization": 120.0,
+    "online": 1300.0,
+    "training": 900.0,
+    "events": 700.0,
+    "save": 300.0,
+    "repair": 100.0
+  },
+  "SGD_limit": 5000,
+  "GPU": 0,
+  "q_fit": 0,
+  "watchdog_seconds": 7200
+}

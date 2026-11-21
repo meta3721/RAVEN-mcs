@@ -1,0 +1,123 @@
+{
+  "status": "PASS",
+  "q_records": {
+    "R0": {
+      "value": 0.0,
+      "frozen_at": 38.1,
+      "model_version": "S2_isolated_q_half_not_calibrated",
+      "policy_version": "reachability_stop/conditional-bundle-RE-interval-v3",
+      "evidence_id": "outside_R",
+      "role": "outside_R",
+      "feature_hash": "c00cb6c2b66cd238fabc861eb98b2df25ca2042f1f9e1908b8aa05e1a3417229"
+    },
+    "E0": {
+      "value": 0.0,
+      "frozen_at": 38.1,
+      "model_version": "S2_isolated_q_half_not_calibrated",
+      "policy_version": "reachability_stop/conditional-bundle-RE-interval-v3",
+      "evidence_id": "age_monotonicity_proof",
+      "role": "structural_zero",
+      "feature_hash": "1a111dd73eb1f4b9124af28955bef6f83f4356f0b1943845e8710bd1c678485c"
+    },
+    "ok": {
+      "value": 0.5,
+      "frozen_at": 38.1,
+      "model_version": "S2_isolated_q_half_not_calibrated",
+      "policy_version": "reachability_stop/conditional-bundle-RE-interval-v3",
+      "evidence_id": "S2_fixture",
+      "role": "isolated_test_input",
+      "feature_hash": "c00cb6c2b66cd238fabc861eb98b2df25ca2042f1f9e1908b8aa05e1a3417229"
+    }
+  },
+  "backend_forwarded_training_calls": [
+    "E0",
+    "ok"
+  ],
+  "SGD": 0,
+  "physical_E0": {
+    "registration": {
+      "key": "E0",
+      "client": "E0",
+      "registered_at": 38.1,
+      "downloaded_version": 0,
+      "device_class": "public_device",
+      "network_class": "public_network"
+    },
+    "features": {
+      "model_age": 6,
+      "device_class": "public_device",
+      "network_class": "public_network",
+      "maximum_deadline_slack": 3.8999999999999986,
+      "pool_count": 0,
+      "in_flight_count": 4,
+      "configuration_hash": "e65d86a7080b8a81f9600b382698ec867be7c2f100078f761936b2302c41fb19",
+      "as_of": 38.1,
+      "policy_version": "reachability_stop/conditional-bundle-RE-interval-v3",
+      "clock_run_id": "",
+      "service_parameters_hash": "1c4ef4842de270c7781416d49b310fb6532f77a34fde4c9bee1014f41ed99685"
+    },
+    "q": {
+      "value": 0.0,
+      "frozen_at": 38.1,
+      "model_version": "S2_isolated_q_half_not_calibrated",
+      "policy_version": "reachability_stop/conditional-bundle-RE-interval-v3",
+      "evidence_id": "age_monotonicity_proof",
+      "role": "structural_zero",
+      "feature_hash": "1a111dd73eb1f4b9124af28955bef6f83f4356f0b1943845e8710bd1c678485c"
+    },
+    "physical_outcome": "completion",
+    "accepted_at": null,
+    "completed_at": 38.2,
+    "terminal_reason": "expired",
+    "terminal_at": 38.1,
+    "consumed": 0,
+    "right_censored_at": null
+  },
+  "all_registration_marks": 24,
+  "retained_records": [
+    {
+      "key": "R0",
+      "client": "R0",
+      "time": 38.1,
+      "device_class": "public_device",
+      "network_class": "public_network",
+      "known_at": 38.1,
+      "R": 0,
+      "registration_age": 0,
+      "clock_run_id": "isolated_fixture",
+      "provenance": "all_registrations/current_observation_and_download"
+    },
+    {
+      "key": "E0",
+      "client": "E0",
+      "time": 38.1,
+      "device_class": "public_device",
+      "network_class": "public_network",
+      "known_at": 38.1,
+      "R": 1,
+      "registration_age": 6,
+      "clock_run_id": "isolated_fixture",
+      "provenance": "all_registrations/current_observation_and_download"
+    },
+    {
+      "key": "ok",
+      "client": "ok",
+      "time": 38.1,
+      "device_class": "public_device",
+      "network_class": "public_network",
+      "known_at": 38.1,
+      "R": 1,
+      "registration_age": 0,
+      "clock_run_id": "isolated_fixture",
+      "provenance": "all_registrations/current_observation_and_download"
+    }
+  ],
+  "inverse_denominator_keys": [
+    "ok"
+  ],
+  "restore_identical": true,
+  "old_checkpoint_rejected": true,
+  "conditional_kernel_exclusions": true,
+  "unproved_resource_effects_remain_unknown": true,
+  "caveat": "training interface spy and preserved work records; no physical training executed"
+}

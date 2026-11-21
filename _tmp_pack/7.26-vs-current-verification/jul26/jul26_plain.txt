@@ -1,0 +1,3647 @@
+1
+RAVEN-MCS: Target-Risk-Calibrated
+Asynchronous Federated Data Completion under
+Two-Stage Non-Random Selection
+****, Anfeng Liu
+Abstract—Sparse mobile crowdsensing relies on data comple-
+tion to reconstruct unobserved spatio-temporal values from a
+limited number of mobile measurements. Federated and asyn-
+chronous learning can keep raw measurements on devices and
+accommodate heterogeneous computation and communication,
+but the successfully received updates generally do not represent
+the desired deployment distribution. A client–unit record must
+first arise from a nonuniform sensing opportunity and produce a
+valid observation, after which its local update must complete
+computation, arrive before the aggregation deadline, and re-
+main sufficiently fresh. Consequently, conventional asynchronous
+aggregation may optimize the distribution of received updates
+rather than the prescribed city-level target risk. This paper
+proposes RAVEN-MCS, a target-risk-calibrated asynchronous
+federated data-completion framework under opportunity imbal-
+ance and two-stage non-random selection. RAVEN-MCS maps
+non-repeated atomic units into repeatable opportunity strata,
+combines target-to-opportunity design correction with stabilized
+H´ajek observation weighting, and applies a second inverse-
+propensity correction to usable update generation. At the end
+of each asynchronous aggregation window, the server main-
+tains a learning-rate-weighted target-debt process and solves a
+strongly convex calibration problem that jointly controls instan-
+taneous target-group mismatch, long-term under-representation,
+corrected client–record composition, update variance, and model
+staleness. The analysis bounds the practical two-stage reference
+error, establishes long-term group-mixture alignment under ap-
+proximate window reachability, and derives a nonconvex target-
+risk convergence bound determined by the per-window client–
+record distribution error, local optimization drift, staleness,
+stochastic variance, and population-calibration residual. An eval-
+uation methodology based on controlled completion benchmarks
+and trace-consistent mobile sensing data separately measures
+deployment-target error, raw-arrival-weighted error, distribution
+alignment, target debt, reachability, robustness, and system
+overhead.
+Index Terms—Mobile crowdsensing, sparse data completion,
+federated learning, asynchronous aggregation, non-random se-
+lection, importance weighting, target-risk calibration.
+I. INTRODUCTION
+Mobile crowdsensing (MCS) exploits the sensing, compu-
+tation, and communication capabilities of pervasive mobile
+devices to construct large-scale observations of physical and
+urban environments [1], [2]. It has enabled applications such
+•Manuscript
+received
+28
+May,
+2026;
+2026.
+This
+work
+was
+sup-
+ported in part by the National Natural Science Foundation of China
+(U24A20248).(Corresponding author: )
+*** and Anfeng Liu are with the School of Electronic Information, Cen-
+tral South University, Changsha, 410083, China (E-mail: ****@csu.edu.cn,
+afengliu@mail.csu.edu.cn).
+as environmental monitoring, traffic-state estimation, public-
+safety assessment, and urban resource management. How-
+ever, collecting dense observations over every spatial region
+and time interval is often prohibitively expensive because
+of limited sensing budgets, uncertain user mobility, device
+availability, and communication constraints. Sparse mobile
+crowdsensing (SMCS) addresses this difficulty by collecting
+measurements from only part of the spatio-temporal field and
+inferring the remaining values through data completion [3],
+[4].
+Substantial progress has been made in improving SMCS
+completion. Matrix-completion methods exploit low-rank
+structure to recover unobserved values, while graph neural
+networks, attention mechanisms, and temporal representation
+models capture more complex spatial and temporal dependen-
+cies [3]–[5]. Recent studies have further examined whether
+the computational cost of completion is justified by its benefit
+to downstream sensing tasks [6]. Nevertheless, most data-
+completion methods require the platform to collect or centrally
+process users’ location-dependent sensing records, which may
+reveal sensitive mobility and behavioral information.
+Federated learning (FL) provides a natural means of keeping
+raw records on mobile devices while learning a shared model
+through locally computed updates [7]. Asynchronous FL fur-
+ther reduces synchronization delays by allowing clients with
+heterogeneous computation and communication capabilities to
+return updates at different times [8]. Following this direction,
+federated distributed completion has been introduced into
+SMCS by combining local matrix-factorization models, time-
+aware completion, and asynchronous parameter aggregation
+[9]. Such a framework substantially improves the deployability
+of distributed completion under sparse and irregular local data.
+However, retaining raw measurements at clients does not by
+itself provide a cryptographic or differential-privacy guarantee,
+and it does not resolve the statistical bias caused by the way
+local records and model updates enter federated training.
+The central problem considered in this paper is that the
+data received by an asynchronous SMCS platform are gen-
+erally not a random sample from the deployment target. A
+client–unit record must first appear in the client’s sensing
+opportunity set and then produce a valid local observation.
+Even after local observations are obtained, the corresponding
+model update may be absent because local computation fails,
+transmission is interrupted, the update misses the aggrega-
+tion deadline, or its downloaded model becomes excessively
+stale. These mechanisms constitute two coupled non-random
+
+2
+selection stages: local observation selection and usable-update
+selection. Moreover, the underlying sensing opportunities are
+themselves unequally distributed across clients, regions, and
+recurring temporal contexts.
+This issue is more fundamental than ordinary data hetero-
+geneity. Asynchronous aggregation may converge accurately
+with respect to the distribution of successfully received up-
+dates while still performing poorly under the desired city-
+wide deployment distribution. Related FL studies have shown
+that partial, nonuniform, or biased client participation can
+change convergence behavior, increase aggregation variance,
+and move the learned solution away from the full-participation
+objective [10]–[12]. However, these methods mainly study
+client-level participation or sampling. They do not jointly
+correct the preceding non-random observation process, the
+recurring client–spatio-temporal opportunity distribution, and
+the subsequent computation–delivery–expiry process of asyn-
+chronous SMCS.
+Importance weighting provides a general statistical principle
+for aligning training and target distributions under identifiable
+distribution shift [13]. Directly applying an inverse propensity
+weight to RAVEN-MCS is nevertheless insufficient. First, ab-
+solute spatio-temporal units generally occur only once, so their
+opportunity probabilities cannot be reliably estimated through
+per-unit historical counts. Second, multiplying two inverse
+selection probabilities can create highly concentrated local
+and server weights. Third, a finite aggregation window may
+not contain all target groups, making exact target matching
+infeasible in an individual window. Fourth, controlling only
+the final long-term group proportion does not ensure that each
+model update approximates the target-risk gradient. A practical
+solution must therefore combine identifiable two-stage correc-
+tion with weight stabilization, instantaneous calibration, long-
+term coverage control, variance regulation, and stale-update
+management.
+To address these challenges, we propose RAVEN-MCS, a
+target-risk-calibrated asynchronous federated data completion
+framework under opportunity imbalance and two-stage non-
+random selection. RAVEN-MCS first maps atomic spatio-
+temporal units into repeatable opportunity strata, allowing the
+platform to estimate recurring client–context opportunity dis-
+tributions without relying on non-repeated absolute time slots.
+Each client combines the resulting target-to-opportunity design
+ratio with a lagged observation propensity and constructs
+a stabilized H´ajek-weighted local completion objective. The
+server registers all local training attempts and estimates the
+probability that each attempt produces an on-time, sufficiently
+fresh, usable update. A second self-normalized correction then
+reconstructs a reference client–record composition from the
+successfully received updates.
+RAVEN-MCS does not directly impose this statistical refer-
+ence as the aggregation vector. Instead, it maintains a learning-
+rate-weighted target-debt process that records accumulated
+group under-representation and solves a strongly convex cali-
+bration problem at the end of each asynchronous aggregation
+window. The calibration jointly controls accumulated target
+debt, instantaneous group mismatch, deviation from the cor-
+rected client–record reference, update variance, and model
+staleness. This separation allows complementary opportunities
+from different windows to achieve long-term target coverage
+while directly limiting the distributional bias of each global
+update.
+The main contributions of this work are summarized as
+follows.
+• We formulate target-risk misalignment in asynchronous
+federated data completion by distinguishing the pre-
+scribed public deployment distribution from the distribu-
+tion induced by sensing opportunities, valid observations,
+and usable model updates. The model accommodates
+recurring opportunity strata, slowly varying opportunity
+distributions, heterogeneous client measurements, and a
+measurable population-calibration residual.
+• We develop RAVEN-MCS, which integrates lagged
+target-to-opportunity design correction, stabilized local
+H´ajek learning, usable-update propensity correction, and
+windowed asynchronous aggregation. Its online calibra-
+tion simultaneously controls instantaneous target mis-
+match, long-term group debt, corrected client composi-
+tion, update variance, and staleness.
+• We establish a theoretical framework that separately char-
+acterizes statistical correction and dynamic optimization.
+The analysis bounds practical two-stage reference error,
+relates target debt to the long-term group mixture, char-
+acterizes the residual caused by limited window reach-
+ability, and derives a nonconvex target-risk convergence
+bound governed by the actual per-window client–record
+discrepancy, local optimization drift, staleness, stochastic
+variance, and population-calibration error.
+• We design an evaluation methodology that separates
+deployment-target error from raw-arrival-weighted er-
+ror and measures opportunity-ratio estimation, two-stage
+correction, client–record alignment, target debt, window
+reachability, variance, and system overhead under con-
+trolled and trace-consistent SMCS settings.
+The remainder of this paper is organized as follows. Sec-
+tion III presents the system model and problem formulation.
+Section IV describes the proposed framework. Section V
+provides the theoretical analysis. Section VI presents the
+performance evaluation, and the final section concludes the
+paper.through query-and-answer mechanisms. However,
+II. RELATED WORK
+A. Data Completion in Sparse Mobile Crowdsensing
+Sparse mobile crowdsensing reduces sensing expenditure by
+collecting measurements from only part of a spatio-temporal
+field and inferring the remaining values. Early studies pri-
+marily formulated this task as a matrix-completion problem.
+Xie et al. [3] jointly considered active sensing scheduling and
+matrix completion, thereby improving recovery quality under a
+limited sensing budget. Subsequent methods introduced more
+expressive spatial and temporal models. For example, GAMC
+combines graph representations and attention mechanisms to
+address spatial and temporal fractures, in which entire regions
+or time intervals may be unobserved [4]. Recent work has
+
+3
+further moved beyond fixed discrete-time completion. TIME-
+DMF incorporates irregular physical time intervals into a time-
+continuous completion model [5], while other studies examine
+whether the computational cost of data completion is justified
+by its benefit to downstream sensing tasks [6].
+Most of these methods assume that the observed entries
+used for model training are an adequate representation of the
+intended sensing field. Their main focus is the completion
+architecture, the exploitation of spatio-temporal correlation, or
+the selection of sensing locations. Consequently, they generally
+do not distinguish the deployment target distribution from the
+distribution induced by users’ mobility, sensing availability,
+and successful data reporting.
+Federated data completion has recently been introduced to
+avoid centralizing raw spatio-temporal measurements. Wang
+et al. [9] proposed a federated matrix-factorization framework
+with time-aware local completion and asynchronous model
+aggregation. This work provides the most direct foundation for
+distributed SMCS completion and demonstrates how irregular
+local observations can be processed without transmitting raw
+records. Nevertheless, its aggregation mechanism primarily
+addresses local data sparsity and asynchronous arrival. It does
+not explicitly correct the unequal probability that a client–unit
+opportunity becomes a valid observation, nor the subsequent
+probability that its local update completes, arrives before the
+aggregation deadline, and remains sufficiently fresh. There-
+fore, the distribution represented by successfully delivered
+updates may still differ from the prescribed deployment target.
+B. Asynchronous Federated Learning with Nonuniform Par-
+ticipation
+Federated averaging trains a shared model by repeatedly
+aggregating updates computed from decentralized client data
+[7]. To reduce waiting time caused by heterogeneous devices,
+asynchronous federated optimization allows clients to commu-
+nicate at different times and analyzes the effects of delayed
+updates [8], [14]. These studies establish the feasibility of
+federated optimization under heterogeneous computation and
+communication, but typically treat client participation as uni-
+form, sufficiently regular, or exogenously given.
+A growing body of research has shown that partial and
+nonuniform participation can affect both variance and the
+solution reached by federated learning. Clustered sampling
+improves client representativeness while reducing the variance
+of stochastic aggregation weights [10]. FedVARP reduces the
+optimization variance caused by partial participation by main-
+taining surrogate updates for absent clients [12]. Cho et al. [11]
+analyze biased client selection and show that deliberately
+favoring particular clients may accelerate optimization while
+changing the limiting solution. Wang and Ji [15] provide a uni-
+fied analysis covering a broad class of arbitrary participation
+patterns. More recently, correlated and nonuniform availability
+has been modeled explicitly, together with mechanisms that
+debias the resulting federated updates [16].
+These methods mainly address participation at the client
+level. They assume that a participating client’s local dataset or
+gradient is already available and then study which clients com-
+municate or how their updates should be aggregated. In SMCS,
+however, selection begins before local training: mobility and
+sensing conditions determine the client–spatio-temporal op-
+portunity stream, and only some opportunities yield valid
+measurements. Moreover, computation failure, communication
+delay, deadline expiry, and model staleness jointly determine
+whether a locally generated update is usable. Correcting only
+the final client-participation process therefore cannot generally
+reconstruct the desired client–record distribution.
+Target-oriented federated learning is also related to our
+objective. On-Demand FL selects clients whose aggregate
+class distribution approximates a requested target distribution
+[17]. Its target-matching perspective is valuable, but it is
+designed for client selection using inferred class proportions.
+RAVEN-MCS instead considers a continuously generated
+spatio-temporal target, corrects two sequential non-random se-
+lection stages, and calibrates the updates that actually become
+available. It further distinguishes instantaneous target-gradient
+alignment from long-term target-group representation.
+C. Importance Weighting and Target-Distribution Calibration
+Inverse-probability weighting provides a classical means of
+recovering population quantities from samples drawn with
+unequal inclusion probabilities. The Horvitz–Thompson es-
+timator establishes unbiased estimation when the inclusion
+probabilities are known [18]. Self-normalized, or H´ajek-type,
+estimators replace population totals with ratio-normalized
+weighted sums and are widely used to improve finite-sample
+stability [19].
+In statistical learning, importance weighting has been ex-
+tensively studied for covariate shift, where the training and
+target covariate distributions differ but the conditional outcome
+mechanism remains stable. Importance-weighted validation
+and risk estimation can align model selection with the target
+distribution [13]. Density-ratio estimation methods, such as
+least-squares importance fitting, estimate the target-to-source
+ratio directly without separately estimating the two densities
+[20]. These methods provide the statistical basis for correcting
+an identifiable distribution shift, but large inverse weights may
+substantially increase estimator variance, particularly when
+target support is weakly represented in the source sample.
+RAVEN-MCS builds on these principles but addresses a dif-
+ferent sequential and federated setting. First, absolute spatio-
+temporal units usually do not recur, so RAVEN-MCS estimates
+opportunity ratios over repeatable client–context strata rather
+than through per-unit historical frequencies. Second, it com-
+bines target-to-opportunity weighting with a local observation
+propensity and a separate usable-update propensity, thereby
+correcting two distinct selection stages. Third, it uses flooring,
+clipping, H´ajek normalization, effective sample size, and a
+lagged variance proxy to control the instability of the resulting
+weights. Finally, because the target mixture may be infeasible
+in a single asynchronous aggregation window, RAVEN-MCS
+combines instantaneous group calibration with learning-rate-
+weighted target debt. Hence, unlike existing completion, par-
+ticipation, or importance- weighting methods considered sep-
+arately, RAVEN-MCS jointly addresses record-level selection,
+update-level selection, per-window target-risk alignment, and
+long-term target coverage in asynchronous federated SMCS.
+
+4
+III. SYSTEM MODEL AND PROBLEM FORMULATION
+A. Public Spatio-Temporal Completion Target
+We consider a mobile crowdsensing system consisting of a
+platform server and a set of mobile clients
+K = {1, . . . , K}.
+(1)
+The sensing region is partitioned into N spatial cells, and the
+sensing horizon is divided into T time slots. An atomic spatio-
+temporal completion unit is
+i = (n, t) ∈I,
+I = {1, . . . , N} × {1, . . . , T}.
+(2)
+Let Yi ∈R denote the latent public sensing value associated
+with unit i.
+The platform maintains a differentiable completion model
+fθ with parameter vector θ ∈Rd. Given a deployment context
+Cdep
+i
+, the public city-level prediction is
+bYi = fθ
+
+i; Cdep
+i
+
+.
+(3)
+The context may include a sparse observation matrix, its
+observation mask, timestamps, and admissible spatial and tem-
+poral features. Its test-time distribution is fixed independently
+of the learning method. Therefore, all compared methods
+are evaluated under the same public completion task and
+deployment context.
+Atomic units are mapped into target calibration groups
+through
+h : I →G,
+G = {1, . . . , G},
+(4)
+where
+Ig = {i ∈I : h(i) = g}.
+(5)
+The application specifies a target group distribution
+µ = [µ1, . . . , µG]T,
+µg ≥0,
+G
+X
+g=1
+µg = 1,
+(6)
+and fixed within-group unit weights
+νtar
+i|g ≥0,
+X
+i∈Ig
+νtar
+i|g = 1.
+(7)
+The target mass assigned to atomic unit i is
+ϖtar
+i
+= µh(i)νtar
+i|h(i),
+X
+i∈I
+ϖtar
+i
+= 1.
+(8)
+For uniform city-wide completion, µg = 1/G and νtar
+i|g =
+1/|Ig|. For a service-weighted deployment, these quantities
+may instead reflect externally specified monitoring priorities.
+Using the squared loss, the target group risk is
+Fg(θ) =
+X
+i∈Ig
+νtar
+i|g ECdep
+i
+1
+2
+
+fθ(i; Cdep
+i
+) −Yi
+2
+.
+(9)
+The desired deployment risk is
+Fµ(θ) =
+G
+X
+g=1
+µgFg(θ) =
+X
+i∈I
+ϖtar
+i
+Fi(θ),
+(10)
+where
+Fi(θ) = ECdep
+i
+1
+2
+
+fθ(i; Cdep
+i
+) −Yi
+2
+.
+(11)
+B. Repeatable Opportunity Strata
+A specific atomic unit i = (n, t) generally appears only
+once and therefore cannot support reliable estimation of a
+client–unit opportunity frequency. We introduce a repeatable
+opportunity-stratum mapping
+s : I →S,
+S = {1, . . . , S}.
+(12)
+A stratum may combine spatial region, time-of-day block, day
+type, task category, and other pre-outcome attributes that recur
+across multiple sensing windows.
+Let
+Is = {i ∈I : s(i) = s}.
+(13)
+The target mass of stratum s is
+Λtar
+s
+=
+X
+i∈Is
+ϖtar
+i
+.
+(14)
+For Λtar
+s
+> 0, define the conditional target-unit distribution
+νtar
+i|s = ϖtar
+i
+Λtar
+s
+,
+i ∈Is.
+(15)
+Let λtar
+k|s be the target client share within stratum s:
+λtar
+k|s ≥0,
+K
+X
+k=1
+λtar
+k|s = 1.
+(16)
+It specifies the client population whose measurements are
+intended to represent the public field within that stratum.
+The target client–stratum mass is
+πtar
+k,s = Λtar
+s λtar
+k|s,
+(17)
+and the corresponding target client–unit mass is
+πtar
+k,i = πtar
+k,s(i)νtar
+i|s(i).
+(18)
+These masses satisfy
+K
+X
+k=1
+S
+X
+s=1
+πtar
+k,s =
+K
+X
+k=1
+X
+i∈I
+πtar
+k,i = 1.
+(19)
+At aggregation window r, let πopp
+k,s,r denote the pre-
+observation probability that a randomly selected opportunity
+belongs to client k and stratum s. Within that stratum, let
+νopp
+k,r (i | s)
+(20)
+denote the conditional opportunity probability of atomic unit
+i.
+The ideal opportunity-design ratio is
+ζ◦
+k,r,i =
+πtar
+k,s(i)
+πopp
+k,s(i),r
+νtar
+i|s(i)
+νopp
+k,r (i | s(i)).
+(21)
+The first factor corrects client–stratum opportunity imbalance.
+The second factor corrects any remaining unit imbalance
+within the same stratum.
+When the opportunity strata are chosen so that atomic units
+are conditionally exchangeable,
+νopp
+k,r (i | s) = νtar
+i|s ,
+(22)
+
+5
+and (21) reduces to
+ζ◦
+k,r,s =
+πtar
+k,s
+πopp
+k,s,r
+.
+(23)
+The opportunity process may be stationary or slowly vary-
+ing. The practical framework uses only opportunity records
+completed before window r to estimate the current ratio. The
+theoretical analysis allows
+bζk,r,i −ζ◦
+k,r,i
+ ≤ϵζ
+r,
+(24)
+which includes finite estimation error and temporal opportu-
+nity drift.
+C. Client Measurement Heterogeneity
+When client k has a sensing opportunity for unit i, its
+potential measurement is
+Z⋆
+k,i = Yi + bk,i + εk,i,
+(25)
+where bk,i is a client-dependent systematic deviation and εk,i
+is random sensing noise satisfying
+E
+h
+εk,i | k, i, Cdep
+i
+i
+= 0.
+(26)
+The target-population mean deviation for atomic unit i is
+b
+tar
+i
+=
+K
+X
+k=1
+λtar
+k|s(i)bk,i.
+(27)
+Exact population calibration corresponds to
+b
+tar
+i
+= 0.
+(28)
+To accommodate finite reference populations and real mobility
+traces, we allow a nonzero calibration residual and define
+∆cal =
+X
+i∈I
+ϖtar
+i
+b
+tar
+i
+ .
+(29)
+The local squared loss is
+ℓk,i(θ; z) = 1
+2
+h
+fθ(i; Cdep
+i
+) −z
+i2
+.
+(30)
+Define the target-population measurement risk
+eFπ(θ) =
+K
+X
+k=1
+X
+i∈I
+πtar
+k,iE
+
+ℓk,i
+ θ; Z⋆
+k,i
+
+.
+(31)
+If
+∇θfθ(i; Cdep
+i
+)
+
+2 ≤Gf,
+(32)
+then
+∇eFπ(θ) −∇Fµ(θ)
+
+2 ≤Gf∆cal.
+(33)
+Thus, exact population calibration makes the target-weighted
+measurement gradient equal to the public-field target gradi-
+ent. For real traces, ∆cal explicitly quantifies the remaining
+population-calibration error.
+D. Windowed Asynchronous Federated Learning
+The server organizes aggregation decisions into consecutive
+windows
+Wr = [Tr, Tr+1),
+r = 0, . . . , R −1.
+(34)
+The server keeps model version θr fixed during Wr and
+applies one aggregated update when the window closes.
+Clients operate asynchronously. An update considered in
+window r may be trained from an earlier downloaded model
+θsk,r,
+sk,r ≤r.
+(35)
+Its aggregation-time staleness is
+τk,r = r −sk,r.
+(36)
+No global-model version is incremented for an individual
+arrival inside the same window. All usable arrivals in Wr are
+jointly calibrated when the window closes.
+E. Identifiable Two-Stage Non-Random Selection
+A client opportunity affects the global model only after
+passing two non-random stages: local observation and usable
+update generation.
+1) Local observation: During window r, client k constructs
+a pre-outcome risk set
+Rk,r ⊆I.
+(37)
+It contains all atomic units for which a sensing opportunity
+is defined in the current local sensing interval. The risk set is
+determined before the corresponding measurement outcomes
+and records both successful and unsuccessful opportunities.
+For every i ∈Rk,r, define
+Ok,r,i =
+(
+1,
+if a valid measurement is obtained,
+0,
+otherwise.
+(38)
+The observation propensity is
+pobs
+k,r,i = Pr
+
+Ok,r,i = 1 | Xobs
+k,r,i, H−
+k,r
+
+,
+(39)
+where Xobs
+k,r,i contains only pre-outcome information, such as
+reachability, distance, time context, sensing schedule, device
+state, and historical visitation.
+The observed buffer is
+Bk,r = {i ∈Rk,r : Ok,r,i = 1} .
+(40)
+We assume conditional observation ignorability:
+Ok,r,i ⊥∇ℓk,i
+ θ; Z⋆
+k,i
+
+Xobs
+k,r,i, H−
+k,r.
+(41)
+Unlike an independence condition involving an already ex-
+pected gradient, (41) concerns the random potential measure-
+ment gradient associated with the current opportunity.
+
+6
+2) Usable update generation: Every client with a nonempty
+observed buffer is registered as a second-stage update attempt:
+Er = {k ∈K : |Bk,r| > 0} .
+(42)
+If the platform deliberately subsamples these clients, the
+known attempt-selection probability is included in the second-
+stage propensity.
+For k ∈Er, define
+Uk,r = 1
+
+
+
+local training is completed,
+the update arrives before Tr+1, and
+τk,r ≤Smax
+
+
+.
+(43)
+Hence, local computation failure, transmission failure, dead-
+line violation, and excessive staleness are represented by a
+single second-stage outcome.
+The usable-update propensity is
+quse
+k,r = Pr
+ Uk,r = 1 | Xuse
+k,r, H−
+r
+
+.
+(44)
+The feature vector Xuse
+k,r may contain pre-training local sum-
+maries, expected computation time, available bandwidth, en-
+ergy, expected transmission delay, downloaded model version,
+and historical availability. It excludes the current model up-
+date, realized computation time, realized transmission delay,
+and all post-deadline information.
+The usable set at the end of the window is
+Ar = {k ∈Er : Uk,r = 1} .
+(45)
+Let
+Ξ⋆
+k,r =
+ u⋆
+k,r, c⋆
+k,r, v⋆
+k,r
+
+(46)
+denote the potential model update, group composition, and
+variance summary that would be produced under successful
+local computation.
+We assume conditional usable-update ignorability:
+Uk,r ⊥Ξ⋆
+k,r Xuse
+k,r, H−
+r .
+(47)
+The target-support conditions are
+πtar
+k,s > 0
+=⇒
+πopp
+k,s,r > 0,
+pobs
+k,r,i ≥p0 > 0,
+quse
+k,r ≥q0 > 0
+(48)
+for opportunities used to represent the target support. Equiv-
+alently, the ideal design and inverse-propensity weights are
+required to have bounded moments.
+RAVEN-MCS therefore addresses observable, conditionally
+ignorable selection. It does not identify arbitrary hidden con-
+founding or target regions that are absent from the opportunity
+process.
+F. Target-Risk Misalignment
+Let craw
+k,r,i be the normalized raw local weight assigned to
+atomic unit i by a conventional method, with
+X
+i∈Rk,r
+craw
+k,r,i = 1
+(49)
+whenever the client has a nonempty local sample.
+Suppose a conventional asynchronous method assigns ag-
+gregation weight αbase
+k,r
+to usable client k. Conditioned on
+an active aggregation window, its induced client–unit training
+distribution is
+ρbase
+k,i,r = E
+
+αbase
+k,r craw
+k,r,i
+ H−
+r , |Ar| > 0
+
+.
+(50)
+It satisfies
+K
+X
+k=1
+X
+i∈I
+ρbase
+k,i,r = 1.
+(51)
+Ignoring finite-sample, local-drift, and stale-model errors,
+the expected baseline direction is
+K
+X
+k=1
+X
+i∈I
+ρbase
+k,i,rgk,i(θr),
+(52)
+where
+gk,i(θ) = E
+
+∇ℓk,i
+ θ; Z⋆
+k,i
+
+.
+(53)
+The desired target-population measurement direction is
+K
+X
+k=1
+X
+i∈I
+πtar
+k,igk,i(θr).
+(54)
+In general,
+ρbase
+r̸
+= πtar.
+(55)
+The discrepancy in (55) may arise from:
+1) unequal generation of client–stratum opportunities;
+2) unequal atomic-unit opportunities within a stratum;
+3) non-random conversion from opportunities to valid mea-
+surements;
+4) non-random local computation and update delivery; and
+5) distorted client composition among measurements asso-
+ciated with the same public target.
+We refer to the resulting difference between the induced
+training direction and the prescribed deployment direction as
+target-risk misalignment.
+G. Ideal Two-Stage Corrected Quantities
+To formulate the ideal offline problem, suppose that the true
+design ratios and both selection propensities were known. For
+an observed opportunity, define the ideal first-stage weight
+a◦
+k,r,i =
+ζ◦
+k,r,i
+pobs
+k,r,i
+.
+(56)
+The ideal corrected local mass is
+m◦
+k,r =
+X
+i∈Rk,r
+Ok,r,ia◦
+k,r,i.
+(57)
+For m◦
+k,r > 0, the ideal group composition is
+c◦
+k,r,g =
+X
+i∈Rk,r:h(i)=g
+Ok,r,ia◦
+k,r,i
+m◦
+k,r
+.
+(58)
+Using the true usable-update propensity, the ideal self-
+normalized second-stage reference is
+β◦
+k,r =
+Uk,rm◦
+k,r/quse
+k,r
+X
+j∈Er
+Uj,rm◦
+j,r/quse
+j,r
+,
+k ∈Ar.
+(59)
+
+7
+Let
+M ◦
+r =
+
+c◦
+k,r
+
+k∈Ar ∈RG×Kr,
+Kr = |Ar|.
+(60)
+For aggregation vector αr, the ideal effective group mixture
+is
+ω◦
+r = M ◦
+rαr.
+(61)
+H. Target-Risk-Calibrated Asynchronous Problem
+At the end of an active window, the platform applies
+θr+1 = θr −ηr
+X
+k∈Ar
+αk,ruk,r,
+(62)
+where ηr > 0 is the server learning rate.
+Define the active-window indicator and cumulative learning
+mass as
+Ir = 1 {|Ar| > 0} ,
+SR =
+R−1
+X
+r=0
+ηrIr.
+(63)
+For a horizon satisfying SR > 0, the learning-rate-weighted
+long-term group mixture is
+ω◦
+R =
+R−1
+X
+r=0
+ηrIrω◦
+r
+SR
+.
+(64)
+Let V ◦
+r ⪰0 be the diagonal matrix of conditional update
+variances, and define normalized staleness
+τ k,r =
+τk,r
+max{Smax, 1}.
+(65)
+The feasible aggregation set is
+Cr =
+(
+α : 1Tα = 1,
+0 ≤αk ≤αr,
+∥α∥2
+2 ≤1
+Er
+)
+,
+(66)
+where
+αr = min
+
+1, max
+
+αmax, 1
+Kr
+
+,
+Er = min {Emin, Kr} .
+(67)
+The uniform vector is feasible for every active window.
+The ideal target-risk-calibrated asynchronous problem is
+P1 :
+min
+{θr},{αr}
+E [Fµ(θR)]
++ λLE [∥ω◦
+R −µ∥1]
++ λgE
+"
+1
+SR
+R−1
+X
+r=0
+ηrIr ∥ω◦
+r −µ∥2
+2
+#
++ λβE
+"
+1
+SR
+R−1
+X
+r=0
+ηrIr ∥αr −β◦
+r∥2
+2
+#
++ λvE
+"
+1
+SR
+R−1
+X
+r=0
+ηrIrαT
+r V ◦
+rαr
+#
++ λsE
+"
+1
+SR
+R−1
+X
+r=0
+ηrIrτ T
+r αr
+#
+(68a)
+s.t.
+θr+1 = θr −ηr
+X
+k∈Ar
+αk,ruk,r,
+∀r : Ir = 1,
+(68b)
+θr+1 = θr,
+∀r : Ir = 0,
+(68c)
+αr ∈Cr,
+∀r : Ir = 1.
+(68d)
+The first term minimizes the public-field completion risk.
+The second controls long-term target-group representation.
+The third limits the instantaneous group-mixture error that
+directly affects the current target gradient. The fourth preserves
+the client composition recovered by ideal two-stage correction.
+The final two terms control update variance and model stale-
+ness.
+Problem P1 cannot be solved offline because future op-
+portunity sets, observation outcomes, local-computation out-
+comes, transmission delays, usable-update sets, conditional
+variances, and true selection propensities are unavailable.
+RAVEN-MCS therefore constructs lagged estimates of the
+opportunity design ratio and both selection propensities, ap-
+plies a stable local H´ajek correction, maintains a learning-rate-
+weighted target-debt process, and solves a strongly convex
+online calibration problem at the end of each aggregation
+window.
+IV. THE PROPOSED RAVEN-MCS FRAMEWORK
+A. Framework Overview
+RAVEN-MCS is a target-risk-calibrated asynchronous fed-
+erated completion framework for the opportunity imbalance
+and two-stage non-random selection process defined in Sec-
+tion III. It does not require a new completion backbone.
+Instead, it corrects the empirical distribution on which the
+backbone is trained and controls the distribution represented
+by each asynchronous global update.
+During aggregation window Wr, the server keeps θr fixed.
+Clients independently construct observation risk sets, correct
+their local objectives, and train from potentially stale down-
+loaded models θsk,r. All updates that complete computation,
+arrive before the window deadline, and satisfy the staleness
+limit form the usable set Ar. When the window closes, the
+server jointly calibrates these updates and produces θr+1.
+RAVEN-MCS contains five coupled components:
+
+8
+1) lagged estimation of the opportunity-design ratio;
+2) stable H´ajek correction of local observation selection;
+3) inverse-propensity correction of usable update genera-
+tion;
+4) instantaneous and long-term target-group calibration;
+and
+5) variance- and staleness-controlled asynchronous aggre-
+gation.
+The correction flow is
+bζk,r,i, bpobs
+k,r,i −→ak,r,i −→bF H
+k,r −→uk,r, ck,r, mk,r
+−→bquse
+k,r −→bβr −→α⋆
+r −→θr+1.
+B. Lagged Opportunity-Design Estimation
+The target client–stratum masses {πtar
+k,s} and within-stratum
+target-unit distributions {νtar
+i|s } are fixed before federated
+model training. The platform estimates only the opportunity
+process appearing in the denominator of (21).
+Let Lopp
+r−be the opportunity log completed before aggrega-
+tion window r. It contains client identity, opportunity stratum,
+admissible pre-outcome features, and the atomic unit associ-
+ated with every recorded opportunity, regardless of whether a
+valid measurement was eventually obtained.
+Using this lagged log, the platform estimates
+bπopp
+k,s,r = c
+Pr
+ k, s | Lopp
+r−
+
+(69)
+and, when within-stratum exchangeability is not imposed,
+bνopp
+k,r (i | s) = c
+Pr
+ i | k, s, Lopp
+r−
+
+.
+(70)
+These probabilities may be obtained from a known sensing
+schedule, smoothed stratum counts, or a parametric opportu-
+nity model over recurring spatial and temporal features. They
+are not estimated from one count for each absolute spatio-
+temporal unit.
+The practical design ratio is
+bζk,r,i =
+πtar
+k,s(i)
+max
+n
+bπopp
+k,s(i),r, πmin
+o
+νtar
+i|s(i)
+max
+n
+bνopp
+k,r (i | s(i)), νmin
+o,
+(71)
+where πmin > 0 and νmin > 0 are numerical floors.
+Under the exchangeability condition (22), the second factor
+equals one, and the default implementation uses
+bζk,r,s =
+πtar
+k,s
+max
+n
+bπopp
+k,s,r, πmin
+o.
+(72)
+All opportunity estimates used in window r are measurable
+before the current observation outcomes. This prevents the
+current sensing values or model errors from affecting their
+own target-design weights.
+C. Stable Local Observation Correction
+1) Lagged observation-propensity estimation:
+Client k
+maintains a local observation-propensity model hobs
+k . For every
+candidate opportunity i ∈Rk,r, it computes
+bpobs
+k,r,i = hobs
+k
+
+Xobs
+k,r,i; ϕobs
+k,r−1
+
+,
+(73)
+where ϕobs
+k,r−1 is trained only on risk-set outcomes completed
+before window r.
+The current observation outcome, potential measurement,
+and current model error are excluded from their own
+propensity prediction. The practical combined design-and-
+observation weight is
+ak,r,i = min
+
+
+amax,
+bζk,r,i
+max
+n
+bpobs
+k,r,i, pmin
+o
+
+
+.
+(74)
+The floors control numerical instability, while amax limits the
+influence of extremely rare opportunities.
+2) Corrected local mass and group composition: The sta-
+bilized corrected mass contributed to target group g is
+mk,r,g =
+X
+i∈Rk,r
+Ok,r,iak,r,i1 {h(i) = g} .
+(75)
+The total corrected mass is
+mk,r =
+G
+X
+g=1
+mk,r,g =
+X
+i∈Rk,r
+Ok,r,iak,r,i.
+(76)
+A client with mk,r = 0 does not enter the update-attempt set.
+For mk,r > 0, define the normalized H´ajek weight
+ak,r,i = Ok,r,iak,r,i
+mk,r
+.
+(77)
+The practical corrected group composition is
+ck,r,g = mk,r,g
+mk,r
+,
+G
+X
+g=1
+ck,r,g = 1.
+(78)
+The corresponding effective sample size is
+neff
+k,r =
+m2
+k,r
+X
+i∈Rk,r
+(Ok,r,iak,r,i)2 =
+1
+X
+i∈Rk,r
+a 2
+k,r,i
+.
+(79)
+The two quantities have different meanings. The corrected
+mass mk,r estimates target-equivalent local opportunity mass
+and is used in second-stage correction. The effective sample
+size neff
+k,r measures weight concentration and is used only for
+uncertainty and stability control.
+D. H´ajek-Corrected Local Completion
+For every successfully observed opportunity, let
+Zk,r,i = Z⋆
+k,i,
+i ∈Bk,r.
+(80)
+Client k minimizes the self-normalized empirical objective
+bF H
+k,r(θ) =
+X
+i∈Bk,r
+ak,r,iℓk,i (θ; Zk,r,i) .
+(81)
+No unobserved potential measurement is required to evaluate
+(81).
+The theoretical algorithm uses local stochastic gradient
+descent. Starting from θsk,r, client k performs Eloc local steps:
+θ(0)
+k,r = θsk,r,
+θ(e+1)
+k,r
+= θ(e)
+k,r −γrbg(e)
+k,r,
+e = 0, . . . , Eloc −1,
+(82)
+
+9
+where bg(e)
+k,r is an unbiased stochastic gradient of (81) condi-
+tional on the corrected local sample.
+The normalized local displacement is
+uk,r =
+θsk,r −θ(Eloc)
+k,r
+γrEloc
+.
+(83)
+For local SGD, uk,r is the average of the stochastic gradients
+applied during the local procedure.
+E. Attempt Registration and Lagged Variance State
+A client with mk,r > 0 sends a lightweight control-plane
+registration before local training:
+Regk,r =
+
+k, Xuse
+k,r, mk,r, neff
+k,r, sk,r
+
+.
+(84)
+The registration message is substantially smaller than a model
+update. It allows the server to construct the full attempt set Er
+and record a usable-update outcome even if subsequent local
+computation or model transmission fails.
+RAVEN-MCS uses a lagged update-variance state so that
+the current aggregation decision does not depend on the
+stochastic noise of the same update. Let S
+2
+k,r−be the most
+recent weighted single-record gradient-variance estimate avail-
+able before the current attempt. The current variance proxy is
+vk,r =
+S
+2
+k,r−
+max
+n
+neff
+k,r, 1
+o + vfloor,
+(85)
+where vfloor > 0 prevents a client without sufficient history
+from appearing variance-free.
+After the local procedure is resolved, the client may update
+its variance state for future windows. Let gk,r,i be a per-record
+or micro-batch gradient and define
+gk,r =
+X
+i∈Bk,r
+ak,r,igk,r,i.
+(86)
+For neff
+k,r > 1, the weighted variance estimate is
+bS 2
+k,r =
+X
+i∈Bk,r
+ak,r,i
+gk,r,i −gk,r
+2
+2
+1 −
+X
+i∈Bk,r
+a 2
+k,r,i
+.
+(87)
+The lagged state is updated as
+S
+2
+k,(r+1)−= ρvS
+2
+k,r−+ (1 −ρv)bS 2
+k,r,
+(88)
+where ρv ∈[0, 1). When neff
+k,r ≤1, the previous variance state
+is retained.
+F. Usable-Update Propensity Correction
+Upon receiving Regk,r, the server predicts the usable-update
+probability using a lagged model:
+bquse
+k,r = huse  Xuse
+k,r, H−
+r ; ϕuse
+r−1
+
+.
+(89)
+The estimator uses only information available before the
+completion and delivery outcomes of the current attempt. It
+excludes the current update value, realized computation time,
+realized transmission delay, and future server states.
+If client k completes training and its update reaches the
+server before Tr+1 with τk,r ≤Smax, it transmits
+Updk,r = (uk,r, ck,r, vk,r) .
+(90)
+Otherwise, its registered outcome is Uk,r = 0.
+For every usable client k ∈Ar, define the stabilized inverse
+usable-update weight
+dk,r = min
+
+
+dmax,
+1
+max
+n
+bquse
+k,r, qmin
+o
+
+
+.
+(91)
+The practical two-stage corrected mass is
+bk,r = mk,rdk,r,
+(92)
+and the normalized usable-update reference is
+bβk,r =
+bk,r
+X
+j∈Ar
+bj,r
+.
+(93)
+The reference client–record mass is
+bΠref
+k,i,r = bβk,rak,r,i,
+(94)
+and its client–group marginal is
+bΠref
+k,g,r = bβk,rck,r,g.
+(95)
+When the opportunity model and both selection propensity
+models are correctly specified and the weights are not trun-
+cated, this self-normalized reference estimates the prescribed
+client–unit target composition. The final aggregation vector is
+allowed to deviate from the reference to account for finite-
+window group availability, variance, and staleness.
+G. Learning-Rate-Weighted Target Debt
+The server maintains a nonnegative target-group debt vector
+Qr = [Q1,r, . . . , QG,r]T,
+Q0 = 0.
+(96)
+For the usable set Ar, define the practical coverage matrix
+M r = [ck,r]k∈Ar ∈RG×Kr,
+Kr = |Ar|.
+(97)
+Given aggregation weights αr, the effective group mixture is
+ωr = M rαr.
+(98)
+After an active aggregation window, the debt evolves as
+Qr+1 = [Qr + ηr (µ −ωr)]+ .
+(99)
+When Ar = ∅, both the model and debt remain unchanged.
+The learning-rate factor gives the debt the same effective-
+training unit as the global-model update. A group accumulates
+positive debt when its realized effective training mass is below
+its prescribed target mass. The projection prevents temporary
+over-representation from creating unbounded negative credit.
+
+10
+H. Target-Risk-Calibrated Online Aggregation
+Consider the Lyapunov function
+L(Qr) = 1
+2 ∥Qr∥2
+2 .
+(100)
+Using [x]2
++ ≤x2, the one-window debt drift satisfies
+L(Qr+1) −L(Qr)
+≤ηrQT
+r (µ −M rαr) + η2
+r
+2 ∥µ −M rαr∥2
+2 .
+(101)
+After division by ηr, the decision-dependent linear drift term
+is
+−QT
+r M rαr.
+(102)
+Define the diagonal variance matrix
+V r = diag (vk,r : k ∈Ar) ⪰0,
+(103)
+and normalized aggregation staleness
+τ k,r =
+τk,r
+max{Smax, 1}.
+(104)
+The practical feasible set is
+Cr =
+(
+α : 1Tα = 1,
+0 ≤αk ≤αr,
+∥α∥2
+2 ≤1
+Er
+)
+,
+(105)
+where
+αr = min
+
+1, max
+
+αmax, 1
+Kr
+
+,
+Er = min {Emin, Kr} ,
+1 ≤Emin.
+(106)
+The uniform aggregation vector is feasible for every active
+window.
+RAVEN-MCS selects the aggregation vector by solving
+P2 :
+min
+αr∈Cr
+−QT
+r M rαr
++ λg
+2 ∥M rαr −µ∥2
+2
++ λβ
+2
+αr −bβr
+
+2
+2
++ λv
+2 αT
+r V rαr
++ λsτ T
+r αr.
+(107)
+For the debt-drift analysis, we set
+λg ≥ηmax,
+ηmax = sup
+r ηr.
+(108)
+The instantaneous calibration term then dominates the normal-
+ized second-order drift term ηr∥µ −M rαr∥2
+2/2.
+The five objective terms have distinct roles:
+• the debt term reduces accumulated long-term under-
+representation;
+• the instantaneous group term controls the current group
+marginal of the target-gradient error;
+• the reference term preserves the corrected client–record
+composition;
+• the variance term suppresses statistically unstable up-
+dates; and
+• the staleness term limits dependence on old downloaded
+models.
+The reference term directly controls the induced client–
+record distribution. For
+bΠk,i,r(α) = αkak,r,i,
+(109)
+we have
+ bΠr(α) −bΠ
+ref
+r
+
+1
+=
+X
+k∈Ar
+X
+i∈Bk,r
+αk −bβk,r
+ ak,r,i
+=
+α −bβr
+
+1
+≤
+p
+Kr
+α −bβr
+
+2 .
+(110)
+Problem P2 is a convex quadratically constrained quadratic
+program. Its objective Hessian is
+Hr = λgM T
+r M r + λβI + λvV r.
+(111)
+If λβ > 0, then
+Hr ⪰λβI,
+(112)
+so the objective is strongly convex and the optimal aggregation
+vector is unique.
+Importantly, P2 uses corrected masses, compositions,
+lagged variance states, propensity estimates, and staleness, but
+not the coordinates of the current stochastic model updates.
+This separation supports the conditional-centering argument
+in the theoretical analysis.
+I. Global Update and Complete Online Procedure
+Let α⋆
+r be the unique solution of (107). At the end of an
+active aggregation window, the server updates
+θr+1 = θr −ηr
+X
+k∈Ar
+α⋆
+k,ruk,r
+(113)
+and then updates the target debt using (99).
+Only after the window is closed are its outcomes included
+in future estimators:
+Lopp
+(r+1)−←Lopp
+r−∪{k, s(i), i : i ∈Rk,r} ,
+ϕobs
+k,r ←UpdateObs
+
+ϕobs
+k,r−1,
+n
+Xobs
+k,r,i, Ok,r,i
+o
+i∈Rk,r
+
+,
+ϕuse
+r
+←UpdateUse
+
+ϕuse
+r−1,
+
+Xuse
+k,r, Uk,r
+	
+k∈Er
+
+.
+(114)
+Algorithm 1 summarizes the complete method.
+J. Computational, Communication, and Privacy Scope
+For client k, opportunity-design weighting, observation cor-
+rection, corrected-mass construction, and group summarization
+require
+O (|Rk,r|)
+(115)
+additional scalar operations. The dominant client-side compu-
+tation remains local completion-model training.
+
+11
+Algorithm 1 RAVEN-MCS
+Require: Initial model θ0, target distributions, opportunity
+strata, pmin, qmin, πmin, νmin, amax, dmax, Emin, αmax,
+and Smax
+1: Initialize Q0 ←0, lagged opportunity models, propensity
+models, and client variance states
+2: for r = 0, . . . , R −1 do
+3:
+Open aggregation window Wr = [Tr, Tr+1) and keep
+θr fixed
+4:
+Estimate lagged opportunity-design ratios bζk,r,i
+5:
+for all k ∈K in parallel do
+6:
+Construct pre-outcome risk set Rk,r
+7:
+Estimate bpobs
+k,r,i from lagged local history
+8:
+Compute ak,r,i, mk,r,g, mk,r, and neff
+k,r
+9:
+if mk,r > 0 then
+10:
+Send Regk,r and enter Er
+11:
+Server estimates bquse
+k,r
+12:
+Train asynchronously from θsk,r using bF H
+k,r
+13:
+Construct uk,r, ck,r, and lagged vk,r
+14:
+Attempt delivery before Tr+1
+15:
+end if
+16:
+end for
+17:
+Close Wr, resolve {Uk,r : k ∈Er}, and form Ar
+18:
+if Ar = ∅then
+19:
+θr+1 ←θr and Qr+1 ←Qr
+20:
+else
+21:
+Construct bβr, M r, V r, and τ r
+22:
+Solve P2 for α⋆
+r
+23:
+Update the global model by (113)
+24:
+Update target debt by (99)
+25:
+end if
+26:
+Update opportunity, propensity, and variance models
+using completed window-r records
+27: end for
+28: return θR
+The registration message contains only scalar and low-
+dimensional control information. A usable update transmits
+a model displacement of dimension d, a sparse group-
+composition vector, and a variance scalar. The usable-update
+communication cost is
+O (d + nnz(ck,r)) .
+(116)
+Problem P2 contains Kr variables. A projected first-order
+implementation requires approximately
+O(JGKr)
+(117)
+operations for J iterations, dominated by products involv-
+ing M r. The calibration dimension is independent of the
+completion-model dimension d.
+RAVEN-MCS preserves raw-measurement locality but does
+not
+by
+itself
+provide
+cryptographic
+privacy
+or
+a
+new
+differential-privacy guarantee. The registration and group-
+composition summaries may reveal coarse participation in-
+formation. Secure aggregation, summary perturbation, or dif-
+ferentially private model updates may be incorporated as
+orthogonal mechanisms. Any added zero-mean update noise
+must be included in the variance proxy used by P2.
+V. THEORETICAL ANALYSIS
+This section analyzes the statistical correction, target-debt
+control, and target-risk convergence properties of RAVEN-
+MCS. We first quantify the distributional bias of conventional
+asynchronous aggregation. We then bound the perturbation of
+the practical two-stage reference, establish long-term group-
+mixture alignment under window reachability, and derive a
+target-risk convergence result based on the actual per-window
+client–record distribution error.
+A. Assumptions and Filtration
+Recall the expected client–unit measurement gradient
+gk,i(θ) = E
+
+∇ℓk,i
+ θ; Z⋆
+k,i
+
+.
+(118)
+The target-population measurement gradient is
+egπ(θ) =
+K
+X
+k=1
+X
+i∈I
+πtar
+k,igk,i(θ).
+(119)
+By (33),
+∥egπ(θ) −∇Fµ(θ)∥2 ≤Gf∆cal.
+(120)
+We use the following assumptions.
+Assumption 1 (Smoothness and bounded gradients). The
+public target risk Fµ is lower bounded by F ⋆
+µ. Every client–
+unit measurement risk is Lc-smooth, and Fµ is L-smooth.
+There exists G0 > 0 such that
+gk,i(θ)
+
+2 ≤G0,
+∀k, i, θ.
+(121)
+Assumption 2 (Correction estimation and positivity). The
+ignorability and positivity conditions in (41), (47), and (48)
+hold. The lagged estimators satisfy
+max
+k,i
+bζk,r,i −ζ◦
+k,r,i
+ ≤ϵζ
+r,
+max
+k,i
+bpobs
+k,r,i −pobs
+k,r,i
+ ≤ϵp
+r,
+max
+k
+bquse
+k,r −quse
+k,r
+ ≤ϵq
+r.
+(122)
+Assumption 3 (Weight regularity). The ideal design and
+inverse-propensity weights have bounded second moments. For
+every active window, the total ideal first-stage and second-
+stage corrected masses are bounded away from zero. More-
+over,
+0 < vk,r ≤Vmax < ∞.
+(123)
+Let F cal
+r
+be the sigma-field generated by all information
+used to solve P2, including opportunity and propensity esti-
+mates, observation indicators, corrected masses, group com-
+positions, registered usable-update outcomes, lagged variance
+states, and staleness values. It excludes the stochastic gradient
+noise of the current local updates.
+Because P2 does not use the coordinates of uk,r, the
+aggregation vector αr is measurable with respect to F cal
+r .
+
+12
+B. Distributional Misalignment of Conventional Aggregation
+The following proposition formalizes the motivating failure
+mode.
+Proposition
+1
+(Target-gradient misalignment). Let ρbase
+r
+be the client–unit distribution induced by a conventional
+asynchronous method as defined in (50). Ignoring local-
+optimization, stochastic, and stale-model errors,
+E
+h
+bgbase
+r
+| H−
+r , Ir = 1
+i
+−∇Fµ(θr)
+
+2
+≤G0
+ρbase
+r
+−πtar
+1 + Gf∆cal.
+(124)
+Proof. The difference between the baseline direction and the
+target-population measurement direction equals
+X
+k,i
+ ρbase
+k,i,r −πtar
+k,i
+
+gk,i(θr).
+(125)
+Its norm is bounded by G0∥ρbase
+r
+−πtar∥1. Equation (120)
+then gives the result.
+Proposition 1 shows that accurate optimization over the
+received-update distribution need not minimize the prescribed
+public-field risk.
+C. Local Update Decomposition
+For a usable client, define the conditional weighted mea-
+surement gradient at its downloaded model as
+gH
+k,r =
+X
+i∈Bk,r
+ak,r,igk,i
+ θsk,r
+
+.
+(126)
+The normalized local displacement can be decomposed as
+uk,r = gH
+k,r + esgd
+k,r + ξk,r,
+(127)
+where esgd
+k,r is the deterministic local-optimization drift and
+ξk,r is the stochastic local-gradient error.
+Assumption 4 (Local SGD and conditional centering). There
+exists a constant Csgd > 0 such that
+esgd
+k,r
+
+2 ≤CsgdγrEloc,
+(128)
+and
+E
+
+ξk,r | F cal
+r
+
+= 0.
+(129)
+The lagged variance construction is essential for (129). A
+same-update variance estimate could make αr a function of
+the current stochastic update noise.
+D. Perturbation of the Two-Stage Reference
+For an observed opportunity, define the untruncated ideal
+weight
+a◦
+k,r,i =
+ζ◦
+k,r,i
+pobs
+k,r,i
+.
+(130)
+Define the true-but-stabilized weight
+ea◦
+k,r,i = min
+
+
+amax,
+ζ◦
+k,r,i
+max
+n
+pobs
+k,r,i, pmin
+o
+
+
+.
+(131)
+The first-stage stabilization bias is summarized by
+B(1)
+k,r =
+X
+i∈Rk,r
+Ok,r,i
+a◦
+k,r,i −ea◦
+k,r,i
+
+max
+n
+m◦
+k,r, mmin
+o
+.
+(132)
+For the second stage, define
+d◦
+k,r =
+1
+quse
+k,r
+(133)
+and
+ed◦
+k,r = min
+
+
+dmax,
+1
+max
+n
+quse
+k,r, qmin
+o
+
+
+.
+(134)
+The corresponding second-stage stabilization bias is
+B(2)
+r
+=
+X
+k∈Ar
+m◦
+k,r
+d◦
+k,r −ed◦
+k,r
+
+max
+( X
+k∈Ar
+m◦
+k,r, mmin
+).
+(135)
+Let a◦
+k,r,i be the ideal normalized first-stage weight, and
+define the ideal finite-window client–record reference
+Π◦
+k,i,r = β◦
+k,ra◦
+k,r,i.
+(136)
+Its finite-window opportunity error is
+ϵopp
+r
+=
+Π◦
+r −πtar
+1 .
+(137)
+The practical reference distribution is
+bΠref
+k,i,r = bβk,rak,r,i.
+(138)
+Lemma 1 (Two-stage reference error). Under Assumptions 2
+and 3, there exist finite constants Cζ, Cp, Cq, C1, C2 > 0,
+independent of R, such that
+ bΠ
+ref
+r
+−πtar
+1
+≤ϵref
+r
+≜ϵopp
+r
++ Cζϵζ
+r + Cpϵp
+r + Cqϵq
+r + C1B(1)
+r
++ C2B(2)
+r .
+(139)
+The term ϵopp
+r
+remains even with oracle design ratios and
+propensities because one finite aggregation window need not
+contain a perfectly representative realization of the target
+opportunity population.
+E. Calibration Stability and Pair-Distribution Error
+For aggregation vector α, define its induced client–record
+distribution as
+bΠk,i,r(α) = αkak,r,i,
+k ∈Ar,
+i ∈Bk,r.
+(140)
+It is normalized because
+X
+k,i
+bΠk,i,r(α) =
+X
+k
+αk = 1.
+(141)
+The per-window client–record discrepancy is
+δpair
+r
+=
+ bΠr(αr) −πtar
+1 .
+(142)
+
+13
+Its group marginal discrepancy is
+δgrp
+r
+= ∥M rαr −µ∥1 .
+(143)
+Marginalization cannot increase total variation, so
+δgrp
+r
+≤δpair
+r
+.
+(144)
+Using (110) and Lemma 1,
+δpair
+r
+≤
+p
+Kr
+αr −bβr
+
+2 + ϵref
+r .
+(145)
+For fixed Qr, M r, V r, and τ r, let Ar(β) denote the
+optimizer of P2 with reference vector β.
+Proposition 2 (Reference non-expansiveness). For any two
+reference vectors β and β′,
+Ar(β) −Ar(β′)
+
+2 ≤
+β −β′
+2 .
+(146)
+Proof. Collect all terms in P2 except the reference penalty
+into a closed proper convex function Ψr that includes the
+indicator of Cr. The optimizer can be written as
+Ar(β) = proxΨr/λβ(β).
+(147)
+The result follows from non-expansiveness of the proximal
+mapping.
+F. Target Debt and Long-Term Group Alignment
+We first give an exact deterministic relation.
+Theorem 1 (Debt-to-mixture relation). For every horizon
+satisfying SR > 0,
+∥ωR −µ∥1 ≤2∥QR∥1
+SR
+,
+(148)
+where
+ωR =
+PR−1
+r=0 ηrIrωr
+SR
+.
+(149)
+Proof. Define
+DR =
+R−1
+X
+r=0
+ηrIr (µ −ωr) .
+(150)
+Since [x]+ ≥x, the debt recursion implies DR,g ≤Qg,R.
+Moreover, 1TDR = 0 because both µ and ωr are probability
+vectors. Therefore,
+∥DR∥1 = 2
+X
+g
+[DR,g]+ ≤2∥QR∥1.
+(151)
+Using DR = SR(µ −ωR) completes the proof.
+Theorem 1 is conditional on the target debt. To control debt
+growth, the target must be reachable over bounded windows.
+Assumption 5 (Approximate window reachability). There ex-
+ist an integer W < ∞and ϵreach ≥0 such that every block B
+containing at most W consecutive active aggregation windows
+admits feasible comparator vectors eαr ∈Cr satisfying
+
+X
+r∈B
+ηr (M r eαr −µ)
+
+2
+≤ϵreach
+X
+r∈B
+ηr.
+(152)
+Exact reachability corresponds to ϵreach = 0. The target
+need not be feasible in every individual aggregation window.
+Theorem 2 (Target-debt growth). Suppose Assumptions 3 and
+5 hold and
+0 < ηr ≤ηmax.
+(153)
+Then there exist constants CQ, Creach, C0 > 0, independent of
+R, such that
+∥QR∥2 ≤CQ
+v
+u
+u
+tC0 + SR +
+R−1
+X
+r=0
+η2rIr
++ CreachϵreachSR.
+(154)
+Consequently,
+∥ωR −µ∥1
+≤2
+√
+GCQ
+SR
+s
+C0 + SR +
+X
+r
+η2rIr + 2
+√
+GCreachϵreach.
+(155)
+Under exact window reachability and bounded server learn-
+ing rates, the long-term group mismatch is O(S−1/2
+R
+). Approx-
+imate reachability produces a residual proportional to ϵreach.
+The constants depend on the maximum aggregation-window
+length, bounded non-debt penalties in P2, the group dimen-
+sion, and the maximum server step, but not on the training
+horizon.
+G. Aggregate Update Variance
+Assumption 6 (Variance-proxy calibration). Conditional on
+F cal
+r , the stochastic errors of different usable clients are
+uncorrelated, and
+E
+
+∥ξk,r∥2
+2 | F cal
+r
+
+≤cvvk,r + ϵv
+(156)
+for constants cv, ϵv ≥0.
+Lemma 2 (Aggregate variance bound). Define
+Σ2
+r = E
+
+
+
+X
+k∈Ar
+αk,rξk,r
+
+2
+2
+
+F cal
+r
+
+.
+(157)
+Then
+Σ2
+r ≤cvαT
+r V rαr + ϵv
+Er
+.
+(158)
+Proof. Conditional uncorrelatedness gives
+Σ2
+r =
+X
+k∈Ar
+α2
+k,rE
+
+∥ξk,r∥2
+2 | F cal
+r
+
+.
+(159)
+Applying (156) and ∥αr∥2
+2 ≤1/Er yields the result.
+H. Per-Window Target-Gradient Bias
+Define the aggregate update direction
+bgr =
+X
+k∈Ar
+αk,ruk,r.
+(160)
+The aggregate local-SGD drift is
+∆sgd
+r
+=
+X
+k∈Ar
+αk,r
+esgd
+k,r
+
+2 .
+(161)
+
+14
+By (128),
+∆sgd
+r
+≤CsgdγrEloc.
+(162)
+The stale-model discrepancy is
+∆stale
+r
+= LcU
+X
+k∈Ar
+αk,r
+r−1
+X
+t=sk,r
+ηtIt,
+(163)
+where the bounded model-movement condition is
+∥θt+1 −θt∥2 ≤ηtU.
+(164)
+Lemma 3 (Per-window target-gradient bias). Under Assump-
+tions 1 and 4,
+E
+bgr | F cal
+r
+
+−∇Fµ(θr)
+
+2
+≤Br ≜G0δpair
+r
++ ∆sgd
+r
++ ∆stale
+r
++ Gf∆cal.
+(165)
+Proof. Using (127) and conditional centering, the conditional
+mean aggregate direction is the bΠr(αr)-weighted measure-
+ment gradient evaluated at the downloaded client models, plus
+local-SGD drift.
+Replacing the induced client–record distribution by πtar
+contributes at most G0δpair
+r
+. Replacing each downloaded
+model by θr contributes at most ∆stale
+r
+. The local-SGD
+approximation contributes ∆sgd
+r
+. Finally, (120) contributes
+Gf∆cal.
+Combining (145) and (165) gives the observable upper
+bound
+Br ≤G0
+p
+Kr
+αr −bβr
+
+2 + G0ϵref
+r
++ ∆sgd
+r
++ ∆stale
+r
++ Gf∆cal.
+The instantaneous group-calibration term in P2 separately
+controls the group marginal δgrp
+r
+, whereas the reference
+penalty controls the finer client–record composition appearing
+in (166).
+I. Target-Risk Convergence
+The target-risk result is based on the actual per-window
+gradient bias in Lemma 3. Long-term group-mixture alignment
+is not used as a substitute for per-window target-gradient
+control.
+Theorem
+3
+(Target-risk convergence). Suppose Assump-
+tions 1, 4, and 6 hold, and
+0 < ηr ≤η < 1
+4L.
+(166)
+Then there exist constants C0, C1, C2 > 0, independent of R,
+such that
+R−1
+X
+r=0
+ηrIrE
+h
+∥∇Fµ(θr)∥2
+2
+i
+SR
+≤C0
+
+Fµ(θ0) −F ⋆
+µ
+
+SR
++ C1
+R−1
+X
+r=0
+ηrIrE
+
+B2
+r
+
+SR
++ C2L
+R−1
+X
+r=0
+η2
+rIrE
+
+G2
+0 + B2
+r + Σ2
+r
+
+SR
+.
+The first term in (167) is the finite-horizon optimization er-
+ror. The second term is the weighted persistent target-gradient
+bias. The final term contains stochastic update variance and
+higher-order smoothness effects.
+RAVEN-MCS converges to a neighborhood of a stationary
+point when design-ratio error, propensity error, clipping bias,
+finite-window opportunity error, population-calibration resid-
+ual, local-SGD drift, and staleness remain nonzero.
+Exact stationary convergence requires
+SR →∞,
+(167)
+P
+r ηrIrE[B2
+r]
+SR
+→0,
+(168)
+and
+P
+r η2
+rIrE[Σ2
+r]
+SR
+→0.
+(169)
+The debt and convergence results have different meanings.
+Theorems 1 and 2 control the long-term target-group mixture.
+Theorem 3 shows that target-risk optimization additionally
+depends on the complete per-window client–record discrep-
+ancy and on residual measurement, optimization, staleness,
+and variance errors.
+VI. PERFORMANCE EVALUATION
+We evaluate RAVEN-MCS through the following research
+questions.
+• RQ1: Do opportunity imbalance, non-random observa-
+tion, and non-random usable-update generation cause
+conventional asynchronous learning to optimize a distri-
+bution different from the prescribed deployment target?
+• RQ2: Does RAVEN-MCS reduce target-weighted com-
+pletion error, particularly for target units and groups that
+receive insufficient raw training mass?
+• RQ3: Are opportunity-design correction, observation cor-
+rection, usable-update correction, instantaneous group
+calibration, long-term target debt, variance control, and
+staleness control all necessary?
+• RQ4: How sensitive is RAVEN-MCS to design-ratio
+estimation error, propensity misspecification, weight trun-
+cation, opportunity drift, limited support, and population
+calibration residual?
+
+15
+TABLE I: Datasets and experimental roles.
+Dataset
+Signal
+Experimental role
+Sensor-Scope
+EnvironmentControlled sensing and comple-
+tion benchmark
+U-Air
+PM2.5
+Spatially
+heterogeneous
+urban
+sensing benchmark
+Traffic Volume
+Traffic
+Benchmark with strong temporal
+dependence
+T-Drive-Speed
+Speed
+Trace-consistent benchmark with
+real client mobility
+• RQ5: Do target debt, window reachability, client–record
+distribution error, and aggregate variance behave consis-
+tently with the theoretical results in Section V?
+• RQ6: What computation, communication, memory, and
+convergence-time overhead does RAVEN-MCS intro-
+duce?
+A. Datasets and Public-Field Construction
+We use three controlled completion benchmarks and one
+trace-consistent mobile crowdsensing benchmark, as summa-
+rized in Table I.
+For Sensor-Scope, U-Air, and Traffic Volume, preprocessing
+constructs a public reference field
+Y = {Yi : i ∈I} .
+(170)
+The simulator initially hides all training entries. An entry
+becomes locally available only when the corresponding client
+receives a pre-observation opportunity and the observation
+outcome is positive. Unobserved entries remain unavailable to
+clients, the platform, the completion model, and all propensity
+estimators.
+For T-Drive-Speed, vehicles are partitioned by identity into
+a reference fleet and a client fleet. The split is stratified by
+trajectory length and regenerated for each random seed. The
+reference fleet is used only to construct the public speed field:
+Yn,t =
+1
+|Vref
+n,t|
+X
+v∈Vref
+n,t
+zv,n,t,
+(171)
+where Vref
+n,t is the set of reference vehicles with valid records in
+cell n during interval t. Only atomic units containing at least
+M ref
+min reference records are included in the public evaluation
+support.
+Vehicles in the disjoint client fleet act as federated clients
+and supply local measurements. Thus, no vehicle record is
+simultaneously used as a client measurement and as its own
+public target.
+Each dataset is divided chronologically into training, vali-
+dation, and test periods. The early part of the training period is
+used as a warm-up interval for opportunity estimation, propen-
+sity initialization, and variance state initialization. No valida-
+tion or test completion error is used to estimate opportunity-
+design ratios or selection propensities.
+B. Target Groups and Repeatable Opportunity Strata
+Target groups are defined by spatial region and coarse time-
+of-day block:
+h(i) =
+ n(i), bh(t(i))
+
+.
+(172)
+The default setting uses four time-of-day blocks.
+Opportunity strata must recur across multiple days and
+cannot contain an absolute time-slot identifier. We use
+s(i) =
+ ns(i), bs(t(i)), d(i)
+
+,
+(173)
+where ns(i) is a spatial region, bs(t(i)) is a time-of-day
+interval, and d(i) distinguishes weekday and weekend oppor-
+tunities. The stratum resolution is selected using validation
+data.
+The primary public target is uniform across supported
+atomic units:
+ϖtar
+i
+=
+1
+|Isup|,
+i ∈Isup.
+(174)
+The corresponding µ, νtar
+i|g , and Λtar
+s
+are obtained by marginal-
+ization.
+We additionally evaluate a service-weighted target:
+ϖtar
+i
+=
+wsvc
+i
+P
+ℓ∈Isup wsvc
+ℓ
+,
+(175)
+where wsvc
+i
+is fixed before training from application-side
+information such as monitoring priority, road category, or
+administrative importance.
+For the controlled benchmarks, λtar
+k|s is specified by the
+population generator. For T-Drive-Speed, it is estimated from
+warm-up risk-set opportunities:
+bλtar
+k|s =
+N opp
+k,s + ξλλbase
+k|s
+X
+j
+
+N opp
+j,s + ξλλbase
+j|s
+,
+(176)
+where N opp
+k,s
+is the number of warm-up opportunities for
+client k in recurring stratum s. The smoothing distribution
+has support only on client–stratum pairs observed during the
+warm-up period.
+C. Opportunity Process and Design-Ratio Estimation
+1) Controlled opportunity generator: For the controlled
+benchmarks, each client follows a stochastic mobility and
+sensing-schedule process. At aggregation window r, its current
+mobility state, reachable regions, sensing schedule, and device
+status determine Rk,r.
+The client–stratum opportunity probability is generated by
+πopp
+k,s,r ∝exp
+
+ϑT
+kψs,r + χk,s,r
+
+,
+(177)
+where ψs,r contains recurring spatial and temporal features
+and χk,s,r controls client-specific preference and temporal
+drift.
+Within each stratum, atomic units are sampled according to
+νopp
+k,r (i | s).
+(178)
+The primary experiments impose within-stratum exchangeabil-
+ity:
+νopp
+k,r (i | s) = νtar
+i|s .
+(179)
+A robustness experiment introduces within-stratum imbalance
+so that both factors in (21) are required.
+Temporal opportunity drift is controlled by
+Γdrift =
+1
+R −1
+R−1
+X
+r=1
+πopp
+r+1 −πopp
+r
+
+1 .
+(180)
+
+16
+2) Practical opportunity estimation:
+The practical im-
+plementation estimates πopp
+k,s,r from lagged recurring-stratum
+counts with exponential forgetting:
+Copp
+k,s,r = ρoppCopp
+k,s,r−1 + N opp
+k,s,r−1,
+(181)
+where N opp
+k,s,r−1 is the number of opportunities completed in
+the previous window. The estimated probability is
+bπopp
+k,s,r =
+Copp
+k,s,r + ξππbase
+k,s
+X
+j,u
+ Copp
+j,u,r + ξππbase
+j,u
+.
+(182)
+When within-stratum exchangeability is used, the design
+ratio becomes
+bζk,r,s =
+πtar
+k,s
+max
+n
+bπopp
+k,s,r, πmin
+o.
+(183)
+For non-exchangeable settings, a multinomial conditional-unit
+model estimates νopp
+k,r (i | s).
+Controlled experiments include an oracle design-ratio con-
+dition. The real-trace experiments use only lagged estimated
+ratios.
+D. Client Measurement Heterogeneity
+For the controlled benchmarks, local measurements are
+generated as
+Z⋆
+k,i = Yi + bk,i + εk,i,
+(184)
+where εk,i is zero-mean random noise.
+Uncentered client effects ebk,i are generated according to
+the prescribed heterogeneity level σb. They are then centered
+under the target client composition:
+bk,i = ebk,i −
+X
+j
+λtar
+j|s(i)ebj,i.
+(185)
+Hence,
+∆cal = 0
+(186)
+in the principal controlled experiments.
+A calibration-residual stress test adds a common stratum-
+dependent offset:
+bstress
+k,i
+= bk,i + δcal
+s(i).
+(187)
+For T-Drive-Speed, client heterogeneity is not syntheti-
+cally centered. We estimate a validation-period population-
+calibration residual:
+b∆cal =
+X
+s∈S
+Λtar
+s
+
+X
+k
+bλtar
+k|sbbk,s
+ ,
+(188)
+where bbk,s is the difference between client k’s mean mea-
+surement and the reference-fleet mean within stratum s. This
+quantity is reported as a validity diagnostic and is not forced
+to zero by preprocessing.
+E. Two-Stage Selection Processes
+1) Local observation selection: For each i ∈Rk,r, the
+controlled observation propensity is
+pobs
+k,r,i = clip
+h
+σ
+
+a0 + aTXobs
+k,r,i
+
+, plo, phi
+i
+.
+(189)
+The covariates include reachability, distance, time context,
+device state, sensing schedule, and historical visitation. The
+outcome is sampled as
+Ok,r,i ∼Bernoulli
+ pobs
+k,r,i
+
+.
+(190)
+The current latent value, current measurement error, and
+current model error do not enter the generator.
+For T-Drive-Speed, the trajectory and pre-record metadata
+determine the risk set and observation features. A measure-
+ment is regarded as valid according to timestamp, physical-
+range, and packet-integrity rules fixed before model training.
+2) Windowed usable-update generation: The server uses
+fixed aggregation windows
+Wr = [Tr, Tr+1),
+Tr+1 −Tr = ∆T.
+(191)
+The model version remains unchanged inside a window and
+is incremented only after the joint update at its closure.
+For every registered attempt k ∈Er, the simulator generates
+a local-computation success indicator
+Ccmp
+k,r
+∼Bernoulli
+
+pcmp
+k,r
+
+(192)
+and, conditioned on success, a computation duration
+T cmp
+k,r
+∼LogNormal
+
+µcmp
+k,r , σ2
+cmp
+
+.
+(193)
+The parameters depend on device capability, energy, corrected
+local mass, and local training steps.
+Network success is generated as
+Cnet
+k,r ∼Bernoulli
+ pnet
+k,r
+
+,
+(194)
+and the successful transmission delay follows
+T net
+k,r ∼LogNormal
+ µnet
+k,r, σ2
+net
+
+.
+(195)
+The downloaded version is generated before the current
+attempt:
+sk,r = r −Astart
+k,r ,
+Astart
+k,r
+≥0,
+(196)
+where Astart
+k,r
+is the model age at attempt registration. The
+staleness at window closure is
+τk,r = r −sk,r = Astart
+k,r .
+(197)
+The arrival time is
+T arr
+k,r = T reg
+k,r + T cmp
+k,r
++ T net
+k,r .
+(198)
+The usable-update indicator is
+Uk,r = 1
+n
+Ccmp
+k,r
+= 1, Cnet
+k,r = 1,
+T arr
+k,r < Tr+1, τk,r ≤Smax
+o
+.
+All usable arrivals in the same window are aggregated jointly.
+No individual arrival triggers an intermediate global update.
+
+17
+The practical usable-update model uses only information
+available at registration, including model age, expected com-
+putation time, expected transmission delay, device capability,
+energy, bandwidth, corrected local mass, and historical avail-
+ability.
+For the controlled simulator, a high-accuracy diagnostic
+propensity is obtained through conditional Monte Carlo:
+bqsim
+k,r =
+1
+MMC
+MMC
+X
+m=1
+U (m)
+k,r ,
+(199)
+where each replay fixes the pre-attempt state and resamples
+only computation and network outcomes. The method using
+this propensity is denoted RAVEN-SimOracle, rather than
+claiming access to a closed-form true propensity.
+F. Selection Regimes
+We consider the following regimes.
+1) Balanced: the opportunity distribution matches the tar-
+get, and both selection propensities are approximately
+constant;
+2) Opportunity-only: the recurring opportunity distribu-
+tion differs from the target, while both selection stages
+are balanced;
+3) Observation-only: opportunities match the target, but
+valid local observations are non-random;
+4) Usable-only: opportunity and observation processes are
+balanced, but computation, transmission, and expiry are
+non-random;
+5) Complete: opportunity imbalance and both non-random
+selection stages occur simultaneously;
+6) Drifting: the complete regime is combined with a time-
+varying opportunity distribution.
+The complete regime is used for the principal comparison.
+We vary the mean observation rate, mean usable-update rate,
+opportunity-skew intensity, drift intensity, client population,
+aggregation-window duration, and maximum accepted stale-
+ness.
+G. Support and Reachability Audit
+Formal positivity alone is insufficient when a target stratum
+has negligible effective opportunity mass. For every target
+client–stratum pair, define its expected effective opportunity
+count:
+N eff
+k,s =
+X
+r
+X
+i∈Rk,r:s(i)=s
+pobs
+k,r,iquse
+k,r.
+(200)
+The group-level effective count is
+N eff
+g
+=
+X
+k,s
+N eff
+k,s1 {s overlaps g} .
+(201)
+Primary experiments require
+N eff
+g
+≥N eff
+min,
+∀g : µg > 0.
+(202)
+We additionally report the lower quantiles of pobs, quse, and
+πopp over the target support.
+For a block B of active aggregation windows, empirical
+reachability is
+bϵreach(B) = min
+αr∈Cr
+P
+r∈B ηr (M rαr −µ)
+
+2
+P
+r∈B ηr
+.
+(203)
+Unsupported and poorly reachable cases are reported as stress
+tests and are not mixed with the primary theory-consistent
+results.
+H. Compared Methods
+The principal federated comparisons use the same com-
+pletion backbone, public field, client partitions, observation
+opportunities, local training budget, initialization, and aggre-
+gation windows.
+• Central-Delivered: centrally trains on raw observations
+belonging to usable updates. It has the same realized
+information reachability as federated methods but does
+not preserve raw-data locality.
+• Central-All: centrally trains on all valid local obser-
+vations before computation and delivery loss. It is an
+information-rich reference rather than a guaranteed upper
+bound on target-weighted accuracy.
+• FedAvg-Window: performs sample-count-weighted ag-
+gregation over each usable window without staleness or
+selection correction.
+• FedAsync-Window: uses conventional sample-mass and
+staleness weighting over the usable set.
+• TimeAlign-Agg:
+applies
+timestamp-aligned
+asynchronous
+aggregation
+to
+the
+same
+completion
+backbone.
+• FLAMF-Original: reproduces the original time-aware
+completion and asynchronous aggregation pipeline. Be-
+cause its completion backbone differs, it is treated as an
+external system baseline.
+• Local-Hajek: applies opportunity-design and observation
+correction but no usable-update correction or target cali-
+bration.
+• TwoStage-Hajek: applies both stages of correction and
+directly sets αr = bβr.
+• Inst-Cal: uses instantaneous group calibration but no
+target debt.
+• Debt-Cal: uses target debt and instantaneous group cali-
+bration without opportunity or propensity correction.
+• RAVEN-MCS: uses the complete proposed framework
+with lagged estimated design ratios and propensities.
+• RAVEN-SimOracle: uses the generating opportunity ra-
+tios, observation propensities, and Monte Carlo usable-
+update propensities in controlled experiments.
+The principal experiments use local SGD, consistent with
+the theoretical analysis. Adaptive local optimizers are evalu-
+ated separately as an engineering robustness test.
+I. Evaluation Metrics
+1) Target-weighted completion accuracy: Let Ite be the
+supported test set. The target weights are renormalized as
+eϖtar
+i
+=
+ϖtar
+i
+X
+ℓ∈Ite
+ϖtar
+ℓ
+.
+(204)
+
+18
+The target-weighted MSE is
+MSEµ =
+X
+i∈Ite
+eϖtar
+i
+
+bYi −Yi
+2
+,
+(205)
+and the primary metric is
+RMSEµ =
+p
+MSEµ.
+(206)
+Target-weighted MAE is defined analogously.
+Groups are ranked using the ratio of their raw arrival mass
+to target mass:
+Rarr
+g
+= bρarr
+g
+µg
+.
+(207)
+The bottom and top 20% form the tail and head sets. We report
+tail RMSE and
+GapHT = RMSEtail −RMSEhead.
+(208)
+2) Raw arrival distribution and arrival-weighted risk: The
+realized raw client–record arrival distribution during training
+is
+bρarr,tr
+k,i
+=
+X
+r
+Uk,rOk,r,i1 {i ∈Rk,r}
+X
+j,ℓ,r
+Uj,rOj,r,ℓ1 {ℓ∈Rj,r}
+.
+(209)
+Its group marginal is
+bρarr
+g
+=
+X
+k
+X
+i:h(i)=g
+bρarr,tr
+k,i
+.
+(210)
+Because test atomic units occur after the training period,
+their arrival weights are obtained from the fitted recurring
+opportunity and selection models. For test unit i, define the
+predicted raw arrival intensity
+brarr
+i
+=
+X
+k
+bπopp
+k,s(i)bνopp
+k
+(i | s(i))
+× bpobs
+k,i bquse
+k,s(i).
+The normalized test arrival weight is
+eρarr
+i
+=
+brarr
+i
+X
+ℓ∈Ite
+brarr
+ℓ
+.
+(211)
+The arrival-weighted completion error is
+RMSEρ =
+s X
+i∈Ite
+eρarr
+i
+
+bYi −Yi
+2
+.
+(212)
+Unlike a group-only metric, (212) also captures within-group
+atomic-unit arrival imbalance.
+The target–arrival error gap is
+Gapmis = RMSEµ −RMSEρ.
+(213)
+3) Effective training distribution: Let w(m)
+k,r,i be the normal-
+ized expected local-objective weight used by method m for
+record i in window r. It is zero when record i is not included
+in the current local objective.
+For RAVEN-MCS,
+w(RAVEN)
+k,r,i
+= ak,r,i.
+(214)
+For an uncorrected baseline, it is the normalized raw sample
+weight.
+The learning-rate-weighted effective training distribution is
+bΠ(m)
+k,i =
+R−1
+X
+r=0
+ηrIrα(m)
+k,r w(m)
+k,r,i
+SR
+.
+(215)
+It satisfies
+X
+k,i
+bΠ(m)
+k,i = 1.
+(216)
+For controlled experiments, we compare (215) with the
+target distribution renormalized over the training support:
+∆(m)
+pair =
+ bΠ
+(m) −eπtar,tr
+
+1
+.
+(217)
+For large real traces, the primary estimable distribution
+metric is the client–stratum mismatch:
+∆(m)
+c-s =
+X
+k,s
+
+X
+i:s(i)=s
+bΠ(m)
+k,i −πtar
+k,s
+
+.
+(218)
+The effective group marginal is
+bω(m)
+g
+=
+X
+k
+X
+i:h(i)=g
+bΠ(m)
+k,i ,
+(219)
+and its mismatch is
+∆(m)
+grp =
+bω(m) −µ
+
+1 .
+(220)
+4) Per-window calibration diagnostics: The learning-rate-
+weighted pair-reference deviation is
+δref =
+X
+r
+ηrIr
+p
+Kr
+αr −bβr
+
+2
+SR
+.
+(221)
+The average instantaneous group discrepancy is
+δgrp =
+X
+r
+ηrIr ∥M rαr −µ∥1
+SR
+.
+(222)
+For controlled experiments, the realized per-window pair dis-
+crepancy is
+δpair =
+X
+r
+ηrIrδpair
+r
+SR
+.
+(223)
+
+19
+5) Debt and reachability: Normalized final debt is
+∆(R)
+Q
+= ∥QR∥1
+SR
+.
+(224)
+We jointly report
+∥ωR −µ∥1
+and
+2∥QR∥1
+SR
+(225)
+to verify Theorem 1.
+We also report the empirical relationship among bϵreach, debt
+growth, and final group mismatch.
+6) Correction and system metrics: Opportunity-design es-
+timation error is
+Errζ = 1
+R
+X
+r
+X
+k,s
+πopp
+k,s,r
+bζk,r,s −ζ◦
+k,r,s
+ .
+(226)
+Observation and usable-update propensity quality is measured
+using Brier score, log loss, and expected calibration error.
+Stability metrics include local effective sample size, maxi-
+mum aggregation weight, aggregate update variance, and seed-
+to-seed variation. System metrics include registration bytes,
+model-update bytes, client runtime, server calibration time,
+peak memory, and active windows required to reach a fixed
+target RMSE.
+J. Implementation and Statistical Protocol
+All same-backbone methods are implemented in PyTorch.
+The principal experiments use local SGD and identical client
+and server learning-rate schedules. Unless otherwise specified,
+Eloc = 5.
+(227)
+We additionally evaluate
+Eloc ∈{1, 5, 10, 30}
+(228)
+to measure local-optimization drift.
+The principal implementation solves P2 using a deter-
+ministic convex solver with a relative tolerance of 10−6.
+A projected first-order implementation is evaluated in the
+scalability experiment.
+All clipping thresholds, forgetting factors, target-calibration
+coefficients, ESS constraints, variance coefficients, and stal-
+eness coefficients are selected using validation data. Every
+compared method receives the same hyperparameter-search
+budget.
+Principal experiments use 20 independent random seeds.
+Large-scale sensitivity experiments use at least 10 seeds. We
+report mean, standard deviation, and 95% confidence intervals.
+Paired comparisons use a two-sided Wilcoxon signed-rank test
+with Holm correction.
+K. Evidence of Target-Risk Misalignment
+We first compare FedAvg-Window, FedAsync-Window,
+and TimeAlign-Agg under the balanced, opportunity-only,
+observation-only, usable-only, and complete regimes.
+For each regime, we report
+∆grp,
+∆pair or ∆c-s,
+RMSEρ,
+RMSEµ,
+Gapmis.
+(229)
+Report whether arrival-weighted and target-weighted errors
+are statistically indistinguishable under the balanced regime.
+Quantify the separate distributional distortions introduced
+by opportunity imbalance, observation selection, and usable-
+update selection.
+Report whether conventional asynchronous methods retain
+relatively low arrival-weighted error while target-weighted and
+tail-group errors increase under the complete regime.
+L. Overall Target-Risk Performance
+Table II reports the principal results under the complete
+selection regime.
+Report RAVEN-MCS’s average relative target-RMSE im-
+provement over the strongest deployable baseline.
+Determine whether the improvement is concentrated in
+target-underrepresented units and groups.
+Report the gap between RAVEN-MCS and RAVEN-
+SimOracle and relate it to opportunity and propensity-
+estimation errors.
+Under the balanced regime, RAVEN-MCS should remain
+close to the strongest uncorrected method. A substantial degra-
+dation would indicate excessive importance-weight variance or
+over-aggressive calibration.
+M. Ablation Study
+We evaluate the following ablations:
+• w/o Design: sets bζk,r,i = 1;
+• w/o Obs: removes inverse observation-propensity correc-
+tion;
+• w/o Use: removes inverse usable-update correction;
+• w/o Inst: sets λg = 0;
+• w/o Debt: removes the Lyapunov debt term;
+• w/o Ref: sets λβ = 0;
+• w/o Var: removes the variance penalty and ESS con-
+straint;
+• w/o Stale: removes the staleness penalty;
+• No Forget: estimates opportunity probabilities without
+temporal forgetting;
+• Current-Var: replaces the lagged variance state with a
+same-update variance estimate.
+The main text reports the first six ablations. Variance,
+staleness, opportunity drift, and same-update variance results
+may be placed in the appendix when space is limited.
+Report the contribution of every component to target RMSE,
+pair mismatch, group mismatch, reference deviation, normal-
+ized debt, ESS, and maximum aggregation weight.
+The contrast between w/o Inst and w/o Debt separates
+instantaneous target-gradient calibration from long-term group
+representation.
+N. Robustness and Identification Boundary
+We evaluate estimated correction under:
+1) correctly specified opportunity and propensity models;
+2) omitted observable opportunity features;
+3) omitted observation-propensity features;
+4) omitted usable-update features;
+
+20
+TABLE II: Target-risk performance under opportunity imbalance and two-stage non-random selection.
+Method
+RMSEµ ↓Tail RMSE ↓∆grp ↓∆pair ↓δgrp ↓δref ↓∆(R)
+Q
+↓
+Central-Delivered
+–
+–
+–
+–
+–
+–
+–
+Central-All
+–
+–
+–
+–
+–
+–
+–
+FedAvg-Window
+–
+–
+–
+–
+–
+–
+–
+FedAsync-Window
+–
+–
+–
+–
+–
+–
+–
+TimeAlign-Agg
+–
+–
+–
+–
+–
+–
+–
+FLAMF-Original
+–
+–
+–
+–
+–
+–
+–
+Local-Hajek
+–
+–
+–
+–
+–
+–
+–
+TwoStage-Hajek
+–
+–
+–
+–
+–
+–
+–
+Inst-Cal
+–
+–
+–
+–
+–
+–
+–
+Debt-Cal
+–
+–
+–
+–
+–
+–
+–
+RAVEN-MCS
+–
+–
+–
+–
+–
+–
+–
+RAVEN-SimOracle
+–
+–
+–
+–
+–
+–
+–
+5) opportunity drift;
+6) limited target support;
+7) nonzero population-calibration residual; and
+8) hidden confounding.
+The hidden-confounding setting introduces a latent variable
+affecting both selection and the potential measurement or
+update. It intentionally violates (41) or (47) and is excluded
+from the main correctness claims.
+Relate target error and pair mismatch to Errζ and propensity
+calibration error.
+Measure how temporal forgetting affects performance as
+Γdrift increases.
+Report the target-risk residual produced by nonzero b∆cal.
+Show that hidden confounding produces persistent residual
+bias, confirming the stated identification boundary.
+The clipping thresholds amax and dmax are varied over a
+logarithmic grid.
+Report the bias–variance tradeoff among target RMSE,
+distribution mismatch, effective sample size, maximum aggre-
+gation weight, and aggregate variance.
+O. Theory Diagnostics
+To verify Theorem 1, we plot
+∥ωr −µ∥1
+and
+2∥Qr∥1
+Sr
+(230)
+throughout training.
+Verify that measured long-term group mismatch never ex-
+ceeds the deterministic debt-based upper bound.
+We evaluate bϵreach for several block lengths and compare it
+with debt growth and final group mismatch.
+Report whether poorly reachable targets produce the resid-
+ual group mismatch predicted by Theorem 2.
+To examine the per-window gradient-bias chain, we jointly
+report
+δpair,
+δgrp,
+δref,
+RMSEµ.
+(231)
+Determine whether pair-distribution discrepancy predicts
+target risk more accurately than final group proportions alone.
+The lagged variance proxy is compared with repeated real-
+izations of the same local update condition.
+Report variance-proxy calibration, rank correlation, and
+the aggregate variance reduction obtained from the variance
+penalty.
+P. Sensitivity and System Overhead
+We vary:
+K ∈{20, 50, 100, 200},
+(232)
+Eloc ∈{1, 5, 10, 30},
+(233)
+Smax ∈{1, 2, 5, 10, 20},
+(234)
+as well as aggregation-window duration, target-group reso-
+lution, opportunity-stratum resolution, warm-up size, hetero-
+geneity level, and drift intensity.
+Report whether RAVEN-MCS’s advantage increases with
+opportunity skew, selection imbalance, and client heterogene-
+ity.
+Report how finer opportunity strata trade design-ratio bias
+against estimation variance.
+Report the relationship among aggregation-window dura-
+tion, usable-update count, staleness, reachability, and target
+error.
+Report server optimization time for each client population
+and its fraction of total window runtime.
+Report registration-message and group-summary communi-
+cation overhead relative to TimeAlign-Agg.
+Report the active windows and wall-clock time required to
+reach a fixed target RMSE.
+RAVEN-MCS is considered practically scalable when cal-
+ibration and summary-transmission overhead remain small
+relative to local model training and model-update transmission,
+while producing statistically significant reductions in target-
+weighted and tail-group completion errors.
+VII. CONCLUSION AND FUTURE WORK
+This paper presented RAVEN-MCS, a target-risk-calibrated
+asynchronous federated data-completion framework for mo-
+bile crowdsensing under opportunity imbalance and two-stage
+non-random selection. RAVEN-MCS combines repeatable
+opportunity-stratum correction, H´ajek-weighted local learning,
+usable-update propensity correction, instantaneous target cal-
+ibration, and learning-rate-weighted target debt. Its strongly
+convex aggregation problem further controls corrected client
+composition, update variance, and model staleness. The the-
+oretical analysis characterizes two complementary properties:
+
+21
+long-term group-mixture alignment under window reachabil-
+ity and target-risk convergence governed by the per-window
+client–record distribution error, local optimization drift, stale-
+ness, stochastic variance, and population-calibration residual.
+The evaluation protocol further distinguishes deployment-
+target risk from error measured under the raw arrival distribu-
+tion.
+RAVEN-MCS requires observable selection covariates, ade-
+quate target support, and sufficiently accurate opportunity and
+propensity models. Future work will investigate sensitivity-
+aware correction under hidden confounding, adaptive construc-
+tion of opportunity strata under mobility drift, and privacy
+protection for transmitted participation summaries.
+REFERENCES
+[1] R. K. Ganti, F. Ye, and H. Lei, “Mobile crowdsensing: Current state and
+future challenges,” IEEE Communications Magazine, vol. 49, no. 11, pp.
+32–39, 2011.
+[2] A. Capponi, C. Fiandrino, B. Kantarci, L. Foschini, D. Kliazovich, and
+P. Bouvry, “A survey on mobile crowdsensing systems: Challenges, so-
+lutions, and opportunities,” IEEE Communications Surveys & Tutorials,
+vol. 21, no. 3, pp. 2419–2465, 2019.
+[3] K. Xie, G. Xie, X. Li, J. Wen, X. Wang, and D. Zhang, “Active sparse
+mobile crowd sensing based on matrix completion,” in Proceedings of
+the 2019 International Conference on Management of Data.
+ACM,
+2019, pp. 195–210.
+[4] X. Guo, F. Huang, D. Yang, C. Tu, Z. Yu, and W. Guo, “Spatiotem-
+poral fracture data inference in sparse mobile crowdsensing: A graph-
+and attention-based approach,” IEEE/ACM Transactions on Networking,
+vol. 32, no. 2, pp. 1631–1644, 2024.
+[5] H. Du, W. Liu, Z. Sun, H. Su, E. Wang, and Y. Xu, “Toward time-
+continuous data inference in sparse urban crowdsensing,” in Proceedings
+of the AAAI Conference on Artificial Intelligence, vol. 40, no. 1. AAAI
+Press, 2026, pp. 246–254.
+[6] Y. Xu, J. Liu, E. Wang, B. Yang, D. Luan, Y. Yang, and J. Deng,
+“Rethinking the effect of sparse data completion on sparse mobile
+crowdsensing tasks,” IEEE Transactions on Mobile Computing, vol. 24,
+no. 6, pp. 5094–5105, 2025.
+[7] B. McMahan, E. Moore, D. Ramage, S. Hampson, and B. A. y. Arcas,
+“Communication-efficient learning of deep networks from decentralized
+data,” in Proceedings of the 20th International Conference on Artifi-
+cial Intelligence and Statistics, ser. Proceedings of Machine Learning
+Research, vol. 54.
+PMLR, 2017, pp. 1273–1282.
+[8] C. Xie, S. Koyejo, and I. Gupta, “Asynchronous federated optimization,”
+arXiv preprint arXiv:1903.03934, 2019.
+[9] E. Wang, B. Li, W. Liu, Z. Han, C. Wang, X. Li, and J. Wu,
+“Federated learning-based distributed data completion in sparse mobile
+crowdsensing,” IEEE Transactions on Mobile Computing, vol. 25, no. 5,
+pp. 6784–6800, 2026.
+[10] Y. Fraboni, R. Vidal, L. Kameni, and M. Lorenzi, “Clustered sampling:
+Low-variance and improved representativity for clients selection in
+federated learning,” in Proceedings of the 38th International Conference
+on Machine Learning, ser. Proceedings of Machine Learning Research,
+vol. 139.
+PMLR, 2021, pp. 3407–3416.
+[11] Y. J. Cho, J. Wang, and G. Joshi, “Towards understanding biased client
+selection in federated learning,” in Proceedings of the 25th International
+Conference on Artificial Intelligence and Statistics, ser. Proceedings of
+Machine Learning Research, vol. 151. PMLR, 2022, pp. 10 351–10 375.
+[12] D. Jhunjhunwala, P. Sharma, A. Nagarkatti, and G. Joshi, “Fedvarp:
+Tackling the variance due to partial client participation in federated
+learning,” in Proceedings of the Thirty-Eighth Conference on Uncer-
+tainty in Artificial Intelligence, ser. Proceedings of Machine Learning
+Research, vol. 180.
+PMLR, 2022, pp. 906–916.
+[13] M. Sugiyama, M. Krauledat, and K.-R. M¨uller, “Covariate shift adap-
+tation by importance weighted cross validation,” Journal of Machine
+Learning Research, vol. 8, no. 35, pp. 985–1005, 2007.
+[14] D. Avdiukhin and S. Kasiviswanathan, “Federated learning under arbi-
+trary communication patterns,” in Proceedings of the 38th International
+Conference on Machine Learning, ser. Proceedings of Machine Learning
+Research, vol. 139.
+PMLR, 2021, pp. 425–435.
+[15] S. Wang and M. Ji, “A unified analysis of federated learning with arbi-
+trary client participation,” in Advances in Neural Information Processing
+Systems, vol. 35.
+Curran Associates, Inc., 2022, pp. 19 124–19 137.
+[16] Z. Sun, Z. Zhang, Z. Xu, G. Joshi, P. Sharma, and E. Wei, “Debiasing
+federated learning with correlated client participation,” in Proceedings
+of the Thirteenth International Conference on Learning Representations.
+ICLR, 2025.
+[17] I. Jeong and S. Lee, “On-demand federated learning for arbitrary target
+class distributions,” in Proceedings of the 27th International Conference
+on Artificial Intelligence and Statistics, ser. Proceedings of Machine
+Learning Research, vol. 238.
+PMLR, 2024, pp. 3421–3429.
+[18] D. G. Horvitz and D. J. Thompson, “A generalization of sampling
+without replacement from a finite universe,” Journal of the American
+Statistical Association, vol. 47, no. 260, pp. 663–685, 1952.
+[19] J. H´ajek, Sampling from a Finite Population. New York: Marcel Dekker,
+1981.
+[20] T. Kanamori, S. Hido, and M. Sugiyama, “A least-squares approach to
+direct importance estimation,” Journal of Machine Learning Research,
+vol. 10, no. 48, pp. 1391–1445, 2009.

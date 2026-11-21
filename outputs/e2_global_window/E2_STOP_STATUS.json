@@ -1,0 +1,29 @@
+{
+  "authorization_next_round": "NOT_AUTHORIZED_UNTIL_PROTOCOL_PASS",
+  "capacity": {
+    "max_legal_global_windows": 10,
+    "requested_windows": 100,
+    "supported_span_hours": 61.0,
+    "supported_time_end": "2007-01-02T13:00:00+00:00",
+    "supported_time_start": "2006-12-31T00:00:00+00:00",
+    "supported_unit_count": 3410,
+    "unique_timestamp_count": 62,
+    "window_hours": 6
+  },
+  "design_seed_count": 20,
+  "e2_formal_runs": 0,
+  "e3_e9_status": "NOT_STARTED",
+  "formal_seed_reads": 0,
+  "global_window_status": "BLOCKED_GLOBAL_WINDOW_CAPACITY_INSUFFICIENT",
+  "isolation_status": "PASS",
+  "non_balanced_trace_count": 0,
+  "profile_selection": "NOT_STARTED",
+  "real_canary_runs": "0/20",
+  "seed_29001_read_count": 0,
+  "single_arm_replicate_count": 0,
+  "spatial_status": "BLOCKED_NO_VALID_SPATIAL_IDENTITY",
+  "status": "BLOCKED_GLOBAL_WINDOW_CAPACITY_INSUFFICIENT",
+  "unique_assignment_status": "BLOCKED_GLOBAL_WINDOW_CAPACITY_INSUFFICIENT",
+  "validation_seed_read_count": 0,
+  "validation_traces": 0
+}

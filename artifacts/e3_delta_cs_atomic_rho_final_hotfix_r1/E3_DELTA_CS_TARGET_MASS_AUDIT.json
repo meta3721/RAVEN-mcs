@@ -1,0 +1,9 @@
+{
+  "fixture_ok": true,
+  "formula": "pi_tar(k,s) = Lambda_s^tar * lambda_{k|s}^tar with lambda=1 under unique station-client map",
+  "n_positive_cells": 12,
+  "not_derived_from_method_outputs": true,
+  "production_builder": "build_pi_target / build_pi_tar_client_stratum",
+  "status": "PASS",
+  "sum_pi_tar": 1.0
+}

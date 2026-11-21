@@ -1,0 +1,72 @@
+{
+  "directions": {
+    "d_opp": -1,
+    "d_p": -1,
+    "d_q": 1
+  },
+  "display_name": "Complete-counteracting",
+  "expected": {
+    "D_arr": 0.3872948019530473,
+    "D_obs": 0.4268478750834208,
+    "D_opp": 0.20739150033467343,
+    "checks": {
+      "hard_cancellation_visible": true,
+      "hard_not_fully_balanced": true,
+      "intermediate_misalignment": true,
+      "not_fully_balanced": true,
+      "opp_obs_same_sign": true,
+      "usable_opposes": true
+    },
+    "expected_status": "PASS",
+    "head_mass_ratio": 1.7745896039063371,
+    "signed": {
+      "arr": 0.7745896039063369,
+      "obs": 0.8536957501671709,
+      "opp": 0.4147830006695987
+    },
+    "tail_mass_ratio": 0.22541039609366323
+  },
+  "expected_direction": "usable_opposes_opportunity_observation",
+  "grid_search_count": 0,
+  "hard_direction_pass": true,
+  "hard_pooled": {
+    "D_TV": 0.8250000000001825,
+    "antithetic_average": false,
+    "head_mass_ratio": 1.7752675386445835,
+    "pooled_arrival_mass": 5046.0,
+    "seed_count": 3,
+    "signed_head_minus_tail": 0.7752675386445265,
+    "tail_mass_ratio": 0.22473246135553068
+  },
+  "intercepts": {
+    "obs": -2.0353580544110628,
+    "opp": 0.25480574768721453,
+    "q": 1.2496681229208662
+  },
+  "label": "S6",
+  "parameter_set_count": 1,
+  "profile_id": "PROFILE-S2",
+  "rates": {
+    "mean_observation": 0.2010274624646217,
+    "mean_opportunity": 0.5484754521963824,
+    "mean_usable": 0.6019310225652176,
+    "rate_pass": true,
+    "soft_mean_p_obs": 0.19999999999968682,
+    "soft_mean_p_opp": 0.5499999999999831,
+    "soft_mean_q": 0.6000000000002068
+  },
+  "scenario_id": "complete_counteracting",
+  "seeds": [
+    28201,
+    28202,
+    28203
+  ],
+  "status": "PASS",
+  "strength": {
+    "kappa_opp": 1.0,
+    "kappa_p": 1.0,
+    "kappa_q": 1.0
+  },
+  "structural_pass": true,
+  "trace_count": 3
+}

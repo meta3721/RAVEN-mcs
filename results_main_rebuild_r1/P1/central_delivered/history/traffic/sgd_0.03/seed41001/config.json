@@ -1,0 +1,16 @@
+{
+  "dataset": "traffic",
+  "seed": 41001,
+  "model": "history",
+  "optimizer": "sgd",
+  "lr": 0.03,
+  "scaler_mean": 442.0339185953711,
+  "scaler_std": 524.6945852390786,
+  "trace_hash": "82566b943e08ab80bac4a7b990f8f66a3eb4a21a3134bcb059fdb1a0f1c3ccc4",
+  "train_unique": 1253,
+  "information": "train_delivered_only",
+  "budget": 200,
+  "train_input_meaning": "observed client measurements",
+  "validation_input_meaning": "frozen target labels",
+  "test_access": false
+}

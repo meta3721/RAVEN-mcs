@@ -1,0 +1,4 @@
+dataset,pi_opp_identity_correct,p_obs_identity_correct,q_identity_correct,no_object_aliasing,no_future_leakage,fixed_prestate_q,same_EventTrace_family,M_MC,M_MC_CHECK,oracle_status,notes
+sensorscope,True,True,True,True,True,True,True,2000,10000,VALID_CONTROLLED_ORACLE,"R2 generator emits pi_opp_true, p_obs_true, q_use_true distinctly"
+uair,True,True,True,True,True,True,True,2000,10000,VALID_CONTROLLED_ORACLE,"R2 generator emits pi_opp_true, p_obs_true, q_use_true distinctly"
+traffic,True,True,True,True,True,True,True,2000,10000,VALID_CONTROLLED_ORACLE,Hard AOU generator; objects must remain unaliased in Traffic runner

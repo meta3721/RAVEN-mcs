@@ -1,0 +1,14 @@
+{
+  "dataset": "uair",
+  "generator": "e3-complete-aligned-r2-v1",
+  "notes": [
+    "E3 Complete-aligned R2 three-stage generator",
+    "pi_opp sampled (not cyclic)",
+    "p_obs and q/U distinct",
+    "U enforces deadline"
+  ],
+  "num_clients": 8,
+  "num_windows": 6,
+  "s_max": 5,
+  "seed": 31001
+}

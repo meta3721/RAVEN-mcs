@@ -1,0 +1,19 @@
+{
+  "created_utc": "2026-08-10T03:49:11.054735+00:00",
+  "formula": "pi_opp(k,s) ∝ exp(-theta * 1{stratum in Tail time-blocks})",
+  "generator_version": "e3-complete-aligned-r2-v1",
+  "materialized_fields": [
+    "dataset",
+    "seed",
+    "window",
+    "client",
+    "opportunity_stratum",
+    "legal_support",
+    "pi_opp",
+    "sampled",
+    "prestate_features",
+    "generator_version"
+  ],
+  "not_cyclic_slice": true,
+  "risk_set_sampled_from_pi_opp": true
+}

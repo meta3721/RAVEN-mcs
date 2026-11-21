@@ -1,0 +1,108 @@
+{
+  "analysis_set": {
+    "arms": [
+      "fedavg_window",
+      "raven_simoracle"
+    ],
+    "block": "NSW-Traffic",
+    "n_seeds": 15,
+    "seeds": [
+      30006,
+      30020
+    ]
+  },
+  "created_utc": "2026-10-09T10:23:28.953146+00:00",
+  "instruction_sha256": "8d4790bc635b1d49c14eb8a62e33eafad011171557e46e4f43b45142f4c7e413",
+  "metrics": {
+    "Delta_c_s": {
+      "MDE80": 0.005114158813478408,
+      "applicability_strings_seen": [
+        "APPLICABLE"
+      ],
+      "bootstrap_interval": {
+        "draws": 10000,
+        "lower": 0.006724524039012507,
+        "rng": 20261007,
+        "upper": 0.013241532821026799
+      },
+      "field_present": {
+        "Delta_c_s": true,
+        "Delta_group": true
+      },
+      "included_seeds": [
+        30006,
+        30007,
+        30008,
+        30009,
+        30010,
+        30011,
+        30012,
+        30013,
+        30014,
+        30015,
+        30016,
+        30017,
+        30018,
+        30019,
+        30020
+      ],
+      "label": "SEPARATED-ORACLE",
+      "label_rule": "interval entirely above 0 -> SEPARATED-ORACLE; entirely below 0 -> SEPARATED-FEDAVG; contains 0 -> NOT-SEPARATED",
+      "mean": 0.009939661215117069,
+      "missing_seeds": [],
+      "n": 15,
+      "n_missing": 0,
+      "sd": 0.0065742097999971225
+    },
+    "Delta_group": {
+      "MDE80": 0.004761598071517162,
+      "applicability_strings_seen": [
+        "APPLICABLE"
+      ],
+      "bootstrap_interval": {
+        "draws": 10000,
+        "lower": 0.005050083024358629,
+        "rng": 20261007,
+        "upper": 0.011032292876163016
+      },
+      "field_present": {
+        "Delta_c_s": true,
+        "Delta_group": true
+      },
+      "included_seeds": [
+        30006,
+        30007,
+        30008,
+        30009,
+        30010,
+        30011,
+        30012,
+        30013,
+        30014,
+        30015,
+        30016,
+        30017,
+        30018,
+        30019,
+        30020
+      ],
+      "label": "SEPARATED-ORACLE",
+      "label_rule": "interval entirely above 0 -> SEPARATED-ORACLE; entirely below 0 -> SEPARATED-FEDAVG; contains 0 -> NOT-SEPARATED",
+      "mean": 0.007875461474741708,
+      "missing_seeds": [],
+      "n": 15,
+      "n_missing": 0,
+      "sd": 0.006120995817125243
+    }
+  },
+  "not_claimed": [
+    "TE1 is not reopened and RMSE_mu is not re-scored",
+    "no transfer claim from the frozen-server-step tables",
+    "these 15 seeds are not combined with any other seed",
+    "a separated contrast would be a property of this pipeline and these two arms, not a deployment decision and not E1"
+  ],
+  "te1_verdict_at_read": {
+    "n_analysis": 15,
+    "verdict": "NO-GO-H"
+  }
+}

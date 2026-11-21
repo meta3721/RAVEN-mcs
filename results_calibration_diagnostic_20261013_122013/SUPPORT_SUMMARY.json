@@ -1,0 +1,181 @@
+{
+  "status": "PASS",
+  "checks": {
+    "decisions_1000": true,
+    "warmup_200": true,
+    "fallbacks_792": true,
+    "completions_503": true,
+    "opportunity_cells_129": true,
+    "missing_mark_cells_4": true,
+    "risk_arithmetic_all": true,
+    "cutoff_legal": true,
+    "age6to8_634": true,
+    "no_age6to8_consumption": true,
+    "history_matches_registrations": true
+  },
+  "decision_categories": {
+    "warmup": 200,
+    "support_fallback": 792,
+    "conditional_bundle": 7,
+    "endpoint": 1
+  },
+  "reasons": {
+    "common_warmup": 200,
+    "UNSUPPORTED_PREDICTION/fixed_time_2/NO_COMPATIBLE_MARK:56975": 41,
+    "UNSUPPORTED_PREDICTION/fixed_time_2/INSUFFICIENT_RISK:('tier-1', 'net-tier-1'):15": 171,
+    "UNSUPPORTED_PREDICTION/fixed_time_2/INSUFFICIENT_RISK:('tier-0', 'net-tier-0'):22": 117,
+    "UNSUPPORTED_PREDICTION/fixed_time_2/NO_COMPATIBLE_MARK:56975:('tier-2', 'net-tier-2')": 31,
+    "UNSUPPORTED_PREDICTION/fixed_time_2/INSUFFICIENT_RISK:('tier-2', 'net-tier-2'):9": 91,
+    "UNSUPPORTED_PREDICTION/fixed_time_2/NO_COMPATIBLE_MARK:56602": 103,
+    "UNSUPPORTED_PREDICTION/fixed_time_2/NO_COMPATIBLE_MARK:57051:('tier-2', 'net-tier-2')": 27,
+    "UNSUPPORTED_PREDICTION/fixed_time_2/NO_COMPATIBLE_MARK:56602:('tier-0', 'net-tier-0')": 191,
+    "UNSUPPORTED_PREDICTION/fixed_time_2/NO_COMPATIBLE_MARK:57106:('tier-2', 'net-tier-2')": 16,
+    "UNSUPPORTED_PREDICTION/fixed_time_2/INSUFFICIENT_RISK:('tier-1', 'net-tier-1'):16": 3,
+    "UNSUPPORTED_PREDICTION/fixed_time_2/NO_COMPATIBLE_MARK:57051": 1,
+    "conditional_bundle": 7,
+    "experiment_end": 1
+  },
+  "actions": {
+    "WAIT": 940,
+    "CLOSE": 60
+  },
+  "warmup_service_outcomes": {
+    "completion": 503,
+    "notified_failure": 155,
+    "right_censored": 23
+  },
+  "warmup_opportunities": 860,
+  "warmup_R0": 179,
+  "missing_mark_cells": [
+    {
+      "client": "56975",
+      "device": "tier-2",
+      "network": "net-tier-2",
+      "opportunities": 3,
+      "R0": 2,
+      "R1": 1,
+      "completion": 0,
+      "notified_failure": 1,
+      "right_censored": 0,
+      "compatible_marks": 0,
+      "first_opportunity_key": "004::56975",
+      "first_R1_key": "012::56975",
+      "first_completion_key": ""
+    },
+    {
+      "client": "56602",
+      "device": "tier-0",
+      "network": "net-tier-0",
+      "opportunities": 5,
+      "R0": 1,
+      "R1": 4,
+      "completion": 0,
+      "notified_failure": 4,
+      "right_censored": 0,
+      "compatible_marks": 0,
+      "first_opportunity_key": "006::56602",
+      "first_R1_key": "007::56602",
+      "first_completion_key": ""
+    },
+    {
+      "client": "57051",
+      "device": "tier-2",
+      "network": "net-tier-2",
+      "opportunities": 1,
+      "R0": 1,
+      "R1": 0,
+      "completion": 0,
+      "notified_failure": 0,
+      "right_censored": 0,
+      "compatible_marks": 0,
+      "first_opportunity_key": "006::57051",
+      "first_R1_key": "",
+      "first_completion_key": ""
+    },
+    {
+      "client": "57106",
+      "device": "tier-2",
+      "network": "net-tier-2",
+      "opportunities": 1,
+      "R0": 1,
+      "R1": 0,
+      "completion": 0,
+      "notified_failure": 0,
+      "right_censored": 0,
+      "compatible_marks": 0,
+      "first_opportunity_key": "008::57106",
+      "first_R1_key": "",
+      "first_completion_key": ""
+    }
+  ],
+  "first_unsupported_service_bin": {
+    "tier-0": 22,
+    "tier-1": 15,
+    "tier-2": 9
+  },
+  "supported_risk_cells": 43,
+  "risk_cells": 51,
+  "age_support": {
+    "0": {
+      "R1": 509,
+      "consumed": 292,
+      "mature": 509
+    },
+    "1": {
+      "R1": 443,
+      "consumed": 239,
+      "mature": 443
+    },
+    "2": {
+      "R1": 429,
+      "consumed": 258,
+      "mature": 429
+    },
+    "3": {
+      "R1": 462,
+      "consumed": 284,
+      "mature": 462
+    },
+    "4": {
+      "R1": 400,
+      "consumed": 238,
+      "mature": 400
+    },
+    "5": {
+      "R1": 428,
+      "consumed": 182,
+      "mature": 428
+    },
+    "6": {
+      "R1": 210,
+      "consumed": 0,
+      "mature": 210
+    },
+    "7": {
+      "R1": 204,
+      "consumed": 0,
+      "mature": 204
+    },
+    "8": {
+      "R1": 220,
+      "consumed": 0,
+      "mature": 220
+    }
+  },
+  "frozen_completed_marks_registration_age_gt5": 60,
+  "earliest_causal_snapshot": {
+    "now": 20.1,
+    "in_flight": 14,
+    "overage": 0,
+    "missing_mark_items": 0,
+    "immediate_unsupported_risk_items": 0,
+    "both_same_item": 0
+  },
+  "physical_pending": 23,
+  "no_planner_called": true,
+  "no_new_scenarios": true,
+  "no_q_fit": true,
+  "training_steps": 0,
+  "future_R_semantics": "all historical registrations are expanded; every expanded opportunity receives R1-completion-conditioned joint mark, with no R occurrence draw; service law itself conditions on R1",
+  "overlap_limit": "Only deterministic gaps from frozen history and one saved causal snapshot. No 12-sample extrapolation or counterfactual full-trajectory fallback rate."
+}

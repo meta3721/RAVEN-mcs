@@ -1,0 +1,15 @@
+{
+  "command": [
+    "C:\\Cursor\\raven.mcs\\.venv_new\\Scripts\\python.exe",
+    "-X",
+    "faulthandler",
+    "-c",
+    "from pathlib import Path; from raven_mcs.utils.manifest import _git_info; print(_git_info(Path.cwd()),flush=True)"
+  ],
+  "returncode": 124,
+  "process_tree_cpu_seconds": 43.640625,
+  "monitor_cpu_seconds": 0.359375,
+  "wall_seconds": 60.901151500000196,
+  "limit_reason": "wall",
+  "log": "C:\\Cursor\\raven.mcs\\results_conditional_bundle_b0_20261012_223821\\legacy-manifest-once.log"
+}

@@ -1,0 +1,83 @@
+{
+  "canary_seed": 31001,
+  "canary_seed_disjoint_from": {
+    "e1_formal_example": [
+      28001,
+      28002,
+      28003,
+      28004,
+      28005
+    ],
+    "e2_formal": [
+      30001,
+      30002,
+      30003,
+      30004,
+      30005,
+      30006,
+      30007,
+      30008,
+      30009,
+      30010,
+      30011,
+      30012,
+      30013,
+      30014,
+      30015,
+      30016,
+      30017,
+      30018,
+      30019,
+      30020
+    ],
+    "legacy_e3_yaml_seeds": [
+      26001,
+      26002,
+      26003,
+      26004,
+      26005,
+      26006,
+      26007,
+      26008,
+      26009,
+      26010,
+      26011,
+      26012,
+      26013,
+      26014,
+      26015,
+      26016,
+      26017,
+      26018,
+      26019,
+      26020
+    ]
+  },
+  "created_utc": "2026-08-09T15:41:08.424796+00:00",
+  "datasets": [
+    "traffic"
+  ],
+  "execute_in_this_round": false,
+  "methods_to_validate": [
+    "local_hajek",
+    "inst_cal",
+    "debt_cal",
+    "raven_simoracle"
+  ],
+  "next_round": "E3-REAL-RUNNER-CANARY-R1",
+  "requirements": [
+    "Complete-aligned EventTrace",
+    "pair-level state materialization hooks if claiming Delta_pair",
+    "direct Ledger",
+    "checkpoint/output hashes",
+    "no test-performance claim"
+  ],
+  "reuse_without_revalidation_training": [
+    "fedavg_window",
+    "fedasync_window",
+    "flamf_timealign_adapted",
+    "twostage_hajek",
+    "raven"
+  ],
+  "scenario": "complete_aligned"
+}

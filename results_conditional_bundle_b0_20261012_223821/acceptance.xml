@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="29" time="22.942" timestamp="2026-10-12T23:27:44.621470+08:00" hostname="LAPTOP-4349UTOC"><testcase classname="tests.control_b0.test_lifecycle_preview" name="test_corrected_preview_application_and_stale_rejection" time="0.060" /><testcase classname="tests.control_b0.test_lifecycle_preview" name="test_missing_q_not_silently_replaced" time="0.001" /><testcase classname="tests.control_b0.test_lifecycle_preview" name="test_replacement_out_of_order_and_physical_outcome" time="0.002" /><testcase classname="tests.control_b0.test_lifecycle_preview" name="test_inflight_expiry_empty_close_and_mature_labels" time="0.039" /><testcase classname="tests.control_b0.test_lifecycle_preview" name="test_future_checkpoint_invalid_tensor_and_stale_snapshot" time="0.014" /><testcase classname="tests.control_b0.test_lifecycle_preview" name="test_design_freeze_and_gate_has_no_computation_effect" time="0.027" /><testcase classname="tests.control_b0.test_lifecycle_preview" name="test_probability_frozen_per_attempt_and_failure_censoring" time="0.001" /><testcase classname="tests.control_b0.test_persistence_and_full_connection" name="test_production_save_restore_same_suffix_and_no_overwrite" time="2.295" /><testcase classname="tests.control_b0.test_persistence_and_full_connection" name="test_real_model_and_existing_trainer_connected_but_no_sgd" time="0.159" /><testcase classname="tests.control_b0.test_persistence_and_full_connection" name="test_shared_stage1_exact_existing_formulas_and_legal_clipping" time="0.001" /><testcase classname="tests.control_b0.test_persistence_and_full_connection" name="test_invalid_numeric_inputs_not_prediction_fallback" time="0.001" /><testcase classname="tests.control_b0.test_persistence_and_full_connection" name="test_official_registration_uses_full_runner_lagged_inputs" time="0.034" /><testcase classname="tests.control_b0.test_persistence_and_full_connection" name="test_probability_rejects_other_target_policy_context" time="0.001" /><testcase classname="tests.control_b0.test_persistence_and_full_connection" name="test_official_missing_p_is_input_error" time="0.006" /><testcase classname="tests.control_b0.test_predictor_planner" name="test_competing_risk_and_censoring_arithmetic" time="0.003" /><testcase classname="tests.control_b0.test_predictor_planner" name="test_client_marks_not_reassigned_and_frozen_download" time="0.002" /><testcase classname="tests.control_b0.test_predictor_planner" name="test_joint_support_uses_multistep_path_and_no_real_mutation" time="0.050" /><testcase classname="tests.control_b0.test_predictor_planner" name="test_snapshot_does_not_accept_future_or_hidden_fields" time="0.054" /><testcase classname="tests.control_b0.test_predictor_planner" name="test_unsupported_prediction_fallback_and_hard_deadline" time="0.028" /><testcase classname="tests.control_b0.test_predictor_planner" name="test_isolated_normal_and_controlled_cpu_timeout" time="8.152"><failure message="raven_mcs.control.schema.InputError: planner failed to exit after result">populated = &lt;raven_mcs.control.lifecycle.DynamicWindowRunner object at 0x0000020710C2A590&gt;
+
+    def test_isolated_normal_and_controlled_cpu_timeout(populated):
+        r=populated;controller=IsolatedController()
+&gt;       normal=controller.decide(r.snapshot(),r.predictor)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\control_b0\test_predictor_planner.py:93: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;raven_mcs.control.isolation.IsolatedController object at 0x0000020710D392D0&gt;
+snapshot = DecisionSnapshot(now=21.0, window_open=20.0, model_version=0, revision=10, config=ControlConfig(source='B0_explicit_de..._release=None, variance=(), predictor_version='B0_frozen_history', seed=26004, experiment_end=40.0, isolated_test=True)
+model = FrozenServiceModel(version='B0_frozen_history', as_of=20.0, cells=(), marks=(), q_model={'kind': 'evidence_logistic', ...olated_test_input'}, opportunities=(), opportunity_history=(), schedule_complete_until=100.0, grid=0.1, minimum_risk=5)
+test_fault = None
+
+    def decide(self,snapshot,model,*,test_fault=None):
+        if test_fault is not None and (not snapshot.isolated_test or test_fault!='burn_cpu'):
+            raise InputError("controlled fault only available in isolated tests")
+        validate_planning_inputs(snapshot,model)
+        wall=time.perf_counter();parent_cpu=time.process_time()
+        context=mp.get_context('spawn'); parent,child=context.Pipe()
+        process=context.Process(target=_worker,args=(child,asdict(snapshot),model.to_dict(),test_fault))
+        budget=ProcessTreeBudget();status='not_started';decision=None;error=None
+        try:
+            # Numerical children must be single-threaded so the short sampling
+            # reserve also bounds CPU across BLAS/solver threads.
+            names=('OMP_NUM_THREADS','OPENBLAS_NUM_THREADS','MKL_NUM_THREADS','NUMEXPR_NUM_THREADS')
+            original={k:os.environ.get(k) for k in names}
+            try:
+                for k in names:os.environ[k]='1'
+                process.start()
+            finally:
+                for k,v in original.items():
+                    if v is None:os.environ.pop(k,None)
+                    else:os.environ[k]=v
+            child.close();budget.attach(process.pid);parent.send('GO')
+            status=wait_accounted(process,budget,cpu_limit=snapshot.config.planning_cpu_seconds,
+                                  parent_started=parent_cpu,wall_started=wall,pipe=parent)
+            if status=='cpu_timeout':
+                decision=fixed_fallback(snapshot,'CPU_TIMEOUT/fixed_time_2')
+            elif status=='facility_stall':
+                error=InputError("planning facility stalled; no valid action")
+            elif parent.poll(.05):
+                kind,payload=parent.recv()
+                if kind=='error':error=InputError(f"{payload['type']}: {payload['message']}\n{payload['trace']}")
+                else:
+                    payload['plan_scores']=tuple(tuple(x) for x in payload['plan_scores'])
+                    decision=Decision(**payload)
+            else:error=InputError(f"planning worker exited without result: {process.exitcode}")
+            process.join(timeout=1)
+            if process.is_alive():
+                budget.terminate();process.join()
+                if error is None:error=InputError("planner failed to exit after result")
+            cpu=budget.cpu_seconds()+time.process_time()-parent_cpu
+            if cpu&gt;snapshot.config.planning_cpu_seconds:
+                error=InputError(f"planning CPU hard budget exceeded: {cpu:.6f}")
+            record=dict(status=status,child_tree_cpu_seconds=budget.cpu_seconds(),
+                parent_cpu_seconds=time.process_time()-parent_cpu,total_cpu_seconds=cpu,
+                wall_seconds=time.perf_counter()-wall,exitcode=process.exitcode,
+                child_terminated=status=='cpu_timeout',training_steps=0)
+            self.accounting.append(record)
+&gt;           if error is not None:raise error
+                                 ^^^^^^^^^^^
+E           raven_mcs.control.schema.InputError: planner failed to exit after result
+
+src\raven_mcs\control\isolation.py:80: InputError</failure></testcase><testcase classname="tests.control_b0.test_predictor_planner" name="test_public_future_registration_and_q_freeze" time="0.015" /><testcase classname="tests.unit.test_e0_p2_debt" name="test_e0_3_p2_unique_across_repeated_solves" time="0.029" /><testcase classname="tests.unit.test_e0_p2_debt" name="test_e0_3_rejects_nonpositive_lambda_beta" time="0.001" /><testcase classname="tests.unit.test_e0_p2_debt" name="test_e0_4_debt_prefix_bound" time="0.001" /><testcase classname="tests.unit.test_e0_p2_debt" name="test_coverage_mix_matches_matrix_product" time="0.000" /><testcase classname="tests.unit.test_e3_local_hajek_weight_and_p2_final_closure_core" name="test_p2_certificate_checks_ess_ball" time="0.000" /><testcase classname="tests.unit.test_e3_local_hajek_weight_and_p2_final_closure_core" name="test_weight_uniformity_epsilon" time="0.001" /><testcase classname="tests.unit.test_manifest_complete" name="test_auditable_manifest_can_require_git" time="0.080" /><testcase classname="tests.unit.test_manifest_complete" name="test_manifest_rejects_seed_bundle_mismatch" time="0.006" /></testsuite></testsuites>

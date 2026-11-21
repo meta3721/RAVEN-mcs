@@ -1,0 +1,63 @@
+{
+  "Delta_pair_policy": "NOT_MATERIALIZED — atomic client×unit Delta_pair not available",
+  "finite_value_policy": "applicable metrics must be finite floats",
+  "na_policy": "null + *_applicability; paper renders N/A",
+  "no_placeholder_substitution": true,
+  "per_metric": {
+    "Delta_c_s": {
+      "forbidden": "client × target_group h",
+      "formula": "sum_{k,s} |Pi_hat_ks - pi_tar_ks|",
+      "formula_version": "v6",
+      "support": "client × opportunity_stratum"
+    },
+    "Delta_group": {
+      "formula_version": "v6",
+      "support": "target_group h(i)"
+    },
+    "Delta_pair": {
+      "status": "NOT_MATERIALIZED"
+    },
+    "Q_norm1_over_S": {
+      "applicable_only_if": "uses_debt"
+    },
+    "RMSE_mu": {
+      "formula_version": "v6",
+      "weighting": "mu target on h"
+    },
+    "RMSE_rho": {
+      "forbidden": "group-marginal rho_g/n_g",
+      "formula_version": "v6",
+      "weighting": "atomic rho_i^arr = normalize(sum_k pi_opp*nu*p_obs*q)"
+    },
+    "delta_ref": {
+      "applicable_only_if": "uses_reference_penalty"
+    }
+  },
+  "required_fields": [
+    "RMSE_mu",
+    "MAE_mu",
+    "Head_RMSE",
+    "Tail_RMSE",
+    "RMSE_rho",
+    "Delta_group",
+    "Delta_c_s",
+    "Delta_pair",
+    "delta_ref",
+    "Q_norm1_over_S",
+    "Q_norm2_over_S",
+    "ESS",
+    "clip_rate_stage1",
+    "clip_rate_stage2",
+    "solver_status",
+    "runtime_seconds"
+  ],
+  "schema_version": "E3_REAL_METRIC_OUTPUT_SCHEMA_V6",
+  "structural_metric": "Delta_c_s",
+  "support_separation": {
+    "Delta_c_s": "client × opportunity_stratum s(i)",
+    "Delta_group": "target_group h(i)",
+    "Head_Tail": "target_group h(i)",
+    "RMSE_mu": "target mu on h(i)",
+    "RMSE_rho": "atomic rho_i^arr"
+  }
+}

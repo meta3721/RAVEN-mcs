@@ -1,0 +1,5 @@
+metric,feasibility,required_inputs
+Head_RMSE,EXACTLY_RECONSTRUCTABLE,final_metrics.json:group_rmse; HEAD_GROUPS; target_group_mass
+Tail_RMSE,EXACTLY_RECONSTRUCTABLE,final_metrics.json:group_rmse; TAIL_GROUPS; target_group_mass
+Delta_group,RECONSTRUCTABLE_FROM_FROZEN_DIAGNOSTICS,runner_diagnostics.parquet; training_eventtrace/events.parquet; atomic_units; target_group_mass; coverage_mix/delta_group code
+Delta_pair,NOT_RECONSTRUCTABLE_DUE_TO_MISSING_DEFINITION,Pi_hat trajectory (absent); pi_tar alone insufficient

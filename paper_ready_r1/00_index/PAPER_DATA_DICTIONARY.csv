@@ -1,0 +1,15 @@
+term,definition,unit,lower_better,datasets,rounds,formula_source,na_semantics
+RMSE_mu,Deployment-target RMSE under target measure mu,target units,True,all,E1-E4,sealed metric definitions,empty value + status
+RMSE_rho,Arrival/usable-update risk under sampling measure rho,target units,True,where defined,E1-E3,sealed,NOT_COMPARABLE on Traffic E3 cross-vintage
+MAE_mu,Mean absolute error under target measure,target units,True,where recorded,E3 primarily,sealed,MISSING_NOT_RECORDED if absent
+Tail_RMSE,Tail-group RMSE,target units,True,where recorded,E1-E4,sealed,MISSING_NOT_RECORDED if absent
+Delta_group,Structural group disparity / mismatch,ratio/gap as sealed,True,"SensorScope,U-Air,E1","E1,E3,E4",sealed,empty+status
+Delta_c_s,Structural stratum mismatch,as sealed,True,"SensorScope,U-Air","E3,E4",sealed,empty+status
+Delta_pair,Paired target metric delta,as sealed,context,where recorded,E3,sealed,MISSING_NOT_RECORDED
+D_aligned,Delta RMSE_mu - Delta RMSE_rho on Complete-aligned,risk units,context (sign/direction evidence),NSW-Traffic,E2,COMPLETE_ALIGNED_DOD,n/a
+ESS,Effective sample size,count,False,where recorded,E3+,sealed metrics,MISSING_NOT_RECORDED
+n_eff,Effective update count / ESS proxy,count,False,where recorded,E3+,sealed,MISSING_NOT_RECORDED
+debt_norm,Debt norm / normalized debt,as sealed,context,where recorded,E1/E4 supporting,sealed,MISSING_NOT_RECORDED
+calibration_residual,Instant calibration residual,as sealed,True,where recorded,supporting,sealed,MISSING_NOT_RECORDED
+runtime,Wall-clock runtime,seconds,True,where recorded,E1-E4,sealed,MISSING_NOT_RECORDED
+P2_residual,P2 feasibility residual,as sealed,True,P2 methods,E3/E4 supporting,solver audits,optimality not reconstructable

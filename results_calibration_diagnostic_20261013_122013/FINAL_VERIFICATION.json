@@ -1,0 +1,30 @@
+{
+  "status": "PASS",
+  "protected_files": 101,
+  "changed": [],
+  "scientific_source_changes": [],
+  "syntax_files": [
+    "scripts/windows_cpu_meter.py",
+    "scripts/validate_conditional_bundle_b0.py",
+    "scripts/diagnostic_meter_workload.py",
+    "scripts/diagnostic_meter_check.py",
+    "scripts/diagnostic_legacy_meter_repro.py",
+    "scripts/diagnostic_bounded.py",
+    "scripts/diagnose_calibration_d0.py",
+    "scripts/diagnose_calibration_support.py",
+    "scripts/finalize_calibration_diagnostic.py"
+  ],
+  "syntax_passed": true,
+  "missing_mark_first_reason": {
+    "future_opportunity": 145,
+    "in_flight": 265
+  },
+  "D0": "PASS",
+  "D1": "PASS",
+  "D2": "PASS",
+  "planner_replays": 0,
+  "new_trajectories": 0,
+  "local_SGD": 0,
+  "q_fit": 0,
+  "GPU": 0
+}

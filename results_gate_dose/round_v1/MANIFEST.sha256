@@ -1,0 +1,28 @@
+{
+  "content_sha256": {
+    "masks": "6b456bd378e92ead19345239801c5f4462b06c81f9219a611cd187adff383e18",
+    "wiring": "b9de9d9b7d7e782369400b77bed5f0b1d16c8e70104706b80d3ebb978655e125"
+  },
+  "created_utc": "2026-10-06T15:59:51.385901+00:00",
+  "files": {
+    "results_gate_dose/round_v1/MASKS.json": {
+      "bytes": 157836,
+      "sha256": "033d0cb7304b126c2de5d78c89e7921c2ca78539086669b588be56811637f5ee"
+    },
+    "results_gate_dose/round_v1/RHO.csv": {
+      "bytes": 5266,
+      "sha256": "302cd48c779e9a2a8078fd991ddcd834abf1fd838d7826dd96bfa6241fdc5ecd"
+    },
+    "results_gate_dose/round_v1/TARGET_WIRING.json": {
+      "bytes": 9265,
+      "sha256": "4fd05b8d3ecf877963f2350f6f9842d2fb487dd5a997b1a97c388772fb5fe5a9"
+    }
+  },
+  "instruction": {
+    "bytes": 11275,
+    "path": "raven-mcs-gate-dose-execution-prompt.md",
+    "sha256": "56607091831dbaff735061019b6c82cb5a89d2b09c465083cac70c967ee2b59b"
+  },
+  "round": "results_gate_dose/round_v1",
+  "training_authorized": false
+}

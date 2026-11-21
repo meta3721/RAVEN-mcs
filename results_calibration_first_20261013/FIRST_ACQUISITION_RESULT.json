@@ -1,0 +1,109 @@
+{
+  "B1_executed": false,
+  "T_observed": 100.0,
+  "T_target": 100,
+  "age_support": {
+    "0": 509,
+    "1": 443,
+    "2": 429,
+    "3": 462,
+    "4": 400,
+    "5": 428,
+    "6": 210,
+    "7": 204,
+    "8": 220
+  },
+  "censored": 0,
+  "checkpoint": "C:\\Cursor\\raven.mcs\\results_calibration_first_20261013\\trajectory\\COMPLETE_T100_tick1000.json",
+  "client_support": 43,
+  "consumed": 1493,
+  "decision_reasons": {
+    "UNSUPPORTED_PREDICTION/fixed_time_2/INSUFFICIENT_RISK:('tier-0', 'net-tier-0'):22": 117,
+    "UNSUPPORTED_PREDICTION/fixed_time_2/INSUFFICIENT_RISK:('tier-1', 'net-tier-1'):15": 171,
+    "UNSUPPORTED_PREDICTION/fixed_time_2/INSUFFICIENT_RISK:('tier-1', 'net-tier-1'):16": 3,
+    "UNSUPPORTED_PREDICTION/fixed_time_2/INSUFFICIENT_RISK:('tier-2', 'net-tier-2'):9": 91,
+    "UNSUPPORTED_PREDICTION/fixed_time_2/NO_COMPATIBLE_MARK:56602": 103,
+    "UNSUPPORTED_PREDICTION/fixed_time_2/NO_COMPATIBLE_MARK:56602:('tier-0', 'net-tier-0')": 191,
+    "UNSUPPORTED_PREDICTION/fixed_time_2/NO_COMPATIBLE_MARK:56975": 41,
+    "UNSUPPORTED_PREDICTION/fixed_time_2/NO_COMPATIBLE_MARK:56975:('tier-2', 'net-tier-2')": 31,
+    "UNSUPPORTED_PREDICTION/fixed_time_2/NO_COMPATIBLE_MARK:57051": 1,
+    "UNSUPPORTED_PREDICTION/fixed_time_2/NO_COMPATIBLE_MARK:57051:('tier-2', 'net-tier-2')": 27,
+    "UNSUPPORTED_PREDICTION/fixed_time_2/NO_COMPATIBLE_MARK:57106:('tier-2', 'net-tier-2')": 16,
+    "common_warmup": 200,
+    "conditional_bundle": 7,
+    "experiment_end": 1
+  },
+  "fallback_calls": 792,
+  "fallback_proportion": 0.792,
+  "feature_support": {
+    "in_flight_count": {
+      "max": 41,
+      "min": 0
+    },
+    "maximum_deadline_slack": {
+      "max": 3.950000000000003,
+      "min": 2.5299999999999976
+    },
+    "pool_count": {
+      "max": 30,
+      "min": 0
+    }
+  },
+  "formal_executed": false,
+  "gpu": 0,
+  "historical_failed_planning_calls": 1,
+  "local_sgd_steps": 3305,
+  "mature": 3305,
+  "max_actual_weight_residual": 2.220446049250313e-16,
+  "max_successful_planning_CPU": 1.640625,
+  "next_status": "WAITING_USER_REVIEW",
+  "observed_target_groups": 172,
+  "physical_pending": 23,
+  "planner_cpu_seconds": 1044.171875,
+  "planner_wall_seconds": 1072.6889088000048,
+  "planning_calls": 1000,
+  "positive_observation_attempts": 3305,
+  "post_warmup_fallback_proportion": 0.99,
+  "predictor_supported_cells": 43,
+  "predictor_total_cells": 51,
+  "q_calibration_pass": "NOT_COMPUTED",
+  "q_fitted": false,
+  "q_role": "diagnostic_prior",
+  "registrations": 4300,
+  "remaining_trajectories_executed": 0,
+  "resumed_segment_process_tree_cpu_seconds": 1345.828125,
+  "resumed_segment_wall_seconds": 1364.4451016,
+  "status": "COMPLETE_T100",
+  "support": {
+    "tier-0/net-tier-0": {
+      "R1": 1023,
+      "censored": 0,
+      "consumed": 268,
+      "mature": 1023
+    },
+    "tier-1/net-tier-1": {
+      "R1": 1600,
+      "censored": 0,
+      "consumed": 752,
+      "mature": 1600
+    },
+    "tier-2/net-tier-2": {
+      "R1": 682,
+      "censored": 0,
+      "consumed": 473,
+      "mature": 682
+    }
+  },
+  "target_groups": 172,
+  "terminal_reasons": {
+    "compute_failure": 411,
+    "consumed": 1493,
+    "expired": 792,
+    "horizon_unconsumed": 16,
+    "network_failure": 202,
+    "no_observations": 995,
+    "superseded": 391
+  },
+  "training_cpu_seconds": 8.015625,
+  "training_wall_seconds": 9.35744790000706
+}

@@ -1,0 +1,43 @@
+{
+  "A_GRID": [
+    1.0,
+    0.8,
+    0.6,
+    0.4,
+    0.2
+  ],
+  "alpha": 0.05,
+  "feature_spec_hash": "6cd0b52dd7ce8f064a636e3bfc8de9b2309a7dfb02abb27056836d0416fd20a6",
+  "gate_mode": "aggregate_coverage",
+  "mask_rule_hash": "b87cf615ab34b447e87bf447d79b9e4183a6e16fcef6223c57fad7be4aec6502",
+  "n_min": 19,
+  "oracle_sha256": "82444e4f495344856de94b0d72ab4a46843780c232e2f299b300fcafa8c4b4a1",
+  "paper_method": "raven_mcs",
+  "pi_safe_rule_hash": "aa574c33b577965a78a9e6eb7d14877ac78add0fee4ab3e9c95deb47926891c7",
+  "predictor": {
+    "formal_paper_method": "raven_mcs",
+    "gate_mode": "aggregate_coverage",
+    "implementation": "numpy_ridge_closed_form",
+    "model_zoo": false,
+    "predictor_id": "AGGREGATE_COVERAGE_RIDGE_V1",
+    "ridge_alpha": 1.0,
+    "scan_alphas": false,
+    "seed": 30001
+  },
+  "reset": {
+    "alpha": 0.05,
+    "n_min": 19,
+    "next_window": "RESET then new-block WARMUP",
+    "protects_first_unseen_shift": false,
+    "proves_exchangeability": false,
+    "rule_id": "MISCOVERAGE_TRIGGERED_RESET_V1",
+    "second_detector": false,
+    "tau_cov": 0.05,
+    "tol": 1e-12,
+    "trigger": "C_LCB > C_t + tol after a CERTIFIED window completes",
+    "violation_window_retained": true
+  },
+  "target_law_hash": "86fd55f7e0bf8499944433de16324bd4687befd5568892613ee87acacad3ad07",
+  "tau_cov": 0.05,
+  "threshold_hash": "526343535887e2f1094916be22d0403032fab0b905e74ac588f2b1bc6613510e"
+}

@@ -1,0 +1,63 @@
+{
+  "task": "support-consumption ledger audit and ordinary-cache training decision",
+  "date": "2026-10-19",
+  "training": false,
+  "prediction_gain": false,
+  "main_block": "measured-O",
+  "review_block": "visit",
+  "seeds": {
+    "measured-O": [
+      33001,
+      33002,
+      33003
+    ],
+    "visit": [
+      32001,
+      32002,
+      32003
+    ]
+  },
+  "methods": [
+    "I-Proj",
+    "F1-Proj",
+    "F2-Proj",
+    "S-Proj"
+  ],
+  "external_arms_not_replayed": [
+    "TwoStage-Hájek",
+    "FedAvg-Window"
+  ],
+  "rules": {
+    "s_max": 5,
+    "residence_h": 2,
+    "pool_cap": 64,
+    "complement_margin": 0.01,
+    "alpha_max": 0.5,
+    "e_min": 3.0,
+    "num_windows": 100
+  },
+  "inputs": [
+    "C:\\Cursor\\raven.mcs\\results_support_consumption\\round_v1\\EXPERIMENT_REPORT.md",
+    "C:\\Cursor\\raven.mcs\\results_support_consumption\\round_v1\\PROTOCOL_FREEZE.json",
+    "C:\\Cursor\\raven.mcs\\results_support_consumption\\round_v1\\METHOD_SPEC.md",
+    "C:\\Cursor\\raven.mcs\\results_support_consumption\\round_v1\\P0_ASSET_AUDIT.md",
+    "C:\\Cursor\\raven.mcs\\results_support_consumption\\round_v1\\P1_EVENT_LEDGER.parquet",
+    "C:\\Cursor\\raven.mcs\\results_support_consumption\\round_v1\\P1_WINDOW_METRICS.csv",
+    "C:\\Cursor\\raven.mcs\\results_support_consumption\\round_v1\\P1_SUMMARY.csv",
+    "C:\\Cursor\\raven.mcs\\results_support_consumption\\round_v1\\P1_STATUS.json",
+    "C:\\Cursor\\raven.mcs\\results_support_consumption\\round_v1\\P1_DECISION.md",
+    "C:\\Cursor\\raven.mcs\\results_support_consumption\\round_v1\\P2_IMPLEMENTATION_REPORT.md",
+    "C:\\Cursor\\raven.mcs\\results_support_consumption\\round_v1\\P2_CRITICAL_TESTS.json",
+    "C:\\Cursor\\raven.mcs\\results_support_consumption\\round_v1\\TRAINING_REQUEST.md",
+    "C:\\Cursor\\raven.mcs\\results_support_consumption\\round_v1\\BUDGET_LEDGER.json",
+    "C:\\Cursor\\raven.mcs\\results_support_consumption\\round_v1\\cache_scheduler.py",
+    "C:\\Cursor\\raven.mcs\\results_support_consumption\\round_v1\\reference_replay.py",
+    "C:\\Cursor\\raven.mcs\\results_support_consumption\\round_v1\\support_distance.py",
+    "C:\\Cursor\\raven.mcs\\results_support_consumption\\round_v1\\run_support_consumption.py",
+    "C:\\Cursor\\raven.mcs\\results_support_consumption\\round_v1\\protocol.py",
+    "C:\\Cursor\\raven.mcs\\results_support_consumption\\round_v1\\SOURCE_INDEX.md"
+  ],
+  "budget_cpu_seconds": 300,
+  "budget_wall_seconds": 900,
+  "old_results_rewritten": false
+}

@@ -1,0 +1,87 @@
+{
+  "arm": "fedavg_window",
+  "block": "uair",
+  "created_utc": "2026-10-08T08:42:43.709696+00:00",
+  "diag_first": [
+    {
+      "active": true,
+      "applied": true,
+      "g_norm": 2.4837934783061595,
+      "m_norm": 0.24837934783061594,
+      "opt_move_norm": 0.08920425294228734,
+      "sgd_move_norm": 0.024837934783061597,
+      "t": 1,
+      "v_norm": 0.026113520770275792,
+      "window_id": 0
+    },
+    {
+      "active": true,
+      "applied": true,
+      "g_norm": 0.6532231199554517,
+      "m_norm": 0.1876939203249261,
+      "opt_move_norm": 0.06093217021204269,
+      "sgd_move_norm": 0.006532231199554517,
+      "t": 2,
+      "v_norm": 0.0275509840079695,
+      "window_id": 1
+    },
+    {
+      "active": true,
+      "applied": true,
+      "g_norm": 0.4863965890312363,
+      "m_norm": 0.15418273902176352,
+      "opt_move_norm": 0.04669836988523455,
+      "sgd_move_norm": 0.0048639658903123625,
+      "t": 3,
+      "v_norm": 0.027628390726068642,
+      "window_id": 2
+    }
+  ],
+  "diag_last": [
+    {
+      "active": true,
+      "applied": true,
+      "g_norm": 1.8741061519360425,
+      "m_norm": 0.5370167194642966,
+      "opt_move_norm": 0.03906596321157781,
+      "sgd_move_norm": 0.018741061519360423,
+      "t": 72,
+      "v_norm": 0.2552110569212747,
+      "window_id": 77
+    },
+    {
+      "active": true,
+      "applied": true,
+      "g_norm": 5.267798061174584,
+      "m_norm": 0.3595611671202092,
+      "opt_move_norm": 0.03627171499304905,
+      "sgd_move_norm": 0.05267798061174583,
+      "t": 73,
+      "v_norm": 0.302984499221727,
+      "window_id": 78
+    },
+    {
+      "active": true,
+      "applied": true,
+      "g_norm": 1.5052394579347634,
+      "m_norm": 0.3855222775224581,
+      "opt_move_norm": 0.035967994784024064,
+      "sgd_move_norm": 0.015052394579347633,
+      "t": 74,
+      "v_norm": 0.30031548093016897,
+      "window_id": 79
+    }
+  ],
+  "local_steps": 2,
+  "n_windows_optimizer_applied": 74,
+  "runtime_seconds": 11.30261059999998,
+  "seed": 30001,
+  "server_opt": {
+    "beta1": 0.9,
+    "beta2": 0.99,
+    "eta_s": 0.001,
+    "mode": "adam",
+    "tau": 0.001
+  },
+  "tag": "A_eta0.001"
+}

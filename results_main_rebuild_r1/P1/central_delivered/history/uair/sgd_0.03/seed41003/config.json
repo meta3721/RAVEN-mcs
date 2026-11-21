@@ -1,0 +1,16 @@
+{
+  "dataset": "uair",
+  "seed": 41003,
+  "model": "history",
+  "optimizer": "sgd",
+  "lr": 0.03,
+  "scaler_mean": 31.569745988326886,
+  "scaler_std": 17.33065904559171,
+  "trace_hash": "bafd276974411215a2befd20b78b3c0a49feea3879301f48d84dfbeb7c56717e",
+  "train_unique": 312,
+  "information": "train_delivered_only",
+  "budget": 200,
+  "train_input_meaning": "observed client measurements",
+  "validation_input_meaning": "frozen target labels",
+  "test_access": false
+}

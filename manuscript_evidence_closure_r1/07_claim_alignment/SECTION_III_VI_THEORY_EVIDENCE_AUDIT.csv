@@ -1,0 +1,11 @@
+claim,class,evidence,intro_empirical,note
+Two-stage/multi-layer selection can induce update vs deployment-target mismatch,DIRECTLY_EMPIRICALLY_SUPPORTED,E2 D_aligned / risk non-interchangeability,True,
+Arrival/usable-update risk is not generally interchangeable with deployment-target risk,DIRECTLY_EMPIRICALLY_SUPPORTED,E2 D_aligned sign stability,True,
+Hajek / two-stage IPW reconstruction of selection layers,INDIRECTLY_SUPPORTED,E3 TwoStage-Hajek and RAVEN vs window baselines on structural metrics,True,
+Instantaneous target calibration (P2) existence/feasibility,INDIRECTLY_SUPPORTED,E4 Inst + P2 feasibility audit; exact experimental optimality NOT reconstructable,True,
+Exact P2 uniqueness/optimality under theorem assumptions,THEORY_ONLY_VALID,mathematical optimizer claim; C10 forbids experimental exact-optimality language,False,
+Long-term debt calibration has a structural role,DIRECTLY_EMPIRICALLY_SUPPORTED,"E4 Debt STRUCTURAL_ONLY_SUPPORTED, quantitatively small",True,
+Usable-update IPW (Use) is empirically necessary,NOT_EMPIRICALLY_TESTED,E4 Use NO_CLEAR_EFFECT,False,The component exists and was ablated; the sealed result is NO_CLEAR_EFFECT. Do not list as empirically demonstrated necessity.
+RAVEN reduces structural mismatch on comparable SensorScope/U-Air,DIRECTLY_EMPIRICALLY_SUPPORTED,E3 Holm on Delta_group and Delta_c_s vs main baselines,True,
+Universal RMSE superiority / three-dataset homogeneous E3,OVERCLAIM_REQUIRES_WORDING_REPAIR,Forbidden by C4/C9; Traffic E3 NOT_COMPARABLE,False,
+Real taxi-mobility opportunity as current formal evidence,NOT_EMPIRICALLY_TESTED,T-Drive protocol sealed but no formal performance block,False,

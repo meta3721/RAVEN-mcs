@@ -1,0 +1,11 @@
+{
+  "claim_ceiling": "C5–C8 mechanism/trade-off; not universal component necessity",
+  "csv_sha256": "c80f6dddabd7c8e76d01e88b33537b0490454bf673baeea7d1e79b4a550330a9",
+  "formula": "100*(Metric_w/oX - Metric_RAVEN)/Metric_RAVEN",
+  "negative": "removing the component improves the metric",
+  "positive": "removing the component worsens a lower-is-better metric",
+  "source_files": [
+    "paper_ready_r2/04_statistics/E4_FINAL_STATISTICS_R2.csv"
+  ],
+  "wo_inst_generation": "2"
+}

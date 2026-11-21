@@ -1,0 +1,12 @@
+{
+  "charged_CPU": 22.0,
+  "job_CPU": null,
+  "driver_CPU": null,
+  "wall": 9.592474,
+  "exit": "root_atomic_publish_sharing_error",
+  "audit": false,
+  "actual_CPU": "UNKNOWN; no completed meter result",
+  "conservative_basis": "Job one-CPU affinity and monitor at most one CPU; observed full invocation wall 9.592474s; charged 2*(ceil(wall)+1)=22 seconds. Includes suspended start and finally cleanup; not an actual CPU measurement.",
+  "evidence": "four_paths_attempt3.log and FOUR_PATH_FAILED records; root exception tool output preserved in ROOT_PUBLISH_ERROR.md",
+  "ordinary_error": "Windows root ledger read handles blocked atomic rename; fixed new-client share-delete binding without changing old publisher, formula or test scope"
+}

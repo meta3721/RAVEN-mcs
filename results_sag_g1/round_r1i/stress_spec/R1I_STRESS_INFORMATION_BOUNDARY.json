@@ -1,0 +1,11 @@
+{
+  "availability_level_a": "scenario-level public exogenous parameter; known before the window starts",
+  "future_predictor_may_not_use": [
+    "current-window realized availability mask"
+  ],
+  "future_predictor_may_use": [
+    "a"
+  ],
+  "realized_entity_mask": "not pre-window fully observed information",
+  "this_round": "oracle only; no predictor"
+}

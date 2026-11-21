@@ -1,0 +1,2507 @@
+{
+  "archive_root": "outputs/archive/E2_TRAFFIC_REAL_RUNNER_CANARY_R1_PRE_LEDGER_CLOSURE_20260807T023639Z",
+  "created_utc": "2026-08-07T02:37:16.685149+00:00",
+  "file_count": 500,
+  "files": [
+    {
+      "path": "deliverables/TO_SUBMIT_E2_TRAFFIC_REAL_RUNNER_CANARY_R1/E2_TRAFFIC_REAL_RUNNER_CANARY_R1_REPORT.docx",
+      "sha256": "f41f69616dd1bb477f7bb5f5a990d512755fdac42c29cb3761416af11fa08086",
+      "bytes": 37635
+    },
+    {
+      "path": "deliverables/TO_SUBMIT_E2_TRAFFIC_REAL_RUNNER_CANARY_R1/E2_TRAFFIC_REAL_RUNNER_CANARY_R1_SUBMISSION_README.txt",
+      "sha256": "600af06bb7de002433de6fb619670278b9fa72176879701c12942c4230bed50d",
+      "bytes": 503
+    },
+    {
+      "path": "deliverables/TO_SUBMIT_E2_TRAFFIC_REAL_RUNNER_CANARY_R1/FINAL_DELIVERABLE_HASHES.json",
+      "sha256": "c6b6bdeeceebfc472e9aea77cc57c9f8c47445897e0bcbb5ce0de04528cbcde9",
+      "bytes": 466
+    },
+    {
+      "path": "deliverables/TO_SUBMIT_E2_TRAFFIC_REAL_RUNNER_CANARY_R1/FINAL_DELIVERABLE_HASHES_VERIFY.json",
+      "sha256": "aa1a1903db6c7995524e85559d01fcbe64c9503beaafe382874f9e9377c26a25",
+      "bytes": 1006
+    },
+    {
+      "path": "deliverables/TO_SUBMIT_E2_TRAFFIC_REAL_RUNNER_CANARY_R1/RAVEN_MCS_E2_TRAFFIC_REAL_RUNNER_CANARY_R1_EVIDENCE.zip",
+      "sha256": "525f99891631381059c3f0841428c132c8cc1e3827d9bfdf996258d536bfeab2",
+      "bytes": 17846709
+    },
+    {
+      "path": "logs/e2rr_baseline_runtime_audit.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "logs/e2rr_baseline_runtime_audit.stdout.log",
+      "sha256": "d938fa189912f8776c3deb31a6bec42f403f57b9c8e3ed936bdb076caf6bd61c",
+      "bytes": 6
+    },
+    {
+      "path": "logs/e2rr_compact_replay.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "logs/e2rr_compact_replay.stdout.log",
+      "sha256": "faddf98bc7951d9a2adb6e288f60b48fde26978dc26c61bba5438fbead4c90b3",
+      "bytes": 361
+    },
+    {
+      "path": "logs/e2rr_evidence_zip.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "logs/e2rr_evidence_zip.stdout.log",
+      "sha256": "9dded439989177f99711caf906e6bfb12b9c81d17ea2c87bb9141e48656dcc3d",
+      "bytes": 176
+    },
+    {
+      "path": "logs/e2rr_full_repository_pytest.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "logs/e2rr_full_repository_pytest.stdout.log",
+      "sha256": "dc751452935ba831a3e41c88c83d688e58ffde4dbe4a82f8e122e2653865a7c3",
+      "bytes": 1215
+    },
+    {
+      "path": "logs/e2rr_gates.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "logs/e2rr_gates.stdout.log",
+      "sha256": "0ec7834793cc8f87242bc2024e8bccb7addb5c2e989b163bb35aefc655f32166",
+      "bytes": 621
+    },
+    {
+      "path": "logs/e2rr_input_identity_verification.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "logs/e2rr_input_identity_verification.stdout.log",
+      "sha256": "d938fa189912f8776c3deb31a6bec42f403f57b9c8e3ed936bdb076caf6bd61c",
+      "bytes": 6
+    },
+    {
+      "path": "logs/e2rr_integration_tests.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "logs/e2rr_integration_tests.stdout.log",
+      "sha256": "c7e4112ee00157f6cd73b78553233801e1ebd66836f258ef8f46fb8e60480444",
+      "bytes": 81
+    },
+    {
+      "path": "logs/e2rr_metric_aggregation.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "logs/e2rr_metric_aggregation.stdout.log",
+      "sha256": "c5dbb92bcb2ba79188091ae09688fc17d60b46256d913b3712d785dbc16bc954",
+      "bytes": 4
+    },
+    {
+      "path": "logs/e2rr_metric_consistency_audit.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "logs/e2rr_metric_consistency_audit.stdout.log",
+      "sha256": "d938fa189912f8776c3deb31a6bec42f403f57b9c8e3ed936bdb076caf6bd61c",
+      "bytes": 6
+    },
+    {
+      "path": "logs/e2rr_pip_check.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "logs/e2rr_pip_check.stdout.log",
+      "sha256": "672aec65a45bed50e70229c70934a7eebf0462595c459b83023027645d57cccf",
+      "bytes": 31
+    },
+    {
+      "path": "logs/e2rr_raven_runtime_audit.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "logs/e2rr_raven_runtime_audit.stdout.log",
+      "sha256": "d938fa189912f8776c3deb31a6bec42f403f57b9c8e3ed936bdb076caf6bd61c",
+      "bytes": 6
+    },
+    {
+      "path": "logs/e2rr_report_readme_already_written.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "logs/e2rr_report_readme_already_written.stdout.log",
+      "sha256": "9f2a59a60e65fbcd5a3e1b7248adf92890ce3a32b19e43fb4751c2657196de13",
+      "bytes": 4
+    },
+    {
+      "path": "logs/e2rr_seed29001_real_runner_canary.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "logs/e2rr_seed29001_real_runner_canary.stdout.log",
+      "sha256": "24eedcf015c03cd2372b3fdaaaef17079fadda64ca03bde7b2610e0c7e3e70d0",
+      "bytes": 134
+    },
+    {
+      "path": "logs/e2rr_six_eventtrace_generation.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "logs/e2rr_six_eventtrace_generation.stdout.log",
+      "sha256": "92961e9752250efa971147344b22295db32d7b75e940e0971e5fb34f21d0bc67",
+      "bytes": 3
+    },
+    {
+      "path": "logs/e2rr_thirty_training_runs_replay.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "logs/e2rr_thirty_training_runs_replay.stdout.log",
+      "sha256": "68328dca0d4138c6a29361e5afbabec5cf654f7416fd95b14038a9cdd8884104",
+      "bytes": 7
+    },
+    {
+      "path": "logs/e2rr_unit_tests.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "logs/e2rr_unit_tests.stdout.log",
+      "sha256": "4a50870ecd7b8cbe659feb0a53b448c2c2d5b9f65d5c5ad43dd80ee85c8336ac",
+      "bytes": 81
+    },
+    {
+      "path": "logs/e2_traffic_real_runner_canary_full_repository.xml",
+      "sha256": "55e4109c277069acaeb05952d8cf45ffdc610c0b02417c45b270f5b8b6dc39d3",
+      "bytes": 148692
+    },
+    {
+      "path": "logs/e2_traffic_real_runner_canary_integration.xml",
+      "sha256": "b605ef3488c77bb9f92d329840cc76bd58282cfe366b81f2786a36adaa266a9d",
+      "bytes": 915
+    },
+    {
+      "path": "logs/E2_TRAFFIC_REAL_RUNNER_CANARY_R1_EXACT_COMMANDS.jsonl",
+      "sha256": "d9d0802bc9f7532c6a7d43b2796d7b71d77ee4b99a09a6d7a0a371b44419b966",
+      "bytes": 14083
+    },
+    {
+      "path": "logs/e2_traffic_real_runner_canary_unit.xml",
+      "sha256": "58178056639cc866e0cb9d10fa5f7f0cd45f13023dfdc1781ba5f8bb6cdc6d5a",
+      "bytes": 4748
+    },
+    {
+      "path": "outputs/audits/E2_TRAFFIC_CANARY_BASELINE_RUNTIME_AUDIT.json",
+      "sha256": "c5ea3e65151519cb090c893ef0b51752e95c37da9531c924dc2d8c101bf01431",
+      "bytes": 11298
+    },
+    {
+      "path": "outputs/audits/E2_TRAFFIC_CANARY_CROSS_METHOD_TRACE_IDENTITY.json",
+      "sha256": "414743edf5303a114c55e6a2c485fecd7c08a39f88e4c742ad51971f2959e148",
+      "bytes": 5791
+    },
+    {
+      "path": "outputs/audits/E2_TRAFFIC_CANARY_METRIC_CONSISTENCY_AUDIT.json",
+      "sha256": "e44ec55a0ddc2c01ff56a9a237f012d1ae815bf46d2a48d022ca0bba3ac36a46",
+      "bytes": 1039
+    },
+    {
+      "path": "outputs/audits/E2_TRAFFIC_CANARY_NUMERICAL_STABILITY_AUDIT.json",
+      "sha256": "4efcf85e81dac5b85db62dfd6ebddce98fc985f9c795e9af972bf13bd5f8a40c",
+      "bytes": 154
+    },
+    {
+      "path": "outputs/audits/E2_TRAFFIC_CANARY_RAVEN_RUNTIME_AUDIT.json",
+      "sha256": "7d2230008a63652acf3b6fff4d9974f035a8f97929126f4adbba0b4b07844a7d",
+      "bytes": 6623
+    },
+    {
+      "path": "outputs/audits/E2_TRAFFIC_CANARY_VALIDATION_FORMAL_NONINSPECTION_AUDIT.json",
+      "sha256": "513159c5fd2bf2f1db9331824bbb5f03765c45fd92e2513b8f03db68b6137a3c",
+      "bytes": 244
+    },
+    {
+      "path": "outputs/audits/E2_TRAFFIC_REAL_RUNNER_CANARY_INPUT_IDENTITY.json",
+      "sha256": "ef8daeea5f218a72fcb0aed98df0cc3610ac4f8d130727564edf73d2ad2e0d2e",
+      "bytes": 3607
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/canary_summary_seed29001.json",
+      "sha256": "1a465c5c64e30796d559767b4d55b069a61a521ee1c735db3a20c78f93917348",
+      "bytes": 607
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/clip_metrics_seed29001.csv",
+      "sha256": "729e97b3771bcb4f10329c9cde391b7e29cc9ca83e8812a789248a7a2c0e1fee",
+      "bytes": 1926
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/communication_metrics_seed29001.csv",
+      "sha256": "21c073484e54d2ad2839a1c6ba405d8245234a8dc3e07abd3745a52caa1d4901",
+      "bytes": 1903
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/E2_TRAFFIC_REAL_RUNNER_CANARY_STOP_STATUS.json",
+      "sha256": "687217a45046ae394287a45e465c58dd22db5763e78de80c6bfe024d4efaf01f",
+      "bytes": 1465
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/group_metrics_seed29001.csv",
+      "sha256": "a3434d2bda0737cd37dc70e8dcf09d8e9fd56ceb65a2aaa3a406c762ef814706",
+      "bytes": 7666
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/main_results_seed29001.csv",
+      "sha256": "213d9aed86bff83d42b82c2fa855f1f2d602c4294abd80f369bd63b8b1b892ec",
+      "bytes": 4674
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/main_results_seed29001.parquet",
+      "sha256": "38447157d7a5061f0f3e99c288e010c82e4816085432f9bcb269ceabbfa0b2a3",
+      "bytes": 9882
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/p2_metrics_seed29001.csv",
+      "sha256": "fe5229cdb5bd3a46702f5c382f7d68ceef874d9b3e7f6fa232424a9fc7f81e06",
+      "bytes": 1511
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runtime_metrics_seed29001.csv",
+      "sha256": "8d6129263d6f972b4fed992a9e70670d54124dd3dc8ef5738735d66403bd98ee",
+      "bytes": 2124
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/run_manifest_seed29001.json",
+      "sha256": "b59a22d897005fe4f9ce6f5afcf138c6fad70883884a779ca4f5f317c94a1cdd",
+      "bytes": 83669
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/stage_metrics_seed29001.csv",
+      "sha256": "05ddeb1a2ca11f43b4105ab34870bdad05005c46582e56d88b0e607798b4a6af",
+      "bytes": 3458
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/_traffic_station_measurements.parquet",
+      "sha256": "6180dc52e6e5f64a33e6cfe868562bbce97dec4497df8e765e60abf7747a39f2",
+      "bytes": 560803
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/eventtraces/balanced/eventtrace_identity.json",
+      "sha256": "7c6fa40baba583456183eb5f6e9d719c8ecc1152e2b524ff2ae5764f4a0bc518",
+      "bytes": 1466
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/eventtraces/balanced/hard/client_window_activity.parquet",
+      "sha256": "5f20ba9cf4244b8d9cb0b262c61d8d3e9f4f347ba232b8f70cb151c2b612dfad",
+      "bytes": 8341
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/eventtraces/balanced/hard/eventtrace_manifest.json",
+      "sha256": "3c9d44898082c66cefa19bbda70b97f5c4d9c2d5f3cf44a37dc1f4a08d500907",
+      "bytes": 635
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/eventtraces/balanced/hard/failed_attempts.parquet",
+      "sha256": "ad038fc933293b7d0c14a6aae9d5dadc2323f09864103aa6ec428e74291c3159",
+      "bytes": 20791
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/eventtraces/balanced/hard/hard_arrival_events.parquet",
+      "sha256": "33470ee11377a7ada787ee6e93e4e164cdc90a516287e09465d7e47707c889f7",
+      "bytes": 188575
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/eventtraces/balanced/hard/observation_events.parquet",
+      "sha256": "d053475c3cd67087254712763f70036de410118bdfa49b2f32623b167a0bf58b",
+      "bytes": 248767
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/eventtraces/balanced/hard/opportunity_events.parquet",
+      "sha256": "a71163b0e7c94b8155fc42b03300c5c51307231a69b049b7b75cf28174ddf27f",
+      "bytes": 435260
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/eventtraces/balanced/hard/runtime_parameter_snapshot.json",
+      "sha256": "1f430fdc5d4b587f54b68c246169821873ea62052ca3c8472cb0f73ced863f62",
+      "bytes": 664
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/eventtraces/balanced/hard/usable_events.parquet",
+      "sha256": "665c9868b6a12e2d872e43cd273fa4be398349785ca94bf05ddc82816145f05e",
+      "bytes": 41356
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/eventtraces/balanced/training_eventtrace/events.parquet",
+      "sha256": "c579add82c5f670d1fe8958e29172b524bdb0cb6ce251c246cd99b8be153b316",
+      "bytes": 240732
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/eventtraces/balanced/training_eventtrace/metadata.json",
+      "sha256": "c52d44478e39c60970cca9fbfa0972dbf8a5cabf16f3b204440fcef962e00435",
+      "bytes": 239
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/eventtraces/balanced/training_eventtrace/trace_identity.json",
+      "sha256": "9f1d89562cd51d3f4a97e540e81460e0ecb65dd50cac2904e866dce96edd58d4",
+      "bytes": 541
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/eventtraces/complete_aligned/eventtrace_identity.json",
+      "sha256": "64da079f6e35cf325f6b026b2d4eee18593d354479dca3fc244fdcfdfd09e03b",
+      "bytes": 1511
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/eventtraces/complete_aligned/hard/client_window_activity.parquet",
+      "sha256": "b617ce181240837a26a7761e80100bfa93a89363a581197bd3e091c4df5d745c",
+      "bytes": 8452
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/eventtraces/complete_aligned/hard/eventtrace_manifest.json",
+      "sha256": "1cc37730d8ac2ce794152b811095005bc49c20a4bf5a9407abe4cdcc7827d736",
+      "bytes": 643
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/eventtraces/complete_aligned/hard/failed_attempts.parquet",
+      "sha256": "589b6f09cbeae64475e0c1261a6e556690b4f871fe48feadc574973d795cf3ed",
+      "bytes": 20636
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/eventtraces/complete_aligned/hard/hard_arrival_events.parquet",
+      "sha256": "066be7402acf2992d47fcff539f13fef1cf77a3963100d3b7fc20f1b57b30071",
+      "bytes": 187491
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/eventtraces/complete_aligned/hard/observation_events.parquet",
+      "sha256": "cdab5c8f62acc673b2ca3a5d5d96d0fa7006edf5b31c52cc6bebef622b2cc605",
+      "bytes": 248254
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/eventtraces/complete_aligned/hard/opportunity_events.parquet",
+      "sha256": "a939d8fa7c40561d51b439e1f94ba3b99c4ada46ae0396ff14642b1b3888ea1b",
+      "bytes": 435344
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/eventtraces/complete_aligned/hard/runtime_parameter_snapshot.json",
+      "sha256": "a472d30579ceb7c7c18d4187f6a9dee17ac9fc1a05c39455d81b054b78b2e997",
+      "bytes": 679
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/eventtraces/complete_aligned/hard/usable_events.parquet",
+      "sha256": "62e2673838cceedc57ccea40eec5c8e16128d8d84dd5bb419806cba90e2dbfb9",
+      "bytes": 40079
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/eventtraces/complete_aligned/training_eventtrace/events.parquet",
+      "sha256": "b46b6b9605b825d2dd4282802d4bd2be9325ab67780228be5502ced8064ca987",
+      "bytes": 238972
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/eventtraces/complete_aligned/training_eventtrace/metadata.json",
+      "sha256": "ab6f383a99886aef66a7cbf839e57fb4064624ea01dc6e0012cff48c9083cbb1",
+      "bytes": 247
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/eventtraces/complete_aligned/training_eventtrace/trace_identity.json",
+      "sha256": "e40160ad0cf830a152eea2840f929e18ccc1327244632a2768e398491ec7bcd8",
+      "bytes": 549
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/eventtraces/complete_counteracting/eventtrace_identity.json",
+      "sha256": "6bbd74f8148b8c7b126bca49e984d70923872bbf4528ba25e09bd772f8749455",
+      "bytes": 1538
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/eventtraces/complete_counteracting/hard/client_window_activity.parquet",
+      "sha256": "d921639c8f07723b1c125be09611138e28b2d73c769c4106412125efe0033d63",
+      "bytes": 8452
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/eventtraces/complete_counteracting/hard/eventtrace_manifest.json",
+      "sha256": "a4b775ee7feae9436bcf098ae9361c61f9602bf6b554572747bcfd5e4a82db2b",
+      "bytes": 649
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/eventtraces/complete_counteracting/hard/failed_attempts.parquet",
+      "sha256": "8e92fbb24c77047dfb878c1cac4e03a15fe159cde994a81647ec44f0a6e8738c",
+      "bytes": 20361
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/eventtraces/complete_counteracting/hard/hard_arrival_events.parquet",
+      "sha256": "5908c24de47b331b4c53716b3e291fe4c62d7e9ea1f56c0974b647d0ce0e39c7",
+      "bytes": 187954
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/eventtraces/complete_counteracting/hard/observation_events.parquet",
+      "sha256": "aca5d1e0d4adf5c6e4cff01d400004076d1aa04c66475144a0843817eb0fede9",
+      "bytes": 248284
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/eventtraces/complete_counteracting/hard/opportunity_events.parquet",
+      "sha256": "a8a52212011e61812e30479cc5886511f3fdab86c236938995c05e2e334bfc3d",
+      "bytes": 435386
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/eventtraces/complete_counteracting/hard/runtime_parameter_snapshot.json",
+      "sha256": "b2a36f1f01ad39e91809f9e4452c9bf501c91c3da37826fa8106d4c9b1241c0b",
+      "bytes": 680
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/eventtraces/complete_counteracting/hard/usable_events.parquet",
+      "sha256": "f72d234cf501ac59d0244fb1094ae50337fceb7f960dc5ae728e21678e64bd0f",
+      "bytes": 40089
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/eventtraces/complete_counteracting/training_eventtrace/events.parquet",
+      "sha256": "237e04f057577771648a61457e88e803b159d9661be10857df0bdfcc41657407",
+      "bytes": 238899
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/eventtraces/complete_counteracting/training_eventtrace/metadata.json",
+      "sha256": "616535c8e9e269bace9b20db1ef0001ea2700aaa8e8c88ab4116fdbffada08cd",
+      "bytes": 253
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/eventtraces/complete_counteracting/training_eventtrace/trace_identity.json",
+      "sha256": "50a6c22a65015cc3a480bf23009f7d0bc84910f7f82418c54d5448f9bbbb1833",
+      "bytes": 555
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/eventtraces/observation_only/eventtrace_identity.json",
+      "sha256": "5313ce6b5f96c4def743ac6c6b4273f2064c34371822bfb0704ee6cfefb49d43",
+      "bytes": 1508
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/eventtraces/observation_only/hard/client_window_activity.parquet",
+      "sha256": "ac32d6adf109ee574b1cafef1dc105b69faa6cdd2c656d218986e05d74e53188",
+      "bytes": 8340
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/eventtraces/observation_only/hard/eventtrace_manifest.json",
+      "sha256": "1c70d58153ed1532f85b0fd91a98fc393901b628cbff9b09ee46303554ac662e",
+      "bytes": 644
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/eventtraces/observation_only/hard/failed_attempts.parquet",
+      "sha256": "a7b5ab003637be3674a8d58ca880909c38a51241754963b4ea9440cf304bbe79",
+      "bytes": 20649
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/eventtraces/observation_only/hard/hard_arrival_events.parquet",
+      "sha256": "fddd42bb2040a5d29984af94767f932959917cb91e440702b0dab116c22a1a90",
+      "bytes": 188192
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/eventtraces/observation_only/hard/observation_events.parquet",
+      "sha256": "73484788372c0aff7325ebc9e3849576a08ee8f0ef5319a6c1b24bf7cd7341e7",
+      "bytes": 248952
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/eventtraces/observation_only/hard/opportunity_events.parquet",
+      "sha256": "c9b33dc170f59ac251286037d23f6b042b7cba666412b749b9f226f09e806b9e",
+      "bytes": 435316
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/eventtraces/observation_only/hard/runtime_parameter_snapshot.json",
+      "sha256": "7640a96cf1f23bb66f0d5561ed5374bda0c00d19ac720f8bd097c2900b857886",
+      "bytes": 675
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/eventtraces/observation_only/hard/usable_events.parquet",
+      "sha256": "b466192e81ac723334b4d9c7ab198538993d7ad1d51e75063dce9665df1f0f5c",
+      "bytes": 40458
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/eventtraces/observation_only/training_eventtrace/events.parquet",
+      "sha256": "e02a57033545b50bc27e190504b8dd3295e2a0173192f106a66ebc37526b8978",
+      "bytes": 240284
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/eventtraces/observation_only/training_eventtrace/metadata.json",
+      "sha256": "2efc1371604335b9b90982a9fd0e5e5b3951ddb246027715e948446aa97f2f4d",
+      "bytes": 247
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/eventtraces/observation_only/training_eventtrace/trace_identity.json",
+      "sha256": "dff2d31d467351eeb49ddad2681286c25f2de9b8b2b04f368f7792dc9fd2aca2",
+      "bytes": 549
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/eventtraces/opportunity_only/eventtrace_identity.json",
+      "sha256": "02a790fad17b5aba905cdf24757ca0a19102bb493a87afde5d24f32a0043566c",
+      "bytes": 1507
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/eventtraces/opportunity_only/hard/client_window_activity.parquet",
+      "sha256": "5dc7603bccee7dac595a0da1c77f755938774d19c3f34f19082280d5e1e9b323",
+      "bytes": 8342
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/eventtraces/opportunity_only/hard/eventtrace_manifest.json",
+      "sha256": "05b2237e8fbfef104feb69bc31fa23b9a46b7f5dcd62c6bb19cc75292c4b7864",
+      "bytes": 643
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/eventtraces/opportunity_only/hard/failed_attempts.parquet",
+      "sha256": "ae187478ae49cd2524ebaf77ed48e6fa259fd2ad74104c9787ebf42057f4614f",
+      "bytes": 20937
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/eventtraces/opportunity_only/hard/hard_arrival_events.parquet",
+      "sha256": "ea03af11d94659e7003565043671a89d30261b1484bc640bdf2bea52700e7960",
+      "bytes": 188323
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/eventtraces/opportunity_only/hard/observation_events.parquet",
+      "sha256": "577dd25026d34574ada730a2e1badddd8ff4175db4bb6fed815eb828f29c9aee",
+      "bytes": 248118
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/eventtraces/opportunity_only/hard/opportunity_events.parquet",
+      "sha256": "bcb8f00626e6944e59038f52cc5c8a16ad9bb61c51a7a6641219728f33c38ea0",
+      "bytes": 435344
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/eventtraces/opportunity_only/hard/runtime_parameter_snapshot.json",
+      "sha256": "dbf120f05d28d3108be75f0d97ce5f56cfafbde7530562e262c5723ef152d5a9",
+      "bytes": 673
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/eventtraces/opportunity_only/hard/usable_events.parquet",
+      "sha256": "067f0a2e0eeb599bd253f485b1918748a1ae2d8542fc72dac26498df03f94378",
+      "bytes": 41379
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/eventtraces/opportunity_only/training_eventtrace/events.parquet",
+      "sha256": "ca563142ed58519d5928fe9dc789b8d0b6c438edf54d0872c47fbf122b33715d",
+      "bytes": 239069
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/eventtraces/opportunity_only/training_eventtrace/metadata.json",
+      "sha256": "c99b19378ac5957c55676b94a0df53ed6e0d1733bd33c0449df421f394a3a8bf",
+      "bytes": 247
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/eventtraces/opportunity_only/training_eventtrace/trace_identity.json",
+      "sha256": "d2c8e693c464b2822096b0917e3cbacda62e8686ab0d403c2f501ec3e6be6b7f",
+      "bytes": 549
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/eventtraces/usable_only/eventtrace_identity.json",
+      "sha256": "bb9428637b9f13b25ab646fa71dd76a540258a73ac4c1f0ba6f089f30d8be889",
+      "bytes": 1482
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/eventtraces/usable_only/hard/client_window_activity.parquet",
+      "sha256": "8ed7a7fb8b5d0ef43f9fdf2cfa2f1eed0fddae30867afa7b071f0fc2bf39a6fd",
+      "bytes": 8446
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/eventtraces/usable_only/hard/eventtrace_manifest.json",
+      "sha256": "ef1fd0dbd2566ed9110c54f693b7a67c21f2bb3a242227633159381cdbca81db",
+      "bytes": 638
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/eventtraces/usable_only/hard/failed_attempts.parquet",
+      "sha256": "0f01a02ec470c26b8673a252a25b8288562444b0f623ac393e0d0f57e167dd88",
+      "bytes": 21202
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/eventtraces/usable_only/hard/hard_arrival_events.parquet",
+      "sha256": "234b884f86ad38cb163fb68f083fbd40ba3359762517142fa8fce9794e0d13cb",
+      "bytes": 188466
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/eventtraces/usable_only/hard/observation_events.parquet",
+      "sha256": "3896ddced3d7ef5532f82bd99abea6171823a3293371f7f615397caa0641dd92",
+      "bytes": 248782
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/eventtraces/usable_only/hard/opportunity_events.parquet",
+      "sha256": "8d654b4d4d85c89780ceccade528ac34106e1d21b799800b6ec9966b2ddf9c9c",
+      "bytes": 435281
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/eventtraces/usable_only/hard/runtime_parameter_snapshot.json",
+      "sha256": "f58e2a0c450fd99855a40a9b20591052fc0c9a6544385a1b64d8800c16bf0b0c",
+      "bytes": 668
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/eventtraces/usable_only/hard/usable_events.parquet",
+      "sha256": "e53310e48ae076170b40b7741f2bb5e5cec716ed1d647b240ceebd92cc170e4c",
+      "bytes": 41581
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/eventtraces/usable_only/training_eventtrace/events.parquet",
+      "sha256": "02e9cce4b42bf319de292d69af34938ae95fcdb56aa898ca890121f9a0abdd84",
+      "bytes": 241265
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/eventtraces/usable_only/training_eventtrace/metadata.json",
+      "sha256": "9772530b3a5cb2b2df65d86d0dadfc3ae9aa2cff890c32ff02ae20f6cf059c50",
+      "bytes": 242
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/eventtraces/usable_only/training_eventtrace/trace_identity.json",
+      "sha256": "a66bb7164c2753f3fad64f2a6a7f4027f9af5361fdad5d888fd056f838e3ee31",
+      "bytes": 544
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/balanced/fedasync_window/config_snapshot.json",
+      "sha256": "3648f30e3dc7fb921ce7d57c9dd35fc35a046c629b466fbb1aaba2372a9362ed",
+      "bytes": 386
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/balanced/fedasync_window/eventtrace_identity.json",
+      "sha256": "e294656dabf8656fc003ce3ffb9b1167532b579486803aa684cda5a29f5952e1",
+      "bytes": 695
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/balanced/fedasync_window/final_metrics.json",
+      "sha256": "337ba691bebe085567744f4cfff7003c417c719fec47edef8c01543acaa5b920",
+      "bytes": 1102
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/balanced/fedasync_window/method_identity.json",
+      "sha256": "08dfe683e7615c010e52a739af4d96300e1fce10a21d13e2e3b11c03b981d49f",
+      "bytes": 58
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/balanced/fedasync_window/runner_diagnostics.parquet",
+      "sha256": "96f93bdabe334b07ef9f65eb2fc2191d9ed4cb5715d7976a51424838d9c773d9",
+      "bytes": 305081
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/balanced/fedasync_window/runtime_manifest.json",
+      "sha256": "5e9b5756188e006d07339ff0a88078dc822984ff7531c44dc19b141f5cb8f41b",
+      "bytes": 2451
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/balanced/fedasync_window/scenario_identity.json",
+      "sha256": "e162f4b4c0303be21f4f4665e7a20d5457dab3b16568b71ee4981afbb2beff6f",
+      "bytes": 49
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/balanced/fedasync_window/stderr.log",
+      "sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6",
+      "bytes": 2
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/balanced/fedasync_window/stdout.log",
+      "sha256": "b1f979d77168241f8b8ca5f3f712a8dab6a05195cc0cb2a4e6f029223863ad49",
+      "bytes": 1003
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/balanced/fedasync_window/window_metrics.parquet",
+      "sha256": "d2166b174d355165711e3c8aa8dfdca2bc2eb2574e5f64dc931511c8ac95f61e",
+      "bytes": 23266
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/balanced/fedasync_window/checkpoints/final.pt",
+      "sha256": "f77e745354a1fc0b654575679b6f48b8e5c6f15466ab39e4c3305a6267297800",
+      "bytes": 126806
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/balanced/fedavg_window/config_snapshot.json",
+      "sha256": "d70c20e34d5f80278da0e1dcfc77517b8c4ae2bf4782f28a67ec150fb46edd0f",
+      "bytes": 384
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/balanced/fedavg_window/eventtrace_identity.json",
+      "sha256": "e294656dabf8656fc003ce3ffb9b1167532b579486803aa684cda5a29f5952e1",
+      "bytes": 695
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/balanced/fedavg_window/final_metrics.json",
+      "sha256": "6d178b9a99b18287144940f658aedd56f165022d4136227e37c3b8c3b175f34e",
+      "bytes": 1105
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/balanced/fedavg_window/method_identity.json",
+      "sha256": "7bcb900ef06a0f35648fc2d5044a4a06060d2ee1dcfa0c34d9c6c9821510c6b7",
+      "bytes": 54
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/balanced/fedavg_window/runner_diagnostics.parquet",
+      "sha256": "9946cd275ee32f887b154da8305542407961a5b3bb90bec728092c553b2583ff",
+      "bytes": 303543
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/balanced/fedavg_window/runtime_manifest.json",
+      "sha256": "99baa834c17053a1c771aca2d98297b8d56ff768c6e343a79d055766a2e1042d",
+      "bytes": 2450
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/balanced/fedavg_window/scenario_identity.json",
+      "sha256": "e162f4b4c0303be21f4f4665e7a20d5457dab3b16568b71ee4981afbb2beff6f",
+      "bytes": 49
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/balanced/fedavg_window/stderr.log",
+      "sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6",
+      "bytes": 2
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/balanced/fedavg_window/stdout.log",
+      "sha256": "9c3e65c0fc5121efe02833b24e84ab667f0a60616983ffe5d2123af6ceb7c0f2",
+      "bytes": 1006
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/balanced/fedavg_window/window_metrics.parquet",
+      "sha256": "0de3b4dca5ea9c2cb9a548570e643c7d4b2e7f78b6d7aabdff30dfb823d37b34",
+      "bytes": 23269
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/balanced/fedavg_window/checkpoints/final.pt",
+      "sha256": "24b698e15d2299cdbc2ade5c6208ee2f4df4d588061064218c5ff1ac37952b0c",
+      "bytes": 126806
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/balanced/flamf_timealign_adapted/config_snapshot.json",
+      "sha256": "2d68af99f0df7f2ef069486d39b6e8165628c5a944c8fd5039293cbf410f7752",
+      "bytes": 394
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/balanced/flamf_timealign_adapted/eventtrace_identity.json",
+      "sha256": "e294656dabf8656fc003ce3ffb9b1167532b579486803aa684cda5a29f5952e1",
+      "bytes": 695
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/balanced/flamf_timealign_adapted/final_metrics.json",
+      "sha256": "4be0325e1635c392882eec4c6276372d3d2e72aa5d5b547864ca5b4e7ac5fd83",
+      "bytes": 1104
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/balanced/flamf_timealign_adapted/method_identity.json",
+      "sha256": "fd2ee84d727a3f5b32cef5a30d9e1bac33ab8d4432d459d2136b67ef1a9dbb20",
+      "bytes": 67
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/balanced/flamf_timealign_adapted/runner_diagnostics.parquet",
+      "sha256": "47ba0016d361d6bcd2241e9574fe88343598d86d89b924a3389b4bfe7d16203d",
+      "bytes": 343986
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/balanced/flamf_timealign_adapted/runtime_manifest.json",
+      "sha256": "126c2178f4b861c50ad3dae53fffb9f8517adaf6a0e286b56ac444a65bb14a64",
+      "bytes": 2462
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/balanced/flamf_timealign_adapted/scenario_identity.json",
+      "sha256": "e162f4b4c0303be21f4f4665e7a20d5457dab3b16568b71ee4981afbb2beff6f",
+      "bytes": 49
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/balanced/flamf_timealign_adapted/stderr.log",
+      "sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6",
+      "bytes": 2
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/balanced/flamf_timealign_adapted/stdout.log",
+      "sha256": "ac52ba3bcdbaa990f19638722005dc1ec4ff1aa4853b8b5d9f56dc209455f171",
+      "bytes": 1005
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/balanced/flamf_timealign_adapted/window_metrics.parquet",
+      "sha256": "831e9882d4a2d852e3661ed2e4b4e33687ee29b3f2e4328d9e7c82fc0ed38a96",
+      "bytes": 23268
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/balanced/flamf_timealign_adapted/checkpoints/final.pt",
+      "sha256": "46ae9a79abec7ce1ff88c49f2fcc8a9986e37aae15467c9a8e7bcfd695c72e59",
+      "bytes": 126806
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/balanced/raven/config_snapshot.json",
+      "sha256": "fe4dd2d3b2f049da27ca85fbe9550cd868756c1a49572c39be56675af4426710",
+      "bytes": 376
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/balanced/raven/eventtrace_identity.json",
+      "sha256": "e294656dabf8656fc003ce3ffb9b1167532b579486803aa684cda5a29f5952e1",
+      "bytes": 695
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/balanced/raven/final_metrics.json",
+      "sha256": "511456b784d595360e186558b9906a579188d50f50aca4be585f31d4470cbb72",
+      "bytes": 1097
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/balanced/raven/method_identity.json",
+      "sha256": "91448f748f3827bcae2ff380c4d23bfb9b9cc21ed117e8d06fe9ccc0453ee551",
+      "bytes": 45
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/balanced/raven/runner_diagnostics.parquet",
+      "sha256": "a122c0d97c14fb282300c3af799e6635a7549c70a57ae6b7f3d35790af0c6369",
+      "bytes": 307588
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/balanced/raven/runtime_manifest.json",
+      "sha256": "ddd28e71e0a617dd729154b34eb45f82899337ca8d1f47a4c374d8cd868f1d24",
+      "bytes": 2432
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/balanced/raven/scenario_identity.json",
+      "sha256": "e162f4b4c0303be21f4f4665e7a20d5457dab3b16568b71ee4981afbb2beff6f",
+      "bytes": 49
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/balanced/raven/stderr.log",
+      "sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6",
+      "bytes": 2
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/balanced/raven/stdout.log",
+      "sha256": "48565224f20a04fced45fd6a33b1ea780ec0fa666995ab47a263358cc08591ed",
+      "bytes": 998
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/balanced/raven/window_metrics.parquet",
+      "sha256": "a4958b536e0523f264b45113dffb855a4a023615d4202a7d6b40029b7dca2249",
+      "bytes": 23388
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/balanced/raven/checkpoints/final.pt",
+      "sha256": "ba963183de8aa896af12cc983ff159a4d8c559fa8742be59fa925747df63f263",
+      "bytes": 126806
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/balanced/twostage_hajek/config_snapshot.json",
+      "sha256": "5b834e686807f43c71718dd15e206d8deb03f95fa74976141ea0e37fd936a1c9",
+      "bytes": 385
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/balanced/twostage_hajek/eventtrace_identity.json",
+      "sha256": "e294656dabf8656fc003ce3ffb9b1167532b579486803aa684cda5a29f5952e1",
+      "bytes": 695
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/balanced/twostage_hajek/final_metrics.json",
+      "sha256": "088bd42e7150c8e224e602e917634c5a75d68b927d1dc57c0e74beccfbfa887f",
+      "bytes": 1101
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/balanced/twostage_hajek/method_identity.json",
+      "sha256": "cfe09373885ee986f3853e3087d503fb385e9bea5c0e583e3edf0656cb535262",
+      "bytes": 57
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/balanced/twostage_hajek/runner_diagnostics.parquet",
+      "sha256": "ffbab8faaab5690c2d22005cc0639d8637768d7df549825f81408491bf853702",
+      "bytes": 310666
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/balanced/twostage_hajek/runtime_manifest.json",
+      "sha256": "ad6fa7be22d412e09366bfb96c64efb28875a3a50be385fbc8772c3dc289df55",
+      "bytes": 2448
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/balanced/twostage_hajek/scenario_identity.json",
+      "sha256": "e162f4b4c0303be21f4f4665e7a20d5457dab3b16568b71ee4981afbb2beff6f",
+      "bytes": 49
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/balanced/twostage_hajek/stderr.log",
+      "sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6",
+      "bytes": 2
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/balanced/twostage_hajek/stdout.log",
+      "sha256": "cd8980fdb3a2d396c9f2ddea8175bffec54a7ae12cb9cdbc5b916200bfc536f1",
+      "bytes": 1002
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/balanced/twostage_hajek/window_metrics.parquet",
+      "sha256": "16ccc9dfa4f58ae15e008911a05de69488fa26e51e872f3ee66b66386f7e34dd",
+      "bytes": 23265
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/balanced/twostage_hajek/checkpoints/final.pt",
+      "sha256": "712bfc717f23de8d8be66c9fd13e5ff8a69bc57ab0d03da58bf59272aaa88b7e",
+      "bytes": 126806
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/complete_aligned/fedasync_window/config_snapshot.json",
+      "sha256": "7500b4e8980db9d589a3561373229d82d467aa42024f22f3c1a05ee7acdf8419",
+      "bytes": 394
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/complete_aligned/fedasync_window/eventtrace_identity.json",
+      "sha256": "f11498657e11dfc9ce4d0de30f90a30854155f245e3f8e1f680863f003927502",
+      "bytes": 711
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/complete_aligned/fedasync_window/final_metrics.json",
+      "sha256": "98c1ce123cc1c05dbc6da881ec7927bdfae5c7d554be8a5bdf9265586a278a24",
+      "bytes": 1121
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/complete_aligned/fedasync_window/method_identity.json",
+      "sha256": "08dfe683e7615c010e52a739af4d96300e1fce10a21d13e2e3b11c03b981d49f",
+      "bytes": 58
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/complete_aligned/fedasync_window/runner_diagnostics.parquet",
+      "sha256": "950307d6324686ec8b9f71c2e7fc6e12ce35946b6608997b7bfc81d615421546",
+      "bytes": 279066
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/complete_aligned/fedasync_window/runtime_manifest.json",
+      "sha256": "6986278e9b490f0baf4b15ef88013b86cfb332ee6f7f773a7d0454793fbe2750",
+      "bytes": 2493
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/complete_aligned/fedasync_window/scenario_identity.json",
+      "sha256": "5e25e12f55a11a556bae9cc4155f084745a910563f5fb2898965a23845624d0e",
+      "bytes": 57
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/complete_aligned/fedasync_window/stderr.log",
+      "sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6",
+      "bytes": 2
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/complete_aligned/fedasync_window/stdout.log",
+      "sha256": "dc53df1e9ff8083da8e31d2a535d1c933e488624bf17cc0aedaeab2fb2408a6e",
+      "bytes": 1022
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/complete_aligned/fedasync_window/window_metrics.parquet",
+      "sha256": "9cbf6ffa248bf1c3d91f91b3993786d63bc9f13d60c6ac29ac4744228f7e3fa5",
+      "bytes": 23315
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/complete_aligned/fedasync_window/checkpoints/final.pt",
+      "sha256": "555999dd20e4f71f9891e618bff02a96664757fb09e315e624d829d215f9ad2f",
+      "bytes": 126806
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/complete_aligned/fedavg_window/config_snapshot.json",
+      "sha256": "80dcd27f82cc70cc0408b181757e8fceefcb3776f2867224e7684d53f04cb152",
+      "bytes": 392
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/complete_aligned/fedavg_window/eventtrace_identity.json",
+      "sha256": "f11498657e11dfc9ce4d0de30f90a30854155f245e3f8e1f680863f003927502",
+      "bytes": 711
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/complete_aligned/fedavg_window/final_metrics.json",
+      "sha256": "406e7452d04799c85a55e859c82c8977e992d3a4f1fb73541c609fc605f1f14b",
+      "bytes": 1121
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/complete_aligned/fedavg_window/method_identity.json",
+      "sha256": "7bcb900ef06a0f35648fc2d5044a4a06060d2ee1dcfa0c34d9c6c9821510c6b7",
+      "bytes": 54
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/complete_aligned/fedavg_window/runner_diagnostics.parquet",
+      "sha256": "a901e556d96233d4d00e8a3b3c95f8904a09e340dcef3d8328df486c94eaa516",
+      "bytes": 281609
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/complete_aligned/fedavg_window/runtime_manifest.json",
+      "sha256": "c79dc9c94471ec5efc4dd82515ccdcae56cac8f8d5ecbebdf2cc9148fd8f0d49",
+      "bytes": 2489
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/complete_aligned/fedavg_window/scenario_identity.json",
+      "sha256": "5e25e12f55a11a556bae9cc4155f084745a910563f5fb2898965a23845624d0e",
+      "bytes": 57
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/complete_aligned/fedavg_window/stderr.log",
+      "sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6",
+      "bytes": 2
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/complete_aligned/fedavg_window/stdout.log",
+      "sha256": "a69a3bfbbe1cd63df86b0e5778b489923dc5aacc04c564c89072008af69283fd",
+      "bytes": 1022
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/complete_aligned/fedavg_window/window_metrics.parquet",
+      "sha256": "fa1a885780c5734c3aa21038ec8bc5dff0352a46d4e934cb4ebf0cbe98dcd6ab",
+      "bytes": 23288
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/complete_aligned/fedavg_window/checkpoints/final.pt",
+      "sha256": "f9621c762489e4371cbcb50a53e7f5c6f932c0927a631e2b69efc30dc2418c9c",
+      "bytes": 126806
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/complete_aligned/flamf_timealign_adapted/config_snapshot.json",
+      "sha256": "8e4eb125926aa07828a21e982cba3213c8dc20e1d6bfc9fb647f0e0edd9f1c4c",
+      "bytes": 402
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/complete_aligned/flamf_timealign_adapted/eventtrace_identity.json",
+      "sha256": "f11498657e11dfc9ce4d0de30f90a30854155f245e3f8e1f680863f003927502",
+      "bytes": 711
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/complete_aligned/flamf_timealign_adapted/final_metrics.json",
+      "sha256": "be95da28b810a58ccb55ef23eaa0d9c3524b8336eb63d7dbb0cf5fce74f79782",
+      "bytes": 1121
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/complete_aligned/flamf_timealign_adapted/method_identity.json",
+      "sha256": "fd2ee84d727a3f5b32cef5a30d9e1bac33ab8d4432d459d2136b67ef1a9dbb20",
+      "bytes": 67
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/complete_aligned/flamf_timealign_adapted/runner_diagnostics.parquet",
+      "sha256": "c3cbf3bf9b072849a15ab5b1fcffca03446c27a16eb9804ed0ded55b12fa2c9c",
+      "bytes": 329119
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/complete_aligned/flamf_timealign_adapted/runtime_manifest.json",
+      "sha256": "966be6a9acff9aae1d1fefed5ce036a4cf15681d8fda1f34953a0e05dd8158ec",
+      "bytes": 2502
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/complete_aligned/flamf_timealign_adapted/scenario_identity.json",
+      "sha256": "5e25e12f55a11a556bae9cc4155f084745a910563f5fb2898965a23845624d0e",
+      "bytes": 57
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/complete_aligned/flamf_timealign_adapted/stderr.log",
+      "sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6",
+      "bytes": 2
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/complete_aligned/flamf_timealign_adapted/stdout.log",
+      "sha256": "6cef0fa3a8bf54b37f675c1e02f1f70ecbfb3f400bba52f835b26b128a26acc1",
+      "bytes": 1022
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/complete_aligned/flamf_timealign_adapted/window_metrics.parquet",
+      "sha256": "3e18bde6933c3efdfaef819ca89809c8c4a6d15adaeb6074fd67e2a6f8f7d2d0",
+      "bytes": 23312
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/complete_aligned/flamf_timealign_adapted/checkpoints/final.pt",
+      "sha256": "c316be71c62d93596362fd021eb859b0ccf71649157ac64428fa602bbcea0a0c",
+      "bytes": 126806
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/complete_aligned/raven/config_snapshot.json",
+      "sha256": "4c76fb74cc7fbcce82b7a9bc792ca4298e82453f94179b0be6a39c91bcfb3089",
+      "bytes": 384
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/complete_aligned/raven/eventtrace_identity.json",
+      "sha256": "f11498657e11dfc9ce4d0de30f90a30854155f245e3f8e1f680863f003927502",
+      "bytes": 711
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/complete_aligned/raven/final_metrics.json",
+      "sha256": "6dedc26e98edcd94ca3c07fc259a2b6d650010e6ae0d62ccdffdd2ca8f5cfd5d",
+      "bytes": 1113
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/complete_aligned/raven/method_identity.json",
+      "sha256": "91448f748f3827bcae2ff380c4d23bfb9b9cc21ed117e8d06fe9ccc0453ee551",
+      "bytes": 45
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/complete_aligned/raven/runner_diagnostics.parquet",
+      "sha256": "0f3c7b8a66abe295fe668de430282668004964f4b290dc8199050bf4e7dcd70f",
+      "bytes": 286651
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/complete_aligned/raven/runtime_manifest.json",
+      "sha256": "42a1068f4b62762bb87e0576eaf477e7c9dd2e28e448ca40be6dde4ecc39b8de",
+      "bytes": 2472
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/complete_aligned/raven/scenario_identity.json",
+      "sha256": "5e25e12f55a11a556bae9cc4155f084745a910563f5fb2898965a23845624d0e",
+      "bytes": 57
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/complete_aligned/raven/stderr.log",
+      "sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6",
+      "bytes": 2
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/complete_aligned/raven/stdout.log",
+      "sha256": "564f3d46d0e1d1feb38cf656f446e9d5faa3708316c743503d8ce5ed5f20c74e",
+      "bytes": 1014
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/complete_aligned/raven/window_metrics.parquet",
+      "sha256": "59e7c00ccd4614a45c25006fa7336bf91fbb4071bfe5a6e255de1d33a50094bc",
+      "bytes": 23501
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/complete_aligned/raven/checkpoints/final.pt",
+      "sha256": "48a6877c2df235a56ae24b679da2cf1526e4edfd63ee5a3a52d918a0e8823a64",
+      "bytes": 126806
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/complete_aligned/twostage_hajek/config_snapshot.json",
+      "sha256": "46e7f56252572d31c47dfd5f32393b28cfec48c786ee9bb5a11c77ee5b0c5aac",
+      "bytes": 393
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/complete_aligned/twostage_hajek/eventtrace_identity.json",
+      "sha256": "f11498657e11dfc9ce4d0de30f90a30854155f245e3f8e1f680863f003927502",
+      "bytes": 711
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/complete_aligned/twostage_hajek/final_metrics.json",
+      "sha256": "715e11bf4104432c22b82349465b8e5117810990727be9ca51d9dc06ed1a260b",
+      "bytes": 1118
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/complete_aligned/twostage_hajek/method_identity.json",
+      "sha256": "cfe09373885ee986f3853e3087d503fb385e9bea5c0e583e3edf0656cb535262",
+      "bytes": 57
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/complete_aligned/twostage_hajek/runner_diagnostics.parquet",
+      "sha256": "d9a5c0d75397a238976643e0c7ad9734410b0c298e0f6ae6c355ea8bf55c4da0",
+      "bytes": 288026
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/complete_aligned/twostage_hajek/runtime_manifest.json",
+      "sha256": "4b8774fc945f67aa85734deb18ad1b51778b5000a57f8ce9b9ae9d9b8a9552c3",
+      "bytes": 2489
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/complete_aligned/twostage_hajek/scenario_identity.json",
+      "sha256": "5e25e12f55a11a556bae9cc4155f084745a910563f5fb2898965a23845624d0e",
+      "bytes": 57
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/complete_aligned/twostage_hajek/stderr.log",
+      "sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6",
+      "bytes": 2
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/complete_aligned/twostage_hajek/stdout.log",
+      "sha256": "6c65ae4ccb8f687b31df654a603c8dc40e8320c1a14057cb8c6f3f9f3ef5bb39",
+      "bytes": 1019
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/complete_aligned/twostage_hajek/window_metrics.parquet",
+      "sha256": "4013d3ab3dc50e40b36534d34fadd19aab7528106f4d47eb41a56dfb003e3a3d",
+      "bytes": 23319
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/complete_aligned/twostage_hajek/checkpoints/final.pt",
+      "sha256": "0d098402406c4bf22b4beebbccd0807e95d1badf5c5c3d1fdc6f12624fb2e310",
+      "bytes": 126806
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/complete_counteracting/fedasync_window/config_snapshot.json",
+      "sha256": "dafc2e8bfae9614dcd58c714547b7de8be97459652f171e129d76362e4ef0aaf",
+      "bytes": 400
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/complete_counteracting/fedasync_window/eventtrace_identity.json",
+      "sha256": "c2338c954947a2c678cb5b15fa14bae364c765ab1f6edac40e627315cb7657b3",
+      "bytes": 723
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/complete_counteracting/fedasync_window/final_metrics.json",
+      "sha256": "20047be59da3635e511868fbbd3648e6b4871dacaca52e582512c35f88866174",
+      "bytes": 1107
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/complete_counteracting/fedasync_window/method_identity.json",
+      "sha256": "08dfe683e7615c010e52a739af4d96300e1fce10a21d13e2e3b11c03b981d49f",
+      "bytes": 58
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/complete_counteracting/fedasync_window/runner_diagnostics.parquet",
+      "sha256": "682c43f78d108018a1d33d20a97a926a0bf31a1a33ba96f9d8474212ef3c1cc0",
+      "bytes": 284237
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/complete_counteracting/fedasync_window/runtime_manifest.json",
+      "sha256": "c8c7315b01b1d7215460097fa2902ea8d852c50cc57885378121638adc85046e",
+      "bytes": 2497
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/complete_counteracting/fedasync_window/scenario_identity.json",
+      "sha256": "2259f4bc59d4fe8b651c252572e7138734b503db39da82a05dbc52cdefbd5251",
+      "bytes": 63
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/complete_counteracting/fedasync_window/stderr.log",
+      "sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6",
+      "bytes": 2
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/complete_counteracting/fedasync_window/stdout.log",
+      "sha256": "199df3dbd3fb14e2cb2ff26f51fb41fc8a74b5a4ed6924e56e2fdfeb9a654b9b",
+      "bytes": 1008
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/complete_counteracting/fedasync_window/window_metrics.parquet",
+      "sha256": "5c2cf428f16f7e5075fc96111de265fba254f09513a67804c8120ff19a716f0d",
+      "bytes": 23426
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/complete_counteracting/fedasync_window/checkpoints/final.pt",
+      "sha256": "fcf6e5b278828a563947325d5a8492f68d748a234f2d21498e2c85954bd7bf32",
+      "bytes": 126806
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/complete_counteracting/fedavg_window/config_snapshot.json",
+      "sha256": "3c5128733a7752bacfa07a0964ad7c4a6ba09bdcb5da9785d2e34d089144864a",
+      "bytes": 398
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/complete_counteracting/fedavg_window/eventtrace_identity.json",
+      "sha256": "c2338c954947a2c678cb5b15fa14bae364c765ab1f6edac40e627315cb7657b3",
+      "bytes": 723
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/complete_counteracting/fedavg_window/final_metrics.json",
+      "sha256": "da4e06ee0f82dcd235e6279279ae4fee0703e3219f53147bda7ed0519078e350",
+      "bytes": 1108
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/complete_counteracting/fedavg_window/method_identity.json",
+      "sha256": "7bcb900ef06a0f35648fc2d5044a4a06060d2ee1dcfa0c34d9c6c9821510c6b7",
+      "bytes": 54
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/complete_counteracting/fedavg_window/runner_diagnostics.parquet",
+      "sha256": "797458fe932e39a8743b9689fb64b9b0f40c2e3f903c0a1ae8176adec0f68279",
+      "bytes": 277866
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/complete_counteracting/fedavg_window/runtime_manifest.json",
+      "sha256": "76450171f7d885d4363608d756aec6cb2c22273998ec2eab5f9d0a1c313d3cc2",
+      "bytes": 2493
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/complete_counteracting/fedavg_window/scenario_identity.json",
+      "sha256": "2259f4bc59d4fe8b651c252572e7138734b503db39da82a05dbc52cdefbd5251",
+      "bytes": 63
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/complete_counteracting/fedavg_window/stderr.log",
+      "sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6",
+      "bytes": 2
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/complete_counteracting/fedavg_window/stdout.log",
+      "sha256": "5a2262e2b25faea506bb8e6fb978281f8464860847630e58928549f4bc018198",
+      "bytes": 1009
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/complete_counteracting/fedavg_window/window_metrics.parquet",
+      "sha256": "8a20b64e0a3aaae8cf9263b80b0b85e4cd0ddc0c2d6b5291979ff42b7d9162a0",
+      "bytes": 23378
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/complete_counteracting/fedavg_window/checkpoints/final.pt",
+      "sha256": "6b0d6971faf11a02033831ba2f3c4fc27cced82d3c35df344f34a44f280e5c38",
+      "bytes": 126806
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/complete_counteracting/flamf_timealign_adapted/config_snapshot.json",
+      "sha256": "f39fdfb981f768cfd35c11f3a037e4c27c8aaf51dee291853e48f9935dc2bd47",
+      "bytes": 408
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/complete_counteracting/flamf_timealign_adapted/eventtrace_identity.json",
+      "sha256": "c2338c954947a2c678cb5b15fa14bae364c765ab1f6edac40e627315cb7657b3",
+      "bytes": 723
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/complete_counteracting/flamf_timealign_adapted/final_metrics.json",
+      "sha256": "9177dd904a0de7be9be6af51821d31ac9c6117ec041acf27df7e6b016b894564",
+      "bytes": 1108
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/complete_counteracting/flamf_timealign_adapted/method_identity.json",
+      "sha256": "fd2ee84d727a3f5b32cef5a30d9e1bac33ab8d4432d459d2136b67ef1a9dbb20",
+      "bytes": 67
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/complete_counteracting/flamf_timealign_adapted/runner_diagnostics.parquet",
+      "sha256": "05b22ef3d076da134b0414c6d213916dd655859755470e63d681be8f148d6e99",
+      "bytes": 325035
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/complete_counteracting/flamf_timealign_adapted/runtime_manifest.json",
+      "sha256": "db28703e648a433a14d1ecb74337ee8e75e218ff5d4a1063156f2409b842f5ce",
+      "bytes": 2507
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/complete_counteracting/flamf_timealign_adapted/scenario_identity.json",
+      "sha256": "2259f4bc59d4fe8b651c252572e7138734b503db39da82a05dbc52cdefbd5251",
+      "bytes": 63
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/complete_counteracting/flamf_timealign_adapted/stderr.log",
+      "sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6",
+      "bytes": 2
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/complete_counteracting/flamf_timealign_adapted/stdout.log",
+      "sha256": "d0840e217cac6d5e353b61131ca3951e847fa565c12aac39e16cde0f9b5d7186",
+      "bytes": 1009
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/complete_counteracting/flamf_timealign_adapted/window_metrics.parquet",
+      "sha256": "42ac22348f401d11c6ca721070be988849cc1837619ee76dd790db10ba46b369",
+      "bytes": 23257
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/complete_counteracting/flamf_timealign_adapted/checkpoints/final.pt",
+      "sha256": "e870d18c4dd34d040be95f72cbfda0d71a2cbe00d892628fca5133836c29fddc",
+      "bytes": 126806
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/complete_counteracting/raven/config_snapshot.json",
+      "sha256": "e99322724d5b4a23022a3bbd8de9d5db4595455dc4a2e28aac083b119e17f6ae",
+      "bytes": 390
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/complete_counteracting/raven/eventtrace_identity.json",
+      "sha256": "c2338c954947a2c678cb5b15fa14bae364c765ab1f6edac40e627315cb7657b3",
+      "bytes": 723
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/complete_counteracting/raven/final_metrics.json",
+      "sha256": "d99935b22759e2f08d72fde840c917918d8f677e76b024a48a4d9edbe7e44ff7",
+      "bytes": 1097
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/complete_counteracting/raven/method_identity.json",
+      "sha256": "91448f748f3827bcae2ff380c4d23bfb9b9cc21ed117e8d06fe9ccc0453ee551",
+      "bytes": 45
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/complete_counteracting/raven/runner_diagnostics.parquet",
+      "sha256": "6f510912e7b6affeacb338b2965fd2ce37d68ab0d9b5ac56406452ac3eccba78",
+      "bytes": 288070
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/complete_counteracting/raven/runtime_manifest.json",
+      "sha256": "c9dcf222bd8d397d2147943a92ae9daee7b8003df4e21b3f2cefbe2490ca1e7e",
+      "bytes": 2473
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/complete_counteracting/raven/scenario_identity.json",
+      "sha256": "2259f4bc59d4fe8b651c252572e7138734b503db39da82a05dbc52cdefbd5251",
+      "bytes": 63
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/complete_counteracting/raven/stderr.log",
+      "sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6",
+      "bytes": 2
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/complete_counteracting/raven/stdout.log",
+      "sha256": "44b0800ba1087a7943e4d628bf52a63d8f0939788e7adf3838c895bb1b4e01f8",
+      "bytes": 998
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/complete_counteracting/raven/window_metrics.parquet",
+      "sha256": "99cf57cef77c8f6c0828f96987194d550d357dded204cf1a0745dd2d9375b495",
+      "bytes": 23534
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/complete_counteracting/raven/checkpoints/final.pt",
+      "sha256": "9153f58cf2ead5356f73895fccd8b5b9cdd1cd89c8233eaa9995c9e24d8242ad",
+      "bytes": 126806
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/complete_counteracting/twostage_hajek/config_snapshot.json",
+      "sha256": "01b53f703eae5f9df3b8b7c417d886497df2857c2d208a6ff7122c339c1b32b6",
+      "bytes": 399
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/complete_counteracting/twostage_hajek/eventtrace_identity.json",
+      "sha256": "c2338c954947a2c678cb5b15fa14bae364c765ab1f6edac40e627315cb7657b3",
+      "bytes": 723
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/complete_counteracting/twostage_hajek/final_metrics.json",
+      "sha256": "4f816e53372a9872c35036a2ed23c749d92f4262b29a121f02b2545b6ce1feff",
+      "bytes": 1104
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/complete_counteracting/twostage_hajek/method_identity.json",
+      "sha256": "cfe09373885ee986f3853e3087d503fb385e9bea5c0e583e3edf0656cb535262",
+      "bytes": 57
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/complete_counteracting/twostage_hajek/runner_diagnostics.parquet",
+      "sha256": "805555f10e9536b1a4867e30952d91a54c12b7567bf6b8fdff67cc1ed19832ca",
+      "bytes": 292130
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/complete_counteracting/twostage_hajek/runtime_manifest.json",
+      "sha256": "5e3823bf28b605067c63143641c4924cb1ed34f87a87596f745e237807e37889",
+      "bytes": 2493
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/complete_counteracting/twostage_hajek/scenario_identity.json",
+      "sha256": "2259f4bc59d4fe8b651c252572e7138734b503db39da82a05dbc52cdefbd5251",
+      "bytes": 63
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/complete_counteracting/twostage_hajek/stderr.log",
+      "sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6",
+      "bytes": 2
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/complete_counteracting/twostage_hajek/stdout.log",
+      "sha256": "0d8ed188e07fd42cbe3230f3a9f9215cb3739e8f1abbac8eaa8adbcd51a5da9b",
+      "bytes": 1005
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/complete_counteracting/twostage_hajek/window_metrics.parquet",
+      "sha256": "ccfff7d168b2ae00c6c1b13837934c10aa27ac55e9b7d5a2af7fff5ab6b69bd3",
+      "bytes": 23428
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/complete_counteracting/twostage_hajek/checkpoints/final.pt",
+      "sha256": "b44378223d612b698d080043193dd8498be3e77db1c67cc98d192a8bc4e80099",
+      "bytes": 126806
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/observation_only/fedasync_window/config_snapshot.json",
+      "sha256": "39a8a2e4403ed6647dd577f97bc09d54e298e39b94adda49ec039915231404fc",
+      "bytes": 394
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/observation_only/fedasync_window/eventtrace_identity.json",
+      "sha256": "f6b842d5953659755a983295cb6b03edc2fc85e9238b7fcda54247dac0f05efa",
+      "bytes": 711
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/observation_only/fedasync_window/final_metrics.json",
+      "sha256": "601d2d6d378bc20bfc681586f58122782a072feec2a4e4ab5b304e39a42aa32b",
+      "bytes": 1106
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/observation_only/fedasync_window/method_identity.json",
+      "sha256": "08dfe683e7615c010e52a739af4d96300e1fce10a21d13e2e3b11c03b981d49f",
+      "bytes": 58
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/observation_only/fedasync_window/runner_diagnostics.parquet",
+      "sha256": "841d0060ce9d977d4dae1f91d4bdba93e923ed6b871e9fe8b4dca8df32e12a92",
+      "bytes": 292609
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/observation_only/fedasync_window/runtime_manifest.json",
+      "sha256": "2708f5366ddb8ac8236a55589c09240c0baf064366756fa1b8fc2c2e10e249f9",
+      "bytes": 2478
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/observation_only/fedasync_window/scenario_identity.json",
+      "sha256": "f0fa2348160c2c33635c5bd4c4ff4e8039f74c8e915df495403a4912a9894b2c",
+      "bytes": 57
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/observation_only/fedasync_window/stderr.log",
+      "sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6",
+      "bytes": 2
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/observation_only/fedasync_window/stdout.log",
+      "sha256": "e8a5f0ba13ecda0950cb891177741d545022c881d2184923123967ba59fdaf46",
+      "bytes": 1007
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/observation_only/fedasync_window/window_metrics.parquet",
+      "sha256": "7e9b59f28577fe3b742a5e32d047ded613bdab22f00330845adf7f77257c629e",
+      "bytes": 23431
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/observation_only/fedasync_window/checkpoints/final.pt",
+      "sha256": "9b07397207e2e0807bc45fd289d3ae5d2023f1940f1dc911c996cb6e64e4d971",
+      "bytes": 126806
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/observation_only/fedavg_window/config_snapshot.json",
+      "sha256": "e2ac95418d2b347929f95063c4b97106083da9b4d353844463a2145a3a7dec93",
+      "bytes": 392
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/observation_only/fedavg_window/eventtrace_identity.json",
+      "sha256": "f6b842d5953659755a983295cb6b03edc2fc85e9238b7fcda54247dac0f05efa",
+      "bytes": 711
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/observation_only/fedavg_window/final_metrics.json",
+      "sha256": "f16a2835a5299622517ca1db4355e96a584d8e27bce9231c63ee8fa0bfb9f8d8",
+      "bytes": 1099
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/observation_only/fedavg_window/method_identity.json",
+      "sha256": "7bcb900ef06a0f35648fc2d5044a4a06060d2ee1dcfa0c34d9c6c9821510c6b7",
+      "bytes": 54
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/observation_only/fedavg_window/runner_diagnostics.parquet",
+      "sha256": "30a5d80e208c1cf7a63b76c115657c36a62aa32d9141bbd486565076e519b168",
+      "bytes": 286107
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/observation_only/fedavg_window/runtime_manifest.json",
+      "sha256": "dbc2f0eb00bb98f436a0c67428f8ad59c551bd90db9a1de21b5068927ce9819a",
+      "bytes": 2467
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/observation_only/fedavg_window/scenario_identity.json",
+      "sha256": "f0fa2348160c2c33635c5bd4c4ff4e8039f74c8e915df495403a4912a9894b2c",
+      "bytes": 57
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/observation_only/fedavg_window/stderr.log",
+      "sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6",
+      "bytes": 2
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/observation_only/fedavg_window/stdout.log",
+      "sha256": "f65007a8767679497d5eb2a852b4fc884891c5bb5bde6c80a465977e575eda93",
+      "bytes": 1000
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/observation_only/fedavg_window/window_metrics.parquet",
+      "sha256": "95b1ecbef5f20c167d04469b6228a1ddb40d4ffb0194c8d3a721ee0d313b1f27",
+      "bytes": 23431
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/observation_only/fedavg_window/checkpoints/final.pt",
+      "sha256": "a6576edd803677bc339cb65f7b2bea1e47907a875a2a28c9e3e08f0d48e23af3",
+      "bytes": 126806
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/observation_only/flamf_timealign_adapted/config_snapshot.json",
+      "sha256": "8fec8000e4b99f425acba860f4aa16af098c50f523afb8ac4de52fbf67ff770b",
+      "bytes": 402
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/observation_only/flamf_timealign_adapted/eventtrace_identity.json",
+      "sha256": "f6b842d5953659755a983295cb6b03edc2fc85e9238b7fcda54247dac0f05efa",
+      "bytes": 711
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/observation_only/flamf_timealign_adapted/final_metrics.json",
+      "sha256": "5c781bceddd920036a1701714fe06838b547d22a04d8aebb3d09e2f0e436bfc8",
+      "bytes": 1107
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/observation_only/flamf_timealign_adapted/method_identity.json",
+      "sha256": "fd2ee84d727a3f5b32cef5a30d9e1bac33ab8d4432d459d2136b67ef1a9dbb20",
+      "bytes": 67
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/observation_only/flamf_timealign_adapted/runner_diagnostics.parquet",
+      "sha256": "2f00d534d0a8f7549ec195c9e8eccf93861d98d547b42a21468111ad7652824d",
+      "bytes": 334428
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/observation_only/flamf_timealign_adapted/runtime_manifest.json",
+      "sha256": "d7cd4d4387db4a9cabc9b04e323a2127025915ebf699fecf2714c0616c2d37b0",
+      "bytes": 2488
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/observation_only/flamf_timealign_adapted/scenario_identity.json",
+      "sha256": "f0fa2348160c2c33635c5bd4c4ff4e8039f74c8e915df495403a4912a9894b2c",
+      "bytes": 57
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/observation_only/flamf_timealign_adapted/stderr.log",
+      "sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6",
+      "bytes": 2
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/observation_only/flamf_timealign_adapted/stdout.log",
+      "sha256": "b921f665e9a01aa4f626d27f3cf3d2ae3197a3250f1fda5e217b0c73248f2b3b",
+      "bytes": 1008
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/observation_only/flamf_timealign_adapted/window_metrics.parquet",
+      "sha256": "b407d4d61e6c82db0004983e1db085f02881116c9f7921a933fcc8362336dd4a",
+      "bytes": 23431
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/observation_only/flamf_timealign_adapted/checkpoints/final.pt",
+      "sha256": "74dbfeed01847404fdfd7c72b9bba685c7f944c4f9dc773c996bbe5df33e2402",
+      "bytes": 126806
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/observation_only/raven/config_snapshot.json",
+      "sha256": "c6ce4eef2372fe79ede9f76760e053a22e66c5eeb1ced5622dbd85887c97b71e",
+      "bytes": 384
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/observation_only/raven/eventtrace_identity.json",
+      "sha256": "f6b842d5953659755a983295cb6b03edc2fc85e9238b7fcda54247dac0f05efa",
+      "bytes": 711
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/observation_only/raven/final_metrics.json",
+      "sha256": "3bbd7e4b66bcd3591881513f9bf21cdbe1a28f810574c6e9dd54a15c769058f0",
+      "bytes": 1098
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/observation_only/raven/method_identity.json",
+      "sha256": "91448f748f3827bcae2ff380c4d23bfb9b9cc21ed117e8d06fe9ccc0453ee551",
+      "bytes": 45
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/observation_only/raven/runner_diagnostics.parquet",
+      "sha256": "35550c2cf5c7aa2787a160990d58395bbcea1ea723530254b3519b237467c3c9",
+      "bytes": 297255
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/observation_only/raven/runtime_manifest.json",
+      "sha256": "49da6316de1d0b92ecb2ba09a3e543e845aafdcafcf31a0bd36920da36808463",
+      "bytes": 2457
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/observation_only/raven/scenario_identity.json",
+      "sha256": "f0fa2348160c2c33635c5bd4c4ff4e8039f74c8e915df495403a4912a9894b2c",
+      "bytes": 57
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/observation_only/raven/stderr.log",
+      "sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6",
+      "bytes": 2
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/observation_only/raven/stdout.log",
+      "sha256": "dfebecf0b8b298fdbf0043e6b749750f969e8e49d4cb5ea1bd5d3f8c07db1616",
+      "bytes": 999
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/observation_only/raven/window_metrics.parquet",
+      "sha256": "245e143ee7c4b3f803530124b76142850ed6bf5a69de50c542e9b7bff388a0ef",
+      "bytes": 23583
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/observation_only/raven/checkpoints/final.pt",
+      "sha256": "b4ba071a33a4942de0a8e62de91665acc9b4a28bd0e21c52ba9ab14ca68e4944",
+      "bytes": 126806
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/observation_only/twostage_hajek/config_snapshot.json",
+      "sha256": "9d5fee895adb7336a88cc572be24707fd8885fd0c1a266e845c161a194ce3571",
+      "bytes": 393
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/observation_only/twostage_hajek/eventtrace_identity.json",
+      "sha256": "f6b842d5953659755a983295cb6b03edc2fc85e9238b7fcda54247dac0f05efa",
+      "bytes": 711
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/observation_only/twostage_hajek/final_metrics.json",
+      "sha256": "45112efcaddd1cf078ecd2db8233d939ac147c8a594f02eea1a35fc6dbf837d2",
+      "bytes": 1103
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/observation_only/twostage_hajek/method_identity.json",
+      "sha256": "cfe09373885ee986f3853e3087d503fb385e9bea5c0e583e3edf0656cb535262",
+      "bytes": 57
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/observation_only/twostage_hajek/runner_diagnostics.parquet",
+      "sha256": "3e1bca0ea1fe67899245baabc33858b55e06f9d3b4005b07ba0ca6e2876e4851",
+      "bytes": 297966
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/observation_only/twostage_hajek/runtime_manifest.json",
+      "sha256": "dd4ff633c7e799639cdc422021a4420cd5db80e30876149a63ab9c866022de40",
+      "bytes": 2474
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/observation_only/twostage_hajek/scenario_identity.json",
+      "sha256": "f0fa2348160c2c33635c5bd4c4ff4e8039f74c8e915df495403a4912a9894b2c",
+      "bytes": 57
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/observation_only/twostage_hajek/stderr.log",
+      "sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6",
+      "bytes": 2
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/observation_only/twostage_hajek/stdout.log",
+      "sha256": "8ebdc71f32fb58b1ee189ddfe342dd873f38dcf56369fe509d8c632e2dba2d5a",
+      "bytes": 1004
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/observation_only/twostage_hajek/window_metrics.parquet",
+      "sha256": "b5b61233d0ce735445b363b0e5807462f3cb41be44068d18ee6b0a201dca9dae",
+      "bytes": 23429
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/observation_only/twostage_hajek/checkpoints/final.pt",
+      "sha256": "99ee966f0f74329fca527e8713d68e355dbc01db4778daa54706c69fc22441c6",
+      "bytes": 126806
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/opportunity_only/fedasync_window/config_snapshot.json",
+      "sha256": "3edb460e23f4a3f3d6b3b33644996acc2cdf727d26c5061572ea228e0b96acc6",
+      "bytes": 394
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/opportunity_only/fedasync_window/eventtrace_identity.json",
+      "sha256": "52fdc338c3d706728ca42802fa8f0786b7c2b8bebf9fa65746d86b75bb1a88bf",
+      "bytes": 711
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/opportunity_only/fedasync_window/final_metrics.json",
+      "sha256": "34a960b582e5bdd0e945aa1e877ca9cf64cf64dea909e1da048c7af6b168c979",
+      "bytes": 1108
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/opportunity_only/fedasync_window/method_identity.json",
+      "sha256": "08dfe683e7615c010e52a739af4d96300e1fce10a21d13e2e3b11c03b981d49f",
+      "bytes": 58
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/opportunity_only/fedasync_window/runner_diagnostics.parquet",
+      "sha256": "ffd5ed8131d1ee8155df2179cdfcd9d6f3a003b0d5232f71ed76928006e56883",
+      "bytes": 301843
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/opportunity_only/fedasync_window/runtime_manifest.json",
+      "sha256": "b6e933c2a12d9fe7aeb83665be77ec444e4b68307b3af7359b8e994c4e797036",
+      "bytes": 2480
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/opportunity_only/fedasync_window/scenario_identity.json",
+      "sha256": "ea6d901a77e836adac47211a811bae2496fe4701ee3e0cde41e67ef6b5f8f2ef",
+      "bytes": 57
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/opportunity_only/fedasync_window/stderr.log",
+      "sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6",
+      "bytes": 2
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/opportunity_only/fedasync_window/stdout.log",
+      "sha256": "e477b9a63369a98698a616a26dc312620ca07ffb1f9aabc876b949671078c42f",
+      "bytes": 1009
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/opportunity_only/fedasync_window/window_metrics.parquet",
+      "sha256": "8d87404cf143f3fdc087c754142712cfc10729f63760398b7b4d0a94a58dbf7b",
+      "bytes": 23340
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/opportunity_only/fedasync_window/checkpoints/final.pt",
+      "sha256": "3c97005fda88c7608ee4ed0bd44c4fcdc5f48646c222591731e0d6b3b0afe522",
+      "bytes": 126806
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/opportunity_only/fedavg_window/config_snapshot.json",
+      "sha256": "abcdd45116e4913f5647ea34ce630b14f312fd5ae85def643a72c0872e115460",
+      "bytes": 392
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/opportunity_only/fedavg_window/eventtrace_identity.json",
+      "sha256": "52fdc338c3d706728ca42802fa8f0786b7c2b8bebf9fa65746d86b75bb1a88bf",
+      "bytes": 711
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/opportunity_only/fedavg_window/final_metrics.json",
+      "sha256": "970ad565cf913ae0d86fa3172dfdd1b4efb9a99d91ff2a5eaa041c08a4acf5dc",
+      "bytes": 1108
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/opportunity_only/fedavg_window/method_identity.json",
+      "sha256": "7bcb900ef06a0f35648fc2d5044a4a06060d2ee1dcfa0c34d9c6c9821510c6b7",
+      "bytes": 54
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/opportunity_only/fedavg_window/runner_diagnostics.parquet",
+      "sha256": "8f6adb2617ae0a45b3ffcbc98bf70714535df9f5ae4495f7c24a076f6cc93c73",
+      "bytes": 300146
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/opportunity_only/fedavg_window/runtime_manifest.json",
+      "sha256": "937af7c62a9f926c43d8b6e8f122a61aeaaa9a57d9615e48efbd990ff35ddcb4",
+      "bytes": 2476
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/opportunity_only/fedavg_window/scenario_identity.json",
+      "sha256": "ea6d901a77e836adac47211a811bae2496fe4701ee3e0cde41e67ef6b5f8f2ef",
+      "bytes": 57
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/opportunity_only/fedavg_window/stderr.log",
+      "sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6",
+      "bytes": 2
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/opportunity_only/fedavg_window/stdout.log",
+      "sha256": "4b44ab74df0591b3a5f9a76449cb5ad054a46535f8f6966c6dd16b9ff50c9ab8",
+      "bytes": 1009
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/opportunity_only/fedavg_window/window_metrics.parquet",
+      "sha256": "f619f932610d6e01d4f5c7d2f740e29316dc106b6d68194e2933f729f046d68b",
+      "bytes": 23346
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/opportunity_only/fedavg_window/checkpoints/final.pt",
+      "sha256": "3365977248a74bfe18d0019ec523a3b7c3860f5d415ac5616b779112e573c106",
+      "bytes": 126806
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/opportunity_only/flamf_timealign_adapted/config_snapshot.json",
+      "sha256": "a76a036b21097270b590192695a4321a901a21666d67ee2673443f5d5c992505",
+      "bytes": 402
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/opportunity_only/flamf_timealign_adapted/eventtrace_identity.json",
+      "sha256": "52fdc338c3d706728ca42802fa8f0786b7c2b8bebf9fa65746d86b75bb1a88bf",
+      "bytes": 711
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/opportunity_only/flamf_timealign_adapted/final_metrics.json",
+      "sha256": "6888d2ad981e3458ad594fb05cf49fc47682017fa40131ec36866425a4e495ad",
+      "bytes": 1101
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/opportunity_only/flamf_timealign_adapted/method_identity.json",
+      "sha256": "fd2ee84d727a3f5b32cef5a30d9e1bac33ab8d4432d459d2136b67ef1a9dbb20",
+      "bytes": 67
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/opportunity_only/flamf_timealign_adapted/runner_diagnostics.parquet",
+      "sha256": "808dd904ed55c83268428218eb00b269d90fa3c016ca8831e093361f77d1da9f",
+      "bytes": 344118
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/opportunity_only/flamf_timealign_adapted/runtime_manifest.json",
+      "sha256": "54cdd1e63aa18840e954ee3c57b92110c57dff1ed85806960fa3b0937352ed1f",
+      "bytes": 2482
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/opportunity_only/flamf_timealign_adapted/scenario_identity.json",
+      "sha256": "ea6d901a77e836adac47211a811bae2496fe4701ee3e0cde41e67ef6b5f8f2ef",
+      "bytes": 57
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/opportunity_only/flamf_timealign_adapted/stderr.log",
+      "sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6",
+      "bytes": 2
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/opportunity_only/flamf_timealign_adapted/stdout.log",
+      "sha256": "5185d8681b40b67cd658a0d05f1ddc22a8bd7431eb8dd98eaf04cfb9ae8804c9",
+      "bytes": 1002
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/opportunity_only/flamf_timealign_adapted/window_metrics.parquet",
+      "sha256": "8b6f5c61d3af5b2694c27c59c3375d0d9d96a84372cbf709e6dd879550bcd315",
+      "bytes": 23346
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/opportunity_only/flamf_timealign_adapted/checkpoints/final.pt",
+      "sha256": "6683e9b6fd0705606ba98d6f2cc8da80e6dead410cb14fb91c82c4d3ad3e7e98",
+      "bytes": 126806
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/opportunity_only/raven/config_snapshot.json",
+      "sha256": "c5f167a2f1ced7ce7b2d0cd0d26f711268080c12a318bc897cb1a2d90abfc97a",
+      "bytes": 384
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/opportunity_only/raven/eventtrace_identity.json",
+      "sha256": "52fdc338c3d706728ca42802fa8f0786b7c2b8bebf9fa65746d86b75bb1a88bf",
+      "bytes": 711
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/opportunity_only/raven/final_metrics.json",
+      "sha256": "86970a77d4fb4361499b86a3cca963a3039af6d1fdd23aba40855e8573027df0",
+      "bytes": 1098
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/opportunity_only/raven/method_identity.json",
+      "sha256": "91448f748f3827bcae2ff380c4d23bfb9b9cc21ed117e8d06fe9ccc0453ee551",
+      "bytes": 45
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/opportunity_only/raven/runner_diagnostics.parquet",
+      "sha256": "3452cfbc4e35d71dc9e3356520612ad07da8bbea601e02a8999e03aa25b15591",
+      "bytes": 306536
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/opportunity_only/raven/runtime_manifest.json",
+      "sha256": "70746ff3b8adeb0d53df7053d0bd77136c0089eecc8ab0ec3a2c0ddafef9adff",
+      "bytes": 2457
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/opportunity_only/raven/scenario_identity.json",
+      "sha256": "ea6d901a77e836adac47211a811bae2496fe4701ee3e0cde41e67ef6b5f8f2ef",
+      "bytes": 57
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/opportunity_only/raven/stderr.log",
+      "sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6",
+      "bytes": 2
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/opportunity_only/raven/stdout.log",
+      "sha256": "241902dff5f6cd9c00c71e9bad5dd58cc34d7874ec8085a4a42550a71033d7f5",
+      "bytes": 999
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/opportunity_only/raven/window_metrics.parquet",
+      "sha256": "f3477ea9d73dcc5013f8fb25918433cc84e25585741e9476c75309c3a83a4def",
+      "bytes": 23466
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/opportunity_only/raven/checkpoints/final.pt",
+      "sha256": "635ecb91da108316056123d7462ab8de03777be08da1eb3b9d116dddf06e1672",
+      "bytes": 126806
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/opportunity_only/twostage_hajek/config_snapshot.json",
+      "sha256": "d9db3a14402830a45fbb81288e878b9764be02f49e263b66e20028fcd01f0fc1",
+      "bytes": 393
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/opportunity_only/twostage_hajek/eventtrace_identity.json",
+      "sha256": "52fdc338c3d706728ca42802fa8f0786b7c2b8bebf9fa65746d86b75bb1a88bf",
+      "bytes": 711
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/opportunity_only/twostage_hajek/final_metrics.json",
+      "sha256": "e24b764279286cd18c4f3f583b0647253b4fb3fff243bb039b7786cdc08b36af",
+      "bytes": 1103
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/opportunity_only/twostage_hajek/method_identity.json",
+      "sha256": "cfe09373885ee986f3853e3087d503fb385e9bea5c0e583e3edf0656cb535262",
+      "bytes": 57
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/opportunity_only/twostage_hajek/runner_diagnostics.parquet",
+      "sha256": "491d40b01d70f293db3bb750f8a93719afb3436fa47cf55879359518c28d10cb",
+      "bytes": 306502
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/opportunity_only/twostage_hajek/runtime_manifest.json",
+      "sha256": "2b5b1dddfa78e39160c507cb17d91558a24584825eb43d65bebeee5cc9e391eb",
+      "bytes": 2474
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/opportunity_only/twostage_hajek/scenario_identity.json",
+      "sha256": "ea6d901a77e836adac47211a811bae2496fe4701ee3e0cde41e67ef6b5f8f2ef",
+      "bytes": 57
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/opportunity_only/twostage_hajek/stderr.log",
+      "sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6",
+      "bytes": 2
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/opportunity_only/twostage_hajek/stdout.log",
+      "sha256": "2a2069d88b0821d008527fbd15687583efaa9c46c2100ae1b9b21dd0c9228e82",
+      "bytes": 1004
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/opportunity_only/twostage_hajek/window_metrics.parquet",
+      "sha256": "a5abdb4c61c947f20674e4ea8738d13bf1c9e7d296aa8d8766dcf6420bae1c3a",
+      "bytes": 23345
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/opportunity_only/twostage_hajek/checkpoints/final.pt",
+      "sha256": "98414a359709e1796da50696b67aee3ae650601dc8c69f103365974b0aed931f",
+      "bytes": 126806
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/usable_only/fedasync_window/config_snapshot.json",
+      "sha256": "b682c8dfca73ffc5fb5b2db1a6623d1edfbc3a11a2cbf8e3eaa9ef6d76274101",
+      "bytes": 389
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/usable_only/fedasync_window/eventtrace_identity.json",
+      "sha256": "0e372b1c76c5994e7ec37112ca31ceaa3b5797b3d7ed629c620371d15ce2765c",
+      "bytes": 701
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/usable_only/fedasync_window/final_metrics.json",
+      "sha256": "dcf4933c17db9d9dd0410140ef9ab2c528cd9f14dd6ded4fff06ec8be5b207c3",
+      "bytes": 1116
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/usable_only/fedasync_window/method_identity.json",
+      "sha256": "08dfe683e7615c010e52a739af4d96300e1fce10a21d13e2e3b11c03b981d49f",
+      "bytes": 58
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/usable_only/fedasync_window/runner_diagnostics.parquet",
+      "sha256": "0f254f843f794eaaf590ea94dba22bc710c2a06e56679b4b821bf7974b5a68fd",
+      "bytes": 304409
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/usable_only/fedasync_window/runtime_manifest.json",
+      "sha256": "9bb97fcd00da6ac81a207f7847095271e6919a8a70785d88fd74729c523fa648",
+      "bytes": 2473
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/usable_only/fedasync_window/scenario_identity.json",
+      "sha256": "2cc0abf7bdb004b955a29782461f1e8f4103d59e9175f4ad6bd069e6e6a63a47",
+      "bytes": 52
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/usable_only/fedasync_window/stderr.log",
+      "sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6",
+      "bytes": 2
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/usable_only/fedasync_window/stdout.log",
+      "sha256": "9352f70cce4e4d9363390ed2aca2babf5e17ae0b3ab0c655a87da42ff514a2ad",
+      "bytes": 1017
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/usable_only/fedasync_window/window_metrics.parquet",
+      "sha256": "cf46b429d7507b2929f97b2122c03db85c317c9e7873c9c1b803aaee51b0d0bf",
+      "bytes": 23118
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/usable_only/fedasync_window/checkpoints/final.pt",
+      "sha256": "b7024aa5994e436b19ee9fe357fdddec2267d37e6ffdc6be4923a13b8a7e6439",
+      "bytes": 126806
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/usable_only/fedavg_window/config_snapshot.json",
+      "sha256": "e6c328dcc4fa41d38bdde5968d281b41023460e5f44237f1e1c83b09487d39f4",
+      "bytes": 387
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/usable_only/fedavg_window/eventtrace_identity.json",
+      "sha256": "0e372b1c76c5994e7ec37112ca31ceaa3b5797b3d7ed629c620371d15ce2765c",
+      "bytes": 701
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/usable_only/fedavg_window/final_metrics.json",
+      "sha256": "46ec4090c608ef5ca1d12ff4f710dbb3b69838dc1a15a18d20b2542d17c00424",
+      "bytes": 1120
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/usable_only/fedavg_window/method_identity.json",
+      "sha256": "7bcb900ef06a0f35648fc2d5044a4a06060d2ee1dcfa0c34d9c6c9821510c6b7",
+      "bytes": 54
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/usable_only/fedavg_window/runner_diagnostics.parquet",
+      "sha256": "4989c1a69fa16b09175b0b1303126df5e8c252b94c481bbdd2330c188bf1e43c",
+      "bytes": 298721
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/usable_only/fedavg_window/runtime_manifest.json",
+      "sha256": "ffa80f93f199bc41c1323b81f8153ed2748f4ee34e89a2ebe7da51dfe4185247",
+      "bytes": 2473
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/usable_only/fedavg_window/scenario_identity.json",
+      "sha256": "2cc0abf7bdb004b955a29782461f1e8f4103d59e9175f4ad6bd069e6e6a63a47",
+      "bytes": 52
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/usable_only/fedavg_window/stderr.log",
+      "sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6",
+      "bytes": 2
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/usable_only/fedavg_window/stdout.log",
+      "sha256": "af0a1f228a22207da1265dd710416ef826c1056d90e9dd15734d8bb2481a3a1c",
+      "bytes": 1021
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/usable_only/fedavg_window/window_metrics.parquet",
+      "sha256": "0a7609d25745ee8f5fb86072096e5acfc348067bd4e23f78994c5d36356bfd2e",
+      "bytes": 23104
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/usable_only/fedavg_window/checkpoints/final.pt",
+      "sha256": "d99635fd52f275d39bd4242342cc4467ba4e51f78e5c25dcfbe0c493793b97df",
+      "bytes": 126806
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/usable_only/flamf_timealign_adapted/config_snapshot.json",
+      "sha256": "9536e3a03f4084fa8a2a07f586ee2936a3b7b486ce04c587f308831fca41b641",
+      "bytes": 397
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/usable_only/flamf_timealign_adapted/eventtrace_identity.json",
+      "sha256": "0e372b1c76c5994e7ec37112ca31ceaa3b5797b3d7ed629c620371d15ce2765c",
+      "bytes": 701
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/usable_only/flamf_timealign_adapted/final_metrics.json",
+      "sha256": "503b9891cfae672e3c1799f5efdd6152463e9920b055d8c02c7bb14fd9dec1af",
+      "bytes": 1115
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/usable_only/flamf_timealign_adapted/method_identity.json",
+      "sha256": "fd2ee84d727a3f5b32cef5a30d9e1bac33ab8d4432d459d2136b67ef1a9dbb20",
+      "bytes": 67
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/usable_only/flamf_timealign_adapted/runner_diagnostics.parquet",
+      "sha256": "2ed79e1412e73462c06bede8b2f3690ed67a5a6ad0539b4b4fb76af66b551402",
+      "bytes": 348482
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/usable_only/flamf_timealign_adapted/runtime_manifest.json",
+      "sha256": "d8ca1b4f7473112352db33761ba5b3668f04dc397da8e5cca6476ee6445877e8",
+      "bytes": 2481
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/usable_only/flamf_timealign_adapted/scenario_identity.json",
+      "sha256": "2cc0abf7bdb004b955a29782461f1e8f4103d59e9175f4ad6bd069e6e6a63a47",
+      "bytes": 52
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/usable_only/flamf_timealign_adapted/stderr.log",
+      "sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6",
+      "bytes": 2
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/usable_only/flamf_timealign_adapted/stdout.log",
+      "sha256": "a7ad967eb83e7794a122c079823cfcfc65347a5f871d26caeeeb2b2ddad76dc8",
+      "bytes": 1016
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/usable_only/flamf_timealign_adapted/window_metrics.parquet",
+      "sha256": "53b9ffd86b5fa3218bb67ae58e8e4f0f49806342388a27b37b7a5f5217b5ed09",
+      "bytes": 23347
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/usable_only/flamf_timealign_adapted/checkpoints/final.pt",
+      "sha256": "57259b68d174c9900f3d956949d80cc8407ad3e6b6d1920752fef6085c1292d6",
+      "bytes": 126806
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/usable_only/raven/config_snapshot.json",
+      "sha256": "12d915ac95ee61b01f4f7c9b449e22ad3da0077a39d50969eb053e728f669abf",
+      "bytes": 379
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/usable_only/raven/eventtrace_identity.json",
+      "sha256": "0e372b1c76c5994e7ec37112ca31ceaa3b5797b3d7ed629c620371d15ce2765c",
+      "bytes": 701
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/usable_only/raven/final_metrics.json",
+      "sha256": "a71cfff7feec2499e8044f05ae4976b238195410406818c07aceb5371a5c0f73",
+      "bytes": 1111
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/usable_only/raven/method_identity.json",
+      "sha256": "91448f748f3827bcae2ff380c4d23bfb9b9cc21ed117e8d06fe9ccc0453ee551",
+      "bytes": 45
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/usable_only/raven/runner_diagnostics.parquet",
+      "sha256": "684bde80608da4737143d51aad310013c30cf7af7e087691075cd20895cdfc11",
+      "bytes": 305631
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/usable_only/raven/runtime_manifest.json",
+      "sha256": "e4f7c342e902778d8710660b096ac4d67fcf20f972634bf83d2d797f91f57d5b",
+      "bytes": 2455
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/usable_only/raven/scenario_identity.json",
+      "sha256": "2cc0abf7bdb004b955a29782461f1e8f4103d59e9175f4ad6bd069e6e6a63a47",
+      "bytes": 52
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/usable_only/raven/stderr.log",
+      "sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6",
+      "bytes": 2
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/usable_only/raven/stdout.log",
+      "sha256": "c6c6a31610d133583e13ba5fab791f816ddc3a327bd6bcf608518ea6c1a5bffd",
+      "bytes": 1012
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/usable_only/raven/window_metrics.parquet",
+      "sha256": "a448a695844a79833606910e666eead98c6c30703023788712c1a424848a183b",
+      "bytes": 23506
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/usable_only/raven/checkpoints/final.pt",
+      "sha256": "3c08f52a73d46ba3c87b047c473cfd9ec173588c06675f133b09ba423c3a9bb6",
+      "bytes": 126806
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/usable_only/twostage_hajek/config_snapshot.json",
+      "sha256": "3061f9467a31e98a6b32bb5b93b9ae0f7d5e717f8d57f0d7b846021596290dd1",
+      "bytes": 388
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/usable_only/twostage_hajek/eventtrace_identity.json",
+      "sha256": "0e372b1c76c5994e7ec37112ca31ceaa3b5797b3d7ed629c620371d15ce2765c",
+      "bytes": 701
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/usable_only/twostage_hajek/final_metrics.json",
+      "sha256": "e93052f01868cd198077ebb7f603fd666aae64214dde157906046070eda656e9",
+      "bytes": 1116
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/usable_only/twostage_hajek/method_identity.json",
+      "sha256": "cfe09373885ee986f3853e3087d503fb385e9bea5c0e583e3edf0656cb535262",
+      "bytes": 57
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/usable_only/twostage_hajek/runner_diagnostics.parquet",
+      "sha256": "d63966c2e0d0367d0b6be6158495b7d5c419422afb13de2e9e1c2fc03fdc919e",
+      "bytes": 308758
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/usable_only/twostage_hajek/runtime_manifest.json",
+      "sha256": "05cff252504123af82c634e2704a14d554027755076ace4bcfef2a9bfdca83b6",
+      "bytes": 2472
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/usable_only/twostage_hajek/scenario_identity.json",
+      "sha256": "2cc0abf7bdb004b955a29782461f1e8f4103d59e9175f4ad6bd069e6e6a63a47",
+      "bytes": 52
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/usable_only/twostage_hajek/stderr.log",
+      "sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6",
+      "bytes": 2
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/usable_only/twostage_hajek/stdout.log",
+      "sha256": "7d562f6cc3b6cc51785a3441cd253952372397f74dca652294e19f5d9939adff",
+      "bytes": 1017
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/usable_only/twostage_hajek/window_metrics.parquet",
+      "sha256": "93d40d265af0e14d7379f2074d40b47283f1ba1b4c586f90de6cc6ac93958c38",
+      "bytes": 23060
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/runs/usable_only/twostage_hajek/checkpoints/final.pt",
+      "sha256": "c68c76c4750872e12afa0ac667a0394ed874da13e4adcfb2bc27bdb62cd0812b",
+      "bytes": 126806
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/_smoke/balanced/eventtrace_identity.json",
+      "sha256": "747baa9cbea6b365596f638b34c2cf1903b12972b2e885f08d61330169e9f6dd",
+      "bytes": 1456
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/_smoke/balanced/hard/client_window_activity.parquet",
+      "sha256": "5f20ba9cf4244b8d9cb0b262c61d8d3e9f4f347ba232b8f70cb151c2b612dfad",
+      "bytes": 8341
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/_smoke/balanced/hard/eventtrace_manifest.json",
+      "sha256": "3c9d44898082c66cefa19bbda70b97f5c4d9c2d5f3cf44a37dc1f4a08d500907",
+      "bytes": 635
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/_smoke/balanced/hard/failed_attempts.parquet",
+      "sha256": "ad038fc933293b7d0c14a6aae9d5dadc2323f09864103aa6ec428e74291c3159",
+      "bytes": 20791
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/_smoke/balanced/hard/hard_arrival_events.parquet",
+      "sha256": "33470ee11377a7ada787ee6e93e4e164cdc90a516287e09465d7e47707c889f7",
+      "bytes": 188575
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/_smoke/balanced/hard/observation_events.parquet",
+      "sha256": "d053475c3cd67087254712763f70036de410118bdfa49b2f32623b167a0bf58b",
+      "bytes": 248767
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/_smoke/balanced/hard/opportunity_events.parquet",
+      "sha256": "a71163b0e7c94b8155fc42b03300c5c51307231a69b049b7b75cf28174ddf27f",
+      "bytes": 435260
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/_smoke/balanced/hard/runtime_parameter_snapshot.json",
+      "sha256": "1f430fdc5d4b587f54b68c246169821873ea62052ca3c8472cb0f73ced863f62",
+      "bytes": 664
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/_smoke/balanced/hard/usable_events.parquet",
+      "sha256": "665c9868b6a12e2d872e43cd273fa4be398349785ca94bf05ddc82816145f05e",
+      "bytes": 41356
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/_smoke/balanced/runs/fedavg_window/config_snapshot.json",
+      "sha256": "ac996cbec7c1446afa48f27e887a29d9909bdeb358aa4a9c0a2af93db911624d",
+      "bytes": 302
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/_smoke/balanced/runs/fedavg_window/eventtrace_identity.json",
+      "sha256": "674e6df360a538e00ac68ee4591ca20bb42ee8c45f3ccb26fad36873a0bccc4d",
+      "bytes": 120
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/_smoke/balanced/runs/fedavg_window/final_metrics.json",
+      "sha256": "2e01ef6e6d4cf69c5b539415859a21f213b6f636bd3ef424c6e87e591cecb4d6",
+      "bytes": 388
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/_smoke/balanced/runs/fedavg_window/method_identity.json",
+      "sha256": "7bcb900ef06a0f35648fc2d5044a4a06060d2ee1dcfa0c34d9c6c9821510c6b7",
+      "bytes": 54
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/_smoke/balanced/runs/fedavg_window/runner_diagnostics.parquet",
+      "sha256": "b1c548a8deb2a986e492cef8f891c117aacdb15711476b61ccaece476305f969",
+      "bytes": 116958
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/_smoke/balanced/runs/fedavg_window/runtime_manifest.json",
+      "sha256": "044cb57f2c33bf9e5ab0c25e266c0593bf263b85f46b309d69ec96dd57195d27",
+      "bytes": 1044
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/_smoke/balanced/runs/fedavg_window/scenario_identity.json",
+      "sha256": "e162f4b4c0303be21f4f4665e7a20d5457dab3b16568b71ee4981afbb2beff6f",
+      "bytes": 49
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/_smoke/balanced/runs/fedavg_window/stderr.log",
+      "sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6",
+      "bytes": 2
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/_smoke/balanced/runs/fedavg_window/stdout.log",
+      "sha256": "a5e57a7f4b1f5c44a62a4a7b5e602dad912dc983d75dcce839ba13baeca66211",
+      "bytes": 345
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/_smoke/balanced/runs/fedavg_window/window_metrics.parquet",
+      "sha256": "13ca10f022725b4865709d9534853486b0b0b68d21dd21f859a9270a92d1d294",
+      "bytes": 7691
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/_smoke/balanced/runs/fedavg_window/checkpoints/final.pt",
+      "sha256": "487ba08a59af8d9c70653887096442b92dbf31b5864b845254a4e800d7cc1c4b",
+      "bytes": 126806
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/_smoke/balanced/runs/fedavg_window_std/config_snapshot.json",
+      "sha256": "ac996cbec7c1446afa48f27e887a29d9909bdeb358aa4a9c0a2af93db911624d",
+      "bytes": 302
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/_smoke/balanced/runs/fedavg_window_std/eventtrace_identity.json",
+      "sha256": "674e6df360a538e00ac68ee4591ca20bb42ee8c45f3ccb26fad36873a0bccc4d",
+      "bytes": 120
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/_smoke/balanced/runs/fedavg_window_std/final_metrics.json",
+      "sha256": "beaadbb786fbf519c5ae26fa1691dbe973b6bd005d131c15ea228b892a1b1d9a",
+      "bytes": 471
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/_smoke/balanced/runs/fedavg_window_std/method_identity.json",
+      "sha256": "7bcb900ef06a0f35648fc2d5044a4a06060d2ee1dcfa0c34d9c6c9821510c6b7",
+      "bytes": 54
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/_smoke/balanced/runs/fedavg_window_std/runner_diagnostics.parquet",
+      "sha256": "9946cd275ee32f887b154da8305542407961a5b3bb90bec728092c553b2583ff",
+      "bytes": 303543
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/_smoke/balanced/runs/fedavg_window_std/runtime_manifest.json",
+      "sha256": "8259884ed2409c38ca531e06314381b3757aa27a674df62ffaa5edf005ffa51c",
+      "bytes": 1127
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/_smoke/balanced/runs/fedavg_window_std/scenario_identity.json",
+      "sha256": "e162f4b4c0303be21f4f4665e7a20d5457dab3b16568b71ee4981afbb2beff6f",
+      "bytes": 49
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/_smoke/balanced/runs/fedavg_window_std/stderr.log",
+      "sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6",
+      "bytes": 2
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/_smoke/balanced/runs/fedavg_window_std/stdout.log",
+      "sha256": "5c96e8dfaf4aaa3be52cae0e0cc08e7aa9834f116d091eb2f8f8f9fd3cfbbaf6",
+      "bytes": 428
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/_smoke/balanced/runs/fedavg_window_std/window_metrics.parquet",
+      "sha256": "460a4424e2d5eae699e2f70da635de4bd3f51574151f1b2730e092e8f480188a",
+      "bytes": 18936
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/_smoke/balanced/runs/fedavg_window_std/checkpoints/final.pt",
+      "sha256": "24b698e15d2299cdbc2ade5c6208ee2f4df4d588061064218c5ff1ac37952b0c",
+      "bytes": 126806
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/_smoke/balanced/training_eventtrace/events.parquet",
+      "sha256": "a8fe4d7ab65778ec8d195555d33f4947baa5670596510b0a2684c680d17eface",
+      "bytes": 240712
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/_smoke/balanced/training_eventtrace/metadata.json",
+      "sha256": "c52d44478e39c60970cca9fbfa0972dbf8a5cabf16f3b204440fcef962e00435",
+      "bytes": 239
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/_smoke/balanced/training_eventtrace/trace_identity.json",
+      "sha256": "8c109100f03ac24bee33747b3087fc8701648f7bf6059e9d30c65872f03f2efe",
+      "bytes": 541
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/_traffic_dataset_staging/atomic_units.parquet",
+      "sha256": "b36b9efa2b3341b3f95b98fdf4f93016ffb0fb78db56b9e7b383c4be00c9155d",
+      "bytes": 324952
+    },
+    {
+      "path": "outputs/e2_traffic_real_runner_canary/_traffic_dataset_staging/client_measurements.parquet",
+      "sha256": "6180dc52e6e5f64a33e6cfe868562bbce97dec4497df8e765e60abf7747a39f2",
+      "bytes": 560803
+    },
+    {
+      "path": "outputs/gates/E2_TRAFFIC_REAL_RUNNER_CANARY_R1_COMPACT_EVIDENCE_GATE.json",
+      "sha256": "8d293b60ffa829ce2b1d0a2790be0bca11cdac77fd4480df948b70e1c2c19bc0",
+      "bytes": 346
+    },
+    {
+      "path": "outputs/gates/E2_TRAFFIC_REAL_RUNNER_CANARY_R1_GATES.json",
+      "sha256": "6bd12be837a20193c0ea7ff2e1ed4eb7d45c1596efb868a94de323aa3b27d717",
+      "bytes": 597
+    }
+  ]
+}

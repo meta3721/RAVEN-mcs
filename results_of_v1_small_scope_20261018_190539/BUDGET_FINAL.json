@@ -1,0 +1,119 @@
+{
+  "as_of": "2026-10-18T11:50:43.800911+00:00",
+  "audited_actual_CPU": 411.890625,
+  "unmetered_conservative_occupancy": 50,
+  "charged_CPU": 461.890625,
+  "remaining_CPU": 538.109375,
+  "active_wall_envelope": 3144.253177,
+  "phases": {
+    "A": 32.015625,
+    "B": 47.28125,
+    "C": 356.15625,
+    "delivery": 26.4375
+  },
+  "charges": [
+    {
+      "label": "A",
+      "charged_CPU": 0.53125,
+      "job_CPU": 0.421875,
+      "launcher_and_monitor_CPU": 0.109375,
+      "audit": true,
+      "returncode": 1,
+      "limit": null,
+      "wall": 0.5030093999957899,
+      "actual_CPU": 0.53125
+    },
+    {
+      "label": "A_identity",
+      "charged_CPU": 1.484375,
+      "job_CPU": 1.375,
+      "launcher_and_monitor_CPU": 0.109375,
+      "audit": true,
+      "returncode": 0,
+      "limit": null,
+      "wall": 1.48683439999877,
+      "actual_CPU": 1.484375
+    },
+    {
+      "label": "B",
+      "charged_CPU": 12.734375,
+      "job_CPU": 11.640625,
+      "launcher_and_monitor_CPU": 1.09375,
+      "audit": true,
+      "returncode": 1,
+      "limit": null,
+      "wall": 18.098547700006748,
+      "actual_CPU": 12.734375
+    },
+    {
+      "label": "B_repair",
+      "charged_CPU": 2.953125,
+      "job_CPU": 2.734375,
+      "launcher_and_monitor_CPU": 0.21875,
+      "audit": true,
+      "returncode": 1,
+      "limit": null,
+      "wall": 3.0312498999992386,
+      "actual_CPU": 2.953125
+    },
+    {
+      "label": "B_repair2",
+      "charged_CPU": 10.671875,
+      "job_CPU": 10.109375,
+      "launcher_and_monitor_CPU": 0.5625,
+      "audit": true,
+      "returncode": 1,
+      "limit": null,
+      "wall": 10.897185999987414,
+      "actual_CPU": 10.671875
+    },
+    {
+      "label": "B_repair3",
+      "charged_CPU": 20.921875,
+      "job_CPU": 19.75,
+      "launcher_and_monitor_CPU": 1.171875,
+      "audit": true,
+      "returncode": 0,
+      "limit": null,
+      "wall": 21.233072399991215,
+      "actual_CPU": 20.921875
+    },
+    {
+      "label": "C",
+      "charged_CPU": 356.15625,
+      "job_CPU": 265.53125,
+      "launcher_and_monitor_CPU": 90.625,
+      "audit": true,
+      "returncode": 0,
+      "limit": null,
+      "wall": 2036.917051299999,
+      "actual_CPU": 356.15625
+    },
+    {
+      "label": "D_delivery",
+      "charged_CPU": 0.15625,
+      "job_CPU": 0.0625,
+      "launcher_and_monitor_CPU": 0.09375,
+      "audit": true,
+      "returncode": 0,
+      "limit": null,
+      "wall": 0.1431901000032667,
+      "actual_CPU": 0.15625
+    },
+    {
+      "label": "D_validation",
+      "charged_CPU": 6.28125,
+      "job_CPU": 5.828125,
+      "launcher_and_monitor_CPU": 0.453125,
+      "audit": true,
+      "returncode": 0,
+      "limit": null,
+      "wall": 6.115392499996233,
+      "actual_CPU": 6.28125
+    }
+  ],
+  "state": "WAITING_USER_REVIEW",
+  "new_experiments_running": false,
+  "full_P3": false,
+  "paper_modified": false
+}

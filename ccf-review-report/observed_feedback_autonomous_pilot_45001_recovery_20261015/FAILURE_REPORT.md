@@ -1,0 +1,15 @@
+# 本阶段失败或未建立效用的具体范围
+
+状态PILOT_UTILITY_NOT_ESTABLISHED。完整4/4，缺[]。四臂完整时，本报告是原单种子科学幅度/保护条件未满足；缺臂时是设施/有效性/资源阶段未完成，科学筛查NOT_EVALUATED。各固定基线、主路线/保护条件：{"fixed05": {"Gb": 0.9588590116279057, "Wb": 0.5063291139240507, "Gof": 0.9452180232558112, "Wof": 0.6015037593984962, "rW": -0.18796992481202993, "rG": 0.014226271231403936, "dG": -0.013640988372094487, "W_ratio": 1.18796992481203, "wait_route": false, "match_route": false, "protects_wait_quality": true, "protects_match_wait": false, "autonomous_action_difference_799": 229, "dynamic_Q_different_grids": 794, "model_version_different_grids": 794, "closure_times_equal": false, "interpretation": "same global time, different endogenous state;not same-state counterfactual"}, "fixed2": {"Gb": 0.8430825786217807, "Wb": 2.0, "Gof": 0.9452180232558112, "Wof": 0.6015037593984962, "rW": 0.6992481203007519, "rG": -0.12114524392260029, "dG": 0.10213544463403046, "W_ratio": 0.3007518796992481, "wait_route": false, "match_route": false, "protects_wait_quality": false, "protects_match_wait": true, "autonomous_action_difference_799": 141, "dynamic_Q_different_grids": 790, "model_version_different_grids": 791, "closure_times_equal": false, "interpretation": "same global time, different endogenous state;not same-state counterfactual"}, "noqstop": {"Gb": 0.9452180232558112, "Wb": 0.6015037593984962, "Gof": 0.9452180232558112, "Wof": 0.6015037593984962, "rW": 0.0, "rG": 0.0, "dG": 0.0, "W_ratio": 1.0, "wait_route": false, "match_route": false, "protects_wait_quality": true, "protects_match_wait": true, "autonomous_action_difference_799": 0, "dynamic_Q_different_grids": 0, "model_version_different_grids": 0, "closure_times_equal": true, "interpretation": "same global time, different endogenous state;not same-state counterfactual"}}；主判定{"Gb": 0.9588590116279057, "Wb": 0.5063291139240507, "Gof": 0.9452180232558112, "Wof": 0.6015037593984962, "rW": -0.18796992481202993, "rG": 0.014226271231403936, "dG": -0.013640988372094487, "W_ratio": 1.18796992481203, "wait_route": false, "match_route": false, "protects_wait_quality": true, "protects_match_wait": false, "autonomous_action_difference_799": 229, "dynamic_Q_different_grids": 794, "model_version_different_grids": 794, "closure_times_equal": false, "interpretation": "same global time, different endogenous state;not same-state counterfactual"}，Q停止项Q_STOP_CLAIM_UNSUPPORTED。没有事后改门槛。
+
+恢复/新增每臂EXECUTION_RESULT记录具体异常、now/下一格/最后完整模型-private和保存失败；旧失联后缀不复原、真实根因UNKNOWN。仍有效的OF终点、原t75、设施PASS、等值恢复与已完成臂证据保留，旧失败记录不覆盖。
+
+本阶段账快照1423.515625/1800、连续4407.375000/4800；新活动墙钟8891.691830/9000。旧2388保守占用不是实际算法费用，已测/未知/保守分开。详见RESOURCE_AND_BUDGET最终补正。若是科学幅度失败，不能据此证明所有种子/同类方法不可能有效；若资源/设施失败，不能据缺臂宣布科学失败。
+
+下一步仅提交明确所缺阶段与实际点、保持方法的最小资源/设施需求或待审批方法修订；未批准不扩预算、改方法、重跑OF或开展其他实验。
+
+对fixed_time_0.5：rW=-18.796992%，rG=1.422627%，dG=-0.013640988，W比=1.187969925；等待路线False（质量保护True），匹配路线False（等待保护False）。自主799格动作不同229，动态Q不同794，模型版本不同794。
+
+对fixed_time_2：rW=69.924812%，rG=-12.114524%，dG=0.102135445，W比=0.300751880；等待路线False（质量保护False），匹配路线False（等待保护True）。自主799格动作不同141，动态Q不同790，模型版本不同791。
+
+四臂若全部完整，则失败发生在原D科学幅度筛查，而非中断或资源终审。无需再训练即可报告本单种子是否达幅；任何下一方法或新种子另需用户审批。

@@ -1,0 +1,87 @@
+{
+  "candidate_size": 20,
+  "kappas": {
+    "kappa_opp": 1.0,
+    "kappa_p": 1.0,
+    "kappa_q": 1.0
+  },
+  "profile_summary": [
+    {
+      "kappa_sum": 1.5,
+      "max_seed_aligned_dtv_group": 0.21777094453469484,
+      "profile_id": "PROFILE-S1",
+      "profile_valid": false
+    },
+    {
+      "kappa_sum": 3.0,
+      "max_seed_aligned_dtv_group": 0.4074417030975933,
+      "profile_id": "PROFILE-S2",
+      "profile_valid": true
+    },
+    {
+      "kappa_sum": 4.5,
+      "max_seed_aligned_dtv_group": 0.5245945464266619,
+      "profile_id": "PROFILE-S3",
+      "profile_valid": true
+    },
+    {
+      "kappa_sum": 3.5,
+      "max_seed_aligned_dtv_group": 0.4282481027142545,
+      "profile_id": "PROFILE-S4",
+      "profile_valid": true
+    },
+    {
+      "kappa_sum": 4.0,
+      "max_seed_aligned_dtv_group": 0.44329964724166004,
+      "profile_id": "PROFILE-S5",
+      "profile_valid": true
+    },
+    {
+      "kappa_sum": 5.0,
+      "max_seed_aligned_dtv_group": 0.533249715831145,
+      "profile_id": "PROFILE-S6",
+      "profile_valid": true
+    }
+  ],
+  "runtime": {
+    "e1_runtime_per_100_windows_sec": {
+      "fedasync_window": 42.3753,
+      "fedavg_window": 43.7399,
+      "flamf_timealign_adapted": 41.5501
+    },
+    "estimated_baselines": {
+      "local_hajek": {
+        "seconds_per_100": 35.0,
+        "source": "ESTIMATED_FROM_E1_ORDER"
+      },
+      "twostage_hajek": {
+        "seconds_per_100": 38.0,
+        "source": "ESTIMATED_FROM_E1_ORDER"
+      }
+    },
+    "estimated_disk_gb": 4.875,
+    "extended_diagnostic_runs": 40,
+    "extended_serial_cpu_hours": 1.7223039999999998,
+    "local_twostage_not_faked_as_fedavg": true,
+    "no_runs_executed_this_round": true,
+    "safety_margin": 0.2,
+    "selected_windows": 300,
+    "strict_primary_runs": 360,
+    "strict_serial_cpu_hours": 15.319836,
+    "total_runs": 400,
+    "total_serial_cpu_hours": 17.04214,
+    "wall_hours_2_workers": 8.52107,
+    "wall_hours_4_workers": 4.260535,
+    "wall_hours_8_workers": 2.1302675
+  },
+  "selected_profile": "PROFILE-S2",
+  "selected_windows": 300,
+  "status": "PASS",
+  "trace_count": 180,
+  "trace_failures": 0,
+  "window_status": {
+    "100": "FAIL",
+    "200": "FAIL",
+    "300": "PASS"
+  }
+}

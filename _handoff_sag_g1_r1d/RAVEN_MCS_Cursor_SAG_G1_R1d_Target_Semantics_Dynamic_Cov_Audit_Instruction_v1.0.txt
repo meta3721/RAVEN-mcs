@@ -1,0 +1,1047 @@
+RAVEN-MCS v2.0
+Cursor 下一轮实验指令
+SAG-G1-R1d Target-Semantics Freeze + Dynamic Coverage Certificate Audit
+=====================================================================
+版本：v1.0
+
+本轮定位：
+  TARGET_SEMANTICS_AND_DYNAMIC_COV_CERTIFICATE_AUDIT
+
+本轮目标：
+  在进入任何 5-seed 之前，彻底回答两个剩余核心问题：
+
+  Q1. 论文真正的 deployment target law 到底是什么？
+      必须冻结唯一 varpi^{tar}，并统一派生 mu 与 pi^{tar}。
+
+  Q2. C_cov 能否真正预测 current-window opportunity support？
+      必须从“all-history pooled static law”改成“window/block-level predictable current-window certificate”。
+
+本轮仍不做正式大实验。
+先做 1-seed development audit：
+  SensorScope seed 30001
+  U-Air seed 30001
+
+若 U-Air 在正确 target law 下不再是 unsafe regime，
+不得强行让它 OFF。
+此时只允许进入“自然 unsafe block 搜索 / 预注册 support-stress diagnostic”，
+且必须先停下来输出结论，不自动扩跑。
+
+=====================================================================
+一、必须先阅读的权威材料
+=====================================================================
+
+Cursor 开始前必须完整阅读：
+
+1. RAVEN_MCS_Support_Aware_Gate_Spec_v1.2_Final_Closure.txt
+2. RAVEN_MCS_v2_Sections_III_VI_PostAudit_Final.txt
+3. RAVEN_MCS_Cursor_SAG_G0_G1_Experiment_Instruction_v1.0.txt
+4. RAVEN_MCS_Cursor_SAG_G1_R1_Certificate_Repair_Instruction_v1.0.txt
+5. RAVEN_MCS_Cursor_SAG_G1_R1b_Semantic_Alignment_Repair_Instruction_v1.0.txt
+6. RAVEN_MCS_Cursor_SAG_G1_R1c_Coverage_Certificate_Repair_Instruction_v1.0.txt
+7. 最新 R1c evidence package：
+   - R1C_COVERAGE_REPAIR_REPORT.md
+   - R1C_VERDICT.json
+   - TARGET_SOURCE_AUDIT.md
+   - TARGET_COMPATIBILITY_CHECK.csv
+   - TARGET_ATOMIC_LAW.csv
+   - PI_SAFE_RULE_FROZEN.json
+   - EVENT_COUNT_EFFECTIVE_SAMPLE.csv
+   - OPPORTUNITY_LCB_PAIR.csv
+   - C_COV_WINDOW.csv
+   - C_COV_CALIBRATION.csv
+   - C_COV_OLD_VS_NEW.csv
+   - A8B_CERTIFICATE_COVERAGE_R1C.csv
+   - A8B_CERTIFICATE_WIDTH_R1C.csv
+   - R1C_GATE_WINDOW_LOG.csv
+   - R1C_GATE_PASSRATE.csv
+   - 当前源码快照 / commit hash
+
+authority 顺序：
+
+  SAG v1.2 Final Spec
+    ->
+  Sections III--VI PostAudit Final
+    ->
+  本轮 R1d 指令
+
+若旧代码与论文冲突，以 PostAudit Final 为准。
+
+=====================================================================
+二、当前已经确认的事实
+=====================================================================
+
+A. G0 已 PASS：
+  timing / leakage / EventTrace / B_r-A_r semantics 不再重做。
+
+B. deployment-group h(i) 已修正：
+  SensorScope 当前 |G|=4；
+  B_tot 在 SensorScope 已不再是主要 blocker。
+
+C. opportunity-event mass 已修正：
+  不再使用 unique-pair presence uniformization。
+
+D. target compatibility 在 R1c 已数值闭合：
+  max compatibility error 约 1.72e-13。
+
+但是：
+  R1c 选择的 varpi^{tar}
+  =
+  uniform over train-split supported atoms。
+
+这一选择数学上一致，
+但“是否符合论文真正 deployment population semantics”
+还没有科学性封口。
+
+E. R1c 新 C_cov 使用：
+  all completed opportunity-event counts
+  + Clopper-Pearson
+  + Bonferroni。
+
+它解决了“LCB 恒为 0”的问题，
+但出现新的严重问题：
+
+  SensorScope Gate ON 约 89%;
+  U-Air Gate ON 约 87.5%;
+
+warm-up 后二者都接近 Always-ON。
+
+同时 C_cov calibration：
+  pairwise coverage 约 74%;
+  joint-window coverage = 0。
+
+而且 coverage 随时间明显下降。
+
+这说明：
+  pooled-history static opportunity law
+  不适合作为 current-window P_r^{opp} 的 certificate。
+
+F. U-Air 旧的 active-set mismatch / Design reversal
+在统一 target law 后大幅消失。
+
+因此：
+  旧 U-Air unsafe evidence 不能再直接沿用。
+
+G. A8b 95% calibration 仍未完全闭合：
+  joint coverage 约 93%左右。
+
+本轮主要优先处理：
+  target semantics
+  dynamic C_cov
+
+=====================================================================
+三、本轮绝对禁止事项
+=====================================================================
+
+1. 不得修改：
+   tau_cov  = 0.05
+   tau_ret  = 0.05
+   tau_ESS  = 1.0
+   tau_clip = 0.95
+   tau_A    = 0.35
+   tau_safe = 4.0
+   delta_cal = 0.05
+
+2. 不得通过改阈值恢复 U-Air unsafe。
+
+3. 不得通过选择“更差结果”的 target law 来制造 reversal。
+
+4. 不得依据 Gate ON/OFF、RMSE、Delta_group 结果选择 varpi^{tar}。
+
+5. 不得用 test labels/test residual/test prediction error 定义 target law。
+
+6. 不得继续把 all-history pooled CP bound 当 current-window support certificate。
+
+7. 不得把 current R/O/U 进入同窗口 Gate。
+
+8. 不得自动跑 5 seeds。
+
+9. 不得自动新增外部数据集。
+
+10. 不得自动设计多档 synthetic stress。
+
+11. 不得修改 Theorem 3/4 公式。
+
+12. 不得把旧 U-Air reversal 继续写成新版已验证事实。
+
+=====================================================================
+四、R1d-A：冻结唯一 Deployment Target Semantics
+=====================================================================
+
+本轮第一优先级不是跑实验，
+而是回答：
+
+  “RAVEN-MCS 的 deployment population 到底是谁？”
+
+------------------------------------------------------------
+R1d-A.1 做 Target Semantics Provenance Audit
+------------------------------------------------------------
+
+搜索：
+
+  varpi_tar
+  deployment target
+  target population
+  target law
+  train-supported
+  deployment-supported
+  test-supported
+  public target
+  atomic target
+  evaluation population
+  target map
+  mu
+  pi_tar
+
+必须从以下材料中找证据：
+
+  - 当前 Sections III--VI；
+  - 旧正式论文全文；
+  - 旧实验 protocol；
+  - frozen target construction；
+  - public dataset semantics；
+  - existing target config。
+
+输出：
+
+  outputs/sag_g1_r1d/target/
+    TARGET_SEMANTICS_PROVENANCE_AUDIT.md
+
+必须分成候选：
+
+Candidate A:
+  train-supported atomic target
+
+Candidate B:
+  public deployment/test-support target
+
+Candidate C:
+  external/publicly specified deployment target
+  （若项目中真实存在）
+
+对于每个 candidate，写：
+
+  source/provenance
+  scientific meaning
+  uses outcomes?
+  uses labels?
+  uses test-side public metadata?
+  compatible with Sections III--VI?
+  previously used in manuscript?
+  previously used in experiments?
+  whether it makes target equal to training support by construction
+
+禁止写：
+  “Candidate X 结果更好，所以选 X”。
+
+------------------------------------------------------------
+R1d-A.2 冻结规则
+------------------------------------------------------------
+
+只有当 evidence 唯一支持某个 target semantics 时，
+才冻结：
+
+  TARGET_LAW_RULE_V1
+
+至少记录：
+
+  rule_id
+  scientific_population
+  atomic support
+  atomic mass construction
+  allowed metadata
+  forbidden outcome information
+  train/val/test relation
+  hash
+
+输出：
+
+  TARGET_LAW_RULE_FROZEN.json
+
+如果现有材料无法唯一决定：
+  STOP。
+  输出 verdict：
+
+    TARGET_SEMANTICS_NOT_FROZEN
+
+不得继续改 Gate。
+
+------------------------------------------------------------
+R1d-A.3 所有 target objects 从唯一 varpi_tar 派生
+------------------------------------------------------------
+
+统一：
+
+  varpi_tar
+    ->
+  mu
+    ->
+  pi_tar
+
+或者：
+  varpi_tar + frozen client allocation rule
+    ->
+  pi_tar
+
+重新检查：
+
+  sum_i varpi_tar(i)=1
+  sum_g mu_g=1
+  sum_{k,s} pi_tar(k,s)=1
+
+以及所有兼容 bridge。
+
+要求 max abs error <=1e-10，
+最多 1e-8 且必须解释。
+
+------------------------------------------------------------
+R1d-A.4 比较“语义变化”，不是性能
+------------------------------------------------------------
+
+如果最终 target law 与 R1c train-supported target 不同，
+只先输出 target-level comparison：
+
+  support size
+  mass overlap
+  TV distance
+  target-zero mass
+  train-support overlap
+  opportunity-support overlap
+
+不要先跑方法性能来选择 target。
+
+输出：
+
+  TARGET_LAW_R1C_VS_R1D.csv
+
+=====================================================================
+五、R1d-B：定义 current-window opportunity target
+=====================================================================
+
+理论对象是：
+
+  P_r^{opp}
+
+它可以随 r 变化。
+
+因此当前 Gate 需要预测的是：
+
+  pi_{k,s,r}^{opp}
+
+不是一个全局静态：
+
+  pi_{k,s}^{opp}。
+
+必须显式区分：
+
+  pooled historical opportunity law
+  current-window opportunity law
+  lagged predictive opportunity law
+
+------------------------------------------------------------
+R1d-B.1 current-window realized reference
+------------------------------------------------------------
+
+仅用于 post-window audit，
+对每个 completed window r：
+
+  pi_opp_realized(k,s,r)
+  =
+  N_opp(k,s,r)
+  /
+  total_N_opp(r)
+
+这是 current-window realized event-mark mass。
+
+它绝对不能进入同窗口 Gate。
+
+输出：
+
+  CURRENT_WINDOW_OPP_REALIZED.csv
+
+------------------------------------------------------------
+R1d-B.2 pre-window features
+------------------------------------------------------------
+
+只能从 F_{r-} 构造。
+
+允许优先使用已有：
+
+  recent completed pi_opp
+  lagged counts
+  time block
+  public mobility/context
+  previous-window opportunity mass
+  rolling mean
+  rolling trend
+  seasonal/time-of-day indicator
+
+禁止：
+
+  current R
+  current opportunity counts
+  current O/U
+  current loss
+  current outcome
+
+输出：
+
+  DYNAMIC_COV_FEATURE_AUDIT.md
+
+列出所有 feature，
+标记：
+  pre-window legal?
+  source?
+  update stage?
+
+=====================================================================
+六、R1d-C：构造动态 current-window C_cov certificate
+=====================================================================
+
+本轮优先使用“简单、低维、可解释”的动态方法。
+不要上神经网络。
+
+推荐主路线：
+
+  predictor for pi_opp(k,s,r)
+    +
+  one-sided calibrated residual bound
+
+------------------------------------------------------------
+R1d-C.1 预测器
+------------------------------------------------------------
+
+优先从简单方案开始：
+
+Option 1:
+  recent-window rolling predictor
+
+  pi_hat_opp(k,s,r)
+  =
+  weighted mean of last L completed windows
+
+Option 2:
+  time-block-conditioned rolling predictor
+
+Option 3:
+  low-dimensional ridge / logistic / multinomial predictor
+  using only legal pre-window context
+
+优先使用最简单能工作的方案。
+
+不要同时扫很多模型。
+
+------------------------------------------------------------
+R1d-C.2 one-sided residual calibration
+------------------------------------------------------------
+
+对 completed calibration windows t：
+
+  residual_{k,s,t}
+  =
+  pi_hat_opp(k,s,t)
+  -
+  pi_opp_realized(k,s,t)
+
+为了 lower bound：
+
+  lower_pi_opp(k,s,r)
+  =
+  max{
+    0,
+    pi_hat_opp(k,s,r)
+    -
+    q_{1-delta_cov}
+  }
+
+其中 q 必须从 strictly prior / calibration windows 得到。
+
+允许：
+
+A. split-conformal style one-sided residual quantile
+
+B. rolling calibrated quantile
+
+C. block-conformal / block residual quantile
+
+由于 window 内 events 强相关，
+优先以“window/block”为 calibration unit。
+
+不要把同一 window 内大量 events 当成 iid calibration samples。
+
+------------------------------------------------------------
+R1d-C.3 calibration split
+------------------------------------------------------------
+
+必须明确：
+
+  fit history
+  calibration history
+  evaluation window
+
+不能 current-window 自校准。
+
+如果 history 太短：
+  fail closed。
+
+------------------------------------------------------------
+R1d-C.4 simultaneous coverage
+------------------------------------------------------------
+
+C_cov 依赖多个 target-positive (k,s)。
+
+本轮不强制证明 exact family-wise 95%，
+但必须做 empirical joint-window calibration。
+
+至少报告：
+
+  pairwise coverage
+  target-mass-weighted coverage
+  window-joint coverage
+  certified target mass
+
+若 window-joint 远低于 95%，
+不得称为 95% simultaneous certificate。
+
+可以采用：
+  conservative quantile inflation
+  Bonferroni over target-positive pairs
+  conformal max-residual calibration
+
+优先推荐：
+
+  max-residual per window：
+
+    R_t
+    =
+    max_{(k,s): pi_tar>0}
+      [
+        pi_hat_opp(k,s,t)
+        -
+        pi_opp_realized(k,s,t)
+      ]
+
+然后用 R_t 的 one-sided calibrated quantile：
+
+  q_r
+
+得到：
+
+  lower_pi_opp
+  =
+  max(0, pi_hat_opp - q_r)
+
+这样直接以 window 为 unit，
+更接近 joint support certificate。
+
+------------------------------------------------------------
+R1d-C.5 C_cov 公式保持不变
+------------------------------------------------------------
+
+继续：
+
+  C_cov_LCB(r)
+  =
+  sum_{k,s}
+    pi_tar(k,s)
+    1{
+      lower_pi_opp(k,s,r)
+      >=
+      pi_safe
+    }
+
+不得改定义。
+
+=====================================================================
+七、R1d-D：动态 C_cov 校准审计
+=====================================================================
+
+每个 window post-hoc 检查：
+
+  lower_pi_opp(k,s,r)
+  <=
+  pi_opp_realized(k,s,r)
+
+注意：
+  realized current-window empirical mass 本身有 sampling noise，
+  所以该检查是 development diagnostic，
+  不是理论真值证明。
+
+必须至少报告：
+
+1. pairwise empirical coverage
+2. target-mass-weighted coverage
+3. window-joint empirical coverage
+4. coverage vs time
+5. coverage vs history length
+6. certified target mass vs realized support mass
+
+输出：
+
+  DYNAMIC_COV_CALIBRATION.csv
+  DYNAMIC_COV_COVERAGE_BY_TIME.csv
+
+------------------------------------------------------------
+R1d-D.1 anti-conservatism stop rule
+------------------------------------------------------------
+
+若 warm-up 后：
+
+  window-joint empirical coverage < 0.90
+
+或：
+
+  pairwise coverage 明显随时间持续下滑，
+
+则：
+  不允许进入 Gate evaluation。
+  verdict：
+    DYNAMIC_COV_NOT_CALIBRATED
+
+------------------------------------------------------------
+R1d-D.2 over-conservatism stop rule
+------------------------------------------------------------
+
+若 coverage 很高但：
+
+  C_cov_LCB == 0
+
+或：
+
+  certified target mass 接近 0
+
+在几乎所有 compatible-looking windows 中，
+
+则：
+  verdict：
+    DYNAMIC_COV_TOO_CONSERVATIVE
+
+不要调 tau_cov。
+
+=====================================================================
+八、R1d-E：重新审计 U-Air 是否仍是 unsafe regime
+=====================================================================
+
+在 TARGET_LAW_RULE_V1 冻结后，
+只重新计算 1-seed：
+
+  SensorScope 30001
+  U-Air 30001
+
+首先只比较：
+
+  Always-Design
+  No-Design
+
+暂时不看 SAG。
+
+记录：
+
+  active-set mismatch
+  RMSE difference
+  WorstGroupRMSE difference
+  Delta_group difference
+  Delta_c-s difference
+
+目的不是挑 dataset，
+而是回答：
+
+  在正确 target law 下，
+  U-Air 是否自然仍是 support-unsafe regime？
+
+------------------------------------------------------------
+R1d-E.1 unsafe regime 定义
+------------------------------------------------------------
+
+不要只看某一个 metric。
+
+定义 development unsafe candidate 至少满足一项：
+
+A. active-set mismatch 高；
+B. Full Design 在 prediction-risk budget 下明显伤害；
+C. Full Design 显著恶化 deployment-group alignment；
+D. severe support-zero/ESS/clipping collapse。
+
+必须报告所有条件，
+不能 post-hoc 只挑有利的一项。
+
+------------------------------------------------------------
+R1d-E.2 如果 U-Air 不再 unsafe
+------------------------------------------------------------
+
+如果正确 target law 下：
+
+  active-set mismatch 低；
+  prediction 不伤；
+  Delta_group 不伤；
+
+则明确输出：
+
+  U_AIR_NO_LONGER_UNSAFE_UNDER_CORRECT_TARGET
+
+不得强行调 Gate 让它 OFF。
+
+这时本轮不自动做 stress experiment。
+
+只进入下一步：
+  NATURAL_UNSAFE_BLOCK_SEARCH_PLAN
+
+=====================================================================
+九、R1d-F：如果需要，只做自然 unsafe block 搜索计划
+=====================================================================
+
+仅当 U-Air 不再 unsafe 时，
+生成计划，不直接大跑。
+
+优先搜索：
+
+  SensorScope / U-Air 内自然的：
+    low opportunity overlap blocks
+    sparse temporal blocks
+    high target-zero blocks
+    high active-set-mismatch blocks
+    low ESS blocks
+
+必须使用已有真实 EventTrace。
+
+输出：
+
+  NATURAL_UNSAFE_BLOCK_CANDIDATES.csv
+
+字段：
+  dataset
+  block_id
+  time range
+  target support mass
+  opportunity support mass
+  overlap
+  active_set_mismatch
+  ESS
+  clipping
+  no performance-based selection flag
+
+注意：
+  候选 block 只能按 support statistics 选，
+  不能按 RMSE 结果选。
+
+------------------------------------------------------------
+R1d-F.1 若没有自然 unsafe block
+------------------------------------------------------------
+
+仅生成预注册 controlled stress proposal：
+
+  PRE_REGISTERED_SUPPORT_STRESS_PLAN.md
+
+只允许一条主线，例如：
+
+  opportunity-support thinning
+
+要求：
+  基于真实 EventTrace；
+  stress level 在运行前冻结；
+  不用 outcome 调 stress；
+  不做多档大 sweep。
+
+本轮不自动执行 stress。
+
+=====================================================================
+十、A8b 95% calibration 继续保留
+=====================================================================
+
+本轮仍报告：
+
+  Delta_beta coverage
+  Delta_M coverage
+  Delta_V coverage
+  joint coverage
+  widths
+
+若仍 <95%：
+  标记：
+    A8B_NOT_FINAL_CLOSED
+
+但不允许为了 95% 盲目扩大 UCB。
+
+=====================================================================
+十一、1-seed Gate re-diagnostic
+=====================================================================
+
+只有同时满足：
+
+  TARGET SEMANTICS FROZEN
+  DYNAMIC COV CALIBRATED
+
+才运行 SAG。
+
+运行：
+
+  SensorScope 30001
+  U-Air 30001
+
+方法：
+  Always-Design
+  No-Design
+  SAG-R1d
+
+所有旧阈值冻结不动。
+
+报告：
+
+  C_cov pass rate
+  C_ret pass rate
+  C_ESS pass rate
+  C_clip pass rate
+  delta_A pass rate
+  B_tot pass rate
+  ALL-pass
+  Gate ON rate
+
+同时报告：
+  false enable
+  false disable
+  prediction harm
+  structural gain
+
+=====================================================================
+十二、本轮不再要求 “U-Air 必须 OFF”
+=====================================================================
+
+这是非常重要的新规则。
+
+Gate 的正确性必须服从正确 target law。
+
+如果：
+  U-Air 在正确 target 下本身就是 safe，
+
+那么：
+  SAG ON 是合理的。
+
+不要拿旧 bug 版本的 U-Air reversal
+作为“Gate 必须 OFF”的标签。
+
+真正要求是：
+
+  Gate behavior
+  应与合法 support-risk evidence 一致。
+
+=====================================================================
+十三、必须新增的单元测试
+=====================================================================
+
+1. test_target_law_rule_frozen.py
+2. test_mu_pi_same_target_law.py
+3. test_target_no_outcome_selection.py
+4. test_dynamic_cov_no_current_window.py
+5. test_dynamic_cov_history_only.py
+6. test_dynamic_cov_window_block_calibration.py
+7. test_dynamic_cov_monotonic_history.py
+8. test_dynamic_cov_joint_coverage_metric.py
+9. test_uair_not_hardcoded_unsafe.py
+10. test_thresholds_unchanged.py
+
+=====================================================================
+十四、输出目录
+=====================================================================
+
+新建：
+
+outputs/sag_g1_r1d/
+
+必须包含：
+
+R1D_TARGET_DYNAMIC_COV_REPORT.md
+R1D_VERDICT.json
+
+target/
+  TARGET_SEMANTICS_PROVENANCE_AUDIT.md
+  TARGET_LAW_RULE_FROZEN.json
+  TARGET_COMPATIBILITY_R1D.csv
+  TARGET_LAW_R1C_VS_R1D.csv
+
+dynamic_cov/
+  DYNAMIC_COV_FEATURE_AUDIT.md
+  CURRENT_WINDOW_OPP_REALIZED.csv
+  DYNAMIC_COV_PREDICTION.csv
+  DYNAMIC_COV_CALIBRATION.csv
+  DYNAMIC_COV_COVERAGE_BY_TIME.csv
+  C_COV_DYNAMIC_WINDOW.csv
+
+unsafe_audit/
+  UAIR_UNSAFE_REAUDIT.csv
+  NATURAL_UNSAFE_BLOCK_CANDIDATES.csv
+  PRE_REGISTERED_SUPPORT_STRESS_PLAN.md
+  （若对应步骤触发）
+
+a8b/
+  A8B_COVERAGE_R1D.csv
+  A8B_WIDTH_R1D.csv
+
+diagnostic/
+  R1D_GATE_WINDOW_LOG.csv
+  R1D_GATE_PASSRATE.csv
+  R1D_METHOD_DIAGNOSTIC.csv
+
+tests/
+  TEST_SUMMARY.json
+
+configs/
+  thresholds_frozen_copy.json
+  target_rule_hash.json
+  dynamic_cov_config.json
+  source_hashes.json
+
+=====================================================================
+十五、R1D_TARGET_DYNAMIC_COV_REPORT.md 模板
+=====================================================================
+
+# 1. Executive Verdict
+
+只能选：
+
+  READY_FOR_G1_R2_5SEED
+  TARGET_SEMANTICS_NOT_FROZEN
+  DYNAMIC_COV_NOT_CALIBRATED
+  DYNAMIC_COV_TOO_CONSERVATIVE
+  U_AIR_NO_LONGER_UNSAFE_UNDER_CORRECT_TARGET
+  NEED_NATURAL_UNSAFE_BLOCK_AUDIT
+
+# 2. Target Semantics
+
+回答：
+
+  deployment population 是什么？
+  为什么？
+  varpi_tar 如何构造？
+  是否使用 test outcome？
+  mu/pi_tar 是否来自同一 law？
+
+# 3. Dynamic Opportunity Model
+
+回答：
+
+  预测 current P_r^{opp} 用了哪些合法 features？
+  是否只用 F_{r-}？
+  是否建模 temporal variation？
+
+# 4. Dynamic C_cov Calibration
+
+报告：
+
+  pairwise coverage
+  target-mass-weighted coverage
+  window-joint coverage
+  coverage over time
+  certified target mass
+
+# 5. U-Air Re-Audit
+
+回答：
+
+  在正确 target 下：
+  active-set mismatch 是否仍高？
+  Full Design 是否仍伤 prediction？
+  是否仍伤 Delta_group？
+  是否还应叫 unsafe environment？
+
+# 6. Gate Diagnostic
+
+若允许运行 SAG：
+
+  Dataset | Ccov | Cret | CESS | Cclip | deltaA | Btot | ALL | ON
+
+# 7. A8b Status
+
+  95% 是否闭合？
+  若未闭合，差多少？
+
+# 8. Scientific Interpretation
+
+必须明确：
+
+  当前证据是否真正支持：
+    safe/unsafe regime 可预测区分？
+
+# 9. Next Decision
+
+若 READY：
+  才允许下一轮 5-seed。
+
+若 U-Air 不再 unsafe：
+  不要自动做 5-seed；
+  先做自然 unsafe block audit。
+
+=====================================================================
+十六、最终 READY 条件
+=====================================================================
+
+只有同时满足：
+
+1. target semantics 唯一冻结；
+2. mu/pi_tar 同源；
+3. dynamic C_cov strictly pre-window；
+4. dynamic C_cov empirical calibration 不再明显失效；
+5. Gate 不靠 dataset hardcode；
+6. 至少存在可解释的 safe/unsafe contrast：
+   - 可以是 SensorScope vs U-Air；
+   - 也可以是同 dataset 的自然 support blocks；
+7. SAG 对该 contrast 有正确方向的 Gate behavior；
+8. thresholds 未改；
+9. 无 current-window leakage；
+
+才输出：
+
+  READY_FOR_G1_R2_5SEED
+
+否则不要扩实验。
+
+=====================================================================
+十七、Cursor 严格执行顺序
+=====================================================================
+
+1. 阅读全部 authority + R1c evidence。
+2. 输出：
+     SAG_G1_R1D_PLAN.md
+3. 先做 Target Semantics Provenance Audit。
+4. 若 target semantics 无法唯一冻结：
+     STOP。
+5. 冻结 TARGET_LAW_RULE_V1。
+6. 重算 mu/pi_tar compatibility。
+7. 构造 current-window realized opp reference（post-hoc only）。
+8. 构造 pre-window dynamic predictor。
+9. 做 window/block-level one-sided calibration。
+10. 做 dynamic C_cov coverage audit。
+11. calibration 不过：
+      STOP，不跑 SAG。
+12. 重审 U-Air 是否仍 unsafe。
+13. 若 U-Air 不再 unsafe：
+      生成 natural unsafe block search plan。
+14. 只有有合法 safe/unsafe contrast 时，
+      才跑 1-seed SAG diagnostic。
+15. 输出 R1D report。
+16. STOP。
+17. 不自动跑 5 seeds。
+
+=====================================================================
+十八、本轮最重要的科学判断
+=====================================================================
+
+不要问：
+
+  “怎样让 Gate 区分 SensorScope 和 U-Air？”
+
+要问：
+
+  “在科学上正确的 deployment target 下，
+   current-window support risk 是否真实存在，
+   是否可由 pre-window information 预测，
+   SAG 是否因此选择性启用 Full Design？”
+
+如果正确 target 下 Full Design 几乎总是安全，
+那么必须诚实承认：
+
+  old U-Air reversal 不是新版论文的有效核心证据。
+
+如果存在真实、可预测的 support-unsafe blocks，
+且 SAG 能关闭它们，
+那么新版论文主线才真正成立。
+
+END OF CURSOR INSTRUCTION

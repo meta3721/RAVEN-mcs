@@ -1,0 +1,64 @@
+{
+  "status": "STOP_G1_count_mismatch",
+  "g1_specified_triple": [
+    "raven_wo_debt",
+    "raven_wo_use",
+    "raven_wo_inst"
+  ],
+  "g1_count_mismatch_cells": 40,
+  "g1_mismatch_examples": [
+    {
+      "dataset": "sensorscope",
+      "seed": 30001,
+      "counts": {
+        "raven_wo_inst": [
+          0,
+          97
+        ]
+      }
+    },
+    {
+      "dataset": "sensorscope",
+      "seed": 30002,
+      "counts": {
+        "raven_wo_inst": [
+          0,
+          98
+        ]
+      }
+    },
+    {
+      "dataset": "sensorscope",
+      "seed": 30003,
+      "counts": {
+        "raven_wo_inst": [
+          0,
+          92
+        ]
+      }
+    },
+    {
+      "dataset": "sensorscope",
+      "seed": 30004,
+      "counts": {
+        "raven_wo_inst": [
+          0,
+          92
+        ]
+      }
+    }
+  ],
+  "deviation_arms_with_states": [
+    "raven_wo_debt",
+    "raven_wo_use",
+    "raven_wo_obs"
+  ],
+  "deviation_max_M_diff": 0.0,
+  "deviation_max_w_diff": 5.551115123125783e-17,
+  "deviation_active_clients_all_equal": true,
+  "g2_rows": 320,
+  "g2_pass": 320,
+  "g2_max_d_group_err": 8.881784197001252e-16,
+  "g2_max_d_cs_err": 7.993605777301127e-15,
+  "g2_notes": {}
+}

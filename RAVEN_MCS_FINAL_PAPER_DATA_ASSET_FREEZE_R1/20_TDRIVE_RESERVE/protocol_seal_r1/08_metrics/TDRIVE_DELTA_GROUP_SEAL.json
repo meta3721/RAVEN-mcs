@@ -1,0 +1,10 @@
+{
+  "formula": "Delta_group = ||omega_hat - mu||_1",
+  "mu": "test-support frequency over h(i)",
+  "must_not_use_s_as_h": true,
+  "omega_hat": "realized/estimated target-group composition from method weights on EventTrace",
+  "source_hash": "23178fb519cacb6f746b1fb10f748191b582dd8ec48d65c15ac0ca7916e5c8c8",
+  "source_implementation": "src/raven_mcs/metrics/distribution.py::delta_group",
+  "status": "FROZEN",
+  "support": "public target groups h(i) = H1-H4"
+}

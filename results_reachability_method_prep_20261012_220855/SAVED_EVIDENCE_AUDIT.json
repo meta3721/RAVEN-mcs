@@ -1,0 +1,279 @@
+{
+  "scope": "saved file arithmetic; no controller execution, no replay",
+  "policies": [
+    {
+      "policy": "fixed_time_1",
+      "J": 0.9619110448705535,
+      "grid_rows": 800,
+      "grid_min": 20.1,
+      "grid_max": 100.0,
+      "closure_score_error": 0.0,
+      "timeline_error": 0.0,
+      "J_error": 1.1102230246251565e-16,
+      "weight_residual": 2.220446049250313e-16,
+      "closures_total": 100,
+      "closures_postwarmup": 80,
+      "unique_consumed": 1586,
+      "reasons": {
+        "fixed_time": 80
+      },
+      "K_counts": {
+        "16": 10,
+        "17": 12,
+        "13": 10,
+        "23": 2,
+        "15": 10,
+        "14": 6,
+        "20": 2,
+        "18": 6,
+        "11": 5,
+        "19": 6,
+        "10": 1,
+        "12": 6,
+        "21": 2,
+        "22": 1,
+        "9": 1
+      },
+      "duration_under_1_count": 0,
+      "duration_mean": 1.0,
+      "score_components": {
+        "geometry": 0.9093168604651163,
+        "age": 0.0025941844054371546,
+        "waiting": 0.05
+      }
+    },
+    {
+      "policy": "fixed_time_2",
+      "J": 0.9406627743284826,
+      "grid_rows": 800,
+      "grid_min": 20.1,
+      "grid_max": 100.0,
+      "closure_score_error": 0.0,
+      "timeline_error": 0.0,
+      "J_error": 1.1102230246251565e-16,
+      "weight_residual": 2.220446049250313e-16,
+      "closures_total": 60,
+      "closures_postwarmup": 40,
+      "unique_consumed": 1452,
+      "reasons": {
+        "fixed_time": 40
+      },
+      "K_counts": {
+        "28": 7,
+        "32": 2,
+        "27": 9,
+        "31": 3,
+        "30": 2,
+        "26": 5,
+        "29": 4,
+        "33": 1,
+        "23": 2,
+        "25": 3,
+        "22": 1,
+        "34": 1
+      },
+      "duration_under_1_count": 0,
+      "duration_mean": 2.0,
+      "score_components": {
+        "geometry": 0.8400290697674418,
+        "age": 0.0018212045610407099,
+        "waiting": 0.09881250000000001
+      }
+    },
+    {
+      "policy": "fixed_time_4",
+      "J": 0.980540494954127,
+      "grid_rows": 800,
+      "grid_min": 20.1,
+      "grid_max": 100.0,
+      "closure_score_error": 0.0,
+      "timeline_error": 0.0,
+      "J_error": 0.0,
+      "weight_residual": 3.3306690738754696e-16,
+      "closures_total": 40,
+      "closures_postwarmup": 20,
+      "unique_consumed": 1100,
+      "reasons": {
+        "fixed_time": 20
+      },
+      "K_counts": {
+        "41": 1,
+        "39": 3,
+        "37": 7,
+        "38": 3,
+        "36": 2,
+        "40": 2,
+        "35": 1,
+        "42": 1
+      },
+      "duration_under_1_count": 0,
+      "duration_mean": 4.0,
+      "score_components": {
+        "geometry": 0.7855886627906977,
+        "age": 0.0022643321634293265,
+        "waiting": 0.1926875
+      }
+    },
+    {
+      "policy": "fixed_K8_timeout4",
+      "J": 0.9840832718976334,
+      "grid_rows": 800,
+      "grid_min": 20.1,
+      "grid_max": 100.0,
+      "closure_score_error": 0.0,
+      "timeline_error": 0.0,
+      "J_error": 0.0,
+      "weight_residual": 2.220446049250313e-16,
+      "closures_total": 154,
+      "closures_postwarmup": 134,
+      "unique_consumed": 1505,
+      "reasons": {
+        "K8": 134
+      },
+      "K_counts": {
+        "10": 15,
+        "8": 73,
+        "9": 39,
+        "12": 1,
+        "11": 5,
+        "13": 1
+      },
+      "duration_under_1_count": 130,
+      "duration_mean": 0.5962686567164179,
+      "score_components": {
+        "geometry": 0.9495494186046511,
+        "age": 0.0059276032929822635,
+        "waiting": 0.028606249999999996
+      }
+    },
+    {
+      "policy": "age_count_trigger",
+      "J": 1.0035429993164493,
+      "grid_rows": 800,
+      "grid_min": 20.1,
+      "grid_max": 100.0,
+      "closure_score_error": 0.0,
+      "timeline_error": 0.0,
+      "J_error": 0.0,
+      "weight_residual": 2.220446049250313e-16,
+      "closures_total": 232,
+      "closures_postwarmup": 212,
+      "unique_consumed": 1317,
+      "reasons": {
+        "age_count": 212
+      },
+      "K_counts": {
+        "5": 22,
+        "8": 18,
+        "7": 5,
+        "4": 38,
+        "11": 2,
+        "3": 100,
+        "6": 13,
+        "9": 9,
+        "10": 3,
+        "12": 1,
+        "13": 1
+      },
+      "duration_under_1_count": 210,
+      "duration_mean": 0.3764150943396226,
+      "score_components": {
+        "geometry": 0.9739825581395348,
+        "age": 0.011941691176914362,
+        "waiting": 0.017618750000000016
+      }
+    },
+    {
+      "policy": "target_gain_stop",
+      "J": 0.9756027356577401,
+      "grid_rows": 800,
+      "grid_min": 20.1,
+      "grid_max": 100.0,
+      "closure_score_error": 0.0,
+      "timeline_error": 0.0,
+      "J_error": 0.0,
+      "weight_residual": 2.220446049250313e-16,
+      "closures_total": 123,
+      "closures_postwarmup": 103,
+      "unique_consumed": 1535,
+      "reasons": {
+        "marginal_gain_below_cost": 103
+      },
+      "K_counts": {
+        "5": 7,
+        "17": 6,
+        "18": 5,
+        "4": 8,
+        "11": 11,
+        "10": 4,
+        "12": 9,
+        "19": 5,
+        "7": 2,
+        "14": 11,
+        "15": 4,
+        "13": 10,
+        "3": 9,
+        "6": 2,
+        "16": 4,
+        "20": 3,
+        "21": 2,
+        "9": 1
+      },
+      "duration_under_1_count": 66,
+      "duration_mean": 0.7689320388349515,
+      "score_components": {
+        "geometry": 0.9316351744186047,
+        "age": 0.005517561239135528,
+        "waiting": 0.03845000000000001
+      }
+    }
+  ],
+  "decisions": {
+    "count": 553,
+    "stop_count": 103,
+    "wait_count": 450,
+    "zero_gain_count": 6,
+    "nonpositive_gain_count": 7,
+    "cost_values": [
+      0.005000000000000001
+    ],
+    "K_counts": {
+      "5": 55,
+      "8": 47,
+      "10": 35,
+      "13": 24,
+      "14": 24,
+      "16": 11,
+      "17": 13,
+      "7": 38,
+      "9": 30,
+      "12": 38,
+      "15": 11,
+      "3": 74,
+      "6": 34,
+      "18": 8,
+      "4": 61,
+      "11": 38,
+      "19": 7,
+      "20": 3,
+      "21": 2
+    },
+    "gain_min": -5.8144801702297855e-06,
+    "gain_max": 0.035591823526677446
+  },
+  "comparison": {
+    "baseline": "fixed_time_2",
+    "absolute_J_difference": 0.034939961329257585,
+    "relative_J_worsening": 0.03714398218235054,
+    "component_differences": {
+      "geometry": 0.09160610465116281,
+      "age": 0.003696356678094818,
+      "waiting": -0.0603625
+    }
+  },
+  "limits": [
+    "No recomputation of atomic-unit Q or service events in this audit.",
+    "Original COMPLETED_ARTEFACT_AUDIT covers those metadata checks; preserved as historical evidence.",
+    "No neural predictions exist for v1."
+  ]
+}

@@ -1,0 +1,67 @@
+{
+  "a_bar_inputs": [
+    {
+      "changed_by_zero_update": false,
+      "input": "pi_target / pi_opp_joint (zeta)",
+      "model_dependent": false,
+      "notes": "Formal path supplies frozen pi_opp_joint; OpportunityEstimator online path unused."
+    },
+    {
+      "changed_by_zero_update": false,
+      "input": "EventTrace opportunity features + rec.O (p_hat via ObservationPropensity)",
+      "model_dependent": false,
+      "notes": "Lagged propensity updates use features and observation indicators only."
+    },
+    {
+      "changed_by_zero_update": false,
+      "input": "EventTrace O / target_groups / risk-set membership",
+      "model_dependent": false,
+      "notes": "Immutable EventTrace state."
+    },
+    {
+      "changed_by_zero_update": true,
+      "input": "model parameters / loss / gradients / prediction residual / post-update theta",
+      "model_dependent": true,
+      "notes": "Present in training path but not consumed by a_bar construction.",
+      "used_by_a_bar": false
+    }
+  ],
+  "current_source_hash": "f7bff5e30c76898f5ab3e3998021f9b09e52ccf73f135b44bc4e141d9e13c436",
+  "formal_source_hash": "f7bff5e30c76898f5ab3e3998021f9b09e52ccf73f135b44bc4e141d9e13c436",
+  "formal_source_revision": "b01db69e8554a33446c438c060ac464dcfadac24",
+  "frozen_source": "src/raven_mcs/training/window_runner.py",
+  "functions": [
+    "WindowRunner._compute_zeta",
+    "WindowRunner._compute_p_hat",
+    "WindowRunner._process_window",
+    "WindowRunner._update_lagged_estimators",
+    "ObservationPropensity.predict",
+    "ObservationPropensity.update_records_after_completion",
+    "raw_weights",
+    "normalized_weights"
+  ],
+  "parent_weight_audit": {
+    "max_weight_range": 0.0,
+    "n_client_windows": 9666,
+    "n_uniform": 9666
+  },
+  "proof": [
+    "With formal pi_opp_joint supplied, zeta uses frozen pi_target and pi_opp_joint.",
+    "ObservationPropensity.predict consumes EventTrace features; lagged updates consume only features and rec.O.",
+    "raw_weights then normalized_weights(rec.O, a_raw, m_total) determine a_bar.",
+    "No model parameters, loss, gradients, prediction residuals, or theta are inputs to a_bar.",
+    "Zero-update forensic replay therefore cannot alter a_bar inputs."
+  ],
+  "source_file_line_refs": {
+    "applied_local_weights": "src/raven_mcs/training/window_runner.py:~414-430",
+    "lagged_propensity_update": "src/raven_mcs/training/window_runner.py:~685-729",
+    "observation_propensity": "src/raven_mcs/propensity/observation.py:53-97",
+    "zeta_and_p_hat_to_a_bar": "src/raven_mcs/training/window_runner.py:~299-347"
+  },
+  "source_hashes": {
+    "src/raven_mcs/propensity/observation.py": "e1aef7d830b10ba500c712cc62597af9ac25b45065f434feab7fe9e5351b8a37",
+    "src/raven_mcs/training/window_runner.py": "f7bff5e30c76898f5ab3e3998021f9b09e52ccf73f135b44bc4e141d9e13c436"
+  },
+  "weight_dependency_result": "MODEL_INDEPENDENT",
+  "zero_update_changes_any_a_bar_input": false
+}

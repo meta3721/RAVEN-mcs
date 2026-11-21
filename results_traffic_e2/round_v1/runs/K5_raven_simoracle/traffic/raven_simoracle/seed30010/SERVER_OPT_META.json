@@ -1,0 +1,22 @@
+{
+  "arm": "raven_simoracle",
+  "block": "traffic",
+  "created_utc": "2026-10-10T14:43:41.907667+00:00",
+  "diag_first": [],
+  "diag_last": [],
+  "local_steps": 2,
+  "n_windows_optimizer_applied": 0,
+  "reuse_guard_code_default": "DUPLICATE_REUSED_TRAFFIC_RUN_BLOCKED",
+  "reuse_guard_exemption": true,
+  "reuse_guard_ledger_part": "Part IX item 65",
+  "runtime_seconds": 38.40312440000707,
+  "seed": 30010,
+  "server_opt": {
+    "beta1": 0.9,
+    "beta2": 0.99,
+    "eta_s": null,
+    "mode": "off",
+    "tau": 0.001
+  },
+  "tag": "K5_raven_simoracle"
+}

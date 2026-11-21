@@ -1,0 +1,32 @@
+{
+  "protocol_version": "e3-v2-time-aligned-v1",
+  "n_rows": 424,
+  "n_windows": 53,
+  "dataset": "uair",
+  "window_rule_hash": "078eb96bfe869489edd75a17950537cd191babc37f38235fe1260680a9e3299f",
+  "population_rule_hash": "e11381db4d55a036f1728bfad03549161ad74cd0bac6235c04bb2823ee363732",
+  "generated_utc": "2026-08-30T08:55:22.262466+00:00",
+  "schema_fields": [
+    "protocol_version",
+    "dataset",
+    "seed",
+    "split_id",
+    "window_id",
+    "window_start_utc",
+    "window_end_utc",
+    "timezone",
+    "public_context_hash",
+    "risk_set_hash",
+    "candidate_set_hash",
+    "target_law_hash",
+    "pi_safe_rule_hash",
+    "tau_cov",
+    "raw_window_source_hash",
+    "event_count",
+    "user_count",
+    "spatial_support",
+    "logical_deadline_fields",
+    "optional_original_record_ids_hash"
+  ],
+  "trace_hash": "136484a144c6c67ef62976d49557751fee55e1a2eb2ecc0c59d07664bcef2797"
+}

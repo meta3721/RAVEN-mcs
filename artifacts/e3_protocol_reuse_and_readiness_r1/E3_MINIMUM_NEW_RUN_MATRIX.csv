@@ -1,0 +1,28 @@
+dataset,method,seed_block,required_by_protocol,already_available_and_reusable,missing,reason,needs_training,number_of_new_runs
+traffic,fedavg_window,30001-30020,True,True,False,E2 Complete-aligned sealed block,False,0
+traffic,fedasync_window,30001-30020,True,True,False,E2 Complete-aligned sealed block,False,0
+traffic,flamf_timealign_adapted,30001-30020,True,True,False,E2 Complete-aligned sealed block,False,0
+traffic,twostage_hajek,30001-30020,True,True,False,E2 Complete-aligned sealed block,False,0
+traffic,raven,30001-30020,True,True,False,E2 Complete-aligned sealed block,False,0
+traffic,local_hajek,30001-30020,True,False,True,not in E2 five-method block,True,20
+traffic,inst_cal,30001-30020,True,False,True,not in E2 five-method block,True,20
+traffic,debt_cal,30001-30020,True,False,True,not in E2 five-method block,True,20
+traffic,raven_simoracle,30001-30020,True,False,True,not in E2 five-method block,True,20
+sensorscope,fedavg_window,30001-30020,True,False,True,dataset not protocol-ready for E3 formal Complete-aligned harness,False,0
+sensorscope,fedasync_window,30001-30020,True,False,True,dataset not protocol-ready for E3 formal Complete-aligned harness,False,0
+sensorscope,flamf_timealign_adapted,30001-30020,True,False,True,dataset not protocol-ready for E3 formal Complete-aligned harness,False,0
+sensorscope,twostage_hajek,30001-30020,True,False,True,dataset not protocol-ready for E3 formal Complete-aligned harness,False,0
+sensorscope,raven,30001-30020,True,False,True,dataset not protocol-ready for E3 formal Complete-aligned harness,False,0
+sensorscope,local_hajek,30001-30020,True,False,True,dataset not protocol-ready for E3 formal Complete-aligned harness,False,0
+sensorscope,inst_cal,30001-30020,True,False,True,dataset not protocol-ready for E3 formal Complete-aligned harness,False,0
+sensorscope,debt_cal,30001-30020,True,False,True,dataset not protocol-ready for E3 formal Complete-aligned harness,False,0
+sensorscope,raven_simoracle,30001-30020,True,False,True,dataset not protocol-ready for E3 formal Complete-aligned harness,False,0
+uair,fedavg_window,30001-30020,True,False,True,dataset not protocol-ready for E3 formal Complete-aligned harness,False,0
+uair,fedasync_window,30001-30020,True,False,True,dataset not protocol-ready for E3 formal Complete-aligned harness,False,0
+uair,flamf_timealign_adapted,30001-30020,True,False,True,dataset not protocol-ready for E3 formal Complete-aligned harness,False,0
+uair,twostage_hajek,30001-30020,True,False,True,dataset not protocol-ready for E3 formal Complete-aligned harness,False,0
+uair,raven,30001-30020,True,False,True,dataset not protocol-ready for E3 formal Complete-aligned harness,False,0
+uair,local_hajek,30001-30020,True,False,True,dataset not protocol-ready for E3 formal Complete-aligned harness,False,0
+uair,inst_cal,30001-30020,True,False,True,dataset not protocol-ready for E3 formal Complete-aligned harness,False,0
+uair,debt_cal,30001-30020,True,False,True,dataset not protocol-ready for E3 formal Complete-aligned harness,False,0
+uair,raven_simoracle,30001-30020,True,False,True,dataset not protocol-ready for E3 formal Complete-aligned harness,False,0

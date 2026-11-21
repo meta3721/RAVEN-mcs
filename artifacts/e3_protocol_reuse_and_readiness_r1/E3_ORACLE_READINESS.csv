@@ -1,0 +1,4 @@
+dataset,true_opportunity_probability_defined,p_generation_probability_known,q_fixed_prestate_monte_carlo,monte_carlo_count_frozen,oracle_independent_of_test_leakage,eventtrace_comparison_fair,oracle_status,note
+sensorscope,False,False,False,False,False,False,NOT_AVAILABLE,
+uair,False,False,False,False,False,False,NOT_AVAILABLE,
+traffic,True,True,True,False,True,True,VALID_CONTROLLED_ORACLE,Hard AOU generator probabilities are controlled; freeze MC count before SimOracle formal runs

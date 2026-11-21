@@ -1,0 +1,276 @@
+{
+  "stage": "R0",
+  "read_only": true,
+  "tolerance": 1e-09,
+  "known_nonrepro": [
+    "uair|fedavg_window"
+  ],
+  "stop_triggered": true,
+  "cells": [
+    {
+      "ds": "sensorscope",
+      "arm": "fedavg_window",
+      "source": "h_round",
+      "max_abs_diff": 0.0,
+      "known_nonrepro": false,
+      "accepted": true
+    },
+    {
+      "ds": "sensorscope",
+      "arm": "fedavg_window",
+      "source": "h_gate",
+      "max_abs_diff": 0.0,
+      "known_nonrepro": false,
+      "accepted": true
+    },
+    {
+      "ds": "sensorscope",
+      "arm": "fedavg_window",
+      "source": "rshift_grid",
+      "max_abs_diff": 0.04390010213261597,
+      "known_nonrepro": false,
+      "accepted": false
+    },
+    {
+      "ds": "sensorscope",
+      "arm": "raven_simoracle",
+      "source": "h_round",
+      "max_abs_diff": 0.0,
+      "known_nonrepro": false,
+      "accepted": true
+    },
+    {
+      "ds": "sensorscope",
+      "arm": "raven_simoracle",
+      "source": "h_gate",
+      "max_abs_diff": 0.0,
+      "known_nonrepro": false,
+      "accepted": true
+    },
+    {
+      "ds": "sensorscope",
+      "arm": "raven_simoracle",
+      "source": "rshift_grid",
+      "max_abs_diff": 0.05049632115937008,
+      "known_nonrepro": false,
+      "accepted": false
+    },
+    {
+      "ds": "uair",
+      "arm": "fedavg_window",
+      "source": "h_round",
+      "max_abs_diff": 0.10745595178251133,
+      "known_nonrepro": true,
+      "accepted": true
+    },
+    {
+      "ds": "uair",
+      "arm": "fedavg_window",
+      "source": "h_gate",
+      "max_abs_diff": 0.03958590311060117,
+      "known_nonrepro": true,
+      "accepted": true
+    },
+    {
+      "ds": "uair",
+      "arm": "fedavg_window",
+      "source": "rshift_grid",
+      "max_abs_diff": 0.11015981132318475,
+      "known_nonrepro": true,
+      "accepted": true
+    },
+    {
+      "ds": "uair",
+      "arm": "raven_simoracle",
+      "source": "h_round",
+      "max_abs_diff": 0.0,
+      "known_nonrepro": false,
+      "accepted": true
+    },
+    {
+      "ds": "uair",
+      "arm": "raven_simoracle",
+      "source": "h_gate",
+      "max_abs_diff": 0.0,
+      "known_nonrepro": false,
+      "accepted": true
+    },
+    {
+      "ds": "uair",
+      "arm": "raven_simoracle",
+      "source": "rshift_grid",
+      "max_abs_diff": 0.02642063930753147,
+      "known_nonrepro": false,
+      "accepted": false
+    }
+  ],
+  "pairing_rule": {
+    "sensorscope|fedavg_window": {
+      "reproduces_e3": [
+        "e3_frozen",
+        "h_round",
+        "h_gate"
+      ],
+      "pairing": "frozen"
+    },
+    "sensorscope|raven_simoracle": {
+      "reproduces_e3": [
+        "e3_frozen",
+        "h_round",
+        "h_gate"
+      ],
+      "pairing": "frozen"
+    },
+    "uair|fedavg_window": {
+      "reproduces_e3": [
+        "e3_frozen"
+      ],
+      "pairing": "frozen"
+    },
+    "uair|raven_simoracle": {
+      "reproduces_e3": [
+        "e3_frozen",
+        "h_round",
+        "h_gate"
+      ],
+      "pairing": "frozen"
+    }
+  },
+  "finding": "(uair, fedavg_window) does not reproduce the E3 frozen record in any re-run source and is the arm that makes H negative on U-Air; the oracle arm reproduces exactly. The oracle is not defective; the comparison baseline is.",
+  "next": "R1 requires the phrase 授权 oracle 重测",
+  "R0_3_rescoped": {
+    "reason": "the bar as first written had no source qualifier and therefore also tested rshift_grid, a NEW feature_blind run that cannot be expected to reproduce the full production model; that is a scope defect in this protocol, not a second unexplained non-reproduction",
+    "bar_unchanged": 1e-09,
+    "in_scope_sources": [
+      "h_round",
+      "h_gate"
+    ],
+    "not_gated_sources": [
+      "rshift_grid"
+    ],
+    "stop_triggered_after_rescope": false,
+    "cells": [
+      {
+        "ds": "sensorscope",
+        "arm": "fedavg_window",
+        "source": "h_round",
+        "in_scope": true,
+        "max_abs_diff": 0.0,
+        "known_nonrepro": false,
+        "accepted": true
+      },
+      {
+        "ds": "sensorscope",
+        "arm": "fedavg_window",
+        "source": "h_gate",
+        "in_scope": true,
+        "max_abs_diff": 0.0,
+        "known_nonrepro": false,
+        "accepted": true
+      },
+      {
+        "ds": "sensorscope",
+        "arm": "raven_simoracle",
+        "source": "h_round",
+        "in_scope": true,
+        "max_abs_diff": 0.0,
+        "known_nonrepro": false,
+        "accepted": true
+      },
+      {
+        "ds": "sensorscope",
+        "arm": "raven_simoracle",
+        "source": "h_gate",
+        "in_scope": true,
+        "max_abs_diff": 0.0,
+        "known_nonrepro": false,
+        "accepted": true
+      },
+      {
+        "ds": "uair",
+        "arm": "fedavg_window",
+        "source": "h_round",
+        "in_scope": true,
+        "max_abs_diff": 0.1074559517825113,
+        "known_nonrepro": true,
+        "accepted": true
+      },
+      {
+        "ds": "uair",
+        "arm": "fedavg_window",
+        "source": "h_gate",
+        "in_scope": true,
+        "max_abs_diff": 0.0395859031106011,
+        "known_nonrepro": true,
+        "accepted": true
+      },
+      {
+        "ds": "uair",
+        "arm": "raven_simoracle",
+        "source": "h_round",
+        "in_scope": true,
+        "max_abs_diff": 0.0,
+        "known_nonrepro": false,
+        "accepted": true
+      },
+      {
+        "ds": "uair",
+        "arm": "raven_simoracle",
+        "source": "h_gate",
+        "in_scope": true,
+        "max_abs_diff": 0.0,
+        "known_nonrepro": false,
+        "accepted": true
+      },
+      {
+        "ds": "sensorscope",
+        "arm": "fedavg_window",
+        "source": "rshift_grid",
+        "in_scope": false,
+        "max_abs_diff": 0.0439001021326159,
+        "mean_rel_pct": -0.1581246882503582,
+        "accepted": null
+      },
+      {
+        "ds": "sensorscope",
+        "arm": "raven_simoracle",
+        "source": "rshift_grid",
+        "in_scope": false,
+        "max_abs_diff": 0.05049632115937,
+        "mean_rel_pct": -0.13206072845499672,
+        "accepted": null
+      },
+      {
+        "ds": "uair",
+        "arm": "fedavg_window",
+        "source": "rshift_grid",
+        "in_scope": false,
+        "max_abs_diff": 0.1101598113231847,
+        "mean_rel_pct": -5.217725154272449,
+        "accepted": null
+      },
+      {
+        "ds": "uair",
+        "arm": "raven_simoracle",
+        "source": "rshift_grid",
+        "in_scope": false,
+        "max_abs_diff": 0.0264206393075314,
+        "mean_rel_pct": 1.5103855451674029,
+        "accepted": null
+      }
+    ]
+  },
+  "stop_triggered_as_first_written": true,
+  "uair_baseline_isolated": {
+    "seed30001_reproduces_exactly_in_both_batches": true,
+    "seeds_30002_30005_do_not": true,
+    "explanation": "a seed-dependent batch effect inside the H harness, not a per-seed re-training difference: the same arm reproduces bit-exactly for seed 30001 and is 2.6-9.4 % low for the other four",
+    "structural_side": "U-Air fedavg_window Delta_group 1.120507 -> 1.053095; the oracle arm's Delta_group is unchanged at 1.101096"
+  },
+  "pairing_rule_declared": {
+    "sensorscope|fedavg_window": "frozen",
+    "sensorscope|raven_simoracle": "frozen",
+    "uair|fedavg_window": "frozen",
+    "uair|raven_simoracle": "frozen"
+  }
+}

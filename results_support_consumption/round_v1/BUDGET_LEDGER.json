@@ -1,0 +1,81 @@
+[
+  {
+    "stage": "P0",
+    "status": "RESOURCE_EXIT",
+    "available_bytes": 527060992,
+    "cpu_seconds": 0.15625,
+    "wall_seconds": 0.0,
+    "rss_bytes": 22458368,
+    "peak_rss_bytes": 23093248,
+    "complete": true,
+    "note": "stopped before heavy imports"
+  },
+  {
+    "stage": "P0",
+    "status": "RESOURCE_EXIT",
+    "available_bytes": 623198208,
+    "cpu_seconds": 0.109375,
+    "wall_seconds": 0.011848099995404482,
+    "rss_bytes": 21934080,
+    "peak_rss_bytes": 22552576,
+    "complete": true,
+    "note": "stopped before heavy imports"
+  },
+  {
+    "stage": "P0",
+    "status": "PASS",
+    "cpu_seconds": 2.953125,
+    "wall_seconds": 3.9490694999985863,
+    "remaining_cpu": 296.78125,
+    "remaining_wall": 596.039082400006,
+    "rss_bytes": 207712256,
+    "peak_rss_bytes": 222945280,
+    "available_bytes": 4992450560,
+    "min_available_bytes": 4283580416,
+    "descendant_count": 0,
+    "complete": true
+  },
+  {
+    "stage": "P1",
+    "status": "NO_STRUCTURAL_ADVANTAGE",
+    "cpu_seconds": 8.859375,
+    "wall_seconds": 9.289178599981824,
+    "remaining_cpu": 591.140625,
+    "remaining_wall": 1190.7108214000182,
+    "rss_bytes": 230207488,
+    "peak_rss_bytes": 247341056,
+    "available_bytes": 4438929408,
+    "min_available_bytes": 4435218432,
+    "descendant_count": 0,
+    "complete": true
+  },
+  {
+    "stage": "P2",
+    "status": "INVALID_IMPLEMENTATION",
+    "cpu_seconds": 2.125,
+    "wall_seconds": 2.385370600008173,
+    "remaining_cpu": 297.875,
+    "remaining_wall": 897.6146293999918,
+    "rss_bytes": 204414976,
+    "peak_rss_bytes": 219344896,
+    "available_bytes": 5121413120,
+    "min_available_bytes": 5091192832,
+    "descendant_count": 0,
+    "complete": true
+  },
+  {
+    "stage": "P2",
+    "status": "PASS",
+    "cpu_seconds": 2.21875,
+    "wall_seconds": 2.489281899994239,
+    "remaining_cpu": 295.65625,
+    "remaining_wall": 895.1253474999976,
+    "rss_bytes": 192958464,
+    "peak_rss_bytes": 218206208,
+    "available_bytes": 5040783360,
+    "min_available_bytes": 5040783360,
+    "descendant_count": 0,
+    "complete": true,
+    "authorization": "user_requested_after_p1_no_structural_advantage"
+  }
+]

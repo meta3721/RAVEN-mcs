@@ -1,0 +1,50 @@
+{
+  "gate": "fail",
+  "gate_failed_blocks": [
+    "cityscanner_nyc_pm25"
+  ],
+  "cityscanner_only_failure": true,
+  "slopes_interpreted": false,
+  "E_mix": {
+    "sensorscope": "inapplicable",
+    "uair": "inapplicable",
+    "path": "closed"
+  },
+  "E_group": {
+    "sensorscope": "inapplicable",
+    "uair": "inapplicable",
+    "path": "closed"
+  },
+  "E_dec": {
+    "uair": "inapplicable",
+    "path": "closed"
+  },
+  "weighting_path": "closed",
+  "reason": "instruction section 1.4: one unexpected failure stops the round and no slope is interpreted; section 5: a City Scanner slope is not permission to train",
+  "gate_detail": {
+    "cityscanner_nyc_pm25": {
+      "rule": "|d| <= 1e-12 vs CS_ACCEPTED.json",
+      "n": 20,
+      "max_abs_diff": 3.6803273883897285,
+      "pass": false
+    },
+    "sensorscope": {
+      "rule": "|d| <= 1e-12 (trigger seeds recorded, not failed)",
+      "n_regular": 100,
+      "max_abs_diff_regular": 0.0,
+      "pass_regular": true,
+      "n_trigger": 0,
+      "max_abs_diff_trigger": null
+    },
+    "uair": {
+      "rule": "|d| <= 1e-12 (trigger seeds recorded, not failed)",
+      "n_regular": 85,
+      "max_abs_diff_regular": 0.0,
+      "pass_regular": true,
+      "n_trigger": 15,
+      "max_abs_diff_trigger": 0.056610333161796866
+    }
+  },
+  "prereg_sha256": "e9ab6f1e471204f9c2df1755bf190e4d6e204283eacfe8ff3bd4f011123b7875",
+  "cityscanner_in_decision": false
+}

@@ -22,6 +22,7 @@ if str(_SRC) not in sys.path:
     sys.path.insert(0, str(_SRC))
 
 from raven_mcs.aggregation.methods import get_aggregator
+from raven_mcs.aggregation.method_policy import get_method_policy
 from raven_mcs.data.base import DatasetMetadata
 from raven_mcs.data.processed_dataset import ProcessedDataset
 from raven_mcs.simulation.event_trace import (
@@ -35,6 +36,7 @@ from raven_mcs.training.window_runner import FullWindowRunner, build_full_runner
 from raven_mcs.utils.config import resolve_run_config
 from raven_mcs.utils.serialization import dump_json, load_json, load_yaml
 from raven_mcs.experiments.e1_entry import run_official_method
+from raven_mcs.sag.r1l_design import configuration_for_method
 
 
 def _get_or_generate_trace(
@@ -91,8 +93,17 @@ def _run_experiment(
     local_steps: int = 2,
     device: str = "cpu",
     output_root: Path | None = None,
+    design: str | None = None,
+    design_source: str = "explicit_cli",
 ) -> dict[str, Any]:
     """Execute one experiment run and return summary metrics."""
+    configuration = configuration_for_method(method, design, source=design_source)
+    identity = {
+        "design_configuration": configuration.to_dict() if configuration else None,
+        "method_version": get_method_policy(method).method_version,
+        "design_control": get_method_policy(method).design_control,
+        "coverage_role": "diagnostic_only" if configuration else "legacy_policy",
+    }
     if trace_cache is None:
         trace_cache = Path("outputs/event_traces")
 
@@ -107,11 +118,13 @@ def _run_experiment(
                 "scenario": scenario, "seed": seed,
                 "trace_hash": identity["trace_hash"], "status": "dry_run",
                 "official_entry": True,
+                **identity,
             }
         run_dir = run_official_method(
             _ROOT, method=method, seed=seed, num_windows=num_windows,
             local_steps=local_steps, device=device, trace_dir=trace_dir,
             output_root=output_root,
+            design=design, design_source=design_source,
         )
         metrics_run = load_json(run_dir / "metrics_run.json")
         manifest = load_json(run_dir / "manifest.json")
@@ -127,6 +140,7 @@ def _run_experiment(
             "git_commit": manifest["git_commit"],
             "status": "completed",
             "official_entry": True,
+            **identity,
         }
 
     trace, trace_hash = _get_or_generate_trace(dataset, scenario, seed, num_windows, trace_cache)
@@ -140,10 +154,13 @@ def _run_experiment(
             "seed": seed,
             "trace_hash": trace_hash,
             "status": "dry_run",
+            **identity,
         }
 
     # Build and run
     if dataset == "synthetic":
+        if configuration is not None:
+            raise ValueError("Configured method requires the full runner; SyntheticGateRunner is a separate diagnostic tool")
         aggregator = get_aggregator(method)
         runner = SyntheticGateRunner(
             trace=trace,
@@ -174,7 +191,9 @@ def _run_experiment(
             method=method,
             n_groups=processed.num_groups,
             model_seed=seed,
-            device="cpu",
+            device=device,
+            local_steps=local_steps,
+            design=design, design_source=design_source,
         )
         runner = full_runner
         metrics = full_runner.run()
@@ -195,7 +214,9 @@ def _run_experiment(
         "active_windows": active_windows,
         "final_debt_l1": final_debt,
         "omega_bar": omega_bar.tolist(),
+        "design_window_logs": getattr(runner, "design_window_logs", []),
         "status": "completed",
+        **identity,
     }
 
 
@@ -206,6 +227,8 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--experiment", required=True, help="Experiment name (e.g. E1_balanced)")
     parser.add_argument("--dataset", default=None, help="Override dataset")
     parser.add_argument("--method", default=None, help="Override method")
+    parser.add_argument("--design", choices=("on", "off"), default=None)
+    parser.add_argument("--design-source", default="explicit_cli")
     parser.add_argument("--scenario", default=None, help="Override scenario")
     parser.add_argument("--seed", type=int, default=None, help="Override seed")
     parser.add_argument("--num-windows", type=int, default=None, help="Override num_windows")
@@ -217,6 +240,9 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--resume", action="store_true")
     parser.add_argument("--fail-fast", action="store_true")
     args = parser.parse_args(argv)
+    summary_path = args.output_dir / f"{args.experiment}_summary.json"
+    if summary_path.exists():
+        raise FileExistsError(f"Existing results preserved: {summary_path}; use a new output directory")
 
     # Load experiment config
     exp_cfg = load_yaml(_ROOT / "configs" / "experiment" / f"{args.experiment}.yaml")
@@ -256,6 +282,8 @@ def main(argv: list[str] | None = None) -> int:
                             local_steps=args.local_steps,
                             device=args.device,
                             output_root=args.output_dir,
+                            design=args.design or exp_cfg.get("design"),
+                            design_source=args.design_source if args.design else "explicit_experiment_config",
                         )
                         results.append(result)
                         status = result.get("status", "unknown")

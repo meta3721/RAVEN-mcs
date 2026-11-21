@@ -1,0 +1,159 @@
+{
+  "M_MC": 2000,
+  "debug_seed": 32999,
+  "distinct_pi_hat_hashes": 4,
+  "eventtrace": {
+    "audit": {
+      "generator_version": "e3-complete-aligned-r3-v1",
+      "n_pairs": 12,
+      "staleness_gt_smax_rate": 0.0,
+      "sum_pi_opp_joint": 0.9999999999999999
+    },
+    "identity": {
+      "events_sha256": "c57bd2869d709fefc2d812b958490e869cf2af0a1f57ba669442a69c364dce40",
+      "metadata": {
+        "dataset": "fixture",
+        "generator": "e3-complete-aligned-r3-v1",
+        "notes": [
+          "joint pi_opp",
+          "atomic p_obs",
+          "staleness>S_max possible",
+          "MC q"
+        ],
+        "num_clients": 3,
+        "num_windows": 4,
+        "s_max": 5,
+        "seed": 32999
+      },
+      "metadata_sha256": "9a6e8de2f4f658085b37a5e88bb575a40e23b44de1edc19c2c8838bb01ad9b29",
+      "trace_hash": "0d22934407de10975190e95502ba1cf9cfb5b3c5f369e88f926ca6c13187f4ae"
+    },
+    "status": "READY"
+  },
+  "fixture": {
+    "data_dir": "D:\\Cursor\\raven.mcs\\artifacts\\e3_target_pair_metric_final_integration_closure_r1\\fixture_nd",
+    "n_clients": 3,
+    "n_spatial_time_groups": 12,
+    "n_test_units": 12,
+    "n_train_units": 12,
+    "spatial_to_client": {
+      "n0": "client-000",
+      "n1": "client-001",
+      "n2": "client-002"
+    }
+  },
+  "max_a_r_size": 3,
+  "no_method_ranking": true,
+  "raven_Q_norm1_over_S": 0.6458333333333333,
+  "rows": [
+    {
+      "Delta_group_applicability": "APPLICABLE",
+      "Delta_pair": 1.0,
+      "Q_norm1_over_S": 0.0,
+      "RMSE_mu": 1.791065141482474,
+      "RMSE_rho": 1.7259822539839131,
+      "checkpoint_written": true,
+      "delta_ref": 0.2499327535360127,
+      "local_optimizer_steps": 22,
+      "max_a_r_size": 3,
+      "method": "fedavg_window",
+      "n_delivered_updates": 11,
+      "n_groups_frozen": 12,
+      "n_groups_runtime": 12,
+      "no_performance_claim": true,
+      "pi_hat_hash": "28229f304f379ee8a3f63cf32c5ef72bba18825ce9425e362cb9194473ec2230",
+      "status": "REAL_PATH_EXECUTED"
+    },
+    {
+      "Delta_group_applicability": "APPLICABLE",
+      "Delta_pair": 1.0,
+      "Q_norm1_over_S": 0.0,
+      "RMSE_mu": 1.7833447355005128,
+      "RMSE_rho": 1.7177926827876182,
+      "checkpoint_written": true,
+      "delta_ref": 0.0,
+      "local_optimizer_steps": 22,
+      "max_a_r_size": 3,
+      "method": "twostage_hajek",
+      "n_delivered_updates": 11,
+      "n_groups_frozen": 12,
+      "n_groups_runtime": 12,
+      "no_performance_claim": true,
+      "pi_hat_hash": "4d4f59f432fc344693ccc4e1bf31df9261ee8ece5f0a328922cc4a68d2cf775d",
+      "status": "REAL_PATH_EXECUTED"
+    },
+    {
+      "Delta_group_applicability": "APPLICABLE",
+      "Delta_pair": 1.0,
+      "Q_norm1_over_S": 0.6458333333333333,
+      "RMSE_mu": 1.7910651281696308,
+      "RMSE_rho": 1.725982236066963,
+      "checkpoint_written": true,
+      "delta_ref": 0.2499323504264257,
+      "local_optimizer_steps": 22,
+      "max_a_r_size": 3,
+      "method": "raven",
+      "n_delivered_updates": 11,
+      "n_groups_frozen": 12,
+      "n_groups_runtime": 12,
+      "no_performance_claim": true,
+      "pi_hat_hash": "1cf92179a7ae69623c761848ae33bc25c2c962972785245628b33313d76a411d",
+      "status": "REAL_PATH_EXECUTED"
+    },
+    {
+      "Delta_group_applicability": "APPLICABLE",
+      "Delta_pair": 1.0000000011697097,
+      "Q_norm1_over_S": 0.6458333333333333,
+      "RMSE_mu": 1.7910650626474118,
+      "RMSE_rho": 1.7259821625820264,
+      "checkpoint_written": true,
+      "delta_ref": 0.6475580747170675,
+      "local_optimizer_steps": 22,
+      "max_a_r_size": 3,
+      "method": "raven_simoracle",
+      "n_delivered_updates": 11,
+      "n_groups_frozen": 12,
+      "n_groups_runtime": 12,
+      "no_performance_claim": true,
+      "pi_hat_hash": "0b51f44be0c19b81bece4871051e552a146663c738ba9608e5c1381afed8ecc8",
+      "status": "REAL_PATH_EXECUTED"
+    },
+    {
+      "Delta_group_applicability": "NOT_APPLICABLE",
+      "Delta_pair": null,
+      "Q_norm1_over_S": null,
+      "RMSE_mu": 0.5185748475718179,
+      "RMSE_rho": 0.4931897762655549,
+      "checkpoint_written": true,
+      "delta_ref": null,
+      "local_optimizer_steps": 20,
+      "max_a_r_size": 0,
+      "method": "central_all",
+      "n_delivered_updates": 12,
+      "n_groups_frozen": 12,
+      "n_groups_runtime": 12,
+      "no_performance_claim": true,
+      "pi_hat_hash": null,
+      "status": "REAL_PATH_EXECUTED"
+    },
+    {
+      "Delta_group_applicability": "NOT_APPLICABLE",
+      "Delta_pair": null,
+      "Q_norm1_over_S": null,
+      "RMSE_mu": 0.6253927333362866,
+      "RMSE_rho": 0.5150456408667016,
+      "checkpoint_written": true,
+      "delta_ref": null,
+      "local_optimizer_steps": 20,
+      "max_a_r_size": 0,
+      "method": "central_delivered",
+      "n_delivered_updates": 6,
+      "n_groups_frozen": 12,
+      "n_groups_runtime": 12,
+      "no_performance_claim": true,
+      "pi_hat_hash": null,
+      "status": "REAL_PATH_EXECUTED"
+    }
+  ],
+  "status": "PASS"
+}

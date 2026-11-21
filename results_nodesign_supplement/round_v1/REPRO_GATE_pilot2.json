@@ -1,0 +1,40 @@
+{
+  "abs_diff": {
+    "Delta_c_s": 0.0,
+    "Delta_group": 0.0,
+    "RMSE_mu": 0.0,
+    "WorstGroupRMSE": 0.0
+  },
+  "block": "pilot2",
+  "eventtrace_hash_match": true,
+  "frozen": {
+    "Delta_c_s": 0.44401397405596094,
+    "Delta_group": 0.043241688955982585,
+    "RMSE_mu": 0.7248443131996575,
+    "WorstGroupRMSE": 0.7426507882288593
+  },
+  "pass": true,
+  "rerun": {
+    "Delta_c_s": 0.44401397405596094,
+    "Delta_group": 0.043241688955982585,
+    "RMSE_mu": 0.7248443131996575,
+    "WorstGroupRMSE": 0.7426507882288593
+  },
+  "seed": 33001,
+  "setup_checks": {
+    "mu_max_abs_diff": [
+      0.0,
+      0.0
+    ],
+    "n_pi_opp_keys": [
+      942,
+      942
+    ],
+    "n_pi_target_keys": [
+      1192,
+      1192
+    ]
+  },
+  "tolerance": 1e-09,
+  "utc": "2026-09-24T02:19:27.838147+00:00"
+}

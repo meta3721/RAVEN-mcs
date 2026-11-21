@@ -1,0 +1,62 @@
+"""Fix stale text in the regenerated round artifacts after the traffic Stage A run."""
+from __future__ import annotations
+
+import json
+import pathlib
+from datetime import datetime, timezone
+
+OUT = pathlib.Path(r"C:\Cursor\raven.mcs\results_server_optimizer\round_v1")
+
+# 1. S1P_VERDICT.json: real timestamp + corrected Stage B reason
+p = OUT / "S1P_VERDICT.json"
+d = json.loads(p.read_text(encoding="utf-8"))
+d["created_utc"] = datetime.now(timezone.utc).isoformat()
+d["stage_B"] = {
+    "run": False,
+    "reason": "section 5 applies Stage B only to blocks not PASS at Stage A; SensorScope, U-Air and "
+              "NSW-Traffic all PASS, so no block qualified",
+}
+d["note_traffic"] = (
+    "NSW-Traffic Stage A was run after the user authorized the narrow reuse-guard exemption "
+    "(ledger Part IX item 65). Its 15 cells carry allow_reused_traffic_rerun=True, recorded per run in "
+    "SERVER_OPT_META.json and REUSE_GUARD_EXEMPTION.json. Stage C has not been run for traffic."
+)
+p.write_text(json.dumps(d, indent=2, sort_keys=True, default=str) + "\n", encoding="utf-8")
+print("fixed S1P_VERDICT.json")
+
+# 2. S1P_STAGE_C_H.json: traffic is no longer 'N3=BLOCKED', it simply has not had Stage C yet
+p2 = OUT / "S1P_STAGE_C_H.json"
+c = json.loads(p2.read_text(encoding="utf-8"))
+c["H"]["traffic"] = {
+    "verdict": "not_run",
+    "reason": "Stage C has not been executed for NSW-Traffic; its Stage A verdict is PASS "
+              "(ledger Part IX item 65 exemption in force), so section 6 permits Stage C there. "
+              "SensorScope and U-Air were measured earlier.",
+}
+c["traffic_stage_c_status"] = {
+    "N3_prime": "PASS",
+    "stage_c_run": False,
+    "why_it_matters": "NSW-Traffic is the only block section 6 does not exclude from GO-H: its "
+                      "K_r<=3 share under the new config is 0.111, below the 0.25 threshold, whereas "
+                      "SensorScope (0.753) and U-Air (0.662) are excluded.",
+    "needs": "raven_simoracle (allowed by the guard) and raven (a reused-block method, so it too "
+             "requires the recorded exemption); H itself uses fedavg and raven_simoracle only, and "
+             "raven is descriptive",
+}
+p2.write_text(json.dumps(c, indent=2, sort_keys=True, default=str) + "\n", encoding="utf-8")
+print("fixed S1P_STAGE_C_H.json")
+
+# 3. show the traffic Stage A detail so the numbers can be reported
+av = json.loads((OUT / "S1P_STAGE_A_VERDICT.json").read_text(encoding="utf-8"))
+print()
+print("=== traffic N3' detail ===")
+t = av["N3_prime"]["traffic"]
+for k in ("verdict", "eta_s_star", "c_central_delivered", "frozen_fedavg_window", "new_fedavg",
+          "ratio_to_c", "vs_frozen_fedavg_rel", "threshold_1p01c"):
+    print(f"   {k} = {t.get(k)}")
+cfg = json.loads((OUT / "S1P_FROZEN_CONFIG.json").read_text(encoding="utf-8"))
+print()
+print("=== traffic validation means by level ===")
+for k, v in sorted(cfg["per_block"]["traffic"]["levels"].items(), key=lambda kv: float(kv[0])):
+    print(f"   eta_s={k}: n_non_diverged={v['n_non_diverged']}/{v['n_screen_seeds']} "
+          f"all_usable={v['all_screen_seeds_usable']} mean_val={v['mean_val_RMSE_mu']}")

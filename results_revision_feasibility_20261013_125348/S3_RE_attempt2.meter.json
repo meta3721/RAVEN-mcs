@@ -1,0 +1,138 @@
+{
+  "command": [
+    ".venv_new/Scripts/python.exe",
+    "scripts/validate_re_interval_revision.py",
+    "RE",
+    "2"
+  ],
+  "returncode": 0,
+  "process_tree_cpu_seconds": 2.640625,
+  "monitor_cpu_seconds": 0.046875,
+  "wall_seconds": 3.3015035999997053,
+  "limit_reason": null,
+  "log": "C:\\Cursor\\raven.mcs\\results_revision_feasibility_20261013_125348\\S3_RE_attempt2.log",
+  "pids": [
+    {
+      "pid": 12808,
+      "joined_observed_wall": 0.012541500000224914,
+      "root_job_member": true,
+      "image": "C:\\Cursor\\raven.mcs\\.venv_new\\Scripts\\python.exe",
+      "initial_cpu": 0.0,
+      "created_filetime": 13436342927.624687,
+      "exited_filetime": 13436342930.913382,
+      "kernel_cpu": 0.0,
+      "user_cpu": 0.03125,
+      "cpu_seconds": 0.03125,
+      "exit_code": 0,
+      "exit_observed_wall": 3.3014646000010544
+    },
+    {
+      "pid": 21196,
+      "joined_observed_wall": 0.018689100001211045,
+      "root_job_member": true,
+      "image": "C:\\Windows\\System32\\conhost.exe",
+      "initial_cpu": 0.0,
+      "created_filetime": 13436342927.639393,
+      "exited_filetime": 13436342930.917015,
+      "kernel_cpu": 0.0,
+      "user_cpu": 0.015625,
+      "cpu_seconds": 0.015625,
+      "exit_code": 0,
+      "exit_observed_wall": 3.3014712000003783
+    },
+    {
+      "pid": 4712,
+      "joined_observed_wall": 0.04041810000126134,
+      "root_job_member": true,
+      "image": "C:\\Users\\szr\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+      "initial_cpu": 0.0,
+      "created_filetime": 13436342927.661968,
+      "exited_filetime": 13436342930.899073,
+      "kernel_cpu": 1.0,
+      "user_cpu": 1.578125,
+      "cpu_seconds": 2.578125,
+      "exit_code": 0,
+      "exit_observed_wall": 3.301476000000548
+    },
+    {
+      "pid": 21628,
+      "joined_observed_wall": 0.4245278000016697,
+      "root_job_member": true,
+      "image": "C:\\Windows\\System32\\cmd.exe",
+      "initial_cpu": 0.0,
+      "created_filetime": 13436342928.041763,
+      "exited_filetime": 13436342928.063711,
+      "kernel_cpu": 0.0,
+      "user_cpu": 0.015625,
+      "cpu_seconds": 0.015625,
+      "exit_code": 0,
+      "exit_observed_wall": 3.301482599999872
+    }
+  ],
+  "notifications": [
+    {
+      "message": 6,
+      "pid": 12808,
+      "wall": 0.013388600000325823
+    },
+    {
+      "message": 6,
+      "pid": 21196,
+      "wall": 0.018672099999093916
+    },
+    {
+      "message": 6,
+      "pid": 4712,
+      "wall": 0.04038679999939632
+    },
+    {
+      "message": 6,
+      "pid": 21628,
+      "wall": 0.4244987999991281
+    },
+    {
+      "message": 7,
+      "pid": 21628,
+      "wall": 0.446700200001942
+    },
+    {
+      "message": 7,
+      "pid": 4712,
+      "wall": 3.285731300002226
+    },
+    {
+      "message": 7,
+      "pid": 12808,
+      "wall": 3.2963295000008657
+    },
+    {
+      "message": 7,
+      "pid": 21196,
+      "wall": 3.296335999999428
+    },
+    {
+      "message": 4,
+      "pid": 0,
+      "wall": 3.301397300001554
+    }
+  ],
+  "errors": [],
+  "job_total_processes": 4,
+  "job_active_processes": 0,
+  "independent_pid_CPU_sum": 2.640625,
+  "difference_seconds": 0.0,
+  "predeclared_tolerance_seconds": 0.135,
+  "audit_passed": true,
+  "CPU_limit": 45.0,
+  "single_CPU_affinity": 1,
+  "mutually_exclusive_costs": [
+    "process_tree_cpu_seconds",
+    "monitor_cpu_seconds"
+  ],
+  "included_not_additive": [
+    "independent_pid_CPU_sum",
+    "individual_PID_CPU",
+    "inner_job_CPU"
+  ],
+  "cpu_scope": "creation through process exit; root created suspended, descendants inherit before execution"
+}

@@ -1,0 +1,19 @@
+{
+  "canary_executed": false,
+  "central_status": "CENTRAL_RUNNER_READY",
+  "created_utc": "2026-08-10T03:49:15.194559+00:00",
+  "next_authorized_round": "E3-MULTIDATASET-REAL-RUNNER-CANARY-R1",
+  "no_training": true,
+  "pair_status": "PAIR_STATE_RUNNER_INTEGRATED",
+  "round": "E3-SEMANTIC-ALIGNMENT-AND-RUNNER-INTEGRATION-CLOSURE-R1",
+  "status": "READY_FOR_E3_MULTIDATASET_REAL_RUNNER_CANARY",
+  "totals": {
+    "Central_reference_runs": 120,
+    "Oracle_runs": 60,
+    "RAVEN_new_runs": 40,
+    "external_baseline_runs": 0,
+    "reused_Traffic_runs": 100,
+    "same_backbone_new_runs": 380,
+    "total_new_training_runs": 560
+  }
+}

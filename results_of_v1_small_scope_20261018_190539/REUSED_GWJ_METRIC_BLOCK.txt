@@ -1,0 +1,12 @@
+if full:
+ g=[];active=None;j=0
+ nonempty=[x for x in closures if not x['empty']]
+ for tick in range(201,1001):
+  t=round(tick*.1,10)
+  while j<len(nonempty) and nonempty[j]['time']<=t+1e-9:active=nonempty[j];j+=1
+  g.append(active['preview']['ell'] if active else 1.);fallback+=int(active is None)
+ G=sum(g)/800
+ post=[x for x in closures if x['time']>20 and x['duration']>0]
+ assert post;W=sum(x['duration'] for x in post)/len(post)
+ post_nonempty=[x for x in post if not x['empty']]
+ if post_nonempty:J=sum(x['preview']['ell']+.02*x['preview']['age']+.20*x['duration']/4 for x in post_nonempty)/len(post_nonempty)

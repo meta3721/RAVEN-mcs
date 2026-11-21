@@ -1,0 +1,65 @@
+{
+  "EPS_ZERO": 1e-12,
+  "alpha": 0.05,
+  "ci95": "mean(d) ± 1.96 * std(d, ddof=1) / sqrt(n)  [frozen normal approximation, not bootstrap]",
+  "configurations": [
+    "RAVEN-MCS",
+    "RAVEN-w/o-Design",
+    "RAVEN-w/o-Obs",
+    "RAVEN-w/o-Use",
+    "RAVEN-w/o-Inst",
+    "RAVEN-w/o-Debt"
+  ],
+  "datasets": [
+    "SensorScope",
+    "U-Air"
+  ],
+  "direction": "worsened if mean(d)>EPS_ZERO else improved if mean(d)<-EPS_ZERO else tie",
+  "effect_size": "Cohen_dz = mean(d) / std(d, ddof=1)",
+  "holm_algorithm": "Holm step-down with cumulative max, cap at 1.0",
+  "holm_family": "per (dataset, metric) across the 5 ablation components (Design, Obs, Use, Inst, Debt)",
+  "holm_note": "R3 claim-matrix Holm_p for parent components used Gen1 Inst inside the family; Inst Gen2 was Holm-adjusted in isolation (m=1). R2 rebuilds Holm from the 240 Gen2 cells with the frozen 5-component family. Paper-facing Holm_p is the rebuilt value. sealed_r3_p_holm is retained for provenance.",
+  "input_file": "D:/Cursor/raven.mcs/paper_ready_r1/01_core_data/e4/E4_FINAL_VALID_EVIDENCE_240.csv",
+  "input_sha256": "36dfedb95bf1990009f80e02fe739f64d19ec3633dad357beaa5c840da02224c",
+  "mae_mu_policy": "MAE_mu and RMSE_rho are present in sealed final_metrics.json but were marked MISSING_NOT_RECORDED in the 240-cell CSV; they are extracted only as supporting diagnostics, not as new core metrics.",
+  "metrics_from_240_cells": [
+    "Delta_group",
+    "Delta_c_s",
+    "RMSE_mu",
+    "Tail_RMSE"
+  ],
+  "n_pairs": 20,
+  "optional_metrics_not_in_240_cells": [
+    "MAE_mu",
+    "RMSE_rho"
+  ],
+  "paired_design": "same-seed ablation minus full RAVEN-MCS",
+  "protocol_id": "E4_FROZEN_PAIRED_WILCOXON_HOLM_R2",
+  "round": "E4",
+  "seed_set": [
+    "30001",
+    "30002",
+    "30003",
+    "30004",
+    "30005",
+    "30006",
+    "30007",
+    "30008",
+    "30009",
+    "30010",
+    "30011",
+    "30012",
+    "30013",
+    "30014",
+    "30015",
+    "30016",
+    "30017",
+    "30018",
+    "30019",
+    "30020"
+  ],
+  "source": "src/raven_mcs/e4/analyze.py",
+  "test": "scipy.stats.wilcoxon two-sided zero_method=wilcox correction=False (scipy default)",
+  "wo_inst_generation": 2,
+  "wo_inst_generation_status": "FINAL_VALID_ONE_FACTOR"
+}

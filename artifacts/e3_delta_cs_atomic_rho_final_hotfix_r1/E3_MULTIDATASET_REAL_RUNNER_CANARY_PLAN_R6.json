@@ -1,0 +1,19 @@
+{
+  "canary_seed": 31001,
+  "execute_in_this_round": false,
+  "no_performance_conclusion": true,
+  "round": "E3-MULTIDATASET-REAL-RUNNER-CANARY-R1",
+  "status": "PLAN_READY_NOT_EXECUTED",
+  "traffic_reuse": "REUSE_ONLY_NO_RERUN",
+  "verifies": [
+    "spatial×time h",
+    "opportunity stratum s",
+    "Delta_c_s client×s",
+    "atomic rho_i^arr",
+    "RMSE_mu/rho",
+    "Head/Tail",
+    "atomic p_obs",
+    "joint pi_opp",
+    "applicability N/A"
+  ]
+}

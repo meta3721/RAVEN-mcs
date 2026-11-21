@@ -1,0 +1,45 @@
+{
+  "audit_registry_hash": "8f3e6c85bcacb99bee3b70c369745eaa5ac38c467db32d5330bf7751c61cb743",
+  "cell_count": 32,
+  "coordinate_file_hash": "7a0c35eccb149ab804f0b35d65dc06fb2367ae78381855a01e4bc9ad7f26f1da",
+  "feasibility": {
+    "CERT-L16": {
+      "P95_D_TV_cert": 0.019468598886071577,
+      "P95_abs_head_dev": 0.0353683499636937,
+      "P95_abs_tail_dev": 0.03196821274314412,
+      "cell_count": 16,
+      "feasible": true,
+      "minimum_expected_arrivals_per_positive_cell": 539.3986838709691,
+      "zero_arrival_positive_cert_cell_rate": 0.0
+    },
+    "CERT-L32": {
+      "P95_D_TV_cert": 0.023864704458330898,
+      "P95_abs_head_dev": 0.0353683499636937,
+      "P95_abs_tail_dev": 0.03196821274314412,
+      "cell_count": 32,
+      "feasible": true,
+      "minimum_expected_arrivals_per_positive_cell": 269.6993419354844,
+      "zero_arrival_positive_cert_cell_rate": 0.0
+    },
+    "CERT-L8": {
+      "P95_D_TV_cert": 0.016524493719164857,
+      "P95_abs_head_dev": 0.0353683499636937,
+      "P95_abs_tail_dev": 0.03196821274314412,
+      "cell_count": 8,
+      "feasible": true,
+      "minimum_expected_arrivals_per_positive_cell": 1120.2895741935424,
+      "zero_arrival_positive_cert_cell_rate": 0.0
+    }
+  },
+  "mapping_hash": "ce29e3d4a9e876dc8146d632e2e765c674b667b7919e54b94254f21a30a56d09",
+  "selected_level": "CERT-L32",
+  "selection_inputs": [
+    "raw_target_mass",
+    "dense_legal_candidate_exposure",
+    "soft_balanced_probabilities",
+    "audit-rep-0001:0200"
+  ],
+  "status": "PASS",
+  "target_mass_hash": "93384ee11e6433e3b5e442ce886b8b7fe3de5e319f8c5f0f773fb2ee14dae4e8",
+  "validation_seeds_used_for_selection": false
+}

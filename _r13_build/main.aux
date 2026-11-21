@@ -1,0 +1,251 @@
+\relax 
+\citation{ganti2011mobile,guo2015mobile,ma2014opportunities}
+\citation{wang2023outlier,li2024robust,wang2023transformer,wang2024fewshot,wang2025evolutionary,xu2025rethinking,liu2026pyramid,zhang2026mapt}
+\citation{mcmahan2017communication,yang2019federated,kairouz2021advances,li2020federated}
+\citation{wang2026federated,xie2019asynchronous,liu2023adaptive,sun2024staleness}
+\citation{wang2023spatiotemporal,li2024robust}
+\citation{wang2026federated,sun2024staleness}
+\citation{wang2022unified,jhunjhunwala2022fedvarp,wu2023anchor,wang2024lightweight,sun2025debiasing,mohri2019agnostic,chen2026fedcure,morishita2026who}
+\@writefile{toc}{\contentsline {section}{\numberline {I}Introduction}{1}{}\protected@file@percent }
+\newlabel{sec:introduction}{{I}{1}{}{section.1}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces RAVEN-MCS aligns asynchronous federated completion with a public deployment target. (a)~Three selection layers induce an arrival law that need not match the deployment target. (b)~RAVEN-Design forms a selection-corrected target-mass reference and calibrates it in the current feasible support. RAVEN-NoDesign uses $\setbox \z@ \hbox {\mathsurround \z@ $\textstyle \zeta $}\mathaccent "0362{\zeta }=1$ and is not target-mass reconstruction. (P2) is the per-window calibration program that maps this reference onto the feasible aggregation set; it is defined in Section~\ref {sec:calibration}.}}{2}{}\protected@file@percent }
+\newlabel{fig:raven_overview}{{1}{2}{}{figure.1}{}}
+\citation{ganti2011mobile,guo2015mobile,ma2014opportunities,wang2023spatiotemporal,wang2023outlier,wang2023transformer,wang2024fewshot,li2024robust,wang2025evolutionary,xu2025rethinking,liu2026pyramid,zhang2026mapt,liu2026pricing}
+\citation{liu2026multidimensional,zhang2025incentive,lu2025piece,zhang2026locally}
+\citation{mcmahan2017communication,yang2019federated,kairouz2021advances,li2020federated}
+\citation{wang2026federated}
+\citation{xie2019asynchronous,liu2023adaptive,sun2024staleness,islam2025seafl,li2026stdfl}
+\citation{lu2023federated,plassier2023conformal}
+\citation{wang2022unified,jhunjhunwala2022fedvarp,wu2023anchor}
+\citation{wang2024lightweight}
+\citation{sun2025debiasing,chen2026fedcure}
+\citation{mohri2019agnostic}
+\citation{li2020fedprox,karimireddy2020scaffold}
+\citation{morishita2026who}
+\citation{goetze2025floss}
+\citation{listozec2024overcoming}
+\citation{horvitz1952generalization,hajek1971comment,shimodaira2000covariate,robins1994estimation}
+\citation{byrd2019importance}
+\@writefile{toc}{\contentsline {section}{\numberline {II}Related Work}{3}{}\protected@file@percent }
+\newlabel{sec:related_work}{{II}{3}{}{section.2}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {III}System Model and Target-Mass Formulation}{3}{}\protected@file@percent }
+\newlabel{sec:system_model}{{III}{3}{}{section.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-A}}Windowed Asynchronous Mobile Crowdsensing}{3}{}\protected@file@percent }
+\newlabel{subsec:windowed_mcs}{{\mbox  {III-A}}{3}{}{subsection.3.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-B}}Two-Stage, Three-Layer Non-Random Selection}{4}{}\protected@file@percent }
+\newlabel{subsec:selection_process}{{\mbox  {III-B}}{4}{}{subsection.3.2}{}}
+\newlabel{eq:opp_event_law}{{1}{4}{}{equation.1}{}}
+\newlabel{eq:pobs_def}{{2}{4}{}{equation.2}{}}
+\newlabel{eq:quse_def}{{3}{4}{}{equation.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-C}}Public Deployment Target and Compatible Target Measures}{4}{}\protected@file@percent }
+\newlabel{subsec:target_measures}{{\mbox  {III-C}}{4}{}{subsection.3.3}{}}
+\newlabel{eq:atomic_target}{{4}{4}{}{equation.4}{}}
+\newlabel{eq:target_compatibility}{{5}{4}{}{equation.5}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-D}}Aggregate Coverage Certification Object}{4}{}\protected@file@percent }
+\newlabel{subsec:agg_coverage_object}{{\mbox  {III-D}}{4}{}{subsection.3.4}{}}
+\newlabel{eq:agg_Ct}{{6}{4}{}{equation.6}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-E}}Deployment-Target Risk Versus Arrival Risk}{4}{}\protected@file@percent }
+\newlabel{subsec:target_risk}{{\mbox  {III-E}}{4}{}{subsection.3.5}{}}
+\newlabel{eq:target_risk}{{7}{4}{}{equation.7}{}}
+\newlabel{eq:arrival_intensity}{{8}{4}{}{equation.8}{}}
+\newlabel{eq:arrival_distribution}{{9}{5}{}{equation.9}{}}
+\newlabel{eq:arrival_risk}{{10}{5}{}{equation.10}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-F}}Structural Alignment Objective}{5}{}\protected@file@percent }
+\newlabel{subsec:design_objective}{{\mbox  {III-F}}{5}{}{subsection.3.6}{}}
+\newlabel{subsec:equivalence_band}{{\mbox  {III-F}}{5}{}{subsection.3.6}{}}
+\newlabel{eq:omega_bar}{{11}{5}{}{equation.11}{}}
+\newlabel{eq:Pi_hat_ks}{{12}{5}{}{equation.12}{}}
+\newlabel{eq:delta_cs}{{13}{5}{}{equation.13}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {IV}Selection-Layer-Aware Target Reconstruction}{5}{}\protected@file@percent }
+\newlabel{sec:reconstruction}{{IV}{5}{}{section.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {IV-A}}Opportunity/Design Correction}{5}{}\protected@file@percent }
+\newlabel{subsec:design_correction}{{\mbox  {IV-A}}{5}{}{subsection.4.1}{}}
+\newlabel{eq:design_ratio_general}{{14}{5}{}{equation.14}{}}
+\newlabel{eq:design_ratio_simple}{{15}{5}{}{equation.15}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {IV-B}}Observation Correction and Local H\'ajek Normalization}{6}{}\protected@file@percent }
+\newlabel{subsec:observation_hajek}{{\mbox  {IV-B}}{6}{}{subsection.4.2}{}}
+\newlabel{eq:a_stabilized}{{16}{6}{}{equation.16}{}}
+\newlabel{eq:m_total}{{17}{6}{}{equation.17}{}}
+\newlabel{eq:m_group}{{18}{6}{}{equation.18}{}}
+\newlabel{eq:m_stratum}{{19}{6}{}{equation.19}{}}
+\newlabel{eq:neff}{{20}{6}{}{equation.20}{}}
+\newlabel{eq:local_hajek_objective}{{21}{6}{}{equation.21}{}}
+\newlabel{eq:normalized_update}{{22}{6}{}{equation.22}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {IV-C}}Usable-Update Correction and Reference Aggregation Mass}{6}{}\protected@file@percent }
+\newlabel{subsec:usable_correction}{{\mbox  {IV-C}}{6}{}{subsection.4.3}{}}
+\newlabel{eq:d_use}{{23}{6}{}{equation.23}{}}
+\newlabel{eq:beta_ref}{{24}{6}{}{equation.24}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {IV-D}}Information Boundary and Stabilization}{6}{}\protected@file@percent }
+\newlabel{subsec:information_boundary}{{\mbox  {IV-D}}{6}{}{subsection.4.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {IV-E}}Why Pairwise Positive Lower Bounds Are Not the Formal Certificate}{6}{}\protected@file@percent }
+\newlabel{subsec:pairwise_barrier}{{\mbox  {IV-E}}{6}{}{subsection.4.5}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {V}Feasibility-Aware Target Calibration}{6}{}\protected@file@percent }
+\newlabel{sec:calibration}{{V}{6}{}{section.5}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {V-A}}Feasible Aggregation Set}{6}{}\protected@file@percent }
+\newlabel{subsec:feasible_set}{{\mbox  {V-A}}{6}{}{subsection.5.1}{}}
+\newlabel{eq:Cr}{{25}{6}{}{equation.25}{}}
+\newlabel{eq:variance_proxy}{{26}{6}{}{equation.26}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {V-B}}Long-Term Target Debt}{7}{}\protected@file@percent }
+\newlabel{subsec:debt}{{\mbox  {V-B}}{7}{}{subsection.5.2}{}}
+\newlabel{eq:debt_bound}{{27}{7}{}{equation.27}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {V-C}}Feasibility-Aware Calibration Program}{7}{}\protected@file@percent }
+\newlabel{subsec:P2}{{\mbox  {V-C}}{7}{}{subsection.5.3}{}}
+\newlabel{eq:P2_objective}{{28}{7}{}{equation.28}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {V-D}}Global Update and Window Logic}{7}{}\protected@file@percent }
+\newlabel{subsec:global_update}{{\mbox  {V-D}}{7}{}{subsection.5.4}{}}
+\newlabel{eq:server_update}{{29}{7}{}{equation.29}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {V-E}}Finite-Sample Aggregate Coverage Certificate}{7}{}\protected@file@percent }
+\newlabel{subsec:agg_certificate_alg}{{\mbox  {V-E}}{7}{}{subsection.5.5}{}}
+\newlabel{eq:agg_kn}{{30}{7}{}{equation.30}{}}
+\newlabel{eq:agg_CLCB}{{31}{7}{}{equation.31}{}}
+\newlabel{eq:design_factor}{{32}{7}{}{equation.32}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {VI}Theoretical Analysis}{7}{}\protected@file@percent }
+\newlabel{sec:theory}{{VI}{7}{}{section.6}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VI-A}}Assumptions}{7}{}\protected@file@percent }
+\newlabel{subsec:assumptions}{{\mbox  {VI-A}}{7}{}{subsection.6.1}{}}
+\@writefile{loa}{\contentsline {algorithm}{\numberline {1}{\ignorespaces Window-close RAVEN-MCS with the Design factor as an explicit configuration}}{8}{}\protected@file@percent }
+\newlabel{alg:window_close}{{1}{8}{}{algorithm.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VI-B}}Target Risk Is Not Arrival Risk}{8}{}\protected@file@percent }
+\newlabel{subsec:prop_risk}{{\mbox  {VI-B}}{8}{}{subsection.6.2}{}}
+\newlabel{prop:risk}{{1}{8}{}{proposition.1}{}}
+\newlabel{eq:prop1_nonidentity}{{33}{8}{}{equation.33}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VI-C}}Normalized Sequential Target Reconstruction}{8}{}\protected@file@percent }
+\newlabel{subsec:prop_reconstruction}{{\mbox  {VI-C}}{8}{}{subsection.6.3}{}}
+\newlabel{eq:chi_event}{{34}{8}{}{equation.34}{}}
+\newlabel{prop:reconstruction}{{2}{8}{}{proposition.2}{}}
+\newlabel{eq:hajek_phi}{{35}{8}{}{equation.35}{}}
+\newlabel{eq:target_phi}{{36}{8}{}{equation.36}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VI-D}}Existence and Uniqueness of Feasible Calibration}{8}{}\protected@file@percent }
+\newlabel{subsec:theorem_calibration}{{\mbox  {VI-D}}{8}{}{subsection.6.4}{}}
+\newlabel{thm:calibration}{{1}{8}{}{theorem.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VI-E}}Practical Plug-in Perturbation}{9}{}\protected@file@percent }
+\newlabel{subsec:prop_plugin}{{\mbox  {VI-E}}{9}{}{subsection.6.5}{}}
+\newlabel{eq:eps_stab}{{37}{9}{}{equation.37}{}}
+\newlabel{prop:practical_plugin}{{3}{9}{}{proposition.3}{}}
+\newlabel{eq:g4_beta}{{38}{9}{}{equation.38}{}}
+\newlabel{eq:g4_alpha}{{39}{9}{}{equation.39}{}}
+\newlabel{eq:g4_comp}{{40}{9}{}{equation.40}{}}
+\newlabel{prop:group_decomposition}{{4}{9}{}{proposition.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VI-F}}Aggregate Coverage Guarantees}{9}{}\protected@file@percent }
+\newlabel{subsec:agg_coverage_theory}{{\mbox  {VI-F}}{9}{}{subsection.6.6}{}}
+\newlabel{ass:score-exchangeability}{{1}{9}{}{assumption.1}{}}
+\newlabel{thm:agg-lcb}{{2}{9}{}{theorem.2}{}}
+\newlabel{eq:agg_thm1}{{41}{9}{}{equation.41}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {VII}Evaluation}{9}{}\protected@file@percent }
+\newlabel{sec:evaluation}{{VII}{9}{}{section.7}{}}
+\citation{ingelrest2010sensorscope,barrenetxea2019sensorscope}
+\citation{zheng2013uair}
+\citation{tfnsw2024traffic}
+\citation{yuan2010tdrive}
+\citation{ingelrest2010sensorscope}
+\citation{zheng2013uair}
+\citation{tfnsw2024traffic}
+\citation{yuan2010tdrive}
+\citation{wang2023cityscanner}
+\citation{mcmahan2017communication}
+\citation{xie2019asynchronous}
+\citation{wang2026federated}
+\citation{horvitz1952generalization,hajek1971comment}
+\citation{wang2024lightweight}
+\citation{chen2026fedcure}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VII-A}}Experimental Setup}{10}{}\protected@file@percent }
+\newlabel{subsec:eval_setup}{{\mbox  {VII-A}}{10}{}{subsection.7.1}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {\mbox  {VII-A}1}Datasets and target semantics}{10}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {\mbox  {VII-A}2}Selection protocol and compared methods}{10}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {\mbox  {VII-A}3}Metrics and statistical policy}{10}{}\protected@file@percent }
+\citation{wilcoxon1945individual}
+\citation{holm1979simple}
+\@writefile{lot}{\contentsline {table}{\numberline {I}{\ignorespaces Datasets and roles. Targets use public or training-side information, never test labels. T-Drive is a hybrid ranking under real $R$ with controlled $O$ and $U$.}}{11}{}\protected@file@percent }
+\newlabel{tab:datasets}{{I}{11}{}{table.1}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Risk interchangeability on complete-aligned NSW-Traffic. (a)~Seed-level $D_{\mathrm  {aligned}}=\Delta \mathrm  {RMSE}_{\mu }-\Delta \mathrm  {RMSE}_{\rho }$ over 20 paired seeds. (b)~Count of negative seeds (not a method ranking). A negative value means that the arrival-weighted risk changes more than the deployment-target risk under the same selection shift. Local-H\'ajek is omitted here because the risk-semantic experiment reports the five methods used in that test.}}{11}{}\protected@file@percent }
+\newlabel{fig:risk_noninterchangeability}{{2}{11}{}{figure.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VII-B}}Risk Interchangeability under Two-Stage Selection}{11}{}\protected@file@percent }
+\newlabel{subsec:eval_rq1}{{\mbox  {VII-B}}{11}{}{subsection.7.2}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces T-Drive real-mobility opportunity. (a)~Public $\boldsymbol  \mu $, taxi opportunity, and a unit-balanced reference; real $R$ under-serves H3 and over-serves H4. (b)~Four-block $\mathrm  {TV}(\pi ^{\mathrm  {opp}},\boldsymbol  \mu )$. Design is off; the RAVEN-NoDesign ranking is in Table~\ref {tab:tdrive_hybrid}.}}{12}{}\protected@file@percent }
+\newlabel{fig:g3_tdrive}{{3}{12}{}{figure.3}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {II}{\ignorespaces T-Drive hybrid ranking under real taxi $R$ (mean $\pm $ std, 10 seeds, $178$ windows). Lower is better. $O$ and $U$ are Complete-aligned controls. RAVEN-NoDesign ($\setbox \z@ \hbox {\mathsurround \z@ $\textstyle \zeta $}\mathaccent "0362{\zeta }=1$) is not target-mass reconstruction. WorstGroupRMSE is the maximum over UTC H1--H4. RAVEN-NoDesign is outside the descriptive $+0.5\%$ worst-group tolerance versus FedAU-Window and ObsUse-Window.}}{12}{}\protected@file@percent }
+\newlabel{tab:tdrive_hybrid}{{II}{12}{}{table.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VII-C}}Structural Alignment, Target RMSE, and Worst-Group Risk}{12}{}\protected@file@percent }
+\newlabel{subsec:eval_rq2}{{\mbox  {VII-C}}{12}{}{subsection.7.3}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {III}{\ignorespaces Development table for the main comparison under always-on protocol $R$ (mean $\pm $ std, 20 seeds; lower is better). This is a development table on station traces whose $O$ and $U$ layers are protocol-constructed, not a real-mobility ranking. Both Design settings are reported on both blocks, so the table is a within-dataset factor. WorstGroupRMSE is the maximum over the four UTC groups. On SensorScope both RAVEN settings, and on U-Air RAVEN-NoDesign, stay within the descriptive $+0.5\%$ worst-group tolerance versus those two (TEST seeds $30011$--$30020$); U-Air RAVEN-Design is outside it at $+7.9\%$ and $+8.0\%$. We do not claim a Holm-significant RMSE win. A supplemental protocol table uses intermittent occupancy.}}{13}{}\protected@file@percent }
+\newlabel{tab:main_effectiveness}{{III}{13}{}{table.3}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Design versus No-Design, estimated and oracle propensities (20 seeds; positive $=$ Design worse). On SensorScope, Design slightly reduces $\Delta _{\mathrm  {group}}$ ($-1.23\%$ estimated, $-1.03\%$ oracle) with a flat RMSE. On U-Air, estimated and oracle Design both worsen $\Delta _{\mathrm  {group}}$ and $\mathrm  {RMSE}_{\mu }$ by about $7.5\%$. Algorithm~\ref {alg:window_close} runs RAVEN-NoDesign on U-Air; this figure diagnoses the reversal, not the selection rule. The U-Air Design-on $\Delta _{c\text  {-}s}$ gain remains in Table~\ref {tab:e4_ablation}.}}{13}{}\protected@file@percent }
+\newlabel{fig:w1_design_gate}{{4}{13}{}{figure.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VII-D}}A Pre-Registered Under-Served-Block Check}{14}{}\protected@file@percent }
+\newlabel{subsec:eval_underserved}{{\mbox  {VII-D}}{14}{}{subsection.7.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VII-E}}What the Correction and Calibration Components Do}{14}{}\protected@file@percent }
+\newlabel{subsec:eval_rq3}{{\mbox  {VII-E}}{14}{}{subsection.7.5}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {IV}{\ignorespaces Component-removal ablation: relative change (\%) after removing one RAVEN component. Positive means the ablation worsens the metric; negative means it improves the metric. $^\ast $ denotes Holm-adjusted $p<0.05$.}}{14}{}\protected@file@percent }
+\newlabel{tab:e4_ablation}{{IV}{14}{}{table.4}{}}
+\@writefile{toc}{\contentsline {paragraph}{\numberline {\mbox  {VII-E}0a}Design correction.}{14}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{\numberline {\mbox  {VII-E}0b}Setting the Design factor.}{14}{}\protected@file@percent }
+\newlabel{eq:design_gate}{{42}{14}{}{equation.42}{}}
+\newlabel{eq:design_switch}{{43}{14}{}{equation.43}{}}
+\@writefile{toc}{\contentsline {paragraph}{\numberline {\mbox  {VII-E}0c}Observation and usable-update correction.}{14}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{\numberline {\mbox  {VII-E}0d}Instantaneous calibration and debt.}{15}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VII-F}}Recoverable-Gain Ceiling}{15}{}\protected@file@percent }
+\newlabel{subsec:ceiling}{{\mbox  {VII-F}}{15}{}{subsection.7.6}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VII-G}}Limitations}{15}{}\protected@file@percent }
+\newlabel{subsec:limitations}{{\mbox  {VII-G}}{15}{}{subsection.7.7}{}}
+\citation{yuan2010tdrive}
+\citation{wang2023cityscanner}
+\bibstyle{IEEEtran}
+\bibdata{reference}
+\bibcite{ganti2011mobile}{1}
+\@writefile{toc}{\contentsline {section}{\numberline {VIII}Conclusion}{16}{}\protected@file@percent }
+\newlabel{sec:conclusion}{{VIII}{16}{}{section.8}{}}
+\bibcite{guo2015mobile}{2}
+\bibcite{ma2014opportunities}{3}
+\bibcite{wang2023outlier}{4}
+\bibcite{li2024robust}{5}
+\bibcite{wang2023transformer}{6}
+\bibcite{wang2024fewshot}{7}
+\bibcite{wang2025evolutionary}{8}
+\bibcite{xu2025rethinking}{9}
+\bibcite{liu2026pyramid}{10}
+\bibcite{zhang2026mapt}{11}
+\bibcite{mcmahan2017communication}{12}
+\bibcite{yang2019federated}{13}
+\bibcite{kairouz2021advances}{14}
+\bibcite{li2020federated}{15}
+\bibcite{wang2026federated}{16}
+\bibcite{xie2019asynchronous}{17}
+\bibcite{liu2023adaptive}{18}
+\bibcite{sun2024staleness}{19}
+\bibcite{wang2023spatiotemporal}{20}
+\bibcite{wang2022unified}{21}
+\bibcite{jhunjhunwala2022fedvarp}{22}
+\bibcite{wu2023anchor}{23}
+\bibcite{wang2024lightweight}{24}
+\bibcite{sun2025debiasing}{25}
+\bibcite{mohri2019agnostic}{26}
+\bibcite{chen2026fedcure}{27}
+\bibcite{morishita2026who}{28}
+\bibcite{liu2026pricing}{29}
+\bibcite{liu2026multidimensional}{30}
+\bibcite{zhang2025incentive}{31}
+\bibcite{lu2025piece}{32}
+\bibcite{zhang2026locally}{33}
+\bibcite{islam2025seafl}{34}
+\bibcite{li2026stdfl}{35}
+\bibcite{lu2023federated}{36}
+\bibcite{plassier2023conformal}{37}
+\bibcite{li2020fedprox}{38}
+\bibcite{karimireddy2020scaffold}{39}
+\bibcite{goetze2025floss}{40}
+\@writefile{toc}{\contentsline {section}{References}{17}{}\protected@file@percent }
+\bibcite{listozec2024overcoming}{41}
+\bibcite{horvitz1952generalization}{42}
+\bibcite{hajek1971comment}{43}
+\bibcite{shimodaira2000covariate}{44}
+\bibcite{robins1994estimation}{45}
+\bibcite{byrd2019importance}{46}
+\bibcite{ingelrest2010sensorscope}{47}
+\bibcite{barrenetxea2019sensorscope}{48}
+\bibcite{zheng2013uair}{49}
+\bibcite{tfnsw2024traffic}{50}
+\bibcite{yuan2010tdrive}{51}
+\bibcite{wang2023cityscanner}{52}
+\bibcite{wilcoxon1945individual}{53}
+\bibcite{holm1979simple}{54}
+\gdef \@abspage@last{18}

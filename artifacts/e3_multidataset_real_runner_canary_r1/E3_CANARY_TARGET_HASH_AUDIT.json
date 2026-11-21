@@ -1,0 +1,19 @@
+{
+  "sensorscope": {
+    "n_groups": 220,
+    "path": "artifacts/e3_semantic_alignment_and_runner_integration_closure_r1/E3_SENSORSCOPE_TARGET_SEMANTICS_R2.json",
+    "sha256": "c6194f2aebffe38ee0feed7d83bbebf318e901d5aa788bfb102d01915b159ef6",
+    "status": "PASS"
+  },
+  "traffic": {
+    "note": "Traffic uses public-target spatial×time freeze via TrafficRunnerDataset/atomic",
+    "path": "freeze_from_atomic_at_runtime",
+    "status": "PASS"
+  },
+  "uair": {
+    "n_groups": 144,
+    "path": "artifacts/e3_semantic_alignment_and_runner_integration_closure_r1/E3_UAIR_TARGET_SEMANTICS_R2.json",
+    "sha256": "c158ec34582e1124e3b7f72e6ac55dd1b2130a5cf9f030a5ac231e81e8ac39b8",
+    "status": "PASS"
+  }
+}

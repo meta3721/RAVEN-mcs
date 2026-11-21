@@ -1,0 +1,12 @@
+protocol: E2-BALANCED-DGP-AND-SINGLE-TRACE-CERTIFICATION-REPAIR-R1
+spatial_source: e1_frozen_client_region_mapping_v1
+time_band_0:
+- block0
+- block1
+time_band_1:
+- block2
+- block3
+levels:
+  CERT-L32: "4 real spatial regions \xD7 4 time blocks \xD7 2 day types"
+  CERT-L16: "4 real spatial regions \xD7 2 time bands \xD7 2 day types"
+  CERT-L8: "2 real spatial regions \xD7 2 time bands \xD7 2 day types"

@@ -1,0 +1,24 @@
+{
+  "Delta_c_s_A": 0.9,
+  "Delta_c_s_B": 1.9,
+  "delta_differ": true,
+  "error_A": 0.0,
+  "error_B": 0.0,
+  "h_independence": true,
+  "hand_Delta_c_s_A": 0.9,
+  "hand_Delta_c_s_B": 1.9,
+  "pi_hat_differ": true,
+  "pi_hat_hash_A": "b3a99bb47ffcadaf10055487b3b4737df9f13002cd8332c1906fd741c06876e6",
+  "pi_hat_hash_B": "898ea45e24c868804e49a668cc125d148a55dcb99fe02f6a4e52f25761faa8c8",
+  "pi_tar": {
+    "c0::n0::block0::weekday": 0.55,
+    "c0::n0::block2::weekend": 0.25,
+    "c1::n1::block0::weekday": 0.15,
+    "c1::n1::block2::weekend": 0.05
+  },
+  "post_stratum_seal": true,
+  "status": "PASS",
+  "structural_metric_name": "Delta_c_s",
+  "support": "client × opportunity_stratum",
+  "traffic_uses_region_s": true
+}

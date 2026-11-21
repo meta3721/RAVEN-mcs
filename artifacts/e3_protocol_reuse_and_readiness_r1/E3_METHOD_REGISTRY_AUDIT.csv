@@ -1,0 +1,14 @@
+method,method_display,implementation_exists,implementation_hash,semantic_definition,Common_NDMF_compatibility,same_EventTrace_compatibility,target_leakage,q_leakage,true_baseline_or_diagnostic,frozen_before_E3_outcomes,needs_training,same_statistical_family,E3_table_role,blocker
+central_all,Central-All,False,4e381b684b83de0c529ee39be1cffd98bbf08342f2d99f85e9c22f878cb3d22f,Centralized all-data reference,False,False,False,False,reference,True,False,False,REFERENCE_ONLY,run_central.py missing / NotImplemented in aggregation path
+central_delivered,Central-Delivered,False,4e381b684b83de0c529ee39be1cffd98bbf08342f2d99f85e9c22f878cb3d22f,Centralized delivered-only reference,False,False,False,False,reference,True,False,False,REFERENCE_ONLY,run_central.py missing / NotImplemented in aggregation path
+fedavg_window,FedAvg-Window,True,4e381b684b83de0c529ee39be1cffd98bbf08342f2d99f85e9c22f878cb3d22f,Same-backbone FedAvg,True,True,False,False,baseline,True,True,True,MAIN_TABLE,
+fedasync_window,FedAsync-Window,True,4e381b684b83de0c529ee39be1cffd98bbf08342f2d99f85e9c22f878cb3d22f,Same-backbone FedAsync,True,True,False,False,baseline,True,True,True,MAIN_TABLE,
+flamf_timealign_adapted,TimeAlign-Agg,True,4e381b684b83de0c529ee39be1cffd98bbf08342f2d99f85e9c22f878cb3d22f,TimeAlign-Agg adapted (E2 frozen name),True,True,False,False,baseline,True,True,True,MAIN_TABLE,
+timealign_agg,TimeAlign-Agg,True,4e381b684b83de0c529ee39be1cffd98bbf08342f2d99f85e9c22f878cb3d22f,Alias of TimeAlign; do not double-count vs flamf_timealign_adapted,True,True,False,False,baseline,True,True,True,MAIN_TABLE,
+local_hajek,Local-Hajek,True,4e381b684b83de0c529ee39be1cffd98bbf08342f2d99f85e9c22f878cb3d22f,Local Hajek same-backbone,True,True,False,False,baseline,True,True,True,MAIN_TABLE,
+twostage_hajek,TwoStage-Hajek,True,4e381b684b83de0c529ee39be1cffd98bbf08342f2d99f85e9c22f878cb3d22f,Two-stage Hajek,True,True,False,False,baseline,True,True,True,MAIN_TABLE,
+inst_cal,Inst-Cal,True,4e381b684b83de0c529ee39be1cffd98bbf08342f2d99f85e9c22f878cb3d22f,Instant calibration diagnostic/baseline,True,True,False,False,baseline,True,True,True,SECONDARY,
+debt_cal,Debt-Cal,True,4e381b684b83de0c529ee39be1cffd98bbf08342f2d99f85e9c22f878cb3d22f,Debt calibration diagnostic/baseline,True,True,False,False,baseline,True,True,True,SECONDARY,
+raven,RAVEN-MCS,True,4e381b684b83de0c529ee39be1cffd98bbf08342f2d99f85e9c22f878cb3d22f,Full RAVEN-MCS,True,True,False,False,baseline,True,True,True,MAIN_TABLE,
+flamf_original,FLAMF-Original,False,4e381b684b83de0c529ee39be1cffd98bbf08342f2d99f85e9c22f878cb3d22f,External original FLAMF not faithfully reproduced; must not rename TimeAlign,True,False,False,False,excluded,True,False,False,EXCLUDED_WITH_REASON,external stub only; not faithful original protocol
+raven_simoracle,RAVEN-SimOracle,True,4e381b684b83de0c529ee39be1cffd98bbf08342f2d99f85e9c22f878cb3d22f,Controlled oracle propensity RAVEN,True,True,False,False,reference,True,True,False,REFERENCE_ONLY,

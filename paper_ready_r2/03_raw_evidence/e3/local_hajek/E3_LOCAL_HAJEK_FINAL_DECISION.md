@@ -1,0 +1,3 @@
+# Local-Hajek decision
+
+LOCAL_HAJEK_FORMAL_COLLAPSE_CERTIFIED

@@ -1,0 +1,31 @@
+name: PRE_E1_SMOKE
+description: Clean-commit Pre-E1 seal smoke
+datasets:
+- sensorscope
+methods:
+- fedavg_window
+- twostage_hajek
+- raven
+scenarios:
+- complete_aligned
+seeds:
+- 26001
+num_windows: 20
+clients: 10
+local_steps: 2
+target_groups: 4
+s_max: 5
+solver:
+  primary: CLARABEL
+  fallback: SCS
+  residual_tolerance: 1.0e-07
+dataset: sensorscope
+freeze_timestamp: '2026-08-01T12:43:00.489325+00:00'
+freeze_git_commit: d273c17039f5e9479449756243f4772059e0296c
+group_mapping_hash: 7027c9f0d8b63e5a20e257faf8c4f82d86bd59024f4addcb7c393f9fd01687b2
+event_trace_hash: 45c7a6a813fa8bab725eb053abb26aa8083d3a1c6034407122b965645fe669ad
+data_hash: 44081beb40e019ad999dc997162e7c7be9c0eb4cf562cddfb4f570ec1f7cca03
+validation_summary:
+  experiment_config_exists: true
+  dataset: sensorscope
+  group_mapping_frozen: true

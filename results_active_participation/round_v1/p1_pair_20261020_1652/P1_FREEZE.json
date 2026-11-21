@@ -1,0 +1,82 @@
+{
+  "protocol": "active-participation-p1-pair",
+  "p0_directory": "ccf-review-report/active_participation_p0_20261020_1605",
+  "master_seed": 46001,
+  "dates": "2021-09-23 through 2021-11-04",
+  "denominator_days": 43,
+  "drop_days": false,
+  "dataset": "City Scanner Pilot2 PM2.5 measured-O",
+  "observation": "real O",
+  "delivery": "U=1 reliable-delivery assumption; server choice recorded as A",
+  "mu": [0.25, 0.25, 0.25, 0.25],
+  "decision_time": "after the UTC day inventory summary exists, before local training",
+  "eligibility": "P0 legal cell-slots; unknown spatial ids are rejected and are not mapped to index 0",
+  "warmup_meaning": "vocabulary and scaler only; no optimizer warmup and no loaded checkpoint",
+  "vocabulary_size": 118,
+  "parameter_count": 33121,
+  "dtype": "float32",
+  "dropout": 0.1,
+  "scaler": {
+    "n_warmup_train_records": 1722,
+    "mean": 7.235721204740506,
+    "population_std": 2.5343724212040586,
+    "source": "recomputed from warmup train targets before use"
+  },
+  "local_loss": "mean squared error on that client's legal records that day",
+  "local_optimizer": "handwritten SGD",
+  "local_learning_rate": 0.01,
+  "local_steps": 2,
+  "batch": "all legal records of the client that day, one forward per step",
+  "server_step_size": 0.01,
+  "aggregation": "theta_next = theta + eta * sum_j I_j * a_j * delta_j / p_j",
+  "delta_definition": "theta_after_local - theta_before_local on the cloned snapshot; the plus sign then moves the server toward the local models",
+  "excluded": ["hajek", "ess_projection", "p2", "gradient_clip", "weight_decay", "lr_schedule"],
+  "arms": {
+    "B": "region quota plus within-group quality PPS, w_j = n_j/N_g",
+    "C": "joint candidate, w_j = (n_j/N_g)*h_j"
+  },
+  "not_trained": ["global_uniform", "other_pps", "full_inventory", "full_raven"],
+  "history": {
+    "magnitude": "norm(delta)/sqrt(33121)",
+    "ema": 0.2,
+    "expiry_days": 7,
+    "prior": "median of that region's client EMAs updated within 7 days, else 1",
+    "prior_floor": 1e-12,
+    "clip": [0.5, 2.0]
+  },
+  "exploration": 0.2,
+  "sampler": "P0 fixed-size systematic sampling",
+  "shared_uniform_start": "B and C share u per date and region",
+  "primary_metric": "RMSE_mu = sqrt(sum_g 0.25*MSE_g) on inverse-standardized PM2.5",
+  "anchors": ["shared random initialization", "constant warmup mean 7.235721204740506"],
+  "success": {
+    "gain_min": 0.02,
+    "worst_change_max": 0.01,
+    "cpu_ratio_max": 1.1,
+    "byte_ratio_max": 1.1
+  },
+  "resource_caps": {
+    "cpu_seconds": 600,
+    "wall_seconds": 1200,
+    "rss_bytes": 1610612736,
+    "free_bytes_to_start_training": 3221225472,
+    "free_bytes_runtime_floor": 2147483648
+  },
+  "evaluation": "existing validation O=1, finite labels, spatial id inside the 118 warmup vocabulary; test is not used",
+  "feature_contract": {
+    "hour": "unix_hours % 24 with unix_hours = POSIX seconds / 3600",
+    "weekday": "(floor(unix_hours/24)+3) mod 7",
+    "trend_denominator": "count of occupancy time slots at or before the end of the decision day; evaluation freezes the 2021-11-04 denominator",
+    "unknown_spatial": "reject"
+  },
+  "code_entries": {
+    "preprocess_and_driver": "results_active_participation/round_v1/p1_pair_20261020_1652/run_p1_pair.py",
+    "model_definition": "src/raven_mcs/models/common_ndmf.py",
+    "feature_formulas": "src/raven_mcs/models/features.py",
+    "sampler": "P0 systematic sampler copied into the driver",
+    "training": "driver local SGD and HT aggregation",
+    "scoring": "driver endpoint evaluation after both arms finish 43 days"
+  },
+  "validation_scores_opened_before_freeze": false,
+  "training_started": false
+}

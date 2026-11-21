@@ -1,0 +1,46 @@
+{
+  "B_star": 0.38,
+  "calibration_seed": 29999,
+  "calibrator_version": "v2_stability_screen",
+  "gate_used": false,
+  "generator_version": "e3-complete-aligned-r3-v1 + occupancy_spec",
+  "git_commit": "5c4243761c8c5999bb9ec08a25969bef4ad0cdd6",
+  "occupancy": {
+    "alpha": 0.7752380952380953,
+    "beta": 0.8366666666666667,
+    "burstiness_miss": true,
+    "family": "two_state_markov",
+    "rho0": 0.425
+  },
+  "rho_star": 0.425,
+  "rng_scheme": "always_advance_r3_rng_then_drop_A0_rows",
+  "scd_rule": {
+    "sensorscope": "raven (Design always_on; not Gate)",
+    "uair": "raven_wo_design (Design always_off; not Gate)"
+  },
+  "stability_hits": 40,
+  "stability_level": "L40",
+  "stability_n_checks": 40,
+  "stability_seeds": [
+    28001,
+    28002,
+    28003,
+    28004,
+    28005,
+    28006,
+    28007,
+    28008,
+    28009,
+    28010,
+    28011,
+    28012,
+    28013,
+    28014,
+    28015,
+    28016,
+    28017,
+    28018,
+    28019,
+    28020
+  ]
+}

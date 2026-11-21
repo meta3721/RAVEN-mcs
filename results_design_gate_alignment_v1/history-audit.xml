@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="2" skipped="0" tests="2" time="1.832" timestamp="2026-10-12T21:02:55.230218+08:00" hostname="LAPTOP-4349UTOC"><testcase classname="tests.integration.test_e1_r2_results_audit" name="test_audit_solver_and_communication_pipeline" time="0.006"><failure message="FileNotFoundError: no RAVEN formal runs under C:\Cursor\raven.mcs\outputs\runs\E1_R2">tests\integration\test_e1_r2_results_audit.py:49: in test_audit_solver_and_communication_pipeline
+    solver.audit(ROOT / "outputs/runs/E1_R2", root=ROOT)
+scripts\audit_e1_r2_solver_fallback.py:108: in audit
+    raise FileNotFoundError(f"no RAVEN formal runs under {run_root}")
+E   FileNotFoundError: no RAVEN formal runs under C:\Cursor\raven.mcs\outputs\runs\E1_R2</failure></testcase><testcase classname="tests.unit.test_e1_r2_results_audit_identity" name="test_solver_fallback_summary_matches_raw_rows" time="0.002"><failure message="FileNotFoundError: no RAVEN formal runs under C:\Cursor\raven.mcs\outputs\runs\E1_R2">tests\unit\test_e1_r2_results_audit_identity.py:79: in test_solver_fallback_summary_matches_raw_rows
+    result = solver_mod.audit(run_root, root=ROOT)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+scripts\audit_e1_r2_solver_fallback.py:108: in audit
+    raise FileNotFoundError(f"no RAVEN formal runs under {run_root}")
+E   FileNotFoundError: no RAVEN formal runs under C:\Cursor\raven.mcs\outputs\runs\E1_R2</failure></testcase></testsuite></testsuites>

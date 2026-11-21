@@ -1,0 +1,8 @@
+{
+  "pid": 8468,
+  "command": [
+    ".venv_new/Scripts/python.exe",
+    "-c",
+    "import pandas as pd; from pathlib import Path; import json; d=Path('results_main_rebuild_r1/data/traffic'); a=pd.read_parquet(d/'atomic_units.parquet'); c=pd.read_parquet(d/'client_measurements.parquet'); print(a.columns.tolist(),len(a),a['split'].value_counts().to_dict()); print(c.columns.tolist(),len(c),c['client_id'].nunique()); print(a[['unit_id','spatial_id','opportunity_stratum','target_group','timestamp']].head().to_string()); print(c.head().to_string())"
+  ]
+}

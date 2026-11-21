@@ -1,0 +1,139 @@
+{
+  "constants": {
+    "a_max": 20.0,
+    "p_min": 0.05,
+    "pi_min": 1e-06,
+    "d_max": 10.0,
+    "q_min": 0.05
+  },
+  "arm": "local_hajek",
+  "seeds": [
+    "seed30001",
+    "seed30002",
+    "seed30003",
+    "seed30004",
+    "seed30005",
+    "seed30006",
+    "seed30007",
+    "seed30008",
+    "seed30009",
+    "seed30010",
+    "seed30011",
+    "seed30012",
+    "seed30013",
+    "seed30014",
+    "seed30015",
+    "seed30016",
+    "seed30017",
+    "seed30018",
+    "seed30019",
+    "seed30020"
+  ],
+  "definition": "eps_stab = ||beta_T - beta_star||_1 at true margins",
+  "sensorscope": {
+    "pi_pairs": 440,
+    "pi_zero_pairs": 0,
+    "design_on": {
+      "design": "on",
+      "active_windows": 1877,
+      "active_client_windows": 4849,
+      "eps_stab_median": 0.0,
+      "eps_stab_p95": 0.07189138275525195,
+      "eps_stab_max": 0.5529816210137829,
+      "eps_stab_fraction_positive": 0.10708577517314864,
+      "max_ceiling_ratio_true_margins": 19.2631386193587,
+      "ceiling_clause_violations": 0,
+      "ceiling_clause_violation_share": 0.0,
+      "worst_cell": [
+        "seed30002",
+        80,
+        "client-000"
+      ],
+      "max_inverse_p": 5.194805194805195,
+      "q_min_floor_cells": 15,
+      "q_min_floor_share_on_active": 0.0030934213239843266
+    },
+    "design_off": {
+      "design": "off",
+      "active_windows": 1877,
+      "active_client_windows": 4849,
+      "eps_stab_median": 0.0,
+      "eps_stab_p95": 0.08061564425934299,
+      "eps_stab_max": 0.6609762244170909,
+      "eps_stab_fraction_positive": 0.10708577517314864,
+      "max_ceiling_ratio_true_margins": 5.194805194805195,
+      "ceiling_clause_violations": 0,
+      "ceiling_clause_violation_share": 0.0,
+      "worst_cell": [
+        "seed30001",
+        3,
+        "client-003"
+      ],
+      "max_inverse_p": 5.194805194805195,
+      "q_min_floor_cells": 15,
+      "q_min_floor_share_on_active": 0.0030934213239843266
+    }
+  },
+  "uair": {
+    "pi_pairs": 288,
+    "pi_zero_pairs": 72,
+    "design_on": {
+      "design": "on",
+      "active_windows": 1402,
+      "active_client_windows": 2923,
+      "eps_stab_median": 0.0,
+      "eps_stab_p95": 0.052751288656234005,
+      "eps_stab_max": 0.6800165984717579,
+      "eps_stab_fraction_positive": 0.11126961483594865,
+      "max_ceiling_ratio_true_margins": 23.473164198117917,
+      "ceiling_clause_violations": 80,
+      "ceiling_clause_violation_share": 0.027369141293191925,
+      "worst_cell": [
+        "seed30001",
+        34,
+        "client-003"
+      ],
+      "max_inverse_p": 5.194805194805195,
+      "q_min_floor_cells": 6,
+      "q_min_floor_share_on_active": 0.0020526855969893944
+    },
+    "design_off": {
+      "design": "off",
+      "active_windows": 1402,
+      "active_client_windows": 2923,
+      "eps_stab_median": 0.0,
+      "eps_stab_p95": 0.0254320685750476,
+      "eps_stab_max": 0.9048084096678065,
+      "eps_stab_fraction_positive": 0.06918687589158345,
+      "max_ceiling_ratio_true_margins": 5.194805194805195,
+      "ceiling_clause_violations": 0,
+      "ceiling_clause_violation_share": 0.0,
+      "worst_cell": [
+        "seed30001",
+        18,
+        "client-005"
+      ],
+      "max_inverse_p": 5.194805194805195,
+      "q_min_floor_cells": 6,
+      "q_min_floor_share_on_active": 0.0020526855969893944
+    }
+  },
+  "released_audit_recheck": {
+    "sensorscope": {
+      "records": 16000,
+      "observed": 12346,
+      "min_p_obs_true": 0.1925,
+      "q_min_floor_share_observed": 0.052243641665316705,
+      "q_below_inv_dmax_share_observed": 0.24218370322371618,
+      "q_below_inv_dmax_share_all": 0.41525
+    },
+    "uair": {
+      "records": 12800,
+      "observed": 9760,
+      "min_p_obs_true": 0.1925,
+      "q_min_floor_share_observed": 0.05184426229508197,
+      "q_below_inv_dmax_share_observed": 0.2375,
+      "q_below_inv_dmax_share_all": 0.41859375
+    }
+  }
+}

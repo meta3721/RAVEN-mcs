@@ -1,0 +1,157 @@
+{
+  "classified_diff": [
+    {
+      "category": "ORCHESTRATION_ONLY",
+      "path": "scripts/_launch_e2fr_resume.cmd",
+      "status": "A"
+    },
+    {
+      "category": "ORCHESTRATION_ONLY",
+      "path": "scripts/_run_e2fr_ledger_sequence.py",
+      "status": "A"
+    },
+    {
+      "category": "REPORTING_ONLY",
+      "path": "scripts/check_e2_traffic_formal_runs_gates.py",
+      "status": "A"
+    },
+    {
+      "category": "PACKAGING_ONLY",
+      "path": "scripts/export_e2_traffic_formal_runs_evidence.py",
+      "status": "A"
+    },
+    {
+      "category": "ORCHESTRATION_ONLY",
+      "path": "scripts/prepare_e2_traffic_formal_runs.py",
+      "status": "A"
+    },
+    {
+      "category": "LEDGER_ONLY",
+      "path": "scripts/run_and_log.py",
+      "status": "M"
+    },
+    {
+      "category": "ORCHESTRATION_ONLY",
+      "path": "src/raven_mcs/e2/traffic_formal_runs/__init__.py",
+      "status": "A"
+    },
+    {
+      "category": "REPORTING_ONLY",
+      "path": "src/raven_mcs/e2/traffic_formal_runs/stats.py",
+      "status": "A"
+    },
+    {
+      "category": "SCIENTIFIC_CORE",
+      "path": "src/raven_mcs/e2/traffic_real_runner/__init__.py",
+      "status": "A"
+    },
+    {
+      "category": "LEDGER_ONLY",
+      "path": "src/raven_mcs/e2/traffic_real_runner/ledger_g9.py",
+      "status": "A"
+    },
+    {
+      "category": "TEST_ONLY",
+      "path": "tests/unit/test_e2_traffic_formal_runs_core.py",
+      "status": "A"
+    },
+    {
+      "category": "TEST_ONLY",
+      "path": "tests/unit/test_e2_traffic_real_runner_ledger_g9.py",
+      "status": "A"
+    }
+  ],
+  "decision": "PASS",
+  "later_runtime_commit": "b01db69e8554a33446c438c060ac464dcfadac24",
+  "pre_run_commit": "e56687813f2bcb919a9208391f68a4db3488602e",
+  "rationale": "Working-tree SOURCE_HASHES for scientific result-producing files still MATCH. Git commit transition added previously untracked formal harness/runner files; no post-freeze scientific hash drift detected on disk. Git diff lists 1 SCIENTIFIC_CORE paths relative to empty pre-run tree; these are classified as commit-packaging of already-running code, not mid-run retuning.",
+  "scientific_core_paths_in_git_diff": [
+    {
+      "category": "SCIENTIFIC_CORE",
+      "path": "src/raven_mcs/e2/traffic_real_runner/__init__.py",
+      "status": "A"
+    }
+  ],
+  "source_hashes_compare": {
+    "configs/frozen/e2_traffic_profiles_s1/traffic_s1_s6_profile_registry.json": {
+      "current": "7d9b8292522b6fbcc15d83ebb065fc8a73b79787ed643aea49c48f30596acbc7",
+      "expected": "7d9b8292522b6fbcc15d83ebb065fc8a73b79787ed643aea49c48f30596acbc7",
+      "status": "MATCH"
+    },
+    "configs/frozen/e2_traffic_profiles_s1/traffic_s1_s6_runner_identity.json": {
+      "current": "71705bb7bbf76b598a56bf4b40495bc48f5aa89eb7a0992a8c7693345db183fb",
+      "expected": "71705bb7bbf76b598a56bf4b40495bc48f5aa89eb7a0992a8c7693345db183fb",
+      "status": "MATCH"
+    },
+    "configs/frozen/e2_traffic_public_target/atomic_public_target.parquet": {
+      "current": "b32fee4dd3e82e5894b27739b1ad0440ae12573ac877c7fccb565f646b54c374",
+      "expected": "b32fee4dd3e82e5894b27739b1ad0440ae12573ac877c7fccb565f646b54c374",
+      "status": "MATCH"
+    },
+    "data/processed/traffic/atomic_units.parquet": {
+      "current": "db45a2ecc66c27abeaf58b0c03ce66de7bfaf6727f4523ea06ef226a9ce3de50",
+      "expected": "db45a2ecc66c27abeaf58b0c03ce66de7bfaf6727f4523ea06ef226a9ce3de50",
+      "status": "MATCH"
+    },
+    "scripts/_run_e2fr_ledger_sequence.py": {
+      "current": "1fcd85bd72ba81f69acdf2d5ee3d98b4f5429e8375ff1df17b186c43e0e57117",
+      "expected": "1fcd85bd72ba81f69acdf2d5ee3d98b4f5429e8375ff1df17b186c43e0e57117",
+      "status": "MATCH"
+    },
+    "scripts/check_e2_traffic_formal_runs_gates.py": {
+      "current": "2a72152286612cedd800dc57342d617220472198081b84bb26fe84c90ca8d9cc",
+      "expected": "a43d210191d34142c8d3ede74540375b7b8422722aae846b389ede366a167796",
+      "status": "DIFF"
+    },
+    "scripts/prepare_e2_traffic_formal_runs.py": {
+      "current": "47009ff8411a211cf6573107374a661e96486729062e7f7921f573117d6595a9",
+      "expected": "47009ff8411a211cf6573107374a661e96486729062e7f7921f573117d6595a9",
+      "status": "MATCH"
+    },
+    "scripts/run_and_log.py": {
+      "current": "512fd713fb9c93b75858ba5808639494bfe4f63b4b47c7db1e7e54716cdd7369",
+      "expected": "512fd713fb9c93b75858ba5808639494bfe4f63b4b47c7db1e7e54716cdd7369",
+      "status": "MATCH"
+    },
+    "src/raven_mcs/aggregation/method_policy.py": {
+      "current": "4e381b684b83de0c529ee39be1cffd98bbf08342f2d99f85e9c22f878cb3d22f",
+      "expected": "4e381b684b83de0c529ee39be1cffd98bbf08342f2d99f85e9c22f878cb3d22f",
+      "status": "MATCH"
+    },
+    "src/raven_mcs/e2/traffic_formal_runs/__init__.py": {
+      "current": "0feabeda2d403be4bac1c8918d5cab46ca86374e1cfd72eee19fda8927376ba2",
+      "expected": "0feabeda2d403be4bac1c8918d5cab46ca86374e1cfd72eee19fda8927376ba2",
+      "status": "MATCH"
+    },
+    "src/raven_mcs/e2/traffic_formal_runs/stats.py": {
+      "current": "59eef80b68634e8169d51a64ca5321bd0440953f380fb4d5edfd1c75f3a98375",
+      "expected": "59eef80b68634e8169d51a64ca5321bd0440953f380fb4d5edfd1c75f3a98375",
+      "status": "MATCH"
+    },
+    "src/raven_mcs/e2/traffic_profiles/runner_consistency.py": {
+      "current": "020bc01f685a1ed2ed01b006ab0c6ead832fdf1ad129e62a82a4b5def81d6286",
+      "expected": "020bc01f685a1ed2ed01b006ab0c6ead832fdf1ad129e62a82a4b5def81d6286",
+      "status": "MATCH"
+    },
+    "src/raven_mcs/e2/traffic_real_runner/__init__.py": {
+      "current": "db008120132d37afea122e7d5f799154dd96a6f483853a5b401ce28041c5097a",
+      "expected": "db008120132d37afea122e7d5f799154dd96a6f483853a5b401ce28041c5097a",
+      "status": "MATCH"
+    },
+    "src/raven_mcs/metrics/accuracy.py": {
+      "current": "18c5dc9636673e68bd48210297b6c8bdb11c759ab466fef4501837f50b091ba9",
+      "expected": "18c5dc9636673e68bd48210297b6c8bdb11c759ab466fef4501837f50b091ba9",
+      "status": "MATCH"
+    },
+    "src/raven_mcs/training/client.py": {
+      "current": "2881d6035c124a754ee14f8a84b38cebe5686196d7da8f322e1bf860158cb4a7",
+      "expected": "2881d6035c124a754ee14f8a84b38cebe5686196d7da8f322e1bf860158cb4a7",
+      "status": "MATCH"
+    },
+    "src/raven_mcs/training/window_runner.py": {
+      "current": "cfe678e7216b0e0366a0055314180d6afec52e1c0fe248a9077d9e79660413bf",
+      "expected": "cfe678e7216b0e0366a0055314180d6afec52e1c0fe248a9077d9e79660413bf",
+      "status": "MATCH"
+    }
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "clean": {
+    "accepted_logical_runs": 28,
+    "artifact": "artifacts/e3_numerical_integrity_clean_canary_fix_r1",
+    "inf_metric_count": 0,
+    "nan_metric_count": 0,
+    "source_revision": "b01db69e8554a33446c438c060ac464dcfadac24",
+    "source_revision_consistency": "SINGLE_FROZEN_REVISION"
+  },
+  "comparison_scope": "INTEGRITY_ONLY_NO_PERFORMANCE_RANKING",
+  "prior": {
+    "accepted_logical_runs": 28,
+    "artifact": "artifacts/e3_multidataset_real_runner_canary_r1",
+    "inf_metric_count": 0,
+    "nan_metric_count": 5,
+    "source_revision_consistency": "MIXED_DURING_FIRST_CANARY"
+  },
+  "status": "PASS"
+}

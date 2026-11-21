@@ -1,0 +1,28 @@
+{
+  "spec_sha256": "533c405c225e2126403829d6a102f41934335a3fd73f6ff947d51fc4d1e162f1",
+  "script_sha256": "9a6b05ec0e24133f14e0232e6807680c2651de27429922b6d79d9d218cee0bd5",
+  "unknown_registration": [
+    22.2,
+    22.25
+  ],
+  "qualities": [
+    0,
+    1
+  ],
+  "completion_times": [
+    22.3,
+    22.7,
+    23.2,
+    24.2,
+    29.9
+  ],
+  "first_failure": 22.3,
+  "tail": [
+    "mu_at_22.6",
+    "failure_at_22.6",
+    "pending"
+  ],
+  "states": 1,
+  "branches": 33,
+  "purpose": "legal-subset counterexamples; subset min/max are not outer bounds for full Z"
+}

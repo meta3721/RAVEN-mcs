@@ -1,0 +1,42 @@
+{
+  "authoritative_paper_facing_labels": {
+    "Debt": "STRUCTURAL_ONLY_SUPPORTED",
+    "Design": "ENDPOINT_TRADEOFF",
+    "Inst": "ENDPOINT_TRADEOFF",
+    "Obs": "ENDPOINT_TRADEOFF",
+    "Use": "NO_CLEAR_EFFECT"
+  },
+  "claim_numeric_conflicts": [],
+  "debt_note": "statistically consistent but quantitatively small",
+  "inst_r1_inconsistency": {
+    "holm_sensitivity": "Do not cite Inst improve-side effects as Holm-significant under the frozen 5-component family. Point estimates remain mixed.",
+    "numeric_basis": "Inst Gen2 has mixed directions. Under R3 Inst-only Holm (m=1), SensorScope Delta_group improve and U-Air Delta_c_s improve are Holm-significant. Under the frozen 5-component Holm family rebuilt from 240 cells, those improve-side Holm p-values rise to ~0.0515 (not significant), while SensorScope Delta_c_s worsen and U-Air RMSE/Tail worsen remain Holm-significant. Paper-facing label remains ENDPOINT_TRADEOFF (claim ceiling C8 + cross-endpoint significant worsen).",
+    "old_label_tag": "OLD_SUPERSEDED_LABEL",
+    "r1_instruction_suggested": "ENDPOINT_TRADEOFF",
+    "r2_authoritative": "ENDPOINT_TRADEOFF",
+    "sealed_r3_status": "STRUCTURAL_ONLY_SUPPORTED"
+  },
+  "mechanical_classifier_from_rebuilt_holm": {
+    "Debt": "STRUCTURAL_ONLY_SUPPORTED",
+    "Design": "ENDPOINT_TRADEOFF",
+    "Inst": "ENDPOINT_TRADEOFF",
+    "Obs": "ENDPOINT_TRADEOFF",
+    "Use": "NO_CLEAR_EFFECT"
+  },
+  "notes": {
+    "Debt": "statistically consistent but quantitatively small",
+    "Design": "endpoint-dependent and dataset-dependent structural/predictive directions",
+    "Inst": "mixed significant directions across endpoints/datasets (not a one-sided structural-only effect)",
+    "Obs": "endpoint-specific tradeoff across structural metrics/datasets",
+    "Use": "no Holm-significant paired effect in the Complete-aligned E4 family"
+  },
+  "round": "R2",
+  "source_240_sha256": "36dfedb95bf1990009f80e02fe739f64d19ec3633dad357beaa5c840da02224c",
+  "wording": {
+    "Debt": "Debt shows a statistically consistent but quantitatively small structural effect without robust prediction degradation.",
+    "Design": "Design shows mixed structural directions across endpoints/datasets (endpoint tradeoff).",
+    "Inst": "Under true one-factor w/o-Inst semantics (matched E3 λ_β), Inst shows an endpoint tradeoff: mixed significant directions across structural and predictive metrics/datasets.",
+    "Obs": "Obs shows mixed structural directions across endpoints/datasets (endpoint tradeoff).",
+    "Use": "Use shows no clear sealed E4 effect under the pre-registered Holm families."
+  }
+}

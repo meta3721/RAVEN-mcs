@@ -1,0 +1,119 @@
+{
+  "core_missing": [],
+  "final_status": "PAPER_DATA_R1_COMPLETE_TDRIVE_NOT_READY",
+  "gates": {
+    "all_pass": true,
+    "n_gates": 30,
+    "n_pass": 30
+  },
+  "pack": {
+    "core_verification": {
+      "extra": [],
+      "mismatch": [],
+      "missing": [],
+      "n_manifest": 101,
+      "pass": true,
+      "zip": "D:\\Cursor\\raven.mcs\\deliverables\\RAVEN_MCS_PAPER_DATA_CORE_R1.zip"
+    },
+    "core_zip": "D:\\Cursor\\raven.mcs\\deliverables\\RAVEN_MCS_PAPER_DATA_CORE_R1.zip",
+    "full_verification": {
+      "extra": [],
+      "mismatch": [],
+      "missing": [],
+      "n_manifest": 4753,
+      "pass": true,
+      "zip": "D:\\Cursor\\raven.mcs\\deliverables\\RAVEN_MCS_PAPER_DATA_FULL_EVIDENCE_R1.zip"
+    },
+    "full_zip": "D:\\Cursor\\raven.mcs\\deliverables\\RAVEN_MCS_PAPER_DATA_FULL_EVIDENCE_R1.zip",
+    "n_core_members": 101,
+    "n_full_members": 4753
+  },
+  "statuses": {
+    "E1": {
+      "core_complete": true,
+      "n_valid_runs": 25,
+      "notes": "E1 sealed outputs taken from outputs/aggregate/E1_R2 and outputs/statistics/E1_R2_FINAL_SEALED",
+      "round": "E1",
+      "sources_found": [
+        "aggregate_summary",
+        "gate_report",
+        "holm",
+        "no_harm_summary",
+        "per_seed",
+        "stats_report",
+        "table_main",
+        "table_no_harm",
+        "table_per_seed",
+        "wilcoxon"
+      ],
+      "sources_missing": []
+    },
+    "E2": {
+      "core_complete": true,
+      "expected_eventtraces": 120,
+      "expected_runs": 600,
+      "n_d_aligned_rows": 100,
+      "n_eventtraces": 120,
+      "n_valid_runs": 600,
+      "raw_files_copied": 4328,
+      "round": "E2"
+    },
+    "E3": {
+      "core_complete": true,
+      "expected_merged": 660,
+      "n_formal_status_rows": 560,
+      "n_index_rows": 660,
+      "n_main_comparable": 440,
+      "n_reused_traffic": 100,
+      "n_traffic": 220,
+      "round": "E3"
+    },
+    "E4": {
+      "core_complete": true,
+      "design_774_present": true,
+      "expected_cells": 240,
+      "gen0_archive": "artifacts/e4_core_mechanism_ablation_r1",
+      "gen1_archive": "artifacts/e4_ablation_semantic_integrity_repair_r1",
+      "gen2_source": "artifacts/e4_wo_inst_reference_penalty_final_correction_r1",
+      "n_core_cells": 240,
+      "n_wo_inst_gen2": 40,
+      "round": "E4",
+      "wo_inst_policy": "Only Generation 2 FINAL_VALID_ONE_FACTOR enters PAPER_CORE"
+    }
+  },
+  "tdrive": {
+    "advanced": {
+      "client_assignment": true,
+      "eventtrace_generation": false,
+      "formal_tdrive_runs_started": false,
+      "frozen_formal_config": true,
+      "opportunity_definition": false,
+      "seed_handling_frozen": false,
+      "spatial_grid": false,
+      "speed_target_construction": true,
+      "time_slot": false,
+      "train_val_test_split_frozen": false,
+      "validation_only_tuning_artifacts": false
+    },
+    "blockers": [
+      "Not ready: opportunity_definition",
+      "Not ready: eventtrace_generation",
+      "Not ready: train_val_test_split_frozen",
+      "EventTrace / split / opportunity freeze incomplete"
+    ],
+    "checks": {
+      "adapter_or_config": true,
+      "atomic_units": true,
+      "checksum_manifest": true,
+      "client_measurements": true,
+      "experiment_config_e9": true,
+      "interim": true,
+      "preprocessing_processed": true,
+      "raw_trajectory": true
+    },
+    "formal_tdrive_runs_authorized": false,
+    "formal_tdrive_runs_started": false,
+    "minimal_50_run_ready": false,
+    "status": "NOT_READY_OTHER"
+  }
+}

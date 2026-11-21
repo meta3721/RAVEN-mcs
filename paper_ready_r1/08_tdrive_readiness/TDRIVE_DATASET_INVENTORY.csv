@@ -1,0 +1,20 @@
+item,present,path,notes
+raw_trajectory,True,data/raw/tdrive_speed,
+checksum_manifest,True,data/manifests/tdrive_speed_manifest.json,
+adapter_or_config,True,configs/dataset/tdrive_speed.yaml,
+preprocessing_processed,True,data/processed/tdrive_speed,
+atomic_units,True,data/processed/tdrive_speed/atomic_units.parquet,
+client_measurements,True,data/processed/tdrive_speed/client_measurements.parquet,
+interim,True,data/interim/tdrive_speed,
+experiment_config_e9,True,configs/experiment/E9_tdrive.yaml,
+speed_target_construction,True,,readiness probe
+spatial_grid,False,,readiness probe
+time_slot,False,,readiness probe
+opportunity_definition,False,,readiness probe
+client_assignment,True,,readiness probe
+eventtrace_generation,False,,readiness probe
+train_val_test_split_frozen,False,,readiness probe
+seed_handling_frozen,False,,readiness probe
+validation_only_tuning_artifacts,False,,readiness probe
+frozen_formal_config,True,,readiness probe
+formal_tdrive_runs_started,False,,readiness probe

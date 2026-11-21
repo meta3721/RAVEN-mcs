@@ -1,0 +1,10 @@
+{
+  "P_age_gt_Smax_design": 0.2,
+  "S_max": 5,
+  "U_rejects_stale": true,
+  "distribution": "mixture 80% U{0..S_max} + 20% U{S_max+1..S_max+3}",
+  "empirical_rate_on_diag_trace": 0.0625,
+  "generator_version": "e3-complete-aligned-r3-v1",
+  "num_windows_diagnostic": 8,
+  "status": "STALENESS_FAILURE_REALIZABLE"
+}

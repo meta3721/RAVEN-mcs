@@ -1,0 +1,16 @@
+{
+  "dataset": "uair",
+  "seed": 41001,
+  "model": "ndmf",
+  "optimizer": "sgd",
+  "lr": 0.001,
+  "scaler_mean": 33.224623781635756,
+  "scaler_std": 18.14268509867439,
+  "trace_hash": "9bcbb871ea08c98b53ea6846ae1407f1fe7e1e6a51a1090c53cb42b891cc0d1c",
+  "train_unique": 305,
+  "information": "train_delivered_only",
+  "budget": 200,
+  "train_input_meaning": "observed client measurements",
+  "validation_input_meaning": "frozen target labels",
+  "test_access": false
+}

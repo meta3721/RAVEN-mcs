@@ -1,0 +1,22 @@
+{
+  "arm": "local_hajek",
+  "block": "traffic",
+  "created_utc": "2026-10-10T15:35:08.982495+00:00",
+  "diag_first": [],
+  "diag_last": [],
+  "local_steps": 2,
+  "n_windows_optimizer_applied": 0,
+  "reuse_guard_code_default": "DUPLICATE_REUSED_TRAFFIC_RUN_BLOCKED",
+  "reuse_guard_exemption": true,
+  "reuse_guard_ledger_part": "Part IX item 65",
+  "runtime_seconds": 35.69370100001106,
+  "seed": 30005,
+  "server_opt": {
+    "beta1": 0.9,
+    "beta2": 0.99,
+    "eta_s": null,
+    "mode": "off",
+    "tau": 0.001
+  },
+  "tag": "KLIM_local_hajek"
+}

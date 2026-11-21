@@ -1,0 +1,29 @@
+{
+  "datasets": {
+    "sensorscope": {
+      "checks": {
+        "directions_align_complete_aligned": true,
+        "methods_share_exogenous_trace": true,
+        "observation_layer_exists": true,
+        "opportunity_layer_exists": true,
+        "probability_objects_not_aliased": true,
+        "usable_update_layer_exists": true
+      },
+      "generator_version": "e3-complete-aligned-r2-v1",
+      "status": "PASS"
+    },
+    "uair": {
+      "checks": {
+        "directions_align_complete_aligned": true,
+        "methods_share_exogenous_trace": true,
+        "observation_layer_exists": true,
+        "opportunity_layer_exists": true,
+        "probability_objects_not_aliased": true,
+        "usable_update_layer_exists": true
+      },
+      "generator_version": "e3-complete-aligned-r2-v1",
+      "status": "PASS"
+    }
+  },
+  "status": "PASS"
+}

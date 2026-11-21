@@ -1,0 +1,12 @@
+{
+  "charged_CPU": 22.0,
+  "job_CPU": null,
+  "driver_CPU": null,
+  "wall": 9.3169056,
+  "exit": "root_atomic_publish_sharing_error_after_reader_share_delete",
+  "audit": false,
+  "actual_CPU": "UNKNOWN; no completed meter result",
+  "conservative_basis": "one-CPU Job plus at most one monitor CPU, 2*(ceil(9.3169056)+1)=22 seconds",
+  "evidence": "four_paths_attempt4.log and process metadata; root exception retained in ROOT_PUBLISH_ERROR.md",
+  "ordinary_error": "atomic replacement still transiently denied; lock owner unknown. New local publisher retries preserving measurement timestamp; old facility source unchanged."
+}

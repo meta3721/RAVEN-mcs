@@ -1,0 +1,179 @@
+{
+  "G1a": [
+    {
+      "abs_diff": 0.0,
+      "bit_equal": true,
+      "bit_equal_strict": true,
+      "dataset": "sensorscope",
+      "frozen": 7.914987375753928,
+      "method": "fedasync_window",
+      "rerun": 7.914987375753928,
+      "seed": 30001,
+      "tol": 1e-06
+    },
+    {
+      "abs_diff": 0.0,
+      "bit_equal": true,
+      "bit_equal_strict": true,
+      "dataset": "sensorscope",
+      "frozen": 7.914880089294206,
+      "method": "flamf_timealign_adapted",
+      "rerun": 7.914880089294206,
+      "seed": 30001,
+      "tol": 1e-06
+    },
+    {
+      "abs_diff": 2.0677010326153322e-07,
+      "bit_equal": true,
+      "bit_equal_strict": false,
+      "dataset": "sensorscope",
+      "frozen": 7.915297744846339,
+      "method": "debt_cal",
+      "rerun": 7.915297538076236,
+      "seed": 30001,
+      "tol": 1e-06
+    }
+  ],
+  "G1b": {
+    "abs_diff": 0.0,
+    "bit_equal": true,
+    "dataset": "uair",
+    "frozen": 1.327415800209486,
+    "method": "central_delivered",
+    "rerun": 1.327415800209486,
+    "seed": 30001
+  },
+  "G1c": [
+    {
+      "abs_diff": 0.0,
+      "bit_equal": true,
+      "csv": 1.18941261605731,
+      "dataset": "uair",
+      "frozen": 1.1424870864095478,
+      "match_csv": false,
+      "match_tree": true,
+      "method": "raven",
+      "rerun": 1.1424870864095478,
+      "seed": 30007
+    },
+    {
+      "abs_diff": 0.0,
+      "bit_equal": true,
+      "csv": 1.1526704437327764,
+      "dataset": "uair",
+      "frozen": 1.1709258951551238,
+      "match_csv": false,
+      "match_tree": true,
+      "method": "raven",
+      "rerun": 1.1709258951551238,
+      "seed": 30016
+    },
+    {
+      "abs_diff": 0.0,
+      "bit_equal": true,
+      "csv": 1.1817229910128095,
+      "dataset": "uair",
+      "frozen": 1.125360082508588,
+      "match_csv": false,
+      "match_tree": true,
+      "method": "raven",
+      "rerun": 1.125360082508588,
+      "seed": 30018
+    },
+    {
+      "abs_diff": 0.0,
+      "bit_equal": true,
+      "csv": 1.1868478786334546,
+      "dataset": "uair",
+      "frozen": 1.1441802550200664,
+      "match_csv": false,
+      "match_tree": true,
+      "method": "twostage_hajek",
+      "rerun": 1.1441802550200664,
+      "seed": 30007
+    },
+    {
+      "abs_diff": 0.0,
+      "bit_equal": true,
+      "csv": 1.2085144491379751,
+      "dataset": "uair",
+      "frozen": 1.2242075631780656,
+      "match_csv": false,
+      "match_tree": true,
+      "method": "twostage_hajek",
+      "rerun": 1.2242075631780656,
+      "seed": 30016
+    },
+    {
+      "abs_diff": 0.0,
+      "bit_equal": true,
+      "csv": 1.186397524006943,
+      "dataset": "uair",
+      "frozen": 1.1286332988862726,
+      "match_csv": false,
+      "match_tree": true,
+      "method": "twostage_hajek",
+      "rerun": 1.1286332988862726,
+      "seed": 30018
+    }
+  ],
+  "G1c_selection": {
+    "raven": {
+      "csv_matches": 0,
+      "n": 3,
+      "selected": "tree",
+      "tree_matches": 3
+    },
+    "twostage_hajek": {
+      "csv_matches": 0,
+      "n": 3,
+      "selected": "tree",
+      "tree_matches": 3
+    }
+  },
+  "G1d": [
+    {
+      "abs_diff": 0.03958590311060117,
+      "audit": 1.1712625825964955,
+      "bit_equal": false,
+      "dataset": "uair",
+      "frozen": 1.210848485707097,
+      "match_audit": true,
+      "method": "fedavg_window",
+      "rerun": 1.1712625825964957,
+      "seed": 30001
+    },
+    {
+      "abs_diff": 0.1353623714159775,
+      "audit": 1.1502492213912836,
+      "bit_equal": false,
+      "dataset": "uair",
+      "frozen": 1.2856115928072611,
+      "match_audit": true,
+      "method": "fedavg_window",
+      "rerun": 1.1502492213912836,
+      "seed": 30006
+    }
+  ],
+  "amendment": {
+    "applied_tolerance": 1e-06,
+    "authorized_by": "user, 2026-09-27 (explicit: loosen the tolerance, run E1, flag it)",
+    "determinism": "fresh-process first call, same-process repeat and third-in-process G1a call all return 7.915297538076236",
+    "evidence_file": "G1_DEBT_CAL_DIAG.json",
+    "gate": "G1a",
+    "grounds": [
+      "5x below the 1e-6 tolerance used by the plan's own E2 block_rmse reference path",
+      "relative magnitude 2.6e-08, ~1e6 times smaller than the ~6.3 % filter effect",
+      "E1 compares new-batch rows against each other; the frozen value is only the replaced cell"
+    ],
+    "measured_drift": {
+      "debt_cal": 2.0677010326153322e-07
+    },
+    "original_tolerance": 1e-09,
+    "plan_rule": "final metrics bit-equal to the frozen tree; failure action = stop"
+  },
+  "failures": [],
+  "generated": "2026-09-27T04:00:25.864447+00:00",
+  "pass": true,
+  "tolerance": 1e-09
+}

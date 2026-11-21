@@ -1,0 +1,20 @@
+{
+  "dataset": "sensorscope",
+  "seed": 41001,
+  "model": "history",
+  "optimizer": "sgd",
+  "lr": 0.03,
+  "RMSE_mu": 2.99225875154314,
+  "best_pass": 66,
+  "best_at_100": 2.99225875154314,
+  "improvement_100_to_200": 0.0,
+  "plateau_pass": true,
+  "strongest_baseline": "train_mean",
+  "baseline_RMSE": 2.965253341579932,
+  "relative_gain": -0.009107285905230236,
+  "meaningful_validation_pass": false,
+  "elapsed_seconds": 5.15599999999904,
+  "samples_processed": 79600,
+  "optimizer_steps": 1400,
+  "run": "P1\\central_delivered\\history\\sensorscope\\sgd_0.03\\seed41001"
+}

@@ -1,0 +1,16 @@
+{
+  "protocol": "resident_initialization6_online2_v1",
+  "source_hashes": {
+    "ccf-review-report\\observed_feedback_persistent_cost_20261014\\EXECUTION_COST_PROTOCOL.md": "fa35dae56e005e37f700adb40ffef0f72e766a280dff92c3e7a221ed996e58ef",
+    "scripts\\observed_feedback_persistent_cost_budget.py": "2706deefee0d5234d23fd97b538b0f68bc188268e4bd87bb0f9181e3bf2a4c57",
+    "scripts\\observed_feedback_persistent_worker.py": "35ba6afa06736f148c0a2eb01cb6c793ffcb6505e83538be580d99cb1c62f562",
+    "scripts\\check_observed_feedback_persistent_cost.py": "5ab2d70663cfcab9d8a04e771025ea58548cb1e7b93fa85b7ccc2694cf9d8417"
+  },
+  "input_hash": "c880a4361ea0ec8fa3fc65b30cd9932347181c8591d39c6f003e829d5c695e5b",
+  "requests": [
+    "A",
+    "B"
+  ],
+  "pre_READY_solver_calls_allowed": 0,
+  "SGD": 0
+}

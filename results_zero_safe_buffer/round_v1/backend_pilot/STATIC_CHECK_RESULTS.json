@@ -1,0 +1,110 @@
+{
+  "training_executed": false,
+  "historical_z2_cpu_seconds": 0.03125,
+  "historical_z2_wall_seconds": 0.1175537999952212,
+  "historical_z2_note": "incremental snapshots from RESOURCE_LEDGER.jsonl; not re-run",
+  "pure_checks": {
+    "pass": true,
+    "server_step": [
+      0.99875,
+      0.99625
+    ],
+    "server_step_pass": true,
+    "rmse_formula": 0.7071067811865476,
+    "rmse_formula_pass": true,
+    "worst_group_pass": true,
+    "hold_pass": true,
+    "training_call_denied": true,
+    "attempt_seed_stable": true,
+    "weight_rules_pass": true,
+    "checkpoint_roundtrip_pass": true,
+    "step_count_only_rejected": true,
+    "compiled": [
+      "update_semantics.py",
+      "checkpoint_store.py",
+      "five_arm_backend.py",
+      "static_check.py",
+      "zero_safe_scheduler.py"
+    ],
+    "neural_training": "UNRUN"
+  },
+  "available_bytes_at_gate": 6659559424,
+  "counter_check": {
+    "pass": true,
+    "first_action": "HOLD",
+    "second_action": "RELEASE",
+    "zero_state": "REFERENCE_ZERO_EXCLUDED",
+    "positive_state": "committed",
+    "zero_replaces_positive": 0,
+    "zero_would_replace_positive": 1,
+    "max_zero_pending": 0,
+    "replacement_event": {
+      "action": "WOULD_SUPERSEDE_UNDER_OLD_RULE",
+      "occurred": false,
+      "incoming_id": "a|1|0",
+      "existing_id": "a|0|0",
+      "incoming_m": 0.0,
+      "existing_m": 1.0
+    },
+    "pending_after_zero": [
+      "a|0|0"
+    ]
+  },
+  "validation_support": {
+    "status": "PASS",
+    "validation_counts": {
+      "region0": 1242,
+      "region1": 331,
+      "region2": 108,
+      "region3": 408
+    },
+    "missing_groups": [],
+    "rows_read": 2089,
+    "target_value_read": false,
+    "test_used_for_selection": false
+  },
+  "bind_check": {
+    "pass": true,
+    "bound": {
+      "initial_model": "raven_mcs.models.common_ndmf:deterministic_common_ndmf",
+      "local_train": "raven_mcs.training.client:ClientTrainer.train_step",
+      "local_loss": "raven_mcs.training.local_objective:local_hajek_loss",
+      "stage1": "raven_mcs.correction.stage1:reconstruct_stage1",
+      "project": "projection:project_reference",
+      "fedavg_weights": "raven_mcs.aggregation.methods:FedAvgWindowAggregator.compute_server_weights",
+      "twostage_weights": "raven_mcs.aggregation.methods:TwoStageHajekAggregator.compute_server_weights",
+      "d_weight": "raven_mcs.correction.second_stage:d_weight",
+      "two_stage_mass": "raven_mcs.correction.second_stage:two_stage_mass",
+      "beta_hat": "raven_mcs.correction.second_stage:beta_hat",
+      "usable_propensity": "raven_mcs.propensity.usable:UsablePropensity",
+      "observation_propensity": "raven_mcs.propensity.observation:ObservationPropensity"
+    },
+    "identity": {
+      "local_train": true,
+      "initial_model": true,
+      "project": true,
+      "fedavg_weights": true,
+      "twostage_weights": true,
+      "d_weight": true,
+      "two_stage_mass": true,
+      "beta_hat": true,
+      "usable_propensity": true
+    },
+    "train_step_called": false
+  },
+  "status": "BACKEND_STATIC_READY",
+  "git_diff_stat": "",
+  "resource": {
+    "cpu_seconds": 3.125,
+    "wall_seconds": 5.061348200018983,
+    "rss_bytes": 636510208,
+    "peak_rss_bytes": 637112320,
+    "available_bytes": 6251024384,
+    "min_available_bytes": 6251024384,
+    "cpu_budget_seconds": 599.96875,
+    "wall_budget_seconds": 1199.8824462000048,
+    "cpu_with_historical_z2": 3.15625,
+    "wall_with_historical_z2": 5.1789020000142045
+  },
+  "exit_code": 0
+}

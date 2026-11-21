@@ -1,0 +1,19 @@
+Traceback (most recent call last):
+  File "C:\Cursor\raven.mcs\results_conditional_reference_projection\round_v1\p1_controlled_diagnostic_20261020_1010\run_p1.py", line 574, in main
+    metrics = runner._process_window(window_id, trace.events)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Cursor\raven.mcs\results_conditional_reference_projection\round_v1\p1_controlled_diagnostic_20261020_1010\run_p1.py", line 361, in process_and_prune
+    result = original(window_id, events)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Cursor\raven.mcs\src\raven_mcs\training\window_runner.py", line 1224, in _process_window
+    alpha = self.aggregator.compute_server_weights(payload)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Cursor\raven.mcs\src\raven_mcs\aggregation\methods.py", line 566, in compute_server_weights
+    return _normalize(result.alpha)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Cursor\raven.mcs\results_conditional_reference_projection\round_v1\p1_controlled_diagnostic_20261020_1010\run_p1.py", line 272, in normalize
+    cleaned, _record = clean_server_weights(weights)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Cursor\raven.mcs\results_conditional_reference_projection\round_v1\implementation\guards.py", line 57, in clean_server_weights
+    raise RealConstraintViolation(
+guards.RealConstraintViolation: {"stage": "before_cleanup", "a_bar": 0.5, "e_bar": 3.0, "before": {"simplex": 6.196496649124583e-10, "negative": 0.0, "cap": 0.0, "ess": 1.4537101800105034e-08}, "limit": 1e-08}

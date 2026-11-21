@@ -1,0 +1,17 @@
+{
+  "T": 100.0,
+  "clock_namespace": {
+    "origin_utc": "2026-10-12T23:40:29.874701+00:00",
+    "run_id": "calibration_only/fit/43001/results_calibration_first_20261013",
+    "unit": "controlled_service_unit"
+  },
+  "core_source_closure_unchanged": true,
+  "driver_sha256": "281426ea1ba0eac775748c076c31c7c0037bcffdc561a8479987405131629201",
+  "existing_SGD_steps": 686,
+  "fix": "Windows __mp_main__ no longer imports the real training entry",
+  "no_method_parameter_change": true,
+  "no_retraining_prefix": true,
+  "parent_checkpoint": "C:\\Cursor\\raven.mcs\\results_calibration_first_20261013\\trajectory\\FAILED_tick0201.json",
+  "parent_hash": "82e1506a7907846f7c56d3de8cf4938924d0009cfb3d24ff2a1bbbb5228d7d94",
+  "seed": 43001
+}

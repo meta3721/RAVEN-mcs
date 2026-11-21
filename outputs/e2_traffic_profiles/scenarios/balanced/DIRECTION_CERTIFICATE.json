@@ -1,0 +1,71 @@
+{
+  "directions": {
+    "d_opp": 0,
+    "d_p": 0,
+    "d_q": 0
+  },
+  "display_name": "Balanced",
+  "expected": {
+    "D_arr": 0.0,
+    "D_obs": 1.748276003132876e-16,
+    "D_opp": 8.74138001566438e-17,
+    "checks": {
+      "D_arr_le_0.01": true,
+      "D_obs_le_0.01": true,
+      "D_opp_le_0.01": true,
+      "hard_head_tail_near_one": true,
+      "head_tail_near_one": true
+    },
+    "expected_status": "PASS",
+    "head_mass_ratio": 0.9999999999999998,
+    "signed": {
+      "arr": 0.0,
+      "obs": 0.0,
+      "opp": 0.0
+    },
+    "tail_mass_ratio": 0.9999999999999998
+  },
+  "expected_direction": "near_target",
+  "grid_search_count": 0,
+  "hard_direction_pass": true,
+  "hard_pooled": {
+    "D_TV": 0.8144961240312019,
+    "antithetic_average": false,
+    "head_mass_ratio": 1.0056673832323553,
+    "pooled_arrival_mass": 5117.0,
+    "seed_count": 3,
+    "signed_head_minus_tail": 0.005667383232363488,
+    "tail_mass_ratio": 0.9943326167676283
+  },
+  "intercepts": {
+    "obs": -1.386294361122964,
+    "opp": 0.20067069546030325,
+    "q": 0.4054651081105476
+  },
+  "label": "S1",
+  "parameter_set_count": 1,
+  "profile_id": "PROFILE-S2",
+  "rates": {
+    "mean_observation": 0.20149435674015923,
+    "mean_opportunity": 0.5506459948320414,
+    "mean_usable": 0.5968718736371764,
+    "rate_pass": true,
+    "soft_mean_p_obs": 0.19999999999950838,
+    "soft_mean_p_opp": 0.5499999999995425,
+    "soft_mean_q": 0.6000000000005719
+  },
+  "scenario_id": "balanced",
+  "seeds": [
+    28201,
+    28202,
+    28203
+  ],
+  "status": "PASS",
+  "strength": {
+    "kappa_opp": 1.0,
+    "kappa_p": 1.0,
+    "kappa_q": 1.0
+  },
+  "structural_pass": true,
+  "trace_count": 3
+}

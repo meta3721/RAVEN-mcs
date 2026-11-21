@@ -1,0 +1,58 @@
+{
+  "action": "Rename production structural field to Delta_c_s; retain Delta_pair = NOT_MATERIALIZED (atomic client×unit not emitted)",
+  "candidates": {
+    "Delta_c_s": {
+      "c_s_meaning": "client–stratum (or client–spatial×time group) L1 gap",
+      "current_implementation_matches": true,
+      "mathematical_domain": "client k × stratum/group s",
+      "support_realized": "client × spatial×time target_group (canonical_pair_id = client_id::target_group)"
+    },
+    "Delta_pair": {
+      "client_x_target_group_preserves_exact_definition": false,
+      "estimated_measure": "Pi_hat_{k,i}",
+      "mathematical_domain": "client k × atomic unit i",
+      "norm": "L1",
+      "pair_index": "(k, i)",
+      "target_measure": "pi_tar over atomic pairs (V3)"
+    }
+  },
+  "circular_self_citation_forbidden": true,
+  "frozen_sources_consulted": {
+    "common_support_v4_domain": {
+      "pair_domain": "client × target_group (spatial×time)",
+      "path": "artifacts/e3_target_pair_metric_final_integration_closure_r1/E3_DELTA_PAIR_COMMON_SUPPORT_DEFINITION.json"
+    },
+    "distribution_delta_c_s": {
+      "domain_note": "client×stratum cells",
+      "formula": "sum_{k,s} |Pi_hat_ks - pi_tar_ks|",
+      "path": "src/raven_mcs/metrics/distribution.py"
+    },
+    "distribution_delta_pair": {
+      "domain_note": "generic L1; E3 V3 freezes support as client×atomic_unit",
+      "formula": "||Pi_hat - pi_tar||_1",
+      "path": "src/raven_mcs/metrics/distribution.py"
+    },
+    "formula_map": {
+      "F7.4": "Delta_pair = ||Pi_hat-pi^tar||_1",
+      "F7.5": "Delta_{c-s}",
+      "path": "docs/FORMULA_TO_CODE_MAP.md"
+    },
+    "oracle_v3_atomic": {
+      "Delta_pair": "||Pi_hat^{(m)} - pi_tar||_1 on atomic support",
+      "pair_identity": "(client_id, atomic_unit_id)",
+      "path": "artifacts/e3_real_runner_pair_oracle_correctness_closure_r1/E3_DELTA_PAIR_EXACT_DEFINITION.md"
+    },
+    "p10_descriptive": {
+      "note": "Delta_c-s described as real-trace distribution gap; no atomic Delta_pair freeze",
+      "path": "docs/reports/P10_END_TO_END_INTEGRATION_REPORT.md"
+    },
+    "protocol_closure_v1": {
+      "Delta_c_s": "sum |Pi_hat_ks - pi_tar_ks| via delta_c_s",
+      "Delta_pair": "||Pi_hat - pi_tar||_1 via delta_pair",
+      "path": "artifacts/e3_multidataset_protocol_closure_r1/E3_PAIR_METRIC_DEFINITION.json"
+    }
+  },
+  "outcome": "CURRENT_V4_IS_DELTA_C_S_NOT_DELTA_PAIR",
+  "round": "E3-PAIR-RHO-PRODUCTION-CONSUMPTION-HOTFIX-R1",
+  "status": "RESOLVED"
+}

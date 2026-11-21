@@ -1,0 +1,42 @@
+{
+  "forbidden_support": "client × target_group h(i)",
+  "formula": {
+    "Delta_c_s": "sum_{k,s} |Pi_hat_ks - pi_tar_ks|",
+    "Delta_pair": "NOT_MATERIALIZED",
+    "Pi_hat_ks": "(1/S_R) sum_r eta_r I_r alpha_{k,r}^{(m)} w_{k,r,i}^{(m)} aggregated over i with s(i)=s"
+  },
+  "outputs": [
+    "delta_cs_state_v6.parquet",
+    "delta_cs_summary_v6.json"
+  ],
+  "pi_tar_source": "raven_mcs.correction.pi_target.build_pi_target",
+  "required_columns": [
+    "dataset",
+    "seed",
+    "scenario",
+    "method",
+    "window",
+    "client_id",
+    "atomic_unit_id",
+    "opportunity_stratum_id",
+    "coarse_spatial_region",
+    "time_block",
+    "weekday_weekend_flag",
+    "eta_r",
+    "I_r",
+    "alpha_client",
+    "w_atomic",
+    "atomic_contribution",
+    "accumulated_client_stratum_mass",
+    "target_client_stratum_mass",
+    "normalization_denominator",
+    "eventtrace_hash",
+    "stratum_map_hash",
+    "target_mass_hash",
+    "method_source_hash",
+    "schema_version"
+  ],
+  "schema_version": "E3_DELTA_CS_STATE_SCHEMA_V6",
+  "structural_metric_name": "Delta_c_s",
+  "support": "client × opportunity_stratum"
+}

@@ -1,0 +1,61 @@
+{
+  "comparisons": {
+    "10_orientation": {
+      "match": true,
+      "note": "lower better"
+    },
+    "11_source_hashes": {
+      "e2_runner": "src/raven_mcs/e2/traffic_real_runner/__init__.py::_evaluation_weights",
+      "e3_builder": "src/raven_mcs/e3/delta_cs_rho/atomic_rho.py::build_atomic_arrival_rho"
+    },
+    "1_spatial_region_mapping": {
+      "e2": "4 regions (public-target label-free)",
+      "e3": "same frozen mapping hash",
+      "match": true
+    },
+    "2_opportunity_stratum_s": {
+      "e2": "region×time×day (32)",
+      "e3_sealed": "region×time×day (≤32)",
+      "match": true
+    },
+    "3_atomic_evaluation_support": {
+      "e2": "protocol atomic units with varpi",
+      "e3": "TEST atomic units",
+      "match": "PARTIAL"
+    },
+    "4_pi_opp": {
+      "e2": "E2 Traffic opportunity construction",
+      "e3": "build_joint_pi_opp on sealed s",
+      "match": false
+    },
+    "5_nu_i_given_s": {
+      "e2": "not used in E2 Traffic RMSE_rho weights",
+      "e3": "atom_mass/Lambda_s",
+      "match": false
+    },
+    "6_atomic_p_obs": {
+      "e2": "not in E2 arrival weight product",
+      "e3": "atomic p_obs factor",
+      "match": false
+    },
+    "7_q_use": {
+      "e2": "not in E2 arrival weight product",
+      "e3": "q_use factor",
+      "match": false
+    },
+    "8_normalization": {
+      "e2": "group-smoothed I_arr within target_group then normalize",
+      "e3": "normalize atomic r_hat intensity",
+      "match": false
+    },
+    "9_RMSE_rho_formula": {
+      "e2": "sqrt(sum w_i err^2) with group-smoothed arrival w",
+      "e3": "sqrt(sum rho_i^arr err^2) with atomic rho_i^arr",
+      "match": false
+    }
+  },
+  "outcome": "NOT_COMPARABLE_FROM_SEALED_OUTPUTS",
+  "rationale": "E2 sealed RMSE_rho uses group-smoothed hard-arrival counts within target-group blocks, not the E3 atomic product pi_opp·nu·p_obs·q. Sealed outputs lack the atomic factors required for exact offline reconstruction of E3 rho_i^arr.",
+  "sealed_block_rerun": false,
+  "status": "SEALED"
+}

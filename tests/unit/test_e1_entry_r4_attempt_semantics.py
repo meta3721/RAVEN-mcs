@@ -36,7 +36,11 @@ def test_nonattempt_client_never_trains() -> None:
 
 def test_nonattempt_client_never_aggregates() -> None:
     source = inspect.getsource(FullWindowRunner._process_window)
-    assert "set(e_r_clients) != set(attempted_clients)" in source
+    # E_r must never include clients outside the frozen attempted set.
+    # Equality is not required: attempted clients may have m_total==0 when
+    # zeta_hat=0 (e.g. zero TEST pi_tar on a train-only stratum).
+    assert "issubset(set(attempted_clients))" in source
+    assert "e_r_clients" in source
 
 
 def test_attempted_field_persisted() -> None:

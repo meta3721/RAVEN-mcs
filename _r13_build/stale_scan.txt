@@ -1,0 +1,43 @@
+documented repair cells (old != new): 32
+
+BUNDLE FILES that contain a superseded (old) value and NOT the corrected (new) value:
+
+  tables/TABLE_II_FREEZE.json
+      Table III (UA)|RAVEN-Design|RMSE_mu: 1.1911 -> 1.1954
+      Table III (UA)|RAVEN-Design|WorstGroupRMSE: 1.263 -> 1.2630
+      appendix tab:app_e3_uair|Inst-Cal|RMSE_mu: 1.1911 -> 1.1954
+      appendix tab:app_e3_uair|RAVEN-Design|RMSE_mu: 1.1911 -> 1.1954
+      appendix tab:app_block_rmse|RAVEN-Design|g2: 1.263 -> 1.2630
+      appendix tab:app_block_rmse|RAVEN-Design|WG: 1.263 -> 1.2630
+  w1/PAPER_NUMBERS.csv
+      appendix tab:app_block_rmse|TwoStage-Hajek|g3: 1.18 -> 1.1800
+  w1/frontier/EXECUTION_REPORT.md
+      appendix tab:app_block_rmse|TwoStage-Hajek|g3: 1.18 -> 1.1800
+  w1/frontier/PHASE4_INPUT_GAPS.md
+      appendix tab:app_block_rmse|TwoStage-Hajek|g3: 1.18 -> 1.1800
+
+==========================================================================================
+Per-artifact old/new presence matrix (key artifacts)
+==========================================================================================
+artifact                                      [0][1][2][3][4][5][6][7]
+  [0] Table III UA RAVEN-Design/Inst-Cal RMSE_mu: old=1.1911 new=1.1954
+  [1] appendix Local-Hajek RMSE_mu: old=1.1882 new=1.1923
+  [2] Table III UA TwoStage RMSE_mu: old=1.216 new=1.2202
+  [3] appendix RAVEN-SimOracle RMSE_mu: old=1.1914 new=1.1958
+  [4] Table IV UA Design RMSE_mu: old=-6.553094 new=-6.885464
+  [5] Table IV UA Design Tail_RMSE: old=-6.875243 new=-7.221249
+  [6] Table IV UA Use RMSE_mu: old=0.023974 new=0.025271
+  [7] Table IV UA Inst RMSE_mu: old=0.130684 new=0.142931
+
+  tables/TABLE_II_MAIN_EFFECTIVENESS.csv              ..  ..  ..  ..  ..  ..  ..  ..  
+  tables/TABLE_E3_MAIN_EFFECTIVENESS.csv              ..  ..  ..  ..  ..  ..  ..  ..  
+  tables/TABLE_E4_CORE_ABLATION.csv                   ..  ..  ..  ..  ..  ..  ..  ..  
+  tables/TABLE_E4_COMPONENT_EFFECTS.csv               ..  ..  ..  ..  ..  ..  ..  ..  
+  tables/TABLE_E4_COMPONENT_EFFECTS.csv               ..  ..  ..  ..  ..  ..  ..  ..  
+  tables/PAPER_EVIDENCE_MASTER_LONG.csv               ..  ..  ..  ..  ..  ..  ..  ..  
+  figures/FIG_E3_E3_PREDICTION_RISK.csv               ..  ..  ..  ..  ..  ..  ..  ..  
+  figures/FIG_E4_E4_COMPONENT_ABLATION.csv            ..  ..  ..  ..  ..  ..  ..  ..  
+  figures/FIG_W1_DESIGN_GATE.csv                      ..  ..  ..  ..  ..  ..  ..  ..  
+  w1/audit_v5/round_v5_1/ERRATA_FOR_PAPER.md          ..  ..  ..  ..  ..  ..  ..  ..  
+  w1/audit_v5/round_v5_1/A3P_RESOURCE_UPAIR.csv       ..  ..  ..  ..  ..  ..  ..  ..  
+  (O=old present, N=new present within each cell)

@@ -1,0 +1,241 @@
+{
+  "gates": [
+    {
+      "description": "input freeze",
+      "evidence_file": "R1H_INPUT_FREEZE_MANIFEST.csv",
+      "expected": "0",
+      "gate_id": "R1H-S0",
+      "metric": "missing",
+      "observed": "0",
+      "pass": true
+    },
+    {
+      "description": "CF-M1 frozen before run",
+      "evidence_file": "matched_counterfactual/CFM1_MATCHING_RULE_FREEZE.md",
+      "expected": "272edf7acbc16d181dab4167914206f94a4d5c9a4f105aec1edf26f3f5b739f3",
+      "gate_id": "R1H-S1",
+      "metric": "hash",
+      "observed": "272edf7acbc16d181dab4167914206f94a4d5c9a4f105aec1edf26f3f5b739f3",
+      "pass": true
+    },
+    {
+      "description": "target/pi_safe/tau unchanged",
+      "evidence_file": "audit/R1H_FREEZE_AUDIT.json",
+      "expected": "0.05",
+      "gate_id": "R1H-S2",
+      "metric": "tau",
+      "observed": "0.05",
+      "pass": true
+    },
+    {
+      "description": "budgets matched where feasible",
+      "evidence_file": "matched_counterfactual/CFM1_ORACLE_COMPARISON_SUMMARY.csv",
+      "expected": "reported",
+      "gate_id": "R1H-S3",
+      "metric": "exact_match_rate",
+      "observed": "[0.0, 1.0]",
+      "pass": true
+    },
+    {
+      "description": "deficits logged",
+      "evidence_file": "matched_counterfactual/CFM1_MATCHING_AUDIT.csv",
+      "expected": "present",
+      "gate_id": "R1H-S4",
+      "metric": "deficit_col",
+      "observed": "present",
+      "pass": true
+    },
+    {
+      "description": "no cross-time padding",
+      "evidence_file": "matched_counterfactual/CFM1_MATCHING_AUDIT.csv",
+      "expected": "false",
+      "gate_id": "R1H-S5",
+      "metric": "cross_time_fill",
+      "observed": "False",
+      "pass": true
+    },
+    {
+      "description": "CF-M1 oracle artifact-derived",
+      "evidence_file": "matched_counterfactual/CFM1_ORACLE_COMPARISON.csv",
+      "expected": ">0",
+      "gate_id": "R1H-S6",
+      "metric": "rows",
+      "observed": "180",
+      "pass": true
+    },
+    {
+      "description": "causal strength conservative",
+      "evidence_file": "matched_counterfactual/CFM1_ROOT_CAUSE_VERDICT.json",
+      "expected": "PARTIAL_CROSS_TIME_MIXING_EVIDENCE",
+      "gate_id": "R1H-S7",
+      "metric": "verdict",
+      "observed": "PARTIAL_CROSS_TIME_MIXING_EVIDENCE",
+      "pass": true
+    },
+    {
+      "description": "mechanisms separated",
+      "evidence_file": "matched_counterfactual/ROOT_CAUSE_MECHANISM_SPLIT.md",
+      "expected": "present",
+      "gate_id": "R1H-S8",
+      "metric": "file",
+      "observed": "present",
+      "pass": true
+    },
+    {
+      "description": "completeness outcome-blind",
+      "evidence_file": "completeness_rule/WINDOW_COMPLETENESS_RULE_V1.md",
+      "expected": "false",
+      "gate_id": "R1H-S9",
+      "metric": "uses_oracle",
+      "observed": "False",
+      "pass": true
+    },
+    {
+      "description": "completeness before oracle join",
+      "evidence_file": "boundary_audit/E3V2_WINDOW_COMPLETENESS_AUDIT_NO_ORACLE.csv",
+      "expected": "no_oracle_then_join",
+      "gate_id": "R1H-S10",
+      "metric": "order",
+      "observed": "True",
+      "pass": true
+    },
+    {
+      "description": "all E3-v2 windows audited",
+      "evidence_file": "boundary_audit/E3V2_WINDOW_COMPLETENESS_AUDIT.csv",
+      "expected": "115",
+      "gate_id": "R1H-S11",
+      "metric": "n",
+      "observed": "115",
+      "pass": true
+    },
+    {
+      "description": "5 U-Air unsafe audited",
+      "evidence_file": "boundary_audit/UAIR_UNSAFE_WINDOW_AUDIT.md",
+      "expected": "0,1,2,51,52",
+      "gate_id": "R1H-S12",
+      "metric": "ids",
+      "observed": "(0, 1, 2, 51, 52)",
+      "pass": true
+    },
+    {
+      "description": "interior diagnostic separate",
+      "evidence_file": "boundary_audit/E3V2_INTERIOR_DIAGNOSTIC_SUMMARY.csv",
+      "expected": "separate file",
+      "gate_id": "R1H-S13",
+      "metric": "not_main",
+      "observed": "present",
+      "pass": true
+    },
+    {
+      "description": "boundary classified",
+      "evidence_file": "boundary_audit/E3V2_BOUNDARY_REPRESENTATIVENESS_VERDICT.json",
+      "expected": "UNSAFE_RARE_BUT_NATURAL",
+      "gate_id": "R1H-S14",
+      "metric": "verdict",
+      "observed": "UNSAFE_RARE_BUT_NATURAL",
+      "pass": true
+    },
+    {
+      "description": "E3-v2 snapshot complete",
+      "evidence_file": "source_snapshot/E3V2_SOURCE_SNAPSHOT_MANIFEST.csv",
+      "expected": "0",
+      "gate_id": "R1H-S15",
+      "metric": "missing",
+      "observed": "0",
+      "pass": true
+    },
+    {
+      "description": "TARGET_LAW unchanged",
+      "evidence_file": "audit/R1H_FREEZE_AUDIT.json",
+      "expected": "86fd55f7e0bf8499944433de16324bd4687befd5568892613ee87acacad3ad07",
+      "gate_id": "R1H-S16",
+      "metric": "hash",
+      "observed": "86fd55f7e0bf8499944433de16324bd4687befd5568892613ee87acacad3ad07",
+      "pass": true
+    },
+    {
+      "description": "PI_SAFE unchanged",
+      "evidence_file": "summary/R1H_VERDICT.json",
+      "expected": "0.10",
+      "gate_id": "R1H-S17",
+      "metric": "q10",
+      "observed": "0.10",
+      "pass": true
+    },
+    {
+      "description": "tau_cov unchanged",
+      "evidence_file": "configs/sag_g0/thresholds.json",
+      "expected": "0.05",
+      "gate_id": "R1H-S18",
+      "metric": "tau",
+      "observed": "0.05",
+      "pass": true
+    },
+    {
+      "description": "no predictor repair",
+      "evidence_file": "summary/R1H_VERDICT.json",
+      "expected": "false",
+      "gate_id": "R1H-S19",
+      "metric": "predictor_repair_executed",
+      "observed": "false",
+      "pass": true
+    },
+    {
+      "description": "no calibration repair",
+      "evidence_file": "summary/R1H_VERDICT.json",
+      "expected": "false",
+      "gate_id": "R1H-S20",
+      "metric": "calibration_repair_executed",
+      "observed": "false",
+      "pass": true
+    },
+    {
+      "description": "no dynamic C_cov",
+      "evidence_file": "summary/R1H_VERDICT.json",
+      "expected": "false",
+      "gate_id": "R1H-S21",
+      "metric": "dynamic_cov_run",
+      "observed": "false",
+      "pass": true
+    },
+    {
+      "description": "no SAG",
+      "evidence_file": "summary/R1H_VERDICT.json",
+      "expected": "false",
+      "gate_id": "R1H-S22",
+      "metric": "sag_started",
+      "observed": "false",
+      "pass": true
+    },
+    {
+      "description": "no 5-seed",
+      "evidence_file": "summary/R1H_VERDICT.json",
+      "expected": "false",
+      "gate_id": "R1H-S23",
+      "metric": "five_seed_started",
+      "observed": "false",
+      "pass": true
+    },
+    {
+      "description": "no coverage stress",
+      "evidence_file": "summary/R1H_VERDICT.json",
+      "expected": "false",
+      "gate_id": "R1H-S24",
+      "metric": "coverage_stress_created",
+      "observed": "false",
+      "pass": true
+    },
+    {
+      "description": "final verdict artifact-derived",
+      "evidence_file": "summary/R1H_VERDICT.json",
+      "expected": "R1H_ROOTCAUSE_PARTIAL_BOUNDARY_CLOSED",
+      "gate_id": "R1H-S25",
+      "metric": "verdict",
+      "observed": "R1H_ROOTCAUSE_PARTIAL_BOUNDARY_CLOSED",
+      "pass": true
+    }
+  ],
+  "n_fail": 0,
+  "n_pass": 26,
+  "verdict": "R1H_ROOTCAUSE_PARTIAL_BOUNDARY_CLOSED"
+}

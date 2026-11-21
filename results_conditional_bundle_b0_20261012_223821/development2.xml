@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="17" time="14.878" timestamp="2026-10-12T23:06:02.050709+08:00" hostname="LAPTOP-4349UTOC"><testcase classname="tests.control_b0.test_lifecycle_preview" name="test_corrected_preview_application_and_stale_rejection" time="0.064" /><testcase classname="tests.control_b0.test_lifecycle_preview" name="test_missing_q_not_silently_replaced" time="0.002" /><testcase classname="tests.control_b0.test_lifecycle_preview" name="test_replacement_out_of_order_and_physical_outcome" time="0.003" /><testcase classname="tests.control_b0.test_lifecycle_preview" name="test_inflight_expiry_empty_close_and_mature_labels" time="0.058" /><testcase classname="tests.control_b0.test_lifecycle_preview" name="test_future_checkpoint_invalid_tensor_and_stale_snapshot" time="0.027" /><testcase classname="tests.control_b0.test_lifecycle_preview" name="test_design_freeze_and_gate_has_no_computation_effect" time="0.047" /><testcase classname="tests.control_b0.test_lifecycle_preview" name="test_probability_frozen_per_attempt_and_failure_censoring" time="0.002" /><testcase classname="tests.control_b0.test_persistence_and_full_connection" name="test_production_save_restore_same_suffix_and_no_overwrite" time="1.117"><failure message="RuntimeError: Git is required for an auditable run, but no repository is available">populated = &lt;raven_mcs.control.lifecycle.DynamicWindowRunner object at 0x000002890B960C50&gt;
+tmp_path = WindowsPath('C:/Users/szr/AppData/Local/Packages/sandbox.{bbb8640f-258c-422a-8457-dd086d57ff5e}/AC/Temp/pytest-of-szr/pytest-0/test_production_save_restore_s0')
+
+    def test_production_save_restore_same_suffix_and_no_overwrite(populated,tmp_path):
+        r=populated;register(r,'inflight','fifth',21.)
+        out=tmp_path/'dynamic_new_run'
+&gt;       manifest=initialize_control_run(r,out,repo_root=ROOT)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\control_b0\test_persistence_and_full_connection.py:33: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+src\raven_mcs\control\persistence.py:55: in initialize_control_run
+    manifest=build_manifest(run_id=run_dir.name,config=config,
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+run_id = 'dynamic_new_run'
+config = {'experiment': 'conditional_bundle_control', 'dataset': 'explicit_data_identity', 'method': 'reachability_stop/conditional-bundle-v2', 'scenario': 'isolated_deterministic_B0', ...}
+seed_bundle = SeedBundle(master=26004, data=1994589523, opportunity=1498648934, observation=1505471554, event=1978286624, model=662049791, solver=2120948521, bootstrap=1344069672, mc_oracle=1153072862)
+data_hash = '01100a811a7f14490bec6a8acb8f4bfec14ecc6e79812f27fb53eec23bad848a'
+event_trace_hash = '142eeecdb5b73145a72c306f91409120785e5fe71180a5397da21c20049a8c29'
+device = None, repo_root = WindowsPath('C:/Cursor/raven.mcs')
+require_git = True, allow_unset_hashes = False
+source_paths = (WindowsPath('C:/Cursor/raven.mcs/src/raven_mcs/__init__.py'), WindowsPath('C:/Cursor/raven.mcs/src/raven_mcs/aggregat...n_mcs/aggregation/feasibility.py'), WindowsPath('C:/Cursor/raven.mcs/src/raven_mcs/aggregation/method_policy.py'), ...)
+
+    def build_manifest(
+        *,
+        run_id: str,
+        config: Mapping[str, Any],
+        seed_bundle: SeedBundle,
+        data_hash: str = "UNSET",
+        event_trace_hash: str = "UNSET",
+        device: str | None = None,
+        repo_root: Path | None = None,
+        require_git: bool = False,
+        allow_unset_hashes: bool = False,
+        source_paths: tuple[Path, ...] | None = None,
+    ) -&gt; RunManifest:
+        config_seed = config.get("seed")
+        configured_seeds = config.get("seeds")
+        if not isinstance(config_seed, int) or isinstance(config_seed, bool):
+            raise ValueError("config seed must be an integer")
+        if configured_seeds is not None and not isinstance(configured_seeds, Mapping):
+            raise ValueError("config seeds must be a mapping")
+        expected_seed_bundle = SeedBundle.from_config(config_seed, configured_seeds)
+        if seed_bundle != expected_seed_bundle:
+            raise ValueError(
+                "seed_bundle does not match the resolved config seed streams"
+            )
+        commit, dirty, git_state_hash = _git_info(repo_root, source_paths=source_paths)
+        if require_git and (commit == "NO_GIT" or dirty is None):
+&gt;           raise RuntimeError("Git is required for an auditable run, but no repository is available")
+E           RuntimeError: Git is required for an auditable run, but no repository is available
+
+src\raven_mcs\utils\manifest.py:254: RuntimeError</failure></testcase><testcase classname="tests.control_b0.test_persistence_and_full_connection" name="test_real_model_and_existing_trainer_connected_but_no_sgd" time="0.156" /><testcase classname="tests.control_b0.test_persistence_and_full_connection" name="test_shared_stage1_exact_existing_formulas_and_legal_clipping" time="0.002" /><testcase classname="tests.control_b0.test_persistence_and_full_connection" name="test_invalid_numeric_inputs_not_prediction_fallback" time="0.001" /><testcase classname="tests.control_b0.test_predictor_planner" name="test_competing_risk_and_censoring_arithmetic" time="0.003" /><testcase classname="tests.control_b0.test_predictor_planner" name="test_client_marks_not_reassigned_and_frozen_download" time="0.002" /><testcase classname="tests.control_b0.test_predictor_planner" name="test_joint_support_uses_multistep_path_and_no_real_mutation" time="0.057" /><testcase classname="tests.control_b0.test_predictor_planner" name="test_snapshot_does_not_accept_future_or_hidden_fields" time="0.080" /><testcase classname="tests.control_b0.test_predictor_planner" name="test_unsupported_prediction_fallback_and_hard_deadline" time="0.036" /><testcase classname="tests.control_b0.test_predictor_planner" name="test_isolated_normal_and_controlled_cpu_timeout" time="3.782" /></testsuite></testsuites>

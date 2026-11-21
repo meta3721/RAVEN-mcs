@@ -1,0 +1,16 @@
+dataset: traffic
+client: traffic counting station / spatial_id
+atomic_unit: (station_id, hourly timestamp)
+target_field: target_value
+normalization:
+  type: identity
+  fitting_population: none
+  params: {}
+  leakage_boundary: no fit on validation/formal; identity transform
+  inverse_transform: identity
+target_group: time-of-day block0..block3
+opportunity_stratum: spatial_region × time_block × day_type
+stage2_eligibility: 1{observed_count > 0}
+hard_arrival: A × O × U
+mapping_seed_structural: 27901
+e1_formal_commit: e8bd1fc777431c2609def257a04fba093f0daf24

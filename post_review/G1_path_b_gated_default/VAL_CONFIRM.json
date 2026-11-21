@@ -1,0 +1,36 @@
+{
+  "verdict": "PATH_B_VAL_CONFIRMED",
+  "n_uair": 10,
+  "n_sensorscope": 10,
+  "checks": [
+    {
+      "rule": "uair_raven_worse_than_off_Delta_group",
+      "raven_mean": 1.1018353224774162,
+      "off_mean": 1.023302514049719,
+      "pass": true
+    },
+    {
+      "rule": "uair_raven_worse_than_off_RMSE_mu",
+      "raven_mean": 1.18021493772346,
+      "off_mean": 1.098129939776537,
+      "pass": true
+    },
+    {
+      "rule": "uair_raven_worse_than_off_Tail_RMSE",
+      "raven_mean": 1.1884324141714924,
+      "off_mean": 1.1015420364716524,
+      "pass": true
+    },
+    {
+      "rule": "sensorscope_raven_not_worse_than_off_Delta_group",
+      "raven_vs_off_pct": -1.3875207282248956,
+      "pass": true
+    },
+    {
+      "rule": "sensorscope_raven_delta_cs_le_off",
+      "raven_mean": 1.2512780387504943,
+      "off_mean": 1.2594797099045176,
+      "pass": true
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "error": "RuntimeError('REPRESENTATIVE_ROOT_REQUEST_EXCEEDS_2_CPU: STARTUP_AND_FIRST_MIN_CLIENTS')",
+  "trace": "Traceback (most recent call last):\n  File \"C:\\Cursor\\raven.mcs\\scripts\\validate_observed_feedback_four_paths.py\", line 291, in <module>\n    first=operation('STARTUP_AND_FIRST_MIN_CLIENTS',bootstrap_first_request,judgement=True,first=True)\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Cursor\\raven.mcs\\scripts\\validate_observed_feedback_four_paths.py\", line 32, in operation\n    if judgement and upper>2.:raise RuntimeError('REPRESENTATIVE_ROOT_REQUEST_EXCEEDS_2_CPU: '+label)\n                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nRuntimeError: REPRESENTATIVE_ROOT_REQUEST_EXCEEDS_2_CPU: STARTUP_AND_FIRST_MIN_CLIENTS\n",
+  "cases_completed": [],
+  "measurements": [
+    {
+      "label": "STARTUP_AND_FIRST_MIN_CLIENTS",
+      "judgement": true,
+      "first_includes_startup": true,
+      "root_sample_difference_CPU": 2.296875,
+      "conservative_root_upper_CPU": 2.316875,
+      "process_CPU": 1.9375,
+      "wall": 3.7577490999992733,
+      "root_id": "95839eaa3b0b41bba63c6fb739755fa9",
+      "root_sequence": 77,
+      "P2": 0,
+      "cache": 0
+    }
+  ],
+  "SGD": 0,
+  "scope": "same four frozen interface cases; ordinary engineering errors may be repaired"
+}

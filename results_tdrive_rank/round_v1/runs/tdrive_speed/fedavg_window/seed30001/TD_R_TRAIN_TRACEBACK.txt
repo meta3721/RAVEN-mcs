@@ -1,0 +1,20 @@
+Traceback (most recent call last):
+  File "C:\Cursor\raven.mcs\scripts\run_tdrive_rank_v1.py", line 466, in train_one
+    window_metrics = runner.run()
+                     ^^^^^^^^^^^^
+  File "C:\Cursor\raven.mcs\src\raven_mcs\training\window_runner.py", line 588, in run
+    window_metrics = self._process_window(window_id, events)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Cursor\raven.mcs\scripts\run_tdrive_rank_v1.py", line 453, in _pw
+    out = orig_pw(window_id, events)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Cursor\raven.mcs\src\raven_mcs\training\window_runner.py", line 817, in _process_window
+    update, loss = self._trainer.train_step(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Cursor\raven.mcs\src\raven_mcs\training\client.py", line 101, in train_step
+    flat_params_before = _flatten_params(param_ids_before)
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Cursor\raven.mcs\src\raven_mcs\training\client.py", line 119, in _flatten_params
+    return np.concatenate(pieces).astype(np.float64)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+numpy._core._exceptions._ArrayMemoryError: Unable to allocate 2.66 MiB for an array with shape (349153,) and data type float64

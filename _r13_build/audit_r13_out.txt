@@ -1,0 +1,277 @@
+== sha256 (first 16 hex) ==
+   8a7f8fb4a5f4e6ec results_estimand_selection\round_v1\SELECTION_DECISION.json
+   a9fdae64df957075 results_estimand_selection\round_v1\tables\RISK_ROWS.csv
+   2ade58664ea35cda results_estimand_selection\round_v1\tables\SELECTION.csv
+   1146c71099e98baa results_estimand_selection\round_v1\tables\SELECTION_SUMMARY.csv
+   b3fbf40aa0d9814f results_estimand_selection\round_v1\PART_I_REPORT.md
+   cd1aa6d3b6c01b90 results_estimand_selection\round_v1\WEIGHTS.csv
+   4e9579555069a783 results_gate_dose\round_v2\DOSE_DECISION.json
+   fb0f00f9c767c259 results_gate_dose\round_v2\tables\DOSE_SUMMARY.csv
+   c1127aff6c9219bb results_gate_dose\round_v2\tables\DOSE_SLOPES.csv
+   2db24e119be1dad4 results_gate_dose\round_v2\tables\DOSE_CELLS.csv
+   257f27915ce3474e results_gate_dose\round_v2\tables\DOSE_CELLS_PAIRED.csv
+   033f4d48ec87600e results_gate_dose\round_v2\tables\GATE_POLICY.csv
+   2b1d498eb739fc9d results_gate_dose\round_v2\GATE.json
+   5eee327e0ccf4257 results_gate_dose\round_v2\GATE_AMENDMENT.md
+   718cb5bc8dbca1a2 results_gate_dose\round_v2\M0_RUNS.json
+   ceba959af371869b results_gate_dose\round_v2\DOSE_RUNS.json
+   302cd48c779e9a2a results_gate_dose\round_v1\RHO.csv
+   033d0cb7304b126c results_gate_dose\round_v1\MASKS.json
+   4fd05b8d3ecf8779 results_gate_dose\round_v1\TARGET_WIRING.json
+
+======================================================================
+A. RISK_ROWS.csv / SELECTION_DECISION.json
+======================================================================
+RISK_ROWS rows: 360
+datasets: ['sensorscope', 'uair']
+n methods (overall): 9
+  sensorscope  methods=9 seeds=20 rows=180
+  uair         methods=9 seeds=20 rows=180
+method names:
+   - debt_cal
+   - fedasync_window
+   - fedavg_window
+   - flamf_timealign_adapted
+   - inst_cal
+   - local_hajek
+   - raven
+   - raven_wo_design
+   - twostage_hajek
+
+per (dataset, method): mean b over 20 seeds, recomputed from R_mu/R_arr, and mean of printed 'b' column; also mean of b_R
+dataset      method                      mean_b_recomp mean_b_printed mean_bR_printed      max|diff|
+sensorscope  debt_cal                    -0.0411292275  -0.0411292275  -0.0244045496       0.00e+00
+sensorscope  fedasync_window             -0.0411313999  -0.0411313999  -0.0244055788       0.00e+00
+sensorscope  fedavg_window               -0.0411321179  -0.0411321179  -0.0244059950       0.00e+00
+sensorscope  flamf_timealign_adapted     -0.0411281479  -0.0411281479  -0.0244032319       0.00e+00
+sensorscope  inst_cal                    -0.0411325246  -0.0411325246  -0.0244054021       0.00e+00
+sensorscope  local_hajek                 -0.0411321179  -0.0411321179  -0.0244059950       0.00e+00
+sensorscope  raven                       -0.0411326655  -0.0411326655  -0.0244055404       0.00e+00
+sensorscope  raven_wo_design             -0.0411339984  -0.0411339984  -0.0244070208       0.00e+00
+sensorscope  twostage_hajek              -0.0411703193  -0.0411703193  -0.0244300045       0.00e+00
+uair         debt_cal                     0.0034410587   0.0034410587   0.0029441709       0.00e+00
+uair         fedasync_window              0.0034737545   0.0034737545   0.0029696186       0.00e+00
+uair         fedavg_window                0.0034757660   0.0034757660   0.0029705515       0.00e+00
+uair         flamf_timealign_adapted      0.0034678797   0.0034678797   0.0029660292       0.00e+00
+uair         inst_cal                     0.0033827372   0.0033827372   0.0029031222       0.00e+00
+uair         local_hajek                  0.0034757660   0.0034757660   0.0029705515       0.00e+00
+uair         raven                        0.0033832572   0.0033832572   0.0029035080       0.00e+00
+uair         raven_wo_design              0.0061953260   0.0061953260   0.0047863487       0.00e+00
+uair         twostage_hajek               0.0026720314   0.0026720314   0.0024365433       0.00e+00
+
+sensorscope: min mean_b = -0.0411703193  (-4.1170%)  via ['twostage_hajek']
+sensorscope: max mean_b = -0.0411281479  (-4.1128%)  via ['flamf_timealign_adapted']
+
+uair: min mean_b = 0.0026720314  (0.2672%)  via ['twostage_hajek']
+uair: max mean_b = 0.0061953260  (0.6195%)  via ['raven_wo_design']
+
+cross-check mean_b vs SELECTION_DECISION.json -> summaries[].method_b[].mean_b
+  dataset=sensorscope n_methods=9 n_seeds=20
+    debt_cal                   json=-0.0411292275  my_mean_of_printed_b=-0.0411292275  diff=5.55e-17
+    fedasync_window            json=-0.0411313999  my_mean_of_printed_b=-0.0411313999  diff=5.55e-17
+    fedavg_window              json=-0.0411321179  my_mean_of_printed_b=-0.0411321179  diff=4.86e-17
+    flamf_timealign_adapted    json=-0.0411281479  my_mean_of_printed_b=-0.0411281479  diff=4.16e-17
+    inst_cal                   json=-0.0411325246  my_mean_of_printed_b=-0.0411325246  diff=4.86e-17
+    local_hajek                json=-0.0411321179  my_mean_of_printed_b=-0.0411321179  diff=4.86e-17
+    raven                      json=-0.0411326655  my_mean_of_printed_b=-0.0411326655  diff=4.16e-17
+    raven_wo_design            json=-0.0411339984  my_mean_of_printed_b=-0.0411339984  diff=4.86e-17
+    twostage_hajek             json=-0.0411703193  my_mean_of_printed_b=-0.0411703193  diff=4.86e-17
+  dataset=uair n_methods=9 n_seeds=20
+    debt_cal                   json=0.0034410587  my_mean_of_printed_b=0.0034410587  diff=4.16e-17
+    fedasync_window            json=0.0034737545  my_mean_of_printed_b=0.0034737545  diff=5.20e-17
+    fedavg_window              json=0.0034757660  my_mean_of_printed_b=0.0034757660  diff=5.03e-17
+    flamf_timealign_adapted    json=0.0034678797  my_mean_of_printed_b=0.0034678797  diff=5.12e-17
+    inst_cal                   json=0.0033827372  my_mean_of_printed_b=0.0033827372  diff=4.60e-17
+    local_hajek                json=0.0034757660  my_mean_of_printed_b=0.0034757660  diff=5.03e-17
+    raven                      json=0.0033832572  my_mean_of_printed_b=0.0033832572  diff=6.11e-17
+    raven_wo_design            json=0.0061953260  my_mean_of_printed_b=0.0061953260  diff=4.94e-17
+    twostage_hajek             json=0.0026720314  my_mean_of_printed_b=0.0026720314  diff=3.60e-17
+
+======================================================================
+B. SELECTION.csv per-seed agreement
+======================================================================
+rows: 40 datasets: ['sensorscope', 'uair']
+sensorscope: n_seeds=20  agreement(m_arr==m_mu)=20  agreement(arrR)=20  mismatches=0
+   distinct m_mu values: ['debt_cal', 'fedasync_window', 'flamf_timealign_adapted', 'inst_cal', 'raven_wo_design', 'twostage_hajek']
+   distinct m_arr values: ['debt_cal', 'fedasync_window', 'flamf_timealign_adapted', 'inst_cal', 'raven_wo_design', 'twostage_hajek']
+   d_arr values: ['0']
+   tau_arr: min=0.9428571428571428 max=1.0 ; seeds with tau<1: ['30014', '30015']
+     seed 30001 m_arr=twostage_hajek           m_mu=twostage_hajek           d=0 reg=0.0 tau=1.0
+     seed 30002 m_arr=debt_cal                 m_mu=debt_cal                 d=0 reg=0.0 tau=1.0
+     seed 30003 m_arr=twostage_hajek           m_mu=twostage_hajek           d=0 reg=0.0 tau=1.0
+     seed 30004 m_arr=twostage_hajek           m_mu=twostage_hajek           d=0 reg=0.0 tau=1.0
+     seed 30005 m_arr=fedasync_window          m_mu=fedasync_window          d=0 reg=0.0 tau=1.0
+     seed 30006 m_arr=twostage_hajek           m_mu=twostage_hajek           d=0 reg=0.0 tau=1.0
+     seed 30007 m_arr=twostage_hajek           m_mu=twostage_hajek           d=0 reg=0.0 tau=1.0
+     seed 30008 m_arr=twostage_hajek           m_mu=twostage_hajek           d=0 reg=0.0 tau=1.0
+     seed 30009 m_arr=raven_wo_design          m_mu=raven_wo_design          d=0 reg=0.0 tau=1.0
+     seed 30010 m_arr=flamf_timealign_adapted  m_mu=flamf_timealign_adapted  d=0 reg=0.0 tau=1.0
+     seed 30011 m_arr=twostage_hajek           m_mu=twostage_hajek           d=0 reg=0.0 tau=1.0
+     seed 30012 m_arr=twostage_hajek           m_mu=twostage_hajek           d=0 reg=0.0 tau=1.0
+     seed 30013 m_arr=twostage_hajek           m_mu=twostage_hajek           d=0 reg=0.0 tau=1.0
+     seed 30014 m_arr=twostage_hajek           m_mu=twostage_hajek           d=0 reg=0.0 tau=0.9428571428571428
+     seed 30015 m_arr=twostage_hajek           m_mu=twostage_hajek           d=0 reg=0.0 tau=0.9428571428571428
+     seed 30016 m_arr=twostage_hajek           m_mu=twostage_hajek           d=0 reg=0.0 tau=1.0
+     seed 30017 m_arr=inst_cal                 m_mu=inst_cal                 d=0 reg=0.0 tau=1.0
+     seed 30018 m_arr=debt_cal                 m_mu=debt_cal                 d=0 reg=0.0 tau=1.0
+     seed 30019 m_arr=raven_wo_design          m_mu=raven_wo_design          d=0 reg=0.0 tau=1.0
+     seed 30020 m_arr=flamf_timealign_adapted  m_mu=flamf_timealign_adapted  d=0 reg=0.0 tau=1.0
+uair: n_seeds=20  agreement(m_arr==m_mu)=20  agreement(arrR)=20  mismatches=0
+   distinct m_mu values: ['fedasync_window', 'raven_wo_design']
+   distinct m_arr values: ['fedasync_window', 'raven_wo_design']
+   d_arr values: ['0']
+   tau_arr: min=1.0 max=1.0 ; seeds with tau<1: []
+     seed 30001 m_arr=raven_wo_design          m_mu=raven_wo_design          d=0 reg=0.0 tau=1.0
+     seed 30002 m_arr=raven_wo_design          m_mu=raven_wo_design          d=0 reg=0.0 tau=1.0
+     seed 30003 m_arr=raven_wo_design          m_mu=raven_wo_design          d=0 reg=0.0 tau=1.0
+     seed 30004 m_arr=raven_wo_design          m_mu=raven_wo_design          d=0 reg=0.0 tau=1.0
+     seed 30005 m_arr=raven_wo_design          m_mu=raven_wo_design          d=0 reg=0.0 tau=1.0
+     seed 30006 m_arr=raven_wo_design          m_mu=raven_wo_design          d=0 reg=0.0 tau=1.0
+     seed 30007 m_arr=raven_wo_design          m_mu=raven_wo_design          d=0 reg=0.0 tau=1.0
+     seed 30008 m_arr=raven_wo_design          m_mu=raven_wo_design          d=0 reg=0.0 tau=1.0
+     seed 30009 m_arr=raven_wo_design          m_mu=raven_wo_design          d=0 reg=0.0 tau=1.0
+     seed 30010 m_arr=raven_wo_design          m_mu=raven_wo_design          d=0 reg=0.0 tau=1.0
+     seed 30011 m_arr=fedasync_window          m_mu=fedasync_window          d=0 reg=0.0 tau=1.0
+     seed 30012 m_arr=raven_wo_design          m_mu=raven_wo_design          d=0 reg=0.0 tau=1.0
+     seed 30013 m_arr=raven_wo_design          m_mu=raven_wo_design          d=0 reg=0.0 tau=1.0
+     seed 30014 m_arr=raven_wo_design          m_mu=raven_wo_design          d=0 reg=0.0 tau=1.0
+     seed 30015 m_arr=raven_wo_design          m_mu=raven_wo_design          d=0 reg=0.0 tau=1.0
+     seed 30016 m_arr=raven_wo_design          m_mu=raven_wo_design          d=0 reg=0.0 tau=1.0
+     seed 30017 m_arr=raven_wo_design          m_mu=raven_wo_design          d=0 reg=0.0 tau=1.0
+     seed 30018 m_arr=raven_wo_design          m_mu=raven_wo_design          d=0 reg=0.0 tau=1.0
+     seed 30019 m_arr=raven_wo_design          m_mu=raven_wo_design          d=0 reg=0.0 tau=1.0
+     seed 30020 m_arr=raven_wo_design          m_mu=raven_wo_design          d=0 reg=0.0 tau=1.0
+
+======================================================================
+C. DOSE_SUMMARY.csv / DOSE_CELLS.csv / DOSE_SLOPES.csv
+======================================================================
+DOSE_SUMMARY rows: 7 header: ['dataset', 'level', 'rho', 'n', 'r_RMSE_mean', 'r_RMSE_ci_lo', 'r_RMSE_ci_hi', 'r_dgroup_mean', 'r_dgroup_ci_lo', 'r_dgroup_ci_hi', 'r_dcs_mean', 'r_dcs_ci_lo', 'r_dcs_ci_hi', 'r_Tail_mean', 'r_Tail_ci_lo', 'r_Tail_ci_hi']
+dataset      level           rho  rRMSE_mean%    rRMSE_lo%    rRMSE_hi%     rdgroup%        rdcs%       rTail%
+sensorscope  0          0.000000      -0.0053      -0.0377       0.0271      -1.2284      -0.5945      -0.0052
+sensorscope  0.1        0.097423       0.1419      -0.0041       0.2879      -1.1093      -1.4667       0.1354
+sensorscope  0.25       0.245309       0.1747       0.0139       0.3355       0.3184      -3.2633       0.1675
+sensorscope  0.4        0.388138       0.0586      -0.1621       0.2793       0.7486      -5.7678       0.0581
+uair         0          0.354430       7.4565       6.1057       8.8073       7.4990      -4.7525       7.8570
+uair         0.1        0.418776       6.9947       5.5875       8.4020       7.3113      -6.5194       7.3513
+uair         0.2        0.466245       6.6385       4.6755       8.6015       5.7125      -8.7940       6.9378
+
+DOSE_CELLS rows: 280 header: ['dataset', 'level', 'seed', 'arm', 'last_window_active', 'theta_scored', 'source', 'RMSE_mu', 'Delta_group', 'Delta_c_s', 'Tail_RMSE']
+levels actually run (dataset, level, n_rows, n_seeds):
+   sensorscope  m=0     rows=40   seeds=20
+   sensorscope  m=0.1   rows=40   seeds=20
+   sensorscope  m=0.25  rows=40   seeds=20
+   sensorscope  m=0.4   rows=40   seeds=20
+   uair         m=0     rows=40   seeds=20
+   uair         m=0.1   rows=40   seeds=20
+   uair         m=0.2   rows=40   seeds=20
+
+recompute per-cell r_RMSE = (RMSE_mu[raven] - RMSE_mu[raven_wo_design]) / RMSE_mu[raven_wo_design]
+dataset      level         mean%         min%         max%            n
+sensorscope  0           -0.0053      -0.1446       0.1396           20
+sensorscope  0.1          0.1419      -0.4180       0.7161           20
+sensorscope  0.25         0.1747      -0.3433       0.7193           20
+sensorscope  0.4          0.0586      -0.9960       1.1845           20
+uair         0            7.4565       2.4826      12.8833           20
+uair         0.1          6.9947       1.7066      12.9791           20
+uair         0.2          6.6385      -0.5288      13.5376           20
+
+compare recomputed per-level mean r_RMSE with DOSE_SUMMARY r_RMSE_mean
+  sensorscope  0      recomputed=-0.0000531125  summary=-0.0000531125  diff=0.00e+00
+  sensorscope  0.1    recomputed=+0.0014188184  summary=+0.0014188184  diff=2.17e-19
+  sensorscope  0.25   recomputed=+0.0017465318  summary=+0.0017465318  diff=4.34e-19
+  sensorscope  0.4    recomputed=+0.0005862652  summary=+0.0005862652  diff=1.08e-19
+  uair         0      recomputed=+0.0745650940  summary=+0.0745650940  diff=1.39e-17
+  uair         0.1    recomputed=+0.0699473531  summary=+0.0699473531  diff=1.39e-17
+  uair         0.2    recomputed=+0.0663848220  summary=+0.0663848220  diff=0.00e+00
+
+alternative r_RMSE via (raven_wo_design - raven)/raven, per level (to test sign convention)
+  sensorscope  0      mean=+0.0054%
+  sensorscope  0.1    mean=-0.1408%
+  sensorscope  0.25   mean=-0.1732%
+  sensorscope  0.4    mean=-0.0565%
+  uair         0      mean=-6.8750%
+  uair         0.1    mean=-6.4669%
+  uair         0.2    mean=-6.0866%
+
+SensorScope per-CELL r_RMSE: min=-0.9960% (m=0.4,seed=30019)  max=+1.1845% (m=0.4,seed=30007)  n=80
+U-Air   per-CELL r_RMSE: min=-0.5288% (m=0.2,seed=30017)  max=+13.5376% (m=0.2,seed=30006)  n=60
+
+SensorScope per-level MAX positive cell r_RMSE (is 0.17% a cell bound or a level-mean bound?)
+  sensorscope  m=0     mean=-0.0053%  max_cell=+0.1396%  p95_cell=+0.1329%
+  sensorscope  m=0.1   mean=+0.1419%  max_cell=+0.7161%  p95_cell=+0.5654%
+  sensorscope  m=0.25  mean=+0.1747%  max_cell=+0.7193%  p95_cell=+0.5668%
+  sensorscope  m=0.4   mean=+0.0586%  max_cell=+1.1845%  p95_cell=+0.5492%
+  uair         m=0     mean=+7.4565%  max_cell=+12.8833%  p95_cell=+10.5907%
+  uair         m=0.1   mean=+6.9947%  max_cell=+12.9791%  p95_cell=+10.0587%
+  uair         m=0.2   mean=+6.6385%  max_cell=+13.5376%  p95_cell=+12.4560%
+
+======================================================================
+F. DOSE_SLOPES.csv
+======================================================================
+dataset      endpoint                   ncells          slope          ci_lo          ci_hi   label   
+sensorscope  r_RMSE                         80       0.001365      -0.003556       0.006356   null    rho*=-0.4947395288744446 [-3.9843872237819427, 3.9830889970285637]
+sensorscope  r_RMSE__theta_excluded         80       0.001365      -0.003556       0.006356   null    rho*=-0.4947395288744446 [-3.9843872237819427, 3.9830889970285637]
+sensorscope  r_dcs                          80      -0.133141      -0.146482      -0.120472           rho*=-0.025562970543018232 [-0.037268334326331504, -0.014588802599168098]
+sensorscope  r_dcs__theta_excluded          80      -0.133141      -0.146482      -0.120472   harm    rho*=-0.025562970543018232 [-0.037268334326331504, -0.014588802599168098]
+sensorscope  r_dgroup                       80       0.056786       0.021643       0.093677           rho*=0.2386640221133391 [0.14872742896207877, 0.5413156307792597]
+sensorscope  r_dgroup__theta_excluded       80       0.056786       0.021643       0.093677   open    rho*=0.2386640221133391 [0.14872742896207877, 0.5413156307792597]
+sensorscope  r_Tail                         80       0.001362      -0.003351       0.006153           rho*=-0.4702191531510975 [-4.112038219496576, 3.8510003202291108]
+sensorscope  r_Tail__theta_excluded         80       0.001362      -0.003351       0.006153   null    rho*=-0.4702191531510975 [-4.112038219496576, 3.8510003202291108]
+uair         r_RMSE                         60      -0.073079      -0.165370       0.022770   null    rho*=1.3751076751750473 [-5.979083800671478, 9.16129440161177]
+uair         r_RMSE__theta_excluded         49      -0.024948      -0.132285       0.082296   null    rho*=3.2751896277413346 [-17.30363711567239, 18.66461391622554]
+uair         r_dcs                          60      -0.356456      -0.399355      -0.317088           rho*=0.22550740759801532 [0.20501259714796893, 0.2439838194903398]
+uair         r_dcs__theta_excluded          49      -0.367351      -0.416873      -0.323758   harm    rho*=0.2291288852580149 [0.2076655414274343, 0.2492764362440093]
+uair         r_dgroup                       60      -0.152269      -0.228810      -0.079887           rho*=0.8624153035264177 [0.6958027338350886, 1.3065281352090024]
+uair         r_dgroup__theta_excluded       49      -0.134563      -0.223566      -0.049108   harm    rho*=0.9187368765749266 [0.6896927580677099, 1.8740401526803623]
+uair         r_Tail                         60      -0.081995      -0.177818       0.017565           rho*=1.3134553977319348 [-4.953249564707703, 7.880005224562877]
+uair         r_Tail__theta_excluded         49      -0.031959      -0.143280       0.079737   null    rho*=2.757114894197001 [-17.622485969504975, 19.227830152871352]
+
+DOSE_DECISION.json verbatim key readouts:
+  gate_law = "not supported"
+  h1_labels = {"sensorscope": "null", "uair": "null"}
+  h2 = {"reason": "H1 does not support the law", "tested": false}
+  gate.G1/G2/G3_amended = True True True
+  gate.G3_original_pass = False  G3_original_tol_rel = 1e-06  G3_tol_rel = 1e-05
+  gate.amended = True  amendment = GATE_AMENDMENT.md
+  gate.pass = True
+  rho_star = {"sensorscope": -0.4947395288744446, "uair": 1.3751076751750473}
+  h3.label_w_eq = saturated  label_w_pred = null
+  h3.secondary_w_eq.label = saturated
+  h3.uair_descriptive = {"note": "every level has rho > 0, gate == always_off"}
+
+GATE.json verbatim keys:
+   G1 = true
+   G2 = true
+   G3_amended = true
+   G3_original_pass = false
+   G3_original_tol_rel = 1e-06
+   G3_tol_rel = 1e-05
+   amended = true
+   amendment = "GATE_AMENDMENT.md"
+   created_utc = "2026-10-07T02:51:29.741336+00:00"
+   n_m0_runs = 40
+   pass = true
+   reused_runs = true
+
+======================================================================
+G. MASKS.json levels, TARGET_WIRING.json, RHO.csv
+======================================================================
+sensorscope: n_candidates(pi_tar>0 keys)=440 rule=production test-split keys with pi_tar > 0, lexicographic
+   level 0     m=0.0   n_masked=0     n_masked/n_candidates=0.0000
+   level 0.1   m=0.1   n_masked=44    n_masked/n_candidates=0.1000
+   level 0.25  m=0.25  n_masked=110   n_masked/n_candidates=0.2500
+   level 0.4   m=0.4   n_masked=176   n_masked/n_candidates=0.4000
+uair: n_candidates(pi_tar>0 keys)=216 rule=production test-split keys with pi_tar > 0, lexicographic
+   level 0     m=0.0   n_masked=0     n_masked/n_candidates=0.0000
+   level 0.1   m=0.1   n_masked=22    n_masked/n_candidates=0.1019
+   level 0.2   m=0.2   n_masked=43    n_masked/n_candidates=0.1991
+RHO.csv rows=7 header=['dataset', 'm', 'level', 'n_masked_keys', 'rho', 'n_train_atoms', 'n_train_atoms_zero', 'rho_alt_delivered_traces', 'rho_alt_n_records', 'rho_alt_per_seed_mean', 'rho_alt_per_seed_min', 'rho_alt_per_seed_max', 'rho_alt_per_seed', 'seed_dimension']
+    {"dataset": "sensorscope", "m": "0.0", "level": "0", "n_masked_keys": "0", "rho": "0.0", "n_train_atoms": "10285", "n_train_atoms_zero": "0", "rho_alt_delivered_traces": "0.0", "rho_alt_n_records": "19396", "rho_alt_per_seed_mean": "0.0", "rho_alt_per_seed_min": "0.0", "rho_alt_per_seed_max": "0.0", "rho_alt_per_seed": "{\"30001\": 0.0, \"30002\": 0.0, \"30003\": 0.0, \"30004\": 0.0, \"30005\": 0.0, \"30006\": 0.0, \"30007\": 0.0, \"30008\": 0.0, \"30009\": 0.0, \"30010\": 0.0, \"30011\": 0.0, \"30012\": 0.0, \"30013\": 0.0, \"30014\": 0.0, \"30015\": 0.0, \"30016\": 0.0, \"30017\": 0.0, \"30018\": 0.0, \"30019\": 0.0, \"30020\": 0.0}", "seed_dimension": "none (static frame, no model output)"}
+    {"dataset": "sensorscope", "m": "0.1", "level": "0.1", "n_masked_keys": "44", "rho": "0.09742343218279047", "n_train_atoms": "10285", "n_train_atoms_zero": "1002", "rho_alt_delivered_traces": "0.11528150134048257", "rho_alt_n_records": "19396", "rho_alt_per_seed_mean": "0.1154846425560023", "rho_alt_per_seed_min": "0.08333333333333333", "rho_alt_per_seed_max": "0.15416666666666667", "rho_alt_per_seed": "{\"30001\": 0.10505836575875487, \"30002\": 0.10727969348659004, \"30003\": 0.1198501872659176, \"30004\": 0.1111111111111111, \"30005\": 0.12550607287449392, \"30006\": 0.13333333333333333, \"30007\": 0.08333333333333333, \"30008\": 0.11553784860557768, \"30009\": 0.09765625, \"30010\": 0.1092436974789916, \"30011\": 0.11013215859030837, \"30012\": 0.11403508771929824, \"30013\": 0.1092436974789916, \"30014\": 0.12552301255230125, \"30015\": 0.15416666666666667, \"30016\": 0.10084033613445378, \"30017\": 0.11194029850746269, \"30018\": 0.1452991452991453, \"30019\": 0.10504201680672269, \"30020\": 0.12556053811659193}", "seed_dimension": "none (static frame, no model output)"}
+    {"dataset": "sensorscope", "m": "0.25", "level": "0.25", "n_masked_keys": "110", "rho": "0.24530870199319396", "n_train_atoms": "10285", "n_train_atoms_zero": "2523", "rho_alt_delivered_traces": "0.30233037739740154", "rho_alt_n_records": "19396", "rho_alt_per_seed_mean": "0.30249372519143625", "rho_alt_per_seed_min": "0.2578125", "rho_alt_per_seed_max": "0.35874439461883406", "rho_alt_per_seed": "{\"30001\": 0.3035019455252918, \"30002\": 0.28735632183908044, \"30003\": 0.32209737827715357, \"30004\": 0.32905982905982906, \"30005\": 0.3319838056680162, \"30006\": 0.28444444444444444, \"30007\": 0.2875, \"30008\": 0.2868525896414343, \"30009\": 0.2578125, \"30010\": 0.28991596638655465, \"30011\": 0.2907488986784141, \"30012\": 0.2631578947368421, \"30013\": 0.3277310924369748, \"30014\": 0.3054393305439331, \"30015\": 0.32083333333333336, \"30016\": 0.29831932773109243, \"30017\": 0.29850746268656714, \"30018\": 0.29914529914529914, \"30019\": 0.3067226890756303, \"30020\": 0.35874439461883406}", "seed_dimension": "none (static frame, no model output)"}
+    {"dataset": "sensorscope", "m": "0.4", "level": "0.4", "n_masked_keys": "176", "rho": "0.38813806514341276", "n_train_atoms": "10285", "n_train_atoms_zero": "3992", "rho_alt_delivered_traces": "0.4419467931532275", "rho_alt_n_records": "19396", "rho_alt_per_seed_mean": "0.44218711669758715", "rho_alt_per_seed_min": "0.3671875", "rho_alt_per_seed_max": "0.5067264573991032", "rho_alt_per_seed": "{\"30001\": 0.4280155642023346, \"30002\": 0.4444444444444444, \"30003\": 0.4794007490636704, \"30004\": 0.45726495726495725, \"30005\": 0.48582995951417, \"30006\": 0.39555555555555555, \"30007\": 0.4625, \"30008\": 0.4302788844621514, \"30009\": 0.3671875, \"30010\": 0.4579831932773109, \"30011\": 0.44493392070484583, \"30012\": 0.37719298245614036, \"30013\": 0.4579831932773109, \"30014\": 0.4393305439330544, \"30015\": 0.42916666666666664, \"30016\": 0.4327731092436975, \"30017\": 0.40671641791044777, \"30018\": 0.45726495726495725, \"30019\": 0.4831932773109244, \"30020\": 0.5067264573991032}", "seed_dimension": "none (static frame, no model output)"}
+    {"dataset": "uair", "m": "0.0", "level": "0", "n_masked_keys": "0", "rho": "0.35443037974683544", "n_train_atoms": "5688", "n_train_atoms_zero": "2016", "rho_alt_delivered_traces": "0.2543367346938776", "rho_alt_n_records": "15680", "rho_alt_per_seed_mean": "0.25376171995662583", "rho_alt_per_seed_min": "0.17777777777777778", "rho_alt_per_seed_max": "0.3147208121827411", "rho_alt_per_seed": "{\"30001\": 0.2644230769230769, \"30002\": 0.27411167512690354, \"30003\": 0.26540284360189575, \"30004\": 0.2553191489361702, \"30005\": 0.3147208121827411, \"30006\": 0.2931937172774869, \"30007\": 0.2885572139303483, \"30008\": 0.24210526315789474, \"30009\": 0.21875, \"30010\": 0.22905027932960895, \"30011\": 0.17777777777777778, \"30012\": 0.23958333333333334, \"30013\": 0.25225225225225223, \"30014\": 0.25133689839572193, \"30015\": 0.2815533980582524, \"30016\": 0.31, \"30017\": 0.20476190476190476, \"30018\": 0.2198952879581152, \"30019\": 0.234375, \"30020\": 0.25806451612903225}", "seed_dimension": "none (static frame, no model output)"}
+    {"dataset": "uair", "m": "0.1", "level": "0.1", "n_masked_keys": "22", "rho": "0.41877637130801687", "n_train_atoms": "5688", "n_train_atoms_zero": "2382", "rho_alt_delivered_traces": "0.32627551020408163", "rho_alt_n_records": "15680", "rho_alt_per_seed_mean": "0.32582682125082907", "rho_alt_per_seed_min": "0.2388888888888889", "rho_alt_per_seed_max": "0.395", "rho_alt_per_seed": "{\"30001\": 0.3317307692307692, \"30002\": 0.350253807106599, \"30003\": 0.33175355450236965, \"30004\": 0.30319148936170215, \"30005\": 0.3604060913705584, \"30006\": 0.35602094240837695, \"30007\": 0.373134328358209, \"30008\": 0.3368421052631579, \"30009\": 0.28125, \"30010\": 0.3407821229050279, \"30011\": 0.2388888888888889, \"30012\": 0.3177083333333333, \"30013\": 0.3333333333333333, \"30014\": 0.32085561497326204, \"30015\": 0.35436893203883496, \"30016\": 0.395, \"30017\": 0.2571428571428571, \"30018\": 0.3036649214659686, \"30019\": 0.296875, \"30020\": 0.3333333333333333}", "seed_dimension": "none (static frame, no model output)"}
+    {"dataset": "uair", "m": "0.2", "level": "0.2", "n_masked_keys": "43", "rho": "0.46624472573839665", "n_train_atoms": "5688", "n_train_atoms_zero": "2652", "rho_alt_delivered_traces": "0.3931122448979592", "rho_alt_n_records": "15680", "rho_alt_per_seed_mean": "0.39277626643794583", "rho_alt_per_seed_min": "0.3055555555555556", "rho_alt_per_seed_max": "0.465", "rho_alt_per_seed": "{\"30001\": 0.40384615384615385, \"30002\": 0.39593908629441626, \"30003\": 0.4028436018957346, \"30004\": 0.3617021276595745, \"30005\": 0.41116751269035534, \"30006\": 0.41361256544502617, \"30007\": 0.4228855721393035, \"30008\": 0.4, \"30009\": 0.3697916666666667, \"30010\": 0.4134078212290503, \"30011\": 0.3055555555555556, \"30012\": 0.4114583333333333, \"30013\": 0.38738738738738737, \"30014\": 0.39037433155080214, \"30015\": 0.41262135922330095, \"30016\": 0.465, \"30017\": 0.3333333333333333, \"30018\": 0.39267015706806285, \"30019\": 0.3802083333333333, \"30020\": 0.3817204301075269}", "seed_dimension": "none (static frame, no model output)"}
+TARGET_WIRING.json top-level keys: ['created_utc', 'datasets', 'm0_rho_check']
+{"created_utc": "2026-10-06T15:56:15.895413+00:00", "datasets": {"sensorscope": {"consumers": {"T1_pi_target_override": "run_e3_real(pi_target_override=...) -> WorkerSetup.pi_target", "T2_mu_bundle": "production_target_bundle(...)['mu'] (patched), used by Delta_group and the RMSE_mu test weights", "T3_delta_cs_denominator": "raven_mcs.e3.delta_cs_rho.delta_cs_v6.build_pi_tar_client_stratum (patched)"}, "levels": {"0": {"m": 0.0, "mass_removed": 4.9960036108132044e-15, "mu_hash": "4170d2c22b737ad923f6d97d3d3b872f3ecafe5b3400a9c4cc69d8c66ff1a6eb", "mu_vs_masked_test_share_max_abs": 0.0, "n_masked_keys": 0, "n_test_units_kept": 3410, "pass": true, "pi_target_hash": "90b47337d3a3959ac7902f04c20f2c00e40a8b6de507ad5a94c7f2a989938b94", "sum_mu": 0.9999999999999999, "sum_pi_target": 0.9999999999999969}, "0.1": {"m": 0.1, "mass_removed": 0.10029325513196885, "mu_hash": "e3c6c216568b983ae7d41ee81d9ef3a517a69dbeb04fd6800f21c59861991d7f", "mu_vs_masked_test_share_max_abs": 0.0, "n_masked_keys": 44, "n_test_units_kept": 3068, "pass": true, "pi_target_hash": "ad303010bed08c70f389495e72d84da1469a6ecbcc9b849d7b5ffa02eeb0e27d", "sum_mu": 1.0, "sum_pi_target": 1.0000000000000067}, "0.25": {"m": 0.25, "mass_removed": 0.24809384164223092, "mu_hash": "155695c825e7ea6f39eaa68ca2c04902f58836edacdb196efdc6cd5ff6cc9342", "mu_vs_masked_test_share_max_abs": 0.0, "n_masked_keys": 110, "n_test_units_kept": 2564, "pass": true, "pi_target_hash": "41c3b9325ba57e8d4f2e4290d7cd6887b4f63cbe150cb0a3812182e65e2330b9", "sum_mu": 0.9999999999999999, "sum_pi_target": 1.0000000000000082}, "0.4": {"m": 0.4, "mass_removed": 0.3900293255131969, "mu_hash": "d32c67a6d03a7dcc44f7293c3765858f3cfde25741947bf149833723556597d4", "mu_vs_masked_test_share_max_abs": 0.0, "n_masked_keys": 176, "n_test_units_kept": 2080, "pass": true, "pi_target_hash": "2dfd5f14342b3d9a695b96b1eb78e8601e5b05759f9055708f9a25111ac2f264", "sum_mu": 1.0, "sum_pi_target": 0.9999999999999974}}, "m0_identity": {"T1_pi_target_hash_equal": false, "T1_pi_target_hash_production": "2e2b609d86889a4d8af4f31a2f972a3e3cb1cad38963d80cd0e8a2214c0696d0", "T1_pi_target_hash_rebuilt": "90b47337d3a3959ac7902f04c20f2c00e40a8b6de507ad5a94c7f2a989938b94", "T1_pi_target_max_abs_diff_vs_production": 1.7780915628762273e-17, "T1_pi_target_values_equal_1e-12": true, "T2_mu_max_abs_diff_share_vs_mu": 0.0, "T2_mu_max_abs_diff_vs_production": 0.0, "T3_pi_tar_hash_equal": false, "T3_pi_tar_rebuilt_max_abs_diff_vs_production": 1.7780915628762273e-17, "pass": true, "pi0_sum_before_renorm": 0.999999999999995, "renormalization_noise_note": "1 - sum(pi_tar) before renormalization at m = 0", "sum_mu": 0.9999999999999999, "sum_pi_target": 0.9999999999999969}, "n_groups": 220, "rho_frame": {"cross_check_frames": {"delivered_U1_non_test": {"frame_rho_at_m0": 0.0, "n_records": 19396, "n_traces": 20, "note": "c1_deletion_driver-style event-trace frame; for the E3 traces it gives 0 / 0.2543 and is reported as a cross-check only, because the instruction pins m = 0

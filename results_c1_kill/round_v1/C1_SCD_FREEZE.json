@@ -1,0 +1,24 @@
+{
+  "design_on": true,
+  "experiment_id": "C1-KILL-TD-SPATIAL",
+  "frozen_utc": "2026-09-10T06:58:33.146777+00:00",
+  "full_design_diagnostic_method": "raven",
+  "gate_unused": true,
+  "git_commit": "44261d66c0b906c6b26e8936388f121c5ba0ba43",
+  "h_definition": "beijing_grid_4_quadrant_median_gx_gy_all_cells_no_Y",
+  "mu": {
+    "region0": 0.24858855556598586,
+    "region1": 0.3391087449208116,
+    "region2": 0.13598144000858264,
+    "region3": 0.2763212595046199
+  },
+  "n_train_units": 285659,
+  "n_train_zero": 0,
+  "note": "Frozen from region mu on train units. Not from labels or residuals.",
+  "phi_definition": "phi_train_unit",
+  "phi_train_unit": 0.0,
+  "rule": "Design_ON iff phi_train_unit == 0",
+  "scd_method": "raven",
+  "train_full_design_extra": false,
+  "used_y_or_rmse": false
+}

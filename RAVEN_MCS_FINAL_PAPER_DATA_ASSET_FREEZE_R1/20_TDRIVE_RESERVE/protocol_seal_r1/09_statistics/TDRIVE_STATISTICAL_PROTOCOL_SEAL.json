@@ -1,0 +1,36 @@
+{
+  "EPS_ZERO": 1e-12,
+  "alpha": 0.05,
+  "baselines": [
+    "fedavg_window",
+    "fedasync_window",
+    "flamf_timealign_adapted",
+    "twostage_hajek"
+  ],
+  "do_not_change_after_seeing_results": true,
+  "effect_size": "paired Cohen-like mean_diff / sd(diffs)",
+  "holm_family": "within each primary metric, RAVEN vs the four baselines (m=4 per metric; three separate families)",
+  "n_seeds": 10,
+  "paired_test": "Wilcoxon signed-rank two-sided (E3 e3.formal.stats.wilcoxon_signed_rank_two_sided)",
+  "pairing": "same seed across RAVEN and each baseline",
+  "primary_metrics": [
+    "Delta_group",
+    "Delta_c_s",
+    "RMSE_mu"
+  ],
+  "seeds": [
+    30001,
+    30002,
+    30003,
+    30004,
+    30005,
+    30006,
+    30007,
+    30008,
+    30009,
+    30010
+  ],
+  "status": "FROZEN",
+  "wins_definition_predictive": "smaller RMSE_mu is better",
+  "wins_definition_structural": "smaller Delta_group / Delta_c_s is better"
+}

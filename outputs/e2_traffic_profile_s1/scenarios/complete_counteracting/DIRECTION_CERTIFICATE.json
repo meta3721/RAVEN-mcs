@@ -1,0 +1,245 @@
+{
+  "clip": {
+    "observation_lower_clip_rate": 0.0,
+    "observation_upper_clip_rate": 0.0,
+    "opportunity_lower_clip_rate": 0.0,
+    "opportunity_upper_clip_rate": 0.0,
+    "p_obs_max": 0.2559990715911763,
+    "p_obs_min": 0.11235898154118192,
+    "p_opp_max": 0.6711574761047978,
+    "p_opp_min": 0.4288425238961375,
+    "q_lower_clip_rate": 0.0,
+    "q_max": 0.7607619163046413,
+    "q_min": 0.5391350957745559,
+    "q_upper_clip_rate": 0.0
+  },
+  "expected_signed": {
+    "arr": 0.43294657914805923,
+    "obs": 0.5619608252150979,
+    "opp": 0.22028632018950411
+  },
+  "hard_certificate": {
+    "checks": {
+      "cancellation": true,
+      "not_balanced": true,
+      "obs_direction": true,
+      "opp_direction": true
+    },
+    "hard_group_tv": {
+      "arr": 0.21656176239181746,
+      "obs": 0.28138502861146797,
+      "opp": 0.10933267378041597
+    },
+    "hard_signed": {
+      "arr": 0.4331235247836349,
+      "obs": 0.5627700572229359,
+      "opp": 0.2186653475608319
+    },
+    "notes": {
+      "abs_signed": {
+        "arr": 0.4331235247836349,
+        "obs": 0.5627700572229359,
+        "opp": 0.2186653475608319
+      },
+      "hardcoded_pass_used": false
+    },
+    "status": "PASS"
+  },
+  "hard_pooled": {
+    "arrival": {
+      "group_mass": {
+        "block0": 0.36939417781274586,
+        "block1": 0.3471675845790716,
+        "block2": 0.14201416207710466,
+        "block3": 0.1414240755310779
+      },
+      "group_tv_vs_equal": 0.21656176239181746,
+      "head_mass_ratio": 1.433123524783635,
+      "pooled_total_mass": 5084.0,
+      "signed_head_minus_tail": 0.4331235247836349,
+      "stratum_mass": {
+        "region0::block0::weekday": 0.05527143981117231,
+        "region0::block0::weekend": 0.02891424075531078,
+        "region0::block1::weekday": 0.05684500393391031,
+        "region0::block1::weekend": 0.026357199055861525,
+        "region0::block2::weekday": 0.024586939417781273,
+        "region0::block2::weekend": 0.011605035405192761,
+        "region0::block3::weekday": 0.022816679779701022,
+        "region0::block3::weekend": 0.011998426435877263,
+        "region1::block0::weekday": 0.06018882769472856,
+        "region1::block0::weekend": 0.03245476003147128,
+        "region1::block1::weekday": 0.06451612903225806,
+        "region1::block1::weekend": 0.03048780487804878,
+        "region1::block2::weekday": 0.020849724626278522,
+        "region1::block2::weekend": 0.00963808025177026,
+        "region1::block3::weekday": 0.027734067663257277,
+        "region1::block3::weekend": 0.00983477576711251,
+        "region2::block0::weekday": 0.06805664830841857,
+        "region2::block0::weekend": 0.03284815106215578,
+        "region2::block1::weekday": 0.05782848151062156,
+        "region2::block1::weekend": 0.02143981117230527,
+        "region2::block2::weekday": 0.02930763178599528,
+        "region2::block2::weekend": 0.012195121951219513,
+        "region2::block3::weekday": 0.02104642014162077,
+        "region2::block3::weekend": 0.011801730920535013,
+        "region3::block0::weekday": 0.06195908733280881,
+        "region3::block0::weekend": 0.02970102281667978,
+        "region3::block1::weekday": 0.06117230527143981,
+        "region3::block1::weekend": 0.02852084972462628,
+        "region3::block2::weekday": 0.022619984264358774,
+        "region3::block2::weekend": 0.011211644374508261,
+        "region3::block3::weekday": 0.023603461841070025,
+        "region3::block3::weekend": 0.012588512981904013
+      },
+      "tail_mass_ratio": 0.5668764752163651
+    },
+    "observation": {
+      "group_mass": {
+        "block0": 0.3990423916851571,
+        "block1": 0.3823426369263109,
+        "block2": 0.11035851921055705,
+        "block3": 0.10825645217797501
+      },
+      "group_tv_vs_equal": 0.28138502861146797,
+      "head_mass_ratio": 1.562770057222936,
+      "pooled_total_mass": 8563.0,
+      "signed_head_minus_tail": 0.5627700572229359,
+      "stratum_mass": {
+        "region0::block0::weekday": 0.061894195959360035,
+        "region0::block0::weekend": 0.030830316477869907,
+        "region0::block1::weekday": 0.056872591381525166,
+        "region0::block1::weekend": 0.027677215928996846,
+        "region0::block2::weekday": 0.017984351278757443,
+        "region0::block2::weekend": 0.008992175639378722,
+        "region0::block3::weekday": 0.01634941025341586,
+        "region0::block3::weekend": 0.008291486628518042,
+        "region1::block0::weekday": 0.06878430456615672,
+        "region1::block0::weekend": 0.0325820390050216,
+        "region1::block1::weekday": 0.06820039705710615,
+        "region1::block1::weekend": 0.03234847600140138,
+        "region1::block2::weekday": 0.017283662267896766,
+        "region1::block2::weekend": 0.007824360621277589,
+        "region1::block3::weekday": 0.02137101483125073,
+        "region1::block3::weekend": 0.008758612635758495,
+        "region2::block0::weekday": 0.07228774962046011,
+        "region2::block0::weekend": 0.03199813149597104,
+        "region2::block1::weekday": 0.06749970804624547,
+        "region2::block1::weekend": 0.02744365292537662,
+        "region2::block2::weekday": 0.021487796333060843,
+        "region2::block2::weekend": 0.009108957141188836,
+        "region2::block3::weekday": 0.01611584724979563,
+        "region2::block3::weekend": 0.009342520144809062,
+        "region3::block0::weekday": 0.06668223753357468,
+        "region3::block0::weekend": 0.033983417026742964,
+        "region3::block1::weekday": 0.07018568258787808,
+        "region3::block1::weekend": 0.03211491299778115,
+        "region3::block2::weekday": 0.01880182179142824,
+        "region3::block2::weekend": 0.00887539413756861,
+        "region3::block3::weekday": 0.018685040289618125,
+        "region3::block3::weekend": 0.009342520144809062
+      },
+      "tail_mass_ratio": 0.4372299427770641
+    },
+    "opportunity": {
+      "group_mass": {
+        "block0": 0.30553788895955525,
+        "block1": 0.3037947848208607,
+        "block2": 0.1958636609898005,
+        "block3": 0.1948036652297835
+      },
+      "group_tv_vs_equal": 0.10933267378041597,
+      "head_mass_ratio": 1.2186653475608318,
+      "pooled_total_mass": 42453.0,
+      "signed_head_minus_tail": 0.2186653475608319,
+      "stratum_mass": {
+        "region0::block0::weekday": 0.04689892351541705,
+        "region0::block0::weekend": 0.023037241184368597,
+        "region0::block1::weekday": 0.047417143664758674,
+        "region0::block1::weekend": 0.02341412856570796,
+        "region0::block2::weekday": 0.031328763573834593,
+        "region0::block2::weekend": 0.014627941488234047,
+        "region0::block3::weekday": 0.03147009634183685,
+        "region0::block3::weekend": 0.014109721338892421,
+        "region1::block0::weekday": 0.05304689892351542,
+        "region1::block0::weekend": 0.02478034532306315,
+        "region1::block1::weekday": 0.05316467623018397,
+        "region1::block1::weekend": 0.024945233552399124,
+        "region1::block2::weekday": 0.03243587025651897,
+        "region1::block2::weekend": 0.016253268320260052,
+        "region1::block3::weekday": 0.035427413845900174,
+        "region1::block3::weekend": 0.01575860363225214,
+        "region2::block0::weekday": 0.05413045014486609,
+        "region2::block0::weekend": 0.025369231856405907,
+        "region2::block1::weekday": 0.05226956869950298,
+        "region2::block1::weekend": 0.025322120933738486,
+        "region2::block2::weekday": 0.03523897015523049,
+        "region2::block2::weekend": 0.015711492709584718,
+        "region2::block3::weekday": 0.033425199632534805,
+        "region2::block3::weekend": 0.01597060278425553,
+        "region3::block0::weekday": 0.052999788000847994,
+        "region3::block0::weekend": 0.025275010011071068,
+        "region3::block1::weekday": 0.05264645608084234,
+        "region3::block1::weekend": 0.02461545709372718,
+        "region3::block2::weekday": 0.03389630885920901,
+        "region3::block2::weekend": 0.016371045626928604,
+        "region3::block3::weekday": 0.032530092101853814,
+        "region3::block3::weekend": 0.016111935552257792
+      },
+      "tail_mass_ratio": 0.781334652439168
+    }
+  },
+  "intercept_solve_count": 1,
+  "label": "S6",
+  "params": {
+    "a_obs": -1.5668684648176168,
+    "a_opp": 0.21342481271631186,
+    "a_q": 0.656861230368122,
+    "bounds": {
+      "obs": [
+        0.05,
+        0.95
+      ],
+      "opp": [
+        0.05,
+        0.95
+      ],
+      "q": [
+        0.05,
+        0.95
+      ]
+    },
+    "d_opp": -1,
+    "d_p": -1,
+    "d_q": 1,
+    "kappa_obs": 0.5,
+    "kappa_opp": 0.5,
+    "kappa_q": 0.5,
+    "profile_id": "PROFILE-S1",
+    "rate_targets": {
+      "observation": 0.2,
+      "opportunity": 0.55,
+      "usable": 0.6
+    },
+    "scenario_id": "complete_counteracting"
+  },
+  "profile_id": "PROFILE-S1",
+  "rates_pooled": {
+    "observation": 0.20170793847291235,
+    "opportunity": 0.5484883720930233,
+    "usable": 0.6002473466889205
+  },
+  "scenario_id": "complete_counteracting",
+  "seeds": [
+    28201,
+    28202,
+    28203
+  ],
+  "status": "PASS",
+  "support": {
+    "minimum_positive_client_stratum_expected_arrivals": 1.759525796303171,
+    "minimum_positive_group_expected_arrivals": 236.4362788782386,
+    "minimum_positive_stratum_expected_arrivals": 17.59525796303171,
+    "status": "PASS"
+  },
+  "trace_count": 3
+}

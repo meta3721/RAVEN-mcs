@@ -1,0 +1,349 @@
+{
+  "scenario": "drifting",
+  "rows": [
+    {
+      "status": "CREATED",
+      "dataset": "sensorscope",
+      "seed": 30001,
+      "hash": "c57a5f01a04d3504325631a1de423f5574ede6b144be519dfb87ff49ce80c136",
+      "audit": {
+        "sum_pi_opp_joint": 1.0000000000000007,
+        "n_pairs": 440,
+        "staleness_gt_smax_rate": 0.16375,
+        "generator_version": "e3-complete-aligned-r3-v1",
+        "drift_period": 50,
+        "drift_magnitude": 0.1
+      }
+    },
+    {
+      "status": "CREATED",
+      "dataset": "sensorscope",
+      "seed": 30002,
+      "hash": "b779746a72c75289f4c1c86b9ac9c6a033b7cbd5a81be6690128a59440db8736",
+      "audit": {
+        "sum_pi_opp_joint": 1.0000000000000007,
+        "n_pairs": 440,
+        "staleness_gt_smax_rate": 0.16875,
+        "generator_version": "e3-complete-aligned-r3-v1",
+        "drift_period": 50,
+        "drift_magnitude": 0.1
+      }
+    },
+    {
+      "status": "CREATED",
+      "dataset": "sensorscope",
+      "seed": 30003,
+      "hash": "888cf15eda2d1ba2c3a5788acc62ed41f56b8ab593afb9d3ccfd0d13c952763c",
+      "audit": {
+        "sum_pi_opp_joint": 1.0000000000000007,
+        "n_pairs": 440,
+        "staleness_gt_smax_rate": 0.19125,
+        "generator_version": "e3-complete-aligned-r3-v1",
+        "drift_period": 50,
+        "drift_magnitude": 0.1
+      }
+    },
+    {
+      "status": "CREATED",
+      "dataset": "sensorscope",
+      "seed": 30004,
+      "hash": "f36a617d25190cfc6e5024a907e26c28059d208070392c1ca92c332bb1c1f5d9",
+      "audit": {
+        "sum_pi_opp_joint": 1.0000000000000007,
+        "n_pairs": 440,
+        "staleness_gt_smax_rate": 0.17375,
+        "generator_version": "e3-complete-aligned-r3-v1",
+        "drift_period": 50,
+        "drift_magnitude": 0.1
+      }
+    },
+    {
+      "status": "CREATED",
+      "dataset": "sensorscope",
+      "seed": 30005,
+      "hash": "fef7c33de8ba1a9d681b6b9f5a81d71ca93e31731e3310c92747916a062dc5d5",
+      "audit": {
+        "sum_pi_opp_joint": 1.0000000000000007,
+        "n_pairs": 440,
+        "staleness_gt_smax_rate": 0.1925,
+        "generator_version": "e3-complete-aligned-r3-v1",
+        "drift_period": 50,
+        "drift_magnitude": 0.1
+      }
+    },
+    {
+      "status": "CREATED",
+      "dataset": "sensorscope",
+      "seed": 30006,
+      "hash": "ccf32b26a25444360f7557704b3c8ebf84653f5afc97667ac4013f0ddfa0c711",
+      "audit": {
+        "sum_pi_opp_joint": 1.0000000000000007,
+        "n_pairs": 440,
+        "staleness_gt_smax_rate": 0.1875,
+        "generator_version": "e3-complete-aligned-r3-v1",
+        "drift_period": 50,
+        "drift_magnitude": 0.1
+      }
+    },
+    {
+      "status": "CREATED",
+      "dataset": "sensorscope",
+      "seed": 30007,
+      "hash": "df401e4efc23f6cb61222fa85f3532d276a21ef62df377209e7ec57da9082f55",
+      "audit": {
+        "sum_pi_opp_joint": 1.0000000000000007,
+        "n_pairs": 440,
+        "staleness_gt_smax_rate": 0.17625,
+        "generator_version": "e3-complete-aligned-r3-v1",
+        "drift_period": 50,
+        "drift_magnitude": 0.1
+      }
+    },
+    {
+      "status": "CREATED",
+      "dataset": "sensorscope",
+      "seed": 30008,
+      "hash": "8db1efc32389db9fa6a13cba7c7a9ad03eab97bb48f9c379efae9aaca85e2bf7",
+      "audit": {
+        "sum_pi_opp_joint": 1.0000000000000007,
+        "n_pairs": 440,
+        "staleness_gt_smax_rate": 0.18875,
+        "generator_version": "e3-complete-aligned-r3-v1",
+        "drift_period": 50,
+        "drift_magnitude": 0.1
+      }
+    },
+    {
+      "status": "CREATED",
+      "dataset": "sensorscope",
+      "seed": 30009,
+      "hash": "b76d8c70bed6083a7cc5b3532c0d16e4175d40a2ec4caf5c6b6d34e8f88da55a",
+      "audit": {
+        "sum_pi_opp_joint": 1.0000000000000007,
+        "n_pairs": 440,
+        "staleness_gt_smax_rate": 0.18375,
+        "generator_version": "e3-complete-aligned-r3-v1",
+        "drift_period": 50,
+        "drift_magnitude": 0.1
+      }
+    },
+    {
+      "status": "CREATED",
+      "dataset": "sensorscope",
+      "seed": 30010,
+      "hash": "5883ff8a8ad5d16691122d19092e96ca5aeb13d42335fb3cc5643988e063641a",
+      "audit": {
+        "sum_pi_opp_joint": 1.0000000000000007,
+        "n_pairs": 440,
+        "staleness_gt_smax_rate": 0.18125,
+        "generator_version": "e3-complete-aligned-r3-v1",
+        "drift_period": 50,
+        "drift_magnitude": 0.1
+      }
+    },
+    {
+      "status": "REUSED",
+      "dataset": "sensorscope",
+      "seed": 30011,
+      "hash": "5d295536367ed8e840934ec0aa5eb44d40df9b6d8002f603628d2f5a6aa8d670"
+    },
+    {
+      "status": "REUSED",
+      "dataset": "sensorscope",
+      "seed": 30012,
+      "hash": "f424fb21601ce1e33621d54a756e832206f6bbedbc1264d21e7e182988ca3b8d"
+    },
+    {
+      "status": "REUSED",
+      "dataset": "sensorscope",
+      "seed": 30013,
+      "hash": "3b9d383cb1bed9cc29cc19d477fab51dcf8c0a170f93581c820fd23aa0da1c8e"
+    },
+    {
+      "status": "REUSED",
+      "dataset": "sensorscope",
+      "seed": 30014,
+      "hash": "466127aa49e117903a648bf5360beb2761fde918d8c130720f40dac5be0cd23f"
+    },
+    {
+      "status": "REUSED",
+      "dataset": "sensorscope",
+      "seed": 30015,
+      "hash": "b4e4bd187eb37f525e9cd2209696a38d7f3560378e8b841b90fb4e789220a87a"
+    },
+    {
+      "status": "REUSED",
+      "dataset": "sensorscope",
+      "seed": 30016,
+      "hash": "0aa371cd53ae30e43c40e07e7f6fe3e4dbb262f411df29f63f4913cd2cb2c79e"
+    },
+    {
+      "status": "REUSED",
+      "dataset": "sensorscope",
+      "seed": 30017,
+      "hash": "19ce51a11a1589178f140518fc60d046de5da6e7a135193997930984e3166c9b"
+    },
+    {
+      "status": "CREATED",
+      "dataset": "sensorscope",
+      "seed": 30018,
+      "hash": "fdab7062a099531659426b740b5a63eed3063fa23951c7af0a82d68633c2f2e7",
+      "audit": {
+        "sum_pi_opp_joint": 1.0000000000000007,
+        "n_pairs": 440,
+        "staleness_gt_smax_rate": 0.20375,
+        "generator_version": "e3-complete-aligned-r3-v1",
+        "drift_period": 50,
+        "drift_magnitude": 0.1
+      }
+    },
+    {
+      "status": "CREATED",
+      "dataset": "sensorscope",
+      "seed": 30019,
+      "hash": "756064303e7524e4e0eb255b4f07ce619db744525dbbe37763ab24e1c385fd20",
+      "audit": {
+        "sum_pi_opp_joint": 1.0000000000000007,
+        "n_pairs": 440,
+        "staleness_gt_smax_rate": 0.21,
+        "generator_version": "e3-complete-aligned-r3-v1",
+        "drift_period": 50,
+        "drift_magnitude": 0.1
+      }
+    },
+    {
+      "status": "CREATED",
+      "dataset": "sensorscope",
+      "seed": 30020,
+      "hash": "25abbdbe2201558ed9b94b12a67820a028bf1a2df18e0518a8e4e91b57397096",
+      "audit": {
+        "sum_pi_opp_joint": 1.0000000000000007,
+        "n_pairs": 440,
+        "staleness_gt_smax_rate": 0.22375,
+        "generator_version": "e3-complete-aligned-r3-v1",
+        "drift_period": 50,
+        "drift_magnitude": 0.1
+      }
+    },
+    {
+      "status": "REUSED",
+      "dataset": "uair",
+      "seed": 30001,
+      "hash": "4a82ba4aa8ebf881ec1cff3fe6210f4265ac00882a8336a5a8bd568cc7fb956f"
+    },
+    {
+      "status": "REUSED",
+      "dataset": "uair",
+      "seed": 30002,
+      "hash": "ea5412165c8bb56e0318c1a46bab04f6d7f840326aa959ac8a71c6cc816ba36d"
+    },
+    {
+      "status": "REUSED",
+      "dataset": "uair",
+      "seed": 30003,
+      "hash": "f29c59cc7e972b052333e4dce58f314e5cc6df0da6b7d676da3b9a6a57e73ae2"
+    },
+    {
+      "status": "REUSED",
+      "dataset": "uair",
+      "seed": 30004,
+      "hash": "536766126fc4616b7c5c5aefdce3232f3525d909a13a34e724f429ec1102b9e4"
+    },
+    {
+      "status": "REUSED",
+      "dataset": "uair",
+      "seed": 30005,
+      "hash": "763f14684e28ffd0f5224474a708ec46d4ed5e37dea87d2755b1034881c08533"
+    },
+    {
+      "status": "REUSED",
+      "dataset": "uair",
+      "seed": 30006,
+      "hash": "28747167fe8709313f3d3e1e5936eede70d2689a8fe4680fb5e1c38807c94a8e"
+    },
+    {
+      "status": "REUSED",
+      "dataset": "uair",
+      "seed": 30007,
+      "hash": "a01c19ceea7f9fec2b3b700afee51758a2cb69d4dbba3a46970c51f39160944c"
+    },
+    {
+      "status": "REUSED",
+      "dataset": "uair",
+      "seed": 30008,
+      "hash": "790b95928a84ccd55c0b44264dd29a359e8efddda8abcab823f036082c805fc7"
+    },
+    {
+      "status": "REUSED",
+      "dataset": "uair",
+      "seed": 30009,
+      "hash": "19dda2c602ce27ab7118d6779c6f908004acf7df308955f6a5bce00741ca4833"
+    },
+    {
+      "status": "REUSED",
+      "dataset": "uair",
+      "seed": 30010,
+      "hash": "04766ef1bfc1dace5e9b19d386551b739bce94da62a84327001023eb776c8732"
+    },
+    {
+      "status": "REUSED",
+      "dataset": "uair",
+      "seed": 30011,
+      "hash": "71b66eef0a471842202abb05e5924ff3320e7ca3c887c00334fb5627e46d4909"
+    },
+    {
+      "status": "REUSED",
+      "dataset": "uair",
+      "seed": 30012,
+      "hash": "8e4f916aa40b48088714789be3aed0d4b1ea35a66c90a4d30656081c8859b6b4"
+    },
+    {
+      "status": "REUSED",
+      "dataset": "uair",
+      "seed": 30013,
+      "hash": "6f47b3ec2ad5bec6ac46788ecfeb8454d809c6152263a22e0540d510189acb1b"
+    },
+    {
+      "status": "REUSED",
+      "dataset": "uair",
+      "seed": 30014,
+      "hash": "5c3265fd73573bf0a234fe4d0e678e1faf32578b4f6dc50f9258c96fe13b1fdb"
+    },
+    {
+      "status": "REUSED",
+      "dataset": "uair",
+      "seed": 30015,
+      "hash": "7c89402eab76f7ef1390f054cc6b818ee8a88f7c85ef1ea8c24910a76ff934bb"
+    },
+    {
+      "status": "REUSED",
+      "dataset": "uair",
+      "seed": 30016,
+      "hash": "abf7197092f820167d12ecdc89b76df524ee73608ee94916ca8dfd298f1f68e6"
+    },
+    {
+      "status": "REUSED",
+      "dataset": "uair",
+      "seed": 30017,
+      "hash": "e5e37d05b64cdd6da2d7dc27aba6289c0da395360ef8babad61697db408fadb7"
+    },
+    {
+      "status": "REUSED",
+      "dataset": "uair",
+      "seed": 30018,
+      "hash": "96499fd12f21b50fdb2c20c22fd73a571ed42509c8abcf4d9c5050b9911a2efc"
+    },
+    {
+      "status": "REUSED",
+      "dataset": "uair",
+      "seed": 30019,
+      "hash": "1bce968dfc103d0d85ef0f4f1aad1a9212840151f1adc202cec4903ffa03b815"
+    },
+    {
+      "status": "REUSED",
+      "dataset": "uair",
+      "seed": 30020,
+      "hash": "7e949a514843caaab13ceeb5798827b5818d9d28162517acd5e9c40ddff337ad"
+    }
+  ]
+}

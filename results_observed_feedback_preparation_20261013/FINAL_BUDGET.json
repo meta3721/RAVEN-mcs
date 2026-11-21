@@ -1,0 +1,48 @@
+{
+  "status": "WAITING_USER_REVIEW",
+  "limit_CPU": 120.0,
+  "charged_CPU": 22.203125,
+  "measured_disjoint_CPU": 2.203125,
+  "conservative_inspection_delivery_CPU": 20.0,
+  "inspection_actual_CPU": "UNKNOWN; charged conservative reserve",
+  "prior_charged_CPU": 4535.09375,
+  "cumulative_charged_CPU": 4557.296875,
+  "nominal_5hour_remaining_CPU": 13442.703125,
+  "historical_actual_gap": "UNKNOWN",
+  "wall_invocations": 3.5406779999993887,
+  "charges": [
+    {
+      "label": "exact_arithmetic",
+      "charged_CPU": 0.234375,
+      "job_CPU": 0.109375,
+      "driver_CPU": 0.125,
+      "wall": 0.31636670000079903,
+      "exit": 0,
+      "audit": true
+    },
+    {
+      "label": "final_verification",
+      "charged_CPU": 0.953125,
+      "job_CPU": 0.84375,
+      "driver_CPU": 0.109375,
+      "wall": 1.5582314999992377,
+      "exit": 0,
+      "audit": true
+    },
+    {
+      "label": "source_audit",
+      "charged_CPU": 1.015625,
+      "job_CPU": 0.875,
+      "driver_CPU": 0.140625,
+      "wall": 1.666079799999352,
+      "exit": 0,
+      "audit": true
+    }
+  ],
+  "new_trajectories": 0,
+  "SGD": 0,
+  "GPU": 0,
+  "q_fit": 0,
+  "random_replay": 0,
+  "production_controller_implementation": 0
+}

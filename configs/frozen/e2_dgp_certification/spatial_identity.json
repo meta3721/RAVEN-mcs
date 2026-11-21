@@ -1,0 +1,24 @@
+{
+  "E1_region_mapping_availability": true,
+  "coordinate_file": "configs/frozen/e2_dgp_certification/station_spatial_identity.parquet",
+  "coordinate_range": null,
+  "coordinate_source": "e1_frozen_client_region_mapping_v1",
+  "duplicate_coordinate_count": 0,
+  "e1_spatial_partition": "none",
+  "groups_config_hash": "11f5974839e18716fa53f69c44b570106a944dcd50ccfebc3ff1b4f25399c579",
+  "missing_coordinate_count": 0,
+  "r2_regions": [
+    "R2_0",
+    "R2_1"
+  ],
+  "r4_regions": [
+    "R4_0",
+    "R4_1",
+    "R4_2",
+    "R4_3"
+  ],
+  "source_hash": "804dd0fdb9f9f8865f70e42e4fba57926314d85205642e86972b98d560b3a64c",
+  "station_count": 55,
+  "status": "PASS",
+  "synthetic_coordinate_usage_count": 0
+}

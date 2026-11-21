@@ -1,0 +1,19 @@
+{
+  "status": "RESOURCE_DEFERRED",
+  "gate": "free physical memory at least 4 GiB before the anchor, shadow updates, and scoring",
+  "threshold_bytes": 4294967296,
+  "free_bytes_first_reading": 888147968,
+  "free_bytes_at_decision": 1133596672,
+  "decision": "both readings are below 4 GiB; the training import and the anchor were not started",
+  "retries": 0,
+  "cpu_limit_seconds": 180,
+  "wall_limit_seconds": 360,
+  "anchor_cpu_seconds": "NOT_STARTED",
+  "anchor_wall_seconds": "NOT_STARTED",
+  "shadow_cpu_seconds": "NOT_STARTED",
+  "shadow_wall_seconds": "NOT_STARTED",
+  "scoring_cpu_seconds": "NOT_STARTED",
+  "scoring_wall_seconds": "NOT_STARTED",
+  "rss_peak_bytes": "UNMEASURED",
+  "historical_context_not_this_run": "Seed 33001 F previously recorded deploy_CPU_s 30.125 for 100 windows. That figure is not spend from this P1 process."
+}

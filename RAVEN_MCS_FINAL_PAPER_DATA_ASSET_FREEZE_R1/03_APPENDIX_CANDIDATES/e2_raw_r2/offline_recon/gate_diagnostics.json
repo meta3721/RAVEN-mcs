@@ -1,0 +1,54 @@
+{
+  "claim_statuses": {
+    "C1": "SUPPORTED",
+    "C10": "PARTIALLY_SUPPORTED",
+    "C2": "PARTIALLY_SUPPORTED",
+    "C3": "SUPPORTED",
+    "C4": "UNSUPPORTED",
+    "C5": "UNSUPPORTED",
+    "C6": "UNSUPPORTED",
+    "C7": "UNSUPPORTED",
+    "C8": "UNSUPPORTED",
+    "C9": "PARTIALLY_SUPPORTED"
+  },
+  "claim_validation": "PASS",
+  "delta_group_finite": 600,
+  "delta_group_statuses": {
+    "RECONSTRUCTABLE_FROM_FROZEN_DIAGNOSTICS": 600
+  },
+  "feasibility": {
+    "Delta_group": "RECONSTRUCTABLE_FROM_FROZEN_DIAGNOSTICS",
+    "Delta_pair": "NOT_RECONSTRUCTABLE_DUE_TO_MISSING_DEFINITION",
+    "Head_RMSE": "EXACTLY_RECONSTRUCTABLE",
+    "Tail_RMSE": "EXACTLY_RECONSTRUCTABLE"
+  },
+  "head_finite": 600,
+  "ledger": {
+    "accepted_logical_run_count": 600,
+    "corrupt_ledger_lines": 0,
+    "duplicate_start_event_count": 1,
+    "duplicate_start_run_ids": [
+      "formal_seed30001_observation_only_raven__attempt1"
+    ],
+    "excess_start_event_count": 1,
+    "failed_finished_attempt_count": 0,
+    "finish_event_count": 600,
+    "interrupted_start_event_count": 1,
+    "ledger_rewritten": false,
+    "note": "Historical ledger unchanged. Known anomaly is a duplicate START on the same run_id (interrupted attempt) with a later successful FINISH; accepted logical runs=600.",
+    "orphan_finish_event_count": 0,
+    "orphan_start_event_count": 0,
+    "orphan_start_run_ids": [],
+    "start_event_count": 601
+  },
+  "stop": {
+    "created_utc": "2026-08-09T08:34:11.284185+00:00",
+    "delta_group_finite": 600,
+    "delta_pair_status": "DEFINITION_NOT_RECOVERABLE",
+    "head_tail_finite": 600,
+    "no_training": true,
+    "status": "E2_TRAFFIC_SCIENTIFICALLY_SEALED"
+  },
+  "tail_finite": 600,
+  "verification": "PASS"
+}

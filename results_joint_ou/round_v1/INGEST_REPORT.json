@@ -1,0 +1,69 @@
+{
+  "audit": {
+    "clients_are_spatial_id": true,
+    "grid_max_lat": 40.90443,
+    "grid_max_lon": -73.664795,
+    "grid_origin_lat": 40.702755,
+    "grid_origin_lon": -74.001976,
+    "measured_o0_fraction": 0.12907754010695188,
+    "median_gx": 20.0,
+    "median_gy": 27.0,
+    "n_atomic_o1": 13029,
+    "n_o0_cell_slots": 1931,
+    "n_occupancy": 14960,
+    "n_occupied_cells": 416,
+    "n_occupied_slots": 2402,
+    "n_opportunity_strata": 32,
+    "n_union_cell_slots": 14960,
+    "n_unique_sensor_ids_audit_only": 5,
+    "no2_meta": {
+      "n_by_file": {
+        "NYC_Pilot2_NO2_Part1.csv": 249999,
+        "NYC_Pilot2_NO2_Part2.csv": 241867
+      },
+      "n_raw": 491866,
+      "time_unit": "s"
+    },
+    "p_obs_bernoulli": false,
+    "pm_meta": {
+      "n_by_file": {
+        "NYC_Pilot2_PM_Part1.csv": 169999,
+        "NYC_Pilot2_PM_Part2.csv": 169999,
+        "NYC_Pilot2_PM_Part3.csv": 175919
+      },
+      "n_raw": 515917,
+      "time_unit": "s"
+    },
+    "used_y_for_h": false,
+    "vehicles_are_fl_clients": false
+  },
+  "clients": "spatial_id",
+  "data_hash": "06e2953afad17b27facfbf593d399be92255775c5c298e5c89924903a30a2de8",
+  "dataset": "cityscanner_nyc_p2_measured_o",
+  "design_on": true,
+  "eventtrace_run": true,
+  "experiment_id": "JOINT-MEASURED-O-CS-NYC-P2",
+  "frozen_utc": "2026-09-11T07:29:27.163506+00:00",
+  "git_commit": "2e47464c2c15d7dae4ceb059592782b9542de625",
+  "grid_origin_lat": 40.702755,
+  "grid_origin_lon": -74.001976,
+  "measured_o0_fraction": 0.12907754010695188,
+  "measurements_sha256": "e7c0ebf348960fb127075cd73dd0d4690171b21046d20f3b351cda8bb47f72ce",
+  "n_atomic_o1": 13029,
+  "n_o0_cell_slots": 1931,
+  "n_occupancy": 14960,
+  "n_train_units": 10141,
+  "n_train_zero": 0,
+  "n_union_cell_slots": 14960,
+  "o_layer": "MEASURED_FINITE_PM25",
+  "occupancy_sha256": "8b1deff66f1a23973d87b44f1e6da69cc2291ee8da77dc7d1db4f222ac3f96af",
+  "p_obs_bernoulli": false,
+  "phi_run": true,
+  "phi_train_unit": 0.0,
+  "r_layer": "REAL_FROM_UNION_PM_NO2_GPS",
+  "scd_method": "raven",
+  "status": "INGEST_FROZEN",
+  "train_run": true,
+  "u_layer": "CONTROLLED_EXPERIMENTAL compute_usable_r3 s_max=5",
+  "vehicles_are_fl_clients": false
+}

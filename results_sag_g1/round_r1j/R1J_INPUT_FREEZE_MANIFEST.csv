@@ -1,0 +1,11 @@
+artifact,path,sha256,source_round,role,frozen,notes
+R1i oracle by window,results_sag_g1/round_r1i/oracle_stress/R1I_ORACLE_STRESS_BY_WINDOW.csv,82444e4f495344856de94b0d72ab4a46843780c232e2f299b300fcafa8c4b4a1,R1I,ORACLE,True,not rewritten in R1j
+R1i oracle summary,results_sag_g1/round_r1i/oracle_stress/R1I_ORACLE_STRESS_SUMMARY.csv,ce39af16f9e010129939281a9ef6af60730aa14f5a886bd203126498c9b37e0e,R1I,ORACLE,True,not rewritten in R1j
+R1i mask hash,results_sag_g1/round_r1i/stress_masks/R1I_AVAILABILITY_MASK_HASH.txt,229cea35b94434097e10d5d758801b2476c0115d4b5bef7f76662f4be8cc35d1,R1I,MASK,True,not rewritten in R1j
+R1i stress levels,results_sag_g1/round_r1i/stress_spec/R1I_STRESS_LEVEL.json,387faf7116d80234e7fbdf5cf8c9feaf42dd1087bae74255c18e0398e8ca9d67,R1I,STRESS,True,not rewritten in R1j
+R1i verdict,results_sag_g1/round_r1i/summary/R1I_VERDICT.json,085d1ad30aaa2c41b6f87d2a445289be8ae4c04b791f5def7053e479d6f7be9c,R1I,VERDICT,True,not rewritten in R1j
+TARGET_LAW,outputs/sag_g1_r1d/target/TARGET_LAW_RULE_FROZEN.json,1e8ca4eb74a2d9ce7f4d265c1db2ffbb812ae424cd072d33d6e71f76514b91a2,R1D,TARGET_LAW,True,not rewritten in R1j
+PI_SAFE,outputs/sag_g1_r1e/configs/PI_SAFE_RULE_FROZEN.json,663ab617739a1403ab481fc638842d44a9dcd5f978df6896d9c1892e7e61b265,R1E,PI_SAFE,True,not rewritten in R1j
+thresholds,configs/sag_g0/thresholds.json,526343535887e2f1094916be22d0403032fab0b905e74ac588f2b1bc6613510e,R0,TAU,True,not rewritten in R1j
+E3-v2 SS identity,results_sag_g1/round_r1g/e3v2_skeleton/sensorscope/identity.json,a37f9bc5a16cb8b91ad81ab7a0d5b27d7f8594c01cefcd378337b8ce604fe993,R1G,E3_V2,True,not rewritten in R1j
+E3-v2 UA identity,results_sag_g1/round_r1g/e3v2_skeleton/uair/identity.json,ebd21ce734b04d0cd32e160f6f12a7b762a2743a44232c31ef139c8c8deea5eb,R1G,E3_V2,True,not rewritten in R1j

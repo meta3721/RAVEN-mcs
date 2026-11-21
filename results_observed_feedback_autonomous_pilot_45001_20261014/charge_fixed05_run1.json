@@ -1,0 +1,25 @@
+{
+  "label": "fixed05_run1",
+  "arm": "fixed05",
+  "root_CPU": 2388.0,
+  "categories": {
+    "repair": 2388.0
+  },
+  "wall": 6671.2,
+  "exit": "PROCESS_DISAPPEARED_FINAL_AUDIT_NOT_PUBLISHED",
+  "audit": false,
+  "actual_CPU": "UNKNOWN",
+  "limit": "RESOURCE_AUDIT_UNAVAILABLE",
+  "conservative_role": "entire allocated2380 CPU plus8 safety reserve retained; allocation reservation, not reconstructed actual root CPU or proved upper bound",
+  "wall_role": "conservative launch-to-first-observed-absence envelope; exact process exit time unknown",
+  "known_last_persisted": {
+    "now": 75,
+    "SGD": 2493,
+    "grid": 750
+  },
+  "cancelled": [
+    "fixed05 suffix resume",
+    "fixed2",
+    "noqstop"
+  ]
+}

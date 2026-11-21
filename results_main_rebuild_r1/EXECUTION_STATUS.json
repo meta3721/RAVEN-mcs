@@ -1,0 +1,25 @@
+{
+  "status": "STOP_P1_NO_VALID_UNIFIED_BACKBONE",
+  "date": "2026-10-12",
+  "central_gate": {
+    "history": false,
+    "ndmf": false
+  },
+  "gate_threshold_mean_relative_gain": 0.02,
+  "plateau_tolerance": 0.005,
+  "formal_tests_scored": false,
+  "U_B_P_R_end_to_end_confirmation_started": false,
+  "main_experiment_complete": false,
+  "reason": "Neither of the two prespecified backbones passed all three dataset learning gates. Uniform development curve also failed budget plateau.",
+  "totals": {
+    "training_trajectories": 112,
+    "central_delivered": 108,
+    "uniform_development": 1,
+    "privileged_diagnostic": 3,
+    "samples_processed": 17530611,
+    "optimizer_steps": 425105,
+    "sum_trajectory_wall_seconds": 1314.1280000000115
+  },
+  "authoritative_baselines": "P0_VALIDATION_BASELINES_R2.csv",
+  "authoritative_runs": "P1_ALL_RUNS_R2.csv"
+}

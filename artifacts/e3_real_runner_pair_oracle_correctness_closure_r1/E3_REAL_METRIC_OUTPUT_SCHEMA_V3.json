@@ -1,0 +1,21 @@
+{
+  "no_placeholder_none_on_real_path": true,
+  "required_fields": [
+    "RMSE_mu",
+    "MAE_mu",
+    "Head_RMSE",
+    "Tail_RMSE",
+    "RMSE_rho",
+    "Delta_group",
+    "Delta_pair",
+    "delta_ref",
+    "Q_norm1_over_S",
+    "Q_norm2_over_S",
+    "ESS",
+    "clip_rate_stage1",
+    "clip_rate_stage2",
+    "solver_status",
+    "runtime_seconds"
+  ],
+  "schema_version": "E3_REAL_METRIC_OUTPUT_SCHEMA_V3"
+}

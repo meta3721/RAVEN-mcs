@@ -1,0 +1,63 @@
+{
+  "artifact_injection_verified": [
+    "inline_fixture_freeze"
+  ],
+  "artifact_sha_seen": [
+    "fbade3683aaf3e72b1b76d57e3dbb47c1b14dbb306bfa759b13e72a28b06b973"
+  ],
+  "bar_2pct_of_control": 0.020287919378766853,
+  "contrasts": {
+    "debt_cal": {
+      "MDE80": 0.0005588626525432224,
+      "boot_hi": 0.0007558574320971352,
+      "boot_lo": 3.648552262109085e-05,
+      "conditions": {
+        "effect_ge_2pct_of_control": false,
+        "interval_entirely_favourable": true,
+        "mean_exceeds_own_MDE80": false
+      },
+      "control_mean": 1.0143959689383426,
+      "mean_D": 0.00038782641982600954,
+      "n": 20,
+      "sd_D": 0.000846083699699939,
+      "separated": false
+    },
+    "inst_cal": {
+      "MDE80": 0.000292121839455719,
+      "boot_hi": 0.000344508183296265,
+      "boot_lo": -2.6038737614597352e-05,
+      "conditions": {
+        "effect_ge_2pct_of_control": false,
+        "interval_entirely_favourable": false,
+        "mean_exceeds_own_MDE80": false
+      },
+      "control_mean": 1.0143959689383426,
+      "mean_D": 0.00014916761336699613,
+      "n": 20,
+      "sd_D": 0.0004422545066575746,
+      "separated": false
+    },
+    "raven_simoracle": {
+      "MDE80": 0.0002894846413624627,
+      "boot_hi": 0.0004224701795087893,
+      "boot_lo": 5.549878523198798e-05,
+      "conditions": {
+        "effect_ge_2pct_of_control": false,
+        "interval_entirely_favourable": true,
+        "mean_exceeds_own_MDE80": false
+      },
+      "control_mean": 1.0143959689383426,
+      "mean_D": 0.00022790024119848651,
+      "n": 20,
+      "sd_D": 0.0004382619508669345,
+      "separated": false
+    }
+  },
+  "created_utc": "2026-10-10T14:54:26.994847+00:00",
+  "kappa": 5.0,
+  "kr_le3_share_mean": 0.14775066996495567,
+  "n_pairs": 20,
+  "priority_region": "region1",
+  "round": "TE2",
+  "step": 3
+}

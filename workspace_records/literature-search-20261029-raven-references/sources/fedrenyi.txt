@@ -1,0 +1,4482 @@
+
+=== PAGE 1 ===
+Federated Rényi Fair Inference in Federated Heterogeneous System
+Zhiyong Ma*1 Yuanjie Shi*2 Yan Yan2 Jian Chen1
+1School of SSE, South China University of Technology University, Guangzhou, Guangdong, China
+2School of EECS, Washington State University, Pullman, W A, USA
+Abstract
+Federated learning (FL) is a prominent dis-
+tributed learning approach that addresses two ma-
+jor challenges: statistical heterogeneity (i.e., non-
+identically distributed data) and system heterogene-
+ity (i.e., variability in communication and compu-
+tation on each client). As FL is commonly applied
+in sectors such as commercial and financial, group
+disparities can emerge and cause harm. However,
+current fairness algorithms assume homogeneous
+data, which do not align with the FL context. The
+main challenge is estimating global fairness mea-
+sures (e.g., Rényi or Pearson correlation) in an
+asynchronous, heterogeneous system. To address
+this, we propose the FedRényi algorithm, which
+regularizes fairness by Rényi correlation. For statis-
+tical heterogeneity, FedRényi aggregates local fair-
+ness statistics to estimate the global Rényi correla-
+tion with an estimation error bound of O(1/√n),
+where n is the total number of data samples. This
+theoretical result improves significantly over the
+previous result O(1/
+√
+K) with K clients. We fur-
+ther prove that FedRényi converges at the same
+rate as in the homogeneous setting. For system het-
+erogeneity, FedRényi approximates missing client
+updates through weighted averaging over a near-
+est neighbor region, ensuring a non-expansive ap-
+proximation error under non-convex conditions.
+Extensive experiments demonstrate that FedRényi
+achieves a promising fairness-accuracy trade-off,
+with at least 2% improvement over baselines.
+1 INTRODUCTION
+Federated learning (FL) is an effective paradigm for de-
+centralized learning in large-scale datasets McMahan et al.
+[2017], Kairouz et al. [2021], allowing models to be trained
+on multiple clients without sharing raw data, thus preserving
+privacy Zhang et al. [2023]. Many FL works Karimireddy
+et al. [2020], Li et al. [2020b], Xu et al. [2023], Zhu et al.
+[2021a] have been proposed to address challenges in FL,
+such as statistical heterogeneity, where locally distributed
+data are non-identically distributed (non-IID), and system
+heterogeneity, which involves variability in communication
+and computational capabilities between clients, such as un-
+participating clients Li et al. [2020a,b]. These methods make
+FL attractive and suitable for many real-world sectors, such
+as commercial Jain and Jerripothula [2023] and finance
+Long et al. [2020], Mammen [2021], where large institu-
+tions (e.g., banks) seek to mitigate predictor bias caused by
+group disparities Barocas et al. [2023].
+Group fairness Barocas et al. [2023] is a commonly used
+approach to mitigate prediction bias against certain demo-
+graphic groups Kleinberg et al. [2018], divided by sensi-
+tive attributes such as race or gender Dwork et al. [2012],
+Mehrabi et al. [2021]. Many methods have been proposed to
+promote group fairness Baharlouei et al. [2020], Woodworth
+et al. [2017] , but they are mostly designed for a centralized
+and homogeneous setting.
+Some works have been proposed to improve group fairness
+in FL Zeng et al. [2021], Abay et al. [2020], Du et al. [2020],
+Zhang et al. [2020], Chu et al. [2021], all of which require
+empirical estimation of fairness measures (e.g., group dispar-
+ities). Although the previously established estimation error
+of the fairness measure is in O(1/
+√
+K) with K clients Chu
+et al. [2021] under non-IID conditions, it is worse than the
+standard estimation error of O(1/√n) with n data samples
+in the centralized setting Mohri et al. [2018].
+In addition, it is unclear how to adapt these methods to the
+system heterogeneity (e.g., with dropping clients or “strag-
+glers” Li et al. [2020b]). Specifically, the empirical fairness
+measure based on partially participating clients can deviate
+significantly from the true fairness measure based on fully
+participating clients. The above two challenges raise a ques-
+tion: How can we develop a federated fairness-enhanced al-
+Proceedings of the 41st Conference on Uncertainty in Artificial Intelligence (UAI 2025), PMLR 244:2804–2843.
+
+=== PAGE 2 ===
+gorithm with theoretical guarantees for fairness and conver-
+gence in both statistically and systemically heterogeneous
+settings?
+To this end, we propose Federated Rényi Fair Inference (Fe-
+dRényi) algorithm to promote group fairness in FL. We use
+the general and tractable Rényi correlation Rényi [2007],
+Baharlouei et al. [2020] as regularization to induce fair-
+ness globally across all clients. Specifically, to estimate
+the global Rényi correlation, we first compute the neces-
+sary local group-wise statistics (see Eq. (5) later) on each
+client, and then aggregate these local statistics following
+two federated weighting schemes (see Eq. (2) later) from
+clients into a global measure Mansour et al. [2020]. For any
+nonparticipating client in each communication round, Fe-
+dRényi approximates its local statistics/model by weighted
+averaging over its neighbor clients based on their similarity
+measures.
+We theoretically show that FedRényi guarantees the estima-
+tion error bound in O(1/√n) order, which improves signifi-
+cantly over the previous established one in O(1/
+√
+K) Chu
+et al. [2021] (K ≪ n usually in FL Kairouz et al. [2021]).
+Furthermore, we derive a convergence rate of FedRényi in
+O(1/ϵ4) iteration complexity, matching the same order as
+the standard FL result Karimireddy et al. [2020]. Moreover,
+we show that the proposed approximation is non-expansive
+for certain non-convex loss functions Liu et al. [2021] with
+pre-trained model Tan et al. [2022], Weller et al. [2022],
+Tian et al. [2022], i.e., the non-increasing distance between
+the approximated and true local statistics/models within
+a communication round. Finally, we empirically evaluate
+our method on benchmark datasets, showing that FedRényi
+provides a promising trade-off performance between global
+accuracy and group fairness with at least 2% improvement
+of the harmonic mean of accuracy and fairness over base-
+lines in most cases.
+Contributions: Our key contributions are summarized:
+•We propose FedRényi to promote group fairness in FL
+by using Rényi correlation as a regularization term. We
+develop an aggregation method to estimate the global
+Rényi statistics from local clients, and an approximation
+scheme to approximate local statistics/models based on
+similarity measures between clients.
+•We theoretically prove that our FedRényi effectively pro-
+vides a tight estimation error bound of O(1/√n). Based
+on the improved results, we further derive the same con-
+vergence rate O(1/ϵ4) of FedRényi with the standard
+FL result Karimireddy et al. [2020]. In addition, the
+similarity-based approximation scheme is non-expansive
+(the distance between the approximated and true statis-
+tics/models is non-increasing) under mild conditions.
+•Extensive experimental results verify the improved trade-
+off ability of FedRényi (at least 2% improvement in the
+harmonic mean of accuracy and fairness over baselines
+in most cases).
+2 RELA TED WORK
+Fairness in FL. Gajane and Pechenizkiy [2017] system-
+atically divides machine learning fairness into five types:
+group fairness, individual fairness, unconscious fairness,
+counterfactual fairness, and preference-based fairness. Many
+studies have examined the impact of group fairness in FL
+using metrics such as demographic parity and/or equality
+of opportunity Shi et al. [2021]. To mitigate group bias
+in heterogeneous settings, MWR Selialia et al. [2024] em-
+ploys a heuristic approach that enhances fairness by using
+importance weighting and regularization to optimize the
+accuracy of the worst-performing group. As data statistics
+are allowed to be shared in FL (e.g., Shao et al. [2023], Zhu
+et al. [2021b], Jeong et al. [2018], Seo et al. [2016]), FairFed
+Ezzeldin et al. [2023] increases the aggregated weights of
+clients with small deviations between local and global fair-
+ness metrics or accuracy. Based on FairBatch Roh et al.
+[2021], FedFB Zeng et al. [2021] relies on statistical in-
+formation about the performance of the client to adjust the
+minibatch sizes of each client in local update process to
+optimize the group-specific losses, thus imposing group fair-
+ness. FedFair Chu et al. [2021] estimates model fairness and
+incorporates this estimation as a loss function constraint. Its
+estimation bound is O(1/
+√
+K), which is especially large
+compared to centralized results (e.g., Mohri et al. [2018]) as
+K ≪ n. However, both FedFB and FairFed lack theoretical
+analysis of estimation errors to justify their validity.
+Heterogeneity in FL. In FL, heterogeneity is categorized
+into statistical and system heterogeneity. Statistical het-
+erogeneity refers to variability in data distributions across
+clients, which impacts performance and convergence of FL
+algorithms. Methods like control variates to reduce vari-
+ance Karimireddy et al. [2020] or proximal terms to sta-
+bilize training Li et al. [2020b] address these issues but
+lack theoretical guarantees. System heterogeneity refers to
+disparities in communication and computational capacities
+among clients, leading to inefficient training and potential
+client dropout. Studies analyze estimation errors due to these
+disparities. Sefidgaran et al. [2024] investigates the partial
+estimation error caused by inter-client estimation discrepan-
+cies. In this framework, Sefidgaran et al. [2024] investigates
+the impact of communication rounds on the estimation error
+in federated learning, finding that increased communication
+does not always improve performance. Hu et al. [2023] intro-
+duces a two-level distribution framework to analyze the full
+estimation error caused by inter- and intra-client estimation
+errors in FL. It establishes learning bounds for participat-
+ing and nonparticipating clients (stragglers), respectively.
+However, a comprehensive evaluation of the total estimation
+error remains limited.
+2805
+
+=== PAGE 3 ===
+3 BACKGROUND AND MOTIV A TION
+Notations. Let (x, y, s) ∈ X × Y × S be a data sample,
+where X ⊆ Rd, Y = {1, ..., C} and S = {1, ..., P} repre-
+sent the feature, classification label, and protected attribute
+spaces, respectively. Let P be the underlying distribution
+defined on X × Y × S . Let X, Y, S be the random variables
+drawn from their respective distributions and x, y, s be the
+realization. K denotes the number of clients, and the set of
+all client indices is [K]. Let Ik be the index set for data on
+client k, nk denote the number of data samples onk-th client,
+the total number of data is n and n = PK
+k=1 nk. Denote
+nmin := mink nk as the minimum number of data samples
+across all clients. We define the distribution on clientk by
+Pk and refer the data heterogeneity as Pk1 ̸= Pk2 where
+k1 ̸= k2. Let Xk and Sk be feature and attribute variables
+on client k, respectively. Define fθ(x, s) as the prediction
+function parameterized by θ on (x, s) and ℓ(by, y) as a loss
+function measured on the predicted label by and true label
+y. Define Pc = P [fθ(X, S) = c] as the probability of the
+model predicting class c and ρ = minc∈C Pc as the smallest
+model prediction probability over all classes. Let ⊮[·] be an
+indicator function and A ∽ B means that A and B are in the
+same order. Define τ as the total number of communication
+round and e as the index of communication round, respec-
+tively. Denote M as the number of local update iterations
+in one communication round e and m as the index of local
+iteration. Define the total number of iterations as T , where
+T = τ M. Notations are summarized in Table 3.
+Federated Learning. In FL, given K distributions
+P1, ..., PK with sizes {nk}K
+k=1 from client k ∈ [K], one
+aims to learn a model that minimizes the overall loss L(θ):
+min
+θ
+L(θ) =
+KX
+k=1
+γk · E(x,s,y)∼Pk[ℓ(fθ(x, s), y)], (1)
+where γk is the weights of client k. Two target weighting
+schemes are commonly considered, i.e., uniform over sam-
+ple and uniform over client:
+γk =
+(
+nk/n, uniform over sample,
+1/K, uniform over client. (2)
+The choices of γk represent different schemes, which are
+both used in fairness-aware FL studies Mohri et al. [2019],
+Li et al. [2019], Lyu et al. [2020], Chu et al. [2021], Fan
+et al. [2021]. Since L(θ) is defined on population and is not
+accessible, an empirical FL objective is defined as:
+min
+θ
+bL(θ) :=
+KX
+k=1
+γk
+nkX
+i=1
+1
+nk
+ℓ(fθ(xki, ski), yki)
+| {z }
+bLk(θ)
+, (3)
+where (xki, ski, yki) is i-th data sample on client k.
+In fairness-aware FL, minimizing bL(θ) alone can lead to
+group disparities across sensitive attributes S. To mitigate
+this, many fairness-aware FL studies Li et al. [2021], Chu
+et al. [2021] incorporate a fairness regularization term bR(θ)
+with parameter λ into the objective function:
+min
+θ
+bL(θ) + λbR(θ).
+In this paper, we consider using Rényi correlation as the
+fairness regularization term.
+Rényi Fair Inference. Rényi correlation measures the cor-
+relation between two random variables, ranging from 0 (in-
+dependent) to 1 (strictly dependent). Unlike Pearson correla-
+tion, which captures linear relationships Zafar et al. [2017],
+Rényi correlation indicates high order dependencies Ba-
+harlouei et al. [2020]. It is also computationally tractable,
+compared to very expensive mutual information Song et al.
+[2019]. Rényi correlation between two random variables
+A ∈ {A1, · · · Aa} and B ∈ {B1, · · · Bb} is defined as:
+ρR(A, B) = sup
+f,g
+E[f(A)g(B)]
+s.t. E[f(A)] = E[g(B)] = 0, E[f2(A)] = E[g2(B)] = 1.
+Following Witsenhausen [1975], Baharlouei et al. [2020],
+Rényi correlation ρR(a, b) is the second largest singu-
+lar value of the matrix Q, where each element qij =
+P[A=Ai,B=Bj]√
+P[A=Ai]P[B=Bj] for 1 ≤ i ≤ a and 1 ≤ j ≤ b. The
+main idea of Rényi fair inference Baharlouei et al. [2020] is
+to minimize the correlation between predictions and sensi-
+tive attributes. Following Baharlouei et al. [2020], we can
+also re-formulate the squared term ρ2(A, B) as follows:
+ρ2(A, B) = max
+v⊥v1,∥v∥2≤1
+v⊤Q⊤Qv, (4)
+where v1 = (
+p
+P[B = B1], ...,
+p
+P[B = Bb]) ∈ Rb is the
+right singular vector associated with the largest singular
+value of Q.
+In centralized machine learning, where samples are i.i.d.
+and accessible, the estimation error for statistics (e.g., the
+Rényi correlation) is bounded by O(1/√n) with high prob-
+ability Mohri et al. [2018]. However, it remains unclear
+how accurately these statistics can be estimated in FL under
+decentralized and heterogeneous settings. Specifically, the
+following challenges arise: First, server is not allowed to
+access attribute data to calculate Rényi correlation in FL.
+This restriction complicates the global estimation of fairness
+measures; Second, clients often have vastly different data
+distributions due to statistical heterogeneity. This variation
+makes it difficult to precisely estimate the Rényi correla-
+tion across all devices. Third, due to varying computational
+capabilities and communication resources, the server may
+not receive updates from some clients (i.e., stragglers). This
+variability complicates the aggregation of local statistics
+and model updates. To address these challenges, we propose
+FedRényi algorithm.
+2806
+
+=== PAGE 4 ===
+4 FEDERA TED RÉNYI-REGULARIZED
+LEARNING
+In this section, we detail the design and theoretical analysis
+of the FedRényi algorithm. We begin by formulating the
+federated Rényi-regularized objective function. Next, we in-
+troduce the synchronous variant of FedRényi and present its
+theoretical analysis, highlighting improved estimation error
+bounds and convergence guarantees. Finally, we propose
+the asynchronous variant and analyze its approximation and
+estimation errors.
+4.1 FEDERA TED RÉNYI-REGULARIZED
+OBJECTIVE
+We use the squared Rényi correlation as a regularization
+term combined with the federated lossbL(θ) aforementioned
+in (3). Since all elements of the matrix Q in (4) are defined
+in population and unavailable to compute, instead, we ag-
+gregate the local statistics to estimate Q based on a fixed
+model θ. We denote this empirically aggregated estimation
+as bQθ ∈ RC×P (recall we have C classes and P attributes).
+For 1 ≤ c ≤ C, 1 ≤ p ≤ P , the each entry in bQθ is defined
+asbqcp :=
+ˆj(c,p)·ˆr(p)√
+ˆu(c)·ˆr(p)
+, where:
+ˆj(c, p) =
+KX
+k=1
+γkbP[fθk(Xk, Sk) = c|Sk = p]| {z }
+=¯jk(c,p)
+,
+ˆr(p) =
+KX
+k=1
+γkbP[Sk = p]| {z }
+=¯rk(p)
+,
+ˆu(c) =
+KX
+k=1
+γkbP[fθk(Xk, Sk) = c]| {z }
+=¯uk(c)
+, (5)
+wherebP[Xk ∈ D] := 1
+nk
+P
+i∈Ik
+⊮[xki ∈ D] represents the
+empirical probability that Xk in any measurable set D.
+Therefore, following (4), we definebH(θ, v) := v⊤bQ⊤
+θ bQθv,
+and we formulate the federated Rényi-regularized objective:
+min
+θ
+
+bL(θ) + max
+v⊥ˆv1,∥v∥2≤1
+λbH(θ, v)
+
+, (6)
+where ˆv1 =
+ p
+ˆr(1), ...,
+p
+ˆr(P )
+
+∈ RP . The counterpart
+of bH(θ, v) defined in population instead of empirical level
+is denoted by H(θ, v), asbL(θ) in (3) and L(θ) in (1)
+4.2 SYNCHRONOUS FEDRÉNYI
+4.2.1 Algorithm Design.
+To solve problem (6) without violating privacy constraints
+in FL, We propose the FedRényi algorithm (summarized in
+Algorithm 1 FedRényi Algorithm
+1: Initialize θ0
+0, v0 and hyperparameter λ, M, J and η on
+server and clients
+2: Each client k ∈ K compute ¯rk(p) following Eq. (5)
+and upload ¯rk(p) and nk
+3: Server aggregate ˆr(p) = PK
+k=1 γk¯rk(p) and ˆv1 =
+[
+p
+ˆr(1), ...,
+p
+ˆr(P )]
+4: for e = 0, . . . , τ − 1 do
+5: for m ∈ {0, · · · , M − 1} do
+6: Each client k compute Qθe
+k,m
+7: θe
+k,m+1 = θe
+k,m − η∂θ(bLk(θe
+k,m) + λ ˆH(θe
+k,m, v))
+8: end for
+9: for c ∈ {1, . . . , C} do
+10: for p ∈ {1, . . . , P} do
+11: Compute {¯je
+k(c, p), ¯ue
+k(c)} following Eq. (5)
+12: end for
+13: end for
+14: Upload {¯je
+k(c, p), ¯ue
+k(c)} and θe
+k,M
+15: Option I Synchronous FedRényi:
+16: θe+1
+0 =PK
+k=1 γkθe
+k,M
+17: ˆje+1(c, p) =PK
+k=1 γk¯je
+k(c, p)
+18: ˆue+1(c) =PK
+k=1 γk¯ue
+k(c)
+19: Option II Asynchronous FedRényi:
+20: Find stragglers sets I e+1, where |I e+1| = eK e+1
+21: Find neighbor set Robζ(ek) for stragglersek ∈ I e+ 1
+22: Approximate theeθe
+ek,M ,eje
+ek(c, p),eue
+ek(c) for all
+stragglersek ∈ I e+1 by Algorithm 2
+23: θe+1 =PK− eKe+1
+k=1 γkθe
+k,M +P eKe+1
+ek=1 γek
+eθe
+ek,M
+24: ˆje+1(c, p)= PK−eKe+1
+k=1 γk¯je
+k(c, p)+P eKe+1
+ek=1 γek
+eje
+ek(c, p)
+25: ˆue+1(c)= PK− eKe+1
+k=1 γk¯ue
+k(c) + P eKe+1
+ek=1 γek eue
+ek(c)
+26: Compute ˆQe+ 1
+θ where each entry ˆqe+ 1
+c,p =
+ˆje+ 1(c,p)·ˆr(p)√
+ˆue+ 1(c)·ˆr(p)
+27: ve+1 ← arg maxv⊥ˆv1[bL(θe+1) + λbH(θe+1, v)]
+28: Broadcast θe+1 and ve+1 to all clients k ∈ K
+29: end for
+Algorithm 1). Specifically, we first initialize θ0
+0, v0. Then
+we compute ¯rk(p) and aggregate ˆr(p) (see Line 1 to Line 3).
+During each communication round e, clients update the lo-
+cal model θe
+k,m+1 for m ∈ 0, · · · , M − 1(see Line 6 to Line
+7). After completing local updates, each client calculates
+¯je
+k(c, p) and ¯ue
+k(c) (see Line 9 to Line 13), and then uploads
+these statistics and local model θe
+k,M to server (see Line
+14 ). For synchronous FedRényi (Option I), the server ag-
+gregates the global model θe+1, global statistics ˆje+1(c, p),
+and ˆue+1(c) (see Line 16 to 18). Next, we compute matrix
+bQe+1
+θ and then apply SVD method to calculate ve+1 (see
+Line 26 and 27). Finally, the server broadcasts the global
+model θe+1 and the fairness component ve+1 to each client
+(see Line 28).
+2807
+
+=== PAGE 5 ===
+4.2.2 Theoretical analysis
+In this part, we first study the estimation error for syn-
+chronous FedRényi from empirically aggregated bH(θ, v) to
+population H(θ, v) under two weighting schemes in The-
+orem 1. Then, we discuss the convergence guarantee of
+synchronous FedRényi in Proposition 1. Particularly, we
+show how the estimation error bound derived in Theorem 1
+benefits the convergence guarantee.
+We first prove that, under mild conditions, the estimation
+error is bounded by O(1/√n), which significantly im-
+proves upon the prior result O(1/
+√
+K) reported in Chu
+et al. [2021], leading to improved accuracy and stability in
+fairness estimation.
+Theorem 1. (Estimation error of Rényi regularization for
+synchronous FedRényi) Supposejmin ∽ umin ∽ rmin = O(1)
+and nmin ∽ n
+K log(K). When γk = nk
+n or 1
+K , for any global
+model θ and δ ∈ (0, 1), the following inequality holds:
+P
+h
+bH(θ, v) − H(θ, v) ≤ O
+ 
+1/√n
+θ
+i
+≥ 1 − δ.
+Remark 1. The above theorem shows that for any fixed
+global model θ, the estimation error between population
+H(θ, v) and empirically aggregatedbH(θ, v) is bounded by
+O(1/√n) with high probability in two schemes. Compared
+with previous results on the order ofO(1/K), FedRényi sig-
+nificantly reduces estimation error, achieving a bound that is
+comparable to the standard estimation error in centralized
+settings Mohri et al. [2018].
+Then, we analyze the convergence guarantee of synchronous
+FedRényi to achieve ϵ-stationary solution. We first denote
+F (θ) = L(θ) + max v⊥v1,∥v∥2≤1 λH(θ), and bF (θ) =
+bL(θ) + max v⊥v1,∥v∥2≤1 λbH(θ). Then, we consider the
+uniform-over-client weighting scheme following Karim-
+ireddy et al. [2020], i.e., γk = 1 /K. We highlight
+that the convergence analysis for the empirical measure
+E[∥∇ ˆF (θ)∥2] computed on infinite samples follows the
+same framework of previous work Karimireddy et al. [2020],
+Li et al. [2020b]. Our main target of the convergence analy-
+sis for the population measure E[∥∇F (θ)∥2] is more diffi-
+cult to achieve while considering the impact of the estima-
+tion error between H(θ, v) and bH(θ, v).
+Proposition 1. (Convergence of synchronous Fe-
+dRényi) Suppose η ≤ O(1/M) and Lk(θ) sat-
+isfies (GL, BL)-bounded gradient dissimilarity,
+where 1
+K
+PK
+k=1 ∥ ∂Lk(θ)
+∂θ ∥2 ≤ G2
+L + B2
+L∥ ∂L(θ)
+∂θ ∥2.
+If ∥ ∂L(θ)
+∂θ ∥2, ∥ ∂Qθ
+∂θ ∥2, ∥ ∂ bQθ
+∂θ ∥2, ∥ ∂vθ
+∂θ ∥2 are bounded
+by ¯G for all θ, Then, H(θ, v) satisfies (GH , BH)-
+bounded gradient dissimilarity, where GH is C ¯G(ρ+C)
+ρ2
+and BH is 1. F (θ) also satisfies (GF , BF )-bounded
+gradient dissimilarity, where BF = 2 B2
+L and
+GF = 2G2
+L+(4λ−2B2
+Lλ2) C ¯G(ρ+C)
+ρ2 +4B2
+Lλ·
+q
+C ¯G2(ρ+C)
+ρ2 .
+Thus, FedRényi algorithm achieves E[∥∇bF (θT )∥2] ≤ ϵ
+and E[∥∇F (θT )∥2] ≤ ϵ + O
+
+1
+n + maxθ
+ ∂ bQθ
+∂θ − ∂Qθ
+∂θ
+2
+when T ≥ O(1/ϵ2).
+Remark 2. The above proposition shows that the empiri-
+cal version of synchronous FedRényi algorithm could con-
+verge to ϵ-stationary solution and the population version
+could converge to approximate ϵ-stationary solution with
+gap O
+
+1
+n + maxθ
+ ∂ bQθ
+∂θ − ∂Qθ
+∂θ
+2
+, while the former is at
+the same order of previous work Karimireddy et al. [2020],
+Li et al. [2020b]. From Theorem 1, we know that the esti-
+mation error is bounded by O(1/√n), which is explicitly
+present in the above result. Thus, the improved estimation
+can benefit not only the fairness guarantee but also the
+convergence.
+4.3 ASYNCHRONOUS FEDRÉNYI
+4.3.1 Algorithm Design
+In asynchronous FL, stragglers may fail to provide timely up-
+dates, which can compromise accurate estimation of global
+Rényi correlation. To overcome this challenge, following
+Zhang et al. [2021], Wang et al. [2021], we assume that
+clients with similar empirical prediction distributions also
+have comparable data distributions, making the nearest-
+neighbor approximation a reasonable strategy for estimating
+missing updates. Consequently, even if a client fails to up-
+load its model and local statistics within the communication
+threshold, its contribution to the global fairness measure can
+still be estimated reliably using its robust neighbors.
+Specifically, we first identify a robust neighbor set for each
+straggler. Define Robζ(ek) is the neighbor set of straggler
+ek, where Robζ(ek) := {k′ : ∥ω¯uk′(c) − ¯uek(c)∥ ≤ ζ, k ′ ∈
+[K], ∀c and ∀ω ∈ (0, 1)}. Next, we compute the similarity
+between clients. Let dist(·, ·) denote the Euclidean distance,
+which represents the dissimilarity. The similarity between
+the k-th and k′-th client is then quantified by weights Wk,k′,
+where larger weights indicate greater similarity. Based on
+the local statistics uploaded in the first communication
+round, for a stragglerek, we define:
+W
+ek,k′
+θ = exp
+ −dist(θ0
+ek,M , θ0
+k′,M)
+ρ
+
+, , k′ ∈[K] (7)
+W
+ek,k′
+j =exp
+ −dist(¯j0
+ek , M(c ,p), ¯j0
+k′, M(c ,p))
+ρ
+
+, k′ ∈ Robζ(ek),
+W
+ek,k′
+u = exp
+ −dist(¯u0
+ek,M (c), ¯u0
+k′,M(c)
+ρ
+
+, k′ ∈ Robζ(ek),
+where ρ is the temperature parameter.
+Then the server approximates the model parameter eθe
+ek,M
+and statisticseje
+ek,M (c, p) andeue
+ek,M (c) for each stragglerek.
+We summarize the approximation method in Algorithm 2.
+2808
+
+=== PAGE 6 ===
+Algorithm 2 Localized Approximation
+1: Input: {¯je
+k,M (c, p), ¯ue
+k,M (c), θe
+k,M } for all non-
+straggler clients k ∈ [K]\I e+1, and temperature
+parameter ρ.
+2: Compute Wek,k′ for all stragglers following Eq. (7).
+3: For each stragglerek,eθe
+ek,M =
+PK− fKe+1
+k′ =1 W
+ek,k′
+θ θe
+k′ ,M
+PK− fKe+1
+k′=1 W
+ek,k′
+θ
+.
+4: eje
+ek,M (c, p) =
+Pk′ ∈Robζ (ek)
+k′ =1 W k,k′
+j ¯je
+k,M(c,p)
+Pk′ ∈Robζ (ek)
+k′ =1 W k,k′
+j
+.
+5: eue
+ek,M (c) =
+Pk′ ∈Robζ (ek)
+k′ =1 W k,k′
+u ¯ue
+k,M(c)
+Pk′∈Robζ (ek)
+k′=1 W k,k′
+u
+.
+After approximating local models and statistics for strag-
+glers, we integrate these approximations into an asyn-
+chronous FedRényi algorithm to compute the global Rényi
+correlation (see Option II in Algorithm 1). In each round
+e + 1, the server identifies the set of stragglers I e+1 (with
+|I e+1| = eK e+1) as those clients that either fail to return
+their local model and statistics within the communication
+threshold or have a local update timestamp below M (see
+Line 20). For each stragglerek, the server selects its robust
+neighbor set Robζ(ek) (see Line 21). Next, the server ap-
+proximates the missing statisticseje
+ek,M (c, p) andeue
+ek,M (c), ,
+as well as the modeleθe
+ek,M for each stragglerek by Algorithm
+2 (see Line 20 and 22). Finally, global Rényi regularization
+statistics je+1(c, p), ue+1(c), and the global modelθe+1 are
+aggregated (see Line 23 to 25).
+4.3.2 Theoretical Analysis
+In this part, we first analyze the approximation error of each
+straggler from actual local statistics¯je
+ek,M (c, p), ¯ue
+ek,M (c) and
+model θe
+ek,M to approximated statisticseje
+ek,M (c, p),eue
+ek,M (c)
+and modeleθe
+ek,M in Proposition 2. Then, in Theorem 2, we
+analyze the estimation error of the asynchronous FedRényi
+algorithm, explicitly accounting for the approximation error.
+Before analyzing the approximation error, we first assume
+the following assumptions:
+Assumption 1. (β-co-coercive condition of ∇F (θ)) For
+all clients and any model θ, the gradient of F (θ) satisfies
+β-co-coercive condition with β ≥ η
+2 if:
+⟨∇F (θ1) − ∇F (θ2), θ1 − θ2⟩ ≥ β∥∇F (θ1) − ∇F (θ2)∥2.
+Assumption 2. (L-Lipschitz) bP[fθ(Xk, Sk) = c] is L-
+lipschitz on model θ such that |P[fθ(Xk, Sk) = c] −
+P[fθ′(Xk, Sk) = c]| ≤ L∥θ − θ′∥.
+With the two above assumptions, we can bound the approxi-
+mation error of each straggler by the following proposition:
+Proposition 2. (Approximation error of each straggler
+in asynchronous FedRényi) Define maxk,k′∈[K] ∥θe
+k,0 −
+θe
+k′,0∥ = εe
+0. Suppose that Assumption 1 and 2 hold. Then,
+for each communication round e, the approximation er-
+rors of model and local statistics on stragglersek are upper
+bounded as follows:
+∥eθe
+ek,M − θe
+ek,M ∥ ≤ εe
+0,
+|eje
+ek,M (c, p) − ¯je
+ek,M (c, p)| ≤ Lεe
+0 + ζ,
+|eue
+ek,M (c) − ¯ue
+ek,M (c)| ≤ Lεe
+0 + ζ. (8)
+Remark 3. In the above result, the localized approximation
+for the stragglers shows non-expansion behavior (1st line),
+i.e., the error after running s stages is not larger than the
+error at the 1st iteration. In practice, we could set a smaller
+learning rate η (due to Assumption 1) and use pre-trained
+model to decrease the approximation error ε0. Besides, us-
+ing the pre-trained model, which is common in FL Tan et al.
+[2022], Weller et al. [2022], Tian et al. [2022], could make
+the Assumption 1 easy to hold.
+Then, we study how approximation error influences the esti-
+mation error of the asynchronous FedRényi algorithm. To
+explicitly investigate this impact, we defineeQe+1
+θ ∈ RC×P
+as the global empirical matrix at communication round
+e + 1, andeve+1 is its corresponding second largest singular
+vector. Therefore, the empirical objective function in asyn-
+chronous setting could be rewritten as bH(θe+1,eve+1) =
+(eve+1)⊤(eQe+1
+θ )⊤eQe+1
+θ eve+1. Our goal is to study the esti-
+mation between bH(θe+1,eve+1) and H(θe+1, ve+1).
+Theorem 2. (Estimation error of Rényi regularization for
+asynchronous FedRényi) Suppose jmin ∽ umin ∽ rmin =
+O(1) and nmin ∽ n
+K log(K). When γk = nk
+n or 1
+K , for any
+communication round e, any global model θe+1 and δ ∈
+(0, 1), we have the following inequality holds:
+P
+h
+bH(θe+1,eve+1) − H(θe+1, ve+1)
+≤ O
+ 
+1/√n + (Lεe
+0 + ζ)2θe+1
+i
+≥ 1 − δ.
+Remark 4. The above theorem shows that, with high prob-
+ability, the estimation error for asynchronous FedRényi be-
+tween population H(θe+1, ve+1) and empirically aggre-
+gated bH(θe+1,eve+1) in two consecutive communication
+rounds is bounded by O(1/√n + (Lεe
+0 + ζ)2) and follows
+a stage-wise recurrence. For each communication round
+e, the dynamic estimation error is bounded by fixed term
+O(1/√n) and the largest distance of model at the beginning
+of each stage εe
+0. During communication, εe+1
+0 ≤ εe
+M ≤ εe
+0
+(see Section B.2.3 and Equation (24) in Appendix). Thus, the
+estimation error decreases as the communication progress.
+Unlike previous works Sefidgaran et al. [2024], Hu et al.
+[2023], our global estimation error studies the inter-client
+and intra-client estimation error of all clients, including
+stragglers and participating clients.
+2809
+
+=== PAGE 7 ===
+Table 1: Experimental results of all methods with the heterogeneous setting (Dir = 0.5) on four datasets. For ACC, FR, and
+HM, higher values indicate better performance. Accuracy, fairness, and harmonic mean are denoted by ACC, FR, and HM,
+respectively. The best results are in bold. The mean and standard deviation of 20 results with better HM for each method
+under different hyperparameter settings are presented. Comparing FedRényi with other baselines, there exist at least2%
+improvements of ACC, FR and HM over three datasets (ADULT, DRUG, DUTCH).
+FedA vg FedProx Scaffold FedFair FL-
+FairBatch FedFB FairFed FedRényi
+(1/K )
+FedRényi
+(nk /n)
+ADULT
+ACC 0.62±0.12 0.61±0.12 0.56±0.20 0.51±0.07 0.64±0.00 0.65±0.00 0.62±0.17 0.67±0.03 0.65±0.04
+FR 0.87±0.1 0.88±0.11 0.88±0.13 0.84±0.17 0.91±0.02 0.92±0.03 0.77±0.16 0.94±0.04 0.94±0.04
+HM 0.72±0.11 0.72±0.11 0.68±0.16 0.63±0.10 0.75±0.00 0.76±0.00 0.69±0.16 0.78±0.03 0.77±0.04
+COMPAS
+ACC 0.66±0.01 0.66±0.01 0.47±0.12 0.62±0.03 0.67±0.01 0.67±0.01 0.62±0.03 0.68±0.01 0.68±0.01
+FR 0.79±0.03 0.79±0.03 0.82±0.10 0.79±0.10 0.78±0.02 0.75±0.03 0.79±0.10 0.81±0.02 0.82±0.01
+HM 0.72±0.01 0.72±0.01 0.60±0.11 0.69±0.05 0.72±0.01 0.71±0.01 0.69±0.05 0.72±0.03 0.73±0.02
+DRUG
+ACC 0.67±0.02 0.67±0.01 0.66±0.01 0.67±0.02 0.66±0.00 0.66±0.00 0.50±0.08 0.68±0.01 0.69±0.01
+FR 0.86±0.02 0.86±0.02 0.82±0.06 0.86±0.02 0.84±0.00 0.85±0.00 0.77±0.10 0.96±0.03 0.96±0.02
+HM 0.75±0.02 0.75±0.01 0.73±0.02 0.75±0.02 0.74±0.00 0.74±0.00 0.61±0.09 0.80±0.01 0.80±0.01
+DUTCH
+ACC 0.81±0.01 0.80±0.01 0.60±0.12 0.61±0.16 0.81±0.01 0.69±0.05 0.62±0.13 0.83±0.01 0.83±0.01
+FR 0.64±0.08 0.63±0.09 0.84±0.18 0.65±0.35 0.66±0.06 0.92±0.04 0.78±0.25 0.94±0.04 0.96±0.04
+HM 0.72±0.02 0.7±0.02 0.7±0.14 0.63±0.22 0.73±0.02 0.79±0.04 0.69±0.17 0.88±0.02 0.89±0.02
+5 NUMERICAL EXPERIMENTS
+5.1 EXPERIMENTAL SETUP
+Hyperparameters and Dataset. In this paper, we use
+several combinations of hyperparameters (λ, ρ, T &M, α,
+and Dir) to train FL models. We use ADULT, COMPAS,
+DRUG, and DUTCH datasets, which are widely studied
+benchmarks for fairness evaluation in FL. They vary in size
+and demographic attributes, allowing comprehensive fair-
+ness analysis. More details are provided in Appendix C.1.
+Measurement. We use the accuracy (ACC), fairness score
+(FR), and harmonic mean (HM) of ACC and FR to measure
+the performance. To evaluate global accuracy (ACC) in FL,
+we compute the local accuracy of each client and aggregate
+them using either nk/n for uniform data or 1/K uniform
+client settings across clients. To measure how unfair a
+model is, Donini et al. [2018] propose DEO by extending
+the equal opportunity (EOD) Hardt et al. [2016] as follows:
+|P(fθ(X, S)|S = 1, Y = 1) − P(fθ(X, S)|S = 0, Y = 1)|,
+and the FR is extended by F R = 1 − DEO(fθ). For ACC,
+FR, and HM, higher values indicate better performance.
+Data Distribution Setting. To simulate the IID and non-
+IID data distribution setting, we build quantity skew and
+control heterogeneity levels through Dir following Li et al.
+[2022], Ezzeldin et al. [2023], Lee et al. [2023]. SmallerDir
+indicates a more imbalanced scenario about data quantity
+across clients, and Dir = +∞ represents the uniform case.
+Baselines. We include general FL methods (FedAvg McMa-
+han et al. [2017], FedProx Li et al. [2020b], Scaffold
+Karimireddy et al. [2020]) and fairness-aware FL base-
+lines (FedFair Chu et al. [2021], FL-FairBatch Roh et al.
+[2021], FedFB Zeng et al. [2021], FairFed Ezzeldin et al.
+[2023]) to compare fairness trade-offs in FL settings. Fol-
+lowing Baharlouei et al. [2020], Chu et al. [2021], Zeng
+et al. [2021], Ezzeldin et al. [2023], we use the logistic
+regression model as backbone. More details are shown in
+Appendix C.1. The FedRényi code is available at https:
+//github.com/AllenMa97/Federated-Renyi.
+5.2 EXPERIMENT RESULT
+FedRényi consistently outperforms baseline methods.
+The main experimental results are summarized in Table 1.
+Since hyperparameter affect the performance of algorithms,
+we select top 20 results (with better HM) for each method
+and report their mean and standard deviaition to ensure
+reliable comparisons. In ADULT, DRUG, and DUTCH, Fe-
+dRényi outperforms other algorithms. Although FedRényi
+does not outperform all baselines in COMPAS, its HM rank
+second with a small gap from the highest ( ≤ 0.1). These
+results demonstrate the effectiveness of FedRényi. More de-
+tailed results for all datasets are supplemented in the Table
+9, 10, 11, and 12.
+2810
+
+=== PAGE 8 ===
+FedRényi effectively balances accuracy and fairness by
+adjusting λ. To further examine the trade-off, we adjust the
+regularization coefficient λ within {0.1, 0.5, 1, 5, 1000} and
+visually present some experimental results in Figure 1. As
+shown in Figure 1, the FR of FedRényi becomes larger as λ
+enlarges at the heterogeneous setting and the ACC increases
+as λ becomes smaller. More experimental results on four
+datasets are presented in Figure 6.
+0.1 0.5 1 5 1000
+0.84 0.85 0.86 0.87 0.88 0.89
+Fairness
+(nk/n)
+0.84 0.86 0.88 0.90
+ACC 
+(nk/n)
+0.1 0.5 1 5 1000
+ (DUTCH, LR, Heterogeneous Data)
+0.77 0.79 0.81 0.83
+                            Fairness
+Fairness
+(1/K)
+0.83 0.84 0.85 0.86 0.87
+                            Accuracy
+ACC 
+(1/K)
+0.1 0.5 1 5 1000
+0.84 0.85 0.86 0.87 0.88 0.89
+Fairness
+(nk/n)
+0.84 0.86 0.88 0.90
+ACC 
+(nk/n)
+0.1 0.5 1 5 1000
+ (DUTCH, LR, Heterogeneous Data)
+0.77 0.79 0.81 0.83
+                            Fairness
+Fairness
+(1/K)
+0.83 0.84 0.85 0.86 0.87
+                            Accuracy
+ACC 
+(1/K)
+Figure 1: The accuracy and fairness trade-off adjusting viaλ
+of FedRényi in DUTCH with heterogeneous and isomorphic
+setting. We could observe that the fairness increase and
+accuracy decrease with a larger λ value.
+FedRényi takes the optimal trade-off between accuracy
+and fairness. A comparison of ACC and FR across different
+algorithms is shown in Figure 2. Only the top 5 results
+(with better HM value) of each algorithm will be plotted,
+and some methods show less than 5 points are caused by
+overlap. Intuitively, red and yellow scatter points (FedRényi)
+are closer to the optimal corner than others in most cases.
+Besides, these scatters approximately form several curves,
+exhibiting the trade-off ability between ACC and FR. More
+results on four datasets are presented in Figure 7.
+0.3 0.4 0.5 0.6 0.7 0.8
+T esting Accuracy
+0.70
+0.75
+0.80
+0.85
+0.90
+0.95
+1.00
+T esting Fairness
+ADULT LR (Dir = 0.5)
+Separate
+FedAvg
+FedFair
+FairBatch
+FairFed
+FedRényi (1/K)
+FedRényi (nk/n)
+0.4 0.5 0.6 0.7 0.8
+T esting Accuracy
+0.6
+0.7
+0.8
+0.9
+1.0
+T esting Fairness
+ADULT LR (Dir = + )
+Separate
+FedAvg
+FedFair
+FairBatch
+FairFed
+FedRényi (1/K)
+FedRényi (nk/n)
+Figure 2: The ACC and FR trade-off on ADULT of all
+methods with two distribution settings. FedRényi performs
+closer to optimal and approximately forms trade-off curves
+from the most accurate and least fair to the least accurate
+and most fair.
+FedRényi converges. To study the convergence behavior,
+training loss at different communication rounds on four
+datasets are illustrated in Figure 3. The training loss of syn-
+chronous FedRényi decreases as communication proceeds
+0 50 100 150 200 250
+0.7
+0.8
+0.9
+1.0
+ADULT
+FedRényi (1/K)
+0 50 100 150 200 250
+1.46
+1.48
+1.50
+1.52
+COMPAS
+FedRényi (1/K)
+0 50 100 150 200 250
+0.75
+0.80
+0.85
+DRUG
+FedRényi (1/K)
+0 50 100 150 200 250
+0.8
+0.9
+1.0
+1.1
+DUTCH
+FedRényi (1/K)
+0 50 100 150 200 250
+1.8
+1.9
+2.0
+2.1
+ADULT
+FedRényi (nk/n)
+0 50 100 150 200 250
+0.68
+0.70
+0.72
+0.74
+0.76
+COMPAS
+FedRényi (nk/n)
+0 50 100 150 200 250
+0.80
+0.82
+0.84
+0.86
+0.88
+DRUG
+FedRényi (nk/n)
+0 50 100 150 200 250
+0.8
+0.9
+1.0
+DUTCH
+FedRényi (nk/n)
+Heterogeneous Data (Dir = 0.5)
+Training Loss
+Communication Round
+Figure 3: The training loss of FedRényi under heterogeneity
+data settings, which verify that FedRényi converges to a
+stable range after a certain number of rounds.
+Table 2: The HM and the average approximation errors
+across all stragglers of FedRényi with different α. These
+approximation errors are measured by the L2 distance be-
+tween the approximation values and the actual values on
+stragglers.
+Dir=0.5
+λ=1 Drop α: 0% Drop α: 30% Drop α: 50%
+(T, I)
+=(100,4)
+HM/j Err ./
+u Err ./θ Err .
+HM/j Err ./
+u Err ./θ Err .
+HM/j Err ./
+u Err ./θ Err .
+COMPAS
+Asyn.
+(nk/n)
+0.77/0/
+0/0
+0.73/0.03/
+0.01/0.92
+0.71/0.01/
+0.02/1.41
+Asyn.
+(1/K)
+0.75/0/
+0/0
+0.76/0.04/
+0.01/0.27
+0.78/0.01/
+0.02/0.34
+Syn.
+(nk/n)
+0.76/0/
+0/0
+0.76/0/
+0/0
+0.76/0/
+0/0
+DRUG
+Asyn.
+(nk/n)
+0.74/0/
+0/0
+0.74/0.01/
+0.01/0.25
+0.75/0.08/
+0.03/0.40
+Asyn.
+(1/K)
+0.73/0/
+0/0
+0.72/0.01/
+0.02/0.29
+0.73/0.09/
+0.02/0.37
+Syn.
+(nk/n)
+0.74/0/
+0/0
+0.74/0/
+0/0
+0.74/0/
+0/0
+and becomes stable at around 50 rounds, verifying the con-
+vergence property. More results on other datasets are shown
+in Figure 8 and 9.
+Asynchronous FedRényi maintains stable HM perfor-
+mance and effectively controls estimation errors. To ver-
+ify the performance with the asynchronous FedRényi, we
+build experiments and simulate different communication
+thresholds by controlling the proportion of straggler α. As
+shown in Table 2, the asynchronous FedRényi not only
+maintains stable HM performance but also achieves effec-
+tive approximation error control. More experimental results
+on other datasets are presented in Appendix C.3.
+Assumption 1 is empirically valid. To empirically demon-
+strate the validity of Assumption 1, we conduct experiments
+on the DUTCH dataset under a heterogeneous (Dir = 0.5)
+2811
+
+=== PAGE 9 ===
+10 20 30 40 50 60 70 80 90
+0.02
+0.04
+0.06
+0.08
+0.10
+FedRényi (nk/n), Dir = +
+F( 1) F( 2), 1 2
+F( 1)  F( 2) 2, = /2
+20 40 60 80 100
+0.02
+0.04
+0.06
+0.08
+0.10
+FedRényi (nk/n), Dir = + 0.5
+F( 1) F( 2), 1 2
+F( 1)  F( 2) 2, = /2
+20 40 60 80 100
+0.01
+0.02
+0.03
+0.04
+0.05
+0.06
+0.07
+0.08
+0.09
+FedRényi (1/K), Dir = +
+F( 1) F( 2), 1 2
+F( 1)  F( 2) 2, = /2
+20 40 60 80 100
+0.01
+0.02
+0.03
+0.04
+0.05
+0.06
+0.07
+0.08
+FedRényi (1/K), Dir = + 0.5
+F( 1) F( 2), 1 2
+F( 1)  F( 2) 2, = /2
+DUTCH, = 1, T=100, M=10, X axis for iteration, Y axis for value 
+ Assumption 1: F( 1) F( 2), 1 2   F( 1)  F( 2) 2
+Figure 4: Verification of the co-coercivity assumption (As-
+sumption 1) on DUTCH under Dir = 0.5 and Dir = +∞,
+with uniform over data (λ = nk/n) and uniform over client
+(λ = nk/n) settings and λ = 1 . The X-axis represents
+training iterations, while the Y-axis shows the values cor-
+responding to each side of the co-coercivity inequality: (i)
+⟨∇F (θ1) − ∇F (θ2), θ1 − θ2⟩, the left side of the inequality
+in Assumption 1; (ii)β∥∇F (θ1)−∇F (θ2)∥2 with β = η/2,
+the right side of the inequality in Assumption 1.
+and isomorphism Data ( Dir = + ∞) distribution setting,
+with uniform over data (γ = nk/n) and uniform over client
+(γ = nk/n) settings and λ = 1 . Specifically, in Figure
+4, the X-axis represents training iterations, while the Y-
+axis shows the values corresponding to each side of the
+co-coercivity inequality: (i) ⟨∇F (θ1) − ∇F (θ2), θ1 − θ2⟩,
+the left-hand side of the inequality in Assumption 1; (ii)
+β∥∇F (θ1) − ∇F (θ2)∥2 with β = η/2, the right-hand side
+of the inequality in Assumption 1. At each iteration, we ran-
+domly select 5 clients and record their gradients and parame-
+ter vectors. Then we compute ⟨∇F (θ1) − ∇F (θ2), θ1 − θ2⟩
+and β∥∇F (θ1) − ∇F (θ2)∥2 values for these clients, fol-
+lowing the inequality structure in Assumption 1. Next, we
+plot the average across all selected clients over each iter-
+ation. As shown in Figure 4, in most iterations, the line
+of ⟨∇F (θ1) − ∇ F (θ2), θ1 − θ2⟩ consistently lies above
+the line of β∥∇F (θ1) − ∇ F (θ2)∥2, indicating that the
+inequality holds, which verifying the validity of the co-
+coercivity assumption (i.e., ⟨∇F (θ1) − ∇F (θ2), θ1 − θ2⟩ ≥
+β∥∇F (θ1) − ∇F (θ2)∥2 ) in practice.
+Assumption 2 is empirically valid. We plot Figure 5 to em-
+pirically demonstrate the validity of Assumption 2, which
+assumes that the change in predicted class probabilities is
+Lipschitz continuous with respect to model parameters θ.
+We adopt the same setup: DUTCH dataset, λ = 1, under
+both a heterogeneous (Dir = 0.5) and isomorphism data
+(Dir = + ∞) distribution settings and two uniform over
+data ( γ = nk/n) and uniform over client ( γ = nk/n)
+weights settings. Each subplot in Figure 5 visualizes the
+10 20 30 40 50 60 70 80 90 100
+0.47
+0.48
+0.49
+0.50
+0.51
+0.52
+0.53
+FedRényi (nk/n), Dir = +
+Class 0
+Class 1
+10 20 30 40 50 60 70 80 90 100
+0.47
+0.48
+0.49
+0.50
+0.51
+0.52
+0.53
+FedRényi (nk/n), Dir = + 0.5
+Class 0
+Class 1
+10 20 30 40 50 60 70 80 90 100
+0.48
+0.49
+0.50
+0.51
+0.52
+FedRényi (1/K), Dir = +
+Class 0
+Class 1
+10 20 30 40 50 60 70 80 90 100
+0.47
+0.48
+0.49
+0.50
+0.51
+0.52
+0.53
+FedRényi (1/K), Dir = + 0.5
+Class 0
+Class 1
+DUTCH, = 1, T=100, M=10, X axis for iteration, Y axis for probability 
+ Assumption 2: |P[f (Xk, Sk) = c] P[f  (Xk, Sk) = c]|  L   
+Figure 5: Verification of Lipschitz assumption (Assumption
+2) on DUTCH dataset under a Dir = 0.5 and Dir = +∞,
+with uniform over data (λ = nk/n) and uniform over client
+(λ = nk/n) settings and λ = 1. The X-axis denotes training
+iterations, and the Y-axis represents the predicted probability
+for each class.
+prediction probability of Class 0 (blue) and Class 1 (red)
+over training iterations. The X-axis denotes training itera-
+tions, and the Y-axis represents the predicted probability for
+each class. To compute these probabilities, at each iteration,
+we compute the local predicted class probabilities over all
+clients and then compute the average over clients to obtain
+the global prediction probability. As shown in Figure 5, the
+predicted probabilities for both classes evolve smoothly and
+do not exhibit sharp fluctuations throughout the iterations.
+This consistent behavior across multiple configurations em-
+pirically supports the Lipschitz continuity assumption with
+respect to θ.
+6 CONCLUSION
+We propose FedRényi, a federated fairness-aware algorithm
+that enhances group fairness in decentralized heterogeneous
+systems under two weighting schemes. FedRényi addresses
+data heterogeneity by aggregating local empirical statistics
+to estimate global Rényi correlation, with an estimation er-
+ror of O(1/√n), matching centralized learning bounds and
+improving upon prior estimation error bounds. FedRényi
+algorithm reduces the expected squared gradient norm to
+O(ϵ+1/n) with an iteration complexity ofO(1/ϵ4). For sys-
+tem heterogeneity, asynchronous FedRényi uses weighted
+averaging over a nearest neighbor region to approximate
+stragglers, with a non-increasing approximation error over a
+communication round. Our experiments on multiple bench-
+mark datasets clearly demonstrate that FedRényi could
+achieve better accuracy and fairness trade-off over prior
+FL fairness baselines with at least 2% improvement.
+2812
+
+=== PAGE 10 ===
+References
+Annie Abay, Yi Zhou, Nathalie Baracaldo, Shashank Raja-
+moni, Ebube Chuba, and Heiko Ludwig. Mitigating bias
+in federated learning. arXiv preprint arXiv:2012.02447,
+2020.
+Sina Baharlouei, Maher Nouiehed, Ahmad Beirami, and
+Meisam Razaviyayn. Rényi fair inference. In ICLR,
+2020.
+Hao Ban and Kaiyi Ji. Fair resource allocation in multi-
+task learning. In Proceedings of the 41st International
+Conference on Machine Learning, ICML’24. JMLR.org,
+2024.
+Solon Barocas, Moritz Hardt, and Arvind Narayanan. Fair-
+ness and machine learning: Limitations and opportunities.
+MIT press, 2023.
+Lingyang Chu, Lanjun Wang, Yanjie Dong, Jian Pei, Zirui
+Zhou, and Yong Zhang. Fedfair: Training fair mod-
+els in cross-silo federated learning. arXiv preprint
+arXiv:2109.05662, 2021.
+Michele Donini, Luca Oneto, Shai Ben-David, John S
+Shawe-Taylor, and Massimiliano Pontil. Empirical risk
+minimization under fairness constraints. In NeurIPS, vol-
+ume 31, 2018.
+Michele Donini, Luca Oneto, Shai Ben-David, John Shawe-
+Taylor, and Massimiliano Pontil. Empirical risk mini-
+mization under fairness constraints, 2020.
+Wei Du, Depeng Xu, Xintao Wu, and Hanghang Tong.
+Fairness-aware agnostic federated learning, 2020.
+Cynthia Dwork, Moritz Hardt, Toniann Pitassi, Omer Rein-
+gold, and Richard Zemel. Fairness through awareness.
+In Proceedings of the 3rd innovations in theoretical com-
+puter science conference, pages 214–226, 2012.
+Yahya H. Ezzeldin, Shen Yan, Chaoyang He, Emilio Fer-
+rara, and Salman Avestimehr. Fairfed: Enabling group
+fairness in federated learning. In Proceedings of the AAAI
+Conference on Artificial Intelligence, 2023.
+Zhenan Fan, Huang Fang, Zirui Zhou, Jian Pei, Michael P
+Friedlander, Changxin Liu, and Yong Zhang. Improving
+fairness for data valuation in federated learning. arXiv
+preprint arXiv:2109.09046, 2021.
+Elaine Fehrman, Awaz K. Muhammad, Evgeny M. Mirkes,
+Vincent Egan, and Alexander N. Gorban. The five factor
+model of personality and evaluation of drug consumption
+risk. pages 231–242, 2017.
+Pratik Gajane and Mykola Pechenizkiy. On formalizing fair-
+ness in prediction with machine learning. arXiv preprint
+arXiv:1710.03184, 2017.
+Moritz Hardt, Eric Price, and Nathan Srebro. Equality of
+opportunity in supervised learning. 2016.
+Xiaolin Hu, Shaojie Li, and Yong Liu. Generalization
+bounds for federated learning: Fast rates, unparticipating
+clients and unbounded losses. In The Eleventh Interna-
+tional Conference on Learning Representations, 2023.
+Shreyansh Jain and Koteswar Rao Jerripothula. Federated
+learning for commercial image sources. In Proceedings
+of the IEEE/CVF Winter Conference on Applications of
+Computer Vision, pages 6534–6543, 2023.
+Eunjeong Jeong, Seungeun Oh, Hyesung Kim, Jihong Park,
+Mehdi Bennis, and Seong-Lyun Kim. Communication-
+efficient on-device machine learning: Federated distilla-
+tion and augmentation under non-iid private data. arXiv
+preprint arXiv:1811.11479, 2018.
+Peter Kairouz, H Brendan McMahan, Brendan Avent, Au-
+rélien Bellet, Mehdi Bennis, Arjun Nitin Bhagoji, Kallista
+Bonawitz, Zachary Charles, Graham Cormode, Rachel
+Cummings, et al. Advances and open problems in fed-
+erated learning. Foundations and Trends® in Machine
+Learning, 14(1–2):1–210, 2021.
+Sai Praneeth Karimireddy, Satyen Kale, Mehryar Mohri,
+Sashank Reddi, Sebastian Stich, and Ananda Theertha
+Suresh. Scaffold: Stochastic controlled averaging for fed-
+erated learning. In International Conference on Machine
+Learning, pages 5132–5143. PMLR, 2020.
+Jon Kleinberg, Jens Ludwig, Sendhil Mullainathan, and
+Ashesh Rambachan. Algorithmic fairness. In Aea papers
+and proceedings, volume 108, pages 22–27, 2018.
+Ron Kohavi. Scaling up the accuracy of naive-bayes classi-
+fiers: A decision-tree hybrid. page 202–207, 1996.
+Jeff Larson, Marjorie Roswell, and Vaggelis Atlidakis.
+Compas analysis. URL https://github.com/propublica/
+compas-analysis/. 2016.
+Royson Lee, Minyoung Kim, Da Li, Xinchi Qiu, Timothy
+Hospedales, Ferenc Huszár, and Nicholas Donald Lane.
+Fedl2p: Federated learning to personalize. In Thirty-
+seventh Conference on Neural Information Processing
+Systems, 2023. URL https://openreview.net/forum?id=
+FM81CI68Iz.
+Qinbin Li, Yiqun Diao, Quan Chen, and Bingsheng He.
+Federated learning on non-iid data silos: An experimen-
+tal study. In IEEE International Conference on Data
+Engineering, 2022.
+Tian Li, Maziar Sanjabi, Ahmad Beirami, and Virginia
+Smith. Fair resource allocation in federated learning.
+arXiv preprint arXiv:1905.10497, 2019.
+2813
+
+=== PAGE 11 ===
+Tian Li, Anit Kumar Sahu, Ameet Talwalkar, and Virginia
+Smith. Federated learning: Challenges, methods, and
+future directions. IEEE signal processing magazine, 37
+(3):50–60, 2020a.
+Tian Li, Anit Kumar Sahu, Manzil Zaheer, Maziar
+Sanjabi, Ameet Talwalkar, and Virginia Smith. Fed-
+erated optimization in heterogeneous networks.
+In I. Dhillon, D. Papailiopoulos, and V . Sze, ed-
+itors, Proceedings of Machine Learning and Sys-
+tems, volume 2, pages 429–450, 2020b. URL
+https://proceedings.mlsys.org/paper_files/paper/2020/
+file/1f5fe83998a09396ebe6477d9475ba0c-Paper.pdf.
+Tian Li, Shengyuan Hu, Ahmad Beirami, and Virginia
+Smith. Ditto: Fair and robust federated learning through
+personalization. In International Conference on Machine
+Learning, pages 6357–6368. PMLR, 2021.
+Mingrui Liu, Hassan Rafique, Qihang Lin, and Tianbao
+Yang. First-order convergence theory for weakly-convex-
+weakly-concave min-max problems. Journal of Machine
+Learning Research, 22(169):1–34, 2021.
+Ziwei Liu, Ping Luo, Xiaogang Wang, and Xiaoou Tang.
+Deep learning face attributes in the wild. In Proceedings
+of International Conference on Computer Vision (ICCV),
+December 2015.
+Guodong Long, Yue Tan, Jing Jiang, and Chengqi Zhang.
+Federated learning for open banking. In Federated learn-
+ing: privacy and incentive , pages 240–254. Springer,
+2020.
+Lingjuan Lyu, Xinyi Xu, Qian Wang, and Han Yu. Col-
+laborative fairness in federated learning. In Federated
+Learning, pages 189–204. Springer, 2020.
+Priyanka Mary Mammen. Federated learning: Opportunities
+and challenges. arXiv preprint arXiv:2101.05428, 2021.
+Yishay Mansour, Mehryar Mohri, Jae Ro, and
+Ananda Theertha Suresh. Three approaches for
+personalization with applications to federated learning.
+arXiv preprint arXiv:2002.10619, 2020.
+Brendan McMahan, Eider Moore, Daniel Ramage, Seth
+Hampson, and Blaise Aguera y Arcas. Communication-
+efficient learning of deep networks from decentralized
+data. In Artificial intelligence and statistics, pages 1273–
+1282. PMLR, 2017.
+Ninareh Mehrabi, Fred Morstatter, Nripsuta Saxena,
+Kristina Lerman, and Aram Galstyan. A survey on bias
+and fairness in machine learning. ACM Computing Sur-
+veys (CSUR), 54(6):1–35, 2021.
+Mehryar Mohri, Afshin Rostamizadeh, and Ameet Tal-
+walkar. Foundations of machine learning. MIT press,
+2018.
+Mehryar Mohri, Gary Sivek, and Ananda Theertha Suresh.
+Agnostic federated learning. In International Conference
+on Machine Learning, pages 4615–4625. PMLR, 2019.
+Alfred Rényi. Foundations of probability. Courier Corpora-
+tion, 2007.
+Yuji Roh, Kangwook Lee, Steven Euijong Whang, and
+Changho Suh. Fairbatch: Batch selection for model fair-
+ness. In International Conference on Learning Represen-
+tations, 2021.
+Milad Sefidgaran, Romain Chor, Abdellatif Zaidi, and Yi-
+jun Wan. Lessons from generalization error analysis of
+federated learning: You may communicate less often! In
+Forty-first International Conference on Machine Learn-
+ing, 2024.
+Khotso Selialia, Yasra Chandio, and Fatima M Anwar. Miti-
+gating group bias in federated learning for heterogeneous
+devices. In The 2024 ACM Conference on Fairness, Ac-
+countability, and Transparency, pages 1043–1054, 2024.
+Hyowoon Seo, Jihong Park, Seungeun Oh, Mehdi Bennis,
+and Seong-Lyun Kim. Federated knowledge distillation.
+2016.
+Jiawei Shao, Zijian Li, Wenqiang Sun, Tailin Zhou, Yuchang
+Sun, Lumin Liu, Zehong Lin, and Jun Zhang. A survey of
+what to share in federated learning: perspectives on model
+utility, privacy leakage, and communication efficiency.
+arXiv preprint arXiv:2307.10655, 2023.
+Yuxin Shi, Han Yu, and Cyril Leung. A survey of
+fairness-aware federated learning. arXiv preprint
+arXiv:2111.01872, 2021.
+Jiaming Song, Pratyusha Kalluri, Aditya Grover, Shengjia
+Zhao, and Stefano Ermon. Learning controllable fair
+representations. In The 22nd International Conference
+on Artificial Intelligence and Statistics, pages 2164–2173.
+PMLR, 2019.
+Yue Tan, Guodong Long, Jie Ma, Lu Liu, Tianyi Zhou, and
+Jing Jiang. Federated learning from pre-trained models:
+A contrastive learning approach. Advances in neural
+information processing systems, 35:19332–19344, 2022.
+Yuanyishu Tian, Yao Wan, Lingjuan Lyu, Dezhong Yao,
+Hai Jin, and Lichao Sun. Fedbert: When federated learn-
+ing meets pre-training. ACM Transactions on Intelligent
+Systems and Technology (TIST), 13(4):1–26, 2022.
+Yuanli Wang, Joel Wolfrath, Nikhil Sreekumar, Dhruv Ku-
+mar, and Abhishek Chandra. Accelerated training via
+device similarity in federated learning. In Proceedings of
+the 4th International Workshop on Edge Systems, Analyt-
+ics and Networking, pages 31–36, 2021.
+2814
+
+=== PAGE 12 ===
+Orion Weller, Marc Marone, Vladimir Braverman, Dawn
+Lawrie, and Benjamin Van Durme. Pretrained mod-
+els for multilingual federated learning. arXiv preprint
+arXiv:2206.02291, 2022.
+Hans S Witsenhausen. On sequences of pairs of dependent
+random variables. SIAM Journal on Applied Mathematics,
+28(1):100–113, 1975.
+Blake Woodworth, Suriya Gunasekar, Mesrob I Ohannes-
+sian, and Nathan Srebro. Learning non-discriminatory
+predictors. In Conference on Learning Theory , pages
+1920–1953. PMLR, 2017.
+Chenhao Xu, Youyang Qu, Yong Xiang, and Longxiang
+Gao. Asynchronous federated learning on heterogeneous
+devices: A survey. Computer Science Review, 50:100595,
+2023.
+Yi Yu, Tengyao Wang, and Richard J Samworth. A use-
+ful variant of the davis–kahan theorem for statisticians.
+Biometrika, 102(2):315–323, 2015.
+Muhammad Bilal Zafar, Isabel Valera, Manuel Gomez Ro-
+griguez, and Krishna P Gummadi. Fairness constraints:
+Mechanisms for fair classification. In Artificial intelli-
+gence and statistics, pages 962–970. PMLR, 2017.
+Yuchen Zeng, Hongxu Chen, and Kangwook Lee. Im-
+proving fairness via federated learning. arXiv preprint
+arXiv:2110.15545, 2021.
+Daniel Yue Zhang, Ziyi Kou, and Dong Wang. Fairfl: A
+fair federated learning approach to reducing demographic
+bias in privacy-sensitive classification models. In 2020
+IEEE International Conference on Big Data (Big Data),
+pages 1051–1060. IEEE, 2020.
+Jie Zhang, Song Guo, Xiaosong Ma, Haozhao Wang, Wen-
+chao Xu, and Feijie Wu. Parameterized knowledge trans-
+fer for personalized federated learning. Advances in Neu-
+ral Information Processing Systems , 34:10092–10104,
+2021.
+Xinwen Zhang, Yihan Zhang, Tianbao Yang, Richard Sou-
+venir, and Hongchang Gao. Federated compositional
+deep auc maximization. arXiv preprint arXiv:2304.10101,
+2023.
+Ligeng Zhu, Hongzhou Lin, Yao Lu, Yujun Lin, , and Song
+Han. Delayed gradient averaging: Tolerate the com-
+munication latency in federated learning. In Annual
+Conference on Neural Information Processing Systems
+(NeurIPS), 2021a.
+Zhuangdi Zhu, Junyuan Hong, and Jiayu Zhou. Data-free
+knowledge distillation for heterogeneous federated learn-
+ing. In International conference on machine learning ,
+pages 12878–12889. PMLR, 2021b.
+2815
+
+=== PAGE 13 ===
+Federated Rényi Fair Inference in Federated Heterogeneous System
+(Supplementary Material)
+Zhiyong Ma*1 Yuanjie Shi*2 Yan Yan2 Jian Chen1
+1School of SSE, South China University of Technology University, Guangzhou, Guangdong, China
+2School of EECS, Washington State University, Pullman, W A, USA
+A MA THEMA TICAL NOTA TIONS
+Table 3: Key notations used in this paper .
+Notation Meaning
+X ∈ X Input feature
+Y ∈ Y The ground-truth label
+S ∈ S Sensitive attributes
+P The underlying distribution defined on X × Y × S
+(X, Y, S) The data sample drawn from a distribution P
+(x, y, s) The realization of data sample
+C Total number of classes
+P Total number of attributes
+k Index of client
+Xk Feature variables on client k
+Sk Attribute variables on client k
+Pk Distribution on client k
+fθ The prediction function parameterised by θ
+nk The number of data examples for client k
+nmin := mink nk The minimal number of data samples across all clients
+⊮[·] An indicator function
+Pc = P [fθ(X, S) = c] The probability of the model predicting class c
+ρ = minc∈C Pc The smallest model prediction probability over all classes.
+τ Total number of communication rounds
+e Index of communication rounds
+M Total number of local updates
+m Index of local updates
+T Total number of iterations
+B THEORETICAL ANALYSIS
+In this section, we prove the theoretical results in this paper.
+B.1 PROOF FOR SECTION 4.2.2
+In this section, we prove Theorem 1 and Proposition 1 in Section 4.2.2.
+2816
+
+=== PAGE 14 ===
+B.1.1 Proof of Theorem 1
+Theorem 3. (Theorem 1 restated, Estimation error of Rényi regularization for synchronous FedRényi) Suppose jmin ∽
+umin ∽ rmin = O(1) and nmin ∽ n
+K log(K). When γk = nk
+n or 1
+K , for any global model θ and δ ∈ (0, 1), the following
+inequality holds:
+P
+h
+bH(θ, v) − H(θ, v) ≤ O
+ 
+1/√n
+θ
+i
+≥ 1 − δ.
+Proof. of (Theorem 1)
+Before proving Theorem 1, we first present some technical lemmas. Lemma 1 and 2 provides the estimation error of general
+random variables for γk = nk/n and γk = 1/K respectively. Lemma 3 shows that the estimation errors from Lemma 1 and
+2 can be transferred to each entry of matrix ˆQθ. Lemma 4 bounds the norm of matrix Qθ
+Lemma 1. (mean-of-sum for γk = nk
+n ) For any distribution Pk on different clients, denoting Vk = 1
+nk
+P
+i∈Ik
+Vk,i, then the
+condition γk = nk
+n gives
+P
+(E[V ] − 1
+n
+KX
+k=1
+X
+i∈Ik
+Vk,i
+ ≤
+r
+log(2/δ)
+2n
+)
+≥ 1 − δ. (9)
+Lemma 2. (mean-of-mean for γk = 1
+K ) For any distribution Pk on different clients, define nmin := mink=1,...,K nk as the
+minimal number of data samples across different clients, and µmin := mink Vk, then the condition γk = 1
+K gives
+P
+(
+1
+K
+KX
+k=1
+Vk − E
+"
+1
+K
+KX
+k=1
+Vk
+# ≤
+s
+log(2K/δ) · log(4/δ)
+Knminµmin
+)
+≥ 1 − δ. (10)
+Lemma 3. Suppose |j(c, p) − ˆj(c, p)| ≤ ϵ, |u(c) − ˆu(c)| ≤ ϵ and |r(p) − ˆr(p)| ≤ ϵ. Under ϵ = O
+
+1√n
+
+and ˆj(c, p) ∽
+ˆu(c) ∽ ˆr(p) = Ω
+  1√n
+
+, the following inequality holds:
+j(c, p)r(p)p
+u(c)r(p)
+≤
+ˆj(c, p)ˆr(p)p
+ˆu(c)ˆr(p)
++ O(ϵ). (11)
+Lemma 4. Recall that ρ = minc∈C Pc as the smallest model prediction probability over all classes. Then, the norm of
+matrix Qθ is bounded : ∥Qθ∥ ≤
+q
+C
+ρ .
+Now we begin to prove Theorem 1. Given fixed global modelθ, according to Lemma 3, the estimation error between each
+entry of matrix Qθ (i.e., qcp) and bQθ (i.e.,bqcp) is bounded by O(ϵ), where ϵ is the estimation error bound in Lemma 1 or 2.
+Thus, we define ε ∈ RC×P as an estimation error matrix and ε := Qθ − ˆQθ, where each entry εc,p = ϵ is the same.
+First, we prove the estimation error of Rényi when γk = nk
+n :
+2817
+
+=== PAGE 15 ===
+bH(θ, v) = v⊤ ˆQ⊤
+θ ˆQθv
+= v⊤( ˆQ⊤
+θ ˆQθ)v
+≤ v⊤
+
+(Qθ + ε)⊤(Qθ + ε)
+
+v
+= v⊤
+
+Q⊤
+θ Qθ + ε⊤ ˆQθ + Q⊤
+θ ε + ε⊤ε
+
+v
+≤ v⊤
+
+Q⊤
+θ Qθ + 2∥ε∥ · ∥ ˆQθ∥ + ∥ε∥2
+
+v
+≤ v⊤
+
+Q⊤
+θ Qθ + 2(C · P )2 · ϵ ·
+s
+C
+ρ + (C · P )2 · ϵ2
+
+v
+= v⊤Q⊤
+θ Qθv + v⊤
+
+2(C · P )2 · ϵ ·
+s
+C
+ρ + (C · P )2 · ϵ2
+
+v
+≤ v⊤Q⊤
+θ Qθv + ∥v∥ ·
+
+(2(C · P )2 · ϵ ·
+s
+C
+ρ + (C · P )2 · ϵ2
+
+· ∥v∥
+≤ v⊤Q⊤
+θ Qθv +
+
+2(C · P )2 · ϵ ·
+s
+C
+ρ + (C · P )2 · ϵ2
+
+,
+Where the second, third, and fourth inequality is due to Cauchy–Schwarz inequality.
+Let ϵ equals to the result in Lemma 1, the following inequality holds:
+P
+
+bH(θ, v) − H(θ, v) ≤ C2P 2(log(2/δ)
+2n + 2
+s
+C log(2/δ)
+2nρ )
+θ
+
+≥ 1 − δ.
+Therefore, we have that:
+P
+
+bH(θ, v) − H(θ, v) ≤ ˜O
+ 1√n
+θ
+
+≥ 1 − δ, when γk = nk/n. (12)
+Now we begin to prove estimation error when γk = 1
+K .
+Let the estimation error of ˆjk(c, p), ˆuk(c) and ˆrk(p) be ϵj, ϵu and ϵr respectively.
+Under the condition of jmin ∽ umin ∽ rmin = O(1), according to lemma 2, the following holds:
+ϵj =
+s
+log(2K/δ) · log(4/δ)
+Knminjmin
+=
+s
+log(2K/δ) · log(4/δ)
+Knmin
+,
+ϵu =
+s
+log(2K/δ) · log(4/δ)
+Knminumin
+=
+s
+log(2K/δ) · log(4/δ)
+Knmin
+,
+ϵr =
+s
+log(2K/δ) · log(4/δ)
+Knminrmin
+=
+s
+log(2K/δ) · log(4/δ)
+Knmin
+.
+Thus, the estimation errors of ˆjk(c, p), ˆuk(c) and ˆrk(p) are the same:
+q
+log(2K/δ)·log(4/δ)
+Knmin
+.
+Then, the following inequality holds:
+P
+"
+bH(θ, v) − H(θ, v) ≤ C2P 2(log(2K/δ) · log(4/δ)
+Knmin
++ 2
+s
+C log(2K/δ) · log(4/δ)
+Knminρ )
+θ
+#
+≥ 1 − δ.
+2818
+
+=== PAGE 16 ===
+Due to nmin ∽ n
+K log(K), we have that:
+P
+
+bH(θ, v) − H(θ, v) ≤ ˜O
+ 1√n
+θ
+
+≥ 1 − δ, where γk = 1/K. (13)
+Combining Equation (12) and (13), we have that:
+P
+
+bH(θ, v) − H(θ, v) ≤ ˜O
+ 1√n
+θ
+
+≥ 1 − δ. (14)
+Thus, the proof of Theorem 1 is finished.
+B.1.2 Proof of Lemma 1
+Proof. (of Lemma 1) DefineXk,i = ⊮[Ek,i] for an eventEk,i. This eventE can be instantiated with the components contained
+in Qθ. For example, it can be defined by the case where for a data (x, y, s), s = 0, fθk,t(x) = 1, or s = 1 and fθk,t(x) = 1.
+Define Vk,i := Xk,i. Then we apply Hoeffding’s inequality acrossn data samples as follows
+P
+(
+KX
+k=1
+X
+i∈Ik
+Vk,i − E
+" KX
+k=1
+X
+i∈Ik
+Vk,i
+# ≤ t
+)
+≥1 − 2 exp
+
+− 2t2
+PK
+k=1
+P
+i∈Ik
+(1)2
+
+≥1 − δ,
+or equivalently
+P
+(E[V ] − 1
+n
+KX
+k=1
+X
+i∈Ik
+Vk,i
+ ≤
+r
+log(2/δ)
+2n
+)
+≥ 1 − δ. (15)
+B.1.3 Proof of Lemma 2
+Proof. (of Lemma 2) DefineXk,i = ⊮[Ek,i] for an eventEk,i. This eventE can be instantiated with the components contained
+in Qθ. For example, it can be defined by the case where for a data (x, y, s), s = 0, fθk,t(x) = 1, or s = 1 and fθk,t(x) = 1.
+For fixed k ∈ {1, ..., K}, applying Chernoff bound, we have
+P
+(
+X
+i∈Ik
+Xi − E
+"X
+i∈Ik
+Xi
+# ≥ ϵE
+"X
+i∈Ik
+Xi
+#)
+≤ exp
+ 
+− ϵ2E[P
+i∈Ik
+Xk,i]
+3
+!
+, (16)
+or equivalently,
+P
+(
+X
+i∈Ik
+Xi − E
+"X
+i∈Ik
+Xi
+# ≤ ϵE
+"X
+i∈Ik
+Xi
+#)
+≥ 1 − exp
+ 
+− ϵ2E[P
+i∈Ik
+Xk,i]
+3
+!
+. (17)
+2819
+
+=== PAGE 17 ===
+Define Vk := 1
+nk
+P
+i∈Ik
+Xk,i. Let Gk be a good event such that (1 − ϵ)E[Vk] ≤ Vk ≤ (1 + ϵ)E[Vk]. From the above result,
+we know that P{Gk} ≥ 1 − exp
+ 
+−
+ϵ2E[P
+i∈Ik Xk,i]
+3
+!
+. Furthermore, denote G =TK
+k=1 Gk. Therefore,
+P{G} ≥
+KY
+k=1
+ 
+1 − exp
+
+− ϵ2E[P
+i∈Ik
+Xk,i]
+3
+!
+≥ 1 −
+KX
+k=1
+exp
+
+− ϵ2E[P
+i∈Ik
+Xk,i]
+3
+
+≥ 1 − K · exp
+
+− ϵ2nminµmin
+3
+
+.
+(18)
+Then we apply Hoeffding inequality across K clients as follows
+P
+(
+KX
+k=1
+Vk − E
+" KX
+k=1
+Vk
+# ≤ t
+)
+=P{G} · P
+(
+KX
+k=1
+Vk − E
+" KX
+k=1
+Vk
+# ≤ t
+G
+)
++ (1 − P{G}) · P
+(
+KX
+k=1
+Vk − E
+" KX
+k=1
+Vk
+# ≤ t
+G
+)
+≥
+ 
+1 − K · exp
+
+− ϵ2nminµmin
+3
+!
+·
+ 
+1 − 2 exp
+
+− 2t2
+PK
+k=1(2ϵE[Vk])2
+!
+≥1 − K · exp
+
+− ϵ2nminµmin
+3
+
+− 2 exp
+
+− 2t2
+PK
+k=1(2ϵE[Vk])2
+
+.
+If ϵ ≥
+q
+3 log(2K/δ)
+nminµmin
+, then K · exp
+
+− ϵ2nminµmin
+3
+
+≤ δ/2. On the other hand, if t ≥
+q
+K log(2K/δ)·log(4/δ)
+nminµmin
+, then
+2 exp
+
+− 2t2
+PK
+k=1(2ϵE[Vk])2
+
+≤ δ/2.
+Therefore, we have
+P
+(
+KX
+k=1
+Vk − E
+" KX
+k=1
+Vk
+# ≤ t
+)
+≥P
+(
+KX
+k=1
+Vk − E
+" KX
+k=1
+Vk
+# ≤
+s
+K log(2K/δ) · log(4/δ)
+nminµmin
+)
+≥1 − δ,
+or equivalently
+P
+(
+1
+K
+KX
+k=1
+Vk − E
+"
+1
+K
+KX
+k=1
+Vk
+# ≤
+s
+log(2K/δ) · log(4/δ)
+Knminµmin
+)
+≥ 1 − δ. (19)
+B.1.4 Proof of Lemma 3
+Proof. (of Lemma 3)
+Lemma 1 and 2 show the estimation error of single statistics ˆu(c) and ˆj(c, p). Now we study how to transfer the estimation
+error of each entry of the matrix ˆQθ thatbqcp :=
+ˆj(c,p)·ˆr(p)√
+ˆu(c)·ˆr(p)
+:
+2820
+
+=== PAGE 18 ===
+( jr√ur )2 ≤(ˆj + ϵ)2(ˆr + ϵ)2
+(ˆu − ϵ)(ˆr − ϵ) = (ˆj2 + ϵ2 + 2ˆjϵ)(ˆr2 + ϵ2 + 2ˆrϵ)
+ˆuˆr − ϵ(ˆr + ˆu) + ϵ2
+=
+ˆj2ˆr2 + ˆj2ϵ2 + 2ˆj2ˆrϵ + ϵ2ˆr2 + ϵ4 + 2ˆrϵ3 + 2ˆjˆr2ϵ + 2ˆjϵ3 + 4ˆjˆrϵ2
+ˆuˆr − ϵ(ˆr + ˆu) + ϵ2
+≤
+ˆj2ˆr2 + ˆj2ϵ2 + 2ˆj2ˆrϵ + ϵ2ˆr2 + ϵ4 + 2ˆrϵ3 + 2ˆjˆr2ϵ + 2ˆjϵ3 + 4ˆjˆrϵ2 + ϵ(ˆr + ˆu) − ϵ2
+ˆuˆr
+=
+ˆj2ˆr2
+ˆuˆr + O(ϵ),
+According to lemma 5, the last inequality is held due to ϵ is upper bounded by the order of ˜O( 1√n) while ˆj(c, p), ˆu(c) and
+ˆr(p) are all the empirical probabilities between 0 and 1.
+Lemma 5. For any positive number v, p, q and 0 < v ≤ p ≤ q − v, if v ≤ q2/(2p), then the following inequality holds:
+p
+q − v − p + v
+q ≤ 0. (20)
+Proof. (of Lemma 5)
+From the condition v ≤ q2/(2p) and 0 < v ≤ p ≤ q − v, we have following hold:
+v ≤ q2/(2p) ≤ q2/(p + v). (21)
+Inequality 21 could be transferred as follows:
+(p + v)v ≤ vq ≤ q2. (22)
+Then, the following inequality hold:
+p
+q − v − p + v
+q
+= pq − (p + v)(q − v)
+(q − v)q
+= pq − pq + pv − qv + v2
+(q − v)q
+= v(p − q + v)
+(q − v)q
+= v(p + v) − vq
+q2 − vq
+≤0,
+where the last inequality is due to the inequality 22.
+Thus, Lemma 5 is proved.
+B.1.5 Proof of Lemma 4
+Proof. (of Lemma 4)
+2821
+
+=== PAGE 19 ===
+∥Qθ∥ =
+vuut
+CX
+c=1
+PX
+p=1
+j(c, p) · r(p)p
+u(c) · r(p)
+≤
+vuut
+CX
+c=1
+PX
+p=1
+j(c, p) · r(p)
+u(c)
+=
+vuut
+CX
+c=1
+PX
+p=1
+r(p)
+u(c)
+=
+vuut
+CX
+c=1
+1
+u(c)
+≤
+s
+C
+ρ ,
+where the first inequality is due to j(c, p) ≤ 1, and the second inequality is due to the definition of ρ.
+B.1.6 Proof of Proposition 1
+Proposition 3. (Proposition 1 restated, convergence of FedRényi) Supposeη ≤ O(1/M) and Lk(θ) satisfies (GL, BL)-
+bounded gradient dissimilarity, where 1
+K
+PK
+k=1 ∥ ∂Lk(θ)
+∂θ ∥2 ≤ G2
+L + B2
+L∥ ∂L(θ)
+∂θ ∥2. If ∥ ∂L(θ)
+∂θ ∥2, ∥ ∂Qθ
+∂θ ∥2, ∥ ∂ bQθ
+∂θ ∥2, ∥ ∂vθ
+∂θ ∥2
+are bounded by ¯G for all θ, Then, H(θ, v) satisfies (GH , BH)-bounded gradient dissimilarity, where GH is C ¯G(ρ+C)
+ρ2
+and BH is 1. F (θ) also satisfies (GF , BF )-bounded gradient dissimilarity, where BF = 2B2
+L and GF = 2G2
+L + (4λ −
+2B2
+Lλ2) C ¯G(ρ+C)
+ρ2 + 4B2
+Lλ ·
+q
+C ¯G2(ρ+C)
+ρ2 . Thus, FedRényi algorithm achieves E[∥∇bF (θT )∥2] ≤ ϵ and E[∥∇F (θT )∥2] ≤
+ϵ + O
+
+1
+n + maxθ
+ ∂ bQθ
+∂θ − ∂Qθ
+∂θ
+2
+when T ≥ O(1/ϵ2).
+Proof. (of Proposition 1 )
+Before we prove thatF (θ) satisfies (GF , BF )-bounded gradient dissimilarity, we first prove thatH(θ, v) satisfies (GH , BH)-
+bounded gradient dissimilarity:
+1
+K
+KX
+k=1
+
+∂Hk(θk, v)
+∂θk
+
+2
+= 1
+K
+KX
+k=1
+Qθk · vθ ·
+h ∂Qθk
+∂θk
+· vθ + ∂vθ
+∂θ · Qθk
+i
+2
+= 1
+K
+KX
+k=1
+∥Qθk ∥2 · ∥vθ∥2 ·
+"
+∂Qθk
+∂θk
+
+2
+· ∥vθ∥2 +
+
+∂vθ
+∂θ
+
+2
+· ∥Qθk ∥2
+#
+≤ 1
+K
+KX
+k=1
+ C
+ρ
+
+·
+
+¯G + ¯G ·
+ C
+ρ
+
+= C ¯G(ρ + C)
+ρ2
+≤ C ¯G(ρ + C)
+ρ2 +
+
+∂H(θ, v)
+∂θ
+
+2
+,
+2822
+
+=== PAGE 20 ===
+where the first inequality is due to the assumption that∥ ∂Qθ
+∂θ ∥2, ∥ ∂vθ
+∂θ ∥2 are bounded by ¯G, ∥vθ∥2 ≤ 1, and the last inequality
+is due to the non-negativity of
+
+∂H(θ,v)
+∂θ
+
+2
+.
+Therefore, H(θ, v) satisfies (GH , BH)-bounded gradient dissimilarity, where GH is C ¯G(ρ+C)
+ρ2 and BH is 1.
+Then, we begin to prove that F (θ) satisfies (G, B)-bounded gradient dissimilarity:
+1
+K
+KX
+k=1
+
+∂Fk(θk)
+∂θk
+
+2
+= 1
+K
+KX
+k=1
+
+∂
+
+Lk(θk) + λHk(θk, v)
+
+∂θk
+
+2
+≤ 2
+K
+KX
+k=1
+
+∂Lk(θk)
+∂θk
+
+2
++ 2λ
+K
+KX
+k=1
+
+∂Hk(θk, v)
+∂θk
+
+2
+≤2G2
+L + 2B2
+L ·
+
+∂L(θ)
+∂θ
+
+2
++ 2λ · C ¯G(ρ + C)
+ρ2 + 2λ
+
+∂H(θ, v)
+∂θ
+
+2
+=2B2
+L ·
+
+∂L(θ)
+∂θ
+
+2
++ 2B2
+Lλ2
+
+∂H(θ, v)
+∂θ
+
+2
++ 4B2
+Lλ
+ ∂L(θ)
+∂θ , ∂H(θ, v)
+∂θ
+
++ 2G2
+L + 2λ C ¯G(ρ + C)
+ρ2 + 2(λ − B2
+Lλ2)
+
+∂H(θ, v)
+∂θ
+
+2
+− 4B2
+Lλ
+ ∂L(θ)
+∂θ , ∂H(θ, v)
+∂θ
+
+=2B2
+L
+
+∂F (θ)
+∂θ
+
+2
++ 2G2
+L + 2λ C ¯G(ρ + C)
+ρ2 + 2(λ − B2
+Lλ2)
+
+∂H(θ, v)
+∂θ
+
+2
+− 4B2
+Lλ
+ ∂L(θ)
+∂θ , ∂H(θ, v)
+∂θ
+
+≤2B2
+L
+
+∂F (θ)
+∂θ
+
+2
++ 2G2
+L + 2λ C ¯G(ρ + C)
+ρ2 + 2(λ − B2
+Lλ2)
+
+∂H(θ, v)
+∂θ
+
+2
++ 4B2
+Lλ
+
+∂L(θ)
+∂θ
+ ·
+
+∂H(θ, v)
+∂θ
+
+=2B2
+L
+
+∂F (θ)
+∂θ
+
+2
++ 2G2
+L + 2λ C ¯G(ρ + C)
+ρ2 + 2(λ − B2
+Lλ2)
+Qθ · vθ ·
+h ∂Qθ
+∂θ · vθ + ∂vθ
+∂θ · Qθ
+i
+2
++ 4B2
+Lλ
+
+∂L(θ)
+∂θ
+ ·
+Qθ · vθ ·
+h ∂Qθ
+∂θ · vθ + ∂vθ
+∂θ · Qθ
+i
+≤2B2
+L
+
+∂F (θ)
+∂θ
+
+2
++ 2G2
+L + (4λ − 2B2
+Lλ2) C ¯G(ρ + C)
+ρ2 + 4B2
+Lλ ·
+s
+C ¯G2(ρ + C)
+ρ2 ,
+where the first inequality is due to(a + b)2 ≤ 2a2 + 2b2, and the second inequality is due to the (GL, BL)-bounded gradient
+dissimilarity condition of L(θ) and H(θ, v), the third inequality is due to −∥a∥ · ∥b∥ ≤ ⟨ a, b⟩, the last inequality is due to
+the assumption that ∥ ∂L(θ)
+∂θ ∥2, ∥ ∂Qθ
+∂θ ∥2, ∥ ∂vθ
+∂θ ∥2 are bounded by ¯G.
+Therefore, F (θ) satisfies (GF , BF )-bounded gradient dissimilarity, where BF = 2 B2
+L and GF = 2 G2
+L + (4λ −
+2B2
+Lλ2) C ¯G(ρ+C)
+ρ2 + 4B2
+Lλ ·
+q
+C ¯G2(ρ+C)
+ρ2 .
+Then, we begin to study the convergence of FedRényi. We first decompose∥∇F (θ)∥2 as follows
+∥∇F (θ)∥2 =∥∇F (θ) − ∇bF (θ) + ∇bF (θ)∥2 ≤ 2∥∇bF (θ)∥2 + 2∥∇bF (θ) − ∇F (θ)∥2
+=2∥∇bF (θ)∥2 + 2λ2
+
+∂bH(θ,bv∗)
+∂θ − ∂H(θ, v∗)
+∂θ
+
+2
+,
+where the first inequality is due to (a + b)2 ≤ 2a2 + 2b2.
+Define v∗ = arg maxv⊥v1,∥v∥2≤1 L(θ) + λH(θ),bv∗ = arg maxv⊥v1,∥v∥2≤1 L(θ) + λbH(θ). Then we upper bound the
+2823
+
+=== PAGE 21 ===
+last term as follows.
+
+∂bH(θ,bv∗)
+∂θ − ∂H(θ, v∗)
+∂θ
+
+2
+= 4
+
+bQθ(bv∗(bv∗)⊤) · ∂bQθ
+∂θ − Qθ(v∗(v∗)⊤) · ∂Qθ
+∂θ
+
+2
+=
+
+bQθ · (bv∗(bv∗)⊤ − v∗(v∗)⊤) · ∂bQθ
+∂θ + bQθ · (v∗(v∗)⊤) · ( ∂bQθ
+∂θ − ∂Q
+∂θ ) + (bQθ − Qθ) · (v∗(v∗)⊤) · ∂Qθ
+∂θ
+
+2
+≤2∥bQθ∥2 · ∥bv∗(bv∗)⊤ − v∗(v∗)⊤∥2 ·
+
+∂bQθ
+∂θ
+
+2
++ 4∥bQθ∥2 · ∥v∗(v∗)⊤∥2 ·
+
+∂bQθ
+∂θ − ∂Q
+∂θ
+
+2
++ 4∥bQθ − Qθ∥2 · ∥v∗(v∗)⊤∥2 ·
+
+∂Qθ
+∂θ
+
+2
+≤2 C
+ρ · ∥bv∗(bv∗)⊤ − v∗(v∗)⊤∥2 · ¯G + 4C
+ρ ·
+
+∂bQθ
+∂θ − ∂Q
+∂θ
+
+2
++ 4∥bQθ − Qθ∥2 · ¯G
+≤O
+ 
+1
+n +
+
+∂bQθ
+∂θ − ∂Qθ
+∂θ
+
+2!
+,
+where the inequality is due to (a + b)2 ≤ 2a2 + 2b2, and the second inequality is due to ∥ ∂Qθ
+∂θ ∥2 ≤ ¯G, ∥ ∂ bQθ
+∂θ ∥2 ≤ ¯G, ∥v∥ ≤
+1, ∥bv∗ − v∗∥ ≤ O(
+q
+1
+n), ∥bQθ − Qθ∥ ≤ O(
+q
+1
+n), and Lemma 4.
+As a result, we have
+∥∇F (θ)∥2 ≤ 2∥∇bF (θ)∥2 + O
+ 
+1
+n +
+
+∂bQθ
+∂θ − ∂Qθ
+∂θ
+
+2!
+.
+Finally, the convergence result is the immediate from Theorem I in Karimireddy et al. [2020].
+B.2 PROOF FOR SECTION 4.3.2
+In this subsection, we prove Proposition 2 and Theorem 2 in Section 4.3.2.
+B.2.1 Proof of Proposition 2
+Proposition 4. (Proposition 2 restated, approximation error of each straggler in asynchronous FedRényi) Define
+maxk,k′∈[K] ∥θe
+k,0 − θe
+k′,0∥ = εe
+0. Suppose that Assumption 1 and 2 hold. Then, for each communication round e, the
+approximation errors of model and local statistics on each stragglersek are upper bounded:
+∥eθe
+ek,M − θe
+ek,M ∥ ≤ εe
+0,
+|eje
+ek,M (c, p) − ¯je
+ek,M (c, p)| ≤ Lεe
+0 + ζ,
+|eue
+ek,M (c) − ¯ue
+ek,M (c)| ≤ Lεe
+0 + ζ. (23)
+Proof. (of Proposition 2)
+Before proving Proposition 2, we show the following technical lemma:
+Lemma 6. (Non-expansiveness of SGD under β-co-coercive condition)
+∥SGD(x) − SGD(y)∥ ≤ ∥ x − y∥.
+2824
+
+=== PAGE 22 ===
+Now we begin to prove Proposition 2.
+We first bound the model distance between θe
+k,M and θe
+k′,M on arbitrary two different clients k, k′ ∈ [K], k ̸= k′ by
+following inequality:
+∥θe
+k,M − θe
+k′,M ∥ = ∥θe
+k,M −1 − η∇F (θe
+k,M −1) − θe
+k′,M −1 + η∇F (θe
+k′,M −1)∥ ≤ ∥ θe
+k,M −1 − θe
+k′,M −1∥ ≤ εe
+M −1 ≤ εe
+0,
+(24)
+where the first inequality is due to Assumption 1 and Lemma 6, the second inequality is due to the definition of εe
+t , the last
+inequality is due to Lemma 6.
+Then, we begin to bound the approximation error between θe
+ek,M andeθe
+ek,M :
+∥eθe
+ek,M − θe
+ek,M ∥
+=∥
+PK− eKe+1
+k′=1 W k,k′
+θ θe
+k′,M
+PK− eKe+1
+k′=1 W k,k′
+θ
+− θe
+k,M ∥
+≤
+PK− eKe+1
+k′=1 W k,k′
+θ ∥θe
+k′,M − θe
+k,M ∥
+PK− eKe+1
+k′=1 W k,k′
+θ
+≤
+PK− eKe+1
+k′=1 W k,k′
+θ
+PK− eKe+1
+k′=1 W k,k′
+θ
+εe
+0
+=εe
+0,
+where the first inequality is due to the triangle inequality, and the second inequality is due to inequality 24.
+Next, we bound the approximation error between of local statistics eje
+ek,M (c, p) andeue
+ek,M (c). Recall that ¯ue
+ek,M (c) and
+¯je
+ek,M (c, p) are the empirical probability and empirical conditional probability of bP[fθ(Xk, Sk) = c], we could study the
+approximation error throughbP[fθe+1
+k,0
+(Xk, Sk) = c]:
+
+Pk′∈Robζ(ek)
+k′=1 W k,k′
+bP
+
+fθe+1
+k′ ,0
+(X ′
+k, S′
+k) = c
+
+Pk′∈Robζ(ek)
+k′=1 W k,k′
+−bP
+
+fθe+1
+k,0
+(Xk, Sk) = c
+
+≤
+Pk′∈Robζ(ek)
+k′=1 W k,k′
+bP
+
+fθe+1
+k′ ,0
+(X ′
+k, S′
+k) = c
+
+−bP
+
+fθe+1
+k,0
+(Xk, Sk) = c
+
+Pk′∈Robζ(ek)
+k′=1 W k,k′
+=
+Pk′∈Robζ(ek)
+k′=1 W k,k′
+bP
+
+fθe+1
+k′,0
+(X ′
+k, S′
+k) = c
+
+−bP
+
+fθe+1
+k,0
+(X ′
+k, S′
+k) = c
+
++bP
+
+fθe+1
+k,0
+(X ′
+k, S′
+k) = c
+
+−bP
+
+fθe+1
+k,0
+(Xk, Sk) = c
+
+Pk′∈Robζ(ek)
+k′=1 W k,k′
+≤
+Pk′∈Robζ(ek)
+k′=1 W k,k′
+bP
+
+fθe+1
+k′,0
+(X ′
+k, S′
+k) = c
+
+−bP
+
+fθe+1
+k,0
+(X ′
+k, S′
+k) = c
+
+Pk′∈Robζ(ek)
+k′=1 W k,k′
++
+Pk′∈Robζ(ek)
+k′=1 W k,k′
+bP
+
+fθe+1
+k,0
+(X ′
+k, S′
+k) = c
+
+−bP
+
+fθe+1
+k,0
+(Xk, Sk) = c
+
+Pk′∈Robζ(ek)
+k′=1 W k,k′
+≤L ·
+Pk′∈Robζ(ek)
+k′=1 W k,k′
+θe+1
+k′,0 − θe+1
+k,0
+
+Pk′∈Robζ(ek)
+k′=1 W k,k′
++
+Pk′∈Robζ(ek)
+k′=1 W k,k′
+ζ
+Pk′∈Robζ(ek)
+k′=1 W k,k′
+≤L · εe
+0 + ζ,
+Where the first and second inequality is due to triangle inequality, and the third inequality is due to Assumption 2 and
+definition of robust neighbor set Robζ(ek) that Robζ(ek) = {k′ : ∥ω¯uk′(c) − ¯uek(c)∥ ≤ ζ, k ′ ∈ [K], ∀c and ∀ω ∈ (0, 1)}.
+2825
+
+=== PAGE 23 ===
+Combining the above inequality and definition of je
+ek,M (c, p) and ue
+ek,M (c), we can bound the approximation error between
+eje
+ek,M (c, p) and je
+ek,M (c, p),eue
+ek,M (c) and ue
+ek,M (c), respectively:
+|eje
+ek,M (c, p) − ¯je
+ek,M (c, p)| ≤ Lεe
+0 + ζ,
+|eue
+ek,M (c) − ¯ue
+ek,M (c)| ≤ Lεe
+0 + ζ.
+B.2.2 Proof of Lemma 6
+Proof. (of Lemma 6)
+∥SGD(x) − SGD(y)∥2 =∥(x − ηg(x)) − (y − ηg(y))∥2
+=∥x − y∥2 + η2∥g(x) − g(y)∥2 − 2η(x − y)⊤(g(x) − g(y))
+≤∥x − y∥2 + η2∥g(x) − g(y)∥2 − 2ηβ∥g(x) − g(y)∥2
+=∥x − y∥2 + η(η − 2β)∥g(x) − g(y)∥2
+≤∥x − y∥2,
+where the first inequality is due to β-co-coercive condition of g(x), and the last inequality is due to η ≤ 2β.
+B.2.3 Proof of Theorem 2
+Theorem 4. (Theorem 2 restated, estimation error of Rényi regularization for asynchronous FedRényi) Supposejmin ∽
+umin ∽ rmin = O(1) and nmin ∽ n
+K log(K). When γk = nk
+n or 1
+K , for any communication round e, any global model θe+1
+and δ ∈ (0, 1), we have the following inequality holds:
+P
+h
+bH(θe+1,eve+1) − H(θe+1, ve+1) ≤ O
+ 
+1/√n + (Lεe
+0 + ζ)2θe+1
+i
+≥ 1 − δ.
+Proof. (of Theorem 2)
+Recall that the H(θe+1, ve+1) = (ve+1)
+⊤
+Qe+1
+θ
+⊤
+Qe+1
+θ ve+1, where ve+1 is the second largest singular vector of Qe+1
+θ .
+Before proving Theorem 2, we propose the following lemma to bound ∥ve+1 −eve+1∥.
+Lemma 7. Define ξ = min |λ2 − λ3|, |eλ2 −eλ3|, where λ1 ≥ · · · ≥ λp andeλ1 ≥ · · · ≥eλp are singular values of matrix Q
+and eQ. Assume ξ is at the constant order. Suppose that ∥Q − eQ∥ ≤ ϵQ and ˆj(c, p) ∽ ˆu(c) ∽ ˆr(p) = Ω
+  1√n
+
+, the following
+inequality holds:
+∥v −ev∥ ≤
+√
+2 ϵQ
+ξ .
+First, we study the approximation error between Qθ and eQθ.
+Given fixed global model θe+1 for arbitrary communication round e + 1, For all participating client k ∈ [K]\I e+1,
+θe+1
+k,0 = θe+1 =PK− eKe+1
+k=1 γkθe
+k,M +P eKe+1
+ek=1 γek
+eθe
+ek,M . For any stragglerek ∈ I e+1, θe+1
+ek,0 = θe
+ek,M . Thus, ϵe+1
+0 ≤ ϵe
+M , where
+ϵe
+M is bounded by Proposition 2.
+Next, according to Lemma 3, the approximation error between each entry of matrix Qe+1
+θ and eQe+1
+θ is bounded by O(ϵe+1
+0 ),
+We define ˜ε ∈ RC×P as an approximation error matrix and ˜ε = Qe+1
+θ − eQe+1
+θ , where each entry ˜εc,p = Lεe
+0 + ζ is the
+same.
+Now we start to prove Theorem 2.
+2826
+
+=== PAGE 24 ===
+bH(θe+1,eve+1) − H(θe+1, ve+1)
+=bH(θe+1,eve+1) − bH(θe+1, ve+1) + bH(θe+1, ve+1) − H(θe+1, ve+1)
+=(eve+1)
+⊤
+(eQe+1
+θ )
+⊤eQe+1
+θ eve+1 − (ve+1)
+⊤
+( ˆQe+1
+θ )
+⊤ ˆQe+1
+θ ve+1 + bH(θe+1, ve+1) − H(θe+1, ve+1)
+≤(eve+1)
+⊤
+( ˆQe+1
+θ + ˜ε)⊤( ˆQe+1
+θ + ˜ε)
+eve+1 − (ve+1)
+⊤
+( ˆQe+1
+θ )
+⊤ ˆQe+1
+θ ve+1 + bH(θe+1, ve+1) − H(θe+1, ve+1)
+≤(eve+1)
+⊤
+( ˆQe+1
+θ )
+⊤ ˆQe+1
+θ + 2∥˜ε∥ · ∥ ˆQe+1
+θ ∥ + ∥˜ε∥2eve+1 − (ve+1)
+⊤
+( ˆQe+1
+θ )
+⊤ ˆQe+1
+θ ve+1 + bH(θe+1, ve+1) − H(θe+1, ve+1)
+≤(eve+1)
+⊤
+( ˆQe+1
+θ )
+⊤ ˆQe+1
+θ + 2C2P 2 · (Lεe
+0 + ζ) + (Lεe
+0 + ζ)2eve+1 − (ve+1)
+⊤
+( ˆQe+1
+θ )
+⊤ ˆQe+1
+θ ve+1 + bH(θe+1, ve+1) − H(θe+1, ve+1)
+=(eve+1)
+⊤
+( ˆQe+1
+θ )
+⊤ ˆQe+1
+θ eve+1 + (eve+1)
+⊤
+2C2P 2 · (Lεe
+0 + ζ) + (Lεe
+0 + ζ)2eve+1 − (ve+1)
+⊤
+( ˆQe+1
+θ )
+⊤ ˆQe+1
+θ ve+1
++ bH(θe+1, ve+1) − H(θe+1, ve+1)
+≤(eve+1)
+⊤
+( ˆQe+1
+θ )
+⊤ ˆQe+1
+θ eve+1 − (ve+1)
+⊤
+( ˆQe+1
+θ )
+⊤ ˆQe+1
+θ ve+1 +
+
+2C2P 2 · (Lεe
+0 + ζ) + (Lεe
+0 + ζ)2
++ bH(θe+1, ve+1) − H(θe+1, ve+1)
+=(eve+1)
+⊤
+( ˆQe+1
+θ )
+⊤ ˆQe+1
+θ eve+1 − (ve+1)
+⊤
+( ˆQe+1
+θ )
+⊤ ˆQe+1
+θ eve+1 + (ve+1)
+⊤
+( ˆQe+1
+θ )
+⊤ ˆQe+1
+θ eve+1 − (ve+1)
+⊤
+( ˆQe+1
+θ )
+⊤ ˆQe+1
+θ ve+1
++
+
+2C2P 2 · (Lεe
+0 + ζ) + (Lεe
+0 + ζ)2
++ bH(θe+1, ve+1) − H(θe+1, ve+1)
+=((eve+1)
+⊤
+− (ve+1)
+⊤
+)( ˆQe+1
+θ )
+⊤ ˆQe+1
+θ eve+1 + (ve+1)
+⊤
+( ˆQe+1
+θ )
+⊤ ˆQe+1
+θ (eve+1 − ve+1)
++
+
+2C2P 2 · (Lεe
+0 + ζ) + (Lεe
+0 + ζ)2
++ bH(θe+1, ve+1) − H(θe+1, ve+1)
+≤∥(eve+1)
+⊤
+− (ve+1)
+⊤
+∥ · ∥( ˆQe+1
+θ )
+⊤ ˆQe+1
+θ ∥ · ∥eve+1∥ + ∥(ve+1)
+⊤
+∥ · ∥( ˆQe+1
+θ )
+⊤ ˆQe+1
+θ ∥ · ∥eve+1 − ve+1∥
++
+
+2C2P 2 · (Lεe
+0 + ζ) + (Lεe
+0 + ζ)2
++ bH(θe+1, ve+1) − H(θe+1, ve+1)
+=∥(eve+1)
+⊤
+− (ve+1)
+⊤
+∥ · ∥( ˆQe+1
+θ )
+⊤ ˆQe+1
+θ ∥ ·
+
+∥eve+1∥ + ∥(ve+1)
+⊤
+∥
+
++
+
+2C2P 2 · (Lεe
+0 + ζ) + (Lεe
+0 + ζ)2
++ bH(θe+1, ve+1) − H(θe+1, ve+1)
+≤2∥(eve+1)
+⊤
+− (ve+1)
+⊤
+∥ · ∥( ˆQe+1
+θ )
+⊤ ˆQe+1
+θ ∥ +
+
+2C2P 2 · (Lεe
+0 + ζ) + (Lεe
+0 + ζ)2
++ bH(θe+1, ve+1) − H(θe+1, ve+1)
+≤2
+√
+2 Lεe
+0 + ζ
+ξ · ∥ ˆQe+1
+θ ∥2 +
+
+2C2P 2 · (Lεe
+0 + ζ) + (Lεe
+0 + ζ)2
++ bH(θe+1, ve+1) − H(θe+1, ve+1)
+≤2
+√
+2 Lεe
+0 + ζ
+ξ · ( C
+ρ ) +
+
+2C2P 2 · (Lεe
+0 + ζ) + (Lεe
+0 + ζ)2
++ bH(θe+1, v) − H(θe+1, ve+1)
+=2C2P 2 · (Lεe
+0 + ζ)2 + (2C2P 2 + 2
+√
+2 C
+ρξ ) · (Lεe
+0 + ζ) + bH(θe+1, ve+1) − H(θe+1, ve+1),
+where the second and third inequality is due to Cauchy–Schwarz inequality, the sixth inequality is due to ∥v∥ ≤ 1 as v is
+the singular vector of matrix, the seventh inequality is due to Lemma 7, the last inequality is due to Lemma 4.
+Then, combining the above inequality with Theorem 1, we have that:
+P
+"
+bH(θe+1,eve+1) − H(θe+1, ve+1) ≤ O
+r
+1
+n + (Lεe
+0 + ζ)2
+θe+1
+#
+≥ 1 − δ. (25)
+B.2.4 Proof of Lemma 7
+Proof. (of Lemma 7)
+Define α = Θ(v,ev) as the angle between vector v andev. Then, according to Davis–Kahan theorem Yu et al. [2015], the
+following inequality hold:
+sin(α) ≤ ∥Q − eQ∥
+ξ .
+2827
+
+=== PAGE 25 ===
+Then we begin to bound ∥v −ev∥:
+∥v −ev∥
+=
+q
+∥v∥2 + ∥ev∥2 − 2v⊤ev
+=
+q
+2
+ 
+1 − cos(α)
+
+=
+r
+2
+ 
+1 −
+q
+1 − sin2(α)
+
+≤
+vuut2
+ 
+1 −
+s
+1 − ∥Q − eQ∥2
+ξ2
+
+≤
+vuut2
+ 
+1 −
+s
+1 −
+ϵ2
+Q
+ξ2
+
+≤
+s
+2 − 2
+ 
+1 −
+ϵ2
+Q
+ξ2
+
+=
+√
+2 ϵQ
+ξ ,
+where the first inequality is due to the Davis–Kahan theorem, the third inequality is due to√1 − x ≥ 1 − x when 0 ≤ x ≤ 1
+and 0 ≤
+ϵ2
+Q
+ξ2 ≤ 1.
+2828
+
+=== PAGE 26 ===
+C SUPPLEMENTARY NUMERICAL EXPERIMENTS
+C.1 EXPERIMENTAL DETAILS
+Dataset. To have an impartial experiment result, we conduct the test-bed in four widely used benchmark datasets, ADULT,
+COMPAS, DRUG, and DUTCH, following the setups of Chu et al. [2021], Du et al. [2020] and Donini et al. [2020].
+Specifically, the ADULT dataset Kohavi [1996] contains45, 222 instances, where the training and test part are two separated
+files consisting of 32K and 14K samples, respectively, and the training data is partitioned into 50 clients. The binary class
+label of each instance indicates whether a person’s annual income exceeds50K dollars. Following the settings of Hardt
+et al. [2016], we take gender as the sensitive attribute. The COMPAS Larson et al. and the DRUG Fehrman et al. [2017]
+dataset contain 5, 278 and 1, 885 data instances, respectively. Following the design of Chu et al. [2021], we uniformly
+sample 4, 800 and 1, 600 instances as the training data from COMPAS and DRUG, respectively, and then use the remaining
+part as the test dataset. The training data in the experiments is divided into 20 clients for the COMPAS dataset and 10
+clients for the DRUG dataset. In COMPAS, the binary class label indicates whether the person is a recidivist or not, while
+in DRUG, it manifests whether the person abuses a volatile substance or not. Following Chu et al. [2021], we use the
+(‘African-American’, ‘Caucasian’) as the sensitive attribute in COMPAS and (‘white’,‘non-white’) in DRUG. The DUTCH
+dataset collects personal information of the inhabitants in the Netherlands and the task is to classify the individual into
+high-income or low-income, with gender as the protected attribute. It contains 60, 419 data instances. We also sample 80%
+data to construct the training set and use the remaining part as the test dataset.
+Hyperparameters. In this paper, several combinations of hyperparameters are adopted, including the regularization
+parameter λ ∈ ({0.1, 0.5, 1, 5, 1000}), temperature parameter ρ is 0.1, training rounds T and local updates iteration M
+∈ ({(100, 10), (100, 4), (100, 2), (500, 50), (1000, 4)}), and proportion of straggler α ∈ ({0, 0.3, 0.5}). Most experimental
+settings of baselines follow the configurations proposed by the original authors. The structure of the logistics regression
+model follows Baharlouei et al. [2020]. We fix the batch size as64. We tune the optimization step size η in {5e-3, 2e-3, 1e-3,
+5e-2, 2e-2, 1e-2, 0.5, 0.2, 0.1, 5, 2, 1}, and pick the optimal setting for each dataset by observing the average of top-20 HM
+values of the model trained by FedAvg. Then we set η for every experiment in our work on ADULT, COMPAS, DRUG, and
+DUTCH as {5, 0.1, 0.02, 0.1}. The client number of FL system on ADULT, COMPAS, DRUG, and DUTCH are as {50, 20,
+10, 30} following Du et al. [2020], Chu et al. [2021], Ezzeldin et al. [2023]. The fraction of activate client in FL system is
+set as 0.4. The hyperparameter of regularization term µ in FedProx Li et al. [2020b] and Scaffold Karimireddy et al. [2020]
+are tuned in {0.01, 0.1, 0.5, 1, 2}, and we set µ = 1 according to the optimal result. The hyperparameter used in FedFair
+Chu et al. [2021], LCO Chu et al. [2021], FL-FairBatch Roh et al. [2021], FedFB Zeng et al. [2021], and FairFed Ezzeldin
+et al. [2023] are following the setting proposed by the authors. Additionally, we follow the common stopping criteria in FL
+that each algorithm stops training when the number of training rounds T is reached.
+Baselines. In this paper, we adopt the following state-of-the-art algorithms as our baselines, which are designed for the
+problems of heterogeneity and group fairness:
+•Local: To observe the effect of server aggregation, we also adopt the local training setting, where each client updates
+their model by only local training.
+•FedAvg McMahan et al. [2017]: the original FL algorithm which does not consider fairness for different demographic
+groups.
+•FedProx Li et al. [2020b]: the representative FL algorithm for tackling the statistical and system heterogeneous problem
+by sloving an optimization object with regularization constraint. We compare the performance of FedProx to verify the
+effectiveness of FedRényi in tackling heterogeneous problem.
+•Scaffold Karimireddy et al. [2020]: the FL algorithm for statistical heterogeneous problem by constructing regularization
+term with aggregated variate. We set Scaffold in our comparative group to observe the impact of statistical heterogeneity.
+•FedFair Chu et al. [2021]: the cross-silo federated framework for group fairness by leveraging estimated statistics from
+participants. We use FedFair as a baseline to compare accuracy, fairness, and their trade-off.
+•LCO Chu et al. [2021]: the local variant of FedFair for the locally optimization problem. We take LCO as our baseline
+for the same reason as FedFair.
+•FedAvg+FairBatch (FL-FairBatch) Roh et al. [2021]: the enhancement of FedAvg that each client adopts the FairBatch
+to debias its local training data. To verify the effectiveness of FedRényi in tackling group fairness problem, we take this
+2829
+
+=== PAGE 27 ===
+algorithm as our baseline.
+•FedFB Zeng et al. [2021]: an in-processing debiasing approach in FL based on FairBatch, where the server computes
+new weights for each client based on their statistics. Improving group fairness by leveraging the aggregated local statistics
+from each client, we compare this method with FedRényi.
+•FairFedEzzeldin et al. [2023]: the federated framework which adjust the aggregated weights of clients according to the
+deviations between local and global fairness metrics or accuracy. We take this method as our baseline to compare the
+effect of different aggregation methods to solve the group fairness problem and optimize the accuracy of model.
+Communication Simulation. To simulate the network latency in practice, we use the beta distribution to simulate
+the communication ability of each client. Specifically, we use the beta distribution generation package in Scipy. The
+hyperparameters of beta distribution (a and b) are set as 0.3 and 1, respectively. The results of the probability density function
+(PDF) are used to compute the latency. For PDF values that tend to be positively infinite, we trim them to 16 based on
+network programming in practice, where the network wait time has a specific upper limit. Each client has a communication
+delay of at least 1 second.
+C.2 ADDITIONAL EXPERIMENTS FOR RESULTS IN MAIN PAPER
+Effect of Regularization parameter λ. Next, we analyze how the regularization parameter λ affects the performance of
+the models trained by FedRényi in another three datasets. As the result shown in Figs. 6, for each dataset with two data
+distribution settings, we train and fine-tune the base models with λ in {0.1, 0.5, 1, 5, 1000}.
+Among these empirical results, the fairness performance of FedRényi shows a growing trend in most cases, while the
+accuracy performance shows a tendency to decrease or unchanged on the contrary, especially on DUTCH, as shown in
+Figure 2 of the main text. Recalling Equation 6, the regularization term becomes more significant to the FL training object,
+when λ becomes larger, which might compromise accuracy. Therefore, these results further demonstrate that FedRényi
+can construct a trade-off between accuracy and fairness. However, the FedRényi performance does not always exhibit the
+expected trade-off. As shown in Figure 6, the accuracy of models does not always drop with λ decreasing. We speculate that
+the sensitive features in these datasets are easy to identify. Therefore, increasing λ might over-optimize the empirical target,
+making the ACC unstable. Overall, the defects do not obscure the fact that the FedRényi algorithm can balance the accuracy
+and fairness through different λ values by adjusting the value of λ and obtain the optimal results, according to different
+preferences.
+0.1 0.5 1 5 1000
+0.80 0.85 0.90 0.95
+Fairness
+0.580.600.620.640.660.68
+FedRényi
+(nk/n) ACC
+0.1 0.5 1 5 1000
+ (ADULT, LR, Heterogeneous Data)
+0.75 0.80 0.85 0.90 0.95
+                            Fairness
+0.62 0.63 0.64 0.65 0.66 0.67
+                            Accuracy
+FedRényi
+(1/K) ACC
+0.1 0.5 1 5 1000
+0.65 0.70 0.75 0.80
+F air ness
+0.80 0.82 0.84 0.86 0.88
+F edR ényi
+( n
+k
+/ n ) ACC
+0.1 0.5 1 5 1000
+λ (COMP AS, LR, Heterogeneous Data)
+0.72 0.74 0.76 0.78 0.80 0.82 0.84
+                            F a rness
+0.80 0.81 0.82 0.83 0.84
+                            Accurac(
+F edR én( 
+(1/ K ) ACC
+0.1 0.5 1 5 1000
+0.92 0.93 0.94 0.95 0.96
+Fairness
+0.66 0.67 0.68 0.69
+FedRényi
+(nk/n) ACC
+0.1 0.5 1 5 1000
+ (DRUG, LR, Heterogeneous Data)
+0.92 0.93 0.94 0.95
+                            Fairness
+0.66 0.67 0.68 0.69 0.70
+                            Accuracy
+FedRényi
+(1/K) ACC
+0.1 0.5 1 5 1000
+0.84 0.85 0.86 0.87 0.88 0.89
+F air ness
+0.84 0.86 0.88 0.90
+F edR ényi
+( n
+k
+/ n )  ACC
+0.1 0.5 1 5 1000
+λ (DUTCH, LR, Heteroge eous Data)
+0.77 0.79 0.81 0.83
+                            F air ess
+0.83 0.84 0.85 0.86 0.87
+                            Accuracy
+FedRé yi
+(1/ K ) ACC
+0.1 0.5 1 5 1000
+0.880.900.920.940.960.98
+Fairness
+0.66 0.68 0.70 0.72 0.74
+FedRényi
+(nk/n) ACC
+0.1 0.5 1 5 1000
+ (ADULT, LR, Isomorphism Data)
+0.7 0.8 0.9
+                            Fairness
+0.58 0.60 0.62 0.64 0.66 0.68
+                            Accuracy
+FedRényi
+(1/K) ACC
+0.1 0.5 1 5 1000
+0.790 0.795 0.800 0.805 0.810
+Fairness
+0.655 0.660 0.665 0.670 0.675
+FedRényi
+(nk/n) ACC
+0.1 0.5 1 5 1000
+ (COMPAS, LR, Isomorphism Data)
+0.79 0.80 0.81 0.82
+                            Fairness
+0.650 0.655 0.660 0.665 0.670
+                            Accuracy
+FedRényi
+(1/K) ACC
+0.1 0.5 1 5 1000
+0.930 0.935 0.940
+Fairness
+0.66 0.67 0.68
+FedRényi
+(nk/n) ACC
+0.1 0.5 1 5 1000
+ (DRUG, LR, Isomorphism Data)
+0.91 0.92 0.93 0.94 0.95
+                            Fairness
+0.66 0.67 0.68 0.69 0.70
+                            Accuracy
+FedRényi
+(1/K) ACC
+0.1 0.5 1 5 1000
+0.75 0.80 0.85 0.90 0.95
+Fairness
+0.80 0.82 0.84 0.86
+FedRényi
+(nk/n) ACC
+0.1 0.5 1 5 1000
+ (DUTCH, LR, Isomorphism Data)
+0.70 0.75 0.80 0.85
+                            Fairness
+0.81 0.82 0.83 0.84
+                            Accuracy
+FedRényi
+(1/K) ACC
+Figure 6: The effect of parameter λ in four dataset.
+2830
+
+=== PAGE 28 ===
+The Trade-off between Accuracy and Fairness. A comparison of testing ACC and FR about each algorithm is shown in
+Figure 7. Only the top-5 results (with better HM value) of each algorithm will be plotted, and some methods show less than
+5 points are caused by overlap. Intuitively, red and yellow scatters (FedRényi results) get closer to the optimal corner than
+others in most cases. Besides, these scatters approximately form several curves, exhibiting the trade-off ability between ACC
+and FR. In particular, most baselines behave closely in these experiments, except the FairFed (blue). Some blue triangles
+tend to be towards the upper left, which means FairFed may over-emphasize fairness, thus penalizing the accuracy.
+0.3 0.4 0.5 0.6 0.7 0.8
+T esting Accuracy
+0.70
+0.75
+0.80
+0.85
+0.90
+0.95
+1.00
+T esting Fairness
+ADULT LR (Dir = 0.5)
+Separate
+FedAvg
+FedFair
+FairBatch
+FairFed
+FedRényi (1/K)
+FedRényi (nk/n)
+0.50 0.55 0.60 0.65 0.70 0.75 0.80
+T esting Accuracy
+0.6
+0.7
+0.8
+0.9
+1.0
+T esting Fairness
+COMPAS LR (Dir = 0.5)
+Separate
+FedAvg
+FedFair
+FairBatch
+FairFed
+FedRényi (1/K)
+FedRényi (nk/n)
+0.40 0.45 0.50 0.55 0.60 0.65 0.70
+T esting Accuracy
+0.65
+0.70
+0.75
+0.80
+0.85
+0.90
+0.95
+1.00
+T esting Fairness
+DRUG LR (Dir = 0.5)
+Separate
+FedAvg
+FedFair
+FairBatch
+FairFed
+FedRényi (1/K)
+FedRényi (nk/n)
+0.50 0.55 0.60 0.65 0.70 0.75 0.80 0.85
+T esting Accuracy
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+T esting Fairness
+DUTCH LR (Dir = 0.5)
+Separate
+FedAvg
+FedFair
+FairBatch
+FairFed
+FedRényi (1/K)
+FedRényi (nk/n)
+0.4 0.5 0.6 0.7 0.8
+T esting Accuracy
+0.6
+0.7
+0.8
+0.9
+1.0
+T esting Fairness
+ADULT LR (Dir = + )
+Separate
+FedAvg
+FedFair
+FairBatch
+FairFed
+FedRényi (1/K)
+FedRényi (nk/n)
+0.50 0.55 0.60 0.65 0.70
+T esting Accuracy
+0.70
+0.75
+0.80
+0.85
+0.90
+0.95
+T esting Fairness
+COMPAS LR (Dir = + )
+Separate
+FedAvg
+FedFair
+FairBatch
+FairFed
+FedRényi (1/K)
+FedRényi (nk/n)
+0.58 0.60 0.62 0.64 0.66 0.68 0.70
+T esting Accuracy
+0.65
+0.70
+0.75
+0.80
+0.85
+0.90
+0.95
+1.00
+T esting Fairness
+DRUG LR (Dir = + )
+Separate
+FedAvg
+FedFair
+FairBatch
+FairFed
+FedRényi (1/K)
+FedRényi (nk/n)
+0.50 0.55 0.60 0.65 0.70 0.75 0.80 0.85
+T esting Accuracy
+0.5
+0.6
+0.7
+0.8
+0.9
+T esting Fairness
+DUTCH LR (Dir = + )
+Separate
+FedAvg
+FedFair
+FairBatch
+FairFed
+FedRényi (1/K)
+FedRényi (nk/n)
+Figure 7: The ACC and FR trade-off in four datasets with two data distribution settings (Dir=0.5, Dir=+∞). Some methods
+show less than 5 points are caused by overlap. FedRényi performs closer to the optimal (the top right) and approximately
+forms trade-off curves from the bottom right (most accurate and least fair) to the top left (least accurate and most fair).
+Convergence. To further verify the convergence properties of FedRényi in the heterogeneous and the uniform (isomor-
+phism) data distribution setting, we visually record the training loss at different communication rounds in Figure 8 and 9.
+Also, the testing ACC, testing FR of FedRényi at different communication rounds on four datasets are presented. Intuitively,
+the training losses of FedRényi decrease with increasing communication and become stable at around 25 rounds in ADULT
+and DUTCH, and at around 50 rounds in COMPAS and DRUG.
+2831
+
+=== PAGE 29 ===
+0 50 100 150 200 250
+0.7
+0.8
+0.9
+1.0
+ADULT
+FedRényi (1/K)
+0 50 100 150 200 250
+1.46
+1.48
+1.50
+1.52
+COMPAS
+FedRényi (1/K)
+0 50 100 150 200 250
+0.75
+0.80
+0.85
+DRUG
+FedRényi (1/K)
+0 50 100 150 200 250
+0.8
+0.9
+1.0
+1.1
+DUTCH
+FedRényi (1/K)
+0 50 100 150 200 250
+1.8
+1.9
+2.0
+2.1
+ADULT
+FedRényi (nk/n)
+0 50 100 150 200 250
+0.68
+0.70
+0.72
+0.74
+0.76
+COMPAS
+FedRényi (nk/n)
+0 50 100 150 200 250
+0.80
+0.82
+0.84
+0.86
+0.88
+DRUG
+FedRényi (nk/n)
+0 50 100 150 200 250
+0.8
+0.9
+1.0
+DUTCH
+FedRényi (nk/n)
+Heterogeneous Data (Dir = 0.5)
+Training Loss
+Communication Round
+0 50 100 150 200 250
+0.8
+0.9
+1.0
+1.1
+ADULT
+FedRényi (1/K)
+0 50 100 150 200 250
+1.74
+1.76
+1.78
+1.80
+1.82
+COMPAS
+FedRényi (1/K)
+0 50 100 150 200 250
+1.34
+1.36
+1.38
+1.40
+1.42
+DRUG
+FedRényi (1/K)
+0 50 100 150 200 250
+1.0
+1.1
+1.2
+1.3
+DUTCH
+FedRényi (1/K)
+0 50 100 150 200 250
+0.8
+0.9
+1.0
+1.1
+ADULT
+FedRényi (nk/n)
+0 50 100 150 200 250
+0.88
+0.90
+0.92
+0.94
+0.96
+0.98
+COMPAS
+FedRényi (nk/n)
+0 50 100 150 200 250
+0.82
+0.84
+0.86
+0.88
+0.90
+0.92
+DRUG
+FedRényi (nk/n)
+0 50 100 150 200 250
+1.0
+1.1
+1.2
+DUTCH
+FedRényi (nk/n)
+Isomorphism Data (Dir = + )
+Training Loss
+Communication Round
+Figure 8: The illustration about the training loss of FedRényi under the uniform (Isomorphism) data settings on four datasets,
+which verify that FedRényi converges to a stable range after a certain number of rounds
+2832
+
+=== PAGE 30 ===
+0 100 200
+0.78
+0.80
+0.82
+0.84
+ADULT
+0 100 200
+0.675
+0.680
+0.685
+0.690
+0.695
+0.700
+COMPAS
+0 100 200
+0.61
+0.62
+0.63
+0.64
+DRUG
+0 100 200
+0.72
+0.74
+0.76
+0.78
+0.80
+0.82
+0.84
+DUTCH
+Heterogeneous Data (Dir = 0.5)
+T esting ACC
+Communication Round
+FedRényi (1/K) FedRényi (nk/n)
+0 100 200
+0.850
+0.875
+0.900
+0.925
+0.950
+0.975
+1.000
+ADULT
+0 100 200
+0.80
+0.82
+0.84
+0.86
+0.88
+0.90
+COMPAS
+0 100 200
+0.80
+0.85
+0.90
+0.95
+1.00
+DRUG
+0 100 200
+0.55
+0.60
+0.65
+0.70
+0.75
+0.80
+0.85
+0.90
+DUTCH
+Heterogeneous Data (Dir = 0.5)
+T esting FR
+Communication Round
+FedRényi (1/K) FedRényi (nk/n)
+0 100 200
+0.78
+0.80
+0.82
+0.84
+ADULT
+0 100 200
+0.6750
+0.6775
+0.6800
+0.6825
+0.6850
+0.6875
+0.6900
+COMPAS
+0 100 200
+0.620
+0.625
+0.630
+0.635
+0.640
+0.645
+DRUG
+0 100 200
+0.74
+0.76
+0.78
+0.80
+0.82
+0.84
+DUTCH
+Isomorphism Data (Dir = + )
+T esting ACC
+Communication Round
+FedRényi (1/K) FedRényi (nk/n)
+0 100 200
+0.850
+0.875
+0.900
+0.925
+0.950
+0.975
+1.000
+ADULT
+0 100 200
+0.84
+0.86
+0.88
+0.90
+COMPAS
+0 100 200
+0.78
+0.80
+0.82
+0.84
+DRUG
+0 100 200
+0.55
+0.60
+0.65
+0.70
+0.75
+0.80
+0.85
+0.90
+DUTCH
+Isomorphism Data (Dir = + )
+T esting FR
+Communication Round
+FedRényi (1/K) FedRényi (nk/n)
+Figure 9: The illustration about the training ACC, and FR of FedRényi under the uniform (Isomorphism) data settings on
+four datasets, which verify that FedRényi converges to a stable range after a certain number of rounds
+2833
+
+=== PAGE 31 ===
+C.3 ROBUSTNESS EXPERIMENT
+Compared to the general machine learning scenario, one of the implementation challenges of FL is client communication. In
+this paper, we adjust the step T and local updates interval M to investigate the effect of communication frequency. We also
+adjust the client dropping rate to simulate the situation where some clients are lost in the communication round. To verify
+the robustness of FedRényi about the condition change of communication, two groups of additional experiments are set up.
+Robustness of total iteration T and local update iteration M . To evaluate the sensibility of FedRényi to communication
+frequency, we compare the HM of FedRényi with FedAvg and FairFed. It is well known that communication costs are
+especially expensive in FL. Comparing the result in different columns in Table 4, the performance of FedRényi with different
+γk settings improves as the training rounds T or the number of local updates (M) are increased in most case. For example,
+when the number of communication round is increasing with the same training epoch, e.g., (T:100, M:10) to (T:100, M:4) or
+(T:100, M:4) to (T:100, M:2), the accuracy of our proposed method is improved.
+Comparing different results that testing with the same communication frequency, e.g., (T:100, M:10) and (T:500, M:50), the
+overall performances of FedRényi achieve outstanding stability, which proves the robustness to communication costs of
+our algorithm. In conclusion, the results of the supplementary experiment provide evidence of the FedRényi robustness
+specifically for different training epochs and communication rounds.
+Table 4: The HM effect of different federated dropping rates on COMPAS and DRUG with Heterogeneous setting.
+Step T Local Updates M
+T=100, M=10 T=100, M=4 T=100, M=2 T=500, M=50Method
+Dir=0.5/+∞ Dir=0.5/+∞ Dir=0.5/+∞ Dir=0.5/+∞
+COMPAS
+FedA vg 0.72/0.71 0.723/0.713 0.72/0.71 0.713/0.72
+FairFed 0.68/0.71 0.73/0.65 0.64/0.68 0.69/0.63
+λ=1000 0.71/0.715 0.703/0.717 0.72/0.717 0.72/0.715FedRényi
+(1/K) λ=0.1 0.71/0.715 0.717/0.718 0.72/0.722 0.715/0.713
+λ=1000 0.712/0.713 0.718/0.717 0.72/0.71 0.725/0.722FedRényi
+(nk/n) λ=0.1 0.718/0.715 0.722/0.72 0.723/0.72 0.718/0.715
+DUTCH
+FedA vg 0.69/0.7 0.687/0.71 0.683/0.697 0.8/0.797
+FairFed 0.69/0.73 0.51/0.59 0.75/0.69 0.64/0.63
+λ=1000 0.805/0.798 0.768/0.773 0.747/0.737 0.85/0.808FedRényi
+(1/K) λ=0.1 0.805/0.795 0.784/0.767 0.769/0.742 0.809/0.805
+λ=1000 0.805/0.795 0.77/0.772 0.733/0.73 0.807/0.83FedRényi
+(nk/n) λ=0.1 0.812/0.807 0.787/0.768 0.775/0.74 0.853/0.84
+Asynchronous affect. To verify the performance with the asynchronous FedRényi (Option II in Algorithm 1), we build
+experiments and simulate different communication thresholds to control the proportion of straggler α. Generally, as the
+proportion of stragglers ( α) increases, the amount of algorithm available data will decrease significantly, resulting in
+degraded HM. As shown in Table 5 and 6, the asynchronous FedRényi not only performs stable HM but also does fairly
+well in bias control. When the asynchronous scheme is utilized in the training process of FedRényi, there exists a tolerable
+decline in HM (smaller than 0.06). These results demonstrate our method could accelerate the training process against
+stragglers with a small performance decline.
+In addition, in order to explore the trade-off ability of FedRényi between FR and ACC under asynchronous settings, we set
+α as 0.3 and 0.5 respectively and record them in the form of scatter plots, as shown in Figure 10. Also, only the top-5 results
+(with better HM value) of each algorithm will be plotted, and some methods show less than 5 points are caused by overlap.
+As shown in Figure 10, the scatters of FedRényi approximately form several curves, exhibiting the trade-off ability between
+ACC and FR in most cases.
+2834
+
+=== PAGE 32 ===
+Table 5: The HM and the average approximation errors over stragglers with different α. These approximation errors are
+measured by the L2 distance between the approximation values and the corresponding target from stragglers.
+Dir=0.5 λ=1 Drop α: 0% Drop α: 30% Drop α: 50%
+(T, M) = (100, 4) HM/j Error/
+u Error/θ Error
+HM/j Error/
+u Error/θ Error
+HM/j Error/
+u Error/θ Error
+ADULT
+Asynchronous
+FedRényi (nk/n)
+0.88/0/
+0/0
+0.88/0.03/
+0.04/0.01
+0.87/0.03/
+0.04/0.02
+Asynchronous
+FedRényi (1/K)
+0.88/0/
+0/0
+0.88/0.03/
+0.04/0.01
+0.87/0.03/
+0.04/0.02
+Synchronous
+FedRényi (nk/n)
+0.88/0/
+0/0
+0.88/0/
+0/0
+0.88/0/
+0/0
+COMPAS
+Asynchronous
+FedRényi (nk/n)
+0.77/0/
+0/0
+0.73/0.03/
+0.01/0.92
+0.71/0.01/
+0.02/1.41
+Asynchronous
+FedRényi (1/K)
+0.75/0/
+0/0
+0.76/0.04/
+0.01/0.27
+0.78/0.01/
+0.02/0.34
+Synchronous
+FedRényi (nk/n)
+0.76/0/
+0/0
+0.76/0/
+0/0
+0.76/0/
+0/0
+DRUG
+Asynchronous
+FedRényi (nk/n)
+0.74/0/
+0/0
+0.74/0.01/
+0.01/0.25
+0.75/0.08/
+0.03/0.40
+Asynchronous
+FedRényi (1/K)
+0.73/0/
+0/0
+0.72/0.01/
+0.02/0.29
+0.73/0.09/
+0.02/0.37
+Synchronous
+FedRényi (nk/n)
+0.74/0/
+0/0
+0.74/0/
+0/0
+0.74/0/
+0/0
+DUTCH
+Asynchronous
+FedRényi (nk/n)
+0.78/0/
+0/0
+0.77/0.03/
+0.02/2.44
+0.79/0.03/
+0.01/4.04
+Asynchronous
+FedRényi (1/K)
+0.74/0/
+0/0
+0.74/0.03/
+0.02/2.47
+0.78/0.03/
+0.01/4.01
+Synchronous
+FedRényi (nk/n)
+0.78/0/
+0/0
+0.78/0/
+0/0
+0.78/0/
+0/0
+2835
+
+=== PAGE 33 ===
+Table 6: The comparison between FedProx and FedRényi with different straggler proportions in the heterogeneous setting.
+Dir=0.5 (T, M) = (100, 4), λ=1
+Method Drop: 0% Drop: 30% Drop: 50%
+ACC/FR/HM ACC/FR/HM ACC/FR/HM
+ADULT
+FedProx 0.84/0.91/0.87 0.84/0.93/0.88 0.84/0.93/0.88
+Asynchronous
+FedRényi (nk/n) 0.85/0.92/0.88 0.85/0.92/0.88 0.85/0.92/0.88
+Asynchronous
+FedRényi (1/K) 0.85/0.91/0.87 0.85/0.91/0.87 0.85/0.91/0.87
+COMPAS
+FedProx 0.68/0.83/0.75 0.69/0.85/0.76 0.69/0.85/0.76
+Asynchronous
+FedRényi (nk/n) 0.68/0.89/0.77 0.66/0.81/0.73 0.67/0.76/0.71
+Asynchronous
+FedRényi (1/K) 0.70/0.80/0.75 0.69/0.86/0.76 0.68/0.91/0.78
+DRUG
+FedProx 0.63/0.84/0.72 0.63/0.84/0.72 0.62/0.88/0.73
+Asynchronous
+FedRényi (nk/n) 0.66/0.84/0.74 0.65/0.84/0.74 0.67/0.85/0.75
+Asynchronous
+FedRényi (1/K) 0.61/0.93/0.73 0.61/0.89/0.72 0.64/0.85/0.73
+DUTCH
+FedProx 0.81/0.59/0.68 0.81/0.63/0.71 0.81/0.66/0.73
+Asynchronous
+FedRényi (nk/n) 0.82/0.75/0.78 0.82/0.77/0.79 0.82/0.75/0.78
+Asynchronous
+FedRényi (1/K) 0.82/0.67/0.74 0.82/0.67/0.74 0.82/0.74/0.78
+2836
+
+=== PAGE 34 ===
+0.81 0.82 0.83 0.84 0.85 0.86 0.87 0.88
+T esting Accuracy
+0.89
+0.90
+0.91
+0.92
+0.93
+0.94
+T esting Fairness
+ADULT ( = 0.3, Dir = 0.5)
+FedProx
+FedRényi (1/K)
+FedRényi (nk/n)
+0.63 0.64 0.65 0.66 0.67 0.68 0.69 0.70
+T esting Accuracy
+0.80
+0.81
+0.82
+0.83
+0.84
+0.85
+0.86
+0.87
+T esting Fairness
+COMPAS ( = 0.3, Dir = 0.5)
+FedProx
+FedRényi (1/K)
+FedRényi (nk/n)
+0.60 0.61 0.62 0.63 0.64 0.65 0.66 0.67 0.68
+T esting Accuracy
+0.80
+0.82
+0.84
+0.86
+0.88
+0.90
+T esting Fairness
+DRUG ( = 0.3, Dir = 0.5)
+FedProx
+FedRényi (1/K)
+FedRényi (nk/n)
+0.76 0.78 0.80 0.82 0.84
+T esting Accuracy
+0.60
+0.65
+0.70
+0.75
+0.80
+0.85
+T esting Fairness
+DUTCH ( = 0.3, Dir = 0.5)
+FedProx
+FedRényi (1/K)
+FedRényi (nk/n)
+0.81 0.82 0.83 0.84 0.85 0.86 0.87 0.88
+T esting Accuracy
+0.89
+0.90
+0.91
+0.92
+0.93
+0.94
+T esting Fairness
+ADULT ( = 0.5, Dir = 0.5)
+FedProx
+FedRényi (1/K)
+FedRényi (nk/n)
+0.65 0.66 0.67 0.68 0.69 0.70
+T esting Accuracy
+0.76
+0.78
+0.80
+0.82
+0.84
+0.86
+0.88
+0.90
+T esting Fairness
+COMPAS ( = 0.5, Dir = 0.5)
+FedProx
+FedRényi (1/K)
+FedRényi (nk/n)
+0.58 0.60 0.62 0.64 0.66 0.68
+T esting Accuracy
+0.82
+0.84
+0.86
+0.88
+0.90
+0.92
+T esting Fairness
+DRUG ( = 0.5, Dir = 0.5)
+FedProx
+FedRényi (1/K)
+FedRényi (nk/n)
+0.800 0.805 0.810 0.815 0.820 0.825 0.830 0.835 0.840
+T esting Accuracy
+0.60
+0.65
+0.70
+0.75
+0.80
+T esting Fairness
+DUTCH ( = 0.5 Dir = 0.5)
+FedProx
+FedRényi (1/K)
+FedRényi (nk/n)
+0.81 0.82 0.83 0.84 0.85 0.86 0.87
+T esting Accuracy
+0.88
+0.89
+0.90
+0.91
+0.92
+0.93
+0.94
+0.95
+T esting Fairness
+ADULT ( = 0.3, Dir = + )
+FedProx
+FedRényi (1/K)
+FedRényi (nk/n)
+0.66 0.67 0.68 0.69 0.70 0.71
+T esting Accuracy
+0.82
+0.83
+0.84
+0.85
+0.86
+0.87
+0.88
+0.89
+0.90
+T esting Fairness
+COMPAS ( = 0.3, Dir = + )
+FedProx
+FedRényi (1/K)
+FedRényi (nk/n)
+0.610 0.615 0.620 0.625 0.630 0.635 0.640 0.645 0.650
+T esting Accuracy
+0.79
+0.80
+0.81
+0.82
+0.83
+0.84
+0.85
+0.86
+0.87
+T esting Fairness
+DRUG ( = 0.3, Dir = + )
+FedProx
+FedRényi (1/K)
+FedRényi (nk/n)
+0.76 0.77 0.78 0.79 0.80 0.81 0.82 0.83
+T esting Accuracy
+0.64
+0.66
+0.68
+0.70
+0.72
+0.74
+0.76
+T esting Fairness
+DUTCH ( = 0.3, Dir = + )
+FedProx
+FedRényi (1/K)
+FedRényi (nk/n)
+0.82 0.83 0.84 0.85 0.86 0.87
+T esting Accuracy
+0.87
+0.88
+0.89
+0.90
+0.91
+0.92
+0.93
+0.94
+T esting Fairness
+ADULT ( = 0.5, Dir = + )
+FedProx
+FedRényi (1/K)
+FedRényi (nk/n)
+0.65 0.66 0.67 0.68 0.69 0.70
+T esting Accuracy
+0.82
+0.84
+0.86
+0.88
+0.90
+0.92
+0.94
+T esting Fairness
+COMPAS ( = 0.5, Dir = + )
+FedProx
+FedRényi (1/K)
+FedRényi (nk/n)
+0.6300 0.6325 0.6350 0.6375 0.6400 0.6425 0.6450 0.6475 0.6500
+T esting Accuracy
+0.80
+0.81
+0.82
+0.83
+0.84
+0.85
+0.86
+T esting Fairness
+DRUG ( = 0.5, Dir = + )
+FedProx
+FedRényi (1/K)
+FedRényi (nk/n)
+0.78 0.79 0.80 0.81 0.82 0.83 0.84
+T esting Accuracy
+0.600
+0.625
+0.650
+0.675
+0.700
+0.725
+0.750
+T esting Fairness
+DUTCH ( = 0.5, Dir = + )
+FedProx
+FedRényi (1/K)
+FedRényi (nk/n)
+Figure 10: The ACC and FR trade-off in four datasets with two data distribution settings ( Dir=0.5, Dir=+∞) and two
+proportion of straggler settings (α = 0.3, α = 0.5). Some methods show less than 5 points are caused by overlap.
+2837
+
+=== PAGE 35 ===
+Robustness of client dropping. In practice, a fraction of offline clients may drop out randomly during the communication
+stage (upload and download) in the training process. This proportion of dropped clients is known as the drop rate. In this
+paper, the setting of the proportion of stragglers α is [0, 0.3, 0.5], where 0 means no client is dropped. The effect of the
+proportion of stragglers is evaluated in four datasets as shown in Table 7. With different dropping rates, the ACC/FR/HM of
+FedRényi under two configurations both stay stable with tolerable fluctuation in most cases (0.05), which demonstrates the
+robustness of FedRényi to different dropping rates and fits for the FL practical implementation.
+Table 7: The effect of different proportion of federated stragglers on four datasets with different heterogeneous settings
+T:100 M:10 ACC FR HM
+Dropα 0%/30%/50% 0%/30%/50% 0%/30%/50% 0%/30%/50% 0%/30%/50% 0%/30%/50%
+Method Dir = 0.5 Dir = +∞ Dir = 0.5 Dir = +∞ Dir = 0.5 Dir = +∞
+ADULT
+FedA vg 0.58/0.41/0.62 0.6/0.55/0.46 0.92/0.72/0.97 0.93/0.87/0.88 0.71/0.53/0.76 0.73/0.68/0.61
+FedRényi (1/K) 0.62/0.51/0.5 0.61/0.52/0.51 0.94/0.86/0.91 0.94/0.84/0.85 0.75/0.63/0.64 0.74/0.62/0.63
+FedRényi (nk/n) 0.61/0.47/0.47 0.6/0.54/0.54 0.93/0.8/0.9 0.93/0.84/0.85 0.74/0.59/0.61 0.73/0.65/0.66
+COMPAS
+FedA vg 0.66/0.67/0.66 0.67/0.66/0.66 0.8/0.75/0.82 0.76/0.79/0.76 0.72/0.71/0.73 0.71/0.72/0.7
+FedRényi (1/K) 0.67/0.66/0.67 0.67/0.67/0.66 0.82/0.78/0.76 0.83/0.77/0.78 0.74/0.71/0.71 0.74/0.72/0.71
+FedRényi (nk/n) 0.67/0.66/0.67 0.67/0.67/0.66 0.83/0.79/0.76 0.84/0.77/0.77 0.74/0.72/0.71 0.75/0.71/0.71
+DRUG
+FedA vg 0.64/0.68/0.69 0.66/0.62/0.63 0.77/0.89/0.96 0.71/0.65/0.63 0.7/0.77/0.8 0.68/0.63/0.63
+FedRényi (1/K) 0.68/0.67/0.66 0.68/0.66/0.66 0.94/0.9/0.9 0.92/0.88/0.9 0.79/0.76/0.77 0.78/0.76/0.76
+FedRényi (nk/n) 0.68/0.66/0.67 0.68/0.66/0.67 0.94/0.89/0.9 0.93/0.89/0.92 0.79/0.76/0.77 0.79/0.76/0.77
+DUTCH
+FedA vg 0.81/0.8/0.81 0.8/0.8/0.8 0.62/0.58/0.62 0.62/0.62/0.63 0.7/0.67/0.7 0.7/0.7/0.7
+FedRényi (1/K) 0.83/0.83/0.83 0.83/0.83/0.83 0.84/0.77/0.79 0.84/0.77/0.75 0.84/0.8/0.81 0.84/0.8/0.79
+FedRényi (nk/n) 0.83/0.83/0.83 0.83/0.83/0.83 0.86/0.82/0.76 0.84/0.76/0.75 0.84/0.82/0.79 0.84/0.79/0.78
+2838
+
+=== PAGE 36 ===
+C.4 SCALABILITY EXPERIMENT
+To evaluate the scalability to large-scale dataset of our method, we conduct the image classification on CelebA dataset Liu
+et al. [2015] following the setting in FairGrad Ban and Ji [2024]. The CelebA contains 202599 samples with162770 for
+training, 19867 for validation, and 19962 for testing. Each image sample in the CelebA contains 40 binary attribute labels,
+and we focus on 2 attribution among 40 for binary classification. We take the 21-th attribute (gender) as the sensitive attribute,
+take the third attribute (attractive) as the classification label for each image. The training data of CelebA is partitioned into
+20 client. We compare the performance of our method and FedAvg with20% activate client as shown in Table 8.
+Table 8: Performances of methods with the heterogeneous setting on CelebA. The Accuracy, fairness, and harmonic mean
+are denoted by AC, FR, and HM, respectively.
+CelebA
+Dir=0.5, λ=1 Drop α: 0% Batch Size=256 9-layers CNN
+(T, M) = (100, 10) ACC FR HM
+FedA vg 0.702±0.005 1.0±0.0 0.825±0.003
+FedRényi (nk/n) 0.715±0.001 1.0±0.0 0.834±0.001
+FedRényi (1/K) 0.716±0.001 1.0±0.0 0.834±0.001
+C.5 RESULT SUMMARY
+To evaluate the performance of each algorithm on four different datasets, we construct several sets of experiments with
+different levels of heterogeneity. To avoid the unfair comparison caused by random factors in practice and hyperparameter
+settings, we record the mean and standard deviation of the top-20 performances (with better HM values) about different
+algorithms.
+As shown in experimental results (see Table 9-12), FedRényi outperforms other baseline methods and shows a satisfactory
+level of ACC, FR, and HM in most cases, under different heterogeneity scenarios. These results support the effectiveness of
+our proposed method.
+2839
+
+=== PAGE 37 ===
+Table 9: Performances of methods with the heterogeneous setting on ADULT. The Accuracy, fairness, and harmonic mean
+are denoted by AC, FR, and HM, respectively. A smaller Dir indicates a more heterogeneous distribution across clients.
+Dir=+∞ represents the uniform data distribution setting.
+ADULT Method Dir=0.5 Dir=1 Dir=8 Dir=+∞
+Local 0.56±0.12 0.67±0.06 0.67±0.06 0.63±0.12
+FedA vg 0.62±0.12 0.59±0.12 0.59±0.12 0.6±0.10
+FedProx 0.61±0.12 0.63±0.07 0.63±0.07 0.58±0.12
+Scaffold 0.56±0.20 0.62±0.06 0.56±0.20 0.56±0.14
+FedFair 0.51±0.07 0.58±0.02 0.52±0.08 0.5±0.13
+LCO 0.52±0.01 0.59±0.04 0.52±0.07 0.5±0.13
+FL-FairBatch 0.64±0.00 0.64±0.00 0.64±0.00 0.64±0.00
+FedFB 0.65±0.00 0.65±0.01 0.64±0.00 0.64±0.00
+FairFed 0.62±0.17 0.64±0.21 0.64±0.21 0.63±0.17
+FedRényi (1/K) 0.67±0.03 0.69±0.04 0.67±0.03 0.68±0.03
+ACC
+FedRényi (nk/n) 0.65±0.04 0.65±0.03 0.65±0.04 0.68±0.03
+Local 0.87±0.07 0.93±0.02 0.93±0.02 0.97±0.01
+FedA vg 0.87±0.1 0.89±0.12 0.89±0.12 0.91±0.07
+FedProx 0.88±0.11 0.84±0.06 0.84±0.06 0.76±0.14
+Scaffold 0.88±0.13 0.85±0.05 0.84±0.06 0.79±0.11
+FedFair 0.84±0.17 0.86±0.08 0.85±0.11 0.85±0.16
+LCO 0.86±0.07 0.89±0.11 0.87±0.04 0.84±0.11
+FL-FairBatch 0.91±0.02 0.93±0.02 0.93±0.02 0.92±0.02
+FedFB 0.92±0.03 0.93±0.02 0.93±0.02 0.92±0.02
+FairFed 0.77±0.16 0.95±0.07 0.95±0.07 0.92±0.08
+FedRényi (1/K) 0.94±0.04 0.94±0.05 0.95±0.05 0.92±0.04
+FR
+FedRényi (nk/n) 0.94±0.04 0.95±0.03 0.92±0.05 0.93±0.05
+Local 0.68±0.09 0.78±0.03 0.78±0.03 0.76±0.02
+FedA vg 0.72±0.11 0.71±0.12 0.71±0.12 0.72±0.08
+FedProx 0.72±0.11 0.72±0.06 0.72±0.06 0.66±0.13
+Scaffold 0.68±0.16 0.72±0.05 0.67±0.09 0.66±0.12
+FedFair 0.63±0.10 0.69±0.03 0.65±0.09 0.63±0.14
+LCO 0.65±0.02 0.71±0.06 0.65±0.05 0.63±0.12
+FL-FairBatch 0.75±0.00 0.76±0.00 0.76±0.00 0.75±0.00
+FedFB 0.76±0.00 0.77±0.01 0.76±0.00 0.75±0.00
+FairFed 0.69±0.16 0.76±0.11 0.76±0.11 0.75±0.11
+FedRényi (1/K) 0.78±0.03 0.8±0.04 0.79±0.04 0.78±0.03
+HM
+FedRényi (nk/n) 0.77±0.04 0.77±0.03 0.76±0.04 0.79±0.04
+2840
+
+=== PAGE 38 ===
+Table 10: Performances of methods with the heterogeneous setting on COMPAS. The Accuracy, fairness, and harmonic
+mean are denoted by AC, FR, and HM, respectively. A smaller Dir indicates a more heterogeneous distribution across clients.
+Dir=+∞ represents the uniform data distribution setting.
+COMPAS Method Dir=0.5 Dir=1 Dir=8 Dir=+∞
+Local 0.62±0.01 0.64±0.01 0.65±0.01 0.65±0.01
+FedA vg 0.66±0.01 0.67±0.01 0.66±0.01 0.66±0.01
+FedProx 0.66±0.01 0.67±0.01 0.67±0.01 0.67±0.00
+Scaffold 0.47±0.12 0.48±0.13 0.45±0.14 0.50±0.13
+FedFair 0.62±0.03 0.57±0.04 0.62±0.03 0.59±0.06
+LCO 0.59±0.03 0.58±0.06 0.56±0.07 0.56±0.06
+FL-FairBatch 0.67±0.01 0.67±0.00 0.67±0.00 0.66±0.00
+FedFB 0.67±0.01 0.67±0.01 0.67±0.0 0.66±0.01
+FairFed 0.62±0.03 0.57±0.04 0.62±0.03 0.59±0.06
+FedRényi (1/K) 0.68±0.01 0.66±0.02 0.66±0.01 0.66±0.01
+ACC
+FedRényi (nk/n) 0.68±0.01 0.65±0.01 0.66±0.01 0.66±0.01
+Local 0.81±0.01 0.80±0.04 0.79±0.03 0.80±0.00
+FedA vg 0.79±0.03 0.77±0.03 0.78±0.02 0.77±0.02
+FedProx 0.79±0.03 0.79±0.03 0.78±0.03 0.77±0.02
+Scaffold 0.82±0.10 0.74±0.10 0.71±0.05 0.81±0.06
+FedFair 0.79±0.10 0.91±0.05 0.70±0.11 0.79±0.07
+LCO 0.85±0.09 0.83±0.06 0.87±0.04 0.90±0.05
+FL-FairBatch 0.78±0.02 0.79±0.01 0.79±0.01 0.78±0.01
+FedFB 0.75±0.03 0.74±0.01 0.76±0.01 0.74±0.01
+FairFed 0.79±0.10 0.91±0.05 0.70±0.11 0.79±0.07
+FedRényi (1/K) 0.81±0.02 0.81±0.03 0.77±0.05 0.82±0.02
+FR
+FedRényi (nk/n) 0.82±0.01 0.81±0.01 0.80±0.06 0.81±0.02
+Local 0.70±0.01 0.71±0.02 0.71±0.01 0.72±0.00
+FedA vg 0.72±0.01 0.72±0.01 0.72±0.01 0.71±0.01
+FedProx 0.72±0.01 0.73±0.01 0.72±0.01 0.72±0.00
+Scaffold 0.60±0.11 0.58±0.11 0.55±0.07 0.62±0.08
+FedFair 0.69±0.05 0.70±0.04 0.66±0.05 0.68±0.06
+LCO 0.70±0.04 0.68±0.06 0.68±0.05 0.69±0.05
+FL-FairBatch 0.72±0.01 0.73±0.00 0.73±0.00 0.72±0.00
+FedFB 0.71±0.01 0.70±0.01 0.71±0.00 0.7±0.01
+FairFed 0.69±0.05 0.70±0.04 0.66±0.05 0.68±0.06
+FedRényi (1/K) 0.72±0.03 0.73±0.02 0.71±0.02 0.73±0.01
+HM
+FedRényi (nk/n) 0.73±0.02 0.71±0.01 0.72±0.02 0.73±0.01
+2841
+
+=== PAGE 39 ===
+Table 11: Performances of methods with the heterogeneous setting on DRUG. The Accuracy, fairness, and harmonic mean
+are denoted by AC, FR, and HM, respectively. A smaller Dir indicates a more heterogeneous distribution across clients.
+Dir=+∞ represents the uniform data distribution setting.
+DRUG Method Dir=0.5 Dir=1 Dir=8 Dir=+∞
+Local 0.65±0.01 0.66±0.01 0.66±0.02 0.67±0.01
+FedA vg 0.67±0.02 0.67±0.02 0.67±0.02 0.64±0.02
+FedProx 0.67±0.01 0.65±0.02 0.67±0.01 0.66±0.01
+Scaffold 0.66±0.01 0.55±0.13 0.62±0.04 0.54±0.13
+FedFair 0.67±0.02 0.67±0.02 0.67±0.02 0.64±0.02
+LCO 0.49±0.05 0.60±0.06 0.49±0.11 0.65±0.01
+FL-FairBatch 0.66±0.00 0.66±0.00 0.66±0.00 0.66±0.00
+FedFB 0.66±0.00 0.66±0.00 0.66±0.00 0.66±0.00
+FairFed 0.50±0.08 0.63±0.04 0.56±0.12 0.62±0.04
+FedRényi (1/K) 0.68±0.01 0.68±0.01 0.69±0.01 0.68±0.01
+ACC
+FedRényi (nk/n) 0.69±0.01 0.69±0.01 0.69±0.01 0.69±0.01
+Local 0.88±0.03 0.89±0.03 0.87±0.05 0.89±0.01
+FedA vg 0.86±0.02 0.85±0.01 0.87±0.01 0.85±0.03
+FedProx 0.86±0.02 0.85±0.01 0.87±0.01 0.85±0.03
+Scaffold 0.82±0.06 0.84±0.01 0.87±0.06 0.83±0.05
+FedFair 0.86±0.02 0.85±0.01 0.87±0.01 0.85±0.03
+LCO 0.93±0.03 0.85±0.07 0.83±0.11 0.86±0.04
+FL-FairBatch 0.84±0.00 0.84±0.00 0.84±0.01 0.84±0.00
+FedFB 0.85±0.00 0.84±0.00 0.84±0.00 0.84±0.00
+FairFed 0.77±0.10 0.84±0.11 0.81±0.06 0.90±0.06
+FedRényi (1/K) 0.96±0.03 0.95±0.03 0.96±0.02 0.96±0.02
+FR
+FedRényi (nk/n) 0.96±0.02 0.96±0.02 0.96±0.02 0.96±0.02
+Local 0.75±0.01 0.76±0.01 0.75±0.03 0.76±0.01
+FedA vg 0.75±0.02 0.75±0.01 0.76±0.01 0.73±0.02
+FedProx 0.75±0.01 0.74±0.01 0.76±0.01 0.74±0.01
+Scaffold 0.73±0.02 0.66±0.02 0.72±0.05 0.65±0.07
+FedFair 0.75±0.02 0.75±0.01 0.76±0.01 0.73±0.02
+LCO 0.64±0.04 0.70±0.06 0.62±0.11 0.74±0.02
+FL-FairBatch 0.74±0.00 0.74±0.00 0.74±0.00 0.74±0.00
+FedFB 0.74±0.00 0.74±0.00 0.74±0.00 0.74±0.00
+FairFed 0.61±0.09 0.72±0.06 0.66±0.08 0.73±0.05
+FedRényi (1/K) 0.80±0.01 0.79±0.01 0.80±0.01 0.80±0.01
+HM
+FedRényi (nk/n) 0.80±0.01 0.80±0.01 0.80±0.01 0.80±0.01
+2842
+
+=== PAGE 40 ===
+Table 12: Performances of methods with the heterogeneous setting on DUTCH. The Accuracy, fairness, and harmonic mean
+are denoted by AC, FR, and HM, respectively. A smaller Dir indicates a more heterogeneous distribution across clients.
+Dir=+∞ represents the uniform data distribution setting.
+DUTCH Method Dir=0.5 Dir=1 Dir=8 Dir=+∞
+Local 0.79±0.01 0.80±0.01 0.81±0.01 0.80±0.01
+FedA vg 0.81±0.01 0.81±0.01 0.81±0.01 0.81±0.01
+FedProx 0.80±0.01 0.81±0.01 0.81±0.01 0.81±0.01
+Scaffold 0.60±0.12 0.57±0.13 0.55±0.13 0.57±0.13
+FedFair 0.61±0.16 0.62±0.08 0.61±0.15 0.61±0.13
+LCO 0.62±0.03 0.67±0.03 0.61±0.05 0.61±0.13
+FL-FairBatch 0.81±0.01 0.81±0.01 0.81±0.01 0.81±0.01
+FedFB 0.69±0.05 0.74±0.05 0.74±0.04 0.60±0.10
+FairFed 0.62±0.13 0.70±0.07 0.75±0.06 0.61±0.12
+FedRényi (1/K) 0.83±0.01 0.83±0.00 0.83±0.00 0.83±0.00
+ACC
+FedRényi (nk/n) 0.83±0.01 0.83±0.01 0.83±0.01 0.83±0.01
+Local 0.67±0.04 0.67±0.05 0.65±0.06 0.65±0.07
+FedA vg 0.64±0.08 0.65±0.08 0.66±0.07 0.66±0.06
+FedProx 0.63±0.09 0.67±0.06 0.65±0.07 0.63±0.08
+Scaffold 0.84±0.18 0.87±0.13 0.87±0.16 0.84±0.16
+FedFair 0.65±0.35 0.71±0.12 0.62±0.19 0.72±0.19
+LCO 0.65±0.35 0.73±0.01 0.64±0.01 0.72±0.11
+FL-FairBatch 0.66±0.06 0.66±0.06 0.66±0.07 0.64±0.07
+FedFB 0.92±0.04 0.72±0.21 0.69±0.20 0.87±0.23
+FairFed 0.78±0.25 0.80±0.18 0.75±0.11 0.80±0.20
+FedRényi (1/K) 0.94±0.04 0.93±0.03 0.94±0.03 0.94±0.04
+FR
+FedRényi (nk/n) 0.96±0.04 0.95±0.04 0.94±0.04 0.96±0.04
+Local 0.73±0.02 0.73±0.02 0.72±0.02 0.72±0.02
+FedA vg 0.72±0.02 0.72±0.02 0.73±0.02 0.73±0.02
+FedProx 0.70±0.02 0.73±0.02 0.72±0.02 0.71±0.02
+Scaffold 0.70±0.14 0.69±0.13 0.67±0.14 0.68±0.14
+FedFair 0.63±0.22 0.66±0.10 0.61±0.17 0.66±0.15
+LCO 0.63±0.06 0.70±0.01 0.62±0.02 0.66±0.12
+FL-FairBatch 0.73±0.02 0.73±0.02 0.73±0.02 0.72±0.02
+FedFB 0.79±0.04 0.73±0.08 0.71±0.07 0.71±0.14
+FairFed 0.69±0.17 0.75±0.10 0.75±0.08 0.69±0.15
+FedRényi (1/K) 0.88±0.02 0.88±0.00 0.88±0.00 0.88±0.00
+HM
+FedRényi (nk/n) 0.89±0.02 0.89±0.02 0.88±0.02 0.89±0.02
+2843

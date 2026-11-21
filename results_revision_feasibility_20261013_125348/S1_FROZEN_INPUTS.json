@@ -1,0 +1,28 @@
+{
+  "method": "reachability_stop/conditional-bundle-RE-interval-v3",
+  "spec_sha256": "0f368697ec23ed6b42f91b604eb83e3df15fd9bad87e8b2e3cf9a5d46e15498e",
+  "script_sha256": "3efd6304fbd3bfca631e92a3c4e8262caae033627805feb2492749e5a96009a4",
+  "late_register": [
+    28.9,
+    28.95
+  ],
+  "early_register": [
+    22.2,
+    22.25
+  ],
+  "branch_product": [
+    [
+      "mu",
+      1,
+      "failure"
+    ],
+    [
+      0.3,
+      0.5,
+      "pending"
+    ]
+  ],
+  "source_mu": "FAILED_tick0201.state.mu",
+  "constants": "unchanged",
+  "no_search": true
+}

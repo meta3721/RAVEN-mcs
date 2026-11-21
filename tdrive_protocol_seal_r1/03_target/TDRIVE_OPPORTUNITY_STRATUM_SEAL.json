@@ -1,0 +1,10 @@
+{
+  "definition": "s(i) = spatial_id :: block{0-3} :: {weekday|weekend}",
+  "h_definition": "H1-H4 time-of-day only",
+  "h_equals_s": false,
+  "n_strata": 46082,
+  "performance_tuned": false,
+  "s_definition": "spatial cell × 4 TOD blocks × weekday/weekend",
+  "source": "processed opportunity_stratum field (provenance-linked)",
+  "status": "FROZEN"
+}

@@ -1,0 +1,43 @@
+{
+  "fixtures": {
+    "hold_complement_deadline_expiry": {
+      "first_reason": "HOLD_NO_COMPLEMENT",
+      "complement_reason": "COMPLEMENTARY_RELEASE",
+      "complement_distances": {
+        "H": 0.5,
+        "A": 0.5,
+        "P": 0.0
+      },
+      "deadline_reason": "DEADLINE_RELEASE",
+      "expired_state": "expired"
+    },
+    "replacement_endpoint_reentry": {
+      "superseded": "a|0|0",
+      "committed": [
+        "a|1|0"
+      ],
+      "endpoint_state": "endpoint_unconsumed"
+    },
+    "solver_empty_pool_design": {
+      "distance": 6.938893903907228e-16,
+      "alpha_max": 0.2500000000000004,
+      "ess_square": 0.25000000000000067,
+      "empty_solver_calls": 0,
+      "design_t": 1,
+      "gate_t": 0,
+      "configured_zeta": [
+        2.0,
+        0.5
+      ]
+    },
+    "save_restore": {
+      "version": 1,
+      "optimizer_steps": 1,
+      "ledger_rows": 2,
+      "releases": 1
+    },
+    "status": "PASS"
+  },
+  "fragment_mismatches": [],
+  "status": "PASS"
+}

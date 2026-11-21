@@ -1,0 +1,33 @@
+{
+  "feasibility": {
+    "CERT-L16": {
+      "P95_D_TV_cert": 0.019468598886071577,
+      "P95_abs_head_dev": 0.0353683499636937,
+      "P95_abs_tail_dev": 0.03196821274314412,
+      "cell_count": 16,
+      "feasible": true,
+      "minimum_expected_arrivals_per_positive_cell": 539.3986838709691,
+      "zero_arrival_positive_cert_cell_rate": 0.0
+    },
+    "CERT-L32": {
+      "P95_D_TV_cert": 0.023864704458330898,
+      "P95_abs_head_dev": 0.0353683499636937,
+      "P95_abs_tail_dev": 0.03196821274314412,
+      "cell_count": 32,
+      "feasible": true,
+      "minimum_expected_arrivals_per_positive_cell": 269.6993419354844,
+      "zero_arrival_positive_cert_cell_rate": 0.0
+    },
+    "CERT-L8": {
+      "P95_D_TV_cert": 0.016524493719164857,
+      "P95_abs_head_dev": 0.0353683499636937,
+      "P95_abs_tail_dev": 0.03196821274314412,
+      "cell_count": 8,
+      "feasible": true,
+      "minimum_expected_arrivals_per_positive_cell": 1120.2895741935424,
+      "zero_arrival_positive_cert_cell_rate": 0.0
+    }
+  },
+  "selected_level": "CERT-L32",
+  "status": "PASS"
+}

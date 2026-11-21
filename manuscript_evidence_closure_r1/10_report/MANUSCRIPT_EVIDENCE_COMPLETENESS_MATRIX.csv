@@ -1,0 +1,11 @@
+row,importance_to_core,existing_evidence,evidence_strength,missing,requires_new_experiment,paper_action
+Problem motivation,high,E2 Traffic D_aligned; C1–C2,strong,none for core claim,False,Fig. 1 + RQ1
+Risk-semantic distinction,high,E2 RMSE_mu vs RMSE_rho / D_aligned,strong,none,False,Results VII-B
+Method correctness,high,E0/E1 sanity + sealed runners,adequate,none requiring new science,False,cite E1 appendix
+Main structural effectiveness,high,E3 SensorScope/U-Air Holm on Delta_group/Delta_c_s,strong,Traffic E3 excluded by design,False,Table II + Fig. 2
+Prediction effectiveness,medium-high,"E3 RMSE_mu/Tail competitive, selective Holm",adequate_selective,universal RMSE (forbidden to claim),False,Table II wording
+Mechanism explanation,high,E4 240-cell ablation + labels,strong_with_tradeoffs,none,False,Table III + Fig. 3
+Theory support,medium,method specification + P2 theory vs C10 experimental boundary,adequate,experimental exact P2 optimality (not reconstructable),False,"wording, not new runs"
+External mobility validity,medium_for_TMC_presentation,protocol seal only; no formal T-Drive block,absent_as_performance_evidence,formal real-mobility performance,False,limitation + reviewer reserve (T-Drive C)
+System cost,low,optional runtime diagnostics if present,not_core,full cost study,False,do not trigger new experiments
+Robustness,low-medium,paired seeds; E4 one-factor family,limited_by_design,broad robustness sweeps,False,limitation; no new family

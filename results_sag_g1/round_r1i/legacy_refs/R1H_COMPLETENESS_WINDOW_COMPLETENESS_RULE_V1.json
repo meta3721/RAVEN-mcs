@@ -1,0 +1,22 @@
+{
+  "edge_n": 3,
+  "expected_span_seconds": 3600.0,
+  "forbidden_fields": [
+    "C_oracle_safe",
+    "oracle_pass",
+    "C_cov",
+    "Gate",
+    "residual"
+  ],
+  "full_boundary": "native 1h hour complete, but missing previous or next hour inside the same split",
+  "full_interior": "same-split previous and next hours exist and are ±1 hour contiguous; slot is a native 1h hour",
+  "native_slot": "processed hourly UTC hour (time_index)",
+  "partial_if_time_coverage_ratio_below": 0.5,
+  "partial_left_right": "observed timestamp span inside the hour is < 50% of 3600s, or split cuts records inside the hour",
+  "rule_id": "WINDOW_COMPLETENESS_RULE_V1",
+  "sparse_within_hour_not_partial": "If the processed matrix is one record per spatial_id per hour, low entity count is not PARTIAL.",
+  "uses_c_cov": false,
+  "uses_gate": false,
+  "uses_oracle": false,
+  "uses_predictor": false
+}

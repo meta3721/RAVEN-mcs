@@ -1,0 +1,19 @@
+protocol: E2-LEGAL-HORIZON-AND-BALANCED-OPPORTUNITY-CALIBRATION-R1
+source_rule: spatial_region_or_station × time_block × weekday_or_weekend
+region_definition: sensorscope_station
+horizon_windows: 100
+lambda_stratum_min: 1.0e-4
+# Floors drive station-preserving collapse to one mixed stratum per station
+# (~55). Soft group is restored by post-IPF cell-preserving raking.
+min_expected_opportunity_events_100: 30
+min_expected_arrival_events_100: 6
+time_of_day_bins: [block0, block1, block2, block3]
+day_types: [weekday, weekend, mixed_day]
+merge_order:
+  - same_spatial_region_same_day_type_adjacent_time_block
+  - same_spatial_region_same_time_block_merge_weekday_weekend
+cross_day_merged_label: mixed_day
+cross_region_merge_allowed: false
+tie_break: lexicographic_stratum_id
+role_substitution_forbidden: true
+forbidden_stratum_ids: [head, neutral, tail]

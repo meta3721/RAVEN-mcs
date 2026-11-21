@@ -1,0 +1,41 @@
+{
+  "all_pass": true,
+  "checks": [
+    {
+      "check": "no_atomic_key_overlap",
+      "detail": "n_overlap=0",
+      "pass": true
+    },
+    {
+      "check": "no_time_slot_overlap",
+      "detail": "n_overlap=0",
+      "pass": true
+    },
+    {
+      "check": "no_future_in_training",
+      "detail": "train_max=177 val=[178,237] test_min=238",
+      "pass": true
+    },
+    {
+      "check": "scaling_fitted_on_train_only",
+      "detail": "data/interim/tdrive_speed/scaling.json fitted_split=train",
+      "pass": true
+    },
+    {
+      "check": "h_does_not_use_test_outcomes",
+      "detail": "fallback h(i) uses wall-clock hour only",
+      "pass": true
+    },
+    {
+      "check": "q_features_prestate_only",
+      "detail": "U/q from controlled device/network/deadline/staleness; no Y",
+      "pass": true
+    },
+    {
+      "check": "later_model_selection_val_only",
+      "detail": "pre-registered; no T-Drive test tuning in R1",
+      "pass": true
+    }
+  ],
+  "status": "PASS"
+}

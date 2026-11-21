@@ -1,0 +1,13 @@
+pair,condition,n,status,E_dec_A,E_dec_B,r_mean,ci_lo,ci_hi,seeds_B_lt_A,missed_A,missed_B,fa_A,fa_B,base_rate,TP_share_A,TP_share_B,seeds_TP_A,seeds_TP_B,A_max,B_max
+fedavg_rule,C0_frozen,17,ok,0.33675545689974085,0.0873412257984954,-0.3891204222221201,-0.5998723092811424,-0.1783685351630978,9.0,0.05691207300530269,0.08586138858058937,0.2798433838944381,0.0014798372179060295,0.0859538784067085,0.3378766140602583,0.0010760401721663904,8.0,1.0,,
+fedavg_rule,C1_tilt_strong,17,replay_gate_failed,,,,,,,,,,,,,,,,0.0457696336554451,0.0
+fedavg_rule,C2_tilt_extreme,17,replay_gate_failed,,,,,,,,,,,,,,,,0.0837860627723978,0.0
+fedavg_rule,C3_low_capacity,17,replay_gate_failed,,,,,,,,,,,,,,,,0.0003286911872937,0.0003779521005082
+fedavg_rule,C4_block_uniform,17,replay_gate_failed,,,,,,,,,,,,,,,,0.0,0.0032210036988586
+fedavg_rule,C5_combined,17,replay_gate_failed,,,,,,,,,,,,,,,,0.0845311845158784,0.0032231468521766
+oracle_design,C0_frozen,17,ok,0.34208903687261044,0.09100998890122075,-0.36450967825527253,-0.579146367851536,-0.14987298865900914,10.0,0.05722037242569978,0.08586138858058937,0.28486866444691067,0.0051486003206313935,0.0859538784067085,0.33428981348637016,0.0010760401721663904,7.0,1.0,,
+oracle_design,C1_tilt_strong,17,replay_gate_failed,,,,,,,,,,,,,,,,0.0452388971637203,0.0
+oracle_design,C2_tilt_extreme,17,replay_gate_failed,,,,,,,,,,,,,,,,0.0908889994422703,0.0
+oracle_design,C3_low_capacity,17,replay_gate_failed,,,,,,,,,,,,,,,,0.0,0.000408638731326
+oracle_design,C4_block_uniform,17,replay_gate_failed,,,,,,,,,,,,,,,,0.0,0.0032553580936864
+oracle_design,C5_combined,17,replay_gate_failed,,,,,,,,,,,,,,,,0.088539554742381,0.0032181914070585

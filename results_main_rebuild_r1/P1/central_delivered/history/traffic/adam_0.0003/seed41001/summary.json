@@ -1,0 +1,20 @@
+{
+  "dataset": "traffic",
+  "seed": 41001,
+  "model": "history",
+  "optimizer": "adam",
+  "lr": 0.0003,
+  "RMSE_mu": 359.8113062273777,
+  "best_pass": 56,
+  "best_at_100": 359.8113062273777,
+  "improvement_100_to_200": 0.0,
+  "plateau_pass": true,
+  "strongest_baseline": "seasonal_naive_week",
+  "baseline_RMSE": 383.3430056560719,
+  "relative_gain": 0.06138549310015687,
+  "meaningful_validation_pass": true,
+  "elapsed_seconds": 18.5,
+  "samples_processed": 250600,
+  "optimizer_steps": 4000,
+  "run": "P1\\central_delivered\\history\\traffic\\adam_0.0003\\seed41001"
+}

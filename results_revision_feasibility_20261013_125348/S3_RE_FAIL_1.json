@@ -1,0 +1,5 @@
+{
+  "type": "AssertionError",
+  "error": "",
+  "trace": "Traceback (most recent call last):\n  File \"C:\\Cursor\\raven.mcs\\scripts\\validate_re_interval_revision.py\", line 154, in <module>\n    result=checks[label]();put('S3_'+label+'_PASS.json',result);print(json.dumps(result,ensure_ascii=False))\n           ^^^^^^^^^^^^^^^\n  File \"C:\\Cursor\\raven.mcs\\scripts\\validate_re_interval_revision.py\", line 67, in check_re\n    assert restored.to_dict()==r.to_dict()\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError\n"
+}

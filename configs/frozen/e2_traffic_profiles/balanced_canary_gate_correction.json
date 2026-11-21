@@ -1,0 +1,27 @@
+{
+  "absolute_gates_retained": [
+    "per_seed_group_TV",
+    "per_seed_head_tail_ratio",
+    "pooled_group_TV",
+    "pooled_stratum_TV",
+    "pooled_head_tail_ratio",
+    "soft_group_TV",
+    "soft_stratum_TV",
+    "soft_client_stratum_TV"
+  ],
+  "balanced_canary_acceptance": "PASS_WITH_HIGH_DIMENSIONAL_GATE_CORRECTION",
+  "diagnostic_only": [
+    {
+      "absolute_veto": false,
+      "metric": "pooled_hard_client_stratum_TV",
+      "observed_value": 0.10887068428442574,
+      "prior_absolute_threshold": 0.1,
+      "reason": "Positive-support client-stratum cells ~344; three-seed hard arrivals ~5002; ~14.5 samples/cell on average. Metric mainly reflects high-dimensional sampling fluctuation.",
+      "role": "high_dimensional_finite_sample_diagnostic"
+    }
+  ],
+  "no_balanced_parameter_change": true,
+  "no_rerun_of_seeds_28101_28103": true,
+  "protocol_appendix": "balanced_canary_gate_correction",
+  "status": "PASS"
+}

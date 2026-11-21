@@ -1,0 +1,47 @@
+{
+  "M_MC": 2000,
+  "debug_seed": 31999,
+  "eventtrace": {
+    "audit": {
+      "generator_version": "e3-complete-aligned-r3-v1",
+      "n_pairs": 8,
+      "staleness_gt_smax_rate": 0.0,
+      "sum_pi_opp_joint": 1.0000000000000002
+    },
+    "identity": {
+      "events_sha256": "9938e61fe04c82e83e37653733e9ec2ce2b8997d5ece2c60d5576ead69030cf0",
+      "metadata": {
+        "dataset": "fixture",
+        "generator": "e3-complete-aligned-r3-v1",
+        "notes": [
+          "joint pi_opp",
+          "atomic p_obs",
+          "staleness>S_max possible",
+          "MC q"
+        ],
+        "num_clients": 2,
+        "num_windows": 2,
+        "s_max": 5,
+        "seed": 31999
+      },
+      "metadata_sha256": "f60132d7ac2b7be2a5662e32b8a7c8813004e39cfe45d77390604d1999cdda23",
+      "trace_hash": "6dd5ac5dea02fe9cc26e0095721ed6696bcded58d45c7e1543f3311dde114b46"
+    },
+    "status": "READY"
+  },
+  "fixture": {
+    "data_dir": "D:\\Cursor\\raven.mcs\\artifacts\\e3_real_runner_pair_oracle_correctness_closure_r1\\fixture",
+    "n_test_units": 8,
+    "n_train_units": 8,
+    "spatial_to_client": {
+      "n0": "client-000",
+      "n1": "client-001"
+    }
+  },
+  "n_methods_smoked": 11,
+  "no_paper_performance_claim": true,
+  "num_windows": 2,
+  "production_runner": "run_e3_real",
+  "smoke_all_real_path": true,
+  "status": "PASS"
+}

@@ -1,0 +1,79 @@
+{
+  "arms": {
+    "control": "local_hajek",
+    "oracle_upper_bound": "raven_simoracle",
+    "roles_from": "runner.py L498-L502 p2_methods",
+    "treatment": [
+      "inst_cal",
+      "debt_cal"
+    ]
+  },
+  "block": "NSW-Traffic",
+  "bootstrap": {
+    "draws": 10000,
+    "rng": 20261007
+  },
+  "contrast": "D_s = RMSE_mu(local_hajek, s) - RMSE_mu(treatment, s), paired on seed",
+  "decision_rule": "supported only if the bootstrap interval lies entirely favourable AND the mean exceeds its own MDE80 AND the effect is at least 2 % of the control's deployment-weighted error; every ladder cell is reported as measured",
+  "frozen_protocol": {
+    "local_steps": 2,
+    "n_groups": 172,
+    "server_step": "frozen (no override, driver mode 'off')"
+  },
+  "frozen_utc": "2026-10-10T13:56:56.428063+00:00",
+  "phase0": {
+    "caveat": "the sd measured in Phase 0 is a lower bound because those checkpoints were trained under the uniform target",
+    "verdict": "CONTINUE"
+  },
+  "primary_endpoint": "RMSE_mu under the concentrated target weights",
+  "round": "TE2",
+  "scenario": "complete_aligned",
+  "secondary_endpoints": [
+    "WorstGroupRMSE",
+    "Tail_RMSE",
+    "Delta_group",
+    "Delta_c-s"
+  ],
+  "seeds": [
+    30001,
+    30002,
+    30003,
+    30004,
+    30005,
+    30006,
+    30007,
+    30008,
+    30009,
+    30010,
+    30011,
+    30012,
+    30013,
+    30014,
+    30015,
+    30016,
+    30017,
+    30018,
+    30019,
+    30020
+  ],
+  "target_artifact": {
+    "file": "results_traffic_e2/round_v1/TE2_TARGET_ARTIFACT_KAPPA5.json",
+    "inline_sha256": "f34e5b9403036cd60623261338f61299f6c9c4a7f3b2a36ba8dee49c275d9b89",
+    "kappa": 5.0,
+    "priority_region": "region1",
+    "priority_rule": "region holding the largest share of the frozen pre-outcome target mass at kappa=1; ties broken by ascending region id",
+    "region_mass_kappa1": {
+      "region0": 0.23255813953488386,
+      "region1": 0.25581395348837227,
+      "region2": 0.25581395348837227,
+      "region3": 0.25581395348837227
+    },
+    "region_mass_kappa5": {
+      "region0": 0.11494252873563215,
+      "region1": 0.6321839080459773,
+      "region2": 0.12643678160919536,
+      "region3": 0.12643678160919536
+    },
+    "tie_note": "region1/2/3 tie at 0.255814 under kappa=1; the tie-break rule above is part of the pre-registration and was fixed after Phase 0"
+  }
+}

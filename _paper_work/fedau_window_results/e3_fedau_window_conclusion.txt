@@ -1,0 +1,16 @@
+FedAU-Window is a windowed adaptation of FedAU (wang2024lightweight), not an official reproduction.
+n=20 paired formal seeds (30001-30020). Holm family = 4 metrics within each (dataset, comparison).
+Lower is better. mean_diff is left minus right.
+
+SensorScope
+- FedAU vs FedAvg: RMSE/Tail not significant (p_holm=1.0). Delta_group and Delta_c_s: FedAU significantly worse (p_holm=0.00255 / 0.000671).
+- RAVEN vs FedAU: RMSE/Tail not significant (p_holm=1.0). Delta_group and Delta_c_s: RAVEN significantly better (20/20 seeds, p_holm=7.63e-06).
+
+U-Air
+- FedAU vs FedAvg: RMSE, Tail, and Delta_group: FedAU significantly better (20/20, p_holm=7.63e-06). Delta_c_s: FedAU significantly worse (0/20, p_holm=7.63e-06).
+- RAVEN vs FedAU: RMSE, Tail, and Delta_group: RAVEN significantly worse (FedAU lower; p_holm=7.63e-06 / 7.63e-06 / 9.54e-06). Delta_c_s: RAVEN significantly better (20/20, p_holm=7.63e-06).
+
+Author verdict (honest)
+- FedAU Delta_c_s is not better than FedAvg on either dataset, so participation-only inverse weighting does not improve client-stratum alignment here.
+- RAVEN is Holm-significantly better than FedAU on Delta_c_s on both datasets (M2 structural claim can be supported for Delta_c_s).
+- RAVEN is not uniformly better than FedAU on Delta_group (wins SensorScope, loses U-Air) and is Holm-significantly worse than FedAU on U-Air prediction RMSE/Tail. Do not write a blanket "RAVEN outperforms FedAU" sentence.

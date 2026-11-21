@@ -1,0 +1,66 @@
+====================================================================================================
+PAIR figures/FIG_W1_DESIGN_GATE.csv
+  bundle        275 B  5462183b6858f4b486626ab35c2499e1705b6f60694d44723e2b3ae07ca19716
+  worktree TO_OVERLEAF_paper_tmc_r1_clean/figure_data/FIG_W1_DESIGN_GATE.csv       269 B  050f595a42867bbf374f22fa596277d5489b141207cc9fef62763120be392250
+  bundle header: ['dataset', 'variant', 'Delta_group_pct', 'RMSE_mu_pct']
+  worktree header: ['dataset', 'variant', 'Delta_group_pct', 'RMSE_mu_pct']
+  bundle data rows: 4   worktree data rows: 4
+  key columns: ['dataset', 'variant']
+  keys only in bundle: []
+  keys only in worktree: []
+  common keys: 4   differing rows: 2
+    column 'RMSE_mu_pct': 2 differing cells
+      min abs diff = 0.3841845412900433   max abs diff = 0.39659919360191864  at key (('U-Air', 'Oracle'), '7.1079118838817745', '7.504511077483693')
+      sample (first 6):
+        key=('U-Air', 'Estimated')  bundle='7.072313349518344'  worktree='7.456497890808388'
+        key=('U-Air', 'Oracle')  bundle='7.1079118838817745'  worktree='7.504511077483693'
+  --- bundle rows ---
+   dataset | variant | Delta_group_pct | RMSE_mu_pct
+   SensorScope | Estimated | -1.228434133650586 | -0.005309736559435988
+   SensorScope | Oracle | -1.0345888345453522 | -0.013228562650964629
+   U-Air | Estimated | 7.498982753025233 | 7.072313349518344
+   U-Air | Oracle | 7.476232772036189 | 7.1079118838817745
+  --- worktree rows ---
+   dataset | variant | Delta_group_pct | RMSE_mu_pct
+   SensorScope | Estimated | -1.228434133650586 | -0.005309736559435988
+   SensorScope | Oracle | -1.0345888345453522 | -0.013228562650964629
+   U-Air | Estimated | 7.498982753025233 | 7.456497890808388
+   U-Air | Oracle | 7.476232772036189 | 7.504511077483693
+====================================================================================================
+PAIR figures/FIG_E4_E4_COMPONENT_ABLATION.csv
+  bundle       5656 B  c80f6dddabd7c8e76d01e88b33537b0490454bf673baeea7d1e79b4a550330a9
+  worktree TO_OVERLEAF_paper_tmc_r1_clean/figure_data/FIG_E4_E4_COMPONENT_ABLATION.csv      5658 B  998cdac5982cc2b9900762d0d79e505da07c14a68ec506d5a4c84bf4e5f608c8
+  bundle header: ['dataset', 'component', 'metric', 'relative_change_percent', 'paired_mean_difference', 'Holm_p', 'holm_significant', 'direction', 'final_component_label', 'qualitative_magnitude', 'evidence_generation']
+  worktree header: ['dataset', 'component', 'metric', 'relative_change_percent', 'paired_mean_difference', 'Holm_p', 'holm_significant', 'direction', 'final_component_label', 'qualitative_magnitude', 'evidence_generation']
+  bundle data rows: 40   worktree data rows: 40
+  key columns: ['dataset', 'component']
+  keys only in bundle: []
+  keys only in worktree: []
+  common keys: 10   differing rows: 5
+    column 'relative_change_percent': 5 differing cells
+      min abs diff = 5.9992448508675e-05   max abs diff = 0.34600632316663216  at key (('U-Air', 'Design'), '-6.875242584162889', '-7.221248907329521')
+      sample (first 6):
+        key=('U-Air', 'Debt')  bundle='0.000775232954355'  worktree='0.000715240505846325'
+        key=('U-Air', 'Design')  bundle='-6.875242584162889'  worktree='-7.221248907329521'
+        key=('U-Air', 'Inst')  bundle='0.1363753990751629'  worktree='0.14902918597946535'
+        key=('U-Air', 'Obs')  bundle='-0.0102288937108689'  worktree='-0.010295794089172574'
+        key=('U-Air', 'Use')  bundle='0.0252184289979606'  worktree='0.026449615882742403'
+    column 'paired_mean_difference': 5 differing cells
+      min abs diff = 6.878189678261031e-07   max abs diff = 0.0044747132054164945  at key (('U-Air', 'Design'), '-0.0824931179217944', '-0.08696783112721089')
+      sample (first 6):
+        key=('U-Air', 'Debt')  bundle='9.301691211272e-06'  worktree='8.613872243445898e-06'
+        key=('U-Air', 'Design')  bundle='-0.0824931179217944'  worktree='-0.08696783112721089'
+        key=('U-Air', 'Inst')  bundle='0.0016363105359298'  worktree='0.0017948065834059613'
+        key=('U-Air', 'Obs')  bundle='-0.0001227321545052'  worktree='-0.00012399557100964965'
+        key=('U-Air', 'Use')  bundle='0.0003025852268721'  worktree='0.00031854126024305485'
+====================================================================================================
+PAIR figures/FIG_E3_E3_PREDICTION_RISK.csv
+  bundle      54029 B  8110240a5f88644b29e5d0aa85986d6d052a653a09ad9c7292c11ff2f71a9685
+  worktree TO_OVERLEAF_paper_tmc_r1_clean/figure_data/FIG_E3_E3_PREDICTION_RISK.csv     53593 B  27b90460279afbec12d770e5a6d233753787904ef24351e3f4ef28d8e77c11f2
+  bundle header: ['dataset', 'method', 'seed', 'RMSE_mu', 'MAE_mu', 'Tail_RMSE', 'RMSE_rho', 'comparison_class']
+  worktree header: ['dataset', 'method', 'seed', 'RMSE_mu', 'MAE_mu', 'Tail_RMSE', 'RMSE_rho', 'comparison_class']
+  bundle data rows: 440   worktree data rows: 440
+  key columns: ['dataset', 'method']
+  keys only in bundle: []
+  keys only in worktree: []
+  common keys: 22   differing rows: 0

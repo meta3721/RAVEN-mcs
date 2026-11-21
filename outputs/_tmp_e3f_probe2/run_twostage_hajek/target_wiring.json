@@ -1,0 +1,46 @@
+{
+  "artifact_path": "inline_fixture_freeze",
+  "artifact_sha256": "07f25945b669a4174c95fb8284d428469c83994e985313ab6225e52cf7cf1222",
+  "head_tail": {
+    "head_group_ids": [
+      0,
+      1,
+      4,
+      5,
+      8,
+      9
+    ],
+    "head_groups": [
+      "n0::block0",
+      "n0::block1",
+      "n1::block0",
+      "n1::block1",
+      "n2::block0",
+      "n2::block1"
+    ],
+    "head_hash": "605e5a6d2c8fd457339bf99945fc53f3ef8d3fa75c6b5fab5c04848488d693fb",
+    "n_head": 6,
+    "n_tail": 6,
+    "rule": "time_block in {0,1}=Head; {2,3}=Tail (protocol, not performance)",
+    "tail_group_ids": [
+      2,
+      3,
+      6,
+      7,
+      10,
+      11
+    ],
+    "tail_groups": [
+      "n0::block2",
+      "n0::block3",
+      "n1::block2",
+      "n1::block3",
+      "n2::block2",
+      "n2::block3"
+    ],
+    "tail_hash": "0d91dfe562390910a53f64ad43f1172fa1d241d854bb8a1fea629f5cc2181c60"
+  },
+  "n_groups_frozen": 12,
+  "n_groups_runtime": 12,
+  "uses_repeatable_time_of_day_mapper": false
+}

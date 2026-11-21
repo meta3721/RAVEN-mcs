@@ -1,0 +1,29 @@
+{
+  "P2_constraints": {
+    "ESS_constraints": 3.0,
+    "alpha_bounds": 0.5,
+    "e_min": 3.0
+  },
+  "debt_policy": "full RAVEN debt",
+  "design_obs_use_ipw": true,
+  "instant_calibration": true,
+  "lambda_beta": 1.0,
+  "lambda_group": 1.0,
+  "lambda_s": 0.1,
+  "lambda_v": 0.1,
+  "local_training_parameters": {
+    "backbone": "common NDMF / E3 real-runner defaults",
+    "local_steps": 2
+  },
+  "policy": "TRANSFER_FROM_E3_E4_FULL_RAVEN",
+  "q_policy": "usable IPW from controlled complete_aligned q; prestate only",
+  "solver_policy": "existing p2_cvxpy frozen implementation",
+  "source": "artifacts/e4_wo_inst_reference_penalty_final_correction_r1/E4_WO_INST_FINAL_ONE_FACTOR_SPEC.json required_identities plus lambda_group=1.0 full RAVEN",
+  "status": "FROZEN",
+  "tdrive_test_tuned": false,
+  "tdrive_validation_frozen_config_exists": false,
+  "weight_clipping": {
+    "alpha_max": 0.5
+  },
+  "window_policy": "one window per unique train time slot; WINDOW_DURATION=1.0"
+}

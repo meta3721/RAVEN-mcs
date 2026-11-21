@@ -1,0 +1,45 @@
+{
+  "generated": "2026-09-27T03:50:14.639474+00:00",
+  "n_run_dir_inventoried": 640,
+  "pi_tar_holes": [
+    {
+      "block": "uair",
+      "n_strata": 288,
+      "status": "OK",
+      "support_pairs": 288,
+      "zero_fraction": 0.25,
+      "zero_pi_tar_pairs": 72
+    },
+    {
+      "block": "sensorscope",
+      "n_strata": 440,
+      "status": "OK",
+      "support_pairs": 440,
+      "zero_fraction": 0.0,
+      "zero_pi_tar_pairs": 0
+    },
+    {
+      "block": "traffic",
+      "n_strata": 32,
+      "status": "OK",
+      "support_pairs": 344,
+      "zero_fraction": 0.0,
+      "zero_pi_tar_pairs": 0
+    },
+    {
+      "block": "tdrive_speed",
+      "reason": "load_spatial_to_client has no tdrive branch (dataset_load.py:76-85), so the runner's pi^tar support cannot be rebuilt for this block, and no stored hybrid pi^tar artifact exists under results_tdrive_rank/ or manuscript_evidence_closure_r1/09_tdrive_decision/. T-Drive is outside route A's rebuild set.",
+      "status": "NOT_COUNTED"
+    }
+  ],
+  "violation_blocks": [
+    "uair"
+  ],
+  "violation_methods": [
+    "debt_cal",
+    "fedasync_window",
+    "fedavg_window",
+    "flamf_timealign_adapted"
+  ],
+  "violations": 80
+}

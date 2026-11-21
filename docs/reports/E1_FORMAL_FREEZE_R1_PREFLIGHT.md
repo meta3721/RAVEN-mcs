@@ -1,4 +1,4 @@
-﻿# E1-FORMAL-FREEZE-R1 Preflight
+# E1-FORMAL-FREEZE-R1 Preflight
 
 Mode: `final-candidate`
 Status: **PASS**

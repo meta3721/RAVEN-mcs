@@ -1,0 +1,19 @@
+field,required,source,post_outcome
+dataset,True,protocol,False
+seed,True,protocol,False
+client_id,True,processed,False
+atomic_unit_id,True,processed,False
+spatial_id,True,processed,False
+time_slot,True,processed time_index,False
+target_group_h,True,fallback H1-H4,False
+opportunity_stratum_s,True,processed opportunity_stratum,False
+R_opportunity,True,client_measurements,False
+O_observed,True,controlled p_obs,False
+E_eligibility,True,controlled complete_aligned,False
+U_usable,True,controlled complete_aligned,False
+p_obs,True,controlled 0.35,False
+q_use,True,controlled U / MC q,False
+deadline state,True,controlled,False
+staleness state tau,True,controlled,False
+timestamp,True,processed absolute_time,False
+source/provenance,True,protocol,False

@@ -1,0 +1,11 @@
+{
+  "atomic_key": "unit_id = {spatial_id}_t{time_index:05d}  <=>  i=(spatial_id, time_slot)",
+  "number_atomic_units": 435516,
+  "number_missing_targets": 0,
+  "number_nonmissing_targets": 435516,
+  "paper_interpretation": "An atomic unit is a 500 m Beijing grid cell in a 30-minute slot whose speed target is the mean reference-fleet speed.",
+  "row_uniqueness": true,
+  "status": "FROZEN",
+  "target_name": "speed",
+  "target_unit": "km_per_h"
+}

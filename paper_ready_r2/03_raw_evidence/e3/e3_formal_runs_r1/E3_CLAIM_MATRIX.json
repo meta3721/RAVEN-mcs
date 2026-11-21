@@ -1,0 +1,31 @@
+{
+  "claims": {
+    "C1_sensorscope": {
+      "claim": "RAVEN improves or maintains RMSE_mu vs main same-backbone baselines",
+      "significant_beneficial_vs": [],
+      "status": "UNSUPPORTED"
+    },
+    "C1_traffic": {
+      "claim": "RAVEN improves or maintains RMSE_mu vs main same-backbone baselines",
+      "significant_beneficial_vs": [],
+      "status": "UNSUPPORTED"
+    },
+    "C1_uair": {
+      "claim": "RAVEN improves or maintains RMSE_mu vs main same-backbone baselines",
+      "significant_beneficial_vs": [
+        "raven_vs_twostage_hajek"
+      ],
+      "status": "PARTIALLY_SUPPORTED"
+    },
+    "C4_simoracle": {
+      "claim": "RAVEN remains below SimOracle gap expected from estimated vs true probs",
+      "note": "Oracle-gap reference; not a peer-baseline superiority family",
+      "status": "PARTIALLY_SUPPORTED"
+    },
+    "C5_central": {
+      "claim": "Central references provide contextual bounds, not peer federated claims",
+      "status": "SUPPORTED"
+    }
+  },
+  "round": "E3-FORMAL-RUNS-R1"
+}

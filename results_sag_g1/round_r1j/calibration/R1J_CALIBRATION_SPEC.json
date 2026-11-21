@@ -1,0 +1,15 @@
+{
+  "C_cov_dynamic": "sum pi_tar * 1{lower_pi_opp >= pi_safe}",
+  "calibration_id": "CONTEXT_STRATIFIED_WINDOW_MAX_CONFORMAL_V1",
+  "delta_cal": 0.05,
+  "lookback_min": 8,
+  "lower_pi_opp": "max(0, hat_pi_opp - q_{r,a})",
+  "no_cross_a_borrow": true,
+  "no_oracle_grouping": true,
+  "quantile": "conformal_upper_residual from dynamic_cov.py (R1d formula)",
+  "residual": "max_{target-positive pairs} (hat_pi_opp - pi_opp_realized)",
+  "same_a_only": true,
+  "stratum": "availability_level a",
+  "tau_cov": 0.05,
+  "warmup_if_calib_lt": 8
+}

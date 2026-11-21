@@ -1,0 +1,16 @@
+{
+  "dataset": "sensorscope",
+  "seed": 41003,
+  "model": "ndmf",
+  "optimizer": "sgd",
+  "lr": 0.03,
+  "scaler_mean": 0.08425146838318494,
+  "scaler_std": 1.0800701251011924,
+  "trace_hash": "238e4a503024684fab68c4f35bef81941f5c3eb8f3d8054911245add5d268f26",
+  "train_unique": 333,
+  "information": "train_delivered_only",
+  "budget": 200,
+  "train_input_meaning": "observed client measurements",
+  "validation_input_meaning": "frozen target labels",
+  "test_access": false
+}

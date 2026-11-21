@@ -1,0 +1,40 @@
+{
+  "abs_diff": {
+    "Delta_c_s": 0.0,
+    "Delta_group": 0.0,
+    "RMSE_mu": 0.0,
+    "WorstGroupRMSE": 0.0
+  },
+  "block": "cityscanner",
+  "eventtrace_hash_match": true,
+  "frozen": {
+    "Delta_c_s": 0.6032874844741689,
+    "Delta_group": 0.05490366930013694,
+    "RMSE_mu": 0.3640887382754061,
+    "WorstGroupRMSE": 0.38698378721310384
+  },
+  "pass": true,
+  "rerun": {
+    "Delta_c_s": 0.6032874844741689,
+    "Delta_group": 0.05490366930013694,
+    "RMSE_mu": 0.3640887382754061,
+    "WorstGroupRMSE": 0.38698378721310384
+  },
+  "seed": 32001,
+  "setup_checks": {
+    "mu_max_abs_diff": [
+      0.0,
+      0.0
+    ],
+    "n_pi_opp_keys": [
+      959,
+      959
+    ],
+    "n_pi_target_keys": [
+      1164,
+      1164
+    ]
+  },
+  "tolerance": 1e-09,
+  "utc": "2026-09-24T02:18:19.744627+00:00"
+}

@@ -1,0 +1,14 @@
+{
+  "dataset": "traffic_spatial_h",
+  "generator": "e3-complete-aligned-r3-v1",
+  "notes": [
+    "joint pi_opp",
+    "atomic p_obs",
+    "staleness>S_max possible",
+    "MC q"
+  ],
+  "num_clients": 43,
+  "num_windows": 100,
+  "s_max": 5,
+  "seed": 30002
+}

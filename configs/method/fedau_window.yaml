@@ -1,0 +1,10 @@
+name: fedau_window
+description: FedAU-Window: inverse-participation (usable-layer) client reweighting only; no design/observation correction, no P2, no debt. Windowed adaptation of FedAU, not an official reproduction.
+uses_design_ratio: false
+uses_obs_correction: false
+uses_use_correction: true
+uses_instant_calibration: false
+uses_debt: false
+uses_reference: false
+uses_variance: false
+uses_staleness: false

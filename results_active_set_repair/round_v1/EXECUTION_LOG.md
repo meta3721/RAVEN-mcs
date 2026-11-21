@@ -1,0 +1,37 @@
+- 2026-09-27T03:47:50.538088+00:00 G0 start
+- 2026-09-27T03:47:54.960416+00:00 G0 uair: support=288 zero=72
+- 2026-09-27T03:47:59.599465+00:00 G0 sensorscope: support=440 zero=0
+- 2026-09-27T03:48:04.497394+00:00 G0 traffic: support=344 zero=0
+- 2026-09-27T03:48:17.588317+00:00 G0 tdrive_speed: ValueError: unknown dataset tdrive_speed
+- 2026-09-27T03:48:18.074220+00:00 G0 done rows=0 violations=0
+- 2026-09-27T03:50:03.023886+00:00 G0 start
+- 2026-09-27T03:50:07.233764+00:00 G0 uair: support=288 zero=72
+- 2026-09-27T03:50:11.220636+00:00 G0 sensorscope: support=440 zero=0
+- 2026-09-27T03:50:13.933906+00:00 G0 traffic: support=344 zero=0
+- 2026-09-27T03:50:13.935905+00:00 G0 tdrive_speed: NOT_COUNTED (no mapping loader, no stored pi^tar)
+- 2026-09-27T03:50:14.651052+00:00 G0 done rows=640 violations=80
+- 2026-09-27T03:50:25.065722+00:00 G1 start
+- 2026-09-27T03:53:12.157213+00:00 G1 done pass=False failures=['G1a debt_cal: abs_diff=2.0677010326153322e-07']
+- 2026-09-27T03:53:38.693663+00:00 DIAG start
+- 2026-09-27T03:54:24.493902+00:00 DIAG done verdict=genuine deterministic frozen-versus-current drift in debt_cal
+- 2026-09-27T04:00:25.864447+00:00 G1 start
+- 2026-09-27T04:00:25.882454+00:00 G1 done pass=True failures=[]
+- 2026-09-27T04:00:28.834804+00:00 E1 start
+- 2026-09-27T04:18:52.913136+00:00 E1 done; all assertions passed
+- 2026-09-27T04:19:02.151913+00:00 E2 start
+- 2026-09-27T04:20:17.196849+00:00 E2 start
+- 2026-09-27T04:22:14.272756+00:00 E2 done
+- 2026-09-27T04:22:17.233659+00:00 E3 start
+- 2026-09-27T04:22:17.360266+00:00 E3 done
+- 2026-09-27T04:22:31.250967+00:00 G2 start
+- 2026-09-27T04:22:31.255956+00:00 G2 done (feasibility report)
+- 2026-09-27T05:21:58.301234+00:00 C1 start
+- 2026-09-27T05:22:01.527729+00:00 C2 start
+- 2026-09-27T05:22:34.202226+00:00 C2 done: sanitisation NEVER load-bearing on these two runs (0 non-finite, 0 negative)
+- 2026-09-27T05:22:45.089187+00:00 C1 start
+- 2026-09-27T05:23:11.043360+00:00 C1 done
+- 2026-09-27T05:23:20.200542+00:00 C3 start
+- 2026-09-27T05:24:02.646919+00:00 G2run start
+- 2026-09-27T05:28:04.587967+00:00 G2run done: Every frozen hybrid row reproduces under full delivery, so City Scanner and Pilot 2 active sets are CLEARED on these six cells.
+- 2026-09-27T05:28:26.580139+00:00 C3 start
+- 2026-09-27T05:28:29.935896+00:00 C3 BLOCKED: lambda_group must be >= max_server_learning_rate (got 0.0 < 1.0)

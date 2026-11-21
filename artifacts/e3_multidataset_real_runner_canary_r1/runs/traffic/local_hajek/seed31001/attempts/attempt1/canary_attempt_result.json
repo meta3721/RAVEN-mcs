@@ -1,0 +1,13 @@
+{
+  "accepted": false,
+  "attempt_count": 1,
+  "attempt_id": "e3::traffic::complete_aligned::local_hajek::seed31001__attempt1",
+  "dataset": "traffic",
+  "error": "RuntimeError: pi target lacks opportunity support: [('15252019', '15252019::block2::weekday'), ('15252019', '15252019::block2::weekday'), ('15252019', '15252019::block2::weekday')]",
+  "execution_status": "FAILED",
+  "finished_utc": "2026-08-10T14:58:19.256249+00:00",
+  "logical_run_id": "e3::traffic::complete_aligned::local_hajek::seed31001",
+  "method": "local_hajek",
+  "seed": 31001,
+  "traceback": "Traceback (most recent call last):\n  File \"D:\\Cursor\\raven.mcs\\src\\raven_mcs\\e3\\canary\\execute.py\", line 117, in run_logical\n    result = run_e3_real(\n             ^^^^^^^^^^^^\n  File \"D:\\Cursor\\raven.mcs\\src\\raven_mcs\\e3\\real_runner\\runner.py\", line 424, in run_e3_real\n    window_metrics = runner.run()\n                     ^^^^^^^^^^^^\n  File \"D:\\Cursor\\raven.mcs\\src\\raven_mcs\\training\\window_runner.py\", line 255, in run\n    window_metrics = self._process_window(window_id, events)\n                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"D:\\Cursor\\raven.mcs\\src\\raven_mcs\\training\\window_runner.py\", line 305, in _process_window\n    zeta = self._compute_zeta(cid, rec.opportunity_strata)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"D:\\Cursor\\raven.mcs\\src\\raven_mcs\\training\\window_runner.py\", line 196, in _compute_zeta\n    raise RuntimeError(f\"pi target lacks opportunity support: {missing[:3]}\")\nRuntimeError: pi target lacks opportunity support: [('15252019', '15252019::block2::weekday'), ('15252019', '15252019::block2::weekday'), ('15252019', '15252019::block2::weekday')]\n"
+}

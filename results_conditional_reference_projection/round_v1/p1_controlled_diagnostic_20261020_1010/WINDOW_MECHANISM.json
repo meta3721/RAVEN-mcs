@@ -1,0 +1,272 @@
+{
+  "windows": [
+    {
+      "window": 0,
+      "K": 20,
+      "K_twostage": 20,
+      "client_sha": "ee615f05d629cbe983b639d018c34436640c1ed589ebf0e99578840937813398",
+      "metadata_match": false,
+      "weight_l1": {
+        "P_U": 0.6960322070106655,
+        "F_P": 0.2718392550037395,
+        "F_U": 0.8161012617701833
+      },
+      "step_l2": {
+        "P_U": 0.0004796217961065679,
+        "F_P": 0.00023844189696543028,
+        "F_U": 0.0005169379351538199
+      },
+      "twostage_client_only_f": [],
+      "twostage_client_only_twostage": [],
+      "twostage_local_weight_l1_on_overlap": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "formula_gap": 0.0,
+      "projection_kind": "activeset",
+      "p2": {
+        "F": 1,
+        "TwoStage": 0,
+        "P": 0
+      }
+    },
+    {
+      "window": 1,
+      "K": 20,
+      "K_twostage": 20,
+      "client_sha": "ed88db3e54ba773677354ef96f3b6d7bd624a5e3eedefd0697bd6fc543936a3e",
+      "metadata_match": false,
+      "weight_l1": {
+        "P_U": 0.4322592052295599,
+        "F_P": 0.30782791032224777,
+        "F_U": 0.5802401411080877
+      },
+      "step_l2": {
+        "P_U": 0.001013583673252752,
+        "F_P": 0.0005975284088311224,
+        "F_U": 0.0006673243783315035
+      },
+      "twostage_client_only_f": [],
+      "twostage_client_only_twostage": [],
+      "twostage_local_weight_l1_on_overlap": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "formula_gap": 0.0,
+      "projection_kind": "activeset",
+      "p2": {
+        "F": 1,
+        "TwoStage": 0,
+        "P": 0
+      }
+    },
+    {
+      "window": 2,
+      "K": 11,
+      "K_twostage": 11,
+      "client_sha": "95cbc68c08d44708599553bbea303321c9da7dc860da32d011ff820db261c268",
+      "metadata_match": false,
+      "weight_l1": {
+        "P_U": 0.5855892201821367,
+        "F_P": 0.2080911761747042,
+        "F_U": 0.6310065999970536
+      },
+      "step_l2": {
+        "P_U": 0.000551552508992841,
+        "F_P": 0.00037154222685476445,
+        "F_U": 0.0006411856769922251
+      },
+      "twostage_client_only_f": [],
+      "twostage_client_only_twostage": [],
+      "twostage_local_weight_l1_on_overlap": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "formula_gap": 0.0,
+      "projection_kind": "activeset",
+      "p2": {
+        "F": 1,
+        "TwoStage": 0,
+        "P": 0
+      }
+    },
+    {
+      "window": 33,
+      "K": 11,
+      "K_twostage": 11,
+      "client_sha": "c1f15ef2caa6eb0e9ecd368d196b48de8d5c2be45f21239585fc6e4fe1eaebbf",
+      "metadata_match": false,
+      "weight_l1": {
+        "P_U": 0.7122384598659772,
+        "F_P": 0.3961857780178829,
+        "F_U": 0.5308585063135379
+      },
+      "step_l2": {
+        "P_U": 0.00398949446529277,
+        "F_P": 0.0014491163426636258,
+        "F_U": 0.0026559555447033963
+      },
+      "twostage_client_only_f": [],
+      "twostage_client_only_twostage": [],
+      "twostage_local_weight_l1_on_overlap": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "formula_gap": 0.0,
+      "projection_kind": "activeset",
+      "p2": {
+        "F": 1,
+        "TwoStage": 0,
+        "P": 0
+      }
+    },
+    {
+      "window": 34,
+      "K": 17,
+      "K_twostage": 17,
+      "client_sha": "ccfced4c55598f3d4ed5baf68e96a95579fa39a634c3b8202a10db8f3624871f",
+      "metadata_match": false,
+      "weight_l1": {
+        "P_U": 0.8415472688038139,
+        "F_P": 0.35994226101033727,
+        "F_U": 0.8469337193188131
+      },
+      "step_l2": {
+        "P_U": 0.0017947373189171848,
+        "F_P": 0.0009968906558844512,
+        "F_U": 0.0019518732457864305
+      },
+      "twostage_client_only_f": [],
+      "twostage_client_only_twostage": [],
+      "twostage_local_weight_l1_on_overlap": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "formula_gap": 0.0,
+      "projection_kind": "activeset",
+      "p2": {
+        "F": 1,
+        "TwoStage": 0,
+        "P": 0
+      }
+    },
+    {
+      "window": 35,
+      "K": 20,
+      "K_twostage": 20,
+      "client_sha": "2af02adf0e4020685b198f38358a32e1c76018eb422017bb25d0f9763ae50ca4",
+      "metadata_match": false,
+      "weight_l1": {
+        "P_U": 0.8337882181183037,
+        "F_P": 0.41354237654811377,
+        "F_U": 0.7912078503039245
+      },
+      "step_l2": {
+        "P_U": 0.0017942691909201105,
+        "F_P": 0.0007956091438447493,
+        "F_U": 0.001925723734536279
+      },
+      "twostage_client_only_f": [],
+      "twostage_client_only_twostage": [],
+      "twostage_local_weight_l1_on_overlap": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "formula_gap": 0.0,
+      "projection_kind": "activeset",
+      "p2": {
+        "F": 1,
+        "TwoStage": 0,
+        "P": 0
+      }
+    }
+  ],
+  "epsilon_score": 1e-07
+}

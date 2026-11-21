@@ -1,0 +1,24 @@
+{
+  "SensorScope": {
+    "RAVEN-MCS-SCD": {
+      "RMSE_mu": 7.938,
+      "WorstGroupRMSE": 8.6707,
+      "Delta_group": 1.0139,
+      "Delta_c_s": 1.2644
+    }
+  },
+  "U-Air": {
+    "RAVEN-MCS-SCD": {
+      "RMSE_mu": 1.1131,
+      "WorstGroupRMSE": 1.1703,
+      "Delta_group": 1.0165,
+      "Delta_c_s": 1.2949
+    },
+    "RAVEN-MCS-Full-Design": {
+      "RMSE_mu": 1.1911,
+      "WorstGroupRMSE": 1.263,
+      "Delta_group": 1.0924,
+      "Delta_c_s": 1.2334
+    }
+  }
+}

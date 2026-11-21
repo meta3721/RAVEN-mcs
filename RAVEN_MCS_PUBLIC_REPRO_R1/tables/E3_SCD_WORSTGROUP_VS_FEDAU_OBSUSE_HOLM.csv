@@ -1,0 +1,5 @@
+family,dataset,scd_method,comparator,metric,n,seeds,mean_rel_pct,p_raw,p_holm,significant_holm_0.05
+e3_scd_worstgroup_vs_fedau_obsuse_all20,sensorscope,raven,fedau_window,WorstGroupRMSE,20,30001-30020,0.01895651523304511,0.7841262817382812,1.0,False
+e3_scd_worstgroup_vs_fedau_obsuse_all20,sensorscope,raven,obsuse_window,WorstGroupRMSE,20,30001-30020,0.10262607233589187,0.0758514404296875,0.30340576171875,False
+e3_scd_worstgroup_vs_fedau_obsuse_all20,uair,raven_wo_design,fedau_window,WorstGroupRMSE,20,30001-30020,0.002448245595786317,0.956329345703125,1.0,False
+e3_scd_worstgroup_vs_fedau_obsuse_all20,uair,raven_wo_design,obsuse_window,WorstGroupRMSE,20,30001-30020,0.07533460121622045,0.8123550415039062,1.0,False

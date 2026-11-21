@@ -1,0 +1,15 @@
+{
+  "gate": "pass",
+  "sensorscope": "open",
+  "uair": "null",
+  "aggregate_path": "closed",
+  "gate_max_abs_diff": 8.881784197001252e-16,
+  "gate_n_runs": 200,
+  "dropped_mu_mass": 0.0,
+  "E_floor": {
+    "rule": "closed form",
+    "value": 0.0,
+    "note": "K inside the delivered range on 40/40 traces, so the floor is 0.0"
+  },
+  "prereg_sha256": "1d7193b48fdc58ddd7f9ed4158982c73f638f5d396b09241cea7342f3da554f8"
+}

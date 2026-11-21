@@ -1,0 +1,57 @@
+96: \section{Introduction}
+164: \caption{RAVEN-MCS aligns asynchronous federated completion with a public
+174: \label{fig:raven_overview}
+263: \section{Related Work}
+320: \section{System Model and Target-Mass Formulation}
+323: \subsection{Windowed Asynchronous Mobile Crowdsensing}
+351: \subsection{Two-Stage, Three-Layer Non-Random Selection}
+432: \subsection{Public Deployment Target and Compatible Target Measures}
+471: \subsection{Aggregate Coverage Certification Object}
+488: \subsection{Deployment-Target Risk Versus Arrival Risk}
+555: \subsection{Structural Alignment Objective}
+637: \section{Selection-Layer-Aware Target Reconstruction}
+646: \subsection{Opportunity/Design Correction}
+696: \subsection{Observation Correction and Local H\'ajek Normalization}
+791: \subsection{Usable-Update Correction and Reference Aggregation Mass}
+828: \subsection{Information Boundary and Stabilization}
+842: \subsection{Why Pairwise Positive Lower Bounds Are Not the Formal Certificate}
+852: \section{Feasibility-Aware Target Calibration}
+860: \subsection{Feasible Aggregation Set}
+904: \subsection{Long-Term Target Debt}
+931: \subsection{Feasibility-Aware Calibration Program}
+971: \subsection{Global Update and Window Logic}
+995: \subsection{Finite-Sample Aggregate Coverage Certificate}
+1045: \caption{Window-close RAVEN-MCS with the Design factor as an explicit configuration}
+1083: \section{Theoretical Analysis}
+1094: \subsection{Assumptions}
+1153: \subsection{Target Risk Is Not Arrival Risk}
+1182: \subsection{Normalized Sequential Target Reconstruction}
+1248: \subsection{Existence and Uniqueness of Feasible Calibration}
+1265: \subsection{Practical Plug-in Perturbation}
+1375: \subsection{Aggregate Coverage Guarantees}
+1421: \section{Evaluation}
+1437: \subsection{Experimental Setup}
+1440: \subsubsection{Datasets and target semantics}
+1482: \caption{Datasets and roles.  Targets use public or training-side
+1485: \label{tab:datasets}
+1509: \subsubsection{Selection protocol and compared methods}
+1570: \subsubsection{Metrics and statistical policy}
+1633: \subsection{Risk Interchangeability under Two-Stage Selection}
+1664: \caption{Risk interchangeability on complete-aligned NSW-Traffic.  (a)~Seed-level
+1670: \label{fig:risk_noninterchangeability}
+1690: \caption{T-Drive real-mobility opportunity.  (a)~Public $\boldsymbol\mu$,
+1696: \label{fig:g3_tdrive}
+1712: \caption{T-Drive hybrid ranking under real taxi $R$
+1719: \label{tab:tdrive_hybrid}
+1768: \subsection{Structural Alignment, Target RMSE, and Worst-Group Risk}
+1857: \caption{Development table for the main comparison under always-on protocol $R$
+1872: \label{tab:main_effectiveness}
+1902: \caption{Design versus No-Design, estimated and oracle propensities
+1912: \label{fig:w1_design_gate}
+1936: \subsection{A Pre-Registered Under-Served-Block Check}
+1950: \subsection{What the Correction and Calibration Components Do}
+1966: \caption{Component-removal ablation: relative change (\%) after removing one RAVEN component.
+1969: \label{tab:e4_ablation}
+2105: \subsection{Prediction Sensitivity within the Feasible Weight Class}
+2170: \subsection{Deployment Conditions and Evaluation Scope}
+2248: \section{Conclusion}

@@ -1,0 +1,24 @@
+{
+  "B_star": 0.38,
+  "alpha": 0.9390476190476191,
+  "beta": 0.9595238095238096,
+  "burstiness_miss": false,
+  "calibrated_utc": "2026-09-05T05:24:13.925653+00:00",
+  "calibration_replay": {
+    "burstiness_per_client_mean": 0.3063735305704954,
+    "burstiness_pooled": 0.4371596594789916,
+    "fraction_windows_all_clients_off": 0.0,
+    "mean_active_clients_per_window": 3.29,
+    "mean_active_frac": 0.41125,
+    "n_clients": 8.0,
+    "n_pooled_gaps": 322.0,
+    "n_windows": 100.0
+  },
+  "calibration_seed": 29999,
+  "family": "two_state_markov",
+  "git_commit": "5c4243761c8c5999bb9ec08a25969bef4ad0cdd6",
+  "n_clients_sensorscope": 8,
+  "n_windows_sensorscope": 100,
+  "rho0": 0.425,
+  "rho_star": 0.425
+}

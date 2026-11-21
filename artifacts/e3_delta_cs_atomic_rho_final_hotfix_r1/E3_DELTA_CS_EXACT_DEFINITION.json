@@ -1,0 +1,18 @@
+{
+  "exact_formula": "sum_{k,s} |Pi_hat_ks - pi_tar_ks|",
+  "final_metric_name": "Delta_c_s",
+  "forbidden": "client × target_group h",
+  "mapping_atomic_to_s": "atomic.opportunity_stratum column (frozen processed)",
+  "method_effective_mass": "Pi_hat_ks ∝ sum_r eta I alpha_k,r w_k,r,i aggregated over i with s(i)=s",
+  "normalization": "Pi_hat probability-normalized before L1; pi_tar from build_pi_target sums to 1",
+  "orientation": "lower better",
+  "source_protocol": [
+    "src/raven_mcs/correction/pi_target.py",
+    "src/raven_mcs/metrics/distribution.py::delta_c_s",
+    "docs/DATA_DICTIONARY.md (E1 opportunity stratum)"
+  ],
+  "status": "FROZEN",
+  "support_domain": "K × S (client × opportunity_stratum)",
+  "target_mass_construction": "pi_tar(k,s)=Lambda_s^tar * lambda_{k|s}^tar via build_pi_target",
+  "valid_range": "[0, 2]"
+}

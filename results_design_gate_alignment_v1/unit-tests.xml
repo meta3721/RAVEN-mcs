@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="9" failures="0" skipped="0" tests="9" time="11.394" timestamp="2026-10-12T20:32:06.550822+08:00" hostname="LAPTOP-4349UTOC"><testcase classname="" name="tests.unit.test_feature_spec_fixed" time="0.000"><error message="collection failure">tests\unit\test_feature_spec_fixed.py:1: in &lt;module&gt;
+    from raven_mcs.sag.r1m_spec import FEATURE_NAMES, feature_spec_hash
+src\raven_mcs\sag\r1m_spec.py:106: in &lt;module&gt;
+    assert PAPER_METHOD == "raven_mcs"
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   AssertionError</error></testcase><testcase classname="" name="tests.unit.test_n_lt_19_warmup_off" time="0.000"><error message="collection failure">tests\unit\test_n_lt_19_warmup_off.py:3: in &lt;module&gt;
+    from raven_mcs.sag.r1m_track import complete_window, decide_window, open_track
+src\raven_mcs\sag\r1m_track.py:11: in &lt;module&gt;
+    from raven_mcs.sag.r1m_predictor import RidgeSnapshot, fit_ridge_snapshot
+src\raven_mcs\sag\r1m_predictor.py:10: in &lt;module&gt;
+    from raven_mcs.sag.r1m_features import design_matrix, feature_vector
+src\raven_mcs\sag\r1m_features.py:10: in &lt;module&gt;
+    from raven_mcs.sag.r1m_spec import FEATURE_NAMES, LOOKBACK_L
+src\raven_mcs\sag\r1m_spec.py:106: in &lt;module&gt;
+    assert PAPER_METHOD == "raven_mcs"
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   AssertionError</error></testcase><testcase classname="" name="tests.unit.test_r1m_frozen_theory_constants" time="0.000"><error message="collection failure">tests\unit\test_r1m_frozen_theory_constants.py:5: in &lt;module&gt;
+    from raven_mcs.sag.r1m_spec import RIDGE_ALPHA
+src\raven_mcs\sag\r1m_spec.py:106: in &lt;module&gt;
+    assert PAPER_METHOD == "raven_mcs"
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   AssertionError</error></testcase><testcase classname="" name="tests.unit.test_reset_clears_buffer" time="0.000"><error message="collection failure">tests\unit\test_reset_clears_buffer.py:1: in &lt;module&gt;
+    from raven_mcs.sag.r1m_track import complete_window, decide_window, open_track
+src\raven_mcs\sag\r1m_track.py:11: in &lt;module&gt;
+    from raven_mcs.sag.r1m_predictor import RidgeSnapshot, fit_ridge_snapshot
+src\raven_mcs\sag\r1m_predictor.py:10: in &lt;module&gt;
+    from raven_mcs.sag.r1m_features import design_matrix, feature_vector
+src\raven_mcs\sag\r1m_features.py:10: in &lt;module&gt;
+    from raven_mcs.sag.r1m_spec import FEATURE_NAMES, LOOKBACK_L
+src\raven_mcs\sag\r1m_spec.py:106: in &lt;module&gt;
+    assert PAPER_METHOD == "raven_mcs"
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   AssertionError</error></testcase><testcase classname="" name="tests.unit.test_reset_not_retroactive" time="0.000"><error message="collection failure">tests\unit\test_reset_not_retroactive.py:1: in &lt;module&gt;
+    from raven_mcs.sag.r1m_track import complete_window, decide_window, open_track
+src\raven_mcs\sag\r1m_track.py:11: in &lt;module&gt;
+    from raven_mcs.sag.r1m_predictor import RidgeSnapshot, fit_ridge_snapshot
+src\raven_mcs\sag\r1m_predictor.py:10: in &lt;module&gt;
+    from raven_mcs.sag.r1m_features import design_matrix, feature_vector
+src\raven_mcs\sag\r1m_features.py:10: in &lt;module&gt;
+    from raven_mcs.sag.r1m_spec import FEATURE_NAMES, LOOKBACK_L
+src\raven_mcs\sag\r1m_spec.py:106: in &lt;module&gt;
+    assert PAPER_METHOD == "raven_mcs"
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   AssertionError</error></testcase><testcase classname="" name="tests.unit.test_reset_refits_new_snapshot" time="0.000"><error message="collection failure">tests\unit\test_reset_refits_new_snapshot.py:1: in &lt;module&gt;
+    from raven_mcs.sag.r1m_track import complete_window, decide_window, open_track
+src\raven_mcs\sag\r1m_track.py:11: in &lt;module&gt;
+    from raven_mcs.sag.r1m_predictor import RidgeSnapshot, fit_ridge_snapshot
+src\raven_mcs\sag\r1m_predictor.py:10: in &lt;module&gt;
+    from raven_mcs.sag.r1m_features import design_matrix, feature_vector
+src\raven_mcs\sag\r1m_features.py:10: in &lt;module&gt;
+    from raven_mcs.sag.r1m_spec import FEATURE_NAMES, LOOKBACK_L
+src\raven_mcs\sag\r1m_spec.py:106: in &lt;module&gt;
+    assert PAPER_METHOD == "raven_mcs"
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   AssertionError</error></testcase><testcase classname="" name="tests.unit.test_reset_restarts_warmup" time="0.000"><error message="collection failure">tests\unit\test_reset_restarts_warmup.py:1: in &lt;module&gt;
+    from raven_mcs.sag.r1m_track import complete_window, decide_window, open_track
+src\raven_mcs\sag\r1m_track.py:11: in &lt;module&gt;
+    from raven_mcs.sag.r1m_predictor import RidgeSnapshot, fit_ridge_snapshot
+src\raven_mcs\sag\r1m_predictor.py:10: in &lt;module&gt;
+    from raven_mcs.sag.r1m_features import design_matrix, feature_vector
+src\raven_mcs\sag\r1m_features.py:10: in &lt;module&gt;
+    from raven_mcs.sag.r1m_spec import FEATURE_NAMES, LOOKBACK_L
+src\raven_mcs\sag\r1m_spec.py:106: in &lt;module&gt;
+    assert PAPER_METHOD == "raven_mcs"
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   AssertionError</error></testcase><testcase classname="" name="tests.unit.test_reset_trigger_after_completed_miscoverage" time="0.000"><error message="collection failure">tests\unit\test_reset_trigger_after_completed_miscoverage.py:1: in &lt;module&gt;
+    from raven_mcs.sag.r1m_reset import miscoverage_reset_trigger
+src\raven_mcs\sag\r1m_reset.py:6: in &lt;module&gt;
+    from raven_mcs.sag.r1m_spec import RESET_RULE_ID
+src\raven_mcs\sag\r1m_spec.py:106: in &lt;module&gt;
+    assert PAPER_METHOD == "raven_mcs"
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   AssertionError</error></testcase><testcase classname="" name="tests.unit.test_ridge_alpha_fixed" time="0.000"><error message="collection failure">tests\unit\test_ridge_alpha_fixed.py:1: in &lt;module&gt;
+    from raven_mcs.sag.r1m_predictor import RIDGE_ALPHA as PRED_ALPHA
+src\raven_mcs\sag\r1m_predictor.py:10: in &lt;module&gt;
+    from raven_mcs.sag.r1m_features import design_matrix, feature_vector
+src\raven_mcs\sag\r1m_features.py:10: in &lt;module&gt;
+    from raven_mcs.sag.r1m_spec import FEATURE_NAMES, LOOKBACK_L
+src\raven_mcs\sag\r1m_spec.py:106: in &lt;module&gt;
+    assert PAPER_METHOD == "raven_mcs"
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   AssertionError</error></testcase></testsuite></testsuites>

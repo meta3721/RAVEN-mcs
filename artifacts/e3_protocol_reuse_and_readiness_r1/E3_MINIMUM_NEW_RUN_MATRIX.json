@@ -1,0 +1,313 @@
+{
+  "new_runs_actually_needed_for_ready_scope": 80,
+  "note": "New run count excludes the 100 sealed Traffic Complete-aligned five-method runs",
+  "pending_teacher_authorization_datasets": [
+    "sensorscope",
+    "uair"
+  ],
+  "percent_compute_saved_by_reuse": 20.83,
+  "ready_dataset_scope": [
+    "traffic"
+  ],
+  "reusable_existing_runs": 100,
+  "rows": [
+    {
+      "already_available_and_reusable": true,
+      "dataset": "traffic",
+      "method": "fedavg_window",
+      "missing": false,
+      "needs_training": false,
+      "number_of_new_runs": 0,
+      "reason": "E2 Complete-aligned sealed block",
+      "required_by_protocol": true,
+      "seed_block": "30001-30020"
+    },
+    {
+      "already_available_and_reusable": true,
+      "dataset": "traffic",
+      "method": "fedasync_window",
+      "missing": false,
+      "needs_training": false,
+      "number_of_new_runs": 0,
+      "reason": "E2 Complete-aligned sealed block",
+      "required_by_protocol": true,
+      "seed_block": "30001-30020"
+    },
+    {
+      "already_available_and_reusable": true,
+      "dataset": "traffic",
+      "method": "flamf_timealign_adapted",
+      "missing": false,
+      "needs_training": false,
+      "number_of_new_runs": 0,
+      "reason": "E2 Complete-aligned sealed block",
+      "required_by_protocol": true,
+      "seed_block": "30001-30020"
+    },
+    {
+      "already_available_and_reusable": true,
+      "dataset": "traffic",
+      "method": "twostage_hajek",
+      "missing": false,
+      "needs_training": false,
+      "number_of_new_runs": 0,
+      "reason": "E2 Complete-aligned sealed block",
+      "required_by_protocol": true,
+      "seed_block": "30001-30020"
+    },
+    {
+      "already_available_and_reusable": true,
+      "dataset": "traffic",
+      "method": "raven",
+      "missing": false,
+      "needs_training": false,
+      "number_of_new_runs": 0,
+      "reason": "E2 Complete-aligned sealed block",
+      "required_by_protocol": true,
+      "seed_block": "30001-30020"
+    },
+    {
+      "already_available_and_reusable": false,
+      "dataset": "traffic",
+      "method": "local_hajek",
+      "missing": true,
+      "needs_training": true,
+      "number_of_new_runs": 20,
+      "reason": "not in E2 five-method block",
+      "required_by_protocol": true,
+      "seed_block": "30001-30020"
+    },
+    {
+      "already_available_and_reusable": false,
+      "dataset": "traffic",
+      "method": "inst_cal",
+      "missing": true,
+      "needs_training": true,
+      "number_of_new_runs": 20,
+      "reason": "not in E2 five-method block",
+      "required_by_protocol": true,
+      "seed_block": "30001-30020"
+    },
+    {
+      "already_available_and_reusable": false,
+      "dataset": "traffic",
+      "method": "debt_cal",
+      "missing": true,
+      "needs_training": true,
+      "number_of_new_runs": 20,
+      "reason": "not in E2 five-method block",
+      "required_by_protocol": true,
+      "seed_block": "30001-30020"
+    },
+    {
+      "already_available_and_reusable": false,
+      "dataset": "traffic",
+      "method": "raven_simoracle",
+      "missing": true,
+      "needs_training": true,
+      "number_of_new_runs": 20,
+      "reason": "not in E2 five-method block",
+      "required_by_protocol": true,
+      "seed_block": "30001-30020"
+    },
+    {
+      "already_available_and_reusable": false,
+      "dataset": "sensorscope",
+      "method": "fedavg_window",
+      "missing": true,
+      "needs_training": false,
+      "number_of_new_runs": 0,
+      "reason": "dataset not protocol-ready for E3 formal Complete-aligned harness",
+      "required_by_protocol": true,
+      "seed_block": "30001-30020"
+    },
+    {
+      "already_available_and_reusable": false,
+      "dataset": "sensorscope",
+      "method": "fedasync_window",
+      "missing": true,
+      "needs_training": false,
+      "number_of_new_runs": 0,
+      "reason": "dataset not protocol-ready for E3 formal Complete-aligned harness",
+      "required_by_protocol": true,
+      "seed_block": "30001-30020"
+    },
+    {
+      "already_available_and_reusable": false,
+      "dataset": "sensorscope",
+      "method": "flamf_timealign_adapted",
+      "missing": true,
+      "needs_training": false,
+      "number_of_new_runs": 0,
+      "reason": "dataset not protocol-ready for E3 formal Complete-aligned harness",
+      "required_by_protocol": true,
+      "seed_block": "30001-30020"
+    },
+    {
+      "already_available_and_reusable": false,
+      "dataset": "sensorscope",
+      "method": "twostage_hajek",
+      "missing": true,
+      "needs_training": false,
+      "number_of_new_runs": 0,
+      "reason": "dataset not protocol-ready for E3 formal Complete-aligned harness",
+      "required_by_protocol": true,
+      "seed_block": "30001-30020"
+    },
+    {
+      "already_available_and_reusable": false,
+      "dataset": "sensorscope",
+      "method": "raven",
+      "missing": true,
+      "needs_training": false,
+      "number_of_new_runs": 0,
+      "reason": "dataset not protocol-ready for E3 formal Complete-aligned harness",
+      "required_by_protocol": true,
+      "seed_block": "30001-30020"
+    },
+    {
+      "already_available_and_reusable": false,
+      "dataset": "sensorscope",
+      "method": "local_hajek",
+      "missing": true,
+      "needs_training": false,
+      "number_of_new_runs": 0,
+      "reason": "dataset not protocol-ready for E3 formal Complete-aligned harness",
+      "required_by_protocol": true,
+      "seed_block": "30001-30020"
+    },
+    {
+      "already_available_and_reusable": false,
+      "dataset": "sensorscope",
+      "method": "inst_cal",
+      "missing": true,
+      "needs_training": false,
+      "number_of_new_runs": 0,
+      "reason": "dataset not protocol-ready for E3 formal Complete-aligned harness",
+      "required_by_protocol": true,
+      "seed_block": "30001-30020"
+    },
+    {
+      "already_available_and_reusable": false,
+      "dataset": "sensorscope",
+      "method": "debt_cal",
+      "missing": true,
+      "needs_training": false,
+      "number_of_new_runs": 0,
+      "reason": "dataset not protocol-ready for E3 formal Complete-aligned harness",
+      "required_by_protocol": true,
+      "seed_block": "30001-30020"
+    },
+    {
+      "already_available_and_reusable": false,
+      "dataset": "sensorscope",
+      "method": "raven_simoracle",
+      "missing": true,
+      "needs_training": false,
+      "number_of_new_runs": 0,
+      "reason": "dataset not protocol-ready for E3 formal Complete-aligned harness",
+      "required_by_protocol": true,
+      "seed_block": "30001-30020"
+    },
+    {
+      "already_available_and_reusable": false,
+      "dataset": "uair",
+      "method": "fedavg_window",
+      "missing": true,
+      "needs_training": false,
+      "number_of_new_runs": 0,
+      "reason": "dataset not protocol-ready for E3 formal Complete-aligned harness",
+      "required_by_protocol": true,
+      "seed_block": "30001-30020"
+    },
+    {
+      "already_available_and_reusable": false,
+      "dataset": "uair",
+      "method": "fedasync_window",
+      "missing": true,
+      "needs_training": false,
+      "number_of_new_runs": 0,
+      "reason": "dataset not protocol-ready for E3 formal Complete-aligned harness",
+      "required_by_protocol": true,
+      "seed_block": "30001-30020"
+    },
+    {
+      "already_available_and_reusable": false,
+      "dataset": "uair",
+      "method": "flamf_timealign_adapted",
+      "missing": true,
+      "needs_training": false,
+      "number_of_new_runs": 0,
+      "reason": "dataset not protocol-ready for E3 formal Complete-aligned harness",
+      "required_by_protocol": true,
+      "seed_block": "30001-30020"
+    },
+    {
+      "already_available_and_reusable": false,
+      "dataset": "uair",
+      "method": "twostage_hajek",
+      "missing": true,
+      "needs_training": false,
+      "number_of_new_runs": 0,
+      "reason": "dataset not protocol-ready for E3 formal Complete-aligned harness",
+      "required_by_protocol": true,
+      "seed_block": "30001-30020"
+    },
+    {
+      "already_available_and_reusable": false,
+      "dataset": "uair",
+      "method": "raven",
+      "missing": true,
+      "needs_training": false,
+      "number_of_new_runs": 0,
+      "reason": "dataset not protocol-ready for E3 formal Complete-aligned harness",
+      "required_by_protocol": true,
+      "seed_block": "30001-30020"
+    },
+    {
+      "already_available_and_reusable": false,
+      "dataset": "uair",
+      "method": "local_hajek",
+      "missing": true,
+      "needs_training": false,
+      "number_of_new_runs": 0,
+      "reason": "dataset not protocol-ready for E3 formal Complete-aligned harness",
+      "required_by_protocol": true,
+      "seed_block": "30001-30020"
+    },
+    {
+      "already_available_and_reusable": false,
+      "dataset": "uair",
+      "method": "inst_cal",
+      "missing": true,
+      "needs_training": false,
+      "number_of_new_runs": 0,
+      "reason": "dataset not protocol-ready for E3 formal Complete-aligned harness",
+      "required_by_protocol": true,
+      "seed_block": "30001-30020"
+    },
+    {
+      "already_available_and_reusable": false,
+      "dataset": "uair",
+      "method": "debt_cal",
+      "missing": true,
+      "needs_training": false,
+      "number_of_new_runs": 0,
+      "reason": "dataset not protocol-ready for E3 formal Complete-aligned harness",
+      "required_by_protocol": true,
+      "seed_block": "30001-30020"
+    },
+    {
+      "already_available_and_reusable": false,
+      "dataset": "uair",
+      "method": "raven_simoracle",
+      "missing": true,
+      "needs_training": false,
+      "number_of_new_runs": 0,
+      "reason": "dataset not protocol-ready for E3 formal Complete-aligned harness",
+      "required_by_protocol": true,
+      "seed_block": "30001-30020"
+    }
+  ],
+  "total_original_E3_runs_if_run_from_scratch": 480
+}

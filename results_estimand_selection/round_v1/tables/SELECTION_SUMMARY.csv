@@ -1,0 +1,3 @@
+dataset,n_seeds,n_methods,mean_reg,reg_ci_lo,reg_ci_hi,label,delta,mde_80pct,reg_seed_sd,reg_degenerate_all_seeds_equal,headroom_vs_mde,disagreement_rate,disagreement_wilson_lo,disagreement_wilson_hi,base_rate_non_degenerate,median_tau,mean_tau,sign_flip_rate,sign_flip_n,sign_flip_rate_big_delta,sign_flip_n_big_delta,mean_reg_arrR,disagreement_rate_arrR,median_tau_arrR
+sensorscope,20,9,0.0,0.0,0.0,saturated,0.005,0.0,0.0,True,,0.0,0.0,0.16112515805281938,False,1.0,0.9942857142857143,0.002857142857142857,700,0.0,10,0.0,0.0,1.0
+uair,20,9,0.0,0.0,0.0,saturated,0.005,0.0,0.0,True,,0.0,0.0,0.16112515805281938,False,1.0,1.0,0.0,700,0.0,417,0.0,0.0,1.0

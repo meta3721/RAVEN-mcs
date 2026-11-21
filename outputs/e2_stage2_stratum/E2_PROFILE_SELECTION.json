@@ -1,0 +1,51 @@
+{
+  "candidates": [
+    {
+      "kappa_sum": 3.5,
+      "max_seed_aligned_dtv_group": 0.4388962127938157,
+      "profile_id": "PROFILE-S4",
+      "std_seed_cancellation_group_tv": 0.005307083308749065
+    },
+    {
+      "kappa_sum": 4.0,
+      "max_seed_aligned_dtv_group": 0.45906782845806277,
+      "profile_id": "PROFILE-S5",
+      "std_seed_cancellation_group_tv": 0.004700808593024967
+    },
+    {
+      "kappa_sum": 4.5,
+      "max_seed_aligned_dtv_group": 0.5351697607115127,
+      "profile_id": "PROFILE-S3",
+      "std_seed_cancellation_group_tv": 0.009309343380478693
+    },
+    {
+      "kappa_sum": 5.0,
+      "max_seed_aligned_dtv_group": 0.5510801934977332,
+      "profile_id": "PROFILE-S6",
+      "std_seed_cancellation_group_tv": 0.005693431940676941
+    }
+  ],
+  "prior_PROFILE_S2_not_special_cased": true,
+  "revalidated_on_stage2_and_true_stratum": true,
+  "selected_metrics": {
+    "kappa_sum": 3.5,
+    "max_seed_aligned_dtv_group": 0.4388962127938157,
+    "profile_id": "PROFILE-S4",
+    "std_seed_cancellation_group_tv": 0.005307083308749065
+  },
+  "selected_profile_id": "PROFILE-S4",
+  "selection_rule": [
+    "min max_seed D_TV_group(complete_aligned)",
+    "min kappa_opp+kappa_p+kappa_q",
+    "min std_seed cancellation_group_TV(complete_counteracting)",
+    "profile_id lexicographic"
+  ],
+  "status": "SELECTED",
+  "validation_seed_list": [
+    29101,
+    29102,
+    29103,
+    29104,
+    29105
+  ]
+}

@@ -1,0 +1,306 @@
+EVENTTRACES BREAKDOWN
+  (index files)                    3 files
+  e1_formal                        1 files
+  e1_formal/seed_28001             6 files
+  e1_formal/seed_28002             6 files
+  e1_formal/seed_28003             6 files
+  e1_formal/seed_28004             6 files
+  e1_formal/seed_28005             6 files
+  e2/30001                        72 files
+  e2/30002                        72 files
+  e2/30003                        72 files
+  e2/30004                        72 files
+  e2/30005                        72 files
+  e2/30006                        72 files
+  e2/30007                        72 files
+  e2/30008                        72 files
+  e2/30009                        72 files
+  e2/30010                        72 files
+  e2/30011                        72 files
+  e2/30012                        72 files
+  e2/30013                        72 files
+  e2/30014                        72 files
+  e2/30015                        72 files
+  e2/30016                        72 files
+  e2/30017                        72 files
+  e2/30018                        72 files
+  e2/30019                        72 files
+  e2/30020                        72 files
+  e3/sensorscope                 120 files
+  e3/traffic                      80 files
+  e3/uair                        120 files
+  TOTAL 1794
+
+  representative sample (5 per subtree), bundle sha256 vs worktree twin:
+    eventtraces/E2_EVENTTRACE_INDEX.csv  075a915384bd031a4fbf56b5b9d0ddf98caef4a8ceb2bf0218eb46f9a578b434
+    eventtraces/E2_EVENTTRACE_MANIFEST.csv  7d49a14a583b170f5fbebda89de0209fd20f1d58278d77ef26dee33f01165f4c
+    eventtraces/E3_EVENTTRACE_MANIFEST.json  8458438a37eb66bb35643183c6dca155db4c492379a522c4ace24d56b34ce33e
+    eventtraces/e1_formal/ROLE_MANIFEST.json  ebd20c370c12154052ce0b7e160684c1a0eae76377231f119137125c28749dc3
+    eventtraces/e1_formal/seed_28001/audit.json  8d3525ac9feacd3d6592a04e4145a4daef0841c46c435f79cc8fbbf1fd00e636
+    eventtraces/e1_formal/seed_28001/event_trace_manifest.json  3cea0cc85a78755a297aaed45830bb66f63680003c533d0a12a93a13ded58c10
+    eventtraces/e1_formal/seed_28001/events.parquet  363a6955f388ad75e1566647d6c62f2e37f30647cbbc37c5404576aef819141f
+    eventtraces/e1_formal/seed_28001/generation_config.yaml  21c277410d7aef37161211934f48850ce1cc5955755467a47ea643e8c8a6e029
+    eventtraces/e1_formal/seed_28001/metadata.json  54d44a26f15a64a0e51f1405d189373db0990562befcae1ec61071dd1d89e3df
+    eventtraces/e1_formal/seed_28002/audit.json  c5bbc4c5d19b6f8c2d53b630e01cde70ff7e228e7ae62d4db25ed51f557b7bf1
+    eventtraces/e1_formal/seed_28002/event_trace_manifest.json  82738bc21ebe985bee6a04c5d7dee308b96338c043cc4e9708deb5f632f4fff9
+    eventtraces/e1_formal/seed_28002/events.parquet  8c95a6f7fa40a67218c36f781ea6237118e7c8bc6789803b184a3bfb1f394e56
+    eventtraces/e1_formal/seed_28002/generation_config.yaml  f53ca4f8098be11972d5a82fe88e41867e794baefa00c2c5cd24155d3046ba5b
+    eventtraces/e1_formal/seed_28002/metadata.json  fd9bb67e252cc7f6ac74d8ac975ac7d34cacf20d0bbe5a13f99563f15dafad85
+    eventtraces/e1_formal/seed_28003/audit.json  59f1c14f716cdb9c0b5d9aaa93043c9087c97fc941f465f12e234f8720288080
+    eventtraces/e1_formal/seed_28003/event_trace_manifest.json  e9f4583295afdcecf0668f8227a43857a47e6a03202fe511ff9c6049e52afd87
+    eventtraces/e1_formal/seed_28003/events.parquet  bdab74a4b2bb3c2da7046e23c10f4de55dce2ee9070f33bd631c74942cb6d6c3
+    eventtraces/e1_formal/seed_28003/generation_config.yaml  fa93b65f13c19b9d3cd951b9aaa449c8933eb6ee0bce3ab2c06f3500e102846d
+    eventtraces/e1_formal/seed_28003/metadata.json  d3039ac4b12ebad3987be46e76309deecea1f0d93cfc03e2c0c234f65f322020
+    eventtraces/e1_formal/seed_28004/audit.json  73ca3b70ae725e3ba164e305c1d812c4fa38bdb4da65ceac27039a8abf4f754f
+    eventtraces/e1_formal/seed_28004/event_trace_manifest.json  66d78f7a123ba87be414c0ae50c87e3e4d7e9dcb008eb0e82dcdab97afda008f
+    eventtraces/e1_formal/seed_28004/events.parquet  602b8841c4846ba9194fedabaa7b55d3fd6f45802d1383ad01fd14e4e8d1ca5e
+    eventtraces/e1_formal/seed_28004/generation_config.yaml  e88229c327829a468fce21f1ae041409e9f5cd033898201835068033962b27aa
+    eventtraces/e1_formal/seed_28004/metadata.json  6835091c37265e3f2e923f67d2624ef1da884485af015d0394dbd354efd96ff9
+    eventtraces/e1_formal/seed_28005/audit.json  f7372eed925881875bb6dccf9dc4e9ee67da5a619b829c77bb73d77e0f6cd817
+    eventtraces/e1_formal/seed_28005/event_trace_manifest.json  3ba1fe8440ef0d5744602a9cb0198c3f2e0967e26bfb1e58a3789be2e6e044d6
+    eventtraces/e1_formal/seed_28005/events.parquet  82f74d5dc2cefd2648be743c1b36d46b576183e8983bc8defc87b49085aca2fd
+    eventtraces/e1_formal/seed_28005/generation_config.yaml  b1016a651738099bfbc9a98cacf2b481d83d2cd4726c295fe08c01b16801bb39
+    eventtraces/e1_formal/seed_28005/metadata.json  75507e2961a2cd5dcad818ae73f6d332605dd1b516ae4298bbcfbf680bf12764
+    eventtraces/e2/30001/balanced/eventtrace_identity.json  075fc158da372c80ccd518fb35faa813d588b37ccde880d6f80d0df167f8539c
+    eventtraces/e2/30001/balanced/hard/client_window_activity.parquet  067e429e53bdd6fb68298b8c3fca5759d5ba033bf9195339f17db1f4a320bf77
+    eventtraces/e2/30001/balanced/hard/eventtrace_manifest.json  1a8f191b528ad4040790928d4b9f7976c2a214d7c46f06ed0d2a76f2849eb253
+    eventtraces/e2/30001/balanced/hard/failed_attempts.parquet  99477f0e9ca26ac4c9f0a385ec983260c83ff211f37320b8e7715b106e71f5a3
+    eventtraces/e2/30001/balanced/hard/hard_arrival_events.parquet  d9ab955f78656808da3b8c83c3ccc326700f1525ba80fc555dec68fd1020dcd6
+    eventtraces/e2/30002/balanced/eventtrace_identity.json  489fdf958b9adf21dae66bd3fb279a9b4432b0f73e7b310029d850811c10b10a
+    eventtraces/e2/30002/balanced/hard/client_window_activity.parquet  4cc5bfc8a7a1e4f3da6422cfbe7e28113bb505b3ae3741e74165853b607bfe97
+    eventtraces/e2/30002/balanced/hard/eventtrace_manifest.json  20d6031fdd3ec7221f342fc2b77901cb7fdc0a52ac152d84bac884fbc6a75a86
+    eventtraces/e2/30002/balanced/hard/failed_attempts.parquet  6db9842d2096224dbeb184b01977960b739f887de70f9c292de9d44316fbfc53
+    eventtraces/e2/30002/balanced/hard/hard_arrival_events.parquet  8cc45c6886759be5fb3c90eb3fe114f00a1804557cfb8e48d66f5a48f949cc0e
+    eventtraces/e2/30003/balanced/eventtrace_identity.json  7e228fec4c49999d7897e593e6a17da2e07ebf562936ed0c31b6ffff141bc459
+    eventtraces/e2/30003/balanced/hard/client_window_activity.parquet  f0aaea0a0cce373e248ea660a6b644785b7ddd398f63f61752ee7c0a60e90641
+    eventtraces/e2/30003/balanced/hard/eventtrace_manifest.json  22125c764aa68a7b75d2a897f47da07918dcd1f74172822826fb8b2a3af514db
+    eventtraces/e2/30003/balanced/hard/failed_attempts.parquet  519082714e9e1f08ce21b759cc83cd8a537865373af1f0dc6ad37de58cdd254a
+    eventtraces/e2/30003/balanced/hard/hard_arrival_events.parquet  07c293d828d442f56fad57e91d85e7ffd5dbda579f18ad5f62450c3d01c984fa
+    eventtraces/e2/30004/balanced/eventtrace_identity.json  48d4ef15a47b0570b7b4e419e82cf99422999c6f9fff5d37c385ce8092be9f5d
+    eventtraces/e2/30004/balanced/hard/client_window_activity.parquet  cae3ecfb1f07f07c5ae145f079af79a8fd8eb3e368e277c9752b48ac61b34610
+    eventtraces/e2/30004/balanced/hard/eventtrace_manifest.json  3bc12472848911896dfe6a9dac64e2df29073adfc15bbc05efa7403cb13f9933
+    eventtraces/e2/30004/balanced/hard/failed_attempts.parquet  234bb1176db8ed534373bdd75d67a02f7375908ba0f92e4556d636e63bc34f3c
+    eventtraces/e2/30004/balanced/hard/hard_arrival_events.parquet  e8c008c4d09a94e647154b8c0dd02aac22780a18c8a3ec2260d7306699dd5453
+    eventtraces/e2/30005/balanced/eventtrace_identity.json  a1ad75c14120ee1920abe6ede649f29a0c9eb3ecd04365cdf3ff5d19b9047e8c
+    eventtraces/e2/30005/balanced/hard/client_window_activity.parquet  403088cc0baa6bfe0e98a627f9c44fbd5339af676419e224987a621812f091ec
+    eventtraces/e2/30005/balanced/hard/eventtrace_manifest.json  525a93caa45bd015c2f8d41a8a100740e350e8d3a5bb17c21cc6ae96f09e8f5a
+    eventtraces/e2/30005/balanced/hard/failed_attempts.parquet  1848329bdbc3c01018906af4980ffbb4c9800f0b7e46a901b5afa68a2b9fb455
+    eventtraces/e2/30005/balanced/hard/hard_arrival_events.parquet  b40feddc662a2e92d0adaa3fc097ef57fdd2b787489356c83c77b2eee6270bee
+    eventtraces/e2/30006/balanced/eventtrace_identity.json  9fcad91dc1941912966bbf8a5826904f676044a4cf17291a5ac02f6717fe8bb8
+    eventtraces/e2/30006/balanced/hard/client_window_activity.parquet  74a5da9c3e7a1400ce06527bd2866f33d9dd9ae53dbd8c235f12f7d2d0818ff6
+    eventtraces/e2/30006/balanced/hard/eventtrace_manifest.json  68bcdab19ded7c0491c9a9e44ba99e81fc85e05d75cc3fa675d23545ead5fba5
+    eventtraces/e2/30006/balanced/hard/failed_attempts.parquet  319aa53a10d2d4d85a06df2c1eaf5e8fc3ed43e56085a742465014ca5fef98b2
+    eventtraces/e2/30006/balanced/hard/hard_arrival_events.parquet  ec36419486721227a9243aa39a36ed48766b927b104c76ebf493d26c21797ff6
+    eventtraces/e2/30007/balanced/eventtrace_identity.json  f65e92ef22cae897abf8a04f7c9bf7a6256ea651619ff908fdaf46546ea257ab
+    eventtraces/e2/30007/balanced/hard/client_window_activity.parquet  62f1fe60b5ae48039f1059e782c7a384425deb135717856fbb05b2aee2509fe9
+    eventtraces/e2/30007/balanced/hard/eventtrace_manifest.json  58ca655b9fa5affdc300f228a92a65c3a2a25220212b7448357677fc0d8870df
+    eventtraces/e2/30007/balanced/hard/failed_attempts.parquet  5d94df5a85a4b77ac8c205b33e2581d6afef986ee180989807ac49a9f5265bd9
+    eventtraces/e2/30007/balanced/hard/hard_arrival_events.parquet  5a01e01cb49ce2934a3d5446aedbe0f73ff250841daec516313e52a5d6ff4bf3
+    eventtraces/e2/30008/balanced/eventtrace_identity.json  60727fbfa3d93fd4df7482d2ac0d0f8f2e8f9b06165efd0055ed078260723efb
+    eventtraces/e2/30008/balanced/hard/client_window_activity.parquet  0ea1243ddbe3b448c98f47ddbc3ac9cfc86491aa138b481bc564a72af3803b8b
+    eventtraces/e2/30008/balanced/hard/eventtrace_manifest.json  db67a0b445e94fc6fa3d0e8b951207d47e1be724cf03fca4e7c1e410da04e629
+    eventtraces/e2/30008/balanced/hard/failed_attempts.parquet  d7f65567dc187ab2f8a54d522c3ce728b8c733e9b0432f124cd9e26187e8d8df
+    eventtraces/e2/30008/balanced/hard/hard_arrival_events.parquet  8e11d163386969a90a30dc4721eac079c83f7f4fe9850a312ce658aa8b2bbad8
+    eventtraces/e2/30009/balanced/eventtrace_identity.json  2f1c3a670c3980227d28537632f056fcf1dfaa9ca29a5d2b23789a7479278eb6
+    eventtraces/e2/30009/balanced/hard/client_window_activity.parquet  9e380667bb216758c67ee040dd8753d509750762108e23ffdae2696c1fa522cd
+    eventtraces/e2/30009/balanced/hard/eventtrace_manifest.json  b20f5ab1893514bb2ca81de994b31a2395008af6f7f516b691d82ae86ab9f35c
+    eventtraces/e2/30009/balanced/hard/failed_attempts.parquet  8e5680fd5b3530c8cdf641aa2152314c3e45b1f0af520e31aea978d1a320e1f8
+    eventtraces/e2/30009/balanced/hard/hard_arrival_events.parquet  bfb4c30fc0c679668be84c878048fafb1d6f480c4e08cee653f9225c1d32e9e5
+    eventtraces/e2/30010/balanced/eventtrace_identity.json  89bece977deda835b34a172e2fab6d63e0d83f9fd475192aaf7c9a7c7c9f94bd
+    eventtraces/e2/30010/balanced/hard/client_window_activity.parquet  2705616052000af387eaeb0665d4ded1153f1eec8e9f17c20d1f241a9d6b4954
+    eventtraces/e2/30010/balanced/hard/eventtrace_manifest.json  0497a995731adf487f7508732f0f927851c94a9cd422309979d2b186cc4903b8
+    eventtraces/e2/30010/balanced/hard/failed_attempts.parquet  60016ffc221b047e5ae21d2bc9f369681ca008623b813c73dbaaead3af98ca01
+    eventtraces/e2/30010/balanced/hard/hard_arrival_events.parquet  1f033ea4e47155c3500f54358e3b947518e11fcbe764a6f63be3a92176a865db
+    eventtraces/e2/30011/balanced/eventtrace_identity.json  e63e8e1c2152a0d93b1d6dac8bb7cf56d52fabb06c148bfbe8e1b32d74eba6dc
+    eventtraces/e2/30011/balanced/hard/client_window_activity.parquet  d3913712ce0719ce4e2af5a3bf6e68ae7c4f6cf9c79fb13de5510d23b0f2e47d
+    eventtraces/e2/30011/balanced/hard/eventtrace_manifest.json  113912bc9a989cc5b3ddec303611e2e10d5334a67f90684b8279b6107c16a4c4
+    eventtraces/e2/30011/balanced/hard/failed_attempts.parquet  96a4683f64a10fdfeec612952756561d3d64c18c0b6f1ef8b7ae911617bb4358
+    eventtraces/e2/30011/balanced/hard/hard_arrival_events.parquet  619c41bac47296147eb848fc143f4537029179c6a88403fe007165629eabec6b
+    eventtraces/e2/30012/balanced/eventtrace_identity.json  4969ec58130779c8ab6bd041053cb0401acf8818cf33790b315af5865e63b8a8
+    eventtraces/e2/30012/balanced/hard/client_window_activity.parquet  d6dbee5bc8d47ccfd6804376d99e6701e40e604f3431fca479ecaa6e6e47fa0f
+    eventtraces/e2/30012/balanced/hard/eventtrace_manifest.json  01fee0c15dacdce775701e6832e35d0e0d9e8178b9a721affa775b0502914e85
+    eventtraces/e2/30012/balanced/hard/failed_attempts.parquet  27541630cf26642554236ea88a104c8fda4f60994c7250b56a3930c073571329
+    eventtraces/e2/30012/balanced/hard/hard_arrival_events.parquet  0a2835ad25912249f9bb689253aef65fe2c43b64afa54b88009cf77f026cfa56
+    eventtraces/e2/30013/balanced/eventtrace_identity.json  b186391d6139340bbecbd2056a9d089bf48a489c66f512bef4b5afe0a10485b7
+    eventtraces/e2/30013/balanced/hard/client_window_activity.parquet  7435e690d80347a019958a1a7929ae8e50240cc6c16c563842ef1287e6ba9b67
+    eventtraces/e2/30013/balanced/hard/eventtrace_manifest.json  3e0dedfa1e32e24e65d773968ebe3624caee8dec138f6ea7233c37c3e4bef0fa
+    eventtraces/e2/30013/balanced/hard/failed_attempts.parquet  3f90c15a55bb2bdb5249bcdcada3faca164e74e0721d286f79cd9cb4ac698d33
+    eventtraces/e2/30013/balanced/hard/hard_arrival_events.parquet  ae84c8a44e62ced0e624d47b6658206bdca7672d452a2ac694a9b434b26ffcdb
+    eventtraces/e2/30014/balanced/eventtrace_identity.json  64d016bd1a43ce6645d00b8326f035f877eef5bed9179bf21712c671917c335b
+    eventtraces/e2/30014/balanced/hard/client_window_activity.parquet  9ca6a4c2e9eff3b6ab0754c47d639857b9b4670e7ce7b3455e9734f373acb634
+    eventtraces/e2/30014/balanced/hard/eventtrace_manifest.json  0acf5ba09c00b263872776ee0c774252d977e81d45ee2987e716ce0dbf80dace
+    eventtraces/e2/30014/balanced/hard/failed_attempts.parquet  71b93270f56ff0cbec12e4c15f2133f4b2cdb620df9159f880fb531198f85e3b
+    eventtraces/e2/30014/balanced/hard/hard_arrival_events.parquet  e9e61c3fafcfb982782712039f6f790504a5e1980cd20761c95010a8c1f5e5d0
+    eventtraces/e2/30015/balanced/eventtrace_identity.json  ddd0dabdca5db676a3ecaf6b1b597421cb86911fed41783b537103154a6cf7d6
+    eventtraces/e2/30015/balanced/hard/client_window_activity.parquet  5d43bfaf74a9511359ccf0410d7b56c3fa71c5f23d56276773cb80a4bf87ea15
+    eventtraces/e2/30015/balanced/hard/eventtrace_manifest.json  d8f9f75513d5ded90a1aeca8f06f7773e1c9b93badb62885bde7e7809510068f
+    eventtraces/e2/30015/balanced/hard/failed_attempts.parquet  bae06bb871da111172416f712c5d7d778f79f35c759937ddde0fe9aff908fb7d
+    eventtraces/e2/30015/balanced/hard/hard_arrival_events.parquet  5fde3642038b98d95c6454bd6d31742a7f9c9d6ddf10f2018f28bc2d68a6f970
+    eventtraces/e2/30016/balanced/eventtrace_identity.json  607d2be7b050422a0f1e32b0bd1cbda7a1914d0c81303d8b47bd2396df404119
+    eventtraces/e2/30016/balanced/hard/client_window_activity.parquet  d35e001894f191ca29d36e8f891c58350fab16020790f370de4b5768afaa7f9e
+    eventtraces/e2/30016/balanced/hard/eventtrace_manifest.json  d1006f1d5ae7b25dc984d80b3c79d41a6bfb3cfef1bd4b2009ead99da9b627fe
+    eventtraces/e2/30016/balanced/hard/failed_attempts.parquet  29e8411ab821ad7715d51ce3c3b2aa2b83596d54bb6a8db9ce13e025cf85761b
+    eventtraces/e2/30016/balanced/hard/hard_arrival_events.parquet  0e48dc5751ab6e85f61687be673cbe29b957eefd0135ab01099258573f68dd76
+    eventtraces/e2/30017/balanced/eventtrace_identity.json  d9af0852252a66e98f342f0748c6ae4b2db6004c4cfbe61345ba371293fe92e2
+    eventtraces/e2/30017/balanced/hard/client_window_activity.parquet  33c6c8597f6b207e0758c261331a0d358304a90d8e99cc84de71afc5b37e7cfd
+    eventtraces/e2/30017/balanced/hard/eventtrace_manifest.json  587f689b944a120b9d648bec8b18a2e0f45b5f6256173f70414e1529ac22736c
+    eventtraces/e2/30017/balanced/hard/failed_attempts.parquet  6970e6edc2160479b8eb562cf1c9eca49509f68ecf9d934a8b6365ec0f004839
+    eventtraces/e2/30017/balanced/hard/hard_arrival_events.parquet  b69caada5d907834170e10ca38f2ba503fbec2be7b036b70775c3fc5206fbe68
+    eventtraces/e2/30018/balanced/eventtrace_identity.json  7a0fc616db7789e84c58c8c6a6a934fd92d9f599be1d3273b5d4acb3b2a2585d
+    eventtraces/e2/30018/balanced/hard/client_window_activity.parquet  28aa851afab4ce082132ad6358ed88253decde3c1f740141a3dfb7b677a66a83
+    eventtraces/e2/30018/balanced/hard/eventtrace_manifest.json  3619e8f731087640bfd41b7c0acf145a39a6b7b769f0ae9c352b0c81f9438c8c
+    eventtraces/e2/30018/balanced/hard/failed_attempts.parquet  e1d245a0e37502505896f9fa37b90cd0a1017c2ee47592198e4bdb7903693711
+    eventtraces/e2/30018/balanced/hard/hard_arrival_events.parquet  01328d22d581c501e7d8c963ef659cd5689ea96291c88bd67a395423075880d5
+    eventtraces/e2/30019/balanced/eventtrace_identity.json  6498e1f1a40038bade5df31d9d1df76984ab5989dd94879736f2edfb05669cb4
+    eventtraces/e2/30019/balanced/hard/client_window_activity.parquet  082d7285accc6715883292eb08ecfbe1621c577627c070a51d97e0bfb6161ed0
+    eventtraces/e2/30019/balanced/hard/eventtrace_manifest.json  a13f89b79e6efb87963767e695d00e41b3777b05a03234c0dc19b71924023166
+    eventtraces/e2/30019/balanced/hard/failed_attempts.parquet  1063f5e0cac2efbf5dba7b5eb64c1a0c0037516544611a57d58758e7251f1384
+    eventtraces/e2/30019/balanced/hard/hard_arrival_events.parquet  0d2ca3bfd557e03523ee9239fde5205f21e1710a49ae3e3c485ff410c557233f
+    eventtraces/e2/30020/balanced/eventtrace_identity.json  a7b18b547e6e325460265554fea0232f0f5c7e9d0b06df63d175a3d39fc8d1c7
+    eventtraces/e2/30020/balanced/hard/client_window_activity.parquet  b5bf86123bd1b49cf0cc5294c785a1a999c2a19e5b8e3e84520f4011b1701a71
+    eventtraces/e2/30020/balanced/hard/eventtrace_manifest.json  a779ee9f998857dbcd9ad7b9b1bcae9701b0fcac9ff4fc7fb5f557e01b4e33dc
+    eventtraces/e2/30020/balanced/hard/failed_attempts.parquet  f2a8584ef321892b80d5973f7b6b1a056be9f09cf67009ccddddc690598fa88d
+    eventtraces/e2/30020/balanced/hard/hard_arrival_events.parquet  4b26ce7655a6a13e9764bbaeaafda9d3c59c78d7d3a22fc702a3d4baa271a059
+    eventtraces/e3/sensorscope/seed30001/atomic_p_obs_true.parquet  6841be27c15e2858dcca75fb078ff9a36f6893606acb1ab09661ca86305cd0b3
+    eventtraces/e3/sensorscope/seed30001/generation_meta.json  a1ac6d1f4a1493b5aa718ee6db61aa54fe1db412f7f9e14d74e6b36e22661034
+    eventtraces/e3/sensorscope/seed30001/opportunity_events.parquet  f3cc93a87be958fa1f382077586a7b77cda8b492e8ec22751204f30a21c311db
+    eventtraces/e3/sensorscope/seed30001/training_eventtrace/events.parquet  3cb008eb8a65c75f927991a319259180778f0b71ab1127b7099cf1b6010d9f87
+    eventtraces/e3/sensorscope/seed30001/training_eventtrace/metadata.json  1e24ed76c7863808212d5418841cd3d55bb75236dc9d778932d3e67226983416
+    eventtraces/e3/traffic/seed30001/e2_reuse_provenance.json  e0b39e00fc163a82e3087e84d73c9871350e9e83088578d6c95f807ad03fc0f5
+    eventtraces/e3/traffic/seed30001/training_eventtrace/events.parquet  f4ae137ab49672673236440cb2f6484a52318474377df47af83812caa5eb1f7e
+    eventtraces/e3/traffic/seed30001/training_eventtrace/metadata.json  cb5716650193ab0da3ac01bb05dc9b37be37b5032cf81d2de66700cc9327a31c
+    eventtraces/e3/traffic/seed30001/training_eventtrace/trace_identity.json  dbaed630a7f09bbac0018a660805f3db2a913182d0729a535607f27180361852
+    eventtraces/e3/traffic/seed30002/e2_reuse_provenance.json  60eab27b96bd1fd687ba226f189cf60c70011abf021044e6ae4e40b6d7d2047d
+    eventtraces/e3/uair/seed30001/atomic_p_obs_true.parquet  1922a8b13123b499935cefb096983c1697f2725442cac881286e355f1eada74e
+    eventtraces/e3/uair/seed30001/generation_meta.json  70d605d30c0f3833a29ebfdf2a63b809a54185c9a7399c62f86d3af81582fc9a
+    eventtraces/e3/uair/seed30001/opportunity_events.parquet  e4bb3b519dabcfeec7436adbaabd0ce195d1eb28df1cf4e8946fea51fb9435b8
+    eventtraces/e3/uair/seed30001/training_eventtrace/events.parquet  d685b67b5cd5f0cc34cd2cc95a5e8ca5c30726b43e8afc9122093244e0193f3d
+    eventtraces/e3/uair/seed30001/training_eventtrace/metadata.json  9eff268b70c53730eb3d4166115c01439adad6e2bc73a1094fb587a32d0ac0e2
+
+====================================================================================================
+BUNDLE scripts/build_public_repro_bundle.py  vs  WORKTREE scripts/build_public_repro_bundle.py
+====================================================================================================
+  bundle lines=411 bytes=14814 sha256=c8d9f0acc9e9d2c3107801d19c75b362583a1e1e09a5a839c69184c14ac7864b
+  worktree lines=502 bytes=18354 sha256=d400bdf449b4c779fb760e75673de69a1273d32d6af32cd1874ed84c43bf88f4
+  unified diff lines: 102
+   --- bundle
+   +++ worktree
+   @@ -38,2 +38,90 @@
+        shutil.copy2(src, dst)
+   +
+   +
+   +def _repo_root() -> Path:
+   +    here = Path(__file__).resolve()
+   +    for p in (here.parents[1], here.parents[2]):
+   +        if (p / "post_review" / "P0_ni_artifact" / "tables").is_dir():
+   +            return p
+   +    return here.parents[1]
+   +
+   +
+   +def _overlay_p0_table_ii(out: Path) -> None:
+   +    p0 = _repo_root() / "post_review" / "P0_ni_artifact" / "tables"
+   +    for name in (
+   +        "TABLE_II_MAIN_EFFECTIVENESS.csv",
+   +        "TABLE_II_FREEZE.json",
+   +        "TABLE_II_WORSTGROUP_PER_SEED.csv",
+   +        "TABLE_E3_MAIN_EFFECTIVENESS.csv",
+   +        "TD_R_E3_PAIRED.csv",
+   +    ):
+   +        src = p0 / name
+   +        if not src.is_file():
+   +            continue
+   +        dst = out / "tdrive" / name if name == "TD_R_E3_PAIRED.csv" else out / "tables" / name
+   +        copy_file(src, dst)
+   +    scripts_src = _repo_root() / "RAVEN_MCS_PUBLIC_REPRO_R1" / "scripts"
+   +    for name in ("rebuild_table_ii.py", "rebuild_table_ii_tolerance.py"):
+   +        src = scripts_src / name
+   +        if src.is_file():
+   +            copy_file(src, out / "scripts" / name)
+   +
+   +
+   +def _overlay_cityscanner_hybrids(out: Path) -> None:
+   +    """Copy visit-occupancy and Pilot-2 ranking CSVs. Does not copy traces or PATH_A."""
+   +    cs_src = ROOT / "results_c1_cityscanner" / "round_v1"
+   +    cs_map = {
+   +        "CS_E3.csv": cs_src / "tables" / "CS_E3.csv",
+   +        "CS_E3_PAIRED.csv": cs_src / "tables" / "CS_E3_PAIRED.csv",
+   +        "CS_E3_SUMMARY.csv": cs_src / "tables" / "CS_E3_SUMMARY.csv",
+   +        "CS_PHI.csv": cs_src / "tables" / "CS_PHI.csv",
+   +        "CS_PHI_DECISION.json": cs_src / "CS_PHI_DECISION.json",
+   +        "GO.json": cs_src / "GO.json",
+   +        "AUDIT.json": cs_src / "C1_KILL_AUDIT.json",
+   +    }
+   +    for name, src in cs_map.items():
+   +        if src.is_file():
+   +            copy_file(src, out / "cityscanner" / name)
+   +    p2_src = ROOT / "results_joint_ou" / "round_v1"
+   +    p2_map = {
+   +        "JO_E3.csv": p2_src / "tables" / "JO_E3.csv",
+   +        "JO_E3_PAIRED.csv": p2_src / "tables" / "JO_E3_PAIRED.csv",
+   +        "JO_E3_SUMMARY.csv": p2_src / "tables" / "JO_E3_SUMMARY.csv",
+   +        "JO_PHI_DECISION.json": p2_src / "JO_PHI_DECISION.json",
+   +        "GO.json": p2_src / "GO.json",
+   +        "AUDIT.json": p2_src / "JO_KILL_AUDIT.json",
+   +    }
+   +    for name, src in p2_map.items():
+   +        if src.is_file():
+   +            copy_file(src, out / "cityscanner_p2" / name)
+   +    phi_src = p2_src / "JO_PHI_DECISION.json"
+   +    if phi_src.is_file():
+   +        dec = json.loads(phi_src.read_text(encoding="utf-8"))
+   +        phi_path = out / "cityscanner_p2" / "JO_PHI.csv"
+   +        phi_path.parent.mkdir(parents=True, exist_ok=True)
+   +        with phi_path.open("w", encoding="utf-8", newline="") as f:
+   +            w = csv.DictWriter(
+   +                f,
+   +                fieldnames=[
+   +                    "dataset",
+   +                    "h_definition",
+   +                    "n_train_units",
+   +                    "n_train_zero",
+   +                    "phi_train_unit",
+   +                    "design_on",
+   +                    "scd_method",
+   +                ],
+   +            )
+   +            w.writeheader()
+   +            w.writerow(
+   +                {
+   +                    "dataset": dec["dataset"],
+   +                    "h_definition": dec["h_definition"],
+   +                    "n_train_units": dec["n_train_units"],
+   +                    "n_train_zero": dec["n_train_zero"],
+   +                    "phi_train_unit": dec["phi_train_unit"],
+   +                    "design_on": dec["design_on"],
+   +                    "scd_method": dec["scd_method"],
+   +                }
+   +            )
+    
+   @@ -255,2 +343,3 @@
+            copy_file(ROOT / "paper_ready_r2" / "06_table_sources" / name, OUT / "tables" / name)
+   +    _overlay_p0_table_ii(OUT)
+        copy_file(
+   @@ -329,2 +418,4 @@
+            copy_if_small(src, OUT / "tdrive" / src.name)
+   +
+   +    _overlay_cityscanner_hybrids(OUT)
+    
+
+====================================================================================================
+TABLE_E3_MAIN_EFFECTIVENESS.csv: bundle/P0 copy vs paper_ready_r2 copy
+====================================================================================================
+  bundle           2076 B 550ea605296ae54af6f7d4e1a150b454e9d769b65730f378dfbff754fd409e61
+  paper_ready_r2   1939 B 4fc603c0cb82a42c870671341d8c66244e2e3dc374e07e134297e05727b9db0f
+  headers: ['dataset', 'method', 'n', 'RMSE_mu_mean', 'MAE_mu_mean', 'Tail_RMSE_mean', 'Delta_group_mean', 'Delta_c_s_mean', 'comparison_class']
+           ['dataset', 'method', 'n', 'RMSE_mu_mean', 'MAE_mu_mean', 'Tail_RMSE_mean', 'Delta_group_mean', 'Delta_c_s_mean', 'comparison_class']
+  diff lines 10
+   --- bundle
+   +++ paper_ready_r2
+   @@ -9 +9 @@
+   -SensorScope,RAVEN-MCS-SCD,20,7.93799,7.65858,8.46005,1.01394,1.26438,SCI_COMPARABLE_MAIN
+   +SensorScope,RAVEN-MCS,20,7.93799,7.65858,8.46005,1.01394,1.26438,SCI_COMPARABLE_MAIN
+   @@ -20 +20 @@
+   -U-Air,RAVEN-MCS-Full-Design,20,1.19111,1.0903,1.19986,1.09236,1.23339,SCI_COMPARABLE_MAIN
+   +U-Air,RAVEN-MCS,20,1.19111,1.0903,1.19986,1.09236,1.23339,SCI_COMPARABLE_MAIN
+   @@ -24 +23,0 @@
+   -U-Air,RAVEN-MCS-SCD,20,1.1130591116704196,,1.1173644421854962,1.0165152111017324,1.2949338429848216,SCI_COMPARABLE_MAIN

@@ -1,0 +1,130 @@
+{
+  "adapter": "TDriveSpeedAdapter",
+  "all_raw_hashes_match_manifest": true,
+  "bbox": {
+    "lat_max": 40.2,
+    "lat_min": 39.6,
+    "lon_max": 116.8,
+    "lon_min": 116.0
+  },
+  "canonical_id": "tdrive_speed",
+  "coordinate_system": "WGS84 longitude/latitude degrees",
+  "data_hash": "7a0e197eeb8ba5230b364ae08d66b53ffbfdb82fc9caf5458a8c5557004387e8",
+  "dataset_name": "T-Drive-Speed",
+  "file_count": 10,
+  "known_source_cleaning_already_applied": [
+    "bbox clip 116.0-116.8E, 39.6-40.2N",
+    "speed 5-120 km/h",
+    "dt in (0, 0.25] hours"
+  ],
+  "license_source_notes": "microsoft-research-license",
+  "manifest_sha256": "31f4a212b316ff0c2e2ba3d6c30a2a1886e35f650c7be4de5032502ff78f1dd1",
+  "preparation_seed": 26001,
+  "provenance": {
+    "accessed_at": "2026-07-31T02:52:15+00:00",
+    "dataset": "tdrive_speed",
+    "errors": [],
+    "files": [
+      {
+        "downloaded_at": "2026-07-31T02:51:22+00:00",
+        "expected_md5": null,
+        "filename": "014.zip",
+        "http_status": 200,
+        "md5": "7a9201d8f4440a61969769499601ff4f",
+        "size_bytes": 1786189,
+        "status": "downloaded",
+        "url": "https://www.microsoft.com/en-us/research/wp-content/uploads/2016/02/014.zip"
+      },
+      {
+        "downloaded_at": "2026-07-31T02:51:28+00:00",
+        "expected_md5": null,
+        "filename": "013.zip",
+        "http_status": 200,
+        "md5": "bb0b7a6a2b2eae7073f80a5cf3bf6041",
+        "size_bytes": 7511662,
+        "status": "downloaded",
+        "url": "https://www.microsoft.com/en-us/research/wp-content/uploads/2016/02/013.zip"
+      },
+      {
+        "downloaded_at": "2026-07-31T02:51:34+00:00",
+        "expected_md5": null,
+        "filename": "012.zip",
+        "http_status": 200,
+        "md5": "2dcc35df6df79541341694613f0df4de",
+        "size_bytes": 8765021,
+        "status": "downloaded",
+        "url": "https://www.microsoft.com/en-us/research/wp-content/uploads/2016/02/012.zip"
+      },
+      {
+        "downloaded_at": "2026-07-31T02:51:40+00:00",
+        "expected_md5": null,
+        "filename": "011.zip",
+        "http_status": 200,
+        "md5": "b8161f3ef39092e859f196d7d9ef4f8e",
+        "size_bytes": 10330098,
+        "status": "downloaded",
+        "url": "https://www.microsoft.com/en-us/research/wp-content/uploads/2016/02/011.zip"
+      },
+      {
+        "downloaded_at": "2026-07-31T02:51:46+00:00",
+        "expected_md5": null,
+        "filename": "010.zip",
+        "http_status": 200,
+        "md5": "0c72aefa790c0311bd4bf3adc27c27c9",
+        "size_bytes": 10732764,
+        "status": "downloaded",
+        "url": "https://www.microsoft.com/en-us/research/wp-content/uploads/2016/02/010.zip"
+      },
+      {
+        "downloaded_at": "2026-07-31T02:51:51+00:00",
+        "expected_md5": null,
+        "filename": "09.zip",
+        "http_status": 200,
+        "md5": "f48319d79890243d49157a875e5afede",
+        "size_bytes": 11771101,
+        "status": "downloaded",
+        "url": "https://www.microsoft.com/en-us/research/wp-content/uploads/2016/02/09.zip"
+      },
+      {
+        "downloaded_at": "2026-07-31T02:51:57+00:00",
+        "expected_md5": null,
+        "filename": "08.zip",
+        "http_status": 200,
+        "md5": "f8f359a0bd57eb6c1138950d2014b382",
+        "size_bytes": 13519832,
+        "status": "downloaded",
+        "url": "https://www.microsoft.com/en-us/research/wp-content/uploads/2016/02/08.zip"
+      },
+      {
+        "downloaded_at": "2026-07-31T02:52:03+00:00",
+        "expected_md5": null,
+        "filename": "07.zip",
+        "http_status": 200,
+        "md5": "79ccabe5ff217737ea6c71eb66a88a57",
+        "size_bytes": 11720280,
+        "status": "downloaded",
+        "url": "https://www.microsoft.com/en-us/research/wp-content/uploads/2016/02/07.zip"
+      },
+      {
+        "downloaded_at": "2026-07-31T02:52:08+00:00",
+        "expected_md5": null,
+        "filename": "06.zip",
+        "http_status": 200,
+        "md5": "c2775a3154787850b30163bdcc4d12d3",
+        "size_bytes": 7827329,
+        "status": "downloaded",
+        "url": "https://www.microsoft.com/en-us/research/wp-content/uploads/2016/02/06.zip"
+      }
+    ],
+    "license": "microsoft-research-license",
+    "ok": true,
+    "source_name": "Microsoft Research T-Drive trajectory sample",
+    "source_url": "https://www.microsoft.com/en-us/research/publication/t-drive-trajectory-data-sample/"
+  },
+  "raw_dataset_sha256_if_available": "1e80ad548200e49db2fb3efc9336fcd8a4bf7944744e9556c8cd33eb6331e585",
+  "raw_root": "data/raw/tdrive_speed",
+  "source_description": "Microsoft Research T-Drive trajectory sample (Beijing taxis)",
+  "status": "HASH_BOUND",
+  "timezone_semantics": "Raw timestamps are naive Beijing wall-clock values; adapter labels them UTC without offset conversion.",
+  "total_size_bytes": 83967733
+}

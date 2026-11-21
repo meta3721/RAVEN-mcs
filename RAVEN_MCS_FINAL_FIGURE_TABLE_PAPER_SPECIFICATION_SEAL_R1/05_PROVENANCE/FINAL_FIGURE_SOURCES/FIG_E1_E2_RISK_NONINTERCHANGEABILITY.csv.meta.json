@@ -1,0 +1,13 @@
+{
+  "aggregation": "none",
+  "filters": "copy only; SensorScope/U-Air already applied in source where required",
+  "input_assets": [
+    "RAVEN_MCS_FINAL_PAPER_DATA_ASSET_FREEZE_R1/15_FIGURE_SOURCES/manuscript_closure_r1/FIG1_E2_RISK_NONINTERCHANGEABILITY_FINAL.csv"
+  ],
+  "input_hashes": [
+    "28605d1ebf874c5f2c1ad7e780790a68c02bcd7ea2c12d1636f49755628b6511"
+  ],
+  "output_hash": "28605d1ebf874c5f2c1ad7e780790a68c02bcd7ea2c12d1636f49755628b6511",
+  "scientific_semantics_changed": false,
+  "statistical_protocol": "unchanged sealed protocol"
+}

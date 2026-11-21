@@ -1,0 +1,11 @@
+section,required_data,available,asset_ids,gap,new_experiment_needed
+III,dataset semantics / h / s / R / O / U definitions,True,DATASET_METADATA_FINAL;FINAL_H_S_SEMANTICS,row-level R/O/U not sealed,False
+IV,selection-layer correction definitions/provenance,True,FINAL_CONFIG_MASTER;Local-Hajek provenance,propensity distributions MISSING_NOT_RECORDED,False
+V,calibration/debt/P2 semantics,True,P2_CLAIM_BOUNDARY;E4 labels,debt trajectory MISSING_NOT_RECORDED,False
+VI,theory diagnostics if any,partial,ESS scalars;P2 feasibility,ESS trajectory MISSING_NOT_RECORDED,False
+VII-A,dataset/config/statistics metadata,True,TABLE_I;FINAL_CONFIG_MASTER,none core,False
+VII-B,E1/E2,True,E1 25; E2 600; FIG1,none,False
+VII-C,E3 SS/U-Air,True,E3 440 comparable; TABLE_II; FIG2,Traffic E3 NOT_COMPARABLE by design,False
+VII-D,E4 240,True,E4 240; TABLE_III; FIG4,none core,False
+VIII,Traffic/P2/Use/Debt limitations,True,boundaries; E4 labels; T-Drive reserve,no T-Drive performance,False
+Appendix,"diagnostics, provenance, full tables",True,supporting/appendix folders,supporting fields listed in MISSING_DATA_FINAL,False

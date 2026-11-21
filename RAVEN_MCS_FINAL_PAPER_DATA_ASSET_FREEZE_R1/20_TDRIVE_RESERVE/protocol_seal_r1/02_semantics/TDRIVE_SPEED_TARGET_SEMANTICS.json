@@ -1,0 +1,21 @@
+{
+  "aggregation_rule": "Y_i = mean reference-fleet speed in (spatial_id, 30-min slot); client potential_measurement = mean client-fleet speed in same cell×slot",
+  "coordinate_distance_formula": "haversine, Earth radius 6371 km",
+  "derivation": "consecutive GPS haversine distance (km) / dt (hours)",
+  "implausible_speed_filter": "drop speed_kmh < 5 or speed_kmh > 120",
+  "missing_target_rule": "atomic units exist only where reference fleet produced at least one valid speed; client rows inner-joined to those units",
+  "performance_tuned": false,
+  "processed_source_conflict": false,
+  "source_files": [
+    "src/raven_mcs/data/tdrive.py",
+    "configs/dataset/tdrive_speed.yaml"
+  ],
+  "source_hashes": {
+    "configs/dataset/tdrive_speed.yaml": "3d2c53b34f2e20ae3a10de98cd6dd1acc6059ed304063bbc789a70f0dfc30b76",
+    "src/raven_mcs/data/tdrive.py": "1a3b9d5edd4672f403a859ebdc98db053a1ab44d9c421ef7d5f946837f4afd77"
+  },
+  "spatial_assignment": "500 m grid cell of the segment start point (longitude/latitude of the first of the consecutive pair)",
+  "status": "RECOVERED",
+  "timestamp_difference_rule": "dt_hours = (t_{j+1}-t_j)/3600; require 0 < dt_hours <= 0.25",
+  "units": "km_per_h"
+}

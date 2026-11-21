@@ -1,0 +1,13 @@
+{
+  "classification": "NOT_REQUIRED_FOR_TDRIVE_PRIMARY_CLAIM",
+  "do_not_force": true,
+  "factor_status": {
+    "nu_hat": "method-internal; required for RMSE_rho collection",
+    "p_obs": "will exist as controlled EventTrace truth; method hats depend on persistence",
+    "pi_opp_hat": "method-internal; required for RMSE_rho collection",
+    "q_use": "will exist as controlled complete_aligned; method hats depend on persistence"
+  },
+  "if_any_factor_missing_at_run_time": "NOT_AVAILABLE_MISSING_FACTOR",
+  "r_hat_i": "sum_k pi_opp_hat(k,s(i)) * nu_hat_k(i|s(i)) * p_obs_hat(k,i) * q_use_hat(k,s(i))",
+  "status": "FROZEN"
+}

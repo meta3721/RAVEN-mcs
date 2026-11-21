@@ -1,0 +1,237 @@
+{
+  "contract": {
+    "id": "TMC-J-R4",
+    "venue": "IEEE TMC journal revision; method-plus-measurement paper; page budget treated as TMC regular 12 pp with a project MOPC allowance up to 18 pp",
+    "scale": "dimensions anchored 1-5; overall 1-10",
+    "dimensions": [
+      "Originality",
+      "Soundness",
+      "Evidence",
+      "Clarity",
+      "Reproducibility",
+      "Significance",
+      "Related work",
+      "Terminology"
+    ],
+    "weights": {
+      "Originality": 0.10,
+      "Soundness": 0.20,
+      "Evidence": 0.25,
+      "Clarity": 0.15,
+      "Reproducibility": 0.10,
+      "Significance": 0.10,
+      "Related work": 0.05,
+      "Terminology": 0.05
+    },
+    "reviewer_roles": [
+      "Best-justified",
+      "Critical",
+      "Method / soundness",
+      "Reproducibility auditor",
+      "Writing and presentation"
+    ],
+    "thresholds": {
+      "progress_unchanged_when_abs_weighted_delta_lt": 0.05,
+      "acceptance_overall": 4,
+      "current_stance": 5
+    },
+    "evidence_standard": "manuscript text at a stated sha256 plus named repository artifacts; no author promise substitutes for manuscript evidence"
+  },
+  "relative_progress_scorecard": {
+    "historical": {
+      "Originality": 2,
+      "Soundness": 5,
+      "Evidence": 3,
+      "Clarity": 5,
+      "Reproducibility": 3,
+      "Significance": 2,
+      "Related work": 3,
+      "Terminology": 4
+    },
+    "current": {
+      "Originality": 2,
+      "Soundness": 5,
+      "Evidence": 3,
+      "Clarity": 4,
+      "Reproducibility": 2,
+      "Significance": 2,
+      "Related work": 3,
+      "Terminology": 4
+    },
+    "deltas": {
+      "Originality": 0,
+      "Soundness": 0,
+      "Evidence": 0,
+      "Clarity": -1,
+      "Reproducibility": -1,
+      "Significance": 0,
+      "Related work": 0,
+      "Terminology": 0
+    },
+    "weighted_delta": -0.25,
+    "classification": "regressed"
+  },
+  "absolute_readiness_scorecard": {
+    "current_dimension_scores": {
+      "Originality": 2,
+      "Soundness": 5,
+      "Evidence": 3,
+      "Clarity": 4,
+      "Reproducibility": 2,
+      "Significance": 2,
+      "Related work": 3,
+      "Terminology": 4
+    },
+    "scale": "dimensions anchored 1-5; weighted overall 1-10",
+    "overall_score": 3.3,
+    "stance": "5/10 borderline negative (maintained); the margin narrowed because readiness fell from 3.55 to 3.30 while the decisive Evidence axis did not move",
+    "threshold": "4/10 acceptance threshold under frozen contract TMC-J-R4",
+    "evidence_standard": "manuscript text at a stated sha256 plus named repository artifacts; no author promise substitutes for manuscript evidence"
+  },
+  "confidence_and_comparability": "Comparability is high: both versions are exact byte-verified texts of the same manuscript line (historical sha256 02447BFE6256632B5AF2A535BCFCE2EB1024EB3A7AC957C2158B3EEDB6B1219A, 113854 B, reconstructed from the current file and hash-verified; current sha256 68D9B44F17A4E48D7D010C5BB83EFC4C0951B60BC3EED39A6529B56AC4FC700B, 116379 B), scored under the same frozen contract, the same five roles and the same evidence standard, with no external standard change. The diff is fully enumerated and small: two hunks, +36/-0 relative to the historical version. Confidence in the relative-progress scorecard is high for Evidence, Clarity and Reproducibility (the changed sites were read in full and every printed number in them was traced to a named artifact), medium for Soundness and Originality (proofs were not re-derived and no literature search was run). Confidence in the absolute-readiness scorecard is medium, inherited from the previous round on the axes this revision did not touch. The historical scores were re-derived under the frozen anchors rather than copied: Clarity 5 reflects that the round-12 contribution-bullet split is already present in the historical version, and Reproducibility 3 reflects that the round-12 availability fix is already present.",
+  "issues": [
+    {
+      "id": "E1",
+      "first_seen_version": "round 9",
+      "status": "unresolved",
+      "origin": "inherited",
+      "applies_to": "both",
+      "affected_dimensions": ["Evidence", "Significance"],
+      "evidence": "main.tex L2096-L2101 (no Holm survivor in the prediction family) and the Recoverable-Gain Ceiling subsection L2107-L2130; unchanged by this revision; results_regime_b_endpoints/round_v1/P2D_REPORT.md for the saturated decision endpoint",
+      "score_effect": { "historical": 0, "current": 0 },
+      "note": "The revision explains why the endpoint is flat on these blocks but supplies no pre-registered endpoint with headroom above its detectable effect; under the pre-fixed TMC-J-R4 standard for this axis, explaining a null does not repair it."
+    },
+    {
+      "id": "E2",
+      "first_seen_version": "round 9",
+      "status": "unresolved",
+      "origin": "inherited",
+      "applies_to": "both",
+      "affected_dimensions": ["Significance", "Originality"],
+      "evidence": "main.tex L229-L237 and L1826-L1856, unchanged; the contribution list still does not lead with the projection and the Design factor",
+      "score_effect": { "historical": 0, "current": 0 }
+    },
+    {
+      "id": "NEW-r12-1",
+      "first_seen_version": "round 12",
+      "status": "unresolved",
+      "origin": "newly_revealed_by_evidence",
+      "applies_to": "current",
+      "affected_dimensions": ["Evidence"],
+      "evidence": "results_regime_b_endpoints/round_v1/P2D_REPORT.md and tables/P2D_CONTRASTS.csv: the U-Air exceedance decision endpoint is saturated in both regimes and cannot separate the arms at 25/35/50/75 ug/m3",
+      "score_effect": { "historical": 0, "current": 0 },
+      "note": "Still the constraint that forbids re-offering the same decision endpoint as E1's repair; the revision honours it and claims no decision skill."
+    },
+    {
+      "id": "NEW-r12-2",
+      "first_seen_version": "round 9 (F10)",
+      "status": "partially_resolved",
+      "origin": "inherited",
+      "applies_to": "both",
+      "affected_dimensions": ["Reproducibility"],
+      "evidence": "rebuilt this round: main.log 0 errors / 0 undefined / 0 multiply-defined / 0 Overfull; supplemental.log 0 / 0 / 0 / 1 Overfull (\\vbox, 3.42152 pt), reproduced from the current source",
+      "score_effect": { "historical": 0, "current": 0 }
+    },
+    {
+      "id": "NEW-r12-3",
+      "first_seen_version": "round 12",
+      "status": "unresolved",
+      "origin": "inherited",
+      "applies_to": "both",
+      "affected_dimensions": ["Terminology"],
+      "evidence": "main.tex L606-L609 versus L1819/L2194; the two names for two different gaps are still distinct",
+      "score_effect": { "historical": 0, "current": 0 },
+      "note": "Recorded, not charged, as in round 12; no reader test has shown confusion."
+    },
+    {
+      "id": "M2",
+      "first_seen_version": "round-10 state",
+      "status": "resolved",
+      "origin": "inherited",
+      "applies_to": "both",
+      "affected_dimensions": ["Reproducibility"],
+      "evidence": "main.tex L2260-L2264 now names the w1/ subtree, w1/PAPER_NUMBERS.csv and verify.py; present in the historical version, so it carries no delta in this comparison",
+      "score_effect": { "historical": 0, "current": 0 }
+    },
+    {
+      "id": "M4",
+      "first_seen_version": "round 12",
+      "status": "resolved",
+      "origin": "inherited",
+      "applies_to": "both",
+      "affected_dimensions": ["Clarity", "Reproducibility"],
+      "evidence": "main.tex L617 region points at w1/ladder_v3/PREREG.md for the band and its reading rule; present in the historical version",
+      "score_effect": { "historical": 0, "current": 0 }
+    },
+    {
+      "id": "CL-3",
+      "first_seen_version": "round 12",
+      "status": "resolved",
+      "origin": "inherited",
+      "applies_to": "both",
+      "affected_dimensions": ["Clarity"],
+      "evidence": "main.tex L228-L229: the verdict, the kappa exclusion and the prediction pointer now sit in their own contribution bullet (What the measurement does not attribute); present in the historical version",
+      "score_effect": { "historical": 0, "current": 0 }
+    },
+    {
+      "id": "NEW-r13-1",
+      "first_seen_version": "round 13 (this comparison)",
+      "status": "unresolved",
+      "origin": "revision_regression",
+      "applies_to": "current",
+      "affected_dimensions": ["Clarity"],
+      "evidence": "main.tex L2160-L2162 calls +0.768/+0.286 pp 'the small margin of the projection over uniform server weights', while L1834 of the same manuscript states the SensorScope value is 'above the 0.5 pp practical line and stable across the two seed halves' and L2092 reports it at p_Holm = 2.7e-5; the bundled source RAVEN_MCS_PUBLIC_REPRO_R1/w1/tradeoff_v4/PART_A_REPORT.md L15/L17 marks both pairs as outside the equivalence band, SensorScope passing the practical line. Two further precision defects sit in the same passage: L2207 states a bound of 0.17 % that the source crosses (largest SensorScope level mean 0.1747 %, results_gate_dose/round_v2/tables/DOSE_SUMMARY.csv), and L2213 says 'for every local budget from 2 to 20 steps' where S1_LADDER.csv contains four budgets (2, 5, 10, 20) and records local_steps_source=sealed_e2_complete_aligned_read_only for the 2-step rung",
+      "score_effect": { "historical": 0, "current": -1 }
+    },
+    {
+      "id": "NEW-r13-2",
+      "first_seen_version": "round 13 (this comparison)",
+      "status": "unresolved",
+      "origin": "revision_regression",
+      "applies_to": "current",
+      "affected_dimensions": ["Reproducibility"],
+      "evidence": "The revision prints about ten numbers from results_estimand_selection/round_v1, results_gate_dose/round_v2 and results_new_block_traffic/round_v1 (L2199-L2215), and neither new passage carries any \\cite or \\ref pointer to a depositable artifact (both blocks contain zero \\cite and one \\eqref each). A recursive search of RAVEN_MCS_PUBLIC_REPRO_R1 returns zero files matching DOSE_*, RISK_ROWS, SELECTION, gate_dose, estimand, new_block_traffic, evidence_headroom, HEADROOM, TARGET_CONCENTRATION, MASK, RHO.csv, S0_* or S1_*, and MANIFEST.csv names none of those trees; w1/PAPER_NUMBERS.csv, which L2262 presents as 'indexing the printed values', has zero of the new values among its 83 rows. This reintroduces, for this revision's numbers, the same availability gap that M2 closed for the previous round's numbers",
+      "score_effect": { "historical": 0, "current": -1 }
+    },
+    {
+      "id": "NEW-r13-3",
+      "first_seen_version": "round 13 (this comparison)",
+      "status": "unresolved",
+      "origin": "previously_undetected",
+      "applies_to": "both",
+      "affected_dimensions": ["Reproducibility"],
+      "evidence": "Three of the nine TO_OVERLEAF_paper_tmc_r1_clean/figure_data files differ from their RAVEN_MCS_PUBLIC_REPRO_R1/figures counterparts: FIG_E3_E3_PREDICTION_RISK.csv (27B90460279AFBEC vs 8110240A5F88644B), FIG_E4_E4_COMPONENT_ABLATION.csv (998CDAC5982CC2B9 vs C80F6DDDABD7C8E7) and FIG_W1_DESIGN_GATE.csv (050F595A42867BBF vs 5462183B6858F4B4). The E4 pair is explained by the theta-copy re-score ruling (frozen runs give -6.553094 %, the printed -6.885464 % uses results_active_set_repair/round_v1/E2_UAIR_CELLS.csv). BUNDLE_SUMMARY.json also reports file_count 2117 against 2118 files present. Present in both versions, so it carries no delta",
+      "score_effect": { "historical": 0, "current": 0 }
+    },
+    {
+      "id": "NEW-r13-4",
+      "first_seen_version": "round 13 (this comparison)",
+      "status": "unresolved",
+      "origin": "previously_undetected",
+      "applies_to": "both",
+      "affected_dimensions": ["Reproducibility"],
+      "evidence": "scripts/compute_cityscanner_phi.py, scripts/run_c1_cityscanner.py and scripts/run_p2_nt_e3.py are each 2 bytes (sha256 7EB70257593D..., mtime 2026-10-07 19:11) and untracked; no copy and no bytecode exists anywhere in the workspace. The bundle ships their outputs under cityscanner/ and cityscanner_p2/ with no surviving generator, while README.md L20-L21 presents those subtrees as reproducibility artifacts. Present in both versions",
+      "score_effect": { "historical": 0, "current": 0 }
+    },
+    {
+      "id": "NEW-r13-5",
+      "first_seen_version": "round 13 (this comparison)",
+      "status": "unresolved",
+      "origin": "previously_undetected",
+      "applies_to": "both",
+      "affected_dimensions": ["Reproducibility"],
+      "evidence": "The mechanism paragraph's K_r statistic agrees between the runner and the traces on SensorScope (1877/1475, 2000/2000 rows) and on U-Air Design-off (1515/1197, 1600/1600 rows), but not on U-Air Design-on: .rb_work/evidence_headroom/REACHABILITY_WINDOWS.parquet gives a K_r<=3 share of 77.389 % over the same 1402 windows against the printed and runner-derived 90.157 %. The number is correct against window_metrics.json and not derivable from the released EventTraces. Applies to the historical version too (the paragraph is new, but the underlying artefact disagreement is not)",
+      "score_effect": { "historical": 0, "current": 0 }
+    },
+    {
+      "id": "NEW-r13-6",
+      "first_seen_version": "round 13 (this comparison)",
+      "status": "unresolved",
+      "origin": "previously_undetected",
+      "applies_to": "both",
+      "affected_dimensions": ["Reproducibility", "Clarity"],
+      "evidence": "The mechanism paragraph's premise E_min = 3 is not recorded in any frozen E3 config_snapshot.json on the measured path (they carry only local_steps and scenario) and not in configs/frozen/e3_multidataset_protocol_closure/; it is inferred from the e_min=3.0 aggregator defaults, the runtime getattr default in training/window_runner.py L989, and artifacts/e4_wo_inst_reference_penalty_final_correction_r1/E4_WO_INST_FINAL_ONE_FACTOR_SPEC.json L16. Two E4 call sites override it to 1.0",
+      "score_effect": { "historical": 0, "current": 0 }
+    }
+  ]
+}

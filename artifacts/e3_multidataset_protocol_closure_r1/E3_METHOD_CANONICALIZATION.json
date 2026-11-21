@@ -1,0 +1,158 @@
+{
+  "aliases": [
+    {
+      "alias": "fedavg",
+      "canonical_method_id": "fedavg_window",
+      "classification": "ALIAS_ONLY"
+    },
+    {
+      "alias": "fedasync",
+      "canonical_method_id": "fedasync_window",
+      "classification": "ALIAS_ONLY"
+    },
+    {
+      "alias": "timealign_agg",
+      "canonical_method_id": "flamf_timealign_adapted",
+      "classification": "ALIAS_ONLY"
+    },
+    {
+      "alias": "timealign",
+      "canonical_method_id": "flamf_timealign_adapted",
+      "classification": "ALIAS_ONLY"
+    },
+    {
+      "alias": "time_align",
+      "canonical_method_id": "flamf_timealign_adapted",
+      "classification": "ALIAS_ONLY"
+    },
+    {
+      "alias": "time_align_agg",
+      "canonical_method_id": "flamf_timealign_adapted",
+      "classification": "ALIAS_ONLY"
+    },
+    {
+      "alias": "two_stage_hajek",
+      "canonical_method_id": "twostage_hajek",
+      "classification": "ALIAS_ONLY"
+    },
+    {
+      "alias": "instant_calibration",
+      "canonical_method_id": "inst_cal",
+      "classification": "ALIAS_ONLY"
+    },
+    {
+      "alias": "raven_mcs",
+      "canonical_method_id": "raven",
+      "classification": "ALIAS_ONLY"
+    },
+    {
+      "alias": "simoracle",
+      "canonical_method_id": "raven_simoracle",
+      "classification": "ALIAS_ONLY"
+    },
+    {
+      "alias": "centralall",
+      "canonical_method_id": "central_all",
+      "classification": "ALIAS_ONLY"
+    },
+    {
+      "alias": "centraldelivered",
+      "canonical_method_id": "central_delivered",
+      "classification": "ALIAS_ONLY"
+    },
+    {
+      "alias": "flamf",
+      "canonical_method_id": "flamf_original",
+      "classification": "ALIAS_ONLY"
+    }
+  ],
+  "canonical_methods": [
+    {
+      "display": "FedAvg-Window",
+      "excluded": false,
+      "in_policy_map": true,
+      "method_id": "fedavg_window",
+      "role": "MAIN_BASELINE"
+    },
+    {
+      "display": "FedAsync-Window",
+      "excluded": false,
+      "in_policy_map": true,
+      "method_id": "fedasync_window",
+      "role": "MAIN_BASELINE"
+    },
+    {
+      "display": "TimeAlign-Agg",
+      "excluded": false,
+      "in_policy_map": true,
+      "method_id": "flamf_timealign_adapted",
+      "role": "MAIN_BASELINE"
+    },
+    {
+      "display": "Local-Hajek",
+      "excluded": false,
+      "in_policy_map": true,
+      "method_id": "local_hajek",
+      "role": "MAIN_BASELINE"
+    },
+    {
+      "display": "TwoStage-Hajek",
+      "excluded": false,
+      "in_policy_map": true,
+      "method_id": "twostage_hajek",
+      "role": "MAIN_BASELINE"
+    },
+    {
+      "display": "Inst-Cal",
+      "excluded": false,
+      "in_policy_map": true,
+      "method_id": "inst_cal",
+      "role": "MAIN_BASELINE"
+    },
+    {
+      "display": "Debt-Cal",
+      "excluded": false,
+      "in_policy_map": true,
+      "method_id": "debt_cal",
+      "role": "MAIN_BASELINE"
+    },
+    {
+      "display": "RAVEN-MCS",
+      "excluded": false,
+      "in_policy_map": true,
+      "method_id": "raven",
+      "role": "RAVEN"
+    },
+    {
+      "display": "RAVEN-SimOracle",
+      "excluded": false,
+      "in_policy_map": true,
+      "method_id": "raven_simoracle",
+      "role": "ORACLE"
+    },
+    {
+      "display": "Central-All",
+      "excluded": false,
+      "in_policy_map": true,
+      "method_id": "central_all",
+      "role": "REFERENCE_ONLY"
+    },
+    {
+      "display": "Central-Delivered",
+      "excluded": false,
+      "in_policy_map": true,
+      "method_id": "central_delivered",
+      "role": "REFERENCE_ONLY"
+    },
+    {
+      "display": "FLAMF-Original",
+      "excluded": true,
+      "in_policy_map": true,
+      "method_id": "flamf_original",
+      "role": "EXTERNAL"
+    }
+  ],
+  "n_canonical_semantic_methods": 12,
+  "n_non_excluded_canonical": 11,
+  "rule": "aliases must not appear twice in run matrix / table / Holm family / ledger logical counts"
+}

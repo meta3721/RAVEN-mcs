@@ -1,0 +1,36 @@
+{
+  "by_dataset": [
+    {
+      "cf0_mean_oracle": 0.018335267991494025,
+      "cf1_mean_oracle": 0.06852142509896524,
+      "cf1_minus_cf0": 0.05018615710747121,
+      "cf2_mean_oracle": 0.06852142509896524,
+      "cf2_minus_cf1": 0.0,
+      "dataset": "sensorscope",
+      "e3_lag1_jaccard": 0.012217412217412217,
+      "raw_lag1_jaccard": 0.8333333333333334,
+      "tv_distance": 0.45454545454545675
+    },
+    {
+      "cf0_mean_oracle": 0.02785908931082979,
+      "cf1_mean_oracle": 0.09333333333333334,
+      "cf1_minus_cf0": 0.06547424402250354,
+      "cf2_mean_oracle": 0.09333333333333334,
+      "cf2_minus_cf1": 0.0,
+      "dataset": "uair",
+      "e3_lag1_jaccard": 0.01952983725135624,
+      "raw_lag1_jaccard": 0.8343949044585988,
+      "tv_distance": 0.36810990490616774
+    }
+  ],
+  "cautious_statement": "Cross-time train-pool resampling (E3-v1) removes natural co-occurrence and temporal continuity. CF1/CF2 restore within-window membership at the frozen k=4 cap; treat them as diagnostics, not E3-v2.",
+  "codes": [
+    "RC-A",
+    "RC-B",
+    "RC-C",
+    "RC-D"
+  ],
+  "confidence": "high_on_temporal_and_cooccurrence_loss; diagnostic_only_on_counterfactuals",
+  "primary": "RC-A+RC-B+RC-C+RC-D",
+  "sampling_caused_ceiling_strict": true
+}

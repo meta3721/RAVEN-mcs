@@ -1,0 +1,8 @@
+pair,status,note
+FIG-E1 vs E2 D_aligned CSV,EXACT_MATCH,byte-copy from manuscript-closure/freeze source
+FIG-E2 vs E3 structural master subset,AGGREGATION_MATCH,seed-level boxplot source copied; Traffic dropped in source
+FIG-E3 vs E3 prediction master,EXACT_MATCH,copy of E3_PREDICTION_METRICS_MASTER
+FIG-E4 vs E4_FINAL_STATISTICS_R2 relative_change,EXACT_MATCH,manuscript-closure FIG3 source
+TABLE-II vs E3_FINAL_STATISTICS means,AGGREGATION_MATCH,mean±std already computed in sealed table source; no recompute
+TABLE-III vs E4_240 / ablation table,EXACT_MATCH,w/o-Inst gen 2 in source
+TABLE-I vs DATASET_METADATA_FINAL,AGGREGATION_MATCH,field projection; T-Drive not listed as evaluated

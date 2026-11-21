@@ -1,0 +1,92 @@
+[
+  {
+    "dataset": "traffic",
+    "splits": {
+      "test": {
+        "n": 6192,
+        "tmin": "2015-09-22 00:00:00+00:00",
+        "tmax": "2015-09-27 23:00:00+00:00",
+        "n_spatial": 43
+      },
+      "train": {
+        "n": 18576,
+        "tmin": "2015-08-29 00:00:00+00:00",
+        "tmax": "2015-09-15 23:00:00+00:00",
+        "n_spatial": 43
+      },
+      "validation": {
+        "n": 6192,
+        "tmin": "2015-09-16 00:00:00+00:00",
+        "tmax": "2015-09-21 23:00:00+00:00",
+        "n_spatial": 43
+      }
+    },
+    "train_label_scale_diagnostic": {
+      "mean": 554.2328048736721,
+      "std": 575.7755968885956
+    },
+    "measurement_source": "station=client exact target measurement, same as formal TrafficE3Dataset",
+    "source_atomic_sha": "db45a2ecc66c27abeaf58b0c03ce66de7bfaf6727f4523ea06ef226a9ce3de50",
+    "source_client_sha": "f80ff849be57f8513b7122e67ffe78ece1f3ddfa00f7efd274a73672bbc60787"
+  },
+  {
+    "dataset": "sensorscope",
+    "splits": {
+      "test": {
+        "n": 3410,
+        "tmin": "2006-12-31 00:00:00+00:00",
+        "tmax": "2007-01-02 13:00:00+00:00",
+        "n_spatial": 55
+      },
+      "train": {
+        "n": 10285,
+        "tmin": "2006-12-20 14:00:00+00:00",
+        "tmax": "2006-12-28 08:00:00+00:00",
+        "n_spatial": 55
+      },
+      "validation": {
+        "n": 3465,
+        "tmin": "2006-12-28 09:00:00+00:00",
+        "tmax": "2006-12-30 23:00:00+00:00",
+        "n_spatial": 55
+      }
+    },
+    "train_label_scale_diagnostic": {
+      "mean": 0.3005773489727914,
+      "std": 1.155367706017523
+    },
+    "measurement_source": "frozen controlled client measurement",
+    "source_atomic_sha": "47581d5b04d3795b3fe663198ba32a53e83f35707718a82bd1ec0662daff88ce",
+    "source_client_sha": "292524d4c9679bb76de760fd45c7b7c797a6edba1a9d38d40da9eb83bb1aa295"
+  },
+  {
+    "dataset": "uair",
+    "splits": {
+      "test": {
+        "n": 1908,
+        "tmin": "2014-05-09 21:00:00+00:00",
+        "tmax": "2014-05-12 01:00:00+00:00",
+        "n_spatial": 36
+      },
+      "train": {
+        "n": 5688,
+        "tmin": "2014-05-01 00:00:00+00:00",
+        "tmax": "2014-05-07 15:00:00+00:00",
+        "n_spatial": 36
+      },
+      "validation": {
+        "n": 1908,
+        "tmin": "2014-05-07 16:00:00+00:00",
+        "tmax": "2014-05-09 20:00:00+00:00",
+        "n_spatial": 36
+      }
+    },
+    "train_label_scale_diagnostic": {
+      "mean": 31.109001406469762,
+      "std": 17.36325121670317
+    },
+    "measurement_source": "frozen controlled client measurement",
+    "source_atomic_sha": "0d57445890f7e1a21038c17106a8e7f332e95fe13fe81713f24b8fd0ab254eed",
+    "source_client_sha": "4ec8ae79c7b6f74f5969e1914310bc61d0005c86cf9cfd434e1ee5e60f70647f"
+  }
+]

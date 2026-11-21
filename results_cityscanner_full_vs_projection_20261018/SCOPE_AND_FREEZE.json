@@ -1,0 +1,55 @@
+{
+  "created_utc": "2026-10-18T12:50:04.556302+00:00",
+  "authorization": "user requests five outlines then direct comparison",
+  "question": "Full P2 versus Euclidean projection of the same reconstructed reference",
+  "blocks": {
+    "cityscanner": [
+      32001,
+      32002,
+      32003
+    ],
+    "pilot2": [
+      33001,
+      33002,
+      33003
+    ]
+  },
+  "seed_selection": "first three existing trace/model seeds in numeric order; already-used development evidence",
+  "arms": [
+    "full_p2",
+    "reference_projection"
+  ],
+  "windows": 100,
+  "local_steps": 2,
+  "design": "preconfigured on throughout",
+  "coverage": "diagnostic only",
+  "learning_rate": 0.01,
+  "server_eta": 0.01,
+  "alpha_max": 0.5,
+  "e_min": 3,
+  "projection": "argmin ||alpha-beta_hat||_2^2 subject to same simplex/cap/ESS",
+  "projection_source": "scripts/w1_v51a_oracle.py:project_Cr; full two-multiplier routine, not a proxy",
+  "selection_correction": "same dataset, target maps, p/q estimation, local Hajek and trace in each pair",
+  "no_parameter_search": true,
+  "no_OF_restart": true,
+  "paper_changes": false,
+  "metrics": [
+    "RMSE_mu",
+    "WorstGroupRMSE",
+    "Delta_group",
+    "Delta_c_s",
+    "weight_compute_CPU",
+    "instrumented_run_wall"
+  ],
+  "decision": "descriptive paired effects and dominance; no significance or noninferiority claim from three reused seeds",
+  "resources": {
+    "worker_CPU_limit_seconds": 1200.0,
+    "wall_limit_seconds": 1800.0,
+    "GPU": 0,
+    "workers": 1,
+    "torch_threads": 1
+  },
+  "budget_semantics": "worker process CPU including native single-process computation; outside orchestration CPU not claimed as complete root CPU",
+  "partial_runs": "retained, excluded from full endpoint comparisons; no early scientific stop on a losing seed",
+  "source": "C:\\Users\\szr\\Desktop\\record\\1\\ccfa-review-reports\\cityscanner_full_vs_projection_driver.py"
+}

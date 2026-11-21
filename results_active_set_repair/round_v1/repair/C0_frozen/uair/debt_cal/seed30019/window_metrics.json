@@ -1,0 +1,1446 @@
+[
+  {
+    "a_r_size": 4,
+    "active": true,
+    "active_clients": [
+      "client-000",
+      "client-001",
+      "client-003",
+      "client-006"
+    ],
+    "alpha": [
+      0.2596719958709892,
+      0.24292016232441033,
+      0.24292016232441033,
+      0.25448767948019024
+    ],
+    "beta_hat": [
+      0.5,
+      0.125,
+      0.125,
+      0.25
+    ],
+    "window_id": 0
+  },
+  {
+    "a_r_size": 2,
+    "active": true,
+    "active_clients": [
+      "client-001",
+      "client-005"
+    ],
+    "alpha": [
+      0.49999999999540407,
+      0.5000000000045959
+    ],
+    "beta_hat": [
+      0.5,
+      0.5
+    ],
+    "window_id": 1
+  },
+  {
+    "a_r_size": 5,
+    "active": true,
+    "active_clients": [
+      "client-001",
+      "client-002",
+      "client-003",
+      "client-005",
+      "client-007"
+    ],
+    "alpha": [
+      0.21757125991744153,
+      0.1839790368690288,
+      0.21589962833334028,
+      0.18566685347051204,
+      0.1968832214096773
+    ],
+    "beta_hat": [
+      0.2727272727272727,
+      0.09090909090909091,
+      0.2727272727272727,
+      0.09090909090909091,
+      0.2727272727272727
+    ],
+    "window_id": 2
+  },
+  {
+    "a_r_size": 3,
+    "active": true,
+    "active_clients": [
+      "client-000",
+      "client-001",
+      "client-004"
+    ],
+    "alpha": [
+      0.3333325579072706,
+      0.3333365405010208,
+      0.33333090159170864
+    ],
+    "beta_hat": [
+      0.3333333333333333,
+      0.5,
+      0.16666666666666666
+    ],
+    "window_id": 3
+  },
+  {
+    "a_r_size": 3,
+    "active": true,
+    "active_clients": [
+      "client-003",
+      "client-004",
+      "client-007"
+    ],
+    "alpha": [
+      0.3333317857823871,
+      0.33333382336652256,
+      0.3333343908510904
+    ],
+    "beta_hat": [
+      0.25,
+      0.25,
+      0.5
+    ],
+    "window_id": 4
+  },
+  {
+    "a_r_size": 4,
+    "active": true,
+    "active_clients": [
+      "client-000",
+      "client-001",
+      "client-004",
+      "client-007"
+    ],
+    "alpha": [
+      0.3037577854891075,
+      0.2209664780307759,
+      0.21841652750194046,
+      0.25685920897817616
+    ],
+    "beta_hat": [
+      0.14285714285714285,
+      0.2857142857142857,
+      0.2857142857142857,
+      0.2857142857142857
+    ],
+    "window_id": 5
+  },
+  {
+    "a_r_size": 3,
+    "active": true,
+    "active_clients": [
+      "client-000",
+      "client-001",
+      "client-006"
+    ],
+    "alpha": [
+      0.33333333230284007,
+      0.3333333376909163,
+      0.3333333300062437
+    ],
+    "beta_hat": [
+      0.14285714285714285,
+      0.42857142857142855,
+      0.42857142857142855
+    ],
+    "window_id": 6
+  },
+  {
+    "a_r_size": 3,
+    "active": true,
+    "active_clients": [
+      "client-000",
+      "client-002",
+      "client-004"
+    ],
+    "alpha": [
+      0.33333775910337965,
+      0.3332644830578282,
+      0.3333977578387922
+    ],
+    "beta_hat": [
+      0.2,
+      0.4,
+      0.4
+    ],
+    "window_id": 7
+  },
+  {
+    "a_r_size": 4,
+    "active": true,
+    "active_clients": [
+      "client-001",
+      "client-003",
+      "client-004",
+      "client-007"
+    ],
+    "alpha": [
+      0.24735097266167963,
+      0.24893417431319995,
+      0.2856844165246611,
+      0.21803043650045936
+    ],
+    "beta_hat": [
+      0.25,
+      0.375,
+      0.25,
+      0.125
+    ],
+    "window_id": 8
+  },
+  {
+    "a_r_size": 2,
+    "active": true,
+    "active_clients": [
+      "client-002",
+      "client-005"
+    ],
+    "alpha": [
+      0.49999999999474143,
+      0.5000000000052585
+    ],
+    "beta_hat": [
+      0.5,
+      0.5
+    ],
+    "window_id": 9
+  },
+  {
+    "a_r_size": 1,
+    "active": true,
+    "active_clients": [
+      "client-000"
+    ],
+    "alpha": [
+      1.0
+    ],
+    "beta_hat": [
+      1.0
+    ],
+    "window_id": 10
+  },
+  {
+    "a_r_size": 1,
+    "active": true,
+    "active_clients": [
+      "client-006"
+    ],
+    "alpha": [
+      1.0
+    ],
+    "beta_hat": [
+      1.0
+    ],
+    "window_id": 11
+  },
+  {
+    "a_r_size": 2,
+    "active": true,
+    "active_clients": [
+      "client-005",
+      "client-007"
+    ],
+    "alpha": [
+      0.49999999998315436,
+      0.5000000000168456
+    ],
+    "beta_hat": [
+      0.3333333333333333,
+      0.6666666666666666
+    ],
+    "window_id": 12
+  },
+  {
+    "a_r_size": 2,
+    "active": true,
+    "active_clients": [
+      "client-000",
+      "client-003"
+    ],
+    "alpha": [
+      0.5000000000022485,
+      0.49999999999775147
+    ],
+    "beta_hat": [
+      0.3333333333333333,
+      0.6666666666666666
+    ],
+    "window_id": 13
+  },
+  {
+    "a_r_size": 1,
+    "active": true,
+    "active_clients": [
+      "client-006"
+    ],
+    "alpha": [
+      1.0
+    ],
+    "beta_hat": [
+      1.0
+    ],
+    "window_id": 14
+  },
+  {
+    "a_r_size": 2,
+    "active": true,
+    "active_clients": [
+      "client-003",
+      "client-004"
+    ],
+    "alpha": [
+      0.5000000000057173,
+      0.49999999999428274
+    ],
+    "beta_hat": [
+      0.75,
+      0.25
+    ],
+    "window_id": 15
+  },
+  {
+    "a_r_size": 2,
+    "active": true,
+    "active_clients": [
+      "client-001",
+      "client-003"
+    ],
+    "alpha": [
+      0.4999999999949829,
+      0.5000000000050171
+    ],
+    "beta_hat": [
+      0.5,
+      0.5
+    ],
+    "window_id": 16
+  },
+  {
+    "a_r_size": 4,
+    "active": true,
+    "active_clients": [
+      "client-002",
+      "client-004",
+      "client-005",
+      "client-007"
+    ],
+    "alpha": [
+      0.27050836934602124,
+      0.28054120129282717,
+      0.2035516905850691,
+      0.24539873877608254
+    ],
+    "beta_hat": [
+      0.125,
+      0.25,
+      0.25,
+      0.375
+    ],
+    "window_id": 17
+  },
+  {
+    "a_r_size": 2,
+    "active": true,
+    "active_clients": [
+      "client-000",
+      "client-003"
+    ],
+    "alpha": [
+      0.49999999998879735,
+      0.5000000000112026
+    ],
+    "beta_hat": [
+      0.5,
+      0.5
+    ],
+    "window_id": 18
+  },
+  {
+    "a_r_size": 0,
+    "active": false,
+    "active_clients": [],
+    "alpha": [],
+    "beta_hat": [],
+    "window_id": 19
+  },
+  {
+    "a_r_size": 2,
+    "active": true,
+    "active_clients": [
+      "client-000",
+      "client-003"
+    ],
+    "alpha": [
+      0.5000000000111606,
+      0.4999999999888393
+    ],
+    "beta_hat": [
+      0.5,
+      0.5
+    ],
+    "window_id": 20
+  },
+  {
+    "a_r_size": 3,
+    "active": true,
+    "active_clients": [
+      "client-001",
+      "client-002",
+      "client-005"
+    ],
+    "alpha": [
+      0.33333945577081014,
+      0.33336788173459253,
+      0.3332926624945974
+    ],
+    "beta_hat": [
+      0.25,
+      0.5,
+      0.25
+    ],
+    "window_id": 21
+  },
+  {
+    "a_r_size": 3,
+    "active": true,
+    "active_clients": [
+      "client-001",
+      "client-004",
+      "client-005"
+    ],
+    "alpha": [
+      0.33333206916258035,
+      0.3333409743193383,
+      0.3333269565180813
+    ],
+    "beta_hat": [
+      0.2,
+      0.4,
+      0.4
+    ],
+    "window_id": 22
+  },
+  {
+    "a_r_size": 2,
+    "active": true,
+    "active_clients": [
+      "client-003",
+      "client-006"
+    ],
+    "alpha": [
+      0.4999999999912117,
+      0.5000000000087883
+    ],
+    "beta_hat": [
+      0.5,
+      0.5
+    ],
+    "window_id": 23
+  },
+  {
+    "a_r_size": 2,
+    "active": true,
+    "active_clients": [
+      "client-004",
+      "client-006"
+    ],
+    "alpha": [
+      0.5000000000184474,
+      0.49999999998155276
+    ],
+    "beta_hat": [
+      0.5,
+      0.5
+    ],
+    "window_id": 24
+  },
+  {
+    "a_r_size": 3,
+    "active": true,
+    "active_clients": [
+      "client-002",
+      "client-006",
+      "client-007"
+    ],
+    "alpha": [
+      0.3333057459526703,
+      0.3334335677304139,
+      0.33326068631691574
+    ],
+    "beta_hat": [
+      0.5,
+      0.16666666666666666,
+      0.3333333333333333
+    ],
+    "window_id": 25
+  },
+  {
+    "a_r_size": 2,
+    "active": true,
+    "active_clients": [
+      "client-002",
+      "client-007"
+    ],
+    "alpha": [
+      0.5000000000170233,
+      0.49999999998297673
+    ],
+    "beta_hat": [
+      0.25,
+      0.75
+    ],
+    "window_id": 26
+  },
+  {
+    "a_r_size": 3,
+    "active": true,
+    "active_clients": [
+      "client-000",
+      "client-005",
+      "client-006"
+    ],
+    "alpha": [
+      0.3332489888534012,
+      0.33342378371038695,
+      0.33332722743621185
+    ],
+    "beta_hat": [
+      0.3333333333333333,
+      0.3333333333333333,
+      0.3333333333333333
+    ],
+    "window_id": 27
+  },
+  {
+    "a_r_size": 3,
+    "active": true,
+    "active_clients": [
+      "client-002",
+      "client-003",
+      "client-007"
+    ],
+    "alpha": [
+      0.3333309868256903,
+      0.33333469247135017,
+      0.3333343207029596
+    ],
+    "beta_hat": [
+      0.4,
+      0.4,
+      0.2
+    ],
+    "window_id": 28
+  },
+  {
+    "a_r_size": 4,
+    "active": true,
+    "active_clients": [
+      "client-001",
+      "client-002",
+      "client-003",
+      "client-006"
+    ],
+    "alpha": [
+      0.2682679655330695,
+      0.2279276190001532,
+      0.26279238802590865,
+      0.24101202744086864
+    ],
+    "beta_hat": [
+      0.375,
+      0.375,
+      0.125,
+      0.125
+    ],
+    "window_id": 29
+  },
+  {
+    "a_r_size": 2,
+    "active": true,
+    "active_clients": [
+      "client-000",
+      "client-003"
+    ],
+    "alpha": [
+      0.49999999999121975,
+      0.5000000000087802
+    ],
+    "beta_hat": [
+      0.3333333333333333,
+      0.6666666666666666
+    ],
+    "window_id": 30
+  },
+  {
+    "a_r_size": 0,
+    "active": false,
+    "active_clients": [],
+    "alpha": [],
+    "beta_hat": [],
+    "window_id": 31
+  },
+  {
+    "a_r_size": 2,
+    "active": true,
+    "active_clients": [
+      "client-004",
+      "client-005"
+    ],
+    "alpha": [
+      0.5000000000153789,
+      0.49999999998462114
+    ],
+    "beta_hat": [
+      0.6666666666666666,
+      0.3333333333333333
+    ],
+    "window_id": 32
+  },
+  {
+    "a_r_size": 2,
+    "active": true,
+    "active_clients": [
+      "client-000",
+      "client-002"
+    ],
+    "alpha": [
+      0.49999999997923444,
+      0.5000000000207656
+    ],
+    "beta_hat": [
+      0.5,
+      0.5
+    ],
+    "window_id": 33
+  },
+  {
+    "a_r_size": 1,
+    "active": true,
+    "active_clients": [
+      "client-007"
+    ],
+    "alpha": [
+      1.0
+    ],
+    "beta_hat": [
+      1.0
+    ],
+    "window_id": 34
+  },
+  {
+    "a_r_size": 2,
+    "active": true,
+    "active_clients": [
+      "client-000",
+      "client-003"
+    ],
+    "alpha": [
+      0.4999999999853935,
+      0.5000000000146064
+    ],
+    "beta_hat": [
+      0.6666666666666666,
+      0.3333333333333333
+    ],
+    "window_id": 35
+  },
+  {
+    "a_r_size": 3,
+    "active": true,
+    "active_clients": [
+      "client-003",
+      "client-005",
+      "client-006"
+    ],
+    "alpha": [
+      0.3333296819245948,
+      0.33334156950731203,
+      0.33332874856809325
+    ],
+    "beta_hat": [
+      0.42857142857142855,
+      0.2857142857142857,
+      0.2857142857142857
+    ],
+    "window_id": 36
+  },
+  {
+    "a_r_size": 3,
+    "active": true,
+    "active_clients": [
+      "client-003",
+      "client-004",
+      "client-006"
+    ],
+    "alpha": [
+      0.33333225780003967,
+      0.33333557693081073,
+      0.3333321652691496
+    ],
+    "beta_hat": [
+      0.3333333333333333,
+      0.3333333333333333,
+      0.3333333333333333
+    ],
+    "window_id": 37
+  },
+  {
+    "a_r_size": 4,
+    "active": true,
+    "active_clients": [
+      "client-002",
+      "client-003",
+      "client-005",
+      "client-007"
+    ],
+    "alpha": [
+      0.20643482427435483,
+      0.2751827478887488,
+      0.22752431390893835,
+      0.290858113927958
+    ],
+    "beta_hat": [
+      0.14285714285714285,
+      0.42857142857142855,
+      0.14285714285714285,
+      0.2857142857142857
+    ],
+    "window_id": 38
+  },
+  {
+    "a_r_size": 2,
+    "active": true,
+    "active_clients": [
+      "client-001",
+      "client-002"
+    ],
+    "alpha": [
+      0.5000000000091152,
+      0.4999999999908849
+    ],
+    "beta_hat": [
+      0.75,
+      0.25
+    ],
+    "window_id": 39
+  },
+  {
+    "a_r_size": 1,
+    "active": true,
+    "active_clients": [
+      "client-002"
+    ],
+    "alpha": [
+      1.0
+    ],
+    "beta_hat": [
+      1.0
+    ],
+    "window_id": 40
+  },
+  {
+    "a_r_size": 1,
+    "active": true,
+    "active_clients": [
+      "client-000"
+    ],
+    "alpha": [
+      1.0
+    ],
+    "beta_hat": [
+      1.0
+    ],
+    "window_id": 41
+  },
+  {
+    "a_r_size": 4,
+    "active": true,
+    "active_clients": [
+      "client-000",
+      "client-001",
+      "client-004",
+      "client-005"
+    ],
+    "alpha": [
+      0.2845366727928852,
+      0.24818572801818461,
+      0.2448414669821795,
+      0.22243613220675074
+    ],
+    "beta_hat": [
+      0.2857142857142857,
+      0.2857142857142857,
+      0.2857142857142857,
+      0.14285714285714285
+    ],
+    "window_id": 42
+  },
+  {
+    "a_r_size": 2,
+    "active": true,
+    "active_clients": [
+      "client-001",
+      "client-006"
+    ],
+    "alpha": [
+      0.4999999999938505,
+      0.5000000000061496
+    ],
+    "beta_hat": [
+      0.3333333333333333,
+      0.6666666666666666
+    ],
+    "window_id": 43
+  },
+  {
+    "a_r_size": 2,
+    "active": true,
+    "active_clients": [
+      "client-004",
+      "client-005"
+    ],
+    "alpha": [
+      0.5000000000019565,
+      0.4999999999980435
+    ],
+    "beta_hat": [
+      0.6666666666666666,
+      0.3333333333333333
+    ],
+    "window_id": 44
+  },
+  {
+    "a_r_size": 3,
+    "active": true,
+    "active_clients": [
+      "client-000",
+      "client-004",
+      "client-006"
+    ],
+    "alpha": [
+      0.3333792427773924,
+      0.3333884320133745,
+      0.33323232520923307
+    ],
+    "beta_hat": [
+      0.3333333333333333,
+      0.5,
+      0.16666666666666666
+    ],
+    "window_id": 45
+  },
+  {
+    "a_r_size": 1,
+    "active": true,
+    "active_clients": [
+      "client-002"
+    ],
+    "alpha": [
+      1.0
+    ],
+    "beta_hat": [
+      1.0
+    ],
+    "window_id": 46
+  },
+  {
+    "a_r_size": 5,
+    "active": true,
+    "active_clients": [
+      "client-000",
+      "client-001",
+      "client-002",
+      "client-003",
+      "client-005"
+    ],
+    "alpha": [
+      0.2515399373894183,
+      0.1508223085731784,
+      0.18530034393911243,
+      0.24682664151687866,
+      0.16551076858141214
+    ],
+    "beta_hat": [
+      0.4,
+      0.3,
+      0.1,
+      0.1,
+      0.1
+    ],
+    "window_id": 47
+  },
+  {
+    "a_r_size": 0,
+    "active": false,
+    "active_clients": [],
+    "alpha": [],
+    "beta_hat": [],
+    "window_id": 48
+  },
+  {
+    "a_r_size": 4,
+    "active": true,
+    "active_clients": [
+      "client-002",
+      "client-003",
+      "client-004",
+      "client-007"
+    ],
+    "alpha": [
+      0.26385361731202833,
+      0.28580069388786716,
+      0.24621343515946226,
+      0.20413225364064214
+    ],
+    "beta_hat": [
+      0.18181818181818182,
+      0.2727272727272727,
+      0.2727272727272727,
+      0.2727272727272727
+    ],
+    "window_id": 49
+  },
+  {
+    "a_r_size": 2,
+    "active": true,
+    "active_clients": [
+      "client-000",
+      "client-003"
+    ],
+    "alpha": [
+      0.5000000000118537,
+      0.4999999999881463
+    ],
+    "beta_hat": [
+      0.6666666666666666,
+      0.3333333333333333
+    ],
+    "window_id": 50
+  },
+  {
+    "a_r_size": 3,
+    "active": true,
+    "active_clients": [
+      "client-002",
+      "client-003",
+      "client-007"
+    ],
+    "alpha": [
+      0.33333971583433286,
+      0.333334537960311,
+      0.3333257462053562
+    ],
+    "beta_hat": [
+      0.25,
+      0.5,
+      0.25
+    ],
+    "window_id": 51
+  },
+  {
+    "a_r_size": 3,
+    "active": true,
+    "active_clients": [
+      "client-000",
+      "client-005",
+      "client-006"
+    ],
+    "alpha": [
+      0.33333592934742884,
+      0.33333420984595047,
+      0.3333298608066207
+    ],
+    "beta_hat": [
+      0.5,
+      0.16666666666666666,
+      0.3333333333333333
+    ],
+    "window_id": 52
+  },
+  {
+    "a_r_size": 1,
+    "active": true,
+    "active_clients": [
+      "client-004"
+    ],
+    "alpha": [
+      1.0
+    ],
+    "beta_hat": [
+      1.0
+    ],
+    "window_id": 53
+  },
+  {
+    "a_r_size": 5,
+    "active": true,
+    "active_clients": [
+      "client-000",
+      "client-001",
+      "client-003",
+      "client-006",
+      "client-007"
+    ],
+    "alpha": [
+      0.19334170807931056,
+      0.17093519373351262,
+      0.23339930973739734,
+      0.17510142977666301,
+      0.2272223586731165
+    ],
+    "beta_hat": [
+      0.14285714285714285,
+      0.14285714285714285,
+      0.14285714285714285,
+      0.42857142857142855,
+      0.14285714285714285
+    ],
+    "window_id": 54
+  },
+  {
+    "a_r_size": 2,
+    "active": true,
+    "active_clients": [
+      "client-003",
+      "client-007"
+    ],
+    "alpha": [
+      0.5000000000058527,
+      0.4999999999941473
+    ],
+    "beta_hat": [
+      0.25,
+      0.75
+    ],
+    "window_id": 55
+  },
+  {
+    "a_r_size": 4,
+    "active": true,
+    "active_clients": [
+      "client-000",
+      "client-004",
+      "client-005",
+      "client-007"
+    ],
+    "alpha": [
+      0.2294446052783203,
+      0.28734049131404993,
+      0.21339116747693584,
+      0.2698237359306938
+    ],
+    "beta_hat": [
+      0.25,
+      0.25,
+      0.25,
+      0.25
+    ],
+    "window_id": 56
+  },
+  {
+    "a_r_size": 2,
+    "active": true,
+    "active_clients": [
+      "client-000",
+      "client-005"
+    ],
+    "alpha": [
+      0.5000000000126557,
+      0.49999999998734435
+    ],
+    "beta_hat": [
+      0.5,
+      0.5
+    ],
+    "window_id": 57
+  },
+  {
+    "a_r_size": 3,
+    "active": true,
+    "active_clients": [
+      "client-001",
+      "client-003",
+      "client-007"
+    ],
+    "alpha": [
+      0.33333104103983613,
+      0.33333510849093523,
+      0.3333338504692286
+    ],
+    "beta_hat": [
+      0.3333333333333333,
+      0.3333333333333333,
+      0.3333333333333333
+    ],
+    "window_id": 58
+  },
+  {
+    "a_r_size": 3,
+    "active": true,
+    "active_clients": [
+      "client-001",
+      "client-003",
+      "client-005"
+    ],
+    "alpha": [
+      0.33333631566480654,
+      0.33333356851557655,
+      0.33333011581961686
+    ],
+    "beta_hat": [
+      0.5,
+      0.25,
+      0.25
+    ],
+    "window_id": 59
+  },
+  {
+    "a_r_size": 4,
+    "active": true,
+    "active_clients": [
+      "client-000",
+      "client-001",
+      "client-002",
+      "client-004"
+    ],
+    "alpha": [
+      0.268821599680633,
+      0.24329566213662618,
+      0.22287267460626134,
+      0.26501006357647955
+    ],
+    "beta_hat": [
+      0.42857142857142855,
+      0.14285714285714285,
+      0.14285714285714285,
+      0.2857142857142857
+    ],
+    "window_id": 60
+  },
+  {
+    "a_r_size": 2,
+    "active": true,
+    "active_clients": [
+      "client-003",
+      "client-006"
+    ],
+    "alpha": [
+      0.4999999999906527,
+      0.5000000000093473
+    ],
+    "beta_hat": [
+      0.6666666666666666,
+      0.3333333333333333
+    ],
+    "window_id": 61
+  },
+  {
+    "a_r_size": 1,
+    "active": true,
+    "active_clients": [
+      "client-001"
+    ],
+    "alpha": [
+      1.0
+    ],
+    "beta_hat": [
+      1.0
+    ],
+    "window_id": 62
+  },
+  {
+    "a_r_size": 2,
+    "active": true,
+    "active_clients": [
+      "client-000",
+      "client-004"
+    ],
+    "alpha": [
+      0.4999999999760683,
+      0.5000000000239316
+    ],
+    "beta_hat": [
+      0.6,
+      0.4
+    ],
+    "window_id": 63
+  },
+  {
+    "a_r_size": 3,
+    "active": true,
+    "active_clients": [
+      "client-000",
+      "client-003",
+      "client-006"
+    ],
+    "alpha": [
+      0.3332880081911602,
+      0.33331029539277807,
+      0.33340169641606165
+    ],
+    "beta_hat": [
+      0.42857142857142855,
+      0.2857142857142857,
+      0.2857142857142857
+    ],
+    "window_id": 64
+  },
+  {
+    "a_r_size": 2,
+    "active": true,
+    "active_clients": [
+      "client-005",
+      "client-007"
+    ],
+    "alpha": [
+      0.4999999999862017,
+      0.5000000000137983
+    ],
+    "beta_hat": [
+      0.25,
+      0.75
+    ],
+    "window_id": 65
+  },
+  {
+    "a_r_size": 2,
+    "active": true,
+    "active_clients": [
+      "client-004",
+      "client-005"
+    ],
+    "alpha": [
+      0.499999999978449,
+      0.500000000021551
+    ],
+    "beta_hat": [
+      0.4,
+      0.6
+    ],
+    "window_id": 66
+  },
+  {
+    "a_r_size": 2,
+    "active": true,
+    "active_clients": [
+      "client-000",
+      "client-004"
+    ],
+    "alpha": [
+      0.5000000000223146,
+      0.49999999997768535
+    ],
+    "beta_hat": [
+      0.6666666666666666,
+      0.3333333333333333
+    ],
+    "window_id": 67
+  },
+  {
+    "a_r_size": 3,
+    "active": true,
+    "active_clients": [
+      "client-003",
+      "client-004",
+      "client-007"
+    ],
+    "alpha": [
+      0.333332711111179,
+      0.33333525009373555,
+      0.33333203879508544
+    ],
+    "beta_hat": [
+      0.2,
+      0.2,
+      0.6
+    ],
+    "window_id": 68
+  },
+  {
+    "a_r_size": 1,
+    "active": true,
+    "active_clients": [
+      "client-000"
+    ],
+    "alpha": [
+      1.0
+    ],
+    "beta_hat": [
+      1.0
+    ],
+    "window_id": 69
+  },
+  {
+    "a_r_size": 4,
+    "active": true,
+    "active_clients": [
+      "client-002",
+      "client-003",
+      "client-004",
+      "client-007"
+    ],
+    "alpha": [
+      0.24009313053902284,
+      0.22126848366538168,
+      0.3007115465748525,
+      0.23792683922074293
+    ],
+    "beta_hat": [
+      0.42857142857142855,
+      0.14285714285714285,
+      0.14285714285714285,
+      0.2857142857142857
+    ],
+    "window_id": 70
+  },
+  {
+    "a_r_size": 1,
+    "active": true,
+    "active_clients": [
+      "client-007"
+    ],
+    "alpha": [
+      1.0
+    ],
+    "beta_hat": [
+      1.0
+    ],
+    "window_id": 71
+  },
+  {
+    "a_r_size": 1,
+    "active": true,
+    "active_clients": [
+      "client-004"
+    ],
+    "alpha": [
+      1.0
+    ],
+    "beta_hat": [
+      1.0
+    ],
+    "window_id": 72
+  },
+  {
+    "a_r_size": 5,
+    "active": true,
+    "active_clients": [
+      "client-001",
+      "client-004",
+      "client-005",
+      "client-006",
+      "client-007"
+    ],
+    "alpha": [
+      0.1957702121837633,
+      0.25183894763229914,
+      0.2521751030131284,
+      0.15104882618243193,
+      0.14916691098837728
+    ],
+    "beta_hat": [
+      0.375,
+      0.125,
+      0.125,
+      0.25,
+      0.125
+    ],
+    "window_id": 73
+  },
+  {
+    "a_r_size": 2,
+    "active": true,
+    "active_clients": [
+      "client-006",
+      "client-007"
+    ],
+    "alpha": [
+      0.49999999998953765,
+      0.5000000000104623
+    ],
+    "beta_hat": [
+      0.5,
+      0.5
+    ],
+    "window_id": 74
+  },
+  {
+    "a_r_size": 3,
+    "active": true,
+    "active_clients": [
+      "client-000",
+      "client-003",
+      "client-006"
+    ],
+    "alpha": [
+      0.33333574599564036,
+      0.333330862403535,
+      0.3333333916008246
+    ],
+    "beta_hat": [
+      0.25,
+      0.25,
+      0.5
+    ],
+    "window_id": 75
+  },
+  {
+    "a_r_size": 0,
+    "active": false,
+    "active_clients": [],
+    "alpha": [],
+    "beta_hat": [],
+    "window_id": 76
+  },
+  {
+    "a_r_size": 3,
+    "active": true,
+    "active_clients": [
+      "client-000",
+      "client-003",
+      "client-005"
+    ],
+    "alpha": [
+      0.33333461520015206,
+      0.333334769540805,
+      0.33333061525904295
+    ],
+    "beta_hat": [
+      0.5,
+      0.16666666666666666,
+      0.3333333333333333
+    ],
+    "window_id": 77
+  },
+  {
+    "a_r_size": 1,
+    "active": true,
+    "active_clients": [
+      "client-003"
+    ],
+    "alpha": [
+      1.0
+    ],
+    "beta_hat": [
+      1.0
+    ],
+    "window_id": 78
+  },
+  {
+    "a_r_size": 1,
+    "active": true,
+    "active_clients": [
+      "client-007"
+    ],
+    "alpha": [
+      1.0
+    ],
+    "beta_hat": [
+      1.0
+    ],
+    "window_id": 79
+  }
+]

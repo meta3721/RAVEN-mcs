@@ -1,0 +1,13 @@
+method,real_training,target_h,opportunity_stratum_s,Delta_c_s,atomic_rho,RMSE_rho,status
+fedavg_window,True,True,True,True,True,True,READY_FOR_REAL_CANARY
+fedasync_window,True,True,True,True,True,True,READY_FOR_REAL_CANARY
+flamf_timealign_adapted,True,True,True,True,True,True,READY_FOR_REAL_CANARY
+local_hajek,True,True,True,True,True,True,READY_FOR_REAL_CANARY
+twostage_hajek,True,True,True,True,True,True,READY_FOR_REAL_CANARY
+inst_cal,True,True,True,True,True,True,READY_FOR_REAL_CANARY
+debt_cal,True,True,True,True,True,True,READY_FOR_REAL_CANARY
+raven,True,True,True,True,True,True,READY_FOR_REAL_CANARY
+raven_simoracle,True,True,True,True,True,True,READY_FOR_REAL_CANARY
+central_all,True,True,True,False,True,True,READY_FOR_REAL_CANARY
+central_delivered,True,True,True,False,True,True,READY_FOR_REAL_CANARY
+flamf_original,,,,,,,EXCLUDED_WITH_REASON

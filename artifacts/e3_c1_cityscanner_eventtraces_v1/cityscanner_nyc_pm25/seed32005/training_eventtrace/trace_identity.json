@@ -1,0 +1,19 @@
+{
+  "events_sha256": "784d589a5e1efcad411033432ba709abcc5a02ca80a9e3f835760eb736f0aad7",
+  "metadata": {
+    "dataset": "cityscanner_nyc_pm25",
+    "generator": "cityscanner-real-r-complete-aligned-ou-v1",
+    "notes": [
+      "R from occupied City Scanner cell x 30min visits",
+      "O/U Complete-aligned controlled transfer from E3",
+      "100 windows = chronological bins of 1666 train slots",
+      "method-independent"
+    ],
+    "num_clients": 421,
+    "num_windows": 100,
+    "s_max": 5,
+    "seed": 32005
+  },
+  "metadata_sha256": "3e2fa1c5d537f21f66a6f4152c39b0d17e64e0e07279d99e96526560d1e4508c",
+  "trace_hash": "15c5b1e713508ed4bfcf66910c602052296fa57521f681fb303e0e14b602c119"
+}

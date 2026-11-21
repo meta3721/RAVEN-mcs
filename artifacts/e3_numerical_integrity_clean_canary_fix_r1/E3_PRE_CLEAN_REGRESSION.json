@@ -1,0 +1,46 @@
+{
+  "checks": [
+    "A_uair_fedavg_finite",
+    "B_uair_raven_finite",
+    "C_traffic_local_hajek_finite",
+    "D_sensorscope_regression_finite"
+  ],
+  "classification": "CORRECTNESS_ONLY_NOT_PERFORMANCE_TUNING",
+  "results": [
+    {
+      "RMSE_mu": 1.1741692494862739,
+      "accepted": true,
+      "all_required_finite": true,
+      "dataset": "uair",
+      "method": "fedavg_window",
+      "n_windows": 80
+    },
+    {
+      "RMSE_mu": 1.1684948101300214,
+      "accepted": true,
+      "all_required_finite": true,
+      "dataset": "uair",
+      "method": "raven",
+      "n_windows": 80
+    },
+    {
+      "RMSE_mu": 1.0210515844543233,
+      "accepted": true,
+      "all_required_finite": true,
+      "dataset": "traffic",
+      "method": "local_hajek",
+      "n_windows": 100
+    },
+    {
+      "RMSE_mu": 8.117071524764324,
+      "accepted": true,
+      "all_required_finite": true,
+      "dataset": "sensorscope",
+      "method": "fedavg_window",
+      "n_windows": 100
+    }
+  ],
+  "round": "E3-NUMERICAL-INTEGRITY-AND-CLEAN-CANARY-FIX-R1",
+  "status": "PASS",
+  "updated_utc": "2026-08-11T01:38:19.715606+00:00"
+}

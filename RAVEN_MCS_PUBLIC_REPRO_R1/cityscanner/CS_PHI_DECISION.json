@@ -1,0 +1,32 @@
+{
+  "atomic_sha256": "bcb3c07f1cbb0bad8799d5094930722f5af4cb26df2f335898953d4ea4104b55",
+  "data_hash": "22896ed585d50da8e55cc3bfe96b0e07eab790e7f9aaadb36c25e0a85c03d556",
+  "dataset": "cityscanner_nyc_pm25",
+  "design_on": true,
+  "experiment_id": "C1-KILL-CITYSCANNER-NYC",
+  "frozen_utc": "2026-09-11T01:03:10.673105+00:00",
+  "full_design_diagnostic_method": "raven",
+  "gate_unused": true,
+  "git_commit": "2e47464c2c15d7dae4ceb059592782b9542de625",
+  "h_definition": "nyc_grid_4_quadrant_median_gx_gy_all_cells_no_Y",
+  "mu": {
+    "region0": 0.23732057416267943,
+    "region1": 0.47464114832535886,
+    "region2": 0.0708133971291866,
+    "region3": 0.21722488038277513
+  },
+  "mu_split": "test_units_region_share_no_Y",
+  "n_test_units": 2090,
+  "n_train_units": 9343,
+  "n_train_zero": 0,
+  "note": "Frozen from region mu on train units. Not from labels, residuals, or EventTrace.",
+  "phi_definition": "phi_train_unit",
+  "phi_train_unit": 0.0,
+  "pi_i_tar": "mu_of_region_h_i",
+  "rule": "Design_ON iff phi_train_unit == 0",
+  "scd_method": "raven",
+  "status": "PASS",
+  "train_full_design_extra": false,
+  "used_support_compatible": false,
+  "used_y_or_rmse": false
+}

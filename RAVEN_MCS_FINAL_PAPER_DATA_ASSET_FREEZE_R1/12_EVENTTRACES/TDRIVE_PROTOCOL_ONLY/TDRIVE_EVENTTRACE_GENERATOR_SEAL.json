@@ -1,0 +1,25 @@
+{
+  "e3_station_spatial_to_client_generator_not_used": true,
+  "generator_id": "tdrive-complete-aligned-r1-v1",
+  "hashing_rule": "raven_mcs.simulation.event_trace.compute_trace_hash",
+  "method_independence_required": true,
+  "observation_source": "controlled Bernoulli MEAN_OBSERVATION_RATE=0.35",
+  "output_schema": "EventTrace + unit-level long table",
+  "random_seed_entry_point": "np.random.default_rng(seed + 13) then compute_usable_r3",
+  "reason_not_e3_r3_as_is": "E3 generate_complete_aligned_r3 maps spatial_id→one client (station datasets). T-Drive has many vehicles per cell; R is trajectory-derived.",
+  "source_files": [
+    "src/raven_mcs/tdrive_protocol_seal_r1/eventtrace_generator.py",
+    "src/raven_mcs/e3/real_runner/stage2_r3.py",
+    "src/raven_mcs/simulation/event_trace.py",
+    "src/raven_mcs/data/tdrive.py"
+  ],
+  "source_hashes": {
+    "src/raven_mcs/data/tdrive.py": "1a3b9d5edd4672f403a859ebdc98db053a1ab44d9c421ef7d5f946837f4afd77",
+    "src/raven_mcs/e3/real_runner/stage2_r3.py": "60194a3048c90def6a0430f62f535b722a7445ee809cf317b6b7f2a0e3102c4a",
+    "src/raven_mcs/simulation/event_trace.py": "39b87ea551c7b9637665779144d0e70a6bc9ecdafb3d63f057c4abd38d31e86b",
+    "src/raven_mcs/tdrive_protocol_seal_r1/eventtrace_generator.py": "8ddb2fe0c5526100e64ea231d62a04c6148bdc6aaf18f9201d3b50e31145782d"
+  },
+  "status": "FROZEN",
+  "trajectory_opportunity_source": "data/processed/tdrive_speed/client_measurements.parquet",
+  "usable_event_source": "raven_mcs.e3.real_runner.stage2_r3.compute_usable_r3"
+}

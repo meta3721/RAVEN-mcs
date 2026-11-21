@@ -1,0 +1,73 @@
+{
+  "command": [
+    "C:/Users/szr/AppData/Local/Programs/Python/Python311/python.exe",
+    "scripts/audit_observed_feedback_seed45011.py"
+  ],
+  "returncode": 124,
+  "process_tree_cpu_seconds": 32.921875,
+  "monitor_cpu_seconds": 1.9375,
+  "wall_seconds": 45.08379199999763,
+  "limit_reason": "cpu",
+  "log": "C:\\Cursor\\raven.mcs\\results_observed_feedback_acquisition_45011_20261014\\seed_audit_chunked.log",
+  "pids": [
+    {
+      "pid": 16796,
+      "joined_observed_wall": 0.016743499996664468,
+      "root_job_member": true,
+      "image": "C:\\Users\\szr\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+      "initial_cpu": 0.0,
+      "created_filetime": 13436433290.05278,
+      "exited_filetime": 13436433335.127447,
+      "kernel_cpu": 22.890625,
+      "user_cpu": 10.015625,
+      "cpu_seconds": 32.90625,
+      "exit_code": 124,
+      "exit_observed_wall": 45.08187889999681
+    },
+    {
+      "pid": 21960,
+      "joined_observed_wall": 0.02480680000007851,
+      "root_job_member": true,
+      "image": "C:\\Windows\\System32\\conhost.exe",
+      "initial_cpu": 0.0,
+      "created_filetime": 13436433290.070724,
+      "exited_filetime": 13436433335.128214,
+      "kernel_cpu": 0.015625,
+      "user_cpu": 0.0,
+      "cpu_seconds": 0.015625,
+      "exit_code": 124,
+      "exit_observed_wall": 45.083768399999826
+    }
+  ],
+  "notifications": [
+    {
+      "message": 6,
+      "pid": 16796,
+      "wall": 0.01819239999895217
+    },
+    {
+      "message": 6,
+      "pid": 21960,
+      "wall": 0.024786999998468673
+    }
+  ],
+  "errors": [],
+  "job_total_processes": 2,
+  "job_active_processes": 0,
+  "independent_pid_CPU_sum": 32.921875,
+  "difference_seconds": 0.0,
+  "predeclared_tolerance_seconds": 0.0725,
+  "audit_passed": true,
+  "CPU_limit": 35.0,
+  "single_CPU_affinity": 1,
+  "mutually_exclusive_costs": [
+    "process_tree_cpu_seconds",
+    "monitor_cpu_seconds"
+  ],
+  "included_not_additive": [
+    "independent_pid_CPU_sum",
+    "individual_PID_CPU",
+    "inner_job_CPU"
+  ],
+  "cpu_scope": "creation through process exit; root created suspended, descendants inherit before execution"
+}

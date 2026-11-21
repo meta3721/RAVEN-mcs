@@ -1,0 +1,31 @@
+{
+  "status": "PAIRING_INCOMPLETE",
+  "WAITING_USER_REVIEW": true,
+  "MD_only": true,
+  "files": [
+    "FAILURE_REPORT.md",
+    "NEXT_STAGE_READINESS.md",
+    "PAIRING_CHECK.md",
+    "PILOT_COMPARISON.md",
+    "PILOT_FREEZE.md",
+    "RESOURCE_AND_BUDGET.md",
+    "RESULT_FIXED05.md",
+    "RESULT_FIXED2.md",
+    "RESULT_NOQSTOP.md",
+    "RESULT_OF.md",
+    "STRATEGY_IMPLEMENTATION_REPORT.md"
+  ],
+  "charged_CPU": 2983.859375,
+  "q_fit": 0,
+  "GPU": 0,
+  "full_arms": 1,
+  "partial_arms": 1,
+  "not_started_arms": 2,
+  "root_audit_missing": true,
+  "method_or_threshold_changed": false,
+  "unresolved": [
+    "interrupted root final audit",
+    "unknown fixed05 physical suffix",
+    "four-arm completeness"
+  ]
+}

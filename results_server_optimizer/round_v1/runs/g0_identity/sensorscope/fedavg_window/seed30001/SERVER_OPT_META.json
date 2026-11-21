@@ -1,0 +1,81 @@
+{
+  "arm": "fedavg_window",
+  "block": "sensorscope",
+  "created_utc": "2026-10-08T08:30:33.253840+00:00",
+  "diag_first": [
+    {
+      "active": true,
+      "applied": true,
+      "g_norm": 1.3836474590848444,
+      "m_norm": NaN,
+      "opt_move_norm": 0.013836474590848444,
+      "sgd_move_norm": 0.013836474590848444,
+      "t": 0,
+      "v_norm": NaN,
+      "window_id": 0
+    },
+    {
+      "active": true,
+      "applied": true,
+      "g_norm": 0.9266010046231704,
+      "m_norm": NaN,
+      "opt_move_norm": 0.009266010046231704,
+      "sgd_move_norm": 0.009266010046231704,
+      "t": 0,
+      "v_norm": NaN,
+      "window_id": 1
+    },
+    {
+      "active": true,
+      "applied": true,
+      "g_norm": 0.634889074737908,
+      "m_norm": NaN,
+      "opt_move_norm": 0.00634889074737908,
+      "sgd_move_norm": 0.00634889074737908,
+      "t": 0,
+      "v_norm": NaN,
+      "window_id": 2
+    }
+  ],
+  "diag_last": [
+    {
+      "active": true,
+      "applied": true,
+      "g_norm": 0.1961748898596998,
+      "m_norm": NaN,
+      "opt_move_norm": 0.001961748898596998,
+      "sgd_move_norm": 0.001961748898596998,
+      "t": 0,
+      "v_norm": NaN,
+      "window_id": 97
+    },
+    {
+      "active": false,
+      "applied": false,
+      "window_id": 98
+    },
+    {
+      "active": true,
+      "applied": true,
+      "g_norm": 1.197029315881682,
+      "m_norm": NaN,
+      "opt_move_norm": 0.01197029315881682,
+      "sgd_move_norm": 0.01197029315881682,
+      "t": 0,
+      "v_norm": NaN,
+      "window_id": 99
+    }
+  ],
+  "local_steps": 2,
+  "n_windows_optimizer_applied": 97,
+  "runtime_seconds": 19.640605299999947,
+  "seed": 30001,
+  "server_opt": {
+    "beta1": 0.9,
+    "beta2": 0.99,
+    "eta_s": 0.01,
+    "mode": "sgd",
+    "tau": 0.001
+  },
+  "tag": "g0_identity"
+}

@@ -1,0 +1,32 @@
+{
+  "created_utc": "2026-08-12T12:00:15.887017+00:00",
+  "rows": [
+    {
+      "P2_invoked": true,
+      "accepted": true,
+      "completed_windows": 100,
+      "dataset": "sensorscope",
+      "execution_status": "REAL_PATH_EXECUTED",
+      "finished_utc": "2026-08-12T11:59:35.484890+00:00",
+      "logical_run_id": "e4::sensorscope::complete_aligned::raven_wo_inst::seed32001",
+      "method": "raven_wo_inst",
+      "p2_states_len": 97,
+      "scenario": "complete_aligned",
+      "seed": 32001
+    },
+    {
+      "P2_invoked": true,
+      "accepted": true,
+      "completed_windows": 80,
+      "dataset": "uair",
+      "execution_status": "REAL_PATH_EXECUTED",
+      "finished_utc": "2026-08-12T12:00:15.839099+00:00",
+      "logical_run_id": "e4::uair::complete_aligned::raven_wo_inst::seed32001",
+      "method": "raven_wo_inst",
+      "p2_states_len": 72,
+      "scenario": "complete_aligned",
+      "seed": 32001
+    }
+  ],
+  "status": "PASS"
+}

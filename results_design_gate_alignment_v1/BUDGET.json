@@ -1,0 +1,21 @@
+{
+  "wall_seconds_since_start": 3049.918135166168,
+  "gpu_training_seconds": 0,
+  "formal_dataset_training_runs": 0,
+  "canceled_experiments_resumed": 0,
+  "final_related_tests": {
+    "name": "pytest",
+    "errors": "0",
+    "failures": "0",
+    "skipped": "0",
+    "tests": "226",
+    "time": "23.189",
+    "timestamp": "2026-10-12T21:13:02.912386+08:00",
+    "hostname": "LAPTOP-4349UTOC"
+  },
+  "full_suite_status": "INCOMPLETE_WINDOWS_ACCESS_VIOLATION",
+  "large_training": false,
+  "final_configured_integration_active_windows": 21,
+  "final_configured_integration_local_steps": 42,
+  "note": "Window/step counts describe the final integration fixture only; accumulated local steps across earlier test iterations and unrelated regression fixtures were not individually instrumented."
+}

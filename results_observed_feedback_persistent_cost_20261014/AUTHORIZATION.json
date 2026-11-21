@@ -1,0 +1,16 @@
+{
+  "CPU_limit": 90,
+  "initialization_CPU_limit": 6,
+  "online_CPU_limit": 2,
+  "new_workers_allowed": 1,
+  "requests": [
+    "A_first_P2",
+    "B_same_input_cache"
+  ],
+  "input_hash": "c880a4361ea0ec8fa3fc65b30cd9932347181c8591d39c6f003e829d5c695e5b",
+  "SGD": 0,
+  "GPU": 0,
+  "q_fit": 0,
+  "trajectories": 0,
+  "collection_entry_implementation": false
+}

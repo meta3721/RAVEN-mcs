@@ -1,0 +1,18 @@
+{
+  "forbidden_features": [
+    "observed_count",
+    "observation_rate_in_current_window",
+    "current_Y_i",
+    "target_value",
+    "current_loss",
+    "prediction_error",
+    "update_norm",
+    "current_arrival",
+    "future_information",
+    "formal_result",
+    "validation_result"
+  ],
+  "observed_count_forbidden_in_q": true,
+  "status": "PASS",
+  "target_value_forbidden_in_q": true
+}

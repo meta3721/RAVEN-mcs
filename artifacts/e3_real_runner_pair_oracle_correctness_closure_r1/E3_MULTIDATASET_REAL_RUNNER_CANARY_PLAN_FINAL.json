@@ -1,0 +1,40 @@
+{
+  "canary_seed": 31001,
+  "datasets": {
+    "sensorscope": {
+      "methods": "all_canonical_non_excluded",
+      "scenario": "complete_aligned"
+    },
+    "traffic": {
+      "methods": "missing_new_E3_only",
+      "reuse_policy": "REUSE_ONLY_NO_RERUN",
+      "reused_block": [
+        "fedavg_window",
+        "fedasync_window",
+        "flamf_timealign_adapted",
+        "twostage_hajek",
+        "raven"
+      ]
+    },
+    "uair": {
+      "methods": "all_canonical_non_excluded",
+      "scenario": "complete_aligned"
+    }
+  },
+  "execute_in_this_round": false,
+  "no_performance_claim": true,
+  "round": "E3-MULTIDATASET-REAL-RUNNER-CANARY-R1",
+  "scenario": "complete_aligned",
+  "status": "PLAN_READY_NOT_EXECUTED",
+  "verifies": [
+    "actual model training",
+    "checkpoint",
+    "non-placeholder metrics",
+    "pair state",
+    "Central real-data",
+    "SimOracle M_MC=2000",
+    "q_hat",
+    "P2/debt where applicable",
+    "attempt-aware Ledger"
+  ]
+}

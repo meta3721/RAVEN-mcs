@@ -1,0 +1,32 @@
+{
+  "gate": "G1",
+  "pass": true,
+  "rows": [
+    {
+      "all_endpoints_zero": true,
+      "dataset": "sensorscope",
+      "endpoint_abs_diffs": {
+        "Delta_c_s": 0.0,
+        "Delta_group": 0.0,
+        "RMSE_mu": 0.0,
+        "Tail_RMSE": 0.0
+      },
+      "max_abs_dtheta": 0.0,
+      "pass": true,
+      "theta_bit_equal": true
+    },
+    {
+      "all_endpoints_zero": true,
+      "dataset": "uair",
+      "endpoint_abs_diffs": {
+        "Delta_c_s": 0.0,
+        "Delta_group": 0.0,
+        "RMSE_mu": 0.0,
+        "Tail_RMSE": 0.0
+      },
+      "max_abs_dtheta": 0.0,
+      "pass": true,
+      "theta_bit_equal": true
+    }
+  ]
+}

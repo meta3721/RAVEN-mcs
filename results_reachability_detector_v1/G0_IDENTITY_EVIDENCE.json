@@ -1,0 +1,137 @@
+{
+  "checks": {
+    "paper_configured_design": true,
+    "paper_gate_diagnostic": true,
+    "code_formal_mode": "aggregate_coverage",
+    "code_raven_mcs_mode": "aggregate_coverage",
+    "code_gate_drives_design": true,
+    "code_static_design_ignored": true,
+    "runner_returns_gate_for_design": true,
+    "uniform_cache_inherits_raven_mcs": true
+  },
+  "conflict_reproduced": true,
+  "source_lines": [
+    {
+      "file": "TO_OVERLEAF_paper_tmc_r1_clean/main.tex",
+      "line": 171,
+      "text": "the coverage Gate is a separate diagnostic."
+    },
+    {
+      "file": "TO_OVERLEAF_paper_tmc_r1_clean/main.tex",
+      "line": 207,
+      "text": "configuration that the deployment fixes before the window opens and holds"
+    },
+    {
+      "file": "TO_OVERLEAF_paper_tmc_r1_clean/main.tex",
+      "line": 210,
+      "text": "empirical diagnostic in the supplemental material."
+    },
+    {
+      "file": "TO_OVERLEAF_paper_tmc_r1_clean/main.tex",
+      "line": 259,
+      "text": "station clients, and a coverage Gate is audited only as a diagnostic that does not"
+    },
+    {
+      "file": "TO_OVERLEAF_paper_tmc_r1_clean/main.tex",
+      "line": 284,
+      "text": "\\cite{lu2023federated,plassier2023conformal}; the diagnostic Gate in"
+    },
+    {
+      "file": "TO_OVERLEAF_paper_tmc_r1_clean/main.tex",
+      "line": 999,
+      "text": "diagnostic Gate, detailed as the aggregate coverage certificate algorithm of the"
+    },
+    {
+      "file": "TO_OVERLEAF_paper_tmc_r1_clean/main.tex",
+      "line": 1016,
+      "text": "audit the bound and update the diagnostic state for subsequent windows."
+    },
+    {
+      "file": "TO_OVERLEAF_paper_tmc_r1_clean/main.tex",
+      "line": 1042,
+      "text": "separately from the coverage diagnostic."
+    },
+    {
+      "file": "TO_OVERLEAF_paper_tmc_r1_clean/main.tex",
+      "line": 1383,
+      "text": "false-safe probability of an empirical diagnostic Gate is bounded by"
+    },
+    {
+      "file": "TO_OVERLEAF_paper_tmc_r1_clean/main.tex",
+      "line": 1433,
+      "text": "\\item \\textbf{Component roles:} which terms move structural diagnostics"
+    },
+    {
+      "file": "TO_OVERLEAF_paper_tmc_r1_clean/main.tex",
+      "line": 1563,
+      "text": "decision.  The support-compatible mixture-target diagnostic on SensorScope"
+    },
+    {
+      "file": "TO_OVERLEAF_paper_tmc_r1_clean/main.tex",
+      "line": 2199,
+      "text": "evaluated as a diagnostic.  Equation~\\eqref{eq:design_gate} reports the"
+    },
+    {
+      "file": "src/raven_mcs/aggregation/method_policy.py",
+      "line": 42,
+      "text": "FORMAL_GATE_MODE = \"aggregate_coverage\""
+    },
+    {
+      "file": "src/raven_mcs/aggregation/method_policy.py",
+      "line": 122,
+      "text": "\"raven_mcs\": MethodPolicy("
+    },
+    {
+      "file": "src/raven_mcs/aggregation/method_policy.py",
+      "line": 124,
+      "text": "gate_mode=\"aggregate_coverage\","
+    },
+    {
+      "file": "src/raven_mcs/sag/r1l_design.py",
+      "line": 57,
+      "text": "def design_from_gate(gate_t: int | bool) -> int:"
+    },
+    {
+      "file": "src/raven_mcs/sag/r1l_design.py",
+      "line": 121,
+      "text": "del oracle_safe, current_C, current_mask, dataset_design_flag, design_enabled"
+    },
+    {
+      "file": "src/raven_mcs/sag/r1l_design.py",
+      "line": 138,
+      "text": "design_t = design_from_gate(gate_t)"
+    },
+    {
+      "file": "src/raven_mcs/sag/r1l_design.py",
+      "line": 170,
+      "text": "raise RuntimeError(\"Design_t must equal Gate_t\")"
+    },
+    {
+      "file": "src/raven_mcs/training/window_runner.py",
+      "line": 367,
+      "text": "Formal RAVEN-MCS (gate_mode=aggregate_coverage): Design_t := Gate_t"
+    },
+    {
+      "file": "src/raven_mcs/training/window_runner.py",
+      "line": 393,
+      "text": "return int(rec[\"Gate_t\"]), certs, rec.get(\"fallback_reason\"), passed"
+    },
+    {
+      "file": "results_main_rebuild_r1/prepare_uniform.py",
+      "line": 63,
+      "text": "policy=dataclasses.replace(POLICY_MAP['raven_mcs'],uses_debt=False,"
+    },
+    {
+      "file": "results_main_rebuild_r1/prepare_uniform.py",
+      "line": 97,
+      "text": "gate_mode='aggregate_coverage',loss_policy=dataclasses.asdict(policy)),dest)"
+    }
+  ],
+  "counterexample": {
+    "kind": "static semantic consequence, not experimental data",
+    "preconfigured_Design": 1,
+    "coverage_Gate": 0,
+    "paper_Design": 1,
+    "implementation_Design": 0
+  }
+}

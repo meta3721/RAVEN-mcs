@@ -1,0 +1,14 @@
+{
+  "dataset": "traffic",
+  "max_raw_strata": 32,
+  "n_unique_strata": 32,
+  "region_ids": [
+    "region0",
+    "region1",
+    "region2",
+    "region3"
+  ],
+  "remapped": true,
+  "spatial_rule": "frozen 4 real regions (E2 public-target label-free)",
+  "status": "FROZEN_IDENTITY_RECOVERED"
+}

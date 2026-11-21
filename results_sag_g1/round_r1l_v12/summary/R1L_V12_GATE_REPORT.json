@@ -1,0 +1,268 @@
+{
+  "gates": [
+    {
+      "description": "R1l-v1.1 mathematical core unchanged",
+      "evidence_file": "round_r1l_v12/legacy_r1l_v11_freeze/summary/R1L_V11_VERDICT.json",
+      "expected": "true",
+      "gate_id": "R1L-V12-T0",
+      "metric": "pass",
+      "observed": "True",
+      "pass": true
+    },
+    {
+      "description": "Gate_t uniquely defined",
+      "evidence_file": "round_r1l_v12/source_snapshot/r1l_design.py",
+      "expected": "true",
+      "gate_id": "R1L-V12-T1",
+      "metric": "pass",
+      "observed": "True",
+      "pass": true
+    },
+    {
+      "description": "Design_t := Gate_t frozen",
+      "evidence_file": "round_r1l_v12/interface/R1L_V12_STATE_GATE_DESIGN_TABLE.md",
+      "expected": "true",
+      "gate_id": "R1L-V12-T2",
+      "metric": "pass",
+      "observed": "True",
+      "pass": true
+    },
+    {
+      "description": "Dataset-level Design flag removed from formal algorithm",
+      "evidence_file": "round_r1l_v12/source_snapshot/main.tex",
+      "expected": "true",
+      "gate_id": "R1L-V12-T3",
+      "metric": "pass",
+      "observed": "True",
+      "pass": true
+    },
+    {
+      "description": "Window-close algorithm receives Gate_t",
+      "evidence_file": "round_r1l_v12/source_snapshot/main.tex",
+      "expected": "true",
+      "gate_id": "R1L-V12-T4",
+      "metric": "pass",
+      "observed": "True",
+      "pass": true
+    },
+    {
+      "description": "WARMUP -> Design OFF",
+      "evidence_file": "round_r1l_v12/interface/R1L_V12_STATE_GATE_DESIGN_TABLE.md",
+      "expected": "true",
+      "gate_id": "R1L-V12-T5",
+      "metric": "pass",
+      "observed": "True",
+      "pass": true
+    },
+    {
+      "description": "RESET -> Design OFF",
+      "evidence_file": "round_r1l_v12/interface/R1L_V12_STATE_GATE_DESIGN_TABLE.md",
+      "expected": "true",
+      "gate_id": "R1L-V12-T6",
+      "metric": "pass",
+      "observed": "True",
+      "pass": true
+    },
+    {
+      "description": "CERTIFIED below tau -> Design OFF",
+      "evidence_file": "round_r1l_v12/interface/R1L_V12_STATE_GATE_DESIGN_TABLE.md",
+      "expected": "true",
+      "gate_id": "R1L-V12-T7",
+      "metric": "pass",
+      "observed": "True",
+      "pass": true
+    },
+    {
+      "description": "CERTIFIED above tau -> Design ON",
+      "evidence_file": "round_r1l_v12/interface/R1L_V12_STATE_GATE_DESIGN_TABLE.md",
+      "expected": "true",
+      "gate_id": "R1L-V12-T8",
+      "metric": "pass",
+      "observed": "True",
+      "pass": true
+    },
+    {
+      "description": "Theorem-to-operation safety interpretation complete",
+      "evidence_file": "round_r1l_v12/source_snapshot/main.tex",
+      "expected": "true",
+      "gate_id": "R1L-V12-T9",
+      "metric": "pass",
+      "observed": "True",
+      "pass": true
+    },
+    {
+      "description": "Current oracle not used for Design_t",
+      "evidence_file": "round_r1l_v12/source_snapshot/r1l_design.py",
+      "expected": "true",
+      "gate_id": "R1L-V12-T10",
+      "metric": "pass",
+      "observed": "True",
+      "pass": true
+    },
+    {
+      "description": "Current mask not used for Design_t",
+      "evidence_file": "round_r1l_v12/source_snapshot/r1l_design.py",
+      "expected": "true",
+      "gate_id": "R1L-V12-T11",
+      "metric": "pass",
+      "observed": "True",
+      "pass": true
+    },
+    {
+      "description": "No dataset-name control in formal path",
+      "evidence_file": "round_r1l_v12/source_snapshot/window_runner.py",
+      "expected": "true",
+      "gate_id": "R1L-V12-T12",
+      "metric": "pass",
+      "observed": "True",
+      "pass": true
+    },
+    {
+      "description": "Legacy static Gate absent from formal runner",
+      "evidence_file": "round_r1l_v12/audit/R1L_V12_LEGACY_GATE_AUDIT.csv",
+      "expected": "true",
+      "gate_id": "R1L-V12-T13",
+      "metric": "pass",
+      "observed": "True",
+      "pass": true
+    },
+    {
+      "description": "Actual window_runner snapshot complete",
+      "evidence_file": "round_r1l_v12/source_snapshot/R1L_V12_SOURCE_SNAPSHOT_MANIFEST.csv",
+      "expected": "true",
+      "gate_id": "R1L-V12-T14",
+      "metric": "pass",
+      "observed": "True",
+      "pass": true
+    },
+    {
+      "description": "Actual window-close source snapshot complete",
+      "evidence_file": "round_r1l_v12/source_snapshot/window_runner.py",
+      "expected": "true",
+      "gate_id": "R1L-V12-T15",
+      "metric": "pass",
+      "observed": "True",
+      "pass": true
+    },
+    {
+      "description": "Gate-to-Design provenance schema frozen",
+      "evidence_file": "round_r1l_v12/interface/R1L_V12_GATE_TO_DESIGN_PROVENANCE_SCHEMA.md",
+      "expected": "true",
+      "gate_id": "R1L-V12-T16",
+      "metric": "pass",
+      "observed": "True",
+      "pass": true
+    },
+    {
+      "description": "Gate_t == Design_t unit tests PASS",
+      "evidence_file": "round_r1l_v12/audit/TEST_SUMMARY.json",
+      "expected": "true",
+      "gate_id": "R1L-V12-T17",
+      "metric": "pass",
+      "observed": "PASS",
+      "pass": true
+    },
+    {
+      "description": "Abstract old dataset-level claims removed/deferred",
+      "evidence_file": "round_r1l_v12/source_snapshot/main.tex",
+      "expected": "true",
+      "gate_id": "R1L-V12-T18",
+      "metric": "pass",
+      "observed": "True",
+      "pass": true
+    },
+    {
+      "description": "Introduction old dataset-level claims removed/deferred",
+      "evidence_file": "round_r1l_v12/source_snapshot/main.tex",
+      "expected": "true",
+      "gate_id": "R1L-V12-T19",
+      "metric": "pass",
+      "observed": "True",
+      "pass": true
+    },
+    {
+      "description": "Conclusion old dataset-level claims removed/deferred",
+      "evidence_file": "round_r1l_v12/source_snapshot/main.tex",
+      "expected": "true",
+      "gate_id": "R1L-V12-T20",
+      "metric": "pass",
+      "observed": "True",
+      "pass": true
+    },
+    {
+      "description": "Section VII remains PRE-R1m legacy",
+      "evidence_file": "round_r1l_v12/source_snapshot/main.tex",
+      "expected": "true",
+      "gate_id": "R1L-V12-T21",
+      "metric": "pass",
+      "observed": "True",
+      "pass": true
+    },
+    {
+      "description": "No new experiment",
+      "evidence_file": "round_r1l_v12/summary/R1L_V12_VERDICT.json",
+      "expected": "true",
+      "gate_id": "R1L-V12-T22",
+      "metric": "pass",
+      "observed": "True",
+      "pass": true
+    },
+    {
+      "description": "No R1m started",
+      "evidence_file": "round_r1l_v12/summary/R1L_V12_VERDICT.json",
+      "expected": "true",
+      "gate_id": "R1L-V12-T23",
+      "metric": "pass",
+      "observed": "True",
+      "pass": true
+    },
+    {
+      "description": "No SAG",
+      "evidence_file": "round_r1l_v12/summary/R1L_V12_VERDICT.json",
+      "expected": "true",
+      "gate_id": "R1L-V12-T24",
+      "metric": "pass",
+      "observed": "True",
+      "pass": true
+    },
+    {
+      "description": "No 5-seed",
+      "evidence_file": "round_r1l_v12/summary/R1L_V12_VERDICT.json",
+      "expected": "true",
+      "gate_id": "R1L-V12-T25",
+      "metric": "pass",
+      "observed": "True",
+      "pass": true
+    },
+    {
+      "description": "Theory–algorithm execution chain complete",
+      "evidence_file": "round_r1l_v12/interface/R1L_ALGORITHM_INTERFACE.md",
+      "expected": "true",
+      "gate_id": "R1L-V12-T26",
+      "metric": "pass",
+      "observed": "True",
+      "pass": true
+    },
+    {
+      "description": "All evidence paths package-local",
+      "evidence_file": "round_r1l_v12/audit/R1L_V12_EVIDENCE_PATH_AUDIT.csv",
+      "expected": "true",
+      "gate_id": "R1L-V12-T27",
+      "metric": "pass",
+      "observed": "True",
+      "pass": true
+    },
+    {
+      "description": "Final verdict artifact-derived",
+      "evidence_file": "round_r1l_v12/summary/R1L_V12_GATE_REPORT.json",
+      "expected": "true",
+      "gate_id": "R1L-V12-T28",
+      "metric": "pass",
+      "observed": "True",
+      "pass": true
+    }
+  ],
+  "n_fail": 0,
+  "n_pass": 29,
+  "verdict": "THEORY_CLOSURE_PASS"
+}

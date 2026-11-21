@@ -1,0 +1,85 @@
+{
+  "all_pass": false,
+  "gates": {
+    "INT-R-OCC-1": false,
+    "INT-R-OCC-2": true,
+    "INT-R-OCC-3": true,
+    "INT-R-OCC-4": true,
+    "INT-R-OCC-5": true
+  },
+  "occupancy_spec": {
+    "alpha": 0.9390476190476191,
+    "beta": 0.9595238095238096,
+    "burstiness_miss": false,
+    "family": "two_state_markov",
+    "rho0": 0.425
+  },
+  "rows": [
+    {
+      "burstiness_pooled": 0.4509930790869373,
+      "dataset": "sensorscope",
+      "fraction_windows_all_clients_off": 0.0,
+      "mean_active_clients_per_window": 3.26,
+      "mean_active_frac": 0.4075,
+      "n_clients": 8,
+      "n_windows": 100,
+      "seed": 30001,
+      "tv_opp_mu": 0.2818149010859224
+    },
+    {
+      "burstiness_pooled": 0.48227088804400803,
+      "dataset": "sensorscope",
+      "fraction_windows_all_clients_off": 0.0,
+      "mean_active_clients_per_window": 3.36,
+      "mean_active_frac": 0.42,
+      "n_clients": 8,
+      "n_windows": 100,
+      "seed": 30010,
+      "tv_opp_mu": 0.29136427298192
+    },
+    {
+      "burstiness_pooled": 0.5782236950153842,
+      "dataset": "sensorscope",
+      "fraction_windows_all_clients_off": 0.05,
+      "mean_active_clients_per_window": 2.54,
+      "mean_active_frac": 0.3175,
+      "n_clients": 8,
+      "n_windows": 100,
+      "seed": 30020,
+      "tv_opp_mu": 0.2861383637205777
+    },
+    {
+      "burstiness_pooled": 0.5003134480996515,
+      "dataset": "uair",
+      "fraction_windows_all_clients_off": 0.05,
+      "mean_active_clients_per_window": 2.55,
+      "mean_active_frac": 0.31875,
+      "n_clients": 8,
+      "n_windows": 80,
+      "seed": 30001,
+      "tv_opp_mu": 0.25266815586994296
+    },
+    {
+      "burstiness_pooled": 0.2876266582044783,
+      "dataset": "uair",
+      "fraction_windows_all_clients_off": 0.05,
+      "mean_active_clients_per_window": 3.225,
+      "mean_active_frac": 0.403125,
+      "n_clients": 8,
+      "n_windows": 80,
+      "seed": 30010,
+      "tv_opp_mu": 0.23967225983711118
+    },
+    {
+      "burstiness_pooled": 0.40987793123971195,
+      "dataset": "uair",
+      "fraction_windows_all_clients_off": 0.0,
+      "mean_active_clients_per_window": 3.0625,
+      "mean_active_frac": 0.3828125,
+      "n_clients": 8,
+      "n_windows": 80,
+      "seed": 30020,
+      "tv_opp_mu": 0.25202789976750195
+    }
+  ]
+}

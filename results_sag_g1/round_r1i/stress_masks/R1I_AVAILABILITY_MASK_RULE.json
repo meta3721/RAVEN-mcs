@@ -1,0 +1,20 @@
+{
+  "available_iff": "u_e_r < a",
+  "base_seed": 30001,
+  "entity_id": "spatial_id",
+  "independent_redraw_per_level": false,
+  "namespace": "RAVEN_MCS_R1I_AVAIL_V1",
+  "nested": true,
+  "outcome_fields_forbidden": [
+    "C_oracle_safe",
+    "oracle_pass",
+    "C_cov",
+    "Gate",
+    "pi_tar_weight",
+    "opportunity_richness"
+  ],
+  "rule_id": "R1I_NESTED_HASH_MASK_V1",
+  "salt_varies_by_dataset": false,
+  "salt_varies_by_oracle": false,
+  "u_definition": "SHA256(namespace|dataset|base_seed|window_id|entity_id)[:8] / 2^64 in [0,1)"
+}

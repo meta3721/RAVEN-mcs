@@ -1,0 +1,35 @@
+{
+  "created_utc": "2026-08-09T15:41:08.434794+00:00",
+  "files": {
+    "e2_formal_results": {
+      "path": "D:\\Cursor\\raven.mcs\\artifacts\\e2_traffic_formal_runs_r1\\formal_results.csv",
+      "sha256": "db564ac12c448394ba2c91c1e7c667092ecbf661d1e0a9034c14c024ff05a3ff",
+      "size_bytes": 119430
+    },
+    "e2_source_hashes": {
+      "path": "D:\\Cursor\\raven.mcs\\artifacts\\e2_traffic_formal_runs_r1\\SOURCE_HASHES.json",
+      "sha256": "abb97f37548b9f9793a8fbc8a0b713e311a046beb3911778248e4be38b6befdf",
+      "size_bytes": 2031
+    },
+    "method_policy": {
+      "path": "D:\\Cursor\\raven.mcs\\src\\raven_mcs\\aggregation\\method_policy.py",
+      "sha256": "4e381b684b83de0c529ee39be1cffd98bbf08342f2d99f85e9c22f878cb3d22f",
+      "size_bytes": 4090
+    },
+    "prepare_script": {
+      "path": "D:\\Cursor\\raven.mcs\\scripts\\prepare_e3_protocol_reuse_and_readiness.py",
+      "sha256": "91f08af9cd95641cf3aaae9a9a3ecf354705b0212f466a4f08845ce50ca03449",
+      "size_bytes": 38128
+    },
+    "traffic_atomic": {
+      "path": "D:\\Cursor\\raven.mcs\\data\\processed\\traffic\\atomic_units.parquet",
+      "sha256": "db45a2ecc66c27abeaf58b0c03ce66de7bfaf6727f4523ea06ef226a9ce3de50",
+      "size_bytes": 326389
+    },
+    "traffic_registry": {
+      "path": "D:\\Cursor\\raven.mcs\\configs\\frozen\\e2_traffic_profiles_s1\\traffic_s1_s6_profile_registry.json",
+      "sha256": "7d9b8292522b6fbcc15d83ebb065fc8a73b79787ed643aea49c48f30596acbc7",
+      "size_bytes": 7816
+    }
+  }
+}

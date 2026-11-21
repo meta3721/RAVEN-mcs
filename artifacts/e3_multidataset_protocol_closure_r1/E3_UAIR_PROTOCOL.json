@@ -1,0 +1,182 @@
+{
+  "blocker_if_any": null,
+  "complete_aligned_generator": {
+    "module": "raven_mcs.e3.protocol_closure.complete_aligned",
+    "probe": {
+      "dataset": "uair",
+      "identity": {
+        "events_sha256": "196ce23442b4622d8174acf9f86c823598594824fc5626e4f82f1e4f8919752d",
+        "metadata": {
+          "dataset": "uair",
+          "generator": "e3-complete-aligned-v1",
+          "notes": [
+            "E3 Complete-aligned controlled generator",
+            "deterministic given seed+dataset+num_windows",
+            "no test outcomes used"
+          ],
+          "num_clients": 8,
+          "num_windows": 3,
+          "s_max": 5,
+          "seed": 31001
+        },
+        "metadata_sha256": "26b0aa65dac0cee10264dedb5a6d34179843925465e377321a7819c853161b45",
+        "trace_hash": "b2b11c3dce5284c985a4558cd3762a8c4fe52ee439ba51489ac6ca3cbd25deb5"
+      },
+      "n_event_rows": 24,
+      "num_windows": 3,
+      "seed": 31001,
+      "status": "EVENTTRACE_PATH_READY"
+    },
+    "status": "READY"
+  },
+  "created_utc": "2026-08-09T16:46:02.500959+00:00",
+  "data_identity": {
+    "client_measurements_hash": "4ec8ae79c7b6f74f5969e1914310bc61d0005c86cf9cfd434e1ee5e60f70647f",
+    "common_timestamps": 264,
+    "interpolation_imputation_policy": "none beyond processed pipeline",
+    "legal_time_horizon": {
+      "chosen_E3_formal_windows": 80,
+      "common_timestamps": 264,
+      "dataset": "uair",
+      "justification": "Train timestamps=158; legal~126. Choose 80 windows within U-Air support before outcomes.",
+      "legal_evaluation_windows": 53,
+      "legal_training_windows": 126,
+      "matches_sealed_traffic_e2_if_traffic": false,
+      "same_across_methods": true,
+      "spatial_units": 36,
+      "split_boundaries": {
+        "test": {
+          "n_atomic": 1908,
+          "n_timestamps": 53,
+          "time_max": 263,
+          "time_min": 211
+        },
+        "train": {
+          "n_atomic": 5688,
+          "n_timestamps": 158,
+          "time_max": 157,
+          "time_min": 0
+        },
+        "validation": {
+          "n_atomic": 1908,
+          "n_timestamps": 53,
+          "time_max": 210,
+          "time_min": 158
+        }
+      },
+      "warmup_atomic_units": 1152
+    },
+    "missingness_policy": "processed support_flag / physical filters from dataset yaml",
+    "n_clients": 8,
+    "processed_hash": "0d57445890f7e1a21038c17106a8e7f332e95fe13fe81713f24b8fd0ab254eed",
+    "processed_path": "D:\\Cursor\\raven.mcs\\data\\processed\\uair\\atomic_units.parquet",
+    "raw_hash": "f72e5c162bd86da145147dad62d8d039b237a9a48b1a5f72375ed8734ffbe873",
+    "raw_path": "D:\\Cursor\\raven.mcs\\data\\raw\\uair\\Data-1.zip",
+    "spatial_units": 36,
+    "standardization_policy": "runner/model-local as in Common-NDMF path",
+    "train_validation_test_split": {
+      "test": 1908,
+      "train": 5688,
+      "validation": 1908
+    }
+  },
+  "dataset": "uair",
+  "formal_horizon": {
+    "chosen_E3_formal_windows": 80,
+    "common_timestamps": 264,
+    "dataset": "uair",
+    "justification": "Train timestamps=158; legal~126. Choose 80 windows within U-Air support before outcomes.",
+    "legal_evaluation_windows": 53,
+    "legal_training_windows": 126,
+    "matches_sealed_traffic_e2_if_traffic": false,
+    "same_across_methods": true,
+    "spatial_units": 36,
+    "split_boundaries": {
+      "test": {
+        "n_atomic": 1908,
+        "n_timestamps": 53,
+        "time_max": 263,
+        "time_min": 211
+      },
+      "train": {
+        "n_atomic": 5688,
+        "n_timestamps": 158,
+        "time_max": 157,
+        "time_min": 0
+      },
+      "validation": {
+        "n_atomic": 1908,
+        "n_timestamps": 53,
+        "time_max": 210,
+        "time_min": 158
+      }
+    },
+    "warmup_atomic_units": 1152
+  },
+  "opportunity_strata": {
+    "dataset": "uair",
+    "definition": "processed opportunity_stratum = spatial_id::time_block::weekday_flag",
+    "deterministic_construction": true,
+    "n_strata": 288,
+    "no_target_leakage": true,
+    "note": "Stratum labels come from processed public features only; not model residuals.",
+    "support_hash_n": 288
+  },
+  "public_target": {
+    "construction": "train_split_utc_block_mass_only_no_test_labels",
+    "dataset": "uair",
+    "group_definition": "repeatable_utc_time_of_day_4",
+    "group_ids": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "group_names": [
+      "UTC_00_06",
+      "UTC_06_12",
+      "UTC_12_18",
+      "UTC_18_24"
+    ],
+    "head_groups": [
+      0,
+      1
+    ],
+    "mu": {
+      "0": 0.26582278481012656,
+      "1": 0.26582278481012656,
+      "2": 0.24050632911392406,
+      "3": 0.22784810126582278
+    },
+    "n_train_atomic": 5688,
+    "tail_groups": [
+      2,
+      3
+    ]
+  },
+  "q_feature_boundary": {
+    "allowed_features": [
+      "hour_sin",
+      "hour_cos",
+      "time_block",
+      "weekday",
+      "spatial_public_block"
+    ],
+    "fixed_prestate": true,
+    "forbidden": [
+      "future_labels",
+      "realized_target",
+      "post_delivery_private_state",
+      "test_outcomes"
+    ]
+  },
+  "readiness_status": "READY_FOR_E3_CANARY",
+  "stage2_eligibility": {
+    "delivered_semantics": "delivered iff U=1",
+    "eligibility_rule": "U=1 requires compute_success and network_success and tau<=s_max and nonempty observations",
+    "failed_attempt_semantics": "O may be nonempty while U=0",
+    "observability_boundary": "no test labels; risk sets from train units only in generator",
+    "s_max": 5,
+    "stage1_stage2_timing": "opportunity then observation then usable within window"
+  }
+}

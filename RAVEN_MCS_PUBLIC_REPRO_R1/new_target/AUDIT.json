@@ -1,0 +1,48 @@
+{
+  "complete_matrix": true,
+  "created_utc": "2026-09-10T06:26:03.527955+00:00",
+  "eventtrace_hash_consistent": true,
+  "formal_ni_restored": false,
+  "formal_ni_section6_triggered": false,
+  "gate_unused": true,
+  "go_matches_decision": true,
+  "n_expected": 50,
+  "n_rows": 50,
+  "p2_solver_nonneg_clip": true,
+  "p2_solver_nonneg_clip_note": "Experiment-local clip of solver negatives in scripts/run_p2_nt_e3.py; lambdas, p_obs, s_max, and phi were not retuned.",
+  "paired": [
+    {
+      "RMSE_mu_paired_rel_mean": -0.0031361695108129404,
+      "WorstGroupRMSE_paired_rel_mean": -0.00567360264138604,
+      "comparator": "fedau_window",
+      "descriptive_interval_not_ni_high": -0.0018919798627986648,
+      "descriptive_interval_not_ni_low": -0.009455225419973415,
+      "n_paired": 10,
+      "scd_method": "raven",
+      "within_0p5pct_point_tolerance": true
+    },
+    {
+      "RMSE_mu_paired_rel_mean": -0.003040504704298691,
+      "WorstGroupRMSE_paired_rel_mean": -0.005417751078808655,
+      "comparator": "obsuse_window",
+      "descriptive_interval_not_ni_high": -0.001690609484585662,
+      "descriptive_interval_not_ni_low": -0.009144892673031648,
+      "n_paired": 10,
+      "scd_method": "raven",
+      "within_0p5pct_point_tolerance": true
+    },
+    {
+      "RMSE_mu_paired_rel_mean": -0.007989278425448538,
+      "WorstGroupRMSE_paired_rel_mean": -0.015154503416428286,
+      "comparator": "fedavg_window",
+      "descriptive_interval_not_ni_high": -0.012202363178216415,
+      "descriptive_interval_not_ni_low": -0.018106643654640157,
+      "n_paired": 10,
+      "scd_method": "raven",
+      "within_0p5pct_point_tolerance": true
+    }
+  ],
+  "seeds_test": null,
+  "status": "PASS",
+  "table_ii_untouched": true
+}

@@ -1,0 +1,46 @@
+{
+  "eta": 0.01,
+  "tol": 1e-12,
+  "n_runs": 80,
+  "runs_all_within_tol": 80,
+  "max_e_overall": 0.0,
+  "median_of_max_e": 0.0,
+  "per_ds_arm": [
+    {
+      "ds": "sensorscope",
+      "arm": "raven_wo_obs",
+      "n": 20,
+      "within_tol": 20,
+      "max_e": 0.0,
+      "median_max_e": 0.0,
+      "first_bad_mean": NaN
+    },
+    {
+      "ds": "sensorscope",
+      "arm": "raven_wo_use",
+      "n": 20,
+      "within_tol": 20,
+      "max_e": 0.0,
+      "median_max_e": 0.0,
+      "first_bad_mean": NaN
+    },
+    {
+      "ds": "uair",
+      "arm": "raven_wo_obs",
+      "n": 20,
+      "within_tol": 20,
+      "max_e": 0.0,
+      "median_max_e": 0.0,
+      "first_bad_mean": NaN
+    },
+    {
+      "ds": "uair",
+      "arm": "raven_wo_use",
+      "n": 20,
+      "within_tol": 20,
+      "max_e": 0.0,
+      "median_max_e": 0.0,
+      "first_bad_mean": NaN
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "all_differences": [
+    "runtime_seconds: 16.223075799999947 vs 14.980286399999954"
+  ],
+  "deterministic_differences": [],
+  "gate": "G2",
+  "pass": true,
+  "rule": "same (block, arm, seed, config) twice -> identical final_metrics.json on all deterministic fields; runtime_seconds excluded as wall clock",
+  "run_a": "results_server_optimizer/round_v1/runs/g2_det_a/sensorscope/fedavg_window/seed30001",
+  "run_b": "results_server_optimizer/round_v1/runs/g2_det_b/sensorscope/fedavg_window/seed30001",
+  "wall_clock_values": {
+    "runtime_seconds": [
+      16.223075799999947,
+      14.980286399999954
+    ]
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "status": "PASS",
+  "actual_SGD": 0,
+  "intercepted_real_trainer_calls": 1,
+  "unit_backend_counter": 1,
+  "fixture_role": "fixed arithmetic only, not Traffic or actual45011 RNG streams",
+  "real_backend": "CommonNDMF/ClientTrainer",
+  "E0_work": true,
+  "R0_no_work": true,
+  "registration_stage1_frozen": true,
+  "actual_design_ratio": [
+    2.0,
+    0.6666666666666666
+  ],
+  "event_order": "register -> intercepted trainer -> private service queue -> due notification",
+  "queue_cursor_RNG_pair_restore": true,
+  "p_after_close": true,
+  "readonly_shadow": true,
+  "worker_PID": 15524,
+  "root_id": "844978b88e7345d8822059a6aa487b5f",
+  "max_online_root_upper": 0.035625000000000004,
+  "save_marker": "C:\\Cursor\\raven.mcs\\results_observed_feedback_continuation_45011_20261014\\DRIVER_SGD0_PAIR\\driver_fixed.complete.json",
+  "old_SGD0_evidence_reused": "C:\\Cursor\\raven.mcs\\results_observed_feedback_acquisition_45011_20261014\\SGD0_RESULT.json"
+}

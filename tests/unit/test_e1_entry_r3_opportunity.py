@@ -60,7 +60,7 @@ def test_new_strata_added_after_window_close() -> None:
 
 def test_current_window_not_used_for_current_zeta() -> None:
     source = inspect.getsource(FullWindowRunner._process_window)
-    assert source.index("zeta = self._compute_zeta") < source.rindex(
+    assert source.index("self._compute_zeta(") < source.rindex(
         "self._update_lagged_estimators",
     )
 

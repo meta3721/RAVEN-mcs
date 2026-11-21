@@ -1,0 +1,54 @@
+{
+  "e9_yaml_incomplete": "E9 omits TimeAlign and uses seeds 26001-26010 / balanced+complete_aligned; not this protocol",
+  "forbidden": [
+    "local_hajek",
+    "inst_cal",
+    "debt_cal",
+    "raven_simoracle",
+    "central_all",
+    "central_delivered",
+    "raven_wo_design",
+    "raven_wo_obs",
+    "raven_wo_use",
+    "raven_wo_inst",
+    "raven_wo_debt",
+    "timealign_agg",
+    "flamf_original"
+  ],
+  "methods": [
+    {
+      "canonical": "fedavg_window",
+      "display": "FedAvg-Window",
+      "role": "baseline",
+      "slot": "M1"
+    },
+    {
+      "canonical": "fedasync_window",
+      "display": "FedAsync-Window",
+      "role": "baseline",
+      "slot": "M2"
+    },
+    {
+      "alias_note": "E3 canonical ID flamf_timealign_adapted; do not substitute timealign_agg or flamf_original",
+      "canonical": "flamf_timealign_adapted",
+      "display": "TimeAlign-Agg",
+      "role": "baseline",
+      "slot": "M3"
+    },
+    {
+      "canonical": "twostage_hajek",
+      "display": "TwoStage-Hajek",
+      "role": "baseline",
+      "slot": "M4"
+    },
+    {
+      "canonical": "raven",
+      "display": "RAVEN-MCS",
+      "role": "focal",
+      "slot": "M5"
+    }
+  ],
+  "n_methods": 5,
+  "reason": "external validation of structural target-alignment, not another full benchmark",
+  "status": "FROZEN"
+}

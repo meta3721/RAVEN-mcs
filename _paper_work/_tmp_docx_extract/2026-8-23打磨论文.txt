@@ -1,0 +1,281 @@
+目录
+1：实验做后，如何将实验结果图放到论文中1
+2：补参考文献。8
+3 定理与附录的处理方式12
+4．检查论文的内容，避免出现低级错误，去AI化。14
+5： 控制篇幅的原则与方法19
+6 通过CCF A paper reviwer来打磨论文30
+1：实验做后，如何将实验结果图放到论文中
+利用cursor将数据图做好看，并将数据图，表格等上传到overleaf中的论文草稿中
+（下面2页是王楷峥同学做的）
+一.作图
+(1)，让cursor基于论文模板和跑出来的实验结果。做出我们需要填充的图像的草图。并提供对应数据集。可以让AI多次查几遍，要求用真实数据集，严谨，符合逻辑
+(2)，在origin上用数据集大致画一下图像符合即可使用这些草图，将它们继续优化。
+(3)，优化这些图像，我整理了老师的一些意见:
+1，柱状图色彩不要太鲜艳，颜色里面用条纹填充。柱子整体低一些，上面就有空间放字(比如图例)了
+2，要美观，漂亮。说是多张图，有些图是几个图在一起的。最好要多张图在一起组合的。一张图太单调了。尽量把图做的紧密，多，一排2个2个的。
+3，总的原则 就是让人觉得你这个图太多了，只是放不下，让人觉得我们图中有很多内容，含有很多信息，只放了代表性的。其它的在附录中放了一部分。
+4，每个图要精美。漂亮 ，色彩协调。对称 美观。看起来高大上。
+5，图像要紧凑，尽可能把空隙减小。就是整体上紧凑，匀称，协调，美观
+6，只有一个图的，就把图例放到方框内。
+7，图不能压字。字不压线。
+(4)图大致修好之后再仔细检查有哪些不符合要求的或者不美观的地方就再指出图名，发布指令，进行修改。
+二.将表与图做到论文中
+1，首先将在overleaf中的论文整个文件夹以压缩包的形式保存到cursor文件夹中.自行解压
+2，让cursor读这个文件夹，并指出哪个文件是我们的论文草稿。
+3，把我们需要往里面填充的图像和数据以及表格之类的放到同一个文件夹中。(需要填充什么东西以及放在同一个文件夹中，并对其进行命名，也可以让cursor代劳。)
+4，让cursor读完文件夹之后，基于我们论文草稿进行修改，把表和图做到里面，并改这个文件的名字。
+5,再将整个文件全部上传到over leaf中。这样的话不会改变原本的文件夹，我们在复制版本的文件夹上进行修改，这样也算有备份。对论文草稿进行重新编译，我们看他做的怎么样。
+6，进入去审查论文图像的问题，
+比如说他图像有没有少放，有没有多放？图像的那个编号对不对？
+论文的排版好不好看？是否非常混乱？是否过于稀疏，是否过于密集？
+有没有字压图的现象？图像和表格的边缘有没有被吞掉？
+公式有没有缺少？有没有错误？
+文字是否分页？
+6，人工审查之后再让cursor只修改文件夹中的论文草稿即可，到时候我们把修改完的版本只上传这个论文草稿，不需要上传整个文件夹。然后重新编译看好不好，然后反复的修改。
+7，也可以再加上机器审查，原则是整洁美观
+正确的图是这样的：
+下面是不好的图。
+上图中的(a), (b)是子图名，子图名也要有名字，要放到相应的图的下面。右边的图压着线了。不要压线。
+要有方框框着。 上面，右边有线
+图1的二个子图，要做成一行。不要这样上下的。要一栏二个图。三个图的也如此办理。
+2：补参考文献。
+在overleaf上打磨论文
+补参考文献。
+我们的overleaf的所有参考文献是放到一个文件中的，单独的
+引用的时候这样写，就会引用。
+参考文献要有40个以上(不要恰好就40个，不要就是交作业，如果这样的想法，事情就难做好)。要选择CCF A期刊或者会议的。再选择IEEE Transaction的。再选择一区的。实在不行，再二区的。
+第一要补的参考文献是：数据集的来源，有网址的用上标注。如下所示
+\item \textbf{T-Drive Trajectory Dataset}\footnote{https://ieee-dataport.org/open-access/crawdad-queensucrowdtemperature}:
+或者标参考文献，所有的数据集都要这样的有源处；
+第二是对比的算法，一定要有参考文献
+参考文献要近2年的，就是今年是2026，就尽量是2026年优先，2025年的次之。
+参考文献的格式是：
+@article{liu2026multidimensional,
+title={Multidimensional Trust Evaluation and Task Match Based Workers Recruitment Scheme for MCS},
+author={Liu, Yuxin and He, Ziyi and Liang, Jingpu and Li, Zhetao and Deng, Qingyong},
+journal={IEEE Transactions on Dependable and Secure Computing},
+volume={23},
+number={3},
+pages={527--542},
+year={2026},
+pages={5058-5074},
+publisher={IEEE}
+}
+可利用google学术来做：
+太新的就不全，再自己补上页码。参考文献不要都加到后面。新的2026年的要加几个在前面。大部分都有页码，不要让google搞了后，就直接贴到论文中，认为google搞了的就是标准。很多同学，我问这个参考文献不对，就说是google搞的。google搞的不是标准，要仔细看看，是不是出版了，出版了的要加上页码。要手工加。至少要有5个以上2026年的参考文献。至少要有15个以上2025年， 2026年的参考文献。
+文献[25], [26]都是已经出版了的，有页码了的。
+3 定理与附录的处理方式
+定理一定要完整，
+在正文中要这样写：
+这是正文部分。前面部分是定理的头。最后证明结束后要有结束标志: 空心的方框.
+下面部分是证明部分。这一种是正文中给出定理，正文的证明在附录中，因而，证明只有一句话。如果在正文中给出详细的证明，就在这里给出。
+特别注意，证明部分一定不能用proof sketch. 出现这样的话，就是AI做的。会直接拒稿的。
+在附录中，不能是下面这样的：
+上面的存在的问题是：附录中的定理1，没有定理1的头。在附录中的定理必须是完整的。要有定理头：
+后面再加严格证明过程。最后要有结束标志: 方框.
+就是一个完整的定理。
+4．检查论文的内容，避免出现低级错误，去AI化。
+AI喜欢PPT那种标题式的论文，喜欢用item, 列表。一段没几个字。段落多。公式多，连一个数字都搞一个公式。这样占用篇幅。AI化。我们就要去掉这些，减少篇幅。
+要仔细读论文。比如上面的附录，到底是说什么，有作用没有？做了没有？要改，或者觉得不合适，就删除。比如这里，是不是涉及到了后面的这个表。要检查论文中出现的所有的图，表，是不是在论文中说了，引用了？一定要引用，
+上面的论文中APPENDIX H，就那么一点，有作用不？没作用就不要了。省的分散别人的注意力。
+上图右边的那个文件在论文中的，是对应实验结果的数据的文件。不能就放在那里不管了。这样投稿，直接就拒了。要把对应的数据做出来，做出表，或者图。在论文中说明这是起什么作用。不能这样，这样就会拒了。
+AI喜欢多列公式，象下面这种数字就做成一个公式不好。写到正文中。AI喜欢很多例式，喜欢很多小段，一段 句话这样的，也不好。减少条例，减少item这样的，正文中一段要长。
+象下面这样公式很短，没有必要单独给一行，而编号，就在正文中一段给出。等式放到正文中，这样显得学术化一些。正式一些。总之，要仔细想想，不要全部AI来做。
+象上面那样的，如果公式没有引用就写到正文中，不要编号，减少篇幅。
+5： 控制篇幅的原则与方法
+总的原则：以欲投稿的目标期刊的篇幅要求为目标控制论文的篇幅。
+总的来说，我们的论文长度，正文控制到14页以内。由于参考文献要点1页，作者介绍要占半页。 因而，论文的长度其实最多只有12.5页。超过篇幅大多期刊不让投稿。二是录用后，超过8页的部分，一般是220美元每页。对于我们项目少的团队也是非常大的压力。
+而且不同的期刊篇幅长度的限制也不相同。我们领域主要投的CCF A期刊的篇幅长度为如下：
+1：IEEE Transactions on Services Computing (TSC), 正文不能超过12页（包括参考文献，作者介绍 ），可以有附录；
+2：IEEE Transactions on Mobile Computing (TMC), 正文建议不超过14页（包括参考文献，作者介绍 ），可以有附录；
+3：IEEE Transactions on Dependable and Secure Computing, 正文建议不超过14页（包括参考文献，作者介绍 ），可以有附录；
+4：IEEE Transactions on Information Forensics & Security 正文+附录不能超过13页；
+我们往往篇幅很长。因而，一是通过GTP来缩小篇幅。二是将图也适当减少。
+象下面这样的四个图，不要占整个二栏。
+要做成只放到一栏。一栏放4个图。如下图所示。
+四个图也可以如下这样的放
+一栏可以放2个，3个图。如下图这样的。现在几乎没有一栏放一个图的。
+上面这样的。
+经过对图的控制后，篇幅还是超了。就要把一些内容放到附录中。如果篇幅少了，就把附录的内容放一些到正文。附录长度也要控制长度，一定不能超过正文长度。
+下面是附录文件append.tex文件完整内容。
+其中，新的图，表，公式与定理的编号要接着正文继续编号。原来的正文的定理在附录 中详细证明要与正文一样。
+\setcounter{equation}{34} % The end of the Eq. number in Manuscript.
+\setcounter{figure}{9}
+% \pagestyle{empty}   % 不显示页码
+上面语句是说附录 的公式与图从哪个号开始编号
+由于附录与正文分开了。因而会导致很多链接没有了。公式，定理，参考文献变成了？号。因而，要重新梳理。
+如果没有附录文件，完整的copy下面的语句就可以了形成append .tex文件。
+\documentclass[lettersize,journal]{IEEEtran}
+\usepackage{amsmath,amsfonts}
+% \usepackage{appendix}
+\usepackage{algorithm}
+\usepackage[noend]{algorithmic}
+\usepackage{array}
+\usepackage[caption=false,font=small,labelfont=rm,textfont=rm]{subfig}
+\usepackage{textcomp}
+\usepackage{amssymb}
+\usepackage{stfloats}
+\usepackage{url}
+\usepackage{verbatim}
+\usepackage{graphicx}
+\usepackage{cite}
+\usepackage{color}
+\usepackage[justification=centering]{caption} %caption in center
+% \renewcommand{\algorithmicrequire}{}
+\usepackage{amsthm}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{corollary}{Corollary}
+% 与 Theorem 同编号
+%-- coding: UTF-8 --
+% \usepackage[UTF8]{ctex}
+\hyphenation{op-tical net-works semi-conduct-tor IEEE-Xplore}
+% updated with editorial comments 8/9/2021
+\begin{document}
+\setcounter{equation}{34} % The end of the Eq. number in Manuscript.
+\setcounter{figure}{9}
+% \pagestyle{empty}   % 不显示页码
+\appendix
+This appendix provides formal theoretical guarantees for the VNPP scheme, including verifiable perturbation correctness, noise-free truth estimation correctness, and convergence properties of user reputation and source weights.
+\subsection{Verifiable Perturbation Correctness}
+\begin{theorem}[Verifiable Perturbation Correctness]
+\label{thm:perturbation}
+Let $d_s$ be the raw data of user $w^s$ and $S_s$ be the noise generated by the disturbance server (DS). Let $D_s$ be the perturbed data obtained by DR after homomorphic addition and proxy re-encryption. Then VNPP ensures
+\[
+\textcolor{black}{D_s - d_s = S_s},
+\]
+and no party other than $w^s$ or DR can \textcolor{black}{obtain} $d_s$ or $S_s$.
+\end{theorem}
+\begin{proof}
+Each user encrypts its raw data as
+\[
+\textcolor{black}{d_s' = \mathrm{Enc}_{pk_s}(d_s)},
+\]
+while the disturbance server generates the perturbation noise and encrypts
+\[
+\textcolor{black}{S_s' = \mathrm{Enc}_{pk_s}(S_s)}.
+\]
+The blockchain executes homomorphic addition
+\[
+\textcolor{black}{D_s = d_s' \circledast S_s' = \mathrm{Enc}_{pk_s}(d_s + S_s)},
+\]
+which, by the additive homomorphic property, guarantees
+\[
+\textcolor{black}{\mathrm{Dec}_{sk_s}(D_s) = d_s + S_s}.
+\]
+Through proxy re-encryption using $\textcolor{black}{rk_s}$, the data requester recovers
+\[
+\textcolor{black}{D_s = d_s + S_s},
+\]
+without exposing $d_s$ or $S_s$ to any intermediate party. Since only $w^s$ possesses $\textcolor{black}{sk_s}$ and only DR possesses $\textcolor{black}{sk_\gamma}$, the perturbation is both verifiable and privacy-preserving.
+\end{proof}
+\subsection{Noise-Free Estimated True Value Correctness}
+\begin{lemma}[Noise-Free ETV Correctness]
+\label{lem:noise_free_etv}
+Given raw data $\{d_s\}_{s=1}^k$ and weights $\{w_s\}$, the VNPP protocol computes a noise-free Estimated True Value
+\[
+\textcolor{black}{X = \frac{\sum_{s=1}^k w_s d_s}{\sum_{s=1}^k w_s}},
+\]
+while \textcolor{black}{preserving the privacy of each $d_s$}.
+\end{lemma}
+\begin{proof}
+The disturbance server generates a random noise vector $\{v_s\}$ and uploads encrypted reciprocals
+\[
+\textcolor{black}{\mathrm{Enc}_{pk_s}(v_s^{-1})}
+\]
+to the blockchain. This enables computation of encrypted ratios
+\[
+\textcolor{black}{\mathrm{Enc}_{pk_s}(d_s v_s^{-1}) = \mathrm{Enc}_{pk_s}(d_s) \otimes \mathrm{Enc}_{pk_s}(v_s^{-1})}
+\]
+without revealing $d_s$. The data requester samples a random scalar $\textcolor{black}{\mathcal{C}}$ and computes masked weights
+\[
+\textcolor{black}{m_s = \mathcal{C} w_s v_s}, \quad S_w = \sum_{s=1}^k w_s,
+\]
+which are aggregated on-chain to obtain
+\[
+\sum_s m_s \cdot \frac{d_s}{v_s} = \textcolor{black}{\mathcal{C} \sum_s w_s d_s}.
+\]
+By removing the mask $\textcolor{black}{\mathcal{C}}$, the exact noise-free ETV is obtained:
+\[
+\textcolor{black}{X = \frac{\sum_s w_s d_s}{\sum_s w_s}}.
+\]
+All blockchain operations involve only masked or ratio values, ensuring the confidentiality of individual $d_s$.
+\end{proof}
+\subsection{EWMA Reputation Convergence}
+\begin{theorem}[Reputation Convergence]
+\label{thm:ewma_convergence}
+Let $R_s^{(t)} \in [0,1]$ denote the reputation of user $w^s$ at time $t$, updated according to
+\[
+\textcolor{black}{R_s^{(t+1)} = R_s^{(t)} + \beta (Z_s^{(t)} - R_s^{(t)})}, \quad \beta \in (0,1),
+\]
+where $\textcolor{black}{Z_s^{(t)} \in \{0,1\}}$ indicates the validity of reported data. If the long-term expected validity is $\textcolor{black}{\bar{Z}_s = \mathbb{E}[Z_s^{(t)}]}$, then
+\[
+\lim_{t \to \infty} \textcolor{black}{R_s^{(t)}} = \bar{Z}_s.
+\]
+\end{theorem}
+\begin{proof}
+Taking expectation on both sides gives
+\[
+\mathbb{E}[R_s^{(t+1)}] = \mathbb{E}[R_s^{(t)}] + \beta (\bar{Z}_s - \mathbb{E}[R_s^{(t)}]).
+\]
+Denoting $\textcolor{black}{E_t = \mathbb{E}[R_s^{(t)}]}$, this forms a first-order linear difference equation
+\[
+E_{t+1} - E_t = \beta (\bar{Z}_s - E_t),
+\]
+whose solution is
+\[
+\textcolor{black}{E_t = \bar{Z}_s + (E_0 - \bar{Z}_s) (1-\beta)^t}.
+\]
+As $t \to \infty$, $(1-\beta)^t \to 0$ for $0<\beta<1$, implying
+\[
+\lim_{t\to\infty} E_t = \bar{Z}_s.
+\]
+Thus, the EWMA-based reputation converges to the expected long-term validity of the user's data.
+\end{proof}
+\subsection{Dynamic Interval Verification Reliability}
+\begin{corollary}[Interval Verification Reliability]
+\label{cor:interval}
+Let $\textcolor{black}{p_s = \Pr(d_s \in [X-\Delta, X+\Delta])}$. Then the long-term expected reputation satisfies
+\[
+\mathbb{E}[R_s^{(t)}] \to \textcolor{black}{p_s} \quad \text{as } t \to \infty.
+\]
+\end{corollary}
+\begin{proof}
+From Theorem~\ref{thm:ewma_convergence}, the EWMA reputation converges to the expected value of $\textcolor{black}{Z_s^{(t)}}$. By definition of the interval verification, this expectation equals $\textcolor{black}{p_s}$, establishing the stated convergence.
+\end{proof}
+\subsection{Convergence of Weight Iteration}
+\begin{lemma}[Weight Iteration Convergence]
+\label{lem:weight_convergence}
+Let $w_s^{(t)}$ be the weight of user $w^s$ at iteration $t$ for noisy ETV computation. The iterative updates
+\[
+\textcolor{black}{w_s^{(t+1)} = \frac{\log\left(\frac{\sum_{j=1}^{k}(D_j - X^{(t)})^2}{(D_s - X^{(t)})^2}\right)}{\log\left(\sum_{j=1}^{k}(D_j - X^{(t)})^2\right)}}
+\]
+converge to a fixed point $\textcolor{black}{w_s^* \propto 1/(D_s - X)^2}$ under the condition that $|X^{(t+1)} - X^{(t)}| < \epsilon$.
+\end{lemma}
+\begin{proof}
+The weight update is continuous in $X^{(t)}$ and $D_s$, while the ETV is defined as
+\[
+\textcolor{black}{X^{(t)} = \frac{\sum_s w_s^{(t)} D_s}{\sum_s w_s^{(t)}}}.
+\]
+This defines a contraction mapping under standard assumptions, ensuring convergence of both $X^{(t)}$ and $w_s^{(t)}$. At the fixed point, the update formula reduces to
+\[
+\textcolor{black}{w_s^* \propto \frac{1}{(D_s - X)^2}},
+\]
+confirming the stability of the iterative process within finite steps.
+\end{proof}
+\end{document}
+6 通过CCF A paper reviwer来打磨论文
+论文打磨的过程就是通过 condex中的一个CCF SKILL。查找论文的不足，然后，针对论文的不足再来修改。把所有能够修改的不足都修改后，再次用CCF A paper reviwer再打不足。做几轮，没有什么问题了。再去AI化，再投稿。
+有ChatGTP Pluse的就可以装Condex如下。
+再装一个CCF SKILL. 装了以后，在输入框中输入“/cc ..”就看得到有下面的提示
+我们选择CCF paper reviwer
+就是下面的
+再把自己的论文输入，再问：请你客观评价这个论文的质量？能够打多少分？请仔细审核，看这个论文还存在什么不足，可改的地方。
+他就会给出问题。我们再依据问题来修改论文。
+经过评审后，就会生成一个评审报告。
+把最新的论文，以及评审报告发给ChatGTP
+ChatGTP就会给出上述的修改方法。
+然后，依据意见对论文进行修改，要补实验，就补实验。
+经过打磨，没有能够修改的意见后，就发给老师看看。
+反复上面的过程。能够打到6分，就不错了。但是，我的CCF A很少达到6分的。

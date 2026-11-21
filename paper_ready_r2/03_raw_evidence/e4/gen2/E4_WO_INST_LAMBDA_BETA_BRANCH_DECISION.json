@@ -1,0 +1,10 @@
+{
+  "branch": "B",
+  "created_utc": "2026-08-12T15:08:32.734807+00:00",
+  "decision": "CURRENT_40_WO_INST_RUNS_INVALID_REFERENCE_PENALTY_MISMATCH",
+  "expected_default": 1.0,
+  "gen1_lambda_beta": 1e-08,
+  "new_formal_runs_authorized": 40,
+  "reason": "Gen1 lambda_beta=1e-08 != E3 lambda_beta=1.0; authorize 40 final wo_inst runs",
+  "recovered_lambda_beta": 1.0
+}

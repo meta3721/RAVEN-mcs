@@ -1,0 +1,14 @@
+{
+  "CRS": "EPSG:4326",
+  "conversion_method": "direct_wgs84_columns_preferred",
+  "geometry_field_fallback": "the_geom",
+  "geometry_field_primary": "wgs84_longitude/wgs84_latitude",
+  "invalid_geometry_count": 0,
+  "library_version": "pandas=3.0.5",
+  "parsed_coordinate_count": 1783,
+  "path": "data/raw/traffic/road_traffic_counts_station_reference.csv",
+  "reference_row_count": 1783,
+  "sha256": "bea9249941c27ae8ebd4c724e8bffd6c6ddfa1db149dff6dc9ca7db777374ffd",
+  "size_bytes": 774192,
+  "status": "PASS"
+}

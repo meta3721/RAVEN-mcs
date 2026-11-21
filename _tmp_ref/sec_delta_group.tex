@@ -1,0 +1,71 @@
+\subsection{Structural Alignment Objective}
+\label{subsec:design_objective}
+
+Section~\ref{sec:reconstruction} will construct two corrected within-client
+compositions: a deployment-group composition
+$\mathbf{c}^{g}_{k,r}\in\Delta^{|\mathcal{G}|-1}$ and an opportunity-stratum
+composition $\mathbf{c}^{s}_{k,r}\in\Delta^{|\mathcal{S}|-1}$.  For the final
+aggregation set $\mathcal{A}_r$, define
+$M_r=[\mathbf{c}^{g}_{k,r}]_{k\in\mathcal{A}_r}$.
+Given feasible aggregation weights $\boldsymbol\alpha_r$, the effective
+deployment-group composition in an active window is
+$\boldsymbol\omega_r=M_r\boldsymbol\alpha_r$.
+
+Let $\eta_r>0$ denote the server step size and define
+$I_r=\mathbf{1}\{|\mathcal{A}_r|>0\}$ and
+$S_R=\sum_{r=0}^{R-1}\eta_r I_r$.
+For $S_R>0$,
+\begin{equation}
+    \overline{\boldsymbol\omega}_R
+    =
+    \frac{1}{S_R}
+    \sum_{r=0}^{R-1}
+    \eta_r I_r\boldsymbol\omega_r.
+    \label{eq:omega_bar}
+\end{equation}
+We measure the group-level structural mismatch
+$\Delta_{\mathrm{group}}(R)=\left\|
+\overline{\boldsymbol\omega}_R-\boldsymbol\mu
+\right\|_1$,
+the $\ell_1$ distance between the time-averaged effective deployment-group
+composition and the deployment target.  Both sides are probability vectors
+over $\mathcal{G}$, so $0\le\Delta_{\mathrm{group}}\le2$.
+
+For client--stratum structure, extend $\alpha_{k,r}=0$ to
+$k\notin\mathcal{A}_r$ and define
+\begin{equation}
+ \widehat\Pi_{k,s}(R)
+ =
+ \frac{1}{S_R}
+ \sum_{r=0}^{R-1}
+ \eta_r I_r\,
+ \alpha_{k,r}\,
+ c^{s}_{k,r,s}.
+ \label{eq:Pi_hat_ks}
+\end{equation}
+Because each active-window $\boldsymbol\alpha_r$ and each
+$\mathbf{c}^{s}_{k,r}$ are probability vectors,
+$\sum_{k,s}\widehat\Pi_{k,s}(R)=1$.  We therefore measure
+\begin{equation}
+ \Delta_{c\text{-}s}(R)
+ =
+ \sum_{k,s}
+ \left|
+ \widehat\Pi_{k,s}(R)-\pi^{\mathrm{tar}}_{k,s}
+ \right|.
+ \label{eq:delta_cs}
+\end{equation}
+The overall design goal is to keep $\mathcal{R}_{\mu}$ low while
+reducing $\Delta_{\mathrm{group}}$ and $\Delta_{c\text{-}s}$ under
+time-varying mobile feasibility and legal pre-outcome information.
+
+
+\section{Selection-Layer-Aware Target Reconstruction}
+\label{sec:reconstruction}
+
+RAVEN-MCS (Reference Alignment Via Exposure-aware Normalization) first forms a
+selection-corrected reference for the mass the usable data represent.
+Opportunity, observation, and usable-update selection are kept separate
+because they have different conditioning sets and therefore cannot be
+replaced by a single generic missingness probability.
+

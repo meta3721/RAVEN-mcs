@@ -1,0 +1,47 @@
+experiment: conditional_bundle_control
+dataset: explicit_data_identity
+method: reachability_stop/conditional-bundle-v2
+scenario: isolated_deterministic_B0
+seed: 26004
+device: cpu
+solver:
+  backend: CLARABEL
+control:
+  source: B0_explicit_deterministic_fixture
+  design:
+    enabled: true
+    source: B0_explicit_fixture
+    method_version: configured-design-v1
+  grid: 0.1
+  deadline: 4.0
+  horizon: 8.0
+  scenarios: 4
+  age_max: 5
+  warmup: 20.0
+  tail_interval: 2.0
+  age_weight: 0.02
+  wait_weight: 0.2
+  minimum_clients: 3
+  minimum_risk: 5
+  scoring_tolerance: 1.0e-07
+  planning_cpu_seconds: 2.0
+  method_version: reachability_stop/conditional-bundle-v2
+settings:
+  lambda_group: 1.0
+  lambda_beta: 1.0
+  lambda_variance: 0.1
+  lambda_staleness: 0.1
+  alpha_max: 0.5
+  e_min: 3.0
+  server_eta: 0.01
+  max_server_learning_rate: 1.0
+  d_max: 10.0
+  q_min: 0.05
+  v_floor: 0.0001
+mu:
+- 0.5
+- 0.5
+target_identity: e2f8f70a28b53aadf0d15ba87db844c29814b1f2511f1fbedb4f15da3007c20e
+training_executed: false
+q_status: EVIDENCE_REQUIRED
+evidence_role: B0_interface_only

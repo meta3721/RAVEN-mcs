@@ -1,0 +1,13 @@
+method,true_training_path,real_data_path,eventtrace_inputs,probability_objects,pair_state,metrics,checkpoint,ledger,formal_role,status
+fedavg_window,True,True,True,True,True,True,True,True,MAIN_BASELINE,READY_FOR_REAL_CANARY
+fedasync_window,True,True,True,True,True,True,True,True,MAIN_BASELINE,READY_FOR_REAL_CANARY
+flamf_timealign_adapted,True,True,True,True,True,True,True,True,MAIN_BASELINE,READY_FOR_REAL_CANARY
+local_hajek,True,True,True,True,True,True,True,True,MAIN_BASELINE,READY_FOR_REAL_CANARY
+twostage_hajek,True,True,True,True,True,True,True,True,MAIN_BASELINE,READY_FOR_REAL_CANARY
+inst_cal,True,True,True,True,True,True,True,True,MAIN_BASELINE,READY_FOR_REAL_CANARY
+debt_cal,True,True,True,True,True,True,True,True,MAIN_BASELINE,READY_FOR_REAL_CANARY
+raven,True,True,True,True,True,True,True,True,RAVEN,READY_FOR_REAL_CANARY
+raven_simoracle,True,True,True,True,True,True,True,True,ORACLE,READY_FOR_REAL_CANARY
+central_all,True,True,True,True,False,True,True,True,REFERENCE_ONLY,READY_FOR_REAL_CANARY
+central_delivered,True,True,True,True,False,True,True,True,REFERENCE_ONLY,READY_FOR_REAL_CANARY
+flamf_original,False,False,False,False,False,False,False,False,EXTERNAL,EXCLUDED_WITH_REASON

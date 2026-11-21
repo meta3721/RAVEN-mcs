@@ -1,0 +1,58 @@
+{
+  "rows": [
+    {
+      "atomic_p_obs_ready": true,
+      "central_real_data_ready": true,
+      "client_mapping_ready": true,
+      "dataset": "sensorscope",
+      "formal_seeds_frozen": true,
+      "horizon_frozen": true,
+      "metrics_ready": true,
+      "pair_state_ready": true,
+      "pi_opp_ready": true,
+      "q_hat_ready": true,
+      "q_true_oracle_ready": true,
+      "same_trace_across_methods": true,
+      "stage2_timing_ready": true,
+      "staleness_failure_ready": true,
+      "status": "READY_FOR_REAL_CANARY",
+      "target_ready": true
+    },
+    {
+      "atomic_p_obs_ready": true,
+      "central_real_data_ready": true,
+      "client_mapping_ready": true,
+      "dataset": "uair",
+      "formal_seeds_frozen": true,
+      "horizon_frozen": true,
+      "metrics_ready": true,
+      "pair_state_ready": true,
+      "pi_opp_ready": true,
+      "q_hat_ready": true,
+      "q_true_oracle_ready": true,
+      "same_trace_across_methods": true,
+      "stage2_timing_ready": true,
+      "staleness_failure_ready": true,
+      "status": "READY_FOR_REAL_CANARY",
+      "target_ready": true
+    },
+    {
+      "atomic_p_obs_ready": true,
+      "central_real_data_ready": true,
+      "client_mapping_ready": true,
+      "dataset": "traffic",
+      "formal_seeds_frozen": true,
+      "horizon_frozen": true,
+      "metrics_ready": true,
+      "pair_state_ready": true,
+      "pi_opp_ready": true,
+      "q_hat_ready": true,
+      "q_true_oracle_ready": true,
+      "same_trace_across_methods": true,
+      "stage2_timing_ready": true,
+      "staleness_failure_ready": true,
+      "status": "READY_FOR_REAL_CANARY",
+      "target_ready": true
+    }
+  ]
+}

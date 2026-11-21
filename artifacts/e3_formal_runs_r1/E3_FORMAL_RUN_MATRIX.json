@@ -1,0 +1,5289 @@
+{
+  "n_new": 560,
+  "n_reused": 100,
+  "n_total": 660,
+  "round": "E3-FORMAL-RUNS-R1",
+  "rows": [
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::fedavg_window::seed30001",
+      "method": "fedavg_window",
+      "seed": 30001,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::fedasync_window::seed30001",
+      "method": "fedasync_window",
+      "seed": 30001,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::flamf_timealign_adapted::seed30001",
+      "method": "flamf_timealign_adapted",
+      "seed": 30001,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::local_hajek::seed30001",
+      "method": "local_hajek",
+      "seed": 30001,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::twostage_hajek::seed30001",
+      "method": "twostage_hajek",
+      "seed": 30001,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::inst_cal::seed30001",
+      "method": "inst_cal",
+      "seed": 30001,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::debt_cal::seed30001",
+      "method": "debt_cal",
+      "seed": 30001,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::raven::seed30001",
+      "method": "raven",
+      "seed": 30001,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::raven_simoracle::seed30001",
+      "method": "raven_simoracle",
+      "seed": 30001,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::central_all::seed30001",
+      "method": "central_all",
+      "seed": 30001,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::central_delivered::seed30001",
+      "method": "central_delivered",
+      "seed": 30001,
+      "stage": "A"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::fedavg_window::seed30001",
+      "method": "fedavg_window",
+      "seed": 30001,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::fedasync_window::seed30001",
+      "method": "fedasync_window",
+      "seed": 30001,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::flamf_timealign_adapted::seed30001",
+      "method": "flamf_timealign_adapted",
+      "seed": 30001,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::local_hajek::seed30001",
+      "method": "local_hajek",
+      "seed": 30001,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::twostage_hajek::seed30001",
+      "method": "twostage_hajek",
+      "seed": 30001,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::inst_cal::seed30001",
+      "method": "inst_cal",
+      "seed": 30001,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::debt_cal::seed30001",
+      "method": "debt_cal",
+      "seed": 30001,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::raven::seed30001",
+      "method": "raven",
+      "seed": 30001,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::raven_simoracle::seed30001",
+      "method": "raven_simoracle",
+      "seed": 30001,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::central_all::seed30001",
+      "method": "central_all",
+      "seed": 30001,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::central_delivered::seed30001",
+      "method": "central_delivered",
+      "seed": 30001,
+      "stage": "B"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "new",
+      "logical_run_id": "e3::traffic::complete_aligned::local_hajek::seed30001",
+      "method": "local_hajek",
+      "seed": 30001,
+      "stage": "C"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "new",
+      "logical_run_id": "e3::traffic::complete_aligned::inst_cal::seed30001",
+      "method": "inst_cal",
+      "seed": 30001,
+      "stage": "C"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "new",
+      "logical_run_id": "e3::traffic::complete_aligned::debt_cal::seed30001",
+      "method": "debt_cal",
+      "seed": 30001,
+      "stage": "C"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "new",
+      "logical_run_id": "e3::traffic::complete_aligned::raven_simoracle::seed30001",
+      "method": "raven_simoracle",
+      "seed": 30001,
+      "stage": "C"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "new",
+      "logical_run_id": "e3::traffic::complete_aligned::central_all::seed30001",
+      "method": "central_all",
+      "seed": 30001,
+      "stage": "C"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "new",
+      "logical_run_id": "e3::traffic::complete_aligned::central_delivered::seed30001",
+      "method": "central_delivered",
+      "seed": 30001,
+      "stage": "C"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "reused",
+      "logical_run_id": "e3::traffic::complete_aligned::fedavg_window::seed30001",
+      "method": "fedavg_window",
+      "seed": 30001,
+      "stage": "reused"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "reused",
+      "logical_run_id": "e3::traffic::complete_aligned::fedasync_window::seed30001",
+      "method": "fedasync_window",
+      "seed": 30001,
+      "stage": "reused"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "reused",
+      "logical_run_id": "e3::traffic::complete_aligned::flamf_timealign_adapted::seed30001",
+      "method": "flamf_timealign_adapted",
+      "seed": 30001,
+      "stage": "reused"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "reused",
+      "logical_run_id": "e3::traffic::complete_aligned::twostage_hajek::seed30001",
+      "method": "twostage_hajek",
+      "seed": 30001,
+      "stage": "reused"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "reused",
+      "logical_run_id": "e3::traffic::complete_aligned::raven::seed30001",
+      "method": "raven",
+      "seed": 30001,
+      "stage": "reused"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::fedavg_window::seed30002",
+      "method": "fedavg_window",
+      "seed": 30002,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::fedasync_window::seed30002",
+      "method": "fedasync_window",
+      "seed": 30002,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::flamf_timealign_adapted::seed30002",
+      "method": "flamf_timealign_adapted",
+      "seed": 30002,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::local_hajek::seed30002",
+      "method": "local_hajek",
+      "seed": 30002,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::twostage_hajek::seed30002",
+      "method": "twostage_hajek",
+      "seed": 30002,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::inst_cal::seed30002",
+      "method": "inst_cal",
+      "seed": 30002,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::debt_cal::seed30002",
+      "method": "debt_cal",
+      "seed": 30002,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::raven::seed30002",
+      "method": "raven",
+      "seed": 30002,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::raven_simoracle::seed30002",
+      "method": "raven_simoracle",
+      "seed": 30002,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::central_all::seed30002",
+      "method": "central_all",
+      "seed": 30002,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::central_delivered::seed30002",
+      "method": "central_delivered",
+      "seed": 30002,
+      "stage": "A"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::fedavg_window::seed30002",
+      "method": "fedavg_window",
+      "seed": 30002,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::fedasync_window::seed30002",
+      "method": "fedasync_window",
+      "seed": 30002,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::flamf_timealign_adapted::seed30002",
+      "method": "flamf_timealign_adapted",
+      "seed": 30002,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::local_hajek::seed30002",
+      "method": "local_hajek",
+      "seed": 30002,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::twostage_hajek::seed30002",
+      "method": "twostage_hajek",
+      "seed": 30002,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::inst_cal::seed30002",
+      "method": "inst_cal",
+      "seed": 30002,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::debt_cal::seed30002",
+      "method": "debt_cal",
+      "seed": 30002,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::raven::seed30002",
+      "method": "raven",
+      "seed": 30002,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::raven_simoracle::seed30002",
+      "method": "raven_simoracle",
+      "seed": 30002,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::central_all::seed30002",
+      "method": "central_all",
+      "seed": 30002,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::central_delivered::seed30002",
+      "method": "central_delivered",
+      "seed": 30002,
+      "stage": "B"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "new",
+      "logical_run_id": "e3::traffic::complete_aligned::local_hajek::seed30002",
+      "method": "local_hajek",
+      "seed": 30002,
+      "stage": "C"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "new",
+      "logical_run_id": "e3::traffic::complete_aligned::inst_cal::seed30002",
+      "method": "inst_cal",
+      "seed": 30002,
+      "stage": "C"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "new",
+      "logical_run_id": "e3::traffic::complete_aligned::debt_cal::seed30002",
+      "method": "debt_cal",
+      "seed": 30002,
+      "stage": "C"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "new",
+      "logical_run_id": "e3::traffic::complete_aligned::raven_simoracle::seed30002",
+      "method": "raven_simoracle",
+      "seed": 30002,
+      "stage": "C"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "new",
+      "logical_run_id": "e3::traffic::complete_aligned::central_all::seed30002",
+      "method": "central_all",
+      "seed": 30002,
+      "stage": "C"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "new",
+      "logical_run_id": "e3::traffic::complete_aligned::central_delivered::seed30002",
+      "method": "central_delivered",
+      "seed": 30002,
+      "stage": "C"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "reused",
+      "logical_run_id": "e3::traffic::complete_aligned::fedavg_window::seed30002",
+      "method": "fedavg_window",
+      "seed": 30002,
+      "stage": "reused"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "reused",
+      "logical_run_id": "e3::traffic::complete_aligned::fedasync_window::seed30002",
+      "method": "fedasync_window",
+      "seed": 30002,
+      "stage": "reused"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "reused",
+      "logical_run_id": "e3::traffic::complete_aligned::flamf_timealign_adapted::seed30002",
+      "method": "flamf_timealign_adapted",
+      "seed": 30002,
+      "stage": "reused"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "reused",
+      "logical_run_id": "e3::traffic::complete_aligned::twostage_hajek::seed30002",
+      "method": "twostage_hajek",
+      "seed": 30002,
+      "stage": "reused"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "reused",
+      "logical_run_id": "e3::traffic::complete_aligned::raven::seed30002",
+      "method": "raven",
+      "seed": 30002,
+      "stage": "reused"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::fedavg_window::seed30003",
+      "method": "fedavg_window",
+      "seed": 30003,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::fedasync_window::seed30003",
+      "method": "fedasync_window",
+      "seed": 30003,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::flamf_timealign_adapted::seed30003",
+      "method": "flamf_timealign_adapted",
+      "seed": 30003,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::local_hajek::seed30003",
+      "method": "local_hajek",
+      "seed": 30003,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::twostage_hajek::seed30003",
+      "method": "twostage_hajek",
+      "seed": 30003,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::inst_cal::seed30003",
+      "method": "inst_cal",
+      "seed": 30003,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::debt_cal::seed30003",
+      "method": "debt_cal",
+      "seed": 30003,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::raven::seed30003",
+      "method": "raven",
+      "seed": 30003,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::raven_simoracle::seed30003",
+      "method": "raven_simoracle",
+      "seed": 30003,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::central_all::seed30003",
+      "method": "central_all",
+      "seed": 30003,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::central_delivered::seed30003",
+      "method": "central_delivered",
+      "seed": 30003,
+      "stage": "A"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::fedavg_window::seed30003",
+      "method": "fedavg_window",
+      "seed": 30003,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::fedasync_window::seed30003",
+      "method": "fedasync_window",
+      "seed": 30003,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::flamf_timealign_adapted::seed30003",
+      "method": "flamf_timealign_adapted",
+      "seed": 30003,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::local_hajek::seed30003",
+      "method": "local_hajek",
+      "seed": 30003,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::twostage_hajek::seed30003",
+      "method": "twostage_hajek",
+      "seed": 30003,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::inst_cal::seed30003",
+      "method": "inst_cal",
+      "seed": 30003,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::debt_cal::seed30003",
+      "method": "debt_cal",
+      "seed": 30003,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::raven::seed30003",
+      "method": "raven",
+      "seed": 30003,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::raven_simoracle::seed30003",
+      "method": "raven_simoracle",
+      "seed": 30003,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::central_all::seed30003",
+      "method": "central_all",
+      "seed": 30003,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::central_delivered::seed30003",
+      "method": "central_delivered",
+      "seed": 30003,
+      "stage": "B"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "new",
+      "logical_run_id": "e3::traffic::complete_aligned::local_hajek::seed30003",
+      "method": "local_hajek",
+      "seed": 30003,
+      "stage": "C"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "new",
+      "logical_run_id": "e3::traffic::complete_aligned::inst_cal::seed30003",
+      "method": "inst_cal",
+      "seed": 30003,
+      "stage": "C"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "new",
+      "logical_run_id": "e3::traffic::complete_aligned::debt_cal::seed30003",
+      "method": "debt_cal",
+      "seed": 30003,
+      "stage": "C"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "new",
+      "logical_run_id": "e3::traffic::complete_aligned::raven_simoracle::seed30003",
+      "method": "raven_simoracle",
+      "seed": 30003,
+      "stage": "C"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "new",
+      "logical_run_id": "e3::traffic::complete_aligned::central_all::seed30003",
+      "method": "central_all",
+      "seed": 30003,
+      "stage": "C"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "new",
+      "logical_run_id": "e3::traffic::complete_aligned::central_delivered::seed30003",
+      "method": "central_delivered",
+      "seed": 30003,
+      "stage": "C"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "reused",
+      "logical_run_id": "e3::traffic::complete_aligned::fedavg_window::seed30003",
+      "method": "fedavg_window",
+      "seed": 30003,
+      "stage": "reused"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "reused",
+      "logical_run_id": "e3::traffic::complete_aligned::fedasync_window::seed30003",
+      "method": "fedasync_window",
+      "seed": 30003,
+      "stage": "reused"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "reused",
+      "logical_run_id": "e3::traffic::complete_aligned::flamf_timealign_adapted::seed30003",
+      "method": "flamf_timealign_adapted",
+      "seed": 30003,
+      "stage": "reused"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "reused",
+      "logical_run_id": "e3::traffic::complete_aligned::twostage_hajek::seed30003",
+      "method": "twostage_hajek",
+      "seed": 30003,
+      "stage": "reused"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "reused",
+      "logical_run_id": "e3::traffic::complete_aligned::raven::seed30003",
+      "method": "raven",
+      "seed": 30003,
+      "stage": "reused"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::fedavg_window::seed30004",
+      "method": "fedavg_window",
+      "seed": 30004,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::fedasync_window::seed30004",
+      "method": "fedasync_window",
+      "seed": 30004,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::flamf_timealign_adapted::seed30004",
+      "method": "flamf_timealign_adapted",
+      "seed": 30004,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::local_hajek::seed30004",
+      "method": "local_hajek",
+      "seed": 30004,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::twostage_hajek::seed30004",
+      "method": "twostage_hajek",
+      "seed": 30004,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::inst_cal::seed30004",
+      "method": "inst_cal",
+      "seed": 30004,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::debt_cal::seed30004",
+      "method": "debt_cal",
+      "seed": 30004,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::raven::seed30004",
+      "method": "raven",
+      "seed": 30004,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::raven_simoracle::seed30004",
+      "method": "raven_simoracle",
+      "seed": 30004,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::central_all::seed30004",
+      "method": "central_all",
+      "seed": 30004,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::central_delivered::seed30004",
+      "method": "central_delivered",
+      "seed": 30004,
+      "stage": "A"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::fedavg_window::seed30004",
+      "method": "fedavg_window",
+      "seed": 30004,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::fedasync_window::seed30004",
+      "method": "fedasync_window",
+      "seed": 30004,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::flamf_timealign_adapted::seed30004",
+      "method": "flamf_timealign_adapted",
+      "seed": 30004,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::local_hajek::seed30004",
+      "method": "local_hajek",
+      "seed": 30004,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::twostage_hajek::seed30004",
+      "method": "twostage_hajek",
+      "seed": 30004,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::inst_cal::seed30004",
+      "method": "inst_cal",
+      "seed": 30004,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::debt_cal::seed30004",
+      "method": "debt_cal",
+      "seed": 30004,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::raven::seed30004",
+      "method": "raven",
+      "seed": 30004,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::raven_simoracle::seed30004",
+      "method": "raven_simoracle",
+      "seed": 30004,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::central_all::seed30004",
+      "method": "central_all",
+      "seed": 30004,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::central_delivered::seed30004",
+      "method": "central_delivered",
+      "seed": 30004,
+      "stage": "B"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "new",
+      "logical_run_id": "e3::traffic::complete_aligned::local_hajek::seed30004",
+      "method": "local_hajek",
+      "seed": 30004,
+      "stage": "C"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "new",
+      "logical_run_id": "e3::traffic::complete_aligned::inst_cal::seed30004",
+      "method": "inst_cal",
+      "seed": 30004,
+      "stage": "C"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "new",
+      "logical_run_id": "e3::traffic::complete_aligned::debt_cal::seed30004",
+      "method": "debt_cal",
+      "seed": 30004,
+      "stage": "C"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "new",
+      "logical_run_id": "e3::traffic::complete_aligned::raven_simoracle::seed30004",
+      "method": "raven_simoracle",
+      "seed": 30004,
+      "stage": "C"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "new",
+      "logical_run_id": "e3::traffic::complete_aligned::central_all::seed30004",
+      "method": "central_all",
+      "seed": 30004,
+      "stage": "C"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "new",
+      "logical_run_id": "e3::traffic::complete_aligned::central_delivered::seed30004",
+      "method": "central_delivered",
+      "seed": 30004,
+      "stage": "C"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "reused",
+      "logical_run_id": "e3::traffic::complete_aligned::fedavg_window::seed30004",
+      "method": "fedavg_window",
+      "seed": 30004,
+      "stage": "reused"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "reused",
+      "logical_run_id": "e3::traffic::complete_aligned::fedasync_window::seed30004",
+      "method": "fedasync_window",
+      "seed": 30004,
+      "stage": "reused"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "reused",
+      "logical_run_id": "e3::traffic::complete_aligned::flamf_timealign_adapted::seed30004",
+      "method": "flamf_timealign_adapted",
+      "seed": 30004,
+      "stage": "reused"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "reused",
+      "logical_run_id": "e3::traffic::complete_aligned::twostage_hajek::seed30004",
+      "method": "twostage_hajek",
+      "seed": 30004,
+      "stage": "reused"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "reused",
+      "logical_run_id": "e3::traffic::complete_aligned::raven::seed30004",
+      "method": "raven",
+      "seed": 30004,
+      "stage": "reused"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::fedavg_window::seed30005",
+      "method": "fedavg_window",
+      "seed": 30005,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::fedasync_window::seed30005",
+      "method": "fedasync_window",
+      "seed": 30005,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::flamf_timealign_adapted::seed30005",
+      "method": "flamf_timealign_adapted",
+      "seed": 30005,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::local_hajek::seed30005",
+      "method": "local_hajek",
+      "seed": 30005,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::twostage_hajek::seed30005",
+      "method": "twostage_hajek",
+      "seed": 30005,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::inst_cal::seed30005",
+      "method": "inst_cal",
+      "seed": 30005,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::debt_cal::seed30005",
+      "method": "debt_cal",
+      "seed": 30005,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::raven::seed30005",
+      "method": "raven",
+      "seed": 30005,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::raven_simoracle::seed30005",
+      "method": "raven_simoracle",
+      "seed": 30005,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::central_all::seed30005",
+      "method": "central_all",
+      "seed": 30005,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::central_delivered::seed30005",
+      "method": "central_delivered",
+      "seed": 30005,
+      "stage": "A"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::fedavg_window::seed30005",
+      "method": "fedavg_window",
+      "seed": 30005,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::fedasync_window::seed30005",
+      "method": "fedasync_window",
+      "seed": 30005,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::flamf_timealign_adapted::seed30005",
+      "method": "flamf_timealign_adapted",
+      "seed": 30005,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::local_hajek::seed30005",
+      "method": "local_hajek",
+      "seed": 30005,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::twostage_hajek::seed30005",
+      "method": "twostage_hajek",
+      "seed": 30005,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::inst_cal::seed30005",
+      "method": "inst_cal",
+      "seed": 30005,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::debt_cal::seed30005",
+      "method": "debt_cal",
+      "seed": 30005,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::raven::seed30005",
+      "method": "raven",
+      "seed": 30005,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::raven_simoracle::seed30005",
+      "method": "raven_simoracle",
+      "seed": 30005,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::central_all::seed30005",
+      "method": "central_all",
+      "seed": 30005,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::central_delivered::seed30005",
+      "method": "central_delivered",
+      "seed": 30005,
+      "stage": "B"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "new",
+      "logical_run_id": "e3::traffic::complete_aligned::local_hajek::seed30005",
+      "method": "local_hajek",
+      "seed": 30005,
+      "stage": "C"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "new",
+      "logical_run_id": "e3::traffic::complete_aligned::inst_cal::seed30005",
+      "method": "inst_cal",
+      "seed": 30005,
+      "stage": "C"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "new",
+      "logical_run_id": "e3::traffic::complete_aligned::debt_cal::seed30005",
+      "method": "debt_cal",
+      "seed": 30005,
+      "stage": "C"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "new",
+      "logical_run_id": "e3::traffic::complete_aligned::raven_simoracle::seed30005",
+      "method": "raven_simoracle",
+      "seed": 30005,
+      "stage": "C"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "new",
+      "logical_run_id": "e3::traffic::complete_aligned::central_all::seed30005",
+      "method": "central_all",
+      "seed": 30005,
+      "stage": "C"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "new",
+      "logical_run_id": "e3::traffic::complete_aligned::central_delivered::seed30005",
+      "method": "central_delivered",
+      "seed": 30005,
+      "stage": "C"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "reused",
+      "logical_run_id": "e3::traffic::complete_aligned::fedavg_window::seed30005",
+      "method": "fedavg_window",
+      "seed": 30005,
+      "stage": "reused"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "reused",
+      "logical_run_id": "e3::traffic::complete_aligned::fedasync_window::seed30005",
+      "method": "fedasync_window",
+      "seed": 30005,
+      "stage": "reused"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "reused",
+      "logical_run_id": "e3::traffic::complete_aligned::flamf_timealign_adapted::seed30005",
+      "method": "flamf_timealign_adapted",
+      "seed": 30005,
+      "stage": "reused"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "reused",
+      "logical_run_id": "e3::traffic::complete_aligned::twostage_hajek::seed30005",
+      "method": "twostage_hajek",
+      "seed": 30005,
+      "stage": "reused"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "reused",
+      "logical_run_id": "e3::traffic::complete_aligned::raven::seed30005",
+      "method": "raven",
+      "seed": 30005,
+      "stage": "reused"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::fedavg_window::seed30006",
+      "method": "fedavg_window",
+      "seed": 30006,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::fedasync_window::seed30006",
+      "method": "fedasync_window",
+      "seed": 30006,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::flamf_timealign_adapted::seed30006",
+      "method": "flamf_timealign_adapted",
+      "seed": 30006,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::local_hajek::seed30006",
+      "method": "local_hajek",
+      "seed": 30006,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::twostage_hajek::seed30006",
+      "method": "twostage_hajek",
+      "seed": 30006,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::inst_cal::seed30006",
+      "method": "inst_cal",
+      "seed": 30006,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::debt_cal::seed30006",
+      "method": "debt_cal",
+      "seed": 30006,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::raven::seed30006",
+      "method": "raven",
+      "seed": 30006,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::raven_simoracle::seed30006",
+      "method": "raven_simoracle",
+      "seed": 30006,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::central_all::seed30006",
+      "method": "central_all",
+      "seed": 30006,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::central_delivered::seed30006",
+      "method": "central_delivered",
+      "seed": 30006,
+      "stage": "A"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::fedavg_window::seed30006",
+      "method": "fedavg_window",
+      "seed": 30006,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::fedasync_window::seed30006",
+      "method": "fedasync_window",
+      "seed": 30006,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::flamf_timealign_adapted::seed30006",
+      "method": "flamf_timealign_adapted",
+      "seed": 30006,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::local_hajek::seed30006",
+      "method": "local_hajek",
+      "seed": 30006,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::twostage_hajek::seed30006",
+      "method": "twostage_hajek",
+      "seed": 30006,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::inst_cal::seed30006",
+      "method": "inst_cal",
+      "seed": 30006,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::debt_cal::seed30006",
+      "method": "debt_cal",
+      "seed": 30006,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::raven::seed30006",
+      "method": "raven",
+      "seed": 30006,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::raven_simoracle::seed30006",
+      "method": "raven_simoracle",
+      "seed": 30006,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::central_all::seed30006",
+      "method": "central_all",
+      "seed": 30006,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::central_delivered::seed30006",
+      "method": "central_delivered",
+      "seed": 30006,
+      "stage": "B"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "new",
+      "logical_run_id": "e3::traffic::complete_aligned::local_hajek::seed30006",
+      "method": "local_hajek",
+      "seed": 30006,
+      "stage": "C"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "new",
+      "logical_run_id": "e3::traffic::complete_aligned::inst_cal::seed30006",
+      "method": "inst_cal",
+      "seed": 30006,
+      "stage": "C"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "new",
+      "logical_run_id": "e3::traffic::complete_aligned::debt_cal::seed30006",
+      "method": "debt_cal",
+      "seed": 30006,
+      "stage": "C"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "new",
+      "logical_run_id": "e3::traffic::complete_aligned::raven_simoracle::seed30006",
+      "method": "raven_simoracle",
+      "seed": 30006,
+      "stage": "C"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "new",
+      "logical_run_id": "e3::traffic::complete_aligned::central_all::seed30006",
+      "method": "central_all",
+      "seed": 30006,
+      "stage": "C"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "new",
+      "logical_run_id": "e3::traffic::complete_aligned::central_delivered::seed30006",
+      "method": "central_delivered",
+      "seed": 30006,
+      "stage": "C"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "reused",
+      "logical_run_id": "e3::traffic::complete_aligned::fedavg_window::seed30006",
+      "method": "fedavg_window",
+      "seed": 30006,
+      "stage": "reused"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "reused",
+      "logical_run_id": "e3::traffic::complete_aligned::fedasync_window::seed30006",
+      "method": "fedasync_window",
+      "seed": 30006,
+      "stage": "reused"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "reused",
+      "logical_run_id": "e3::traffic::complete_aligned::flamf_timealign_adapted::seed30006",
+      "method": "flamf_timealign_adapted",
+      "seed": 30006,
+      "stage": "reused"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "reused",
+      "logical_run_id": "e3::traffic::complete_aligned::twostage_hajek::seed30006",
+      "method": "twostage_hajek",
+      "seed": 30006,
+      "stage": "reused"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "reused",
+      "logical_run_id": "e3::traffic::complete_aligned::raven::seed30006",
+      "method": "raven",
+      "seed": 30006,
+      "stage": "reused"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::fedavg_window::seed30007",
+      "method": "fedavg_window",
+      "seed": 30007,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::fedasync_window::seed30007",
+      "method": "fedasync_window",
+      "seed": 30007,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::flamf_timealign_adapted::seed30007",
+      "method": "flamf_timealign_adapted",
+      "seed": 30007,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::local_hajek::seed30007",
+      "method": "local_hajek",
+      "seed": 30007,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::twostage_hajek::seed30007",
+      "method": "twostage_hajek",
+      "seed": 30007,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::inst_cal::seed30007",
+      "method": "inst_cal",
+      "seed": 30007,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::debt_cal::seed30007",
+      "method": "debt_cal",
+      "seed": 30007,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::raven::seed30007",
+      "method": "raven",
+      "seed": 30007,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::raven_simoracle::seed30007",
+      "method": "raven_simoracle",
+      "seed": 30007,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::central_all::seed30007",
+      "method": "central_all",
+      "seed": 30007,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::central_delivered::seed30007",
+      "method": "central_delivered",
+      "seed": 30007,
+      "stage": "A"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::fedavg_window::seed30007",
+      "method": "fedavg_window",
+      "seed": 30007,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::fedasync_window::seed30007",
+      "method": "fedasync_window",
+      "seed": 30007,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::flamf_timealign_adapted::seed30007",
+      "method": "flamf_timealign_adapted",
+      "seed": 30007,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::local_hajek::seed30007",
+      "method": "local_hajek",
+      "seed": 30007,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::twostage_hajek::seed30007",
+      "method": "twostage_hajek",
+      "seed": 30007,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::inst_cal::seed30007",
+      "method": "inst_cal",
+      "seed": 30007,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::debt_cal::seed30007",
+      "method": "debt_cal",
+      "seed": 30007,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::raven::seed30007",
+      "method": "raven",
+      "seed": 30007,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::raven_simoracle::seed30007",
+      "method": "raven_simoracle",
+      "seed": 30007,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::central_all::seed30007",
+      "method": "central_all",
+      "seed": 30007,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::central_delivered::seed30007",
+      "method": "central_delivered",
+      "seed": 30007,
+      "stage": "B"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "new",
+      "logical_run_id": "e3::traffic::complete_aligned::local_hajek::seed30007",
+      "method": "local_hajek",
+      "seed": 30007,
+      "stage": "C"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "new",
+      "logical_run_id": "e3::traffic::complete_aligned::inst_cal::seed30007",
+      "method": "inst_cal",
+      "seed": 30007,
+      "stage": "C"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "new",
+      "logical_run_id": "e3::traffic::complete_aligned::debt_cal::seed30007",
+      "method": "debt_cal",
+      "seed": 30007,
+      "stage": "C"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "new",
+      "logical_run_id": "e3::traffic::complete_aligned::raven_simoracle::seed30007",
+      "method": "raven_simoracle",
+      "seed": 30007,
+      "stage": "C"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "new",
+      "logical_run_id": "e3::traffic::complete_aligned::central_all::seed30007",
+      "method": "central_all",
+      "seed": 30007,
+      "stage": "C"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "new",
+      "logical_run_id": "e3::traffic::complete_aligned::central_delivered::seed30007",
+      "method": "central_delivered",
+      "seed": 30007,
+      "stage": "C"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "reused",
+      "logical_run_id": "e3::traffic::complete_aligned::fedavg_window::seed30007",
+      "method": "fedavg_window",
+      "seed": 30007,
+      "stage": "reused"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "reused",
+      "logical_run_id": "e3::traffic::complete_aligned::fedasync_window::seed30007",
+      "method": "fedasync_window",
+      "seed": 30007,
+      "stage": "reused"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "reused",
+      "logical_run_id": "e3::traffic::complete_aligned::flamf_timealign_adapted::seed30007",
+      "method": "flamf_timealign_adapted",
+      "seed": 30007,
+      "stage": "reused"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "reused",
+      "logical_run_id": "e3::traffic::complete_aligned::twostage_hajek::seed30007",
+      "method": "twostage_hajek",
+      "seed": 30007,
+      "stage": "reused"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "reused",
+      "logical_run_id": "e3::traffic::complete_aligned::raven::seed30007",
+      "method": "raven",
+      "seed": 30007,
+      "stage": "reused"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::fedavg_window::seed30008",
+      "method": "fedavg_window",
+      "seed": 30008,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::fedasync_window::seed30008",
+      "method": "fedasync_window",
+      "seed": 30008,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::flamf_timealign_adapted::seed30008",
+      "method": "flamf_timealign_adapted",
+      "seed": 30008,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::local_hajek::seed30008",
+      "method": "local_hajek",
+      "seed": 30008,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::twostage_hajek::seed30008",
+      "method": "twostage_hajek",
+      "seed": 30008,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::inst_cal::seed30008",
+      "method": "inst_cal",
+      "seed": 30008,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::debt_cal::seed30008",
+      "method": "debt_cal",
+      "seed": 30008,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::raven::seed30008",
+      "method": "raven",
+      "seed": 30008,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::raven_simoracle::seed30008",
+      "method": "raven_simoracle",
+      "seed": 30008,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::central_all::seed30008",
+      "method": "central_all",
+      "seed": 30008,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::central_delivered::seed30008",
+      "method": "central_delivered",
+      "seed": 30008,
+      "stage": "A"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::fedavg_window::seed30008",
+      "method": "fedavg_window",
+      "seed": 30008,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::fedasync_window::seed30008",
+      "method": "fedasync_window",
+      "seed": 30008,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::flamf_timealign_adapted::seed30008",
+      "method": "flamf_timealign_adapted",
+      "seed": 30008,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::local_hajek::seed30008",
+      "method": "local_hajek",
+      "seed": 30008,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::twostage_hajek::seed30008",
+      "method": "twostage_hajek",
+      "seed": 30008,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::inst_cal::seed30008",
+      "method": "inst_cal",
+      "seed": 30008,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::debt_cal::seed30008",
+      "method": "debt_cal",
+      "seed": 30008,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::raven::seed30008",
+      "method": "raven",
+      "seed": 30008,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::raven_simoracle::seed30008",
+      "method": "raven_simoracle",
+      "seed": 30008,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::central_all::seed30008",
+      "method": "central_all",
+      "seed": 30008,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::central_delivered::seed30008",
+      "method": "central_delivered",
+      "seed": 30008,
+      "stage": "B"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "new",
+      "logical_run_id": "e3::traffic::complete_aligned::local_hajek::seed30008",
+      "method": "local_hajek",
+      "seed": 30008,
+      "stage": "C"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "new",
+      "logical_run_id": "e3::traffic::complete_aligned::inst_cal::seed30008",
+      "method": "inst_cal",
+      "seed": 30008,
+      "stage": "C"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "new",
+      "logical_run_id": "e3::traffic::complete_aligned::debt_cal::seed30008",
+      "method": "debt_cal",
+      "seed": 30008,
+      "stage": "C"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "new",
+      "logical_run_id": "e3::traffic::complete_aligned::raven_simoracle::seed30008",
+      "method": "raven_simoracle",
+      "seed": 30008,
+      "stage": "C"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "new",
+      "logical_run_id": "e3::traffic::complete_aligned::central_all::seed30008",
+      "method": "central_all",
+      "seed": 30008,
+      "stage": "C"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "new",
+      "logical_run_id": "e3::traffic::complete_aligned::central_delivered::seed30008",
+      "method": "central_delivered",
+      "seed": 30008,
+      "stage": "C"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "reused",
+      "logical_run_id": "e3::traffic::complete_aligned::fedavg_window::seed30008",
+      "method": "fedavg_window",
+      "seed": 30008,
+      "stage": "reused"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "reused",
+      "logical_run_id": "e3::traffic::complete_aligned::fedasync_window::seed30008",
+      "method": "fedasync_window",
+      "seed": 30008,
+      "stage": "reused"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "reused",
+      "logical_run_id": "e3::traffic::complete_aligned::flamf_timealign_adapted::seed30008",
+      "method": "flamf_timealign_adapted",
+      "seed": 30008,
+      "stage": "reused"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "reused",
+      "logical_run_id": "e3::traffic::complete_aligned::twostage_hajek::seed30008",
+      "method": "twostage_hajek",
+      "seed": 30008,
+      "stage": "reused"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "reused",
+      "logical_run_id": "e3::traffic::complete_aligned::raven::seed30008",
+      "method": "raven",
+      "seed": 30008,
+      "stage": "reused"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::fedavg_window::seed30009",
+      "method": "fedavg_window",
+      "seed": 30009,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::fedasync_window::seed30009",
+      "method": "fedasync_window",
+      "seed": 30009,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::flamf_timealign_adapted::seed30009",
+      "method": "flamf_timealign_adapted",
+      "seed": 30009,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::local_hajek::seed30009",
+      "method": "local_hajek",
+      "seed": 30009,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::twostage_hajek::seed30009",
+      "method": "twostage_hajek",
+      "seed": 30009,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::inst_cal::seed30009",
+      "method": "inst_cal",
+      "seed": 30009,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::debt_cal::seed30009",
+      "method": "debt_cal",
+      "seed": 30009,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::raven::seed30009",
+      "method": "raven",
+      "seed": 30009,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::raven_simoracle::seed30009",
+      "method": "raven_simoracle",
+      "seed": 30009,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::central_all::seed30009",
+      "method": "central_all",
+      "seed": 30009,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::central_delivered::seed30009",
+      "method": "central_delivered",
+      "seed": 30009,
+      "stage": "A"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::fedavg_window::seed30009",
+      "method": "fedavg_window",
+      "seed": 30009,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::fedasync_window::seed30009",
+      "method": "fedasync_window",
+      "seed": 30009,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::flamf_timealign_adapted::seed30009",
+      "method": "flamf_timealign_adapted",
+      "seed": 30009,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::local_hajek::seed30009",
+      "method": "local_hajek",
+      "seed": 30009,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::twostage_hajek::seed30009",
+      "method": "twostage_hajek",
+      "seed": 30009,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::inst_cal::seed30009",
+      "method": "inst_cal",
+      "seed": 30009,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::debt_cal::seed30009",
+      "method": "debt_cal",
+      "seed": 30009,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::raven::seed30009",
+      "method": "raven",
+      "seed": 30009,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::raven_simoracle::seed30009",
+      "method": "raven_simoracle",
+      "seed": 30009,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::central_all::seed30009",
+      "method": "central_all",
+      "seed": 30009,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::central_delivered::seed30009",
+      "method": "central_delivered",
+      "seed": 30009,
+      "stage": "B"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "new",
+      "logical_run_id": "e3::traffic::complete_aligned::local_hajek::seed30009",
+      "method": "local_hajek",
+      "seed": 30009,
+      "stage": "C"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "new",
+      "logical_run_id": "e3::traffic::complete_aligned::inst_cal::seed30009",
+      "method": "inst_cal",
+      "seed": 30009,
+      "stage": "C"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "new",
+      "logical_run_id": "e3::traffic::complete_aligned::debt_cal::seed30009",
+      "method": "debt_cal",
+      "seed": 30009,
+      "stage": "C"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "new",
+      "logical_run_id": "e3::traffic::complete_aligned::raven_simoracle::seed30009",
+      "method": "raven_simoracle",
+      "seed": 30009,
+      "stage": "C"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "new",
+      "logical_run_id": "e3::traffic::complete_aligned::central_all::seed30009",
+      "method": "central_all",
+      "seed": 30009,
+      "stage": "C"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "new",
+      "logical_run_id": "e3::traffic::complete_aligned::central_delivered::seed30009",
+      "method": "central_delivered",
+      "seed": 30009,
+      "stage": "C"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "reused",
+      "logical_run_id": "e3::traffic::complete_aligned::fedavg_window::seed30009",
+      "method": "fedavg_window",
+      "seed": 30009,
+      "stage": "reused"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "reused",
+      "logical_run_id": "e3::traffic::complete_aligned::fedasync_window::seed30009",
+      "method": "fedasync_window",
+      "seed": 30009,
+      "stage": "reused"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "reused",
+      "logical_run_id": "e3::traffic::complete_aligned::flamf_timealign_adapted::seed30009",
+      "method": "flamf_timealign_adapted",
+      "seed": 30009,
+      "stage": "reused"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "reused",
+      "logical_run_id": "e3::traffic::complete_aligned::twostage_hajek::seed30009",
+      "method": "twostage_hajek",
+      "seed": 30009,
+      "stage": "reused"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "reused",
+      "logical_run_id": "e3::traffic::complete_aligned::raven::seed30009",
+      "method": "raven",
+      "seed": 30009,
+      "stage": "reused"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::fedavg_window::seed30010",
+      "method": "fedavg_window",
+      "seed": 30010,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::fedasync_window::seed30010",
+      "method": "fedasync_window",
+      "seed": 30010,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::flamf_timealign_adapted::seed30010",
+      "method": "flamf_timealign_adapted",
+      "seed": 30010,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::local_hajek::seed30010",
+      "method": "local_hajek",
+      "seed": 30010,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::twostage_hajek::seed30010",
+      "method": "twostage_hajek",
+      "seed": 30010,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::inst_cal::seed30010",
+      "method": "inst_cal",
+      "seed": 30010,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::debt_cal::seed30010",
+      "method": "debt_cal",
+      "seed": 30010,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::raven::seed30010",
+      "method": "raven",
+      "seed": 30010,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::raven_simoracle::seed30010",
+      "method": "raven_simoracle",
+      "seed": 30010,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::central_all::seed30010",
+      "method": "central_all",
+      "seed": 30010,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::central_delivered::seed30010",
+      "method": "central_delivered",
+      "seed": 30010,
+      "stage": "A"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::fedavg_window::seed30010",
+      "method": "fedavg_window",
+      "seed": 30010,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::fedasync_window::seed30010",
+      "method": "fedasync_window",
+      "seed": 30010,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::flamf_timealign_adapted::seed30010",
+      "method": "flamf_timealign_adapted",
+      "seed": 30010,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::local_hajek::seed30010",
+      "method": "local_hajek",
+      "seed": 30010,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::twostage_hajek::seed30010",
+      "method": "twostage_hajek",
+      "seed": 30010,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::inst_cal::seed30010",
+      "method": "inst_cal",
+      "seed": 30010,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::debt_cal::seed30010",
+      "method": "debt_cal",
+      "seed": 30010,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::raven::seed30010",
+      "method": "raven",
+      "seed": 30010,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::raven_simoracle::seed30010",
+      "method": "raven_simoracle",
+      "seed": 30010,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::central_all::seed30010",
+      "method": "central_all",
+      "seed": 30010,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::central_delivered::seed30010",
+      "method": "central_delivered",
+      "seed": 30010,
+      "stage": "B"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "new",
+      "logical_run_id": "e3::traffic::complete_aligned::local_hajek::seed30010",
+      "method": "local_hajek",
+      "seed": 30010,
+      "stage": "C"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "new",
+      "logical_run_id": "e3::traffic::complete_aligned::inst_cal::seed30010",
+      "method": "inst_cal",
+      "seed": 30010,
+      "stage": "C"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "new",
+      "logical_run_id": "e3::traffic::complete_aligned::debt_cal::seed30010",
+      "method": "debt_cal",
+      "seed": 30010,
+      "stage": "C"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "new",
+      "logical_run_id": "e3::traffic::complete_aligned::raven_simoracle::seed30010",
+      "method": "raven_simoracle",
+      "seed": 30010,
+      "stage": "C"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "new",
+      "logical_run_id": "e3::traffic::complete_aligned::central_all::seed30010",
+      "method": "central_all",
+      "seed": 30010,
+      "stage": "C"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "new",
+      "logical_run_id": "e3::traffic::complete_aligned::central_delivered::seed30010",
+      "method": "central_delivered",
+      "seed": 30010,
+      "stage": "C"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "reused",
+      "logical_run_id": "e3::traffic::complete_aligned::fedavg_window::seed30010",
+      "method": "fedavg_window",
+      "seed": 30010,
+      "stage": "reused"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "reused",
+      "logical_run_id": "e3::traffic::complete_aligned::fedasync_window::seed30010",
+      "method": "fedasync_window",
+      "seed": 30010,
+      "stage": "reused"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "reused",
+      "logical_run_id": "e3::traffic::complete_aligned::flamf_timealign_adapted::seed30010",
+      "method": "flamf_timealign_adapted",
+      "seed": 30010,
+      "stage": "reused"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "reused",
+      "logical_run_id": "e3::traffic::complete_aligned::twostage_hajek::seed30010",
+      "method": "twostage_hajek",
+      "seed": 30010,
+      "stage": "reused"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "reused",
+      "logical_run_id": "e3::traffic::complete_aligned::raven::seed30010",
+      "method": "raven",
+      "seed": 30010,
+      "stage": "reused"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::fedavg_window::seed30011",
+      "method": "fedavg_window",
+      "seed": 30011,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::fedasync_window::seed30011",
+      "method": "fedasync_window",
+      "seed": 30011,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::flamf_timealign_adapted::seed30011",
+      "method": "flamf_timealign_adapted",
+      "seed": 30011,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::local_hajek::seed30011",
+      "method": "local_hajek",
+      "seed": 30011,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::twostage_hajek::seed30011",
+      "method": "twostage_hajek",
+      "seed": 30011,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::inst_cal::seed30011",
+      "method": "inst_cal",
+      "seed": 30011,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::debt_cal::seed30011",
+      "method": "debt_cal",
+      "seed": 30011,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::raven::seed30011",
+      "method": "raven",
+      "seed": 30011,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::raven_simoracle::seed30011",
+      "method": "raven_simoracle",
+      "seed": 30011,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::central_all::seed30011",
+      "method": "central_all",
+      "seed": 30011,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::central_delivered::seed30011",
+      "method": "central_delivered",
+      "seed": 30011,
+      "stage": "A"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::fedavg_window::seed30011",
+      "method": "fedavg_window",
+      "seed": 30011,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::fedasync_window::seed30011",
+      "method": "fedasync_window",
+      "seed": 30011,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::flamf_timealign_adapted::seed30011",
+      "method": "flamf_timealign_adapted",
+      "seed": 30011,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::local_hajek::seed30011",
+      "method": "local_hajek",
+      "seed": 30011,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::twostage_hajek::seed30011",
+      "method": "twostage_hajek",
+      "seed": 30011,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::inst_cal::seed30011",
+      "method": "inst_cal",
+      "seed": 30011,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::debt_cal::seed30011",
+      "method": "debt_cal",
+      "seed": 30011,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::raven::seed30011",
+      "method": "raven",
+      "seed": 30011,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::raven_simoracle::seed30011",
+      "method": "raven_simoracle",
+      "seed": 30011,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::central_all::seed30011",
+      "method": "central_all",
+      "seed": 30011,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::central_delivered::seed30011",
+      "method": "central_delivered",
+      "seed": 30011,
+      "stage": "B"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "new",
+      "logical_run_id": "e3::traffic::complete_aligned::local_hajek::seed30011",
+      "method": "local_hajek",
+      "seed": 30011,
+      "stage": "C"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "new",
+      "logical_run_id": "e3::traffic::complete_aligned::inst_cal::seed30011",
+      "method": "inst_cal",
+      "seed": 30011,
+      "stage": "C"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "new",
+      "logical_run_id": "e3::traffic::complete_aligned::debt_cal::seed30011",
+      "method": "debt_cal",
+      "seed": 30011,
+      "stage": "C"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "new",
+      "logical_run_id": "e3::traffic::complete_aligned::raven_simoracle::seed30011",
+      "method": "raven_simoracle",
+      "seed": 30011,
+      "stage": "C"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "new",
+      "logical_run_id": "e3::traffic::complete_aligned::central_all::seed30011",
+      "method": "central_all",
+      "seed": 30011,
+      "stage": "C"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "new",
+      "logical_run_id": "e3::traffic::complete_aligned::central_delivered::seed30011",
+      "method": "central_delivered",
+      "seed": 30011,
+      "stage": "C"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "reused",
+      "logical_run_id": "e3::traffic::complete_aligned::fedavg_window::seed30011",
+      "method": "fedavg_window",
+      "seed": 30011,
+      "stage": "reused"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "reused",
+      "logical_run_id": "e3::traffic::complete_aligned::fedasync_window::seed30011",
+      "method": "fedasync_window",
+      "seed": 30011,
+      "stage": "reused"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "reused",
+      "logical_run_id": "e3::traffic::complete_aligned::flamf_timealign_adapted::seed30011",
+      "method": "flamf_timealign_adapted",
+      "seed": 30011,
+      "stage": "reused"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "reused",
+      "logical_run_id": "e3::traffic::complete_aligned::twostage_hajek::seed30011",
+      "method": "twostage_hajek",
+      "seed": 30011,
+      "stage": "reused"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "reused",
+      "logical_run_id": "e3::traffic::complete_aligned::raven::seed30011",
+      "method": "raven",
+      "seed": 30011,
+      "stage": "reused"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::fedavg_window::seed30012",
+      "method": "fedavg_window",
+      "seed": 30012,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::fedasync_window::seed30012",
+      "method": "fedasync_window",
+      "seed": 30012,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::flamf_timealign_adapted::seed30012",
+      "method": "flamf_timealign_adapted",
+      "seed": 30012,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::local_hajek::seed30012",
+      "method": "local_hajek",
+      "seed": 30012,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::twostage_hajek::seed30012",
+      "method": "twostage_hajek",
+      "seed": 30012,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::inst_cal::seed30012",
+      "method": "inst_cal",
+      "seed": 30012,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::debt_cal::seed30012",
+      "method": "debt_cal",
+      "seed": 30012,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::raven::seed30012",
+      "method": "raven",
+      "seed": 30012,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::raven_simoracle::seed30012",
+      "method": "raven_simoracle",
+      "seed": 30012,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::central_all::seed30012",
+      "method": "central_all",
+      "seed": 30012,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::central_delivered::seed30012",
+      "method": "central_delivered",
+      "seed": 30012,
+      "stage": "A"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::fedavg_window::seed30012",
+      "method": "fedavg_window",
+      "seed": 30012,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::fedasync_window::seed30012",
+      "method": "fedasync_window",
+      "seed": 30012,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::flamf_timealign_adapted::seed30012",
+      "method": "flamf_timealign_adapted",
+      "seed": 30012,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::local_hajek::seed30012",
+      "method": "local_hajek",
+      "seed": 30012,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::twostage_hajek::seed30012",
+      "method": "twostage_hajek",
+      "seed": 30012,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::inst_cal::seed30012",
+      "method": "inst_cal",
+      "seed": 30012,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::debt_cal::seed30012",
+      "method": "debt_cal",
+      "seed": 30012,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::raven::seed30012",
+      "method": "raven",
+      "seed": 30012,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::raven_simoracle::seed30012",
+      "method": "raven_simoracle",
+      "seed": 30012,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::central_all::seed30012",
+      "method": "central_all",
+      "seed": 30012,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::central_delivered::seed30012",
+      "method": "central_delivered",
+      "seed": 30012,
+      "stage": "B"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "new",
+      "logical_run_id": "e3::traffic::complete_aligned::local_hajek::seed30012",
+      "method": "local_hajek",
+      "seed": 30012,
+      "stage": "C"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "new",
+      "logical_run_id": "e3::traffic::complete_aligned::inst_cal::seed30012",
+      "method": "inst_cal",
+      "seed": 30012,
+      "stage": "C"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "new",
+      "logical_run_id": "e3::traffic::complete_aligned::debt_cal::seed30012",
+      "method": "debt_cal",
+      "seed": 30012,
+      "stage": "C"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "new",
+      "logical_run_id": "e3::traffic::complete_aligned::raven_simoracle::seed30012",
+      "method": "raven_simoracle",
+      "seed": 30012,
+      "stage": "C"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "new",
+      "logical_run_id": "e3::traffic::complete_aligned::central_all::seed30012",
+      "method": "central_all",
+      "seed": 30012,
+      "stage": "C"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "new",
+      "logical_run_id": "e3::traffic::complete_aligned::central_delivered::seed30012",
+      "method": "central_delivered",
+      "seed": 30012,
+      "stage": "C"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "reused",
+      "logical_run_id": "e3::traffic::complete_aligned::fedavg_window::seed30012",
+      "method": "fedavg_window",
+      "seed": 30012,
+      "stage": "reused"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "reused",
+      "logical_run_id": "e3::traffic::complete_aligned::fedasync_window::seed30012",
+      "method": "fedasync_window",
+      "seed": 30012,
+      "stage": "reused"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "reused",
+      "logical_run_id": "e3::traffic::complete_aligned::flamf_timealign_adapted::seed30012",
+      "method": "flamf_timealign_adapted",
+      "seed": 30012,
+      "stage": "reused"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "reused",
+      "logical_run_id": "e3::traffic::complete_aligned::twostage_hajek::seed30012",
+      "method": "twostage_hajek",
+      "seed": 30012,
+      "stage": "reused"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "reused",
+      "logical_run_id": "e3::traffic::complete_aligned::raven::seed30012",
+      "method": "raven",
+      "seed": 30012,
+      "stage": "reused"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::fedavg_window::seed30013",
+      "method": "fedavg_window",
+      "seed": 30013,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::fedasync_window::seed30013",
+      "method": "fedasync_window",
+      "seed": 30013,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::flamf_timealign_adapted::seed30013",
+      "method": "flamf_timealign_adapted",
+      "seed": 30013,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::local_hajek::seed30013",
+      "method": "local_hajek",
+      "seed": 30013,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::twostage_hajek::seed30013",
+      "method": "twostage_hajek",
+      "seed": 30013,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::inst_cal::seed30013",
+      "method": "inst_cal",
+      "seed": 30013,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::debt_cal::seed30013",
+      "method": "debt_cal",
+      "seed": 30013,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::raven::seed30013",
+      "method": "raven",
+      "seed": 30013,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::raven_simoracle::seed30013",
+      "method": "raven_simoracle",
+      "seed": 30013,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::central_all::seed30013",
+      "method": "central_all",
+      "seed": 30013,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::central_delivered::seed30013",
+      "method": "central_delivered",
+      "seed": 30013,
+      "stage": "A"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::fedavg_window::seed30013",
+      "method": "fedavg_window",
+      "seed": 30013,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::fedasync_window::seed30013",
+      "method": "fedasync_window",
+      "seed": 30013,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::flamf_timealign_adapted::seed30013",
+      "method": "flamf_timealign_adapted",
+      "seed": 30013,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::local_hajek::seed30013",
+      "method": "local_hajek",
+      "seed": 30013,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::twostage_hajek::seed30013",
+      "method": "twostage_hajek",
+      "seed": 30013,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::inst_cal::seed30013",
+      "method": "inst_cal",
+      "seed": 30013,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::debt_cal::seed30013",
+      "method": "debt_cal",
+      "seed": 30013,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::raven::seed30013",
+      "method": "raven",
+      "seed": 30013,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::raven_simoracle::seed30013",
+      "method": "raven_simoracle",
+      "seed": 30013,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::central_all::seed30013",
+      "method": "central_all",
+      "seed": 30013,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::central_delivered::seed30013",
+      "method": "central_delivered",
+      "seed": 30013,
+      "stage": "B"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "new",
+      "logical_run_id": "e3::traffic::complete_aligned::local_hajek::seed30013",
+      "method": "local_hajek",
+      "seed": 30013,
+      "stage": "C"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "new",
+      "logical_run_id": "e3::traffic::complete_aligned::inst_cal::seed30013",
+      "method": "inst_cal",
+      "seed": 30013,
+      "stage": "C"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "new",
+      "logical_run_id": "e3::traffic::complete_aligned::debt_cal::seed30013",
+      "method": "debt_cal",
+      "seed": 30013,
+      "stage": "C"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "new",
+      "logical_run_id": "e3::traffic::complete_aligned::raven_simoracle::seed30013",
+      "method": "raven_simoracle",
+      "seed": 30013,
+      "stage": "C"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "new",
+      "logical_run_id": "e3::traffic::complete_aligned::central_all::seed30013",
+      "method": "central_all",
+      "seed": 30013,
+      "stage": "C"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "new",
+      "logical_run_id": "e3::traffic::complete_aligned::central_delivered::seed30013",
+      "method": "central_delivered",
+      "seed": 30013,
+      "stage": "C"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "reused",
+      "logical_run_id": "e3::traffic::complete_aligned::fedavg_window::seed30013",
+      "method": "fedavg_window",
+      "seed": 30013,
+      "stage": "reused"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "reused",
+      "logical_run_id": "e3::traffic::complete_aligned::fedasync_window::seed30013",
+      "method": "fedasync_window",
+      "seed": 30013,
+      "stage": "reused"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "reused",
+      "logical_run_id": "e3::traffic::complete_aligned::flamf_timealign_adapted::seed30013",
+      "method": "flamf_timealign_adapted",
+      "seed": 30013,
+      "stage": "reused"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "reused",
+      "logical_run_id": "e3::traffic::complete_aligned::twostage_hajek::seed30013",
+      "method": "twostage_hajek",
+      "seed": 30013,
+      "stage": "reused"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "reused",
+      "logical_run_id": "e3::traffic::complete_aligned::raven::seed30013",
+      "method": "raven",
+      "seed": 30013,
+      "stage": "reused"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::fedavg_window::seed30014",
+      "method": "fedavg_window",
+      "seed": 30014,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::fedasync_window::seed30014",
+      "method": "fedasync_window",
+      "seed": 30014,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::flamf_timealign_adapted::seed30014",
+      "method": "flamf_timealign_adapted",
+      "seed": 30014,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::local_hajek::seed30014",
+      "method": "local_hajek",
+      "seed": 30014,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::twostage_hajek::seed30014",
+      "method": "twostage_hajek",
+      "seed": 30014,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::inst_cal::seed30014",
+      "method": "inst_cal",
+      "seed": 30014,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::debt_cal::seed30014",
+      "method": "debt_cal",
+      "seed": 30014,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::raven::seed30014",
+      "method": "raven",
+      "seed": 30014,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::raven_simoracle::seed30014",
+      "method": "raven_simoracle",
+      "seed": 30014,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::central_all::seed30014",
+      "method": "central_all",
+      "seed": 30014,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::central_delivered::seed30014",
+      "method": "central_delivered",
+      "seed": 30014,
+      "stage": "A"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::fedavg_window::seed30014",
+      "method": "fedavg_window",
+      "seed": 30014,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::fedasync_window::seed30014",
+      "method": "fedasync_window",
+      "seed": 30014,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::flamf_timealign_adapted::seed30014",
+      "method": "flamf_timealign_adapted",
+      "seed": 30014,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::local_hajek::seed30014",
+      "method": "local_hajek",
+      "seed": 30014,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::twostage_hajek::seed30014",
+      "method": "twostage_hajek",
+      "seed": 30014,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::inst_cal::seed30014",
+      "method": "inst_cal",
+      "seed": 30014,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::debt_cal::seed30014",
+      "method": "debt_cal",
+      "seed": 30014,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::raven::seed30014",
+      "method": "raven",
+      "seed": 30014,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::raven_simoracle::seed30014",
+      "method": "raven_simoracle",
+      "seed": 30014,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::central_all::seed30014",
+      "method": "central_all",
+      "seed": 30014,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::central_delivered::seed30014",
+      "method": "central_delivered",
+      "seed": 30014,
+      "stage": "B"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "new",
+      "logical_run_id": "e3::traffic::complete_aligned::local_hajek::seed30014",
+      "method": "local_hajek",
+      "seed": 30014,
+      "stage": "C"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "new",
+      "logical_run_id": "e3::traffic::complete_aligned::inst_cal::seed30014",
+      "method": "inst_cal",
+      "seed": 30014,
+      "stage": "C"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "new",
+      "logical_run_id": "e3::traffic::complete_aligned::debt_cal::seed30014",
+      "method": "debt_cal",
+      "seed": 30014,
+      "stage": "C"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "new",
+      "logical_run_id": "e3::traffic::complete_aligned::raven_simoracle::seed30014",
+      "method": "raven_simoracle",
+      "seed": 30014,
+      "stage": "C"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "new",
+      "logical_run_id": "e3::traffic::complete_aligned::central_all::seed30014",
+      "method": "central_all",
+      "seed": 30014,
+      "stage": "C"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "new",
+      "logical_run_id": "e3::traffic::complete_aligned::central_delivered::seed30014",
+      "method": "central_delivered",
+      "seed": 30014,
+      "stage": "C"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "reused",
+      "logical_run_id": "e3::traffic::complete_aligned::fedavg_window::seed30014",
+      "method": "fedavg_window",
+      "seed": 30014,
+      "stage": "reused"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "reused",
+      "logical_run_id": "e3::traffic::complete_aligned::fedasync_window::seed30014",
+      "method": "fedasync_window",
+      "seed": 30014,
+      "stage": "reused"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "reused",
+      "logical_run_id": "e3::traffic::complete_aligned::flamf_timealign_adapted::seed30014",
+      "method": "flamf_timealign_adapted",
+      "seed": 30014,
+      "stage": "reused"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "reused",
+      "logical_run_id": "e3::traffic::complete_aligned::twostage_hajek::seed30014",
+      "method": "twostage_hajek",
+      "seed": 30014,
+      "stage": "reused"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "reused",
+      "logical_run_id": "e3::traffic::complete_aligned::raven::seed30014",
+      "method": "raven",
+      "seed": 30014,
+      "stage": "reused"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::fedavg_window::seed30015",
+      "method": "fedavg_window",
+      "seed": 30015,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::fedasync_window::seed30015",
+      "method": "fedasync_window",
+      "seed": 30015,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::flamf_timealign_adapted::seed30015",
+      "method": "flamf_timealign_adapted",
+      "seed": 30015,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::local_hajek::seed30015",
+      "method": "local_hajek",
+      "seed": 30015,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::twostage_hajek::seed30015",
+      "method": "twostage_hajek",
+      "seed": 30015,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::inst_cal::seed30015",
+      "method": "inst_cal",
+      "seed": 30015,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::debt_cal::seed30015",
+      "method": "debt_cal",
+      "seed": 30015,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::raven::seed30015",
+      "method": "raven",
+      "seed": 30015,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::raven_simoracle::seed30015",
+      "method": "raven_simoracle",
+      "seed": 30015,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::central_all::seed30015",
+      "method": "central_all",
+      "seed": 30015,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::central_delivered::seed30015",
+      "method": "central_delivered",
+      "seed": 30015,
+      "stage": "A"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::fedavg_window::seed30015",
+      "method": "fedavg_window",
+      "seed": 30015,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::fedasync_window::seed30015",
+      "method": "fedasync_window",
+      "seed": 30015,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::flamf_timealign_adapted::seed30015",
+      "method": "flamf_timealign_adapted",
+      "seed": 30015,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::local_hajek::seed30015",
+      "method": "local_hajek",
+      "seed": 30015,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::twostage_hajek::seed30015",
+      "method": "twostage_hajek",
+      "seed": 30015,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::inst_cal::seed30015",
+      "method": "inst_cal",
+      "seed": 30015,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::debt_cal::seed30015",
+      "method": "debt_cal",
+      "seed": 30015,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::raven::seed30015",
+      "method": "raven",
+      "seed": 30015,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::raven_simoracle::seed30015",
+      "method": "raven_simoracle",
+      "seed": 30015,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::central_all::seed30015",
+      "method": "central_all",
+      "seed": 30015,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::central_delivered::seed30015",
+      "method": "central_delivered",
+      "seed": 30015,
+      "stage": "B"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "new",
+      "logical_run_id": "e3::traffic::complete_aligned::local_hajek::seed30015",
+      "method": "local_hajek",
+      "seed": 30015,
+      "stage": "C"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "new",
+      "logical_run_id": "e3::traffic::complete_aligned::inst_cal::seed30015",
+      "method": "inst_cal",
+      "seed": 30015,
+      "stage": "C"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "new",
+      "logical_run_id": "e3::traffic::complete_aligned::debt_cal::seed30015",
+      "method": "debt_cal",
+      "seed": 30015,
+      "stage": "C"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "new",
+      "logical_run_id": "e3::traffic::complete_aligned::raven_simoracle::seed30015",
+      "method": "raven_simoracle",
+      "seed": 30015,
+      "stage": "C"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "new",
+      "logical_run_id": "e3::traffic::complete_aligned::central_all::seed30015",
+      "method": "central_all",
+      "seed": 30015,
+      "stage": "C"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "new",
+      "logical_run_id": "e3::traffic::complete_aligned::central_delivered::seed30015",
+      "method": "central_delivered",
+      "seed": 30015,
+      "stage": "C"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "reused",
+      "logical_run_id": "e3::traffic::complete_aligned::fedavg_window::seed30015",
+      "method": "fedavg_window",
+      "seed": 30015,
+      "stage": "reused"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "reused",
+      "logical_run_id": "e3::traffic::complete_aligned::fedasync_window::seed30015",
+      "method": "fedasync_window",
+      "seed": 30015,
+      "stage": "reused"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "reused",
+      "logical_run_id": "e3::traffic::complete_aligned::flamf_timealign_adapted::seed30015",
+      "method": "flamf_timealign_adapted",
+      "seed": 30015,
+      "stage": "reused"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "reused",
+      "logical_run_id": "e3::traffic::complete_aligned::twostage_hajek::seed30015",
+      "method": "twostage_hajek",
+      "seed": 30015,
+      "stage": "reused"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "reused",
+      "logical_run_id": "e3::traffic::complete_aligned::raven::seed30015",
+      "method": "raven",
+      "seed": 30015,
+      "stage": "reused"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::fedavg_window::seed30016",
+      "method": "fedavg_window",
+      "seed": 30016,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::fedasync_window::seed30016",
+      "method": "fedasync_window",
+      "seed": 30016,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::flamf_timealign_adapted::seed30016",
+      "method": "flamf_timealign_adapted",
+      "seed": 30016,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::local_hajek::seed30016",
+      "method": "local_hajek",
+      "seed": 30016,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::twostage_hajek::seed30016",
+      "method": "twostage_hajek",
+      "seed": 30016,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::inst_cal::seed30016",
+      "method": "inst_cal",
+      "seed": 30016,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::debt_cal::seed30016",
+      "method": "debt_cal",
+      "seed": 30016,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::raven::seed30016",
+      "method": "raven",
+      "seed": 30016,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::raven_simoracle::seed30016",
+      "method": "raven_simoracle",
+      "seed": 30016,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::central_all::seed30016",
+      "method": "central_all",
+      "seed": 30016,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::central_delivered::seed30016",
+      "method": "central_delivered",
+      "seed": 30016,
+      "stage": "A"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::fedavg_window::seed30016",
+      "method": "fedavg_window",
+      "seed": 30016,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::fedasync_window::seed30016",
+      "method": "fedasync_window",
+      "seed": 30016,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::flamf_timealign_adapted::seed30016",
+      "method": "flamf_timealign_adapted",
+      "seed": 30016,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::local_hajek::seed30016",
+      "method": "local_hajek",
+      "seed": 30016,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::twostage_hajek::seed30016",
+      "method": "twostage_hajek",
+      "seed": 30016,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::inst_cal::seed30016",
+      "method": "inst_cal",
+      "seed": 30016,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::debt_cal::seed30016",
+      "method": "debt_cal",
+      "seed": 30016,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::raven::seed30016",
+      "method": "raven",
+      "seed": 30016,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::raven_simoracle::seed30016",
+      "method": "raven_simoracle",
+      "seed": 30016,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::central_all::seed30016",
+      "method": "central_all",
+      "seed": 30016,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::central_delivered::seed30016",
+      "method": "central_delivered",
+      "seed": 30016,
+      "stage": "B"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "new",
+      "logical_run_id": "e3::traffic::complete_aligned::local_hajek::seed30016",
+      "method": "local_hajek",
+      "seed": 30016,
+      "stage": "C"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "new",
+      "logical_run_id": "e3::traffic::complete_aligned::inst_cal::seed30016",
+      "method": "inst_cal",
+      "seed": 30016,
+      "stage": "C"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "new",
+      "logical_run_id": "e3::traffic::complete_aligned::debt_cal::seed30016",
+      "method": "debt_cal",
+      "seed": 30016,
+      "stage": "C"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "new",
+      "logical_run_id": "e3::traffic::complete_aligned::raven_simoracle::seed30016",
+      "method": "raven_simoracle",
+      "seed": 30016,
+      "stage": "C"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "new",
+      "logical_run_id": "e3::traffic::complete_aligned::central_all::seed30016",
+      "method": "central_all",
+      "seed": 30016,
+      "stage": "C"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "new",
+      "logical_run_id": "e3::traffic::complete_aligned::central_delivered::seed30016",
+      "method": "central_delivered",
+      "seed": 30016,
+      "stage": "C"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "reused",
+      "logical_run_id": "e3::traffic::complete_aligned::fedavg_window::seed30016",
+      "method": "fedavg_window",
+      "seed": 30016,
+      "stage": "reused"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "reused",
+      "logical_run_id": "e3::traffic::complete_aligned::fedasync_window::seed30016",
+      "method": "fedasync_window",
+      "seed": 30016,
+      "stage": "reused"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "reused",
+      "logical_run_id": "e3::traffic::complete_aligned::flamf_timealign_adapted::seed30016",
+      "method": "flamf_timealign_adapted",
+      "seed": 30016,
+      "stage": "reused"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "reused",
+      "logical_run_id": "e3::traffic::complete_aligned::twostage_hajek::seed30016",
+      "method": "twostage_hajek",
+      "seed": 30016,
+      "stage": "reused"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "reused",
+      "logical_run_id": "e3::traffic::complete_aligned::raven::seed30016",
+      "method": "raven",
+      "seed": 30016,
+      "stage": "reused"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::fedavg_window::seed30017",
+      "method": "fedavg_window",
+      "seed": 30017,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::fedasync_window::seed30017",
+      "method": "fedasync_window",
+      "seed": 30017,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::flamf_timealign_adapted::seed30017",
+      "method": "flamf_timealign_adapted",
+      "seed": 30017,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::local_hajek::seed30017",
+      "method": "local_hajek",
+      "seed": 30017,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::twostage_hajek::seed30017",
+      "method": "twostage_hajek",
+      "seed": 30017,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::inst_cal::seed30017",
+      "method": "inst_cal",
+      "seed": 30017,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::debt_cal::seed30017",
+      "method": "debt_cal",
+      "seed": 30017,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::raven::seed30017",
+      "method": "raven",
+      "seed": 30017,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::raven_simoracle::seed30017",
+      "method": "raven_simoracle",
+      "seed": 30017,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::central_all::seed30017",
+      "method": "central_all",
+      "seed": 30017,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::central_delivered::seed30017",
+      "method": "central_delivered",
+      "seed": 30017,
+      "stage": "A"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::fedavg_window::seed30017",
+      "method": "fedavg_window",
+      "seed": 30017,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::fedasync_window::seed30017",
+      "method": "fedasync_window",
+      "seed": 30017,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::flamf_timealign_adapted::seed30017",
+      "method": "flamf_timealign_adapted",
+      "seed": 30017,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::local_hajek::seed30017",
+      "method": "local_hajek",
+      "seed": 30017,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::twostage_hajek::seed30017",
+      "method": "twostage_hajek",
+      "seed": 30017,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::inst_cal::seed30017",
+      "method": "inst_cal",
+      "seed": 30017,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::debt_cal::seed30017",
+      "method": "debt_cal",
+      "seed": 30017,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::raven::seed30017",
+      "method": "raven",
+      "seed": 30017,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::raven_simoracle::seed30017",
+      "method": "raven_simoracle",
+      "seed": 30017,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::central_all::seed30017",
+      "method": "central_all",
+      "seed": 30017,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::central_delivered::seed30017",
+      "method": "central_delivered",
+      "seed": 30017,
+      "stage": "B"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "new",
+      "logical_run_id": "e3::traffic::complete_aligned::local_hajek::seed30017",
+      "method": "local_hajek",
+      "seed": 30017,
+      "stage": "C"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "new",
+      "logical_run_id": "e3::traffic::complete_aligned::inst_cal::seed30017",
+      "method": "inst_cal",
+      "seed": 30017,
+      "stage": "C"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "new",
+      "logical_run_id": "e3::traffic::complete_aligned::debt_cal::seed30017",
+      "method": "debt_cal",
+      "seed": 30017,
+      "stage": "C"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "new",
+      "logical_run_id": "e3::traffic::complete_aligned::raven_simoracle::seed30017",
+      "method": "raven_simoracle",
+      "seed": 30017,
+      "stage": "C"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "new",
+      "logical_run_id": "e3::traffic::complete_aligned::central_all::seed30017",
+      "method": "central_all",
+      "seed": 30017,
+      "stage": "C"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "new",
+      "logical_run_id": "e3::traffic::complete_aligned::central_delivered::seed30017",
+      "method": "central_delivered",
+      "seed": 30017,
+      "stage": "C"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "reused",
+      "logical_run_id": "e3::traffic::complete_aligned::fedavg_window::seed30017",
+      "method": "fedavg_window",
+      "seed": 30017,
+      "stage": "reused"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "reused",
+      "logical_run_id": "e3::traffic::complete_aligned::fedasync_window::seed30017",
+      "method": "fedasync_window",
+      "seed": 30017,
+      "stage": "reused"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "reused",
+      "logical_run_id": "e3::traffic::complete_aligned::flamf_timealign_adapted::seed30017",
+      "method": "flamf_timealign_adapted",
+      "seed": 30017,
+      "stage": "reused"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "reused",
+      "logical_run_id": "e3::traffic::complete_aligned::twostage_hajek::seed30017",
+      "method": "twostage_hajek",
+      "seed": 30017,
+      "stage": "reused"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "reused",
+      "logical_run_id": "e3::traffic::complete_aligned::raven::seed30017",
+      "method": "raven",
+      "seed": 30017,
+      "stage": "reused"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::fedavg_window::seed30018",
+      "method": "fedavg_window",
+      "seed": 30018,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::fedasync_window::seed30018",
+      "method": "fedasync_window",
+      "seed": 30018,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::flamf_timealign_adapted::seed30018",
+      "method": "flamf_timealign_adapted",
+      "seed": 30018,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::local_hajek::seed30018",
+      "method": "local_hajek",
+      "seed": 30018,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::twostage_hajek::seed30018",
+      "method": "twostage_hajek",
+      "seed": 30018,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::inst_cal::seed30018",
+      "method": "inst_cal",
+      "seed": 30018,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::debt_cal::seed30018",
+      "method": "debt_cal",
+      "seed": 30018,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::raven::seed30018",
+      "method": "raven",
+      "seed": 30018,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::raven_simoracle::seed30018",
+      "method": "raven_simoracle",
+      "seed": 30018,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::central_all::seed30018",
+      "method": "central_all",
+      "seed": 30018,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::central_delivered::seed30018",
+      "method": "central_delivered",
+      "seed": 30018,
+      "stage": "A"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::fedavg_window::seed30018",
+      "method": "fedavg_window",
+      "seed": 30018,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::fedasync_window::seed30018",
+      "method": "fedasync_window",
+      "seed": 30018,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::flamf_timealign_adapted::seed30018",
+      "method": "flamf_timealign_adapted",
+      "seed": 30018,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::local_hajek::seed30018",
+      "method": "local_hajek",
+      "seed": 30018,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::twostage_hajek::seed30018",
+      "method": "twostage_hajek",
+      "seed": 30018,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::inst_cal::seed30018",
+      "method": "inst_cal",
+      "seed": 30018,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::debt_cal::seed30018",
+      "method": "debt_cal",
+      "seed": 30018,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::raven::seed30018",
+      "method": "raven",
+      "seed": 30018,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::raven_simoracle::seed30018",
+      "method": "raven_simoracle",
+      "seed": 30018,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::central_all::seed30018",
+      "method": "central_all",
+      "seed": 30018,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::central_delivered::seed30018",
+      "method": "central_delivered",
+      "seed": 30018,
+      "stage": "B"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "new",
+      "logical_run_id": "e3::traffic::complete_aligned::local_hajek::seed30018",
+      "method": "local_hajek",
+      "seed": 30018,
+      "stage": "C"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "new",
+      "logical_run_id": "e3::traffic::complete_aligned::inst_cal::seed30018",
+      "method": "inst_cal",
+      "seed": 30018,
+      "stage": "C"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "new",
+      "logical_run_id": "e3::traffic::complete_aligned::debt_cal::seed30018",
+      "method": "debt_cal",
+      "seed": 30018,
+      "stage": "C"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "new",
+      "logical_run_id": "e3::traffic::complete_aligned::raven_simoracle::seed30018",
+      "method": "raven_simoracle",
+      "seed": 30018,
+      "stage": "C"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "new",
+      "logical_run_id": "e3::traffic::complete_aligned::central_all::seed30018",
+      "method": "central_all",
+      "seed": 30018,
+      "stage": "C"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "new",
+      "logical_run_id": "e3::traffic::complete_aligned::central_delivered::seed30018",
+      "method": "central_delivered",
+      "seed": 30018,
+      "stage": "C"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "reused",
+      "logical_run_id": "e3::traffic::complete_aligned::fedavg_window::seed30018",
+      "method": "fedavg_window",
+      "seed": 30018,
+      "stage": "reused"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "reused",
+      "logical_run_id": "e3::traffic::complete_aligned::fedasync_window::seed30018",
+      "method": "fedasync_window",
+      "seed": 30018,
+      "stage": "reused"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "reused",
+      "logical_run_id": "e3::traffic::complete_aligned::flamf_timealign_adapted::seed30018",
+      "method": "flamf_timealign_adapted",
+      "seed": 30018,
+      "stage": "reused"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "reused",
+      "logical_run_id": "e3::traffic::complete_aligned::twostage_hajek::seed30018",
+      "method": "twostage_hajek",
+      "seed": 30018,
+      "stage": "reused"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "reused",
+      "logical_run_id": "e3::traffic::complete_aligned::raven::seed30018",
+      "method": "raven",
+      "seed": 30018,
+      "stage": "reused"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::fedavg_window::seed30019",
+      "method": "fedavg_window",
+      "seed": 30019,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::fedasync_window::seed30019",
+      "method": "fedasync_window",
+      "seed": 30019,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::flamf_timealign_adapted::seed30019",
+      "method": "flamf_timealign_adapted",
+      "seed": 30019,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::local_hajek::seed30019",
+      "method": "local_hajek",
+      "seed": 30019,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::twostage_hajek::seed30019",
+      "method": "twostage_hajek",
+      "seed": 30019,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::inst_cal::seed30019",
+      "method": "inst_cal",
+      "seed": 30019,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::debt_cal::seed30019",
+      "method": "debt_cal",
+      "seed": 30019,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::raven::seed30019",
+      "method": "raven",
+      "seed": 30019,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::raven_simoracle::seed30019",
+      "method": "raven_simoracle",
+      "seed": 30019,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::central_all::seed30019",
+      "method": "central_all",
+      "seed": 30019,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::central_delivered::seed30019",
+      "method": "central_delivered",
+      "seed": 30019,
+      "stage": "A"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::fedavg_window::seed30019",
+      "method": "fedavg_window",
+      "seed": 30019,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::fedasync_window::seed30019",
+      "method": "fedasync_window",
+      "seed": 30019,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::flamf_timealign_adapted::seed30019",
+      "method": "flamf_timealign_adapted",
+      "seed": 30019,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::local_hajek::seed30019",
+      "method": "local_hajek",
+      "seed": 30019,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::twostage_hajek::seed30019",
+      "method": "twostage_hajek",
+      "seed": 30019,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::inst_cal::seed30019",
+      "method": "inst_cal",
+      "seed": 30019,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::debt_cal::seed30019",
+      "method": "debt_cal",
+      "seed": 30019,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::raven::seed30019",
+      "method": "raven",
+      "seed": 30019,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::raven_simoracle::seed30019",
+      "method": "raven_simoracle",
+      "seed": 30019,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::central_all::seed30019",
+      "method": "central_all",
+      "seed": 30019,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::central_delivered::seed30019",
+      "method": "central_delivered",
+      "seed": 30019,
+      "stage": "B"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "new",
+      "logical_run_id": "e3::traffic::complete_aligned::local_hajek::seed30019",
+      "method": "local_hajek",
+      "seed": 30019,
+      "stage": "C"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "new",
+      "logical_run_id": "e3::traffic::complete_aligned::inst_cal::seed30019",
+      "method": "inst_cal",
+      "seed": 30019,
+      "stage": "C"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "new",
+      "logical_run_id": "e3::traffic::complete_aligned::debt_cal::seed30019",
+      "method": "debt_cal",
+      "seed": 30019,
+      "stage": "C"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "new",
+      "logical_run_id": "e3::traffic::complete_aligned::raven_simoracle::seed30019",
+      "method": "raven_simoracle",
+      "seed": 30019,
+      "stage": "C"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "new",
+      "logical_run_id": "e3::traffic::complete_aligned::central_all::seed30019",
+      "method": "central_all",
+      "seed": 30019,
+      "stage": "C"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "new",
+      "logical_run_id": "e3::traffic::complete_aligned::central_delivered::seed30019",
+      "method": "central_delivered",
+      "seed": 30019,
+      "stage": "C"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "reused",
+      "logical_run_id": "e3::traffic::complete_aligned::fedavg_window::seed30019",
+      "method": "fedavg_window",
+      "seed": 30019,
+      "stage": "reused"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "reused",
+      "logical_run_id": "e3::traffic::complete_aligned::fedasync_window::seed30019",
+      "method": "fedasync_window",
+      "seed": 30019,
+      "stage": "reused"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "reused",
+      "logical_run_id": "e3::traffic::complete_aligned::flamf_timealign_adapted::seed30019",
+      "method": "flamf_timealign_adapted",
+      "seed": 30019,
+      "stage": "reused"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "reused",
+      "logical_run_id": "e3::traffic::complete_aligned::twostage_hajek::seed30019",
+      "method": "twostage_hajek",
+      "seed": 30019,
+      "stage": "reused"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "reused",
+      "logical_run_id": "e3::traffic::complete_aligned::raven::seed30019",
+      "method": "raven",
+      "seed": 30019,
+      "stage": "reused"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::fedavg_window::seed30020",
+      "method": "fedavg_window",
+      "seed": 30020,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::fedasync_window::seed30020",
+      "method": "fedasync_window",
+      "seed": 30020,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::flamf_timealign_adapted::seed30020",
+      "method": "flamf_timealign_adapted",
+      "seed": 30020,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::local_hajek::seed30020",
+      "method": "local_hajek",
+      "seed": 30020,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::twostage_hajek::seed30020",
+      "method": "twostage_hajek",
+      "seed": 30020,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::inst_cal::seed30020",
+      "method": "inst_cal",
+      "seed": 30020,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::debt_cal::seed30020",
+      "method": "debt_cal",
+      "seed": 30020,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::raven::seed30020",
+      "method": "raven",
+      "seed": 30020,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::raven_simoracle::seed30020",
+      "method": "raven_simoracle",
+      "seed": 30020,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::central_all::seed30020",
+      "method": "central_all",
+      "seed": 30020,
+      "stage": "A"
+    },
+    {
+      "dataset": "sensorscope",
+      "kind": "new",
+      "logical_run_id": "e3::sensorscope::complete_aligned::central_delivered::seed30020",
+      "method": "central_delivered",
+      "seed": 30020,
+      "stage": "A"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::fedavg_window::seed30020",
+      "method": "fedavg_window",
+      "seed": 30020,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::fedasync_window::seed30020",
+      "method": "fedasync_window",
+      "seed": 30020,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::flamf_timealign_adapted::seed30020",
+      "method": "flamf_timealign_adapted",
+      "seed": 30020,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::local_hajek::seed30020",
+      "method": "local_hajek",
+      "seed": 30020,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::twostage_hajek::seed30020",
+      "method": "twostage_hajek",
+      "seed": 30020,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::inst_cal::seed30020",
+      "method": "inst_cal",
+      "seed": 30020,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::debt_cal::seed30020",
+      "method": "debt_cal",
+      "seed": 30020,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::raven::seed30020",
+      "method": "raven",
+      "seed": 30020,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::raven_simoracle::seed30020",
+      "method": "raven_simoracle",
+      "seed": 30020,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::central_all::seed30020",
+      "method": "central_all",
+      "seed": 30020,
+      "stage": "B"
+    },
+    {
+      "dataset": "uair",
+      "kind": "new",
+      "logical_run_id": "e3::uair::complete_aligned::central_delivered::seed30020",
+      "method": "central_delivered",
+      "seed": 30020,
+      "stage": "B"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "new",
+      "logical_run_id": "e3::traffic::complete_aligned::local_hajek::seed30020",
+      "method": "local_hajek",
+      "seed": 30020,
+      "stage": "C"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "new",
+      "logical_run_id": "e3::traffic::complete_aligned::inst_cal::seed30020",
+      "method": "inst_cal",
+      "seed": 30020,
+      "stage": "C"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "new",
+      "logical_run_id": "e3::traffic::complete_aligned::debt_cal::seed30020",
+      "method": "debt_cal",
+      "seed": 30020,
+      "stage": "C"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "new",
+      "logical_run_id": "e3::traffic::complete_aligned::raven_simoracle::seed30020",
+      "method": "raven_simoracle",
+      "seed": 30020,
+      "stage": "C"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "new",
+      "logical_run_id": "e3::traffic::complete_aligned::central_all::seed30020",
+      "method": "central_all",
+      "seed": 30020,
+      "stage": "C"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "new",
+      "logical_run_id": "e3::traffic::complete_aligned::central_delivered::seed30020",
+      "method": "central_delivered",
+      "seed": 30020,
+      "stage": "C"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "reused",
+      "logical_run_id": "e3::traffic::complete_aligned::fedavg_window::seed30020",
+      "method": "fedavg_window",
+      "seed": 30020,
+      "stage": "reused"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "reused",
+      "logical_run_id": "e3::traffic::complete_aligned::fedasync_window::seed30020",
+      "method": "fedasync_window",
+      "seed": 30020,
+      "stage": "reused"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "reused",
+      "logical_run_id": "e3::traffic::complete_aligned::flamf_timealign_adapted::seed30020",
+      "method": "flamf_timealign_adapted",
+      "seed": 30020,
+      "stage": "reused"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "reused",
+      "logical_run_id": "e3::traffic::complete_aligned::twostage_hajek::seed30020",
+      "method": "twostage_hajek",
+      "seed": 30020,
+      "stage": "reused"
+    },
+    {
+      "dataset": "traffic",
+      "kind": "reused",
+      "logical_run_id": "e3::traffic::complete_aligned::raven::seed30020",
+      "method": "raven",
+      "seed": 30020,
+      "stage": "reused"
+    }
+  ],
+  "scenario": "complete_aligned"
+}

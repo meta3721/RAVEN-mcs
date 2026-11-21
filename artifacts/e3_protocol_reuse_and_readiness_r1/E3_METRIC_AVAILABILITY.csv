@@ -1,0 +1,14 @@
+metric,exact_formula_source,code_path,output_field,orientation,aggregation_level,available_for_methods,missing_state_required,can_be_reconstructed_offline,should_appear_in_primary_table
+RMSE_mu,metrics/accuracy.py::rmse_mu,traffic_real_runner final_metrics,RMSE_mu,smaller_better,atomic,all trained methods,,False,True
+MAE_mu,metrics/accuracy.py::mae_mu,e1_entry emits; traffic formal does not,,smaller_better,atomic,needs runner emit,y_pred/y_true/weights,True,True
+Tail_RMSE,metrics/accuracy.py::tail_head_rmse or frozen HEAD/TAIL partition,offline recon / must emit in E3,Head/Tail reconstructed in E2 offline,smaller_better,group,needs emit or offline,group_rmse or R_g inputs,True,True
+Delta_group,metrics/distribution.py::delta_group,omega_bar vs mu,,smaller_better,group,needs materialization,omega_bar,True,True
+Delta_pair,metrics/distribution.py::delta_pair,Pi_hat vs pi_tar,,smaller_better,pair,NOT in E2 traffic,Pi_hat trajectory,False,False
+Delta_c-s,metrics/distribution.py::delta_c_s,client-stratum mismatch,,smaller_better,client-stratum,E1 only historically,pi_hat_ks,False,False
+delta_ref,metrics/distribution.py::avg_delta_ref,E1 emits,,smaller_better,window,needs emit,alpha/beta histories,True,True
+Q_norm1_over_S,metrics/debt.py,debt diagnostics,debt_l1 partial,smaller_better,window,needs normalized emit,"Q,S_R",True,True
+Q_norm2_over_S,metrics/debt.py,debt diagnostics,,smaller_better,window,needs emit,"Q,S_R",True,False
+runtime,runner wall time,runtime_seconds,runtime_seconds,smaller_better,run,all,,False,False
+solver_status,runner diagnostics,P2_solver_failure_count,P2_solver_failure_count,diagnostic,run,all,,False,False
+ESS,hajek n_eff,runner_diagnostics n_eff,n_eff,diagnostic,client-window,all,,False,False
+clip_rates,runner,clip_rate_stage1/2,clip_rate_stage*,diagnostic,run,all,,False,False

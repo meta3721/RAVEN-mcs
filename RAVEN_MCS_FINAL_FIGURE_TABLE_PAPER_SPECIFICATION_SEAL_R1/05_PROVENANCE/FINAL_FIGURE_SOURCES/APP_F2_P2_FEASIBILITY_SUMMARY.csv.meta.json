@@ -1,0 +1,13 @@
+{
+  "aggregation": "identity copy of sealed certificate summary",
+  "filters": "drop Traffic rows if any; no metric recompute",
+  "input_assets": [
+    "RAVEN_MCS_FINAL_PAPER_DATA_ASSET_FREEZE_R1/09_P2_SOLVER/r2_solver/E3_P2_CERTIFICATE_SUMMARY.csv"
+  ],
+  "input_hashes": [
+    "76595fec0367aad5dee27fe2ef38fd6000dad3428950edf2b349d733dcfb47c4"
+  ],
+  "output_hash": "7d20004cb5cf813457ff34e8250490d93d606a36d9b93203a9813572af569c89",
+  "scientific_semantics_changed": false,
+  "statistical_protocol": "none; diagnostic counts only"
+}

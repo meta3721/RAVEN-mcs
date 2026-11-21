@@ -1,0 +1,7 @@
+block,n_seeds,adj_A,adj_H,delta_adj,ci_lo,ci_hi,share_A,share_H,new_clients,changed_rows,G0,status,reason
+NSW-Traffic,20,0.0,0.0,0.0,0.0,0.0,0.1477506699649557,0.1477506699649557,0.0,0.0,fail,,
+SensorScope,20,0.004826495233338324,0.004826495233338324,0.0,0.0,0.0,0.7855329299449888,0.7855329299449888,0.0,0.0,fail,,
+U-Air,20,0.006223665992967439,0.006223665992967439,0.0,0.0,0.0,0.7897209615031388,0.7897209615031388,0.0,0.0,fail,,
+CityScanner-visit,,,,,,,,,,,,blocked,"opportunity_features has no group field (no stratum, hour_block, or target_group). s_max=5 is in generation_meta. No frozen mu file was used."
+CityScanner-pilot2,,,,,,,,,,,,blocked,"target_group_by_unit exists and s_max=5 is in metadata, but no frozen mu vector for region0-3 was found. Uniform 0.25 was not assumed."
+T-Drive,,,,,,,,,,,,blocked,opportunity_features has no group field. Micro-fixtures were not used. No frozen mu file was applied.

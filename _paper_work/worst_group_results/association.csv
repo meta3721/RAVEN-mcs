@@ -1,0 +1,29 @@
+dataset,scenario,kind,x,y,n,spearman_rho,spearman_p,pearson_r,pearson_p,note
+sensorscope,complete_aligned,pooled_method_seed,Delta_c_s,RMSE_mu_stored,100,0.26527452745274527,0.007644943920581154,0.25512384189306136,0.010416029376368523,
+sensorscope,complete_aligned,mean_within_seed_across_methods,Delta_c_s,RMSE_mu_stored,20,-0.09,,-0.09999999999999999,0.5811965878119127,pearson_r=median within-seed Spearman; pearson_p=std of those Spearmans
+sensorscope,complete_aligned,method_means_n5,Delta_c_s,RMSE_mu_stored,5,-0.7999999999999999,0.10408803866182788,-0.5006252811985494,0.39031289155507537,
+sensorscope,complete_aligned,paired_gap_vs_fedavg:fedau_window,Delta_c_s_minus_fedavg,RMSE_mu_minus_fedavg,20,-0.3142857142857143,0.17716966765175685,-0.37092064398058844,0.10738870962299596,
+sensorscope,complete_aligned,paired_gap_vs_fedavg:obsuse_window,Delta_c_s_minus_fedavg,RMSE_mu_minus_fedavg,20,-0.30977443609022554,0.1838064324119103,-0.3581373203233367,0.12103083098196603,
+sensorscope,complete_aligned,paired_gap_vs_fedavg:twostage_hajek,Delta_c_s_minus_fedavg,RMSE_mu_minus_fedavg,20,0.2150375939849624,0.3625738870245509,0.19351858937151303,0.41365024360396047,
+sensorscope,complete_aligned,paired_gap_vs_fedavg:raven,Delta_c_s_minus_fedavg,RMSE_mu_minus_fedavg,20,0.03458646616541353,0.8849015088305833,-0.02389210677528361,0.9203581789294594,
+sensorscope,drifting,pooled_method_seed,Delta_c_s,RMSE_mu_stored,100,-0.26466246624662465,0.007791416446491215,-0.23256824161830228,0.01988732408608959,
+sensorscope,drifting,mean_within_seed_across_methods,Delta_c_s,RMSE_mu_stored,20,-0.12499999999999997,,-0.25,0.6180401962740986,pearson_r=median within-seed Spearman; pearson_p=std of those Spearmans
+sensorscope,drifting,method_means_n5,Delta_c_s,RMSE_mu_stored,5,-0.6,0.28475697986529386,-0.34317574925954,0.571789807608822,
+sensorscope,drifting,paired_gap_vs_fedavg:fedau_window,Delta_c_s_minus_fedavg,RMSE_mu_minus_fedavg,20,-0.21954887218045113,0.3523456773115151,-0.25784538322961165,0.2723957606311509,
+sensorscope,drifting,paired_gap_vs_fedavg:obsuse_window,Delta_c_s_minus_fedavg,RMSE_mu_minus_fedavg,20,-0.09323308270676692,0.6958288642370745,-0.168202897922338,0.4784073929210305,
+sensorscope,drifting,paired_gap_vs_fedavg:twostage_hajek,Delta_c_s_minus_fedavg,RMSE_mu_minus_fedavg,20,0.018045112781954885,0.9398091995407436,-0.07234836486118895,0.7618016781354371,
+sensorscope,drifting,paired_gap_vs_fedavg:raven,Delta_c_s_minus_fedavg,RMSE_mu_minus_fedavg,20,0.08421052631578946,0.7241036435108112,0.14834322386727736,0.5325204566507953,
+uair,complete_aligned,pooled_method_seed,Delta_c_s,RMSE_mu_stored,100,-0.4270987098709871,9.357526082220003e-06,-0.44096825591338723,4.393508750784071e-06,
+uair,complete_aligned,mean_within_seed_across_methods,Delta_c_s,RMSE_mu_stored,20,-0.7849999999999999,,-0.7999999999999999,0.13484884325167856,pearson_r=median within-seed Spearman; pearson_p=std of those Spearmans
+uair,complete_aligned,method_means_n5,Delta_c_s,RMSE_mu_stored,5,-0.7999999999999999,0.10408803866182788,-0.9659697404919085,0.007497256730805507,
+uair,complete_aligned,paired_gap_vs_fedavg:fedau_window,Delta_c_s_minus_fedavg,RMSE_mu_minus_fedavg,20,-0.33383458646616543,0.15029922707342813,-0.3727977544204785,0.10548337531271054,
+uair,complete_aligned,paired_gap_vs_fedavg:obsuse_window,Delta_c_s_minus_fedavg,RMSE_mu_minus_fedavg,20,-0.362406015037594,0.1163446491875469,-0.4215693080811483,0.06412679730808984,
+uair,complete_aligned,paired_gap_vs_fedavg:twostage_hajek,Delta_c_s_minus_fedavg,RMSE_mu_minus_fedavg,20,-0.1263157894736842,0.5956535128148983,-0.07393815868544915,0.7567171555637144,
+uair,complete_aligned,paired_gap_vs_fedavg:raven,Delta_c_s_minus_fedavg,RMSE_mu_minus_fedavg,20,0.03157894736842105,0.8948543863933639,0.1681950792284432,0.47842814071412176,
+uair,drifting,pooled_method_seed,Delta_c_s,RMSE_mu_stored,100,-0.32584458445844583,0.0009387937818651933,-0.26503135341314965,0.00770284446204898,
+uair,drifting,mean_within_seed_across_methods,Delta_c_s,RMSE_mu_stored,20,-0.73,,-0.7,0.1559352092174317,pearson_r=median within-seed Spearman; pearson_p=std of those Spearmans
+uair,drifting,method_means_n5,Delta_c_s,RMSE_mu_stored,5,-0.7999999999999999,0.10408803866182788,-0.965857710594517,0.007534181348030507,
+uair,drifting,paired_gap_vs_fedavg:fedau_window,Delta_c_s_minus_fedavg,RMSE_mu_minus_fedavg,20,-0.07669172932330826,0.74793344754194,-0.15317104542583387,0.5191107661101031,
+uair,drifting,paired_gap_vs_fedavg:obsuse_window,Delta_c_s_minus_fedavg,RMSE_mu_minus_fedavg,20,-0.09924812030075188,0.6771888443218217,-0.08894358283102112,0.7092256982100127,
+uair,drifting,paired_gap_vs_fedavg:twostage_hajek,Delta_c_s_minus_fedavg,RMSE_mu_minus_fedavg,20,-0.11127819548872178,0.6404548402871416,-0.23955460838858927,0.3090347677938936,
+uair,drifting,paired_gap_vs_fedavg:raven,Delta_c_s_minus_fedavg,RMSE_mu_minus_fedavg,20,-0.14285714285714285,0.5479501508336088,-0.2364013492804887,0.31563790377657197,

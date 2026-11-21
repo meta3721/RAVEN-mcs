@@ -1,0 +1,16 @@
+file,symbol,reference,formal_path,legacy_only,can_override_gate_t,action,pass
+src/raven_mcs/aggregation/method_policy.py,always_on,# LEGACY experiment/ablation only: policy / always_on / always_off / sag.,False,True,False,isolated,True
+src/raven_mcs/aggregation/method_policy.py,always_on,"gate_mode=""always_on"",",False,True,False,isolated,True
+src/raven_mcs/aggregation/method_policy.py,always_on,"""raven_legacy_always_on"": MethodPolicy(",False,True,False,isolated,True
+src/raven_mcs/aggregation/method_policy.py,always_on,"gate_mode=""always_on"",",False,True,False,isolated,True
+src/raven_mcs/aggregation/method_policy.py,always_on,"""raven_full_design_legacy"": ""raven_legacy_always_on"",",False,True,False,isolated,True
+src/raven_mcs/training/window_runner.py,always_on,always_on / always_off / policy / sag are LEGACY experiment modes.,False,True,False,isolated,True
+src/raven_mcs/training/window_runner.py,always_on,"if mode == ""always_on"":",False,True,False,isolated,True
+src/raven_mcs/sag/r1l_design.py,always_on,"LEGACY_GATE_MODES = frozenset({""always_on"", ""always_off"", ""policy"", ""sag""})",False,True,False,isolated,True
+src/raven_mcs/sag/r1l_design.py,dataset_design,"""dataset_design_flag"",",False,True,False,isolated,True
+src/raven_mcs/sag/r1l_design.py,design_enabled,"""design_enabled"",",False,True,False,isolated,True
+src/raven_mcs/sag/r1l_design.py,dataset_design,"dataset_design_flag: Any = None,",False,True,False,isolated,True
+src/raven_mcs/sag/r1l_design.py,design_enabled,"design_enabled: Any = None,",False,True,False,isolated,True
+src/raven_mcs/sag/r1l_design.py,dataset_design,"del oracle_safe, current_C, current_mask, dataset_design_flag, design_enabled",False,True,False,isolated,True
+src/raven_mcs/experiments/r1m_method_freeze.py,always_on,"LEGACY_CONTROLS = (""raven_legacy_always_on"", ""raven_wo_design"")",False,True,False,isolated,True
+src/raven_mcs/experiments/r1m_method_freeze.py,always_on,"assert get_method_policy(""raven_legacy_always_on"").legacy_only is True",False,True,False,isolated,True

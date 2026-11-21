@@ -1,0 +1,10 @@
+{
+  "pid": 33424,
+  "command": [
+    "C:\\Cursor\\raven.mcs\\.venv_new\\Scripts\\python.exe",
+    "-X",
+    "faulthandler",
+    "-c",
+    "from pathlib import Path; from raven_mcs.utils.manifest import _git_info; print(_git_info(Path.cwd()),flush=True)"
+  ]
+}

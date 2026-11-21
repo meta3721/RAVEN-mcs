@@ -1,0 +1,34 @@
+{
+  "c1_kill": false,
+  "c1_kill_rmse_mu": false,
+  "c1_kill_rule": "SCD paired mean relative vs BOTH fedau_window and obsuse_window is <= -0.005 on WorstGroupRMSE OR on RMSE_mu",
+  "c1_kill_worstgroup": false,
+  "complete_matrix": false,
+  "created_utc": "2026-09-10T08:38:55.432880+00:00",
+  "eventtrace_hash_consistent": true,
+  "formal_ni_restored": false,
+  "gate_unused": true,
+  "go_matches_decision": true,
+  "n_expected": 50,
+  "n_rows": 1,
+  "paired": [
+    {
+      "comparator": "fedau_window",
+      "n_paired": 0,
+      "scd_method": "raven"
+    },
+    {
+      "comparator": "obsuse_window",
+      "n_paired": 0,
+      "scd_method": "raven"
+    },
+    {
+      "comparator": "fedavg_window",
+      "n_paired": 0,
+      "scd_method": "raven"
+    }
+  ],
+  "status": "INCOMPLETE",
+  "table_ii_untouched": true,
+  "tdrive_hybrid_untouched": true
+}

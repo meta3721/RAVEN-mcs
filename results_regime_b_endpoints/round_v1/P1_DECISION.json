@@ -1,0 +1,64 @@
+{
+  "phase": "P1",
+  "scale_declaration": {
+    "dataset": "uair",
+    "conversion": "OFFLINE_LINEAR_CONVERSION",
+    "primary_domain": "physical",
+    "sigma": 17.36325121670317,
+    "zscore_applied": true,
+    "threshold": 35.0
+  },
+  "grounding": {
+    "policy_sigma": 17.36325121670317,
+    "declared_sigma": 17.36325121670317,
+    "dataset_scaler_std": 17.36325121670317,
+    "policy_equals_declared": true,
+    "declared_equals_dataset": true
+  },
+  "replay_gate": {
+    "nontrigger_max_rmse_abs_diff": 0.0,
+    "tolerance": 1e-12
+  },
+  "trigger_seeds": [
+    30007,
+    30016,
+    30018
+  ],
+  "primary_n": 17,
+  "E_dec": {
+    "mean_A": 0.33675545689974085,
+    "mean_B": 0.08734122579849547,
+    "r_mean": -0.38912042222212007,
+    "ci": [
+      -0.5998723092811424,
+      -0.17836853516309775
+    ],
+    "n": 17,
+    "n_r_gt0": 0
+  },
+  "missed": {
+    "mean_A": 0.05691207300530274,
+    "mean_B": 0.08586138858058945,
+    "r_mean": Infinity,
+    "ci": [
+      NaN,
+      NaN
+    ],
+    "n": 17,
+    "n_r_gt0": 8
+  },
+  "false_alarm": {
+    "mean_A": 0.2798433838944381,
+    "mean_B": 0.0014798372179060297,
+    "r_mean": NaN,
+    "ci": [
+      NaN,
+      NaN
+    ],
+    "n": 17,
+    "n_r_gt0": 0
+  },
+  "base_rate_A": 0.08595387840670857,
+  "base_rate_B": 0.08595387840670857,
+  "degenerate_at_T35": false
+}

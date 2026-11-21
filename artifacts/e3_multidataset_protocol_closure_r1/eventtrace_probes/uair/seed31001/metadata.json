@@ -1,0 +1,13 @@
+{
+  "dataset": "uair",
+  "generator": "e3-complete-aligned-v1",
+  "notes": [
+    "E3 Complete-aligned controlled generator",
+    "deterministic given seed+dataset+num_windows",
+    "no test outcomes used"
+  ],
+  "num_clients": 8,
+  "num_windows": 3,
+  "s_max": 5,
+  "seed": 31001
+}

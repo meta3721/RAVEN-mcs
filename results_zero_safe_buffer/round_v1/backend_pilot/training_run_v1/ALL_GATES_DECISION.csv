@@ -1,0 +1,8 @@
+gate,value,threshold,gap,result
+main_gain,0.02901006264197803,0.02,0.009010062641978029,PASS
+direction_2_of_3,2,2,0,PASS
+final_rmse_worsen,0.10087564517095848,0.01,0.09087564517095849,FAIL
+worst_group_worsen,-0.027314089135073605,0.01,-0.03731408913507361,PASS
+deploy_cpu_ratio,0.7971538287779535,1.2,-0.40284617122204647,PASS
+deploy_wall_ratio,,1.25,,UNRESOLVED
+fifteen_by_nine,135,135,0,PASS

@@ -1,0 +1,30 @@
+{
+  "actual_features": [
+    "client_id",
+    "window_id",
+    "spatial_region_id",
+    "time_block",
+    "day_type",
+    "pre_outcome_candidate_count",
+    "pre_outcome_risk_set_composition",
+    "pre_outcome_tail_score_composition",
+    "frozen_delay_resource_features",
+    "frozen_historical_pre_outcome_features"
+  ],
+  "allowed_features": [
+    "client_id",
+    "window_id",
+    "spatial_region_id",
+    "time_block",
+    "day_type",
+    "pre_outcome_candidate_count",
+    "pre_outcome_risk_set_composition",
+    "pre_outcome_tail_score_composition",
+    "frozen_delay_resource_features",
+    "frozen_historical_pre_outcome_features"
+  ],
+  "feature_schema_hash": "a3ddc8368c6f6300085bf4aeb6ee50ec5cdc7fb614e73a4e140acf1045321366",
+  "observed_count_role": "eligibility_only_not_q_input",
+  "stage2_eligibility": "1{observed_count > 0}",
+  "status": "PASS"
+}

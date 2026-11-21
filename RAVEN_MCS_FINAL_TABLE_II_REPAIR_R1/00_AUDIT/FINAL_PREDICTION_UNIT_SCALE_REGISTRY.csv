@@ -1,0 +1,5 @@
+dataset,metric,reported_unit,reported_scale,source,inverse_transform_status,final_mean_range,paper_status
+SensorScope,RMSE_mu,native sealed E3 prediction units,per-seed FIG-E3 RMSE_mu (~7.9),FIG_E3 / E3_PREDICTION_METRICS_MASTER,NOT_RECOMPUTED,7.60–7.94,UNCHANGED_MATCHES_SEED
+SensorScope,Tail_RMSE,native sealed E3 prediction units,per-seed FIG-E3 Tail_RMSE (~8.46),FIG_E3 / E3_PREDICTION_METRICS_MASTER,NOT_RECOMPUTED,8.10–8.46,UNCHANGED_MATCHES_SEED
+U-Air,RMSE_mu,native sealed E3 prediction units,per-seed FIG-E3 RMSE_mu (~1.19); FORBIDDEN stale 20.x RMSE_mu_phys,FIG_E3 / E3_PREDICTION_METRICS_MASTER,NOT_RECOMPUTED,1.18–1.22 primary,REPAIRED_FROM_SEED
+U-Air,Tail_RMSE,native sealed E3 prediction units,per-seed FIG-E3 Tail_RMSE (~1.20); FORBIDDEN stale 20.x Tail_RMSE_phys,FIG_E3 / E3_PREDICTION_METRICS_MASTER,NOT_RECOMPUTED,1.19–1.23 primary,REPAIRED_FROM_SEED

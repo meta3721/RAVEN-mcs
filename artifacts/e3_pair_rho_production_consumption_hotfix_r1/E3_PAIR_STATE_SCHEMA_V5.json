@@ -1,0 +1,51 @@
+{
+  "canonical_pair_id": "client_id::target_group",
+  "formula": {
+    "Delta_c_s": "sum_{k,s} |Pi_hat_ks - pi_tar_ks|  (= ||Pi_hat - pi_tar||_1 on client×stratum support)",
+    "Delta_pair": "NOT_MATERIALIZED — atomic client×unit support not used by this representation",
+    "Pi_hat_ks": "(1/S_R) sum_r eta_r I_r alpha_{k,r}^{(m)} w_{k,r,i}^{(m)} mapped to (client, target_group/stratum)",
+    "code": [
+      "raven_mcs.metrics.distribution.delta_c_s",
+      "raven_mcs.e3.target_pair.pair_state_v4.accumulate_pair_state_v4"
+    ]
+  },
+  "identity_audit_outcome": "CURRENT_V4_IS_DELTA_C_S_NOT_DELTA_PAIR",
+  "method_dependence": [
+    "alpha_client",
+    "w_atomic"
+  ],
+  "no_silent_uniform_fallback": true,
+  "outputs": [
+    "pair_state_v5.parquet",
+    "delta_c_s_summary.json"
+  ],
+  "pair_domain": "client × target_group (spatial×time)",
+  "required_columns": [
+    "dataset",
+    "seed",
+    "scenario",
+    "method",
+    "window",
+    "client_id",
+    "raw_atomic_unit_id",
+    "canonical_pair_id",
+    "spatial_unit",
+    "time_block",
+    "target_group",
+    "eta_r",
+    "I_r",
+    "alpha_client",
+    "w_atomic",
+    "contribution",
+    "accumulated_pair_mass",
+    "target_pair_mass",
+    "support_mask",
+    "normalization_denominator",
+    "eventtrace_hash",
+    "target_artifact_hash",
+    "method_source_hash",
+    "schema_version"
+  ],
+  "schema_version": "E3_PAIR_STATE_SCHEMA_V5",
+  "structural_metric_name": "Delta_c_s"
+}

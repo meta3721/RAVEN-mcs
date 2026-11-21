@@ -1,0 +1,63 @@
+{
+  "zero_isolation": {
+    "positive_state": "committed",
+    "zero_state": "REFERENCE_ZERO_EXCLUDED",
+    "max_zero_pending": 0,
+    "zero_replaces_positive": 0
+  },
+  "projection": {
+    "beta": [
+      0.7,
+      0.1,
+      0.1,
+      0.1
+    ],
+    "projected": [
+      0.4999999997912585,
+      0.1666666667390729,
+      0.1666666667390729,
+      0.1666666667390729
+    ],
+    "tv_alpha": [
+      0.2500000000000004,
+      0.2500000000000002,
+      0.2500000000000004,
+      0.2500000000000004
+    ],
+    "distinct_from_tv": true,
+    "max_coordinate": 0.4999999997912585
+  },
+  "entries": {
+    "I-Proj-ZS": "projection.project_reference",
+    "F1-Proj-ZS": "projection.project_reference",
+    "F2-Proj-ZS": "projection.project_reference",
+    "FedAvg-Window": "raven_mcs.aggregation.methods.FedAvgWindowAggregator",
+    "TwoStage-Hájek": "raven_mcs.aggregation.methods.TwoStageHajekAggregator",
+    "fedavg_weights": [
+      0.25,
+      0.75
+    ],
+    "twostage_weights": [
+      0.2,
+      0.8
+    ],
+    "not_authorized_stub": false
+  },
+  "checkpoint_schema": {
+    "required": [
+      "model",
+      "optimizer",
+      "version",
+      "registration_snapshot",
+      "in_flight",
+      "pending",
+      "rng",
+      "ledger",
+      "evaluation_progress",
+      "budget"
+    ],
+    "status": "STATIC_READY",
+    "training_verified": false
+  },
+  "status": "STATIC_READY"
+}

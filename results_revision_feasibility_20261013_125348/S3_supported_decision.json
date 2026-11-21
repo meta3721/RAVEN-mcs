@@ -1,0 +1,233 @@
+{
+  "decision": {
+    "action": "WAIT",
+    "reason": "INTERVAL_PROVEN",
+    "selected_offset": 0.1,
+    "plan_scores": [],
+    "p2_solves": 4,
+    "cache_hits": 21,
+    "scenario_digest": "b6f58260d5aa7c880aef240f5262557c46fb1265526d6fd9cb8a4354566fd536",
+    "control_cpu_seconds": 1.3125,
+    "wall_seconds": 1.4984761999985494,
+    "forecast_only": true,
+    "evidence_role": "deterministic_interface_or_empirical_planning",
+    "variance_transition": "zero_unknown_gradient_increment",
+    "intervals": [
+      {
+        "offset": 0.0,
+        "L": 0.3391691860461301,
+        "U": 0.33916918604689306,
+        "known_cells": [
+          80,
+          80,
+          80,
+          80
+        ]
+      },
+      {
+        "offset": 0.1,
+        "L": 0.10499999999961863,
+        "U": 0.1050000000003815,
+        "known_cells": [
+          80,
+          80,
+          80,
+          80
+        ]
+      },
+      {
+        "offset": 0.5,
+        "L": 0.16845930232519996,
+        "U": 0.16845930232596285,
+        "known_cells": [
+          80,
+          80,
+          80,
+          80
+        ]
+      },
+      {
+        "offset": 1.0,
+        "L": 0.2449709302321767,
+        "U": 0.2449709302329396,
+        "known_cells": [
+          80,
+          80,
+          80,
+          80
+        ]
+      },
+      {
+        "offset": 2.0,
+        "L": 0.38861918604613016,
+        "U": 0.3886191860468931,
+        "known_cells": [
+          80,
+          80,
+          80,
+          80
+        ]
+      }
+    ],
+    "action_intervals": [
+      {
+        "action": "CLOSE",
+        "L": 0.3391691860461301,
+        "U": 0.33916918604689306,
+        "witness_offset": 0.0
+      },
+      {
+        "action": "WAIT",
+        "L": 0.10499999999961863,
+        "U": 0.1050000000003815,
+        "witness_offset": 0.1
+      }
+    ],
+    "unknown_support": [],
+    "proven": true
+  },
+  "accounting": {
+    "command": [
+      "C:\\Cursor\\raven.mcs\\.venv_new\\Scripts\\python.exe",
+      "-m",
+      "raven_mcs_re_interval.worker",
+      "C:\\Users\\szr\\AppData\\Local\\Packages\\sandbox.{7af106b2-4b4f-479b-9d9b-e06e5be56042}\\AC\\Temp\\RE_interval_wd0sqia7\\input.json",
+      "C:\\Users\\szr\\AppData\\Local\\Packages\\sandbox.{7af106b2-4b4f-479b-9d9b-e06e5be56042}\\AC\\Temp\\RE_interval_wd0sqia7\\output.json"
+    ],
+    "returncode": 0,
+    "process_tree_cpu_seconds": 1.28125,
+    "monitor_cpu_seconds": 0.015625,
+    "wall_seconds": 1.488563000002614,
+    "limit_reason": null,
+    "log": "C:\\Users\\szr\\AppData\\Local\\Packages\\sandbox.{7af106b2-4b4f-479b-9d9b-e06e5be56042}\\AC\\Temp\\RE_interval_wd0sqia7\\worker.log",
+    "pids": [
+      {
+        "pid": 4008,
+        "joined_observed_wall": 0.008535400000255322,
+        "root_job_member": true,
+        "image": "C:\\Cursor\\raven.mcs\\.venv_new\\Scripts\\python.exe",
+        "initial_cpu": 0.0,
+        "created_filetime": 13436342957.784973,
+        "exited_filetime": 13436342959.262672,
+        "kernel_cpu": 0.0,
+        "user_cpu": 0.015625,
+        "cpu_seconds": 0.015625,
+        "exit_code": 0,
+        "exit_observed_wall": 1.4885271999992256
+      },
+      {
+        "pid": 24864,
+        "joined_observed_wall": 0.014849900002445793,
+        "root_job_member": true,
+        "image": "C:\\Windows\\System32\\conhost.exe",
+        "initial_cpu": 0.0,
+        "created_filetime": 13436342957.796177,
+        "exited_filetime": 13436342959.266087,
+        "kernel_cpu": 0.0,
+        "user_cpu": 0.015625,
+        "cpu_seconds": 0.015625,
+        "exit_code": 0,
+        "exit_observed_wall": 1.4885332000012568
+      },
+      {
+        "pid": 1808,
+        "joined_observed_wall": 0.037932200000796,
+        "root_job_member": true,
+        "image": "C:\\Users\\szr\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+        "initial_cpu": 0.0,
+        "created_filetime": 13436342957.820272,
+        "exited_filetime": 13436342959.250444,
+        "kernel_cpu": 0.6875,
+        "user_cpu": 0.5625,
+        "cpu_seconds": 1.25,
+        "exit_code": 0,
+        "exit_observed_wall": 1.488542499999312
+      },
+      {
+        "pid": 25264,
+        "joined_observed_wall": 0.3627061000006506,
+        "root_job_member": true,
+        "image": "C:\\Windows\\System32\\cmd.exe",
+        "initial_cpu": 0.0,
+        "created_filetime": 13436342958.146227,
+        "exited_filetime": 13436342958.176346,
+        "kernel_cpu": 0.0,
+        "user_cpu": 0.0,
+        "cpu_seconds": 0.0,
+        "exit_code": 0,
+        "exit_observed_wall": 1.4885501000026125
+      }
+    ],
+    "notifications": [
+      {
+        "message": 6,
+        "pid": 4008,
+        "wall": 0.00917710000067018
+      },
+      {
+        "message": 6,
+        "pid": 24864,
+        "wall": 0.01482419999956619
+      },
+      {
+        "message": 6,
+        "pid": 1808,
+        "wall": 0.03790880000087782
+      },
+      {
+        "message": 6,
+        "pid": 25264,
+        "wall": 0.3626710999997158
+      },
+      {
+        "message": 7,
+        "pid": 25264,
+        "wall": 0.435414600000513
+      },
+      {
+        "message": 7,
+        "pid": 1808,
+        "wall": 1.4777149000001373
+      },
+      {
+        "message": 7,
+        "pid": 4008,
+        "wall": 1.4831178000022192
+      },
+      {
+        "message": 7,
+        "pid": 24864,
+        "wall": 1.4884577000011632
+      },
+      {
+        "message": 4,
+        "pid": 0,
+        "wall": 1.4884626999992179
+      }
+    ],
+    "errors": [],
+    "job_total_processes": 4,
+    "job_active_processes": 0,
+    "independent_pid_CPU_sum": 1.28125,
+    "difference_seconds": 0.0,
+    "predeclared_tolerance_seconds": 0.135,
+    "audit_passed": true,
+    "CPU_limit": 1.934375,
+    "single_CPU_affinity": 1,
+    "mutually_exclusive_costs": [
+      "process_tree_cpu_seconds",
+      "monitor_cpu_seconds"
+    ],
+    "included_not_additive": [
+      "independent_pid_CPU_sum",
+      "individual_PID_CPU",
+      "inner_job_CPU"
+    ],
+    "cpu_scope": "creation through process exit; root created suspended, descendants inherit before execution",
+    "total_cpu_seconds": 1.3125,
+    "decision_wall_seconds": 1.4984761999985494,
+    "training_steps": 0,
+    "startup_included": true,
+    "method": "RE_interval_v3"
+  }
+}

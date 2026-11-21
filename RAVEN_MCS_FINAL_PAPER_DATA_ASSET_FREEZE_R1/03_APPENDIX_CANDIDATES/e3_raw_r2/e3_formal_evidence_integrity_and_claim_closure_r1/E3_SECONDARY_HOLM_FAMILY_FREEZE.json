@@ -1,0 +1,101 @@
+{
+  "EPS_ZERO": 1e-12,
+  "families": [
+    {
+      "comparisons": [
+        "raven_vs_fedavg_window",
+        "raven_vs_fedasync_window",
+        "raven_vs_flamf_timealign_adapted",
+        "raven_vs_local_hajek",
+        "raven_vs_twostage_hajek"
+      ],
+      "dataset": "sensorscope",
+      "exclusions": [],
+      "metric": "Tail_RMSE_phys"
+    },
+    {
+      "comparisons": [
+        "raven_vs_fedavg_window",
+        "raven_vs_fedasync_window",
+        "raven_vs_flamf_timealign_adapted",
+        "raven_vs_local_hajek",
+        "raven_vs_twostage_hajek"
+      ],
+      "dataset": "sensorscope",
+      "exclusions": [],
+      "metric": "Delta_group"
+    },
+    {
+      "comparisons": [
+        "raven_vs_fedavg_window",
+        "raven_vs_fedasync_window",
+        "raven_vs_flamf_timealign_adapted",
+        "raven_vs_local_hajek",
+        "raven_vs_twostage_hajek"
+      ],
+      "dataset": "sensorscope",
+      "exclusions": [],
+      "metric": "Delta_c_s"
+    },
+    {
+      "comparisons": [
+        "raven_vs_fedavg_window",
+        "raven_vs_fedasync_window",
+        "raven_vs_flamf_timealign_adapted",
+        "raven_vs_local_hajek",
+        "raven_vs_twostage_hajek"
+      ],
+      "dataset": "uair",
+      "exclusions": [],
+      "metric": "Tail_RMSE_phys"
+    },
+    {
+      "comparisons": [
+        "raven_vs_fedavg_window",
+        "raven_vs_fedasync_window",
+        "raven_vs_flamf_timealign_adapted",
+        "raven_vs_local_hajek",
+        "raven_vs_twostage_hajek"
+      ],
+      "dataset": "uair",
+      "exclusions": [],
+      "metric": "Delta_group"
+    },
+    {
+      "comparisons": [
+        "raven_vs_fedavg_window",
+        "raven_vs_fedasync_window",
+        "raven_vs_flamf_timealign_adapted",
+        "raven_vs_local_hajek",
+        "raven_vs_twostage_hajek"
+      ],
+      "dataset": "uair",
+      "exclusions": [],
+      "metric": "Delta_c_s"
+    },
+    {
+      "comparisons": [],
+      "dataset": "traffic",
+      "exclusions": [
+        "cross-vintage Traffic comparisons"
+      ],
+      "metric": "Tail_RMSE_phys"
+    },
+    {
+      "comparisons": [],
+      "dataset": "traffic",
+      "exclusions": [
+        "cross-vintage Traffic comparisons"
+      ],
+      "metric": "Delta_group"
+    },
+    {
+      "comparisons": [],
+      "dataset": "traffic",
+      "exclusions": [
+        "cross-vintage Traffic comparisons"
+      ],
+      "metric": "Delta_c_s"
+    }
+  ]
+}

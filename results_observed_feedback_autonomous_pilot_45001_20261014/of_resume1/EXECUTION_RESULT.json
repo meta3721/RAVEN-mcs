@@ -1,0 +1,36 @@
+{
+  "status": "COMPLETE_T100_ACQUISITION",
+  "failure": null,
+  "actual_SGD": 3354,
+  "GPU": 0,
+  "q_fit": 0,
+  "now": 100.0,
+  "next_grid_tick": 1001,
+  "last_complete_marker": "C:\\Cursor\\raven.mcs\\results_observed_feedback_autonomous_pilot_45001_20261014\\of_resume1\\trajectory\\tick1000.complete.json",
+  "last_saved_time": 100.0,
+  "parent_run_id": "OF-v1/P1_autonomous_P3_pre_pilot/45001/OF-v1/of",
+  "parent_checkpoint": "C:\\Cursor\\raven.mcs\\results_observed_feedback_autonomous_pilot_45001_20261014\\of\\trajectory\\stopped_0333_07272.complete.json",
+  "decision_start_tick": 333,
+  "source_packages_changed": false,
+  "strategy": "OF-v1",
+  "seed": 45001,
+  "spent": {
+    "setup": 0.0,
+    "initialization": 30.6875,
+    "online": 16.484375,
+    "training": 31.21875,
+    "events": 154.859375,
+    "save": 110.640625,
+    "repair": 0.0
+  },
+  "maxima": {
+    "initialization": 10.895,
+    "events": 1.4575,
+    "training": 0.285625,
+    "online": 0.098125,
+    "save": 10.004375
+  },
+  "worker_PID": 13456,
+  "session_id": "of_resume1",
+  "state": "WAITING_USER_REVIEW"
+}

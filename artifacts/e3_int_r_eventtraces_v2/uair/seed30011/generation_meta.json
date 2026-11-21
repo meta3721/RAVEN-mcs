@@ -1,0 +1,18 @@
+{
+  "gate_used": false,
+  "m_mc": 2000,
+  "num_windows": 80,
+  "occupancy": {
+    "alpha": 0.7752380952380953,
+    "beta": 0.8366666666666667,
+    "burstiness_miss": true,
+    "family": "two_state_markov",
+    "rho0": 0.425
+  },
+  "round": "v2",
+  "scd_rule": {
+    "sensorscope": "Design ON (raven always_on components; not Gate)",
+    "uair": "Design OFF (raven_wo_design; not Gate)"
+  },
+  "scenario": "complete_aligned_int_r"
+}

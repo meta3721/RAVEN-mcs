@@ -1,0 +1,20 @@
+{
+  "n_passed": 13,
+  "n_failed": 0,
+  "status": "PASS",
+  "tests": {
+    "test_target_compatibility.py": "PASS",
+    "test_target_no_test_outcome_leakage.py": "PASS",
+    "test_pi_safe_rule_frozen.py": "PASS",
+    "test_event_count_lcb_no_current_window.py": "PASS",
+    "test_event_count_mass.py": "PASS",
+    "test_lcb_monotonicity.py": "PASS",
+    "test_lcb_sample_size_behavior.py": "PASS",
+    "test_c_cov_formula.py": "PASS",
+    "test_thresholds_unchanged.py": "PASS",
+    "test_c_cov_no_current_R_leakage.py": "PASS",
+    "test_c_cov_target_mass.py": "PASS",
+    "test_c_cov_target_mass_weighted.py": "PASS",
+    "test_pi_safe_config.py": "PASS"
+  }
+}

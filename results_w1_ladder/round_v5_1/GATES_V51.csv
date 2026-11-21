@@ -1,0 +1,23 @@
+gate,scope,observed,tolerance,tolerance_source,pass
+B-G1,120 runs: 3 arms x 2 datasets x 20 seeds,0.0,0.0,exact active-set identity vs artifacts/e3_formal_runs_r1/runs/<ds>/raven/seed<seed>/window_metrics.json,True
+G-self,120 runs,0.0,1e-08,AM-1: alpha L-inf <= 1e-8 and both endpoints <= 1e-12 vs final_metrics,True
+G-self,"120 runs (max over |d_group|, |d_c-s|)",5.995204332975845e-15,1e-12,AM-1: alpha L-inf <= 1e-8 and both endpoints <= 1e-12 vs final_metrics,True
+O-G0,80 runs / 6558 windows,9.414136137309015e-13,1e-13,"protocol 2.2 O-G0: per window, primal <= 1e-13, stationarity <= 1e-12, complementary slackness <= 1e-12",False
+O-G0,80 runs / 6558 windows,7.220178629642415,1e-12,"protocol 2.2 O-G0: per window, primal <= 1e-13, stationarity <= 1e-12, complementary slackness <= 1e-12",False
+O-G0,80 runs / 6558 windows,3.8065999074880804e-08,1e-12,"protocol 2.2 O-G0: per window, primal <= 1e-13, stationarity <= 1e-12, complementary slackness <= 1e-12",False
+O-G0,200-window sample,4.798939023942239e-13,1e-13,"protocol 2.2 O-G0: per window, primal <= 1e-13, stationarity <= 1e-12, complementary slackness <= 1e-12",False
+O-G0,200-window sample,36.34798481043206,1e-12,"protocol 2.2 O-G0: per window, primal <= 1e-13, stationarity <= 1e-12, complementary slackness <= 1e-12",False
+O-G1,200 random windows,1.1052635043307113e-06,1e-12,protocol 2.2 O-G1: oracle objective <= fresh CVXPY CLARABEL value + 1e-12 (projected back onto C_r),False
+O-G2,K = 1..64 uniform control,0.0,0.0,protocol 2.2 O-G2: beta = uniform must return uniform exactly when feasible,True
+O-gate,all 160 measured runs (2 arms x 2 datasets x 20 seeds x 2 endpoints),2.4198935053565407e-05,5e-06,protocol 2.3: certified iff max over seeds eps_impl <= 5e-6,False
+O-gate,proj_beta|sensorscope,9.074246121620888e-06,5e-06,protocol 2.3: certified iff max over seeds eps_impl <= 5e-6,False
+O-gate,proj_beta_debt|sensorscope,2.4198935053565407e-05,5e-06,protocol 2.3: certified iff max over seeds eps_impl <= 5e-6,False
+O-gate,proj_beta|uair,1.0308658175528507e-05,5e-06,protocol 2.3: certified iff max over seeds eps_impl <= 5e-6,False
+O-gate,proj_beta_debt|uair,2.4024385270937643e-05,5e-06,protocol 2.3: certified iff max over seeds eps_impl <= 5e-6,False
+G0-a,222 non-trigger rows (RMSE_mu),0.0,1e-12,AM-3: checkpoint/theta re-score equals final_metrics.json on non-trigger rows,True
+G0-a,222 non-trigger rows,0.0,1e-12,AM-3 (Head_RMSE),True
+G0-a,222 non-trigger rows,0.0,1e-12,AM-3 (Tail_RMSE),True
+G0-b,"18 trigger rows, trigger confirmed in each own window_metrics.json",1.5555174306808618e-09,1e-08,AM-3: theta re-score vs TABLE_II_WORSTGROUP_PER_SEED.csv per seed (relative),True
+G0-b,all 240 runs swept,0.0,0.0,AM-3: any trigger outside the pre-fixed set stops A2',True
+G0-b,18 listed rows,0.0,0.0,AM-3: any listed row lacking the trigger stops A2',True
+G0-c,"80 rows (fedavg_window, raven x 2 datasets x 20 seeds)",1.946177011230263e-09,1e-08,AM-4: stored WorstGroupRMSE of the frozen arms reproduced within 1e-8 relative,True

@@ -1,0 +1,10 @@
+{
+  "reason": "raw outer Job=0 after self-owned inner Job; substitute persisted inner measurement, preserve raw record",
+  "source": "FIRST_ACQUISITION_RESULT.json/resumed_segment_process_tree_cpu_seconds",
+  "measured_cpu_seconds": 1345.828125,
+  "unmeasured_startup_tail_reserve_seconds": 120.0,
+  "charged_cpu_seconds": 1465.828125,
+  "actual_full_lifecycle_CPU": "NOT_EXACTLY_RECONSTRUCTABLE",
+  "budget_gate": "ACCOUNTING_BOUNDARY_PENDING_REVIEW",
+  "reserve_is_not_actual_CPU": true
+}

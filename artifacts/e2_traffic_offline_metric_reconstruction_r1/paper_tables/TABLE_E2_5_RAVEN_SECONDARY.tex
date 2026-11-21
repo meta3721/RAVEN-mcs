@@ -1,0 +1,10 @@
+\begin{tabular}{llllrrrrrrrrlllrrrlrrl}
+\toprule
+scenario & metric & raven_method & baseline_method & n_pairs & mean_paired_diff & median_paired_diff & ci95_low & ci95_high & wins & ties & losses & test & zero_difference_policy & multiple_comparison_policy & p_value & mean_raven & mean_baseline & correction_family & p_holm & significant_holm_0.05 & effect_direction \\
+\midrule
+balanced & Delta_group & raven & fedavg_window & 20 & -5.829e-17 & -5.551e-17 & -8.127e-17 & -3.531e-17 & 0 & 20 & 0 & wilcoxon_signed_rank_two_sided & scipy_default_omit_zeros & none_familywise_raw_p_reported & 0.001059 & 3.83e-16 & 4.413e-16 & metric=Delta_group|scenario_x_baseline_24 & 0.02436 & True & raven_lower \\
+opportunity_only & Delta_group & raven & fedavg_window & 20 & -5.551e-17 & -5.551e-17 & -7.784e-17 & -3.319e-17 & 0 & 20 & 0 & wilcoxon_signed_rank_two_sided & scipy_default_omit_zeros & none_familywise_raw_p_reported & 0.001129 & 3.858e-16 & 4.413e-16 & metric=Delta_group|scenario_x_baseline_24 & 0.02484 & True & raven_lower \\
+observation_only & Delta_group & raven & fedavg_window & 20 & -4.996e-17 & -5.551e-17 & -7.069e-17 & -2.923e-17 & 0 & 20 & 0 & wilcoxon_signed_rank_two_sided & scipy_default_omit_zeros & none_familywise_raw_p_reported & 0.001659 & 3.914e-16 & 4.413e-16 & metric=Delta_group|scenario_x_baseline_24 & 0.03485 & True & raven_lower \\
+usable_only & Delta_group & raven & fedavg_window & 20 & -5.829e-17 & -5.551e-17 & -7.837e-17 & -3.82e-17 & 0 & 20 & 0 & wilcoxon_signed_rank_two_sided & scipy_default_omit_zeros & none_familywise_raw_p_reported & 0.0004081 & 3.858e-16 & 4.441e-16 & metric=Delta_group|scenario_x_baseline_24 & 0.009795 & True & raven_lower \\
+\bottomrule
+\end{tabular}

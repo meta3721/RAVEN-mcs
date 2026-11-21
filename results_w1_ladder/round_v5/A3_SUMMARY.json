@@ -1,0 +1,158 @@
+{
+  "z_holm_adjusted": 2.497705474412374,
+  "z_power": 0.8416212335729143,
+  "family_size": 4,
+  "a2_g0_pass": false,
+  "a2_status": "secondary WorstGroupRMSE endpoint TBD: A2 stopped at A2-G0",
+  "uair_tree_caveat": "round_v4/TRADEOFF.csv inherits the E3 U-Air final_metrics.json values; at seeds 30007/30016/30018 those are not reproducible from the runs' own checkpoints (see A2_G0_FAILURES.csv)",
+  "all_equivalent": {
+    "sensorscope": true,
+    "uair": false
+  },
+  "dose_excludes_needed": {
+    "sensorscope": true,
+    "uair": true
+  },
+  "uair_primary_verdict": "equivalent",
+  "inconclusive_mde_gt_margin": {},
+  "part_b_proposable": false,
+  "decision": "R1 CLOSED AS A MEASURED NULL: the dose-response CI excludes the effect needed for a 0.25 % RMSE_mu gain at the observed Delta_group range (datasets: sensorscope,uair). Part B is not run.",
+  "tost": [
+    {
+      "ds": "sensorscope",
+      "contrast": "proj_beta - uniform_window",
+      "verdict": "equivalent",
+      "mean_diff": -0.002056592092177123,
+      "rel_diff": -0.0002590392555111745,
+      "margin": 0.03969653340994113,
+      "p_tost_holm": 0.0,
+      "mde_n20": 0.008672125818704473,
+      "mde_n20_rel_pct": 0.10923026614375261,
+      "n_for_0.25pct": 4,
+      "n_for_0.5pct": 1
+    },
+    {
+      "ds": "sensorscope",
+      "contrast": "proj_beta - fedavg_window",
+      "verdict": "equivalent",
+      "mean_diff": -0.0016433128896022886,
+      "rel_diff": -0.00020699520779881894,
+      "margin": 0.03969446701392825,
+      "p_tost_holm": 0.0,
+      "mde_n20": 0.008854472946729874,
+      "mde_n20_rel_pct": 0.1115328358436323,
+      "n_for_0.25pct": 4,
+      "n_for_0.5pct": 1
+    },
+    {
+      "ds": "sensorscope",
+      "contrast": "raven - proj_beta",
+      "verdict": "equivalent",
+      "mean_diff": 0.000738758989735544,
+      "rel_diff": 9.307492914655273e-05,
+      "margin": 0.039686250449480244,
+      "p_tost_holm": 0.0,
+      "mde_n20": 0.0033838718688336575,
+      "mde_n20_rel_pct": 0.04263279889770961,
+      "n_for_0.25pct": 1,
+      "n_for_0.5pct": 1
+    },
+    {
+      "ds": "sensorscope",
+      "contrast": "proj_beta_debt - proj_beta",
+      "verdict": "equivalent",
+      "mean_diff": 0.0011702621868765917,
+      "rel_diff": 0.00014743924830670394,
+      "margin": 0.039686250449480244,
+      "p_tost_holm": 0.0,
+      "mde_n20": 0.0073989776903086064,
+      "mde_n20_rel_pct": 0.09321840192143308,
+      "n_for_0.25pct": 3,
+      "n_for_0.5pct": 1
+    },
+    {
+      "ds": "uair",
+      "contrast": "proj_beta - uniform_window",
+      "verdict": "equivalent",
+      "mean_diff": 0.003119870677760339,
+      "rel_diff": 0.002623156450639557,
+      "margin": 0.0059467872703507195,
+      "p_tost_holm": 0.0152,
+      "mde_n20": 0.004035107681227329,
+      "mde_n20_rel_pct": 0.33926786832828426,
+      "n_for_0.25pct": 37,
+      "n_for_0.5pct": 10
+    },
+    {
+      "ds": "uair",
+      "contrast": "proj_beta - fedavg_window",
+      "verdict": "harm",
+      "mean_diff": 0.004239604089862081,
+      "rel_diff": 0.003567976353683001,
+      "margin": 0.00594118860329021,
+      "p_tost_holm": 0.2601,
+      "mde_n20": 0.009129577847949126,
+      "mde_n20_rel_pct": 0.7683292399515137,
+      "n_for_0.25pct": 189,
+      "n_for_0.5pct": 48
+    },
+    {
+      "ds": "uair",
+      "contrast": "raven - proj_beta",
+      "verdict": "equivalent",
+      "mean_diff": -0.0013634001469183476,
+      "rel_diff": -0.001143334232545325,
+      "margin": 0.005962386623739522,
+      "p_tost_holm": 0.0,
+      "mde_n20": 0.0020122569500596447,
+      "mde_n20_rel_pct": 0.16874592986370165,
+      "n_for_0.25pct": 10,
+      "n_for_0.5pct": 3
+    },
+    {
+      "ds": "uair",
+      "contrast": "proj_beta_debt - proj_beta",
+      "verdict": "equivalent",
+      "mean_diff": -0.0021027541416645534,
+      "rel_diff": -0.0017633493719547968,
+      "margin": 0.005962386623739522,
+      "p_tost_holm": 0.0015,
+      "mde_n20": 0.003771806268651975,
+      "mde_n20_rel_pct": 0.316300041130707,
+      "n_for_0.25pct": 33,
+      "n_for_0.5pct": 9
+    }
+  ],
+  "dose": [
+    {
+      "ds": "sensorscope",
+      "n_obs": 80,
+      "slope": 0.03245780551626393,
+      "ci_lo": -0.09663518277437866,
+      "ci_hi": 0.15248385054087474,
+      "verdict": "slope_ci_includes_0",
+      "max_dgroup_gain": -0.06971755382741618,
+      "implied_rmse_change_at_max_dgroup": -0.002262878803199936,
+      "implied_ci_lo": -0.01063080105789512,
+      "implied_ci_hi": 0.006737168556694941,
+      "needed_0.25pct_change": -0.019848266704970564,
+      "dose_excludes_needed_0.25pct": true,
+      "p_slope_boot": 0.3103
+    },
+    {
+      "ds": "uair",
+      "n_obs": 80,
+      "slope": -0.10787514725263585,
+      "ci_lo": -0.2522966770637813,
+      "ci_hi": 0.04605000245993002,
+      "verdict": "slope_ci_includes_0",
+      "max_dgroup_gain": -0.053893339469312185,
+      "implied_rmse_change_at_max_dgroup": 0.005813751931188343,
+      "implied_ci_lo": -0.00248178841513567,
+      "implied_ci_hi": 0.013597110463977788,
+      "needed_0.25pct_change": -0.0029733936351753597,
+      "dose_excludes_needed_0.25pct": true,
+      "p_slope_boot": 0.923
+    }
+  ]
+}

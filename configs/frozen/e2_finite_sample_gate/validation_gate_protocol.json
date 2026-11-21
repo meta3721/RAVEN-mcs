@@ -1,0 +1,56 @@
+{
+  "aggregate_thresholds": {
+    "D_TV_mean_cert_mass": 0.03,
+    "D_TV_mean_group_mass": 0.02,
+    "abs_mean_head_ratio_minus_1": 0.03,
+    "abs_mean_tail_ratio_minus_1": 0.03
+  },
+  "core_metrics": [
+    "D_TV_group",
+    "D_TV_cert",
+    "head_mass_ratio",
+    "tail_mass_ratio"
+  ],
+  "design_seeds": [
+    28101,
+    28102,
+    28103,
+    28104,
+    28105,
+    28106,
+    28107,
+    28108,
+    28109,
+    28110,
+    28111,
+    28112,
+    28113,
+    28114,
+    28115,
+    28116,
+    28117,
+    28118,
+    28119,
+    28120
+  ],
+  "freeze_timestamp_utc": "2026-08-05T14:55:23.992256+00:00",
+  "name": "e2_finite_sample_validation_gate_v1",
+  "old_five_of_five_fixed_threshold_rule": "TOMBSTONED",
+  "outside_interval_allowance": 2,
+  "runtime_commit": "e56687813f2bcb919a9208391f68a4db3488602e",
+  "status": "PREREGISTERED_STRUCTURE_ONLY",
+  "system_bias_thresholds_design": {
+    "D_TV_mean_empirical_vs_target": 0.02,
+    "abs_mean_head_ratio_minus_1": 0.02,
+    "abs_mean_tail_ratio_minus_1": 0.02,
+    "max_abs_mean_group_deviation": 0.015
+  },
+  "validation_execution": "NOT_RUN_THIS_ROUND",
+  "validation_seeds": [
+    29101,
+    29102,
+    29103,
+    29104,
+    29105
+  ]
+}

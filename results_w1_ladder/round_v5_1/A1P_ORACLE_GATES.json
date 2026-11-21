@@ -1,0 +1,192 @@
+{
+  "round": "round_v5_1",
+  "oracle": "numpy-only (no CVXPY)",
+  "tol_primal": 1e-13,
+  "tol_stationarity": 1e-12,
+  "tol_cs": 1e-12,
+  "tol_objective": 1e-12,
+  "eps_impl": 5e-06,
+  "O-G2": {
+    "rows": [
+      {
+        "K": 1,
+        "a_bar": 1.0,
+        "e_bar": 1.0,
+        "uniform_feasible": true,
+        "max_abs_diff": 0.0,
+        "active": "degenerate_uniform",
+        "pass": true
+      },
+      {
+        "K": 2,
+        "a_bar": 0.5,
+        "e_bar": 2.0,
+        "uniform_feasible": true,
+        "max_abs_diff": 0.0,
+        "active": "degenerate_uniform",
+        "pass": true
+      },
+      {
+        "K": 3,
+        "a_bar": 0.5,
+        "e_bar": 3.0,
+        "uniform_feasible": true,
+        "max_abs_diff": 0.0,
+        "active": "cap_simplex",
+        "pass": true
+      },
+      {
+        "K": 4,
+        "a_bar": 0.5,
+        "e_bar": 3.0,
+        "uniform_feasible": true,
+        "max_abs_diff": 0.0,
+        "active": "cap_simplex",
+        "pass": true
+      },
+      {
+        "K": 5,
+        "a_bar": 0.5,
+        "e_bar": 3.0,
+        "uniform_feasible": true,
+        "max_abs_diff": 0.0,
+        "active": "cap_simplex",
+        "pass": true
+      },
+      {
+        "K": 6,
+        "a_bar": 0.5,
+        "e_bar": 3.0,
+        "uniform_feasible": true,
+        "max_abs_diff": 0.0,
+        "active": "cap_simplex",
+        "pass": true
+      },
+      {
+        "K": 8,
+        "a_bar": 0.5,
+        "e_bar": 3.0,
+        "uniform_feasible": true,
+        "max_abs_diff": 0.0,
+        "active": "cap_simplex",
+        "pass": true
+      },
+      {
+        "K": 10,
+        "a_bar": 0.5,
+        "e_bar": 3.0,
+        "uniform_feasible": true,
+        "max_abs_diff": 0.0,
+        "active": "cap_simplex",
+        "pass": true
+      },
+      {
+        "K": 16,
+        "a_bar": 0.5,
+        "e_bar": 3.0,
+        "uniform_feasible": true,
+        "max_abs_diff": 0.0,
+        "active": "cap_simplex",
+        "pass": true
+      },
+      {
+        "K": 32,
+        "a_bar": 0.5,
+        "e_bar": 3.0,
+        "uniform_feasible": true,
+        "max_abs_diff": 0.0,
+        "active": "cap_simplex",
+        "pass": true
+      }
+    ],
+    "observed": 0.0,
+    "pass": true,
+    "tolerance": 0.0,
+    "tolerance_source": "protocol 2.2 O-G2: beta = uniform must return uniform exactly when feasible"
+  },
+  "O-G1": {
+    "n_windows": 200,
+    "observed_max_obj_gap": 1.1052635043307113e-06,
+    "max_alpha_linf_vs_cvxpy_projected": 1.7599450993777133e-06,
+    "n_cvxpy_status_optimal": 61,
+    "n_cvxpy_tier0_1e_12": 200,
+    "n_cvxpy_tier1_default": 0,
+    "max_cvxpy_raw_feasibility": 4.80291351689921e-08,
+    "pass": false,
+    "tolerance": 1e-12,
+    "tolerance_source": "protocol 2.2 O-G1: oracle objective <= fresh CVXPY CLARABEL value + 1e-12 (projected back onto C_r)"
+  },
+  "O-G0_sample": {
+    "n_windows": 200,
+    "max_primal": 4.798939023942239e-13,
+    "max_stationarity": 36.34798481043206,
+    "max_cs": 1.006247944718095e-07,
+    "pass": false
+  },
+  "O-G0": {
+    "n_runs": 80,
+    "n_windows": 6558,
+    "observed_primal": 9.414136137309015e-13,
+    "observed_stationarity": 7.220178629642415,
+    "observed_cs": 3.8065999074880804e-08,
+    "pass": false,
+    "tolerance_primal": 1e-13,
+    "tolerance_stationarity": 1e-12,
+    "tolerance_cs": 1e-12,
+    "tolerance_source": "protocol 2.2 O-G0: per window, primal <= 1e-13, stationarity <= 1e-12, complementary slackness <= 1e-12"
+  },
+  "O-gate": {
+    "threshold_eps_impl": 5e-06,
+    "tolerance_source": "protocol 2.3: certified iff max over seeds eps_impl <= 5e-6",
+    "per_cell": {
+      "proj_beta|sensorscope": {
+        "max_eps_impl": 9.074246121620888e-06,
+        "verdict": "approximate",
+        "max_alpha_linf_trained": 0.0,
+        "max_alpha_linf_ref": 0.0001850373659557647
+      },
+      "proj_beta_debt|sensorscope": {
+        "max_eps_impl": 2.4198935053565407e-05,
+        "verdict": "approximate",
+        "max_alpha_linf_trained": 0.0,
+        "max_alpha_linf_ref": 0.005738112841405685
+      },
+      "proj_beta|uair": {
+        "max_eps_impl": 1.0308658175528507e-05,
+        "verdict": "approximate",
+        "max_alpha_linf_trained": 0.0,
+        "max_alpha_linf_ref": 0.00021442150065137389
+      },
+      "proj_beta_debt|uair": {
+        "max_eps_impl": 2.4024385270937643e-05,
+        "verdict": "approximate",
+        "max_alpha_linf_trained": 0.0,
+        "max_alpha_linf_ref": 0.0011723362008261712
+      }
+    },
+    "pass": true
+  },
+  "self_check_debt_algebra": {
+    "identity": "(1/(2k))||a-beta||^2 - Q^T M a = (1/(2k))||a - (beta + k M^T Q)||^2 + const(a)",
+    "kappa": 1000.0,
+    "identity_abs_error": 1.5612511283791264e-17,
+    "kind": "slsqp",
+    "obj_oracle": -0.014423866918130397,
+    "obj_best_perturbation": -0.014423863624705543,
+    "perturbation_not_better": true
+  },
+  "G-self_AM1": {
+    "observed_alpha_linf": 0.0,
+    "observed_endpoint_err": 5.995204332975845e-15,
+    "tolerance_alpha_linf": 1e-08,
+    "tolerance_endpoint": 1e-12,
+    "tolerance_source": "AM-1: alpha L-inf <= 1e-8 and both endpoints <= 1e-12 vs final_metrics",
+    "pass": true
+  },
+  "B-G1": {
+    "observed": 0,
+    "tolerance": 0,
+    "tolerance_source": "exact active-set identity vs artifacts/e3_formal_runs_r1/runs/<ds>/raven/seed<seed>/window_metrics.json",
+    "pass": true
+  }
+}

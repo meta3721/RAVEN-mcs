@@ -1,0 +1,117 @@
+{
+  "starting_charged_CPU": 311.046875,
+  "charged_CPU": 757.375,
+  "CPU_limit": 3600,
+  "remaining_CPU": 2842.625,
+  "categories": {
+    "setup": 178.359375,
+    "initialization": 53.90625,
+    "online": 23.328125,
+    "training": 46.484375,
+    "events": 222.171875,
+    "save": 136.0,
+    "repair": 97.125
+  },
+  "new_audited_CPU": 444.15625,
+  "new_conservative_failed_CPU": 2.171875,
+  "new_read_edit_delivery_conservative_CPU": 0,
+  "prior_known_audited_CPU": 178.03125,
+  "prior_conservative_CPU": 133.015625,
+  "actual_unmetered_CPU": "UNKNOWN",
+  "cumulative_original5h_charged_CPU": 5522.609375,
+  "nominal_original5h_remaining_CPU": 12477.390625,
+  "historical_actual_gap": "UNKNOWN",
+  "charges": [
+    {
+      "label": "descriptive_evidence",
+      "root_CPU": 0.609375,
+      "job_CPU": 0.484375,
+      "driver_CPU": 0.125,
+      "categories": {
+        "setup": 0.609375
+      },
+      "wall": 0.5910424999965471,
+      "exit": 0,
+      "audit": true,
+      "limit": null,
+      "wall_watchdog_remaining_at_launch": 180
+    },
+    {
+      "label": "final_readonly_validation",
+      "root_CPU": 0.21875,
+      "job_CPU": 0.125,
+      "driver_CPU": 0.09375,
+      "categories": {
+        "setup": 0.21875
+      },
+      "wall": 0.12461110000003828,
+      "exit": 1,
+      "audit": true,
+      "limit": null,
+      "wall_watchdog_remaining_at_launch": 180
+    },
+    {
+      "label": "final_readonly_validation_runtime",
+      "root_CPU": 9.65625,
+      "job_CPU": 9.125,
+      "driver_CPU": 0.53125,
+      "categories": {
+        "setup": 9.65625
+      },
+      "wall": 11.061243600001035,
+      "exit": 0,
+      "audit": true,
+      "limit": null,
+      "wall_watchdog_remaining_at_launch": 180
+    },
+    {
+      "label": "publication_path_check",
+      "root_CPU": 0.203125,
+      "job_CPU": 0.09375,
+      "driver_CPU": 0.109375,
+      "categories": {
+        "repair": 0.203125
+      },
+      "wall": 0.14136510000389535,
+      "exit": 0,
+      "audit": true,
+      "limit": null,
+      "wall_watchdog_remaining_at_launch": 180
+    },
+    {
+      "label": "resume_s2",
+      "root_CPU": 2.171875,
+      "categories": {
+        "initialization": 2.171875
+      },
+      "wall": 0.9884930999978678,
+      "exit": "PermissionError(13, '\u62d2\u7edd\u8bbf\u95ee\u3002')",
+      "exception_traceback": "Traceback (most recent call last):\n  File \"C:\\Cursor\\raven.mcs\\scripts\\observed_feedback_rolling_budget_s2.py\", line 51, in <module>\n    result=run_coordinated_metered(command,OUT/(a.label+'.log'),cpu_limit=cap,wall_limit=wall_cap,cwd=ROOT,\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Cursor\\raven.mcs\\scripts\\coordinated_windows_cpu_meter.py\", line 123, in run_coordinated_metered\n    if publisher:publisher.publish((a.user+a.kernel)/1e7,time.process_time()-cpu0)\n                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Cursor\\raven.mcs\\scripts\\observed_feedback_root_publisher.py\", line 16, in publish\n    try:os.replace(temp,self.path);self.last_wall=now;return\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^\nPermissionError: [WinError 5] \u62d2\u7edd\u8bbf\u95ee\u3002: 'C:\\\\Users\\\\szr\\\\AppData\\\\Local\\\\Packages\\\\sandbox.{4c9a6eba-7fa7-4335-807a-9ed8613a8f82}\\\\AC\\\\Temp\\\\OF45011_root_a1qrc961\\\\root.json.1.c70c60b256c4477ca092488915e6d2dd.pending' -> 'C:\\\\Users\\\\szr\\\\AppData\\\\Local\\\\Packages\\\\sandbox.{4c9a6eba-7fa7-4335-807a-9ed8613a8f82}\\\\AC\\\\Temp\\\\OF45011_root_a1qrc961\\\\root.json'\n",
+      "audit": false,
+      "actual_CPU": "UNKNOWN; conservative single-job CPU wall + driver bound"
+    },
+    {
+      "label": "resume_s2_workspace",
+      "root_CPU": 433.46875,
+      "job_CPU": 345.390625,
+      "driver_CPU": 88.078125,
+      "categories": {
+        "setup": 0.0,
+        "initialization": 13.46875,
+        "online": 23.1875,
+        "training": 45.796875,
+        "events": 219.59375,
+        "save": 131.421875,
+        "repair": 0.0
+      },
+      "wall": 2410.307449,
+      "exit": 0,
+      "audit": true,
+      "limit": null,
+      "wall_watchdog_remaining_at_launch": 7132.511863800002
+    }
+  ],
+  "wall_measured": 2423.2142043999993,
+  "category_role": "transferable planning categories, not stopping caps",
+  "state": "WAITING_USER_REVIEW"
+}

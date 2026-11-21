@@ -1,0 +1,68 @@
+[
+  {
+    "policy": "fixed_time_1",
+    "closures_checked": 100,
+    "consumed_unique": 1586,
+    "max_score_recompute_error": 0.0,
+    "main_metric_recompute_error": 0.0,
+    "max_feasibility_violation": 2.220446049250313e-16,
+    "future_completion_consumed": false,
+    "old_U_read": false,
+    "labels_read": false
+  },
+  {
+    "policy": "fixed_time_2",
+    "closures_checked": 60,
+    "consumed_unique": 1452,
+    "max_score_recompute_error": 0.0,
+    "main_metric_recompute_error": 1.1102230246251565e-16,
+    "max_feasibility_violation": 2.220446049250313e-16,
+    "future_completion_consumed": false,
+    "old_U_read": false,
+    "labels_read": false
+  },
+  {
+    "policy": "fixed_time_4",
+    "closures_checked": 40,
+    "consumed_unique": 1100,
+    "max_score_recompute_error": 0.0,
+    "main_metric_recompute_error": 0.0,
+    "max_feasibility_violation": 2.220446049250313e-16,
+    "future_completion_consumed": false,
+    "old_U_read": false,
+    "labels_read": false
+  },
+  {
+    "policy": "fixed_K8_timeout4",
+    "closures_checked": 154,
+    "consumed_unique": 1505,
+    "max_score_recompute_error": 0.0,
+    "main_metric_recompute_error": 0.0,
+    "max_feasibility_violation": 2.220446049250313e-16,
+    "future_completion_consumed": false,
+    "old_U_read": false,
+    "labels_read": false
+  },
+  {
+    "policy": "age_count_trigger",
+    "closures_checked": 232,
+    "consumed_unique": 1317,
+    "max_score_recompute_error": 0.0,
+    "main_metric_recompute_error": 0.0,
+    "max_feasibility_violation": 2.220446049250313e-16,
+    "future_completion_consumed": false,
+    "old_U_read": false,
+    "labels_read": false
+  },
+  {
+    "policy": "target_gain_stop",
+    "closures_checked": 123,
+    "consumed_unique": 1535,
+    "max_score_recompute_error": 0.0,
+    "main_metric_recompute_error": 1.1102230246251565e-16,
+    "max_feasibility_violation": 3.3306690738754696e-16,
+    "future_completion_consumed": false,
+    "old_U_read": false,
+    "labels_read": false
+  }
+]

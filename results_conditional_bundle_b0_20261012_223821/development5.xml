@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="21" time="21.731" timestamp="2026-10-12T23:25:09.682808+08:00" hostname="LAPTOP-4349UTOC"><testcase classname="tests.control_b0.test_lifecycle_preview" name="test_corrected_preview_application_and_stale_rejection" time="0.078" /><testcase classname="tests.control_b0.test_lifecycle_preview" name="test_missing_q_not_silently_replaced" time="0.001" /><testcase classname="tests.control_b0.test_lifecycle_preview" name="test_replacement_out_of_order_and_physical_outcome" time="0.002" /><testcase classname="tests.control_b0.test_lifecycle_preview" name="test_inflight_expiry_empty_close_and_mature_labels" time="0.050" /><testcase classname="tests.control_b0.test_lifecycle_preview" name="test_future_checkpoint_invalid_tensor_and_stale_snapshot" time="0.023" /><testcase classname="tests.control_b0.test_lifecycle_preview" name="test_design_freeze_and_gate_has_no_computation_effect" time="0.038" /><testcase classname="tests.control_b0.test_lifecycle_preview" name="test_probability_frozen_per_attempt_and_failure_censoring" time="0.002" /><testcase classname="tests.control_b0.test_persistence_and_full_connection" name="test_production_save_restore_same_suffix_and_no_overwrite" time="1.963" /><testcase classname="tests.control_b0.test_persistence_and_full_connection" name="test_real_model_and_existing_trainer_connected_but_no_sgd" time="0.151" /><testcase classname="tests.control_b0.test_persistence_and_full_connection" name="test_shared_stage1_exact_existing_formulas_and_legal_clipping" time="0.001" /><testcase classname="tests.control_b0.test_persistence_and_full_connection" name="test_invalid_numeric_inputs_not_prediction_fallback" time="0.001" /><testcase classname="tests.control_b0.test_persistence_and_full_connection" name="test_official_registration_uses_full_runner_lagged_inputs" time="0.032" /><testcase classname="tests.control_b0.test_persistence_and_full_connection" name="test_probability_rejects_other_target_policy_context" time="0.001" /><testcase classname="tests.control_b0.test_persistence_and_full_connection" name="test_official_missing_p_is_input_error" time="0.005" /><testcase classname="tests.control_b0.test_predictor_planner" name="test_competing_risk_and_censoring_arithmetic" time="0.003" /><testcase classname="tests.control_b0.test_predictor_planner" name="test_client_marks_not_reassigned_and_frozen_download" time="0.003" /><testcase classname="tests.control_b0.test_predictor_planner" name="test_joint_support_uses_multistep_path_and_no_real_mutation" time="0.049" /><testcase classname="tests.control_b0.test_predictor_planner" name="test_snapshot_does_not_accept_future_or_hidden_fields" time="0.051" /><testcase classname="tests.control_b0.test_predictor_planner" name="test_unsupported_prediction_fallback_and_hard_deadline" time="0.026" /><testcase classname="tests.control_b0.test_predictor_planner" name="test_isolated_normal_and_controlled_cpu_timeout" time="4.386" /><testcase classname="tests.control_b0.test_predictor_planner" name="test_public_future_registration_and_q_freeze" time="0.003"><failure message="AssertionError: assert 0 == -1&#10; +  where 0 = Registration(key='scheduled', client='public_client', registered_at=20.2, downloaded_version=0, device_class='public_device', network_class='public_network').downloaded_version&#10; +    where Registration(key='scheduled', client='public_client', registered_at=20.2, downloaded_version=0, device_class='public_device', network_class='public_network') = ForecastEvent(time=20.2, kind='register', registration=Registration(key='scheduled', client='public_client', registered_at=20.2, downloaded_version=0, device_class='public_device', network_class='public_network'), summary=None).registration">config = ControlConfig(source='B0_explicit_deterministic_fixture', design=DesignConfiguration(enabled=True, source='B0_explicit...um_risk=5, scoring_tolerance=1e-07, planning_cpu_seconds=2.0, method_version='reachability_stop/conditional-bundle-v2')
+
+    def test_public_future_registration_and_q_freeze(config):
+        from raven_mcs.control.probability import EvidenceLogisticQ
+        r=runner(config)
+        register(r,'old','old_client',20.)
+        old_q=r.attempts['old'].q
+        r.advance_time(20.1)
+        newer=replace(q_model(config),version='B0_second_fixture',weights=(-.7,.1,-.02,.03,-.01))
+        with pytest.raises(InputError,match='before the next window'):
+            r.freeze_next_estimators(predictor=replace(model(config),q_model=newer.to_dict()),q_model=newer)
+        r.apply_release(r.preview_release())
+        opportunity=PublicOpportunity('scheduled','public_client',20.2,'public_device','public_network',19.)
+        mark=JointMark('public_client',('public_device','public_network'),summary(config,19.),19.5,0)
+        predictor=replace(model(config),q_model=newer.to_dict(),opportunities=(opportunity,),marks=(mark,),
+            cells=(RiskCell(('public_device','public_network'),1,5,5,0),))
+        r.freeze_next_estimators(predictor=predictor,q_model=newer)
+        assert r.attempts['old'].q==old_q
+        register(r,'new','new_client',20.1)
+        assert r.attempts['new'].q.model_version==newer.version
+        # Only the scheduled client's future request has historical joint support.
+        snapshot=replace(r.snapshot(),in_flight=tuple(x for x in r.snapshot().in_flight if x.registration.client=='old_client'))
+        old_mark=replace(mark,client='old_client')
+        predictor=replace(predictor,marks=(mark,old_mark),cells=(
+            RiskCell(('public_device','public_network'),2,5,5,0),
+            RiskCell(('public_device','public_network'),1,5,5,0)))
+        scenarios=predictor.sample_scenarios(snapshot)
+        assert len(scenarios)==4
+        for scenario in scenarios:
+            future=[x for x in scenario if x.registration.client=='public_client']
+            assert [x.kind for x in future]==['register','completion']
+&gt;           assert future[0].registration.downloaded_version==-1
+E           AssertionError: assert 0 == -1
+E            +  where 0 = Registration(key='scheduled', client='public_client', registered_at=20.2, downloaded_version=0, device_class='public_device', network_class='public_network').downloaded_version
+E            +    where Registration(key='scheduled', client='public_client', registered_at=20.2, downloaded_version=0, device_class='public_device', network_class='public_network') = ForecastEvent(time=20.2, kind='register', registration=Registration(key='scheduled', client='public_client', registered_at=20.2, downloaded_version=0, device_class='public_device', network_class='public_network'), summary=None).registration
+
+tests\control_b0\test_predictor_planner.py:132: AssertionError</failure></testcase></testsuite></testsuites>

@@ -1,0 +1,2534 @@
+1
+
+RAVEN-MCS: Target-Risk-Calibrated
+Windowed-Asynchronous Federated Data
+Completion for Mobile Crowdsensing under
+Two-Stage Non-Random Selection
+**** and Anfeng Liu
+
+Abstract—Mobile crowdsensing (MCS) completion is trained
+on updates selected by a two-stage process with three layers—
+opportunity, observation, and usable-update delivery—so the
+arrival law need not match the public deployment target. We
+propose RAVEN-MCS, which treats windowed-asynchronous federated completion as target-risk alignment: the server updates
+once at window close, unlike immediate-update FedAsync. It
+reconstructs target-relevant mass from legal pre-outcome R/O/U
+histories and calibrates that reference inside the current feasible
+window. Unequal deployment and arrival laws induce noninterchangeable risks; the ideal sequential correction recovers the
+compatible target under support and identification; calibration is
+uniquely solvable; and the clipped plug-in is a stable perturbation
+of that reference when target support is compatible. Design is
+kept on SensorScope. On U-Air, full Design reverses the primary
+endpoints by about 7% because of support-incompatible target
+mass, not plug-in failure; the gated default drops Design and
+is non-inferior to adapted FedAU and ObsUse on four-block
+worst-group RMSE. A pre-registered under-served-block check
+on validation did not beat those two by 0.5%, so the test look
+was not opened. Design should be applied only on compatible
+support.
+Index Terms—Mobile crowdsensing, federated learning, data
+completion, windowed asynchronous learning, non-random selection, selection bias, target-risk alignment.
+
+I. I NTRODUCTION
+Mobile crowdsensing (MCS) exploits the sensing, communication, and computing capabilities of mobile devices
+to collect large-scale urban and environmental data without
+deploying a dense dedicated sensing infrastructure [1]–[3].
+Because continuous sensing is costly and mobile participation
+is intrinsically intermittent, practical MCS systems observe
+only a sparse subset of the desired spatiotemporal field. This
+has motivated extensive work on sparse sensing and data completion, including robust cell selection, spatiotemporal correlation modeling, few-shot/cold-start completion, and multi-scale
+inference [4]–[11]. Federated learning (FL) further makes
+it possible to train completion models without centralizing
+raw client records [12]–[15], and recent work has combined
+federated completion with asynchronous aggregation to accommodate irregular mobile data and stale client updates [16]–
+[19]. The system studied here is windowed asynchronous:
+This work was supported in part by the National Natural Science Foundation
+of China (U24A20248).
+*** and Anfeng Liu are with the School of Electronic Information, Central South University, Changsha, 410083, China (E-mail: ****@csu.edu.cn,
+afengliu@mail.csu.edu.cn).
+
+updates may arrive at different times inside a window, but
+the server applies one global update at window close. This is
+not immediate-update FedAsync.
+A less visible issue arises before aggregation: the data
+that reach the server are not necessarily sampled from the
+distribution that the deployed predictor is intended to serve.
+Consider an atomic sensing target i. A mobile client must first
+have an opportunity to cover i; the target must then actually
+be observed; finally, the client’s local update must complete
+computation and communication before the server’s usableupdate deadline. Thus, the two-stage MCS process contains
+three distinct selection layers: mobile opportunity R, observation O, and usable update U . Their probabilities depend on
+mobility, sensing conditions, resource state, network quality,
+deadlines, and staleness. Even when each individual layer
+is operationally reasonable, their composition can make the
+distribution of observed and successfully delivered data differ
+from the public deployment target. Optimizing the distribution
+induced by arriving updates can therefore optimize the wrong
+population risk.
+Existing work leaves an important gap at this point. Sparse
+MCS completion primarily asks how to infer missing values
+from the available observations [5], [20]; asynchronous federated completion asks how to learn effectively from irregular or
+stale client updates [16], [19]; and participation-aware FL studies partial, arbitrary, or biased client participation [21]–[27].
+These directions establish that sparsity, asynchrony, and nonuniform participation matter, but they do not by themselves
+resolve the following MCS problem: how should one align
+asynchronous federated data completion with a deployment
+target when sensing-side availability and update-side usability
+jointly select the data that enter learning? In particular, correcting only the final client-participation distribution does not
+identify whether the distortion arose from mobile opportunity,
+actual observation, or usable-update censoring; conversely,
+reconstructing a statistically correct target mass does not imply
+that this mass is realizable by the clients available in a finite
+mobile window.
+To address this gap, we develop RAVEN-MCS, short
+for Risk Alignment Via Exposure-aware Normalization
+for Mobile CrowdSensing. RAVEN-MCS treats deploymenttarget alignment, rather than raw update frequency, as the
+reference semantics of asynchronous federated data completion. As illustrated in Fig. 1, the method first separates the
+
+2
+
+Public target
+¹ over h(i)
+mismatch
+
+Opportunity R
+
+Observation O
+
+Arrival mass
+½ arr ≠ ¹
+
+Usable U
+
+(a) Two-stage selection vs.\ deployment target
+
+Coupled reconstruction + calibration
+not five independent modules
+Design / Obs / Use
+correction
+Normalized reconstruction
+
+Inst.
+calibration
+
+(P2) feasible
+adjustment
+
+Aggregation
+µr + 1
+
+Debt
+update
+
+(b) RAVEN-MCS as one coordinated architecture
+
+Fig. 1. RAVEN-MCS aligns asynchronous federated completion with a public
+deployment target. (a) The three selection layers within the two-stage MCS
+process induce an arrival law that need not match the deployment target.
+(b) RAVEN-MCS reconstructs target-relevant mass and then calibrates it
+within the currently feasible mobile support as one coordinated architecture,
+rather than as five independent modules. The feasibility program (P2) is
+defined in Section V.
+
+public deployment target from the arrival/usable-update law. It
+then reconstructs target-relevant mass by explicitly factoring
+the opportunity, observation, and usable-update layers under
+their legal pre-outcome information boundaries (selection-time
+covariates, not outcome or test labels). The reconstructed
+statistical target may, however, be unattainable in a particular
+mobile window. RAVEN-MCS therefore maps the corrected
+reference to a feasible aggregation decision through instantaneous target calibration, a strongly convex calibration program,
+and long-term target debt. This separation yields three distinct
+questions: what target should be served, what target mass the
+selected data represent, and what target composition can be
+feasibly realized now.
+Our main contributions are as follows.
+Deployment-target risk semantics under two-stage
+non-random selection. We formulate asynchronous federated MCS completion as a deployment-target alignment
+problem rather than an arrival-centered learning problem.
+The formulation distinguishes the atomic deployment law
+from the law induced by mobile opportunity, observation,
+and usable-update selection, and defines structural mismatch at both deployment-group and client–opportunitystratum levels. We prove that when the deployment and
+arrival laws differ, their induced risk functionals are not
+generally interchangeable. This provides the formal basis
+for asking whether a model is trained for the population
+it is actually intended to serve.
+• Selection-layer-aware target reconstruction. We develop an exposure-aware normalized reconstruction that
+keeps the opportunity/design, observation, and usable-
+
+•
+
+update mechanisms separate instead of collapsing them
+into a single missingness probability. The correction
+uses only legal pre-outcome information, combines local
+Hájek normalization with usable-update correction, and
+yields a selection-corrected reference mass for aggregation. Under explicit support, sequential ignorability, correct ideal selection laws, and cluster-level regularity, we
+show that the ideal pooled normalized sequential estimator recovers the compatible deployment target. Clipping
+is a finite-sample stabilizer, not an unbiasedness claim.
+As a practical realization of the same reconstruction—
+not a fourth contribution—Design is applied only when
+target support is compatible: it is kept on SensorScope
+and dropped on U-Air, where 25.5% of risk units have
+π tar = 0 and full Design reverses the primary endpoints.
+• Feasibility-aware instantaneous and long-term target
+calibration. We show that statistically reconstructed target mass and instantaneous mobile realizability are different problems. RAVEN-MCS therefore calibrates the corrected reference inside the current feasible aggregation set
+while accounting for target mismatch, reference fidelity,
+uncertainty, and staleness, and carries unresolved group
+under-service through a long-term target-debt process.
+The resulting calibration program has a nonempty compact convex feasible set and a unique global minimizer
+under the stated conditions. When the active set is held
+fixed and target support is compatible, the implemented
+clipped plug-in is a Lipschitz perturbation of the samewindow ideal reference, and P2 does not amplify that
+error. Debt remains an internal accounting term, not a
+separate contribution.
+RAVEN’s novelty is therefore not inverse-probability
+weighting or Hájek normalization as such. It is the combination of deployment-target semantics, R/O/U legal histories,
+and finite-support calibration.
+We evaluate these contributions with a no-harm control,
+a risk-semantic block, dataset-gated SensorScope and U-Air
+experiments, and a T-Drive opportunity replay. The numbers—
+including the U-Air Design reversal, four-block worst-group
+non-inferiority, and the recorded-negative under-served-block
+check—are reported in Section VII.
+The remainder of the paper is organized as follows. Section II reviews sparse MCS completion, asynchronous federated completion, and participation-aware FL. Section III
+formulates the two-stage, three-layer selection process and
+deployment-target risk. Sections IV and V present selectionlayer-aware reconstruction and feasibility-aware calibration,
+respectively. Section VI presents the theoretical analysis. Section VII reports the evaluation. Section VIII discusses claim
+and modeling boundaries. Section IX concludes the paper.
+Proofs and additional tables are in a separate supplemental
+file.
+II. R ELATED W ORK
+A. Sparse Mobile Crowdsensing and Data Completion
+Sparse mobile crowdsensing reduces sensing cost by collecting only part of the spatiotemporal field and inferring
+
+3
+
+the unsensed portion [1]–[3]. A substantial line of work
+therefore focuses on exploiting spatial and temporal structure
+to improve completion accuracy. Wang et al. [20] combine
+graph modeling with spatiotemporal learning for joint urban
+inference and prediction, while their outlier-aware completion
+method [4] exploits both intra- and inter-data correlations to
+mitigate the effect of anomalous observations. Transformerstyle spatiotemporal inference [6] and few-shot completion
+for new sensing tasks [7] further reduce dependence on dense
+historical labels. Li et al. [5] jointly study adaptive region
+division, robust inference, and cost-effective cell selection
+under sparse noise. More recent approaches model the evolutionary structure of sparse observations [8], examine how
+sparse completion affects downstream MCS tasks [9], exploit cross-scale correlations through a spatiotemporal pyramid
+[10], address cold-start completion with one-shot mapping
+transfer [11], or price sparse sensing data through uncertainty
+quantification [28]. Orthogonal MCS lines study worker recruitment and trust [29], incentive and privacy mechanisms
+[30], [31], and locally private truth discovery [32]. These
+studies substantially advance completion, recruitment, pricing,
+or privacy, but their main objective is not deployment-target
+risk under sequential selection. In contrast, RAVEN-MCS asks
+a different question: when the data that become available
+are themselves produced by non-random mobile opportunity
+and observation processes, which population risk does the
+resulting training mass represent? This distinction motivates
+our explicit separation between the deployment target h(i) and
+the opportunity stratum s(i), as well as the deployment-target
+and arrival-risk semantics in Section III.
+B. Federated and Asynchronous Data Completion
+Federated learning (FL) enables distributed clients to train a
+shared model without centralizing their raw data, with FedAvg
+providing the canonical model-averaging formulation [12],
+[13]. Surveys and open-problem statements further position
+FL as a privacy-preserving distributed learning primitive [14],
+[15]. This paradigm is particularly attractive for MCS because
+sensing records are naturally distributed across mobile participants. Most closely related to our setting, Wang et al. [16]
+develop a federated distributed data-completion framework for
+sparse MCS, combining local completion models with a timeaware architecture and asynchronous aggregation to accommodate irregular client data. Spatio-temporal-aware dynamic
+FL has also been studied for spatial crowdsourcing [33]. In
+the broader asynchronous-FL literature, FedAsync updates the
+server as client models arrive [17], adaptive asynchronous
+aggregation addresses edge dynamics and resource constraints
+[18], [19], and recent staleness-aware designs explicitly trade
+accuracy against system efficiency under heterogeneous client
+speeds [19]; most recently, semi-asynchronous aggregation
+with adaptive weighting and selective training has been proposed to reduce communication and computation cost [34].
+These works establish that privacy, distributed sparsity, and
+stale updates can be handled without reverting to centralized
+completion. Their primary focus, however, is how to learn
+effectively from the updates that participate or arrive. RAVEN-
+
+MCS instead additionally models how sensing opportunities, actual observations, and usable asynchronous updates
+sequentially determine which target mass reaches the server.
+It therefore separates statistical target reconstruction from
+the subsequent feasibility-aware aggregation decision rather
+than treating asynchronous arrivals themselves as the implicit
+deployment population.
+C. Non-Uniform Participation and Selection Bias in FL
+A complementary FL literature studies partial and nonuniform client participation. Wang and Ji [21] provide a unified
+convergence analysis for arbitrary participation patterns. FedVARP [22] reduces the optimization variance caused by partial participation using server-side surrogate updates, whereas
+anchor sampling [23] is designed to improve learning under
+partial client participation and data heterogeneity. FedAU
+[24] is particularly relevant: it estimates adaptive aggregation weights from participation history so that heterogeneous,
+unknown participation does not silently replace the original
+FL objective by a participation-weighted one. More directly
+related to temporal dependence, Sun et al. [25] show that
+non-uniform, correlated client availability can bias FedAvg
+and develop a debiasing method for correlated participation.
+Agnostic FL further asks the model to perform well against an
+adversarially chosen mixture of client distributions [26], while
+FedCure mitigates participation bias in semi-asynchronous
+hierarchical FL [27]. Heterogeneity-aware optimization methods such as FedProx and SCAFFOLD [35], [36] address
+client drift; more recent participation-aware designs, including
+FedAU [24], Sun et al. [25], and FedCure [27], recognize
+that the participating updates themselves may not represent the
+population of interest. Still, these works treat participation as
+the object to be corrected, whereas RAVEN-MCS additionally
+separates the sensing-side selection layers (opportunity and
+observation) from the update-side usable selection. Classical
+survey estimators provide the inverse-probability and rationormalized building blocks used by our Hájek-style baselines
+[37], [38]. Single-step covariate-shift likelihood weighting
+[39] and sequential inverse-probability estimation for missing
+regressors [40] supply the classical density-ratio and IPW
+vocabulary. RAVEN-MCS is not a new IPW estimator: it uses
+sequential R/O/U legal histories and maps the reconstructed
+reference onto a finite-window feasible set.
+These results show that participation cannot always be
+treated as uniform random sampling. In FedAU in particular,
+participation can change the effective FL objective. RAVENMCS differs in the object being aligned and in the selection
+process being modeled: the reference is an application-level
+deployment target, whereas selection occurs before and after
+local sensing rather than only at client/update participation.
+The problem studied here combines three selection layers
+within a two-stage MCS process: mobile opportunity R,
+observation O, and usable update U . RAVEN-MCS fixes a
+deployment target independently of this arrival process. It
+reconstructs target-relevant mass under stage-specific legal
+information boundaries and then calibrates the reconstructed
+reference within the time-varying feasible client support. The
+
+4
+
+TABLE I
+N EAREST- NEIGHBOR COMPARISON . RAVEN’ S DISTINCTION IS NOT IPW
+ITSELF, BUT A PUBLIC DEPLOYMENT TARGET, SEQUENTIAL R/O/U LEGAL
+HISTORIES , SENSING - SIDE CORRECTION , AND FINITE - WINDOW
+CALIBRATION . A DAPTED F EDAU/O BS U SE USED IN S ECTION VII ARE
+WINDOWED IMPLEMENTATIONS , NOT OFFICIAL REPRODUCTIONS .
+Family
+
+Target
+
+Selection
+
+Sensingside
+
+Covariateshift FL
+FedAU / participation debiasing
+Correlated
+participation
+Agnostic
+/
+targeted FL
+Semiasync
+fairness/queue
+RAVENMCS
+
+target/test
+sample/clientno
+domain
+original FL client par- no
+objective
+ticipation
+long-run
+client/updateno
+availability
+client mix- client dis- no
+ture
+tribution
+participation client/updateno
+fairness
+public
+R/O/U
+deployment
+µ
+
+yes
+
+Finitesupport cal.
+no
+no
+limited
+not the issue
+queue ̸= target debt
+yes
+
+distinguishing point is therefore not inverse weighting or asynchronous aggregation in isolation. It is the joint deploymenttarget risk semantics–selection-layer-aware reconstruction–
+feasibility-aware calibration chain required by mobile crowdsensing under non-random sensing and update availability.
+Table I contrasts RAVEN-MCS with the nearest-neighbor
+method families on these four axes.
+III. S YSTEM M ODEL AND TARGET-R ISK F ORMULATION
+A. Windowed Asynchronous Mobile Crowdsensing
+We consider a mobile crowdsensing (MCS) system with a
+server and a set of clients K = {1, . . . , K}. The common
+prediction domain is partitioned into atomic units i ∈ I;
+an atomic unit may be written as i = (n, t), where n is
+a spatial unit and t is an absolute time index. Unit i has
+deployment target Yi and public deployment context Cidep . All
+clients contribute to a common predictor Yˆ︁i = fθ (i; Cidep ). A
+client-side observation of unit i is denoted by Zk,r,i when it
+is available to client k in server window r.
+Server time is divided into aggregation windows
+Wr = [Tr , Tr+1 ),
+
+r = 0, 1, . . . .
+
+(1)
+
+The server keeps θr fixed during Wr . Client k may start local
+training from a previously downloaded model θσk,r , where
+σk,r ≤ r. We use τk,r ≜ r − σk,r as the model-version
+staleness of that attempt. Updates may arrive at different times
+within one window, but individual arrivals do not immediately
+modify the global model. The server closes the window,
+determines which registered attempts are usable, computes
+one aggregation vector, and then performs the single transition
+θr → θr+1 . This windowed-asynchronous semantics is distinct
+from immediate-update FedAsync, in which an arrival would
+revise the global model before the window closes. It keeps
+exogenous mobile/update events independent of the methodspecific aggregation weights.
+
+B. Two-Stage, Three-Layer Non-Random Selection
+The title’s two-stage selection consists of a sensing-side
+stage and an update-side stage. The sensing-side stage itself
+has two layers: mobile opportunity and actual observation.
+The update-side stage determines whether a registered client
+attempt becomes usable before window closure.
+For client k, window r, and unit i, let Rk,r,i ∈ {0, 1} be
+the realized mobile opportunity indicator. It indicates whether
+(k, i) belongs to the opportunity/risk set in window r before the current sensing outcome is revealed. Conditional on
+Rk,r,i = 1, Ok,r,i ∈ {0, 1} indicates whether unit i is actually
+observed. A client with a nonempty observed buffer registers
+an update attempt; the set of registered clients is Er . For
+k ∈ Er , the attempted update is usable (Uk,r = 1) only if computation and transmission succeed, the update arrives by Tr+1 ,
+and its staleness satisfies τk,r ≤ Smax . Otherwise, Uk,r = 0.
+We first define the usable set Ur ≜ {k ∈ Er : Uk,r = 1}. After
+target-relevant mass is reconstructed in Section IV, zero-mass
+clients are removed and the actual aggregation set Ar ⊆ Ur
+is formed. Failures, timeouts, network interruptions, and stale
+arrivals remain recorded as Uk,r = 0 rather than disappearing
+from the selection log.
+We distinguish two structural mappings: the deploymenttarget group h(i) ∈ G and the opportunity stratum s(i) ∈
+S. The group mapping specifies which deployment mass the
+predictor should serve, whereas the stratum mapping pools
+repeatable mobile exposure patterns for selection modeling.
+The two mappings are different scientific objects, so h(i) ̸=
+s(i) in general. Both mappings are frozen from public/trainingside information and do not use test-label values.
+For theoretical bookkeeping, let the normalized opportunityevent law in window r be
+opp
+opp
+Propp (k, i) = πk,s(i),r
+νk,r
+(i | s(i)),
+
+∑︂
+
+Propp (k, i) = 1,
+
+k,i
+
+(2)
+opp
+where πk,s,r
+is the client–stratum opportunity mass and
+opp
+νk,r
+(i | s) is the conditional atomic opportunity law. The
+realized risk-set indicators Rk,r,i are the implementationlevel bookkeeping of the opportunity events induced by this
+mobile exposure process; they are not assumed to be mutually
+independent Bernoulli draws.
+The subsequent selection probabilities are
+(︁
+)︁
+obs
+pobs
+k,r,i ≜ Pr Ok,r,i = 1 | Rk,r,i = 1, Hk,r,i ,
+(︁
+)︁
+use
+use
+qk,r
+≜ Pr Uk,r = 1 | k ∈ Er , Hk,r
+.
+
+(3)
+(4)
+
+obs
+The observation history Hk,r,i
+contains only information availuse
+able before Ok,r,i is realized. The usable-update history Hk,r
+is measured after the sensing-side stage but before Uk,r is
+realized. It may therefore contain the already observed registration state, but not the realized computation/transmission
+outcomes, future events, or the current update vector used for
+aggregation. This sequential information boundary is part of
+the statistical model.
+
+5
+
+C. Public Deployment Target and Compatible Target Measures
+We begin with a public, label-independent atomic deployment target
+∑︂
+ϖitar ≥ 0,
+ϖitar = 1.
+(5)
+i∈Idep
+
+Its deployment-group marginal is
+∑︂
+µg =
+ϖitar ,
+
+µ ∈ ∆|G|−1 .
+
+(6)
+
+i:h(i)=g
+
+i:s(i)=s
+
+For Λtar
+s > 0, define
+ϖitar
+,
+Λtar
+s
+
+s(i) = s,
+
+(8)
+
+and let λtar
+k|s ≥ 0 be a frozen, public, support-compatible target
+client share satisfying
+∑︂
+λtar
+(9)
+k|s = 1.
+k
+
+For a zero-target stratum Λtar
+s = 0, all atomic target masses in
+that stratum are zero by (7) and nonnegativity. We therefore
+set its client–stratum and client–atomic target masses to zero
+tar
+and do not evaluate νi|s
+or λtar
+k|s . Formally,
+{︄
+tar
+tar
+Λtar
+s λk|s , Λs > 0,
+tar
+(10)
+πk,s
+=
+0,
+Λtar
+s = 0,
+and
+
+{︄
+tar
+πk,i
+=
+
+By construction,
+∑︂
+
+tar
+tar
+πk,s(i)
+νi|s(i)
+,
+
+Λtar
+s(i) > 0,
+
+0,
+
+Λtar
+s(i) = 0.
+
+tar
+πk,i
+= ϖitar ,
+
+k
+
+k
+use
+where qˆ︁k,s
+is the corresponding evaluation-period marginal of
+the legal pre-U usable-update model over registered attempts
+associated with stratum s. Normalize
+rˆ︁iarr
+∑︁
+ρ˜︁arr
+=
+,
+(15)
+i
+ˆ︁jarr
+j∈Idep r
+
+and define
+
+These quantities define the application-level target served by
+the deployed predictor.
+For opportunity correction we require a compatible client–
+stratum target. First define the target mass of opportunity
+stratum s by
+∑︂
+Λtar
+ϖitar .
+(7)
+s =
+
+tar
+νi|s
+=
+
+pre-outcome mechanisms. Thus a label-free atomic arrival
+intensity is
+∑︂ opp opp
+use
+,
+(14)
+pobs
+ˆ︁k,s(i)
+rˆ︁iarr =
+π
+ˆ︁k,s(i) νˆ︁k (i | s(i))ˆ︁
+k,i q
+
+∑︂
+
+tar
+πk,s
+= 1.
+
+(11)
+
+(12)
+
+k,s
+
+Equation (12) is the compatibility bridge between the
+deployment-risk target and the client–stratum target used for
+selection reconstruction. All target quantities are frozen before
+test-label evaluation.
+D. Deployment-Target Risk Versus Arrival Risk
+For a loss ℓ(Yˆ︁ , Y ), the deployment-target risk is
+(︂
+)︂
+∑︂
+Rµ (θ) =
+ϖitar ℓ fθ (i; Cidep ), Yi .
+
+(13)
+
+i∈Idep
+
+By contrast, the data reaching learning are distributed according to the opportunity, observation, and usable-update
+mechanisms.
+For evaluation, quantities without a window index denote
+the frozen evaluation-period marginals of their corresponding
+
+Rρ (θ) =
+
+)︂
+(︂
+dep
+ρ˜︁arr
+),
+Y
+.
+ℓ
+f
+(i;
+C
+i
+θ
+i
+i
+
+∑︂
+
+(16)
+
+i∈Idep
+
+The two risks answer different questions. RAVEN-MCS therefore treats deployment-target alignment, rather than usableupdate frequency, as the reference semantics of the learning
+problem.
+E. Structural Alignment Objective
+Section IV will construct two corrected within-client compositions: a deployment-group composition cgk,r ∈ ∆|G|−1
+and an opportunity-stratum composition csk,r ∈ ∆|S|−1 . For
+the final aggregation set Ar , define Mr = [cgk,r ]k∈Ar . Given
+feasible aggregation weights αr , the effective deploymentgroup composition in an active window is ω r = Mr αr .
+Let ηr > 0 denote the server step size and define
+Ir = 1{|Ar | > 0},
+
+SR =
+
+R−1
+∑︂
+
+ηr Ir ,
+
+(17)
+
+r=0
+
+and, for SR > 0,
+ωR =
+
+R−1
+1 ∑︂
+ηr Ir ω r .
+SR r=0
+
+(18)
+
+The group-level structural mismatch is ∆group (R) =
+∥ω R − µ∥1 .
+For client–stratum structure, extend αk,r = 0 to k ∈
+/ Ar
+and define
+R−1
+∑︂
+ˆ︁ k,s (R) = 1
+Π
+ηr Ir αk,r csk,r,s .
+(19)
+SR r=0
+Because each active-window αr and each csk,r are probability
+∑︁ ˆ︁
+vectors, k,s Π
+k,s (R) = 1. We therefore measure
+⃓
+∑︂ ⃓⃓
+tar ⃓
+ˆ︁ k,s (R) − πk,s
+∆c-s (R) =
+(20)
+⃓Π
+⃓.
+k,s
+
+The overall design goal is to keep Rµ low while reducing
+∆group and ∆c-s under time-varying mobile feasibility and
+legal pre-outcome information.
+IV. S ELECTION -L AYER -AWARE TARGET
+R ECONSTRUCTION
+RAVEN-MCS (Risk Alignment Via Exposure-aware Normalization) first reconstructs which deployment-relevant mass
+the usable data represent. Opportunity, observation, and
+usable-update selection are kept separate because they have
+different conditioning sets and therefore cannot be replaced
+by a single generic missingness probability.
+
+6
+
+The local completion objective is
+
+A. Opportunity/Design Correction
+For a target-supported client–atomic pair, the ideal opportunity/design ratio is
+tar
+tar
+tar
+πk,s(i)
+νi|s(i)
+πk,i
+o
+ζk,r,i
+= opp
+= opp
+.
+opp
+πk,s(i),r νk,r (i | s(i))
+Pr (k, i)
+
+∑︂
+
+ak,r,i
+
+i
+
+(21)
+
+Under the within-stratum exchangeability used by the main
+opp
+tar
+protocol, νk,r
+(i | s) = νi|s
+, this reduces to
+o
+ζˆ︁k,r,s
+=
+
+H
+Fˆ︁k,r
+(θ) =
+
+)︂2
+1 (︂
+fθ (i; Cidep ) − Zk,r,i .
+2
+
+Starting from θσk,r , client k performs Eloc local steps with
+step size γr . Its normalized model displacement is
+(E
+
+uk,r =
+
+tar
+πk,s
+.
+opp
+max{ˆ︁
+πk,s,r , πmin }
+
+(31)
+
+θσk,r − θk,rloc
+γr Eloc
+
+(22)
+
+)
+
+.
+
+(32)
+
+The opportunity estimate is lagged: current-window outcomes
+cannot alter the weight applied to that same window. One
+admissible implementation uses
+
+C. Usable-Update Correction and Reference Aggregation
+Mass
+
+opp
+opp
+opp
+Ck,s,r
+= ρopp Ck,s,r−1
++ Nk,s,r−1
+,
+
+(23)
+
+opp
+Ck,s,r
++ ϵopp
+opp
+∑︁
+.
+π
+ˆ︁k,s,r =
+opp
+j,u (Cj,u,r + ϵopp )
+
+use
+For a registered attempt, qˆ︁k,r
+is estimated only from variables measurable before Uk,r is realized. For k ∈ Ar , define
+
+(24)
+
+{︄
+dk,r = min dmax ,
+
+Other pre-outcome estimators are compatible with the framework if they preserve the same support and information
+boundary.
+
+1
+use , q
+max{ˆ︁
+qk,r
+min }
+
+}︄
+,
+
+(33)
+
+and
+bk,r = mk,r dk,r .
+
+(34)
+
+B. Observation Correction and Local Hájek Normalization
+The ideal first-stage weight for a realized opportunity is
+o
+ζk,r,i
+a⋆k,r,i = obs .
+pk,r,i
+
+(25)
+
+The implemented plug-in weight is stabilized as
+{︄
+}︄
+o
+ζˆ︁k,r,i
+ak,r,i = min amax ,
+.
+max{ˆ︁
+pobs
+k,r,i , pmin }
+Define the corrected total mass
+∑︂
+mk,r =
+Rk,r,i Ok,r,i ak,r,i ,
+
+(26)
+
+and the corrected opportunity-stratum mass
+∑︂
+msk,r,s =
+Rk,r,i Ok,r,i ak,r,i 1{s(i) = s}.
+
+,
+
+k ∈ Ar .
+
+(28)
+
+(29)
+
+i
+
+(35)
+
+ˆ︁ is a probability vector on Ar .
+Thus β
+r
+To separate the exact statistical identity from its stabilized
+implementation, define the ideal untruncated quantities
+∑︂
+
+Rk,r,i Ok,r,i a⋆k,r,i ,
+
+(36)
+
+i
+
+Rk,r,i Ok,r,i a⋆k,r,i
+,
+m⋆k,r
+1
+d⋆k,r = use ,
+qk,r
+Uk,r m⋆k,r d⋆k,r
+⋆
+βk,r
+= ∑︁
+⋆
+⋆ .
+j Uj,r mj,r dj,r
+
+a⋆k,r,i =
+
+i
+
+(37)
+(38)
+(39)
+
+For every target-relevant delivered record,
+
+RAVEN aggregates only target-relevant usable clients: Ar ≜
+{k ∈ Ur : mk,r > 0}. Every k ∈ Ar has well-defined normalR
+O
+ak,r,i
+ized record weights ak,r,i = k,r,i mk,r,i
+. Its deploymentk,r
+opportunitycomposition
+
+The local effective sample size is
+m2k,r
+1
+= ∑︁ 2 .
+2
+i (Rk,r,i Ok,r,i ak,r,i )
+i ak,r,i
+
+neff
+k,r = ∑︁
+
+j∈Ar bj,r
+
+(27)
+
+the corrected deployment-group mass
+∑︂
+mgk,r,g =
+Rk,r,i Ok,r,i ak,r,i 1{h(i) = g},
+
+mg
+k,r,g
+mk,r , and its
+ms
+stratum composition is csk,r,s = mk,r,s
+. Both
+k,r
+vectors sum to one for k ∈ Ar .
+
+bk,r
+βˆ︁k,r = ∑︁
+
+m⋆k,r =
+
+i
+
+group composition is cgk,r,g =
+
+The selection-corrected reference aggregation vector is
+
+(30)
+
+It measures weight concentration and is deliberately distinct
+from the target-equivalent corrected mass mk,r .
+
+o
+ζk,r,i
+⋆
+a⋆k,r,i ∝ Rk,r,i Ok,r,i Uk,r obs use .
+βk,r
+pk,r,i qk,r
+
+(40)
+
+Equation (40) is an identity for the ideal untruncated conˆ︁ and ak,r,i are stabilized plug-in
+struction. The implemented β
+r
+counterparts. They are not claimed to preserve exact unbiasedness when clipping is active.
+The corrected deployment-group composition represented
+ˆ︁
+by the usable data before server calibration is ω ref
+r = Mr β r .
+ref
+Even a statistically valid reconstruction need not satisfy ω r =
+µ in a finite mobile window. The current feasible client set
+can lack target support.
+
+7
+
+D. Information Boundary and Stabilization
+Every correction applied in window r is measurable before
+its own random outcome. Opportunity estimates use lagged
+opportunity history, observation propensities exclude the current sensing outcome and label, and usable-update propensities
+exclude the realized U outcome and future events. The server
+determines αr without inspecting the coordinates, norm, or direction of a current random update for the purpose of assigning
+that update’s weight. The clipping constants in (26) and (33)
+are finite-sample bias–variance stabilizers. Exact identification
+in Section VI concerns the ideal ratios, or equivalently regimes
+in which the stabilizing bounds are inactive on target support.
+
+Selection reconstruction determines what the usable data
+statistically represent. It does not guarantee that the intended
+deployment target is instantaneously realizable from the curˆ︁ as a
+rently available clients. RAVEN therefore treats β
+r
+corrected reference and calibrates it within the support feasible
+at window closure.
+A. Feasible Aggregation Set
+Let Kr = |Ar | in an active window and retain Mr =
+[cgk,r ]k∈Ar . The server chooses αr ∈ RKr from
+}︃
+{︃
+1
+, (41)
+Cr = α : 1⊤ α = 1, 0 ≤ αk ≤ αr , ∥α∥22 ≤
+Er
+{︃
+{︃
+}︃}︃
+1
+αr = min 1, max αmax ,
+,
+Kr
+E r = min{Emin , Kr }.
+
+(42)
+
+Here 0 < αmax ≤ 1 and Emin ≥ 1 are frozen design
+parameters. The coordinate cap controls single-client dominance, while the ℓ2 constraint imposes a minimum effective
+aggregation support. The uniform vector 1/Kr belongs to Cr ,
+so every active window has at least one feasible aggregation
+vector.
+RAVEN also uses pre-aggregation uncertainty only. A
+lagged variance proxy is
+
+2∥QR ∥1
+.
+SR
+
+(44)
+
+The full derivation is given in the supplemental material. This
+relation connects bounded long-term debt to structural target
+mismatch. It does not claim that the debt component must
+have a large empirical effect in every dataset.
+C. Feasibility-Aware Calibration Program
+
+Jr (α) = − Q⊤
+r Mr α +
+
+RAVEN
+
+solves
+
+λg
+∥Mr α − µ∥22
+2
+
+λβ
+ˆ︁ ∥2
+∥α − β
+r 2
+2
+λv ⊤
+α Vr α + λ s τ ⊤
++
+r α.
+2
++
+
+(45)
+
+The debt term prioritizes accumulated under-served groups,
+and the group term reduces instantaneous deployment mismatch. The reference term keeps calibration anchored to the
+selection-corrected mass. The variance term discourages concentrated uncertain updates, and the staleness term penalizes
+old usable updates. These are coordinated terms of one calibration mechanism rather than five independent innovations.
+ˆ︁ and αr is fundamental. β
+ˆ︁
+The distinction between β
+r
+r
+answers what the usable data represent after sequential selection correction. αr answers what can be feasibly aggregated
+now while tracking the deployment target. The former is
+statistical reconstruction; the latter is mobile-feasibility-aware
+realization.
+D. Global Update and Window Logic
+Let α⋆r denote the solution of (P2). The server update is
+∑︂
+⋆
+θr+1 = θr − ηr
+αk,r
+uk,r .
+(46)
+k∈Ar
+
+2
+
+S k,r−
+vk,r =
++ vfloor ,
+max{neff
+k,r , 1}
+
+∥ω R − µ∥1 ≤
+
+For
+every
+active
+window,
+(P2) minα∈Cr Jr (α). The objective is
+
+V. F EASIBILITY-AWARE TARGET C ALIBRATION
+
+where
+
+For every prefix with SR > 0, the recursion implies the
+deterministic accounting relation
+
+Vr = diag(vk,r ) ⪰ 0,
+
+(43)
+2
+where S k,r− is available before the current random update
+is weighted. Let τ r ≥ 0 denote the frozen pre-aggregation
+staleness vector.
+B. Long-Term Target Debt
+Finite-window feasibility can make Mr α = µ impossible.
+|G|
+RAVEN maintains a nonnegative target-debt vector Qr ∈ R+ ,
+initialized by Q0 = 0. In an active window, Qr+1 =
+[Qr + ηr (µ − ω r )]+ , with ω r = Mr αr . If the window is
+inactive, Qr+1 = Qr . A positive Qr,g records accumulated
+under-service of deployment group g without pretending that
+unavailable target mass can be synthesized in the current
+window.
+
+After aggregation, the server updates the debt via Qr+1 =
+[Qr + ηr (µ − ω r )]+ , where ω r = Mr αr . It then advances
+all lagged selection/variance states. If Ar = ∅, the window
+is inactive. In that case θr+1 = θr and Qr+1 = Qr , and the
+window does not contribute to SR . The operational sequence is
+therefore threefold: layered reconstruction yields the corrected
+ˆ︁ ; the calibration program (P2) then proreference weights β
+r
+duces the feasible aggregation weights α⋆r ; finally, aggregation
+and the debt update are performed.
+VI. T HEORETICAL A NALYSIS
+We state only the results needed by the paper’s mainline.
+The analysis does not claim identification under arbitrary
+hidden confounding, recovery outside support, or retrospective
+exact optimality of every logged numerical solver output.
+
+8
+
+A. Assumptions
+A1 (Compatible target support and positivity). The public
+tar
+target measures satisfy (5)–(12). Whenever πk,i
+> 0, the
+corresponding opportunity-event law satisfies Propp (k, i) > 0
+on windows in which that target component is eligible for
+use
+reconstruction. Moreover, pobs
+k,r,i > 0 and qk,r > 0 on
+the target-supported sequential events to which their inverse
+factors are applied.
+A2 (Sequential pre-outcome ignorability). Conditional on
+the legal history at each stage, the observation and usableupdate indicators are conditionally mean-ignorable for the
+target moment being reconstructed. The O model conditions
+only on Hobs . For every target-relevant observed opportunity
+event e with mark (ke , ie ) = (k, i), the legal pre-U history
+use
+Hk,r
+is sufficient for usable-update censoring in the sense that,
+on Oe = 1 and k ∈ Er ,
+⃓
+]︄
+[︄
+Uk,r ⃓⃓ use
+(47)
+E use ⃓ Hk,r , Oe = 1, ke = k, ie = i = 1.
+qk,r ⃓
+The U model may therefore condition on the already realized
+sensing-side registration state, but not on the future U outcome
+or post-U information.
+A3 (Correct ideal ratios and cluster-level regularity). For
+the exact identification statement, Propp , pobs , and q use equal
+their population counterparts and the inverse weights are
+untruncated, or the stabilizing bounds are inactive on relevant
+support. Writing NRopp for the total number of opportunity
+events in the first R windows, the asymptotic regime satisfies
+NRopp → ∞. Along this growing sequence of opportunityevent clusters/windows, the weighted numerator and denominator satisfy a weak law of large numbers. This holds, for
+example, under independent windows or a stationary/mixing
+process with uniformly integrable weighted cluster contributions. The normalized denominator converges in probability to
+a strictly positive limit.
+A4 (Convex calibration). In every active window, Kr ≥ 1,
+0 < αmax ≤ 1, Emin ≥ 1, Vr ⪰ 0, λβ > 0, and λg , λv , λs ≥
+0. The feasible set is (41)–(42).
+A5 (Quantitative positivity on target support). On the same
+target-supported events as A1, the opportunity, observation,
+and usable-update margins are bounded away from zero by
+true
+πmin , ptrue
+min , and qmin , respectively. The implemented floors
+true
+satisfy 0 < pmin ≤ ptrue
+min and 0 < qmin ≤ qmin . Plug-in errors
+on that support are uniformly bounded by επ , εp , εq ; the Hájek
+denominators satisfy Br , Br⋆ ≥ Bmin > 0; and the active set
+Ar , composition Mr , and feasible set Cr are identical for the
+ideal and practical references. If a risk unit has π tar = 0 while
+ˆ︁ A5 does not hold.
+Design still changes ζ,
+B. Target Risk Is Not Arrival Risk
+Proposition 1 (Target-vs-arrival risk distinction). Let ϖ tar
+˜︁arr be two normalized laws on the same finite supported
+and ρ
+˜︁arr , then the two risk functionals
+atomic domain. If ϖ tar ̸= ρ
+are not interchangeable in general: there exists a bounded
+nonnegative error profile ei such that
+∑︂
+∑︂
+ϖitar ei ̸=
+ρ˜︁arr
+(48)
+i ei .
+i
+
+i
+
+Conversely, equality of the two weighted expectations for every
+bounded error profile implies equality of the two underlying
+laws.
+Proof. See the supplemental material.
+□
+Proposition 1 states a functional distinction. It does not
+assert that every fixed predictor must incur different numerical
+risks, nor that the minimizers of the two risks must differ for
+every model class.
+
+C. Normalized Sequential Target Reconstruction
+For the ideal analysis, let Or denote the multiset of realized
+opportunity events in window r. Each event e ∈ Or carries
+a mark (ke , ie ) with marginal opportunity law Propp (ke , ie )
+in (2). Observation and usable-update selection then occur
+sequentially according to (3)–(4). Define
+χe = Oe Uke ,r
+
+πktar
+e ,ie
+use
+Propp (ke , ie )pobs
+ke ,r,ie qke ,r
+
+.
+
+(49)
+
+Proposition 2 (Normalized target reconstruction). Under A1–
+A3, for any bounded function ϕ(k, i),
+∑︁
+∑︁
+r<R
+e∈Or χe ϕ(ke , ie ) p
+ˆ︁
+∑︁
+∑︁
+ΦR =
+−
+→ Φtar ,
+(50)
+r<R
+e∈Or χe
+where
+Φtar =
+
+∑︂
+
+tar
+πk,i
+ϕ(k, i).
+
+(51)
+
+k,i
+tar
+Therefore, client–stratum indicators recover πk,s
+. By the compatibility identity (12), choosing ϕ(k, i) = 1{h(i) = g} then
+recovers the deployment-group mass µg .
+
+Proof. See the supplemental material.
+□
+Proposition 2 concerns the ideal pooled sequential correction. It does not imply that the normalized reference β ⋆r of
+every finite window exactly realizes the deployment target.
+Finite-window mobile support may make this impossible,
+which is precisely why Section V introduces feasibility-aware
+calibration. The practical clipped plug-in is a stabilized approximation of the same-window ideal reference (Proposition 3). It is not claimed to be exactly unbiased when its
+bounds are active.
+
+D. Existence and Uniqueness of Feasible Calibration
+Theorem 1 (Unique solution of the calibration program). Under A4, every active window has a nonempty compact convex
+feasible set Cr , and the calibration program minα∈Cr Jr (α)
+has a unique global minimizer α⋆r .
+Proof. See the supplemental material.
+□
+The theorem concerns the mathematical program itself. It
+does not retrospectively certify that every logged numerical
+solution was exactly optimal. The experimental audit establishes feasibility where reconstructable; exact post-hoc solver
+optimality is not claimed.
+
+9
+
+RQ1: Does two-stage non-random selection create a
+meaningful deployment-target risk mismatch, including
+under real mobility opportunity?
+• RQ2: Does the dataset-gated RAVEN default reduce
+structural deployment-target mismatch, remain competitive on target RMSE, and stay non-inferior on four-block
+Proposition 3 (Practical plug-in perturbation). Assume A1,
+worst-group RMSE? A pre-registered under-served-block
+A4, and A5. Let β ⋆r be the same-window ideal untruncated
+prediction check is reported as a recorded negative, not
+ˆ︁ the implemented clipped plug-in. Let α⋆ (β)
+reference and β
+as a second external win.
+r
+denote the unique P2 minimizer at that fixed window state.
+• RQ3: How do the core correction and calibration comThen
+ponents contribute, and when should Design be applied?
+⃦
+⃦
+(︁
+)︁
+E1 is used only as a balanced no-harm control. E2 addresses
+⃦ˆ︁
+β r − β ⋆r ⃦1 ≤ C1 επ + εp + εq + εclip ,
+(52)
+RQ1 by comparing arrival-weighted and deployment-target⃦
+⃦
+⃦
+⃦
+⃦α
+ˆ︁ r − α⋆r ⃦2 ≤ ⃦ˆ︁
+(53) weighted risks under controlled two-stage selection. A T-Drive
+β r − β ⋆r ⃦2 ,
+⃦
+⃦
+⃦
+⃦
+⋆⃦
+⋆ ⃦
+⃦Mr (α
+⃦ˆ︁
+ˆ︁ r − αr ) 2 ≤ ∥Mr ∥2 β r − β r 2 ,
+(54) taxi replay then checks whether the same four-block target–
+opportunity mismatch appears under real mobility opportunity.
+E3 addresses RQ2 on the two scientifically comparable Senwhere
+{︄
+sorScope}︄ and U-Air blocks, using the dataset-gated default
+2Kr nr
+dmax
+dmax
+amax
+(Design on SensorScope; Design off on U-Air). E4 addresses
+C1 =
+max
+,
+2 p
+true , q
+true , amax +dmax .
+Bmin
+πmin
+min qmin
+min πmin pmin pmin
+RQ3 by removing one correction or calibration component at
+(55) a time, and keeps the U-Air full-Design reversal in the record.
+The result is a stability bound. It does not assert unbiasedness This organization mirrors the theoretical chain: Proposition 1
+of the practical estimator, identification on {π tar = 0}, or distinguishes the two risk semantics, Proposition 2 gives the
+robustness to a change of Ar .
+target-law interpretation of ideal sequential reconstruction,
+Proof. See the supplemental material.
+□ Proposition 3 relates the clipped plug-in to that ideal referProposition 3 is part of the reconstruction and calibration ence when A5 holds, and Section V maps the reconstructed
+theory, not a fourth contribution. The constant C1 is con- reference to a feasible aggregation decision while tracking the
+servative: it becomes vacuous if π
+→ 0 or B
+→ 0, deployment target under finite-window mobile support.
+E. Practical Plug-in Perturbation
+Write ˜︁
+a and d˜︁ for the unclipped plug-in ratios in (26) and
+(33), and let εclip collect the clipping residuals (˜︁
+a − amax )+
+∑︁
+and (d˜︁ − dmax )+ . Let nr = maxk∈Ar i Rk,r,i Ok,r,i and
+Kr = |Ar |.
+
+min
+
+•
+
+min
+
+which is exactly the support-incompatible Design regime.
+The bound therefore does not explain the U-Air full-Design
+reversal, where 25.5% of risk units have π tar = 0 and only
+51.6% of windows keep the same Ar . When A5 holds, P2
+does not amplify the same-window reference error (see the
+supplemental material).
+F. Implications for RAVEN-MCS
+The theoretical chain now matches the three-part design.
+Proposition 1 formalizes why a usable-update law cannot
+replace the deployment target by convention. Proposition 2
+shows that, under explicit support, sequential ignorability,
+correct ideal selection laws, and cluster-level regularity, the
+layered opportunity–observation–usable correction has a coherent target-law interpretation. Theorem 1 establishes that
+the resulting corrected reference can be mapped to a unique
+feasible aggregation decision in every active window. Proposition 3 then relates the implemented clipped plug-in to
+that same-window ideal reference when A5 holds. Together
+with the debt accounting relation (44), these results support
+RAVEN’s target-alignment mainline without claiming universal predictive superiority or guarantees outside the supported,
+conditionally identifiable regime.
+VII. E VALUATION
+We evaluate RAVEN-MCS around the three questions implied by the theory in Sections III–VI, rather than around
+individual implementation modules.
+
+A. Experimental Setup
+1) Datasets and target semantics: Table II summarizes the
+evaluated datasets. SensorScope [41], [42]1 and U-Air [43]2
+provide the main E3/E4 evidence. For both, the deploymenttarget mapping h(i) consists of four UTC time-of-day groups
+(00–06, 06–12, 12–18, and 18–24), whose masses are constructed from the training split without test-label values. Their
+opportunity strata s(i) are finer: spatial identity × four time
+blocks × weekday/weekend. Accordingly, h(i) and s(i) retain
+the distinct semantics required by Section III-B. SensorScope
+contains 55 station-level spatial identities and at most 440
+opportunity strata, whereas U-Air contains 36 spatial identities
+and at most 288 strata.
+NSW-Traffic [44]3 contains 43 stations and uses four prespecified coordinate-based regions; its opportunity strata combine region, time block, and weekday/weekend information,
+yielding at most 32 strata. We use this dataset for the E2
+risk-semantic experiment. We do not use its cross-vintage E3
+outputs for method-level inference.
+T-Drive [45] supplies a real-mobility opportunity replay,
+not a method ranking. Processed taxi trajectories yield R on
+9994 spatial cells and 5837 taxis; observation and usableupdate layers remain Complete-aligned controlled processes.
+The four UTC deployment groups are the same h(i) used on
+SensorScope and U-Air.
+1 https://doi.org/10.5281/zenodo.2654726
+2 http://urban-computing.com/data
+3 https://opendata.transport.nsw.gov.au/data/dataset/
+nsw-roads-traffic-volume-counts-api
+
+10
+
+TABLE II
+DATASETS AND THEIR ROLES IN THE EVALUATION . E ACH DATASET IS CITED TO ITS PUBLIC SOURCE . TARGET CONSTRUCTION USES
+PUBLIC / TRAINING - SIDE INFORMATION AND NEVER TEST- LABEL VALUES .
+Dataset
+SensorScope [41]
+U-Air [43]
+NSW-Traffic [44]
+T-Drive [45]
+
+Spatial identities
+
+Train/Val/Test
+
+|G|
+
+Opportunity stratum s(i)
+
+Max. strata
+
+Paper role
+
+55
+36
+43
+9994 cells
+
+10285/3465/3410
+5688/1908/1908
+18576/6192/6192
+285659/–/74569
+
+4
+4
+4
+4
+
+station × time block × day type
+spatial ID × time block × day type
+region × time block × day type
+cell × time block × day type
+
+440
+288
+32
+–
+
+E3/E4 main
+E3/E4 main
+E2 main
+G3 replay, not ranking
+
+2) Selection protocol and compared methods: The main
+E3/E4 condition is Complete-aligned, in which opportunity,
+observation, and usable-update selection are all active and nonrandom in the same direction. All compared methods within
+a paired block consume the same shared selection trace (the
+recorded opportunity, observation, registration, and updateavailability events), so they face identical selection events.
+The five principal same-backbone baselines are FedAvgWindow [12], FedAsync-Window [17], TimeAlign-Agg (our
+windowed time-aware aggregator implemented in the spirit
+of the federated MCS completion architecture of [16], not
+an official reproduction of that system), Local-Hájek (withinclient inverse-probability / Hájek normalization [37], [38]),
+and TwoStage-Hájek (the same Hájek family applied sequentially to the opportunity and observation layers). The main effectiveness table additionally reports two windowed participation baselines, FedAU-Window and ObsUse-Window. FedAUWindow adapts participation debiasing [24] to window-close
+aggregation. ObsUse-Window applies the paper’s observation
+and usable-update corrections without Design, P2, or debt.
+Neither is an official reproduction. FedCure [27] is not included. Inst-Cal and Debt-Cal expose the transition from
+reconstruction to calibration and are reported in the appendix.
+Central-All, Central-Delivered, and RAVEN-SimOracle are
+reference-only methods.
+The paper default is dataset-gated, not a single full-RAVEN
+stack on every dataset. Design is kept on SensorScope, where
+target support is compatible, and dropped on U-Air, where
+25.5% of risk units have π tar = 0. Sealed raven still means
+full Design; the gate is an assignment of that existing estimator.
+A support-compatible mixture target was tested as a universal
+Design repair and failed the SensorScope do-not-break rule; it
+is not a paper method.
+E2 uses 20 paired seeds for each method and scenario.
+E3 uses 20 paired seeds per scientifically comparable dataset
+and method. E4 uses the same 20 seeds for full RAVEN and
+each one-factor ablation. The balanced E1 sanity control uses
+five pre-specified seeds. The 20 seeds capture algorithmic and
+EventTrace randomness; they are not independent cities or
+calendar windows. No test result is used to tune the selection
+process, method parameters, target groups, or opportunity
+strata.
+3) Metrics and statistical policy: Prediction is measured
+under the deployment target by RMSEµ . The external worstgroup endpoint WorstGroupRMSE is the maximum RMSE
+over the same four UTC six-hour deployment groups that
+define µ; it is not the finer runtime grouping used by some
+internal diagnostics. The under-served-block score uses the
+same four groups but evaluates only the block whose public
+
+target mass most exceeds opportunity mass (Section VII-D).
+Tail RMSE remains a supplementary tail-group score. For
+RQ1 only, RMSEρ uses the atomic arrival law in (15).
+Structural alignment is measured by ∆group (R) = ∥ω R − µ∥1
+and ∆c-s in (20). Smaller values are better for all main metrics.
+All formal method comparisons are paired by seed. We
+use the paired Wilcoxon protocol [46] and apply Holm correction [47] within the predeclared comparison families at
+α = 0.05; absolute differences below 10−12 are treated as
+numerical ties. Tables report mean ± standard deviation. Noninferiority of gated RAVEN to adapted FedAU and ObsUse on
+WorstGroupRMSE is a pre-registered mean-relative +0.5%
+rule, not a claim that Holm tests fail to reject. A later underserved-block check uses the same 0.5% mean-relative rule on
+validation only; a win would have required gated RAVEN to
+beat both adapted FedAU and ObsUse by at least 0.5%. For
+P2, warning-affected allocations satisfy the recorded feasibility
+constraints; the stored outputs do not support retrospective
+certification of exact numerical optimality.
+B. RQ1: Does Two-Stage Selection Change the Relevant Risk?
+We first verify that RAVEN does not require biased selection to obtain a reasonable operating point. Under the
+balanced E1 control, TimeAlign obtains the lowest mean
+deployment-target RMSE, 7.7108 ± 0.0272, while RAVEN
+obtains 7.7154 ± 0.0337. RAVEN’s mean relative degradation
+from the preselected TimeAlign reference is only 0.0599%,
+and the one-sided 95% upper bound is 0.134%, below the
+pre-specified 3% no-harm margin (supplemental material). E1
+therefore serves only as a benign-selection sanity check. It
+does not establish RAVEN superiority.
+We then test the premise of Proposition 1 using the NSWTraffic E2 experiment. For each method and seed, define the
+change from the Balanced reference to Complete-aligned as
+∆µ = RMSEaligned
+− RMSEbalanced
+,
+µ
+µ
+
+(56)
+
+∆ρ = RMSEaligned
+− RMSEbalanced
+,
+ρ
+ρ
+
+(57)
+
+and the pre-specified difference-of-differences
+Daligned = ∆µ − ∆ρ .
+
+(58)
+
+If the two risk views reacted interchangeably to the same
+selection shift, Daligned would concentrate around zero.
+Instead, Fig. 2 shows a stable negative shift for all five
+methods. Mean Daligned ranges from −0.0209 to −0.0214;
+17–18 of the 20 paired seeds are negative for each method, and
+the paired Wilcoxon tests against zero give p = 4.83 × 10−4 –
+5.86 × 10−4 . The mean target-risk change is only about
+8 × 10−4 , whereas the mean arrival-risk change is about
+
+Daligned = ¢RMSE ¹ ¡ ¢RMSE ½
+
+11
+
+target ¹
+
+0.01
+0.00
+
+0.6
+
+−0.01
+
+real R
+unit-balanced
+
+−0.03
+−0.04
+−0.05
+FedAvg
+
+FedAsync
+
+TimeAlign
+
+RAVEN
+
+2S-Hajek
+
+(a) Seed-level Daligned (20 paired seeds)
+
+group mass
+
+−0.02
+
+0.4
+
+0.2
+
+20.0
+
+Negative seeds / 20
+
+17.5
+15.0
+12.5
+
+0.0
+
+10.0
+7.5
+
+H1
+
+H2
+
+H3
+
+H4
+
+(a) Four-block masses on T-Drive
+
+5.0
+2.5
+0.0
+
+vg
+FedA
+
+FedA
+
+sync
+
+n
+
+g
+eAli
+Tim
+
+2S-H
+
+ajek
+
+RAV
+
+EN
+
+(b) Direction count (not a ranking)
+
+TV(¼ opp ; ¹)
+
+Fig. 2. RQ1 on complete-aligned NSW-Traffic. (a) Seed-level Daligned =
+∆RMSEµ − ∆RMSEρ over 20 paired seeds. (b) Count of negative seeds
+(not a method ranking). A negative value means that the arrival-weighted risk
+changes more than the deployment-target risk under the same selection shift.
+Local-Hájek is omitted here because E2 reports the five methods used in the
+risk-semantic test.
+
+0.3
+
+0.278
+
+0.192
+
+0.2
+0.142
+
+0.1
+
+2.2 × 10−2 . Thus the same two-stage selection shift changes
+the arrival-weighted and deployment-target-weighted views
+by materially different amounts. Complete method-level E2
+statistics are in the supplemental material.
+Answer to RQ1. Yes. The E2 result is empirical evidence
+for the risk-semantic distinction formalized by Proposition 1:
+under structured two-stage non-random selection, the arrival
+law need not be an interchangeable proxy for the intended
+deployment target. This experiment validates the problem
+being solved. It is not a RAVEN-vs-baseline superiority test.
+The same four-block mismatch appears under real taxi
+opportunity. Fig. 3 compares the public H1–H4 masses with
+the mass induced by processed T-Drive trajectories. Real R
+is intermittent (mean client active fraction 0.425, burstiness
++0.38, cell coverage 0.547), whereas protocol Completealigned R on SensorScope and U-Air is always-on. The
+four-block total variation TV(π opp , µ) is 0.142 on T-Drive,
+0.192 on protocol SensorScope, and 0.278 on protocol UAir, all above the pre-registered 0.05 threshold. Observation
+and usable-update layers on T-Drive remain Complete-aligned
+controls; this is a real-mobility opportunity replay (evidence
+level A), not an end-to-end MCS system and not a T-Drive
+RMSE ranking.
+C. RQ2: Structural Alignment, Target RMSE, and WorstGroup Risk
+Table III reports the paper default. On SensorScope that default is full RAVEN (Design on). It reduces ∆group /∆c-s from
+FedAvg’s 1.0558/1.2903 to 1.0139/1.2644 (3.96%/2.01%).
+Four-block worst-group RMSE is interchangeable with
+adapted FedAU and ObsUse (TEST mean relative change
+−0.01% and +0.05%).
+On U-Air the default drops Design. Gated RAVEN obtains
+∆group = 1.0165 and RMSEµ = 1.1131, versus 1.0924 and
+
+0.0
+
+T-Drive
+
+SS protocol
+
+UA protocol
+
+(b) Four-block opportunity--target TV
+Fig. 3. T-Drive real-mobility opportunity replay. (a) Four UTC deploymentgroup masses: public target µ, real taxi opportunity, and a unit-balanced
+reference. Real R under-serves the afternoon block H3 and over-serves
+H4. (b) Four-block TV(π opp , µ) under real T-Drive opportunity and under
+protocol-generated SensorScope / U-Air opportunity. Protocol R is alwayson; taxi R is intermittent. No method is ranked on T-Drive.
+
+1.1911 for full Design. Fig. 4 shows why: estimated Design
+and oracle Design both worsen the primaries by about 7%
+relative to No-Design, so the reversal is support-incompatible
+π tar , not plug-in failure. Full Design still improves ∆c-s
+(1.2334 versus gated 1.2949) and is retained as a labeled
+diagnostic row. On the four-block worst-group endpoint, gated
+RAVEN is non-inferior to adapted FedAU and ObsUse (TEST
++0.48% and +0.44%, both inside the +0.5% rule; Holm
+tests against those two are not significant). It improves on
+TwoStage-Hájek and FedAvg (TEST −9.11% and −6.17%).
+Full Design does not: its worst-group RMSE is 1.2630 versus
+FedAvg 1.2596. We do not claim a best worst-group method.
+The sealed same-backbone family, including FedAsync,
+TimeAlign, Inst-Cal, and Debt-Cal, is in the supplemental
+material. On U-Air those RAVEN bars are full Design, not the
+gated default of Table III. Local-Hájek coincides with FedAvg
+because the realized within-client Hájek weights are uniform
+(supplemental material).
+These findings agree with the scope of the theory. Proposition 2 gives a target-law interpretation to the ideal pooled
+sequential correction, but explicitly does not claim that every
+finite-window reference vector exactly equals µ. Proposition 3
+
+12
+
+TABLE III
+E3 MAIN EFFECTIVENESS ( MEAN ± STD OVER 20 SEEDS ). L OWER IS BETTER . RAVEN-MCS ( GATED ) IS THE PAPER DEFAULT: D ESIGN ON
+S ENSOR S COPE , D ESIGN OFF ON U-A IR . U-A IR FULL D ESIGN IS A DIAGNOSTIC , NOT THE DEFAULT. WorstGroupRMSE IS THE MAXIMUM ERROR
+OVER THE FOUR UTC DEPLOYMENT GROUPS , NOT A FINER INTERNAL GROUPING . F EDAU-W INDOW AND O BS U SE -W INDOW ARE WINDOWED
+ADAPTATIONS , NOT OFFICIAL REPRODUCTIONS . G ATED RAVEN IS NON - INFERIOR TO THOSE TWO ON WORST- GROUP RMSE (+0.5% RULE ); WE DO
+NOT CLAIM A H OLM - SIGNIFICANT WIN OVER F EDAU. L OCAL -H ÁJEK COINCIDES WITH F EDAVG AND IS OMITTED .
+Method
+
+RMSEµ
+
+WorstGroupRMSE
+
+FedAvg-Window
+TwoStage-Hajek
+SensorScope FedAU-Window
+ObsUse-Window
+RAVEN-MCS (gated)
+
+7.9389 ± 0.0459
+7.9309 ± 0.0543
+7.9364 ± 0.0507
+7.9293 ± 0.0513
+7.9380 ± 0.0473
+
+8.6716 ± 0.0471
+8.6633 ± 0.0556
+8.6691 ± 0.0522
+8.6618 ± 0.0528
+8.6707 ± 0.0486
+
+1.0558 ± 0.0288 1.2903 ± 0.0306
+1.0353 ± 0.0347 1.2910 ± 0.0324
+1.0719 ± 0.0263 1.3057 ± 0.0313
+1.0650 ± 0.0272 1.3062 ± 0.0311
+1.0139 ± 0.0305 1.2644 ± 0.0312
+
+FedAvg-Window
+TwoStage-Hajek
+FedAU-Window
+ObsUse-Window
+RAVEN (full Design)
+RAVEN-MCS (gated)
+
+1.1882 ± 0.0649
+1.2160 ± 0.0716
+1.1128 ± 0.0600
+1.1120 ± 0.0600
+1.1911 ± 0.0659
+1.1131 ± 0.0638
+
+1.2596 ± 0.0709
+1.2907 ± 0.0753
+1.1701 ± 0.0689
+1.1692 ± 0.0689
+1.2630 ± 0.0716
+1.1703 ± 0.0734
+
+1.1218 ± 0.0417 1.2621 ± 0.0309
+1.1196 ± 0.0445 1.2406 ± 0.0297
+1.0557 ± 0.0370 1.3291 ± 0.0360
+1.0413 ± 0.0374 1.3235 ± 0.0349
+1.0924 ± 0.0479 1.2334 ± 0.0320
+1.0165 ± 0.0458 1.2949 ± 0.0293
+
+Dataset
+
+U-Air
+
++7.50%
+
+rel. change (%)
+
+6
+
++7.48%
+
+Estimated Design
+Oracle Design
+
+4
+2
+
+∆group
+
+∆c-s
+
+four-block worst-group RMSE. On U-Air, the gated default
+(Design off) improves the primary endpoints and worst-group
+RMSE relative to full Design and to FedAvg/TwoStage-Hájek,
+and is non-inferior to adapted FedAU and ObsUse. Full
+Design’s U-Air ∆c-s gain is retained as a trade-off, not hidden.
+A pre-registered under-served-block check on validation did
+not produce a second external win (Section VII-D). Traffic is
+excluded from this inferential conclusion.
+
+0
+-1.23%
+
+-1.03%
+
+SensorScope
+
+D. A Pre-Registered Under-Served-Block Check
+
+U-Air
+
+(a) ¢ group vs No-Design
++7.11%
+
++7.07%
+
+rel. change (%)
+
+6
+
+4
+
+g ⋆ = arg
+
+2
+
+0
+
+Four-block WorstGroupRMSE is the maximum error over
+the UTC groups that define µ. That maximum can coincide
+with the intrinsically hardest block rather than with the block
+whose public target mass most exceeds opportunity mass.
+After freezing the paper default and the worst-group look, we
+therefore scored a second prediction endpoint on validation
+only. The under-served block is
+max
+
+(︁
+
+g∈{0,1,2,3}
+
+-0.01%
+
+-0.01%
+
+SensorScope
+
+U-Air
+
+(b) RMSE ¹ vs No-Design
+Fig. 4. Design versus No-Design, estimated and oracle propensities (20 seeds;
+positive = Design worse). On SensorScope, Design slightly reduces ∆group
+(−1.23% estimated, −1.03% oracle) with a flat RMSE. On U-Air, estimated
+and oracle Design both worsen ∆group by about 7.5% and RMSE by about
+7.1%. The paper therefore keeps Design on SensorScope and drops it on UAir. Full Design’s U-Air ∆c-s gain remains in Table V.
+
+applies only when A5 holds and Ar is fixed; that is the SensorScope Design regime, not U-Air full Design. E3 evaluates
+the finite-window system after the feasibility-aware calibration
+in (P2).
+Answer to RQ2. On SensorScope, gated RAVEN (Design on)
+consistently reduces structural mismatch relative to FedAvg
+while remaining competitive on RMSE and non-inferior on
+
+)︁
+µg − πgopp,4 ,
+
+(59)
+
+using the frozen public four-block target µ and the trainingsplit opportunity law marginalized onto the same groups,
+π opp,4 . Ties take the lowest index. The pair (µ, π opp,4 , g ⋆ )
+was frozen before any method scoring; g ⋆ was not chosen
+by inspecting per-block RMSE. SensorScope yields g ⋆ = 2
+(12:00–18:00 UTC; gap +0.114); U-Air yields g ⋆ = 3 (18:00–
+24:00 UTC; gap +0.172). The score is the µ-weighted RMSE
+on that block, already stored from the same traces as Table III.
+A win requires the mean paired relative change versus adapted
+FedAU and versus ObsUse to be at most −0.5%; no-harm is
+at most +0.5%. Validation uses ten paired seeds; Table IV
+reports the resulting relative RMSEs. The corresponding test
+seeds were not opened.
+Neither dataset meets the win rule; both satisfy no-harm.
+On SensorScope, g ⋆ is the worst group. On U-Air it is not,
+and the gated default still misses −0.5%. Informed µ-weighted
+copies were not trained. Worst-group non-inferiority remains
+the only external endpoint statement.
+
+13
+
+7.5
++0.01
++0.01
++0.01
++0.01
+
+1.0
++0.60*
+
+0.5
+
++0.31*
++0.10
+
++0.03
++0.03
+
++0.01*
++0.00*
+
+0.0
+
+0.010
++0.01
++0.01
+
+0.005
+
+0.000
+
+-0.07*
+
+RMSE ¹
+-0.26
+
+−0.5
+Design Obs
+
+5.0
+
+rel. change (%)
+
+¢ c; s
+
+Use
+
+Inst Debt
+
+Use
+
+Design Obs
+
++4.99*
+
+Inst Debt
+
+(b) SensorScope, prediction
+
+RMSE ¹
+Tail RMSE
+
+¢ c; s
+
+0
+
+2.5
+0.0
+−2.5
+−5.0
+
+−2
+−4
+−6
+-6.55*
+-6.88*
+
+−7.5 -6.94*
+
+Tail RMSE
+
+(a) SensorScope, structural
+
+2
+
+¢ group
+
+rel. change (%)
+
+0.015
+
+¢ group
++1.24*
+
+rel. change (%)
+
+rel. change (%)
+
+1.5
+
+Design Obs
+
+Use
+
+Inst Debt
+
+(c) U-Air, structural
+
+−8
+
+Design Obs
+
+Use
+
+Inst Debt
+
+(d) U-Air, prediction
+
+Fig. 5. RQ3 one-factor component removal. Positive bars mean that removing the component worsens the metric; ∗ marks Holm-adjusted p < 0.05.
+(a)(b) SensorScope structural and prediction endpoints; (c)(d) U-Air structural and prediction endpoints, with insets zooming the non-Design components.
+Values with |δ| < 0.05% and no significance mark are left unlabeled. Sign reversals show endpoint- and dataset-dependent roles rather than uniformly additive
+benefits. A magnified U-Air non-Design view is in the supplemental material.
+TABLE IV
+VALIDATION - ONLY UNDER - SERVED - BLOCK RMSE OF GATED RAVEN
+RELATIVE TO ADAPTED F EDAU AND O BS U SE ( TEN PAIRED SEEDS ;
+NEGATIVE MEANS GATED RAVEN IS BETTER ). A WIN REQUIRES BOTH
+COLUMNS ≤ −0.5%. N EITHER DATASET MEETS THAT RULE ; BOTH
+SATISFY NO - HARM (≤ +0.5%). T HE TEST LOOK WAS NOT OPENED .
+Dataset
+
+g ⋆ (UTC) vs FedAU vs ObsUse Win / no-harm
+
+SensorScope 2 (12–18)
+U-Air
+3 (18–24)
+
++0.05%
+−0.44%
+
++0.15%
+−0.27%
+
+No / Yes
+No / Yes
+
+E. RQ3: What Do the Correction and Calibration Components
+Do?
+E4 removes Design, Obs, Use, Inst, or Debt one at a time
+under the same Complete-aligned selection trace and paired
+seeds. Fig. 5 visualizes the one-factor removals, and Table V
+reports the relative change
+δremove (M ) =
+
+Mablated − Mfull
+× 100%,
+Mfull
+
+(60)
+
+so a positive number means that removing the component
+worsens the metric. The Inst ablation uses the one-factor
+removal under the same paired seeds, and all significance
+statements below use the pre-specified Holm families.
+TABLE V
+E4 RELATIVE CHANGE (%) AFTER REMOVING ONE RAVEN COMPONENT.
+P OSITIVE MEANS THE ABLATION WORSENS THE METRIC ; NEGATIVE
+MEANS IT IMPROVES THE METRIC . ∗ DENOTES H OLM - ADJUSTED
+p < 0.05.
+Dataset
+
+Removed
+
+Design
+Obs
+SensorScope Use
+Inst
+Debt
+
+U-Air
+
+Design
+Obs
+Use
+Inst
+Debt
+
+∆group
+
+∆c-s
+
++1.237∗
++0.096
++0.026
+−0.260
++0.014∗
+
++0.597∗
+−0.070∗
++0.026
++0.310∗
++0.004∗
+
+RMSEµ Tail RMSE
++0.005
++0.012
++0.012
+−0.002
+< 0.001
+
++0.005
++0.011
++0.012
+−0.002
+< 0.001
+
+−6.943∗ +4.990∗ −6.553∗
++0.123∗ +0.022 −0.010
++0.014 −0.014 +0.024
+−0.089 −0.143 +0.131∗
++0.004∗ +0.002∗ < 0.001
+
+−6.875∗
+−0.010
++0.025
++0.136∗
+< 0.001
+
+a) Design correction.: Removing Design worsens ∆c-s
+by 0.597% on SensorScope and 4.990% on U-Air, both Holmsignificant. On U-Air the same ablation improves ∆group by
+6.943% and RMSEµ by 6.553%. That reversal is the reason
+the paper default is gated: Design is support-incompatible on
+U-Air (25.5% zero-target units; Ar overlap 51.6%), not because estimated propensities fail (Fig. 4). Oracle Design tracks
+estimated Design. SensorScope keeps Design. A 774-window
+check found identical R/O/U and registration events, with
+differences beginning only at the positive-weight/P2-support
+layer (supplemental material). The non-Design components are
+magnified in the supplemental material.
+b) Observation and usable-update correction.: Observation correction has a smaller, endpoint-specific effect. On
+U-Air, removing Obs worsens ∆group by 0.123% (Holmsignificant), while its ∆c-s and prediction effects are not
+significant. On SensorScope, the +0.096% group change is
+not significant after Holm correction, whereas ∆c-s slightly
+improves by 0.070% when Obs is removed. Thus Obs is best
+characterized as another endpoint trade-off. In contrast, removing Use produces no significant change in any of the four core
+endpoints on either dataset. E4 therefore does not establish
+the marginal indispensability of usable-update correction in
+this Complete-aligned family; the theoretical selection layer
+remains distinct, but its isolated empirical effect is not clearly
+established here.
+c) Instantaneous calibration and debt.: Inst also exhibits
+a trade-off. On SensorScope, removing it worsens ∆c-s by
+0.310% (significant), while the −0.260% change in ∆group
+is not significant after Holm correction. On U-Air, the small
+structural changes are not significant, but removing Inst
+worsens RMSEµ and tail RMSE by 0.131% and 0.136%,
+respectively (both pHolm = 0.0194). Hence Inst exhibits an
+endpoint trade-off, rather than a purely structural role.
+Debt has the narrowest but most consistent role. Removing
+it significantly increases both structural mismatches on both
+datasets, but only by 0.0141%/0.0040% on SensorScope and
+0.0043%/0.0024% on U-Air, well below the 0.5% pairedrelative minimum practical effect used elsewhere; prediction
+changes are negligible. This matches long-term accounting
+in (44), not a standalone performance driver, and does not
+
+14
+
+establish ∥QR ∥1 = o(SR ).
+Answer to RQ3. RAVEN is a coupled correction-andcalibration system, not five monotone boosters. Design is
+applied only on compatible support: it helps SensorScope and
+reverses U-Air primaries while still buying ∆c-s . Obs has
+weaker endpoint-specific effects, Use has no clear isolated
+effect in this family, Inst trades finite-window structure against
+prediction, and Debt is statistically consistent but quantitatively small.
+VIII. D ISCUSSION AND L IMITATIONS
+RAVEN-MCS aligns windowed-asynchronous federated
+completion with a public deployment target. The claim is
+not universal RMSE dominance. The paper default is datasetgated: Design is kept when target support is compatible
+and dropped when it is not. Structural metrics measure that
+objective directly; prediction risk must remain competitive.
+A. Gated Design and the U-Air Reversal
+On SensorScope, Design slightly improves both structural
+endpoints without an RMSE cost. On U-Air, full Design
+improves ∆c-s while worsening ∆group , RMSE, tail RMSE,
+and four-block worst-group RMSE by about 7%. Oracle
+Design tracks estimated Design, so the reversal is supportincompatible π tar —25.5% of risk units have zero target mass,
+and Ar changes—not a failure of plug-in propensities. Proposition 3 does not apply in that regime: A5 requires positivity on
+target support and a common active set. A support-compatible
+mixture target was tested as a universal repair and failed the
+SensorScope do-not-break rule; it is not a hidden method.
+Gating is the practical realization of Contribution 2, not a
+fourth contribution.
+The same trade-off explains why structural alignment need
+not move RMSE one-for-one. Proposition 1 distinguishes the
+two risk functionals; Proposition 2 identifies the ideal pooled
+correction, not every finite-window β r . On U-Air the gated
+default also improves RMSE; on SensorScope the RMSE
+change is negligible. Adapted FedAU and ObsUse remain the
+strong participation comparators on four-block worst-group
+RMSE. Gated RAVEN is non-inferior to both under the preregistered +0.5% rule. We do not claim a best worst-group
+method, and FedCure was not run. The under-served-block
+check remains a recorded negative; it did not retune the gated
+default.
+B. Mobility, Identification, and Privacy
+T-Drive supplies a real-mobility opportunity process (evidence level A): R is trajectory-derived, while O and U
+stay Complete-aligned controls. Real taxi R is intermittent;
+protocol R on SensorScope and U-Air is always-on. The
+four-block target–opportunity mismatch has the same sign
+in all three traces. This is not an end-to-end system, not
+real federated updates, and not a T-Drive ranking. Original
+SensorScope and U-Air traces are not claimed to contain
+mobile clients.
+A1–A2 remain modeling boundaries: RAVEN does not
+recover mass outside opportunity support and does not correct
+
+arbitrary hidden confounding. If h(i) or s(i) is misspecified,
+calibration tracks the wrong target. Proposition 3 is a stability
+statement for the clipped plug-in when A5 holds; it is not
+unbiasedness, and C1 is not a tight RMSE certificate.
+Propensity covariates can include location, network state,
+and device availability. RAVEN uses only lagged pre-outcome
+histories, does not centralize raw records, and needs only
+aggregated selection statistics at the server. Collecting those
+metadata still has a privacy cost; deployments should minimize
+the covariate set and retain aggregated rather than per-event
+features where possible.
+C. Evidence Scope
+NSW-Traffic is RQ1 evidence only; it is not used to rank
+methods. Local-Hájek equals FedAvg on these blocks because
+within-client weights are uniform (supplemental material), a
+protocol-specific degeneracy rather than a general equivalence.
+P2 outputs are feasibility-certified (supplemental material);
+exact post-hoc optimality of every solve is not claimed. On
+later reconstructable logs, CLARABEL and SCS typically
+match to 10−8 in ℓ1 , with a worst-window allocation gap of
+0.0056 that does not move the gated headlines. A windowlevel 10−4 /10−3 divergence rule is recorded; a formal rerun
+was not authorized.
+The 20 seeds are algorithmic and EventTrace randomness,
+not independent cities. Debt effects of 0.002%–0.014% are
+quantitatively small relative to the 0.5% practical threshold
+even where p < 0.05. U-Air Design-off remains a practically
+meaningful effect under that same threshold. The underserved-block percentages are validation-only; they are not a
+test ranking and do not reopen Design on U-Air.
+IX. C ONCLUSION
+Windowed-asynchronous federated MCS completion should
+align selected mass with the public deployment target, not
+with the arrival law of usable updates. RAVEN-MCS separates
+that target from the R/O/U selection process, reconstructs
+target-relevant mass from legal pre-outcome histories, and
+calibrates the reference inside the current feasible window,
+carrying residual group under-service as target debt. When
+the deployment and arrival laws differ, their risks are not
+interchangeable. The ideal sequential correction recovers the
+compatible target under support and identification conditions;
+the calibration program is uniquely solvable; and the clipped
+plug-in is a stable perturbation of the same-window ideal
+reference when target support is compatible.
+The paper default applies Design only on compatible support. On SensorScope, Design remains part of the default and
+improves structural alignment. On U-Air, full Design reverses
+the primary endpoints because of support-incompatible target mass; the gated default drops Design, stays non-inferior
+to adapted FedAU and ObsUse on four-block worst-group
+RMSE, and keeps the ∆c-s trade-off in the record. The
+under-served-block check on validation did not beat those
+two by 0.5%, so the test look was not opened. Real T-Drive
+taxi opportunity reproduces the four-block mismatch without
+supplying a method ranking. Usable-update correction has no
+
+15
+
+clear isolated effect in the tested family, and target debt is
+quantitatively small.
+These guarantees hold under explicit support and sequential
+identification. They do not cover arbitrary hidden confounding,
+misspecified targets, or end-to-end mobile systems. Extending
+the replay to jointly measured observation and network processes, and testing the gate on additional cities, remains future
+work.
+Proofs, additional tables, runtime measurements, and the
+sealed same-backbone E3 plots are submitted as a separate
+supplemental PDF and are not part of this file.
+R EFERENCES
+[1] R. K. Ganti, F. Ye, and H. Lei, “Mobile crowdsensing: Current state and
+future challenges,” IEEE Communications Magazine, vol. 49, no. 11, pp.
+32–39, 2011.
+[2] B. Guo, Z. Wang, Z. Yu, Y. Wang, N. Y. Yen, R. Huang, and X. Zhou,
+“Mobile crowd sensing and computing: The review of an emerging
+human-powered sensing paradigm,” ACM Computing Surveys, vol. 48,
+no. 1, pp. 1–31, 2015, art. no. 7.
+[3] H. Ma, D. Zhao, and P. Yuan, “Opportunities in mobile crowd sensing,”
+IEEE Communications Magazine, vol. 52, no. 8, pp. 29–35, 2014.
+[4] E. Wang, M. Zhang, W. Liu, H. Xiong, B. Yang, Y. Yang, and
+J. Wu, “Outlier-concerned data completion exploiting intra- and interdata correlations in sparse crowdsensing,” IEEE/ACM Transactions on
+Networking, vol. 31, no. 2, pp. 648–663, 2023.
+[5] C. Li, Z. Li, S. Long, P. Qiao, Y. Yuan, and G. Wang, “Robust data inference and cost-effective cell selection for sparse mobile crowdsensing,”
+IEEE/ACM Transactions on Networking, vol. 32, no. 5, pp. 3760–3775,
+2024.
+[6] E. Wang, W. Liu, W. Liu, C. Xiang, B. Yang, and Y. Yang, “Spatiotemporal transformer for data inference and long prediction in sparse mobile
+crowdsensing,” ACM Computing Surveys, vol. 58, no. 4, 2025, art. no.
+7.
+[7] E. Wang, M. Zhang, B. Yang, X. Yang, Z. Song, and Y. Yang, “Fewshot data completion for new tasks in sparse crowdsensing,” in IEEE
+INFOCOM 2024 – IEEE Conference on Computer Communications.
+IEEE, 2024, pp. 1831–1840.
+[8] E. Wang, Z. Song, M. Wu, W. Liu, B. Yang, Y. Yang, and J. Wu, “A
+new data completion perspective on sparse crowdsensing: Spatiotemporal evolutionary inference approach,” IEEE Transactions on Mobile
+Computing, vol. 24, no. 3, pp. 1357–1371, 2025.
+[9] Y. Xu, J. Liu, E. Wang, B. Yang, D. Luan, Y. Yang, and J. Deng,
+“Rethinking the effect of sparse data completion on sparse mobile
+crowdsensing tasks,” IEEE Transactions on Mobile Computing, vol. 24,
+no. 6, pp. 5094–5105, 2025.
+[10] W. Liu, H. Du, E. Wang, J. Lv, W. Liu, B. Yang, and J. Wu,
+“Spatio-temporal pyramid-based multi-scale data completion in sparse
+crowdsensing,” IEEE Transactions on Mobile Computing, vol. 25, no. 1,
+pp. 1270–1286, 2026.
+[11] M. Zhang, W. Li, E. Wang, and J. Wu, “MapT-STC: A one-shot
+spatiotemporal data completion framework for cold-start tasks in sparse
+crowdsensing,” IEEE Transactions on Mobile Computing, vol. 25, no. 9,
+pp. 14 336–14 351, Sep. 2026.
+[12] B. McMahan, E. Moore, D. Ramage, S. Hampson, and B. Aguera y
+Arcas, “Communication-efficient learning of deep networks from decentralized data,” in Proceedings of the 20th International Conference
+on Artificial Intelligence and Statistics, ser. Proceedings of Machine
+Learning Research, vol. 54. PMLR, 2017, pp. 1273–1282.
+[13] Q. Yang, Y. Liu, T. Chen, and Y. Tong, “Federated machine learning:
+Concept and applications,” ACM Transactions on Intelligent Systems and
+Technology, vol. 10, no. 2, pp. 1–19, 2019, art. no. 12.
+[14] P. Kairouz, H. B. McMahan, B. Avent et al., “Advances and open
+problems in federated learning,” Foundations and Trends in Machine
+Learning, vol. 14, no. 1–2, pp. 1–210, 2021.
+[15] T. Li, A. K. Sahu, A. Talwalkar, and V. Smith, “Federated learning:
+Challenges, methods, and future directions,” IEEE Signal Processing
+Magazine, vol. 37, no. 3, pp. 50–60, 2020.
+[16] E. Wang, B. Li, W. Liu, Z. Han, C. Wang, X. Li, and J. Wu,
+“Federated learning-based distributed data completion in sparse mobile
+crowdsensing,” IEEE Transactions on Mobile Computing, vol. 25, no. 5,
+pp. 6784–6800, 2026.
+
+[17] C. Xie, O. Koyejo, and I. Gupta, “Asynchronous federated optimization,”
+in Proceedings of the 12th Annual Workshop on Optimization for
+Machine Learning (OPT 2020), arXiv:1903.03934, 2019.
+[18] J. Liu, H. Xu, L. Wang, Y. Xu, C. Qian, J. Huang, and H. Huang,
+“Adaptive asynchronous federated learning in resource-constrained edge
+computing,” IEEE Transactions on Mobile Computing, vol. 22, no. 2,
+pp. 674–690, 2023.
+[19] S. Sun, Z. Zhang, Q. Pan, M. Liu, Y. Wang, T. He, Y. Chen, and Z. Wu,
+“Staleness-controlled asynchronous federated learning: Accuracy and
+efficiency tradeoff,” IEEE Transactions on Mobile Computing, vol. 23,
+no. 12, pp. 12 621–12 634, 2024.
+[20] E. Wang, W. Liu, W. Liu, Y. Yang, B. Yang, and J. Wu, “Spatiotemporal
+urban inference and prediction in sparse mobile crowdsensing: A graph
+neural network approach,” IEEE Transactions on Mobile Computing,
+vol. 22, no. 11, pp. 6784–6799, 2023.
+[21] S. Wang and M. Ji, “A unified analysis of federated learning with arbitrary client participation,” in Advances in Neural Information Processing
+Systems, vol. 35, 2022, pp. 19 124–19 137.
+[22] D. Jhunjhunwala, P. Sharma, A. Nagarkatti, and G. Joshi, “Fedvarp:
+Tackling the variance due to partial client participation in federated
+learning,” in Proceedings of the Thirty-Eighth Conference on Uncertainty in Artificial Intelligence, ser. Proceedings of Machine Learning
+Research, vol. 180. PMLR, 2022, pp. 906–916.
+[23] F. Wu, S. Guo, Z. Qu, S. He, Z. Liu, and J. Gao, “Anchor sampling for
+federated learning with partial client participation,” in Proceedings of the
+40th International Conference on Machine Learning, ser. Proceedings of
+Machine Learning Research, vol. 202. PMLR, 2023, pp. 37 379–37 416.
+[24] S. Wang and M. Ji, “A lightweight method for tackling unknown participation statistics in federated averaging,” in The Twelfth International
+Conference on Learning Representations, 2024, pp. 854–893.
+[25] Z. Sun, Z. Zhang, Z. Xu, G. Joshi, P. Sharma, and E. Wei, “Debiasing federated learning with correlated client participation,” in The
+Thirteenth International Conference on Learning Representations, 2025,
+pp. 28 564–28 595.
+[26] M. Mohri, G. Sivek, and A. T. Suresh, “Agnostic federated learning,” in
+Proceedings of the 36th International Conference on Machine Learning,
+ser. Proceedings of Machine Learning Research, vol. 97. PMLR, 2019,
+pp. 4615–4625.
+[27] Y. Chen, J. Lu, S. Cao, D. Wang, G. Li, and G. Wen, “FedCure:
+Mitigating participation bias in semi-asynchronous federated learning
+with non-IID data,” in Proceedings of the AAAI Conference on Artificial
+Intelligence, vol. 40, no. 25, pp. 20 418–20 426, 2026.
+[28] W. Liu, E. Wang, B. Yang, Y. Yang, and J. Wu, “Data pricing via
+uncertainty quantification for sparse mobile crowdsensing,” IEEE Transactions on Services Computing, vol. 19, no. 2, pp. 1062–1074, 2026.
+[29] Y. Liu, Z. He, J. Liang, Z. Li, and Q. Deng, “Multidimensional trust
+evaluation and task match based workers recruitment scheme for mcs,”
+IEEE Transactions on Dependable and Secure Computing, vol. 23, no. 3,
+pp. 5058–5074, 2026.
+[30] M. Zhang, X. Li, B. Luo, Y. Ren, Y. Miao, X. Liu, and R. H.
+Deng, “An incentive mechanism for privacy preserved data trading with
+verifiable data disturbance,” IEEE Transactions on Dependable and
+Secure Computing, vol. 22, no. 4, pp. 3960–3976, 2025.
+[31] J. Lu, T. Huang, S. Cao, S. Yu, R. Jia, and M. Li, “Piece: Incentivizing
+personalized privacy-preserving for multi-version model marketplace in
+federated learning,” IEEE Transactions on Information Forensics and
+Security, vol. 20, pp. 9387–9398, 2025.
+[32] P. Zhang, Z. Zhang, Y. Cao, X. Cheng, Y. Zhu, Z. Liu, and J. Zhang,
+“Locally differentially private truth discovery for sparse crowdsensing,”
+IEEE Transactions on Knowledge and Data Engineering, vol. 38, no. 2,
+pp. 1189–1205, 2026.
+[33] M. Li, Z. Wang, C. Ma, C. Jia, L. Qi, and R. Du, “STDFL: A
+spatio-temporal-aware dynamic federated learning framework for spatial
+crowdsourcing,” IEEE Transactions on Mobile Computing, vol. 25,
+no. 9, pp. 13 559–13 576, 2026.
+[34] M. S. Islam et al., “SEAFL: Enhancing efficiency in semi-asynchronous
+federated learning through adaptive aggregation and selective training,”
+arXiv preprint arXiv:2503.05755, 2025.
+[35] T. Li, A. K. Sahu, M. Zaheer, M. Sanjabi, A. Talwalkar, and V. Smith,
+“Federated optimization in heterogeneous networks,” in Proceedings of
+Machine Learning and Systems, vol. 2, pp. 429–450, 2020.
+[36] S. P. Karimireddy, S. Kale, M. Mohri, S. Reddi, S. Stich, and A. T.
+Suresh, “SCAFFOLD: Stochastic controlled averaging for federated
+learning,” in Proceedings of the 37th International Conference on
+Machine Learning, ser. Proceedings of Machine Learning Research, vol.
+119. PMLR, pp. 5132–5143, 2020.
+
+16
+
+[37] D. G. Horvitz and D. J. Thompson, “A generalization of sampling
+without replacement from a finite universe,” Journal of the American
+Statistical Association, vol. 47, no. 260, pp. 663–685, 1952.
+[38] J. Hájek, “Comment on “an essay on the logical foundations of survey
+sampling, part one”,” in Foundations of Statistical Inference, V. P.
+Godambe and D. A. Sprott, Eds. Toronto: Holt, Rinehart and Winston,
+1971, pp. 236–242.
+[39] H. Shimodaira, “Improving predictive inference under covariate shift by
+weighting the log-likelihood function,” Journal of Statistical Planning
+and Inference, vol. 90, no. 2, pp. 227–244, 2000.
+[40] J. M. Robins, A. Rotnitzky, and L. P. Zhao, “Estimation of regression
+coefficients when some regressors are not always observed,” Journal
+of the American Statistical Association, vol. 89, no. 427, pp. 846–866,
+1994.
+[41] F. Ingelrest, G. Barrenetxea, G. Schaefer, M. Vetterli, O. Couach, and
+M. Parlange, “SensorScope: Application-specific sensor network for
+environmental monitoring,” ACM Transactions on Sensor Networks,
+vol. 6, no. 2, pp. 1–32, 2010, art. no. 17.
+[42] G. Barrenetxea, “SensorScope data,” Zenodo, 2019. [Online]. Available:
+https://doi.org/10.5281/zenodo.2654726
+[43] Y. Zheng, F. Liu, and H.-P. Hsieh, “U-Air: When urban air quality
+inference meets big data,” in Proceedings of the 19th ACM SIGKDD
+International Conference on Knowledge Discovery and Data Mining.
+ACM, 2013, pp. 1436–1444.
+[44] Transport for NSW, “NSW roads traffic volume counts,”
+TfNSW Open Data Hub, 2024, accessed: Aug. 14, 2026.
+[Online]. Available: https://opendata.transport.nsw.gov.au/data/dataset/
+nsw-roads-traffic-volume-counts-api
+[45] J. Yuan, Y. Zheng, C. Zhang, W. Xie, X. Xie, G. Sun, and Y. Huang,
+“T-Drive: Driving directions based on taxi trajectories,” in Proceedings
+of the 18th SIGSPATIAL International Conference on Advances in
+Geographic Information Systems, 2010, pp. 99–108.
+[46] F. Wilcoxon, “Individual comparisons by ranking methods,” Biometrics
+Bulletin, vol. 1, no. 6, pp. 80–83, 1945.
+[47] S. Holm, “A simple sequentially rejective multiple test procedure,”
+Scandinavian Journal of Statistics, vol. 6, no. 2, pp. 65–70, 1979.
+
+

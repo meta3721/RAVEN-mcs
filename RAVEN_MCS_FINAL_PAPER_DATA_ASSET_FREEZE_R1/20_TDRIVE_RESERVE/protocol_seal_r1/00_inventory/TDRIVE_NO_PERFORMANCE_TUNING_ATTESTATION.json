@@ -1,0 +1,17 @@
+{
+  "authority_order": [
+    "processed_dataset_manifest",
+    "linked_source_config",
+    "e9_only_if_hash_linked (not used as protocol)",
+    "deterministic_reconstruction",
+    "STOP"
+  ],
+  "baseline_weakened": false,
+  "grid_chosen_by_test_metric": false,
+  "mu_chosen_by_test_metric": false,
+  "raven_config_tuned_on_tdrive_test": false,
+  "result_dependent_semantic_choice": false,
+  "slot_chosen_by_test_metric": false,
+  "split_chosen_by_test_metric": false,
+  "target_h_chosen_by_test_metric": false
+}

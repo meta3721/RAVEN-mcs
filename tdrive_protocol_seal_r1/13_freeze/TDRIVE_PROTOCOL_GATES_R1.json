@@ -1,0 +1,175 @@
+{
+  "all_pass": true,
+  "gates": {
+    "TDPS-G1": {
+      "detail": "formal/training started false",
+      "pass": true
+    },
+    "TDPS-G10": {
+      "detail": "FROZEN",
+      "pass": true
+    },
+    "TDPS-G11": {
+      "detail": "PRE_REGISTERED_PROTOCOL_FALLBACK",
+      "pass": true
+    },
+    "TDPS-G12": {
+      "detail": "sum_ok=True",
+      "pass": true
+    },
+    "TDPS-G13": {
+      "detail": "FROZEN",
+      "pass": true
+    },
+    "TDPS-G14": {
+      "detail": "REAL_FROM_TDRIVE",
+      "pass": true
+    },
+    "TDPS-G15": {
+      "detail": "O labelled",
+      "pass": true
+    },
+    "TDPS-G16": {
+      "detail": "CONTROLLED_EXPERIMENTAL",
+      "pass": true
+    },
+    "TDPS-G17": {
+      "detail": "crosswalk",
+      "pass": true
+    },
+    "TDPS-G18": {
+      "detail": "FROZEN",
+      "pass": true
+    },
+    "TDPS-G19": {
+      "detail": "PASS",
+      "pass": true
+    },
+    "TDPS-G2": {
+      "detail": "canary started false",
+      "pass": true
+    },
+    "TDPS-G20": {
+      "detail": "[30001, 30002, 30003, 30004, 30005, 30006, 30007, 30008, 30009, 30010]",
+      "pass": true
+    },
+    "TDPS-G21": {
+      "detail": "FROZEN",
+      "pass": true
+    },
+    "TDPS-G22": {
+      "detail": "generator hashes",
+      "pass": true
+    },
+    "TDPS-G23": {
+      "detail": "PASS",
+      "pass": true
+    },
+    "TDPS-G24": {
+      "detail": "5",
+      "pass": true
+    },
+    "TDPS-G25": {
+      "detail": "n_identity=5",
+      "pass": true
+    },
+    "TDPS-G26": {
+      "detail": "TRANSFER_FROM_E3_E4_FULL_RAVEN",
+      "pass": true
+    },
+    "TDPS-G27": {
+      "detail": "n_baselines=4",
+      "pass": true
+    },
+    "TDPS-G28": {
+      "detail": "('Delta_group', 'Delta_c_s', 'RMSE_mu')",
+      "pass": true
+    },
+    "TDPS-G29": {
+      "detail": "Delta_group = ||omega_hat - mu||_1",
+      "pass": true
+    },
+    "TDPS-G3": {
+      "detail": "HASH_BOUND",
+      "pass": true
+    },
+    "TDPS-G30": {
+      "detail": "client × opportunity_stratum s(i)",
+      "pass": true
+    },
+    "TDPS-G31": {
+      "detail": "RMSE_mu = sqrt(sum_i varpi_i^tar (Yhat_i - Y_i)^2)",
+      "pass": true
+    },
+    "TDPS-G32": {
+      "detail": "NOT_REQUIRED_FOR_TDRIVE_PRIMARY_CLAIM",
+      "pass": true
+    },
+    "TDPS-G33": {
+      "detail": "stats",
+      "pass": true
+    },
+    "TDPS-G34": {
+      "detail": "claim rules",
+      "pass": true
+    },
+    "TDPS-G35": {
+      "detail": "n=50",
+      "pass": true
+    },
+    "TDPS-G36": {
+      "detail": "n_canary=5",
+      "pass": true
+    },
+    "TDPS-G37": {
+      "detail": "n=5",
+      "pass": true
+    },
+    "TDPS-G38": {
+      "detail": "wording seal",
+      "pass": true
+    },
+    "TDPS-G39": {
+      "detail": "source freeze",
+      "pass": true
+    },
+    "TDPS-G4": {
+      "detail": "HASH_BOUND",
+      "pass": true
+    },
+    "TDPS-G40": {
+      "detail": "master keys",
+      "pass": true
+    },
+    "TDPS-G41": {
+      "detail": "no result-dependent choice",
+      "pass": true
+    },
+    "TDPS-G42": {
+      "detail": "no test-metric protocol choices",
+      "pass": true
+    },
+    "TDPS-G5": {
+      "detail": "RECOVERED",
+      "pass": true
+    },
+    "TDPS-G6": {
+      "detail": "FROZEN",
+      "pass": true
+    },
+    "TDPS-G7": {
+      "detail": "FROZEN",
+      "pass": true
+    },
+    "TDPS-G8": {
+      "detail": "500",
+      "pass": true
+    },
+    "TDPS-G9": {
+      "detail": "30",
+      "pass": true
+    }
+  },
+  "n_pass": 42,
+  "n_total": 42
+}

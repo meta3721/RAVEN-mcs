@@ -1,0 +1,54 @@
+Phase A Design mechanism audit (no new training).
+
+Sources
+- Design ON:  D:/Cursor/raven.mcs/artifacts/e3_formal_runs_r1/runs/*/raven/seed*
+- Design OFF: D:/Cursor/raven.mcs/artifacts/e4_core_mechanism_ablation_r1/runs/*/raven_wo_design/seed*
+- Complete-aligned only. Seeds 30001-30020.
+
+Coverage
+- seed rows: 40
+- eventtrace matches: 40/40
+- ON p2 files: 0 (expected 0 on E3 formal raven)
+- OFF p2 files: 40
+- aligned windows: 3279; usable same-client+dim: 2618
+- zeta vectors are not persisted; clip_rate_stage1 is the stored Design-clip proxy.
+- P2 target dimension is runtime h(i) (U-Air 144, SensorScope 220), not the 4-block paper caption.
+- coarse_* collapses station::block by block = group_id % 4.
+
+Seed-level means (ON = full RAVEN, OFF = w/o-Design)
+[sensorscope] n=20
+  Delta_group: ON 1.013943 vs OFF 1.026489 (ON vs OFF -1.228%; ON worse 0/20)
+  Delta_c_s: ON 1.264380 vs OFF 1.271932 (ON vs OFF -0.595%; ON worse 0/20)
+  RMSE_mu: ON 7.937989 vs OFF 7.938409 (ON vs OFF -0.005%; ON worse 8/20)
+  Tail_RMSE: ON 8.460049 vs OFF 8.460488 (ON vs OFF -0.005%; ON worse 8/20)
+  clip_rate_stage1: ON 0.000421 vs OFF 0.000000 (ON vs OFF +nan%; ON worse 4/20)
+  ESS: ON 1.672340 vs OFF 1.672340 (ON vs OFF +0.000%; ON worse 0/20)
+[uair] n=20
+  Delta_group: ON 1.092362 vs OFF 1.016515 (ON vs OFF +7.499%; ON worse 20/20)
+  Delta_c_s: ON 1.233390 vs OFF 1.294934 (ON vs OFF -4.753%; ON worse 0/20)
+  RMSE_mu: ON 1.191114 vs OFF 1.113059 (ON vs OFF +7.072%; ON worse 20/20)
+  Tail_RMSE: ON 1.199858 vs OFF 1.117364 (ON vs OFF +7.454%; ON worse 20/20)
+  clip_rate_stage1: ON 0.025958 vs OFF 0.000104 (ON vs OFF +2230.000%; ON worse 19/20)
+  ESS: ON 1.679698 vs OFF 1.676843 (ON vs OFF +0.172%; ON worse 11/20)
+
+Window-level P2 mismatch using OFF-run M,mu and ON/OFF beta,alpha from window_metrics
+[sensorscope] windows=1877 P2||M beta-mu|| ON 1.9733 OFF 1.9733 (ON worse 0.1%)
+  P2||M alpha-mu|| ON 1.9733 OFF 1.9733 (ON worse 0.0%)
+  coarse-4 ||M alpha-mu|| ON-worse frac 7.5%; ||alpha-beta|| ON 0.3302 OFF 0.2189
+[uair] windows=741 P2||M beta-mu|| ON 1.9689 OFF 1.9689 (ON worse 0.0%)
+  P2||M alpha-mu|| ON 1.9689 OFF 1.9689 (ON worse 0.0%)
+  coarse-4 ||M alpha-mu|| ON-worse frac 2.2%; ||alpha-beta|| ON 0.3296 OFF 0.1942
+
+Author verdict (honest)
+- U-Air fine P2 L1 (144-d) is often geometrically flat along the simplex: ||M v - mu||_1 can be identical for different v. Do not use that as evidence that beta is on-target.
+- U-Air coarse-4 ||M beta-mu|| ON-worse frac 20.6%; ||M alpha-mu|| ON-worse frac 2.2%.
+- U-Air ||alpha-beta||_1 is larger with Design ON (0.330 vs 0.194). P2 systematically pulls away from the Design reference.
+- U-Air clip_rate_stage1 ON 0.0260 vs OFF 0.0001. Stored clip rate is modest; extreme-zeta is not the main persisted signal.
+- U-Air seed means: Delta_group ON vs OFF +7.499%; RMSE_mu +7.072%; Delta_c_s -4.753% (positive = Design-on worse).
+- RMSE gap remains large. Even if beta is off-target, a P2 constraint alone is not enough to claim the Design problem is solved.
+- SensorScope seed means: Delta_group -1.228%; RMSE_mu -0.005%; Delta_c_s -0.595%.
+- Support shift is the main U-Air mechanism signal: only 741/1402 active window pairs (52.9%) share the same client set. SensorScope is 1877/1877 (100%). Design changes who is in A_r, not only the weights on a shared support.
+- Therefore matched-window P2/coarse comparisons understate the seed-level Delta_group/RMSE reversal. B1 (same-window constrained P2) cannot repair a support change.
+- Next cheap step is B0 validation gate, not a lambda grid.
+- Phase A does not select a method and does not use a test-set gate.
+- VERDICT_PHASE_A=AUDIT_ONLY. Not VALGATE_SOLVES / CONSTRAINED_SOLVES / DESIGN_DROPPED.

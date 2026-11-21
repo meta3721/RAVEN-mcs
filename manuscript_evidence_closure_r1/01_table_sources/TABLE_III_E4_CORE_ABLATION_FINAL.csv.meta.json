@@ -1,0 +1,17 @@
+{
+  "csv_sha256": "22ca24061b48ceda9414c751fb5335834968c7c6cd5a6d77a1d9b0bb95756a7a",
+  "filters": "final valid 240-cell family; w/o-Inst Generation 2 only",
+  "labels": {
+    "Debt": "STRUCTURAL_ONLY_SUPPORTED (quantitatively small)",
+    "Design": "ENDPOINT_TRADEOFF",
+    "Inst": "ENDPOINT_TRADEOFF",
+    "Obs": "ENDPOINT_TRADEOFF",
+    "Use": "NO_CLEAR_EFFECT"
+  },
+  "n_cells": 240,
+  "source_files": [
+    "paper_ready_r2/06_table_sources/TABLE_E4_CORE_ABLATION_R2.csv"
+  ],
+  "source_sha256": "5509df7ec44029bc1e6f1059337c0bd4b7eee6ceacec0b36c6af2772196c927c",
+  "version": "manuscript_evidence_closure_r1"
+}

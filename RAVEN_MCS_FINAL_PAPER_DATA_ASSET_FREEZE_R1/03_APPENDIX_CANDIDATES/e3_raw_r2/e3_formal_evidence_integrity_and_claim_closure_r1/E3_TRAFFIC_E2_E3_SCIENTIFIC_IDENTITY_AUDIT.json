@@ -1,0 +1,89 @@
+{
+  "checks": {
+    "EventTrace_identity": {
+      "equivalent": true,
+      "note": "E2 EventTraces reused by E3."
+    },
+    "RMSE_mu_formula": {
+      "equivalent": null
+    },
+    "RMSE_mu_reporting_domain": {
+      "equivalent": false
+    },
+    "aggregation_code": {
+      "equivalent": null
+    },
+    "batch_size": {
+      "equivalent": null
+    },
+    "evaluation_feature_extraction": {
+      "equivalent": false,
+      "note": "E3 source revision includes a feature-evaluation fix."
+    },
+    "feature_extraction": {
+      "equivalent": false,
+      "note": "E3 fixes evaluation extract_features wiring."
+    },
+    "initialization_semantics": {
+      "equivalent": null
+    },
+    "inverse_transform_logic": {
+      "equivalent": false,
+      "note": "E3 provides synchronized physical and standardized domains."
+    },
+    "learning_rate": {
+      "equivalent": null
+    },
+    "local_loss_code": {
+      "equivalent": null
+    },
+    "local_steps": {
+      "equivalent": null
+    },
+    "method_source_revision": {
+      "equivalent": false
+    },
+    "model_architecture": {
+      "equivalent": null
+    },
+    "opportunity_stratum_s_i": {
+      "equivalent": true
+    },
+    "optimizer_type": {
+      "equivalent": null
+    },
+    "processed_dataset_hash": {
+      "e2": "db45a2ecc66c27abeaf58b0c03ce66de7bfaf6727f4523ea06ef226a9ce3de50",
+      "e3": "db45a2ecc66c27abeaf58b0c03ce66de7bfaf6727f4523ea06ef226a9ce3de50",
+      "equivalent": true
+    },
+    "runtime_config": {
+      "equivalent": null
+    },
+    "split_hash": {
+      "equivalent": null,
+      "note": "Not jointly recoverable from saved artifacts."
+    },
+    "target_h_i": {
+      "equivalent": true
+    },
+    "target_preprocessing": {
+      "equivalent": null
+    },
+    "train_scaler": {
+      "equivalent": false,
+      "note": "E2 standardized reporting; E3 dual-domain measurement sync."
+    },
+    "weight_decay": {
+      "equivalent": null
+    }
+  },
+  "decision": "TRAFFIC_RMSE_MU_NOT_COMPARABLE_ACROSS_SOURCE_VINTAGES",
+  "interpretation": "A deterministic unit conversion cannot establish paired inferential identity after source/evaluation revision differences.",
+  "load_bearing_non_equivalences": [
+    "feature_extraction",
+    "evaluation_feature_extraction",
+    "inverse_transform_logic",
+    "method_source_revision"
+  ]
+}

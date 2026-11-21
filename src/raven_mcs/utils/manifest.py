@@ -67,12 +67,20 @@ def git_executable() -> str | None:
     return None
 
 
-def _git_info(repo_root: Path | None = None) -> tuple[str, bool | None, str]:
+def _git_info(repo_root: Path | None = None, *, source_paths: tuple[Path, ...] | None = None) -> tuple[str, bool | None, str]:
     cwd = str(repo_root) if repo_root is not None else None
     git = git_executable()
     if git is None:
         return "NO_GIT", None, sha256_json({"git": "NO_GIT"})
     try:
+        if repo_root is not None:
+            actual_root=Path(subprocess.check_output(
+                [git,'rev-parse','--show-toplevel'],cwd=cwd,
+                stderr=subprocess.DEVNULL,text=True).strip()).resolve()
+            if actual_root!=Path(repo_root).resolve():
+                # Explicit roots must identify this checkout, not accidentally
+                # borrow a parent's identity for a nested non-repository folder.
+                return 'NO_GIT',None,sha256_json({'git':'NO_GIT','reason':'explicit_root_mismatch'})
         commit = subprocess.check_output(
             [git, "rev-parse", "HEAD"],
             cwd=cwd,
@@ -89,16 +97,26 @@ def _git_info(repo_root: Path | None = None) -> tuple[str, bool | None, str]:
         )
         dirty = bool(status_bytes.strip())
         diff_bytes = subprocess.check_output(
-            [git, "diff", "--binary", "--no-ext-diff", "HEAD"],
-            cwd=cwd,
-            stderr=subprocess.DEVNULL,
-        )
-        untracked_bytes = subprocess.check_output(
-            [git, "ls-files", "--others", "--exclude-standard", "-z"],
+            [git, "diff", "--binary", "--no-ext-diff", "--no-textconv", "HEAD"],
             cwd=cwd,
             stderr=subprocess.DEVNULL,
         )
         root = Path(cwd) if cwd is not None else Path.cwd()
+        if source_paths is None:
+            untracked_bytes = subprocess.check_output(
+                [git, "ls-files", "--others", "--exclude-standard", "-z"],
+                cwd=cwd, stderr=subprocess.DEVNULL,
+            )
+        else:
+            # Dynamic control freezes its complete computational source closure,
+            # not unrelated multi-GB output files. Scope is explicit in manifest;
+            # the historical whole-repository mode remains available unchanged.
+            names=[]
+            for path in source_paths:
+                resolved=Path(path).resolve()
+                names.append(resolved.relative_to(root.resolve()).as_posix())
+                if not resolved.is_file():raise ValueError(f"missing source dependency: {resolved}")
+            untracked_bytes=b'\0'.join(name.encode('utf-8') for name in sorted(set(names)))+b'\0'
         untracked_content = bytearray()
         for encoded_path in untracked_bytes.split(b"\0"):
             if not encoded_path:
@@ -113,7 +131,9 @@ def _git_info(repo_root: Path | None = None) -> tuple[str, bool | None, str]:
         state_hash = sha256_bytes(
             status_bytes + b"\0" + diff_bytes + b"\0" + bytes(untracked_content)
         )
-    except (subprocess.CalledProcessError, FileNotFoundError, OSError):
+    except (subprocess.CalledProcessError, FileNotFoundError, OSError) as exc:
+        if source_paths is not None:
+            raise RuntimeError(f"SOURCE_MANIFEST_GIT_STATE_FAILED: {exc!r}") from exc
         dirty = None
         state_hash = sha256_json({"git": "STATE_UNAVAILABLE", "commit": commit})
     return commit, dirty, state_hash
@@ -146,6 +166,8 @@ class RunManifest:
     environment: dict[str, Any] = field(default_factory=dict)
     phase: str = "1"
     constitution_version: str = "V2.3"
+    git_state_scope: str = "whole_repository"
+    source_files: list[str] = field(default_factory=list)
 
     def to_dict(self) -> dict[str, Any]:
         return asdict(self)
@@ -224,6 +246,7 @@ def build_manifest(
     repo_root: Path | None = None,
     require_git: bool = False,
     allow_unset_hashes: bool = False,
+    source_paths: tuple[Path, ...] | None = None,
 ) -> RunManifest:
     config_seed = config.get("seed")
     configured_seeds = config.get("seeds")
@@ -236,7 +259,7 @@ def build_manifest(
         raise ValueError(
             "seed_bundle does not match the resolved config seed streams"
         )
-    commit, dirty, git_state_hash = _git_info(repo_root)
+    commit, dirty, git_state_hash = _git_info(repo_root, source_paths=source_paths)
     if require_git and (commit == "NO_GIT" or dirty is None):
         raise RuntimeError("Git is required for an auditable run, but no repository is available")
     if not allow_unset_hashes:
@@ -288,6 +311,8 @@ def build_manifest(
         failure_reason=None,
         seeds=seed_bundle.as_dict(),
         environment=environment_fingerprint(),
+        git_state_scope="explicit_computational_source_closure" if source_paths is not None else "whole_repository",
+        source_files=[str(p) for p in source_paths] if source_paths is not None else [],
     )
     errors = manifest.validate()
     if errors:

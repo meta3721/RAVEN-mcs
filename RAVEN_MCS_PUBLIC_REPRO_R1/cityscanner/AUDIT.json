@@ -1,0 +1,53 @@
+{
+  "c1_kill": true,
+  "experiment_id": "C1-KILL-CITYSCANNER-NYC",
+  "hybrid": true,
+  "kill_bar": -0.005,
+  "n_expected": 50,
+  "n_ledger_rows": 50,
+  "not_mixed_into_table_ii": true,
+  "paired": [
+    {
+      "Delta_c_s_paired_mean_diff": -0.5727089362301137,
+      "Delta_c_s_paired_rel_mean": -0.5015256963593637,
+      "Delta_group_paired_mean_diff": -0.2509362369114058,
+      "Delta_group_paired_rel_mean": -0.7814712343234115,
+      "RMSE_mu_paired_mean_diff": -0.003262124618347001,
+      "RMSE_mu_paired_rel_mean": -0.017108199072823203,
+      "WorstGroupRMSE_paired_mean_diff": -0.0029078813732127534,
+      "WorstGroupRMSE_paired_rel_mean": -0.015589540302724475,
+      "comparator": "fedau_window",
+      "n_paired": 10,
+      "scd_method": "raven"
+    },
+    {
+      "Delta_c_s_paired_mean_diff": -0.5693631678130148,
+      "Delta_c_s_paired_rel_mean": -0.5000372358273962,
+      "Delta_group_paired_mean_diff": -0.2480948590265013,
+      "Delta_group_paired_rel_mean": -0.7793840971044805,
+      "RMSE_mu_paired_mean_diff": -0.0016675659053549895,
+      "RMSE_mu_paired_rel_mean": -0.01338651122527534,
+      "WorstGroupRMSE_paired_mean_diff": -0.0014014631925003517,
+      "WorstGroupRMSE_paired_rel_mean": -0.012305709066392802,
+      "comparator": "obsuse_window",
+      "n_paired": 10,
+      "scd_method": "raven"
+    },
+    {
+      "Delta_c_s_paired_mean_diff": -0.24468130914941577,
+      "Delta_c_s_paired_rel_mean": -0.30135014272078314,
+      "Delta_group_paired_mean_diff": -0.12469067366189734,
+      "Delta_group_paired_rel_mean": -0.6336897969580495,
+      "RMSE_mu_paired_mean_diff": 0.01701942393696361,
+      "RMSE_mu_paired_rel_mean": 0.05589074503361474,
+      "WorstGroupRMSE_paired_mean_diff": 0.018175400965661375,
+      "WorstGroupRMSE_paired_rel_mean": 0.05800854857047982,
+      "comparator": "fedavg_window",
+      "n_paired": 10,
+      "scd_method": "raven"
+    }
+  ],
+  "scd_method": "raven",
+  "status": "PASS",
+  "updated_utc": "2026-09-11T02:59:55.313709+00:00"
+}

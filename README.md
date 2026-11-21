@@ -1,3 +1,25 @@
+# RAVEN-MCS
+
+## Current manuscript and project files
+
+The current manuscript is **RAVEN-MCS: Target-Mass Calibration for Windowed Federated Data Completion in Mobile Crowdsensing**.
+
+- [Main manuscript PDF](TO_OVERLEAF_paper_tmc_r1_clean/main.pdf) and [supplementary PDF](TO_OVERLEAF_paper_tmc_r1_clean/supplemental.pdf).
+- [LaTeX, bibliography, figure sources and data](TO_OVERLEAF_paper_tmc_r1_clean/).
+- [Method implementation](src/), [scripts](scripts/), [configurations](configs/) and [tests](tests/).
+- [Review and revision records](ccf-review-report/) and [additional review reports](ccfa-review-reports/).
+- [Desktop workspace records](workspace_records/), including [research instructions](workspace_records/research-protocols/) and literature searches.
+- [Workspace classification index](WORKSPACE_LAYOUT.md).
+- [Upload scope and exclusions](docs/workspace_sync/sync_scope.json).
+
+The source directories retain their existing structure. Historical reports may contain machine-local absolute paths; those records have been preserved. Large model snapshots, raw dataset downloads, virtual environments, temporary caches and files larger than 10 MiB are outside this Git snapshot. Full local trajectories remain on the originating computer.
+
+The `RAVEN_MCS_PUBLIC_REPRO_R1` directory and older paper packages are historical artifacts; use the current manuscript directory above for the latest paper.
+
+## Historical development README
+
+The following notes are retained from the local project and describe earlier development stages.
+
 # RAVEN-MCS V2.3
 
 Workspace: `D:\Cursor\raven.mcs`

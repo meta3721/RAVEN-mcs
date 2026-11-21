@@ -1,0 +1,18 @@
+path,column,dtype,n_missing,n_unique
+D:/Cursor/raven.mcs/data/processed/tdrive_speed/atomic_units.parquet,unit_id,string,0,435516
+D:/Cursor/raven.mcs/data/processed/tdrive_speed/atomic_units.parquet,spatial_id,string,0,9994
+D:/Cursor/raven.mcs/data/processed/tdrive_speed/atomic_units.parquet,absolute_time,"datetime64[ns, UTC]",0,297
+D:/Cursor/raven.mcs/data/processed/tdrive_speed/atomic_units.parquet,time_index,int64,0,297
+D:/Cursor/raven.mcs/data/processed/tdrive_speed/atomic_units.parquet,target_value,float64,0,435511
+D:/Cursor/raven.mcs/data/processed/tdrive_speed/atomic_units.parquet,split,string,0,3
+D:/Cursor/raven.mcs/data/processed/tdrive_speed/atomic_units.parquet,target_group,string,0,28818
+D:/Cursor/raven.mcs/data/processed/tdrive_speed/atomic_units.parquet,opportunity_stratum,string,0,46082
+D:/Cursor/raven.mcs/data/processed/tdrive_speed/atomic_units.parquet,public_features,str,0,1345
+D:/Cursor/raven.mcs/data/processed/tdrive_speed/atomic_units.parquet,support_flag,bool,0,1
+D:/Cursor/raven.mcs/data/processed/tdrive_speed/atomic_units.parquet,is_warmup,bool,0,2
+D:/Cursor/raven.mcs/data/processed/tdrive_speed/client_measurements.parquet,client_id,string,0,5867
+D:/Cursor/raven.mcs/data/processed/tdrive_speed/client_measurements.parquet,unit_id,string,0,329819
+D:/Cursor/raven.mcs/data/processed/tdrive_speed/client_measurements.parquet,potential_measurement,float64,0,2236271
+D:/Cursor/raven.mcs/data/processed/tdrive_speed/client_measurements.parquet,controlled_generator_parameters,str,2236407,0
+D:/Cursor/raven.mcs/data/processed/tdrive_speed/client_measurements.parquet,split,string,0,3
+D:/Cursor/raven.mcs/data/processed/tdrive_speed/client_measurements.parquet,source_trace_id,string,0,2236407

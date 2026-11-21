@@ -1,0 +1,25 @@
+{
+  "datasets": {
+    "sensorscope": {
+      "evidence_n_groups_ne_4": true,
+      "frozen_target_artifact_path": "artifacts/e3_semantic_alignment_and_runner_integration_closure_r1/E3_SENSORSCOPE_TARGET_SEMANTICS_R2.json",
+      "group_map_hash": "8e11d725728f564d6111e26eb87c9189fefec7e4573200edc63432e756584b03",
+      "mu_hash": "eef7da54b74392f9cda958deb32fa65cca6a46efc036b5c8f8bd334cea2780bf",
+      "n_groups": 220,
+      "production_runner_field": "run_e3_real -> production_target_bundle -> build_full_runner(n_groups,target_mu)",
+      "target_artifact_sha256": "c6194f2aebffe38ee0feed7d83bbebf318e901d5aa788bfb102d01915b159ef6",
+      "uses_time_only_fallback": false
+    },
+    "uair": {
+      "evidence_n_groups_ne_4": true,
+      "frozen_target_artifact_path": "artifacts/e3_semantic_alignment_and_runner_integration_closure_r1/E3_UAIR_TARGET_SEMANTICS_R2.json",
+      "group_map_hash": "7a871c42df3823660e2bd04c633e13afe7f1fb190935c862767b1d8ceb9f7cd7",
+      "mu_hash": "d79b06d7d0dede7ec53cb34a6cb5db095a2bc68dcd722a717d46f749e3ea3117",
+      "n_groups": 144,
+      "production_runner_field": "run_e3_real -> production_target_bundle -> build_full_runner(n_groups,target_mu)",
+      "target_artifact_sha256": "c158ec34582e1124e3b7f72e6ac55dd1b2130a5cf9f030a5ac231e81e8ac39b8",
+      "uses_time_only_fallback": false
+    }
+  },
+  "status": "PRODUCTION_TARGET_WIRING_READY"
+}

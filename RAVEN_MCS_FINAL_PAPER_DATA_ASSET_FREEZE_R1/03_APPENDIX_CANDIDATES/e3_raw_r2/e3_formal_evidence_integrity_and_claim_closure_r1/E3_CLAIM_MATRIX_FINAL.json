@@ -1,0 +1,22 @@
+{
+  "C1": {
+    "finding": "Competitive/selected gains; no universal RMSE superiority, and Traffic old-vs-new inference is excluded.",
+    "status": "PARTIALLY_SUPPORTED"
+  },
+  "C2": {
+    "finding": "Tail evidence is evaluated only in valid same-vintage families.",
+    "status": "PARTIALLY_SUPPORTED"
+  },
+  "C3": {
+    "finding": "Structural discrepancy results are mechanism-level evidence; Traffic reuse is descriptive only.",
+    "status": "PARTIALLY_SUPPORTED"
+  },
+  "C4": {
+    "finding": "SimOracle is retained as oracle context, not a peer superiority family.",
+    "status": "PARTIALLY_SUPPORTED"
+  },
+  "C5": {
+    "finding": "Central references are contextual performance references.",
+    "status": "SUPPORTED"
+  }
+}

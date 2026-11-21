@@ -1,0 +1,35 @@
+{
+  "csv_relative": "D:/Cursor/raven.mcs/paper_ready_r1/06_table_sources/TABLE_E3_MAIN_EFFECTIVENESS.csv",
+  "csv_sha256": "4fc603c0cb82a42c870671341d8c66244e2e3dc374e07e134297e05727b9db0f",
+  "excluded_rows": "all NSW-Traffic / NOT_COMPARABLE",
+  "filters": "comparison_class=SCI_COMPARABLE_MAIN (SensorScope+U-Air only)",
+  "included_seeds": [
+    "30001",
+    "30002",
+    "30003",
+    "30004",
+    "30005",
+    "30006",
+    "30007",
+    "30008",
+    "30009",
+    "30010",
+    "30011",
+    "30012",
+    "30013",
+    "30014",
+    "30015",
+    "30016",
+    "30017",
+    "30018",
+    "30019",
+    "30020"
+  ],
+  "metric_definitions": {},
+  "source_files": [
+    "01_core_data/e3/E3_MAIN_COMPARABLE_LONG.csv"
+  ],
+  "statistical_method": "descriptive means; inferential tests in E3 Holms",
+  "transformations": "mean over seeds; Traffic excluded",
+  "version": "R1"
+}

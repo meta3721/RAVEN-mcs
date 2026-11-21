@@ -1,0 +1,23 @@
+{
+  "strategy": "GAP20-fixed-reference",
+  "seed": 45001,
+  "T": 100,
+  "q": 0.5,
+  "q_role": "diagnostic_prior_not_calibrated",
+  "calibration_only": true,
+  "c_ref": 0.9168365859958755,
+  "reference_time": 20.0,
+  "reference_ell": 0.9069767441860466,
+  "reference_age": 0.49299209049144466,
+  "reference_source": "C:\\Cursor\\raven.mcs\\results_observed_feedback_autonomous_pilot_45001_recovery_20261015\\noqstop\\CLOSURES.json",
+  "frozen_UTC": "2026-10-18T11:05:14.147624+00:00",
+  "threshold": 0.0200001,
+  "formula": "c_ref - (preview.ell + .02*preview.age) + .20*clip(elapsed/4,0,1)",
+  "scientific_change": "dynamic last-release reference replaced by fixed warmup reference; stop kappa=0; full P2 Q unchanged",
+  "instruction": "C:/Users/szr/Desktop/record/1/ccfa-review-reports/OF-v1-small-scope-validation-instructions.md",
+  "CPU_limit": 1000,
+  "wall_limit": 5400,
+  "GPU": 0,
+  "new_SGD_limit": 5000,
+  "new_autonomous_arms_limit": 1
+}

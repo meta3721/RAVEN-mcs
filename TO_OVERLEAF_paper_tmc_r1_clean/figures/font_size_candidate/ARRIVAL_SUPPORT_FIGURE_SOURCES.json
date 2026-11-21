@@ -1,0 +1,84 @@
+{
+  "source": "appendix.tex#tab:arrival_support",
+  "seed_range": [
+    30001,
+    30020
+  ],
+  "support": "nonempty formal complete-aligned arrival logs; not the full Design-on P2 support",
+  "columns": [
+    "dataset",
+    "K",
+    "windows",
+    "missing_pct",
+    "narrow_pct",
+    "adjustable_pct",
+    "L1"
+  ],
+  "rows": [
+    [
+      "Traffic",
+      "<=3",
+      294,
+      75.0,
+      25.0,
+      0.0,
+      1.5
+    ],
+    [
+      "Traffic",
+      ">3",
+      1696,
+      75.0,
+      25.0,
+      0.0,
+      1.5
+    ],
+    [
+      "SensorScope",
+      "<=3",
+      1475,
+      98.916,
+      1.084,
+      0.0,
+      1.9783
+    ],
+    [
+      "SensorScope",
+      ">3",
+      402,
+      97.748,
+      0.0,
+      2.252,
+      1.955
+    ],
+    [
+      "U-Air",
+      "<=3",
+      1197,
+      98.551,
+      1.449,
+      0.0,
+      1.971
+    ],
+    [
+      "U-Air",
+      ">3",
+      318,
+      97.024,
+      0.0,
+      2.976,
+      1.9405
+    ]
+  ],
+  "source_table_match": true,
+  "uncertainty": "none; existing rounded table summaries",
+  "aggregation": "seed means within stratum, then equally weighted; as specified in Appendix F-A",
+  "size_inches": [
+    3.5,
+    2.05
+  ],
+  "axis_limits": [
+    0,
+    100
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "delta_group": {
+    "finite": 600,
+    "n": 600,
+    "nonnegative_ok": true,
+    "status_counts": {
+      "RECONSTRUCTABLE_FROM_FROZEN_DIAGNOSTICS": 600
+    }
+  },
+  "delta_pair": {
+    "n": 600,
+    "status_counts": {
+      "DEFINITION_NOT_RECOVERABLE": 600
+    },
+    "unavailable": true
+  },
+  "head_tail": {
+    "duplicates": 0,
+    "finite": 600,
+    "membership_constant_note": "HEAD/TAIL group ids frozen in runner_consistency; identical across methods",
+    "n": 600,
+    "status_counts": {
+      "EXACTLY_RECONSTRUCTABLE": 600
+    }
+  }
+}

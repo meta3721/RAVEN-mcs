@@ -1,0 +1,56 @@
+{
+  "status": "FAIL_NO_CERTIFIABLE_ACTION_ON_FROZEN_EARLY_CASE",
+  "witnesses": {
+    "0.1": {
+      "subset_min": -0.24955153822655318,
+      "subset_max": 0.4980050618059713,
+      "negative_branch": 12,
+      "positive_branch": 1,
+      "full_set_lower_must_be_at_most": -0.24955153812655315,
+      "full_set_upper_must_be_at_least": 0.49800506170597125,
+      "excludes_robust_WAIT": true
+    },
+    "0.5": {
+      "subset_min": -0.6946652414243555,
+      "subset_max": 0.500805061805971,
+      "negative_branch": 9,
+      "positive_branch": 4,
+      "full_set_lower_must_be_at_most": -0.6946652413243554,
+      "full_set_upper_must_be_at_least": 0.5008050617059708,
+      "excludes_robust_WAIT": true
+    },
+    "1.0": {
+      "subset_min": -0.10662558139534836,
+      "subset_max": 0.5110785717952528,
+      "negative_branch": 13,
+      "positive_branch": 6,
+      "full_set_lower_must_be_at_most": -0.10662558129534835,
+      "full_set_upper_must_be_at_least": 0.5110785716952527,
+      "excludes_robust_WAIT": true
+    },
+    "2.0": {
+      "subset_min": 0.0002500000000000835,
+      "subset_max": 0.05025822295804261,
+      "negative_branch": 10,
+      "positive_branch": 0,
+      "full_set_lower_must_be_at_most": 0.0002500001000000835,
+      "full_set_upper_must_be_at_least": 0.0502582228580426,
+      "excludes_robust_WAIT": true
+    }
+  },
+  "all_WAIT_have_legal_positive_counterexample": true,
+  "CLOSE_has_legal_negative_counterexample": true,
+  "branches": 33,
+  "full_P2": true,
+  "common_exogenous_diagonal_is_subset_not_constraint": true,
+  "input_state_unchanged": true,
+  "total_CPU": 4.296875,
+  "total_wall": 5.171111000000565,
+  "total_P2": 198,
+  "total_cache": 946,
+  "timing_role": "in-process counterexample calculation; not production 2-CPU planning acceptance",
+  "training": 0,
+  "new_trajectories": 0,
+  "novelty": "needs-search",
+  "D_authorized_to_run": false
+}

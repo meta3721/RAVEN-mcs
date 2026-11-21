@@ -1,0 +1,14 @@
+{
+  "reason": "bounded wait for a fresh sample expired; no NULL, final root/PID audit PASS",
+  "failed_now": 8.11,
+  "failed_actual_steps": 266,
+  "resume_now": 5,
+  "resume_logical_steps": 170,
+  "known_replayed_steps": 96,
+  "guard": "logicalS+96+1<=5000",
+  "wait_bound_seconds": 10,
+  "accepted_sample_max_age_seconds": 1,
+  "stop_point": "stopped_0082_01732 preserved but active trained registration has incomplete audit draw context; restore prior completed frame instead",
+  "version": "facilities_v2",
+  "scientific_rule_changed": false
+}

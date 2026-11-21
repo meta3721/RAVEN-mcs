@@ -1,0 +1,18 @@
+{
+  "events_sha256": "f13e62cb2e32727e7f66a748cfb3bf1d2190650a281f6937dc815a12d7ddec62",
+  "metadata": {
+    "dataset": "sensorscope",
+    "generator": "e3-complete-aligned-v1",
+    "notes": [
+      "E3 Complete-aligned controlled generator",
+      "deterministic given seed+dataset+num_windows",
+      "no test outcomes used"
+    ],
+    "num_clients": 8,
+    "num_windows": 3,
+    "s_max": 5,
+    "seed": 31001
+  },
+  "metadata_sha256": "e0f7522b89b00e751639ce4c2c98ad37595f94ea781cc6cc003d959fd8556daa",
+  "trace_hash": "412aaecb5d3aa4a35224aa9c652f6eaa76d6e71ded74200d2d8b136a9f0f1bbe"
+}

@@ -1,0 +1,5 @@
+candidate,path,usable,note
+e1_frozen_region_cluster,configs/frozen/e1_sensorscope_groups.yaml,False,spatial_partition=none
+sensorscope_archive_member,data/raw/sensorscope/Sensorscope.zip::Sensorscope/Plain_Morte_locations.txt,False,inspect_for_coordinates
+sensorscope_archive_member,data/raw/sensorscope/Sensorscope.zip::Sensorscope/stbernard-location.zip,False,inspect_for_coordinates
+traffic_station_reference,data/raw/traffic/road_traffic_counts_station_reference.csv,True,"header=the_geom,cartodb_id,the_geom_webmercator,record_id,station_key,station_id,name,road_name,full_name,common_road_name,secondary_name,road_name_base,road_name_type,intersection,distance_to_intersection,r"

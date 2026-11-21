@@ -1,0 +1,11 @@
+dataset,availability_level,fraction_safe,n_safe,n_unsafe,in_band,unsafe_all_split_edge,unsafe_tiny_cluster,unsafe_all_partial,BOUNDARY_RICH
+sensorscope,0.2,0.0,0,62,False,False,False,False,False
+sensorscope,0.4,0.5,31,31,True,False,False,False,True
+sensorscope,0.6,0.9354838709677419,58,4,False,False,False,False,False
+sensorscope,0.8,1.0,62,0,False,False,False,False,False
+sensorscope,1.0,1.0,62,0,False,False,False,False,False
+uair,0.2,0.2830188679245283,15,38,True,False,False,False,True
+uair,0.4,0.9056603773584906,48,5,False,True,False,False,False
+uair,0.6,0.9056603773584906,48,5,False,True,False,False,False
+uair,0.8,0.9056603773584906,48,5,False,True,False,False,False
+uair,1.0,0.9056603773584906,48,5,False,True,False,False,False

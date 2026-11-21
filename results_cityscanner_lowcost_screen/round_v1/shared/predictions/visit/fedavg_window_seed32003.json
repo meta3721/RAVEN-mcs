@@ -1,0 +1,26 @@
+{
+  "block": "visit",
+  "method": "fedavg_window",
+  "seed": 32003,
+  "checkpoint_sha256": "5973438e24c2009ce5c3fdffe54f9778e60b62fd4d5ccdbeead03ccbf6a7f586",
+  "mean_repr": "5.978155091536648",
+  "std_repr": "12.6468751236128",
+  "checkpoint_path": "results_c1_cityscanner/round_v1/runs/cityscanner_nyc_pm25/fedavg_window/seed32003/checkpoints/final.pt",
+  "checkpoint_bytes": 178390,
+  "h_encoding": {
+    "region0": 0,
+    "region1": 1,
+    "region2": 2,
+    "region3": 3
+  },
+  "splits": [
+    "validation",
+    "test"
+  ],
+  "n_rows": 5380,
+  "validation_id_hash": "b1473ceae65c5d1c1bfe964145e57e73564cc3210ae00a16637d791b46801ce5",
+  "test_id_hash": "5cd2893c4c31057ca49ccd9d26f20020a98f3dcb5f3bdc135d3179fb03763a55",
+  "reproduction_pass": true,
+  "batch_check_max_abs_diff": null,
+  "created_utc": "2026-10-19T00:34:57.637620+00:00"
+}

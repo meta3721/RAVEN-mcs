@@ -1,0 +1,40 @@
+{
+  "scope": "P0 records dependency rules; no old weights or model predictions loaded",
+  "rows": [
+    {
+      "object": "raw measurements, Design-independent splits, public catalogue",
+      "action": "preserve; reuse only matching task, preprocessing and pre-window availability",
+      "configured_result_relabel": false
+    },
+    {
+      "object": "exogenous opportunity/service primitive draws",
+      "action": "potential reuse after independence/provenance verification; not final delivered tables",
+      "configured_result_relabel": false
+    },
+    {
+      "object": "old final U, downloaded versions/model ages, consumption/deadline tables",
+      "action": "do not reuse as fixed dynamic outcomes; recompute within each stopping policy",
+      "configured_result_relabel": false
+    },
+    {
+      "object": "fixed-deadline q and Use/IPW inputs",
+      "action": "must model/recompute full policy selection process for adaptive stopping",
+      "configured_result_relabel": false
+    },
+    {
+      "object": "old Design-dependent uniform cache/quality/model/prediction",
+      "action": "preserve and isolate; regenerate selected new dependencies only",
+      "configured_result_relabel": false
+    },
+    {
+      "object": "central/simple baselines",
+      "action": "conditional comparison only after matching fitting data, target, units and resource/information conditions",
+      "configured_result_relabel": false
+    },
+    {
+      "object": "old stop outcomes and old STOP reports",
+      "action": "preserve unchanged; not new reachability_stop evidence",
+      "configured_result_relabel": false
+    }
+  ]
+}

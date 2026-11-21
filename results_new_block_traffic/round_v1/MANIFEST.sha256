@@ -1,0 +1,137 @@
+{
+  "amendment_A1": {
+    "authorized": true,
+    "file": "src/raven_mcs/e3/protocol_closure/reuse_guard.py",
+    "rule": "blocks local_steps=None or 2; allows fresh local_steps > 2"
+  },
+  "authorization": {
+    "given_utc": "2026-10-07",
+    "phrase_required": "\u6388\u6743\u4ea4\u901a\u7b5b\u67e5",
+    "resolved_as": "typo; user confirmed the protocol phrase",
+    "user_wrote": "\u6388\u6743\u4ea4\u901a\u68c0\u67e5"
+  },
+  "confirm_seeds_used": [],
+  "design_gate_rho_zero": true,
+  "family_choice": {
+    "chosen_family": "e3_complete_aligned",
+    "go": true,
+    "le2_share_bar": 0.25,
+    "mean_tv": 0.35637800170171524,
+    "tv_bar": 0.1
+  },
+  "files": {
+    "GATE_AMENDMENT_A1.md": {
+      "bytes": 4766,
+      "sha256": "fc30bbcf8cd5e85b97dacd04847b04c90ad7b60e83629be80dc82bf80d1ff802"
+    },
+    "S0_FOLLOWUP.json": {
+      "bytes": 6183,
+      "sha256": "2a34e4000a38170b8911286aa299a79f308840dd254a53265ffef33f6dea53be"
+    },
+    "S0_REPORT.md": {
+      "bytes": 16171,
+      "sha256": "8f7d621f4adb21c5c44298ead59f6f579460e9ddd5ad0a4deeb0a12df8fd1895"
+    },
+    "S0_TABLE.csv": {
+      "bytes": 9349,
+      "sha256": "de787729eed069bf60355821b43a5b2b093fffe063991c98592e5499da868ee2"
+    },
+    "S0_VERDICT.json": {
+      "bytes": 1967,
+      "sha256": "b2f19670cf21b3f888f2df89ad8307f5b26d02ea8d3fad67a2805495d363a345"
+    },
+    "S1_BLOCKED.md": {
+      "bytes": 6332,
+      "sha256": "48b11e125fcc0f253bb4d285668dc489dc185bb4ecc89586f771ad2ac59bd165"
+    },
+    "S1_LADDER.csv": {
+      "bytes": 669,
+      "sha256": "f240edb3fdbbd5cb10325b370e09fc16bb88312c7ab0e6abdda297a9f628bd08"
+    },
+    "S1_REPORT.md": {
+      "bytes": 6189,
+      "sha256": "646ecde0da683b95f66a61db1128c04e071939b738937868ab5a5c6925e302fa"
+    },
+    "S1_VERDICT.json": {
+      "bytes": 3247,
+      "sha256": "687c456cf64029d9efd4f6beebcb080a667544e970c16b80403da74b7dad1900"
+    },
+    "TRACE_FAMILIES.json": {
+      "bytes": 42725,
+      "sha256": "9bce68b209b4b42410dffbf94981d762d2c2c8489bbdce13e4932bd2194196aa"
+    }
+  },
+  "instruction": {
+    "bytes": 11605,
+    "path": "raven-mcs-new-block-traffic-execution-prompt.md",
+    "sha256": "25f580aa4e2824daa931addab39eadee67319a24fc89c11ce7f2cf9aa552bb36"
+  },
+  "round": "results_new_block_traffic/round_v1",
+  "s1_launch_outcome": {
+    "exception": "DuplicateReusedTrafficRunBlocked",
+    "guard": "src/raven_mcs/e3/protocol_closure/reuse_guard.py",
+    "runs_created": 0,
+    "runs_dir_exists": false,
+    "status": "BLOCKED_BY_REUSE_GUARD"
+  },
+  "s2_decision_endpoint_pre_forecast": {
+    "expected_failed_list": [
+      "recall",
+      "F1_direction"
+    ],
+    "f1_direction_fails": true,
+    "recall_band_violated": true
+  },
+  "s2_path_validation_worst_rel_error": 0.0,
+  "s2_power_pre_forecast": {
+    "binding_risk": "power clause, not the H level",
+    "break_even_sd_H": 0.006395,
+    "smallest_plausible_measurable_H": 0.013
+  },
+  "s8_wall_time_projection": {
+    "F_120_runs_hours_mean_baseline": 22.52,
+    "F_120_runs_hours_slowest_run": 24.56,
+    "S1_12_runs_hours": 2.25,
+    "S2_15_runs_hours": 2.82,
+    "fits_24h_on_mean_baseline": true,
+    "fits_24h_on_slowest_run": false
+  },
+  "seed_split": {
+    "S1": [
+      30001,
+      30002,
+      30003
+    ],
+    "confirm": [
+      30006,
+      30007,
+      30008,
+      30009,
+      30010,
+      30011,
+      30012,
+      30013,
+      30014,
+      30015,
+      30016,
+      30017,
+      30018,
+      30019,
+      30020
+    ],
+    "screen": [
+      30001,
+      30002,
+      30003,
+      30004,
+      30005
+    ]
+  },
+  "stages": {
+    "F": "NOT LICENSED",
+    "S0": "GO (mean TV 0.35638, e3_complete_aligned)",
+    "S1": "NO-GO (N3)",
+    "S2": "NOT RUN (S1 NO-GO)"
+  },
+  "written_before_first_S1_run": true
+}

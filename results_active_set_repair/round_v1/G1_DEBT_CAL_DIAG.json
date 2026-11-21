@@ -1,0 +1,24 @@
+{
+  "frozen": 7.915297744846339,
+  "frozen_path": "artifacts\\e3_formal_runs_r1\\runs\\sensorscope\\debt_cal\\seed30001",
+  "g1a_value_third_in_process": 7.915297538076236,
+  "generated": "2026-09-27T03:53:38.693663+00:00",
+  "ordering_effect": false,
+  "runs": [
+    {
+      "abs_diff_vs_frozen": 2.0677010326153322e-07,
+      "first_call_in_process": true,
+      "rerun": 7.915297538076236,
+      "tag": "repair_solo"
+    },
+    {
+      "abs_diff_vs_frozen": 2.0677010326153322e-07,
+      "first_call_in_process": false,
+      "rerun": 7.915297538076236,
+      "tag": "repair_again"
+    }
+  ],
+  "self_consistent": true,
+  "solo_reproduces_frozen": false,
+  "verdict": "genuine deterministic frozen-versus-current drift in debt_cal"
+}

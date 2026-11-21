@@ -1,0 +1,233 @@
+{
+  "absolute_readiness_scorecard": {
+    "current_dimension_scores": {
+      "Clarity": 4,
+      "Evidence": 3,
+      "Originality": 2,
+      "Related work": 3,
+      "Reproducibility": 2,
+      "Significance": 3,
+      "Soundness": 4,
+      "Terminology": 4
+    },
+    "evidence_standard": "manuscript text at a stated sha256 plus named repository artifacts; no author promise substitutes for manuscript evidence; an endpoint read after another endpoint has been scored is exploratory",
+    "overall_score": 3.2,
+    "scale": "dimensions anchored 1-5; weighted overall 1-10",
+    "stance": "4/10 lean reject, revised down from 5/10 within the same round after an independent review of the identical manuscript identified a comparator-disclosure regression; readiness is 3.20, below the 4.0 acceptance threshold, and no axis carries acceptance on its own",
+    "threshold": "4/10 acceptance threshold under frozen contract TMC-J-R4"
+  },
+  "confidence_and_comparability": "Comparability is high. Current text sha256 6fc9be0b8689b6c8..., 117864 B, 2310 lines, LF only, read directly. Historical text d4fb164d..., 116806 B, reconstructed byte-exactly from the byte-exact 68D9B44F copy plus the known 2026-10-07 22:57 hunk and verified against the hash that round 14 recorded, so the diff is a complete enumeration of four hunks rather than a sample. Same frozen contract, same five roles, same evidence standard, no external standard change. The 02447BFE -> 68D9B44F -> d4fb164d -> 6fc9be0b chain is byte-verifiable end to end. Confidence is high on Soundness, Evidence and Clarity (every number added since 2026-10-07 was recomputed from named artifacts), medium on Originality and Related work (proofs not re-derived, no literature search in this round). Two attributions sit outside the issue ledger because the ledger vocabulary has no slot for either: the +1 Soundness is a revision repair whose benefit is recorded as a negative historical effect on R15-1, and the +1 Significance rests on results that did not exist when the historical version was scored. Provenance note, no dimension charged: the 2026-10-09 revision has no authorization record in the workspace, unlike the two 2026-10-07 revisions which the user confirmed when asked; both execution prompts that produced the newly printed results say the opposite of what the manuscript now does, although those constraints bound those rounds and the text discloses the scoring order of its own account. This contract was corrected after the fact: an independent review of the same file (snapshots/2026-10-09-grok-raven-mcs-tmc-review.md) showed that the 2026-10-09 hunk deleted the only statement that the centralized comparator is a short Adam run while keeping the 2.8 %-3.0 % gap against it. Soundness is therefore 4 on both sides rather than 4 -> 5, the weighted delta is +0.10 rather than +0.30, and the stance moved to 4/10. The independent review's arithmetic and this review's agree everywhere they overlap, including all twelve recomputed values.",
+  "contract": {
+    "dimensions": [
+      "Originality",
+      "Soundness",
+      "Evidence",
+      "Clarity",
+      "Reproducibility",
+      "Significance",
+      "Related work",
+      "Terminology"
+    ],
+    "evidence_standard": "manuscript text at a stated sha256 plus named repository artifacts; no author promise substitutes for manuscript evidence; an endpoint read after another endpoint has been scored is exploratory",
+    "id": "TMC-J-R4",
+    "reviewer_roles": [
+      "Best-justified",
+      "Critical",
+      "Method / soundness",
+      "Reproducibility auditor",
+      "Writing and presentation"
+    ],
+    "scale": "dimensions anchored 1-5; overall 1-10",
+    "thresholds": {
+      "acceptance_overall": 4,
+      "current_stance": 5,
+      "progress_unchanged_when_abs_weighted_delta_lt": 0.05
+    },
+    "venue": "IEEE TMC journal revision; method-plus-measurement paper; page budget treated as TMC regular 12 pp with a project MOPC allowance up to 18 pp",
+    "weights": {
+      "Clarity": 0.15,
+      "Evidence": 0.25,
+      "Originality": 0.1,
+      "Related work": 0.05,
+      "Reproducibility": 0.1,
+      "Significance": 0.1,
+      "Soundness": 0.2,
+      "Terminology": 0.05
+    }
+  },
+  "issues": [
+    {
+      "affected_dimensions": [
+        "Soundness"
+      ],
+      "applies_to": "historical",
+      "evidence": "The historical version carried two defects that round 14 charged -1 to Soundness, and the 2026-10-09 revision removes both. (a) L2127-L2130 replaced 'the gap is a property of these endpoints rather than of an over-easy regime' with 'both inside the same bound. The bound is this weight class at the server step of the grid. NSW-Traffic, where that step is replaced, is reported in Section~\\ref{subsec:limitations}.' (b) The sentence 'The federated learner, not the weighting, therefore limits the prediction endpoint' was deleted, together with the Adam-and-12 % sentence about the centralized reference. Both changes were the repairs round 14 specified, and the newly reported experiment supports the scoped reading: with only the server step replaced, the paired headroom contains zero while the oracle-margin weights reduce Delta_group and Delta_c-s with intervals excluding zero.",
+      "first_seen_version": "round 14 (charged there as R14-1)",
+      "id": "R15-1",
+      "note": "Recorded as a negative historical effect: the two repaired defects depressed the historical score by one point and do not depress the current one. The current version introduces a different Soundness defect, charged separately at R15-8, so the net delta for this dimension is zero.",
+      "origin": "inherited",
+      "score_effect": {
+        "current": 0,
+        "historical": -1
+      },
+      "status": "resolved"
+    },
+    {
+      "affected_dimensions": [
+        "Significance"
+      ],
+      "applies_to": "current",
+      "evidence": "The issue is the absence of a separated positive measurement of the paper's own structural object, which round 14's card inherited from round 13. The 2026-10-09 revision reports one, using runs that did not exist when the historical version was scored: results_traffic_struct/round_v1/TS1_SUMMARY.json gives Delta_group mean 0.007875461474741708 with interval [0.005050083024358629, 0.011032292876163016] and MDE80 0.004762, and Delta_c-s mean 0.009939661215117069 with interval [0.006724524039012507, 0.013241532821026799] and MDE80 0.005114, on the fifteen confirm seeds 30006-30020. Both effects exceed their own detectable effect and both intervals exclude zero. Practical significance remains unshown: no deployment decision changes and the reduction is about 2 % relative on the mismatch metrics.",
+      "first_seen_version": "round 15 (this comparison)",
+      "id": "R15-2",
+      "origin": "newly_revealed_by_evidence",
+      "score_effect": {
+        "current": 1,
+        "historical": 0
+      },
+      "status": "resolved"
+    },
+    {
+      "affected_dimensions": [
+        "Evidence"
+      ],
+      "applies_to": "both",
+      "evidence": "The two structural endpoints satisfy the second clause of this axis's standard (headroom 0.0079 and 0.0099 against MDE80 0.0048 and 0.0051) but not the first: they were read off the confirm runs after the prediction contrast had already been scored, which the manuscript discloses in the sentence 'Scored on the same runs after that prediction contrast'. The prediction endpoint itself remains a well-reported null whose MDE80 of 5.80 % is four times its estimate of 1.49 %, so it cannot test the 0.5 % bar in either direction. This is a property of the frozen evidence standard rather than of either version, so it is charged to neither.",
+      "first_seen_version": "round 15 (this comparison)",
+      "id": "R15-3",
+      "origin": "previously_undetected",
+      "score_effect": {
+        "current": 0,
+        "historical": 0
+      },
+      "status": "unresolved"
+    },
+    {
+      "affected_dimensions": [
+        "Evidence",
+        "Clarity"
+      ],
+      "applies_to": "both",
+      "evidence": "The train-to-test target-level shift on SensorScope (train +0.3006, validation +2.0186, test +7.6572) and U-Air (train -0.0000, validation -0.1456, test -0.8066) is still nowhere disclosed, and the 2026-10-09 revision did not address it. The shift is common to every arm on a block, so the Holm family, H and the paired-difference MDEs are unaffected; the absolute RMSE_mu values on those two blocks are not self-interpreting.",
+      "first_seen_version": "round 14",
+      "id": "R14-2",
+      "origin": "previously_undetected",
+      "score_effect": {
+        "current": 0,
+        "historical": 0
+      },
+      "status": "unresolved"
+    },
+    {
+      "affected_dimensions": [
+        "Reproducibility"
+      ],
+      "applies_to": "both",
+      "evidence": "The released bundle still differs from the paper on 3 of 9 figure-data files and five tables, three drivers remain 2-byte stubs with no surviving generator, w1/PAPER_NUMBERS.csv has no row for any value added since 2026-10-07, and the shipped TO_OVERLEAF_paper_tmc_r1_clean/main.pdf is the 2026-10-06 artifact at 890040 B / 17 pp against an 18 pp / 893440 B rebuild of the current source. The twelve numbers added since 2026-10-07 have their sources in results_traffic_e1/ and results_traffic_struct/, neither of which is in the bundle.",
+      "first_seen_version": "round 13 (NEW-r13-2)",
+      "id": "R15-4",
+      "note": "Carried at 2 on both sides so the axis is not charged twice; it is now the binding constraint on the stance.",
+      "origin": "inherited",
+      "score_effect": {
+        "current": 0,
+        "historical": 0
+      },
+      "status": "unresolved"
+    },
+    {
+      "affected_dimensions": [
+        "Clarity"
+      ],
+      "applies_to": "both",
+      "evidence": "Of the three defects round 13 charged to Clarity, two are now repaired: the 'for every local budget from 2 to 20 steps' overstatement (2026-10-07 22:57) and the ambiguous 'the centralized reference, trained with Adam' (2026-10-09, removed with the rewritten passage). Two remain and both sit in the paper's own headline material: L2162 calls +0.768 'the small margin of the projection over uniform server weights' while L1834 says the same estimate is 'above the 0.5 pp practical line and stable across the two seed halves', and L2210 states a bound of 0.17 % that its own source crosses (largest SensorScope level mean 0.1747 %).",
+      "first_seen_version": "round 13 (NEW-r13-1)",
+      "id": "R15-5",
+      "origin": "inherited",
+      "score_effect": {
+        "current": 0,
+        "historical": 0
+      },
+      "status": "partially_resolved"
+    },
+    {
+      "affected_dimensions": [
+        "Evidence",
+        "Significance"
+      ],
+      "applies_to": "both",
+      "evidence": "No pre-registered endpoint with headroom above its detectable effect. Unchanged by this revision, which supplies an exploratory structural readout rather than a pre-registered one.",
+      "first_seen_version": "round 9",
+      "id": "E1",
+      "origin": "inherited",
+      "score_effect": {
+        "current": 0,
+        "historical": 0
+      },
+      "status": "unresolved"
+    },
+    {
+      "affected_dimensions": [
+        "Soundness"
+      ],
+      "applies_to": "current",
+      "evidence": "Hunk 3 of the 2026-10-09 revision deleted the sentence 'while on SensorScope the centralized reference, trained with Adam, moves its first layer by 12 %', which was the only place the manuscript stated the centralized comparator's optimizer. The same paragraph retains 'leaves window FedAvg 2.8 %-3.0 % above a centralized model trained on the same delivered data' at L2219-L2220, so the current version compares a federated step of one normalized SGD update per window against a short Adam minibatch run without saying so. 'Adam' now occurs only in reference to replacing the federated server step (L2222, L2231, L2259). Found by the independent review at snapshots/2026-10-09-grok-raven-mcs-tmc-review.md and verified here against the round-14 text.",
+      "first_seen_version": "round 15 (this comparison)",
+      "id": "R15-8",
+      "origin": "revision_regression",
+      "score_effect": {
+        "current": -1,
+        "historical": 0
+      },
+      "status": "unresolved"
+    },
+    {
+      "affected_dimensions": [
+        "Clarity"
+      ],
+      "applies_to": "both",
+      "evidence": "L2198-L2232 carries arrival bias, masking, the original server step, the Adam replacement and the later mismatch readout in a single paragraph, so the paper's one positive measurement shares a paragraph with four other topics. Also found by the independent review; a presentation defect that neither version fixes.",
+      "first_seen_version": "round 15 (this comparison)",
+      "id": "R15-7",
+      "origin": "inherited",
+      "score_effect": {
+        "current": 0,
+        "historical": 0
+      },
+      "status": "unresolved"
+    }
+  ],
+  "relative_progress_scorecard": {
+    "classification": "improved",
+    "current": {
+      "Clarity": 4,
+      "Evidence": 3,
+      "Originality": 2,
+      "Related work": 3,
+      "Reproducibility": 2,
+      "Significance": 3,
+      "Soundness": 4,
+      "Terminology": 4
+    },
+    "deltas": {
+      "Clarity": 0,
+      "Evidence": 0,
+      "Originality": 0,
+      "Related work": 0,
+      "Reproducibility": 0,
+      "Significance": 1,
+      "Soundness": 0,
+      "Terminology": 0
+    },
+    "historical": {
+      "Clarity": 4,
+      "Evidence": 3,
+      "Originality": 2,
+      "Related work": 3,
+      "Reproducibility": 2,
+      "Significance": 2,
+      "Soundness": 4,
+      "Terminology": 4
+    },
+    "weighted_delta": 0.1
+  }
+}

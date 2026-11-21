@@ -1,0 +1,53 @@
+{
+  "pass_count": 0,
+  "required": 5,
+  "rows": [
+    {
+      "D_TV_group": 0.037335441306132366,
+      "D_TV_true_stratum": 0.08095278896409909,
+      "failures": "D_TV_group|D_TV_true_stratum|tail_mass_ratio|head_mass_ratio|D_TV_group_exp_emp|D_TV_true_stratum_exp_emp",
+      "head_mass_ratio": 1.0713163682060949,
+      "pass": false,
+      "seed": 29101,
+      "tail_mass_ratio": 1.0859252277725417
+    },
+    {
+      "D_TV_group": 0.019992640745737755,
+      "D_TV_true_stratum": 0.0761147597649499,
+      "failures": "D_TV_true_stratum|D_TV_true_stratum_exp_emp",
+      "head_mass_ratio": 0.9593367131389947,
+      "pass": false,
+      "seed": 29102,
+      "tail_mass_ratio": 0.9576996197718631
+    },
+    {
+      "D_TV_group": 0.03586881919369751,
+      "D_TV_true_stratum": 0.07370280043730554,
+      "failures": "D_TV_group|D_TV_true_stratum|tail_mass_ratio|head_mass_ratio",
+      "head_mass_ratio": 0.9367869256860935,
+      "pass": false,
+      "seed": 29103,
+      "tail_mass_ratio": 1.185322232500771
+    },
+    {
+      "D_TV_group": 0.030628248101110075,
+      "D_TV_true_stratum": 0.1041511396134847,
+      "failures": "D_TV_group|D_TV_true_stratum|head_mass_ratio|D_TV_true_stratum_exp_emp",
+      "head_mass_ratio": 0.9193941319775448,
+      "pass": false,
+      "seed": 29104,
+      "tail_mass_ratio": 0.9702891642834447
+    },
+    {
+      "D_TV_group": 0.013370907782707733,
+      "D_TV_true_stratum": 0.10784048665089557,
+      "failures": "D_TV_true_stratum|D_TV_true_stratum_exp_emp",
+      "head_mass_ratio": 0.9539446509706733,
+      "pass": false,
+      "seed": 29105,
+      "tail_mass_ratio": 1.0131660470879802
+    }
+  ],
+  "status": "BALANCED_PRE_GATE_FAIL",
+  "unique_balanced_traces": 5
+}

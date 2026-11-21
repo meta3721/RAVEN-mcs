@@ -1,0 +1,123 @@
+GROUPED SUMMARY: files | with >=1 byte-identical worktree twin | with none
+  certificate          5     4     1
+  cityscanner          7     7     0
+  cityscanner_p2       7     6     1
+  configs             21    19     2
+  eventtraces       1794  1794     0
+  figures              9     9     0
+  new_target           7     7     0
+  processed            6     6     0
+  scripts              4     1     3
+  tables              21    18     3
+  tdrive              14    14     0
+  w1                 217   214     3
+  (top-level)          6     0     6
+  TOTAL             2118  2099    19
+
+====================================================================================================
+BASENAME NEAR-MISS SCAN: bundle files with NO byte-identical twin that DO have same-basename worktree files
+====================================================================================================
+BUNDLE_SUMMARY.json  (bundle sha256 e827c9264adcaa97ebcc2b5c38ee9ad0ed0c1e5f0057db396299761ba28f560e)
+    -> NO worktree file with this basename at all
+LICENSE.txt  (bundle sha256 a91d2cabf53f67fa19007ea95f357f9be6cf386f8114bb6e66209096d2263551)
+    -> NO worktree file with this basename at all
+MANIFEST.csv  (bundle sha256 f1751cb15e86bb6755b6b03622065a7ef1ad5acb3b75b9bc97cecf2f811cccd2)
+    -> NO worktree file with this basename at all
+PROTOCOL.json  (bundle sha256 1d4e25559ca6a2287a8a978a524c600c68aa13b043e7392fdb0e47b78b0e2a73)
+    -> post_review/C1_tdrive_rank/PROTOCOL.json  (966 B, sha256 835643e32259e36153032e1032a1d590b0a25b9699d94879fc63ed5ecc4836c0)  SAME=NO
+    -> post_review/C2_scd_phi/PROTOCOL.json  (1187 B, sha256 54eea7e610bee88aaa0de4cd341e8feaa47cb1eea0d2b1dbf0acfa4d2d76c748)  SAME=NO
+README.md  (bundle sha256 bbd4a2e859212eb55b666c6827e58bf82304607ad9fabcee40533646d14683a6)
+    -> README.md  (2591 B, sha256 bafdddb3e1cb5ee873d86f0d1ab07a84104fe73232cb37cef58a872bfb0f4a98)  SAME=NO
+    -> .pytest_cache/README.md  (302 B, sha256 73fd6fccdd802c419a6b2d983d6c3173b7da97558ac4b589edec2dfe443db9ad)  SAME=NO
+    -> ADVISOR_PACKAGE_TMC_R1/README.md  (1969 B, sha256 078596c8b61d8e423d8d2749a68276daf6a4bf5056f09e6ed1fe71fb11459848)  SAME=NO
+    -> ADVISOR_PACKAGE_TMC_R1/01_reviews/README.md  (696 B, sha256 423fbbdf0809964d4a2ad6cec5604d314b4dd07ade5b6f473b42fcabdbfa20b3)  SAME=NO
+    -> ADVISOR_PACKAGE_TMC_R1/04_current_paper/README.md  (366 B, sha256 570e19568fccb68959c92cfbe19e8e5185d8de311668928c9c594a1af415de09)  SAME=NO
+    -> artifacts/a5_a6_audit/README.md  (3397 B, sha256 e6d2cfecff36dc17bbe753b6da7fe87ca6a9c03f62adec22b18c6e95eb15ff9e)  SAME=NO
+    -> artifacts/e2_traffic_formal_results_analysis_r1/figure_scripts/README.md  (108 B, sha256 a02a6aa5eacaa0170076818325c4b5e90bc36e9b6fff07b6fc71710e1a7cbe6f)  SAME=NO
+    -> artifacts/e2_traffic_offline_metric_reconstruction_r1/figure_scripts/README.md  (82 B, sha256 eb286955f0785531f5f555f47c1807be2b15ca065b91f3860799c74c46662c10)  SAME=NO
+    -> CCFA-Skills/README.md  (16503 B, sha256 97f2a7d39ea2d45a613056f2795a3abdba29cb0d41ddb9b1f64217604022d67a)  SAME=NO
+    -> CCFA-Skills/ccf-latex-templates/README.md  (8961 B, sha256 18010cbcc4346d4f516e69ca99e57dd3dcf9f130e9a9dcce255eee1a97f47106)  SAME=NO
+    -> CCFA-Skills/ccf-latex-templates/CVPR/README.md  (1552 B, sha256 d91116b58be33154d195012d7d2ef2be310d308ed23f3803aa6baf2aeb441a5e)  SAME=NO
+    -> CCFA-Skills/ccf-latex-templates/ECCV/README.md  (1083 B, sha256 2892b0207b3c6bb4ebd45efbe75cb25da74f9163871b76add5d1e05870654491)  SAME=NO
+    -> CCFA-Skills/ccf-latex-templates/SIAM/README.md  (499 B, sha256 1208d67a76db50ccf2e8e7ea2b9a273b72b08dff6ab5bc2a510a44097d5fdba8)  SAME=NO
+    -> CCFA-Skills/ccf-latex-templates/WWW/README.md  (525 B, sha256 ef5804733eee789ced9cff4db98798ec54f8e688ed3cce9ef40ac5991b97f48d)  SAME=NO
+    -> CCFA-Skills/demo/attention-is-all-you-need/README.md  (2881 B, sha256 40f0997fe8a70416197f40480c4e837937a5e162e45e59c5c29cc5c4aa22330e)  SAME=NO
+    -> CCFA-Skills/demo/attention-is-all-you-need/visual-composer/README.md  (1464 B, sha256 630a7a5efe3d5e877cfbb2888662f9292cd32e1879ef0a87def73582752d244c)  SAME=NO
+    -> deliverables/TO_SUBMIT_TMC_PAPER_AND_PRACTICE_R1/RAVEN_MCS_TMC_PAPER_OVERLEAF_R1/README.md  (1464 B, sha256 459630939c19ee459bda8a7236ceb9242916de3ec1ad53599ad3e958f47cef3c)  SAME=NO
+    -> notebooks/exploratory_only/README.md  (65 B, sha256 261ba2fb9b730f6fcf45488e48820afecfc12214ddea5efe51d6d774a23e67c5)  SAME=NO
+    -> paper_ready_r1/02_supporting_data/e0_correctness/README.md  (97 B, sha256 818a56ef5410f95312eda468c1d17f885139897e80a41617c5adc82eecae2ed6)  SAME=NO
+    -> paper_ready_r1/03_raw_evidence/e2/analysis/figure_scripts/README.md  (108 B, sha256 a02a6aa5eacaa0170076818325c4b5e90bc36e9b6fff07b6fc71710e1a7cbe6f)  SAME=NO
+    -> paper_ready_r1/03_raw_evidence/e2/offline_recon/figure_scripts/README.md  (82 B, sha256 eb286955f0785531f5f555f47c1807be2b15ca065b91f3860799c74c46662c10)  SAME=NO
+    -> paper_ready_r2/02_supporting_data/e0_correctness/README.md  (97 B, sha256 818a56ef5410f95312eda468c1d17f885139897e80a41617c5adc82eecae2ed6)  SAME=NO
+    -> paper_ready_r2/03_raw_evidence/e2/analysis/figure_scripts/README.md  (108 B, sha256 a02a6aa5eacaa0170076818325c4b5e90bc36e9b6fff07b6fc71710e1a7cbe6f)  SAME=NO
+    -> paper_ready_r2/03_raw_evidence/e2/offline_recon/figure_scripts/README.md  (82 B, sha256 eb286955f0785531f5f555f47c1807be2b15ca065b91f3860799c74c46662c10)  SAME=NO
+    -> RAVEN_MCS_FINAL_PAPER_DATA_ASSET_FREEZE_R1/02_PAPER_SUPPORTING/r2_supporting/e0_correctness/README.md  (97 B, sha256 818a56ef5410f95312eda468c1d17f885139897e80a41617c5adc82eecae2ed6)  SAME=NO
+    -> RAVEN_MCS_FINAL_PAPER_DATA_ASSET_FREEZE_R1/03_APPENDIX_CANDIDATES/e2_raw_r2/analysis/figure_scripts/README.md  (108 B, sha256 a02a6aa5eacaa0170076818325c4b5e90bc36e9b6fff07b6fc71710e1a7cbe6f)  SAME=NO
+    -> RAVEN_MCS_FINAL_PAPER_DATA_ASSET_FREEZE_R1/03_APPENDIX_CANDIDATES/e2_raw_r2/offline_recon/figure_scripts/README.md  (82 B, sha256 eb286955f0785531f5f555f47c1807be2b15ca065b91f3860799c74c46662c10)  SAME=NO
+    -> RAVEN_MCS_FINAL_PAPER_DATA_ASSET_FREEZE_R1/17_SUPERSEDED/README.md  (108 B, sha256 73dc1333247e5a2880ba73942cbbed65e0ff4ef4dda99cc1a7d8a549a0dcd1a5)  SAME=NO
+    -> RAVEN_MCS_FINAL_PAPER_DATA_ASSET_FREEZE_R1/18_INVALID_CANARY/README.md  (94 B, sha256 60cdb7b6788295088abc96693919c0737d1787caa1d8772c54864885e0775cc5)  SAME=NO
+certificate/CERTIFICATE_PROTOCOL.json  (bundle sha256 c4008ca5265f5ad40726a0a671625289c83faebf7e41524f1289971d21e2381e)
+    -> NO worktree file with this basename at all
+cityscanner_p2/JO_PHI.csv  (bundle sha256 66ee418d3b3bb48b9a332c41aa57d667e5560a40e33ddd4c2760d3e47898ab79)
+    -> NO worktree file with this basename at all
+configs/design_rule.json  (bundle sha256 b44fe3feb91ea35cd321c30591eaaa9203268b004c4c38c76e9dde7f499c504d)
+    -> NO worktree file with this basename at all
+configs/seeds.json  (bundle sha256 995fdc6e76d1f761b6f7f1ff806d89f5a42a1efc68d92244571e7ab9282f1bfb)
+    -> NO worktree file with this basename at all
+scripts/build_public_repro_bundle.py  (bundle sha256 c8d9f0acc9e9d2c3107801d19c75b362583a1e1e09a5a839c69184c14ac7864b)
+    -> scripts/build_public_repro_bundle.py  (18354 B, sha256 d400bdf449b4c779fb760e75673de69a1273d32d6af32cd1874ed84c43bf88f4)  SAME=NO
+scripts/rebuild_e3_scd_holm_fedau_obsuse.py  (bundle sha256 68b749739e33f27538fc2d1678772530bf94900968c1619a11ad0fd1707d0542)
+    -> NO worktree file with this basename at all
+scripts/rebuild_table_ii_tolerance.py  (bundle sha256 ab0a6dc3d18a49c957208ee71e993715c5ca9fffc9605e03b26c8a866814eaa0)
+    -> post_review/P0_ni_artifact/scripts/rebuild_table_ii_tolerance.py  (3565 B, sha256 7dbf9d2b3f5c58efb2004079fc0afe90b3571c58eb24f14c20d9e4f0f0ee1c3a)  SAME=NO
+tables/E3_SCD_WORSTGROUP_SLICE_REL.csv  (bundle sha256 7123ff64cd0b55b0400a44ce1bdf3591cc66beda4d7758f566ffc74729b9f358)
+    -> NO worktree file with this basename at all
+tables/E3_SCD_WORSTGROUP_VS_FEDAU_OBSUSE_HOLM.csv  (bundle sha256 93e3f129aca453d74a859ef83112f33a9195908d225cd1a11837d40bcd200a1d)
+    -> NO worktree file with this basename at all
+tables/SCD_PHI_DECISION.json  (bundle sha256 d8bb3c8df4a2d284048f9652ccf1978d1ae0c529db55733d0f7967ec940afceb)
+    -> post_review/C2_scd_phi/SCD_PHI_DECISION.json  (0 B, sha256 e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855)  SAME=NO
+verify.py  (bundle sha256 ab8e36422ddd654247cb39b4a8ad62dafc76cfbd1e055f8e3a2f4964d0c15cd6)
+    -> NO worktree file with this basename at all
+w1/EXCLUDED_HASHES.csv  (bundle sha256 e5dcab15c61ffd4ae6d8f578d686523472d1d60fd86ec626b9c731cf46d3b6de)
+    -> NO worktree file with this basename at all
+w1/MANIFEST_ADDITIONS.csv  (bundle sha256 470c886d965b95a26640bfffa4a87d51993c220cd04962b9d5d4380b606b7551)
+    -> NO worktree file with this basename at all
+w1/PAPER_NUMBERS.csv  (bundle sha256 c08e7f8a072db9be90a854e901c1e3ebad9606e368b7557cc227af41d9fe0adb)
+    -> NO worktree file with this basename at all
+
+====================================================================================================
+w1/ SOURCE DISTRIBUTION (byte-identical worktree twins)
+====================================================================================================
+  w1 files with >1 twin: 0
+  results_w1_ladder                        195
+  results_gatekeeping                      16
+  <NONE>                                   3
+  results_exogenous_target                 3
+
+w1 sample rows (path | n_twins | representative):
+  w1/EXCLUDED_HASHES.csv | 0 | <NONE>
+  w1/MANIFEST_ADDITIONS.csv | 0 | <NONE>
+  w1/PAPER_NUMBERS.csv | 0 | <NONE>
+  w1/audit_v5/round_v5/A1_SENS_GRID.csv | 1 | results_w1_ladder/round_v5/A1_SENS_GRID.csv
+  w1/audit_v5/round_v5/A1_SENS_SUMMARY.csv | 1 | results_w1_ladder/round_v5/A1_SENS_SUMMARY.csv
+  w1/audit_v5/round_v5/ERRATA_FOR_PAPER.md | 1 | results_w1_ladder/round_v5/ERRATA_FOR_PAPER.md
+  w1/audit_v5/round_v5/EXECUTION_REPORT.md | 1 | results_w1_ladder/round_v5/EXECUTION_REPORT.md
+  w1/audit_v5/round_v5/GATES_V5.csv | 1 | results_w1_ladder/round_v5/GATES_V5.csv
+  w1/audit_v5/round_v5/MANIFEST.sha256 | 1 | results_w1_ladder/round_v5/MANIFEST.sha256
+  w1/audit_v5/round_v5/R1A_DOSE.csv | 1 | results_w1_ladder/round_v5/R1A_DOSE.csv
+  w1/audit_v5/round_v5/R1A_TOST.csv | 1 | results_w1_ladder/round_v5/R1A_TOST.csv
+  w1/audit_v5/round_v5_1/A1P_ORACLE_GATES.json | 1 | results_w1_ladder/round_v5_1/A1P_ORACLE_GATES.json
+  w1/audit_v5/round_v5_1/A3P_DOSE.csv | 1 | results_w1_ladder/round_v5_1/A3P_DOSE.csv
+  w1/audit_v5/round_v5_1/A3P_RESOURCE_UPAIR.csv | 1 | results_w1_ladder/round_v5_1/A3P_RESOURCE_UPAIR.csv
+  w1/audit_v5/round_v5_1/A3P_SIDE_BY_SIDE.csv | 1 | results_w1_ladder/round_v5_1/A3P_SIDE_BY_SIDE.csv
+  w1/audit_v5/round_v5_1/A3P_TOST_V51.csv | 1 | results_w1_ladder/round_v5_1/A3P_TOST_V51.csv
+  w1/audit_v5/round_v5_1/A3P_TOST_WG.csv | 1 | results_w1_ladder/round_v5_1/A3P_TOST_WG.csv
+  w1/audit_v5/round_v5_1/AMENDMENTS.md | 1 | results_w1_ladder/round_v5_1/AMENDMENTS.md
+  w1/audit_v5/round_v5_1/ERRATA_FOR_PAPER.md | 1 | results_w1_ladder/round_v5_1/ERRATA_FOR_PAPER.md
+  w1/audit_v5/round_v5_1/EXECUTION_REPORT.md | 1 | results_w1_ladder/round_v5_1/EXECUTION_REPORT.md
+  w1/audit_v5/round_v5_1/MANIFEST.sha256 | 1 | results_w1_ladder/round_v5_1/MANIFEST.sha256
+  w1/audit_v5/round_v5_1/TRADEOFF_V51.csv | 1 | results_w1_ladder/round_v5_1/TRADEOFF_V51.csv
+  w1/audit_v5/round_v5_1/WORSTGROUP_NI.csv | 1 | results_w1_ladder/round_v5_1/WORSTGROUP_NI.csv
+  w1/audit_v5/round_v5_1/WORSTGROUP_PAIRED.csv | 1 | results_w1_ladder/round_v5_1/WORSTGROUP_PAIRED.csv
+  w1/audit_v5/round_v5_1/WORSTGROUP_V51.csv | 1 | results_w1_ladder/round_v5_1/WORSTGROUP_V51.csv
+  ... (full list of 217 rows omitted here; counts above are exhaustive)

@@ -1,0 +1,35 @@
+{
+  "FINISH_fields": [
+    "exit_code",
+    "completed_windows",
+    "runtime",
+    "checkpoint_hash",
+    "metric_output_hashes",
+    "pair_state_output_hash",
+    "manifest_hash",
+    "status"
+  ],
+  "START_fields": [
+    "run_id",
+    "attempt_id",
+    "dataset",
+    "seed",
+    "scenario",
+    "canonical_method",
+    "code_hashes",
+    "dataset_hashes",
+    "target_hash",
+    "EventTrace_hash",
+    "config_hash",
+    "metric_schema_version",
+    "pair_state_schema_version",
+    "timestamp"
+  ],
+  "attempt_integrity": {
+    "duplicate_START_visible": true,
+    "no_set_only_validation": true,
+    "orphan_START_visible": true,
+    "retries_preserve_history": true
+  },
+  "version": "E3_LEDGER_SCHEMA_V1"
+}

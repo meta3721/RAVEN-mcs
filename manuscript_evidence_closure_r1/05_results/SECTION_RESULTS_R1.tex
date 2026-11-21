@@ -1,0 +1,19 @@
+\section{Results}
+\subsection{Experimental Setup}
+We evaluate RAVEN-MCS on three sealed datasets with distinct paper roles. SensorScope and U-Air are the scientifically comparable E3/E4 effectiveness blocks. NSW Traffic is used for E2 risk-semantic evidence and is not mixed with E3 as a homogeneous performance block (Traffic E3 cross-vintage inference is \texttt{NOT\_COMPARABLE}).
+
+For SensorScope and U-Air, the deployment-target grouping \(h(i)\) is four UTC time-of-day groups (H1: 00--06, H2: 06--12, H3: 12--18, H4: 18--24), constructed from train-split mass without test labels. The opportunity stratum \(s(i)\) is spatial identity \(\times\) four time blocks \(\times\) weekday/weekend, so \(h(i)\neq s(i)\). NSW Traffic uses the sealed E2 four-region public-target/stratum semantics.
+
+Primary methods are FedAvg-Window, FedAsync-Window, TimeAlign-Agg, Local-Hajek, TwoStage-Hajek, and RAVEN-MCS. Inst-Cal and Debt-Cal are reported in the E3 table; Central-All, Central-Delivered, and RAVEN-SimOracle are reference-only. Primary metrics are \(\Delta_{\mathrm{group}}\), \(\Delta_{c,s}\), and RMSE\(_\mu\). E3/E4 use paired seeds 30001--30020 with the sealed Wilcoxon+Holm protocol. T-Drive is a protocol-only reserve and is not part of the current formal evidence.
+
+\subsection{RQ1: Why Arrival Risk Is Not Deployment-Target Risk}
+E1 is a balanced no-harm sanity check: statistical superiority is not established. E2 is the primary RQ1 evidence. On NSW Traffic complete-aligned traces, \(D_{\mathrm{aligned}}=\Delta\mathrm{RMSE}_\mu-\Delta\mathrm{RMSE}_\rho\) has a stable nonzero direction across five methods and 20 seeds (Fig.~\ref{fig:e2}). This supports risk non-interchangeability and is not a RAVEN ranking result.
+
+\subsection{RQ2: Overall Effectiveness of RAVEN-MCS}
+On SensorScope and U-Air, RAVEN reduces \(\Delta_{\mathrm{group}}\) and \(\Delta_{c,s}\) relative to the main window and Hajek baselines, with Holm-supported paired differences in the sealed structural families (Table~\ref{tab:e3}, Fig.~\ref{fig:e3}). RMSE\(_\mu\) remains competitive, with selective rather than uniform Holm-supported gains. We do not claim that RAVEN is superior to every baseline on every metric.
+
+\subsection{RQ3: Where Do the Gains Come From?}
+E4 one-factor ablations on the final 240-cell family (w/o-Inst Generation~2) yield endpoint-dependent roles (Fig.~\ref{fig:e4}): Design/Obs/Inst are \texttt{ENDPOINT\_TRADEOFF}; Use is \texttt{NO\_CLEAR\_EFFECT}; Debt is \texttt{STRUCTURAL\_ONLY\_SUPPORTED} and quantitatively small. RAVEN is a coupled architecture, not a sum of independently monotone boosters.
+
+\subsection{Summary of Empirical Evidence}
+E2 motivates target-aware correction; E3 shows structural alignment gains on comparable datasets; E4 shows heterogeneous component roles. No new quantitative claims are introduced here.

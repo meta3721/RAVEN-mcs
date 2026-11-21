@@ -1,0 +1,59 @@
+{
+  "candidates": [
+    {
+      "kappa_sum": 3.0,
+      "max_seed_aligned_dtv_group": 0.4074417030975933,
+      "profile_id": "PROFILE-S2",
+      "std_seed_cancellation_group_tv": 0.0081506337115119
+    },
+    {
+      "kappa_sum": 3.5,
+      "max_seed_aligned_dtv_group": 0.4282481027142545,
+      "profile_id": "PROFILE-S4",
+      "std_seed_cancellation_group_tv": 0.006139716767287624
+    },
+    {
+      "kappa_sum": 4.0,
+      "max_seed_aligned_dtv_group": 0.44329964724166004,
+      "profile_id": "PROFILE-S5",
+      "std_seed_cancellation_group_tv": 0.007523038755895461
+    },
+    {
+      "kappa_sum": 4.5,
+      "max_seed_aligned_dtv_group": 0.5245945464266619,
+      "profile_id": "PROFILE-S3",
+      "std_seed_cancellation_group_tv": 0.009274006391726519
+    },
+    {
+      "kappa_sum": 5.0,
+      "max_seed_aligned_dtv_group": 0.533249715831145,
+      "profile_id": "PROFILE-S6",
+      "std_seed_cancellation_group_tv": 0.013272859282973337
+    }
+  ],
+  "prior_PROFILE_S2_not_special_cased": true,
+  "prior_PROFILE_S2_tombstoned": true,
+  "profile_registry_hash": "471c418ccd60e2daa059e0edec1c5de81a4d49db5fa001be35190a04dcad3dcc",
+  "revalidated_on_hard_empirical": true,
+  "selected_metrics": {
+    "kappa_sum": 3.0,
+    "max_seed_aligned_dtv_group": 0.4074417030975933,
+    "profile_id": "PROFILE-S2",
+    "std_seed_cancellation_group_tv": 0.0081506337115119
+  },
+  "selected_profile_id": "PROFILE-S2",
+  "selection_rule": [
+    "min max_seed D_TV_group(complete_aligned)",
+    "min kappa_opp+kappa_p+kappa_q",
+    "min std_seed cancellation_group_TV(complete_counteracting)",
+    "profile_id lexicographic"
+  ],
+  "status": "SELECTED",
+  "validation_seed_list": [
+    29101,
+    29102,
+    29103,
+    29104,
+    29105
+  ]
+}

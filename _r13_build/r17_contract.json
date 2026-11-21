@@ -1,0 +1,156 @@
+{
+  "absolute_readiness_scorecard": {
+    "current_dimension_scores": {
+      "Clarity": 5,
+      "Evidence": 3,
+      "Originality": 2,
+      "Related work": 3,
+      "Reproducibility": 2,
+      "Significance": 3,
+      "Soundness": 5,
+      "Terminology": 4
+    },
+    "evidence_standard": "manuscript text at a stated sha256 plus named repository artifacts; no author promise substitutes for manuscript evidence; an endpoint read after another endpoint has been scored is exploratory",
+    "overall_score": 3.55,
+    "scale": "dimensions anchored 1-5; weighted overall 1-10",
+    "stance": "5/10 borderline negative; the binding constraints are one unreported measurement and one release gap, neither of which is a defect in the prose",
+    "threshold": "4/10 acceptance threshold under frozen contract TMC-J-R4"
+  },
+  "confidence_and_comparability": "The target text is byte-identical to round 16's target (3CC106CA4B6087D9..., 119922 B), verified by hash, so the progress card must read unchanged and the readiness scorecard carries over. High confidence on the identity of the text and on Soundness, Clarity and Reproducibility; medium on Originality, Related work and Significance because no round of this session has performed a literature search. No external standard change. The round's new content is not a score change but a decision: the highest-value repair is page-budget constrained, and the measurements show the substance fits at 18 pp while two cross-reference sentences do not.",
+  "contract": {
+    "dimensions": [
+      "Originality",
+      "Soundness",
+      "Evidence",
+      "Clarity",
+      "Reproducibility",
+      "Significance",
+      "Related work",
+      "Terminology"
+    ],
+    "evidence_standard": "manuscript text at a stated sha256 plus named repository artifacts; no author promise substitutes for manuscript evidence; an endpoint read after another endpoint has been scored is exploratory",
+    "id": "TMC-J-R4",
+    "reviewer_roles": [
+      "Best-justified",
+      "Critical",
+      "Method / soundness",
+      "Reproducibility auditor",
+      "Writing and presentation"
+    ],
+    "scale": "dimensions anchored 1-5; overall 1-10",
+    "thresholds": {
+      "acceptance_overall": 4,
+      "current_stance": 5,
+      "progress_unchanged_when_abs_weighted_delta_lt": 0.05
+    },
+    "venue": "IEEE TMC journal revision; method-plus-measurement paper; page budget treated as TMC regular 12 pp with a project allowance up to a hard 18 pp",
+    "weights": {
+      "Clarity": 0.15,
+      "Evidence": 0.25,
+      "Originality": 0.1,
+      "Related work": 0.05,
+      "Reproducibility": 0.1,
+      "Significance": 0.1,
+      "Soundness": 0.2,
+      "Terminology": 0.05
+    }
+  },
+  "issues": [
+    {
+      "affected_dimensions": [
+        "Evidence"
+      ],
+      "applies_to": "current",
+      "evidence": "No endpoint in the manuscript has headroom above its own detectable effect, and the project's strongest measurement is unreported. TE2 step 3 froze the target artifact, priority rule, ladder, endpoint and decision rule before the runs and measured the oracle ceiling as a function of deployment-target concentration; the alternate step 4 reached the exact single-region target (top-1 1.0000) with 20 seeds and gives +0.001 % (interval contains zero), +0.022 %, +0.045 % and +0.097 % with interval [+0.067 %, +0.130 %]. Round 17 adds that the repair is page-budget constrained rather than costly in prose: the ceiling paragraph alone and the ceiling paragraph plus the availability naming both build to 18 pp, while all four planned insertions build to 19 pp against a hard 18 pp allowance.",
+      "first_seen_version": "round 9 (as E1); re-charged at rounds 15 and 16",
+      "id": "R17-1",
+      "note": "The axis is limited by an authorial scope decision. Round 16 estimated the repair as three sentences; round 17 corrects that estimate to a layout decision, and recommends the two-site scope, whose dropped limitations cross-reference is redundant because L2248 already references subsec:ceiling.",
+      "origin": "inherited",
+      "score_effect": {
+        "current": 0,
+        "historical": 0
+      },
+      "status": "unresolved"
+    },
+    {
+      "affected_dimensions": [
+        "Reproducibility"
+      ],
+      "applies_to": "both",
+      "evidence": "The availability section names the two run trees behind the Adam replacement and its structural readout with the confirm seed range 30006-30020. Still charged: the trees are not in the released bundle, w1/PAPER_NUMBERS.csv indexes no value added since 2026-10-07, and the shipped main.pdf is the 2026-10-06 artifact.",
+      "first_seen_version": "round 13 (NEW-r13-2); re-charged at rounds 15 and 16",
+      "id": "R17-2",
+      "origin": "inherited",
+      "score_effect": {
+        "current": 0,
+        "historical": 0
+      },
+      "status": "partially_resolved"
+    },
+    {
+      "affected_dimensions": [
+        "Reproducibility"
+      ],
+      "applies_to": "both",
+      "evidence": "The 2026-10-09 change from 7b874f28 to 1d6515ff (+75 B) names no new tree, seed range or round_v1, is not in the availability section, and touches none of the sites this session edited. The 2026-10-09 revision as a whole has no authorization record.",
+      "first_seen_version": "round 15 (provenance note)",
+      "id": "R17-3",
+      "origin": "inherited",
+      "score_effect": {
+        "current": 0,
+        "historical": 0
+      },
+      "status": "unresolved"
+    },
+    {
+      "affected_dimensions": [
+        "Originality",
+        "Related work"
+      ],
+      "applies_to": "both",
+      "evidence": "No round of this session, including this one, has performed a literature search, so the novelty band is asserted. The dataset search performed in this session returned no candidate meeting its inclusion bar and is not a novelty search.",
+      "first_seen_version": "round 13",
+      "id": "R17-4",
+      "origin": "inherited",
+      "score_effect": {
+        "current": 0,
+        "historical": 0
+      },
+      "status": "unresolved"
+    }
+  ],
+  "relative_progress_scorecard": {
+    "classification": "unchanged",
+    "current": {
+      "Clarity": 5,
+      "Evidence": 3,
+      "Originality": 2,
+      "Related work": 3,
+      "Reproducibility": 2,
+      "Significance": 3,
+      "Soundness": 5,
+      "Terminology": 4
+    },
+    "deltas": {
+      "Clarity": 0,
+      "Evidence": 0,
+      "Originality": 0,
+      "Related work": 0,
+      "Reproducibility": 0,
+      "Significance": 0,
+      "Soundness": 0,
+      "Terminology": 0
+    },
+    "historical": {
+      "Clarity": 5,
+      "Evidence": 3,
+      "Originality": 2,
+      "Related work": 3,
+      "Reproducibility": 2,
+      "Significance": 3,
+      "Soundness": 5,
+      "Terminology": 4
+    },
+    "weighted_delta": 0.0
+  }
+}

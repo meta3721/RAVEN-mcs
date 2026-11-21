@@ -1,0 +1,13 @@
+const fs = require('fs');
+const ts = require('C:/Users/szr/AppData/Local/Programs/cursor/resources/app/extensions/node_modules/typescript/lib/typescript.js');
+const root = 'C:/Users/szr/Desktop/record/1/ccfa-review-reports/';
+const data = JSON.parse(fs.readFileSync(root+'novelty-review.json','utf8'));
+const local = [...new Set([...data.claims,...data.issues].flatMap(x=>x.sources).filter(x=>!x.startsWith('http')))];
+const missing = local.filter(p=>!fs.existsSync(p.replace(/:\d+$/,'')));
+const code = fs.readFileSync(root+'novelty-review.canvas.tsx','utf8');
+const check = ts.transpileModule(code,{fileName:'novelty-review.canvas.tsx',compilerOptions:{jsx:ts.JsxEmit.ReactJSX,target:ts.ScriptTarget.ES2021,strict:true},reportDiagnostics:true});
+const diagnostics = (check.diagnostics || []).map(d=>ts.flattenDiagnosticMessageText(d.messageText,'\n'));
+const result = {scope:'Local evidence links and TSX syntax only; no experiment reruns, full SDK typecheck, or rendered-UI verification.',localSources:local.length,missing,diagnostics};
+fs.writeFileSync(root+'novelty-review-check.json',JSON.stringify(result,null,2));
+console.log(JSON.stringify(result));
+if(missing.length || diagnostics.length) process.exitCode=1;

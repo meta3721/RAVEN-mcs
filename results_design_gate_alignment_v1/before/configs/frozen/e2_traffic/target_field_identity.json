@@ -1,0 +1,7 @@
+{
+  "selection_rule": "max_score(missing,station_cov,time_cov)+canonical_bonus; tie-break field name",
+  "semantic": "hourly traffic volume at counting station",
+  "status": "PASS",
+  "target_field": "target_value",
+  "unit": "vehicles_per_hour"
+}

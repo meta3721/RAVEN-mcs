@@ -1,0 +1,31 @@
+{
+  "capacity": {
+    "candidate_size": 20,
+    "earliest_time_index": 250,
+    "latest_time_index": 311,
+    "limiting_client": "client-005",
+    "maximum_legal_continuous_windows": 105,
+    "per_client_max_legal_windows": {
+      "client-000": 663,
+      "client-001": 539,
+      "client-002": 663,
+      "client-003": 353,
+      "client-004": 291,
+      "client-005": 105,
+      "client-006": 415,
+      "client-007": 229
+    },
+    "suggested_legal_candidate_lengths": [
+      100
+    ]
+  },
+  "chronology_status": "PASS",
+  "generated_at_utc": "2026-08-05T04:28:42.765947+00:00",
+  "independence_status": "PASS",
+  "package": "E2_TRUE_STRATUM_AND_NONWRAP_SCHEDULE_REPAIR_R1",
+  "profile_status": "NO_VALID_TRUE_STRATUM_NONWRAP_PROFILE",
+  "report": "deliverables\\TO_SUBMIT_E2_TRUE_STRATUM_AND_NONWRAP_SCHEDULE_REPAIR_R1\\E2_TRUE_STRATUM_AND_NONWRAP_SCHEDULE_REPAIR_R1_REPORT.docx",
+  "runtime_commit": "e56687813f2bcb919a9208391f68a4db3488602e",
+  "selected_profile_id": null,
+  "trace_count": 180
+}

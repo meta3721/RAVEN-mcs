@@ -1,0 +1,16 @@
+{
+  "candidate_status_100": "FAIL",
+  "candidate_status_200": "FAIL",
+  "candidate_status_300": "PASS",
+  "prior_300_not_preferred": true,
+  "selected_profile_id": "PROFILE-S4",
+  "selected_windows": 300,
+  "selection_rule": "shortest stable among {100,200,300}; prior-300 not preferred",
+  "validation_seed_list": [
+    29101,
+    29102,
+    29103,
+    29104,
+    29105
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "events_sha256": "5f8f4c73f3be41513a99691cf5e07f731b74e49f391e22cccbedaab85581d95d",
+  "metadata": {
+    "dataset": "cityscanner_nyc_p2_measured_o_no2",
+    "generator": "cityscanner-p2-measured-o-no2-controlled-u-v1",
+    "notes": [
+      "R from Pilot2 PM∪NO2 GPS cell x 30min visits",
+      "O measured finite no2; not Bernoulli p_obs",
+      "U Complete-aligned compute_usable_r3",
+      "method-independent"
+    ],
+    "num_clients": 351,
+    "num_windows": 100,
+    "s_max": 5,
+    "seed": 34008
+  },
+  "metadata_sha256": "871500bbd712217d694dcf4b4b2c72b2c91121ab7041871a19cb1ba00e76aaaa",
+  "trace_hash": "ee4a4f4e0bc685f5fc8a551d396e6fdf58e13fe891a9d5402380468ded894719"
+}

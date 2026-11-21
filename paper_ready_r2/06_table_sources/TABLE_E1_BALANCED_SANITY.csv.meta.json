@@ -1,0 +1,22 @@
+{
+  "csv_relative": "D:/Cursor/raven.mcs/paper_ready_r1/06_table_sources/TABLE_E1_BALANCED_SANITY.csv",
+  "csv_sha256": "092ecf8ede39bf0ca2f5c9cf0bad3c79d18c271f98e8f8fbcdb17db7dba3b09e",
+  "excluded_rows": "",
+  "filters": "E1 accepted sealed runs",
+  "included_seeds": [
+    "28001",
+    "28002",
+    "28003",
+    "28004",
+    "28005"
+  ],
+  "metric_definitions": {
+    "RMSE_mu": "target RMSE"
+  },
+  "source_files": [
+    "01_core_data/e1/E1_FINAL_VALID_RUNS.csv"
+  ],
+  "statistical_method": "descriptive means; no-harm tests in E1_FINAL_STATISTICS",
+  "transformations": "mean over seeds",
+  "version": "R1"
+}

@@ -1,0 +1,68 @@
+{
+  "canary_seed": 31001,
+  "datasets": {
+    "sensorscope": {
+      "methods": [
+        "fedavg_window",
+        "fedasync_window",
+        "flamf_timealign_adapted",
+        "local_hajek",
+        "twostage_hajek",
+        "inst_cal",
+        "debt_cal",
+        "raven",
+        "raven_simoracle",
+        "central_all",
+        "central_delivered"
+      ]
+    },
+    "traffic": {
+      "do_not_rerun": [
+        "fedavg_window",
+        "fedasync_window",
+        "flamf_timealign_adapted",
+        "twostage_hajek",
+        "raven"
+      ],
+      "methods": [
+        "local_hajek",
+        "inst_cal",
+        "debt_cal",
+        "raven_simoracle",
+        "central_all",
+        "central_delivered"
+      ]
+    },
+    "uair": {
+      "methods": [
+        "fedavg_window",
+        "fedasync_window",
+        "flamf_timealign_adapted",
+        "local_hajek",
+        "twostage_hajek",
+        "inst_cal",
+        "debt_cal",
+        "raven",
+        "raven_simoracle",
+        "central_all",
+        "central_delivered"
+      ]
+    }
+  },
+  "disjoint_proof": {
+    "not_e1_block": true,
+    "not_formal": true,
+    "not_legacy_e3": true
+  },
+  "execute_in_this_round": false,
+  "includes": [
+    "Central",
+    "SimOracle",
+    "pair-state",
+    "metric outputs",
+    "attempt-aware Ledger"
+  ],
+  "next_round": "E3-MULTIDATASET-REAL-RUNNER-CANARY-R1",
+  "no_performance_conclusion": true,
+  "purpose": "execution/semantic integrity only"
+}

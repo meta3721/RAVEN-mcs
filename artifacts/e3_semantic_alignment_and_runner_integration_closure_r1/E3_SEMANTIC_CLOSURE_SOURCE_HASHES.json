@@ -1,0 +1,289 @@
+{
+  "dirty_reason": "closure round artifacts/scripts uncommitted; prefer clean commit before Canary",
+  "git_status_porcelain": " M configs/audit/q_feature_whitelist.yaml\n M docs/reports/E1_FORMAL_FREEZE_R1_PREFLIGHT.md\n M docs/reports/E1_R2_COMMUNICATION_METRIC_NOTE.md\n M scripts/check_e2_traffic_formal_runs_gates.py\n?? artifacts/\n?? configs/frozen/e2_certification/\n?? configs/frozen/e2_data_recovery/\n?? configs/frozen/e2_dgp_certification/\n?? configs/frozen/e2_empirical/\n?? configs/frozen/e2_finite_sample_gate/\n?? configs/frozen/e2_global_windows/\n?? configs/frozen/e2_legal_horizon/\n?? configs/frozen/e2_spatial_identity/\n?? configs/frozen/e2_stage2/\n?? configs/frozen/e2_stage2_stratum/\n?? configs/frozen/e2_stratum/\n?? configs/frozen/e2_traffic/\n?? configs/frozen/e2_traffic_profiles/\n?? configs/frozen/e2_traffic_profiles_s1/\n?? configs/frozen/e2_traffic_public_target/\n?? configs/frozen/e2_true_stratum/\n?? configs/frozen/e3_multidataset_protocol_closure/\n?? configs/frozen/e3_semantic_alignment_r2/\n?? outputs/_tmp_g9_ledger_test.jsonl\n?? outputs/_tmp_pf_probe/\n?? outputs/_tmp_pf_probe_bal/\n?? outputs/_tmp_schedule_extract/\n?? outputs/archive/\n?? outputs/data_recovery/\n?? outputs/e2_balanced_calibration/\n?? outputs/e2_balanced_dgp/\n?? outputs/e2_distribution/\n?? outputs/e2_empirical/\n?? outputs/e2_global_window/\n?? outputs/e2_hard_variance/\n?? outputs/e2_stage2_stratum/\n?? outputs/e2_traffic_balanced_canary/\n?? outputs/e2_traffic_canary/\n?? outputs/e2_traffic_profile_s1/\n?? outputs/e2_traffic_profiles/\n?? outputs/e2_traffic_public_target_canary/\n?? outputs/e2_traffic_real_runner_canary/\n?? outputs/e2_traffic_runner_consistency/\n?? outputs/e2_true_stratum/\n?? outputs/plans/E2_FORMAL_RUNTIME_AND_STORAGE_ESTIMATE.json\n?? outputs/plans/E2_FORMAL_RUNTIME_AND_STORAGE_ESTIMATE.md\n?? outputs/traffic_mapping/\n?? outputs/traffic_public_target/\n?? scripts/_e2ee_unpacked_specialized.py\n?? scripts/_e2sr_unpacked_specialized.py\n?? scripts/_extract_schedule_from_transcript.py\n?? scripts/_probe_h1_fix.py\n?? scripts/_run_e2bc_ledger_sequence.py\n?? scripts/_run_e2bd_ledger_sequence.py\n?? scripts/_run_e2dr_ledger_sequence.py\n?? scripts/_run_e2ee_ledger_sequence.py\n?? scripts/_run_e2gw_ledger_sequence.py\n?? scripts/_run_e2hv_ledger_sequence.py\n?? scripts/_run_e2lb_ledger_sequence.py\n?? scripts/_run_e2pf_ledger_sequence.py\n?? scripts/_run_e2pt_ledger_sequence.py\n?? scripts/_run_e2rc_ledger_sequence.py\n?? scripts/_run_e2rr_ledger_sequence.py\n?? scripts/_run_e2s1_ledger_sequence.py\n?? scripts/_run_e2sr_ledger_sequence.py\n?? scripts/_run_e2tr_ledger_sequence.py\n?? scripts/_scan_empirical_gates.py\n?? scripts/_scan_stage2_gates.py\n?? scripts/_verify_e2ee_prepare_artifacts.py\n?? scripts/_verify_e2sr_prepare.py\n?? scripts/_verify_e2tn_prepare.py\n?? scripts/check_e2_balanced_dgp_single_trace_compact_evidence.py\n?? scripts/check_e2_balanced_dgp_single_trace_gates.py\n?? scripts/check_e2_balanced_hard_variance_compact_evidence.py\n?? scripts/check_e2_balanced_hard_variance_gates.py\n?? scripts/check_e2_data_horizon_spatial_recovery_compact_evidence.py\n?? scripts/check_e2_data_horizon_spatial_recovery_gates.py\n?? scripts/check_e2_empirical_eventtrace_gates.py\n?? scripts/check_e2_global_window_finite_gate_compact_evidence.py\n?? scripts/check_e2_global_window_finite_gate_gates.py\n?? scripts/check_e2_legal_horizon_balanced_gates.py\n?? scripts/check_e2_legal_horizon_compact_evidence.py\n?? scripts/check_e2_stage2_stratum_gates.py\n?? scripts/check_e2_traffic_balanced_canary_compact_evidence.py\n?? scripts/check_e2_traffic_balanced_canary_gates.py\n?? scripts/check_e2_traffic_formal_results_analysis_gates.py\n?? scripts/check_e2_traffic_mapping_readiness_compact_evidence.py\n?? scripts/check_e2_traffic_mapping_readiness_gates.py\n?? scripts/check_e2_traffic_numerical_tolerance_and_final_claim_seal_gates.py\n?? scripts/check_e2_traffic_offline_metric_reconstruction_and_claim_correction_gates.py\n?? scripts/check_e2_traffic_profile_runner_consistency_compact_evidence.py\n?? scripts/check_e2_traffic_profile_runner_consistency_gates.py\n?? scripts/check_e2_traffic_profile_s1_final_freeze_compact_evidence.py\n?? scripts/check_e2_traffic_profile_s1_final_freeze_gates.py\n?? scripts/check_e2_traffic_public_target_qseal_compact_evidence.py\n?? scripts/check_e2_traffic_public_target_qseal_gates.py\n?? scripts/check_e2_traffic_real_runner_canary_compact_evidence.py\n?? scripts/check_e2_traffic_real_runner_canary_gates.py\n?? scripts/check_e2_traffic_s1_s6_profile_freeze_compact_evidence.py\n?? scripts/check_e2_traffic_s1_s6_profile_freeze_gates.py\n?? scripts/check_e2_true_stratum_compact_evidence.py\n?? scripts/check_e2_true_stratum_gates.py\n?? scripts/check_e3_multidataset_protocol_closure_gates.py\n?? scripts/check_e3_protocol_reuse_and_readiness_gates.py\n?? scripts/export_e2_balanced_dgp_single_trace_evidence.py\n?? scripts/export_e2_balanced_hard_variance_evidence.py\n?? scripts/export_e2_data_horizon_spatial_recovery_evidence.py\n?? scripts/export_e2_empirical_eventtrace_evidence.py\n?? scripts/export_e2_global_window_finite_gate_evidence.py\n?? scripts/export_e2_legal_horizon_balanced_evidence.py\n?? scripts/export_e2_stage2_stratum_evidence.py\n?? scripts/export_e2_traffic_balanced_canary_evidence.py\n?? scripts/export_e2_traffic_formal_results_analysis_evidence.py\n?? scripts/export_e2_traffic_mapping_readiness_evidence.py\n?? scripts/export_e2_traffic_numerical_tolerance_and_final_claim_seal_evidence.py\n?? scripts/export_e2_traffic_offline_metric_reconstruction_evidence.py\n?? scripts/export_e2_traffic_profile_runner_consistency_evidence.py\n?? scripts/export_e2_traffic_profile_s1_final_freeze_evidence.py\n?? scripts/export_e2_traffic_public_target_qseal_evidence.py\n?? scripts/export_e2_traffic_real_runner_canary_evidence.py\n?? scripts/export_e2_traffic_real_runner_ledger_closure_evidence.py\n?? scripts/export_e2_traffic_s1_s6_profile_freeze_evidence.py\n?? scripts/export_e2_true_stratum_nonwrap_evidence.py\n?? scripts/export_e3_multidataset_protocol_closure_evidence.py\n?? scripts/export_e3_protocol_reuse_and_readiness_evidence.py\n?? scripts/prepare_e2_balanced_dgp_and_single_trace_certification.py\n?? scripts/prepare_e2_balanced_hard_variance_and_certification.py\n?? scripts/prepare_e2_data_horizon_and_spatial_recovery.py\n?? scripts/prepare_e2_empirical_eventtrace_and_profile_refreeze.py\n?? scripts/prepare_e2_global_window_and_finite_sample_gate.py\n?? scripts/prepare_e2_legal_horizon_and_balanced_calibration.py\n?? scripts/prepare_e2_stage2_eligibility_and_true_stratum_refreeze.py\n?? scripts/prepare_e2_traffic_balanced_design_canary.py\n?? scripts/prepare_e2_traffic_formal_results_analysis.py\n?? scripts/prepare_e2_traffic_mapping_and_readiness.py\n?? scripts/prepare_e2_traffic_numerical_tolerance_and_final_claim_seal.py\n?? scripts/prepare_e2_traffic_offline_metric_reconstruction.py\n?? scripts/prepare_e2_traffic_profile_runner_consistency_hotfix.py\n?? scripts/prepare_e2_traffic_profile_s1_final_freeze.py\n?? scripts/prepare_e2_traffic_public_target_and_qseal.py\n?? scripts/prepare_e2_traffic_real_runner_canary.py\n?? scripts/prepare_e2_traffic_s1_s6_profile_freeze.py\n?? scripts/prepare_e2_true_stratum_and_nonwrap_schedule_repair.py\n?? scripts/prepare_e3_multidataset_protocol_closure.py\n?? scripts/prepare_e3_protocol_reuse_and_readiness.py\n?? scripts/prepare_e3_semantic_alignment_and_runner_integration_closure.py\n?? scripts/validate_e2_claim_matrix.py\n?? scripts/validate_e2_claim_matrix_final.py\n?? src/raven_mcs/e2/balanced_dgp/\n?? src/raven_mcs/e2/empirical/\n?? src/raven_mcs/e2/global_window/\n?? src/raven_mcs/e2/hard_variance/\n?? src/raven_mcs/e2/legal_horizon/\n?? src/raven_mcs/e2/stage2/\n?? src/raven_mcs/e2/traffic_balanced_canary/\n?? src/raven_mcs/e2/traffic_final_seal/\n?? src/raven_mcs/e2/traffic_formal_analysis/\n?? src/raven_mcs/e2/traffic_mapping/\n?? src/raven_mcs/e2/traffic_offline_recon/\n?? src/raven_mcs/e2/traffic_profiles/\n?? src/raven_mcs/e2/traffic_public_target/\n?? src/raven_mcs/e2/true_stratum/\n?? src/raven_mcs/e3/\n?? tests/integration/test_e2_balanced_dgp_single_trace_stop.py\n?? tests/integration/test_e2_balanced_hard_variance_stop.py\n?? tests/integration/test_e2_data_horizon_spatial_recovery_stop.py\n?? tests/integration/test_e2_empirical_eventtrace_integration.py\n?? tests/integration/test_e2_global_window_finite_gate_stop.py\n?? tests/integration/test_e2_stage2_stratum_integration.py\n?? tests/integration/test_e2_traffic_balanced_canary_stop.py\n?? tests/integration/test_e2_traffic_mapping_readiness_stop.py\n?? tests/integration/test_e2_traffic_profile_runner_consistency_stop.py\n?? tests/integration/test_e2_traffic_profile_s1_final_freeze_stop.py\n?? tests/integration/test_e2_traffic_public_target_qseal_stop.py\n?? tests/integration/test_e2_traffic_real_runner_canary_stop.py\n?? tests/integration/test_e2_traffic_s1_s6_profile_freeze_stop.py\n?? tests/integration/test_e2_true_stratum_nonwrap_integration.py\n?? tests/test_e2_legal_horizon_balanced_calibration.py\n?? tests/unit/test_e2_balanced_dgp_single_trace_core.py\n?? tests/unit/test_e2_balanced_hard_variance_core.py\n?? tests/unit/test_e2_data_horizon_spatial_recovery_core.py\n?? tests/unit/test_e2_empirical_eventtrace_core.py\n?? tests/unit/test_e2_global_window_finite_gate_core.py\n?? tests/unit/test_e2_stage2_stratum_core.py\n?? tests/unit/test_e2_traffic_balanced_canary_core.py\n?? tests/unit/test_e2_traffic_formal_results_analysis_core.py\n?? tests/unit/test_e2_traffic_mapping_readiness_core.py\n?? tests/unit/test_e2_traffic_profile_runner_consistency_core.py\n?? tests/unit/test_e2_traffic_profile_s1_final_freeze_core.py\n?? tests/unit/test_e2_traffic_public_target_qseal_core.py\n?? tests/unit/test_e2_traffic_real_runner_canary_core.py\n?? tests/unit/test_e2_traffic_s1_s6_profile_freeze_core.py\n?? tests/unit/test_e2_true_stratum_nonwrap_core.py\n?? tests/unit/test_e3_multidataset_protocol_closure_core.py\n?? tests/unit/test_e3_protocol_reuse_and_readiness_core.py\n",
+  "methods": {
+    "central_all": {
+      "files": [
+        {
+          "path": "src/raven_mcs/aggregation/method_policy.py",
+          "sha256": "4e381b684b83de0c529ee39be1cffd98bbf08342f2d99f85e9c22f878cb3d22f"
+        },
+        {
+          "path": "src/raven_mcs/e3/protocol_closure/central_reference.py",
+          "sha256": "4c0de5b74d58f8fd25dacb929321c2a46e70808ae83d6ae640d2871372c1c151"
+        },
+        {
+          "path": "src/raven_mcs/models/common_ndmf.py",
+          "sha256": "959723c87af991b8999fb137648d108310b759677c0e4c891eddd1c168b4de38"
+        }
+      ],
+      "implementation_hash": "0807be0ca2d14f2e11ad2724c0d1f823e6ac94d5a7816d11381cf7a04e7db152",
+      "status": "HASHED"
+    },
+    "central_delivered": {
+      "files": [
+        {
+          "path": "src/raven_mcs/aggregation/method_policy.py",
+          "sha256": "4e381b684b83de0c529ee39be1cffd98bbf08342f2d99f85e9c22f878cb3d22f"
+        },
+        {
+          "path": "src/raven_mcs/e3/protocol_closure/central_reference.py",
+          "sha256": "4c0de5b74d58f8fd25dacb929321c2a46e70808ae83d6ae640d2871372c1c151"
+        },
+        {
+          "path": "src/raven_mcs/models/common_ndmf.py",
+          "sha256": "959723c87af991b8999fb137648d108310b759677c0e4c891eddd1c168b4de38"
+        }
+      ],
+      "implementation_hash": "0807be0ca2d14f2e11ad2724c0d1f823e6ac94d5a7816d11381cf7a04e7db152",
+      "status": "HASHED"
+    },
+    "debt_cal": {
+      "files": [
+        {
+          "path": "src/raven_mcs/aggregation/method_policy.py",
+          "sha256": "4e381b684b83de0c529ee39be1cffd98bbf08342f2d99f85e9c22f878cb3d22f"
+        },
+        {
+          "path": "src/raven_mcs/aggregation/methods.py",
+          "sha256": "925bc88958a01dcf3f820c960eed3b96ad9bc3ae229aec9ebf7bd26f0d17e6a2"
+        },
+        {
+          "path": "src/raven_mcs/training/window_runner.py",
+          "sha256": "cfe678e7216b0e0366a0055314180d6afec52e1c0fe248a9077d9e79660413bf"
+        },
+        {
+          "path": "src/raven_mcs/aggregation/p2_cvxpy.py",
+          "sha256": "0da4e4b3bb3c90ab08e53219e80bce0f871d734670b61c50f0d3ed551bb09b5e"
+        },
+        {
+          "path": "src/raven_mcs/metrics/debt.py",
+          "sha256": "dd4fce52f02b87ec3b903f2fbb94c4c8f5d68c7616ec3fb3fd597abfb3e6451c"
+        }
+      ],
+      "implementation_hash": "2c03396fa246edf94e16a117fdcb3320b7984b39e9def89f488fb63af4a16289",
+      "status": "HASHED"
+    },
+    "fedasync_window": {
+      "files": [
+        {
+          "path": "src/raven_mcs/aggregation/method_policy.py",
+          "sha256": "4e381b684b83de0c529ee39be1cffd98bbf08342f2d99f85e9c22f878cb3d22f"
+        },
+        {
+          "path": "src/raven_mcs/aggregation/methods.py",
+          "sha256": "925bc88958a01dcf3f820c960eed3b96ad9bc3ae229aec9ebf7bd26f0d17e6a2"
+        },
+        {
+          "path": "src/raven_mcs/training/window_runner.py",
+          "sha256": "cfe678e7216b0e0366a0055314180d6afec52e1c0fe248a9077d9e79660413bf"
+        }
+      ],
+      "implementation_hash": "e28106027148bee5ea6c6501723b7eb343d3410d2676c9ea0dd493d99129e9a9",
+      "status": "HASHED"
+    },
+    "fedavg_window": {
+      "files": [
+        {
+          "path": "src/raven_mcs/aggregation/method_policy.py",
+          "sha256": "4e381b684b83de0c529ee39be1cffd98bbf08342f2d99f85e9c22f878cb3d22f"
+        },
+        {
+          "path": "src/raven_mcs/aggregation/methods.py",
+          "sha256": "925bc88958a01dcf3f820c960eed3b96ad9bc3ae229aec9ebf7bd26f0d17e6a2"
+        },
+        {
+          "path": "src/raven_mcs/training/window_runner.py",
+          "sha256": "cfe678e7216b0e0366a0055314180d6afec52e1c0fe248a9077d9e79660413bf"
+        }
+      ],
+      "implementation_hash": "e28106027148bee5ea6c6501723b7eb343d3410d2676c9ea0dd493d99129e9a9",
+      "status": "HASHED"
+    },
+    "flamf_original": {
+      "files": [],
+      "implementation_hash": null,
+      "reason": "external original FLAMF not faithfully reproduced; TimeAlign must not be renamed",
+      "status": "EXCLUDED_WITH_REASON"
+    },
+    "flamf_timealign_adapted": {
+      "files": [
+        {
+          "path": "src/raven_mcs/aggregation/method_policy.py",
+          "sha256": "4e381b684b83de0c529ee39be1cffd98bbf08342f2d99f85e9c22f878cb3d22f"
+        },
+        {
+          "path": "src/raven_mcs/aggregation/methods.py",
+          "sha256": "925bc88958a01dcf3f820c960eed3b96ad9bc3ae229aec9ebf7bd26f0d17e6a2"
+        },
+        {
+          "path": "src/raven_mcs/training/window_runner.py",
+          "sha256": "cfe678e7216b0e0366a0055314180d6afec52e1c0fe248a9077d9e79660413bf"
+        }
+      ],
+      "implementation_hash": "e28106027148bee5ea6c6501723b7eb343d3410d2676c9ea0dd493d99129e9a9",
+      "status": "HASHED"
+    },
+    "inst_cal": {
+      "files": [
+        {
+          "path": "src/raven_mcs/aggregation/method_policy.py",
+          "sha256": "4e381b684b83de0c529ee39be1cffd98bbf08342f2d99f85e9c22f878cb3d22f"
+        },
+        {
+          "path": "src/raven_mcs/aggregation/methods.py",
+          "sha256": "925bc88958a01dcf3f820c960eed3b96ad9bc3ae229aec9ebf7bd26f0d17e6a2"
+        },
+        {
+          "path": "src/raven_mcs/training/window_runner.py",
+          "sha256": "cfe678e7216b0e0366a0055314180d6afec52e1c0fe248a9077d9e79660413bf"
+        },
+        {
+          "path": "src/raven_mcs/aggregation/p2_cvxpy.py",
+          "sha256": "0da4e4b3bb3c90ab08e53219e80bce0f871d734670b61c50f0d3ed551bb09b5e"
+        }
+      ],
+      "implementation_hash": "1f7cb53c313acc8c0635850013a317007aa0999af224b8919b9bddc66bf8ee9d",
+      "status": "HASHED"
+    },
+    "local_hajek": {
+      "files": [
+        {
+          "path": "src/raven_mcs/aggregation/method_policy.py",
+          "sha256": "4e381b684b83de0c529ee39be1cffd98bbf08342f2d99f85e9c22f878cb3d22f"
+        },
+        {
+          "path": "src/raven_mcs/aggregation/methods.py",
+          "sha256": "925bc88958a01dcf3f820c960eed3b96ad9bc3ae229aec9ebf7bd26f0d17e6a2"
+        },
+        {
+          "path": "src/raven_mcs/training/window_runner.py",
+          "sha256": "cfe678e7216b0e0366a0055314180d6afec52e1c0fe248a9077d9e79660413bf"
+        },
+        {
+          "path": "src/raven_mcs/correction/hajek.py",
+          "sha256": "d68c45b6fae1fc1c02dbced3f6cf9e4eeb68464d5ec781659e4c3089c81589fb"
+        }
+      ],
+      "implementation_hash": "ed0bfe2331facb1e6102f1c96cb1be41894dcac7d7b1e39b792a15bba31292b5",
+      "status": "HASHED"
+    },
+    "raven": {
+      "files": [
+        {
+          "path": "src/raven_mcs/aggregation/method_policy.py",
+          "sha256": "4e381b684b83de0c529ee39be1cffd98bbf08342f2d99f85e9c22f878cb3d22f"
+        },
+        {
+          "path": "src/raven_mcs/aggregation/methods.py",
+          "sha256": "925bc88958a01dcf3f820c960eed3b96ad9bc3ae229aec9ebf7bd26f0d17e6a2"
+        },
+        {
+          "path": "src/raven_mcs/training/window_runner.py",
+          "sha256": "cfe678e7216b0e0366a0055314180d6afec52e1c0fe248a9077d9e79660413bf"
+        },
+        {
+          "path": "src/raven_mcs/aggregation/p2_cvxpy.py",
+          "sha256": "0da4e4b3bb3c90ab08e53219e80bce0f871d734670b61c50f0d3ed551bb09b5e"
+        },
+        {
+          "path": "src/raven_mcs/correction/hajek.py",
+          "sha256": "d68c45b6fae1fc1c02dbced3f6cf9e4eeb68464d5ec781659e4c3089c81589fb"
+        },
+        {
+          "path": "src/raven_mcs/metrics/debt.py",
+          "sha256": "dd4fce52f02b87ec3b903f2fbb94c4c8f5d68c7616ec3fb3fd597abfb3e6451c"
+        }
+      ],
+      "implementation_hash": "abc3a820ea4d3e8e0976acbcc9dfdbd109e2c77589c82a4ae9d37754edaf2859",
+      "status": "HASHED"
+    },
+    "raven_simoracle": {
+      "files": [
+        {
+          "path": "src/raven_mcs/aggregation/method_policy.py",
+          "sha256": "4e381b684b83de0c529ee39be1cffd98bbf08342f2d99f85e9c22f878cb3d22f"
+        },
+        {
+          "path": "src/raven_mcs/aggregation/methods.py",
+          "sha256": "925bc88958a01dcf3f820c960eed3b96ad9bc3ae229aec9ebf7bd26f0d17e6a2"
+        },
+        {
+          "path": "src/raven_mcs/training/window_runner.py",
+          "sha256": "cfe678e7216b0e0366a0055314180d6afec52e1c0fe248a9077d9e79660413bf"
+        },
+        {
+          "path": "src/raven_mcs/aggregation/p2_cvxpy.py",
+          "sha256": "0da4e4b3bb3c90ab08e53219e80bce0f871d734670b61c50f0d3ed551bb09b5e"
+        },
+        {
+          "path": "src/raven_mcs/simulation/replay.py",
+          "sha256": "9c7ce740d28e7995e26583534ca9dd4de70134078841ea047911d65ce42bd383"
+        },
+        {
+          "path": "src/raven_mcs/e3/protocol_closure/constants.py",
+          "sha256": "9c83a68426a85f6459c10f1a9c46c21aa402ba04c1bac9dd8e4e9bd4cc9612a2"
+        }
+      ],
+      "implementation_hash": "f724faba906d0ee9e5ca1d5833e4a10102d6a36a5dc22fb2b34e9903f76c306a",
+      "status": "HASHED"
+    },
+    "twostage_hajek": {
+      "files": [
+        {
+          "path": "src/raven_mcs/aggregation/method_policy.py",
+          "sha256": "4e381b684b83de0c529ee39be1cffd98bbf08342f2d99f85e9c22f878cb3d22f"
+        },
+        {
+          "path": "src/raven_mcs/aggregation/methods.py",
+          "sha256": "925bc88958a01dcf3f820c960eed3b96ad9bc3ae229aec9ebf7bd26f0d17e6a2"
+        },
+        {
+          "path": "src/raven_mcs/training/window_runner.py",
+          "sha256": "cfe678e7216b0e0366a0055314180d6afec52e1c0fe248a9077d9e79660413bf"
+        },
+        {
+          "path": "src/raven_mcs/correction/hajek.py",
+          "sha256": "d68c45b6fae1fc1c02dbced3f6cf9e4eeb68464d5ec781659e4c3089c81589fb"
+        }
+      ],
+      "implementation_hash": "ed0bfe2331facb1e6102f1c96cb1be41894dcac7d7b1e39b792a15bba31292b5",
+      "status": "HASHED"
+    }
+  },
+  "runner_files": [
+    {
+      "path": "src/raven_mcs/e3/semantic_alignment/target_semantics.py",
+      "sha256": "888461fb3f720ad23add0feaae2055f2e5ce6432e7718aac9dbcf0f6b22c80b2"
+    },
+    {
+      "path": "src/raven_mcs/e3/semantic_alignment/complete_aligned_r2.py",
+      "sha256": "f8f5798f5e5669b7289e321059430afde9edb9d65258eeffde287b391487de56"
+    },
+    {
+      "path": "src/raven_mcs/e3/semantic_alignment/stage2_usable.py",
+      "sha256": "bc32f7f33fa988775cf4568c3bcd3332211bc6dd5191a70624456200d1b540ee"
+    },
+    {
+      "path": "src/raven_mcs/e3/semantic_alignment/q_boundary.py",
+      "sha256": "7a0b964e7f1b87c0943fea0d8668e9d03eaf7747ed4492c2df5a87bd7179bd95"
+    },
+    {
+      "path": "src/raven_mcs/e3/semantic_alignment/pair_state_v2.py",
+      "sha256": "390778dc77468daa55b6194d923d54a8db0d4f0c1e38875a4cfcbc32d22cb370"
+    },
+    {
+      "path": "src/raven_mcs/e3/semantic_alignment/runner.py",
+      "sha256": "25b4bfd244aec461594ae2849589567fbe7c09b8bf9335e40b61b90df5f149a9"
+    },
+    {
+      "path": "src/raven_mcs/e3/semantic_alignment/central_runner.py",
+      "sha256": "ec690147c787011fc1f50c97099ba4c9cadd3fb842d729972eb2251eff436f1c"
+    },
+    {
+      "path": "src/raven_mcs/e3/semantic_alignment/client_mapping.py",
+      "sha256": "53511264eb8b30e658288316cb171add9164b8f1d5d7aa4d009bb7699b57f184"
+    }
+  ],
+  "working_tree_dirty": true
+}

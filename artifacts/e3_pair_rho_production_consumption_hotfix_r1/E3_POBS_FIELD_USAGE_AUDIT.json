@@ -1,0 +1,18 @@
+{
+  "diagnostic_only": [
+    "oracle_p",
+    "p_obs_mean_diagnostic"
+  ],
+  "enforcement": "FullWindowRunner SimOracle path uses p_obs_true_by_unit only",
+  "forbidden_for_atomic_correction": [
+    "oracle_p",
+    "p_obs_mean_diagnostic"
+  ],
+  "scientific_weighting_may_read": [
+    "p_obs_true_by_unit",
+    "opportunity_features.p_obs_true_by_unit"
+  ],
+  "static_check_simoracle_block": true,
+  "static_check_uses_atomic": true,
+  "status": "AUDITED"
+}

@@ -1,0 +1,11 @@
+dataset,availability_level,delta,one_minus_delta,p_active_upper,strict_positive_lcb_possible,reason
+sensorscope,1.0,0.05,0.95,1.0,True,a_ge_1_minus_delta_availability_zero_event_not_forced
+sensorscope,0.8,0.05,0.95,0.8,False,p_active_upper<=a=0.80<0.95=1-delta; hidden current mask can force X=0 with probability > delta
+sensorscope,0.6,0.05,0.95,0.6,False,p_active_upper<=a=0.60<0.95=1-delta; hidden current mask can force X=0 with probability > delta
+sensorscope,0.4,0.05,0.95,0.4,False,p_active_upper<=a=0.40<0.95=1-delta; hidden current mask can force X=0 with probability > delta
+sensorscope,0.2,0.05,0.95,0.2,False,p_active_upper<=a=0.20<0.95=1-delta; hidden current mask can force X=0 with probability > delta
+uair,1.0,0.05,0.95,1.0,True,a_ge_1_minus_delta_availability_zero_event_not_forced
+uair,0.8,0.05,0.95,0.8,False,p_active_upper<=a=0.80<0.95=1-delta; hidden current mask can force X=0 with probability > delta
+uair,0.6,0.05,0.95,0.6,False,p_active_upper<=a=0.60<0.95=1-delta; hidden current mask can force X=0 with probability > delta
+uair,0.4,0.05,0.95,0.4,False,p_active_upper<=a=0.40<0.95=1-delta; hidden current mask can force X=0 with probability > delta
+uair,0.2,0.05,0.95,0.2,False,p_active_upper<=a=0.20<0.95=1-delta; hidden current mask can force X=0 with probability > delta

@@ -1,0 +1,8 @@
+table_id,all_source_data_present,statistics_present,provenance_complete,new_experiment_required,main_text_value,appendix_value,recommended_final_status
+TABLE_I_DATASET_SETUP,True,True,True,False,main,main,MAIN_TABLE_READY
+TABLE_II_MAIN_EFFECTIVENESS,True,True,True,False,main,main,MAIN_TABLE_READY
+TABLE_III_CORE_ABLATION,True,True,True,False,main,main,MAIN_TABLE_READY
+TABLE_E1_SANITY_APPENDIX,True,True,True,False,appendix,appendix,APPENDIX_TABLE_READY
+TABLE_IV_STATISTICAL_SUMMARY,True,True,True,False,appendix,appendix,APPENDIX_TABLE_READY
+TABLE_V_RUNTIME_P2_APPENDIX,True,True,True,False,appendix,appendix,SOURCE_READY_OPTIONAL
+TABLE_VI_FULL_METHOD_RESULTS_APPENDIX,True,True,True,False,appendix,appendix,APPENDIX_TABLE_READY

@@ -1,0 +1,64 @@
+{
+  "conflict_keys": 381,
+  "keys_unique_monitors": 380,
+  "keys_unresolved": 1,
+  "source_rows_in_conflict_keys": 965,
+  "rows_unique": 964,
+  "rows_unresolved": 1,
+  "identity_value_collisions_in_D_and_V": {},
+  "a_t_values_exported": 0,
+  "examples": {
+    "resolved_two_poc": {
+      "site_id": "06-071-0306",
+      "date": "2019-02-17",
+      "device_id": "CA13",
+      "pm25fm": "1.208333",
+      "poc": "1",
+      "event_type": "None",
+      "method_code": "170",
+      "sample_duration": "1 HOUR",
+      "observation_count": "24"
+    },
+    "duration_distinguished_poc": {
+      "site_id": "55-087-0009",
+      "date": "2019-03-11",
+      "split": "V",
+      "pm25fm": "11.15",
+      "accepted_poc": "3",
+      "accepted_duration": "1 HOUR",
+      "all_exact_mean_durations": [
+        [
+          "3",
+          "1 HOUR",
+          "24"
+        ]
+      ]
+    }
+  },
+  "unresolved_rows": [
+    {
+      "source_row": 8402,
+      "date": "2019-01-27",
+      "split": "D_fit",
+      "device_id": "IA3",
+      "site_id": "19-153-0030",
+      "group": "North",
+      "FEMorFRM": "FRM",
+      "reference_type": "R & P Model 2025 PM-2.5 Sequential Air Sampler w/VSCC - Gravimetric",
+      "pm25fm_exported": "12.6",
+      "value_withheld": "false",
+      "link_status": "UNRESOLVED_NO_EXACT_MONITOR",
+      "parameter_code": "",
+      "poc": "",
+      "sample_duration": "24 HOUR",
+      "event_type": "",
+      "method_code": "",
+      "method_name": "",
+      "observation_count": "",
+      "pollutant_standards": ""
+    }
+  ],
+  "cpu_s": 0.15625,
+  "wall_s": 0.15600000000267755,
+  "available_bytes_end": 1960374272
+}

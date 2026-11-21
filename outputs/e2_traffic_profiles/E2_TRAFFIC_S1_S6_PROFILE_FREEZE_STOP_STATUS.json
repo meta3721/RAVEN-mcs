@@ -1,0 +1,40 @@
+{
+  "design_seeds": [
+    28201,
+    28202,
+    28203
+  ],
+  "direction_certificate_sha256": "bd0f598033efc2fcc1223e99c53f8f68239f717e22c86814eb93d1ce947aa6c0",
+  "e2_formal_runs": 0,
+  "e3_e9_status": "NOT_STARTED",
+  "expected_direction_pass_count": 6,
+  "failed_attempt_omission_count": 0,
+  "formal_seed_read_count": 0,
+  "generated_at_utc": "2026-08-06T09:35:08.005322+00:00",
+  "grid_search_count": 0,
+  "hard_direction_pass_count": 6,
+  "hard_trace_count": 18,
+  "next_authorized_round": "E2-TRAFFIC-REAL-RUNNER-CANARY-R1",
+  "observed_count_in_q_count": 0,
+  "parameter_sets_per_scenario": 1,
+  "q_leakage_count": 0,
+  "registry_sha256": "08b4cf56cef192bc1fa1b6df4ac4685ee11b317c693409c1d2f1c3832af11eed",
+  "runtime_commit": "e56687813f2bcb919a9208391f68a4db3488602e",
+  "scenario_pass_count": 6,
+  "scenario_results": {
+    "balanced": "PASS",
+    "complete_aligned": "PASS",
+    "complete_counteracting": "PASS",
+    "observation_only": "PASS",
+    "opportunity_only": "PASS",
+    "usable_only": "PASS"
+  },
+  "seed_29001_read_count": 0,
+  "selected_strength": "PROFILE-S2",
+  "stage2_eligible_in_q_count": 0,
+  "status": "READY_FOR_TRAFFIC_REAL_RUNNER_CANARY",
+  "target_leakage_count": 0,
+  "training_artifact_count": 0,
+  "unsupported_arrival_count": 0,
+  "validation_seed_read_count": 0
+}

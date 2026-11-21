@@ -1,0 +1,24 @@
+{
+  "rows": [
+    {
+      "feasibility": "EXACTLY_RECONSTRUCTABLE",
+      "metric": "Head_RMSE",
+      "required_inputs": "final_metrics.json:group_rmse; HEAD_GROUPS; target_group_mass"
+    },
+    {
+      "feasibility": "EXACTLY_RECONSTRUCTABLE",
+      "metric": "Tail_RMSE",
+      "required_inputs": "final_metrics.json:group_rmse; TAIL_GROUPS; target_group_mass"
+    },
+    {
+      "feasibility": "RECONSTRUCTABLE_FROM_FROZEN_DIAGNOSTICS",
+      "metric": "Delta_group",
+      "required_inputs": "runner_diagnostics.parquet; training_eventtrace/events.parquet; atomic_units; target_group_mass; coverage_mix/delta_group code"
+    },
+    {
+      "feasibility": "NOT_RECONSTRUCTABLE_DUE_TO_MISSING_DEFINITION",
+      "metric": "Delta_pair",
+      "required_inputs": "Pi_hat trajectory (absent); pi_tar alone insufficient"
+    }
+  ]
+}

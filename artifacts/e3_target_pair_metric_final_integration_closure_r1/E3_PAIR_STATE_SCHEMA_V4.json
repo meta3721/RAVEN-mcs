@@ -1,0 +1,45 @@
+{
+  "canonical_pair_id": "client_id::target_group",
+  "formula": {
+    "Delta_pair": "||Pi_hat - pi_tar||_1 on common canonical support",
+    "Pi_hat_pair": "(1/S_R) sum_r eta_r I_r alpha_{k,r}^{(m)} w_{k,r,i}^{(m)} mapped to (client, target_group)",
+    "code": "raven_mcs.e3.target_pair.pair_state_v4.accumulate_pair_state_v4"
+  },
+  "method_dependence": [
+    "alpha_client",
+    "w_atomic"
+  ],
+  "no_silent_uniform_fallback": true,
+  "outputs": [
+    "pair_state_v4.parquet",
+    "delta_pair_v4_summary.json"
+  ],
+  "pair_domain": "client × target_group (spatial×time)",
+  "required_columns": [
+    "dataset",
+    "seed",
+    "scenario",
+    "method",
+    "window",
+    "client_id",
+    "raw_atomic_unit_id",
+    "canonical_pair_id",
+    "spatial_unit",
+    "time_block",
+    "target_group",
+    "eta_r",
+    "I_r",
+    "alpha_client",
+    "w_atomic",
+    "contribution",
+    "accumulated_pair_mass",
+    "target_pair_mass",
+    "support_mask",
+    "normalization_denominator",
+    "eventtrace_hash",
+    "target_artifact_hash",
+    "method_source_hash",
+    "schema_version"
+  ],
+  "schema_version": "E3_PAIR_STATE_SCHEMA_V4"
+}

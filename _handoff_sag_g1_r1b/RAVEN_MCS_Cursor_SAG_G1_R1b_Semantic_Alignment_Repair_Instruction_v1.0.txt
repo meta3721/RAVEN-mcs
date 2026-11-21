@@ -1,0 +1,943 @@
+RAVEN-MCS v2.0
+Cursor 下一轮实验指令
+SAG-G1-R1b Semantic Alignment Repair + 1-Seed Re-Diagnostic
+============================================================
+版本：v1.0
+目标：在不修改 SAG 理论、不放宽 Gate 阈值的前提下，修复当前实现中
+deployment-group semantics 与 opportunity-event mass semantics 的对齐问题，
+并重新验证 SensorScope/U-Air 的 1-seed Gate 判别行为。
+
+本轮定位：
+  REPAIR_IMPLEMENTATION_SEMANTICS_BEFORE_THEORY_CHANGE
+
+本轮不是：
+  - 新算法设计；
+  - 新 Gate 设计；
+  - 新阈值调参；
+  - 5-seed 正式实验；
+  - 论文最终实验。
+
+============================================================
+一、必须先阅读的权威材料
+============================================================
+
+Cursor 开始前必须完整阅读：
+
+1. RAVEN_MCS_Support_Aware_Gate_Spec_v1.2_Final_Closure.txt
+2. RAVEN_MCS_v2_Sections_III_VI_PostAudit_Final.txt
+3. RAVEN_MCS_Cursor_SAG_G0_G1_Experiment_Instruction_v1.0.txt
+4. RAVEN_MCS_Cursor_SAG_G1_R1_Certificate_Repair_Instruction_v1.0.txt
+5. 最近一轮 R1 evidence package 中：
+   - R1_REPAIR_REPORT.md
+   - R1_VERDICT.json
+   - COUNTERFACTUAL_METRIC_RECOMPUTE.csv
+   - COUNTERFACTUAL_RAW_STATE.jsonl
+   - C_COV_REPAIR_WINDOW.csv
+   - C_COV_PAIR_DIAGNOSTIC.csv
+   - B_TOT_DECOMPOSITION.csv
+   - BM_BOUND_AUDIT.csv
+   - CERTIFICATE_TIGHTNESS.csv
+   - R1_GATE_WINDOW_LOG.csv
+   - R1_CERTIFICATE_COVERAGE.csv
+   - 当前源码快照 / commit hash
+
+authority 顺序：
+
+  SAG v1.2 Final Spec
+    ->
+  Sections III--VI PostAudit Final
+    ->
+  R1 指令
+    ->
+  本 R1b 指令
+
+若代码与论文冲突，以 Sections III--VI PostAudit Final 为准。
+
+============================================================
+二、当前已经确认的事实
+============================================================
+
+A. G0 timing / leakage / EventTrace：
+   已 PASS。
+   本轮不重新设计。
+
+B. R1 已确认旧 counterfactual metric logger 存在问题，
+   当前已独立重算：
+     Delta_beta
+     Delta_M
+     Delta_V
+     service_diff
+   synthetic Case A--D 已通过。
+   本轮只做 regression check，不重新发明 metric。
+
+C. 当前最关键的两个实现语义疑点：
+
+P0-1：deployment-group mapping 疑似与论文 h(i) 不一致。
+
+当前代码运行表现：
+  SensorScope:
+    |G| = 220
+  U-Air:
+    |G| = 144
+
+而论文中的 h(i) 是 application-level deployment group，
+不是默认等于 fine spatial/time atomic identity。
+
+当前源码曾使用：
+  use_coarse_time_groups=False
+
+必须核查：
+  220/144 fine groups 是否真的就是论文冻结的 h(i)。
+
+若不是：
+  当前 M_r、mu、Delta_group、B_srv、B_tot 都是在错误的 group space 上运行，
+  不能据此判断 “certificate 天生过松”。
+
+P0-2：C_cov 的 opportunity mass 仍可能按 unique pair presence
+而不是 opportunity-event mass 计算。
+
+若代码执行：
+  对每个 completed window 去重 (k,s)，
+  对出现过的 pair 赋相同质量 1/#unique_pairs，
+
+则违反论文中的 opportunity-event mass 语义。
+
+正确对象应是：
+  N^{opp}_{k,s,r}
+  =
+  completed window 中属于 (k,s) 的 opportunity-event 数量/质量
+
+并归一化得到：
+  pi^{opp}_{k,s,r}
+  =
+  N^{opp}_{k,s,r}
+  /
+  sum_{j,u} N^{opp}_{j,u,r}。
+
+D. 当前 delta_A 证书具有有价值的区分能力：
+  SensorScope 大部分窗口满足 delta_A_UCB <= 0.35；
+  U-Air 大部分/全部窗口不满足。
+本轮不得破坏这一性质。
+
+E. 当前阈值全部冻结：
+  tau_cov  = 0.05
+  tau_ret  = 0.05
+  tau_ESS  = 1.0
+  tau_clip = 0.95
+  tau_A    = 0.35
+  tau_safe = 4.0
+  delta_cal = 0.05
+
+本轮禁止修改这些阈值。
+
+============================================================
+三、本轮唯一目标
+============================================================
+
+只完成三个技术任务：
+
+R1b-A：
+  冻结并核对论文真正的 deployment-group mapping h(i)，
+  确保：
+    mu
+    M_r
+    omega_r
+    Delta_group
+    B_srv
+    Theorem-4 service space
+  全部使用同一个 deployment-group space。
+
+R1b-B：
+  用真实 opportunity-event counts/mass 重做：
+    pi^{opp}_{k,s,r}
+    lower_pi^{opp}_{k,s,r}
+    C_cov_LCB
+  禁止使用 unique-pair presence uniformization。
+
+R1b-C：
+  对 Delta_V = 0 做机制审计：
+    检查 D/0 设计权在同一 client/window 内是否只是共同乘法因子；
+    检查 n_eff^D 是否真的等于 n_eff^0；
+    若相等，给 raw-state 证据；
+    若不等，修 V counterfactual reconstruction。
+
+完成后只跑：
+  SensorScope seed 30001
+  U-Air seed 30001
+
+然后 STOP。
+
+============================================================
+四、绝对禁止事项
+============================================================
+
+1. 不得修改 tau_safe=4.0。
+2. 不得修改 tau_cov=0.05。
+3. 不得修改 tau_A=0.35。
+4. 不得为了 Gate ON 而改 group 数量。
+5. 不得为了 Gate ON 而人为合并 groups。
+6. deployment-group mapping 只能来自论文 h(i) 的既定语义或其明确数据映射。
+7. 不得用 test outcome 选择 h(i)。
+8. 不得用 current R/O/U 选择 h(i)。
+9. 不得用 prediction 结果选择 pi_safe。
+10. 不得修改 Theorem 3/4 数学公式。
+11. 不得删除 U-Air negative result。
+12. 不得自动进入 5-seed。
+13. 不得自动进入 E1--E5。
+14. 不得新增 baseline。
+15. 不得重新生成不同 EventTrace。
+
+============================================================
+五、R1b-A：Deployment-group semantic alignment
+============================================================
+
+第一步必须做“mapping provenance audit”，不要直接改代码。
+
+------------------------------------------------------------
+R1b-A.1 找到所有 group 定义
+------------------------------------------------------------
+
+搜索项目中所有与下列相关的代码：
+
+  h(i)
+  deployment_group
+  group_id
+  coarse_group
+  coarse_time_group
+  fine_group
+  target_group
+  spatial_group
+  time_block
+  group_map
+  mu
+  target_mu
+  M_r
+  composition_matrix
+  Delta_group
+  WorstGroupRMSE
+  use_coarse_time_groups
+
+输出：
+
+  outputs/sag_g1_r1b/audit/GROUP_MAPPING_SOURCE_AUDIT.md
+
+必须列出：
+
+  file
+  function/class
+  current behavior
+  number of groups on SensorScope
+  number of groups on U-Air
+  source of mapping
+  whether mapping uses:
+    public metadata
+    train-only metadata
+    current-window data
+    labels
+    test outcome
+
+------------------------------------------------------------
+R1b-A.2 核对论文 h(i)
+------------------------------------------------------------
+
+从 Sections III--VI PostAudit Final 中提取 h(i) 的正式定义，
+然后建立：
+
+  PAPER_H_MAPPING_SPEC.md
+
+内容必须说明：
+
+  1) h(i) 表示什么；
+  2) h(i) 与 s(i) 的区别；
+  3) h(i) 是否是 application-level group；
+  4) h(i) 是否允许等于 atomic spatial identity；
+  5) SensorScope / U-Air 应如何从公开/冻结 metadata 构造 h(i)。
+
+不要用“为了让 |G|=4”来倒推。
+
+如果现有论文文件中已经明确 h(i) 为 4 个 deployment groups：
+  严格实现该 mapping。
+
+如果论文只给语义、没有具体数据映射：
+  必须从旧正式实验配置 / target construction / table / frozen target map
+  中寻找既有 mapping provenance。
+
+如果仍无法确定：
+  STOP，
+  输出：
+    H_MAPPING_NOT_FROZEN
+  不得擅自选。
+
+------------------------------------------------------------
+R1b-A.3 建立唯一 group map
+------------------------------------------------------------
+
+一旦确定合法 h(i)，创建：
+
+  configs/deployment_group_map/
+    SensorScope_h_map.json
+    UAir_h_map.json
+
+或等价稳定文件。
+
+必须保存：
+  atomic unit id
+  h(i)
+  source/provenance
+  hash
+
+要求：
+  train/val/test 共用同一冻结 mapping；
+  test label 不参与 mapping。
+
+------------------------------------------------------------
+R1b-A.4 全链路统一
+------------------------------------------------------------
+
+以下对象必须全部来自同一个 h-map：
+
+1. public target group mass:
+   mu_g
+
+2. client group composition:
+   c^g_{k,r}
+
+3. composition matrix:
+   M_r
+
+4. service vector:
+   s_r = M_r alpha_r
+
+5. structural mismatch:
+   Delta_group
+
+6. Theorem-4 service-space dimension:
+   |G|
+
+7. B_srv:
+   sqrt(|G|) * (...)
+
+8. WorstGroupRMSE 的 grouping
+   若 WorstGroupRMSE 原本另有冻结定义，
+   不得擅自改；需要在报告中说明是否与 h(i) 相同。
+   不同的话必须明确两个指标的 group space。
+
+------------------------------------------------------------
+R1b-A.5 必须增加 assert
+------------------------------------------------------------
+
+新增测试：
+
+test_group_mapping_consistency.py
+
+必须 assert：
+
+  len(mu) == number_of_h_groups
+  M.shape[0] == len(mu)
+  each M column sums to 1 when client mass > 0
+  omega = M alpha has len(mu)
+  B_srv uses sqrt(len(mu))
+  Delta_group uses same mu / omega coordinates
+
+再加：
+
+test_group_mapping_frozen.py
+
+同一 atomic unit 在不同 method / seed / window 中：
+  h(i) 不变化。
+
+============================================================
+六、R1b-B：Opportunity-event mass repair
+============================================================
+
+当前重点是：
+  不允许把“是否出现过某 pair”当成 opportunity mass。
+
+------------------------------------------------------------
+R1b-B.1 定义真实 completed-window event counts
+------------------------------------------------------------
+
+对 completed window t：
+
+  N^{opp}_{k,s,t}
+  =
+  sum over opportunity events e in E_t^{opp}
+  1{ k_e=k, s(i_e)=s }
+
+如果 EventTrace 有 event weight：
+  使用真实 event mass；
+否则：
+  每个 opportunity event 计数 1。
+
+总质量：
+
+  N_t^{opp}
+  =
+  sum_{k,s}
+  N^{opp}_{k,s,t}
+
+若 N_t^{opp}>0：
+
+  pi^{opp}_{k,s,t}
+  =
+  N^{opp}_{k,s,t}/N_t^{opp}
+
+若没有 opportunity event：
+  按既有 cold-start/missing-window 规则处理，
+  不得伪造均匀分布。
+
+------------------------------------------------------------
+R1b-B.2 禁止 unique-pair uniformization
+------------------------------------------------------------
+
+搜索并移除/隔离类似逻辑：
+
+  unique_pairs = set(...)
+  mass = 1.0 / len(unique_pairs)
+
+若该逻辑还用于其他 diagnostic：
+  可以保留，但重命名为：
+    pair_presence_distribution
+  并明确不得进入 SAG C_cov。
+
+------------------------------------------------------------
+R1b-B.3 lagged opportunity mass
+------------------------------------------------------------
+
+在线 window r 的 Gate 只能使用 completed windows < r。
+
+构造：
+
+  pi_hat^{opp}_{k,s,r}
+
+使用：
+  completed event counts / lagged state。
+
+允许使用现有 EMA：
+  C^{opp}_{k,s,r}
+  =
+  rho C^{opp}_{k,s,r-1}
+  +
+  N^{opp}_{k,s,r-1}
+
+然后：
+
+  pi_hat^{opp}_{k,s,r}
+  =
+  normalized C^{opp}_{k,s,r}
+
+但必须：
+  current r 的 N^{opp} 不进入 current Gate。
+
+------------------------------------------------------------
+R1b-B.4 lower bound
+------------------------------------------------------------
+
+对每个 target-positive (k,s)：
+  计算 pre-window one-sided lower bound：
+
+  lower_pi^{opp}_{k,s,r}
+
+本轮不重新发明复杂模型。
+优先：
+  用 R1 中已实现的 LCB 框架，
+  但输入必须从 event mass 改为正确的 pi_hat^{opp} history。
+
+------------------------------------------------------------
+R1b-B.5 C_cov
+------------------------------------------------------------
+
+严格计算：
+
+  C_cov_LCB(r)
+  =
+  sum_{k,s}
+    pi_tar(k,s)
+    1{
+      lower_pi_opp(k,s,r) >= pi_safe
+    }
+
+要求：
+  target-mass weighted；
+  不是 pair-count fraction；
+  不是 current R coverage；
+  不是 realized support overlap。
+
+------------------------------------------------------------
+R1b-B.6 pi_safe provenance
+------------------------------------------------------------
+
+先查 authority/config 是否已有 frozen rule/value。
+
+若已有：
+  原样使用。
+
+若当前仍是 provisional rule：
+  只能沿用上一轮已记录的 provisional rule，
+  不得根据本轮 ON/OFF 结果重新选。
+
+必须输出：
+  PI_SAFE_PROVENANCE.json
+
+字段：
+  rule
+  source
+  fitted_on
+  uses_labels?
+  uses_test?
+  value_SensorScope
+  value_UAir
+  status:
+    FROZEN
+    or
+    PROVISIONAL_REQUIRES_LATER_FREEZE
+
+------------------------------------------------------------
+R1b-B.7 单元测试
+------------------------------------------------------------
+
+新增：
+
+test_opportunity_event_mass.py
+
+Case：
+  pair A 有 20 个 events
+  pair B 有 1 个 event
+
+必须得到：
+  mass_A = 20/21
+  mass_B = 1/21
+
+不得得到：
+  1/2, 1/2
+
+新增：
+
+test_c_cov_no_current_R_leakage.py
+
+固定 completed history，
+改变 current window R，
+C_cov_LCB 必须不变。
+
+新增：
+
+test_c_cov_target_mass_weighted.py
+
+手工构造 pi_tar，
+验证 C_cov 等于 target mass sum，
+不是 certified pair ratio。
+
+============================================================
+七、R1b-C：Delta_V / ESS mechanism audit
+============================================================
+
+当前 Delta_V=0 不能只用“same O mask”解释。
+
+对每个 common-nonempty window，
+每个 common client k 记录：
+
+  zeta_D values over observed records
+  zeta_0 values (=1)
+  mean_zeta_D
+  std_zeta_D
+  min_zeta_D
+  max_zeta_D
+
+  n_eff_D
+  n_eff_0
+
+  v_D
+  v_0
+
+定义：
+
+  within_client_zeta_std
+  =
+  std_i(
+    zeta^D_{k,r,i}
+    over observed positive-mass records
+  )
+
+若：
+
+  within_client_zeta_std == 0
+
+则 Design 只是该 client/window 的共同乘法因子，
+Hajek normalization 后：
+  n_eff_D == n_eff_0
+可能是合理结果。
+
+若：
+
+  within_client_zeta_std > 0
+但
+  n_eff_D == n_eff_0
+
+则必须查实现。
+
+输出：
+
+  ESS_VARIANCE_COUNTERFACTUAL_AUDIT.csv
+
+字段：
+  dataset
+  seed
+  window
+  client
+  n_obs
+  zeta_std
+  zeta_min
+  zeta_max
+  n_eff_D
+  n_eff_0
+  abs_neff_diff
+  v_D
+  v_0
+  abs_v_diff
+
+报告：
+  fraction(zeta_std == 0)
+  fraction(n_eff_D == n_eff_0)
+  fraction(Delta_V == 0)
+
+============================================================
+八、重新计算 B_tot，但不改公式
+============================================================
+
+在 h(i) 和 C_cov 修正后，
+重新计算：
+
+  Delta_beta
+  Delta_M
+  Delta_V
+  B_M_pre
+  D_alpha_UCB
+  B_srv_UCB
+  B_tot_UCB
+
+注意：
+  本轮不要先假定 B_tot 会变小。
+
+必须输出新旧对比：
+
+  B_TOT_OLD_VS_R1B.csv
+
+字段：
+  dataset
+  seed
+  window
+  G_size_old
+  G_size_new
+  B_srv_old
+  B_srv_new
+  B_tot_old
+  B_tot_new
+  delta_A_UCB
+  tau_safe
+  pass_Btot_old
+  pass_Btot_new
+
+如果 h(i) 正确后 |G| 仍然是 220/144：
+  如实保留，
+  不得为了 bound 更小修改。
+
+============================================================
+九、1-seed re-diagnostic
+============================================================
+
+只运行：
+
+  SensorScope seed 30001
+  U-Air seed 30001
+
+使用相同 sealed EventTrace。
+
+方法：
+  Always-Design
+  No-Design
+  SAG-R1b
+
+阈值：
+  全部保持上一轮冻结值。
+
+------------------------------------------------------------
+R1b diagnostic 必须报告每个 Gate 条件
+------------------------------------------------------------
+
+按 dataset 分别统计：
+
+  C_cov pass rate
+  C_ret pass rate
+  C_ESS pass rate
+  C_clip pass rate
+  delta_A pass rate
+  B_tot pass rate
+  ALL conditions pass rate
+  Gate ON rate
+
+同时输出：
+  OFF reason first-fail distribution
+  OFF reason all-fail distribution
+
+============================================================
+十、本轮判定标准
+============================================================
+
+最终 verdict 只能选：
+
+1. READY_FOR_G1_R2_5SEED
+
+条件：
+  - h(i) semantic alignment PASS；
+  - opportunity-event mass semantics PASS；
+  - Delta_V audit 无 unresolved bug；
+  - SensorScope 出现合法 ALL-pass / Gate-ON windows；
+  - U-Air support-unsafe windows 仍大部分被 delta_A 或其他合法 certificate 挡住；
+  - 不需要放宽 tau_safe / tau_A / tau_cov。
+
+2. NEEDS_MORE_SEMANTIC_REPAIR
+
+条件：
+  - h(i) mapping 仍不明确；
+  - event-mass implementation 仍不一致；
+  - Delta_V/ESS 存在未解释实现 bug。
+
+3. STRUCTURAL_CERTIFICATE_TOO_CONSERVATIVE_CONFIRMED
+
+只有在：
+  - h(i) 完全正确；
+  - opportunity-event mass 完全正确；
+  - counterfactual metrics 完全正确；
+  - certificate calibration 语义正确；
+  但 SensorScope 仍 0 legal ON，
+  且主要 blocker 仍是 B_tot >> tau_safe，
+才允许输出这个 verdict。
+
+4. H_MAPPING_NOT_FROZEN
+
+若论文/旧正式实验资产无法唯一确定 h(i) mapping，
+必须停止并输出这个 verdict。
+
+============================================================
+十一、必须生成的输出文件
+============================================================
+
+新建：
+
+outputs/sag_g1_r1b/
+
+必须包含：
+
+R1B_SEMANTIC_REPAIR_REPORT.md
+R1B_VERDICT.json
+
+audit/
+  GROUP_MAPPING_SOURCE_AUDIT.md
+  PAPER_H_MAPPING_SPEC.md
+  GROUP_MAPPING_COMPARISON.csv
+  ESS_VARIANCE_COUNTERFACTUAL_AUDIT.csv
+  COUNTERFACTUAL_METRIC_REGRESSION.csv
+
+opportunity/
+  OPPORTUNITY_EVENT_COUNT_WINDOW.csv
+  OPPORTUNITY_EVENT_MASS_WINDOW.csv
+  C_COV_EVENT_MASS_WINDOW.csv
+  C_COV_PAIR_DIAGNOSTIC.csv
+  PI_SAFE_PROVENANCE.json
+
+safety/
+  B_TOT_OLD_VS_R1B.csv
+  B_TOT_DECOMPOSITION_R1B.csv
+
+diagnostic/
+  R1B_GATE_WINDOW_LOG.csv
+  R1B_GATE_PASSRATE.csv
+  R1B_METHOD_DIAGNOSTIC.csv
+
+configs/
+  deployment_group_map/
+  thresholds_frozen_copy.json
+  config_r1b.json
+
+tests/
+  TEST_SUMMARY.json
+
+============================================================
+十二、R1B_SEMANTIC_REPAIR_REPORT.md 模板
+============================================================
+
+# 1. Executive Verdict
+
+只能选：
+  READY_FOR_G1_R2_5SEED
+  NEEDS_MORE_SEMANTIC_REPAIR
+  STRUCTURAL_CERTIFICATE_TOO_CONSERVATIVE_CONFIRMED
+  H_MAPPING_NOT_FROZEN
+
+# 2. Deployment-Group Mapping Audit
+
+必须回答：
+
+  论文 h(i) 的正式语义是什么？
+  SensorScope 最终 |G| 是多少？
+  U-Air 最终 |G| 是多少？
+  当前/旧代码为什么得到 220/144？
+  是否与论文一致？
+  新旧 mu / M / Delta_group 有什么变化？
+
+# 3. Opportunity-Event Mass Repair
+
+必须回答：
+
+  旧实现是否 unique-pair uniformization？
+  新实现是否使用真实 event counts？
+  给一个 concrete window：
+    top-10 (k,s)
+    event count
+    pi_hat_opp
+    lower_pi_opp
+    pi_tar
+    certified?
+
+# 4. C_cov
+
+报告：
+
+  old C_cov distribution
+  new C_cov distribution
+  pi_safe provenance
+  pass rate
+
+必须明确：
+  current R 是否完全不影响 current C_cov。
+
+# 5. ESS / Delta_V Audit
+
+报告：
+
+  zeta within-client variation
+  n_eff_D vs n_eff_0
+  V_D vs V_0
+  Delta_V=0 是否合理
+
+# 6. B_tot Recalculation
+
+分别对 SensorScope/U-Air 报：
+
+  |G|
+  median/p95:
+    Delta_beta_UCB
+    Delta_M_UCB
+    Delta_V_UCB
+    B_srv
+    2 delta_A
+    2 delta_cal
+    B_tot
+
+old vs new。
+
+# 7. Gate Re-Diagnostic
+
+分别报告六个条件 pass rate：
+
+  cov
+  ret
+  ESS
+  clip
+  delta_A
+  B_tot
+
+以及：
+  ALL-pass
+  Gate ON
+
+# 8. Scientific Boundary
+
+必须回答：
+
+SensorScope：
+  是否出现合法可启用窗口？
+
+U-Air：
+  是否仍被 support-risk certificate 大量关闭？
+
+# 9. Next Decision
+
+若 READY：
+  可进入 G1-R2 5-seed；
+  但本轮不自动运行。
+
+若仍 0 ON：
+  明确唯一 blocker 是什么。
+
+============================================================
+十三、Cursor 执行顺序
+============================================================
+
+必须严格：
+
+1. 阅读 authority 文件与 R1 evidence。
+2. 生成：
+     SAG_G1_R1B_SEMANTIC_REPAIR_PLAN.md
+3. 先做 GROUP_MAPPING_SOURCE_AUDIT。
+4. 确定 h(i) 后才能改 M/mu/Delta_group。
+5. 若 h(i) 无法唯一冻结：
+     STOP。
+6. 做 opportunity-event mass unit test。
+7. 修 event-mass pipeline。
+8. 修 C_cov input。
+9. 做 ESS/Delta_V audit。
+10. 跑所有 unit tests。
+11. 重新计算 B_tot。
+12. 只跑：
+      SensorScope 30001
+      U-Air 30001
+13. 生成 R1B report。
+14. STOP。
+15. 不自动 5-seed。
+
+============================================================
+十四、本轮最重要的判断原则
+============================================================
+
+不要问：
+
+  “怎样让 Gate 打开？”
+
+要问：
+
+  “代码里用于 Gate 的统计对象，
+   是否与论文 Sections III--VI 中的数学对象完全相同？”
+
+只有在以下全部满足后：
+
+  h(i) 正确；
+  M/mu 正确；
+  opportunity-event mass 正确；
+  C_cov 正确；
+  Delta metrics 正确；
+  V/ESS 正确；
+
+才允许讨论：
+
+  B_tot 是否真的结构性过松。
+
+如果此时：
+
+  SensorScope 有合法 ON，
+  U-Air unsafe 大多 OFF，
+
+则新版 SAG 获得真正的机制级正证据。
+
+如果此时：
+
+  SensorScope 仍 0 ON，
+  且 B_tot 仍远高于 tau_safe=4，
+
+才输出：
+
+  STRUCTURAL_CERTIFICATE_TOO_CONSERVATIVE_CONFIRMED
+
+并回到理论层考虑 certificate tightening。
+
+END OF CURSOR INSTRUCTION

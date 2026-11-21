@@ -1,0 +1,1919 @@
+{
+  "entries": {
+    "E3_CANARY_DATASET_HASH_AUDIT.json": {
+      "bytes": 930,
+      "included_in_zip": true,
+      "sha256": "f5914997055af7a37750b7e58756c62cbf41c7642e8ea6e6ec7e639b318fab9a"
+    },
+    "E3_CANARY_DELTA_CS_AUDIT.csv": {
+      "bytes": 1677,
+      "included_in_zip": true,
+      "sha256": "c973bc1fef5f7228c4452d5b5abef95e79ab42ce16476a11dd6d1f331b92a9a8"
+    },
+    "E3_CANARY_EVENTTRACE_AUDIT.csv": {
+      "bytes": 583,
+      "included_in_zip": true,
+      "sha256": "05f5b480203053104da7bac7a3795684be66db9438bbc6d67aa0b99283d64aca"
+    },
+    "E3_CANARY_EVENTTRACE_AUDIT.json": {
+      "bytes": 1086,
+      "included_in_zip": true,
+      "sha256": "0740f2988b191b51717662d4dfa52bc10fab71613b033e7e9dc22360ed67cff3"
+    },
+    "E3_CANARY_HASH_MANIFEST.json": {
+      "bytes": 79235,
+      "included_in_zip": true,
+      "post_hash": true,
+      "sha256": "30ae690c969dc5e577f2b6536580a963060ce29e1c398553acb456f3051429ad"
+    },
+    "E3_CANARY_HASH_VERIFICATION.json": {
+      "bytes": 95,
+      "included_in_zip": true,
+      "post_hash": true,
+      "sha256": "36bb83350d1136173c77d4568a73c80f1c98030f0c04bd3fc9fd753937d66f9a"
+    },
+    "E3_CANARY_LEDGER_AUDIT.json": {
+      "bytes": 8915,
+      "included_in_zip": true,
+      "sha256": "79e380faad47c974a2b3197bdb733fddb5b6c977130de505e495a06f785df6ad"
+    },
+    "E3_CANARY_NO_PERFORMANCE_SELECTION_ATTESTATION.md": {
+      "bytes": 391,
+      "included_in_zip": true,
+      "sha256": "a06b876d327c04061b02427cbb079fc744a8d5d8bda770294a89499653705695"
+    },
+    "E3_CANARY_PARENT_INTEGRITY.json": {
+      "bytes": 386,
+      "included_in_zip": true,
+      "sha256": "437e67b71d6f8d253defa78e9018fe1ae5223205ea7def51ca4641258e4a803f"
+    },
+    "E3_CANARY_PHASE1_SUMMARY.json": {
+      "bytes": 7810,
+      "included_in_zip": true,
+      "sha256": "faafc214fbc28e8f33fdd2b1703bad44d28c1dab154646d91ca082a0c609531f"
+    },
+    "E3_CANARY_PHASE2_SUMMARY.json": {
+      "bytes": 11568,
+      "included_in_zip": true,
+      "sha256": "41b45f4123197a104504f93864079d0b9c4e6097d748f6c631ba2ff49ca382b3"
+    },
+    "E3_CANARY_RUN_MATRIX.json": {
+      "bytes": 7116,
+      "included_in_zip": true,
+      "sha256": "5fb3ebefaa908c5bff17666c2cd5a0541f05fed9529c73cf4aada4958638489d"
+    },
+    "E3_CANARY_RUN_STATUS.csv": {
+      "bytes": 4581,
+      "included_in_zip": true,
+      "sha256": "a23e325115dedae94c97b2e4f2b95eb29314eeeddac3e0a1f1693d55d372055d"
+    },
+    "E3_CANARY_SEED_AUDIT.json": {
+      "bytes": 584,
+      "included_in_zip": true,
+      "sha256": "8ceb216d3eb7ce962e840d191ed87bff5db298cba53dbd77cd5991aa45bad1ad"
+    },
+    "E3_CANARY_SOURCE_HASHES.json": {
+      "bytes": 1604,
+      "included_in_zip": true,
+      "sha256": "ed16bdd347ba549af447d73ee6cfdf378440673ff03fc486aa4ef20fda41304d"
+    },
+    "E3_CANARY_STOP_STATUS.json": {
+      "bytes": 365,
+      "included_in_zip": true,
+      "sha256": "e49700526cfa07ca72cdb27f38cf20e6034cc5045a7c88015cd09de2d3083154"
+    },
+    "E3_CANARY_STRATUM_HASH_AUDIT.json": {
+      "bytes": 248,
+      "included_in_zip": true,
+      "sha256": "bf937993e2f3ed035412975b1893b1c0e9be685a66d7d428f9fb220c41cd65b3"
+    },
+    "E3_CANARY_TARGET_HASH_AUDIT.json": {
+      "bytes": 708,
+      "included_in_zip": true,
+      "sha256": "304613d57b6ad73a3d197dc25af2bc0dc4fc8c78174454bf23af8db31d430796"
+    },
+    "E3_CANARY_TEST_RETURNCODES.json": {
+      "bytes": 55,
+      "included_in_zip": true,
+      "sha256": "1fafacf0daa8c6936f12790ece82037a85c2320ed8def00b97b3e826c95e4b66"
+    },
+    "E3_CANARY_TRAFFIC_REUSE_GUARD.json": {
+      "bytes": 2277,
+      "included_in_zip": true,
+      "sha256": "82492a4ab2f3b40bbf9dc7907c61e847e9f5b9604b8bfdbec8a9601edbbc3cf9"
+    },
+    "E3_FORMAL_EXECUTION_PLAN_R1.json": {
+      "bytes": 857,
+      "included_in_zip": true,
+      "sha256": "9b98b5823425c644f98ec494d3420d4c98d8a14cbf5eaed8b6a6fd8310d62754"
+    },
+    "E3_FORMAL_EXECUTION_PLAN_R1.md": {
+      "bytes": 128,
+      "included_in_zip": true,
+      "sha256": "74c487687f9cf2312f78df96ac533dd42365a63c9fd1f6836e02c5eea89f0fb1"
+    },
+    "E3_FORMAL_READINESS_AFTER_CANARY.json": {
+      "bytes": 716,
+      "included_in_zip": true,
+      "sha256": "95e36f8889b7c80df9764691f7d883b435206ab6b3e7475ab893849cbd784aa7"
+    },
+    "E3_FORMAL_READINESS_AFTER_CANARY.md": {
+      "bytes": 150,
+      "included_in_zip": true,
+      "sha256": "89b188de0976f51e510be96a0413fc48b11d32e3ef0abdd81bf9cdbc3ce0c578"
+    },
+    "E3_MULTIDATASET_REAL_RUNNER_CANARY_R1_REPORT.md": {
+      "bytes": 2007,
+      "included_in_zip": true,
+      "sha256": "c3233d16db49ea2438752135a09e231fc5ac539c53c91eb2accdfd3ca61143a9"
+    },
+    "eventtraces/sensorscope/seed31001/generation_meta.json": {
+      "bytes": 252,
+      "included_in_zip": true,
+      "sha256": "a1ac6d1f4a1493b5aa718ee6db61aa54fe1db412f7f9e14d74e6b36e22661034"
+    },
+    "eventtraces/sensorscope/seed31001/training_eventtrace/trace_identity.json": {
+      "bytes": 553,
+      "included_in_zip": true,
+      "sha256": "05ddf8f0839e84a4fb391280aa201590736aad95719981c4000484599efd00b7"
+    },
+    "eventtraces/traffic/seed31001/generation_meta.json": {
+      "bytes": 378,
+      "included_in_zip": true,
+      "sha256": "6dd7083c17a71c680e52c98099a13e5d1b1c9a4a894661c09e8bb999429cb8bb"
+    },
+    "eventtraces/traffic/seed31001/training_eventtrace/trace_identity.json": {
+      "bytes": 550,
+      "included_in_zip": true,
+      "sha256": "c063eb1c392fe5f033b097bc5700a95c0251a236b212a3ec96e0ca6555af07e2"
+    },
+    "eventtraces/uair/seed31001/generation_meta.json": {
+      "bytes": 244,
+      "included_in_zip": true,
+      "sha256": "70d605d30c0f3833a29ebfdf2a63b809a54185c9a7399c62f86d3af81582fc9a"
+    },
+    "eventtraces/uair/seed31001/training_eventtrace/trace_identity.json": {
+      "bytes": 545,
+      "included_in_zip": true,
+      "sha256": "f5c60aad00828474b3e6ec975825823c4310d5f0c16f3825bf3e1d8befdb52e7"
+    },
+    "gate_results.json": {
+      "bytes": 925,
+      "included_in_zip": true,
+      "post_hash": true,
+      "sha256": "3164dff190f32f147b39486fc9530181a3d0eec5d7e6823865ac0c1bb03211d8"
+    },
+    "logs/e3_canary_integration.xml": {
+      "bytes": 535,
+      "included_in_zip": true,
+      "sha256": "4a976db9f43de3dab19657f0116155a99264cd5f3e0d1bc46e39d6aacdf3fd29"
+    },
+    "logs/e3_canary_pip_check.txt": {
+      "bytes": 31,
+      "included_in_zip": true,
+      "sha256": "672aec65a45bed50e70229c70934a7eebf0462595c459b83023027645d57cccf"
+    },
+    "logs/e3_canary_pytest_full.xml": {
+      "bytes": 163231,
+      "included_in_zip": true,
+      "sha256": "5a8c20d371caf533ff67aef626a687479f9f6943e1c407abbc572ed66764537b"
+    },
+    "logs/e3_canary_unit.xml": {
+      "bytes": 670,
+      "included_in_zip": true,
+      "sha256": "74e839bbd73d29fed842532f9eeee5b4cd47d2ae3028bceb1f93772d5955d2d4"
+    },
+    "runs/sensorscope/central_all/seed31001/CANARY_ACCEPTED.json": {
+      "bytes": 579,
+      "included_in_zip": true,
+      "sha256": "66b01ca4e1ae218a4f41bbc7644a219410cdfcf0432bc7fcef1614dde5150553"
+    },
+    "runs/sensorscope/central_all/seed31001/atomic_rho_summary.json": {
+      "bytes": 131,
+      "included_in_zip": true,
+      "sha256": "93bef5e1607c05ec86717ef053ee2f606ca534e51030b976c0ff406c80b24661"
+    },
+    "runs/sensorscope/central_all/seed31001/checkpoints/final.pt.sha256.txt": {
+      "bytes": 66,
+      "included_in_zip": true,
+      "sha256": "2318c47149de66e2a8a28aeee744058708981ccd7d7193eabd16d5d42e9edcba"
+    },
+    "runs/sensorscope/central_all/seed31001/config_snapshot.json": {
+      "bytes": 591,
+      "included_in_zip": true,
+      "sha256": "04f144084bbc6b4d5e09d9d33f6f66377b2297949c36cd54cd76a17fc2a1f6ef"
+    },
+    "runs/sensorscope/central_all/seed31001/delta_c_s_summary.json": {
+      "bytes": 173,
+      "included_in_zip": true,
+      "sha256": "249e9202f9d346e4a525f05d3b72fac2e417c360c7805e8a0c52338d42610d2f"
+    },
+    "runs/sensorscope/central_all/seed31001/delta_cs_summary_v6.json": {
+      "bytes": 173,
+      "included_in_zip": true,
+      "sha256": "249e9202f9d346e4a525f05d3b72fac2e417c360c7805e8a0c52338d42610d2f"
+    },
+    "runs/sensorscope/central_all/seed31001/final_metrics.json": {
+      "bytes": 1204,
+      "included_in_zip": true,
+      "sha256": "220c35bd61fa44c2f04aa404c7d0632ad0384dddd476b76d2a929b8913cc3b04"
+    },
+    "runs/sensorscope/central_all/seed31001/ledger.jsonl": {
+      "bytes": 894,
+      "included_in_zip": true,
+      "sha256": "2fd62903f3322ecf82699157d40ee1d2b465b1c459338cb467f328ca48b264f6"
+    },
+    "runs/sensorscope/central_all/seed31001/method_smoke_audit.json": {
+      "bytes": 333,
+      "included_in_zip": true,
+      "sha256": "ecf0c358fe44907d79b78912642caa23454879d658da0268023fde17accb1197"
+    },
+    "runs/sensorscope/central_all/seed31001/opportunity_stratum_identity.json": {
+      "bytes": 180,
+      "included_in_zip": true,
+      "sha256": "305281b5ef39470f2b4ae40d788865385b0e4a49bfd5f1a1081f23ad182f1303"
+    },
+    "runs/sensorscope/central_all/seed31001/runtime_manifest.json": {
+      "bytes": 816,
+      "included_in_zip": true,
+      "sha256": "febe7dfa9bf984d09b4a312ef76a31556428bb0d56f60d470a51e9cda7663943"
+    },
+    "runs/sensorscope/central_all/seed31001/target_wiring.json": {
+      "bytes": 7673,
+      "included_in_zip": true,
+      "sha256": "f60e350cabf8f3df616559cc468c720e7b374b77896d03abfc269ed0f16ac5a3"
+    },
+    "runs/sensorscope/central_delivered/seed31001/CANARY_ACCEPTED.json": {
+      "bytes": 597,
+      "included_in_zip": true,
+      "sha256": "56ff4d626d498c3c24764ab523efec439a84805885af955cee4295eabdf40ac4"
+    },
+    "runs/sensorscope/central_delivered/seed31001/atomic_rho_summary.json": {
+      "bytes": 131,
+      "included_in_zip": true,
+      "sha256": "93bef5e1607c05ec86717ef053ee2f606ca534e51030b976c0ff406c80b24661"
+    },
+    "runs/sensorscope/central_delivered/seed31001/checkpoints/final.pt.sha256.txt": {
+      "bytes": 66,
+      "included_in_zip": true,
+      "sha256": "7d222a2641257dddf50d09e7abd80825c0d0defea2cc7560b6c7e3fe2be5fe8b"
+    },
+    "runs/sensorscope/central_delivered/seed31001/config_snapshot.json": {
+      "bytes": 597,
+      "included_in_zip": true,
+      "sha256": "a0b86e84d21d9306380cf5553341a7745a6af72ba20e34d8ee5576dd0dbffa8f"
+    },
+    "runs/sensorscope/central_delivered/seed31001/delta_c_s_summary.json": {
+      "bytes": 173,
+      "included_in_zip": true,
+      "sha256": "249e9202f9d346e4a525f05d3b72fac2e417c360c7805e8a0c52338d42610d2f"
+    },
+    "runs/sensorscope/central_delivered/seed31001/delta_cs_summary_v6.json": {
+      "bytes": 173,
+      "included_in_zip": true,
+      "sha256": "249e9202f9d346e4a525f05d3b72fac2e417c360c7805e8a0c52338d42610d2f"
+    },
+    "runs/sensorscope/central_delivered/seed31001/final_metrics.json": {
+      "bytes": 1204,
+      "included_in_zip": true,
+      "sha256": "905460d567d3e9080936b936e960f823daba3acd159ed4ab5eba011cbf164857"
+    },
+    "runs/sensorscope/central_delivered/seed31001/ledger.jsonl": {
+      "bytes": 924,
+      "included_in_zip": true,
+      "sha256": "cffc56a281d607171288b7a72c889ebb6867695a8284332e27124841432c7c0a"
+    },
+    "runs/sensorscope/central_delivered/seed31001/method_smoke_audit.json": {
+      "bytes": 335,
+      "included_in_zip": true,
+      "sha256": "6e7c1eda3a19f40a2974824f33b6de498226a3ad8c44b9dc0fdc9b2a8ae639b8"
+    },
+    "runs/sensorscope/central_delivered/seed31001/opportunity_stratum_identity.json": {
+      "bytes": 180,
+      "included_in_zip": true,
+      "sha256": "305281b5ef39470f2b4ae40d788865385b0e4a49bfd5f1a1081f23ad182f1303"
+    },
+    "runs/sensorscope/central_delivered/seed31001/runtime_manifest.json": {
+      "bytes": 834,
+      "included_in_zip": true,
+      "sha256": "3c56c1675f07dadce9077303e4f6cb04ee5d810c64c661fa5fc9340b1e9b12ec"
+    },
+    "runs/sensorscope/central_delivered/seed31001/target_wiring.json": {
+      "bytes": 7673,
+      "included_in_zip": true,
+      "sha256": "f60e350cabf8f3df616559cc468c720e7b374b77896d03abfc269ed0f16ac5a3"
+    },
+    "runs/sensorscope/debt_cal/seed31001/CANARY_ACCEPTED.json": {
+      "bytes": 583,
+      "included_in_zip": true,
+      "sha256": "9891aabd35b853aaf7eadbd6fcbf398eb00b654d879377c21a4490bb131481f8"
+    },
+    "runs/sensorscope/debt_cal/seed31001/atomic_rho_summary.json": {
+      "bytes": 131,
+      "included_in_zip": true,
+      "sha256": "93bef5e1607c05ec86717ef053ee2f606ca534e51030b976c0ff406c80b24661"
+    },
+    "runs/sensorscope/debt_cal/seed31001/checkpoints/final.pt.sha256.txt": {
+      "bytes": 66,
+      "included_in_zip": true,
+      "sha256": "a0e91f3864b0ac05ef067115d2dfe2df3a8c405d67495c05f0362fe463aa38de"
+    },
+    "runs/sensorscope/debt_cal/seed31001/config_snapshot.json": {
+      "bytes": 588,
+      "included_in_zip": true,
+      "sha256": "22ced6b8d9a81bc24c8e3df739b5a12a3d2c75f949515b7b30ebb1b8cb18ca69"
+    },
+    "runs/sensorscope/debt_cal/seed31001/delta_c_s_summary.json": {
+      "bytes": 530,
+      "included_in_zip": true,
+      "sha256": "d11dc7bbae9aa7eaa07241a25199c28c680f2c0d7a1b046df48332f9ce4eec6a"
+    },
+    "runs/sensorscope/debt_cal/seed31001/delta_cs_summary_v6.json": {
+      "bytes": 530,
+      "included_in_zip": true,
+      "sha256": "d11dc7bbae9aa7eaa07241a25199c28c680f2c0d7a1b046df48332f9ce4eec6a"
+    },
+    "runs/sensorscope/debt_cal/seed31001/final_metrics.json": {
+      "bytes": 1234,
+      "included_in_zip": true,
+      "sha256": "61e4f275e6a7e172da89165942667a71f35610cb589937c2ba6b575ca942e523"
+    },
+    "runs/sensorscope/debt_cal/seed31001/ledger.jsonl": {
+      "bytes": 880,
+      "included_in_zip": true,
+      "sha256": "7ce3e430c961fc313108aecf4b211435b9cd84cdbda2153a1aeede9af78df54c"
+    },
+    "runs/sensorscope/debt_cal/seed31001/method_smoke_audit.json": {
+      "bytes": 345,
+      "included_in_zip": true,
+      "sha256": "4eb23a8c3809e552c0329ef3fc5160d376ff374e2cc161cb93efd63486ccb34d"
+    },
+    "runs/sensorscope/debt_cal/seed31001/opportunity_stratum_identity.json": {
+      "bytes": 180,
+      "included_in_zip": true,
+      "sha256": "305281b5ef39470f2b4ae40d788865385b0e4a49bfd5f1a1081f23ad182f1303"
+    },
+    "runs/sensorscope/debt_cal/seed31001/runtime_manifest.json": {
+      "bytes": 807,
+      "included_in_zip": true,
+      "sha256": "80792427a1af4e1fb98d806b41b3ac7144f20d235f984b8f3328cc0a5cfded94"
+    },
+    "runs/sensorscope/debt_cal/seed31001/target_wiring.json": {
+      "bytes": 7673,
+      "included_in_zip": true,
+      "sha256": "f60e350cabf8f3df616559cc468c720e7b374b77896d03abfc269ed0f16ac5a3"
+    },
+    "runs/sensorscope/fedasync_window/seed31001/CANARY_ACCEPTED.json": {
+      "bytes": 604,
+      "included_in_zip": true,
+      "sha256": "d4c6f3fd1a2e0a300e4ef412fd9e624496e289c2dc8fdc7bb7d1385c6e111cf4"
+    },
+    "runs/sensorscope/fedasync_window/seed31001/atomic_rho_summary.json": {
+      "bytes": 131,
+      "included_in_zip": true,
+      "sha256": "93bef5e1607c05ec86717ef053ee2f606ca534e51030b976c0ff406c80b24661"
+    },
+    "runs/sensorscope/fedasync_window/seed31001/checkpoints/final.pt.sha256.txt": {
+      "bytes": 66,
+      "included_in_zip": true,
+      "sha256": "b9f5aada9ba964f03d0bda5c041797aabcb45517ebbc6a5cb495d32a8ee678fd"
+    },
+    "runs/sensorscope/fedasync_window/seed31001/config_snapshot.json": {
+      "bytes": 595,
+      "included_in_zip": true,
+      "sha256": "aac998515a37b36ba5d01ca7f01fab9ae0deb0204ed8cfba1ce6f034514c187f"
+    },
+    "runs/sensorscope/fedasync_window/seed31001/delta_c_s_summary.json": {
+      "bytes": 530,
+      "included_in_zip": true,
+      "sha256": "d25c8e5de48c9638dfa79c1f02bf0ed2ca2ef9d996d19629f408024a5e144cc8"
+    },
+    "runs/sensorscope/fedasync_window/seed31001/delta_cs_summary_v6.json": {
+      "bytes": 530,
+      "included_in_zip": true,
+      "sha256": "d25c8e5de48c9638dfa79c1f02bf0ed2ca2ef9d996d19629f408024a5e144cc8"
+    },
+    "runs/sensorscope/fedasync_window/seed31001/final_metrics.json": {
+      "bytes": 1200,
+      "included_in_zip": true,
+      "sha256": "e9de2870d12dc072e1b732f7ed47f3d3ae874b7e3b7320abd63d00cf9e323306"
+    },
+    "runs/sensorscope/fedasync_window/seed31001/ledger.jsonl": {
+      "bytes": 915,
+      "included_in_zip": true,
+      "sha256": "345feb9279edde6541c76f4e8e5ceb02e5037c5418540f96d048e14471e1aa31"
+    },
+    "runs/sensorscope/fedasync_window/seed31001/method_smoke_audit.json": {
+      "bytes": 353,
+      "included_in_zip": true,
+      "sha256": "4fb50bba94ff6193fb3f34040b6ce9de50d0572d01ac0487ba11b40df8e8a0a8"
+    },
+    "runs/sensorscope/fedasync_window/seed31001/opportunity_stratum_identity.json": {
+      "bytes": 180,
+      "included_in_zip": true,
+      "sha256": "305281b5ef39470f2b4ae40d788865385b0e4a49bfd5f1a1081f23ad182f1303"
+    },
+    "runs/sensorscope/fedasync_window/seed31001/runtime_manifest.json": {
+      "bytes": 828,
+      "included_in_zip": true,
+      "sha256": "5c42e16297eea88fb8dee50a7225b923dd9d3e7742840e678e72716d40c5939f"
+    },
+    "runs/sensorscope/fedasync_window/seed31001/target_wiring.json": {
+      "bytes": 7673,
+      "included_in_zip": true,
+      "sha256": "f60e350cabf8f3df616559cc468c720e7b374b77896d03abfc269ed0f16ac5a3"
+    },
+    "runs/sensorscope/fedavg_window/seed31001/CANARY_ACCEPTED.json": {
+      "bytes": 598,
+      "included_in_zip": true,
+      "sha256": "bb6af846f49e20aeefae8d183a99711e10692d430c0f58364923016854807b73"
+    },
+    "runs/sensorscope/fedavg_window/seed31001/atomic_rho_summary.json": {
+      "bytes": 131,
+      "included_in_zip": true,
+      "sha256": "93bef5e1607c05ec86717ef053ee2f606ca534e51030b976c0ff406c80b24661"
+    },
+    "runs/sensorscope/fedavg_window/seed31001/checkpoints/final.pt.sha256.txt": {
+      "bytes": 66,
+      "included_in_zip": true,
+      "sha256": "fe916c752dd31f14f9ece5873b720aaac1b01f2dfa53b89f1e84b07ed10d91d0"
+    },
+    "runs/sensorscope/fedavg_window/seed31001/config_snapshot.json": {
+      "bytes": 593,
+      "included_in_zip": true,
+      "sha256": "42039970dadb27e0b6a471c17d85f2c0323385b6115573141a77b00b3e9c8a7e"
+    },
+    "runs/sensorscope/fedavg_window/seed31001/delta_c_s_summary.json": {
+      "bytes": 530,
+      "included_in_zip": true,
+      "sha256": "e938762c9efbe1a43e7cf1a080ec5ff556672c41f1129d001276151d8d26b60e"
+    },
+    "runs/sensorscope/fedavg_window/seed31001/delta_cs_summary_v6.json": {
+      "bytes": 530,
+      "included_in_zip": true,
+      "sha256": "e938762c9efbe1a43e7cf1a080ec5ff556672c41f1129d001276151d8d26b60e"
+    },
+    "runs/sensorscope/fedavg_window/seed31001/final_metrics.json": {
+      "bytes": 1200,
+      "included_in_zip": true,
+      "sha256": "448a6ef550cb542bb281d83cb69bbb5fbdde24cdc430938b30d6e2dce47907f3"
+    },
+    "runs/sensorscope/fedavg_window/seed31001/ledger.jsonl": {
+      "bytes": 905,
+      "included_in_zip": true,
+      "sha256": "65ed50f4852f1964fa0da320c6474ea8f0e5b1fa42e5ed42d838c2c39644c8f4"
+    },
+    "runs/sensorscope/fedavg_window/seed31001/method_smoke_audit.json": {
+      "bytes": 351,
+      "included_in_zip": true,
+      "sha256": "d21698f32fb4765e9366ef2183b3abdd6878eb46bc88a52c3150087c425ba84a"
+    },
+    "runs/sensorscope/fedavg_window/seed31001/opportunity_stratum_identity.json": {
+      "bytes": 180,
+      "included_in_zip": true,
+      "sha256": "305281b5ef39470f2b4ae40d788865385b0e4a49bfd5f1a1081f23ad182f1303"
+    },
+    "runs/sensorscope/fedavg_window/seed31001/runtime_manifest.json": {
+      "bytes": 822,
+      "included_in_zip": true,
+      "sha256": "466b80fc5f677ace48157202f2387fc5cba52e4247ccad8dc3ab41cafec21e9e"
+    },
+    "runs/sensorscope/fedavg_window/seed31001/target_wiring.json": {
+      "bytes": 7673,
+      "included_in_zip": true,
+      "sha256": "f60e350cabf8f3df616559cc468c720e7b374b77896d03abfc269ed0f16ac5a3"
+    },
+    "runs/sensorscope/flamf_timealign_adapted/seed31001/CANARY_ACCEPTED.json": {
+      "bytes": 627,
+      "included_in_zip": true,
+      "sha256": "89f30dce2749cde0519f1e2ab065e5b4f3c06c7c27369f2cf370ea78803866a5"
+    },
+    "runs/sensorscope/flamf_timealign_adapted/seed31001/atomic_rho_summary.json": {
+      "bytes": 131,
+      "included_in_zip": true,
+      "sha256": "93bef5e1607c05ec86717ef053ee2f606ca534e51030b976c0ff406c80b24661"
+    },
+    "runs/sensorscope/flamf_timealign_adapted/seed31001/checkpoints/final.pt.sha256.txt": {
+      "bytes": 66,
+      "included_in_zip": true,
+      "sha256": "aecd58d7ddac91210684520fb40e74fae2efbfc964e109530ee45edb5c9cd197"
+    },
+    "runs/sensorscope/flamf_timealign_adapted/seed31001/config_snapshot.json": {
+      "bytes": 603,
+      "included_in_zip": true,
+      "sha256": "afd9e4efe843067bfb5cdc6466fdaf4c5346356f2302e7ee8252138255156217"
+    },
+    "runs/sensorscope/flamf_timealign_adapted/seed31001/delta_c_s_summary.json": {
+      "bytes": 530,
+      "included_in_zip": true,
+      "sha256": "ea02bc33466c581b321b309d9b44c89864d80d1a72a0d4616649848688f7ed5f"
+    },
+    "runs/sensorscope/flamf_timealign_adapted/seed31001/delta_cs_summary_v6.json": {
+      "bytes": 530,
+      "included_in_zip": true,
+      "sha256": "ea02bc33466c581b321b309d9b44c89864d80d1a72a0d4616649848688f7ed5f"
+    },
+    "runs/sensorscope/flamf_timealign_adapted/seed31001/final_metrics.json": {
+      "bytes": 1200,
+      "included_in_zip": true,
+      "sha256": "3f3bfa0a6880994be37bdd64a13aae50426178d095798f83cad69cadf7c32592"
+    },
+    "runs/sensorscope/flamf_timealign_adapted/seed31001/ledger.jsonl": {
+      "bytes": 955,
+      "included_in_zip": true,
+      "sha256": "3aafee542a5b9d9609120a500db76728f0f5475ae38b847b4549c11f316bfbf3"
+    },
+    "runs/sensorscope/flamf_timealign_adapted/seed31001/method_smoke_audit.json": {
+      "bytes": 361,
+      "included_in_zip": true,
+      "sha256": "da49c77a4cbee83e444e4d3fb8c7c9db80f1cbb7faaa363f7efc8be8e948f2ac"
+    },
+    "runs/sensorscope/flamf_timealign_adapted/seed31001/opportunity_stratum_identity.json": {
+      "bytes": 180,
+      "included_in_zip": true,
+      "sha256": "305281b5ef39470f2b4ae40d788865385b0e4a49bfd5f1a1081f23ad182f1303"
+    },
+    "runs/sensorscope/flamf_timealign_adapted/seed31001/runtime_manifest.json": {
+      "bytes": 852,
+      "included_in_zip": true,
+      "sha256": "482a2a9e51b89dbb4004c277a5ebb0a132aca1c2a9004c7f01dedad1d837bb1e"
+    },
+    "runs/sensorscope/flamf_timealign_adapted/seed31001/target_wiring.json": {
+      "bytes": 7673,
+      "included_in_zip": true,
+      "sha256": "f60e350cabf8f3df616559cc468c720e7b374b77896d03abfc269ed0f16ac5a3"
+    },
+    "runs/sensorscope/inst_cal/seed31001/CANARY_ACCEPTED.json": {
+      "bytes": 583,
+      "included_in_zip": true,
+      "sha256": "9f3958c60211ad45a752dc0355d79f9a27b1c368968bc137de7d77d2d8f8a6ed"
+    },
+    "runs/sensorscope/inst_cal/seed31001/atomic_rho_summary.json": {
+      "bytes": 131,
+      "included_in_zip": true,
+      "sha256": "93bef5e1607c05ec86717ef053ee2f606ca534e51030b976c0ff406c80b24661"
+    },
+    "runs/sensorscope/inst_cal/seed31001/checkpoints/final.pt.sha256.txt": {
+      "bytes": 66,
+      "included_in_zip": true,
+      "sha256": "a0ccd328c148010ad126a70cfcfd3bc7d1c57d133ab60360459f1f66d96a0be2"
+    },
+    "runs/sensorscope/inst_cal/seed31001/config_snapshot.json": {
+      "bytes": 588,
+      "included_in_zip": true,
+      "sha256": "d509c936ca5e40815688f5112d11a3aeb41efbf71524d68342a1940f064c4218"
+    },
+    "runs/sensorscope/inst_cal/seed31001/delta_c_s_summary.json": {
+      "bytes": 530,
+      "included_in_zip": true,
+      "sha256": "8a8139755fc269bc2418924e931e45377d5e9d2c7a126bb56da53f9121d52c6f"
+    },
+    "runs/sensorscope/inst_cal/seed31001/delta_cs_summary_v6.json": {
+      "bytes": 530,
+      "included_in_zip": true,
+      "sha256": "8a8139755fc269bc2418924e931e45377d5e9d2c7a126bb56da53f9121d52c6f"
+    },
+    "runs/sensorscope/inst_cal/seed31001/final_metrics.json": {
+      "bytes": 1208,
+      "included_in_zip": true,
+      "sha256": "91e375156a68f96e3aa92e05ded5a12a9aaa0463bce17c9c18c3301b663c4aca"
+    },
+    "runs/sensorscope/inst_cal/seed31001/ledger.jsonl": {
+      "bytes": 879,
+      "included_in_zip": true,
+      "sha256": "7cd286a138e7108e0c049eab1dea19b985af9c523de6443ddbd289068bb76015"
+    },
+    "runs/sensorscope/inst_cal/seed31001/method_smoke_audit.json": {
+      "bytes": 345,
+      "included_in_zip": true,
+      "sha256": "bbc936fc6bed950f3182142d8f26bde2ebec7cf5f2cca7fdeb17d605f13d6c2f"
+    },
+    "runs/sensorscope/inst_cal/seed31001/opportunity_stratum_identity.json": {
+      "bytes": 180,
+      "included_in_zip": true,
+      "sha256": "305281b5ef39470f2b4ae40d788865385b0e4a49bfd5f1a1081f23ad182f1303"
+    },
+    "runs/sensorscope/inst_cal/seed31001/runtime_manifest.json": {
+      "bytes": 807,
+      "included_in_zip": true,
+      "sha256": "abf6dfdd2b99f6addc8064bf9a521d661b7c5c6c7412b90c4d146728f8a3270d"
+    },
+    "runs/sensorscope/inst_cal/seed31001/target_wiring.json": {
+      "bytes": 7673,
+      "included_in_zip": true,
+      "sha256": "f60e350cabf8f3df616559cc468c720e7b374b77896d03abfc269ed0f16ac5a3"
+    },
+    "runs/sensorscope/local_hajek/seed31001/CANARY_ACCEPTED.json": {
+      "bytes": 592,
+      "included_in_zip": true,
+      "sha256": "258ec793353f5e5f9c6c8074f1202a317159f90f29b782ec0b1fd7a80a706a2d"
+    },
+    "runs/sensorscope/local_hajek/seed31001/atomic_rho_summary.json": {
+      "bytes": 131,
+      "included_in_zip": true,
+      "sha256": "93bef5e1607c05ec86717ef053ee2f606ca534e51030b976c0ff406c80b24661"
+    },
+    "runs/sensorscope/local_hajek/seed31001/checkpoints/final.pt.sha256.txt": {
+      "bytes": 66,
+      "included_in_zip": true,
+      "sha256": "fe916c752dd31f14f9ece5873b720aaac1b01f2dfa53b89f1e84b07ed10d91d0"
+    },
+    "runs/sensorscope/local_hajek/seed31001/config_snapshot.json": {
+      "bytes": 591,
+      "included_in_zip": true,
+      "sha256": "1d6ba34f5754977b01a4589d6437365df2ff19ba8a40ad182c3251ed3878f99a"
+    },
+    "runs/sensorscope/local_hajek/seed31001/delta_c_s_summary.json": {
+      "bytes": 530,
+      "included_in_zip": true,
+      "sha256": "367c59c08b3aeb56224e08960691b9d2878698dfcdcd6d326d0dd309612f74f6"
+    },
+    "runs/sensorscope/local_hajek/seed31001/delta_cs_summary_v6.json": {
+      "bytes": 530,
+      "included_in_zip": true,
+      "sha256": "367c59c08b3aeb56224e08960691b9d2878698dfcdcd6d326d0dd309612f74f6"
+    },
+    "runs/sensorscope/local_hajek/seed31001/final_metrics.json": {
+      "bytes": 1200,
+      "included_in_zip": true,
+      "sha256": "5448ca34598d45014a6dabcbbb08836fbf45a61b27dfdf6e919ab7cc92a3e6d1"
+    },
+    "runs/sensorscope/local_hajek/seed31001/ledger.jsonl": {
+      "bytes": 895,
+      "included_in_zip": true,
+      "sha256": "f52b2ea3d21417c9aecf0f1d5a9ac8636dadb8d714caf949f51f3ff3f4ba89e0"
+    },
+    "runs/sensorscope/local_hajek/seed31001/method_smoke_audit.json": {
+      "bytes": 349,
+      "included_in_zip": true,
+      "sha256": "b1e8e8c5178aa69b3babbe74c16f506fa75d573c44cbbe0217bff3e6449609f1"
+    },
+    "runs/sensorscope/local_hajek/seed31001/opportunity_stratum_identity.json": {
+      "bytes": 180,
+      "included_in_zip": true,
+      "sha256": "305281b5ef39470f2b4ae40d788865385b0e4a49bfd5f1a1081f23ad182f1303"
+    },
+    "runs/sensorscope/local_hajek/seed31001/runtime_manifest.json": {
+      "bytes": 816,
+      "included_in_zip": true,
+      "sha256": "a5f4467496c177a68a372d7886793ac7ade8bf5ca572847a9048b8c3524b2ad4"
+    },
+    "runs/sensorscope/local_hajek/seed31001/target_wiring.json": {
+      "bytes": 7673,
+      "included_in_zip": true,
+      "sha256": "f60e350cabf8f3df616559cc468c720e7b374b77896d03abfc269ed0f16ac5a3"
+    },
+    "runs/sensorscope/raven/seed31001/CANARY_ACCEPTED.json": {
+      "bytes": 575,
+      "included_in_zip": true,
+      "sha256": "c8c2b32982361e9838f7208c6c041cad2da470ed612591e05df46c0b9747e85d"
+    },
+    "runs/sensorscope/raven/seed31001/atomic_rho_summary.json": {
+      "bytes": 131,
+      "included_in_zip": true,
+      "sha256": "93bef5e1607c05ec86717ef053ee2f606ca534e51030b976c0ff406c80b24661"
+    },
+    "runs/sensorscope/raven/seed31001/checkpoints/final.pt.sha256.txt": {
+      "bytes": 66,
+      "included_in_zip": true,
+      "sha256": "59759ff9a3c3f1e75967cc4d47ca9dfae6a10a212cdbe855216550cd4791223e"
+    },
+    "runs/sensorscope/raven/seed31001/config_snapshot.json": {
+      "bytes": 585,
+      "included_in_zip": true,
+      "sha256": "8d990cb8ae5550a73f1b3cfb8e6813a953495cb1dd51b442f6ef56afbf8c9495"
+    },
+    "runs/sensorscope/raven/seed31001/delta_c_s_summary.json": {
+      "bytes": 530,
+      "included_in_zip": true,
+      "sha256": "bb9a116b0ce11bf1f434a51045f9e2744d13e5baa607e8abe1e1d08e7fe93171"
+    },
+    "runs/sensorscope/raven/seed31001/delta_cs_summary_v6.json": {
+      "bytes": 530,
+      "included_in_zip": true,
+      "sha256": "bb9a116b0ce11bf1f434a51045f9e2744d13e5baa607e8abe1e1d08e7fe93171"
+    },
+    "runs/sensorscope/raven/seed31001/final_metrics.json": {
+      "bytes": 1235,
+      "included_in_zip": true,
+      "sha256": "1dec2fa717b9c2c7375aa7c8372806e57df9f4f43b25034e3fe16c038317993e"
+    },
+    "runs/sensorscope/raven/seed31001/ledger.jsonl": {
+      "bytes": 865,
+      "included_in_zip": true,
+      "sha256": "c7ac340ae91030ad6ef410fa4d99b340bbcaf22b7252250de9356aeda7740eec"
+    },
+    "runs/sensorscope/raven/seed31001/method_smoke_audit.json": {
+      "bytes": 342,
+      "included_in_zip": true,
+      "sha256": "b801332a7b816443c3684784b1a7a5608e1a99e7f42d60703ded0bbf4861c144"
+    },
+    "runs/sensorscope/raven/seed31001/opportunity_stratum_identity.json": {
+      "bytes": 180,
+      "included_in_zip": true,
+      "sha256": "305281b5ef39470f2b4ae40d788865385b0e4a49bfd5f1a1081f23ad182f1303"
+    },
+    "runs/sensorscope/raven/seed31001/runtime_manifest.json": {
+      "bytes": 798,
+      "included_in_zip": true,
+      "sha256": "98ab1fc14cfc573e7b71ed0cb8c0a74fb2e132916f551ed76f723d9f202dda99"
+    },
+    "runs/sensorscope/raven/seed31001/target_wiring.json": {
+      "bytes": 7673,
+      "included_in_zip": true,
+      "sha256": "f60e350cabf8f3df616559cc468c720e7b374b77896d03abfc269ed0f16ac5a3"
+    },
+    "runs/sensorscope/raven_simoracle/seed31001/CANARY_ACCEPTED.json": {
+      "bytes": 603,
+      "included_in_zip": true,
+      "sha256": "e109e514684cc91e44533b95107845d03f89a0217237bc6e38bb99309c5064eb"
+    },
+    "runs/sensorscope/raven_simoracle/seed31001/atomic_rho_summary.json": {
+      "bytes": 131,
+      "included_in_zip": true,
+      "sha256": "93bef5e1607c05ec86717ef053ee2f606ca534e51030b976c0ff406c80b24661"
+    },
+    "runs/sensorscope/raven_simoracle/seed31001/checkpoints/final.pt.sha256.txt": {
+      "bytes": 66,
+      "included_in_zip": true,
+      "sha256": "af23f51b390735608ab07d62b653169d5197c07cf7f44bf01f2262f4ad112d45"
+    },
+    "runs/sensorscope/raven_simoracle/seed31001/config_snapshot.json": {
+      "bytes": 595,
+      "included_in_zip": true,
+      "sha256": "4cf18944a55f994c63a16b3cae3d967446867b4c31463dfd1b479386a2fa84d1"
+    },
+    "runs/sensorscope/raven_simoracle/seed31001/delta_c_s_summary.json": {
+      "bytes": 530,
+      "included_in_zip": true,
+      "sha256": "bef16b302c9fad5eba18b6518dfa3aed58be587d8df8c0fe4bd951903429c8ee"
+    },
+    "runs/sensorscope/raven_simoracle/seed31001/delta_cs_summary_v6.json": {
+      "bytes": 530,
+      "included_in_zip": true,
+      "sha256": "bef16b302c9fad5eba18b6518dfa3aed58be587d8df8c0fe4bd951903429c8ee"
+    },
+    "runs/sensorscope/raven_simoracle/seed31001/final_metrics.json": {
+      "bytes": 1248,
+      "included_in_zip": true,
+      "sha256": "52a3876a8696950abdbd5a5f5db5104146d35146a488519439d9973b38821e75"
+    },
+    "runs/sensorscope/raven_simoracle/seed31001/ledger.jsonl": {
+      "bytes": 914,
+      "included_in_zip": true,
+      "sha256": "ff9f5ad5cb4504236dbe771af572108cb79a8fbefd63beab56b0f7b182917485"
+    },
+    "runs/sensorscope/raven_simoracle/seed31001/method_smoke_audit.json": {
+      "bytes": 352,
+      "included_in_zip": true,
+      "sha256": "27c51ad66faeeec9371910ac6e0a45f289615a359e0d4b9637c471294c5d9a59"
+    },
+    "runs/sensorscope/raven_simoracle/seed31001/opportunity_stratum_identity.json": {
+      "bytes": 180,
+      "included_in_zip": true,
+      "sha256": "305281b5ef39470f2b4ae40d788865385b0e4a49bfd5f1a1081f23ad182f1303"
+    },
+    "runs/sensorscope/raven_simoracle/seed31001/runtime_manifest.json": {
+      "bytes": 828,
+      "included_in_zip": true,
+      "sha256": "0400b75a1baad6c814120c3229f31b2ee4dbb5785a1fdfa59e95202f602bed80"
+    },
+    "runs/sensorscope/raven_simoracle/seed31001/target_wiring.json": {
+      "bytes": 7673,
+      "included_in_zip": true,
+      "sha256": "f60e350cabf8f3df616559cc468c720e7b374b77896d03abfc269ed0f16ac5a3"
+    },
+    "runs/sensorscope/twostage_hajek/seed31001/CANARY_ACCEPTED.json": {
+      "bytes": 600,
+      "included_in_zip": true,
+      "sha256": "4f3aafc2947fbfb211a10a93baae3f31b11eca9813abab060771fe94a21e1066"
+    },
+    "runs/sensorscope/twostage_hajek/seed31001/atomic_rho_summary.json": {
+      "bytes": 131,
+      "included_in_zip": true,
+      "sha256": "93bef5e1607c05ec86717ef053ee2f606ca534e51030b976c0ff406c80b24661"
+    },
+    "runs/sensorscope/twostage_hajek/seed31001/checkpoints/final.pt.sha256.txt": {
+      "bytes": 66,
+      "included_in_zip": true,
+      "sha256": "f832ad17b6daf1d6efbe632e88e4df98aa4cb3d625f7e05b91967ea7431c5f42"
+    },
+    "runs/sensorscope/twostage_hajek/seed31001/config_snapshot.json": {
+      "bytes": 594,
+      "included_in_zip": true,
+      "sha256": "bb2abee963315265d3d78c16daec7c5515cd872624771164179cfd8983a8495a"
+    },
+    "runs/sensorscope/twostage_hajek/seed31001/delta_c_s_summary.json": {
+      "bytes": 529,
+      "included_in_zip": true,
+      "sha256": "eb1506dfe8361c2c40021f74bff4c9ddc019db39502483e74437ffa63dd37cfb"
+    },
+    "runs/sensorscope/twostage_hajek/seed31001/delta_cs_summary_v6.json": {
+      "bytes": 529,
+      "included_in_zip": true,
+      "sha256": "eb1506dfe8361c2c40021f74bff4c9ddc019db39502483e74437ffa63dd37cfb"
+    },
+    "runs/sensorscope/twostage_hajek/seed31001/final_metrics.json": {
+      "bytes": 1199,
+      "included_in_zip": true,
+      "sha256": "d7c36e185452d45517054b1e9530a1c8821e7a229e31e5a0e8fed0670812109a"
+    },
+    "runs/sensorscope/twostage_hajek/seed31001/ledger.jsonl": {
+      "bytes": 909,
+      "included_in_zip": true,
+      "sha256": "82278c439e0b8518c51cf7d685769da3d14499a89ec3171be3da9684bb797317"
+    },
+    "runs/sensorscope/twostage_hajek/seed31001/method_smoke_audit.json": {
+      "bytes": 352,
+      "included_in_zip": true,
+      "sha256": "beaa4ee3ea88dd23a1502e98815e30efb31aebcfef69f63d674dd93cf0fe6f21"
+    },
+    "runs/sensorscope/twostage_hajek/seed31001/opportunity_stratum_identity.json": {
+      "bytes": 180,
+      "included_in_zip": true,
+      "sha256": "305281b5ef39470f2b4ae40d788865385b0e4a49bfd5f1a1081f23ad182f1303"
+    },
+    "runs/sensorscope/twostage_hajek/seed31001/runtime_manifest.json": {
+      "bytes": 825,
+      "included_in_zip": true,
+      "sha256": "8110963e50924897a85009405d2c9567e7c15eb0ee8c683bdad855fa38181385"
+    },
+    "runs/sensorscope/twostage_hajek/seed31001/target_wiring.json": {
+      "bytes": 7673,
+      "included_in_zip": true,
+      "sha256": "f60e350cabf8f3df616559cc468c720e7b374b77896d03abfc269ed0f16ac5a3"
+    },
+    "runs/traffic/central_all/seed31001/CANARY_ACCEPTED.json": {
+      "bytes": 569,
+      "included_in_zip": true,
+      "sha256": "80587aece0d129e70c2ba6fe64e7e741fb8d77296dea956dd0ee7369bdef41ab"
+    },
+    "runs/traffic/central_all/seed31001/atomic_rho_summary.json": {
+      "bytes": 131,
+      "included_in_zip": true,
+      "sha256": "2ff7f903e642eacdc8b014d89e29af53fd3eac02745a0386114f1804d31968e5"
+    },
+    "runs/traffic/central_all/seed31001/checkpoints/final.pt.sha256.txt": {
+      "bytes": 66,
+      "included_in_zip": true,
+      "sha256": "8997da4e0851b44352e45c695b0244c9c76f82bc61166a0a65510c34da1364b9"
+    },
+    "runs/traffic/central_all/seed31001/config_snapshot.json": {
+      "bytes": 511,
+      "included_in_zip": true,
+      "sha256": "a57c24ab5555417aca7caefa867424f8385e6b8907b0c67d5c6d9fe954975cdc"
+    },
+    "runs/traffic/central_all/seed31001/delta_c_s_summary.json": {
+      "bytes": 173,
+      "included_in_zip": true,
+      "sha256": "249e9202f9d346e4a525f05d3b72fac2e417c360c7805e8a0c52338d42610d2f"
+    },
+    "runs/traffic/central_all/seed31001/delta_cs_summary_v6.json": {
+      "bytes": 173,
+      "included_in_zip": true,
+      "sha256": "249e9202f9d346e4a525f05d3b72fac2e417c360c7805e8a0c52338d42610d2f"
+    },
+    "runs/traffic/central_all/seed31001/final_metrics.json": {
+      "bytes": 1210,
+      "included_in_zip": true,
+      "sha256": "44abbd7d5c26f32290f21f86cf2ff7f44a261326a3992fe82549444bb6268b93"
+    },
+    "runs/traffic/central_all/seed31001/ledger.jsonl": {
+      "bytes": 875,
+      "included_in_zip": true,
+      "sha256": "618e9a27c153b104650a308622a3a80c440c335dea8a43b5c0095f5c42c54e13"
+    },
+    "runs/traffic/central_all/seed31001/method_smoke_audit.json": {
+      "bytes": 333,
+      "included_in_zip": true,
+      "sha256": "bd3f5f8db8947e90405fcf1b5ec5ef3072333d1d4e6b2bb0a49cfb6986f797d5"
+    },
+    "runs/traffic/central_all/seed31001/opportunity_stratum_identity.json": {
+      "bytes": 292,
+      "included_in_zip": true,
+      "sha256": "418d59951e5998dfc37569df4aef570b57e9a50ae77bf137c4e63ace3e98ed85"
+    },
+    "runs/traffic/central_all/seed31001/runtime_manifest.json": {
+      "bytes": 804,
+      "included_in_zip": true,
+      "sha256": "a0d5f5addc143f783d3beaefd773d83a46cafccc93397f7ee2cfc94c9e519309"
+    },
+    "runs/traffic/central_all/seed31001/target_wiring.json": {
+      "bytes": 6607,
+      "included_in_zip": true,
+      "sha256": "9c096de5406f28cd6ae42685ba9b949e2534bc7891ae0d30be3c82e33fb0f0eb"
+    },
+    "runs/traffic/central_delivered/seed31001/CANARY_ACCEPTED.json": {
+      "bytes": 587,
+      "included_in_zip": true,
+      "sha256": "db54adff98d7a9a509e4b1461ad9ba245a60363be8634fbb076c49a6ba89ada9"
+    },
+    "runs/traffic/central_delivered/seed31001/atomic_rho_summary.json": {
+      "bytes": 131,
+      "included_in_zip": true,
+      "sha256": "2ff7f903e642eacdc8b014d89e29af53fd3eac02745a0386114f1804d31968e5"
+    },
+    "runs/traffic/central_delivered/seed31001/checkpoints/final.pt.sha256.txt": {
+      "bytes": 66,
+      "included_in_zip": true,
+      "sha256": "649aecee60dcf7d58d84365939187c853b6e4e11f2d95e041104eba9024f8399"
+    },
+    "runs/traffic/central_delivered/seed31001/config_snapshot.json": {
+      "bytes": 517,
+      "included_in_zip": true,
+      "sha256": "c5307dc3681dd5847a13cda2c75dbe3569699e68380b4d9f9afed5c5a9d4aa6f"
+    },
+    "runs/traffic/central_delivered/seed31001/delta_c_s_summary.json": {
+      "bytes": 173,
+      "included_in_zip": true,
+      "sha256": "249e9202f9d346e4a525f05d3b72fac2e417c360c7805e8a0c52338d42610d2f"
+    },
+    "runs/traffic/central_delivered/seed31001/delta_cs_summary_v6.json": {
+      "bytes": 173,
+      "included_in_zip": true,
+      "sha256": "249e9202f9d346e4a525f05d3b72fac2e417c360c7805e8a0c52338d42610d2f"
+    },
+    "runs/traffic/central_delivered/seed31001/final_metrics.json": {
+      "bytes": 1208,
+      "included_in_zip": true,
+      "sha256": "eecb89c6ff38c1a6a8f3e4c54a89308de5c42791f99e8749b0858aba6d6e8f19"
+    },
+    "runs/traffic/central_delivered/seed31001/ledger.jsonl": {
+      "bytes": 905,
+      "included_in_zip": true,
+      "sha256": "3768107b17de1eef26baec0761338e1db04d2f4053d2cedef07b7d0987f62181"
+    },
+    "runs/traffic/central_delivered/seed31001/method_smoke_audit.json": {
+      "bytes": 337,
+      "included_in_zip": true,
+      "sha256": "9331acf3af2338e251191b3cab273b42347fddd5c8319c999e55725fea3f1ea1"
+    },
+    "runs/traffic/central_delivered/seed31001/opportunity_stratum_identity.json": {
+      "bytes": 292,
+      "included_in_zip": true,
+      "sha256": "418d59951e5998dfc37569df4aef570b57e9a50ae77bf137c4e63ace3e98ed85"
+    },
+    "runs/traffic/central_delivered/seed31001/runtime_manifest.json": {
+      "bytes": 822,
+      "included_in_zip": true,
+      "sha256": "8bed531357995402e3ac05430bc226e6f2396c0e38c9b8f9a3d21ade8674d7ed"
+    },
+    "runs/traffic/central_delivered/seed31001/target_wiring.json": {
+      "bytes": 6607,
+      "included_in_zip": true,
+      "sha256": "9c096de5406f28cd6ae42685ba9b949e2534bc7891ae0d30be3c82e33fb0f0eb"
+    },
+    "runs/traffic/debt_cal/seed31001/CANARY_ACCEPTED.json": {
+      "bytes": 572,
+      "included_in_zip": true,
+      "sha256": "05c6eb9a5b0bb2f8b5368c1ebc2665847f1ebe4541064d1e0538d03d3bcd5ed6"
+    },
+    "runs/traffic/debt_cal/seed31001/atomic_rho_summary.json": {
+      "bytes": 131,
+      "included_in_zip": true,
+      "sha256": "2ff7f903e642eacdc8b014d89e29af53fd3eac02745a0386114f1804d31968e5"
+    },
+    "runs/traffic/debt_cal/seed31001/checkpoints/final.pt.sha256.txt": {
+      "bytes": 66,
+      "included_in_zip": true,
+      "sha256": "5d0e4ac5f2536be0203a8a9952fcf90ff4f122197e46468a02ffe292e7d67fb4"
+    },
+    "runs/traffic/debt_cal/seed31001/config_snapshot.json": {
+      "bytes": 508,
+      "included_in_zip": true,
+      "sha256": "10e82ba1fd7da9b995de708dd76de4b813ea36a883537cca2bdd607776eaaeb5"
+    },
+    "runs/traffic/debt_cal/seed31001/delta_c_s_summary.json": {
+      "bytes": 531,
+      "included_in_zip": true,
+      "sha256": "3cb17a4a6ab176536661c327a3e612435d65cac9290c0b3fca7f9cb13a2aab0f"
+    },
+    "runs/traffic/debt_cal/seed31001/delta_cs_summary_v6.json": {
+      "bytes": 531,
+      "included_in_zip": true,
+      "sha256": "3cb17a4a6ab176536661c327a3e612435d65cac9290c0b3fca7f9cb13a2aab0f"
+    },
+    "runs/traffic/debt_cal/seed31001/final_metrics.json": {
+      "bytes": 1247,
+      "included_in_zip": true,
+      "sha256": "33970342a6034d9afe33e1868ccd421f210a471af77732e9da5f4fa4a9392d16"
+    },
+    "runs/traffic/debt_cal/seed31001/ledger.jsonl": {
+      "bytes": 858,
+      "included_in_zip": true,
+      "sha256": "868c2e49131288993ee643a9ff9abb95f0a0e039dacdc82f844e437375f3ecf3"
+    },
+    "runs/traffic/debt_cal/seed31001/method_smoke_audit.json": {
+      "bytes": 348,
+      "included_in_zip": true,
+      "sha256": "247692d7e20757d130341cd61838a7a70529bf2e664216e63c0f16fbcb8b4b12"
+    },
+    "runs/traffic/debt_cal/seed31001/opportunity_stratum_identity.json": {
+      "bytes": 292,
+      "included_in_zip": true,
+      "sha256": "418d59951e5998dfc37569df4aef570b57e9a50ae77bf137c4e63ace3e98ed85"
+    },
+    "runs/traffic/debt_cal/seed31001/runtime_manifest.json": {
+      "bytes": 795,
+      "included_in_zip": true,
+      "sha256": "2fcac5b7b25c4e53513fa67db7d4df1f5b0539091b89aab5687eae5015bc194c"
+    },
+    "runs/traffic/debt_cal/seed31001/target_wiring.json": {
+      "bytes": 6607,
+      "included_in_zip": true,
+      "sha256": "9c096de5406f28cd6ae42685ba9b949e2534bc7891ae0d30be3c82e33fb0f0eb"
+    },
+    "runs/traffic/inst_cal/seed31001/CANARY_ACCEPTED.json": {
+      "bytes": 581,
+      "included_in_zip": true,
+      "sha256": "dd8391489efec8a17999d7e33bd5b21b44dbb7f7b26b0a750a78dad49e17ec86"
+    },
+    "runs/traffic/inst_cal/seed31001/atomic_rho_summary.json": {
+      "bytes": 131,
+      "included_in_zip": true,
+      "sha256": "2ff7f903e642eacdc8b014d89e29af53fd3eac02745a0386114f1804d31968e5"
+    },
+    "runs/traffic/inst_cal/seed31001/checkpoints/final.pt.sha256.txt": {
+      "bytes": 66,
+      "included_in_zip": true,
+      "sha256": "dab7f04714d244f27fd45fe46ed72701e275235d662754950837894f6a889098"
+    },
+    "runs/traffic/inst_cal/seed31001/config_snapshot.json": {
+      "bytes": 508,
+      "included_in_zip": true,
+      "sha256": "cb08b5a5e0dab501201a91b5561b4444e09f525b96a8b70bbeb6f7e972be78c1"
+    },
+    "runs/traffic/inst_cal/seed31001/delta_c_s_summary.json": {
+      "bytes": 531,
+      "included_in_zip": true,
+      "sha256": "40b566e5db7b8cf0163fa447e444bb8282135d4df26085038088f9fbdaeb4fb7"
+    },
+    "runs/traffic/inst_cal/seed31001/delta_cs_summary_v6.json": {
+      "bytes": 531,
+      "included_in_zip": true,
+      "sha256": "40b566e5db7b8cf0163fa447e444bb8282135d4df26085038088f9fbdaeb4fb7"
+    },
+    "runs/traffic/inst_cal/seed31001/final_metrics.json": {
+      "bytes": 1243,
+      "included_in_zip": true,
+      "sha256": "756a15fd9f0d76a854f28d17f86e664f52ef85cee7ca870fcb41f39cf1be8d63"
+    },
+    "runs/traffic/inst_cal/seed31001/ledger.jsonl": {
+      "bytes": 858,
+      "included_in_zip": true,
+      "sha256": "be8a85e26397bd255627da710ff1380d41c363ea9d9b32e015f3632fa7fae965"
+    },
+    "runs/traffic/inst_cal/seed31001/method_smoke_audit.json": {
+      "bytes": 348,
+      "included_in_zip": true,
+      "sha256": "67b8405faa3a334035a257bdde188425f2ddc624c4942608011f83d3068b3df6"
+    },
+    "runs/traffic/inst_cal/seed31001/opportunity_stratum_identity.json": {
+      "bytes": 292,
+      "included_in_zip": true,
+      "sha256": "418d59951e5998dfc37569df4aef570b57e9a50ae77bf137c4e63ace3e98ed85"
+    },
+    "runs/traffic/inst_cal/seed31001/runtime_manifest.json": {
+      "bytes": 795,
+      "included_in_zip": true,
+      "sha256": "5e5eb98dd5ad8aaa596829b80c5c2a7c144e43759a106b1fffa33b8188d809b2"
+    },
+    "runs/traffic/inst_cal/seed31001/target_wiring.json": {
+      "bytes": 6607,
+      "included_in_zip": true,
+      "sha256": "9c096de5406f28cd6ae42685ba9b949e2534bc7891ae0d30be3c82e33fb0f0eb"
+    },
+    "runs/traffic/local_hajek/seed31001/CANARY_ACCEPTED.json": {
+      "bytes": 589,
+      "included_in_zip": true,
+      "sha256": "e03872eb8d5a3804b467fc8831c968b7cc5ea0a2e8b004fb1ae7b9c80550d379"
+    },
+    "runs/traffic/local_hajek/seed31001/atomic_rho_summary.json": {
+      "bytes": 131,
+      "included_in_zip": true,
+      "sha256": "2ff7f903e642eacdc8b014d89e29af53fd3eac02745a0386114f1804d31968e5"
+    },
+    "runs/traffic/local_hajek/seed31001/attempts/attempt1/config_snapshot.json": {
+      "bytes": 511,
+      "included_in_zip": true,
+      "sha256": "fb24919d820006d8f0e87cf36b660e4246488fc4a24ae50db5213b44a1794ee7"
+    },
+    "runs/traffic/local_hajek/seed31001/attempts/attempt1/opportunity_stratum_identity.json": {
+      "bytes": 292,
+      "included_in_zip": true,
+      "sha256": "418d59951e5998dfc37569df4aef570b57e9a50ae77bf137c4e63ace3e98ed85"
+    },
+    "runs/traffic/local_hajek/seed31001/attempts/attempt1/target_wiring.json": {
+      "bytes": 6607,
+      "included_in_zip": true,
+      "sha256": "9c096de5406f28cd6ae42685ba9b949e2534bc7891ae0d30be3c82e33fb0f0eb"
+    },
+    "runs/traffic/local_hajek/seed31001/checkpoints/final.pt.sha256.txt": {
+      "bytes": 66,
+      "included_in_zip": true,
+      "sha256": "a03043a4180d301f81ce65c705d678b584d542c4da62c5bbce40731ac0967969"
+    },
+    "runs/traffic/local_hajek/seed31001/config_snapshot.json": {
+      "bytes": 511,
+      "included_in_zip": true,
+      "sha256": "fb24919d820006d8f0e87cf36b660e4246488fc4a24ae50db5213b44a1794ee7"
+    },
+    "runs/traffic/local_hajek/seed31001/delta_c_s_summary.json": {
+      "bytes": 531,
+      "included_in_zip": true,
+      "sha256": "db75a0105685743ef0d7be98ca97c06fbc1c1ea83ea6115ec16eb72076ade47f"
+    },
+    "runs/traffic/local_hajek/seed31001/delta_cs_summary_v6.json": {
+      "bytes": 531,
+      "included_in_zip": true,
+      "sha256": "db75a0105685743ef0d7be98ca97c06fbc1c1ea83ea6115ec16eb72076ade47f"
+    },
+    "runs/traffic/local_hajek/seed31001/final_metrics.json": {
+      "bytes": 1232,
+      "included_in_zip": true,
+      "sha256": "2a1318f93c50758a6b57800d5d24e30b3ea782a6f3352af53d80e54417860225"
+    },
+    "runs/traffic/local_hajek/seed31001/ledger.jsonl": {
+      "bytes": 1669,
+      "included_in_zip": true,
+      "sha256": "80291540be953bad2369607458eb3f492730524bf78881fb41910e3435be7c75"
+    },
+    "runs/traffic/local_hajek/seed31001/method_smoke_audit.json": {
+      "bytes": 352,
+      "included_in_zip": true,
+      "sha256": "8601dc4ddfabb60272760eb4312d2c5ae850ebfa25c434e6db866a93ca7941f9"
+    },
+    "runs/traffic/local_hajek/seed31001/opportunity_stratum_identity.json": {
+      "bytes": 292,
+      "included_in_zip": true,
+      "sha256": "418d59951e5998dfc37569df4aef570b57e9a50ae77bf137c4e63ace3e98ed85"
+    },
+    "runs/traffic/local_hajek/seed31001/runtime_manifest.json": {
+      "bytes": 804,
+      "included_in_zip": true,
+      "sha256": "ff42aaddafc55acc9fb9c9340dbdce1db1c57bcaa36541a02dbe9c954bcbc52a"
+    },
+    "runs/traffic/local_hajek/seed31001/target_wiring.json": {
+      "bytes": 6607,
+      "included_in_zip": true,
+      "sha256": "9c096de5406f28cd6ae42685ba9b949e2534bc7891ae0d30be3c82e33fb0f0eb"
+    },
+    "runs/traffic/raven_simoracle/seed31001/CANARY_ACCEPTED.json": {
+      "bytes": 601,
+      "included_in_zip": true,
+      "sha256": "da078cdd9865ed9c014c787d2104d5107fe432a6263de2e5293bdfc780192990"
+    },
+    "runs/traffic/raven_simoracle/seed31001/atomic_rho_summary.json": {
+      "bytes": 131,
+      "included_in_zip": true,
+      "sha256": "2ff7f903e642eacdc8b014d89e29af53fd3eac02745a0386114f1804d31968e5"
+    },
+    "runs/traffic/raven_simoracle/seed31001/checkpoints/final.pt.sha256.txt": {
+      "bytes": 66,
+      "included_in_zip": true,
+      "sha256": "e09163256e0c4bc5fead44c8fd0f9a2aad585a8f37c31ae2e24ec61b89035af7"
+    },
+    "runs/traffic/raven_simoracle/seed31001/config_snapshot.json": {
+      "bytes": 515,
+      "included_in_zip": true,
+      "sha256": "ac2ba5b7101fa7cc5c801ec35c6655d96c18c099feb4e86322a89ff1964bed16"
+    },
+    "runs/traffic/raven_simoracle/seed31001/delta_c_s_summary.json": {
+      "bytes": 531,
+      "included_in_zip": true,
+      "sha256": "572da622652eb8d13441db60c20c65a667d9b35da9190b553850c187c5e897f3"
+    },
+    "runs/traffic/raven_simoracle/seed31001/delta_cs_summary_v6.json": {
+      "bytes": 531,
+      "included_in_zip": true,
+      "sha256": "572da622652eb8d13441db60c20c65a667d9b35da9190b553850c187c5e897f3"
+    },
+    "runs/traffic/raven_simoracle/seed31001/final_metrics.json": {
+      "bytes": 1278,
+      "included_in_zip": true,
+      "sha256": "ef6d41b6a87a92d40e2a3a9877c8687aee3dddac0f6007159e433b446cf91420"
+    },
+    "runs/traffic/raven_simoracle/seed31001/ledger.jsonl": {
+      "bytes": 894,
+      "included_in_zip": true,
+      "sha256": "1f8dcc4d463e4fc7f09bb8a9d8a7a270047e80d562ad0884155ba91863689437"
+    },
+    "runs/traffic/raven_simoracle/seed31001/method_smoke_audit.json": {
+      "bytes": 355,
+      "included_in_zip": true,
+      "sha256": "9c7df5dece0ec892e2156907c8a460440a7d0dbf7efcf30a071923a5acecdb10"
+    },
+    "runs/traffic/raven_simoracle/seed31001/opportunity_stratum_identity.json": {
+      "bytes": 292,
+      "included_in_zip": true,
+      "sha256": "418d59951e5998dfc37569df4aef570b57e9a50ae77bf137c4e63ace3e98ed85"
+    },
+    "runs/traffic/raven_simoracle/seed31001/runtime_manifest.json": {
+      "bytes": 816,
+      "included_in_zip": true,
+      "sha256": "2b519b8efdaa666679c605be8a19bcb8f0b074d0369e45ee1def6e8bff184652"
+    },
+    "runs/traffic/raven_simoracle/seed31001/target_wiring.json": {
+      "bytes": 6607,
+      "included_in_zip": true,
+      "sha256": "9c096de5406f28cd6ae42685ba9b949e2534bc7891ae0d30be3c82e33fb0f0eb"
+    },
+    "runs/uair/central_all/seed31001/CANARY_ACCEPTED.json": {
+      "bytes": 558,
+      "included_in_zip": true,
+      "sha256": "3037d6a7d413ea6351cd28d2d9567f018eab2b3050be5bc57451739cc6f5e1a8"
+    },
+    "runs/uair/central_all/seed31001/atomic_rho_summary.json": {
+      "bytes": 131,
+      "included_in_zip": true,
+      "sha256": "7e58063e8526fb6b37d273a9d7aad9783bcb41f7262084f72e785b74d86401b3"
+    },
+    "runs/uair/central_all/seed31001/checkpoints/final.pt.sha256.txt": {
+      "bytes": 66,
+      "included_in_zip": true,
+      "sha256": "a3fee6ee84e0640af589444dcbaa24c0e32cbfd10bd6aa1d976c51e0bea1057e"
+    },
+    "runs/uair/central_all/seed31001/config_snapshot.json": {
+      "bytes": 577,
+      "included_in_zip": true,
+      "sha256": "2fdb4db0fcb6c4a5f6fb90d4af19dcfd222f4b3a97b68e4624f81fab2f0d6816"
+    },
+    "runs/uair/central_all/seed31001/delta_c_s_summary.json": {
+      "bytes": 173,
+      "included_in_zip": true,
+      "sha256": "249e9202f9d346e4a525f05d3b72fac2e417c360c7805e8a0c52338d42610d2f"
+    },
+    "runs/uair/central_all/seed31001/delta_cs_summary_v6.json": {
+      "bytes": 173,
+      "included_in_zip": true,
+      "sha256": "249e9202f9d346e4a525f05d3b72fac2e417c360c7805e8a0c52338d42610d2f"
+    },
+    "runs/uair/central_all/seed31001/final_metrics.json": {
+      "bytes": 1204,
+      "included_in_zip": true,
+      "sha256": "47b91927463e62e38600a2778237471e44c27731d55a38f4320028c63e810bb4"
+    },
+    "runs/uair/central_all/seed31001/ledger.jsonl": {
+      "bytes": 860,
+      "included_in_zip": true,
+      "sha256": "80a0d03258cdbfdb33ba61535340abfd3606d8bf5d6769a58f87c8b82598328a"
+    },
+    "runs/uair/central_all/seed31001/method_smoke_audit.json": {
+      "bytes": 331,
+      "included_in_zip": true,
+      "sha256": "76a2d8202b976990dfb26c2dc9f037697204540ccbc3585da0a810fdb34f1fea"
+    },
+    "runs/uair/central_all/seed31001/opportunity_stratum_identity.json": {
+      "bytes": 173,
+      "included_in_zip": true,
+      "sha256": "3b84607934ff494917e97149f5e24327a80d60770825de38ec1a506e6a39724a"
+    },
+    "runs/uair/central_all/seed31001/runtime_manifest.json": {
+      "bytes": 795,
+      "included_in_zip": true,
+      "sha256": "a221b3a1bb18278542bcb630ea2adc1a7ed769038daad6c9d7d01564f57b05e7"
+    },
+    "runs/uair/central_all/seed31001/target_wiring.json": {
+      "bytes": 5476,
+      "included_in_zip": true,
+      "sha256": "2cbf77f100d1dd3a010a614250c8e81483cb17c87362aa8ccd662ab232645439"
+    },
+    "runs/uair/central_delivered/seed31001/CANARY_ACCEPTED.json": {
+      "bytes": 576,
+      "included_in_zip": true,
+      "sha256": "95fb4ac588410ddb3492b612b0aadeb2744246cd209ec8d0c38331cc4e7eba6e"
+    },
+    "runs/uair/central_delivered/seed31001/atomic_rho_summary.json": {
+      "bytes": 131,
+      "included_in_zip": true,
+      "sha256": "7e58063e8526fb6b37d273a9d7aad9783bcb41f7262084f72e785b74d86401b3"
+    },
+    "runs/uair/central_delivered/seed31001/checkpoints/final.pt.sha256.txt": {
+      "bytes": 66,
+      "included_in_zip": true,
+      "sha256": "39451353a735afb84ab2b3b8342954949d28b3c9459f7e71f6ab7539ed661930"
+    },
+    "runs/uair/central_delivered/seed31001/config_snapshot.json": {
+      "bytes": 583,
+      "included_in_zip": true,
+      "sha256": "510887b23343742461a3253350243f2461986480f3cddcd7c0ecd9f8b913ddbf"
+    },
+    "runs/uair/central_delivered/seed31001/delta_c_s_summary.json": {
+      "bytes": 173,
+      "included_in_zip": true,
+      "sha256": "249e9202f9d346e4a525f05d3b72fac2e417c360c7805e8a0c52338d42610d2f"
+    },
+    "runs/uair/central_delivered/seed31001/delta_cs_summary_v6.json": {
+      "bytes": 173,
+      "included_in_zip": true,
+      "sha256": "249e9202f9d346e4a525f05d3b72fac2e417c360c7805e8a0c52338d42610d2f"
+    },
+    "runs/uair/central_delivered/seed31001/final_metrics.json": {
+      "bytes": 1204,
+      "included_in_zip": true,
+      "sha256": "ff8340aab004742c077f095e1e6cc9daa7751436bcd27038ba003d1ac1fbab53"
+    },
+    "runs/uair/central_delivered/seed31001/ledger.jsonl": {
+      "bytes": 889,
+      "included_in_zip": true,
+      "sha256": "4cd98a2d5c2e1f37f6a3c4f6f5285780e3603e465c4069cabc11453342b973e9"
+    },
+    "runs/uair/central_delivered/seed31001/method_smoke_audit.json": {
+      "bytes": 335,
+      "included_in_zip": true,
+      "sha256": "60bc7016a95ce8f99d69626e88ae5b3adb0ba9582eefa55ca5d090ff81aa2f74"
+    },
+    "runs/uair/central_delivered/seed31001/opportunity_stratum_identity.json": {
+      "bytes": 173,
+      "included_in_zip": true,
+      "sha256": "3b84607934ff494917e97149f5e24327a80d60770825de38ec1a506e6a39724a"
+    },
+    "runs/uair/central_delivered/seed31001/runtime_manifest.json": {
+      "bytes": 813,
+      "included_in_zip": true,
+      "sha256": "e2972a22efaeb8f203e2533fb79c9acff26df438a48e073c158fe107c9828528"
+    },
+    "runs/uair/central_delivered/seed31001/target_wiring.json": {
+      "bytes": 5476,
+      "included_in_zip": true,
+      "sha256": "2cbf77f100d1dd3a010a614250c8e81483cb17c87362aa8ccd662ab232645439"
+    },
+    "runs/uair/debt_cal/seed31001/CANARY_ACCEPTED.json": {
+      "bytes": 569,
+      "included_in_zip": true,
+      "sha256": "697c453c651b655bfc5590d2868d866673123298075beebeff161fc359a143e0"
+    },
+    "runs/uair/debt_cal/seed31001/atomic_rho_summary.json": {
+      "bytes": 131,
+      "included_in_zip": true,
+      "sha256": "7e58063e8526fb6b37d273a9d7aad9783bcb41f7262084f72e785b74d86401b3"
+    },
+    "runs/uair/debt_cal/seed31001/checkpoints/final.pt.sha256.txt": {
+      "bytes": 66,
+      "included_in_zip": true,
+      "sha256": "e47f2aa2888c6e0d093786f60db4fb1f5d73e7fca3e85d3fa95dbab584a60e59"
+    },
+    "runs/uair/debt_cal/seed31001/config_snapshot.json": {
+      "bytes": 574,
+      "included_in_zip": true,
+      "sha256": "725a84837c70731035d6fc14fbdb79f242c532932f0a387e8200e1e222d9ee87"
+    },
+    "runs/uair/debt_cal/seed31001/delta_c_s_summary.json": {
+      "bytes": 529,
+      "included_in_zip": true,
+      "sha256": "5b29829999ca798c6515528a012f045dca6a57f3a72d43327fc6c9ae1d253ecb"
+    },
+    "runs/uair/debt_cal/seed31001/delta_cs_summary_v6.json": {
+      "bytes": 529,
+      "included_in_zip": true,
+      "sha256": "5b29829999ca798c6515528a012f045dca6a57f3a72d43327fc6c9ae1d253ecb"
+    },
+    "runs/uair/debt_cal/seed31001/final_metrics.json": {
+      "bytes": 1281,
+      "included_in_zip": true,
+      "sha256": "f304ea9033f108b47afc5f31763e374bdb5fea85554fe4161baad052ef6a5ecf"
+    },
+    "runs/uair/debt_cal/seed31001/ledger.jsonl": {
+      "bytes": 845,
+      "included_in_zip": true,
+      "sha256": "33e6791b935ae0b726fd31eccd4f48d8cf0af03b2eea4b869b0d85cfd2a33d63"
+    },
+    "runs/uair/debt_cal/seed31001/method_smoke_audit.json": {
+      "bytes": 345,
+      "included_in_zip": true,
+      "sha256": "4cd62a97976094726f26a580adc43d084c1d8b0f58bd6f1e0bf8a3ed726ddee6"
+    },
+    "runs/uair/debt_cal/seed31001/opportunity_stratum_identity.json": {
+      "bytes": 173,
+      "included_in_zip": true,
+      "sha256": "3b84607934ff494917e97149f5e24327a80d60770825de38ec1a506e6a39724a"
+    },
+    "runs/uair/debt_cal/seed31001/runtime_manifest.json": {
+      "bytes": 786,
+      "included_in_zip": true,
+      "sha256": "ba8b65317945fb8e232d0b5d615aca08e4ed7a0790cb01d69a5127507a65bcfb"
+    },
+    "runs/uair/debt_cal/seed31001/target_wiring.json": {
+      "bytes": 5476,
+      "included_in_zip": true,
+      "sha256": "2cbf77f100d1dd3a010a614250c8e81483cb17c87362aa8ccd662ab232645439"
+    },
+    "runs/uair/fedasync_window/seed31001/CANARY_ACCEPTED.json": {
+      "bytes": 591,
+      "included_in_zip": true,
+      "sha256": "5b73b8bd21a3051cda67568162ad3cae3475844845072a052268517f62f2faeb"
+    },
+    "runs/uair/fedasync_window/seed31001/atomic_rho_summary.json": {
+      "bytes": 131,
+      "included_in_zip": true,
+      "sha256": "7e58063e8526fb6b37d273a9d7aad9783bcb41f7262084f72e785b74d86401b3"
+    },
+    "runs/uair/fedasync_window/seed31001/checkpoints/final.pt.sha256.txt": {
+      "bytes": 66,
+      "included_in_zip": true,
+      "sha256": "7eb9fb87860903b0f4c4de45dd9b4b5c8b2ce88ac6e6135639b5e3c7cc1e6133"
+    },
+    "runs/uair/fedasync_window/seed31001/config_snapshot.json": {
+      "bytes": 581,
+      "included_in_zip": true,
+      "sha256": "cc419192fc0cd1267db8561c1c621040139d2176566074b9c22a0e9804ac22f7"
+    },
+    "runs/uair/fedasync_window/seed31001/delta_c_s_summary.json": {
+      "bytes": 529,
+      "included_in_zip": true,
+      "sha256": "f04c0738969226d82c20d725bfae5fd85ce062f05080bf92040a18f6ebd3402c"
+    },
+    "runs/uair/fedasync_window/seed31001/delta_cs_summary_v6.json": {
+      "bytes": 529,
+      "included_in_zip": true,
+      "sha256": "f04c0738969226d82c20d725bfae5fd85ce062f05080bf92040a18f6ebd3402c"
+    },
+    "runs/uair/fedasync_window/seed31001/final_metrics.json": {
+      "bytes": 1253,
+      "included_in_zip": true,
+      "sha256": "c2c923e4efa32b89ac51b090c1a9025819f877fe87f8f993cd871e05e64e2f1f"
+    },
+    "runs/uair/fedasync_window/seed31001/ledger.jsonl": {
+      "bytes": 879,
+      "included_in_zip": true,
+      "sha256": "2bdefd6a5282f4de21b92d6dcb5156d6ee607c46ef5bdf999cf890a1a5bb8944"
+    },
+    "runs/uair/fedasync_window/seed31001/method_smoke_audit.json": {
+      "bytes": 353,
+      "included_in_zip": true,
+      "sha256": "5fa93b550e8dc50c2325434aa8e99560da77e4d1c080d05ef08905b5388871bc"
+    },
+    "runs/uair/fedasync_window/seed31001/opportunity_stratum_identity.json": {
+      "bytes": 173,
+      "included_in_zip": true,
+      "sha256": "3b84607934ff494917e97149f5e24327a80d60770825de38ec1a506e6a39724a"
+    },
+    "runs/uair/fedasync_window/seed31001/runtime_manifest.json": {
+      "bytes": 807,
+      "included_in_zip": true,
+      "sha256": "a67f35cf65eb84dd6555d7df4bce7ad342e200609c2d3fc5e3cfd4779db55d61"
+    },
+    "runs/uair/fedasync_window/seed31001/target_wiring.json": {
+      "bytes": 5476,
+      "included_in_zip": true,
+      "sha256": "2cbf77f100d1dd3a010a614250c8e81483cb17c87362aa8ccd662ab232645439"
+    },
+    "runs/uair/fedavg_window/seed31001/CANARY_ACCEPTED.json": {
+      "bytes": 547,
+      "included_in_zip": true,
+      "sha256": "bc5f8dc0b091feb4894ea6f339b816904fb07826a70551e5baf315ea77bdd9fb"
+    },
+    "runs/uair/fedavg_window/seed31001/atomic_rho_summary.json": {
+      "bytes": 131,
+      "included_in_zip": true,
+      "sha256": "7e58063e8526fb6b37d273a9d7aad9783bcb41f7262084f72e785b74d86401b3"
+    },
+    "runs/uair/fedavg_window/seed31001/attempts/attempt1/config_snapshot.json": {
+      "bytes": 579,
+      "included_in_zip": true,
+      "sha256": "ab11da002e7e31acadd9e27db219ce8f4dc53526761eaa694a19ed7a570d0d7f"
+    },
+    "runs/uair/fedavg_window/seed31001/attempts/attempt1/opportunity_stratum_identity.json": {
+      "bytes": 173,
+      "included_in_zip": true,
+      "sha256": "3b84607934ff494917e97149f5e24327a80d60770825de38ec1a506e6a39724a"
+    },
+    "runs/uair/fedavg_window/seed31001/attempts/attempt1/target_wiring.json": {
+      "bytes": 5476,
+      "included_in_zip": true,
+      "sha256": "2cbf77f100d1dd3a010a614250c8e81483cb17c87362aa8ccd662ab232645439"
+    },
+    "runs/uair/fedavg_window/seed31001/checkpoints/final.pt.sha256.txt": {
+      "bytes": 66,
+      "included_in_zip": true,
+      "sha256": "c0280bdda7213f2a2a7789c36a82e4cc0f4b3f89c7bf4b3fb4c6b1b1800f0072"
+    },
+    "runs/uair/fedavg_window/seed31001/config_snapshot.json": {
+      "bytes": 579,
+      "included_in_zip": true,
+      "sha256": "ab11da002e7e31acadd9e27db219ce8f4dc53526761eaa694a19ed7a570d0d7f"
+    },
+    "runs/uair/fedavg_window/seed31001/delta_c_s_summary.json": {
+      "bytes": 528,
+      "included_in_zip": true,
+      "sha256": "26d1e39e176b4ca6c22376665278ac1c1bb92af7c20af2a2cf682a232ba24c44"
+    },
+    "runs/uair/fedavg_window/seed31001/delta_cs_summary_v6.json": {
+      "bytes": 528,
+      "included_in_zip": true,
+      "sha256": "26d1e39e176b4ca6c22376665278ac1c1bb92af7c20af2a2cf682a232ba24c44"
+    },
+    "runs/uair/fedavg_window/seed31001/final_metrics.json": {
+      "bytes": 1158,
+      "included_in_zip": true,
+      "sha256": "f329a1d77c01cc594a288bf056fcc1ac67bda88bce03182605266e0c22e6290c"
+    },
+    "runs/uair/fedavg_window/seed31001/ledger.jsonl": {
+      "bytes": 1659,
+      "included_in_zip": true,
+      "sha256": "de6192e1c5574db40c0631a603b989e985b58c97a95ebac9fc3be7a0e253c101"
+    },
+    "runs/uair/fedavg_window/seed31001/method_smoke_audit.json": {
+      "bytes": 351,
+      "included_in_zip": true,
+      "sha256": "bd4a9a2b4bd0cc5de1372cdf01c57f2bc762e874227eb3a330eefdcebf2e4dad"
+    },
+    "runs/uair/fedavg_window/seed31001/opportunity_stratum_identity.json": {
+      "bytes": 173,
+      "included_in_zip": true,
+      "sha256": "3b84607934ff494917e97149f5e24327a80d60770825de38ec1a506e6a39724a"
+    },
+    "runs/uair/fedavg_window/seed31001/runtime_manifest.json": {
+      "bytes": 801,
+      "included_in_zip": true,
+      "sha256": "4b7818260d789ddec90aba0b1420955d1fe5deee4e9352dd2bf816bd2e5130b3"
+    },
+    "runs/uair/fedavg_window/seed31001/target_wiring.json": {
+      "bytes": 5476,
+      "included_in_zip": true,
+      "sha256": "2cbf77f100d1dd3a010a614250c8e81483cb17c87362aa8ccd662ab232645439"
+    },
+    "runs/uair/flamf_timealign_adapted/seed31001/CANARY_ACCEPTED.json": {
+      "bytes": 615,
+      "included_in_zip": true,
+      "sha256": "271fa16676c9aadc7bf75fd49141bed04455abf99a76dfaca2e3d27b5eb7ef8a"
+    },
+    "runs/uair/flamf_timealign_adapted/seed31001/atomic_rho_summary.json": {
+      "bytes": 131,
+      "included_in_zip": true,
+      "sha256": "7e58063e8526fb6b37d273a9d7aad9783bcb41f7262084f72e785b74d86401b3"
+    },
+    "runs/uair/flamf_timealign_adapted/seed31001/checkpoints/final.pt.sha256.txt": {
+      "bytes": 66,
+      "included_in_zip": true,
+      "sha256": "e9f5af84982b58e2eb6ce316abc33e3c0596243a71fa3a454bc6619a93300522"
+    },
+    "runs/uair/flamf_timealign_adapted/seed31001/config_snapshot.json": {
+      "bytes": 589,
+      "included_in_zip": true,
+      "sha256": "c52987a70702ad478c8f832aa260bc3ed806f1147032bc5d7176fc53ba5f3f25"
+    },
+    "runs/uair/flamf_timealign_adapted/seed31001/delta_c_s_summary.json": {
+      "bytes": 529,
+      "included_in_zip": true,
+      "sha256": "7d6e7ed731e6bd67e1ba2d9d50937278f66c1834bd7730bf909c278ff6d67199"
+    },
+    "runs/uair/flamf_timealign_adapted/seed31001/delta_cs_summary_v6.json": {
+      "bytes": 529,
+      "included_in_zip": true,
+      "sha256": "7d6e7ed731e6bd67e1ba2d9d50937278f66c1834bd7730bf909c278ff6d67199"
+    },
+    "runs/uair/flamf_timealign_adapted/seed31001/final_metrics.json": {
+      "bytes": 1252,
+      "included_in_zip": true,
+      "sha256": "4012e580a74738c7a3b19472f061c9789059f4ac188662fad67f0a0d03a6c590"
+    },
+    "runs/uair/flamf_timealign_adapted/seed31001/ledger.jsonl": {
+      "bytes": 920,
+      "included_in_zip": true,
+      "sha256": "b06fa51b67e8b37e99e82459ba3590bc3928480e1cdcea919bdb31e60eb7555c"
+    },
+    "runs/uair/flamf_timealign_adapted/seed31001/method_smoke_audit.json": {
+      "bytes": 361,
+      "included_in_zip": true,
+      "sha256": "cfe6d441c55377314956c492b390d7597425a1d6b1558fe260dd02799e0c0d4b"
+    },
+    "runs/uair/flamf_timealign_adapted/seed31001/opportunity_stratum_identity.json": {
+      "bytes": 173,
+      "included_in_zip": true,
+      "sha256": "3b84607934ff494917e97149f5e24327a80d60770825de38ec1a506e6a39724a"
+    },
+    "runs/uair/flamf_timealign_adapted/seed31001/runtime_manifest.json": {
+      "bytes": 831,
+      "included_in_zip": true,
+      "sha256": "238d288c1f217889dfb84763c428b9ba7e9c72343d15b0dfb044a8acd96547ef"
+    },
+    "runs/uair/flamf_timealign_adapted/seed31001/target_wiring.json": {
+      "bytes": 5476,
+      "included_in_zip": true,
+      "sha256": "2cbf77f100d1dd3a010a614250c8e81483cb17c87362aa8ccd662ab232645439"
+    },
+    "runs/uair/inst_cal/seed31001/CANARY_ACCEPTED.json": {
+      "bytes": 569,
+      "included_in_zip": true,
+      "sha256": "59a0a479d09dc96cb53bb50c700cb6ec727d52c987de87f93125b2bffb06e5a2"
+    },
+    "runs/uair/inst_cal/seed31001/atomic_rho_summary.json": {
+      "bytes": 131,
+      "included_in_zip": true,
+      "sha256": "7e58063e8526fb6b37d273a9d7aad9783bcb41f7262084f72e785b74d86401b3"
+    },
+    "runs/uair/inst_cal/seed31001/checkpoints/final.pt.sha256.txt": {
+      "bytes": 66,
+      "included_in_zip": true,
+      "sha256": "3cbdb008f4489cbb440e66506284dacfee2cc206156f0f57fb106ef703f1eb2d"
+    },
+    "runs/uair/inst_cal/seed31001/config_snapshot.json": {
+      "bytes": 574,
+      "included_in_zip": true,
+      "sha256": "bb97f37c4b59442ccdbd371a9632a1e07487f6e072a31b8a44371ddbe1a12bc8"
+    },
+    "runs/uair/inst_cal/seed31001/delta_c_s_summary.json": {
+      "bytes": 529,
+      "included_in_zip": true,
+      "sha256": "1ca8130069c681372703d050baa54f3a360f266c3e5fda1b6b5ebadd852ea772"
+    },
+    "runs/uair/inst_cal/seed31001/delta_cs_summary_v6.json": {
+      "bytes": 529,
+      "included_in_zip": true,
+      "sha256": "1ca8130069c681372703d050baa54f3a360f266c3e5fda1b6b5ebadd852ea772"
+    },
+    "runs/uair/inst_cal/seed31001/final_metrics.json": {
+      "bytes": 1262,
+      "included_in_zip": true,
+      "sha256": "5172646e98ea45e8d9e2a3f13649e95097a57eb00bd9f1e7665833caf1910f8a"
+    },
+    "runs/uair/inst_cal/seed31001/ledger.jsonl": {
+      "bytes": 845,
+      "included_in_zip": true,
+      "sha256": "e071fe734afd97ac881e9666b6faabfc44fb441e24be93c892f4a209589a39ff"
+    },
+    "runs/uair/inst_cal/seed31001/method_smoke_audit.json": {
+      "bytes": 345,
+      "included_in_zip": true,
+      "sha256": "19beb77fdf1e50c5b533727bbf6302784474d12c444891bce88c471187085e6f"
+    },
+    "runs/uair/inst_cal/seed31001/opportunity_stratum_identity.json": {
+      "bytes": 173,
+      "included_in_zip": true,
+      "sha256": "3b84607934ff494917e97149f5e24327a80d60770825de38ec1a506e6a39724a"
+    },
+    "runs/uair/inst_cal/seed31001/runtime_manifest.json": {
+      "bytes": 786,
+      "included_in_zip": true,
+      "sha256": "c05d71ef32a444f5c659047bb2164743ff439bbb0c58ab90b6d5f6f832f0f780"
+    },
+    "runs/uair/inst_cal/seed31001/target_wiring.json": {
+      "bytes": 5476,
+      "included_in_zip": true,
+      "sha256": "2cbf77f100d1dd3a010a614250c8e81483cb17c87362aa8ccd662ab232645439"
+    },
+    "runs/uair/local_hajek/seed31001/CANARY_ACCEPTED.json": {
+      "bytes": 578,
+      "included_in_zip": true,
+      "sha256": "be015c2689a48f3ac223b51308c42f31a879133c602d48fda42f065d24d2323c"
+    },
+    "runs/uair/local_hajek/seed31001/atomic_rho_summary.json": {
+      "bytes": 131,
+      "included_in_zip": true,
+      "sha256": "7e58063e8526fb6b37d273a9d7aad9783bcb41f7262084f72e785b74d86401b3"
+    },
+    "runs/uair/local_hajek/seed31001/checkpoints/final.pt.sha256.txt": {
+      "bytes": 66,
+      "included_in_zip": true,
+      "sha256": "e9f5af84982b58e2eb6ce316abc33e3c0596243a71fa3a454bc6619a93300522"
+    },
+    "runs/uair/local_hajek/seed31001/config_snapshot.json": {
+      "bytes": 577,
+      "included_in_zip": true,
+      "sha256": "fe0896aa71cfa594dddc970193aa8eb6a8b65a271e235b9a075735110823293f"
+    },
+    "runs/uair/local_hajek/seed31001/delta_c_s_summary.json": {
+      "bytes": 528,
+      "included_in_zip": true,
+      "sha256": "114af0e4b4c6751e2a8a63df655292aa8f0aec648c123fb56fd41a7362ecd358"
+    },
+    "runs/uair/local_hajek/seed31001/delta_cs_summary_v6.json": {
+      "bytes": 528,
+      "included_in_zip": true,
+      "sha256": "114af0e4b4c6751e2a8a63df655292aa8f0aec648c123fb56fd41a7362ecd358"
+    },
+    "runs/uair/local_hajek/seed31001/final_metrics.json": {
+      "bytes": 1248,
+      "included_in_zip": true,
+      "sha256": "4938f7c9548ab7d29ba175d82164bedbe2432b247fc4e9dc53bb1d02cda9c2aa"
+    },
+    "runs/uair/local_hajek/seed31001/ledger.jsonl": {
+      "bytes": 858,
+      "included_in_zip": true,
+      "sha256": "51720c5764d25daf5a4146c36896e6946eea7d7ebba99ad78232bf42616268bd"
+    },
+    "runs/uair/local_hajek/seed31001/method_smoke_audit.json": {
+      "bytes": 349,
+      "included_in_zip": true,
+      "sha256": "55debf1e9e692170f7a621e6cbfcb228160ddc6d0713e96a4973f3ced51418ea"
+    },
+    "runs/uair/local_hajek/seed31001/opportunity_stratum_identity.json": {
+      "bytes": 173,
+      "included_in_zip": true,
+      "sha256": "3b84607934ff494917e97149f5e24327a80d60770825de38ec1a506e6a39724a"
+    },
+    "runs/uair/local_hajek/seed31001/runtime_manifest.json": {
+      "bytes": 795,
+      "included_in_zip": true,
+      "sha256": "a20319461cd76bbac979d3333396c32b22c527d5c7956ad09687f374f32f20df"
+    },
+    "runs/uair/local_hajek/seed31001/target_wiring.json": {
+      "bytes": 5476,
+      "included_in_zip": true,
+      "sha256": "2cbf77f100d1dd3a010a614250c8e81483cb17c87362aa8ccd662ab232645439"
+    },
+    "runs/uair/raven/seed31001/CANARY_ACCEPTED.json": {
+      "bytes": 560,
+      "included_in_zip": true,
+      "sha256": "728166ad71441050330252f04ded2608482054b30b757da11163aca2e88276a2"
+    },
+    "runs/uair/raven/seed31001/atomic_rho_summary.json": {
+      "bytes": 131,
+      "included_in_zip": true,
+      "sha256": "7e58063e8526fb6b37d273a9d7aad9783bcb41f7262084f72e785b74d86401b3"
+    },
+    "runs/uair/raven/seed31001/attempts/attempt1/config_snapshot.json": {
+      "bytes": 571,
+      "included_in_zip": true,
+      "sha256": "7db36d0582e38ea3e687ac55770506bbc34118ac4dd75ed7fbef6b3d96980d20"
+    },
+    "runs/uair/raven/seed31001/attempts/attempt1/opportunity_stratum_identity.json": {
+      "bytes": 173,
+      "included_in_zip": true,
+      "sha256": "3b84607934ff494917e97149f5e24327a80d60770825de38ec1a506e6a39724a"
+    },
+    "runs/uair/raven/seed31001/attempts/attempt1/target_wiring.json": {
+      "bytes": 5476,
+      "included_in_zip": true,
+      "sha256": "2cbf77f100d1dd3a010a614250c8e81483cb17c87362aa8ccd662ab232645439"
+    },
+    "runs/uair/raven/seed31001/checkpoints/final.pt.sha256.txt": {
+      "bytes": 66,
+      "included_in_zip": true,
+      "sha256": "cbcee4c96d75a1b8c642dd4a0b7d09f0656a2794f2ddcbc14e9d06cc87a5755b"
+    },
+    "runs/uair/raven/seed31001/config_snapshot.json": {
+      "bytes": 571,
+      "included_in_zip": true,
+      "sha256": "7db36d0582e38ea3e687ac55770506bbc34118ac4dd75ed7fbef6b3d96980d20"
+    },
+    "runs/uair/raven/seed31001/delta_c_s_summary.json": {
+      "bytes": 529,
+      "included_in_zip": true,
+      "sha256": "b4e9045ed57a668fc694c7e2631987c90dcf27f0ef092f942c3e8adbbf03ca6c"
+    },
+    "runs/uair/raven/seed31001/delta_cs_summary_v6.json": {
+      "bytes": 529,
+      "included_in_zip": true,
+      "sha256": "b4e9045ed57a668fc694c7e2631987c90dcf27f0ef092f942c3e8adbbf03ca6c"
+    },
+    "runs/uair/raven/seed31001/final_metrics.json": {
+      "bytes": 1282,
+      "included_in_zip": true,
+      "sha256": "ac2f348ffc592cd2e3074a47f6f4e743b0eceabe17a927c8f754a8088c8daadc"
+    },
+    "runs/uair/raven/seed31001/ledger.jsonl": {
+      "bytes": 1580,
+      "included_in_zip": true,
+      "sha256": "e78bb0a49b387f61e9b9116391232e00206060aa064f18319f9e62ef8800cccc"
+    },
+    "runs/uair/raven/seed31001/method_smoke_audit.json": {
+      "bytes": 342,
+      "included_in_zip": true,
+      "sha256": "c28973dbf0496c40c78febbfc8e9722a54fc5e0235302e937f5c5d2e4da6b14d"
+    },
+    "runs/uair/raven/seed31001/opportunity_stratum_identity.json": {
+      "bytes": 173,
+      "included_in_zip": true,
+      "sha256": "3b84607934ff494917e97149f5e24327a80d60770825de38ec1a506e6a39724a"
+    },
+    "runs/uair/raven/seed31001/runtime_manifest.json": {
+      "bytes": 777,
+      "included_in_zip": true,
+      "sha256": "38d256ca30fe6c2fde3fbc0066a73cb2a64ef1a823252bf3cb46352581820c32"
+    },
+    "runs/uair/raven/seed31001/target_wiring.json": {
+      "bytes": 5476,
+      "included_in_zip": true,
+      "sha256": "2cbf77f100d1dd3a010a614250c8e81483cb17c87362aa8ccd662ab232645439"
+    },
+    "runs/uair/raven_simoracle/seed31001/CANARY_ACCEPTED.json": {
+      "bytes": 590,
+      "included_in_zip": true,
+      "sha256": "6eadaaa0d413534e4e4d4ab7da90995cb99cc24bdedce7e7bb582d2f67239f38"
+    },
+    "runs/uair/raven_simoracle/seed31001/atomic_rho_summary.json": {
+      "bytes": 131,
+      "included_in_zip": true,
+      "sha256": "7e58063e8526fb6b37d273a9d7aad9783bcb41f7262084f72e785b74d86401b3"
+    },
+    "runs/uair/raven_simoracle/seed31001/checkpoints/final.pt.sha256.txt": {
+      "bytes": 66,
+      "included_in_zip": true,
+      "sha256": "eb65067a4897e7872218ebac71b9696dd7a2ceb82200d38f5b2a4703be274f60"
+    },
+    "runs/uair/raven_simoracle/seed31001/config_snapshot.json": {
+      "bytes": 581,
+      "included_in_zip": true,
+      "sha256": "cec11ef1f6712c7bfe7218515ef3ffa23b86c1c2e410f28274a4834d8e648131"
+    },
+    "runs/uair/raven_simoracle/seed31001/delta_c_s_summary.json": {
+      "bytes": 529,
+      "included_in_zip": true,
+      "sha256": "f2136328a91e59b5ae00cc86f9541e9ac32a93c6a6b0a64c986d88ab6d09bf0d"
+    },
+    "runs/uair/raven_simoracle/seed31001/delta_cs_summary_v6.json": {
+      "bytes": 529,
+      "included_in_zip": true,
+      "sha256": "f2136328a91e59b5ae00cc86f9541e9ac32a93c6a6b0a64c986d88ab6d09bf0d"
+    },
+    "runs/uair/raven_simoracle/seed31001/final_metrics.json": {
+      "bytes": 1297,
+      "included_in_zip": true,
+      "sha256": "005548d1f5d84a30443e455a5fbff1aeaf0c40b2a56271863a007aed302139f0"
+    },
+    "runs/uair/raven_simoracle/seed31001/ledger.jsonl": {
+      "bytes": 880,
+      "included_in_zip": true,
+      "sha256": "5aa7db7d54aa806bbeb0eda31b0d2389612200e52bebe912045ef8bae0927363"
+    },
+    "runs/uair/raven_simoracle/seed31001/method_smoke_audit.json": {
+      "bytes": 352,
+      "included_in_zip": true,
+      "sha256": "ce319c6ae2869cb7fa0d8bb5d2bee2978209db5434e49378fb3a158de04cbd39"
+    },
+    "runs/uair/raven_simoracle/seed31001/opportunity_stratum_identity.json": {
+      "bytes": 173,
+      "included_in_zip": true,
+      "sha256": "3b84607934ff494917e97149f5e24327a80d60770825de38ec1a506e6a39724a"
+    },
+    "runs/uair/raven_simoracle/seed31001/runtime_manifest.json": {
+      "bytes": 807,
+      "included_in_zip": true,
+      "sha256": "ba06eb1d44cdbd3ec4fe1f4ee7299bac7dc99ec4a1d8bc6b504b2ce46c47360f"
+    },
+    "runs/uair/raven_simoracle/seed31001/target_wiring.json": {
+      "bytes": 5476,
+      "included_in_zip": true,
+      "sha256": "2cbf77f100d1dd3a010a614250c8e81483cb17c87362aa8ccd662ab232645439"
+    },
+    "runs/uair/twostage_hajek/seed31001/CANARY_ACCEPTED.json": {
+      "bytes": 589,
+      "included_in_zip": true,
+      "sha256": "eaa5c5d212ef0e24ddde64a23868a1054cc3155defcca4c6d16cd561c7bde940"
+    },
+    "runs/uair/twostage_hajek/seed31001/atomic_rho_summary.json": {
+      "bytes": 131,
+      "included_in_zip": true,
+      "sha256": "7e58063e8526fb6b37d273a9d7aad9783bcb41f7262084f72e785b74d86401b3"
+    },
+    "runs/uair/twostage_hajek/seed31001/checkpoints/final.pt.sha256.txt": {
+      "bytes": 66,
+      "included_in_zip": true,
+      "sha256": "dbe23a28e54ad1eba99581175e2599de9e5c3fbecbfa1191a0904e86736dfbf1"
+    },
+    "runs/uair/twostage_hajek/seed31001/config_snapshot.json": {
+      "bytes": 580,
+      "included_in_zip": true,
+      "sha256": "5ceed9e64eacad8604bfded702f9c4fde404f6d9725040de20c60ac6144efa6c"
+    },
+    "runs/uair/twostage_hajek/seed31001/delta_c_s_summary.json": {
+      "bytes": 529,
+      "included_in_zip": true,
+      "sha256": "2f4290033f69cf471826069818bede5ed0eda86df67b8b4b31c8f2870652c4cf"
+    },
+    "runs/uair/twostage_hajek/seed31001/delta_cs_summary_v6.json": {
+      "bytes": 529,
+      "included_in_zip": true,
+      "sha256": "2f4290033f69cf471826069818bede5ed0eda86df67b8b4b31c8f2870652c4cf"
+    },
+    "runs/uair/twostage_hajek/seed31001/final_metrics.json": {
+      "bytes": 1255,
+      "included_in_zip": true,
+      "sha256": "86c8b2b32f8f9011e78301a2329f4fc7895c164350f9a44aa34d5b40c1bc2d9e"
+    },
+    "runs/uair/twostage_hajek/seed31001/ledger.jsonl": {
+      "bytes": 874,
+      "included_in_zip": true,
+      "sha256": "02e655eabb9e32a46a0789df43789fd9b0b726510bfcb3ab04eb1de207ed0565"
+    },
+    "runs/uair/twostage_hajek/seed31001/method_smoke_audit.json": {
+      "bytes": 352,
+      "included_in_zip": true,
+      "sha256": "acbe6d9c32093ab4ed6db58a672a35ff5db9339c79733b15c62ec497fe7db697"
+    },
+    "runs/uair/twostage_hajek/seed31001/opportunity_stratum_identity.json": {
+      "bytes": 173,
+      "included_in_zip": true,
+      "sha256": "3b84607934ff494917e97149f5e24327a80d60770825de38ec1a506e6a39724a"
+    },
+    "runs/uair/twostage_hajek/seed31001/runtime_manifest.json": {
+      "bytes": 804,
+      "included_in_zip": true,
+      "sha256": "e134ea0d2b3af10d36d39fb5012c869588c39b6add29f96c46ecd5fb164ba27c"
+    },
+    "runs/uair/twostage_hajek/seed31001/target_wiring.json": {
+      "bytes": 5476,
+      "included_in_zip": true,
+      "sha256": "2cbf77f100d1dd3a010a614250c8e81483cb17c87362aa8ccd662ab232645439"
+    }
+  },
+  "post_hash_artifacts": [
+    "E3_CANARY_HASH_MANIFEST.json",
+    "E3_CANARY_HASH_VERIFICATION.json",
+    "gate_results.json"
+  ],
+  "round": "E3-MULTIDATASET-REAL-RUNNER-CANARY-R1",
+  "status": "READY_FOR_E3_FORMAL_RUNS"
+}

@@ -1,0 +1,84 @@
+{
+  "analytical": {
+    "RMSE_mu": 0.8660254037844386,
+    "RMSE_rho": 0.5,
+    "definition": {
+      "RMSE_mu": "target-weighted risk under mu",
+      "RMSE_rho": "delivered-observation group mass rho_g=c_g/sum c; w_i=rho_g/n_g",
+      "sample_support": "frozen TEST atomic units"
+    },
+    "differ": true,
+    "error_mu": 0.0,
+    "error_rho": 0.0,
+    "group_diagnostics": {
+      "max_normalization_error": 0.0,
+      "rows": [
+        {
+          "c_g": 2.0,
+          "group": "g0",
+          "intended_rho_g": 0.25,
+          "n_g": 3,
+          "normalization_error": 0.0,
+          "per_unit_weight": 0.08333333333333333,
+          "recovered_group_total_mass": 0.25
+        },
+        {
+          "c_g": 6.0,
+          "group": "g1",
+          "intended_rho_g": 0.75,
+          "n_g": 1,
+          "normalization_error": 0.0,
+          "per_unit_weight": 0.75,
+          "recovered_group_total_mass": 0.75
+        }
+      ],
+      "rule": "w_i = rho_g / n_g with rho_g = c_g / sum c_h",
+      "status": "PASS"
+    },
+    "hand_mu": 0.8660254037844386,
+    "hand_rho": 0.5,
+    "hand_weights": [
+      0.08333333333333333,
+      0.08333333333333333,
+      0.08333333333333333,
+      0.75
+    ],
+    "n_g_does_not_inflate_rho_g": true,
+    "production_weights": [
+      0.08333333333333333,
+      0.08333333333333333,
+      0.08333333333333333,
+      0.75
+    ],
+    "status": "PASS",
+    "weight_error": 0.0
+  },
+  "bug": "prior builder assigned c_g to every test unit → mass ∝ n_g * c_g",
+  "diagnostics": {
+    "max_normalization_error": 0.0,
+    "rows": [
+      {
+        "c_g": 2.0,
+        "group": "g0",
+        "intended_rho_g": 0.25,
+        "n_g": 3,
+        "normalization_error": 0.0,
+        "per_unit_weight": 0.08333333333333333,
+        "recovered_group_total_mass": 0.25
+      },
+      {
+        "c_g": 6.0,
+        "group": "g1",
+        "intended_rho_g": 0.75,
+        "n_g": 1,
+        "normalization_error": 0.0,
+        "per_unit_weight": 0.75,
+        "recovered_group_total_mass": 0.75
+      }
+    ],
+    "rule": "w_i = rho_g / n_g with rho_g = c_g / sum c_h",
+    "status": "PASS"
+  },
+  "fix": "w_i = rho_g / n_g with rho_g = c_g / sum_h c_h",
+  "status": "PASS"
+}

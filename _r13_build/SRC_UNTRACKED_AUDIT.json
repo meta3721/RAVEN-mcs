@@ -1,0 +1,719 @@
+{
+  "files_by_date": {
+    "2026-08-05": 7,
+    "2026-08-21": 4,
+    "2026-08-28": 167,
+    "2026-08-30": 105,
+    "2026-08-31": 9,
+    "2026-09-05": 4,
+    "2026-09-11": 4,
+    "2026-09-23": 1,
+    "2026-09-28": 7,
+    "2026-09-29": 32,
+    "2026-10-07": 17
+  },
+  "files_by_month": {
+    "2026-08": 292,
+    "2026-09": 48,
+    "2026-10": 17
+  },
+  "gitignore_evidence": "git check-ignore -v returns nothing for reuse_guard.py, real_runner/runner.py or protocol_closure/__init__.py; .gitignore has no src/e3/protocol match; core.excludesfile is unset",
+  "head_commit": "2e47464c2c15d7dae4ceb059592782b9542de625",
+  "head_commit_date": "2026-09-11 08:40:44 +0800",
+  "ignored_by_gitignore": false,
+  "newest_untracked_file": {
+    "mtime": "2026-10-07T22:48:02.912473",
+    "path": "src/raven_mcs/data/cityscanner_eventtrace.py"
+  },
+  "oldest_untracked_file": {
+    "mtime": "2026-08-05T22:51:55.189662",
+    "path": "src/raven_mcs/e2/global_window/__init__.py"
+  },
+  "per_entry": [
+    {
+      "bytes": 617636,
+      "first_mtime": "2026-08-28 17:01:55",
+      "is_dir": true,
+      "last_mtime": "2026-10-07 17:00:59",
+      "n_files": 125,
+      "path": "src/raven_mcs/e3/"
+    },
+    {
+      "bytes": 188494,
+      "first_mtime": "2026-08-28 17:01:55",
+      "is_dir": true,
+      "last_mtime": "2026-08-30 08:20:15",
+      "n_files": 30,
+      "path": "src/raven_mcs/e4/"
+    },
+    {
+      "bytes": 166624,
+      "first_mtime": "2026-08-30 08:20:15",
+      "is_dir": true,
+      "last_mtime": "2026-10-07 00:06:16",
+      "n_files": 16,
+      "path": "src/raven_mcs/paper_data_r1/"
+    },
+    {
+      "bytes": 272624,
+      "first_mtime": "2026-08-28 17:01:55",
+      "is_dir": true,
+      "last_mtime": "2026-10-07 00:06:18",
+      "n_files": 15,
+      "path": "src/raven_mcs/tdrive_protocol_seal_r1/"
+    },
+    {
+      "bytes": 107067,
+      "first_mtime": "2026-08-28 17:01:55",
+      "is_dir": true,
+      "last_mtime": "2026-08-28 17:01:56",
+      "n_files": 11,
+      "path": "src/raven_mcs/final_paper_data_asset_freeze_r1/"
+    },
+    {
+      "bytes": 87690,
+      "first_mtime": "2026-08-28 17:01:55",
+      "is_dir": true,
+      "last_mtime": "2026-08-28 17:01:56",
+      "n_files": 11,
+      "path": "src/raven_mcs/manuscript_evidence_closure_r1/"
+    },
+    {
+      "bytes": 151047,
+      "first_mtime": "2026-08-28 17:01:55",
+      "is_dir": true,
+      "last_mtime": "2026-08-28 17:01:56",
+      "n_files": 11,
+      "path": "src/raven_mcs/paper_data_r2/"
+    },
+    {
+      "bytes": 103390,
+      "first_mtime": "2026-08-28 17:01:55",
+      "is_dir": true,
+      "last_mtime": "2026-08-28 17:01:56",
+      "n_files": 10,
+      "path": "src/raven_mcs/final_figure_table_paper_specification_seal_r1/"
+    },
+    {
+      "bytes": 65507,
+      "first_mtime": "2026-08-28 17:01:55",
+      "is_dir": true,
+      "last_mtime": "2026-08-28 17:01:56",
+      "n_files": 9,
+      "path": "src/raven_mcs/e2/balanced_dgp/"
+    },
+    {
+      "bytes": 19862,
+      "first_mtime": "2026-08-05 22:51:55",
+      "is_dir": true,
+      "last_mtime": "2026-08-05 22:55:14",
+      "n_files": 7,
+      "path": "src/raven_mcs/e2/global_window/"
+    },
+    {
+      "bytes": 72175,
+      "first_mtime": "2026-08-28 17:01:55",
+      "is_dir": true,
+      "last_mtime": "2026-08-28 17:01:56",
+      "n_files": 7,
+      "path": "src/raven_mcs/e2/hard_variance/"
+    },
+    {
+      "bytes": 53788,
+      "first_mtime": "2026-08-21 09:12:41",
+      "is_dir": true,
+      "last_mtime": "2026-08-30 08:20:06",
+      "n_files": 6,
+      "path": "src/raven_mcs/e2/empirical/"
+    },
+    {
+      "bytes": 46946,
+      "first_mtime": "2026-08-28 17:01:55",
+      "is_dir": true,
+      "last_mtime": "2026-08-28 17:01:56",
+      "n_files": 6,
+      "path": "src/raven_mcs/e2/true_stratum/"
+    },
+    {
+      "bytes": 53791,
+      "first_mtime": "2026-08-28 17:01:55",
+      "is_dir": true,
+      "last_mtime": "2026-08-28 17:01:56",
+      "n_files": 6,
+      "path": "src/raven_mcs/final_table_ii_unit_scale_repair_r1/"
+    },
+    {
+      "bytes": 65998,
+      "first_mtime": "2026-08-28 17:01:55",
+      "is_dir": true,
+      "last_mtime": "2026-08-28 17:01:56",
+      "n_files": 5,
+      "path": "src/raven_mcs/e2/legal_horizon/"
+    },
+    {
+      "bytes": 45748,
+      "first_mtime": "2026-08-28 17:01:55",
+      "is_dir": true,
+      "last_mtime": "2026-08-28 17:01:56",
+      "n_files": 5,
+      "path": "src/raven_mcs/e2/stage2/"
+    },
+    {
+      "bytes": 43649,
+      "first_mtime": "2026-08-28 17:01:55",
+      "is_dir": true,
+      "last_mtime": "2026-09-29 23:03:14",
+      "n_files": 4,
+      "path": "src/raven_mcs/e2/traffic_public_target/"
+    },
+    {
+      "bytes": 13577,
+      "first_mtime": "2026-08-28 17:01:55",
+      "is_dir": true,
+      "last_mtime": "2026-08-28 17:01:56",
+      "n_files": 3,
+      "path": "src/raven_mcs/e2/traffic_formal_analysis/"
+    },
+    {
+      "bytes": 27428,
+      "first_mtime": "2026-08-28 17:01:55",
+      "is_dir": true,
+      "last_mtime": "2026-08-28 17:01:56",
+      "n_files": 2,
+      "path": "src/raven_mcs/e2/traffic_mapping/"
+    },
+    {
+      "bytes": 10574,
+      "first_mtime": "2026-08-28 17:01:55",
+      "is_dir": true,
+      "last_mtime": "2026-08-28 17:01:56",
+      "n_files": 2,
+      "path": "src/raven_mcs/e2/traffic_offline_recon/"
+    },
+    {
+      "bytes": 50501,
+      "first_mtime": "2026-08-28 17:01:55",
+      "is_dir": true,
+      "last_mtime": "2026-08-28 17:01:56",
+      "n_files": 2,
+      "path": "src/raven_mcs/e2/traffic_profiles/"
+    },
+    {
+      "bytes": 5387,
+      "first_mtime": "2026-08-30 16:47:17",
+      "is_dir": false,
+      "last_mtime": "2026-08-30 16:47:17",
+      "n_files": 1,
+      "path": "src/e3_v2_context.py"
+    },
+    {
+      "bytes": 5414,
+      "first_mtime": "2026-08-30 16:47:19",
+      "is_dir": false,
+      "last_mtime": "2026-08-30 16:47:19",
+      "n_files": 1,
+      "path": "src/e3_v2_eventtrace.py"
+    },
+    {
+      "bytes": 3107,
+      "first_mtime": "2026-08-30 16:47:03",
+      "is_dir": false,
+      "last_mtime": "2026-08-30 16:47:03",
+      "n_files": 1,
+      "path": "src/e3_v2_protocol.py"
+    },
+    {
+      "bytes": 10746,
+      "first_mtime": "2026-10-07 22:48:02",
+      "is_dir": false,
+      "last_mtime": "2026-10-07 22:48:02",
+      "n_files": 1,
+      "path": "src/raven_mcs/data/cityscanner_eventtrace.py"
+    },
+    {
+      "bytes": 12213,
+      "first_mtime": "2026-09-11 15:29:23",
+      "is_dir": false,
+      "last_mtime": "2026-09-11 15:29:23",
+      "n_files": 1,
+      "path": "src/raven_mcs/data/cityscanner_p2_measured_o.py"
+    },
+    {
+      "bytes": 9967,
+      "first_mtime": "2026-09-11 15:35:43",
+      "is_dir": false,
+      "last_mtime": "2026-09-11 15:35:43",
+      "n_files": 1,
+      "path": "src/raven_mcs/data/cityscanner_p2_measured_o_eventtrace.py"
+    },
+    {
+      "bytes": 11038,
+      "first_mtime": "2026-09-11 20:29:32",
+      "is_dir": false,
+      "last_mtime": "2026-09-11 20:29:32",
+      "n_files": 1,
+      "path": "src/raven_mcs/data/cityscanner_p2_measured_o_no2.py"
+    },
+    {
+      "bytes": 9974,
+      "first_mtime": "2026-09-11 20:34:50",
+      "is_dir": false,
+      "last_mtime": "2026-09-11 20:34:50",
+      "n_files": 1,
+      "path": "src/raven_mcs/data/cityscanner_p2_measured_o_no2_eventtrace.py"
+    },
+    {
+      "bytes": 27577,
+      "first_mtime": "2026-08-28 17:01:56",
+      "is_dir": true,
+      "last_mtime": "2026-08-28 17:01:56",
+      "n_files": 1,
+      "path": "src/raven_mcs/e2/traffic_balanced_canary/"
+    },
+    {
+      "bytes": 823,
+      "first_mtime": "2026-08-28 17:01:55",
+      "is_dir": true,
+      "last_mtime": "2026-08-28 17:01:55",
+      "n_files": 1,
+      "path": "src/raven_mcs/e2/traffic_final_seal/"
+    },
+    {
+      "bytes": 1511,
+      "first_mtime": "2026-08-31 08:28:37",
+      "is_dir": false,
+      "last_mtime": "2026-08-31 08:28:37",
+      "n_files": 1,
+      "path": "src/raven_mcs/experiments/r1m_method_freeze.py"
+    },
+    {
+      "bytes": 32413,
+      "first_mtime": "2026-08-30 08:20:15",
+      "is_dir": false,
+      "last_mtime": "2026-08-30 08:20:15",
+      "n_files": 1,
+      "path": "src/raven_mcs/experiments/run_sag_g1_r1.py"
+    },
+    {
+      "bytes": 33596,
+      "first_mtime": "2026-08-30 08:20:15",
+      "is_dir": false,
+      "last_mtime": "2026-08-30 08:20:15",
+      "n_files": 1,
+      "path": "src/raven_mcs/experiments/run_sag_g1_r1b.py"
+    },
+    {
+      "bytes": 36431,
+      "first_mtime": "2026-08-30 08:20:15",
+      "is_dir": false,
+      "last_mtime": "2026-08-30 08:20:15",
+      "n_files": 1,
+      "path": "src/raven_mcs/experiments/run_sag_g1_r1c.py"
+    },
+    {
+      "bytes": 35137,
+      "first_mtime": "2026-08-30 08:26:33",
+      "is_dir": false,
+      "last_mtime": "2026-08-30 08:26:33",
+      "n_files": 1,
+      "path": "src/raven_mcs/experiments/run_sag_g1_r1d.py"
+    },
+    {
+      "bytes": 42627,
+      "first_mtime": "2026-08-30 08:28:55",
+      "is_dir": false,
+      "last_mtime": "2026-08-30 08:28:55",
+      "n_files": 1,
+      "path": "src/raven_mcs/experiments/run_sag_g1_r1e.py"
+    },
+    {
+      "bytes": 34005,
+      "first_mtime": "2026-08-30 16:20:43",
+      "is_dir": false,
+      "last_mtime": "2026-08-30 16:20:43",
+      "n_files": 1,
+      "path": "src/raven_mcs/experiments/run_sag_g1_r1f.py"
+    },
+    {
+      "bytes": 52538,
+      "first_mtime": "2026-08-30 16:52:07",
+      "is_dir": false,
+      "last_mtime": "2026-08-30 16:52:07",
+      "n_files": 1,
+      "path": "src/raven_mcs/experiments/run_sag_g1_r1g.py"
+    },
+    {
+      "bytes": 46692,
+      "first_mtime": "2026-08-30 18:57:13",
+      "is_dir": false,
+      "last_mtime": "2026-08-30 18:57:13",
+      "n_files": 1,
+      "path": "src/raven_mcs/experiments/run_sag_g1_r1h.py"
+    },
+    {
+      "bytes": 37081,
+      "first_mtime": "2026-08-30 19:31:53",
+      "is_dir": false,
+      "last_mtime": "2026-08-30 19:31:53",
+      "n_files": 1,
+      "path": "src/raven_mcs/experiments/run_sag_g1_r1i.py"
+    },
+    {
+      "bytes": 47403,
+      "first_mtime": "2026-08-30 20:01:54",
+      "is_dir": false,
+      "last_mtime": "2026-08-30 20:01:54",
+      "n_files": 1,
+      "path": "src/raven_mcs/experiments/run_sag_g1_r1j.py"
+    },
+    {
+      "bytes": 53529,
+      "first_mtime": "2026-08-30 20:51:42",
+      "is_dir": false,
+      "last_mtime": "2026-08-30 20:51:42",
+      "n_files": 1,
+      "path": "src/raven_mcs/experiments/run_sag_g1_r1k.py"
+    },
+    {
+      "bytes": 22736,
+      "first_mtime": "2026-08-30 22:09:18",
+      "is_dir": false,
+      "last_mtime": "2026-08-30 22:09:18",
+      "n_files": 1,
+      "path": "src/raven_mcs/experiments/run_sag_g1_r1l.py"
+    },
+    {
+      "bytes": 20808,
+      "first_mtime": "2026-08-30 22:45:49",
+      "is_dir": false,
+      "last_mtime": "2026-08-30 22:45:49",
+      "n_files": 1,
+      "path": "src/raven_mcs/experiments/run_sag_g1_r1l_v11.py"
+    },
+    {
+      "bytes": 28654,
+      "first_mtime": "2026-08-30 23:19:08",
+      "is_dir": false,
+      "last_mtime": "2026-08-30 23:19:08",
+      "n_files": 1,
+      "path": "src/raven_mcs/experiments/run_sag_g1_r1l_v12.py"
+    },
+    {
+      "bytes": 33543,
+      "first_mtime": "2026-08-31 08:33:00",
+      "is_dir": false,
+      "last_mtime": "2026-08-31 08:33:00",
+      "n_files": 1,
+      "path": "src/raven_mcs/experiments/run_sag_g1_r1l_v13.py"
+    },
+    {
+      "bytes": 51826,
+      "first_mtime": "2026-08-31 09:30:41",
+      "is_dir": false,
+      "last_mtime": "2026-08-31 09:30:41",
+      "n_files": 1,
+      "path": "src/raven_mcs/experiments/run_sag_g1_r1m.py"
+    },
+    {
+      "bytes": 5013,
+      "first_mtime": "2026-08-30 22:38:45",
+      "is_dir": false,
+      "last_mtime": "2026-08-30 22:38:45",
+      "n_files": 1,
+      "path": "src/raven_mcs/sag/aggregate_certificate.py"
+    },
+    {
+      "bytes": 3434,
+      "first_mtime": "2026-08-30 19:23:55",
+      "is_dir": false,
+      "last_mtime": "2026-08-30 19:23:55",
+      "n_files": 1,
+      "path": "src/raven_mcs/sag/availability_stress.py"
+    },
+    {
+      "bytes": 2875,
+      "first_mtime": "2026-08-30 18:49:13",
+      "is_dir": false,
+      "last_mtime": "2026-08-30 18:49:13",
+      "n_files": 1,
+      "path": "src/raven_mcs/sag/cfm1.py"
+    },
+    {
+      "bytes": 4462,
+      "first_mtime": "2026-08-30 08:20:15",
+      "is_dir": false,
+      "last_mtime": "2026-08-30 08:20:15",
+      "n_files": 1,
+      "path": "src/raven_mcs/sag/deployment_groups.py"
+    },
+    {
+      "bytes": 12449,
+      "first_mtime": "2026-08-30 08:27:07",
+      "is_dir": false,
+      "last_mtime": "2026-08-30 08:27:07",
+      "n_files": 1,
+      "path": "src/raven_mcs/sag/dynamic_cov.py"
+    },
+    {
+      "bytes": 9909,
+      "first_mtime": "2026-08-30 16:53:07",
+      "is_dir": false,
+      "last_mtime": "2026-08-30 16:53:07",
+      "n_files": 1,
+      "path": "src/raven_mcs/sag/e3v1_root_cause.py"
+    },
+    {
+      "bytes": 486,
+      "first_mtime": "2026-08-30 08:26:20",
+      "is_dir": false,
+      "last_mtime": "2026-08-30 08:26:20",
+      "n_files": 1,
+      "path": "src/raven_mcs/sag/evidence.py"
+    },
+    {
+      "bytes": 8881,
+      "first_mtime": "2026-08-30 16:16:20",
+      "is_dir": false,
+      "last_mtime": "2026-08-30 16:16:20",
+      "n_files": 1,
+      "path": "src/raven_mcs/sag/oracle_ceiling.py"
+    },
+    {
+      "bytes": 3029,
+      "first_mtime": "2026-08-30 19:23:55",
+      "is_dir": false,
+      "last_mtime": "2026-08-30 19:23:55",
+      "n_files": 1,
+      "path": "src/raven_mcs/sag/oracle_stress_builder.py"
+    },
+    {
+      "bytes": 1817,
+      "first_mtime": "2026-08-30 19:55:33",
+      "is_dir": false,
+      "last_mtime": "2026-08-30 19:55:33",
+      "n_files": 1,
+      "path": "src/raven_mcs/sag/r1j_calibration.py"
+    },
+    {
+      "bytes": 3784,
+      "first_mtime": "2026-08-30 19:55:49",
+      "is_dir": false,
+      "last_mtime": "2026-08-30 19:55:49",
+      "n_files": 1,
+      "path": "src/raven_mcs/sag/r1j_eval.py"
+    },
+    {
+      "bytes": 2086,
+      "first_mtime": "2026-08-30 19:55:28",
+      "is_dir": false,
+      "last_mtime": "2026-08-30 19:55:28",
+      "n_files": 1,
+      "path": "src/raven_mcs/sag/r1j_features.py"
+    },
+    {
+      "bytes": 2249,
+      "first_mtime": "2026-08-30 19:56:06",
+      "is_dir": false,
+      "last_mtime": "2026-08-30 19:56:06",
+      "n_files": 1,
+      "path": "src/raven_mcs/sag/r1j_predictor.py"
+    },
+    {
+      "bytes": 3312,
+      "first_mtime": "2026-08-30 19:55:21",
+      "is_dir": false,
+      "last_mtime": "2026-08-30 19:55:21",
+      "n_files": 1,
+      "path": "src/raven_mcs/sag/r1j_spec.py"
+    },
+    {
+      "bytes": 3179,
+      "first_mtime": "2026-08-30 20:47:45",
+      "is_dir": false,
+      "last_mtime": "2026-08-30 20:47:45",
+      "n_files": 1,
+      "path": "src/raven_mcs/sag/r1k_aggregate.py"
+    },
+    {
+      "bytes": 4037,
+      "first_mtime": "2026-08-30 20:47:17",
+      "is_dir": false,
+      "last_mtime": "2026-08-30 20:47:17",
+      "n_files": 1,
+      "path": "src/raven_mcs/sag/r1k_barrier.py"
+    },
+    {
+      "bytes": 4285,
+      "first_mtime": "2026-08-30 20:48:17",
+      "is_dir": false,
+      "last_mtime": "2026-08-30 20:48:17",
+      "n_files": 1,
+      "path": "src/raven_mcs/sag/r1k_eval.py"
+    },
+    {
+      "bytes": 1244,
+      "first_mtime": "2026-08-30 20:47:28",
+      "is_dir": false,
+      "last_mtime": "2026-08-30 20:47:28",
+      "n_files": 1,
+      "path": "src/raven_mcs/sag/r1k_scale.py"
+    },
+    {
+      "bytes": 3387,
+      "first_mtime": "2026-08-30 20:47:11",
+      "is_dir": false,
+      "last_mtime": "2026-08-30 20:47:11",
+      "n_files": 1,
+      "path": "src/raven_mcs/sag/r1k_spec.py"
+    },
+    {
+      "bytes": 6093,
+      "first_mtime": "2026-08-30 22:37:58",
+      "is_dir": false,
+      "last_mtime": "2026-08-30 22:37:58",
+      "n_files": 1,
+      "path": "src/raven_mcs/sag/r1l_block.py"
+    },
+    {
+      "bytes": 1382,
+      "first_mtime": "2026-08-30 21:29:31",
+      "is_dir": false,
+      "last_mtime": "2026-08-30 21:29:31",
+      "n_files": 1,
+      "path": "src/raven_mcs/sag/r1l_conformal.py"
+    },
+    {
+      "bytes": 5533,
+      "first_mtime": "2026-08-30 23:12:43",
+      "is_dir": false,
+      "last_mtime": "2026-08-30 23:12:43",
+      "n_files": 1,
+      "path": "src/raven_mcs/sag/r1l_design.py"
+    },
+    {
+      "bytes": 2639,
+      "first_mtime": "2026-08-30 22:01:52",
+      "is_dir": false,
+      "last_mtime": "2026-08-30 22:01:52",
+      "n_files": 1,
+      "path": "src/raven_mcs/sag/r1l_spec.py"
+    },
+    {
+      "bytes": 1966,
+      "first_mtime": "2026-08-30 22:38:12",
+      "is_dir": false,
+      "last_mtime": "2026-08-30 22:38:12",
+      "n_files": 1,
+      "path": "src/raven_mcs/sag/r1l_state.py"
+    },
+    {
+      "bytes": 28199,
+      "first_mtime": "2026-08-30 23:14:41",
+      "is_dir": false,
+      "last_mtime": "2026-08-30 23:14:41",
+      "n_files": 1,
+      "path": "src/raven_mcs/sag/r1l_theory.py"
+    },
+    {
+      "bytes": 10847,
+      "first_mtime": "2026-08-31 09:39:59",
+      "is_dir": false,
+      "last_mtime": "2026-08-31 09:39:59",
+      "n_files": 1,
+      "path": "src/raven_mcs/sag/r1m_eval.py"
+    },
+    {
+      "bytes": 2708,
+      "first_mtime": "2026-08-31 09:20:50",
+      "is_dir": false,
+      "last_mtime": "2026-08-31 09:20:50",
+      "n_files": 1,
+      "path": "src/raven_mcs/sag/r1m_features.py"
+    },
+    {
+      "bytes": 3417,
+      "first_mtime": "2026-08-31 09:20:53",
+      "is_dir": false,
+      "last_mtime": "2026-08-31 09:20:53",
+      "n_files": 1,
+      "path": "src/raven_mcs/sag/r1m_predictor.py"
+    },
+    {
+      "bytes": 793,
+      "first_mtime": "2026-08-31 09:21:11",
+      "is_dir": false,
+      "last_mtime": "2026-08-31 09:21:11",
+      "n_files": 1,
+      "path": "src/raven_mcs/sag/r1m_reset.py"
+    },
+    {
+      "bytes": 3118,
+      "first_mtime": "2026-08-31 09:30:26",
+      "is_dir": false,
+      "last_mtime": "2026-08-31 09:30:26",
+      "n_files": 1,
+      "path": "src/raven_mcs/sag/r1m_spec.py"
+    },
+    {
+      "bytes": 6406,
+      "first_mtime": "2026-08-31 09:23:20",
+      "is_dir": false,
+      "last_mtime": "2026-08-31 09:23:20",
+      "n_files": 1,
+      "path": "src/raven_mcs/sag/r1m_track.py"
+    },
+    {
+      "bytes": 695,
+      "first_mtime": "2026-08-30 19:25:02",
+      "is_dir": false,
+      "last_mtime": "2026-08-30 19:25:02",
+      "n_files": 1,
+      "path": "src/raven_mcs/sag/stress_gate_builder.py"
+    },
+    {
+      "bytes": 3083,
+      "first_mtime": "2026-08-30 19:23:47",
+      "is_dir": false,
+      "last_mtime": "2026-08-30 19:23:47",
+      "n_files": 1,
+      "path": "src/raven_mcs/sag/stress_mask.py"
+    },
+    {
+      "bytes": 12616,
+      "first_mtime": "2026-08-30 19:25:20",
+      "is_dir": false,
+      "last_mtime": "2026-08-30 19:25:20",
+      "n_files": 1,
+      "path": "src/raven_mcs/sag/stress_summary.py"
+    },
+    {
+      "bytes": 20335,
+      "first_mtime": "2026-08-30 08:20:15",
+      "is_dir": false,
+      "last_mtime": "2026-08-30 08:20:15",
+      "n_files": 1,
+      "path": "src/raven_mcs/sag/target_law.py"
+    },
+    {
+      "bytes": 2704,
+      "first_mtime": "2026-08-30 18:49:13",
+      "is_dir": false,
+      "last_mtime": "2026-08-30 18:49:13",
+      "n_files": 1,
+      "path": "src/raven_mcs/sag/window_completeness.py"
+    },
+    {
+      "bytes": 4951,
+      "first_mtime": "2026-08-30 08:26:48",
+      "is_dir": false,
+      "last_mtime": "2026-08-30 08:26:48",
+      "n_files": 1,
+      "path": "src/raven_mcs/sag/window_context.py"
+    }
+  ],
+  "purpose": "audit of the untracked entries under src/ (why they are untracked)",
+  "tracked_files_under_src": 116,
+  "untracked_bytes_total": 3168295,
+  "untracked_entries_under_src": 85,
+  "untracked_files_total": 357
+}

@@ -1,0 +1,205 @@
+{
+  "absolute_readiness_scorecard": {
+    "current_dimension_scores": {
+      "Clarity": 5,
+      "Evidence": 3,
+      "Originality": 2,
+      "Related work": 3,
+      "Reproducibility": 2,
+      "Significance": 3,
+      "Soundness": 5,
+      "Terminology": 4
+    },
+    "evidence_standard": "manuscript text at a stated sha256 plus named repository artifacts; no author promise substitutes for manuscript evidence; an endpoint read after another endpoint has been scored is exploratory",
+    "overall_score": 3.55,
+    "scale": "dimensions anchored 1-5; weighted overall 1-10",
+    "stance": "5/10 borderline negative, unchanged in kind from round 15 but improved in readiness; the two binding constraints are that the strongest measurement the project owns is not in the manuscript and that a reader cannot reproduce its newest half",
+    "threshold": "4/10 acceptance threshold under frozen contract TMC-J-R4"
+  },
+  "confidence_and_comparability": "High comparability: current 3CC106CA4B6087D9..., 119922 B, read directly; historical 6fc9be0b..., 117864 B, the target round 15 scored; same frozen contract TMC-J-R4, same five roles, same evidence standard, no external standard change. Confidence high on Soundness, Clarity and Reproducibility (every charged site read; text moves byte-verified by exact reverse replacement), medium on Originality, Related work and Significance because no round of this session has performed a literature search, which is also why the round's own dataset search is not treated as a novelty search.",
+  "contract": {
+    "dimensions": [
+      "Originality",
+      "Soundness",
+      "Evidence",
+      "Clarity",
+      "Reproducibility",
+      "Significance",
+      "Related work",
+      "Terminology"
+    ],
+    "evidence_standard": "manuscript text at a stated sha256 plus named repository artifacts; no author promise substitutes for manuscript evidence; an endpoint read after another endpoint has been scored is exploratory",
+    "id": "TMC-J-R4",
+    "reviewer_roles": [
+      "Best-justified",
+      "Critical",
+      "Method / soundness",
+      "Reproducibility auditor",
+      "Writing and presentation"
+    ],
+    "scale": "dimensions anchored 1-5; overall 1-10",
+    "thresholds": {
+      "acceptance_overall": 4,
+      "current_stance": 5,
+      "progress_unchanged_when_abs_weighted_delta_lt": 0.05
+    },
+    "venue": "IEEE TMC journal revision; method-plus-measurement paper; page budget treated as TMC regular 12 pp with a project MOPC allowance up to 18 pp",
+    "weights": {
+      "Clarity": 0.15,
+      "Evidence": 0.25,
+      "Originality": 0.1,
+      "Related work": 0.05,
+      "Reproducibility": 0.1,
+      "Significance": 0.1,
+      "Soundness": 0.2,
+      "Terminology": 0.05
+    }
+  },
+  "issues": [
+    {
+      "affected_dimensions": [
+        "Soundness"
+      ],
+      "applies_to": "current",
+      "evidence": "R15-8 charged that the 2026-10-09 revision deleted the sentence naming the centralized comparator's optimizer while keeping the '2.8 %-3.0 % above a centralized model' claim. The current text states the rule and its scale (Adam, lr=1e-3, minibatch min(32, n), and the federated side as one step-normalized update per window), so the only unsupported comparison in the paper is removed. Nothing in this round added a claim the evidence does not support, and the null's resolution limit is now stated as a limit of the measurement rather than as a bound on the effect.",
+      "first_seen_version": "round 15 (charged there as R15-8)",
+      "id": "R16-1",
+      "note": "This is the repair that lifts current Soundness to 5; it is not a negative historical effect, because the historical score for this round is round 15's current score, which already included the R15-8 deduction.",
+      "origin": "inherited",
+      "score_effect": {
+        "current": 1,
+        "historical": 0
+      },
+      "status": "resolved"
+    },
+    {
+      "affected_dimensions": [
+        "Clarity"
+      ],
+      "applies_to": "current",
+      "evidence": "All three charged defects are repaired. The contradiction between 'the small margin' and 'above the 0.5 pp practical line' is gone ('small margin' occurs zero times in the current file) and the '0.17 %' bound that its own source crossed is now '0.175 %', above the largest observed level mean of 0.1747 %. The paragraph that round 15 charged as overloaded is split. The two-constant disclosure names both comparators with their values and ratios, so the metric paragraph no longer invites the reader to compare arms against an unnamed oracle.",
+      "first_seen_version": "round 13 (NEW-r13-1); re-charged at round 15 as R15-5 and R15-7",
+      "id": "R16-2",
+      "note": "A further candidate defect was investigated and dismissed: contribution 4's 'the corpus is not a null' and the limitations' 'no detectable headroom' are about different objects (a U-Air component-removal ablation versus the paired oracle-margin headroom on NSW-Traffic), so no edit was made.",
+      "origin": "inherited",
+      "score_effect": {
+        "current": 1,
+        "historical": 0
+      },
+      "status": "resolved"
+    },
+    {
+      "affected_dimensions": [
+        "Evidence"
+      ],
+      "applies_to": "current",
+      "evidence": "TE2 supplies the pre-registered endpoint this axis has demanded since round 9 and the manuscript does not report it. Step 3 froze the target artifact, priority rule, ladder, endpoint and decision rule before any run and then measured the oracle ceiling at +0.000228 (+0.0225 %) against the 2 % bar 0.020288; the alternate step 4 measured the ceiling as a function of concentration with the exact single-region target (top-1 1.0000), giving +0.000013 (+0.0013 %, not separated), +0.000228 (+0.0225 %), +0.000462 (+0.0454 %) and +0.000994 (+0.0970 %, CI [+0.00068, +0.00134]). The gap is monotone and separated at kappa >= 5, so the measurement could have refuted the paper's central negative and instead bounds it: the weight class cannot buy even 0.1 % of the deployment-weighted error at the most extreme concentration that exists. Because it is not in the manuscript, the axis stays at 3. Reporting it would raise the axis to 4.",
+      "first_seen_version": "round 16 (this comparison)",
+      "id": "R16-3",
+      "note": "The axis is limited by an authorial scope decision, not by the science. This is the single largest available readiness gain in the review.",
+      "origin": "newly_revealed_by_evidence",
+      "score_effect": {
+        "current": 0,
+        "historical": 0
+      },
+      "status": "unresolved"
+    },
+    {
+      "affected_dimensions": [
+        "Reproducibility"
+      ],
+      "applies_to": "both",
+      "evidence": "The availability section now names the two run trees behind the Adam replacement and its structural readout, states that they are internal to this study rather than part of the released bundle, and gives the confirm seed range 30006-30020 and the two-constant file. That is the 'name it' half of round 15's charge. Still charged: the trees are not in the bundle, w1/PAPER_NUMBERS.csv indexes no value added since 2026-10-07, and the shipped main.pdf is still the 2026-10-06 artifact.",
+      "first_seen_version": "round 13 (NEW-r13-2); re-charged at round 15 as R15-4",
+      "id": "R16-4",
+      "note": "Held at 2 so the axis is not charged twice; it is now the second binding constraint on the stance.",
+      "origin": "inherited",
+      "score_effect": {
+        "current": 0,
+        "historical": 0
+      },
+      "status": "partially_resolved"
+    },
+    {
+      "affected_dimensions": [
+        "Reproducibility"
+      ],
+      "applies_to": "both",
+      "evidence": "One revision in the chain has no provenance record: the 2026-10-09 change from 7b874f28 to 1d6515ff (+75 B) names no new tree, seed range or round_v1, is not in the availability section, and does not touch any site this session edited. The 2026-10-09 revision as a whole has no authorization record in the workspace, unlike the two 2026-10-07 revisions the user confirmed.",
+      "first_seen_version": "round 15 (this session's provenance note)",
+      "id": "R16-5",
+      "origin": "inherited",
+      "score_effect": {
+        "current": 0,
+        "historical": 0
+      },
+      "status": "unresolved"
+    },
+    {
+      "affected_dimensions": [
+        "Related work"
+      ],
+      "applies_to": "both",
+      "evidence": "No round of this session has performed a literature search: not round 13, 14 or 15, and not this one. The novelty band is therefore asserted rather than sourced, and the round's own dataset search (12 queries, no candidate meeting the inclusion bar) is not a novelty search and cannot stand in for one. Recorded as a limitation of the review as much as of the paper.",
+      "first_seen_version": "round 13",
+      "id": "R16-6",
+      "origin": "inherited",
+      "score_effect": {
+        "current": 0,
+        "historical": 0
+      },
+      "status": "unresolved"
+    },
+    {
+      "affected_dimensions": [
+        "Evidence",
+        "Significance"
+      ],
+      "applies_to": "both",
+      "evidence": "The target-level shift is now partially disclosed: the manuscript prints the test-split target means (7.657, -0.807, 0.301) and the two comparators beside them, so the absolute column is self-interpreting, while the train-side levels that constitute the shift itself are still not printed. The standing practical-significance charge is unchanged and now better quantified: the structural contrast separates but was scored after the prediction contrast, no deployment decision changes, the mismatch reduction is about 2 % relative, and the measured ceiling at the concentration extreme is 0.097 % of the deployment-weighted error.",
+      "first_seen_version": "round 9 (as E1); re-charged at round 14 as R14-2",
+      "id": "R16-7",
+      "note": "Kept as one issue rather than two so that Evidence and Significance are not charged twice for the same absence.",
+      "origin": "inherited",
+      "score_effect": {
+        "current": 0,
+        "historical": 0
+      },
+      "status": "partially_resolved"
+    }
+  ],
+  "relative_progress_scorecard": {
+    "classification": "improved",
+    "current": {
+      "Clarity": 5,
+      "Evidence": 3,
+      "Originality": 2,
+      "Related work": 3,
+      "Reproducibility": 2,
+      "Significance": 3,
+      "Soundness": 5,
+      "Terminology": 4
+    },
+    "deltas": {
+      "Clarity": 1,
+      "Evidence": 0,
+      "Originality": 0,
+      "Related work": 0,
+      "Reproducibility": 0,
+      "Significance": 0,
+      "Soundness": 1,
+      "Terminology": 0
+    },
+    "historical": {
+      "Clarity": 4,
+      "Evidence": 3,
+      "Originality": 2,
+      "Related work": 3,
+      "Reproducibility": 2,
+      "Significance": 3,
+      "Soundness": 4,
+      "Terminology": 4
+    },
+    "weighted_delta": 0.35
+  }
+}

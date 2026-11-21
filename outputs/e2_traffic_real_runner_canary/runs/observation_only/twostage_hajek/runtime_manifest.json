@@ -1,0 +1,78 @@
+{
+  "completed_windows": 100,
+  "end_time_utc": "2026-08-07T03:08:40.958150+00:00",
+  "eventtrace_dir": "outputs/e2_traffic_real_runner_canary/eventtraces/observation_only/training_eventtrace",
+  "eventtrace_identity": {
+    "events_sha256": "6d9909c84f73f8c45b01b03ba99825015c2fe958dff24665f49cdc0cd76e92d9",
+    "metadata": {
+      "dataset": "traffic",
+      "generator": "traffic-profile-s1-hard-aou-bridge-v1",
+      "notes": [
+        "scenario=observation_only",
+        "PROFILE-S1",
+        "station=client"
+      ],
+      "num_clients": 43,
+      "num_windows": 100,
+      "s_max": 5,
+      "seed": 29001
+    },
+    "metadata_sha256": "2efc1371604335b9b90982a9fd0e5e5b3951ddb246027715e948446aa97f2f4d",
+    "trace_hash": "2c533b715eb1fece332ad02bac1ef1e0e8b38ef277655995cc7784356fa5f424"
+  },
+  "exit_code": 0,
+  "failure_reason": null,
+  "final_metrics": {
+    "Gap_mis": -0.026827041652190964,
+    "P2_solver_failure_count": 0,
+    "RMSE_mu": 1.0035821121218973,
+    "RMSE_rho": 1.0304091537740883,
+    "active_window_count": 100,
+    "arrival_weight_sum": 1.0,
+    "clip_rate_stage1": 0.02577772801910733,
+    "clip_rate_stage2": 0.0,
+    "completed_windows": 100,
+    "denominator_zero_count": 0,
+    "effective_sample_size_mean": 1.3598429062346589,
+    "empirical_risk_objective": 1.0304091537740883,
+    "failed_attempt_count": 790,
+    "group_rmse": {
+      "block0": 0.8705229697424827,
+      "block1": 1.173156772652344,
+      "block2": 1.1577892025519152,
+      "block3": 0.7443959507339218
+    },
+    "hard_arrival_count": 1730,
+    "nonfinite_loss_count": 0,
+    "nonfinite_model_parameter_count": 0,
+    "policy": {
+      "uses_debt": false,
+      "uses_design_ratio": true,
+      "uses_hajek_local_loss": true,
+      "uses_instant_calibration": false,
+      "uses_observation_ipw": true,
+      "uses_staleness_penalty": false,
+      "uses_usable_ipw": true,
+      "uses_variance_penalty": false
+    },
+    "stale_update_count": 1020,
+    "target_risk_objective": 1.0035821121218973,
+    "target_weight_sum": 1.0
+  },
+  "local_steps": 2,
+  "method": "twostage_hajek",
+  "method_display": "TwoStage",
+  "n_groups": 4,
+  "peak_memory_mb": null,
+  "profile_id": "PROFILE-S1",
+  "retry_count": 0,
+  "runtime_seconds": 101.1843927000009,
+  "s_max": 5,
+  "scenario": "observation_only",
+  "scenario_label": "S3",
+  "seed": 29001,
+  "seed_replacement_count": 0,
+  "start_time_utc": "2026-08-07T03:06:59.758749+00:00",
+  "status": "PASS",
+  "warnings": []
+}

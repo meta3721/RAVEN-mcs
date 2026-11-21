@@ -1,0 +1,14 @@
+{
+  "EPS_ZERO": 1e-12,
+  "alpha": 0.05,
+  "effect_size": "paired effect size as sealed per round",
+  "multiple_testing": "Holm",
+  "paired_design": true,
+  "reconstruction_policy": "Prefer copy sealed statistics; rebuild only from frozen per-seed with same protocol",
+  "rounds": {
+    "E1": "outputs/statistics/E1_R2_FINAL_SEALED",
+    "E2": "artifacts/e2_traffic_formal_runs_r1/formal_statistics.csv",
+    "E3": "artifacts/e3_formal_runs_r1/E3_FORMAL_HOLM_RESULTS.csv",
+    "E4": "artifacts/e4_wo_inst_reference_penalty_final_correction_r1/E4_COMPONENT_CLAIM_MATRIX_FINAL_R3.json"
+  }
+}

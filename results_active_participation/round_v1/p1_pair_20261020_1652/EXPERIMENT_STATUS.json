@@ -1,0 +1,41 @@
+{
+  "experiment_directory": "C:/Cursor/raven.mcs/results_active_participation/round_v1/p1_pair_20261020_1652",
+  "original_result_status": "FAIL_P1_EFFECT_TOO_SMALL",
+  "management_status": "CLOSED_CURRENT_CONFIGURATION_BY_USER",
+  "completed_days_B": 43,
+  "completed_days_C": 43,
+  "further_training_authorized": false,
+  "further_diagnostics_authorized": false,
+  "paper_update_authorized": false,
+  "pending_jobs_check": {
+    "python_exe_processes_found": 0,
+    "tasks_cancelled": 0,
+    "unattributed_tasks_left_running": 0,
+    "note": "No python.exe process was present. No queued job for this directory was identified."
+  },
+  "preserved_artifacts": [
+    "P1_FREEZE.json",
+    "METHOD_IMPLEMENTATION.md",
+    "run_p1_pair.py",
+    "EVALUATION_SUPPORT.json",
+    "FIRST_DAY_ALIGNMENT.json",
+    "SELECTION_LOG.csv",
+    "DAILY_RUN_LOG.csv",
+    "FINAL_PREDICTIONS.csv",
+    "PAIR_COMPARISON.csv",
+    "RUN_SUMMARY.json",
+    "RESOURCE_AND_BUDGET.md",
+    "PROGRESS.json",
+    "checkpoints/day_2021-09-23.pt through day_2021-11-04.pt",
+    "P1_REPORT.md",
+    "FAILURE_REPORT.md"
+  ],
+  "missing_or_unverified_items": [
+    "Checkpoint parameter tensors were not loaded; completion is confirmed by 43 filenames, PROGRESS.json next_index 43, and 43 dates for each arm in DAILY_RUN_LOG.csv.",
+    "P1_FREEZE.json training_started remains false because it was written before the run.",
+    "RUN_SUMMARY.json init_parameter_l2_gap_* keys are named L2 while P1_REPORT.md describes the same stored numbers as maximum absolute parameter changes."
+  ],
+  "p0_reference": "ccf-review-report/active_participation_p0_20261020_1605",
+  "closed_at": "2026-10-20T18:05:01+08:00",
+  "timezone": "Asia/Shanghai"
+}

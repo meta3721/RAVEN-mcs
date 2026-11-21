@@ -1,0 +1,88 @@
+{
+  "command": [
+    "C:/Users/szr/AppData/Local/Programs/Python/Python311/python.exe",
+    "scripts/prepare_observed_feedback_pilot.py"
+  ],
+  "returncode": 0,
+  "process_tree_cpu_seconds": 0.453125,
+  "monitor_cpu_seconds": 0.109375,
+  "wall_seconds": 1.995337100001052,
+  "limit_reason": null,
+  "log": "C:\\Cursor\\raven.mcs\\results_observed_feedback_autonomous_pilot_45001_20261014\\metadata_hash_resolution.log",
+  "pids": [
+    {
+      "pid": 2956,
+      "joined_observed_wall": 0.005242100000032224,
+      "root_job_member": true,
+      "image": "C:\\Users\\szr\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+      "initial_cpu": 0.0,
+      "created_filetime": 13436450555.034807,
+      "exited_filetime": 13436450556.949862,
+      "kernel_cpu": 0.109375,
+      "user_cpu": 0.265625,
+      "cpu_seconds": 0.375,
+      "exit_code": 0,
+      "exit_observed_wall": 1.9952860999983386
+    },
+    {
+      "pid": 26652,
+      "joined_observed_wall": 0.019478700000036042,
+      "root_job_member": true,
+      "image": "C:\\Windows\\System32\\conhost.exe",
+      "initial_cpu": 0.0,
+      "created_filetime": 13436450555.047062,
+      "exited_filetime": 13436450557.023392,
+      "kernel_cpu": 0.046875,
+      "user_cpu": 0.03125,
+      "cpu_seconds": 0.078125,
+      "exit_code": 0,
+      "exit_observed_wall": 1.9953083000000333
+    }
+  ],
+  "notifications": [
+    {
+      "message": 6,
+      "pid": 2956,
+      "wall": 0.006182899996929336
+    },
+    {
+      "message": 6,
+      "pid": 26652,
+      "wall": 0.019388199994864408
+    },
+    {
+      "message": 7,
+      "pid": 2956,
+      "wall": 1.927585999997973
+    },
+    {
+      "message": 7,
+      "pid": 26652,
+      "wall": 1.9951379999984056
+    },
+    {
+      "message": 4,
+      "pid": 0,
+      "wall": 1.9951531999977306
+    }
+  ],
+  "errors": [],
+  "job_total_processes": 2,
+  "job_active_processes": 0,
+  "independent_pid_CPU_sum": 0.453125,
+  "difference_seconds": 0.0,
+  "predeclared_tolerance_seconds": 0.0725,
+  "audit_passed": true,
+  "CPU_limit": 10.0,
+  "single_CPU_affinity": 1,
+  "mutually_exclusive_costs": [
+    "process_tree_cpu_seconds",
+    "monitor_cpu_seconds"
+  ],
+  "included_not_additive": [
+    "independent_pid_CPU_sum",
+    "individual_PID_CPU",
+    "inner_job_CPU"
+  ],
+  "cpu_scope": "creation through process exit; root created suspended, descendants inherit before execution"
+}

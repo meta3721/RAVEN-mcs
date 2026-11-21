@@ -1,0 +1,48 @@
+{
+  "M_MC": 2000,
+  "M_MC_CHECK": 10000,
+  "rows": [
+    {
+      "M_MC": 2000,
+      "M_MC_CHECK": 10000,
+      "dataset": "sensorscope",
+      "fixed_prestate_q": true,
+      "no_future_leakage": true,
+      "no_object_aliasing": true,
+      "notes": "R2 generator emits pi_opp_true, p_obs_true, q_use_true distinctly",
+      "oracle_status": "VALID_CONTROLLED_ORACLE",
+      "p_obs_identity_correct": true,
+      "pi_opp_identity_correct": true,
+      "q_identity_correct": true,
+      "same_EventTrace_family": true
+    },
+    {
+      "M_MC": 2000,
+      "M_MC_CHECK": 10000,
+      "dataset": "uair",
+      "fixed_prestate_q": true,
+      "no_future_leakage": true,
+      "no_object_aliasing": true,
+      "notes": "R2 generator emits pi_opp_true, p_obs_true, q_use_true distinctly",
+      "oracle_status": "VALID_CONTROLLED_ORACLE",
+      "p_obs_identity_correct": true,
+      "pi_opp_identity_correct": true,
+      "q_identity_correct": true,
+      "same_EventTrace_family": true
+    },
+    {
+      "M_MC": 2000,
+      "M_MC_CHECK": 10000,
+      "dataset": "traffic",
+      "fixed_prestate_q": true,
+      "no_future_leakage": true,
+      "no_object_aliasing": true,
+      "notes": "Hard AOU generator; objects must remain unaliased in Traffic runner",
+      "oracle_status": "VALID_CONTROLLED_ORACLE",
+      "p_obs_identity_correct": true,
+      "pi_opp_identity_correct": true,
+      "q_identity_correct": true,
+      "same_EventTrace_family": true
+    }
+  ]
+}

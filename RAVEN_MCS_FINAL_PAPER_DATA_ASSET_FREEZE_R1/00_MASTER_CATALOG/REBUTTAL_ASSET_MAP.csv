@@ -1,0 +1,12 @@
+concern,existing_asset_ids,ready_answer,new_experiment_needed
+Where is risk mismatch?,FIG1;E2_D_ALIGNED,True,False
+Why Local-Hajek collapses?,07_WEIGHTS/local_hajek_provenance,True,False
+Why Traffic excluded from E3 inference?,19_NOT_COMPARABLE,True,False
+Is P2 feasible?,09_P2_SOLVER;P2_CLAIM_BOUNDARY,True,False
+Why Use has no effect?,E4_FINAL_STATISTICS_R2;C6,True,False
+Why Debt effect is tiny?,E4 Debt rows; C7,True,False
+Do components trade off?,FIG4;C5;C8,True,False
+What is runtime?,11_RUNTIME_SYSTEM,True,False
+What is ESS?,10_ESS_VARIANCE;RUNLEVEL_SEALED_SCALARS_R2,True,False
+Where is mobility?,20_TDRIVE_RESERVE,True,False
+Can T-Drive be run later?,TDRIVE_RESERVE_STATUS,True,False

@@ -1,0 +1,65 @@
+{
+  "NSW-Traffic": {
+    "status": "fail",
+    "n_seeds": 20,
+    "delta_adj": 0.0,
+    "ci95": [
+      0.0,
+      0.0
+    ],
+    "share_K_le3_A": 0.1477506699649557,
+    "share_K_le3_H": 0.1477506699649557,
+    "rule1_interval_above_0_and_point_ge_0.5pp": false,
+    "rule2_K_le3_share_declines": false,
+    "mean_new_clients": 0.0,
+    "mean_changed_rows": 0.0
+  },
+  "SensorScope": {
+    "status": "fail",
+    "n_seeds": 20,
+    "delta_adj": 0.0,
+    "ci95": [
+      0.0,
+      0.0
+    ],
+    "share_K_le3_A": 0.7855329299449888,
+    "share_K_le3_H": 0.7855329299449888,
+    "rule1_interval_above_0_and_point_ge_0.5pp": false,
+    "rule2_K_le3_share_declines": false,
+    "mean_new_clients": 0.0,
+    "mean_changed_rows": 0.0
+  },
+  "U-Air": {
+    "status": "fail",
+    "n_seeds": 20,
+    "delta_adj": 0.0,
+    "ci95": [
+      0.0,
+      0.0
+    ],
+    "share_K_le3_A": 0.7897209615031388,
+    "share_K_le3_H": 0.7897209615031388,
+    "rule1_interval_above_0_and_point_ge_0.5pp": false,
+    "rule2_K_le3_share_declines": false,
+    "mean_new_clients": 0.0,
+    "mean_changed_rows": 0.0
+  },
+  "CityScanner-visit": {
+    "status": "blocked",
+    "reason": "opportunity_features has no group field (no stratum, hour_block, or target_group). s_max=5 is in generation_meta. No frozen mu file was used."
+  },
+  "CityScanner-pilot2": {
+    "status": "blocked",
+    "reason": "target_group_by_unit exists and s_max=5 is in metadata, but no frozen mu vector for region0-3 was found. Uniform 0.25 was not assumed."
+  },
+  "T-Drive": {
+    "status": "blocked",
+    "reason": "opportunity_features has no group field. Micro-fixtures were not used. No frozen mu file was applied."
+  },
+  "_stop": {
+    "negative_control_passed": false,
+    "training": "not started",
+    "reason": "P0 only. SensorScope and U-Air failed, which is the pre-registered expectation, so the round does not stop for an unexpected pass. NSW-Traffic also failed. No block passed, so training was not started.",
+    "why_delta_is_zero": "An attempt that is fresh at its arrival close is the only unconsumed row for that client at that close, so the written rule consumes it there. A later close never sees it. On these three blocks the folded pool H_r therefore matches the same-window set A_r at every recorded window: new clients and changed composition rows are 0, and the paired interval is [0, 0]. This is the gate result. The rule was not replaced after seeing it."
+  }
+}

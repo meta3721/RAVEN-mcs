@@ -1,0 +1,170 @@
+{
+  "round": "results_regime_b_endpoints/round_v1",
+  "phase": "P0",
+  "metric": "Delta_c_s = sum_{k,s} |Pi_hat_ks - pi_tar_ks| on client x opportunity_stratum",
+  "pairing": {
+    "cells": 240,
+    "unpaired": 60
+  },
+  "support_guard": {
+    "required": 288,
+    "A": [
+      288
+    ],
+    "B": [
+      288
+    ]
+  },
+  "reproduction_guard": {
+    "max_abs_diff": 0.0,
+    "traces_equal": 20,
+    "n": 20
+  },
+  "band": 0.1,
+  "cells_confirmatory": [
+    {
+      "pair": "fedavg_rule",
+      "condition": "C1_tilt_strong",
+      "endpoint": "Delta_c_s",
+      "n": 20,
+      "r_mean": 0.03485235258994683,
+      "ci": [
+        0.02928243439932653,
+        0.04042227078056713
+      ],
+      "n_r_gt0": 20,
+      "label": "equivalent_zero"
+    },
+    {
+      "pair": "fedavg_rule",
+      "condition": "C2_tilt_extreme",
+      "endpoint": "Delta_c_s",
+      "n": 20,
+      "r_mean": 0.031208450060237147,
+      "ci": [
+        0.02671650276934614,
+        0.035700397351128156
+      ],
+      "n_r_gt0": 20,
+      "label": "equivalent_zero"
+    },
+    {
+      "pair": "fedavg_rule",
+      "condition": "C3_low_capacity",
+      "endpoint": "Delta_c_s",
+      "n": 20,
+      "r_mean": 0.040943300175239665,
+      "ci": [
+        0.03597144891191785,
+        0.04591515143856148
+      ],
+      "n_r_gt0": 20,
+      "label": "equivalent_zero"
+    },
+    {
+      "pair": "fedavg_rule",
+      "condition": "C4_block_uniform",
+      "endpoint": "Delta_c_s",
+      "n": 20,
+      "r_mean": 0.040943300175239665,
+      "ci": [
+        0.03597144891191785,
+        0.04591515143856148
+      ],
+      "n_r_gt0": 20,
+      "label": "equivalent_zero"
+    },
+    {
+      "pair": "fedavg_rule",
+      "condition": "C5_combined",
+      "endpoint": "Delta_c_s",
+      "n": 20,
+      "r_mean": 0.031208450060237147,
+      "ci": [
+        0.02671650276934614,
+        0.035700397351128156
+      ],
+      "n_r_gt0": 20,
+      "label": "equivalent_zero"
+    },
+    {
+      "pair": "oracle_design",
+      "condition": "C0_frozen",
+      "endpoint": "Delta_c_s",
+      "n": 20,
+      "r_mean": 0.04750804376026267,
+      "ci": [
+        0.04206922802945336,
+        0.05294685949107199
+      ],
+      "n_r_gt0": 20,
+      "label": "equivalent_zero"
+    },
+    {
+      "pair": "oracle_design",
+      "condition": "C1_tilt_strong",
+      "endpoint": "Delta_c_s",
+      "n": 0,
+      "r_mean": NaN,
+      "ci": [
+        NaN,
+        NaN
+      ],
+      "n_r_gt0": 0,
+      "label": "not_evaluable"
+    },
+    {
+      "pair": "oracle_design",
+      "condition": "C2_tilt_extreme",
+      "endpoint": "Delta_c_s",
+      "n": 0,
+      "r_mean": NaN,
+      "ci": [
+        NaN,
+        NaN
+      ],
+      "n_r_gt0": 0,
+      "label": "not_evaluable"
+    },
+    {
+      "pair": "oracle_design",
+      "condition": "C3_low_capacity",
+      "endpoint": "Delta_c_s",
+      "n": 20,
+      "r_mean": 0.047508020551658384,
+      "ci": [
+        0.04206914931100249,
+        0.05294689179231428
+      ],
+      "n_r_gt0": 20,
+      "label": "equivalent_zero"
+    },
+    {
+      "pair": "oracle_design",
+      "condition": "C4_block_uniform",
+      "endpoint": "Delta_c_s",
+      "n": 20,
+      "r_mean": 0.04750806379822634,
+      "ci": [
+        0.04206760196455659,
+        0.052948525631896094
+      ],
+      "n_r_gt0": 20,
+      "label": "equivalent_zero"
+    },
+    {
+      "pair": "oracle_design",
+      "condition": "C5_combined",
+      "endpoint": "Delta_c_s",
+      "n": 0,
+      "r_mean": NaN,
+      "ci": [
+        NaN,
+        NaN
+      ],
+      "n_r_gt0": 0,
+      "label": "not_evaluable"
+    }
+  ],
+  "utc": "2026-10-06T10:58:51.439328+00:00"
+}

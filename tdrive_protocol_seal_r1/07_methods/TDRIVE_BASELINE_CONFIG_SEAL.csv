@@ -1,0 +1,5 @@
+display,canonical,implementation,config_policy,same_backbone,same_preprocessing,same_split,same_eventtrace_per_seed,intentionally_weakened
+FedAvg-Window,fedavg_window,final frozen E3 implementation; TimeAlign = flamf_timealign_adapted,paper-safe transfer; not T-Drive test-tuned,True,True,True,True,False
+FedAsync-Window,fedasync_window,final frozen E3 implementation; TimeAlign = flamf_timealign_adapted,paper-safe transfer; not T-Drive test-tuned,True,True,True,True,False
+TimeAlign-Agg,flamf_timealign_adapted,final frozen E3 implementation; TimeAlign = flamf_timealign_adapted,paper-safe transfer; not T-Drive test-tuned,True,True,True,True,False
+TwoStage-Hajek,twostage_hajek,final frozen E3 implementation; TimeAlign = flamf_timealign_adapted,paper-safe transfer; not T-Drive test-tuned,True,True,True,True,False

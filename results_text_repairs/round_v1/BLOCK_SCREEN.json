@@ -1,0 +1,95 @@
+{
+  "concentration": {
+    "sensorscope|4 UTC blocks": {
+      "effective_groups": 3.9431826015654106,
+      "effective_over_n": 0.9857956503913526,
+      "groups_for_50pct": 2,
+      "n_groups": 4,
+      "top1_share": 0.2903225806451613,
+      "top2_share": 0.5806451612903226
+    },
+    "sensorscope|full": {
+      "effective_groups": 216.87504308609812,
+      "effective_over_n": 0.9857956503913551,
+      "groups_for_50pct": 95,
+      "n_groups": 220,
+      "top1_share": 0.00527859237536657,
+      "top2_share": 0.01055718475073314
+    },
+    "tdrive_speed|4 UTC blocks": {
+      "effective_groups": 3.2911741495390023,
+      "effective_over_n": 0.8227935373847506,
+      "groups_for_50pct": 1,
+      "n_groups": 4,
+      "top1_share": 0.514396062707023,
+      "top2_share": 0.7498826590137992
+    },
+    "tdrive_speed|full": {
+      "effective_groups": 3.2911741495390023,
+      "effective_over_n": 0.8227935373847506,
+      "groups_for_50pct": 1,
+      "n_groups": 4,
+      "top1_share": 0.514396062707023,
+      "top2_share": 0.7498826590137992
+    },
+    "traffic|4 UTC blocks": {
+      "effective_groups": 4.0,
+      "effective_over_n": 1.0,
+      "groups_for_50pct": 2,
+      "n_groups": 4,
+      "top1_share": 0.25,
+      "top2_share": 0.5
+    },
+    "traffic|full": {
+      "effective_groups": 172.0000000000001,
+      "effective_over_n": 1.0000000000000007,
+      "groups_for_50pct": 86,
+      "n_groups": 172,
+      "top1_share": 0.005813953488372094,
+      "top2_share": 0.011627906976744188
+    },
+    "uair|4 UTC blocks": {
+      "effective_groups": 3.98091774131467,
+      "effective_over_n": 0.9952294353286675,
+      "groups_for_50pct": 2,
+      "n_groups": 4,
+      "top1_share": 0.2830188679245283,
+      "top2_share": 0.5471698113207547
+    },
+    "uair|full": {
+      "effective_groups": 143.31303868732812,
+      "effective_over_n": 0.9952294353286675,
+      "groups_for_50pct": 66,
+      "n_groups": 144,
+      "top1_share": 0.007861635220125786,
+      "top2_share": 0.015723270440251572
+    }
+  },
+  "note": "concentration is the test-split deployment target mass per group; slack is the share of active windows with K_r > 3, where eq:Cr does not force uniform weights",
+  "slack": {
+    "sensorscope": {
+      "max_kr": 6.0,
+      "median_kr": 3.0,
+      "n_active": 97,
+      "share_kr_gt3": 0.24742268041237114,
+      "share_kr_le3": 0.7525773195876289,
+      "source": "artifacts/e3_formal_runs_r1/runs/sensorscope/debt_cal/seed30001/window_metrics.json"
+    },
+    "traffic": {
+      "max_kr": 26.0,
+      "median_kr": 12.0,
+      "n_active": 99,
+      "share_kr_gt3": 0.8888888888888888,
+      "share_kr_le3": 0.1111111111111111,
+      "source": "artifacts/e3_formal_runs_r1/runs/traffic/debt_cal/seed30001/window_metrics.json"
+    },
+    "uair": {
+      "max_kr": 5.0,
+      "median_kr": 2.0,
+      "n_active": 66,
+      "share_kr_gt3": 0.19696969696969702,
+      "share_kr_le3": 0.803030303030303,
+      "source": "artifacts/e3_formal_runs_r1/runs/uair/debt_cal/seed30001/window_metrics.json"
+    }
+  }
+}

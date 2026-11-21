@@ -1,0 +1,128 @@
+{
+  "canonical_source": "D:\\Cursor\\raven.mcs\\artifacts\\e2_traffic_formal_runs_r1",
+  "created_utc": "2026-08-09T06:55:16.908892+00:00",
+  "files": {
+    "E2_TRAFFIC_FORMAL_RUNS_STOP_STATUS.json": {
+      "missing": false,
+      "mtime_utc": "2026-08-08T23:50:58.344158+00:00",
+      "path": "D:\\Cursor\\raven.mcs\\artifacts\\e2_traffic_formal_runs_r1\\E2_TRAFFIC_FORMAL_RUNS_STOP_STATUS.json",
+      "sha256": "d7fb577574b77693fc893c3ebd194af243e13dc4484cf0061d0ba3b8205156a1",
+      "size_bytes": 943
+    },
+    "FORMAL_RUN_CONFIG.json": {
+      "missing": false,
+      "mtime_utc": "2026-08-08T10:19:16.843324+00:00",
+      "path": "D:\\Cursor\\raven.mcs\\artifacts\\e2_traffic_formal_runs_r1\\FORMAL_RUN_CONFIG.json",
+      "sha256": "5006daf9fc8337ef33ba0f6a3022e184a82d7bfb2c84d8dafb958f9157d05b1a",
+      "size_bytes": 1524
+    },
+    "SOURCE_HASHES.json": {
+      "missing": false,
+      "mtime_utc": "2026-08-08T10:19:16.855316+00:00",
+      "path": "D:\\Cursor\\raven.mcs\\artifacts\\e2_traffic_formal_runs_r1\\SOURCE_HASHES.json",
+      "sha256": "abb97f37548b9f9793a8fbc8a0b713e311a046beb3911778248e4be38b6befdf",
+      "size_bytes": 2031
+    },
+    "checkpoint_hash_inventory.json": {
+      "missing": false,
+      "mtime_utc": "2026-08-08T23:50:59.697254+00:00",
+      "path": "D:\\Cursor\\raven.mcs\\artifacts\\e2_traffic_formal_runs_r1\\checkpoint_hash_inventory.json",
+      "sha256": "365f2659e83fb670888440e232f4b6179bd99f985406f9dad4af0ad5c92c518e",
+      "size_bytes": 137905
+    },
+    "formal_group_metrics.csv": {
+      "missing": false,
+      "mtime_utc": "2026-08-08T23:44:46.405687+00:00",
+      "path": "D:\\Cursor\\raven.mcs\\artifacts\\e2_traffic_formal_runs_r1\\formal_group_metrics.csv",
+      "sha256": "a199fbbed4e74133297c438a5e0631d0aed76fb89b6442a39db270d296dad379",
+      "size_bytes": 152793
+    },
+    "formal_results.csv": {
+      "missing": false,
+      "mtime_utc": "2026-08-08T23:44:46.385467+00:00",
+      "path": "D:\\Cursor\\raven.mcs\\artifacts\\e2_traffic_formal_runs_r1\\formal_results.csv",
+      "sha256": "db564ac12c448394ba2c91c1e7c667092ecbf661d1e0a9034c14c024ff05a3ff",
+      "size_bytes": 119430
+    },
+    "formal_results.parquet": {
+      "missing": false,
+      "mtime_utc": "2026-08-08T23:44:46.395687+00:00",
+      "path": "D:\\Cursor\\raven.mcs\\artifacts\\e2_traffic_formal_runs_r1\\formal_results.parquet",
+      "sha256": "650ab3ab88140b005940c45f84ce5628c3ba1c2c9e7a1c5b7bea749ee5ffec19",
+      "size_bytes": 39060
+    },
+    "formal_statistics.csv": {
+      "missing": false,
+      "mtime_utc": "2026-08-08T23:44:46.540923+00:00",
+      "path": "D:\\Cursor\\raven.mcs\\artifacts\\e2_traffic_formal_runs_r1\\formal_statistics.csv",
+      "sha256": "4ccead551ccd6acf02670d32ec83a298bffd01b2312a3b338956166d1447f672",
+      "size_bytes": 19598
+    },
+    "gate_results.json": {
+      "missing": false,
+      "mtime_utc": "2026-08-08T23:50:58.348158+00:00",
+      "path": "D:\\Cursor\\raven.mcs\\artifacts\\e2_traffic_formal_runs_r1\\gate_results.json",
+      "sha256": "ccb2fca68ab8112e2077f56f0e7f5ae14977fd8a540a174c07d9f9dc6c4459d1",
+      "size_bytes": 778
+    },
+    "ledger": {
+      "missing": false,
+      "mtime_utc": "2026-08-08T23:51:41.645691+00:00",
+      "path": "D:\\Cursor\\raven.mcs\\logs\\E2_TRAFFIC_FORMAL_RUNS_R1_EXACT_COMMANDS.jsonl",
+      "sha256": "97c4ce69fa4f2473ed1e34679b2194dda546729bdefbfbead3c9e18cd021b0a2",
+      "size_bytes": 4295655
+    },
+    "paired_comparisons.csv": {
+      "missing": false,
+      "mtime_utc": "2026-08-08T23:44:47.028745+00:00",
+      "path": "D:\\Cursor\\raven.mcs\\artifacts\\e2_traffic_formal_runs_r1\\paired_comparisons.csv",
+      "sha256": "27c2dbbf415d3512e81fcb0b47ec2338e778d152351b81ba8d35f8aaf9305d9d",
+      "size_bytes": 18649
+    }
+  },
+  "method_list": [
+    "fedavg_window",
+    "fedasync_window",
+    "flamf_timealign_adapted",
+    "twostage_hajek",
+    "raven"
+  ],
+  "scenario_labels": {
+    "balanced": "S1",
+    "complete_aligned": "S5",
+    "complete_counteracting": "S6",
+    "observation_only": "S3",
+    "opportunity_only": "S2",
+    "usable_only": "S4"
+  },
+  "scenario_list": [
+    "balanced",
+    "opportunity_only",
+    "observation_only",
+    "usable_only",
+    "complete_aligned",
+    "complete_counteracting"
+  ],
+  "seed_list": [
+    30001,
+    30002,
+    30003,
+    30004,
+    30005,
+    30006,
+    30007,
+    30008,
+    30009,
+    30010,
+    30011,
+    30012,
+    30013,
+    30014,
+    30015,
+    30016,
+    30017,
+    30018,
+    30019,
+    30020
+  ]
+}

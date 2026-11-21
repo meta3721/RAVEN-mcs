@@ -1,0 +1,16 @@
+{
+  "dataset": "traffic",
+  "local_steps": 2,
+  "method": "local_hajek",
+  "metric_schema_version": "E3_REAL_METRIC_OUTPUT_SCHEMA_V6",
+  "n_groups_frozen": 172,
+  "n_groups_runtime": 172,
+  "pair_state_schema_version": "E3_DELTA_CS_STATE_SCHEMA_V6",
+  "path": "REAL",
+  "pi_target_mode": "test",
+  "scenario": "complete_aligned",
+  "seed": 30017,
+  "target_artifact_path": "inline_fixture_freeze",
+  "target_artifact_sha256": "e58a08cbaf8995abfa8de40d6d5d665b5f26176b266c15c41fa7250cddaf9552",
+  "uses_spatial_time_target": true
+}

@@ -1,0 +1,84 @@
+{
+  "appendix": "A proofs; B E1/stats; C Local-Hajek; D P2; E full tables",
+  "claim_ceiling": "C1–C10",
+  "contribution_theory_evidence_map": [
+    {
+      "contribution_id": "C1",
+      "empirical_rq": "RQ1",
+      "primary_figure": "FIG-E1",
+      "primary_table": "APP-T1",
+      "theorem_or_proposition": "P1 target-vs-arrival risk"
+    },
+    {
+      "contribution_id": "C2",
+      "empirical_rq": "RQ2",
+      "primary_figure": "FIG-E2",
+      "primary_table": "TABLE-II",
+      "theorem_or_proposition": "P2 normalized reconstruction"
+    },
+    {
+      "contribution_id": "C3",
+      "empirical_rq": "RQ3",
+      "primary_figure": "FIG-E4",
+      "primary_table": "TABLE-III",
+      "theorem_or_proposition": "T-P2 uniqueness (theory-only empirically)"
+    }
+  ],
+  "contributions": [
+    "C1 risk semantics",
+    "C2 layer-aware reconstruction",
+    "C3 feasibility-aware calibration"
+  ],
+  "e4_labels": {
+    "Debt": "STRUCTURAL_ONLY_SUPPORTED",
+    "Design": "ENDPOINT_TRADEOFF",
+    "Inst": "ENDPOINT_TRADEOFF",
+    "Obs": "ENDPOINT_TRADEOFF",
+    "Use": "NO_CLEAR_EFFECT"
+  },
+  "experiment_roles": "E1 sanity; E2 problem; E3 effectiveness SS/U-Air; E4 mechanism Gen2",
+  "fig6_repair": "APPENDIX_READY",
+  "figure_table_hashes": {
+    "APP_F1": "b45846f9085bb372fc5806a5c7802e704a90c701c3a9cb0b9241322b03dfbef8",
+    "APP_F2": "7d20004cb5cf813457ff34e8250490d93d606a36d9b93203a9813572af569c89",
+    "APP_F2_AGG": "151747773017437b073ccd4d51b9e86b6459e2ea5005ae8d8028c89990214637",
+    "APP_T1": "04f1f25acb2088fe1ce67f05973bae8ff400de96ba8a09c256aaf1c0c80c6664",
+    "APP_T2": "d7961b100e37c7013d400eb116fdd76126de7fcfb4d5522abbd92cd754f415d6",
+    "APP_T3": "01a974e7ea47fd130ba3990b04b9ab8a6e379b728366bc1c1beab4ee01094673",
+    "APP_T5": "ec43bf3f90e6ca67d372363e44140392d5116474b0a0f5cc3e66b8c52ab0e46f",
+    "FIG_E1": "28605d1ebf874c5f2c1ad7e780790a68c02bcd7ea2c12d1636f49755628b6511",
+    "FIG_E2": "0949f2e89e82953b1853de1f7893904b5149feaac3e5cabe2dee39a1d5b0c32f",
+    "FIG_E3": "8110240a5f88644b29e5d0aa85986d6d052a653a09ad9c7292c11ff2f71a9685",
+    "FIG_E4": "c80f6dddabd7c8e76d01e88b33537b0490454bf673baeea7d1e79b4a550330a9",
+    "TABLE_I": "563508ecf6bdeb48ae3cbcb567df50312f82995f954d4db19ed99f0f2d3940af",
+    "TABLE_II": "1aa0706f6479b1cac7504e3cffba8eb6a3df7bf9a2a378cc1a689603b49fad86",
+    "TABLE_III": "22ca24061b48ceda9414c751fb5335834968c7c6cd5a6d77a1d9b0bb95756a7a"
+  },
+  "h_s": "h≠s; UTC 4-block h for SS/U-Air",
+  "main_figures": [
+    "FIG-C",
+    "FIG-E1",
+    "FIG-E2",
+    "FIG-E3",
+    "FIG-E4"
+  ],
+  "main_tables": [
+    "TABLE-I",
+    "TABLE-II",
+    "TABLE-III"
+  ],
+  "no_new_experiment": true,
+  "rqs": [
+    "RQ1",
+    "RQ2",
+    "RQ3"
+  ],
+  "sections": [
+    "I–IX",
+    "Appendix A–E"
+  ],
+  "target_journal": "IEEE Transactions on Mobile Computing (TMC)",
+  "tdrive": "PROTOCOL_SEALED / FORMAL_NOT_RUN / REVIEWER_RESERVE",
+  "title": "RAVEN-MCS: Target-Risk-Calibrated Asynchronous Federated Data Completion for Mobile Crowdsensing under Two-Stage Non-Random Selection",
+  "unique_mainline": "mismatch → reconstruction → calibration → structural alignment + competitive prediction"
+}

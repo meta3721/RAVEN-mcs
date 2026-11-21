@@ -1,0 +1,25 @@
+{
+  "n_windows": 3279,
+  "range_quantiles": {
+    "0.05": -0.0,
+    "0.25": -0.0,
+    "0.5": -0.0,
+    "0.75": -0.0,
+    "0.95": -0.0
+  },
+  "range_median": -1.1302070390684094e-13,
+  "min_l1_median": 1.972746331237786,
+  "max_approx_median": 1.9727463312368971,
+  "degenerate_below_1e-3": true,
+  "per_ds_median_range": {
+    "sensorscope": -0.0,
+    "uair": -0.0
+  },
+  "d_myo_vs_unif": {
+    "d_myo": 1.062149006548752,
+    "d_myo_tb": 1.051402204950762,
+    "d_unif": 1.0621341226159433,
+    "max_abs_diff_myo_vs_unif": 4.5714880698044524e-05,
+    "max_abs_diff_tb_vs_unif": 0.033694057466112426
+  }
+}

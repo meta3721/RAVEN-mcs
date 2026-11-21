@@ -1,0 +1,19 @@
+{
+  "n_passed": 12,
+  "n_failed": 0,
+  "status": "PASS",
+  "tests": {
+    "test_target_law_rule_frozen.py": "PASS",
+    "test_mu_pi_same_target_law.py": "PASS",
+    "test_target_no_outcome_selection.py": "PASS",
+    "test_dynamic_cov_no_current_window.py": "PASS",
+    "test_dynamic_cov_history_only.py": "PASS",
+    "test_dynamic_cov_window_block_calibration.py": "PASS",
+    "test_dynamic_cov_monotonic_history.py": "PASS",
+    "test_dynamic_cov_joint_coverage_metric.py": "PASS",
+    "test_uair_not_hardcoded_unsafe.py": "PASS",
+    "test_thresholds_unchanged.py": "PASS",
+    "test_target_compatibility.py": "PASS",
+    "test_c_cov_formula.py": "PASS"
+  }
+}

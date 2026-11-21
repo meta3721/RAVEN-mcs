@@ -1,0 +1,277 @@
+{
+  "reusable_existing_Traffic_runs": 100,
+  "rows": [
+    {
+      "classification": "NEW_RUN_REQUIRED",
+      "dataset": "sensorscope",
+      "method": "fedavg_window",
+      "number_of_new_runs": 20,
+      "reason": "new E3 formal after Canary",
+      "seed_block": "30001-30020"
+    },
+    {
+      "classification": "NEW_RUN_REQUIRED",
+      "dataset": "uair",
+      "method": "fedavg_window",
+      "number_of_new_runs": 20,
+      "reason": "new E3 formal after Canary",
+      "seed_block": "30001-30020"
+    },
+    {
+      "classification": "REUSE_ONLY_NO_RERUN",
+      "dataset": "traffic",
+      "method": "fedavg_window",
+      "number_of_new_runs": 0,
+      "reason": "sealed E2 Traffic block",
+      "seed_block": "30001-30020"
+    },
+    {
+      "classification": "NEW_RUN_REQUIRED",
+      "dataset": "sensorscope",
+      "method": "fedasync_window",
+      "number_of_new_runs": 20,
+      "reason": "new E3 formal after Canary",
+      "seed_block": "30001-30020"
+    },
+    {
+      "classification": "NEW_RUN_REQUIRED",
+      "dataset": "uair",
+      "method": "fedasync_window",
+      "number_of_new_runs": 20,
+      "reason": "new E3 formal after Canary",
+      "seed_block": "30001-30020"
+    },
+    {
+      "classification": "REUSE_ONLY_NO_RERUN",
+      "dataset": "traffic",
+      "method": "fedasync_window",
+      "number_of_new_runs": 0,
+      "reason": "sealed E2 Traffic block",
+      "seed_block": "30001-30020"
+    },
+    {
+      "classification": "NEW_RUN_REQUIRED",
+      "dataset": "sensorscope",
+      "method": "flamf_timealign_adapted",
+      "number_of_new_runs": 20,
+      "reason": "new E3 formal after Canary",
+      "seed_block": "30001-30020"
+    },
+    {
+      "classification": "NEW_RUN_REQUIRED",
+      "dataset": "uair",
+      "method": "flamf_timealign_adapted",
+      "number_of_new_runs": 20,
+      "reason": "new E3 formal after Canary",
+      "seed_block": "30001-30020"
+    },
+    {
+      "classification": "REUSE_ONLY_NO_RERUN",
+      "dataset": "traffic",
+      "method": "flamf_timealign_adapted",
+      "number_of_new_runs": 0,
+      "reason": "sealed E2 Traffic block",
+      "seed_block": "30001-30020"
+    },
+    {
+      "classification": "NEW_RUN_REQUIRED",
+      "dataset": "sensorscope",
+      "method": "local_hajek",
+      "number_of_new_runs": 20,
+      "reason": "new E3 formal after Canary",
+      "seed_block": "30001-30020"
+    },
+    {
+      "classification": "NEW_RUN_REQUIRED",
+      "dataset": "uair",
+      "method": "local_hajek",
+      "number_of_new_runs": 20,
+      "reason": "new E3 formal after Canary",
+      "seed_block": "30001-30020"
+    },
+    {
+      "classification": "NEW_RUN_REQUIRED",
+      "dataset": "traffic",
+      "method": "local_hajek",
+      "number_of_new_runs": 20,
+      "reason": "new E3 formal after Canary",
+      "seed_block": "30001-30020"
+    },
+    {
+      "classification": "NEW_RUN_REQUIRED",
+      "dataset": "sensorscope",
+      "method": "twostage_hajek",
+      "number_of_new_runs": 20,
+      "reason": "new E3 formal after Canary",
+      "seed_block": "30001-30020"
+    },
+    {
+      "classification": "NEW_RUN_REQUIRED",
+      "dataset": "uair",
+      "method": "twostage_hajek",
+      "number_of_new_runs": 20,
+      "reason": "new E3 formal after Canary",
+      "seed_block": "30001-30020"
+    },
+    {
+      "classification": "REUSE_ONLY_NO_RERUN",
+      "dataset": "traffic",
+      "method": "twostage_hajek",
+      "number_of_new_runs": 0,
+      "reason": "sealed E2 Traffic block",
+      "seed_block": "30001-30020"
+    },
+    {
+      "classification": "NEW_RUN_REQUIRED",
+      "dataset": "sensorscope",
+      "method": "inst_cal",
+      "number_of_new_runs": 20,
+      "reason": "new E3 formal after Canary",
+      "seed_block": "30001-30020"
+    },
+    {
+      "classification": "NEW_RUN_REQUIRED",
+      "dataset": "uair",
+      "method": "inst_cal",
+      "number_of_new_runs": 20,
+      "reason": "new E3 formal after Canary",
+      "seed_block": "30001-30020"
+    },
+    {
+      "classification": "NEW_RUN_REQUIRED",
+      "dataset": "traffic",
+      "method": "inst_cal",
+      "number_of_new_runs": 20,
+      "reason": "new E3 formal after Canary",
+      "seed_block": "30001-30020"
+    },
+    {
+      "classification": "NEW_RUN_REQUIRED",
+      "dataset": "sensorscope",
+      "method": "debt_cal",
+      "number_of_new_runs": 20,
+      "reason": "new E3 formal after Canary",
+      "seed_block": "30001-30020"
+    },
+    {
+      "classification": "NEW_RUN_REQUIRED",
+      "dataset": "uair",
+      "method": "debt_cal",
+      "number_of_new_runs": 20,
+      "reason": "new E3 formal after Canary",
+      "seed_block": "30001-30020"
+    },
+    {
+      "classification": "NEW_RUN_REQUIRED",
+      "dataset": "traffic",
+      "method": "debt_cal",
+      "number_of_new_runs": 20,
+      "reason": "new E3 formal after Canary",
+      "seed_block": "30001-30020"
+    },
+    {
+      "classification": "NEW_RUN_REQUIRED",
+      "dataset": "sensorscope",
+      "method": "raven",
+      "number_of_new_runs": 20,
+      "reason": "new E3 formal after Canary",
+      "seed_block": "30001-30020"
+    },
+    {
+      "classification": "NEW_RUN_REQUIRED",
+      "dataset": "uair",
+      "method": "raven",
+      "number_of_new_runs": 20,
+      "reason": "new E3 formal after Canary",
+      "seed_block": "30001-30020"
+    },
+    {
+      "classification": "REUSE_ONLY_NO_RERUN",
+      "dataset": "traffic",
+      "method": "raven",
+      "number_of_new_runs": 0,
+      "reason": "sealed E2 Traffic block",
+      "seed_block": "30001-30020"
+    },
+    {
+      "classification": "NEW_RUN_REQUIRED",
+      "dataset": "sensorscope",
+      "method": "raven_simoracle",
+      "number_of_new_runs": 20,
+      "reason": "new E3 formal after Canary",
+      "seed_block": "30001-30020"
+    },
+    {
+      "classification": "NEW_RUN_REQUIRED",
+      "dataset": "uair",
+      "method": "raven_simoracle",
+      "number_of_new_runs": 20,
+      "reason": "new E3 formal after Canary",
+      "seed_block": "30001-30020"
+    },
+    {
+      "classification": "NEW_RUN_REQUIRED",
+      "dataset": "traffic",
+      "method": "raven_simoracle",
+      "number_of_new_runs": 20,
+      "reason": "new E3 formal after Canary",
+      "seed_block": "30001-30020"
+    },
+    {
+      "classification": "NEW_RUN_REQUIRED",
+      "dataset": "sensorscope",
+      "method": "central_all",
+      "number_of_new_runs": 20,
+      "reason": "new E3 formal after Canary",
+      "seed_block": "30001-30020"
+    },
+    {
+      "classification": "NEW_RUN_REQUIRED",
+      "dataset": "uair",
+      "method": "central_all",
+      "number_of_new_runs": 20,
+      "reason": "new E3 formal after Canary",
+      "seed_block": "30001-30020"
+    },
+    {
+      "classification": "NEW_RUN_REQUIRED",
+      "dataset": "traffic",
+      "method": "central_all",
+      "number_of_new_runs": 20,
+      "reason": "new E3 formal after Canary",
+      "seed_block": "30001-30020"
+    },
+    {
+      "classification": "NEW_RUN_REQUIRED",
+      "dataset": "sensorscope",
+      "method": "central_delivered",
+      "number_of_new_runs": 20,
+      "reason": "new E3 formal after Canary",
+      "seed_block": "30001-30020"
+    },
+    {
+      "classification": "NEW_RUN_REQUIRED",
+      "dataset": "uair",
+      "method": "central_delivered",
+      "number_of_new_runs": 20,
+      "reason": "new E3 formal after Canary",
+      "seed_block": "30001-30020"
+    },
+    {
+      "classification": "NEW_RUN_REQUIRED",
+      "dataset": "traffic",
+      "method": "central_delivered",
+      "number_of_new_runs": 20,
+      "reason": "new E3 formal after Canary",
+      "seed_block": "30001-30020"
+    },
+    {
+      "classification": "EXCLUDED",
+      "dataset": "all",
+      "method": "flamf_original",
+      "number_of_new_runs": 0,
+      "reason": "EXCLUDED_WITH_REASON"
+    }
+  ],
+  "total_new_runs_after_closure": 560
+}

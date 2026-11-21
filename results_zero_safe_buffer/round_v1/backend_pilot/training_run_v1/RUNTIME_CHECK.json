@@ -1,0 +1,59 @@
+{
+  "status": "RUNTIME_READY_UNRUN",
+  "training_executed": false,
+  "pure": {
+    "pass": true,
+    "retry_rule": true,
+    "length_mismatch": {
+      "pass": false,
+      "reason": "composition",
+      "index": 0,
+      "attempt_id": "a|0|0"
+    },
+    "equal_vectors": true,
+    "arrival_rule": true,
+    "resume_cursor": {
+      "seed": 33001,
+      "arm": "F1-Proj-ZS",
+      "next_window": 4,
+      "trace_hash": "probe",
+      "version": 3,
+      "score_points": 0,
+      "registration_versions": [
+        0,
+        3
+      ]
+    },
+    "budget_unchanged_by_resume_read": true,
+    "restore_finally": true,
+    "gate_before_training_stack": true
+  },
+  "memory_gate": {
+    "available_bytes": 4809961472,
+    "rss_bytes": 24043520,
+    "cpu_seconds": 0.140625,
+    "waited_seconds": 0.0,
+    "status": "OK"
+  },
+  "frozen_identity": {
+    "status": "PASS",
+    "n": 1637,
+    "trace_hash": "213a7f5a4512f36369434652dfd3fd220d681488f0490e003d7c051477d9cb57",
+    "path": "C:\\Cursor\\raven.mcs\\results_zero_safe_buffer\\round_v1\\backend_pilot\\training_run_v1\\frozen_reference_seed33001.json"
+  },
+  "heavy_modules_loaded": [
+    "numpy",
+    "pandas",
+    "pyarrow"
+  ],
+  "implementation_cpu_seconds": 5.265625,
+  "implementation_wall_seconds": 67.72281450001174,
+  "implementation_limit_cpu_seconds": 600.0,
+  "implementation_limit_wall_seconds": 1200.0,
+  "training_cpu_seconds": 0.0,
+  "training_wall_seconds": 0.0,
+  "training_limit_cpu_seconds": 2400.0,
+  "training_limit_wall_seconds": 3600.0,
+  "cpu_before_this_process": 3.578125,
+  "budget_monotonic": true
+}

@@ -1,0 +1,55 @@
+{
+  "status": "RESOURCE_BLOCKED",
+  "training_executed": false,
+  "pure": {
+    "pass": true,
+    "retry_rule": true,
+    "length_mismatch": {
+      "pass": false,
+      "reason": "composition",
+      "index": 0,
+      "attempt_id": "a|0|0"
+    },
+    "equal_vectors": true,
+    "arrival_rule": true,
+    "resume_cursor": {
+      "seed": 33001,
+      "arm": "F1-Proj-ZS",
+      "next_window": 4,
+      "trace_hash": "probe",
+      "version": 3,
+      "score_points": 0,
+      "registration_versions": [
+        0,
+        3
+      ]
+    },
+    "budget_unchanged_by_resume_read": true,
+    "restore_finally": true,
+    "gate_before_training_stack": true
+  },
+  "memory_gate": {
+    "available_bytes": 1735626752,
+    "rss_bytes": 24076288,
+    "cpu_seconds": 0.09375,
+    "waited_seconds": 30.017632099974435,
+    "status": "RESOURCE_BLOCKED"
+  },
+  "frozen_identity": {
+    "status": "UNRUN",
+    "reason": "RESOURCE_BLOCKED",
+    "available_bytes": 1735626752,
+    "waited_seconds": 30.017632099974435
+  },
+  "heavy_modules_loaded": [],
+  "implementation_cpu_seconds": 3.453125,
+  "implementation_wall_seconds": 65.47393150001881,
+  "implementation_limit_cpu_seconds": 600.0,
+  "implementation_limit_wall_seconds": 1200.0,
+  "training_cpu_seconds": 0.0,
+  "training_wall_seconds": 0.0,
+  "training_limit_cpu_seconds": 2400.0,
+  "training_limit_wall_seconds": 3600.0,
+  "cpu_before_this_process": 3.40625,
+  "budget_monotonic": true
+}

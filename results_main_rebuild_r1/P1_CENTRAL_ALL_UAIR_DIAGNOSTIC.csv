@@ -1,0 +1,4 @@
+dataset,seed,model,optimizer,lr,track,RMSE_mu,best_pass,best_at_100,improvement_100_to_200,plateau_pass,strongest_baseline,baseline_RMSE,relative_gain,meaningful_validation_pass,elapsed_seconds,samples_processed,optimizer_steps,run
+uair,41001,ndmf,sgd,0.03,central_all,19.467851500207257,1,19.467851500207257,0.0,True,spatial_mean,18.456654353515525,-0.05478767317865084,False,58.95300000000134,1137600,17800,P1\central_all\ndmf\uair\sgd_0.03\seed41001
+uair,41002,ndmf,sgd,0.03,central_all,19.5972638594737,4,19.5972638594737,0.0,True,spatial_mean,18.456654353515525,-0.06179936428949363,False,59.06200000000172,1137600,17800,P1\central_all\ndmf\uair\sgd_0.03\seed41002
+uair,41003,ndmf,sgd,0.03,central_all,19.56311359381209,2,19.56311359381209,0.0,True,spatial_mean,18.456654353515525,-0.05994906872630539,False,41.42199999999866,1137600,17800,P1\central_all\ndmf\uair\sgd_0.03\seed41003

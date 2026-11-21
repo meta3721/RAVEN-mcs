@@ -1,0 +1,14 @@
+artifact_id,paper_role,source_csv,filters,valid_seeds,valid_source_vintage,excluded_evidence,claim_ceiling
+TABLE-1,Dataset summary,06_table_sources/TABLE_DATASET_SUMMARY_R2.csv,frozen metadata only; T-Drive readiness fields only,n/a,E3 protocol closure + E2 SOURCE_HASHES + raw provenance,guessed fields; T-Drive formal results (none),Experimental Setup
+TABLE-2,E3 main effectiveness,06_table_sources/TABLE_E3_MAIN_EFFECTIVENESS.csv,SCI_COMPARABLE_MAIN SensorScope+U-Air,30001-30020,E3 formal new,Traffic NOT_COMPARABLE,"C3,C4"
+TABLE-3,E4 core ablation,06_table_sources/TABLE_E4_CORE_ABLATION_R2.csv,240 cells; w/o-Inst Gen2 only,30001-30020,E4 parent + Inst Gen2,w/o-Inst Gen0/Gen1,"C5,C6,C7,C8"
+FIG-1,E2 risk non-interchangeability,07_figure_sources/FIG1_E2_RISK_NONINTERCHANGEABILITY.csv,E2 complete_aligned / D_aligned,30001-30020,E2 PROFILE-S1,E3 Traffic,"C1,C2"
+FIG-2,E3 structural mismatch,07_figure_sources/FIG2_E3_STRUCTURAL_MISMATCH.csv,SCI_COMPARABLE_MAIN,30001-30020,E3 formal,Traffic,C3
+FIG-3,E4 component removal,07_figure_sources/FIG3_E4_COMPONENT_REMOVAL_R2.csv,final valid 240 cells,30001-30020,E4 Gen2 Inst + parent,Gen0/Gen1 w/o-Inst,"C5,C6,C7,C8"
+OPTIONAL-E1,E1 sanity,06_table_sources/TABLE_E1_BALANCED_SANITY.csv,E1_R2_FINAL_SEALED,28001-28005,E1_R2,,sanity / no-harm
+OPTIONAL-E3-RMSE,E3 RMSE,07_figure_sources/FIG_OPTIONAL_E3_RMSE.csv,SCI_COMPARABLE_MAIN,30001-30020,E3 formal,Traffic,C4
+OPTIONAL-E3-TAIL,E3 Tail_RMSE,07_figure_sources/FIG_OPTIONAL_E3_TAIL_RMSE.csv,SCI_COMPARABLE_MAIN,30001-30020,E3 formal,Traffic,C4
+OPTIONAL-P2,P2 diagnostics,06_table_sources/TABLE_P2_DIAGNOSTICS_SUPPLEMENT.csv,feasibility audit,,E3 P2 certificate seal,certified exact optimality,C10
+OPTIONAL-DEBT,Debt trajectory,07_figure_sources/FIG_OPTIONAL_DEBT_TRAJECTORY.csv,supporting only if present,,sealed states,do not promote to RQ,supporting
+OPTIONAL-ESS,ESS,02_supporting_data/diagnostics_r2/RUNLEVEL_SEALED_SCALARS_R2.csv,run-level ESS scalar,30001-30020,sealed final_metrics.json,not a trajectory,supporting
+OPTIONAL-RUNTIME,runtime,02_supporting_data/diagnostics_r2/RUNLEVEL_SEALED_SCALARS_R2.csv,runtime_seconds,30001-30020,sealed final_metrics.json,not P2-only runtime,supporting

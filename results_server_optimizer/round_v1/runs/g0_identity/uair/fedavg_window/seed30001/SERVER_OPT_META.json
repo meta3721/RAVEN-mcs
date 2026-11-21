@@ -1,0 +1,87 @@
+{
+  "arm": "fedavg_window",
+  "block": "uair",
+  "created_utc": "2026-10-08T08:31:46.048059+00:00",
+  "diag_first": [
+    {
+      "active": true,
+      "applied": true,
+      "g_norm": 2.4837934783061595,
+      "m_norm": NaN,
+      "opt_move_norm": 0.024837934783061597,
+      "sgd_move_norm": 0.024837934783061597,
+      "t": 0,
+      "v_norm": NaN,
+      "window_id": 0
+    },
+    {
+      "active": true,
+      "applied": true,
+      "g_norm": 0.6532232793421864,
+      "m_norm": NaN,
+      "opt_move_norm": 0.006532232793421864,
+      "sgd_move_norm": 0.006532232793421864,
+      "t": 0,
+      "v_norm": NaN,
+      "window_id": 1
+    },
+    {
+      "active": true,
+      "applied": true,
+      "g_norm": 0.4856870898580179,
+      "m_norm": NaN,
+      "opt_move_norm": 0.004856870898580178,
+      "sgd_move_norm": 0.004856870898580178,
+      "t": 0,
+      "v_norm": NaN,
+      "window_id": 2
+    }
+  ],
+  "diag_last": [
+    {
+      "active": true,
+      "applied": true,
+      "g_norm": 1.493074764523912,
+      "m_norm": NaN,
+      "opt_move_norm": 0.01493074764523912,
+      "sgd_move_norm": 0.01493074764523912,
+      "t": 0,
+      "v_norm": NaN,
+      "window_id": 77
+    },
+    {
+      "active": true,
+      "applied": true,
+      "g_norm": 3.334962424352604,
+      "m_norm": NaN,
+      "opt_move_norm": 0.03334962424352604,
+      "sgd_move_norm": 0.03334962424352604,
+      "t": 0,
+      "v_norm": NaN,
+      "window_id": 78
+    },
+    {
+      "active": true,
+      "applied": true,
+      "g_norm": 0.8077168601933014,
+      "m_norm": NaN,
+      "opt_move_norm": 0.008077168601933015,
+      "sgd_move_norm": 0.008077168601933015,
+      "t": 0,
+      "v_norm": NaN,
+      "window_id": 79
+    }
+  ],
+  "local_steps": 2,
+  "n_windows_optimizer_applied": 74,
+  "runtime_seconds": 11.139466200000015,
+  "seed": 30001,
+  "server_opt": {
+    "beta1": 0.9,
+    "beta2": 0.99,
+    "eta_s": 0.01,
+    "mode": "sgd",
+    "tau": 0.001
+  },
+  "tag": "g0_identity"
+}

@@ -1,0 +1,36 @@
+{
+  "claim_statuses": {
+    "C1": "SUPPORTED",
+    "C10": "PARTIALLY_SUPPORTED",
+    "C2": "SUPPORTED",
+    "C3": "SUPPORTED",
+    "C4": "UNSUPPORTED",
+    "C5": "UNSUPPORTED",
+    "C6": "PARTIALLY_SUPPORTED",
+    "C7": "UNSUPPORTED",
+    "C8": "INCONCLUSIVE",
+    "C9": "NOT_TESTABLE_FROM_FROZEN_OUTPUTS"
+  },
+  "freeze_ok": true,
+  "ledger_summary": {
+    "accepted_logical_run_count": 600,
+    "corrupt_ledger_lines": 0,
+    "duplicate_finish_count": 0,
+    "duplicate_start_count": 1,
+    "expected_logical_runs": 600,
+    "interrupted_attempt_count": 0,
+    "known_interrupted_pattern": "extra START without FINISH may exist; acceptance requires one PASS attempt",
+    "ledger_rewritten": false,
+    "orphan_finish_count": 0,
+    "orphan_start_count": 1,
+    "successful_logical_run_count": 600,
+    "training_finish_count": 600,
+    "training_start_count": 601,
+    "unique_run_id_count": 600
+  },
+  "raven_secondary_rows": 72,
+  "scenario_stats_rows": 75,
+  "source_decision": "PASS",
+  "stop_status": "E2_TRAFFIC_ANALYSIS_PARTIALLY_SEALED",
+  "verification_status": "PASS"
+}

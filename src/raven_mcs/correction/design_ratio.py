@@ -27,12 +27,14 @@ def zeta_hat_stratum(
 
     ζ̂_{k,r,s} = π^tar_{k,s} / max(π̂^opp_{k,s,r}, π_min)
     """
-    if pi_min <= 0:
+    if not np.isfinite(pi_min) or pi_min <= 0:
         raise ValueError("pi_min must be positive")
     tar = np.asarray(pi_tar, dtype=np.float64)
     opp = np.asarray(pi_hat_opp, dtype=np.float64)
     if tar.shape != opp.shape:
         raise ValueError("pi_tar and pi_hat_opp must share shape")
+    if not np.all(np.isfinite(tar)) or not np.all(np.isfinite(opp)):
+        raise ValueError("DESIGN_INPUT_ERROR: design-ratio masses must be finite")
     if np.any(tar < 0) or np.any(opp < 0):
         raise ValueError("design-ratio masses must be nonnegative")
     return tar / np.maximum(opp, float(pi_min))

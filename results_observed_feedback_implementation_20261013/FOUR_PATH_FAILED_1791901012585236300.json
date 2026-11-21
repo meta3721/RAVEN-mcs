@@ -1,0 +1,40 @@
+{
+  "error": "RuntimeError('REPRESENTATIVE_ROOT_REQUEST_EXCEEDS_2_CPU: COLD_COMPLETE_CURRENT_P2')",
+  "trace": "Traceback (most recent call last):\n  File \"C:\\Cursor\\raven.mcs\\scripts\\validate_observed_feedback_four_paths.py\", line 315, in <module>\n    operation('COLD_COMPLETE_CURRENT_P2',lambda:controller.decide(cold),judgement=True)\n  File \"C:\\Cursor\\raven.mcs\\scripts\\validate_observed_feedback_four_paths.py\", line 44, in operation\n    if judgement and upper>2.:raise RuntimeError('REPRESENTATIVE_ROOT_REQUEST_EXCEEDS_2_CPU: '+label)\n                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nRuntimeError: REPRESENTATIVE_ROOT_REQUEST_EXCEEDS_2_CPU: COLD_COMPLETE_CURRENT_P2\n",
+  "cases_completed": [],
+  "measurements": [
+    {
+      "label": "STARTUP_AND_FIRST_MIN_CLIENTS",
+      "judgement": true,
+      "first_includes_startup": true,
+      "root_sample_difference_CPU": 1.234375,
+      "conservative_root_upper_CPU": 1.254375,
+      "process_CPU": 0.96875,
+      "root_monitor_delta_CPU": 0.09375,
+      "PID_floor_not_added_to_batch": true,
+      "wall": 1.6650416999982554,
+      "root_id": "2e39ef2d8da349abaa260d1f4260a7e6",
+      "root_sequence": 36,
+      "P2": 0,
+      "cache": 0
+    },
+    {
+      "label": "COLD_COMPLETE_CURRENT_P2",
+      "judgement": true,
+      "first_includes_startup": false,
+      "root_sample_difference_CPU": 2.4375,
+      "conservative_root_upper_CPU": 2.4575,
+      "process_CPU": 2.28125,
+      "root_monitor_delta_CPU": 0.140625,
+      "PID_floor_not_added_to_batch": true,
+      "wall": 3.6383724000006623,
+      "root_id": "2e39ef2d8da349abaa260d1f4260a7e6",
+      "root_sequence": 108,
+      "P2": null,
+      "cache": null,
+      "error": "InputError('CONTROLLER_LOCAL_CPU_TIMEOUT; root cost also required')"
+    }
+  ],
+  "SGD": 0,
+  "scope": "same four frozen interface cases; ordinary engineering errors may be repaired"
+}

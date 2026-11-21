@@ -1,0 +1,95 @@
+{
+  "stage": "P0",
+  "status": "WAITING_USER_REVIEW",
+  "first_trigger_time": "2026-10-12T21:56:21.566330+08:00",
+  "timestamp_scope": "first durable failure record; preceding interactive discovery was not separately timestamp-instrumented",
+  "dataset": "traffic primary; no per-dataset run initiated",
+  "scenario": null,
+  "seed": null,
+  "candidate_method": "reachability_stop/<not-frozen>",
+  "candidate_version": null,
+  "failure_condition_verbatim": "没有候选算法",
+  "failure_category": "INSUFFICIENT_INFORMATION / MISSING_EXECUTABLE_CANDIDATE",
+  "actual_observation": "no candidate stopping definition or live implementation located; existing reachability solver is block L2 geometry, not a stop controller",
+  "numeric_threshold": null,
+  "actual_value": null,
+  "scoring_denominator": null,
+  "paired_baseline": "no new paired run; historical old-v1/fixed_wait_2 values preserved as user-reported evidence",
+  "evidence": "SOURCE_EVIDENCE.json",
+  "production_manifest_probe": "NOT_STARTED_AFTER_FIRST_P0_FAILURE",
+  "secondary_unfinished_dependencies": [
+    "candidate algorithm/version/pseudocode",
+    "dynamic message and U/q process",
+    "actual simulation time unit and horizon T",
+    "sample/attempt/communication caps",
+    "controller decision CPU cap",
+    "exact fixed baseline search set within six",
+    "external algorithm versions and implementations",
+    "paired CI computation details",
+    "confirmation seed contamination audit",
+    "production manifest/checkpoint path validation"
+  ],
+  "confirmed_causes": [
+    "only a block L2 metric found, not dynamic STOP/WAIT action logic",
+    "FullWindowRunner consumes finalized EventTrace U/downloaded_version; adaptive stopping not integrated",
+    "no substantive candidate difference from historical v1 can be established"
+  ],
+  "unverified_hypotheses": [
+    "old v1 source may exist in an out-of-tree or archived workspace",
+    "current production manifest may or may not reproduce prior native crash"
+  ],
+  "not_a_failure_reason": [
+    "known Design/Gate conflict: repaired and accepted",
+    "missing historical E1_R2 audit runs: not a global prerequisite",
+    "old U-Air learning failure: does not bar unlabeled research"
+  ],
+  "mechanism_location": [
+    "candidate definition",
+    "dynamic close/consume/version interface",
+    "policy-specific propensity"
+  ],
+  "claims": {
+    "C1": "NO_NEW_EVIDENCE",
+    "C2": "NO_NEW_EVIDENCE",
+    "C3": "NO_NEW_EVIDENCE",
+    "configured_design_identity": "RETAINED_VALID"
+  },
+  "started_runs": 0,
+  "training_samples_processed": 0,
+  "optimizer_steps": 0,
+  "communicated_bytes": 0,
+  "gpu_training_seconds": 0,
+  "new_synthetic_trajectories": 0,
+  "unstarted_tasks": [
+    "P1",
+    "P2",
+    "P3",
+    "P4",
+    "P5",
+    "P6",
+    "P7"
+  ],
+  "task_disposition": "PENDING; retained, not deleted or automatically resumed",
+  "approval_options": [
+    {
+      "option": "保持方法，补充已有候选源码/旧v1证据",
+      "cap": "up to 0.5 CPU device hour, neural training=0",
+      "resolves": "freeze actual algorithm and substantive input differences; no guarantee of benefits"
+    },
+    {
+      "option": "修复并重验已定义的候选接口",
+      "cap": "up to 2 CPU device hours within P0-P3 8h, neural training=0 before P0 pass",
+      "resolves": "causal dynamic close/version/U-q and save path; requires actual rule before implementation"
+    },
+    {
+      "option": "批准独立新版本/限定经验控制主张",
+      "cap": "first cap 0.5 CPU device hour for specification; implementation budget reviewed separately",
+      "resolves": "explicit changes to method/input/guarantee scope; does not erase old failure"
+    },
+    {
+      "option": "终止该分支",
+      "cap": "no additional training",
+      "resolves": "retain materials and terminate only on explicit user decision"
+    }
+  ]
+}

@@ -1,0 +1,225 @@
+{
+  "diagnosis_entries": 61,
+  "repeated_disclaimer_locations": 17,
+  "source_checks": [
+    {
+      "file": "main.tex",
+      "labels_preserved": true,
+      "displayed_equations_preserved": true,
+      "table_numeric_tokens_preserved": true,
+      "citation_keys_preserved": true,
+      "change_blocks": 69
+    },
+    {
+      "file": "appendix.tex",
+      "labels_preserved": true,
+      "displayed_equations_preserved": true,
+      "table_numeric_tokens_preserved": true,
+      "citation_keys_preserved": true,
+      "change_blocks": 52
+    },
+    {
+      "file": "supplemental.tex",
+      "labels_preserved": true,
+      "displayed_equations_preserved": true,
+      "table_numeric_tokens_preserved": true,
+      "citation_keys_preserved": true,
+      "change_blocks": 4
+    }
+  ],
+  "prose_checks": [
+    {
+      "file": "main.tex",
+      "results": {
+        "scope": "paper",
+        "word_count": 11836,
+        "em_dash_count": 0,
+        "em_dash_limit": 3,
+        "issue_count": 1,
+        "issues": [
+          {
+            "code": "semicolon_density",
+            "severity": "advisory",
+            "count": 76,
+            "per_1000_words": 6.42,
+            "message": "Review semicolon density above two per 1,000 prose words."
+          }
+        ],
+        "input": "natural prose: math, table rows, algorithm syntax and comments excluded"
+      }
+    },
+    {
+      "file": "appendix.tex",
+      "results": {
+        "scope": "paper",
+        "word_count": 8255,
+        "em_dash_count": 0,
+        "em_dash_limit": 3,
+        "issue_count": 2,
+        "issues": [
+          {
+            "code": "uniform_sentence_run",
+            "severity": "warning",
+            "runs": [
+              {
+                "sentences": [
+                  29,
+                  33
+                ],
+                "word_counts": [
+                  5,
+                  9,
+                  7,
+                  9,
+                  9
+                ]
+              },
+              {
+                "sentences": [
+                  30,
+                  34
+                ],
+                "word_counts": [
+                  9,
+                  7,
+                  9,
+                  9,
+                  4
+                ]
+              },
+              {
+                "sentences": [
+                  49,
+                  53
+                ],
+                "word_counts": [
+                  14,
+                  10,
+                  10,
+                  9,
+                  13
+                ]
+              },
+              {
+                "sentences": [
+                  195,
+                  199
+                ],
+                "word_counts": [
+                  6,
+                  5,
+                  7,
+                  5,
+                  3
+                ]
+              },
+              {
+                "sentences": [
+                  196,
+                  200
+                ],
+                "word_counts": [
+                  5,
+                  7,
+                  5,
+                  3,
+                  7
+                ]
+              },
+              {
+                "sentences": [
+                  402,
+                  406
+                ],
+                "word_counts": [
+                  11,
+                  9,
+                  13,
+                  8,
+                  9
+                ]
+              },
+              {
+                "sentences": [
+                  403,
+                  407
+                ],
+                "word_counts": [
+                  9,
+                  13,
+                  8,
+                  9,
+                  9
+                ]
+              },
+              {
+                "sentences": [
+                  404,
+                  408
+                ],
+                "word_counts": [
+                  13,
+                  8,
+                  9,
+                  9,
+                  11
+                ]
+              }
+            ],
+            "message": "Review five-sentence runs with nearly identical length for repeated syntax."
+          },
+          {
+            "code": "semicolon_density",
+            "severity": "advisory",
+            "count": 51,
+            "per_1000_words": 6.18,
+            "message": "Review semicolon density above two per 1,000 prose words."
+          }
+        ],
+        "input": "natural prose: math, table rows, algorithm syntax and comments excluded"
+      }
+    },
+    {
+      "file": "supplemental.tex",
+      "results": {
+        "scope": "paper",
+        "word_count": 409,
+        "em_dash_count": 0,
+        "em_dash_limit": 3,
+        "issue_count": 1,
+        "issues": [
+          {
+            "code": "semicolon_density",
+            "severity": "advisory",
+            "count": 2,
+            "per_1000_words": 4.89,
+            "message": "Review semicolon density above two per 1,000 prose words."
+          }
+        ],
+        "input": "natural prose: math, table rows, algorithm syntax and comments excluded"
+      }
+    }
+  ],
+  "compilation": [
+    {
+      "file": "main.tex",
+      "pdf_written": true,
+      "pages": [
+        "18"
+      ],
+      "undefined_references": false,
+      "overfull_boxes": []
+    },
+    {
+      "file": "supplemental.tex",
+      "pdf_written": true,
+      "pages": [
+        "16"
+      ],
+      "undefined_references": false,
+      "overfull_boxes": [
+        "Overfull \\vbox (2.4194pt too high) has occurred while \\output is active []"
+      ]
+    }
+  ]
+}

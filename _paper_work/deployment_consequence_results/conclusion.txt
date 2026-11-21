@@ -1,0 +1,62 @@
+Deployment-consequence audit (complete_aligned + drifting, 20 seeds).
+Support: client x opportunity_stratum from delta_cs_state_v6.parquet.
+Under-service: omega_r(g) < 0.5 * mu_g; persistently under-served if rate >= 0.5 of active windows.
+Metric B worst-group test RMSE: NOT COMPUTED (not persisted; Tail_RMSE not used).
+
+INVENTORY (what can be computed, from where)
+- Formal E3: NO p2_invocation_states.json. window_metrics keys =
+  a_r_size, active, active_clients, alpha, beta_hat, window_id
+  (no omega, no M, no debt vector).
+- ledger.jsonl: START/FINISH only; no per-window omega/debt.
+- Drifting + FedAU/ObsUse side-path: p2 file exists but is empty except RAVEN.
+- RAVEN drifting p2: 97 windows, M is 220 x n_active, mu/debt are 220-D;
+  omega_r = M @ alpha is recoverable ONLY for those RAVEN runs, so it cannot
+  be used for a 5-method comparison. Formal RAVEN has no p2 file.
+- Usable 5-method quantity: delta_cs_state_v6.parquet atomic_contribution
+  (sums to 1 per active window) on client x opportunity_stratum.
+  400/400 parquet cells present.
+- |G|=4 does not apply to these E3 runs (SensorScope target groups = 220;
+  pair support in parquet overlap ~150, frozen pair_support_size = 440).
+  Common universe = union of pairs observed in any of the five methods.
+
+Group under-service accumulation (underservice_events = sum_g count_g):
+- sensorscope complete_aligned vs FedAU: Holm-sig RAVEN lower, mean_diff=-5.8000, 20/20, p_holm=0.0002
+- sensorscope complete_aligned vs ObsUse: Holm-sig RAVEN lower, mean_diff=-5.8000, 20/20, p_holm=0.0002
+- sensorscope complete_aligned vs FedAvg: ALL TIES (mean_diff=0, 20/20), p_holm=1
+- sensorscope drifting vs FedAU: Holm-sig RAVEN lower, mean_diff=-5.8000, 20/20, p_holm=0.0002
+- sensorscope drifting vs ObsUse: Holm-sig RAVEN lower, mean_diff=-5.8000, 20/20, p_holm=0.0002
+- sensorscope drifting vs FedAvg: ALL TIES (mean_diff=0, 20/20), p_holm=1
+- uair complete_aligned vs FedAU: Holm-sig RAVEN lower, mean_diff=-4.6500, 20/20, p_holm=0.0002
+- uair complete_aligned vs ObsUse: Holm-sig RAVEN lower, mean_diff=-4.6500, 20/20, p_holm=0.0002
+- uair complete_aligned vs FedAvg: ALL TIES, p_holm=1
+- uair drifting vs FedAU: Holm-sig RAVEN lower, mean_diff=-4.6500, 20/20, p_holm=0.0002
+- uair drifting vs ObsUse: Holm-sig RAVEN lower, mean_diff=-4.6500, 20/20, p_holm=0.0002
+- uair drifting vs FedAvg: ALL TIES, p_holm=1
+
+Means (underservice_events):
+- sensorscope complete_aligned: FedAvg=TwoStage=RAVEN 13867.50+/-809.81; FedAU=ObsUse 13873.30+/-809.61
+- sensorscope drifting: FedAvg=TwoStage=RAVEN 13622.15+/-679.37; FedAU=ObsUse 13627.95+/-679.40
+- uair complete_aligned: FedAvg=TwoStage=RAVEN 6684.10+/-375.92; FedAU=ObsUse 6688.75+/-376.57
+- uair drifting: FedAvg=TwoStage=RAVEN 6631.95+/-383.08; FedAU=ObsUse 6636.60+/-382.89
+
+n_persist_groups: identical across all five methods (20/20 ties vs FedAU, ObsUse, and FedAvg)
+on both datasets and both scenarios.
+
+Drift vs complete_aligned: the RAVEN-FedAU gap is the same under drift
+(SS -5.8, U-Air -4.65). Drift does NOT amplify under-service differences.
+
+Author verdict (honest):
+- The Delta_c-s advantage does NOT translate into fewer persistently
+  under-served deployment groups. Persistently under-served pair counts are
+  method-invariant. RAVEN, FedAvg-Window, and TwoStage-Hajek are identical
+  on the 0.5*mu coverage count.
+- Versus FedAU/ObsUse the coverage count is Holm-significantly lower for
+  RAVEN, but the gap is 5.8/13867.5 (~0.04%) on SensorScope and
+  4.65/6684.1 (~0.07%) on U-Air. That is not a material deployment gain.
+- This does NOT support the claim that "worse Delta_c-s -> worse group-level
+  deployment outcomes" at the coverage-threshold operationalization.
+  Delta_c-s remains a statement about mass intensity among already-covered
+  pairs, not about which pairs cross a half-share coverage cutoff.
+- VERDICT_CODE=NOT_SUPPORTED
+- Do not claim ||Q_R||_1=o(S_R) from this audit.
+- Paper: limitation paragraph in Section VII-A; no advantage figure.

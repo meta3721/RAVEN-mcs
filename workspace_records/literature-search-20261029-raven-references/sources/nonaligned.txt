@@ -1,0 +1,1436 @@
+
+=== PAGE 1 ===
+Non-Aligned Multi-Scale Data Completion for
+Sparse Mobile CrowdSensing
+Wenbin Liu1,2, Hao Du 1,2, En Wang 1,2, Dongming Luan 1,2, Bo Yang 1,2, Yongjian Yang1,2, Jie Wu 3
+1 College of Computer Science and Technology, Jilin University, China
+2 Laboratory of Symbolic Computation and Knowledge Engineering of Ministry of Education, Jilin University, China
+3 China Telecom Cloud Computing Research Institute, China
+Email: {liuwb16,duhao22}@mails.jlu.edu.cn, wangen@jlu.edu.cn,
+luandm20@mails.jlu.edu.cn, {ybo,yyj}@jlu.edu.cn, wujie@chinatelecom.cn
+Abstract—Sparse Mobile CrowdSensing has emerged as a
+practical method for data collection, recruiting mobile users to
+collect partial data and leveraging spatiotemporal correlations
+to infer the missing data. To improved the QoS of crowdsourced
+data, existing methods typically assume that the scales of
+collected data are similar. However, in real-world scenarios, the
+diversity of user devices results in data collections that vary in
+scale. More importantly, the collected coarser-scale data points
+often do not perfectly correspond to multiple finer-scale data
+points, resulting in highly complex compositional relationships
+and posing significant challenges for multi-scale data completion.
+To address these challenges, this paper proposes a multi-scale
+data completion framework designed to process and integrate
+multi-scale data with non-aligned compositional relationships.
+We first align features across scales using the least common
+multiple scaling, then enhance the interaction and integration
+of data across scales through a bidirectional processing strategy
+and modified Mamba architectures, specifically ST-Mamba and
+Cross-Mamba. Evaluated on six real-world datasets, our study
+demonstrates the effectiveness of the proposed framework in
+handling multi-scale data completion challenges, particularly
+when dealing with non-aligned compositional relationships.
+Index Terms—Mobile CrowdSensing, Quality of Service, multi-
+scale completion, spatiotemporal data, non-aligned composition.
+I. INTRODUCTION
+Sparse Mobile CrowdSensing (Sparse MCS) [1] has
+emerged as a promising and cost-effective method for data
+collection in diverse real-world scenarios. Sparse MCS recruits
+participants equipped with mobile devices, such as smart-
+phones, vehicles, or drones, to collect partial data. Then, data
+completion, the core of Sparse MCS, utilizes spatiotemporal
+correlations to reconstruct complete data. This ensures data
+completeness while reducing collection costs, thereby enhanc-
+ing Quality of Service (QoS). Currently, Sparse MCS has
+shown its effectiveness in traffic management [2], environ-
+mental monitoring [3], and disaster relief [4].
+However, the differences in data collection scales have been
+significantly neglected by previous research. Existing data
+completion methods in Sparse MCS, such as compressive
+sensing [5], matrix completion [6], and deep learning-based
+techniques [7, 8], often assume that the scales of collected data
+sensed unsensed
+Previous   (Aligned Multi-Scale Data )
+Our    (Non-Aligned Multi-Scale Data)Sensors Diversity
+Scales Diversity
+scale-adjusted resample data integration  ST-Mamba Cross-Mamba input
+fine coarse
+Fig. 1: The Non-Aligned Multi-Scale Scenarios.
+are the same or similar. Nevertheless, in real-world scenarios,
+the diversity of user devices often results in data collections
+that vary in scale [9]. Here, “scale” refers to the sensing range
+of the devices. As shown in Fig. 1 (left part), consider a
+scenario where we aim to collect traffic flow data by recruiting
+three users, each utilizing different devices: a smartphone, a
+vehicle, and a drone. Obviously, the data collected by the
+smartphone covers a smaller area, whereas the drone gathers
+traffic flow data over a much larger range. Such multi-scale
+data demonstrates significant correlations, such as summation
+relationships in traffic flow or averaging patterns in air quality,
+which can enhance data completion. However, existing single-
+scale methods are inadequate for effectively handling multi-
+scale sensing data and leveraging the relationships between
+different scales. Therefore, there is a pressing need for multi-
+scale data completion methods.
+To develop an effective multi-scale data completion method
+for Sparse MCS, three challenges in enhancing QoS arise:
+1) How to handle multi-scale data with non-aligned
+compositional relationships? Recently, a few data mining
+works, such as Pyraformer [10] and Timemixer [11], have
+explored the construction and handling of multi-scale data.
+These studies typically start with single-scale input and artifi-
+cially create multi-scale data through up- and down-sampling.
+As shown in Fig. 1 (right part), due to the sampling process
+ensuring consistent relationships across scales, the created
+coarse-scale data point is perfectly decomposed into fine-scale
+data points. This relationship is referred to as aligned multi-
+scale data , which can be structured and processed using a979-8-3315-4940-4/25/$31.00 © 2025 IEEE
+
+=== PAGE 2 ===
+tree-like framework. However, in practical sensing scenarios,
+the collected coarse-scale data points often do not decompose
+perfectly into multiple fine-scale data points, referred to as
+non-aligned multi-scale data . This leads to irregular and
+intricate relationships between data at different scales, posing
+significant challenges for processing multi-scale data.
+2) How to effectively capture intra-scale and inter-scale
+correlations? Multi-scale data exhibit correlations not only
+within the same scale (intra-scale) but also across different
+scales (inter-scale). Intra-scale correlations describe relation-
+ships within the same scale, providing insights into localized
+relationships. Inter-scale correlations, on the other hand, lever-
+age numerical associations across scales, offering additional
+information for data completion. However, sparse and irregular
+data lead to incomplete relationships within the same scale, af-
+fecting intra-scale correlations by breaking localized patterns.
+Moreover, non-aligned compositional relationships disrupt the
+correspondence between scales, making it difficult to directly
+capture inter-scale correlations. Together, these issues make
+interactions within and across scales particularly challenging.
+3) How to construct a lightweight and effective model
+for handling multi-scale data? Processing multi-scale data
+inherently involves higher complexity than single-scale inputs
+and leads to increased computational overhead. Traditional
+machine learning methods, despite their low computational
+costs, primarily address linear spatiotemporal relationships and
+perform poorly in adapting to multi-scale data processing.
+Conversely, deep learning methods like Transformers [12]
+are highly effective and adaptable but lead to significant
+computational costs. In this context, Mamba [13], an effective
+and lightweight parallel processing architecture, has attracted
+our attention. However, its insensitivity to spatiotemporal
+information limits its applicability in handling multi-scale data.
+To address these challenges, we propose a novel frame-
+work for non-aligned multi-scale data completion. 1) To
+handle non-aligned compositional relationships , we design
+a Scale-Adjusted Resampling Method based on least common
+multiple scaling to align multi-scale structures. Additionally,
+we develop a Spatial Feature Interaction Module (SFIM)
+to address feature differences across scales after positional
+alignment. 2) To effectively capture intra-scale and inter-
+scale correlations, we separately capture intra-scale and inter-
+scale correlations, and introduce a bottleneck mechanism in
+the inter-scale stage to address non-aligned compositional rela-
+tionships. 3) To construct a lightweight and effective model,
+we implement the above interactions using a spatiotemporally
+sensitive variant of Mamba, called ST-Mamba, for intra-scale
+processing, and a modified Cross-Mamba for inter-scale infor-
+mation exchange. Both modules ensure linear computational
+complexity, achieving lightweight and effective processing.
+Our work has the following contributions in enhancing QoS
+of crowdsourced data:
+• We investigate the problem of multi-scale data completion
+in Sparse Mobile CrowdSensing. We propose a novel
+framework that utilizes sparse data collected at differ-
+ent scales with non-aligned compositional relationships,
+enabling comprehensive data completion.
+• We propose an effective multi-scale data representation
+method for data completion. We design a Scale-Adjusted
+Resampling Method to align features across multiple
+scales. Furthermore, we develop the SFIM to address fea-
+ture differences across scales after positional alignment.
+• We propose the ST-Mamba, a spatiotemporally sensitive
+Mamba variant for intra-scale feature interaction. Further-
+more, inspired by bottleneck techniques, we design the
+Cross-Mamba for inter-scale feature interaction.
+• We evaluate the proposed methods using six real-world
+datasets, demonstrating that our approach effectively ad-
+dresses the multi-scale data completion problem.
+II. R ELATED WORK
+A. Sparse Mobile CrowdSensing
+Sparse MCS [1] has emerged as a practical solution for
+QoS data collection, which recruits users to collect partial data
+and leverages spatiotemporal correlations to infer the remain-
+ing ones. Recently, with technological advancements, deep
+learning-based methods have gradually become the de facto
+choices in Sparse MCS. Wang et al. [6] first introduced a deep
+learning-enabled approach to enhance QoS for Sparse MCS .
+Liu et al. [7] also introduced a neural network-based fine-
+grained data completion and prediction framework. Further-
+more, Wang et al. [8] developed a spatiotemporal Transformer
+model for data inference and long-term prediction in Sparse
+MCS. However, current algorithms typically assume that data
+scales are identical or similar, which contradicts the diversity
+of sensing devices in real-world scenarios. Addressing this dis-
+crepancy in multi-scale contexts remains a critical challenge.
+B. Multi-scale Model
+In recent years, many studies have focused on the analysis
+of multi-scale features in spatiotemporal data. Liu et al. [10]
+introduced Pyraformer to enhance prediction accuracy by cap-
+turing scale correlations with a pyramid attention mechanism.
+Similarly, Wang et al. [11] introduced TimeMixer, employing
+a decomposable multi-scale mixing mechanism to integrate
+information from various scales. Chen et al. [14] constructed
+the Multi-Scale Adaptive Graph Neural Network, improv-
+ing feature extraction and integration by learning multi-scale
+graph topologies. Additionally, Zhang et al. [15] presented
+CorrFormer, which uses tree structures to reduce computa-
+tional complexity while maintaining prediction performance.
+Despite these advancements, the diversity of sensing devices
+contributes to challenges with non-aligned multi-scale inputs,
+underscoring the pressing need for further research in this area.
+C. Mamba and Its Variants
+Mamba [13] has been proposed as an efficient architec-
+ture for handling long-range dependencies in sequential data.
+Recently, many studies have focused on the application and
+extension of Mamba. For example, Liu et al. [16] introduced
+
+=== PAGE 3 ===
+publish
+tasks
+8:00 10:00
+. . .
+sense data from a period of time
+. . .
+sensors sensed or inferred  
+ unsensed
+ completion model
+multi-scale inputs results
+scale S 
+scale 1 scale 1 
+scale S 
+. . . . . .
+Platform
+Fig. 2: The workflow of our work: the platform recruits users to collect partial data at multiple scales for data completion.
+Vmamba, which employs a visual state space model for effi-
+cient visual representation learning. This method incorporates
+a cross-scan module to traverse the spatial domain, transform-
+ing non-causal visual images into ordered block sequences
+for processing. Zhu et al. [17] developed Vision Mamba,
+which enhances visual representation learning efficiency by
+randomly shuffling visual images and utilizing a bidirectional
+state space model. Additionally, Li et al. [18] proposed STG-
+Mamba, which leverages a selective state space model for
+spatiotemporal graph learning. Despite advancements, since
+Mamba is designed for sequential tasks, its handling of spatial
+information is limited. Current adaptations struggle with non-
+intuitive sequential traversals. Enhancing Mamba’s spatial
+sensitivity remains a critical challenge.
+III. S YSTEM MODEL AND PROBLEM FORMULATION
+A. System Model
+In this paper, we consider a comprehensive application
+scenario of Sparse MCS. The platform recruits users with
+various devices to collect partial data at specific locations
+and times, and then integrates the collected data. Ultimately,
+the platform utilizes these sparse, multi-scale data to achieve
+complete data collection. To better represent this process, we
+divide the entire sensed map into a grid with a height of H
+and a width of W subareas, and the data collection process is
+segmented into T equal-length time slices.
+Scale. We categorize the sensing capabilities of sensors held
+by users, defined as scales, into S different levels. Each scale,
+denoted as g(s) for level s, represents the magnification factor
+relative to the finest scale 1. For example, a scale of 5 means
+that each sensing unit covers an area of 5×5 units at the finest
+scale 2. This representation helps us to uniformly process and
+analyze data across different scales. For different scales, we
+can divide the map into subareas of varying sizes as follows:
+H (s) = H/g(s), W (s) = W/g(s), s = 1, 2, · · · , S, (1)
+Data. For the time slice t, the data sensed in the row h and
+column w of the sensing map at scale level s is defined as
+1To simplify matters, we assume that all scales inherently contain the finest
+scale. Our method can be easily adapted to other scenarios by assuming the
+finest scale is the greatest common denominator of all scales.
+2To simplify matters, we assume each sensing unit covers a square area.
+x(s)
+t,h,w. Unsensed data is recorded as 0 3. The true value of this
+data is denoted as y(s)
+t,h,w, all true values at scale s are denoted
+as Y(s). To describe the sensing situation at each scale s, we
+introduce a sampling matrix M(s) ∈ RT ×H (s)×W (s)
+, where
+m(s)
+t,h,w = 1 indicates that data in the h−row and w−column
+during the t−time slice has been sensed; if m(s)
+t,h,w = 0, it in-
+dicates unsensed data. The sensed dataset can be expressed as:
+X = {X(1), X(2), · · · , X(S)}, (2)
+X(s) = Y(s) ⊙ M(s), s = 1, 2, · · · , S, (3)
+where X represents all the sensed data across different scales,
+and the dot product ( ⊙) represents the element-wise product.
+Method. Utilizing the completion algorithm I(), we input
+the sensed multi-scale data X to complete the data at all scales,
+which is represented as ˆY. Given that data from all other scales
+can be derived from the finest scale, and because acquiring
+finer-scale data is inherently more challenging, our primary
+metric emphasizes minimizing discrepancies at the finest scale.
+Therefore, we compare ˆY(1) with the ground truth Y(1). We
+denote δ as the error between the completion result and the
+ground truth at the finest scale, expressed as:
+I(X) = ˆY ≈ Y, (4)
+δ( ˆY(1), Y(1)) =
+XT
+i=1
+XH
+j=1
+XW
+k=1
+y(1)
+i,j,k − ˆy(1)
+i,j,k
+ . (5)
+B. Problem Formulation
+Problem [Non-Aligned Multi-Scale Data Completion] :
+Given T time slices, S different scales of data, and H × W
+subareas of the finest scale size, we aim to sense data from a
+limited number of subareas across different scales and utilize
+this data to reconstruct complete data. We strive to minimize
+the error between the completion results and the ground truth.
+min δ( ˆY(1),Y(1))=
+XT
+i=1
+XH
+j=1
+XW
+k=1
+y(1)
+i,j,k − ˆy(1)
+i,j,k
+ . (6)
+3If 0 has a specific meaning, an alternative value will be used.
+
+=== PAGE 4 ===
+strive to minimize the error between the completion results
+and the ground truth. Given that data from all other scales can
+be derived from the finest scale, our primary metric focuses
+on minimizing discrepancies specifically at the finest scale.
+min δ( ˆY(1), Y(1)) =
+T∑
+i=1
+H∑
+j=1
+W∑
+k=1
+⏐⏐
+⏐y(1)
+i,j,k−ˆy(1)
+i,j,k
+⏐
+⏐
+⏐. (7)
+C. Work Flow
+The workflow of our work is shown in Fig. 2. We consider
+an urban Sparse MCS task aimed at acquiring location-specific
+data over a designated time period to infer complete data.
+Initially, the platform publishes sensing tasks to users equipped
+with various sensing devices. These users then collect data in
+specified areas and times, subsequently uploading their data to
+the platform. After a specified period, the platform aggregates
+and categorizes the data according to the sensing scale of
+each user. Ultimately, this data is fed into a completion
+model, which outputs the multi-scale completion results.
+IV. M ETHOD
+A. Overall Structure
+As shown in Fig. 3, the model we proposed consists
+of several key components: Multi-scale Data Representation,
+Intra-scale Feature Interaction, Inter-scale Feature Interaction,
+and the output section. Initially, we perform a preliminary
+data embedding for all scales. Specifically for the finest
+scale, we directly employ ST-Mamba for intra-scale feature
+interaction, while for other scales, we first perform scale-
+aligned downsampling based on the features learned from the
+previous scale to construct new scale features. Subsequently,
+we utilize the Sparse Feature Integration Module (SFIM) to
+merge these newly constructed features with sparse input
+features corresponding to each scale, enriching the information
+obtained. Following this integration, we apply ST-Mamba for
+feature interaction at that scale. Once features from all scales
+have been processed, they are fed into the Inter-scale Feature
+Interaction component, where our Fusion-Mamba mechanism
+explores the relationships among multiple scales. Finally, the
+learned features are fed into the output layer to get the
+completion results across all the scales, and the network is
+trained based on the multi-scale loss.
+B. Multi-scale Data Representation
+1) Data Embedding: Data embedding are pivotal to
+the effectiveness of our completion model. A robust data
+embedding can significantly enhance model performance
+and accuracy. Given that our model is aimed to process
+multi-scale spatiotemporal data, accurately representing the
+spatiotemporal characteristics and scales is key to designing
+the embedding module.
+Our data embedding module, which is inspired by the ST-
+Transformer, includes four principal components: Value em-
+bedding, spatiotemporal position embedding, spatial embed-
+ding and temporal embedding. For unsensed data, following
+the Masked Autoencoder [22] strategy, we embed it with
+Inputs
+SFIM
+Representation
+Embedding
+ST-Mamba
+SFIM
+Intra-scale 
+Interaction
+Outputs
+multi-scale loss
+scale 1 
+…    …
+EmbeddingEmbedding
+ST-Mamba
+  Resample
+ST-Mamba
+ Resample
+Cross-Mamba
+…    …
+scale 2 
+scaleS
+…    …
+Inter-scale 
+Interaction
+Fig. 3: The structure of our model.
+a uniformly randomized learnable vector. The rest of the
+embedding constructions are consistent with [8]. Furthermore,
+to make the model scale-sensitive, we design unique param-
+eters for inputs of different scales, while inputs at the same
+scale share the same parameters. This approach improves the
+model’s adaptability to multi-scale inputs, ensuring that it can
+effectively handle the diverse and dynamic characteristics of
+spatiotemporal data across various scales.
+The embedding of scale s X(s)
+emb∈RT×H(s)×W(s)×dmodel
+can be expressed as:
+X(s)
+emb = X(s)
+val + X(s)
+p + S(s)
+f + T(s)
+f , (8)
+where X(s)
+val represents value embedding, X(s)
+p spatiotemporal
+position embedding, S(s)
+f represents spatial embedding and
+T(s)
+f represents temporal embedding.
+2) Spatial Scale-aligned Downsampling: Accurate scale
+alignment is crucial when handling multi-scale data. Consider
+downsampling a 5×5 data matrix to a 3×3 size. Typically,
+this might involve a convolution operation with a stride of 2,
+kernal size of 2 and padding of 1. While this configuration
+ensures the output size from 5×5 to 3×3, it fails to align
+scales properly. The stride and kernal settings do not consider
+the direct spatial relationships between the original and target
+sizes, potentially leading to spatial misalignments that can
+affect subsequent analyses due to incorrect feature alignment
+and loss of information.
+To address this problem, we develop a novel scale-aligned
+convolution architecture in our model, designed to ensure
+effective alignment between different scales. This approach
+involves an initial upsampling step to align the coarse-scale
+data with the finer-scale spatially, followed by a downsampling
+step to match the dimensions of the target scale.
+For example, to downsample from 3×3 to 2×2, we
+first upsample the 3×3 data to 6×6 (their least common
+multiple size) using a deconvolution operation. Then, we apply
+a standard convolution to downsample from 6×6 to the
+target size of 2×2. This method ensures that the features are
+correctly aligned spatially across scales, effectively addressing
+the challenges of non-hierarchical decomposition in multi-
+scale data processing. Formally,
+X(s)
+conν= relu(conv(relu(deconv(X(s−1)
+rep )))). (9)
+Cross-Mamba
+Cross-Mamba
+Fig. 3: The structure of our model.
+C. Workflow
+Our workflow is shown in Fig. 2. Consider a real-word
+example, platform publishes an urban data sensing task and
+recruits five users for data collection. Two of these users
+employ smartphones (fine-scale), two use vehicles (mid-scale),
+and one operates a drone (coarse-scale). The platform assigns
+specific times and locations for data collection based on the
+scale of each user’s device. Following these directives, the five
+users collect and upload their data. The platform aggregates
+the data across different scales and feeds the spatiotemporal
+maps corresponding to each scale into the completion model,
+ultimately generating completion results for all scales.
+IV. M ETHOD
+A. Overall Structure
+As illustrated in Fig. 3, our model consists of four com-
+ponents: Data Representation, Intra-scale Feature Interaction,
+Inter-scale Feature Interaction, and Output Section. Initially,
+we conduct preliminary data embedding across all scales.
+Subsequently, scale-aligned resampling is utilized to construct
+new scale features from finer-scale features. These newly
+constructed features are then merged with sparse input features
+for each scale via the SFIM, to address feature differences. Fol-
+lowing this, ST-Mamba is employed to process these integrated
+features for intra-scale interaction. After processing features
+from all scales, they are input into the Inter-scale Feature
+Interaction component, where the Cross-Mamba mechanism
+analyzes the relationships among different scales. Finally, we
+use the output layer to get results, and the network is trained
+based on the multi-scale loss.
+B. Multi-scale Data Representation
+1) Data Embedding: Data embedding is crucial for model’s
+performance and accuracy, especially when handling multi-
+scale spatiotemporal data. Our embedding module integrates
+value embedding, position embedding, spatial information (lat-
+itude, longitude, POI) embedding, and temporal information
+(timestamp, holiday) embedding. Furthermore, to enhance the
+model’s responsiveness to different scales, we design different
+parameters for inputs of different scales, while inputs at the
+same scale share the same parameters. This approach improves
+the model’s adaptability to multi-scale inputs, ensuring that it
+Up Down
+deconv
+kernal conv
+kernal
+finish
+deconv
+Fig. 4: The example of scale-adjusted convolution.
+can effectively handle the diverse and dynamic characteristics
+of spatiotemporal data across various scales.
+The embedding of scale s X(s)
+emb ∈ RT ×H (s)×W (s)×dmodel
+can be expressed as:
+X(s)
+emb = X(s)
+val + X(s)
+p + S(s)
+f + T(s)
+f , (7)
+where X(s)
+val represents value embedding, X(s)
+p represents
+spatiotemporal position embedding, S(s)
+f represents spatial
+embedding, and T(s)
+f represents temporal embedding.
+2) Scale-Adjusted Resampling Method: Constructing multi-
+scale features is crucial in multi-scale research, and an effec-
+tive method can significantly boost model efficiency. Our goal
+is to capture the multi-scale characteristics of spatiotemporal
+data across both spatial and temporal dimensions.
+In the spatial dimension, the diversity of sensing devices
+introduces variability in spatial scales. Standard convolutional
+methods often struggle with non-aligned compositional rela-
+tionships between scales. For example, downsampling a 5 × 5
+data matrix to 3 ×3 typically involves a convolution operation
+with a stride of 2, kernel size of 2, and padding of 1. However,
+ideally, each 3 × 3 output cell should correspond to an area
+of approximately 5/3 × 5/3 in the original matrix. Although
+the traditional convolution operation can ensure the correct
+output size, it cannot achieve this non-integer mapping, leading
+to misalignments. These misalignments can cause significant
+information loss and challenges in feature alignment, adversely
+impacting subsequent analyses.
+To address this issue, we develop a novel scale-adjusted
+convolution approach designed to ensure effective alignment
+between different scales. This method includes an initial
+upsampling step to spatially align coarser-scale data with finer-
+scale data, followed by a downsampling step to match the
+dimensions of the target scale. As illustrated in Fig. 4, to
+downsample from 3 × 3 to 2 × 2, we first upsample the 3 × 3
+data to 6 × 6 (their least common multiple size). Then, we
+apply a standard convolution to downsample from 6 ×6 to the
+target size of 2 × 2. This process can be expressed as:
+X(s)
+conν = relu(conv(relu(deconv(X(s−1)
+rep )))), (8)
+where X(s−1)
+rep represents the features from scale s − 1. In
+addition, to enrich features, we utilize both pooling and
+convolution results in constructing the coarse-scale features.
+Here, we employ AdaptivePool to ensure the pooled output is
+aligned to the required dimensions, expressed as:
+X(s)
+pool = AdaptivePool(X(s−1)
+rep ),
+X(s)
+down = Linear(concat(X(s)
+pool, X(s)
+conν)).
+(9)
+
+=== PAGE 5 ===
+down Embedding
+scale s-1 scale s
+deconv
+ conv
+pool
+FFN
+Fig. 5: The structure of Sparse Feature Integration Module.
+In the temporal dimension, as our data collection follows
+fixed time intervals, there is no issue of non-alignment. In
+this case, we adopt a method similar to traditional time series
+analysis by downsampling with a stride of 2 for temporal.
+These techniques allow us to effectively process spatial scales
+and capture connections between long-term and short-term
+data, thus enhancing the depth of our multi-scale data analysis.
+3) Sparse Feature Integration Module (SFIM): After re-
+sampling, the newly constructed features and the originally
+collected sparse data often exhibit significant differences.
+These differences, arising from variations in data scale and in-
+formation content, hinder the effective utilization of both types
+of features. In this respect, we propose SFIM to fuse these two
+types of features, enabling comprehensive data utilization.
+Since the two inputs contain information of two different
+distributions, simple fusion may lead to poor learning and
+ultimately impair model performance. To fully explore and
+leverage the association between these two features, we design
+a bidirectional processing strategy similar to the one in [19].
+As illustrated in Fig. 5, because the features constructed
+represent a coarser time scale, and the input features represent
+a finer time scale, we use deconvolution to upsample the
+features constructed from the previous scale, enhancing their
+time resolution to better match the input fine-scale features. At
+the same time, we use convolution to downsample the direct
+input fine-scale features to align with the constructed coarse-
+scale features. Then, we fuse these two types of features:
+T(s)
+down = deconv(X(s)
+down), Z(s)
+down = T(s)
+down + X(s)
+emb, (10)
+T(s)
+emb = conv(X(s)
+emb), Z(s)
+emb = T(s)
+emb + X(s)
+down. (11)
+Additionally, to further optimize the feature integration
+process, we introduce a weight matrix W, calculated through
+a Feed Forward Neural Network (FFN) that combines the
+previously fused two types of features, outputting a weight
+value to dynamically adjust the contribution of each scale
+feature in the final integration output.
+W = σ(FFN(pool(Z(s)
+down) + Z(s)
+emb)), (12)
+X(s)
+rep = W ⊙ Z(s)
+down + (1 − W) ⊙ Z(s)
+emb. (13)
+where (⊙) denotes element-wise multiplication and σ denotes
+the sigmoid function. This method enables us to adaptively
+adjust the impact of features based on their information and
+importance, thereby maximizing the utilization of limited
+information while minimizing information loss.
+Norm
+Mamba Block
+L×
+Conv1D
+σ
+SSM
+σ
+Linear projection
+Sequence transform
+Multiplication
+σ SiLU activation
+Mamba Block
+Space-Sensitive Block
+Sort Nodes
+idx
+ReSort Nodes
+𝑲𝑸
+MatMul
+Scale
+Softmax
+Sum
+Space-Sensitive
+Block
+ST-Mamba
+Fig. 6: The structure of ST-Mamba model.
+C. Intra-scale Feature Interaction
+An important issue in dealing with multi-scale data is
+to capture intra-scale information correlations. Currently, the
+attention-based architectures, such as Transformers, are com-
+monly employed to capture these relationships due to their
+comprehensive capabilities. However, the quadratic complex-
+ity of Transformers leads to substantial computational over-
+head. While some attempts have been made to address this
+issue by deploying lighter variants of Transformers, these
+efforts often result in reduced effectiveness. Consequently,
+Mamba has emerged as a promising alternative due to its
+potential for efficiency. However, Mamba lacks spatiotemporal
+sensitivity, which we address with our ST-Mamba design.
+1) Mamba: Mamba is a lightweight model designed to
+handle sequential problems, essentially an improvement on
+State Space Models (SSM) [20]. SSM is based on a continuous
+system that models the evolution of internal states over time.
+The continuous system can be expressed as:
+h′(t) = Ah(t) + Bx(t), y (t) = Ch(t), (14)
+where h(t) ∈ RN represents hidden state, A ∈ RN ×N repre-
+sents evolution parameter, B ∈ RN ×1 and C ∈ RN ×1 repre-
+sent projection parameters. To make the system applicable to
+real-world scenarios, the continuous system is discretized by
+the Zero-Order Hold method. This transformation converts the
+continuous parameters A, B, and C into discrete counterparts:
+¯A = exp(∆A), ¯B = (∆A)−1(exp(∆A) − I) · B, (15)
+ht = ¯Aht−1 + ¯Bxt, yt = Cht. (16)
+where ∆ represents the sampling time interval.
+SSM models are designed for linear time-invariant scenar-
+ios, however, many real-world scenarios are non-linear time-
+variant. To overcome this limitation, Mamba introduces an
+input-dependent selection mechanism that enables effective in-
+formation filtering from the input. Specifically, the parameters
+B ∈ RB×L×N , C ∈ RB×L×N and ∆ ∈ RB×L×N are directly
+derived from the input data x ∈ RB×L×N , thereby enhancing
+adaptability and processing efficiency in dynamic environ-
+ments. Mamba also introduces the selective scan method to
+
+=== PAGE 6 ===
+global view
+local view
+down
+cal
+score
+0.2 0.2
+0.2 0.4
+0.1
+0.5 0.2
+0.1 0.2 0.3
+0.3 0.3
+0.3 0.1
+0.4
+0.4 0.1
+0.2 0.3
+0.2
+0.08 0.02
+0.04 0.06
+0.02
+ 0.02
+0.02
+ 0.04
+0.12
+ 0.12
+0.12
+ 0.04
+0.15 0.06
+0.03 0.06
+Fig. 7: The structure of importance score calculation method
+with complexity optimization.
+improve data scanning and processing efficiency, significantly
+boosting inference speed, which can be expressed as:
+K = (CB, CAB, . . . ,CA
+L−1
+B), y = x ∗ K, (17)
+where K is a structured convolutional kernel.
+2) ST-Mamba: Our task involves handling spatiotemporal
+data, making the capture of spatiotemporal correlations crucial.
+[21] has demonstrated the feasibility of applying Mamba to
+time series data, effectively capturing temporal dependencies.
+However, since Mamba is designed for sequential tasks, its
+architecture is insensitive to spatial information. To address
+this issue, we have improved the original Mamba architecture
+to better capture spatial correlations.
+In sequential models like Mamba, later nodes are inher-
+ently more important as they incorporate the receptive fields
+of preceding nodes. This property works well for temporal
+sequences where the order of data collection is linear and
+sequential. However, in the context of spatiotemporal data, the
+spatial arrangement of nodes is not naturally ordered, posing
+a challenge in effectively capturing spatial correlations.
+To tackle this issue, we propose the ST-Mamba architecture.
+As illustrated in Fig. 6, we first input the data into a Space-
+Sensitive Block to determine the importance of spatial nodes.
+After sorting the nodes based on their spatial importance, we
+feed the ordered data into Mamba. Within the Space-Sensitive
+Block, we utilize an attention mechanism to calculate the
+scores of nodes based on their spatial relevance. Here, we
+employ spatial attention, which focuses solely on nodes within
+the same time slice, ensuring that temporal order is preserved
+and that the computational complexity remains linear with
+respect to time 4. This process can be expressed as:
+Q(s)
+Sp = X(s)
+repWQ
+Sp, K(s)
+Sp = X(s)
+repWK
+Sp, (18)
+attn(s)
+Sp = softmax(Q(s)
+SpK(s)
+Sp /
+p
+dk), (19)
+where WQ
+Sp and WK
+Sp are learnable weights for the spatial
+dimensions, and √dk is the dimension of K(s)
+Sp . Unlike simply
+stacking attention and Mamba blocks, our method uses atten-
+tion scores to assign spatial order to the nodes, effectively
+4In practical applications, as the sensed map is fixed, the number of spatial
+points remains constant and can be viewed as a fixed value.
+Scale S Scale S+1
+space
+time
+time
+space
+time 
+slice time 
+slice
+origin features bottlenecks 
+…             …            …
+Fig. 8: The example of Cross-Mamba.
+enhancing spatial information integration. This method not
+only retains the lightweight advantage of the Mamba model
+but also enhances its sensitivity to spatial information, making
+it more efficient and accurate in handling spatiotemporal data.
+3) Complexity Optimization: Due to the large number of
+spatial nodes at the finest scale, the computational overhead
+remains significant. For this purpose, we simplify the finest
+scale calculation process. As illustrated in Fig. 7, we first
+downsample the data to obtain global features and calculate
+the global scores. For the finest-scale nodes within the corre-
+sponding coarse-scale nodes, we compute their local scores.
+The final score of a node at the current scale is the product
+of the global score of its coarse-scale region and its local
+score. Finally, we use a learnable weight to perform a weighted
+average of the scores across different scales, as detailed below:
+score(s) = Global(s)(X(1)
+rep) × Local(s)(X(1)
+rep),
+score =
+XS
+s=2
+score(s) × ws−1,
+(20)
+where Global(s) and Local(s) denote the global and local
+score calculation methods from the perspective of scale s, and
+w represents the learnable weight. Ultimately, we denote the
+intra-scale interaction features at scale s as X(s)
+intra:
+X(s)
+intra = ST-Mamba(X(s)
+rep). (21)
+D. Inter-scale Feature Interaction
+Capturing correlations between multiple scales in multi-
+scale tasks is crucial. Unlike the Transformer architecture,
+which achieves direct interaction through cross-attention,
+Mamba struggles with direct interactions between multiple
+data scales. Simply inputting all scale data into a single
+Mamba model poses two problems: determining the order
+of multi-scale information and incurring significant computa-
+tional overhead. Inspired by the bottleneck architecture [22],
+we integrate this structure into Mamba, called Cross-Mamba.
+The bottleneck architecture significantly reduces computa-
+tional cost while preserving the main features of the data.
+As illustrated in Fig. 8, since the later nodes in the Mamba
+architecture can learn from the preceding nodes, we append
+additional empty nodes (bottlenecks) to the original sequence
+and input them into ST-Mamba to enable the learning of global
+receptive fields. Subsequently, we prepend the learned content
+to finer-scale nodes, allowing them to learn the receptive fields
+
+=== PAGE 7 ===
+of coarser scales. Similarly, the final empty nodes obtain global
+receptive fields, and this process is repeated down to the finest
+scale. We place bottleneck nodes at the end of each time
+dimension to capture all spatial information within each time
+slice:
+[X(1)
+inter, E(1)] = STM
+
+[X(1)
+intra, B(1)]
+
+, (22)
+[ , X(s)
+inter, E(s)] = STM
+
+[E(s−1), X(s)
+intra, B(s)]
+
+, (23)
+[ , X(S)
+inter] = STM
+
+[E(S−1), X(S)
+intra]
+
+, (24)
+where represents placeholder, STM represents ST-Mamba
+method, B(s) represents bottleneck nodes of scale s, E(s)
+represents the learned information, and s ∈ [2, S − 1]. This
+ensures a comprehensive learning process, leveraging the bot-
+tleneck structure to effectively capture multi-scale correlations.
+E. Multi-scale Loss
+For each scale, we use a linear layer to obtain the final
+completion results and consider the completion effect of each
+scale during the final loss calculation. Formally:
+ˆY(s) = Linear(X(s)
+inter), (25)
+L =
+XS
+s=1
+Cs × MSE( ˆY(s), Y(s)), (26)
+where Cs is a constant denoting the weight of the s-th scale
+result. We show our whole workflow in Algorithm 1.
+V. THEORETICAL ANALYSIS
+We prove the necessity of multi-scale data utilization in
+Theorem 1 and the complexity of ST-Mamba in Theorem 2.
+Definition 1. Let Xmulti denote the multi-scale data repre-
+sentation information, and let Xsingle denote the input data
+information at only single scale.
+Theorem 1. The mutual information between Xmulti and the
+target variable Y consistently exceeds the mutual information
+between Xsingle and Y.
+Proof. Mutual information is defined as follows:
+I(Y; Xmulti) = H(Y) − H(Y | Xmulti),
+I(Y; Xsingle) = H(Y) − H(Y | Xsingle), (27)
+where H(Y) denotes the entropy of Y, and H(Y | Xmulti)
+and H(Y | Xsingle) represent the conditional entropy given
+multi-scale and single-scale data, respectively.
+Since Xmulti is constructed by integrating data from mul-
+tiple scales, it inherently encapsulates all the information
+in Xsingle and additional features from other scales. This
+additional information reduces the uncertainty of the target
+variable Y, leading to:
+H(Y | Xmulti) ≤ H(Y | Xsingle). (28)
+Combining Eq. (27) and Eq. (28), we obtain:
+I(Y; Xmulti) ≥ I(Y; Xsingle), (29)
+Algorithm 1: The algorithm of our method.
+Input: X - sparse multi-scale inputs
+1 while not convergent and count < MAX ITER do
+2 Data Representation:
+3 X(1)
+emb ← Eq.(7)(X(1));
+4 X(1)
+rep ← X(1)
+emb;
+5 for each s in [2, S] do
+6 X(s)
+emb ← Eq.(7)(X(s));
+7 X(s)
+down ← Eq.(9)(X(s−1)
+rep );
+8 X(s)
+rep ← Eq.(12)(X(s)
+emb, X(s)
+down);
+9 Intra-scale Feature Interaction:
+10 for each s in [1, S] do
+11 X(s)
+intra ← Eq.(21)(X(s)
+rep);
+12 Inter-scale Feature Interaction:
+13 [X(1)
+inter, E(1)] ← Eq.(22)([X(s)
+intra, 0]);
+14 for each s in [2, S − 1] do
+15 [X(s)
+inter, E(s)] ← Eq.(23)([E(s−1), X(s)
+intra, 0]);
+16 X(S)
+inter ← Eq.(24)([E(S−1), X(s)
+intra]);
+17 Output:
+18 for each s in [1, S] do
+19 ˆY(s) ← Eq.(25)(X(s)
+inter);
+20 L ← Eq.(26)( ˆY, Y);
+21 return ˆY(1).
+indicating that the multi-scale representation improves the
+mutual information with the target variable Y compared to
+single-scale data. This result highlights the importance of
+utilizing multi-scale data for completion.
+Definition 2. Denote L(s) = H/g(s) × W/g(s) as the number
+of spatial nodes, T as the number of time slices.
+Theorem 2. The computational complexity of ST-Mamba is
+linear with respect to the number of time slices T .
+Proof. ST-Mamba is composed of two main parts: the spa-
+tial sensitivity module and the Mamba processing unit. In
+the spatial sensitivity module, for each scale s (except the
+finest scale), the computational complexity is governed by
+the interactions within each time slice. This results in a
+complexity T ×
+ 
+L(s)2
+. The finest scale is calculated dif-
+ferently, following Eq. (20), its computational complexity is:PS
+s=2
+h
+T ×
+ 
+L(s)2i
+. Adding the linear Mamba complexity
+for processing all scales, which is PS
+s=1 T × L(s). The total
+complexity becomes:
+T ×
+
+2 ×
+XS
+s=2
+
+L(s)
+2
++
+XS
+s=1
+L(s)
+
+. (30)
+Since the sensed map is deterministic in real scenarios,
+L(s) can be treated as a constant. Thus the complexity of ST-
+Mamba is linearly related to T .
+
+=== PAGE 8 ===
+TABLE I: Completion performance under the same sensed quantity.
+Data
+Set
+Air-Quality Weather Traffic
+PM2.5 PM10 Humidity Temperature P1 P2
+Models MSE MAE MSE MAE MSE MAE MSE MAE MSE MAE MSE MAE
+MF 60.070 7.000 60.146 7.000 33.601 4.465 363.61 16.543 6250.6 42.251 8623.4 49.746
+DMF 69.753 6.175 68.866 6.134 57.170 5.738 351.84 13.621 14660.8 69.171 18115.0 76.284
+GCN 2.969 1.545 2.865 1.520 2.158 1.064 61.313 5.466 599.94 14.880 938.05 17.785
+Mamba 2.220 0.945 2.662 1.008 3.069 1.220 35.419 4.048 491.85 12.914 710.42 15.594
+Informer 2.526 1.288 3.374 1.506 2.949 1.294 47.384 4.984 534.42 13.717 627.17 14.207
+Timesnet 1.359 0.855 1.729 1.005 2.317 1.111 44.491 4.837 451.28 13.196 568.56 14.799
+TS-BGMC 3.589 1.424 3.585 1.426 22.33 3.565 384.365 15.799 9452.02 51.930 12601.53 60.269
+ST-Transi 1.108 0.765 1.221 0.802 1.306 0.873 13.782 2.665 425.81 12.214 520.97 13.710
+ST-Mamba 0.989 0.703 1.053 0.740 2.294 1.086 30.410 3.812 480.95 12.804 594.77 14.281
+Our 0.857 0.653 1.009 0.723 1.269 0.859 13.179 2.616 419.18 12.043 500.97 13.510
+0 .010 .020 .030 .040 .050.40.81.21.62.02.42.8MSES
+ense Ratio 
+Our   ST-Mamba   Mamba GCN  ST-Transi  Timesnet
+(a) PM2.5
+0 .010 .020 .030 .040 .050.40.81.21.62.02.42.8MSES
+ense Ratio 
+Our   ST-Mamba   Mamba GCN  ST-Transi  Timesnet (b) PM10
+0 .010 .020 .030 .040 .050.40.81.21.62.02.42.83.2MSES
+ense Ratio 
+Our   ST-Mamba   Mamba GCN  ST-Transi  Timesnet (c) Temperature
+0 .010 .020 .030 .040 .05102030405060MSES
+ense Ratio 
+Our   ST-Mamba   Mamba GCN  ST-Transi  Timesnet (d) Humidity
+0 .010 .020 .030 .040 .05300350400450500550600MSES
+ense Ratio 
+Our   ST-Mamba   Mamba GCN  ST-Transi  Timesnet (e) P1
+0 .010 .020 .030 .040 .05300400500600700800900MSES
+ense Ratio 
+Our   ST-Mamba   Mamba GCN  ST-Transi  Timesnet (f) P2
+Fig. 9: Completion performance under different sensed ratios with multi-scale inputs.
+0
+.050.040.030.020.010 .20.30.40.50.60.70.80.90
+.010
+.020
+.030
+.040
+.05s
+ense ratio2sense ratio1M
+SE
+(a) scale1,scale2
+0
+.050.040.030.020.010 .20.30.40.50.60.70.80.90
+.010
+.020
+.030
+.040
+.05s
+ense ratio3sense ratio1M
+SE (b) scale1,scale3
+0
+.050.040.030.020.010 .30.40
+.50
+.60
+.70
+.80
+.90
+.010
+.020
+.030
+.040
+.05s
+ense ratio4sense ratio1M
+SE (c) scale1,scale4
+0
+.050.040.030.020.010 .30.40
+.50
+.60
+.70
+.80
+.90
+.010
+.020
+.030
+.040
+.05s
+ense ratio3sense ratio2M
+SE (d) scale2,scale3
+0
+.050.040.030.020.010 .40
+.50
+.60
+.70
+.80
+.90
+.010
+.020
+.030
+.040
+.05s
+ense ratio4sense ratio2M
+SE (e) scale2,scale4
+0
+.050.040.030.020.010 .30.40
+.50
+.60
+.70
+.80
+.90
+.010
+.020
+.030
+.040
+.05s
+ense ratio4sense ratio3M
+SE (f) scale3,scale4
+Fig. 10: Completion performance under two different scales.
+VI. P ERFORMANCE EVALUATION
+A. Setting
+1) Datasets: We conduct experiments on three datasets.
+Air-Quality5 is derived from CHAP [23, 24] and contains
+meteorological air quality data. We select PM2.5 and PM10
+as the experimental datasets and select 20 × 20 stations.
+Weather6 contains meteorological data from 2017 to 2018.
+We select Humidity and Temperature as the experimental
+datasets and select 24 × 12 stations for experiments.
+Traffic7 is derived from TaxiBJ [25], which contains mete-
+orological traffic flow data in Beijing. We select P1 and P2 as
+the experimental datasets and select 16 × 16 stations.
+2) Data Preprocessing: We set the total number of scales
+to 4. To demonstrate the adaptability of our proposed method
+to real-world scenarios with non-aligned compositions, we use
+different scales for different datasets. Specifically, the scales
+for the Air-Quality dataset are set to 1, 2, 4, and 5, and for
+the Weather dataset, they are 1, 2, 3, and 6. Additionally, to
+prove that our approach is also effective in aligned scenarios,
+the scales for the Traffic dataset are set to 1, 2, 4, and 8.
+We preprocess the data to obtain results at different scales.
+Taking the scale of 2 as an example, we downsample the
+original data by a factor of 2 × 2. The downsampling rules
+5https://nnu.geodata.cn/featured data.html
+6https://www.kdd.org/kdd2018/kdd-cup
+7https://gitee.com/arislee/taxi-bj
+follow the inherent patterns of the data: for Air-Quality and
+Weather use averaging, while Traffic for summation.
+3) Baselines: We categorize the existing methods into
+three categories: temporal interpolation, spatial completion and
+spatiotemporal completion methods.
+Spatial Completion Methods: We consider MF [26], which
+is based on matrix factorization; DMF [27], a neural network
+implementation of matrix factorization; and GCN [28], which
+utilizes a graph convolutional network approach.
+Temporal Interpolation Methods: We consider Mamba
+[13], a linear-time sequence modeling method; Informer,
+which employs sparse attention mechanisms [29]; and Times-
+net [30], a general approach to time series embedding.
+Spatiotemporal Completion Methods: We analyze meth-
+ods like ST-BGMC [7], a matrix completion technique that uti-
+lizes spatiotemporal constraints; ST-Transi [8], a Transformer-
+based method; and our own proposal, ST-Mamba, a variant of
+Mamba model designed to handle spatiotemporal data.
+4) Experimental Settings: In our experiment, the datasets
+are divided into training, validation, and test sets in a 7 : 2 : 1
+ratio. We use Mean Squared Error (MSE) and Mean Abso-
+lute Error (MAE) as our evaluation metrics. All experiments
+are conducted under PyTorch and accelerated using a single
+NVIDIA GeForce RTX 3090 GPU. In our model dmodel is set
+to 64, T is set to 16, model layer is set to 1 and bottleneck size
+is set to 4. To better complement the results at finer scales,
+we give them more weight, so C is set to {0.4, 0.3, 0.2, 0.1 }.
+
+=== PAGE 9 ===
+B. Completion Performance
+1) Performance under the same sensed quantity: We con-
+duct experiments with a sensing rate of 0.01 for each scale
+input. Since existing completion methods are designed for
+single-scale, we ensure a fair comparison by inputting the
+finest scale data with the total sensing amount from all
+scales into other models. As shown in TABLE I, our method
+significantly outperforms the others. In real-world multi-scale
+scenarios, the worse performance of single-scale methods
+highlighting the effectiveness of leveraging multi-scale data.
+2) Performance under the finest scale sense ratios: We
+evaluate model completion effects under different finest scale
+sensing ratios, with a 0.01 ratio for other scales. The number
+of sensed data for other models matches the total number
+from all scales in our method. As shown in Fig. 9, our multi-
+scale model excels due to its ability to capture multi-scale data
+correlations. Although it sometimes lags behind Transformer-
+based models, it has significantly lower overheads. For Air-
+Quality and Weather datasets, high spatial similarity enhances
+spatiotemporal algorithm performance. For the Traffic dataset,
+stronger temporal correlations result in similar performance
+between spatiotemporal and temporal algorithms, causing
+overlap in the graph. Additionally, comparisons with ST-
+Mamba demonstrate the effectiveness of Cross-Mamba.
+3) Performance under multi-scale sense ratios: Fig. 10 fur-
+ther explores the impact on model completion performance as
+the sense ratios of two scales are increased. Due to experimen-
+tal constraints, this part of the study is only conducted on the
+PM2.5 dataset. The results show that the overall performance
+of the model tends to increase as the scale increases and that
+finer scales provide better results for the same sensing range.
+C. Ablation Study
+Due to the space constraints, we use PM2.5, Humidity and
+P1 as the representative datasets for our experiments.
+TABLE II: Performance of different resample methods.
+Method Air Weather Traffic
+MSE MAE MSE MAE MSE MAE
+scale-adjusted+pool0.857 0.653 1.269 0.859 419.177 12.043
+scale-adjusted 0.877 0.673 1.292 0.873 448.466 12.157
+pool 0.975 0.717 1.512 0.949 464.561 12.377
+conv 0.974 0.716 1.452 0.930 497.299 12.579
+1) Resample method: We compared the performance of
+mainstream resampling methods with our proposed up-down
+sampling approach. As shown in TABLE II, our method,
+which considers the alignment of scale features, significantly
+outperforms other methods. Additionally, considering both
+pooling and convolution information yields superior results.
+2) Feature integration module: We compared our SFIM
+with two common methods, Insert and Concat. Specifically,
+Insert involves directly filling the sparse input features into the
+downsampled features, while Concat involves concatenating
+both feature sets followed by a linear layer for feature fusion.
+The results, as illustrated in Fig. 11, show superior perfor-
+mance with our approach. This improvement is attributed to
+0
+.10 .20 .30 .40 .50.00
+.20
+.40
+.60
+.81
+.0M
+SES
+ense Ratio 
+S FIM   
+I nsert   
+C oncat
+(a) Air
+0
+.10 .20 .30 .40 .50
+.60
+.81
+.01
+.21
+.4M
+SES
+ense Ratio 
+S FIM   
+I nsert   
+C oncat (b) Weather
+0
+.10 .20 .30 .40 .53
+004
+005
+00M
+SES
+ense Ratio 
+S FIM   
+I nsert   
+C oncat (c) Traffic
+Fig. 11: Performance of feature integration module.
+the distinct data distributions in the two inputs; simplistic
+approaches tend to allow these distributions to interfere with
+each other, leading to a decrease in performance.
+0 .010 .020 .030 .040 .050.30.40.50.60.70.80.91.01.1MSES
+ense Ratio 
+Our  Self-Attn    Linear
+(a) Performance
+8 1 62 43 24 002468101214Memory(GB)T
+ime Slices 
+Our  Self-Attn    Linear (b) Memory
+8 1 62 43 24 010203040506070Speed(s/epoch)T
+ime Slices 
+Our  Self-Attn    Linear (c) Speed
+Fig. 12: Performance and cost of Space-Sensitive Block.
+3) Space-Sensitive Block: Through previous experiments,
+we have demonstrated the superior performance of our pro-
+posed ST-Mamba compared to the origin Mamba, highlighting
+the effectiveness of our space-sensitive module. Therefore,
+this section will not redundantly prove the effectiveness of
+this method through further experiments. Instead, we will
+conduct detailed experiments on the complexity optimization
+of our space-sensitive module, examining both performance
+and overhead. We conducted comparative analyses among
+linear scoring [31] and original self-attention scoring. As
+shown in Fig. 12, our approach effectively reduces the model’s
+complexity without causing significant performance loss.
+2
+46810121416182020181614121086420
+.1700.6401.1101.5802.0502.5202.990
+(a) Air
+2
+468101214161614121086420
+.5050.6600.8150.9701.1251.2801.435 (b) Traffic
+Fig. 13: Visualization of spatial importance.
+D. Spatial Sensitivity Analysis
+We have shown the importance of spatial nodes for air and
+traffic. As illustrated in the Fig. 13, the importance scores
+for air quality data are notably concentrated in specific urban
+areas, likely indicating regions with significant environmental
+pressures or monitoring demands, such as industrial activity
+zones. Conversely, the importance scores for traffic flow
+data are more uniformly distributed across the entire city,
+suggesting a widespread impact and connectivity of the urban
+traffic system. These differences suggest that our model can
+be responsive to different types of urban data.
+TABLE III: Computing overhead for main methods.
+Mamba Transformer Our
+running time 22 s/epoch 246 s/epoch 39 s/epoch
+memory cost 1520 MB 47624 MB 2050 MB
+
+=== PAGE 10 ===
+E. Computing Overhead
+We compared the computational overhead of our model
+with Mamba and Transformer architectures. As shown in
+TABLE III, our model achieves significantly improved com-
+pletion performance with computational costs slightly higher
+than Mamba, but substantially lower than those of the Trans-
+former. This demonstrates our model’s efficiency in balancing
+performance with computational demands.
+VII. C ONCLUSION
+In this paper, we introduce a novel multi-scale data com-
+pletion framework designed to address the challenges posed
+by non-aligned multi-scale data in Sparse Mobile Crowd-
+Sensing scenarios. We construct multi-scale data under non-
+aligned compositional relationships using our scale-adjusted
+resampling architecture and merge it with sparse multi-scale
+inputs through the SFIM. Then, we employ ST-Mamba and
+Cross-Mamba for intra-scale and inter-scale interactions, re-
+spectively. Our future work delves into the dynamic handling
+of temporal scales and explores the relationship between multi-
+scale data collection locations and model performance, aiming
+to further exploit the potential of multi-scale data.
+ACKNOWLEDGMENT
+This work is supported in part by Jilin Science and
+Technology Research Project 20250102220JC, National
+Natural Science Foundation of China under Grant Nos.
+62472194 and 62272193, and Graduate Innovation Fund
+of Jilin University No. 2025CX212. En Wang is the
+corresponding author of this paper.
+REFERENCES
+[1] L. Wang, D. Zhang, Y . Wang, C. Chen, X. Han, and A. M’hamed,
+“Sparse mobile crowdsensing: challenges and opportunities,” IEEE
+Communications Magazine, vol. 54, no. 7, pp. 161–167, 2016.
+[2] F. Calabrese, G. Di Lorenzo, and C. Ratti, “Human mobility prediction
+based on individual and collective geographical preferences,” in 13th
+International IEEE Conference on Intelligent Transportation systems ,
+2010, pp. 312–317.
+[3] L. Chen, J. Hoey, C. D. Nugent, D. J. Cook, and Z. Yu, “Sensor-
+based activity recognition,” IEEE Transactions on Systems, Man, and
+Cybernetics, vol. 42, no. 6, pp. 790–808, 2012.
+[4] A. Crooks, A. Croitoru, A. Stefanidis, and J. Radzikowski, “# earth-
+quake: Twitter as a distributed sensor system,” Transactions in GIS ,
+vol. 17, no. 1, pp. 124–147, 2013.
+[5] Y . Mostofi, “Compressive cooperative sensing and mapping in mobile
+networks,” IEEE Transactions on Mobile Computing , vol. 10, no. 12,
+pp. 1769–1784, 2011.
+[6] E. Wang, M. Zhang, Y . Yang, Y . Xu, and J. Wu, “Exploiting outlier value
+effects in sparse urban crowdsensing,” in IEEE/ACM Ixnternational
+Symposium on Quality of Service , 2021, pp. 1–10.
+[7] W. Liu, Y . Yang, E. Wang, and J. Wu, “Fine-grained urban prediction
+via sparse mobile crowdsensing,” inIEEE 17th International Conference
+on Mobile Ad Hoc and Sensor Systems , 2020, pp. 265–273.
+[8] E. Wang, W. Liu, W. Liu, C. Xiang, B. Yang, and Y . Yang, “Spatiotem-
+poral transformer for data inference and long prediction in sparse mobile
+crowdsensing,” in IEEE Conference on Computer Communications ,
+2023, pp. 1–10.
+[9] N. D. Lane, E. Miluzzo, H. Lu, D. Peebles, T. Choudhury, and A. T.
+Campbell, “A survey of mobile phone sensing,” IEEE Communications
+magazine, vol. 48, no. 9, pp. 140–150, 2010.
+[10] S. Liu, H. Yu, C. Liao, J. Li, W. Lin, A. X. Liu, and S. Dustdar,
+“Pyraformer: Low-complexity pyramidal attention for long-range time
+series modeling and forecasting,” in International Conference on Learn-
+ing Representations, 2022, pp. 1–20.
+[11] S. Wang, H. Wu, X. Shi, T. Hu, H. Luo, L. Ma, J. Y . Zhang,
+and J. ZHOU, “Timemixer: Decomposable multiscale mixing for time
+series forecasting,” in The Twelfth International Conference on Learning
+Representations, 2024.
+[12] A. Vaswani, N. Shazeer, N. Parmar, J. Uszkoreit, L. Jones, A. N. Gomez,
+L. u. Kaiser, and I. Polosukhin, “Attention is all you need,” in Advances
+in Neural Information Processing Systems , vol. 30, 2017, pp. 1–11.
+[13] A. Gu and T. Dao, “Mamba: Linear-time sequence modeling with
+selective state spaces,” arXiv preprint:2312.00752, 2023.
+[14] L. Chen, D. Chen, Z. Shang, B. Wu, C. Zheng, B. Wen, and W. Zhang,
+“Multi-scale adaptive graph neural network for multivariate time series
+forecasting,” IEEE Transactions on Knowledge and Data Engineering ,
+vol. 35, no. 10, pp. 10 748–10 761, 2023.
+[15] J. Zhang, Y . He, W. Chen, L.-D. Kuang, and B. Zheng, “Corrformer:
+Context-aware tracking with cross-correlation and transformer,” Com-
+puters and Electrical Engineering , vol. 114, p. 109075, 2024.
+[16] Y . Liu, Y . Tian, Y . Zhao, H. Yu, L. Xie, Y . Wang, Q. Ye, J. Jiao,
+and Y . Liu, “VMamba: Visual state space model,” in The Thirty-eighth
+Annual Conference on Neural Information Processing Systems , 2024.
+[17] L. Zhu, B. Liao, Q. Zhang, X. Wang, W. Liu, and X. Wang, “Vision
+mamba: Efficient visual representation learning with bidirectional state
+space model,” in Forty-first International Conference on Machine Learn-
+ing, 2024.
+[18] L. Li, H. Wang, W. Zhang, and A. Coster, “Stg-mamba: spatial-
+temporal graph learning via selective state space model,” arXiv preprint
+arXiv:2403.12418, 2024.
+[19] H. Wu, K. Wang, F. Xu, Y . Li, X. Wang, W. Wang, H. Wang, and
+X. Luo, “Spatio-temporal twins with a cache for modeling long-term
+system dynamics,” 2024.
+[20] A. Gu, Modeling Sequences with Structured State Spaces . Stanford
+University, 2023.
+[21] Z. Wang, F. Kong, S. Feng, M. Wang, X. Yang, H. Zhao, D. Wang, and
+Y . Zhang, “Is mamba effective for time series forecasting?” Neurocom-
+puting, vol. 619, p. 129178, 2025.
+[22] A. Nagrani, S. Yang, A. Arnab, A. Jansen, C. Schmid, and C. Sun,
+“Attention bottlenecks for multimodal fusion,” Advances in Neural
+Information Processing Systems , vol. 34, pp. 14 200–14 213, 2021.
+[23] J. Wei, Z. Li, M. Cribb, W. Huang, W. Xue, L. Sun, J. Guo, Y . Peng,
+J. Li, A. Lyapustin et al., “Improved 1 km resolution pm 2.5 estimates
+across china using enhanced space–time extremely randomized trees,”
+Atmospheric Chemistry and Physics , vol. 20, no. 6, pp. 3273–3289,
+2020.
+[24] J. Wei, Z. Li, W. Xue, L. Sun, T. Fan, L. Liu, T. Su, and M. Cribb,
+“The chinahighpm10 dataset: generation, validation, and spatiotemporal
+variations from 2015 to 2019 across china,” Environment International,
+vol. 146, p. 106290, 2021.
+[25] J. Zhang, Y . Zheng, and D. Qi, “Deep spatio-temporal residual networks
+for citywide crowd flows prediction,” in Proceedings of the Thirty-First
+AAAI Conference on Artificial Intelligence , 2017, pp. 1655–1661.
+[26] Z. Wen, W. Yin, and Y . Zhang, “Solving a low-rank factorization
+model for matrix completion by a nonlinear successive over-relaxation
+algorithm,” Mathematical Programming Computation, vol. 4, no. 4, pp.
+333–361, 2012.
+[27] E. Wang, M. Zhang, X. Cheng, Y . Yang, W. Liu, H. Yu, L. Wang, and
+J. Zhang, “Deep learning-enabled sparse industrial crowdsensing and
+prediction,” IEEE Transactions on Industrial Informatics, vol. 17, no. 9,
+pp. 6170–6181, 2020.
+[28] T. N. Kipf and M. Welling, “Semi-supervised classification with graph
+convolutional networks,” arXiv preprint arXiv:1609.02907 , 2016.
+[29] H. Zhou, S. Zhang, J. Peng, S. Zhang, J. Li, H. Xiong, and W. Zhang,
+“Informer: Beyond efficient transformer for long sequence time-series
+forecasting,” in Proceedings of the AAAI Conference on Artificial
+Intelligence, vol. 35, no. 12, 2021, pp. 11 106–11 115.
+[30] H. Wu, T. Hu, Y . Liu, H. Zhou, J. Wang, and M. Long, “Timesnet:
+Temporal 2d-variation modeling for general time series analysis,” in The
+Eleventh International Conference on Learning Representations , 2023,
+pp. 1–23.
+[31] Z. Shen, M. Zhang, H. Zhao, S. Yi, and H. Li, “Efficient attention:
+Attention with linear complexities,” in Proceedings of the IEEE/CVF
+Winter Conference on Applications of Computer Vision, 2021, pp. 3531–
+3539.

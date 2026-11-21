@@ -1,0 +1,21 @@
+{
+  "data_source": "public_pi_opp_joint_on_target_positive_pairs",
+  "excludes": [
+    "labels",
+    "test_outcomes",
+    "test_prediction_residuals",
+    "current_window_events",
+    "gate_ON_OFF"
+  ],
+  "fit_scope": "frozen public opportunity law × {pi_tar>0}",
+  "frozen": true,
+  "hash": "aa574c33b577965a78a9e6eb7d14877ac78add0fee4ab3e9c95deb47926891c7",
+  "n_positive_target_pairs_SensorScope": 440,
+  "n_positive_target_pairs_UAir": 288,
+  "note": "Rule frozen; environment-specific values follow the same q10 protocol.",
+  "quantile": 0.1,
+  "rule_id": "PI_SAFE_RULE_V1",
+  "status": "FROZEN_DEVELOPMENT_PROTOCOL",
+  "value_SensorScope": 0.0006326708489355371,
+  "value_UAir": 0.0013918758676581813
+}

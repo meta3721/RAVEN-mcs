@@ -1,0 +1,252 @@
+{
+  "methods": {
+    "central_all": {
+      "files": [
+        {
+          "path": "src/raven_mcs/aggregation/method_policy.py",
+          "sha256": "4e381b684b83de0c529ee39be1cffd98bbf08342f2d99f85e9c22f878cb3d22f"
+        },
+        {
+          "path": "src/raven_mcs/e3/protocol_closure/central_reference.py",
+          "sha256": "4c0de5b74d58f8fd25dacb929321c2a46e70808ae83d6ae640d2871372c1c151"
+        },
+        {
+          "path": "src/raven_mcs/models/common_ndmf.py",
+          "sha256": "959723c87af991b8999fb137648d108310b759677c0e4c891eddd1c168b4de38"
+        }
+      ],
+      "implementation_hash": "0807be0ca2d14f2e11ad2724c0d1f823e6ac94d5a7816d11381cf7a04e7db152",
+      "status": "HASHED"
+    },
+    "central_delivered": {
+      "files": [
+        {
+          "path": "src/raven_mcs/aggregation/method_policy.py",
+          "sha256": "4e381b684b83de0c529ee39be1cffd98bbf08342f2d99f85e9c22f878cb3d22f"
+        },
+        {
+          "path": "src/raven_mcs/e3/protocol_closure/central_reference.py",
+          "sha256": "4c0de5b74d58f8fd25dacb929321c2a46e70808ae83d6ae640d2871372c1c151"
+        },
+        {
+          "path": "src/raven_mcs/models/common_ndmf.py",
+          "sha256": "959723c87af991b8999fb137648d108310b759677c0e4c891eddd1c168b4de38"
+        }
+      ],
+      "implementation_hash": "0807be0ca2d14f2e11ad2724c0d1f823e6ac94d5a7816d11381cf7a04e7db152",
+      "status": "HASHED"
+    },
+    "debt_cal": {
+      "files": [
+        {
+          "path": "src/raven_mcs/aggregation/method_policy.py",
+          "sha256": "4e381b684b83de0c529ee39be1cffd98bbf08342f2d99f85e9c22f878cb3d22f"
+        },
+        {
+          "path": "src/raven_mcs/aggregation/methods.py",
+          "sha256": "925bc88958a01dcf3f820c960eed3b96ad9bc3ae229aec9ebf7bd26f0d17e6a2"
+        },
+        {
+          "path": "src/raven_mcs/training/window_runner.py",
+          "sha256": "cfe678e7216b0e0366a0055314180d6afec52e1c0fe248a9077d9e79660413bf"
+        },
+        {
+          "path": "src/raven_mcs/aggregation/p2_cvxpy.py",
+          "sha256": "0da4e4b3bb3c90ab08e53219e80bce0f871d734670b61c50f0d3ed551bb09b5e"
+        },
+        {
+          "path": "src/raven_mcs/metrics/debt.py",
+          "sha256": "dd4fce52f02b87ec3b903f2fbb94c4c8f5d68c7616ec3fb3fd597abfb3e6451c"
+        }
+      ],
+      "implementation_hash": "2c03396fa246edf94e16a117fdcb3320b7984b39e9def89f488fb63af4a16289",
+      "status": "HASHED"
+    },
+    "fedasync_window": {
+      "files": [
+        {
+          "path": "src/raven_mcs/aggregation/method_policy.py",
+          "sha256": "4e381b684b83de0c529ee39be1cffd98bbf08342f2d99f85e9c22f878cb3d22f"
+        },
+        {
+          "path": "src/raven_mcs/aggregation/methods.py",
+          "sha256": "925bc88958a01dcf3f820c960eed3b96ad9bc3ae229aec9ebf7bd26f0d17e6a2"
+        },
+        {
+          "path": "src/raven_mcs/training/window_runner.py",
+          "sha256": "cfe678e7216b0e0366a0055314180d6afec52e1c0fe248a9077d9e79660413bf"
+        }
+      ],
+      "implementation_hash": "e28106027148bee5ea6c6501723b7eb343d3410d2676c9ea0dd493d99129e9a9",
+      "status": "HASHED"
+    },
+    "fedavg_window": {
+      "files": [
+        {
+          "path": "src/raven_mcs/aggregation/method_policy.py",
+          "sha256": "4e381b684b83de0c529ee39be1cffd98bbf08342f2d99f85e9c22f878cb3d22f"
+        },
+        {
+          "path": "src/raven_mcs/aggregation/methods.py",
+          "sha256": "925bc88958a01dcf3f820c960eed3b96ad9bc3ae229aec9ebf7bd26f0d17e6a2"
+        },
+        {
+          "path": "src/raven_mcs/training/window_runner.py",
+          "sha256": "cfe678e7216b0e0366a0055314180d6afec52e1c0fe248a9077d9e79660413bf"
+        }
+      ],
+      "implementation_hash": "e28106027148bee5ea6c6501723b7eb343d3410d2676c9ea0dd493d99129e9a9",
+      "status": "HASHED"
+    },
+    "flamf_original": {
+      "files": [],
+      "implementation_hash": null,
+      "reason": "external original FLAMF not faithfully reproduced; TimeAlign must not be renamed",
+      "status": "EXCLUDED_WITH_REASON"
+    },
+    "flamf_timealign_adapted": {
+      "files": [
+        {
+          "path": "src/raven_mcs/aggregation/method_policy.py",
+          "sha256": "4e381b684b83de0c529ee39be1cffd98bbf08342f2d99f85e9c22f878cb3d22f"
+        },
+        {
+          "path": "src/raven_mcs/aggregation/methods.py",
+          "sha256": "925bc88958a01dcf3f820c960eed3b96ad9bc3ae229aec9ebf7bd26f0d17e6a2"
+        },
+        {
+          "path": "src/raven_mcs/training/window_runner.py",
+          "sha256": "cfe678e7216b0e0366a0055314180d6afec52e1c0fe248a9077d9e79660413bf"
+        }
+      ],
+      "implementation_hash": "e28106027148bee5ea6c6501723b7eb343d3410d2676c9ea0dd493d99129e9a9",
+      "status": "HASHED"
+    },
+    "inst_cal": {
+      "files": [
+        {
+          "path": "src/raven_mcs/aggregation/method_policy.py",
+          "sha256": "4e381b684b83de0c529ee39be1cffd98bbf08342f2d99f85e9c22f878cb3d22f"
+        },
+        {
+          "path": "src/raven_mcs/aggregation/methods.py",
+          "sha256": "925bc88958a01dcf3f820c960eed3b96ad9bc3ae229aec9ebf7bd26f0d17e6a2"
+        },
+        {
+          "path": "src/raven_mcs/training/window_runner.py",
+          "sha256": "cfe678e7216b0e0366a0055314180d6afec52e1c0fe248a9077d9e79660413bf"
+        },
+        {
+          "path": "src/raven_mcs/aggregation/p2_cvxpy.py",
+          "sha256": "0da4e4b3bb3c90ab08e53219e80bce0f871d734670b61c50f0d3ed551bb09b5e"
+        }
+      ],
+      "implementation_hash": "1f7cb53c313acc8c0635850013a317007aa0999af224b8919b9bddc66bf8ee9d",
+      "status": "HASHED"
+    },
+    "local_hajek": {
+      "files": [
+        {
+          "path": "src/raven_mcs/aggregation/method_policy.py",
+          "sha256": "4e381b684b83de0c529ee39be1cffd98bbf08342f2d99f85e9c22f878cb3d22f"
+        },
+        {
+          "path": "src/raven_mcs/aggregation/methods.py",
+          "sha256": "925bc88958a01dcf3f820c960eed3b96ad9bc3ae229aec9ebf7bd26f0d17e6a2"
+        },
+        {
+          "path": "src/raven_mcs/training/window_runner.py",
+          "sha256": "cfe678e7216b0e0366a0055314180d6afec52e1c0fe248a9077d9e79660413bf"
+        },
+        {
+          "path": "src/raven_mcs/correction/hajek.py",
+          "sha256": "d68c45b6fae1fc1c02dbced3f6cf9e4eeb68464d5ec781659e4c3089c81589fb"
+        }
+      ],
+      "implementation_hash": "ed0bfe2331facb1e6102f1c96cb1be41894dcac7d7b1e39b792a15bba31292b5",
+      "status": "HASHED"
+    },
+    "raven": {
+      "files": [
+        {
+          "path": "src/raven_mcs/aggregation/method_policy.py",
+          "sha256": "4e381b684b83de0c529ee39be1cffd98bbf08342f2d99f85e9c22f878cb3d22f"
+        },
+        {
+          "path": "src/raven_mcs/aggregation/methods.py",
+          "sha256": "925bc88958a01dcf3f820c960eed3b96ad9bc3ae229aec9ebf7bd26f0d17e6a2"
+        },
+        {
+          "path": "src/raven_mcs/training/window_runner.py",
+          "sha256": "cfe678e7216b0e0366a0055314180d6afec52e1c0fe248a9077d9e79660413bf"
+        },
+        {
+          "path": "src/raven_mcs/aggregation/p2_cvxpy.py",
+          "sha256": "0da4e4b3bb3c90ab08e53219e80bce0f871d734670b61c50f0d3ed551bb09b5e"
+        },
+        {
+          "path": "src/raven_mcs/correction/hajek.py",
+          "sha256": "d68c45b6fae1fc1c02dbced3f6cf9e4eeb68464d5ec781659e4c3089c81589fb"
+        },
+        {
+          "path": "src/raven_mcs/metrics/debt.py",
+          "sha256": "dd4fce52f02b87ec3b903f2fbb94c4c8f5d68c7616ec3fb3fd597abfb3e6451c"
+        }
+      ],
+      "implementation_hash": "abc3a820ea4d3e8e0976acbcc9dfdbd109e2c77589c82a4ae9d37754edaf2859",
+      "status": "HASHED"
+    },
+    "raven_simoracle": {
+      "files": [
+        {
+          "path": "src/raven_mcs/aggregation/method_policy.py",
+          "sha256": "4e381b684b83de0c529ee39be1cffd98bbf08342f2d99f85e9c22f878cb3d22f"
+        },
+        {
+          "path": "src/raven_mcs/aggregation/methods.py",
+          "sha256": "925bc88958a01dcf3f820c960eed3b96ad9bc3ae229aec9ebf7bd26f0d17e6a2"
+        },
+        {
+          "path": "src/raven_mcs/training/window_runner.py",
+          "sha256": "cfe678e7216b0e0366a0055314180d6afec52e1c0fe248a9077d9e79660413bf"
+        },
+        {
+          "path": "src/raven_mcs/aggregation/p2_cvxpy.py",
+          "sha256": "0da4e4b3bb3c90ab08e53219e80bce0f871d734670b61c50f0d3ed551bb09b5e"
+        },
+        {
+          "path": "src/raven_mcs/simulation/replay.py",
+          "sha256": "9c7ce740d28e7995e26583534ca9dd4de70134078841ea047911d65ce42bd383"
+        },
+        {
+          "path": "src/raven_mcs/e3/protocol_closure/constants.py",
+          "sha256": "9c83a68426a85f6459c10f1a9c46c21aa402ba04c1bac9dd8e4e9bd4cc9612a2"
+        }
+      ],
+      "implementation_hash": "f724faba906d0ee9e5ca1d5833e4a10102d6a36a5dc22fb2b34e9903f76c306a",
+      "status": "HASHED"
+    },
+    "twostage_hajek": {
+      "files": [
+        {
+          "path": "src/raven_mcs/aggregation/method_policy.py",
+          "sha256": "4e381b684b83de0c529ee39be1cffd98bbf08342f2d99f85e9c22f878cb3d22f"
+        },
+        {
+          "path": "src/raven_mcs/aggregation/methods.py",
+          "sha256": "925bc88958a01dcf3f820c960eed3b96ad9bc3ae229aec9ebf7bd26f0d17e6a2"
+        },
+        {
+          "path": "src/raven_mcs/training/window_runner.py",
+          "sha256": "cfe678e7216b0e0366a0055314180d6afec52e1c0fe248a9077d9e79660413bf"
+        },
+        {
+          "path": "src/raven_mcs/correction/hajek.py",
+          "sha256": "d68c45b6fae1fc1c02dbced3f6cf9e4eeb68464d5ec781659e4c3089c81589fb"
+        }
+      ],
+      "implementation_hash": "ed0bfe2331facb1e6102f1c96cb1be41894dcac7d7b1e39b792a15bba31292b5",
+      "status": "HASHED"
+    }
+  }
+}

@@ -1,0 +1,1031 @@
+RAVEN-MCS v2.0
+Cursor 下一轮实验指令
+SAG-G1-R1 Certificate Repair + 1-Seed Diagnostic
+============================================================
+版本：v1.0
+目标：修复当前 G1 中已经定位的 certificate/审计问题，并只做 1-seed 诊断。
+本轮不是重新设计 SAG，不是调阈值“让 Gate 打开”，也不是正式论文实验。
+
+一、必须先阅读的权威材料
+============================================================
+
+Cursor 开始前必须完整阅读：
+
+1. RAVEN_MCS_Support_Aware_Gate_Spec_v1.2_Final_Closure.txt
+2. RAVEN_MCS_v2_Sections_III_VI_PostAudit_Final.txt
+3. RAVEN_MCS_Cursor_SAG_G0_G1_Experiment_Instruction_v1.0.txt
+4. 本轮提交包：
+   RAVEN_MCS_SAG_G0_G1_EVIDENCE_SUBMISSION_R1/
+5. 重点阅读其中：
+   report/SAG_G0_G1_REPORT.md
+   report/G1_VERDICT.json
+   g1/G1_GATE_WINDOW_LOG.csv
+   g1/G1_CERTIFICATE_COVERAGE.csv
+   g1/G1_METHOD_SUMMARY.csv
+   configs/thresholds.json
+   plan/SAG_IMPLEMENTATION_PLAN.md
+
+若旧代码/旧注释与 Sections III--VI PostAudit Final 冲突，
+以 PostAudit Final 为准。
+
+本轮 authority order：
+
+  SAG v1.2 Final Spec
+  ->
+  Sections III--VI PostAudit Final
+  ->
+  本 R1 指令。
+
+============================================================
+二、当前实验已经确认的事实：不得忽略
+============================================================
+
+G0：
+  PASS。
+  不重新设计 R/O/U timing。
+  不重新设计 B_r/A_r。
+  不重新生成 EventTrace。
+
+G1 当前状态：
+  SAG Gate ON = 0 / 900 windows。
+  SAG 因此等价于 No-Design。
+
+SensorScope：
+  Always-Design 对 No-Design 有正的结构收益，
+  active-set mismatch = 0，
+  prediction 基本不伤。
+
+U-Air：
+  Always-Design 相对 No-Design：
+    RMSE 明显恶化（约 7%）；
+    WorstGroupRMSE 明显恶化；
+    Delta_group 恶化；
+    Delta_c-s 反而改善；
+    active-set mismatch 约 46%--59%。
+
+这说明 support-safe / support-unsafe boundary 仍真实存在。
+
+当前已定位两个 Gate 硬阻塞：
+
+1. C_cov 实现语义错误。
+   当前 C_cov_LCB 近似等于 realized current-window support coverage，
+   SensorScope 固定约 0.01818，
+   U-Air 约 0.024--0.028，
+   与理论定义不一致。
+
+2. B_tot 极度保守。
+   当前 tau_safe = 4.0 不变时：
+     SensorScope B_tot_UCB 中位数约 13；
+     U-Air B_tot_UCB 中位数约 12。
+   即使 C_cov 修好，Gate 仍几乎不可能 ON。
+
+另外存在两个必须先排除的 counterfactual-audit 异常：
+
+3. 在大量 common-support windows 中：
+     Delta_beta == Delta_M == service_diff
+   达机器精度级别。
+
+4. Delta_V 在所有可计算窗口中均为 0。
+
+这两个现象在一般定义下不应被默认视为正常。
+必须先做源码级核查。
+
+当前 threshold config：
+  tau_cov = 0.05
+  tau_ret = 0.05
+  tau_ESS = 1.0
+  tau_clip = 0.95
+  tau_A = 0.35
+  tau_safe = 4.0
+  delta_cal = 0.05
+  coverage_target = 0.95
+
+注意：
+  当前正式 coverage target 是 95%，不是 90%。
+
+============================================================
+三、本轮总原则
+============================================================
+
+本轮只完成：
+
+R1-A  Counterfactual metric source audit
+R1-B  C_cov semantic repair
+R1-C  B_tot decomposition + legal tightening audit
+R1-D  95% certificate calibration audit
+R1-E  SensorScope + U-Air 各 1 seed diagnostic
+
+本轮结束后 STOP，并输出报告。
+不要自动做 5 seeds。
+不要自动做 10 seeds。
+不要自动做 E1--E5。
+不要 T-Drive。
+不要添加新 baseline。
+
+============================================================
+四、绝对禁止事项
+============================================================
+
+1. 不得修改 tau_cov / tau_A / tau_safe 来“制造 ON”。
+   本轮第一诊断必须保持旧 frozen thresholds。
+
+2. 不得把 tau_safe 从 4 直接放宽到 10、12、14 等。
+
+3. 不得把 tau_cov 从 0.05 改成 0.01 来绕过 C_cov bug。
+
+4. 不得使用 dataset name 作为 Gate 输入。
+
+5. 不得使用 current R/O/U/Z/loss/update/test outcome 作为同窗口 Gate 输入。
+
+6. 不得把 realized B_M、realized A_r、realized M_r 塞入 pre-window Gate。
+
+7. 不得用 post-window oracle 结果直接决定同一窗口 G_r。
+
+8. 不得删除 U-Air negative result。
+
+9. 不得为了 95% coverage 简单把所有 UCB 乘一个任意大常数。
+
+10. 不得修改 Theorem 3 / Theorem 4 公式来迎合代码。
+
+============================================================
+五、R1-A：先审计 Delta_beta / Delta_M / Delta_V / service_diff
+============================================================
+
+这是本轮第一优先级。
+在修 C_cov 前先确认 counterfactual audit 是真的。
+
+当前源码计划中重点检查：
+
+  src/raven_mcs/sag/counterfactual_audit.py
+  src/raven_mcs/training/window_runner.py
+  src/raven_mcs/aggregation/methods.py
+  src/raven_mcs/aggregation/p2_cvxpy.py
+
+如果实际路径不同，以项目当前路径为准。
+
+必须重新从原始 counterfactual state 计算：
+
+1. beta:
+   Delta_beta
+   =
+   || beta_D - beta_0 ||_2
+
+2. M:
+   Delta_M
+   =
+   || M_D - M_0 ||_2
+   使用论文/代码约定的 matrix spectral/operator 2-norm；
+   不得复制 beta difference。
+
+3. V:
+   Delta_V
+   =
+   || V_D - V_0 ||_2
+   V 必须分别由 D / 0 的 n_eff 和同一 lagged variance state 重构。
+
+4. service:
+   s_D = M_D alpha_D
+   s_0 = M_0 alpha_0
+
+   service_diff_l1
+   =
+   || s_D - s_0 ||_1
+
+同时建议记录：
+   service_diff_l2
+   =
+   || s_D - s_0 ||_2
+
+不得用 service_diff 替代 Delta_M 或 Delta_beta。
+
+------------------------------------------------------------
+R1-A.1 必须增加 synthetic unit tests
+------------------------------------------------------------
+
+至少构造四个可控 synthetic windows：
+
+Case A：
+  beta_D != beta_0
+  M_D = M_0
+  V_D = V_0
+预期：
+  Delta_beta > 0
+  Delta_M = 0
+  Delta_V = 0
+
+Case B：
+  beta_D = beta_0
+  M_D != M_0
+  V_D = V_0
+预期：
+  Delta_beta = 0
+  Delta_M > 0
+  Delta_V = 0
+
+Case C：
+  beta_D = beta_0
+  M_D = M_0
+  n_eff_D != n_eff_0
+因此：
+  V_D != V_0
+预期：
+  Delta_V > 0
+
+Case D：
+  beta/M/V 同时变化
+预期：
+  四个 metric 不被强制相等。
+
+测试必须直接 assert。
+
+------------------------------------------------------------
+R1-A.2 保存原始状态证据
+------------------------------------------------------------
+
+对 diagnostic seed 的前 10 个 common-nonempty windows，
+保存：
+
+  beta_D vector
+  beta_0 vector
+  M_D matrix
+  M_0 matrix
+  V_D diag
+  V_0 diag
+  alpha_D
+  alpha_0
+  s_D
+  s_0
+  Delta_beta
+  Delta_M
+  Delta_V
+  service_diff_l1
+  service_diff_l2
+
+保存为：
+
+  outputs/sag_g1_r1/audit/COUNTERFACTUAL_RAW_STATE.jsonl
+
+并创建：
+
+  COUNTERFACTUAL_METRIC_RECOMPUTE.csv
+
+字段至少：
+  dataset
+  seed
+  window_id
+  A_D_size
+  A_0_size
+  Delta_beta_logged
+  Delta_beta_recomputed
+  Delta_M_logged
+  Delta_M_recomputed
+  Delta_V_logged
+  Delta_V_recomputed
+  service_diff_logged
+  service_diff_l1_recomputed
+  service_diff_l2_recomputed
+
+若旧日志 metric 错：
+  标记 BUG_CONFIRMED，
+  修代码，
+  旧 G1 certificate results 全部作废，
+  后续用修复代码重算。
+
+若重新计算后仍出现 Delta_beta==Delta_M：
+  必须用 raw states 证明是数据结构导致，
+  不得只说“数值相等”。
+
+============================================================
+六、R1-B：严格按论文公式修 C_cov
+============================================================
+
+当前 realized-current-window coverage 实现必须停止用于 Gate。
+
+理论目标：
+
+  C_cov_LCB(r)
+  =
+  sum_{k,s}
+    pi_tar(k,s)
+    * 1{
+        lower_pi_opp(k,s,r) >= pi_safe
+      }
+
+其中：
+
+  lower_pi_opp(k,s,r)
+
+必须是 F_{r-}-measurable 的
+client--stratum opportunity mass one-sided lower bound。
+
+------------------------------------------------------------
+R1-B.1 正确统计对象
+------------------------------------------------------------
+
+必须使用：
+
+  pi_opp(k,s,r)
+
+client--stratum opportunity MASS。
+
+不要使用：
+  当前 window 是否出现 R 的 binary coverage；
+  realized current R count fraction；
+  target-positive pair 在当前 R 中出现的比例。
+
+P_opp(k,i) 与 pi_opp(k,s) 不得混用。
+
+------------------------------------------------------------
+R1-B.2 数据来源
+------------------------------------------------------------
+
+lower_pi_opp 只能使用：
+
+  completed windows;
+  lagged opportunity counts/masses;
+  public target map;
+  legal pre-window context.
+
+不得使用当前 window R。
+
+优先复用项目已有：
+
+  Observation/Opportunity lagged states
+  C_opp counters
+  pi_hat_opp history
+
+不要重新设计一个复杂 ML 模型。
+
+------------------------------------------------------------
+R1-B.3 one-sided lower bound
+------------------------------------------------------------
+
+先检查当前代码是否已有合法 one-sided lower bound。
+
+若已有：
+  复用并验证。
+
+若没有：
+  实现一个简单、可复算的 completed-window-only lower bound。
+
+允许：
+  rolling empirical-Bernstein LCB；
+  window-block bootstrap LCB；
+  conservative one-sided proportion bound；
+  其他低维可解释方法。
+
+要求：
+  方法写入报告；
+  不能使用当前 R；
+  在同一输入 history 下 deterministic；
+  可以复算。
+
+------------------------------------------------------------
+R1-B.4 pi_safe
+------------------------------------------------------------
+
+当前 thresholds.json 未记录 pi_safe。
+
+先搜索 SAG v1.2 Spec / PostAudit Sections III--VI / 当前 config，
+确认是否已有 frozen pi_safe。
+
+若已有：
+  使用该值，不得改。
+
+若没有明确数值：
+  不允许 Cursor 私自选一个“能让 SensorScope ON”的值。
+
+本轮做法：
+
+  1) 生成 development-only candidate diagnostics，
+     例如从 lagged opportunity-mass quantiles 构造一组候选；
+  2) 不使用 prediction outcome、structural outcome、
+     Gate ON rate 作为选择 pi_safe 的依据；
+  3) 输出候选对 target-support certification 的影响；
+  4) 在报告中标记：
+       PI_SAFE_REQUIRES_FREEZE_DECISION
+  5) diagnostic Gate 可使用一个明确标注的 provisional pi_safe，
+     但不得称为 final frozen setting。
+
+如果 authority 文件已有值，则不走此分支。
+
+------------------------------------------------------------
+R1-B.5 必须输出
+------------------------------------------------------------
+
+每 window 记录：
+
+  pi_safe
+  number_target_positive_pairs
+  target_mass_certified
+  C_cov_LCB
+  top failure pairs:
+    (k,s)
+    pi_tar
+    pi_hat_opp
+    lower_pi_opp
+
+保存：
+
+  C_COV_REPAIR_WINDOW.csv
+  C_COV_PAIR_DIAGNOSTIC.csv
+
+必须证明：
+
+  C_cov_LCB 不再等于 realized current-window R coverage。
+
+============================================================
+七、R1-C：B_tot 不允许直接调 tau_safe，先拆解
+============================================================
+
+当前：
+
+  B_tot
+  =
+  B_srv
+  +
+  2 delta_A_UCB
+  +
+  2 delta_cal
+
+其中：
+
+  B_srv
+  =
+  sqrt(|G|)
+  [
+    Delta_M_UCB
+    +
+    B_M_pre * D_alpha_UCB
+  ]
+
+  D_alpha_UCB
+  =
+  Delta_beta_UCB
+  +
+  (
+    B_Q
+    + lambda_g (2 B_M_pre + 1)
+  ) / lambda_beta
+    * Delta_M_UCB
+  +
+  lambda_v / lambda_beta
+    * Delta_V_UCB
+
+本轮必须给每个 window 保存所有分项。
+
+字段至少：
+
+  B_M_pre
+  B_Q
+  Delta_beta_UCB
+  Delta_M_UCB
+  Delta_V_UCB
+  term_beta
+  term_M
+  term_V
+  D_alpha_UCB
+  service_direct_M_term
+  service_alpha_term
+  B_srv_UCB
+  active_set_term = 2*delta_A_UCB
+  cal_failure_term = 2*delta_cal
+  B_tot_UCB
+
+输出：
+
+  B_TOT_DECOMPOSITION.csv
+
+------------------------------------------------------------
+R1-C.1 先计算 post-window oracle diagnostic，不进入 Gate
+------------------------------------------------------------
+
+仅用于诊断，计算：
+
+  B_M_cf
+  =
+  max(
+    ||M_D||_2,
+    ||M_0||_2
+  )
+
+并离线计算：
+
+  B_tot_oracle_BM
+
+即只把 B_M_pre 替换为 B_M_cf，
+其他 UCB 保持不变。
+
+注意：
+
+  B_tot_oracle_BM 绝对不能用于在线 Gate。
+  它只回答：
+  “当前过松主要是不是 sqrt(K) 引起？”
+
+报告：
+
+  ratio_BM = B_M_pre / B_M_cf
+  ratio_Bsrv = B_srv_UCB / max(service_diff_l1, eps)
+  ratio_Btot = B_tot_UCB / max(service_diff_l1, eps)
+
+并给：
+  median
+  p90
+  p95
+  max
+
+------------------------------------------------------------
+R1-C.2 允许寻找更紧 B_M_pre，但必须合法
+------------------------------------------------------------
+
+优先检查是否存在更紧的 deterministic /
+F_{r-}-measurable upper bound。
+
+合法候选示例：
+
+A. pre-window known potential-client upper bound：
+   若当前窗口在 R 前已有合法的 candidate/scheduled client set，
+   可用 sqrt(K_max_pre)。
+
+B. fixed client--deployment-group support mask：
+   若公共/冻结信息可以证明 client k 永远只能落入某些 groups，
+   构造 H_{gk} in {0,1}。
+
+   因每列 M 是 probability vector：
+
+     ||M||_1 = 1
+
+   且：
+
+     ||M||_infty
+     <=
+     max_g d_g,
+
+   其中 d_g 为可能向 group g 提供正 mass 的 client 数。
+
+   因而可使用：
+
+     B_M_support
+     =
+     sqrt(max_g d_g)
+
+   但只有当 support mask 的有效性可以被代码 assert 时才允许。
+
+C. 任何其他确定性上界：
+   必须写出数学理由和代码 assert。
+
+禁止：
+
+  使用当前 realized A_r size；
+  使用当前 realized M_r；
+  使用 current R/O/U；
+  用 empirical 95th percentile 的 B_M 当“确定性上界”。
+
+如果没有合法更紧 deterministic bound：
+  保留 sqrt(K)，
+  在报告中明确：
+    NO_LEGAL_TIGHTER_BM_BOUND_FOUND。
+
+不要为了 Gate ON 而违规。
+
+------------------------------------------------------------
+R1-C.3 Delta UCB 紧度
+------------------------------------------------------------
+
+分别计算 actual / UCB：
+
+  Delta_beta_actual / Delta_beta_UCB
+  Delta_M_actual / Delta_M_UCB
+  Delta_V_actual / Delta_V_UCB
+
+输出：
+  coverage
+  width
+  UCB / actual ratio
+
+注意：
+  actual=0 时单独统计，避免除零。
+
+目标不是让 UCB 最小，而是判断：
+  哪一项真正造成 B_tot 失去判别力。
+
+============================================================
+八、R1-D：certificate calibration 必须按 95%，不是 90%
+============================================================
+
+配置：
+
+  delta_cal = 0.05
+  coverage_target = 0.95
+
+因此正式开发目标：
+
+  joint coverage >= 0.95
+
+当前报告中的 “0.90 development floor” 不再沿用。
+
+------------------------------------------------------------
+R1-D.1 common-support domain
+------------------------------------------------------------
+
+仅在：
+
+  A_D = A_0 != empty
+
+统计：
+
+  Delta_beta
+  Delta_M
+  Delta_V
+
+both-empty：
+  service_diff=0
+  Delta_beta/M/V=NA
+
+active-set mismatch：
+  不进入 common-support Delta coverage。
+
+------------------------------------------------------------
+R1-D.2 coverage + width 同时报告
+------------------------------------------------------------
+
+必须修复当前：
+
+  mean_width_beta = NaN
+  mean_width_M = NaN
+  mean_width_V = NaN
+
+宽度定义对 one-sided UCB：
+
+  width_beta = Delta_beta_UCB - Delta_beta_actual
+  width_M    = Delta_M_UCB    - Delta_M_actual
+  width_V    = Delta_V_UCB    - Delta_V_actual
+
+报告：
+  mean
+  median
+  p90
+  p95
+
+另外报告：
+
+  UCB / actual ratio
+
+对 actual=0 单独统计：
+  exact_zero_rate
+  UCB_zero_rate
+
+------------------------------------------------------------
+R1-D.3 不得通过无脑放宽达到 95%
+------------------------------------------------------------
+
+允许：
+  修 quantile 实现；
+  finite-sample order-statistic/conformal correction；
+  改善低维 predictor；
+  合理分层；
+  增加 completed-history calibration sample。
+
+禁止：
+  看完 current window actual Delta 后再改 UCB；
+  直接乘 2、5、10 而无校准依据；
+  用 current dataset outcome 选择 multiplier。
+
+必须输出 coverage--width tradeoff。
+
+============================================================
+九、R1-E：只做 1-seed diagnostic
+============================================================
+
+完成 R1-A--D 后，运行：
+
+  SensorScope seed = 30001
+  U-Air      seed = 30001
+
+使用相同 sealed EventTrace。
+
+方法：
+  Always-Design
+  No-Design
+  SAG-R1
+
+但本轮重点是 Gate/certificate，
+不是方法排行榜。
+
+------------------------------------------------------------
+R1-E.1 thresholds
+------------------------------------------------------------
+
+除非 pi_safe 在 authority 中原本未冻结，
+以下全部保持：
+
+  tau_cov  = 0.05
+  tau_ret  = 0.05
+  tau_ESS  = 1.0
+  tau_clip = 0.95
+  tau_A    = 0.35
+  tau_safe = 4.0
+  delta_cal = 0.05
+
+本轮不得修改。
+
+------------------------------------------------------------
+R1-E.2 diagnostic 预期
+------------------------------------------------------------
+
+不要求“必须 ON”。
+
+我们要判断的是：
+
+SensorScope：
+  修复 C_cov 后是否存在真正符合全部条件的合法 ON windows？
+
+U-Air：
+  delta_A_UCB 是否仍能阻止大部分 support-unsafe windows？
+
+------------------------------------------------------------
+R1-E.3 继续/停止条件
+------------------------------------------------------------
+
+R1-DIAG-PASS 需要：
+
+A. Source metrics：
+   Delta_beta / Delta_M / Delta_V / service_diff
+   已被独立正确重算；
+   synthetic tests PASS。
+
+B. C_cov：
+   与理论公式一致；
+   strictly pre-window；
+   不再是 current-R coverage。
+
+C. Coverage：
+   修复后的 common-support certificate
+   以 95% 为正式 target；
+   对 1-seed 诊断给出 observed coverage + width，
+   不得隐瞒小样本限制。
+
+D. B_tot：
+   已完成 decomposition；
+   已说明主要松弛来源；
+   若更换 B_M_pre，必须是合法 predictable/deterministic bound。
+
+E. Gate discrimination：
+   不要求预设 ON rate，
+   但必须回答：
+     SensorScope 是否至少存在一部分
+     “全部 certificate 真正通过”的 windows？
+     U-Air 是否仍被 active-set risk 大量挡住？
+
+如果 SensorScope 在正确 C_cov + 正确 metric + 合法 B_M bound 后仍：
+
+  0 legal ON windows
+
+且 B_tot 仍远高于 4，
+
+不要继续 5-seed。
+输出：
+
+  STRUCTURAL_CERTIFICATE_TOO_CONSERVATIVE
+
+并停止，等待理论/方法层判断。
+
+如果 SensorScope 出现合法 ON，且 U-Air unsafe windows 仍大多 OFF：
+输出：
+
+  READY_FOR_G1_R2_5SEED
+
+但仍然不要自动跑 5 seeds。
+
+============================================================
+十、必须新增/更新的单元测试
+============================================================
+
+新增：
+
+test_counterfactual_metrics_independent.py
+  Case A--D 全 PASS。
+
+test_c_cov_semantics.py
+  current R 改变但 F_{r-} history 不变时：
+    C_cov_LCB 不变。
+
+test_c_cov_target_mass.py
+  C_cov 等于 pi_tar 质量加权 certified support，
+  不是 pair count fraction。
+
+test_pi_safe_config.py
+  pi_safe 必须存在来源记录。
+
+test_Btot_decomposition.py
+  B_tot =
+  B_srv + 2 delta_A + 2 delta_cal。
+
+test_BM_predictability.py
+  B_M_pre 不得访问 current A/M/R/O/U。
+
+test_certificate_coverage_domain.py
+  common nonempty 才计算 Delta coverage。
+
+test_certificate_width.py
+  width 不得全 NaN。
+
+============================================================
+十一、输出目录
+============================================================
+
+不得覆盖原 outputs/sag_g0/ 和 outputs/sag_g1/。
+
+新建：
+
+  outputs/sag_g1_r1/
+
+建议：
+
+outputs/sag_g1_r1/
+  R1_REPAIR_REPORT.md
+  R1_VERDICT.json
+
+  audit/
+    COUNTERFACTUAL_RAW_STATE.jsonl
+    COUNTERFACTUAL_METRIC_RECOMPUTE.csv
+    COUNTERFACTUAL_METRIC_UNIT_TEST.json
+
+  coverage/
+    C_COV_REPAIR_WINDOW.csv
+    C_COV_PAIR_DIAGNOSTIC.csv
+
+  safety_bound/
+    B_TOT_DECOMPOSITION.csv
+    BM_BOUND_AUDIT.csv
+    CERTIFICATE_TIGHTNESS.csv
+
+  diagnostic/
+    R1_GATE_WINDOW_LOG.csv
+    R1_CERTIFICATE_COVERAGE.csv
+    R1_METHOD_DIAGNOSTIC.csv
+
+  configs/
+    config_r1.json
+    thresholds_frozen_copy.json
+    pi_safe_provenance.json
+
+  tests/
+    test_summary.json
+
+============================================================
+十二、R1_REPAIR_REPORT.md 必须回答的问题
+============================================================
+
+# 1. Executive Verdict
+
+只能选：
+
+  READY_FOR_G1_R2_5SEED
+  NEEDS_MORE_CERTIFICATE_REPAIR
+  STRUCTURAL_CERTIFICATE_TOO_CONSERVATIVE
+  IMPLEMENTATION_BUG_FOUND
+
+# 2. Counterfactual Metric Audit
+
+必须回答：
+  为什么旧日志出现
+    Delta_beta == Delta_M == service_diff？
+  是 bug 还是数据结构事实？
+
+  为什么 Delta_V == 0？
+  是 bug 还是 n_eff / variance state 的真实结果？
+
+给 raw-state 证据。
+
+# 3. C_cov Repair
+
+给：
+  正确公式；
+  lower_pi_opp 方法；
+  pi_safe 来源；
+  old vs new C_cov 分布；
+  是否严格 F_{r-}-measurable。
+
+# 4. B_tot Decomposition
+
+SensorScope / U-Air 分别给：
+  median/p95：
+    B_M_pre
+    B_M_cf (diagnostic only)
+    Delta UCBs
+    D_alpha
+    B_srv
+    2 delta_A
+    2 delta_cal
+    B_tot
+
+明确指出主要 bottleneck。
+
+# 5. Certificate Coverage
+
+按 95% target 报：
+  beta
+  M
+  V
+  joint
+  width
+  UCB/actual ratio
+
+# 6. One-Seed Gate Diagnostic
+
+分别列：
+  SensorScope
+  U-Air
+
+所有 Gate 条件的 pass rate：
+
+  C_cov
+  C_ret
+  C_ESS
+  C_clip
+  delta_A
+  B_tot
+
+以及：
+  ON rate
+  OFF reason distribution
+
+# 7. Scientific Interpretation
+
+回答：
+
+  SensorScope 的 compatible regime
+  是否终于出现合法可启用窗口？
+
+  U-Air 的 support-unsafe regime
+  是否仍被 delta_A / other certificate 拦截？
+
+# 8. Next Decision
+
+若 READY：
+  写明“可进入 5-seed G1-R2”，但不要自动运行。
+
+否则：
+  指明唯一主要 blocker，
+  不要泛泛写“继续调参”。
+
+============================================================
+十三、Cursor 执行顺序
+============================================================
+
+Cursor 必须按以下顺序执行：
+
+1. 阅读 authority + R1 evidence。
+2. 输出：
+     SAG_G1_R1_REPAIR_PLAN.md
+   列出具体修改文件和函数。
+3. 先做 R1-A counterfactual metric source audit。
+4. synthetic tests 全 PASS 后，才允许改 certificate。
+5. 修 C_cov。
+6. 输出 C_cov unit tests。
+7. 做 B_tot decomposition。
+8. 检查合法更紧 B_M_pre。
+9. 修 95% certificate calibration + width logging。
+10. 跑全部单元测试。
+11. 仅跑：
+      SensorScope 30001
+      U-Air 30001
+12. 生成 R1_REPAIR_REPORT.md。
+13. STOP。
+14. 不自动进入 5-seed。
+
+============================================================
+十四、本轮最重要的科学问题
+============================================================
+
+本轮不是问：
+
+  “怎么把 Gate ON rate 调高？”
+
+而是问：
+
+  1) 我们的 counterfactual metrics 是否真的算对？
+  2) C_cov 是否真正对应论文中的 target-support opportunity certificate？
+  3) B_tot 为什么比真实 service perturbation 大几十倍？
+  4) 在不改理论、不泄漏 current outcome、不放宽 tau_safe 的前提下，
+     是否存在一个合法且有判别力的 safety certificate？
+
+如果答案是：
+
+  SensorScope 有合法 ON，
+  U-Air unsafe 大多 OFF，
+
+则 SAG 研究路线获得关键正证据。
+
+如果在完全正确的 certificate 下，
+SensorScope 仍永远 OFF，
+且合法上界无法明显收紧，
+
+必须诚实输出：
+
+  STRUCTURAL_CERTIFICATE_TOO_CONSERVATIVE
+
+不要强行继续全量实验。
+
+END OF INSTRUCTION

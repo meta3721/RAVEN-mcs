@@ -1,0 +1,10 @@
+{
+  "conversion_applied": false,
+  "conversion_rule": "pd.to_datetime(..., utc=True) labels naive strings as UTC without shifting clock fields",
+  "do_not_apply_plus_eight": true,
+  "paper_timezone": "Beijing local wall-clock coinciding with processed timestamps",
+  "processed_timezone": "pandas UTC-tagged timestamps equal to the naive raw clock (no +8 conversion)",
+  "raw_timezone": "naive timestamps in the official T-Drive sample; scientifically Beijing local wall-clock",
+  "source_evidence": "src/raven_mcs/data/tdrive.py _load_tdrive_points / _parse_trajectory_bytes; time_of_day_block uses tz_convert('UTC').hour",
+  "status": "FROZEN"
+}

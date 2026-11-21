@@ -1,0 +1,2120 @@
+--- before/scripts/run_c1_tdrive_spatial.py
++++ scripts/run_c1_tdrive_spatial.py
+@@ -410,6 +410,10 @@
+ 
+ def _skip_unused_gate(self, window_id: int = -1):
+     """T-Drive: Gate unused. Do not scan pi_target for coverage certificates."""
++    if self.policy.design_control == "configured" or self.policy.gate_mode == "aggregate_coverage":
++        # Modern configured and explicit legacy coverage paths retain their full diagnostic.
++        from raven_mcs.training.window_runner import FullWindowRunner
++        return FullWindowRunner._decide_g_r(self, window_id)
+     self._last_cert_diagnostics = {}
+     self._last_gate_to_design = {}
+     mode = str(getattr(self.policy, "gate_mode", "policy") or "policy")
+--- before/scripts/run_experiment.py
++++ scripts/run_experiment.py
+@@ -22,6 +22,7 @@
+     sys.path.insert(0, str(_SRC))
+ 
+ from raven_mcs.aggregation.methods import get_aggregator
++from raven_mcs.aggregation.method_policy import get_method_policy
+ from raven_mcs.data.base import DatasetMetadata
+ from raven_mcs.data.processed_dataset import ProcessedDataset
+ from raven_mcs.simulation.event_trace import (
+@@ -35,6 +36,7 @@
+ from raven_mcs.utils.config import resolve_run_config
+ from raven_mcs.utils.serialization import dump_json, load_json, load_yaml
+ from raven_mcs.experiments.e1_entry import run_official_method
++from raven_mcs.sag.r1l_design import configuration_for_method
+ 
+ 
+ def _get_or_generate_trace(
+@@ -91,8 +93,17 @@
+     local_steps: int = 2,
+     device: str = "cpu",
+     output_root: Path | None = None,
++    design: str | None = None,
++    design_source: str = "explicit_cli",
+ ) -> dict[str, Any]:
+     """Execute one experiment run and return summary metrics."""
++    configuration = configuration_for_method(method, design, source=design_source)
++    identity = {
++        "design_configuration": configuration.to_dict() if configuration else None,
++        "method_version": get_method_policy(method).method_version,
++        "design_control": get_method_policy(method).design_control,
++        "coverage_role": "diagnostic_only" if configuration else "legacy_policy",
++    }
+     if trace_cache is None:
+         trace_cache = Path("outputs/event_traces")
+ 
+@@ -107,11 +118,13 @@
+                 "scenario": scenario, "seed": seed,
+                 "trace_hash": identity["trace_hash"], "status": "dry_run",
+                 "official_entry": True,
++                **identity,
+             }
+         run_dir = run_official_method(
+             _ROOT, method=method, seed=seed, num_windows=num_windows,
+             local_steps=local_steps, device=device, trace_dir=trace_dir,
+             output_root=output_root,
++            design=design, design_source=design_source,
+         )
+         metrics_run = load_json(run_dir / "metrics_run.json")
+         manifest = load_json(run_dir / "manifest.json")
+@@ -127,6 +140,7 @@
+             "git_commit": manifest["git_commit"],
+             "status": "completed",
+             "official_entry": True,
++            **identity,
+         }
+ 
+     trace, trace_hash = _get_or_generate_trace(dataset, scenario, seed, num_windows, trace_cache)
+@@ -140,10 +154,13 @@
+             "seed": seed,
+             "trace_hash": trace_hash,
+             "status": "dry_run",
++            **identity,
+         }
+ 
+     # Build and run
+     if dataset == "synthetic":
++        if configuration is not None:
++            raise ValueError("Configured method requires the full runner; SyntheticGateRunner is a separate diagnostic tool")
+         aggregator = get_aggregator(method)
+         runner = SyntheticGateRunner(
+             trace=trace,
+@@ -174,7 +191,9 @@
+             method=method,
+             n_groups=processed.num_groups,
+             model_seed=seed,
+-            device="cpu",
++            device=device,
++            local_steps=local_steps,
++            design=design, design_source=design_source,
+         )
+         runner = full_runner
+         metrics = full_runner.run()
+@@ -195,7 +214,9 @@
+         "active_windows": active_windows,
+         "final_debt_l1": final_debt,
+         "omega_bar": omega_bar.tolist(),
++        "design_window_logs": getattr(runner, "design_window_logs", []),
+         "status": "completed",
++        **identity,
+     }
+ 
+ 
+@@ -206,6 +227,8 @@
+     parser.add_argument("--experiment", required=True, help="Experiment name (e.g. E1_balanced)")
+     parser.add_argument("--dataset", default=None, help="Override dataset")
+     parser.add_argument("--method", default=None, help="Override method")
++    parser.add_argument("--design", choices=("on", "off"), default=None)
++    parser.add_argument("--design-source", default="explicit_cli")
+     parser.add_argument("--scenario", default=None, help="Override scenario")
+     parser.add_argument("--seed", type=int, default=None, help="Override seed")
+     parser.add_argument("--num-windows", type=int, default=None, help="Override num_windows")
+@@ -217,6 +240,9 @@
+     parser.add_argument("--resume", action="store_true")
+     parser.add_argument("--fail-fast", action="store_true")
+     args = parser.parse_args(argv)
++    summary_path = args.output_dir / f"{args.experiment}_summary.json"
++    if summary_path.exists():
++        raise FileExistsError(f"Existing results preserved: {summary_path}; use a new output directory")
+ 
+     # Load experiment config
+     exp_cfg = load_yaml(_ROOT / "configs" / "experiment" / f"{args.experiment}.yaml")
+@@ -256,6 +282,8 @@
+                             local_steps=args.local_steps,
+                             device=args.device,
+                             output_root=args.output_dir,
++                            design=args.design or exp_cfg.get("design"),
++                            design_source=args.design_source if args.design else "explicit_experiment_config",
+                         )
+                         results.append(result)
+                         status = result.get("status", "unknown")
+--- before/scripts/run_joint_ou_cs_p2.py
++++ scripts/run_joint_ou_cs_p2.py
+@@ -296,6 +296,10 @@
+ 
+ 
+ def _skip_unused_gate(self, window_id: int = -1):
++    if self.policy.design_control == "configured" or self.policy.gate_mode == "aggregate_coverage":
++        # Modern configured and explicit legacy coverage paths retain their full diagnostic.
++        from raven_mcs.training.window_runner import FullWindowRunner
++        return FullWindowRunner._decide_g_r(self, window_id)
+     self._last_cert_diagnostics = {}
+     self._last_gate_to_design = {}
+     mode = str(getattr(self.policy, "gate_mode", "policy") or "policy")
+--- before/scripts/run_path_a_no2.py
++++ scripts/run_path_a_no2.py
+@@ -287,6 +287,10 @@
+ 
+ 
+ def _skip_unused_gate(self, window_id: int = -1):
++    if self.policy.design_control == "configured" or self.policy.gate_mode == "aggregate_coverage":
++        # Modern configured and explicit legacy coverage paths retain their full diagnostic.
++        from raven_mcs.training.window_runner import FullWindowRunner
++        return FullWindowRunner._decide_g_r(self, window_id)
+     self._last_cert_diagnostics = {}
+     self._last_gate_to_design = {}
+     mode = str(getattr(self.policy, "gate_mode", "policy") or "policy")
+--- before/scripts/run_tdrive_rank_v1.py
++++ scripts/run_tdrive_rank_v1.py
+@@ -233,6 +233,10 @@
+ 
+ def _skip_unused_gate(self, window_id: int = -1):
+     """T-Drive: Gate unused. Do not scan pi_target for coverage certificates."""
++    if self.policy.design_control == "configured" or self.policy.gate_mode == "aggregate_coverage":
++        # Modern configured and explicit legacy coverage paths retain their full diagnostic.
++        from raven_mcs.training.window_runner import FullWindowRunner
++        return FullWindowRunner._decide_g_r(self, window_id)
+     self._last_cert_diagnostics = {}
+     self._last_gate_to_design = {}
+     mode = str(getattr(self.policy, "gate_mode", "policy") or "policy")
+--- before/src/raven_mcs/aggregation/methods.py
++++ src/raven_mcs/aggregation/methods.py
+@@ -715,6 +715,9 @@
+         "raven": RavenAggregator,
+         "raven_mcs": RavenAggregator,
+         "raven_mcs_formal": RavenAggregator,
++        "raven_formal": RavenAggregator,
++        "raven_coverage_legacy": RavenAggregator,
++        "raven_mcs_coverage_legacy": RavenAggregator,
+         "raven_legacy_always_on": RavenAggregator,
+         "raven_full_design_legacy": RavenAggregator,
+         "raven_sag": RavenAggregator,
+--- before/src/raven_mcs/aggregation/method_policy.py
++++ src/raven_mcs/aggregation/method_policy.py
+@@ -29,9 +29,11 @@
+     # two members of RAVEN-SimOracle can be separated. No paper method sets this.
+     uses_oracle_p: bool = False
+     is_external_baseline: bool = False
+-    # Formal RAVEN-MCS: aggregate_coverage (Design_t := Gate_t from C_LCB).
+-    # LEGACY experiment/ablation only: policy / always_on / always_off / sag.
+-    # Never encode dataset identity here.
++    # These three fields have separate responsibilities. gate_mode is only
++    # retained to reproduce historical control policies, never the new method.
++    design_control: str = "legacy"
++    coverage_diagnostic: str = "aggregate_coverage"
++    method_version: str = "legacy-v1"
+     gate_mode: str = "policy"
+     legacy_only: bool = False
+     paper_method: bool = False
+@@ -40,6 +42,8 @@
+ PAPER_METHOD_KEY = "raven_mcs"
+ FORMAL_DEFAULT_METHOD = "raven_mcs"
+ FORMAL_GATE_MODE = "aggregate_coverage"
++CONFIGURED_METHOD_VERSION = "configured-design-v1"
++LEGACY_COVERAGE_METHOD = "raven_coverage_legacy"
+ 
+ _RAVEN_CORE = dict(
+     uses_design_ratio=True,
+@@ -118,12 +122,20 @@
+         legacy_only=True,
+         paper_method=False,
+     ),
+-    # Unique paper method: Design_t := Gate_t from the aggregate certificate.
++    # Unique paper method: explicit pre-window Design, independent coverage.
+     "raven_mcs": MethodPolicy(
+         **_RAVEN_CORE,
+-        gate_mode="aggregate_coverage",
++        design_control="configured",
++        method_version=CONFIGURED_METHOD_VERSION,
+         legacy_only=False,
+         paper_method=True,
++    ),
++    "raven_coverage_legacy": MethodPolicy(
++        **_RAVEN_CORE,
++        gate_mode="aggregate_coverage",
++        method_version="coverage-controlled-v1",
++        legacy_only=True,
++        paper_method=False,
+     ),
+     # E4 one-factor-at-a-time RAVEN ablations.  Keep every non-ablated RAVEN
+     # component identical; do not substitute a historical partial method.
+@@ -207,6 +219,7 @@
+     "raven_formal": "raven_mcs",
+     "raven_mcs_formal": "raven_mcs",
+     "raven_full_design_legacy": "raven_legacy_always_on",
++    "raven_mcs_coverage_legacy": "raven_coverage_legacy",
+ }
+ 
+ 
+--- before/src/raven_mcs/correction/design_ratio.py
++++ src/raven_mcs/correction/design_ratio.py
+@@ -27,12 +27,14 @@
+ 
+     ζ̂_{k,r,s} = π^tar_{k,s} / max(π̂^opp_{k,s,r}, π_min)
+     """
+-    if pi_min <= 0:
++    if not np.isfinite(pi_min) or pi_min <= 0:
+         raise ValueError("pi_min must be positive")
+     tar = np.asarray(pi_tar, dtype=np.float64)
+     opp = np.asarray(pi_hat_opp, dtype=np.float64)
+     if tar.shape != opp.shape:
+         raise ValueError("pi_tar and pi_hat_opp must share shape")
++    if not np.all(np.isfinite(tar)) or not np.all(np.isfinite(opp)):
++        raise ValueError("DESIGN_INPUT_ERROR: design-ratio masses must be finite")
+     if np.any(tar < 0) or np.any(opp < 0):
+         raise ValueError("design-ratio masses must be nonnegative")
+     return tar / np.maximum(opp, float(pi_min))
+--- before/src/raven_mcs/experiments/e1_entry.py
++++ src/raven_mcs/experiments/e1_entry.py
+@@ -604,6 +604,8 @@
+     evaluation_split: str = "test",
+     weight_safety: dict[str, float] | None = None,
+     formal: bool = False,
++    design: str | None = None,
++    design_source: str = "explicit_api",
+ ) -> Path:
+     if method not in E1_METHODS:
+         raise ValueError(f"method is not in frozen E1 registry: {method}")
+@@ -667,6 +669,7 @@
+         pi_min=float(weight_safety.get("pi_min", 1e-6)),
+         d_max=float(weight_safety.get("d_max", 10.0)),
+         q_min=float(weight_safety.get("q_min", 0.05)),
++        design=design, design_source=design_source,
+     )
+     initial_model_hash = runner._theta_hash()
+     metrics = runner.run()
+@@ -852,6 +855,11 @@
+                 bool(solver_df.iloc[item.window_id]["fallback_used"])
+                 if item.window_id < len(solver_df) else False
+             ),
++            "configured_design": item.configured_design,
++            "actual_design": item.actual_design,
++            "coverage_gate": item.coverage_gate,
++            "configuration_source": item.configuration_source,
++            "method_version": item.method_version,
+             "model_hash_before": item.theta_hash_before,
+             "model_hash_after": item.theta_hash_after,
+         })
+@@ -1017,6 +1025,10 @@
+         "experiment": "E1_balanced",
+         "dataset": "sensorscope",
+         "method": method,
++        "method_version": runner.policy.method_version,
++        "design_control": runner.policy.design_control,
++        "design_configuration": runner.design_configuration.to_dict() if runner.design_configuration else None,
++        "coverage_role": "diagnostic_only" if runner.policy.design_control == "configured" else "legacy_policy",
+         "scenario": "balanced",
+         "seed": int(seed),
+         "num_windows": int(num_windows),
+--- before/src/raven_mcs/experiments/r1m_method_freeze.py
++++ src/raven_mcs/experiments/r1m_method_freeze.py
+@@ -1,4 +1,4 @@
+-"""R1m method freeze. No experiment. Paper-facing name is RAVEN-MCS / raven_mcs."""
++"""Configured deployment method freeze. No experiment. Paper-facing name is RAVEN-MCS / raven_mcs."""
+ 
+ from __future__ import annotations
+ 
+@@ -6,7 +6,7 @@
+ 
+ from raven_mcs.aggregation.method_policy import (
+     FORMAL_DEFAULT_METHOD,
+-    FORMAL_GATE_MODE,
++    CONFIGURED_METHOD_VERSION,
+     PAPER_METHOD_KEY,
+     get_method_policy,
+     resolve_method,
+@@ -15,7 +15,7 @@
+ PAPER_METHOD = PAPER_METHOD_KEY
+ DEFAULT_METHOD = FORMAL_DEFAULT_METHOD
+ PAPER_DISPLAY_NAME = "RAVEN-MCS"
+-LEGACY_CONTROLS = ("raven_legacy_always_on", "raven_wo_design")
++LEGACY_CONTROLS = ("raven_coverage_legacy", "raven_legacy_always_on", "raven_wo_design")
+ FORBIDDEN_PAPER_FACING = ("raven_mcs_formal",)
+ R1M_METHODS = (PAPER_METHOD,) + LEGACY_CONTROLS
+ 
+@@ -26,6 +26,8 @@
+         default=DEFAULT_METHOD,
+         help="Formal paper method key (default: raven_mcs).",
+     )
++    parser.add_argument("--design", choices=("on", "off"), help="Required explicit setting for configured RAVEN-MCS")
++    parser.add_argument("--design-source", default="explicit_cli")
+     return parser
+ 
+ 
+@@ -36,7 +38,8 @@
+ 
+ def assert_frozen() -> None:
+     assert resolve_method(PAPER_METHOD) == "raven_mcs"
+-    assert get_method_policy(PAPER_METHOD).gate_mode == FORMAL_GATE_MODE
++    assert get_method_policy(PAPER_METHOD).design_control == "configured"
++    assert get_method_policy(PAPER_METHOD).method_version == CONFIGURED_METHOD_VERSION
+     assert get_method_policy(PAPER_METHOD).paper_method is True
+     assert get_method_policy("raven_mcs_formal") == get_method_policy("raven_mcs")
+     assert get_method_policy("raven_legacy_always_on").legacy_only is True
+--- before/src/raven_mcs/experiments/run_sag_g1_r1l_v12.py
++++ src/raven_mcs/experiments/run_sag_g1_r1l_v12.py
+@@ -573,7 +573,8 @@
+ 
+ 
+ def main() -> None:
+-    parser = argparse.ArgumentParser()
++    parser = argparse.ArgumentParser(description="Legacy coverage-controlled audit only")
++    parser.add_argument("--method", choices=("raven_coverage_legacy",), required=True)
+     parser.add_argument("--root", type=Path, default=None)
+     parser.add_argument("--output-dir", type=Path, default=None)
+     args = parser.parse_args()
+--- before/src/raven_mcs/experiments/run_sag_g1_r1l_v13.py
++++ src/raven_mcs/experiments/run_sag_g1_r1l_v13.py
+@@ -56,7 +56,7 @@
+     ("dynamic_cov", "src/raven_mcs/sag/dynamic_cov.py"),
+     ("sag_state", "src/raven_mcs/sag/sag_state.py"),
+     ("hashing", "src/raven_mcs/utils/hashing.py"),
+-    ("r1m_method_freeze", "src/raven_mcs/experiments/r1m_method_freeze.py"),
++    ("r1m_method_freeze", "src/raven_mcs/experiments/legacy_coverage_freeze.py"),
+     ("r1m_method_freeze_json", "configs/sag_g1/r1m_method_freeze.json"),
+     ("run_sag_g1_r1l_v13", "src/raven_mcs/experiments/run_sag_g1_r1l_v13.py"),
+     ("main_tex", "TO_OVERLEAF_paper_tmc_r1_clean/main.tex"),
+@@ -114,7 +114,7 @@
+ 
+ MODULE_TO_REL = {
+     "raven_mcs.aggregation.method_policy": "src/raven_mcs/aggregation/method_policy.py",
+-    "raven_mcs.experiments.r1m_method_freeze": "src/raven_mcs/experiments/r1m_method_freeze.py",
++    "raven_mcs.experiments.r1m_method_freeze": "src/raven_mcs/experiments/legacy_coverage_freeze.py",
+     "raven_mcs.utils.hashing": "src/raven_mcs/utils/hashing.py",
+ }
+ 
+@@ -124,7 +124,7 @@
+     "src/raven_mcs/sag/certificates.py",
+     "src/raven_mcs/sag/aggregate_certificate.py",
+     "src/raven_mcs/sag/r1l_design.py",
+-    "src/raven_mcs/experiments/r1m_method_freeze.py",
++    "src/raven_mcs/experiments/legacy_coverage_freeze.py",
+ )
+ 
+ OPTIONAL_ROUTING = {"src/raven_mcs/sag/dynamic_cov.py"}
+@@ -285,7 +285,7 @@
+         resolved = resolve_method(key)
+         pol = get_method_policy(key)
+         paper = bool(resolved == PAPER_METHOD_KEY and pol.paper_method)
+-        r1m = resolved in {"raven_mcs", "raven_legacy_always_on", "raven_wo_design"} and key != "raven_mcs_formal"
++        r1m = resolved in {"raven_coverage_legacy", "raven_legacy_always_on", "raven_wo_design"} and key != "raven_mcs_formal"
+         if key == "raven_mcs_formal":
+             r1m = False
+             paper = False
+@@ -312,7 +312,7 @@
+         root / "src/raven_mcs/aggregation/method_policy.py",
+         root / "src/raven_mcs/training/window_runner.py",
+         root / "src/raven_mcs/sag/r1l_design.py",
+-        root / "src/raven_mcs/experiments/r1m_method_freeze.py",
++        root / "src/raven_mcs/experiments/legacy_coverage_freeze.py",
+     ]
+     keys = ("always_on", "dataset_gate", "dataset_design", "design_enabled", "static_gate", "legacy_gate", "sensor_scope_on", "uair_off")
+     rows = []
+@@ -394,8 +394,8 @@
+         and mask_txt == mask_rule_hash()
+         and list(A_GRID) == [1.0, 0.8, 0.6, 0.4, 0.2]
+         and N_MIN == 19 == n_min()
+-        and resolve_method("raven_mcs") == "raven_mcs"
+-        and get_method_policy("raven_mcs").gate_mode == FORMAL_GATE_MODE
++        and resolve_method("raven_coverage_legacy") == "raven_coverage_legacy"
++        and get_method_policy("raven_coverage_legacy").gate_mode == FORMAL_GATE_MODE
+     )
+ 
+     dest_map = {
+@@ -504,13 +504,13 @@
+     no_exp = "raven_mcs.experiments.sag_runtime" not in imported and "sklearn" not in imported
+     no_r1m = not (root / "results_sag_g1" / "round_r1m").exists()
+     closure_ok = all(bool(r["pass"]) for r in closure)
+-    alias_ok = resolve_method("raven_mcs") == "raven_mcs" and get_method_policy("raven_mcs").gate_mode == "aggregate_coverage"
+-    not_always = get_method_policy("raven_mcs").gate_mode != "always_on"
++    alias_ok = resolve_method("raven_coverage_legacy") == "raven_coverage_legacy" and get_method_policy("raven_coverage_legacy").gate_mode == "aggregate_coverage"
++    not_always = get_method_policy("raven_coverage_legacy").gate_mode != "always_on"
+     alias_formal = resolve_method("raven_mcs_formal") == "raven_mcs"
+     legacy_iso = get_method_policy("raven_legacy_always_on").legacy_only and get_method_policy("raven").legacy_only
+     cli_ok = True
+-    from raven_mcs.experiments.r1m_method_freeze import DEFAULT_METHOD, formal_cli_parser
+-    cli_ok = DEFAULT_METHOD == "raven_mcs" and formal_cli_parser().parse_args([]).method == "raven_mcs"
++    from raven_mcs.experiments.legacy_coverage_freeze import DEFAULT_METHOD, formal_cli_parser
++    cli_ok = DEFAULT_METHOD == "raven_coverage_legacy" and formal_cli_parser().parse_args(["--method", DEFAULT_METHOD]).method == DEFAULT_METHOD
+     freeze_md_ok = "raven_mcs" in R1M_FREEZE_MD and "aggregate_coverage" in R1M_FREEZE_MD
+     t8 = "window_runner.py" in snap_csv
+     t9 = "certificates.py" in snap_csv
+@@ -528,7 +528,7 @@
+                 break
+             seen.add(cur)
+             cur = METHOD_ALIASES[cur]
+-    t19 = get_method_policy("raven").paper_method is False and get_method_policy("raven_mcs").paper_method is True
++    t19 = get_method_policy("raven").paper_method is False and get_method_policy("raven_coverage_legacy").paper_method is False and get_method_policy("raven_mcs").paper_method is True
+     t20 = "PRE-R1m" in eval_chunk
+ 
+     flags = {
+@@ -543,7 +543,9 @@
+         "alpha": ALPHA,
+         "tau_cov": TAU_COV,
+         "patch": "R1l-v1.3",
+-        "paper_method": PAPER_METHOD_KEY,
++        "legacy_method": "raven_coverage_legacy",
++        "method_version": "coverage-controlled-v1",
++        "coverage_role": "controls_legacy_design",
+         "formal_gate_mode": FORMAL_GATE_MODE,
+     }
+     dump_json(flags, out / "summary" / "R1L_V13_VERDICT.json")
+@@ -700,7 +702,8 @@
+ 
+ 
+ def main() -> None:
+-    parser = argparse.ArgumentParser()
++    parser = argparse.ArgumentParser(description="Legacy coverage-controlled audit only")
++    parser.add_argument("--method", choices=("raven_coverage_legacy",), required=True)
+     parser.add_argument("--root", type=Path, default=None)
+     parser.add_argument("--output-dir", type=Path, default=None)
+     args = parser.parse_args()
+--- before/src/raven_mcs/experiments/run_sag_g1_r1m.py
++++ src/raven_mcs/experiments/run_sag_g1_r1m.py
+@@ -25,7 +25,7 @@
+ 
+ from e3_v2_context import public_context_from_start
+ from raven_mcs.aggregation.method_policy import FORMAL_GATE_MODE, get_method_policy, resolve_method
+-from raven_mcs.experiments.r1m_method_freeze import PAPER_METHOD
++from raven_mcs.experiments.legacy_coverage_freeze import PAPER_METHOD
+ from raven_mcs.experiments.run_sag_g1_r1 import _git_hash
+ from raven_mcs.experiments.sag_runtime import attach_unified_target, prepare_sag_bundle
+ from raven_mcs.sag.availability_stress import A_GRID, TAU_COV
+@@ -92,7 +92,7 @@
+     ("availability_stress", "src/raven_mcs/sag/availability_stress.py"),
+     ("stress_mask", "src/raven_mcs/sag/stress_mask.py"),
+     ("oracle_stress_builder", "src/raven_mcs/sag/oracle_stress_builder.py"),
+-    ("r1m_method_freeze", "src/raven_mcs/experiments/r1m_method_freeze.py"),
++    ("r1m_method_freeze", "src/raven_mcs/experiments/legacy_coverage_freeze.py"),
+     ("r1m_method_freeze_json", "configs/sag_g1/r1m_method_freeze.json"),
+     ("run_sag_g1_r1m", "src/raven_mcs/experiments/run_sag_g1_r1m.py"),
+     ("thresholds", "configs/sag_g0/thresholds.json"),
+@@ -450,7 +450,8 @@
+ 
+ 
+ def main(argv: list[str] | None = None) -> int:
+-    parser = argparse.ArgumentParser()
++    parser = argparse.ArgumentParser(description="Legacy coverage-controlled audit only")
++    parser.add_argument("--method", choices=("raven_coverage_legacy",), required=True)
+     parser.add_argument("--out", type=Path, default=DEFAULT_OUT)
+     args = parser.parse_args(argv)
+     root = ROOT
+@@ -474,7 +475,9 @@
+             "mask_rule_hash": mask_rule_hash(),
+             "threshold_hash": thresh_hash,
+             "oracle_sha256": oracle_hash,
+-            "paper_method": PAPER_METHOD,
++            "legacy_method": PAPER_METHOD,
++            "method_version": "coverage-controlled-v1",
++            "coverage_role": "controls_legacy_design",
+             "gate_mode": FORMAL_GATE_MODE,
+             "predictor": predictor_family_payload(),
+             "reset": reset_rule_payload(),
+@@ -641,7 +644,9 @@
+                         "predictor_id": PREDICTOR_ID,
+                         "reset_rule_id": RESET_RULE_ID,
+                         "ridge_alpha": RIDGE_ALPHA,
+-                        "paper_method": PAPER_METHOD,
++                        "legacy_method": PAPER_METHOD,
++            "method_version": "coverage-controlled-v1",
++            "coverage_role": "controls_legacy_design",
+                         "k_n_clipped": False,
+                     }
+                 )
+@@ -843,7 +848,7 @@
+         )
+     pd.DataFrame(snap_manifest).to_csv(out / "source_snapshot" / "R1M_SOURCE_SNAPSHOT_MANIFEST.csv", index=False)
+ 
+-    alias_ok = resolve_method("raven_mcs") == "raven_mcs" and get_method_policy("raven_mcs").gate_mode == FORMAL_GATE_MODE
++    alias_ok = resolve_method("raven_coverage_legacy") == "raven_coverage_legacy" and get_method_policy("raven_coverage_legacy").gate_mode == FORMAL_GATE_MODE
+     theory_ok = (
+         target["hash"] == EXPECTED_TARGET_HASH
+         and thresh_hash == EXPECTED_THRESHOLD_HASH
+@@ -949,7 +954,9 @@
+             "posthoc_predictor_tuning": False,
+             "posthoc_reset_tuning": False,
+             "git": _git_hash(),
+-            "paper_method": PAPER_METHOD,
++            "legacy_method": PAPER_METHOD,
++            "method_version": "coverage-controlled-v1",
++            "coverage_role": "controls_legacy_design",
+             "n_pretest_windows": n_pre,
+         },
+         out / "summary" / "R1M_VERDICT.json",
+--- before/src/raven_mcs/sag/r1l_design.py
++++ src/raven_mcs/sag/r1l_design.py
+@@ -1,18 +1,89 @@
+-"""R1l-v1.2 unique Design authority: Design_t := Gate_t.
+-
+-Formal RAVEN-MCS window-close reads Gate_t from the aggregate coverage
+-certificate. Dataset name, static Design flags, oracle labels, current C_t,
+-and the current mask are not Design controls.
++"""Explicit configured Design and isolated R1l legacy coverage control.
++
++Configured RAVEN-MCS uses DesignConfiguration; its Gate never controls updates.
++The functions design_from_gate and legacy_decide_gate_and_design preserve old
++coverage control. Dataset names, current outcomes and oracle labels cannot
++select configured Design. The legacy forbidden-control list is historical.
+ """
+ 
+ from __future__ import annotations
+ 
+ from typing import Any, Mapping
++from dataclasses import dataclass, asdict
+ 
+ import numpy as np
+ 
+ from raven_mcs.sag.gate import zeta_tilde
+ from raven_mcs.sag.r1l_spec import TAU_COV
++from raven_mcs.aggregation.method_policy import CONFIGURED_METHOD_VERSION
++
++
++def configuration_for_method(method: str, design: str | None, *, source: str) -> "DesignConfiguration | None":
++    from raven_mcs.aggregation.method_policy import get_method_policy
++    if get_method_policy(method).design_control != "configured":
++        if design is not None:
++            raise ValueError("Explicit Design is only valid on the configured method; legacy controls keep their own identity")
++        return None
++    if design not in {"on", "off"}:
++        raise ValueError("CONFIGURATION_REQUIRED: supply explicit --design on or --design off")
++    return DesignConfiguration(enabled=design == "on", source=source)
++
++
++@dataclass(frozen=True)
++class DesignConfiguration:
++    """A predeclared setting, not a coverage or identifiability certificate."""
++
++    enabled: bool
++    source: str
++    method_version: str = CONFIGURED_METHOD_VERSION
++
++    def __post_init__(self) -> None:
++        if type(self.enabled) is not bool:
++            raise ValueError("Design configuration must explicitly specify a bool")
++        if not self.source or self.source.strip() != self.source:
++            raise ValueError("Design configuration requires a nonempty source")
++        if self.method_version != CONFIGURED_METHOD_VERSION:
++            raise ValueError("Design configuration method version mismatch")
++
++    def to_dict(self) -> dict[str, Any]:
++        return asdict(self)
++
++    @classmethod
++    def from_dict(cls, value: Mapping[str, Any]) -> "DesignConfiguration":
++        return cls(**dict(value))
++
++
++def apply_configured_design_zeta(zeta_d: np.ndarray, design_t: int | bool) -> np.ndarray:
++    """Consume only the window's frozen Design, independently of diagnostics."""
++    if design_t not in (0, 1):
++        raise ValueError("Frozen Design must be 0 or 1")
++    ratio = np.asarray(zeta_d, dtype=np.float64)
++    if not int(design_t):
++        return np.ones_like(ratio)
++    if not np.all(np.isfinite(ratio)) or np.any(ratio < 0):
++        raise ValueError("DESIGN_INPUT_ERROR: invalid lagged opportunity ratio")
++    return ratio.copy()
++
++
++def configured_decide_gate_and_design(
++    diagnostics: Mapping[str, Any], *, configuration: DesignConfiguration,
++    window_id: int, tau_cov: float = TAU_COV, c_cov_lcb: float | None = None,
++) -> dict[str, Any]:
++    """Record independent diagnostic and explicit setting before reading R/O/U."""
++    if not isinstance(configuration, DesignConfiguration):
++        raise ValueError("Explicit DesignConfiguration required")
++    state = str(diagnostics.get("certificate_state") or "WARMUP")
++    lower = c_cov_lcb if c_cov_lcb is not None else diagnostics.get("C_LCB", 0.0)
++    gate = gate_from_certificate(certificate_state=state, c_lcb=lower, tau_cov=tau_cov)
++    return {
++        "window_id": int(window_id), "configured_design": int(configuration.enabled),
++        "Design_t": int(configuration.enabled), "Gate_t": gate,
++        "configuration_source": configuration.source,
++        "method_version": configuration.method_version,
++        "design_control": "configured", "coverage_role": "diagnostic_only",
++        "certificate_state": state, "C_LCB": _as_float(lower, 0.0),
++        "authority": "prewindow_explicit_configuration",
++    }
+ 
+ FORMAL_GATE_MODE = "aggregate_coverage"
+ LEGACY_GATE_MODES = frozenset({"always_on", "always_off", "policy", "sag"})
+@@ -100,7 +171,7 @@
+     return out if np.isfinite(out) else float(default)
+ 
+ 
+-def formal_decide_gate_and_design(
++def legacy_decide_gate_and_design(
+     diagnostics: Mapping[str, Any] | None = None,
+     *,
+     tau_cov: float = TAU_COV,
+@@ -169,3 +240,9 @@
+     if int(rec["Gate_t"]) != int(rec["Design_t"]):
+         raise RuntimeError("Design_t must equal Gate_t")
+     return rec
++
++
++# Compatibility exports for historical audit programs. New runner branches use
++# configured_decide_gate_and_design; these names describe legacy behavior only.
++formal_decide_gate_and_design = legacy_decide_gate_and_design
++legacy_apply_design_zeta = apply_formal_design_zeta
+--- before/src/raven_mcs/sag/r1l_theory.py
++++ src/raven_mcs/sag/r1l_theory.py
+@@ -1,4 +1,8 @@
+-"""Complete R1l theory texts. Appendix-grade proofs, not sketches."""
++"""Historical R1l coverage-controlled theory texts (legacy only).
++
++The Design := Gate statements below describe the retained legacy method.
++Configured Design is specified by r1l_design.DesignConfiguration, independently
++of the same coverage diagnostic. These texts are not the current method freeze."""
+ 
+ from __future__ import annotations
+ 
+--- before/src/raven_mcs/sag/r1m_spec.py
++++ src/raven_mcs/sag/r1m_spec.py
+@@ -1,10 +1,10 @@
+-"""Frozen R1m aggregate-certificate implementation spec. One predictor, one RESET rule."""
++"""Historical legacy R1m aggregate-certificate implementation spec. One predictor, one RESET rule."""
+ 
+ from __future__ import annotations
+ 
+ from typing import Any
+ 
+-from raven_mcs.aggregation.method_policy import FORMAL_GATE_MODE, PAPER_METHOD_KEY
++from raven_mcs.aggregation.method_policy import FORMAL_GATE_MODE, LEGACY_COVERAGE_METHOD
+ from raven_mcs.sag.availability_stress import A_GRID, BOUNDARY_NEAR_MARGIN
+ from raven_mcs.sag.r1l_spec import ALPHA, N_MIN, NUM_TOL, TAU_COV
+ from raven_mcs.sag.stress_mask import SEED
+@@ -14,7 +14,7 @@
+ LOOKBACK_L = 8
+ PREDICTOR_ID = "AGGREGATE_COVERAGE_RIDGE_V1"
+ RESET_RULE_ID = "MISCOVERAGE_TRIGGERED_RESET_V1"
+-PAPER_METHOD = PAPER_METHOD_KEY
++PAPER_METHOD = LEGACY_COVERAGE_METHOD
+ DATASETS = ("sensorscope", "uair")
+ PRIMARY = {"dataset": "sensorscope", "availability_level": 0.40}
+ SECONDARY = {"dataset": "uair", "availability_level": 0.20}
+@@ -58,7 +58,9 @@
+         "model_zoo": False,
+         "scan_alphas": False,
+         "seed": SEED,
+-        "formal_paper_method": PAPER_METHOD,
++        "legacy_method": PAPER_METHOD,
++        "method_version": "coverage-controlled-v1",
++        "coverage_role": "controls_legacy_design",
+         "gate_mode": FORMAL_GATE_MODE,
+     }
+ 
+@@ -103,4 +105,4 @@
+ assert ALPHA == 0.05
+ assert list(A_GRID) == [1.0, 0.8, 0.6, 0.4, 0.2]
+ assert BOUNDARY_NEAR_MARGIN == 0.01
+-assert PAPER_METHOD == "raven_mcs"
++assert PAPER_METHOD == LEGACY_COVERAGE_METHOD
+--- before/src/raven_mcs/training/window_runner.py
++++ src/raven_mcs/training/window_runner.py
+@@ -1,7 +1,7 @@
+ """Full training pipeline WindowRunner — real Common-NDMF training (P10).
+ 
+ Each window (SAG v1.2 / PostAudit III–VI):
+- 1. Read theta_r; compute F_{r-} certificates; freeze G_r
++ 1. Freeze configured Design; read theta_r; compute independent F_{r-} coverage diagnostic
+  2. Realize R (risk sets) from EventTrace
+  3. Freeze p_hat_obs from pre-O features
+  4. Realize O; E_r = registered/attempted; B_r = {k in E_r : m>0}
+@@ -9,7 +9,7 @@
+  6. Freeze q_hat_use from pre-U features
+  7. Realize U → A_r = B_r ∩ U_r
+  8. P2 / global update / optional debt
+- 9. Post-window D vs 0 audit (future Gate only)
++ 9. Post-window D vs 0 audit updates future coverage diagnostics only for configured Design
+ 10. After window close: update opportunity/p/q/variance state
+ """
+ 
+@@ -68,7 +68,10 @@
+ from raven_mcs.sag.r1l_design import (
+     FORMAL_GATE_MODE,
+     apply_formal_design_zeta,
+-    formal_decide_gate_and_design,
++    legacy_decide_gate_and_design,
++    DesignConfiguration,
++    configured_decide_gate_and_design,
++    apply_configured_design_zeta,
+ )
+ from raven_mcs.sag.sag_state import SagState
+ from raven_mcs.sag.timing import (
+@@ -109,6 +112,11 @@
+     a_r_size: int
+     b_r_size: int = 0
+     g_r: int = 0
++    configured_design: int | None = None
++    actual_design: int | None = None
++    coverage_gate: int | None = None
++    configuration_source: str = ""
++    method_version: str = "legacy-v1"
+ 
+ 
+ @dataclass
+@@ -148,6 +156,7 @@
+     paper_h_by_unit: dict[str, int] | None = None
+     # Frozen joint opportunity mass on client×stratum (same scale as pi_target).
+     pi_opp_joint: dict[tuple[str, str], float] = field(default_factory=dict)
++    design_configuration: DesignConfiguration | None = None
+ 
+     # State
+     theta: dict[str, torch.Tensor] = field(default_factory=dict)
+@@ -173,8 +182,14 @@
+     sag_state: SagState = field(default_factory=SagState)
+     sag_window_logs: list[dict[str, Any]] = field(default_factory=list)
+     sag_raw_states: list[dict[str, Any]] = field(default_factory=list)
++    design_window_logs: list[dict[str, Any]] = field(default_factory=list)
+ 
+     def __post_init__(self) -> None:
++        if self.policy.design_control == "configured":
++            if not isinstance(self.design_configuration, DesignConfiguration):
++                raise ValueError("CONFIGURATION_REQUIRED: raven_mcs requires explicit Design on/off")
++            if self.policy.coverage_diagnostic != "aggregate_coverage":
++                raise ValueError("Unsupported coverage diagnostic")
+         self.mu = np.asarray(self.mu, dtype=np.float64)
+         if self.paper_h_by_unit:
+             if int(self.num_groups) != 4:
+@@ -195,7 +210,8 @@
+             self.opportunity_estimator = OpportunityEstimator()
+         if self.pi_target:
+             self.opportunity_estimator.initialize_support(
+-                key for key, mass in self.pi_target.items() if mass > 0.0
++                key for key, mass in self.pi_target.items()
++                if self._formal_raven_mcs() or mass > 0.0
+             )
+         if self.obs_propensity is None:
+             self.obs_propensity = ObservationPropensity()
+@@ -305,7 +321,12 @@
+             )
+         else:
+             if self.opportunity_estimator is None:
++                if self._formal_raven_mcs():
++                    raise ValueError("DESIGN_INPUT_ERROR: missing lagged opportunity estimator")
+                 return np.ones(len(stratum_ids), dtype=np.float64)
++            lagged = self.opportunity_estimator.pi_hat()
++            if self._formal_raven_mcs() and any((client_id, s) not in lagged for s in stratum_ids):
++                raise ValueError("DESIGN_INPUT_ERROR: missing lagged opportunity support")
+             pi_hat_opp = np.array(
+                 [
+                     self.opportunity_estimator.pi_hat().get((client_id, s), self.p_min)
+@@ -315,6 +336,16 @@
+             )
+ 
+         return zeta_hat_stratum(pi_tar, pi_hat_opp, pi_min=self.pi_min)
++
++    def _design_metric_fields(self) -> dict[str, Any]:
++        rec = self._last_gate_to_design
++        return {
++            "configured_design": rec.get("configured_design"),
++            "actual_design": rec.get("Design_t"),
++            "coverage_gate": rec.get("Gate_t"),
++            "configuration_source": rec.get("configuration_source", "legacy_policy"),
++            "method_version": self.policy.method_version,
++        }
+ 
+     def _compute_p_hat(self, features_list: list[dict[str, float]]) -> np.ndarray:
+         """Compute observation propensity estimates."""
+@@ -342,7 +373,7 @@
+         return str(getattr(self.policy, "gate_mode", "policy") or "policy")
+ 
+     def _formal_raven_mcs(self) -> bool:
+-        return self._gate_mode() == FORMAL_GATE_MODE
++        return self.policy.design_control == "configured"
+ 
+     def _certificate_context(self) -> CertificateContext:
+         return CertificateContext(
+@@ -352,7 +383,8 @@
+             n_clients=int(self._n_clients_pre),
+             n_groups=int(self.num_groups),
+             source="prewindow_debt_and_public_target",
+-            cov_mode=str(getattr(self, "sag_cov_mode", "aggregate_stable_regime") or "aggregate_stable_regime"),
++            cov_mode=("aggregate_stable_regime" if self._formal_raven_mcs()
++                      else str(getattr(self, "sag_cov_mode", "aggregate_stable_regime") or "aggregate_stable_regime")),
+             rolling_L=getattr(self, "sag_rolling_L", None),
+             regime_certified=bool(getattr(self, "sag_regime_certified", True)),
+             had_active_certified_regime=bool(getattr(self, "sag_had_active_certified_regime", True)),
+@@ -364,9 +396,9 @@
+     ) -> tuple[int, dict[str, Any], str | None, dict[str, bool]]:
+         """Freeze G_r from F_{r-} only.
+ 
+-        Formal RAVEN-MCS (gate_mode=aggregate_coverage): Design_t := Gate_t
+-        from the aggregate coverage certificate. Dataset identity, static
+-        Design flags, and uses_design_ratio are not consulted.
++        Configured RAVEN-MCS consumes the pre-window setting independently of
++        the aggregate coverage certificate. Only the explicit legacy coverage
++        branch below imposes Design_t := Gate_t.
+ 
+         always_on / always_off / policy / sag are LEGACY experiment modes.
+         """
+@@ -378,9 +410,20 @@
+         )
+         certs = bundle.as_gate_inputs()
+         self._last_cert_diagnostics = dict(bundle.diagnostics)
++        if self._formal_raven_mcs():
++            rec = configured_decide_gate_and_design(
++                self._last_cert_diagnostics,
++                configuration=self._window_design_configuration,
++                window_id=window_id,
++                tau_cov=float(self.sag_thresholds.tau_cov),
++                c_cov_lcb=float(bundle.C_cov_LCB),
++            )
++            self._last_gate_to_design = rec
++            self.design_window_logs.append(dict(rec, actual_design=rec["Design_t"]))
++            return int(rec["Design_t"]), certs, None, {"aggregate_coverage": bool(rec["Gate_t"])}
+         mode = self._gate_mode()
+         if mode == FORMAL_GATE_MODE:
+-            rec = formal_decide_gate_and_design(
++            rec = legacy_decide_gate_and_design(
+                 self._last_cert_diagnostics,
+                 tau_cov=float(self.sag_thresholds.tau_cov),
+                 window_id=int(window_id),
+@@ -389,6 +432,7 @@
+                 else None,
+             )
+             self._last_gate_to_design = rec
++            self.design_window_logs.append(dict(rec, actual_design=rec["Design_t"], method_version=self.policy.method_version, coverage_role="legacy_control"))
+             passed = {"aggregate_coverage": bool(rec["Gate_t"])}
+             return int(rec["Gate_t"]), certs, rec.get("fallback_reason"), passed
+         # --- LEGACY experiment / ablation path (not formal RAVEN-MCS) ---
+@@ -405,6 +449,8 @@
+         return 0, certs, "OFF_MODE_NO_DESIGN", decision.passed
+ 
+     def _apply_zeta(self, zeta_d: np.ndarray, g_r: int) -> np.ndarray:
++        if self._formal_raven_mcs():
++            return apply_configured_design_zeta(zeta_d, g_r)
+         mode = self._gate_mode()
+         if mode == FORMAL_GATE_MODE:
+             return apply_formal_design_zeta(zeta_d, g_r)
+@@ -501,6 +547,9 @@
+     ) -> None:
+         log = {
+             "window_id": int(window_id),
++            "method_version": self.policy.method_version,
++            "design_control": self.policy.design_control,
++            "coverage_role": "diagnostic_only" if self._formal_raven_mcs() else "legacy_control",
+             "method_gate_mode": self._gate_mode(),
+             "G_r": int(g_r),
+             "fallback_reason": fallback_reason,
+@@ -526,6 +575,10 @@
+         log["certificate_diagnostics"] = dict(self._last_cert_diagnostics)
+         if self._last_gate_to_design:
+             log["gate_to_design"] = dict(self._last_gate_to_design)
++        if self._formal_raven_mcs():
++            log.update(self._last_gate_to_design)
++            log["actual_design"] = int(g_r)
++            log["design_configuration"] = self._window_design_configuration.to_dict()
+         self.sag_window_logs.append(log)
+         raw = audit.get("raw_state") or {}
+         if (
+@@ -596,6 +649,12 @@
+     def _process_window(
+         self, window_id: int, events: "pd.DataFrame",
+     ) -> WindowMetrics:
++        # Immutable snapshot before any certificate, event, or local computation.
++        # Replacing external configuration during this call affects only later windows.
++        if self._formal_raven_mcs():
++            if not isinstance(self.design_configuration, DesignConfiguration):
++                raise ValueError("CONFIGURATION_REQUIRED: invalid pre-window Design")
++            self._window_design_configuration = self.design_configuration
+         before_hash = self._theta_hash()
+         version = self.clock.model_version
+         stages = SagStages()
+@@ -687,12 +746,15 @@
+                 a_r_size=0,
+                 b_r_size=0,
+                 g_r=int(g_r),
++                **self._design_metric_fields(),
+             )
+ 
+         # Freeze p̂_obs from pre-O features (planned_workload_pre / hour_block).
+         client_data: dict[str, dict] = {}
+         for rec in window_slice.records:
+             cid = rec.client_id
++            # Keep the lagged ratio for the independent D-vs-0 diagnostic;
++            # only the frozen setting decides which factor enters computation.
+             zeta_d = self._compute_zeta(cid, rec.opportunity_strata)
+             features_list = [
+                 {
+@@ -1056,6 +1118,7 @@
+                 a_r_size=0,
+                 b_r_size=len(b_r_clients),
+                 g_r=int(g_r),
++                **self._design_metric_fields(),
+             )
+ 
+         # Step 8: Compute method-specific alpha
+@@ -1284,6 +1347,7 @@
+             a_r_size=len(a_r_clients),
+             b_r_size=len(b_r_clients),
+             g_r=int(g_r),
++            **self._design_metric_fields(),
+         )
+ 
+     def _update_lagged_estimators(
+@@ -1421,7 +1485,9 @@
+     trace: EventTrace,
+     dataset: ProcessedDataset,
+     *,
+-    method: str = "raven",
++    method: str = "raven_mcs",
++    design: str | None = None,
++    design_source: str = "explicit_api",
+     n_groups: int | None = None,
+     model_seed: int = 26001,
+     learning_rate: float = 0.01,
+@@ -1440,6 +1506,8 @@
+     paper_h_by_unit: dict[str, int] | None = None,
+ ) -> FullWindowRunner:
+     """Build a FullWindowRunner for end-to-end training."""
++    from raven_mcs.sag.r1l_design import configuration_for_method
++    design_configuration = configuration_for_method(method, design, source=design_source)
+     if n_groups is None:
+         n_groups = dataset.num_groups
+ 
+@@ -1467,6 +1535,8 @@
+             atomic_for_pi["target_group_main"] = (
+                 RepeatableTimeOfDayMapper().map(atomic_for_pi)
+             )
++        else:
++            atomic_for_pi["target_group_main"] = pd.Categorical(atomic_for_pi["target_group"]).codes
+         unit_station = atomic_for_pi.set_index("unit_id")[
+             "spatial_id"
+         ].astype(str).to_dict()
+@@ -1499,6 +1569,7 @@
+         model=model,
+         aggregator=aggregator,
+         policy=policy,
++        design_configuration=design_configuration,
+         mu=mu,
+         num_groups=n_groups,
+         learning_rate=learning_rate,
+--- before/src/raven_mcs/utils/config.py
++++ src/raven_mcs/utils/config.py
+@@ -81,6 +81,22 @@
+     if overrides:
+         cfg = deep_merge(cfg, overrides)
+ 
++    from raven_mcs.aggregation.method_policy import get_method_policy
++    from raven_mcs.sag.r1l_design import configuration_for_method
++    method_name = str(cfg["method"])
++    policy = get_method_policy(method_name)
++    configuration = configuration_for_method(
++        method_name, cfg.get("design"), source=cfg.get("design_source", "explicit_run_config"),
++    )
++    if policy.design_control == "configured":
++        cfg["design_configuration"] = configuration.to_dict()
++        cfg["method_version"] = policy.method_version
++        cfg["coverage_role"] = "diagnostic_only"
++    elif policy.method_version == "coverage-controlled-v1":
++        cfg["design_configuration"] = None
++        cfg["method_version"] = policy.method_version
++        cfg["coverage_role"] = "controls_legacy_design"
++
+     seed_bundle = SeedBundle.from_config(cfg["seed"], cfg.get("seeds"))
+     cfg["seeds"] = seed_bundle.as_dict()
+     if validate:
+--- before/src/raven_mcs/utils/validation.py
++++ src/raven_mcs/utils/validation.py
+@@ -40,6 +40,8 @@
+     "_method_cfg",
+     "_scenario_cfg",
+ )
++DESIGN_CONFIG_KEYS = {"design", "design_source", "design_configuration", "method_version", "coverage_role"}
++METHOD_IDENTITY_KEYS = {"method_version", "design_control", "design_required", "coverage_diagnostic", "coverage_role", "gate_mode", "legacy_only"}
+ 
+ BLOCK_KEYS = {
+     "clients": {"K", "local_steps", "risk_set_mean"},
+@@ -152,7 +154,7 @@
+         if not isinstance(value, Mapping):
+             errors.append(f"{slice_name} must be a mapping")
+             continue
+-        _reject_unknown(value, allowed, f"{slice_name}.", errors)
++        _reject_unknown(value, allowed | (METHOD_IDENTITY_KEYS if slice_name == "_method_cfg" else set()), f"{slice_name}.", errors)
+         name = value.get("name")
+         if not isinstance(name, str) or not name.strip():
+             errors.append(f"{slice_name}.name must be a non-empty string")
+@@ -256,10 +258,21 @@
+     _require_keys(raw, REQUIRED_TOP_LEVEL, "", errors)
+     _reject_unknown(
+         raw,
+-        set(REQUIRED_TOP_LEVEL) | set(INTERNAL_CONFIG_KEYS),
++        set(REQUIRED_TOP_LEVEL) | set(INTERNAL_CONFIG_KEYS) | DESIGN_CONFIG_KEYS,
+         "",
+         errors,
+     )
++
++    if raw.get("method") in {"raven_mcs", "raven_mcs_formal", "raven_formal"}:
++        from raven_mcs.sag.r1l_design import DesignConfiguration
++        try:
++            configuration = DesignConfiguration.from_dict(raw.get("design_configuration") or {})
++            if raw.get("design") != ("on" if configuration.enabled else "off"):
++                errors.append("design and serialized design_configuration disagree")
++            if raw.get("method_version") != configuration.method_version or raw.get("coverage_role") != "diagnostic_only":
++                errors.append("configured method identity mismatch")
++        except (TypeError, ValueError) as exc:
++            errors.append(f"invalid explicit Design configuration: {exc}")
+ 
+     for key in ("experiment", "dataset", "method", "scenario", "device", "output_dir"):
+         value = raw.get(key)
+--- before/tests/unit/test_abstract_has_no_old_dataset_gate_claim.py
++++ tests/unit/test_abstract_has_no_old_dataset_gate_claim.py
+@@ -21,5 +21,4 @@
+     flat = " ".join(chunk.split())
+     for phrase in BANNED:
+         assert phrase not in chunk
+-    assert "aggregate coverage certificate" in flat
+-    assert "abstains from Design" in chunk
++    assert 'preconfigured opportunity Design factor' in flat
+--- before/tests/unit/test_certified_above_tau_design_on.py
++++ tests/unit/test_certified_above_tau_design_on.py
+@@ -1,8 +1,9 @@
+-from raven_mcs.sag.r1l_design import DESIGN_ON, formal_decide_gate_and_design
++"""Historical Design=Gate behavior only; configured behavior is tested in test_configured_design_runner."""
++from raven_mcs.sag.r1l_design import DESIGN_ON, legacy_decide_gate_and_design
+ 
+ 
+-def test_certified_above_tau_design_on() -> None:
+-    rec = formal_decide_gate_and_design(
++def test_legacy_certified_above_tau_design_on() -> None:
++    rec = legacy_decide_gate_and_design(
+         {"certificate_state": "CERTIFIED", "C_LCB": 0.06, "tau_cov": 0.05},
+     )
+     assert rec["Gate_t"] == 1
+--- before/tests/unit/test_certified_below_tau_design_off.py
++++ tests/unit/test_certified_below_tau_design_off.py
+@@ -1,8 +1,9 @@
+-from raven_mcs.sag.r1l_design import DESIGN_OFF, formal_decide_gate_and_design
++"""Historical Design=Gate behavior only; configured behavior is tested in test_configured_design_runner."""
++from raven_mcs.sag.r1l_design import DESIGN_OFF, legacy_decide_gate_and_design
+ 
+ 
+-def test_certified_below_tau_design_off() -> None:
+-    rec = formal_decide_gate_and_design(
++def test_legacy_certified_below_tau_design_off() -> None:
++    rec = legacy_decide_gate_and_design(
+         {"certificate_state": "CERTIFIED", "C_LCB": 0.04, "tau_cov": 0.05},
+     )
+     assert rec["Gate_t"] == 0
+--- before/tests/unit/test_conclusion_has_no_old_dataset_gate_claim.py
++++ tests/unit/test_conclusion_has_no_old_dataset_gate_claim.py
+@@ -17,5 +17,4 @@
+     for phrase in BANNED:
+         assert phrase not in chunk
+         assert phrase not in flat
+-    assert "not the current method" in chunk
+-    assert "aggregate coverage certificate" in flat
++    assert 'With Design configured on' in flat
+--- before/tests/unit/test_current_mask_cannot_control_design.py
++++ tests/unit/test_current_mask_cannot_control_design.py
+@@ -1,8 +1,9 @@
+-from raven_mcs.sag.r1l_design import formal_decide_gate_and_design
++"""Historical Design=Gate behavior only; configured behavior is tested in test_configured_design_runner."""
++from raven_mcs.sag.r1l_design import legacy_decide_gate_and_design
+ 
+ 
+-def test_current_mask_cannot_control_design() -> None:
+-    rec = formal_decide_gate_and_design(
++def test_legacy_current_mask_cannot_control_design() -> None:
++    rec = legacy_decide_gate_and_design(
+         {"certificate_state": "CERTIFIED", "C_LCB": 0.04, "tau_cov": 0.05},
+         current_mask=1,
+     )
+--- before/tests/unit/test_c_cov_semantics.py
++++ tests/unit/test_c_cov_semantics.py
+@@ -21,8 +21,10 @@
+             "Delta_M": 0.01,
+             "Delta_V": 0.01,
+             "opp_mass_by_pair": {"k1|s1": 0.5, "k2|s2": 0.5},
++            "opp_count_by_pair": {"k1|s1": 50, "k2|s2": 50},
++            "opp_event_total": 100,
+         }
+-        for i in range(10)
++        for i in range(30)
+     ]
+ 
+ 
+@@ -39,4 +41,4 @@
+     b = compute_certificates(hist, FrozenSagThresholds(lookback_min=8), ctx)
+     assert current_r
+     assert a.C_cov_LCB == b.C_cov_LCB
+-    assert a.C_cov_LCB == a.C_cov_LCB  # finite or nan, but identical
++    assert __import__("math").isfinite(a.C_cov_LCB)
+--- before/tests/unit/test_dataset_name_cannot_control_design.py
++++ tests/unit/test_dataset_name_cannot_control_design.py
+@@ -1,12 +1,13 @@
+-from raven_mcs.sag.r1l_design import formal_decide_gate_and_design
++"""Historical Design=Gate behavior only; configured behavior is tested in test_configured_design_runner."""
++from raven_mcs.sag.r1l_design import legacy_decide_gate_and_design
+ 
+ 
+-def test_dataset_name_cannot_control_design() -> None:
+-    off = formal_decide_gate_and_design(
++def test_legacy_dataset_name_cannot_control_design() -> None:
++    off = legacy_decide_gate_and_design(
+         {"certificate_state": "WARMUP", "C_LCB": 0.0, "tau_cov": 0.05},
+         dataset="sensorscope",
+     )
+-    on = formal_decide_gate_and_design(
++    on = legacy_decide_gate_and_design(
+         {"certificate_state": "CERTIFIED", "C_LCB": 0.06, "tau_cov": 0.05},
+         dataset="uair",
+     )
+--- before/tests/unit/test_design_t_controls_window_close.py
++++ tests/unit/test_design_t_controls_window_close.py
+@@ -1,22 +1,8 @@
+-from pathlib import Path
+-
+ import numpy as np
+-
+-from raven_mcs.sag.r1l_design import DESIGN_OFF, DESIGN_ON, apply_formal_design_zeta
+-
+-ROOT = Path(__file__).resolve().parents[2]
++from raven_mcs.sag.r1l_design import apply_configured_design_zeta
+ 
+ 
+-def test_design_t_controls_window_close() -> None:
+-    src = (ROOT / "src/raven_mcs/training/window_runner.py").read_text(encoding="utf-8")
+-    assert "apply_formal_design_zeta" in src
+-    zeta_on = apply_formal_design_zeta(np.array([2.0, 4.0]), 1)
+-    zeta_off = apply_formal_design_zeta(np.array([2.0, 4.0]), 0)
+-    assert np.allclose(zeta_on, [2.0, 4.0])
+-    assert np.allclose(zeta_off, [1.0, 1.0])
+-    main = (ROOT / "TO_OVERLEAF_paper_tmc_r1_clean/main.tex").read_text(encoding="utf-8")
+-    i = main.index(r"\label{alg:window_close}")
+-    j = main.index(r"\end{algorithm}", i)
+-    alg = main[i:j]
+-    assert r"\mathrm{Gate}_t=1" in alg
+-    assert "DESIGN" in DESIGN_ON and "OFF" in DESIGN_OFF
++def test_frozen_design_controls_factor():
++    ratio=np.array([2.,4.])
++    np.testing.assert_array_equal(apply_configured_design_zeta(ratio,1),ratio)
++    np.testing.assert_array_equal(apply_configured_design_zeta(ratio,0),[1.,1.])
+--- before/tests/unit/test_design_t_equals_gate_t.py
++++ tests/unit/test_design_t_equals_gate_t.py
+@@ -1,12 +1,13 @@
+-from raven_mcs.sag.r1l_design import design_from_gate, formal_decide_gate_and_design
++"""Historical Design=Gate behavior only; configured behavior is tested in test_configured_design_runner."""
++from raven_mcs.sag.r1l_design import design_from_gate, legacy_decide_gate_and_design
+ 
+ 
+-def test_design_t_equals_gate_t() -> None:
++def test_legacy_design_t_equals_gate_t() -> None:
+     assert design_from_gate(0) == 0
+     assert design_from_gate(1) == 1
+     assert design_from_gate(True) == 1
+     for state, c_lcb in (("WARMUP", 0.0), ("RESET", 0.0), ("CERTIFIED", 0.04), ("CERTIFIED", 0.06)):
+-        rec = formal_decide_gate_and_design(
++        rec = legacy_decide_gate_and_design(
+             {"certificate_state": state, "C_LCB": c_lcb, "tau_cov": 0.05},
+         )
+         assert rec["Gate_t"] == rec["Design_t"]
+--- before/tests/unit/test_e1_entry_r3_opportunity.py
++++ tests/unit/test_e1_entry_r3_opportunity.py
+@@ -60,7 +60,7 @@
+ 
+ def test_current_window_not_used_for_current_zeta() -> None:
+     source = inspect.getsource(FullWindowRunner._process_window)
+-    assert source.index("zeta = self._compute_zeta") < source.rindex(
++    assert source.index("self._compute_zeta(") < source.rindex(
+         "self._update_lagged_estimators",
+     )
+ 
+--- before/tests/unit/test_formal_policy_unique.py
++++ tests/unit/test_formal_policy_unique.py
+@@ -4,5 +4,5 @@
+ def test_formal_policy_unique() -> None:
+     papers = [k for k, p in POLICY_MAP.items() if p.paper_method]
+     assert papers == ["raven_mcs"]
+-    assert get_method_policy("raven_mcs").gate_mode == "aggregate_coverage"
++    assert get_method_policy("raven_mcs").design_control == "configured"
+     assert sum(1 for p in POLICY_MAP.values() if p.paper_method) == 1
+--- before/tests/unit/test_formal_runner_no_static_gate_lookup.py
++++ tests/unit/test_formal_runner_no_static_gate_lookup.py
+@@ -1,9 +1,10 @@
++"""Historical Design=Gate behavior only; configured behavior is tested in test_configured_design_runner."""
+ from pathlib import Path
+ 
+ ROOT = Path(__file__).resolve().parents[2]
+ 
+ 
+-def test_formal_runner_no_static_gate_lookup() -> None:
++def test_legacy_formal_runner_no_static_gate_lookup() -> None:
+     src = (ROOT / "src/raven_mcs/training/window_runner.py").read_text(encoding="utf-8")
+     start = src.index("if mode == FORMAL_GATE_MODE:")
+     end = src.index("LEGACY experiment / ablation path", start)
+@@ -11,7 +12,7 @@
+     assert "uses_design_ratio" not in formal
+     assert "always_on" not in formal
+     assert "dataset_name" not in formal
+-    assert "formal_decide_gate_and_design" in formal
++    assert "legacy_decide_gate_and_design" in formal
+     design = (ROOT / "src/raven_mcs/sag/r1l_design.py").read_text(encoding="utf-8")
+     assert "dataset_name_controls_design" in design
+     assert "Design_t := Gate_t" in design
+--- before/tests/unit/test_gate_t_controls_design_t.py
++++ tests/unit/test_gate_t_controls_design_t.py
+@@ -1,11 +1,12 @@
++"""Historical Design=Gate behavior only; configured behavior is tested in test_configured_design_runner."""
+ from raven_mcs.aggregation.method_policy import get_method_policy
+-from raven_mcs.sag.r1l_design import formal_decide_gate_and_design
++from raven_mcs.sag.r1l_design import legacy_decide_gate_and_design
+ 
+ 
+-def test_gate_t_controls_design_t() -> None:
+-    assert get_method_policy("raven_mcs").gate_mode == "aggregate_coverage"
+-    off = formal_decide_gate_and_design({"certificate_state": "WARMUP", "C_LCB": 0.0})
+-    on = formal_decide_gate_and_design(
++def test_legacy_gate_t_controls_design_t() -> None:
++    assert get_method_policy("raven_coverage_legacy").gate_mode == "aggregate_coverage"
++    off = legacy_decide_gate_and_design({"certificate_state": "WARMUP", "C_LCB": 0.0})
++    on = legacy_decide_gate_and_design(
+         {"certificate_state": "CERTIFIED", "C_LCB": 0.06, "tau_cov": 0.05},
+     )
+     assert off["Gate_t"] == off["Design_t"] == 0
+--- before/tests/unit/test_gate_t_is_unique_design_authority.py
++++ tests/unit/test_gate_t_is_unique_design_authority.py
+@@ -1,9 +1,10 @@
++"""Historical Design=Gate behavior only; configured behavior is tested in test_configured_design_runner."""
+ from raven_mcs.aggregation.method_policy import get_method_policy
+-from raven_mcs.sag.r1l_design import FORMAL_GATE_MODE, formal_decide_gate_and_design
++from raven_mcs.sag.r1l_design import FORMAL_GATE_MODE, legacy_decide_gate_and_design
+ 
+ 
+-def test_gate_t_is_unique_design_authority() -> None:
+-    rec = formal_decide_gate_and_design(
++def test_legacy_gate_t_is_unique_design_authority() -> None:
++    rec = legacy_decide_gate_and_design(
+         {"certificate_state": "CERTIFIED", "C_LCB": 0.06, "tau_cov": 0.05},
+         dataset_design_flag=0,
+         design_enabled=False,
+@@ -12,5 +13,5 @@
+     assert rec["Design_t"] == 1
+     assert rec["authority"] == "aggregate_coverage_certificate"
+     assert rec["static_flag_controls_design"] is False
+-    pol = get_method_policy("raven_mcs_formal")
++    pol = get_method_policy("raven_coverage_legacy")
+     assert pol.gate_mode == FORMAL_GATE_MODE
+--- before/tests/unit/test_gate_uses_lcb_only.py
++++ tests/unit/test_gate_uses_lcb_only.py
+@@ -1,10 +1,9 @@
+-from pathlib import Path
+-from raven_mcs.sag.r1l_conformal import gate_on
++from raven_mcs.sag.r1l_design import gate_from_certificate
+ from raven_mcs.sag.r1l_spec import TAU_COV
+ 
++
+ def test_gate_uses_lcb_only() -> None:
+-    assert gate_on(0.05, TAU_COV) is True
+-    assert gate_on(0.049, TAU_COV) is False
+-    iface = (Path(__file__).resolve().parents[2] / "src/raven_mcs/sag/r1l_theory.py").read_text(encoding="utf-8")
+-    assert "Gate = 1{C_LCB >= tau_cov}" in iface
+-    assert "Gate = 1{C_hat" not in iface
++    assert gate_from_certificate(certificate_state="CERTIFIED", c_lcb=.05, tau_cov=TAU_COV) == 1
++    assert gate_from_certificate(certificate_state="CERTIFIED", c_lcb=.049, tau_cov=TAU_COV) == 0
++    for state in ("WARMUP", "RESET"):
++        assert gate_from_certificate(certificate_state=state, c_lcb=1., tau_cov=TAU_COV) == 0
+--- before/tests/unit/test_intro_has_no_old_dataset_gate_claim.py
++++ tests/unit/test_intro_has_no_old_dataset_gate_claim.py
+@@ -16,5 +16,5 @@
+     flat = " ".join(chunk.split())
+     for phrase in BANNED:
+         assert phrase not in chunk
+-    assert "aggregate coverage certificate" in flat
+-    assert "abstains from Design" in chunk
++    assert 'the coverage Gate is a separate diagnostic.' in flat
++    assert "fixed before the window opens and held throughout it" in flat
+--- before/tests/unit/test_legacy_raven_isolated.py
++++ tests/unit/test_legacy_raven_isolated.py
+@@ -9,6 +9,6 @@
+     assert hist.gate_mode == "always_on"
+     assert legacy.legacy_only is True
+     assert hist.legacy_only is True
+-    assert formal.gate_mode == "aggregate_coverage"
++    assert formal.design_control == "configured"
+     assert resolve_method("raven_legacy_always_on") != "raven_mcs"
+     assert resolve_method("raven_full_design_legacy") == "raven_legacy_always_on"
+--- before/tests/unit/test_no_dataset_gate_override.py
++++ tests/unit/test_no_dataset_gate_override.py
+@@ -1,12 +1,13 @@
++"""Historical Design=Gate behavior only; configured behavior is tested in test_configured_design_runner."""
+ from raven_mcs.aggregation.method_policy import get_method_policy
+-from raven_mcs.sag.r1l_design import formal_decide_gate_and_design
++from raven_mcs.sag.r1l_design import legacy_decide_gate_and_design
+ 
+ 
+-def test_no_dataset_gate_override() -> None:
+-    rec = formal_decide_gate_and_design(
++def test_legacy_no_dataset_gate_override() -> None:
++    rec = legacy_decide_gate_and_design(
+         {"certificate_state": "WARMUP", "C_LCB": 0.0},
+         dataset="sensorscope",
+     )
+     assert rec["Design_t"] == 0
+     assert rec["dataset_name_controls_design"] is False
+-    assert get_method_policy("raven_mcs").gate_mode == "aggregate_coverage"
++    assert get_method_policy("raven_coverage_legacy").gate_mode == "aggregate_coverage"
+--- before/tests/unit/test_no_oracle_current_gate_leakage.py
++++ tests/unit/test_no_oracle_current_gate_leakage.py
+@@ -14,5 +14,7 @@
+     assert "current_oracle_safe" not in blob
+     feat = (ROOT / "src/raven_mcs/sag/r1m_features.py").read_text(encoding="utf-8")
+     assert "oracle_safe" not in feat
+-    design = (ROOT / "src/raven_mcs/sag/r1l_design.py").read_text(encoding="utf-8")
+-    assert "Design_t := Gate_t" in design or "Design_t := Gate_t" in design.replace(" ", "")
++    from raven_mcs.sag.r1l_design import DesignConfiguration, configured_decide_gate_and_design
++    for hidden in (0,1):
++        rec=configured_decide_gate_and_design({'certificate_state':'WARMUP','oracle_safe':hidden,'current_C':hidden,'current_mask':hidden},configuration=DesignConfiguration(True,'explicit_test'),window_id=0)
++        assert rec['Design_t']==1 and rec['Gate_t']==0
+--- before/tests/unit/test_no_static_gate_override.py
++++ tests/unit/test_no_static_gate_override.py
+@@ -1,13 +1,14 @@
++"""Historical Design=Gate behavior only; configured behavior is tested in test_configured_design_runner."""
+ from pathlib import Path
+ 
+ from raven_mcs.aggregation.method_policy import get_method_policy
+-from raven_mcs.sag.r1l_design import formal_decide_gate_and_design
++from raven_mcs.sag.r1l_design import legacy_decide_gate_and_design
+ 
+ ROOT = Path(__file__).resolve().parents[2]
+ 
+ 
+-def test_no_static_gate_override() -> None:
+-    rec = formal_decide_gate_and_design(
++def test_legacy_no_static_gate_override() -> None:
++    rec = legacy_decide_gate_and_design(
+         {"certificate_state": "CERTIFIED", "C_LCB": 0.04, "tau_cov": 0.05},
+         design_enabled=True,
+         dataset_design_flag=1,
+@@ -18,4 +19,4 @@
+     start = src.index("if mode == FORMAL_GATE_MODE:")
+     end = src.index("LEGACY experiment / ablation path", start)
+     assert "always_on" not in src[start:end]
+-    assert get_method_policy("raven_mcs").gate_mode != "always_on"
++    assert get_method_policy("raven_coverage_legacy").gate_mode != "always_on"
+--- before/tests/unit/test_oracle_cannot_control_current_design.py
++++ tests/unit/test_oracle_cannot_control_current_design.py
+@@ -1,8 +1,9 @@
+-from raven_mcs.sag.r1l_design import formal_decide_gate_and_design
++"""Historical Design=Gate behavior only; configured behavior is tested in test_configured_design_runner."""
++from raven_mcs.sag.r1l_design import legacy_decide_gate_and_design
+ 
+ 
+-def test_oracle_cannot_control_current_design() -> None:
+-    rec = formal_decide_gate_and_design(
++def test_legacy_oracle_cannot_control_current_design() -> None:
++    rec = legacy_decide_gate_and_design(
+         {"certificate_state": "WARMUP", "C_LCB": 0.0, "tau_cov": 0.05},
+         oracle_safe=1,
+         current_C=1.0,
+--- before/tests/unit/test_r1l_v12_mock_gate_design_cases.py
++++ tests/unit/test_r1l_v12_mock_gate_design_cases.py
+@@ -1,37 +1,38 @@
++"""Historical Design=Gate behavior only; configured behavior is tested in test_configured_design_runner."""
+ """Mock Cases A–D: interface only, not an experiment."""
+ 
+ from raven_mcs.sag.r1l_design import (
+     DESIGN_OFF,
+     DESIGN_ON,
+     apply_formal_design_zeta,
+-    formal_decide_gate_and_design,
++    legacy_decide_gate_and_design,
+ )
+ import numpy as np
+ 
+ 
+-def test_mock_case_a_warmup() -> None:
+-    rec = formal_decide_gate_and_design(
++def test_legacy_mock_case_a_warmup() -> None:
++    rec = legacy_decide_gate_and_design(
+         {"certificate_state": "WARMUP", "C_LCB": 0.0, "tau_cov": 0.05},
+     )
+     assert rec["Gate_t"] == 0 and rec["design_branch"] == DESIGN_OFF
+ 
+ 
+-def test_mock_case_b_reset() -> None:
+-    rec = formal_decide_gate_and_design(
++def test_legacy_mock_case_b_reset() -> None:
++    rec = legacy_decide_gate_and_design(
+         {"certificate_state": "RESET", "C_LCB": 0.0, "tau_cov": 0.05},
+     )
+     assert rec["Gate_t"] == 0 and rec["design_branch"] == DESIGN_OFF
+ 
+ 
+-def test_mock_case_c_certified_below_tau() -> None:
+-    rec = formal_decide_gate_and_design(
++def test_legacy_mock_case_c_certified_below_tau() -> None:
++    rec = legacy_decide_gate_and_design(
+         {"certificate_state": "CERTIFIED", "C_LCB": 0.04, "tau_cov": 0.05},
+     )
+     assert rec["Gate_t"] == 0 and rec["design_branch"] == DESIGN_OFF
+ 
+ 
+-def test_mock_case_d_certified_above_tau() -> None:
+-    rec = formal_decide_gate_and_design(
++def test_legacy_mock_case_d_certified_above_tau() -> None:
++    rec = legacy_decide_gate_and_design(
+         {"certificate_state": "CERTIFIED", "C_LCB": 0.06, "tau_cov": 0.05},
+     )
+     assert rec["Gate_t"] == 1 and rec["design_branch"] == DESIGN_ON
+--- before/tests/unit/test_r1l_v13_mock_raven_mcs_cases.py
++++ tests/unit/test_r1l_v13_mock_raven_mcs_cases.py
+@@ -1,39 +1,40 @@
++"""Historical Design=Gate behavior only; configured behavior is tested in test_configured_design_runner."""
+ """Mock Cases A–D for raven_mcs vs isolated legacy. Not an experiment."""
+ 
+ from raven_mcs.aggregation.method_policy import get_method_policy, resolve_method
+-from raven_mcs.sag.r1l_design import DESIGN_OFF, DESIGN_ON, formal_decide_gate_and_design
++from raven_mcs.sag.r1l_design import DESIGN_OFF, DESIGN_ON, legacy_decide_gate_and_design
+ 
+ 
+-def test_mock_raven_mcs_case_a_gate_off() -> None:
++def test_legacy_mock_raven_mcs_case_a_gate_off() -> None:
+     assert resolve_method("raven_mcs") == "raven_mcs"
+-    rec = formal_decide_gate_and_design({"certificate_state": "WARMUP", "C_LCB": 0.0})
++    rec = legacy_decide_gate_and_design({"certificate_state": "WARMUP", "C_LCB": 0.0})
+     assert rec["Gate_t"] == 0 and rec["Design_t"] == 0
+     assert rec["design_branch"] == DESIGN_OFF
+ 
+ 
+-def test_mock_raven_mcs_case_b_gate_on() -> None:
+-    rec = formal_decide_gate_and_design(
++def test_legacy_mock_raven_mcs_case_b_gate_on() -> None:
++    rec = legacy_decide_gate_and_design(
+         {"certificate_state": "CERTIFIED", "C_LCB": 0.06, "tau_cov": 0.05},
+     )
+     assert rec["Gate_t"] == 1 and rec["Design_t"] == 1
+     assert rec["design_branch"] == DESIGN_ON
+ 
+ 
+-def test_mock_raven_mcs_case_c_no_dataset_flag() -> None:
+-    rec = formal_decide_gate_and_design(
++def test_legacy_mock_raven_mcs_case_c_no_dataset_flag() -> None:
++    rec = legacy_decide_gate_and_design(
+         {"certificate_state": "CERTIFIED", "C_LCB": 0.06, "tau_cov": 0.05},
+         dataset="uair",
+         dataset_design_flag=0,
+     )
+     assert rec["Design_t"] == 1
+     assert rec["dataset_name_controls_design"] is False
+-    assert get_method_policy("raven_mcs").gate_mode == "aggregate_coverage"
++    assert get_method_policy("raven_coverage_legacy").gate_mode == "aggregate_coverage"
+ 
+ 
+-def test_mock_case_d_legacy_always_on_isolated() -> None:
++def test_legacy_mock_case_d_legacy_always_on_isolated() -> None:
+     legacy = get_method_policy("raven_legacy_always_on")
+-    formal = get_method_policy("raven_mcs")
++    formal = get_method_policy("raven_coverage_legacy")
+     assert legacy.gate_mode == "always_on"
+     assert legacy.legacy_only is True
+     assert formal.gate_mode == "aggregate_coverage"
+-    assert formal.legacy_only is False
++    assert formal.legacy_only is True
+--- before/tests/unit/test_r1m_no_legacy_gate_bypass.py
++++ tests/unit/test_r1m_no_legacy_gate_bypass.py
+@@ -3,7 +3,7 @@
+ 
+ 
+ def test_r1m_no_legacy_gate_bypass() -> None:
+-    assert get_method_policy("raven_mcs").gate_mode == "aggregate_coverage"
++    assert get_method_policy("raven_mcs").design_control == "configured"
+     assert get_method_policy("raven").legacy_only is True
+     assert resolve_method("raven_mcs") != "raven"
+     assert design_from_gate(0) == 0
+--- before/tests/unit/test_r1m_raven_mcs_formal_alias.py
++++ tests/unit/test_r1m_raven_mcs_formal_alias.py
+@@ -4,6 +4,6 @@
+ def test_r1m_raven_mcs_formal_alias() -> None:
+     assert resolve_method("raven_mcs") == "raven_mcs"
+     assert resolve_method("raven_mcs_formal") == "raven_mcs"
+-    assert get_method_policy("raven_mcs").gate_mode == FORMAL_GATE_MODE
++    assert get_method_policy("raven_mcs").design_control == "configured"
+     assert get_method_policy("raven_mcs_formal") == get_method_policy("raven_mcs")
+     assert get_method_policy("raven_mcs").paper_method is True
+--- before/tests/unit/test_raven_mcs_formal_alias_same_policy.py
++++ tests/unit/test_raven_mcs_formal_alias_same_policy.py
+@@ -3,4 +3,5 @@
+ 
+ def test_raven_mcs_formal_alias_same_policy() -> None:
+     assert resolve_method("raven_mcs_formal") == resolve_method("raven_mcs")
+-    assert get_method_policy("raven_mcs_formal").gate_mode == "aggregate_coverage"
++    assert get_method_policy("raven_mcs_formal").design_control == "configured"
++    assert get_method_policy("raven_mcs_formal") == get_method_policy("raven_mcs")
+--- before/tests/unit/test_raven_mcs_not_legacy_static_gate.py
++++ tests/unit/test_raven_mcs_not_legacy_static_gate.py
+@@ -4,5 +4,5 @@
+ def test_raven_mcs_not_legacy_static_gate() -> None:
+     pol = get_method_policy("raven_mcs")
+     assert pol.legacy_only is False
+-    assert pol.gate_mode == "aggregate_coverage"
++    assert pol.design_control == "configured"
+     assert pol.paper_method is True
+--- before/tests/unit/test_raven_mcs_resolves_to_aggregate_coverage.py
++++ tests/unit/test_raven_mcs_resolves_to_aggregate_coverage.py
+@@ -1,6 +1,9 @@
+ from raven_mcs.aggregation.method_policy import get_method_policy, resolve_method
+ 
+ 
+-def test_raven_mcs_resolves_to_aggregate_coverage() -> None:
+-    assert get_method_policy("raven_mcs").gate_mode == "aggregate_coverage"
++def test_configured_and_legacy_coverage_resolve_separately() -> None:
++    assert get_method_policy("raven_mcs").design_control == "configured"
+     assert resolve_method("raven_mcs") != "raven"
++
++    assert get_method_policy("raven_coverage_legacy").gate_mode == "aggregate_coverage"
++    assert get_method_policy("raven_coverage_legacy").legacy_only
+--- before/tests/unit/test_raven_mcs_resolves_to_formal_policy.py
++++ tests/unit/test_raven_mcs_resolves_to_formal_policy.py
+@@ -3,5 +3,5 @@
+ 
+ def test_raven_mcs_resolves_to_formal_policy() -> None:
+     assert resolve_method("raven_mcs") == "raven_mcs"
+-    assert get_method_policy("raven_mcs").gate_mode == FORMAL_GATE_MODE
++    assert get_method_policy("raven_mcs").design_control == "configured"
+     assert get_method_policy("raven_mcs").paper_method is True
+--- before/tests/unit/test_reset_design_off.py
++++ tests/unit/test_reset_design_off.py
+@@ -1,8 +1,9 @@
+-from raven_mcs.sag.r1l_design import DESIGN_OFF, formal_decide_gate_and_design
++"""Historical Design=Gate behavior only; configured behavior is tested in test_configured_design_runner."""
++from raven_mcs.sag.r1l_design import DESIGN_OFF, legacy_decide_gate_and_design
+ 
+ 
+-def test_reset_design_off() -> None:
+-    rec = formal_decide_gate_and_design(
++def test_legacy_reset_design_off() -> None:
++    rec = legacy_decide_gate_and_design(
+         {"certificate_state": "RESET", "C_LCB": 0.99, "tau_cov": 0.05},
+     )
+     assert rec["Gate_t"] == 0
+--- before/tests/unit/test_source_snapshot_contains_window_runner.py
++++ tests/unit/test_source_snapshot_contains_window_runner.py
+@@ -1,3 +1,4 @@
++"""Historical Design=Gate behavior only; configured behavior is tested in test_configured_design_runner."""
+ from pathlib import Path
+ 
+ import pandas as pd
+@@ -5,7 +6,7 @@
+ ROOT = Path(__file__).resolve().parents[2]
+ 
+ 
+-def test_source_snapshot_contains_window_runner() -> None:
++def test_legacy_source_snapshot_contains_window_runner() -> None:
+     frame = pd.read_csv(
+         ROOT / "results_sag_g1/round_r1l_v12/source_snapshot/R1L_V12_SOURCE_SNAPSHOT_MANIFEST.csv"
+     )
+--- before/tests/unit/test_warmup_design_off.py
++++ tests/unit/test_warmup_design_off.py
+@@ -1,8 +1,9 @@
+-from raven_mcs.sag.r1l_design import DESIGN_OFF, formal_decide_gate_and_design
++"""Historical Design=Gate behavior only; configured behavior is tested in test_configured_design_runner."""
++from raven_mcs.sag.r1l_design import DESIGN_OFF, legacy_decide_gate_and_design
+ 
+ 
+-def test_warmup_design_off() -> None:
+-    rec = formal_decide_gate_and_design(
++def test_legacy_warmup_design_off() -> None:
++    rec = legacy_decide_gate_and_design(
+         {"certificate_state": "WARMUP", "C_LCB": 0.99, "tau_cov": 0.05},
+     )
+     assert rec["Gate_t"] == 0
+--- before/tests/unit/test_window_close_receives_gate_t.py
++++ tests/unit/test_window_close_receives_gate_t.py
+@@ -1,15 +1,7 @@
+-from pathlib import Path
+-
+-ROOT = Path(__file__).resolve().parents[2]
++from raven_mcs.sag.r1l_design import DesignConfiguration, configured_decide_gate_and_design
+ 
+ 
+-def test_window_close_receives_gate_t() -> None:
+-    main = (ROOT / "TO_OVERLEAF_paper_tmc_r1_clean/main.tex").read_text(encoding="utf-8")
+-    i = main.index(r"\label{alg:window_close}")
+-    j = main.index(r"\end{algorithm}", i)
+-    alg = main[i:j]
+-    assert r"\mathrm{Gate}_t" in alg
+-    assert "aggregate coverage certificate" in alg
+-    runner = (ROOT / "src/raven_mcs/training/window_runner.py").read_text(encoding="utf-8")
+-    assert "formal_decide_gate_and_design" in runner
+-    assert "FORMAL_GATE_MODE" in runner
++def test_window_close_receives_frozen_design_and_separate_gate():
++    rec=configured_decide_gate_and_design({'certificate_state':'WARMUP'},configuration=DesignConfiguration(True,'test'),window_id=0)
++    assert rec['Design_t']==1 and rec['Gate_t']==0
++    assert rec['coverage_role']=='diagnostic_only'
+--- before/tests/unit/test_window_runner_calls_compute_certificates.py
++++ tests/unit/test_window_runner_calls_compute_certificates.py
+@@ -1,10 +1,11 @@
++"""Historical Design=Gate behavior only; configured behavior is tested in test_configured_design_runner."""
+ from pathlib import Path
+ 
+ ROOT = Path(__file__).resolve().parents[2]
+ 
+ 
+-def test_window_runner_calls_compute_certificates() -> None:
++def test_legacy_window_runner_calls_compute_certificates() -> None:
+     src = (ROOT / "src/raven_mcs/training/window_runner.py").read_text(encoding="utf-8")
+     assert "compute_certificates(" in src
+-    assert "formal_decide_gate_and_design" in src
++    assert "legacy_decide_gate_and_design" in src
+     assert "FORMAL_GATE_MODE" in src
+--- /dev/null
++++ src/raven_mcs/training/cache_identity.py
+@@ -0,0 +1,33 @@
++"""Reject cross-method reuse of Design-dependent artifacts before deserialization."""
++from typing import Any, Mapping
++from pathlib import Path
++import json
++from raven_mcs.sag.r1l_design import DesignConfiguration
++
++
++def configured_cache_identity(configuration: DesignConfiguration, **dependencies: Any) -> dict[str, Any]:
++    return {
++        "method_version": configuration.method_version,
++        "design_configuration": configuration.to_dict(),
++        "coverage_role": "diagnostic_only",
++        "dependencies": dependencies,
++    }
++
++
++def validate_configured_cache(metadata: Mapping[str, Any], expected: Mapping[str, Any]) -> None:
++    """Raw data/splits do not use this guard; weights/models/predictions do."""
++    if not expected.get("dependencies"):
++        raise ValueError("CACHE_IDENTITY_ERROR: exact computational dependencies required")
++    if dict(metadata) != dict(expected):
++        raise ValueError("CACHE_IDENTITY_ERROR: regenerate Design-dependent artifact; legacy or unversioned cache cannot be reused")
++
++
++def load_configured_artifact(path: Path, expected: Mapping[str, Any]) -> Any:
++    """Require the exact identity sidecar before reading weights or predictions."""
++    path = Path(path)
++    sidecar = path.with_suffix(path.suffix + ".identity.json")
++    if not sidecar.is_file():
++        raise ValueError("CACHE_IDENTITY_ERROR: missing configured artifact provenance; regenerate")
++    validate_configured_cache(json.loads(sidecar.read_text(encoding="utf-8")), expected)
++    import torch
++    return torch.load(path, map_location="cpu", weights_only=True)
+--- /dev/null
++++ src/raven_mcs/experiments/legacy_coverage_freeze.py
+@@ -0,0 +1,20 @@
++"""Historical coverage-controlled audit identity; never the configured paper method."""
++import argparse
++from raven_mcs.aggregation.method_policy import LEGACY_COVERAGE_METHOD, get_method_policy
++
++PAPER_METHOD = LEGACY_COVERAGE_METHOD  # Historical variable name in R1l/R1m programs.
++DEFAULT_METHOD = LEGACY_COVERAGE_METHOD
++LEGACY_CONTROLS = ("raven_legacy_always_on", "raven_wo_design")
++R1M_METHODS = (DEFAULT_METHOD,) + LEGACY_CONTROLS
++
++
++def formal_cli_parser():
++    parser = argparse.ArgumentParser(description="Legacy coverage audit only")
++    parser.add_argument("--method", choices=(DEFAULT_METHOD,), required=True)
++    return parser
++
++
++def assert_frozen():
++    policy = get_method_policy(DEFAULT_METHOD)
++    assert policy.gate_mode == "aggregate_coverage"
++    assert policy.legacy_only and not policy.paper_method
+--- /dev/null
++++ scripts/check_design_gate_configuration.py
+@@ -0,0 +1,27 @@
++#!/usr/bin/env python3
++"""Validate/serialize method identity without loading data or starting training."""
++from pathlib import Path
++import json
++import sys
++
++ROOT=Path(__file__).resolve().parents[1]
++sys.path.insert(0,str(ROOT/'src'))
++from raven_mcs.experiments.r1m_method_freeze import formal_cli_parser
++from raven_mcs.sag.r1l_design import configuration_for_method
++from raven_mcs.aggregation.method_policy import get_method_policy, resolve_method
++
++
++def main(argv=None):
++    args=formal_cli_parser().parse_args(argv)
++    configuration=configuration_for_method(args.method,args.design,source=args.design_source)
++    policy=get_method_policy(args.method)
++    print(json.dumps(dict(method=resolve_method(args.method),method_version=policy.method_version,
++        design_control=policy.design_control,coverage_diagnostic=policy.coverage_diagnostic,
++        coverage_role='diagnostic_only' if configuration else 'legacy_control',
++        design_configuration=configuration.to_dict() if configuration else None,
++        training_started=False),indent=2))
++    return 0
++
++
++if __name__=='__main__':
++    raise SystemExit(main())
+--- /dev/null
++++ configs/method/raven_mcs.yaml
+@@ -0,0 +1,14 @@
++name: RAVEN-MCS
++uses_design_ratio: true
++uses_obs_correction: true
++uses_use_correction: true
++uses_instant_calibration: true
++uses_debt: true
++uses_reference: true
++uses_variance: true
++uses_staleness: true
++method_version: configured-design-v1
++design_control: configured
++design_required: true
++coverage_diagnostic: aggregate_coverage
++coverage_role: diagnostic_only
+--- /dev/null
++++ configs/method/raven_coverage_legacy.yaml
+@@ -0,0 +1,14 @@
++name: RAVEN coverage-controlled legacy
++uses_design_ratio: true
++uses_obs_correction: true
++uses_use_correction: true
++uses_instant_calibration: true
++uses_debt: true
++uses_reference: true
++uses_variance: true
++uses_staleness: true
++method_version: coverage-controlled-v1
++design_control: legacy
++gate_mode: aggregate_coverage
++coverage_role: legacy_control
++legacy_only: true
+--- /dev/null
++++ configs/method/configured_design_v1.json
+@@ -0,0 +1,12 @@
++{
++  "paper_method": "raven_mcs",
++  "method_version": "configured-design-v1",
++  "design_control": "configured",
++  "design": null,
++  "design_required": true,
++  "freeze_time": "before_window_open",
++  "coverage_diagnostic": "aggregate_coverage",
++  "coverage_role": "diagnostic_only",
++  "legacy_coverage_method": "raven_coverage_legacy",
++  "results_status": "RESULTS_NOT_REVALIDATED"
++}
+--- /dev/null
++++ tests/integration/test_configured_design_runner.py
+@@ -0,0 +1,245 @@
++"""Behavior checks of the real loss/reconstruction/solver/update chain, not performance experiments."""
++from pathlib import Path
++from unittest.mock import patch
++import copy
++import json
++import numpy as np
++import pandas as pd
++import pytest
++import torch
++
++from raven_mcs.aggregation.method_policy import get_method_policy
++from raven_mcs.aggregation.methods import RavenAggregator
++from raven_mcs.e3.real_runner.fixture import build_correctness_fixture, load_fixture_dataset
++from raven_mcs.models.common_ndmf import deterministic_common_ndmf
++from raven_mcs.simulation.event_trace import EventTrace, EventTraceMetadata
++from raven_mcs.sag.r1l_design import DesignConfiguration
++from raven_mcs.training.window_runner import FullWindowRunner
++from raven_mcs.sag.certificates import compute_certificates
++
++
++class ObservedRaven(RavenAggregator):
++    def __init__(self):
++        super().__init__()
++        self.payloads = []
++
++    def compute_server_weights(self, payload):
++        self.payloads.append(copy.deepcopy(payload))
++        return super().compute_server_weights(payload)
++
++
++@pytest.fixture(scope="module")
++def context(tmp_path_factory):
++    torch.set_num_threads(1)
++    fx = build_correctness_fixture(tmp_path_factory.mktemp('design_data'))
++    ds = load_fixture_dataset(Path(fx['data_dir']))
++    rows, tar = [], {}
++    masses = [[.04,.08,.16,.32],[.02,.06,.12,.20]]
++    for win in range(2):
++        for i, cid in enumerate(['client-000','client-001']):
++            units = ds.atomic_df.loc[(ds.atomic_df.spatial_id==f'n{i}') & (ds.atomic_df.split=='train')].sort_values('time_index')
++            ids = units.unit_id.tolist()
++            for r, mass in zip(units.itertuples(), masses[i]):
++                tar[(cid, r.opportunity_stratum)] = mass
++            rows.append(dict(window_id=win,client_id=cid,risk_set_unit_ids=ids,
++                opportunity_features={},observed_unit_ids=ids,O={u:1 for u in ids},
++                registration_time=win,downloaded_version=win,model_age=0,tau=0,
++                device_profile='test',network_profile='test',compute_success=True,compute_duration=.1,
++                network_success=True,network_duration=.1,arrival_time=win+.2,U=1,raw_workload=4,
++                oracle_p=.5,oracle_q=.5,hidden_confounder=0))
++    trace=EventTrace(pd.DataFrame(rows),EventTraceMetadata('behavior_fixture',26001,2,2))
++    trace.validate()
++    return ds,trace,tar
++
++
++def make_runner(context, design=True, legacy=False):
++    ds,trace,tar=context
++    runner=FullWindowRunner(trace=trace,dataset=ds,model=deterministic_common_ndmf(ds.num_spatial,seed=26001),
++        aggregator=ObservedRaven(),policy=get_method_policy('raven_coverage_legacy' if legacy else 'raven_mcs'),
++        mu=np.ones(ds.num_groups)/ds.num_groups,num_groups=ds.num_groups,pi_target=tar,
++        pi_opp_joint={key:1/8 for key in tar},local_steps=1,
++        design_configuration=None if legacy else DesignConfiguration(design,'paired_behavior_fixture'))
++    runner.observed_trainer_inputs=[]
++    real_train=runner._trainer.train_step
++    def capture(**kw):
++        runner.observed_trainer_inputs.append(np.asarray(kw['a_bar_weights']).copy())
++        return real_train(**kw)
++    runner._trainer.train_step=capture
++    return runner
++
++
++def diagnostic(gate, state='CERTIFIED'):
++    # Only the diagnostic output is controlled; correction, training, rebuilding,
++    # the complete Raven solver and model updates are the production code.
++    def generate(*args,**kwargs):
++        result=compute_certificates(*args,**kwargs)
++        result.C_cov_LCB=.06 if gate else .04
++        result.diagnostics.update(certificate_state=state,C_LCB=result.C_cov_LCB,tau_cov=.05)
++        return result
++    return generate
++
++
++def execute(context, design, gate, state='CERTIFIED',legacy=False):
++    runner=make_runner(context,design,legacy)
++    with patch('raven_mcs.training.window_runner.compute_certificates',side_effect=diagnostic(gate,state)):
++        metric=runner._process_window(0,runner.trace.events)
++    return runner,metric
++
++
++def test_four_combinations_and_gate_parity(context, tmp_path):
++    evidence=[]
++    for design in (True,False):
++        paired=[]
++        for gate in (0,1):
++            r,m=execute(context,design,gate)
++            payload=r.aggregator.payloads[0]
++            expected_ratios=[np.array([.32,.64,1.28,2.56]),np.array([.16,.48,.96,1.60])]
++            for i,(diag,actual_weights) in enumerate(zip(r.diagnostics,r.observed_trainer_inputs)):
++                ratio=expected_ratios[i] if design else np.ones(4)
++                np.testing.assert_allclose(diag['zeta_hat'],ratio,rtol=0,atol=1e-14)
++                np.testing.assert_allclose(actual_weights,ratio/ratio.sum(),rtol=0,atol=1e-14)
++                col=payload.compositions[:,i]
++                observed=np.flatnonzero(col)
++                np.testing.assert_allclose(col[observed],ratio/ratio.sum(),rtol=0,atol=1e-14)
++            # The production observation predictor's cold-start probability is .2.
++            assert all(np.allclose(d['p_hat'],.2) for d in r.diagnostics)
++            np.testing.assert_allclose(payload.total_masses,[24.,16.] if design else [20.,20.],atol=1e-13)
++            np.testing.assert_allclose(payload.beta_hat,[.6,.4] if design else [.5,.5],atol=1e-13)
++            assert m.actual_design == int(design) and m.coverage_gate == gate
++            assert r.sag_window_logs[0]['actual_design']==int(design)
++            evidence.append(dict(design=int(design),gate=gate,ratios=[d['zeta_hat'] for d in r.diagnostics],
++                trainer_weights=[x.tolist() for x in r.observed_trainer_inputs],total_masses=payload.total_masses.tolist(),
++                beta=payload.beta_hat.tolist(),composition=payload.compositions.tolist(),
++                alpha=m.alpha,theta_hash=m.theta_hash_after,method_version=m.method_version))
++            paired.append((r,m))
++        a,b=paired
++        assert a[1].theta_hash_after==b[1].theta_hash_after
++        assert a[1].alpha==b[1].alpha
++        assert a[1].train_loss==b[1].train_loss
++        np.testing.assert_array_equal(a[0].debt,b[0].debt)
++        assert a[0].variance_count==b[0].variance_count
++        for key in a[0].theta:
++            assert torch.equal(a[0].theta[key],b[0].theta[key])
++    assert evidence[0]['theta_hash'] != evidence[2]['theta_hash']
++    # Optional durable evidence is explicitly requested by the validation entry.
++    import os
++    if os.environ.get('DESIGN_ALIGNMENT_EVIDENCE'):
++        Path(os.environ['DESIGN_ALIGNMENT_EVIDENCE']).write_text(json.dumps(evidence,indent=2),encoding='utf-8')
++
++
++@pytest.mark.parametrize('state',['WARMUP','RESET'])
++def test_diagnostic_state_does_not_close_design(context,state):
++    r,m=execute(context,True,1,state)
++    assert m.actual_design==1 and m.coverage_gate==0
++    assert not np.allclose(r.diagnostics[0]['zeta_hat'],1)
++
++
++def test_configuration_frozen_before_diagnostic_and_changes_next_window(context):
++    r=make_runner(context)
++    original=diagnostic(0)
++    def change_during_window(*args,**kwargs):
++        r.design_configuration=DesignConfiguration(False,'explicit_next_window')
++        return original(*args,**kwargs)
++    with patch('raven_mcs.training.window_runner.compute_certificates',side_effect=change_during_window):
++        first=r._process_window(0,r.trace.events)
++    with patch('raven_mcs.training.window_runner.compute_certificates',side_effect=diagnostic(1)):
++        second=r._process_window(1,r.trace.events)
++    assert first.actual_design==1 and second.actual_design==0
++    assert first.configuration_source=='paired_behavior_fixture'
++    assert second.configuration_source=='explicit_next_window'
++    assert not np.allclose(r.diagnostics[0]['zeta_hat'],1)
++    assert all(np.allclose(d['zeta_hat'],1) for d in r.diagnostics if d['window_id']==1)
++
++
++@pytest.mark.parametrize('design',[True,False])
++def test_fixed_running_configuration_gate_only_changes_diagnostics(context,design):
++    a,b=make_runner(context,design),make_runner(context,design)
++    # CommonNDMF local training consumes torch RNG (dropout); pair the same
++    # starting RNG for each real window, as required by the comparison.
++    import random
++    for window in range(2):
++        states=torch.get_rng_state(),np.random.get_state(),random.getstate()
++        with patch('raven_mcs.training.window_runner.compute_certificates',side_effect=diagnostic(window)):
++            ma=a._process_window(window,a.trace.events)
++        torch.set_rng_state(states[0]);np.random.set_state(states[1]);random.setstate(states[2])
++        with patch('raven_mcs.training.window_runner.compute_certificates',side_effect=diagnostic(1-window)):
++            mb=b._process_window(window,b.trace.events)
++        assert ma.actual_design==mb.actual_design==int(design)
++        assert ma.theta_hash_after==mb.theta_hash_after and ma.alpha==mb.alpha
++        np.testing.assert_array_equal(a.aggregator.payloads[-1].beta_hat,b.aggregator.payloads[-1].beta_hat)
++        np.testing.assert_array_equal(a.aggregator.payloads[-1].compositions,b.aggregator.payloads[-1].compositions)
++        np.testing.assert_array_equal(a.debt,b.debt)
++
++
++@pytest.mark.parametrize('gate',[0,1])
++def test_legacy_full_runner_still_uses_gate(context,gate):
++    r,m=execute(context,True,gate,legacy=True)
++    assert m.actual_design==gate and m.coverage_gate==gate
++    assert np.allclose(r.diagnostics[0]['zeta_hat'],1)==(gate==0)
++    assert m.method_version=='coverage-controlled-v1'
++
++
++@pytest.mark.parametrize('bad',[None,float('nan'),-1.])
++def test_missing_invalid_design_inputs_are_errors_even_when_gate_off(context,bad):
++    r=make_runner(context)
++    r.pi_target={} if bad is None else {key:bad for key in r.pi_target}
++    with patch('raven_mcs.training.window_runner.compute_certificates',side_effect=diagnostic(0)):
++        with pytest.raises((ValueError,RuntimeError),match='target|DESIGN_INPUT|nonnegative'):
++            r._process_window(0,r.trace.events)
++
++
++def test_real_window_uses_lagged_opportunity_before_history_update(context):
++    r=make_runner(context)
++    r.pi_opp_joint=None
++    initial=r.opportunity_estimator.pi_hat().to_dict()
++    calls=[]
++    compute=r._compute_zeta
++    update=r._update_lagged_estimators
++    def record_compute(*args,**kw):
++        assert r.opportunity_estimator.pi_hat().to_dict()==initial
++        calls.append('compute')
++        return compute(*args,**kw)
++    def record_update(*args,**kw):
++        assert calls and set(calls)=={'compute'}
++        calls.append('update')
++        return update(*args,**kw)
++    r._compute_zeta=record_compute
++    r._update_lagged_estimators=record_update
++    with patch('raven_mcs.training.window_runner.compute_certificates',side_effect=diagnostic(0)):
++        r._process_window(0,r.trace.events)
++    assert calls[-1]=='update' and calls.count('update')==1
++    np.testing.assert_allclose(r.diagnostics[0]['zeta_hat'],[.32,.64,1.28,2.56])
++
++
++def test_experiment_cli_full_runner_serializes_configured_identity(context,tmp_path):
++    import importlib.util
++    root=Path(__file__).resolve().parents[2]
++    spec=importlib.util.spec_from_file_location('alignment_cli',root/'scripts/run_experiment.py')
++    cli=importlib.util.module_from_spec(spec);spec.loader.exec_module(cli)
++    ds,trace,tar=context
++    build=cli.build_full_runner
++    def frozen_fixture_builder(**kw):
++        return build(**kw,target_mu=np.ones(ds.num_groups)/ds.num_groups,pi_target=tar,pi_opp_joint={k:1/8 for k in tar})
++    args=['--experiment','E2_misalignment','--dataset','behavior_fixture','--method','raven_mcs',
++          '--design','on','--design-source','explicit_cli_test','--num-windows','2',
++          '--local-steps','1','--scenario','balanced','--seed','26001','--output-dir',str(tmp_path)]
++    with patch.object(cli,'_get_or_generate_trace',return_value=(trace,'fixture_trace')), patch.object(cli,'ProcessedDataset',return_value=ds), patch.object(cli,'build_full_runner',side_effect=frozen_fixture_builder):
++        assert cli.main(args)==0
++    result=json.loads((tmp_path/'E2_misalignment_summary.json').read_text(encoding='utf-8'))['results'][0]
++    assert result['method_version']=='configured-design-v1'
++    assert result['design_configuration']['enabled'] is True
++    assert len(result['design_window_logs'])==2
++    assert all(r['configured_design']==r['Design_t']==1 for r in result['design_window_logs'])
++    assert all(r['configuration_source']=='explicit_cli_test' for r in result['design_window_logs'])
++    with pytest.raises(FileExistsError,match='preserved'):
++        cli.main(args)
++
++
++def test_configured_diagnostic_identity_cannot_be_overridden_by_legacy_attribute(context):
++    configured=make_runner(context)
++    configured.sag_cov_mode='event_count_cp'
++    assert configured.policy.coverage_diagnostic=='aggregate_coverage'
++    assert configured._certificate_context().cov_mode=='aggregate_stable_regime'
++    legacy=make_runner(context,legacy=True)
++    legacy.sag_cov_mode='event_count_cp'
++    assert legacy._certificate_context().cov_mode=='event_count_cp'
+--- /dev/null
++++ tests/unit/test_configured_design_configuration.py
+@@ -0,0 +1,75 @@
++import dataclasses
++import pytest
++from raven_mcs.aggregation.method_policy import get_method_policy
++from raven_mcs.experiments.r1m_method_freeze import formal_cli_parser, assert_frozen
++from raven_mcs.sag.r1l_design import DesignConfiguration, configuration_for_method, configured_decide_gate_and_design
++from raven_mcs.training.cache_identity import configured_cache_identity, validate_configured_cache
++from raven_mcs.training.cache_identity import load_configured_artifact
++
++
++def test_configuration_roundtrip_and_explicit_cli():
++    parser=formal_cli_parser()
++    for setting in ('on','off'):
++        args=parser.parse_args(['--design',setting])
++        config=configuration_for_method(args.method,args.design,source=args.design_source)
++        assert DesignConfiguration.from_dict(config.to_dict())==config
++        with pytest.raises(dataclasses.FrozenInstanceError):
++            config.enabled=False
++    with pytest.raises(ValueError,match='CONFIGURATION_REQUIRED'):
++        configuration_for_method('raven_mcs',None,source='test')
++    assert_frozen()
++
++
++def test_diagnostic_and_configuration_have_distinct_authority():
++    for enabled in (True,False):
++        cfg=DesignConfiguration(enabled,'explicit_test')
++        for gate in (0,1):
++            rec=configured_decide_gate_and_design({'certificate_state':'CERTIFIED','C_LCB':.06 if gate else .04},configuration=cfg,window_id=0)
++            assert rec['Design_t']==int(enabled) and rec['Gate_t']==gate
++    assert get_method_policy('raven_mcs').design_control=='configured'
++    assert get_method_policy('raven_coverage_legacy').legacy_only
++
++
++def test_design_dependent_cache_rejects_legacy_and_changed_configuration():
++    config=DesignConfiguration(True,'explicit_test')
++    expected=configured_cache_identity(config,target_id='frozen_target',eventtrace_id='fixed_trace',optimizer='SGD')
++    validate_configured_cache(expected,expected)
++    for old in ({'gate_mode':'aggregate_coverage'}, {}, configured_cache_identity(DesignConfiguration(False,'explicit_test'),**expected['dependencies'])):
++        with pytest.raises(ValueError,match='CACHE_IDENTITY_ERROR'):
++            validate_configured_cache(old,expected)
++
++
++def test_actual_cache_reader_requires_identity_before_loading(tmp_path):
++    import torch
++    import json
++    config=DesignConfiguration(True,'explicit_test')
++    expected=configured_cache_identity(config,eventtrace='unique',target='frozen',model='fixed',optimizer='SGD')
++    path=tmp_path/'weights.pt'
++    torch.save({'weights':torch.tensor([2.,4.])},path)
++    with pytest.raises(ValueError,match='CACHE_IDENTITY_ERROR'):
++        load_configured_artifact(path,expected)
++    path.with_suffix('.pt.identity.json').write_text(json.dumps(expected),encoding='utf-8')
++    assert torch.equal(load_configured_artifact(path,expected)['weights'],torch.tensor([2.,4.]))
++
++
++def test_resolved_configuration_records_identity():
++    from raven_mcs.utils.config import resolve_run_config
++    with pytest.raises(ValueError,match='CONFIGURATION_REQUIRED'):
++        resolve_run_config(method='raven_mcs')
++    cfg=resolve_run_config(method='raven_mcs',overrides={'design':'off','design_source':'explicit_test'})
++    assert cfg['method_version']=='configured-design-v1'
++    assert cfg['design_configuration']['enabled'] is False
++    assert cfg['coverage_role']=='diagnostic_only'
++
++
++def test_legacy_configuration_explicitly_identified_and_no_ignored_design():
++    from raven_mcs.utils.config import resolve_run_config
++    from raven_mcs.experiments.legacy_coverage_freeze import formal_cli_parser
++    cfg=resolve_run_config(method='raven_coverage_legacy')
++    assert cfg['method_version']=='coverage-controlled-v1'
++    assert cfg['coverage_role']=='controls_legacy_design' and cfg['design_configuration'] is None
++    with pytest.raises(ValueError,match='legacy controls'):
++        resolve_run_config(method='raven_coverage_legacy',overrides={'design':'on'})
++    with pytest.raises(SystemExit):
++        formal_cli_parser().parse_args([])
++    assert formal_cli_parser().parse_args(['--method','raven_coverage_legacy']).method=='raven_coverage_legacy'

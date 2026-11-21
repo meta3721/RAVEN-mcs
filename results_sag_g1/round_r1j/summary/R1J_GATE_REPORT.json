@@ -1,0 +1,268 @@
+{
+  "gates": [
+    {
+      "description": "input freeze",
+      "evidence_file": "R1J_INPUT_FREEZE_MANIFEST.csv",
+      "expected": "0",
+      "gate_id": "R1J-S0",
+      "metric": "missing",
+      "observed": "0",
+      "pass": true
+    },
+    {
+      "description": "R1i oracle unchanged",
+      "evidence_file": "freeze/R1J_ORACLE_FREEZE_MANIFEST.csv",
+      "expected": "82444e4f495344856de94b0d72ab4a46843780c232e2f299b300fcafa8c4b4a1",
+      "gate_id": "R1J-S1",
+      "metric": "sha",
+      "observed": "82444e4f495344856de94b0d72ab4a46843780c232e2f299b300fcafa8c4b4a1",
+      "pass": true
+    },
+    {
+      "description": "stress grid/masks unchanged",
+      "evidence_file": "legacy_refs",
+      "expected": "b87cf615ab34b447e87bf447d79b9e4183a6e16fcef6223c57fad7be4aec6502",
+      "gate_id": "R1J-S2",
+      "metric": "mask",
+      "observed": "b87cf615ab34b447e87bf447d79b9e4183a6e16fcef6223c57fad7be4aec6502",
+      "pass": true
+    },
+    {
+      "description": "feature whitelist frozen",
+      "evidence_file": "predictor/R1J_FEATURE_WHITELIST.csv",
+      "expected": "10",
+      "gate_id": "R1J-S3",
+      "metric": "n",
+      "observed": "10",
+      "pass": true
+    },
+    {
+      "description": "no current-window leakage",
+      "evidence_file": "predictor/R1J_FEATURE_LEAKAGE_AUDIT.md",
+      "expected": "listed",
+      "gate_id": "R1J-S4",
+      "metric": "forbidden",
+      "observed": "listed",
+      "pass": true
+    },
+    {
+      "description": "predictor spec frozen",
+      "evidence_file": "predictor/R1J_PREDICTOR_SPEC_FREEZE.md",
+      "expected": "fb5ebd1fa9d33e9be3384038a076a54db7d7a149d5d52d3e0379de8fbcf82f60",
+      "gate_id": "R1J-S5",
+      "metric": "hash",
+      "observed": "fb5ebd1fa9d33e9be3384038a076a54db7d7a149d5d52d3e0379de8fbcf82f60",
+      "pass": true
+    },
+    {
+      "description": "calibration spec frozen",
+      "evidence_file": "calibration/R1J_CALIBRATION_SPEC.md",
+      "expected": "CONTEXT_STRATIFIED_WINDOW_MAX_CONFORMAL_V1",
+      "gate_id": "R1J-S6",
+      "metric": "id",
+      "observed": "CONTEXT_STRATIFIED_WINDOW_MAX_CONFORMAL_V1",
+      "pass": true
+    },
+    {
+      "description": "same-a calibration only",
+      "evidence_file": "calibration/R1J_CALIBRATION_SPEC.json",
+      "expected": "true",
+      "gate_id": "R1J-S7",
+      "metric": "same_a_only",
+      "observed": "True",
+      "pass": true
+    },
+    {
+      "description": "no future leakage",
+      "evidence_file": "src/raven_mcs/sag/r1j_features.py",
+      "expected": "windows<r",
+      "gate_id": "R1J-S8",
+      "metric": "hist",
+      "observed": "windows<r",
+      "pass": true
+    },
+    {
+      "description": "warmup min 8",
+      "evidence_file": "certificate/R1J_JOINT_VALIDITY_BY_WINDOW.csv",
+      "expected": "8",
+      "gate_id": "R1J-S9",
+      "metric": "min_calib",
+      "observed": "8",
+      "pass": true
+    },
+    {
+      "description": "joint validity computed",
+      "evidence_file": "certificate/R1J_JOINT_VALIDITY_BY_WINDOW.csv",
+      "expected": ">0",
+      "gate_id": "R1J-S10",
+      "metric": "n",
+      "observed": "575",
+      "pass": true
+    },
+    {
+      "description": "dynamic C_cov computed",
+      "evidence_file": "certificate/R1J_CERTIFICATE_BY_WINDOW.csv",
+      "expected": "575",
+      "gate_id": "R1J-S11",
+      "metric": "n",
+      "observed": "575",
+      "pass": true
+    },
+    {
+      "description": "gate comparison complete",
+      "evidence_file": "gate_eval/R1J_GATE_CONFUSION_BY_WINDOW.csv",
+      "expected": ">0",
+      "gate_id": "R1J-S12",
+      "metric": "n_elig",
+      "observed": "485",
+      "pass": true
+    },
+    {
+      "description": "false-safe quantified",
+      "evidence_file": "gate_eval/R1J_GATE_METRICS.csv",
+      "expected": "finite",
+      "gate_id": "R1J-S13",
+      "metric": "pooled_fs",
+      "observed": "0.0",
+      "pass": true
+    },
+    {
+      "description": "false-unsafe quantified",
+      "evidence_file": "gate_eval/R1J_GATE_METRICS.csv",
+      "expected": "finite",
+      "gate_id": "R1J-S14",
+      "metric": "pooled_fu",
+      "observed": "1.0",
+      "pass": true
+    },
+    {
+      "description": "SS a=0.4 audit",
+      "evidence_file": "boundary_eval/R1J_SENSORSCOPE_A040_BOUNDARY_AUDIT.csv",
+      "expected": ">0",
+      "gate_id": "R1J-S15",
+      "metric": "n",
+      "observed": "53",
+      "pass": true
+    },
+    {
+      "description": "U-Air a=0.2 audit",
+      "evidence_file": "boundary_eval/R1J_UAIR_A020_BOUNDARY_AUDIT.csv",
+      "expected": ">0",
+      "gate_id": "R1J-S16",
+      "metric": "n",
+      "observed": "44",
+      "pass": true
+    },
+    {
+      "description": "boundary-near audit",
+      "evidence_file": "boundary_eval/R1J_BOUNDARY_NEAR_AUDIT.csv",
+      "expected": "0.01",
+      "gate_id": "R1J-S17",
+      "metric": "margin",
+      "observed": "0.01",
+      "pass": true
+    },
+    {
+      "description": "non-vacuity quantified",
+      "evidence_file": "gate_eval/R1J_GATE_METRICS.csv",
+      "expected": "reported",
+      "gate_id": "R1J-S18",
+      "metric": "zero_frac",
+      "observed": "1.0",
+      "pass": true
+    },
+    {
+      "description": "q-scale audit",
+      "evidence_file": "calibration/R1J_Q_SCALE_AUDIT.csv",
+      "expected": ">0",
+      "gate_id": "R1J-S19",
+      "metric": "n",
+      "observed": "575",
+      "pass": true
+    },
+    {
+      "description": "predictor quality",
+      "evidence_file": "predictor/R1J_PREDICTOR_QUALITY.csv",
+      "expected": ">0",
+      "gate_id": "R1J-S20",
+      "metric": "n",
+      "observed": "485",
+      "pass": true
+    },
+    {
+      "description": "no post-hoc retuning",
+      "evidence_file": "summary/R1J_VERDICT.json",
+      "expected": "false",
+      "gate_id": "R1J-S21",
+      "metric": "retune",
+      "observed": "false",
+      "pass": true
+    },
+    {
+      "description": "TARGET_LAW unchanged",
+      "evidence_file": "audit/R1J_FREEZE_AUDIT.json",
+      "expected": "86fd55f7e0bf8499944433de16324bd4687befd5568892613ee87acacad3ad07",
+      "gate_id": "R1J-S22",
+      "metric": "hash",
+      "observed": "86fd55f7e0bf8499944433de16324bd4687befd5568892613ee87acacad3ad07",
+      "pass": true
+    },
+    {
+      "description": "PI_SAFE unchanged",
+      "evidence_file": "outputs/sag_g1_r1e/configs/PI_SAFE_RULE_FROZEN.json",
+      "expected": "aa574c33b577965a78a9e6eb7d14877ac78add0fee4ab3e9c95deb47926891c7",
+      "gate_id": "R1J-S23",
+      "metric": "hash",
+      "observed": "aa574c33b577965a78a9e6eb7d14877ac78add0fee4ab3e9c95deb47926891c7",
+      "pass": true
+    },
+    {
+      "description": "tau_cov unchanged",
+      "evidence_file": "configs/sag_g0/thresholds.json",
+      "expected": "0.05",
+      "gate_id": "R1J-S24",
+      "metric": "tau",
+      "observed": "0.05",
+      "pass": true
+    },
+    {
+      "description": "no SAG",
+      "evidence_file": "summary/R1J_VERDICT.json",
+      "expected": "false",
+      "gate_id": "R1J-S25",
+      "metric": "sag_started",
+      "observed": "False",
+      "pass": true
+    },
+    {
+      "description": "no 5-seed",
+      "evidence_file": "summary/R1J_VERDICT.json",
+      "expected": "false",
+      "gate_id": "R1J-S26",
+      "metric": "five_seed_started",
+      "observed": "False",
+      "pass": true
+    },
+    {
+      "description": "source snapshot complete",
+      "evidence_file": "source_snapshot/R1J_SOURCE_SNAPSHOT_MANIFEST.csv",
+      "expected": "0",
+      "gate_id": "R1J-S27",
+      "metric": "missing",
+      "observed": "0",
+      "pass": true
+    },
+    {
+      "description": "final verdict artifact-derived",
+      "evidence_file": "summary/R1J_VERDICT.json",
+      "expected": "R1J_CERTIFICATE_TOO_CONSERVATIVE",
+      "gate_id": "R1J-S28",
+      "metric": "verdict",
+      "observed": "R1J_CERTIFICATE_TOO_CONSERVATIVE",
+      "pass": true
+    }
+  ],
+  "n_fail": 0,
+  "n_pass": 29,
+  "verdict": "R1J_CERTIFICATE_TOO_CONSERVATIVE"
+}

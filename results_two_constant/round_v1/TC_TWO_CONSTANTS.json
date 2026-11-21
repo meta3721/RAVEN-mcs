@@ -1,0 +1,60 @@
+{
+  "blocks": {
+    "sensorscope": {
+      "expected": {
+        "ratio": 3.7,
+        "test_fitted_constant": 2.0878,
+        "test_mean": 7.6572,
+        "train_mean": 0.3006,
+        "training_mean_predictor": 7.6471
+      },
+      "match": true,
+      "n_test": 3410,
+      "ratio": 3.7,
+      "test_fitted_constant": 2.0878,
+      "test_mean": 7.6572,
+      "train_mean": 0.3006,
+      "training_mean_predictor": 7.6471
+    },
+    "traffic": {
+      "expected": {
+        "ratio": 1.0,
+        "test_fitted_constant": 1.0067,
+        "test_mean": 0.0027,
+        "train_mean": 0.0,
+        "training_mean_predictor": 1.0067
+      },
+      "match": true,
+      "n_test": 6192,
+      "ratio": 1.0,
+      "test_fitted_constant": 1.0067,
+      "test_mean": 0.0027,
+      "train_mean": 0.0,
+      "training_mean_predictor": 1.0067
+    },
+    "uair": {
+      "expected": {
+        "ratio": 1.6,
+        "test_fitted_constant": 0.6781,
+        "test_mean": -0.8066,
+        "train_mean": 0.0,
+        "training_mean_predictor": 1.0537
+      },
+      "match": true,
+      "n_test": 1908,
+      "ratio": 1.6,
+      "test_fitted_constant": 0.6781,
+      "test_mean": -0.8066,
+      "train_mean": -0.0,
+      "training_mean_predictor": 1.0537
+    }
+  },
+  "g0_pass": true,
+  "gate": "G0",
+  "method": "weighted standard deviation of the scored test target (test-fitted constant) and sqrt(sum_i w_i (y_i - train_mean)^2) (training-mean predictor), through runner._predict + runner._mu_weights_for_test",
+  "scoring_path_checkpoints": {
+    "sensorscope": "artifacts/e3_formal_runs_r1/runs/sensorscope/fedavg_window/seed30001/checkpoints/final.pt",
+    "traffic": "results_server_optimizer/round_v1/runs/C_raven_simoracle/traffic/raven_simoracle/seed30001/checkpoints/final.pt",
+    "uair": "artifacts/e3_formal_runs_r1/runs/uair/fedavg_window/seed30001/checkpoints/final.pt"
+  }
+}

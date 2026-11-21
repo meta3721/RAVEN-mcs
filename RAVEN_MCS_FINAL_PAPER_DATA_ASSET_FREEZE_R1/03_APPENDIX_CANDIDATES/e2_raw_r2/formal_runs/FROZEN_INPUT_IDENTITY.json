@@ -1,0 +1,41 @@
+{
+  "created_utc": "2026-08-08T10:19:16.862317+00:00",
+  "expected_registry_sha256": "7d9b8292522b6fbcc15d83ebb065fc8a73b79787ed643aea49c48f30596acbc7",
+  "forbidden_canary_seed": 29001,
+  "formal_seeds": [
+    30001,
+    30002,
+    30003,
+    30004,
+    30005,
+    30006,
+    30007,
+    30008,
+    30009,
+    30010,
+    30011,
+    30012,
+    30013,
+    30014,
+    30015,
+    30016,
+    30017,
+    30018,
+    30019,
+    30020
+  ],
+  "mismatch_count": 0,
+  "prior_canary_status": "READY_FOR_TRAFFIC_E2_FORMAL_RUNS",
+  "prior_next_authorized_round": "E2-TRAFFIC-FORMAL-RUNS-R1",
+  "profile": "PROFILE-S1",
+  "registry_sha256": "7d9b8292522b6fbcc15d83ebb065fc8a73b79787ed643aea49c48f30596acbc7",
+  "source_file_count": 16,
+  "status": "PASS",
+  "validation_seeds_forbidden": [
+    29101,
+    29102,
+    29103,
+    29104,
+    29105
+  ]
+}

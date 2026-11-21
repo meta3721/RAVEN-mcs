@@ -1,0 +1,28 @@
+{
+  "arms": {
+    "fedavg_window": {
+      "abs_diff": 0.1353623714159775,
+      "frozen": 1.2856115928072611,
+      "known_nonrepro": true,
+      "rerun": 1.1502492213912836
+    },
+    "raven_simoracle": {
+      "abs_diff": 0.0,
+      "frozen": 1.2836740884863933,
+      "known_nonrepro": false,
+      "rerun": 1.2836740884863933
+    }
+  },
+  "dataset": "uair",
+  "oracle_nodesign_smoke_RMSE_mu": 1.1424152116574264,
+  "pass": "True",
+  "seed": 30006,
+  "tolerance": 1e-09,
+  "trace_events_equal_ignoring_meta": true,
+  "trace_meta_keys_ignored": [
+    "drift_magnitude",
+    "drift_period",
+    "occupancy_A"
+  ],
+  "utc": "2026-09-24T11:14:16.567069+00:00"
+}

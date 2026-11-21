@@ -1,0 +1,40 @@
+{
+  "pass": true,
+  "stage": "B",
+  "rule": "m_total = 0 when pi_tar = 0",
+  "rows": [
+    {
+      "condition": "C0_frozen",
+      "seed": 30001,
+      "RMSE_mu_v3": 1.210848485707097,
+      "RMSE_mu_frozen": 1.210848485707097,
+      "rmse_abs_diff": 0.0,
+      "rmse_rel_pct": 0.0,
+      "Delta_group_v3": 1.1131258678428484,
+      "Delta_group_frozen": 1.1131258678428484,
+      "dgroup_abs_diff": 0.0,
+      "active_set_equal": true,
+      "n_windows_differing": 0,
+      "differing_windows": [],
+      "pass": true,
+      "seconds": 11.57950449999771
+    },
+    {
+      "condition": "C0_frozen",
+      "seed": 30006,
+      "RMSE_mu_v3": 1.2856115928072611,
+      "RMSE_mu_frozen": 1.2856115928072611,
+      "rmse_abs_diff": 0.0,
+      "rmse_rel_pct": 0.0,
+      "Delta_group_v3": 1.1951358777035557,
+      "Delta_group_frozen": 1.1951358777035557,
+      "dgroup_abs_diff": 0.0,
+      "active_set_equal": true,
+      "n_windows_differing": 0,
+      "differing_windows": [],
+      "pass": true,
+      "seconds": 8.085873900003207
+    }
+  ],
+  "consequence": "any miss stops the round; no waiver, rule unchanged, other seeds and the stress grid not started"
+}

@@ -1,0 +1,41 @@
+{
+  "READY_FOR_50_RUNS": false,
+  "blockers": [
+    "opportunity definition not frozen",
+    "EventTrace generation not frozen",
+    "train/val/test split not frozen as formal protocol",
+    "seed policy not frozen",
+    "spatial grid / time slot freeze incomplete"
+  ],
+  "checks": {
+    "EventTrace_generation_frozen": false,
+    "checksum": true,
+    "client_identity_definition": true,
+    "client_measurements": true,
+    "compatible_output_schema": false,
+    "formal_tdrive_runs_started": false,
+    "frozen_formal_config": true,
+    "methods_code_present": true,
+    "opportunity_definition_frozen": false,
+    "processed_atomic_units": true,
+    "raw_T-Drive": true,
+    "seed_policy_frozen": false,
+    "spatial_grid_frozen": false,
+    "speed_target": true,
+    "time_slot_frozen": false,
+    "train_val_test_split_frozen": false
+  },
+  "formal_tdrive_runs_authorized": false,
+  "formal_tdrive_runs_started": false,
+  "methods": {
+    "FedAsync-Window": true,
+    "FedAvg-Window": true,
+    "RAVEN-MCS": true,
+    "TimeAlign-Agg": true,
+    "TwoStage-Hajek": true
+  },
+  "minimal_50_run_ready": false,
+  "note": "Readiness metadata only. No T-Drive experiment started in R2.",
+  "r1_status_was": "NOT_READY_OTHER",
+  "status": "NOT_READY_OPPORTUNITY_UNFROZEN"
+}

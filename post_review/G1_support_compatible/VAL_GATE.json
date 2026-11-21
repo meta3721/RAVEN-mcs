@@ -1,0 +1,16 @@
+{
+  "verdict": "PATH_A_FAILS",
+  "n_uair": 10,
+  "n_sensorscope": 10,
+  "pct_definition": "100 * (sc - ref) / ref; positive = SCL worse",
+  "noninferiority": "intended: mean pct <= +0.5 (not worse by 0.5%)",
+  "coded_bug": "first script used pct >= -0.5, which treats a 0.53% improvement as a fail",
+  "checks_intended": [
+    {"rule": "uair_Delta_group_vs_nodesign", "value": -0.5311, "pass": true},
+    {"rule": "uair_RMSE_mu_vs_nodesign", "value": 0.3974, "pass": true},
+    {"rule": "uair_Tail_RMSE_vs_nodesign", "value": 0.4237, "pass": true},
+    {"rule": "uair_delta_cs_still_le_nodesign", "value": -1.1368, "pass": true},
+    {"rule": "sensorscope_Delta_group_vs_raven", "value": 0.5723, "pass": false},
+    {"rule": "sensorscope_Delta_c_s_vs_raven", "value": 0.2692, "pass": true}
+  ]
+}

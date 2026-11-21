@@ -1,0 +1,31 @@
+{
+  "destination_repository": "https://github.com/meta3721/RAVEN-mcs",
+  "selected_files": 88714,
+  "selected_MiB": 2505.91,
+  "counts_by_source": {
+    "main": 88449,
+    "desktop": 265
+  },
+  "MiB_by_source": {
+    "main": 2492.44,
+    "desktop": 13.46
+  },
+  "excluded_by_reason": {
+    "machine_or_temporary": 7514,
+    "noncanonical_pdf_or_external_paper": 128,
+    "larger_than_10_MiB": 55,
+    "binary_or_generated_bulk": 27509,
+    "cache_backup_or_trajectory": 7811,
+    "per_tick_model_state": 1009
+  },
+  "excluded_large_files": 55,
+  "byte_limit": 10485760,
+  "desktop_prefix": "workspace_records/",
+  "snapshot_date": "2026-11-21",
+  "remote_base_commit": "b4af7a9dacf7c47243c67ad71b1ed4f0f51cf6b4",
+  "mode": "overlay: update matching local paths; preserve existing remote-only files",
+  "local_originals": "not moved or renamed",
+  "historical_absolute_paths": "preserved; not portable without adapting local roots",
+  "large_files_policy": "Files above 10 MiB are excluded; full local datasets and model trajectories are not uploaded.",
+  "secret_pattern_exclusion_count": 0
+}

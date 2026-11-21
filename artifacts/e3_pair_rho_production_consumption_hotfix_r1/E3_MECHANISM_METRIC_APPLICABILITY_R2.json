@@ -1,0 +1,393 @@
+{
+  "atomic_Delta_pair": "NOT_MATERIALIZED (client×group representation is Delta_c_s)",
+  "na_emission": "null + applicability code; never numeric 0 for NOT_APPLICABLE",
+  "paper_table_render": "N/A",
+  "rows": [
+    {
+      "applicability": "APPLICABLE",
+      "method": "fedavg_window",
+      "metric": "Delta_c_s"
+    },
+    {
+      "applicability": "NOT_MATERIALIZED",
+      "method": "fedavg_window",
+      "metric": "Delta_pair"
+    },
+    {
+      "applicability": "NOT_APPLICABLE",
+      "method": "fedavg_window",
+      "metric": "delta_ref"
+    },
+    {
+      "applicability": "NOT_APPLICABLE",
+      "method": "fedavg_window",
+      "metric": "Q_norm1_over_S"
+    },
+    {
+      "applicability": "NOT_APPLICABLE",
+      "method": "fedavg_window",
+      "metric": "Q_norm2_over_S"
+    },
+    {
+      "applicability": "APPLICABLE",
+      "method": "fedavg_window",
+      "metric": "RMSE_rho"
+    },
+    {
+      "applicability": "APPLICABLE",
+      "method": "fedavg_window",
+      "metric": "Delta_group"
+    },
+    {
+      "applicability": "APPLICABLE",
+      "method": "fedasync_window",
+      "metric": "Delta_c_s"
+    },
+    {
+      "applicability": "NOT_MATERIALIZED",
+      "method": "fedasync_window",
+      "metric": "Delta_pair"
+    },
+    {
+      "applicability": "NOT_APPLICABLE",
+      "method": "fedasync_window",
+      "metric": "delta_ref"
+    },
+    {
+      "applicability": "NOT_APPLICABLE",
+      "method": "fedasync_window",
+      "metric": "Q_norm1_over_S"
+    },
+    {
+      "applicability": "NOT_APPLICABLE",
+      "method": "fedasync_window",
+      "metric": "Q_norm2_over_S"
+    },
+    {
+      "applicability": "APPLICABLE",
+      "method": "fedasync_window",
+      "metric": "RMSE_rho"
+    },
+    {
+      "applicability": "APPLICABLE",
+      "method": "fedasync_window",
+      "metric": "Delta_group"
+    },
+    {
+      "applicability": "APPLICABLE",
+      "method": "flamf_timealign_adapted",
+      "metric": "Delta_c_s"
+    },
+    {
+      "applicability": "NOT_MATERIALIZED",
+      "method": "flamf_timealign_adapted",
+      "metric": "Delta_pair"
+    },
+    {
+      "applicability": "NOT_APPLICABLE",
+      "method": "flamf_timealign_adapted",
+      "metric": "delta_ref"
+    },
+    {
+      "applicability": "NOT_APPLICABLE",
+      "method": "flamf_timealign_adapted",
+      "metric": "Q_norm1_over_S"
+    },
+    {
+      "applicability": "NOT_APPLICABLE",
+      "method": "flamf_timealign_adapted",
+      "metric": "Q_norm2_over_S"
+    },
+    {
+      "applicability": "APPLICABLE",
+      "method": "flamf_timealign_adapted",
+      "metric": "RMSE_rho"
+    },
+    {
+      "applicability": "APPLICABLE",
+      "method": "flamf_timealign_adapted",
+      "metric": "Delta_group"
+    },
+    {
+      "applicability": "APPLICABLE",
+      "method": "local_hajek",
+      "metric": "Delta_c_s"
+    },
+    {
+      "applicability": "NOT_MATERIALIZED",
+      "method": "local_hajek",
+      "metric": "Delta_pair"
+    },
+    {
+      "applicability": "NOT_APPLICABLE",
+      "method": "local_hajek",
+      "metric": "delta_ref"
+    },
+    {
+      "applicability": "NOT_APPLICABLE",
+      "method": "local_hajek",
+      "metric": "Q_norm1_over_S"
+    },
+    {
+      "applicability": "NOT_APPLICABLE",
+      "method": "local_hajek",
+      "metric": "Q_norm2_over_S"
+    },
+    {
+      "applicability": "APPLICABLE",
+      "method": "local_hajek",
+      "metric": "RMSE_rho"
+    },
+    {
+      "applicability": "APPLICABLE",
+      "method": "local_hajek",
+      "metric": "Delta_group"
+    },
+    {
+      "applicability": "APPLICABLE",
+      "method": "twostage_hajek",
+      "metric": "Delta_c_s"
+    },
+    {
+      "applicability": "NOT_MATERIALIZED",
+      "method": "twostage_hajek",
+      "metric": "Delta_pair"
+    },
+    {
+      "applicability": "NOT_APPLICABLE",
+      "method": "twostage_hajek",
+      "metric": "delta_ref"
+    },
+    {
+      "applicability": "NOT_APPLICABLE",
+      "method": "twostage_hajek",
+      "metric": "Q_norm1_over_S"
+    },
+    {
+      "applicability": "NOT_APPLICABLE",
+      "method": "twostage_hajek",
+      "metric": "Q_norm2_over_S"
+    },
+    {
+      "applicability": "APPLICABLE",
+      "method": "twostage_hajek",
+      "metric": "RMSE_rho"
+    },
+    {
+      "applicability": "APPLICABLE",
+      "method": "twostage_hajek",
+      "metric": "Delta_group"
+    },
+    {
+      "applicability": "APPLICABLE",
+      "method": "inst_cal",
+      "metric": "Delta_c_s"
+    },
+    {
+      "applicability": "NOT_MATERIALIZED",
+      "method": "inst_cal",
+      "metric": "Delta_pair"
+    },
+    {
+      "applicability": "APPLICABLE",
+      "method": "inst_cal",
+      "metric": "delta_ref"
+    },
+    {
+      "applicability": "NOT_APPLICABLE",
+      "method": "inst_cal",
+      "metric": "Q_norm1_over_S"
+    },
+    {
+      "applicability": "NOT_APPLICABLE",
+      "method": "inst_cal",
+      "metric": "Q_norm2_over_S"
+    },
+    {
+      "applicability": "APPLICABLE",
+      "method": "inst_cal",
+      "metric": "RMSE_rho"
+    },
+    {
+      "applicability": "APPLICABLE",
+      "method": "inst_cal",
+      "metric": "Delta_group"
+    },
+    {
+      "applicability": "APPLICABLE",
+      "method": "debt_cal",
+      "metric": "Delta_c_s"
+    },
+    {
+      "applicability": "NOT_MATERIALIZED",
+      "method": "debt_cal",
+      "metric": "Delta_pair"
+    },
+    {
+      "applicability": "APPLICABLE",
+      "method": "debt_cal",
+      "metric": "delta_ref"
+    },
+    {
+      "applicability": "APPLICABLE",
+      "method": "debt_cal",
+      "metric": "Q_norm1_over_S"
+    },
+    {
+      "applicability": "APPLICABLE",
+      "method": "debt_cal",
+      "metric": "Q_norm2_over_S"
+    },
+    {
+      "applicability": "APPLICABLE",
+      "method": "debt_cal",
+      "metric": "RMSE_rho"
+    },
+    {
+      "applicability": "APPLICABLE",
+      "method": "debt_cal",
+      "metric": "Delta_group"
+    },
+    {
+      "applicability": "APPLICABLE",
+      "method": "raven",
+      "metric": "Delta_c_s"
+    },
+    {
+      "applicability": "NOT_MATERIALIZED",
+      "method": "raven",
+      "metric": "Delta_pair"
+    },
+    {
+      "applicability": "APPLICABLE",
+      "method": "raven",
+      "metric": "delta_ref"
+    },
+    {
+      "applicability": "APPLICABLE",
+      "method": "raven",
+      "metric": "Q_norm1_over_S"
+    },
+    {
+      "applicability": "APPLICABLE",
+      "method": "raven",
+      "metric": "Q_norm2_over_S"
+    },
+    {
+      "applicability": "APPLICABLE",
+      "method": "raven",
+      "metric": "RMSE_rho"
+    },
+    {
+      "applicability": "APPLICABLE",
+      "method": "raven",
+      "metric": "Delta_group"
+    },
+    {
+      "applicability": "APPLICABLE",
+      "method": "raven_simoracle",
+      "metric": "Delta_c_s"
+    },
+    {
+      "applicability": "NOT_MATERIALIZED",
+      "method": "raven_simoracle",
+      "metric": "Delta_pair"
+    },
+    {
+      "applicability": "APPLICABLE",
+      "method": "raven_simoracle",
+      "metric": "delta_ref"
+    },
+    {
+      "applicability": "APPLICABLE",
+      "method": "raven_simoracle",
+      "metric": "Q_norm1_over_S"
+    },
+    {
+      "applicability": "APPLICABLE",
+      "method": "raven_simoracle",
+      "metric": "Q_norm2_over_S"
+    },
+    {
+      "applicability": "APPLICABLE",
+      "method": "raven_simoracle",
+      "metric": "RMSE_rho"
+    },
+    {
+      "applicability": "APPLICABLE",
+      "method": "raven_simoracle",
+      "metric": "Delta_group"
+    },
+    {
+      "applicability": "NOT_APPLICABLE",
+      "method": "central_all",
+      "metric": "Delta_c_s"
+    },
+    {
+      "applicability": "NOT_MATERIALIZED",
+      "method": "central_all",
+      "metric": "Delta_pair"
+    },
+    {
+      "applicability": "NOT_APPLICABLE",
+      "method": "central_all",
+      "metric": "delta_ref"
+    },
+    {
+      "applicability": "NOT_APPLICABLE",
+      "method": "central_all",
+      "metric": "Q_norm1_over_S"
+    },
+    {
+      "applicability": "NOT_APPLICABLE",
+      "method": "central_all",
+      "metric": "Q_norm2_over_S"
+    },
+    {
+      "applicability": "APPLICABLE",
+      "method": "central_all",
+      "metric": "RMSE_rho"
+    },
+    {
+      "applicability": "NOT_APPLICABLE",
+      "method": "central_all",
+      "metric": "Delta_group"
+    },
+    {
+      "applicability": "NOT_APPLICABLE",
+      "method": "central_delivered",
+      "metric": "Delta_c_s"
+    },
+    {
+      "applicability": "NOT_MATERIALIZED",
+      "method": "central_delivered",
+      "metric": "Delta_pair"
+    },
+    {
+      "applicability": "NOT_APPLICABLE",
+      "method": "central_delivered",
+      "metric": "delta_ref"
+    },
+    {
+      "applicability": "NOT_APPLICABLE",
+      "method": "central_delivered",
+      "metric": "Q_norm1_over_S"
+    },
+    {
+      "applicability": "NOT_APPLICABLE",
+      "method": "central_delivered",
+      "metric": "Q_norm2_over_S"
+    },
+    {
+      "applicability": "APPLICABLE",
+      "method": "central_delivered",
+      "metric": "RMSE_rho"
+    },
+    {
+      "applicability": "NOT_APPLICABLE",
+      "method": "central_delivered",
+      "metric": "Delta_group"
+    }
+  ],
+  "schema_version": "E3_MECHANISM_METRIC_APPLICABILITY_R2"
+}

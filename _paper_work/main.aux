@@ -1,0 +1,409 @@
+\relax 
+\citation{ganti2011mobile,guo2015mobile,ma2014opportunities}
+\citation{wang2023outlier,li2024robust,wang2023transformer,wang2024fewshot,wang2025evolutionary,xu2025rethinking,liu2026pyramid,zhang2026mapt,tian2026reshaping}
+\citation{mcmahan2017communication,yang2019federated,kairouz2021advances,li2020federated}
+\citation{wang2026federated,xie2019asynchronous,liu2023adaptive,sun2024staleness,qiao2025asmafl,chen2026dvafl}
+\citation{wang2023spatiotemporal,li2024robust}
+\citation{wang2026federated,sun2024staleness}
+\citation{wang2022unified,jhunjhunwala2022fedvarp,wu2023anchor,wang2024lightweight,sun2025debiasing,mohri2019agnostic,chen2026fedcure}
+\@writefile{toc}{\contentsline {section}{\numberline {I}Introduction}{1}{}\protected@file@percent }
+\newlabel{sec:introduction}{{I}{1}{}{section.1}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces RAVEN-MCS aligns asynchronous federated completion with a public deployment target. (a)~The three selection layers within the two-stage MCS process induce an arrival law that need not match the deployment target. (b)~RAVEN-MCS reconstructs target-relevant mass and then calibrates it within the currently feasible mobile support as one coordinated architecture, rather than as five independent modules. The feasibility program (P2) is defined in Section~\ref {sec:calibration}.}}{2}{}\protected@file@percent }
+\newlabel{fig:raven_overview}{{1}{2}{}{figure.1}{}}
+\citation{ganti2011mobile,guo2015mobile,ma2014opportunities}
+\citation{wang2023spatiotemporal}
+\citation{wang2023outlier}
+\citation{wang2023transformer}
+\citation{wang2024fewshot}
+\citation{li2024robust}
+\citation{wang2025evolutionary}
+\citation{xu2025rethinking}
+\citation{liu2026pyramid}
+\citation{zhang2026mapt}
+\citation{tian2026reshaping}
+\citation{liu2026pricing}
+\citation{liu2026multidimensional}
+\citation{zhang2025incentive,lu2025piece}
+\citation{zhang2026locally}
+\citation{mcmahan2017communication,yang2019federated}
+\citation{kairouz2021advances,li2020federated}
+\citation{wang2026federated}
+\citation{li2026stdfl}
+\citation{xie2019asynchronous}
+\citation{liu2023adaptive}
+\citation{sun2024staleness}
+\citation{qiao2025asmafl}
+\citation{chen2026dvafl}
+\@writefile{toc}{\contentsline {section}{\numberline {II}Related Work}{3}{}\protected@file@percent }
+\newlabel{sec:related_work}{{II}{3}{}{section.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {II-A}}Sparse Mobile Crowdsensing and Data Completion}{3}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {II-B}}Federated and Asynchronous Data Completion}{3}{}\protected@file@percent }
+\citation{wang2022unified}
+\citation{jhunjhunwala2022fedvarp}
+\citation{wu2023anchor}
+\citation{wang2024lightweight}
+\citation{sun2025debiasing}
+\citation{mohri2019agnostic}
+\citation{chen2026fedcure}
+\citation{li2020fedprox,karimireddy2020scaffold}
+\citation{horvitz1952generalization,hajek1971comment}
+\citation{shimodaira2000improving}
+\citation{byrd2019what}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {II-C}}Non-Uniform Participation and Selection Bias in FL}{4}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {III}System Model and Target-Risk Formulation}{4}{}\protected@file@percent }
+\newlabel{sec:system_model}{{III}{4}{}{section.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-A}}Windowed Asynchronous Mobile Crowdsensing}{4}{}\protected@file@percent }
+\newlabel{subsec:windowed_mcs}{{\mbox  {III-A}}{4}{}{subsection.3.1}{}}
+\newlabel{eq:common_predictor}{{1}{4}{}{equation.1}{}}
+\newlabel{eq:window}{{2}{4}{}{equation.2}{}}
+\newlabel{eq:staleness}{{3}{4}{}{equation.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-B}}Two-Stage, Three-Layer Non-Random Selection}{4}{}\protected@file@percent }
+\newlabel{subsec:selection_process}{{\mbox  {III-B}}{4}{}{subsection.3.2}{}}
+\newlabel{eq:R_indicator}{{4}{4}{}{equation.4}{}}
+\newlabel{eq:O_indicator}{{5}{5}{}{equation.5}{}}
+\newlabel{eq:U_indicator}{{6}{5}{}{equation.6}{}}
+\newlabel{eq:usable_set}{{7}{5}{}{equation.7}{}}
+\newlabel{eq:h_neq_s}{{8}{5}{}{equation.8}{}}
+\newlabel{eq:opp_event_law}{{9}{5}{}{equation.9}{}}
+\newlabel{eq:pobs_def}{{10}{5}{}{equation.10}{}}
+\newlabel{eq:quse_def}{{11}{5}{}{equation.11}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-C}}Public Deployment Target and Compatible Target Measures}{5}{}\protected@file@percent }
+\newlabel{subsec:target_measures}{{\mbox  {III-C}}{5}{}{subsection.3.3}{}}
+\newlabel{eq:atomic_target}{{12}{5}{}{equation.12}{}}
+\newlabel{eq:target_group_mass}{{13}{5}{}{equation.13}{}}
+\newlabel{eq:target_stratum_mass}{{14}{5}{}{equation.14}{}}
+\newlabel{eq:target_conditional_atomic}{{15}{5}{}{equation.15}{}}
+\newlabel{eq:target_client_share}{{16}{5}{}{equation.16}{}}
+\newlabel{eq:target_ks_mass}{{17}{5}{}{equation.17}{}}
+\newlabel{eq:target_ki_mass}{{18}{5}{}{equation.18}{}}
+\newlabel{eq:target_compatibility}{{19}{5}{}{equation.19}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-D}}Deployment-Target Risk Versus Arrival Risk}{5}{}\protected@file@percent }
+\newlabel{subsec:target_risk}{{\mbox  {III-D}}{5}{}{subsection.3.4}{}}
+\newlabel{eq:target_risk}{{20}{5}{}{equation.20}{}}
+\newlabel{eq:arrival_intensity}{{21}{6}{}{equation.21}{}}
+\newlabel{eq:arrival_distribution}{{22}{6}{}{equation.22}{}}
+\newlabel{eq:arrival_risk}{{23}{6}{}{equation.23}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-E}}Structural Alignment Objective}{6}{}\protected@file@percent }
+\newlabel{subsec:design_objective}{{\mbox  {III-E}}{6}{}{subsection.3.5}{}}
+\newlabel{eq:Mr_def}{{24}{6}{}{equation.24}{}}
+\newlabel{eq:omega_r}{{25}{6}{}{equation.25}{}}
+\newlabel{eq:active_mass}{{26}{6}{}{equation.26}{}}
+\newlabel{eq:omega_bar}{{27}{6}{}{equation.27}{}}
+\newlabel{eq:delta_group}{{28}{6}{}{equation.28}{}}
+\newlabel{eq:Pi_hat_ks}{{29}{6}{}{equation.29}{}}
+\newlabel{eq:delta_cs}{{30}{6}{}{equation.30}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {IV}Selection-Layer-Aware Target Reconstruction}{6}{}\protected@file@percent }
+\newlabel{sec:reconstruction}{{IV}{6}{}{section.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {IV-A}}Opportunity/Design Correction}{6}{}\protected@file@percent }
+\newlabel{subsec:design_correction}{{\mbox  {IV-A}}{6}{}{subsection.4.1}{}}
+\newlabel{eq:design_ratio_general}{{31}{6}{}{equation.31}{}}
+\newlabel{eq:design_ratio_simple}{{32}{6}{}{equation.32}{}}
+\newlabel{eq:opp_ema}{{33}{6}{}{equation.33}{}}
+\newlabel{eq:opp_estimate}{{34}{6}{}{equation.34}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {IV-B}}Observation Correction and Local H\'ajek Normalization}{6}{}\protected@file@percent }
+\newlabel{subsec:observation_hajek}{{\mbox  {IV-B}}{6}{}{subsection.4.2}{}}
+\newlabel{eq:a_star}{{35}{6}{}{equation.35}{}}
+\newlabel{eq:a_stabilized}{{36}{6}{}{equation.36}{}}
+\newlabel{eq:m_total}{{37}{6}{}{equation.37}{}}
+\newlabel{eq:m_group}{{38}{6}{}{equation.38}{}}
+\newlabel{eq:m_stratum}{{39}{6}{}{equation.39}{}}
+\newlabel{eq:aggregation_set}{{40}{6}{}{equation.40}{}}
+\newlabel{eq:abar}{{41}{7}{}{equation.41}{}}
+\newlabel{eq:ckrg}{{42}{7}{}{equation.42}{}}
+\newlabel{eq:ckrs}{{43}{7}{}{equation.43}{}}
+\newlabel{eq:neff}{{44}{7}{}{equation.44}{}}
+\newlabel{eq:local_hajek_objective}{{45}{7}{}{equation.45}{}}
+\newlabel{eq:normalized_update}{{46}{7}{}{equation.46}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {IV-C}}Usable-Update Correction and Reference Aggregation Mass}{7}{}\protected@file@percent }
+\newlabel{subsec:usable_correction}{{\mbox  {IV-C}}{7}{}{subsection.4.3}{}}
+\newlabel{eq:d_use}{{47}{7}{}{equation.47}{}}
+\newlabel{eq:b_mass}{{48}{7}{}{equation.48}{}}
+\newlabel{eq:beta_ref}{{49}{7}{}{equation.49}{}}
+\newlabel{eq:m_star}{{50}{7}{}{equation.50}{}}
+\newlabel{eq:abar_star}{{51}{7}{}{equation.51}{}}
+\newlabel{eq:d_star}{{52}{7}{}{equation.52}{}}
+\newlabel{eq:beta_star}{{53}{7}{}{equation.53}{}}
+\newlabel{eq:factorized_global_weight}{{54}{7}{}{equation.54}{}}
+\newlabel{eq:omega_ref}{{55}{7}{}{equation.55}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {IV-D}}Information Boundary and Stabilization}{7}{}\protected@file@percent }
+\newlabel{subsec:information_boundary}{{\mbox  {IV-D}}{7}{}{subsection.4.4}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {V}Feasibility-Aware Target Calibration}{7}{}\protected@file@percent }
+\newlabel{sec:calibration}{{V}{7}{}{section.5}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {V-A}}Feasible Aggregation Set}{7}{}\protected@file@percent }
+\newlabel{subsec:feasible_set}{{\mbox  {V-A}}{7}{}{subsection.5.1}{}}
+\newlabel{eq:Cr}{{56}{7}{}{equation.56}{}}
+\newlabel{eq:cap_ess}{{57}{7}{}{equation.57}{}}
+\newlabel{eq:variance_proxy}{{58}{8}{}{equation.58}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {V-B}}Long-Term Target Debt}{8}{}\protected@file@percent }
+\newlabel{subsec:debt}{{\mbox  {V-B}}{8}{}{subsection.5.2}{}}
+\newlabel{eq:debt_update}{{59}{8}{}{equation.59}{}}
+\newlabel{eq:debt_bound}{{60}{8}{}{equation.60}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {V-C}}Feasibility-Aware Calibration Program}{8}{}\protected@file@percent }
+\newlabel{subsec:P2}{{\mbox  {V-C}}{8}{}{subsection.5.3}{}}
+\newlabel{eq:P2}{{61}{8}{}{equation.61}{}}
+\newlabel{eq:P2_objective}{{62}{8}{}{equation.62}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {V-D}}Global Update and Window Logic}{8}{}\protected@file@percent }
+\newlabel{subsec:global_update}{{\mbox  {V-D}}{8}{}{subsection.5.4}{}}
+\newlabel{eq:server_update}{{63}{8}{}{equation.63}{}}
+\newlabel{eq:raven_pipeline}{{64}{8}{}{equation.64}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {VI}Theoretical Analysis}{8}{}\protected@file@percent }
+\newlabel{sec:theory}{{VI}{8}{}{section.6}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VI-A}}Assumptions}{8}{}\protected@file@percent }
+\newlabel{subsec:assumptions}{{\mbox  {VI-A}}{8}{}{subsection.6.1}{}}
+\newlabel{eq:A2_use_mean_ignorability}{{65}{8}{}{equation.65}{}}
+\citation{ingelrest2010sensorscope,barrenetxea2019sensorscope}
+\citation{zheng2013uair}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VI-B}}Target Risk Is Not Arrival Risk}{9}{}\protected@file@percent }
+\newlabel{subsec:prop_risk}{{\mbox  {VI-B}}{9}{}{subsection.6.2}{}}
+\newlabel{prop:risk}{{1}{9}{}{proposition.1}{}}
+\newlabel{eq:dist_not_equal}{{66}{9}{}{equation.66}{}}
+\newlabel{eq:prop1_nonidentity}{{67}{9}{}{equation.67}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VI-C}}Normalized Sequential Target Reconstruction}{9}{}\protected@file@percent }
+\newlabel{subsec:prop_reconstruction}{{\mbox  {VI-C}}{9}{}{subsection.6.3}{}}
+\newlabel{eq:chi_event}{{68}{9}{}{equation.68}{}}
+\newlabel{prop:reconstruction}{{2}{9}{}{proposition.2}{}}
+\newlabel{eq:hajek_phi}{{69}{9}{}{equation.69}{}}
+\newlabel{eq:target_phi}{{70}{9}{}{equation.70}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VI-D}}Existence and Uniqueness of Feasible Calibration}{9}{}\protected@file@percent }
+\newlabel{subsec:theorem_calibration}{{\mbox  {VI-D}}{9}{}{subsection.6.4}{}}
+\newlabel{thm:calibration}{{1}{9}{}{theorem.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VI-E}}Implications for RAVEN-MCS}{9}{}\protected@file@percent }
+\newlabel{subsec:theory_implications}{{\mbox  {VI-E}}{9}{}{subsection.6.5}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {VII}Evaluation}{9}{}\protected@file@percent }
+\newlabel{sec:evaluation}{{VII}{9}{}{section.7}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VII-A}}Experimental Setup}{9}{}\protected@file@percent }
+\newlabel{subsec:eval_setup}{{\mbox  {VII-A}}{9}{}{subsection.7.1}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {\mbox  {VII-A}1}Datasets and target semantics}{9}{}\protected@file@percent }
+\citation{tfnsw2024traffic}
+\citation{ingelrest2010sensorscope}
+\citation{zheng2013uair}
+\citation{tfnsw2024traffic}
+\citation{mcmahan2017communication}
+\citation{xie2019asynchronous}
+\citation{wang2026federated}
+\citation{horvitz1952generalization,hajek1971comment}
+\citation{wang2024lightweight}
+\citation{wilcoxon1945individual}
+\citation{holm1979simple}
+\@writefile{lot}{\contentsline {table}{\numberline {I}{\ignorespaces Datasets and their roles in the evaluation. Each dataset is cited to its public source. Target construction uses public/training-side information and never test-label values.}}{10}{}\protected@file@percent }
+\newlabel{tab:datasets}{{I}{10}{}{table.1}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {\mbox  {VII-A}2}Selection protocol and compared methods}{10}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {\mbox  {VII-A}3}Metrics and statistical policy}{10}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VII-B}}RQ1: Does Two-Stage Selection Change the Relevant Risk?}{10}{}\protected@file@percent }
+\newlabel{subsec:eval_rq1}{{\mbox  {VII-B}}{10}{}{subsection.7.2}{}}
+\newlabel{eq:D_aligned_eval}{{73}{10}{}{equation.73}{}}
+\citation{wang2024lightweight}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces RQ1 on complete-aligned NSW-Traffic. (a)~Seed-level $D_{\mathrm  {aligned}}=\Delta \mathrm  {RMSE}_{\mu }-\Delta \mathrm  {RMSE}_{\rho }$ over 20 paired seeds. (b)~Negative-seed count (not a method ranking). A negative value means that the arrival-weighted risk changes more than the deployment-target risk under the same selection shift. Local-H\'ajek is omitted here because E2 reports the five methods used in the risk-semantic test.}}{11}{}\protected@file@percent }
+\newlabel{fig:risk_noninterchangeability}{{2}{11}{}{figure.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VII-C}}RQ2: Structural Alignment and Target Prediction Risk}{11}{}\protected@file@percent }
+\newlabel{subsec:eval_rq2}{{\mbox  {VII-C}}{11}{}{subsection.7.3}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {II}{\ignorespaces E3 main effectiveness on the two scientifically comparable datasets (mean $\pm $ std over 20 seeds). Lower is better. Structural significance is assessed by the pre-specified RAVEN-vs-baseline Holm families; numerical best and statistical significance are distinct. Figs.~\ref {fig:e3_structural} and \ref {fig:e3_prediction} show the seven same-backbone baselines and RAVEN-MCS; Inst-Cal and Debt-Cal are transitional variants reported only in this table. On these blocks, Local-H\'ajek coincides with FedAvg because the realized within-client H\'ajek weights are uniform.}}{12}{}\protected@file@percent }
+\newlabel{tab:main_effectiveness}{{II}{12}{}{table.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VII-D}}RQ3: What Do the Correction and Calibration Components Do?}{12}{}\protected@file@percent }
+\newlabel{subsec:eval_rq3}{{\mbox  {VII-D}}{12}{}{subsection.7.4}{}}
+\newlabel{eq:ablation_relative_change}{{74}{12}{}{equation.74}{}}
+\@writefile{toc}{\contentsline {paragraph}{\numberline {\mbox  {VII-D}0a}Design correction.}{12}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{\numberline {\mbox  {VII-D}0b}Observation and usable-update correction.}{12}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces RQ2 structural alignment on SensorScope and U-Air, the primary E3 claim. Each panel reports mean $\pm $ std over 20 paired seeds (lower is better). (a)(b)~SensorScope $\Delta _{\mathrm  {group}}$ and $\Delta _{c\text  {-}s}$; (c)(d)~U-Air $\Delta _{\mathrm  {group}}$ and $\Delta _{c\text  {-}s}$. RAVEN-MCS consistently reduces both structural mismatch measures relative to the same-backbone baselines.}}{13}{}\protected@file@percent }
+\newlabel{fig:e3_structural}{{3}{13}{}{figure.3}{}}
+\@writefile{toc}{\contentsline {paragraph}{\numberline {\mbox  {VII-D}0c}Instantaneous calibration and debt.}{13}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {VIII}Discussion and Limitations}{13}{}\protected@file@percent }
+\newlabel{sec:discussion}{{VIII}{13}{}{section.8}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces RQ2 deployment-target prediction risk on SensorScope and U-Air. Prediction is \emph  {not} the primary claim: the consistent E3 gain is structural alignment in Fig.~\ref {fig:e3_structural}. Each panel reports mean $\pm $ std over 20 paired seeds (lower is better). (a)(b)~SensorScope $\mathrm  {RMSE}_{\mu }$ and Tail RMSE; (c)(d)~U-Air $\mathrm  {RMSE}_{\mu }$ and Tail RMSE. RAVEN-MCS stays comparable to the classic baselines and obtains selective significant gains; it is not universally the lowest-RMSE method.}}{14}{}\protected@file@percent }
+\newlabel{fig:e3_prediction}{{4}{14}{}{figure.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VIII-A}}Why Structural Alignment Need Not Imply Universal RMSE Gains}{14}{}\protected@file@percent }
+\newlabel{subsec:discussion_alignment_rmse}{{\mbox  {VIII-A}}{14}{}{subsection.8.1}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {III}{\ignorespaces E4 relative change (\%) after removing one RAVEN component. Positive means the ablation worsens the metric; negative means it improves the metric. $^\ast $ denotes Holm-adjusted $p<0.05$.}}{15}{}\protected@file@percent }
+\newlabel{tab:e4_ablation}{{III}{15}{}{table.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VIII-B}}RAVEN as a Coupled Correction System}{15}{}\protected@file@percent }
+\newlabel{subsec:discussion_components}{{\mbox  {VIII-B}}{15}{}{subsection.8.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VIII-C}}Statistical and Modeling Boundaries}{15}{}\protected@file@percent }
+\newlabel{subsec:discussion_statistical_limits}{{\mbox  {VIII-C}}{15}{}{subsection.8.3}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces RQ3 one-factor component removal. Positive bars mean that removing the component worsens the metric; $^\ast $ marks Holm-adjusted $p<0.05$. (a)(b)~SensorScope structural mismatch and prediction risk; (c)(d)~U-Air structural mismatch and prediction risk. On U-Air, Design dominates the axis; Observation, Usable, Instantaneous, and Debt are shown at full scale in Fig.~\ref {fig:e4_uair_zoom}. Values with $|\delta |<0.05\%$ and no significance mark are left unlabeled. Sign reversals show endpoint- and dataset-dependent roles rather than uniformly additive benefits.}}{16}{}\protected@file@percent }
+\newlabel{fig:e4_ablation}{{5}{16}{}{figure.5}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VIII-D}}Evidence and Reproducibility Boundaries}{16}{}\protected@file@percent }
+\newlabel{subsec:discussion_evidence_limits}{{\mbox  {VIII-D}}{16}{}{subsection.8.4}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces U-Air one-factor removal excluding Design, using the same relative-change definition and Holm marks as Fig.~\ref {fig:e4_ablation}. (a)~structural mismatch; (b)~prediction risk. This panel is a scale expansion of Observation, Usable, Instantaneous, and Debt, not a new experiment.}}{17}{}\protected@file@percent }
+\newlabel{fig:e4_uair_zoom}{{6}{17}{}{figure.6}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {IX}Conclusion}{17}{}\protected@file@percent }
+\newlabel{sec:conclusion}{{IX}{17}{}{section.9}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {X}Reproducibility and Data Availability}{18}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{Appendix\nobreakspace  A: Complete Proofs for Sections III--VI}{18}{}\protected@file@percent }
+\newlabel{app:complete_proofs}{{A}{18}{}{section.Appendix.A}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {A-A}}Proof of Proposition~1}{18}{}\protected@file@percent }
+\newlabel{app:proof_prop1}{{\mbox  {A-A}}{18}{}{subsection.Appendix.A.1}{}}
+\newlabel{eq:app_prop1_claim}{{76}{18}{}{equation.76}{}}
+\newlabel{eq:app_prop1_di}{{77}{18}{}{equation.77}{}}
+\newlabel{eq:app_prop1_zero_sum}{{78}{18}{}{equation.78}{}}
+\newlabel{eq:app_prop1_positive_set}{{79}{18}{}{equation.79}{}}
+\newlabel{eq:app_prop1_profile}{{80}{18}{}{equation.80}{}}
+\newlabel{eq:app_prop1_difference}{{81}{18}{}{equation.81}{}}
+\newlabel{eq:app_prop1_all_equal}{{82}{18}{}{equation.82}{}}
+\newlabel{eq:app_prop1_singleton}{{83}{18}{}{equation.83}{}}
+\newlabel{eq:app_prop1_coordinate_equal}{{84}{18}{}{equation.84}{}}
+\@writefile{toc}{\contentsline {paragraph}{\numberline {\mbox  {A-A}0a}Interpretation.}{18}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {A-B}}Proof of Proposition~2}{18}{}\protected@file@percent }
+\newlabel{app:proof_prop2}{{\mbox  {A-B}}{18}{}{subsection.Appendix.A.2}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {\mbox  {A-B}1}Target-Measure Compatibility}{18}{}\protected@file@percent }
+\newlabel{eq:app_nu_normalization}{{86}{18}{}{equation.86}{}}
+\newlabel{eq:app_target_compatibility_positive}{{87}{18}{}{equation.87}{}}
+\newlabel{eq:app_target_compatibility}{{88}{18}{}{equation.88}{}}
+\newlabel{eq:app_pi_normalized}{{89}{19}{}{equation.89}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {\mbox  {A-B}2}Sequential Inverse-Selection Identity}{19}{}\protected@file@percent }
+\newlabel{eq:app_pq_short}{{90}{19}{}{equation.90}{}}
+\newlabel{eq:app_obs_ipw}{{91}{19}{}{equation.91}{}}
+\newlabel{eq:app_use_ipw}{{92}{19}{}{equation.92}{}}
+\newlabel{eq:app_sequential_identity}{{93}{19}{}{equation.93}{}}
+\newlabel{eq:app_target_phi}{{94}{19}{}{equation.94}{}}
+\newlabel{eq:app_chi}{{95}{19}{}{equation.95}{}}
+\newlabel{eq:app_conditional_weighted_moment}{{96}{19}{}{equation.96}{}}
+\newlabel{eq:app_expected_numerator_event}{{97}{19}{}{equation.97}{}}
+\newlabel{eq:app_expected_denominator_event}{{98}{19}{}{equation.98}{}}
+\newlabel{eq:app_total_opp_events}{{99}{19}{}{equation.99}{}}
+\newlabel{eq:app_AR}{{100}{19}{}{equation.100}{}}
+\newlabel{eq:app_BR}{{101}{19}{}{equation.101}{}}
+\newlabel{eq:app_AR_lln}{{102}{19}{}{equation.102}{}}
+\newlabel{eq:app_BR_lln}{{103}{19}{}{equation.103}{}}
+\newlabel{eq:app_hajek_limit}{{104}{19}{}{equation.104}{}}
+\newlabel{eq:app_phi_client_stratum}{{105}{19}{}{equation.105}{}}
+\newlabel{eq:app_recover_client_stratum_positive}{{106}{19}{}{equation.106}{}}
+\newlabel{eq:app_recover_client_stratum}{{107}{19}{}{equation.107}{}}
+\newlabel{eq:app_phi_group}{{108}{19}{}{equation.108}{}}
+\newlabel{eq:app_recover_group}{{109}{20}{}{equation.109}{}}
+\@writefile{toc}{\contentsline {paragraph}{\numberline {\mbox  {A-B}2a}Scope of Proposition~2.}{20}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {A-C}}Proof of Theorem~1}{20}{}\protected@file@percent }
+\newlabel{app:proof_theorem1}{{\mbox  {A-C}}{20}{}{subsection.Appendix.A.3}{}}
+\newlabel{eq:app_K_positive}{{110}{20}{}{equation.110}{}}
+\newlabel{eq:app_uniform_alpha}{{111}{20}{}{equation.111}{}}
+\newlabel{eq:app_uniform_simplex}{{112}{20}{}{equation.112}{}}
+\newlabel{eq:app_alpha_bar}{{113}{20}{}{equation.113}{}}
+\newlabel{eq:app_uniform_box}{{114}{20}{}{equation.114}{}}
+\newlabel{eq:app_uniform_l2}{{115}{20}{}{equation.115}{}}
+\newlabel{eq:app_Ebar_leq_K}{{116}{20}{}{equation.116}{}}
+\newlabel{eq:app_uniform_ess}{{117}{20}{}{equation.117}{}}
+\newlabel{eq:app_C_nonempty}{{118}{20}{}{equation.118}{}}
+\newlabel{eq:app_l2_ball}{{119}{20}{}{equation.119}{}}
+\newlabel{eq:app_P2_hessian}{{120}{20}{}{equation.120}{}}
+\newlabel{eq:app_psd_terms}{{121}{20}{}{equation.121}{}}
+\newlabel{eq:app_strong_convex}{{122}{20}{}{equation.122}{}}
+\@writefile{toc}{\contentsline {paragraph}{\numberline {\mbox  {A-C}0a}Scope of Theorem~1.}{20}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {A-D}}Proof of the Target-Debt Accounting Bound}{20}{}\protected@file@percent }
+\newlabel{app:proof_debt_bound}{{\mbox  {A-D}}{20}{}{subsection.Appendix.A.4}{}}
+\newlabel{eq:app_debt_prefix_defs}{{124}{20}{}{equation.124}{}}
+\newlabel{eq:app_omega_simplex}{{125}{20}{}{equation.125}{}}
+\newlabel{eq:app_equal_mass}{{126}{20}{}{equation.126}{}}
+\newlabel{eq:app_DR}{{127}{20}{}{equation.127}{}}
+\newlabel{eq:app_DR_baromega}{{128}{20}{}{equation.128}{}}
+\newlabel{eq:app_debt_coordinate}{{129}{21}{}{equation.129}{}}
+\newlabel{eq:app_debt_one_step}{{130}{21}{}{equation.130}{}}
+\newlabel{eq:app_debt_one_step_all}{{131}{21}{}{equation.131}{}}
+\newlabel{eq:app_Q_dominates_D}{{132}{21}{}{equation.132}{}}
+\newlabel{eq:app_positive_part_domination}{{133}{21}{}{equation.133}{}}
+\newlabel{eq:app_positive_part_l1}{{134}{21}{}{equation.134}{}}
+\newlabel{eq:app_DR_zero_sum}{{135}{21}{}{equation.135}{}}
+\newlabel{eq:app_pos_neg_equal}{{136}{21}{}{equation.136}{}}
+\newlabel{eq:app_DR_l1_bound}{{137}{21}{}{equation.137}{}}
+\newlabel{eq:app_debt_bound_final}{{138}{21}{}{equation.138}{}}
+\@writefile{toc}{\contentsline {paragraph}{\numberline {\mbox  {A-D}0a}Consequence.}{21}{}\protected@file@percent }
+\newlabel{eq:app_debt_sublinear_consequence}{{139}{21}{}{equation.139}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {A-E}}Supplementary Consequences of the Calibration Geometry}{21}{}\protected@file@percent }
+\newlabel{app:supp_calibration_geometry}{{\mbox  {A-E}}{21}{}{subsection.Appendix.A.5}{}}
+\@writefile{toc}{\contentsline {paragraph}{\numberline {\mbox  {A-E}0a}Feasible target image.}{21}{}\protected@file@percent }
+\newlabel{eq:app_feasible_target_image}{{140}{21}{}{equation.140}{}}
+\newlabel{eq:app_feasibility_gap}{{141}{21}{}{equation.141}{}}
+\newlabel{eq:app_exact_realizability}{{142}{21}{}{equation.142}{}}
+\@writefile{toc}{\contentsline {paragraph}{\numberline {\mbox  {A-E}0b}Reference stability of P2.}{21}{}\protected@file@percent }
+\newlabel{eq:app_reference_nonexpansive}{{143}{21}{}{equation.143}{}}
+\newlabel{eq:app_p2_split}{{144}{21}{}{equation.144}{}}
+\newlabel{eq:app_reference_vi}{{145}{21}{}{equation.145}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {A-F}}Proof-Obligation Summary}{21}{}\protected@file@percent }
+\newlabel{app:proof_summary}{{\mbox  {A-F}}{21}{}{subsection.Appendix.A.6}{}}
+\@writefile{toc}{\contentsline {section}{Appendix\nobreakspace  B: Supplementary Risk-Semantic Evidence}{22}{}\protected@file@percent }
+\newlabel{app:risk_semantic_evidence}{{B}{22}{}{section.Appendix.B}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {B-A}}Balanced No-Harm Control}{22}{}\protected@file@percent }
+\newlabel{app:e1_balanced}{{\mbox  {B-A}}{22}{}{subsection.Appendix.B.1}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {IV}{\ignorespaces E1 Balanced control over the five pre-specified paired seeds.}}{22}{}\protected@file@percent }
+\newlabel{tab:app_e1_balanced}{{IV}{22}{}{table.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {B-B}}Complete E2 Risk Non-Interchangeability Statistics}{22}{}\protected@file@percent }
+\newlabel{app:e2_full_stats}{{\mbox  {B-B}}{22}{}{subsection.Appendix.B.2}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {V}{\ignorespaces E2 Complete-aligned risk non-interchangeability statistics. CI denotes the 95\% interval; $p$ is the paired Wilcoxon test of $D_{\mathrm  {aligned}}$ against zero.}}{22}{}\protected@file@percent }
+\newlabel{tab:app_e2_daligned}{{V}{22}{}{table.5}{}}
+\@writefile{toc}{\contentsline {section}{Appendix\nobreakspace  C: Local-H\'ajek Degeneracy Analysis}{22}{}\protected@file@percent }
+\newlabel{app:local_hajek}{{C}{22}{}{section.Appendix.C}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {VI}{\ignorespaces Local-Hajek provenance audit.}}{22}{}\protected@file@percent }
+\newlabel{tab:app_local_hajek}{{VI}{22}{}{table.6}{}}
+\newlabel{eq:app_local_hajek_uniform}{{146}{22}{}{equation.146}{}}
+\newlabel{eq:app_local_hajek_collapse}{{147}{22}{}{equation.147}{}}
+\@writefile{toc}{\contentsline {section}{Appendix\nobreakspace  D: P2 Feasibility Diagnostics}{22}{}\protected@file@percent }
+\newlabel{app:p2_diagnostics}{{D}{22}{}{section.Appendix.D}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {VII}{\ignorespaces P2 feasibility-certificate coverage in the formal E3 blocks.}}{22}{}\protected@file@percent }
+\newlabel{tab:app_p2_coverage}{{VII}{22}{}{table.7}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {VIII}{\ignorespaces Warning-affected P2 audit and claim boundary.}}{23}{}\protected@file@percent }
+\newlabel{tab:app_p2_warning_audit}{{VIII}{23}{}{table.8}{}}
+\@writefile{toc}{\contentsline {section}{Appendix\nobreakspace  E: Additional Existing Experimental Context}{23}{}\protected@file@percent }
+\newlabel{app:additional_context}{{E}{23}{}{section.Appendix.E}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {E-A}}Full E3 Method Context on the Comparable Datasets}{23}{}\protected@file@percent }
+\newlabel{app:e3_full_context}{{\mbox  {E-A}}{23}{}{subsection.Appendix.E.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {E-B}}Runtime Diagnostic from Existing E2 Logs}{23}{}\protected@file@percent }
+\newlabel{app:runtime}{{\mbox  {E-B}}{23}{}{subsection.Appendix.E.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {E-C}}Provenance of the w/o-Design Endpoint Trade-off}{23}{}\protected@file@percent }
+\newlabel{app:design_provenance}{{\mbox  {E-C}}{23}{}{subsection.Appendix.E.3}{}}
+\@writefile{toc}{\contentsline {paragraph}{\numberline {\mbox  {E-C}0a}Scope of the supplementary evidence.}{23}{}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {IX}{\ignorespaces SensorScope full E3 method context (mean $\pm $ std over 20 seeds). Lower is better. $^\dagger $ denotes reference-only context.}}{24}{}\protected@file@percent }
+\newlabel{tab:app_e3_sensorscope}{{IX}{24}{}{table.9}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {X}{\ignorespaces U-Air full E3 method context (mean $\pm $ std over 20 seeds). Lower is better. $^\dagger $ denotes reference-only context.}}{24}{}\protected@file@percent }
+\newlabel{tab:app_e3_uair}{{X}{24}{}{table.10}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {XI}{\ignorespaces Existing E2 runtime diagnostic in seconds (mean $\pm $ std).}}{24}{}\protected@file@percent }
+\newlabel{tab:app_runtime}{{XI}{24}{}{table.11}{}}
+\bibstyle{IEEEtran}
+\bibdata{reference}
+\bibcite{ganti2011mobile}{1}
+\bibcite{guo2015mobile}{2}
+\bibcite{ma2014opportunities}{3}
+\bibcite{wang2023outlier}{4}
+\bibcite{li2024robust}{5}
+\bibcite{wang2023transformer}{6}
+\bibcite{wang2024fewshot}{7}
+\bibcite{wang2025evolutionary}{8}
+\bibcite{xu2025rethinking}{9}
+\bibcite{liu2026pyramid}{10}
+\bibcite{zhang2026mapt}{11}
+\bibcite{tian2026reshaping}{12}
+\bibcite{mcmahan2017communication}{13}
+\bibcite{yang2019federated}{14}
+\bibcite{kairouz2021advances}{15}
+\bibcite{li2020federated}{16}
+\bibcite{wang2026federated}{17}
+\bibcite{xie2019asynchronous}{18}
+\bibcite{liu2023adaptive}{19}
+\bibcite{sun2024staleness}{20}
+\bibcite{qiao2025asmafl}{21}
+\bibcite{chen2026dvafl}{22}
+\bibcite{wang2023spatiotemporal}{23}
+\bibcite{wang2022unified}{24}
+\bibcite{jhunjhunwala2022fedvarp}{25}
+\bibcite{wu2023anchor}{26}
+\bibcite{wang2024lightweight}{27}
+\bibcite{sun2025debiasing}{28}
+\bibcite{mohri2019agnostic}{29}
+\@writefile{toc}{\contentsline {section}{References}{25}{}\protected@file@percent }
+\bibcite{chen2026fedcure}{30}
+\bibcite{liu2026pricing}{31}
+\bibcite{liu2026multidimensional}{32}
+\bibcite{zhang2025incentive}{33}
+\bibcite{lu2025piece}{34}
+\bibcite{zhang2026locally}{35}
+\bibcite{li2026stdfl}{36}
+\bibcite{li2020fedprox}{37}
+\bibcite{karimireddy2020scaffold}{38}
+\bibcite{horvitz1952generalization}{39}
+\bibcite{hajek1971comment}{40}
+\bibcite{shimodaira2000improving}{41}
+\bibcite{byrd2019what}{42}
+\bibcite{ingelrest2010sensorscope}{43}
+\bibcite{barrenetxea2019sensorscope}{44}
+\bibcite{zheng2013uair}{45}
+\bibcite{tfnsw2024traffic}{46}
+\bibcite{wilcoxon1945individual}{47}
+\bibcite{holm1979simple}{48}
+\gdef \@abspage@last{26}

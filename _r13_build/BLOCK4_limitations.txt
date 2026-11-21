@@ -1,0 +1,18 @@
+Three further measurements bound what the aggregation can claim on prediction.
+Arrival-weighted validation misstates deployment risk, by $-4.11\%$ to
+$-4.12\%$ on SensorScope across the nine federated configurations we score,
+RAVEN with and without Design included, and by $+0.27\%$ to $+0.62\%$ on U-Air.
+It nevertheless selects the same configuration as the deployment target on all
+$20$ seeds of both datasets, so on these blocks the misstatement does not change
+a selection.
+Masking up to $40\%$ of the positive target keys on SensorScope, and with them
+the deployment target, raises $\rho_r$ of \eqref{eq:design_gate} from $0$ to
+$0.388$ without a prediction cost of Design above $0.17\%$, while on U-Air the
+cost stays at $6.6\%$--$7.5\%$ for $\rho_r$ between $0.354$ and $0.466$.  The
+statistic is therefore a support condition for the gate, not a predictor of the
+size of its cost.  On NSW-Traffic a window carries $12.1$ active clients on average, so
+the weights are free, but the four frozen federated members, the oracle-margin
+member included, agree on $\mathrm{RMSE}_{\mu}$ within $0.002\%$, and window
+FedAvg stays $2.8\%$--$3.0\%$ above a centralized model trained on the same
+delivered data for every local budget from $2$ to $20$ steps.  On that block
+the federated learner, not the weighting, limits the endpoint.

@@ -1,0 +1,28 @@
+{
+  "metrics": {
+    "Delta_c_s": "N_A_NOT_COMPARABLE",
+    "Delta_group": "REUSE_EXACT",
+    "Head_RMSE": "REUSE_EXACT",
+    "MAE_mu": "REUSE_EXACT",
+    "Q_norm1_over_S": "NOT_APPLICABLE",
+    "Q_norm2_over_S": "NOT_APPLICABLE",
+    "RMSE_mu": "REUSE_EXACT",
+    "RMSE_rho": "N_A_NOT_COMPARABLE",
+    "Tail_RMSE": "REUSE_EXACT",
+    "delta_ref": "N_A_NOT_COMPARABLE"
+  },
+  "no_invented_values": true,
+  "notes": {
+    "Delta_c_s": "E2 did not emit E3 client×sealed-s Delta_c_s",
+    "RMSE_mu": "Primary endpoint identity unchanged; reuse sealed E2 values",
+    "RMSE_rho": "Mark N/A for reused five methods; do not pair with new E3 atomic RMSE_rho"
+  },
+  "reused_methods": [
+    "fedasync_window",
+    "fedavg_window",
+    "flamf_timealign_adapted",
+    "raven",
+    "twostage_hajek"
+  ],
+  "status": "FROZEN"
+}

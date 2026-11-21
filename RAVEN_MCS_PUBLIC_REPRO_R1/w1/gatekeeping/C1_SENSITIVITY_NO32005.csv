@@ -1,0 +1,48 @@
+estimate,value_full_set,value_no32005,n_traces_full,n_traces_no32005,role,delta_from_full,ci_type
+PRIMARY_H_mech_hl(ctrl/floor-1),-0.0001921862411,-0.005576898314,10,9,"declared sensitivity analysis, never primary",-0.005384712073,percentile trace-cluster bootstrap
+PRIMARY_H_mech_ci95_lo,-0.01893012149,-0.02318324598,10,9,"declared sensitivity analysis, never primary",-0.004253124488,percentile
+PRIMARY_H_mech_ci95_hi,0.1227538472,0.03527576792,10,9,"declared sensitivity analysis, never primary",-0.08747807933,percentile
+PRIMARY_H_mech_wilcoxon_p,0.921875,0.49609375,10,9,"declared sensitivity analysis, never primary",-0.42578125,two-sided
+PRIMARY_power_at_theta0_delta_CS,0.1513393743,0.3608417089,10,9,"declared sensitivity analysis, never primary",0.2095023346,"A1 SS5 formula, post hoc diagnostic"
+PRIMARY_MDE80_at_delta_CS,-0.06097318689,-0.0185905694,10,9,"declared sensitivity analysis, never primary",0.04238261749,"A1 SS5 formula, post hoc diagnostic"
+PRIMARY_sd_trace_level,0.102981013,0.04656057861,10,9,"declared sensitivity analysis, never primary",-0.0564204344,
+PRIMARY_ci_width,0.1416839687,0.0584590139,10,9,"declared sensitivity analysis, never primary",-0.08322495484,percentile
+SEC_M1mu_minus_ctrl_hl,0.002214976672,0.0116516013,10,9,"declared sensitivity analysis, never primary",0.00943662463,
+SEC_M1mu_minus_ctrl_wilcoxon_p,0.921875,0.49609375,10,9,"declared sensitivity analysis, never primary",-0.42578125,
+SEC_M2mu_minus_ctrl_hl,0.01522931172,0.01857712954,10,9,"declared sensitivity analysis, never primary",0.003347817816,
+SEC_M2mu_minus_ctrl_wilcoxon_p,0.4921875,0.1640625,10,9,"declared sensitivity analysis, never primary",-0.328125,
+SEC_ctrl_floor_minus_wo_design_hl,0.0006446186053,0.0004423275402,10,9,"declared sensitivity analysis, never primary",-0.0002022910652,
+SEC_ctrl_floor_minus_wo_design_wilcoxon_p,0.625,0.8203125,10,9,"declared sensitivity analysis, never primary",0.1953125,
+SEC_dose_slope_all6,0.04406101342,-0.00457293767,10,9,"declared sensitivity analysis, never primary",-0.04863395109,
+SEC_dose_slope_raven_arms,0.02400165274,-0.02394002127,10,9,"declared sensitivity analysis, never primary",-0.04794167401,
+A1CHAIN_raven_ctrl_floor_H1_p,0.0009765625,0.001953125,10,9,"declared sensitivity analysis, never primary",0.0009765625,
+A1CHAIN_raven_ctrl_floor_H2_hl,0.003694675449,0.005530015929,10,9,"declared sensitivity analysis, never primary",0.00183534048,
+A1CHAIN_raven_ctrl_floor_H2_ub95,0.03832915022,0.03902409821,10,9,"declared sensitivity analysis, never primary",0.0006949479875,
+A1CHAIN_raven_ctrl_floor_H3_lb95,-0.005068901232,-0.006190566075,10,9,"declared sensitivity analysis, never primary",-0.001121664843,
+A1CHAIN_raven_M1mu_H1_p,0.0009765625,0.001953125,10,9,"declared sensitivity analysis, never primary",0.0009765625,
+A1CHAIN_raven_M1mu_H2_hl,0.007047890352,0.0115166624,10,9,"declared sensitivity analysis, never primary",0.004468772053,
+A1CHAIN_raven_M1mu_H2_ub95,0.04139206599,0.07045427595,10,9,"declared sensitivity analysis, never primary",0.02906220996,
+A1CHAIN_raven_M1mu_H3_lb95,-0.01234542449,-0.01234542449,10,9,"declared sensitivity analysis, never primary",0,
+A1CHAIN_raven_M2mu_H1_p,0.0009765625,0.001953125,10,9,"declared sensitivity analysis, never primary",0.0009765625,
+A1CHAIN_raven_M2mu_H2_hl,0.02263215728,0.01926570243,10,9,"declared sensitivity analysis, never primary",-0.003366454847,
+A1CHAIN_raven_M2mu_H2_ub95,0.08148122972,0.0860051899,10,9,"declared sensitivity analysis, never primary",0.004523960183,
+A1CHAIN_raven_M2mu_H3_lb95,0.005366668736,-0.0003745379014,10,9,"declared sensitivity analysis, never primary",-0.005741206637,
+ARM_fedavg_window_RMSE_mu_mean,0.2409014275,0.2328116195,10,9,"declared sensitivity analysis, never primary",-0.008089807935,
+ARM_fedavg_window_Delta_group_mean,0.195334693,0.1971561954,10,9,"declared sensitivity analysis, never primary",0.001821502385,
+ARM_fedavg_window_WorstGroupRMSE_mean,0.2529465713,0.2454576054,10,9,"declared sensitivity analysis, never primary",-0.007488965839,
+ARM_raven_wo_design_RMSE_mu_mean,0.2439377932,0.2361766163,10,9,"declared sensitivity analysis, never primary",-0.007761176981,
+ARM_raven_wo_design_Delta_group_mean,0.07362666173,0.07600137933,10,9,"declared sensitivity analysis, never primary",0.002374717602,
+ARM_raven_wo_design_WorstGroupRMSE_mean,0.2574771456,0.2504638168,10,9,"declared sensitivity analysis, never primary",-0.007013328777,
+ARM_raven_ctrl_RMSE_mu_mean,0.2561338563,0.2391715385,10,9,"declared sensitivity analysis, never primary",-0.01696231778,
+ARM_raven_ctrl_Delta_group_mean,0.07064377644,0.07084794337,10,9,"declared sensitivity analysis, never primary",0.0002041669324,
+ARM_raven_ctrl_WorstGroupRMSE_mean,0.2695351755,0.2520664723,10,9,"declared sensitivity analysis, never primary",-0.01746870326,
+ARM_raven_ctrl_floor_RMSE_mu_mean,0.2441895321,0.2363441624,10,9,"declared sensitivity analysis, never primary",-0.007845369719,
+ARM_raven_ctrl_floor_Delta_group_mean,0.0682240003,0.07063091374,10,9,"declared sensitivity analysis, never primary",0.002406913435,
+ARM_raven_ctrl_floor_WorstGroupRMSE_mean,0.2575844839,0.2504177395,10,9,"declared sensitivity analysis, never primary",-0.007166744335,
+ARM_raven_M1mu_RMSE_mu_mean,0.2466677414,0.2391287356,10,9,"declared sensitivity analysis, never primary",-0.007539005766,
+ARM_raven_M1mu_Delta_group_mean,0.07710748225,0.08126022392,10,9,"declared sensitivity analysis, never primary",0.004152741669,
+ARM_raven_M1mu_WorstGroupRMSE_mean,0.2609147471,0.253880183,10,9,"declared sensitivity analysis, never primary",-0.007034564159,
+ARM_raven_M2mu_RMSE_mu_mean,0.2507968843,0.2428141098,10,9,"declared sensitivity analysis, never primary",-0.007982774456,
+ARM_raven_M2mu_Delta_group_mean,0.08131643809,0.0846486829,10,9,"declared sensitivity analysis, never primary",0.003332244815,
+ARM_raven_M2mu_WorstGroupRMSE_mean,0.2661453822,0.2590377539,10,9,"declared sensitivity analysis, never primary",-0.007107628281,
+GUARDRAIL_dgroup_gain_retained_share,1.019406194,1.001718254,10,9,"declared sensitivity analysis, never primary",-0.01768794036,

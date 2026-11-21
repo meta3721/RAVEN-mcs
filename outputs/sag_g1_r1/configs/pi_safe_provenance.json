@@ -1,0 +1,28 @@
+{
+  "sensorscope": {
+    "candidates": {
+      "q05": 0.0006326708489355371,
+      "q10": 0.0006326708489355371,
+      "q25": 0.000773264370921212
+    },
+    "frozen": false,
+    "n_positive_target_pairs": 440,
+    "pi_safe": 0.0006326708489355371,
+    "quantile": 0.1,
+    "source": "public_pi_opp_joint_quantile_on_target_positive_pairs",
+    "status": "PI_SAFE_REQUIRES_FREEZE_DECISION"
+  },
+  "uair": {
+    "candidates": {
+      "q05": 0.0013918758676581813,
+      "q10": 0.0013918758676581813,
+      "q25": 0.0013918758676581813
+    },
+    "frozen": false,
+    "n_positive_target_pairs": 216,
+    "pi_safe": 0.0013918758676581813,
+    "quantile": 0.1,
+    "source": "public_pi_opp_joint_quantile_on_target_positive_pairs",
+    "status": "PI_SAFE_REQUIRES_FREEZE_DECISION"
+  }
+}

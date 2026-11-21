@@ -1,0 +1,637 @@
+{
+  "indexed": {
+    "date-parts": [
+      [
+        2026,
+        7,
+        26
+      ]
+    ],
+    "date-time": "2026-07-26T09:46:16Z",
+    "timestamp": 1785059176012,
+    "version": "3.55.0"
+  },
+  "reference-count": 60,
+  "publisher": "Association for Computing Machinery (ACM)",
+  "issue": "10",
+  "content-domain": {
+    "domain": [
+      "dl.acm.org"
+    ],
+    "crossmark-restriction": true
+  },
+  "short-container-title": [
+    "Proc. VLDB Endow."
+  ],
+  "published-print": {
+    "date-parts": [
+      [
+        2025,
+        6
+      ]
+    ]
+  },
+  "abstract": "<jats:p>\n            Tabular data is abundant and crucial across both industry and academia. Federated learning (FL) offers a promising solution for the analysis of tabular data distributed across multiple organizations, without the need to share the privacy information of each client. Existing federated tabular data prediction methods optimize performance and privacy leakage under the completeness assumption of tabular data. They are not applicable in real-world scenarios that are struggling with missing values in tabular data. In this paper, we propose a novel federated prediction framework for incomplete tabular data, named DARN, which leverages the\n            <jats:italic toggle=\"yes\">missing complementarity</jats:italic>\n            to directly optimize prediction performance without relying on the imputed values. It is especially beneficial when clients exhibit heterogeneity in missing data distributions, and the pairwise observed data are complementary. Specifically, each client trains a\n            <jats:italic toggle=\"yes\">missing distribution learning model</jats:italic>\n            to capture the distribution of locally incomplete data. To assist in this, we present a\n            <jats:italic toggle=\"yes\">missing-aware transformer block</jats:italic>\n            with a novel missing-aware attention mechanism to represent incomplete tabular data directly. The server calculates the personalized weights of the prediction models by combining\n            <jats:italic toggle=\"yes\">missing complementary score</jats:italic>\n            and\n            <jats:italic toggle=\"yes\">observed sample size score</jats:italic>\n            , thereby maximizing the utility of the available data. Extensive experiments on four publicly available real-world datasets demonstrate that DARN outperforms state-of-the-art methods with 25.80% improvement in both classification and regression tasks.\n          </jats:p>",
+  "DOI": "10.14778/3748191.3748213",
+  "type": "journal-article",
+  "created": {
+    "date-parts": [
+      [
+        2025,
+        9,
+        4
+      ]
+    ],
+    "date-time": "2025-09-04T13:50:16Z",
+    "timestamp": 1756993816000
+  },
+  "page": "3531-3544",
+  "update-policy": "https://doi.org/10.1145/crossmark-policy",
+  "source": "Crossref",
+  "is-referenced-by-count": 1,
+  "title": [
+    "Federated Incomplete Tabular Data Prediction with Missing Complementarity"
+  ],
+  "prefix": "10.14778",
+  "volume": "18",
+  "author": [
+    {
+      "given": "Yan",
+      "family": "Zhang",
+      "sequence": "first",
+      "affiliation": [
+        {
+          "name": "Center for Data Science, Zhejiang University, Hangzhou, China"
+        }
+      ],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "given": "Shuwei",
+      "family": "Liang",
+      "sequence": "additional",
+      "affiliation": [
+        {
+          "name": "Center for Data Science, Zhejiang University, Hangzhou, China"
+        }
+      ],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "given": "Xiaoye",
+      "family": "Miao",
+      "sequence": "additional",
+      "affiliation": [
+        {
+          "name": "Center for Data Science, Zhejiang University, Hangzhou, China"
+        }
+      ],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "given": "Yangyang",
+      "family": "Wu",
+      "sequence": "additional",
+      "affiliation": [
+        {
+          "name": "Center for Data Science, Zhejiang University, Hangzhou, China"
+        }
+      ],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "given": "Jianwei",
+      "family": "Yin",
+      "sequence": "additional",
+      "affiliation": [
+        {
+          "name": "College of Computer Science, Zhejiang University, Hangzhou, China"
+        }
+      ],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    }
+  ],
+  "member": "320",
+  "published-online": {
+    "date-parts": [
+      [
+        2025,
+        9,
+        4
+      ]
+    ]
+  },
+  "reference": [
+    {
+      "key": "e_1_2_1_1_1",
+      "first-page": "1",
+      "article-title": "General data protection regulation",
+      "volume": "25",
+      "year": "2018",
+      "unstructured": "2018. General data protection regulation. Intouch 25 (2018), 1–5.",
+      "journal-title": "Intouch"
+    },
+    {
+      "key": "e_1_2_1_2_1",
+      "volume-title": "Hinton",
+      "author": "Agarwal Rishabh",
+      "year": "2021",
+      "unstructured": "Rishabh Agarwal, Levi Melnick, Nicholas Frosst, Xuezhou Zhang, Benjamin J. Lengerich, Rich Caruana, and Geoffrey E. Hinton. 2021. Neural additive models: Interpretable machine learning with neural nets. In NeurIPS. 4699–4711."
+    },
+    {
+      "key": "e_1_2_1_3_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1080/00031305.1992.10475879"
+    },
+    {
+      "key": "e_1_2_1_4_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1609/aaai.v35i8.16826"
+    },
+    {
+      "key": "e_1_2_1_5_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1038/ncomms5308"
+    },
+    {
+      "key": "e_1_2_1_6_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1038/s41598-023-46074-3"
+    },
+    {
+      "key": "e_1_2_1_7_1",
+      "unstructured": "Jock Blackard. 1998. Covertype. UCI Machine Learning Repository."
+    },
+    {
+      "key": "e_1_2_1_8_1",
+      "doi-asserted-by": "crossref",
+      "first-page": "5467",
+      "DOI": "10.1038/s41467-020-19270-2",
+      "article-title": "Multiple imputation for analysis of incomplete data in distributed health data networks",
+      "volume": "11",
+      "author": "Chang Changgee",
+      "year": "2020",
+      "unstructured": "Changgee Chang, Yi Deng, Xiaoqian Jiang, and Qi Long. 2020. Multiple imputation for analysis of incomplete data in distributed health data networks. Nature Communications 11, 1 (2020), 5467.",
+      "journal-title": "Nature Communications"
+    },
+    {
+      "key": "e_1_2_1_9_1",
+      "doi-asserted-by": "crossref",
+      "unstructured": "Tianqi Chen and Carlos Guestrin. 2016. XGBoost: A scalable tree boosting system. In SIGKDD. 785–794.",
+      "DOI": "10.1145/2939672.2939785"
+    },
+    {
+      "key": "e_1_2_1_10_1",
+      "volume-title": "Jastin Pompeu Soares, and Pedro Henriques Abreu.",
+      "author": "Costa Adriana Fonseca",
+      "year": "2018",
+      "unstructured": "Adriana Fonseca Costa, Miriam Seoane Santos, Jastin Pompeu Soares, and Pedro Henriques Abreu. 2018. Missing data imputation via denoising autoencoders: The untold story. In IDA. 87–98."
+    },
+    {
+      "key": "e_1_2_1_11_1",
+      "unstructured": "Aymeric Dieuleveut Gersende Fort Eric Moulines and Geneviève Robin. 2021. Federated-EM with heterogeneity mitigation and variance reduction. In NeurIPS. 29553–29566."
+    },
+    {
+      "key": "e_1_2_1_12_1",
+      "volume-title": "Fed-TDA: Federated tabular data augmentation on Non-IID data. CoRR abs/2211.13116",
+      "author": "Duan Shaoming",
+      "year": "2022",
+      "unstructured": "Shaoming Duan, Chuanyi Liu, Peiyi Han, Tianyu He, Yifeng Xu, and Qiyuan Deng. 2022. Fed-TDA: Federated tabular data augmentation on Non-IID data. CoRR abs/2211.13116 (2022)."
+    },
+    {
+      "key": "e_1_2_1_13_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1109/TSMCA.2007.902631"
+    },
+    {
+      "key": "e_1_2_1_14_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1109/TSMCA.2007.902631"
+    },
+    {
+      "key": "e_1_2_1_15_1",
+      "doi-asserted-by": "crossref",
+      "first-page": "486",
+      "DOI": "10.1057/jors.2009.66",
+      "article-title": "Effects of missing data in credit risk scoring. A comparative analysis of methods to achieve robustness in the absence of sufficient data",
+      "volume": "61",
+      "author": "Florez-Lopez Raquel",
+      "year": "2010",
+      "unstructured": "Raquel Florez-Lopez. 2010. Effects of missing data in credit risk scoring. A comparative analysis of methods to achieve robustness in the absence of sufficient data. J. Oper. Res. Soc. 61, 3 (2010), 486–501.",
+      "journal-title": "J. Oper. Res. Soc."
+    },
+    {
+      "key": "e_1_2_1_16_1",
+      "doi-asserted-by": "crossref",
+      "unstructured": "Fangcheng Fu Yingxia Shao Lele Yu Jiawei Jiang Huanran Xue Yangyu Tao and Bin Cui. 2021. VF2Boost: Very fast vertical federated gradient boosting for cross-enterprise learning. In SIGMOD. 563–576.",
+      "DOI": "10.1145/3448016.3457241"
+    },
+    {
+      "key": "e_1_2_1_17_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.14778/3611540.3611617"
+    },
+    {
+      "key": "e_1_2_1_18_1",
+      "volume-title": "The Econometrics of Complex Survey Data.",
+      "author": "Gerdes Geoffrey R",
+      "unstructured": "Geoffrey R Gerdes and Xuemei Liu. 2019. Improving response quality with planned missing data: An application to a survey of banks. In The Econometrics of Complex Survey Data. Vol. 39. 237–258."
+    },
+    {
+      "key": "e_1_2_1_19_1",
+      "volume-title": "Contrastive federated learning with tabular data silos. arXiv preprint arXiv:2409.06123",
+      "author": "Ginanjar Achmad",
+      "year": "2024",
+      "unstructured": "Achmad Ginanjar, Xue Li, and Wen Hua. 2024. Contrastive federated learning with tabular data silos. arXiv preprint arXiv:2409.06123 (2024)."
+    },
+    {
+      "key": "e_1_2_1_20_1",
+      "unstructured": "Yury Gorishniy Ivan Rubachev Valentin Khrulkov and Artem Babenko. 2021. Revisiting deep learning models for tabular data. In NeurIPS. 18932–18943."
+    },
+    {
+      "key": "e_1_2_1_21_1",
+      "first-page": "507",
+      "article-title": "Why do tree-based models still outperform deep learning on typical tabular data?",
+      "volume": "35",
+      "author": "Grinsztajn Léo",
+      "year": "2022",
+      "unstructured": "Léo Grinsztajn, Edouard Oyallon, and Gaël Varoquaux. 2022. Why do tree-based models still outperform deep learning on typical tabular data?. In NeurIPS, Vol. 35. 507–520.",
+      "journal-title": "NeurIPS"
+    },
+    {
+      "key": "e_1_2_1_22_1",
+      "doi-asserted-by": "crossref",
+      "unstructured": "Xinrui He Shuo Liu Jacky Keung and Jingrui He. 2024. Co-clustering for federated recommender system. In WWW. 3821–3832.",
+      "DOI": "10.1145/3589334.3645626"
+    },
+    {
+      "key": "e_1_2_1_23_1",
+      "first-page": "207",
+      "article-title": "Distinguishing \"missing at random\" and \"missing completely at random",
+      "volume": "50",
+      "author": "Heitjan Daniel F",
+      "year": "1996",
+      "unstructured": "Daniel F Heitjan and Srabashi Basu. 1996. Distinguishing \"missing at random\" and \"missing completely at random\". The American Statistician 50, 3 (1996), 207–213.",
+      "journal-title": "The American Statistician"
+    },
+    {
+      "key": "e_1_2_1_24_1",
+      "volume-title": "Measuring the effects of non-identical data distribution for federated visual classification. arXiv preprint arXiv:1909.06335",
+      "author": "Harry Hsu Tzu-Ming",
+      "year": "2019",
+      "unstructured": "Tzu-Ming Harry Hsu, Hang Qi, and Matthew Brown. 2019. Measuring the effects of non-identical data distribution for federated visual classification. arXiv preprint arXiv:1909.06335 (2019)."
+    },
+    {
+      "key": "e_1_2_1_25_1",
+      "volume-title": "Not-MIWAE: Deep generative modelling with missing not at random data. arXiv preprint arXiv:2006.12871",
+      "author": "Ipsen Niels Bruun",
+      "year": "2021",
+      "unstructured": "Niels Bruun Ipsen, Pierre-Alexandre Mattei, and Jes Frellsen. 2021. Not-MIWAE: Deep generative modelling with missing not at random data. arXiv preprint arXiv:2006.12871 (2021)."
+    },
+    {
+      "key": "e_1_2_1_26_1",
+      "unstructured": "Burgu Javier. 2019. https://archive.ics.uci.edu/ml/datasets/Gas+sensor+array+temperature+modulation. (2019)."
+    },
+    {
+      "key": "e_1_2_1_27_1",
+      "first-page": "28",
+      "article-title": "An evolution in the business of banking: The neobank partnership. Loy",
+      "volume": "11",
+      "author": "Kirby Trevor",
+      "year": "2023",
+      "unstructured": "Trevor Kirby. 2023. An evolution in the business of banking: The neobank partnership. Loy. U. Chi. J. Reg. Compl. 11 (2023), 28.",
+      "journal-title": "U. Chi. J. Reg. Compl."
+    },
+    {
+      "key": "e_1_2_1_28_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1038/s41598-024-53193-y"
+    },
+    {
+      "key": "e_1_2_1_29_1",
+      "doi-asserted-by": "crossref",
+      "unstructured": "Qinbin Li Zeyi Wen and Bingsheng He. 2020. Practical federated gradient boosting decision trees. In AAAI. 4642–4649.",
+      "DOI": "10.1609/aaai.v34i04.5895"
+    },
+    {
+      "key": "e_1_2_1_30_1",
+      "doi-asserted-by": "crossref",
+      "first-page": "202",
+      "DOI": "10.14778/3565816.3565823",
+      "article-title": "OpBoost: A vertical federated tree boosting framework based on order-preserving desensitization",
+      "volume": "16",
+      "author": "Li Xiaochen",
+      "year": "2022",
+      "unstructured": "Xiaochen Li, Yuke Hu, Weiran Liu, Hanwen Feng, Li Peng, Yuan Hong, Kui Ren, and Zhan Qin. 2022. OpBoost: A vertical federated tree boosting framework based on order-preserving desensitization. Proc. VLDB Endow. 16, 2 (2022), 202–215.",
+      "journal-title": "Proc. VLDB Endow."
+    },
+    {
+      "key": "e_1_2_1_31_1",
+      "doi-asserted-by": "crossref",
+      "first-page": "89",
+      "DOI": "10.1146/annurev-statistics-040720-031104",
+      "article-title": "Missing data assumptions",
+      "volume": "8",
+      "author": "Little Roderick J",
+      "year": "2021",
+      "unstructured": "Roderick J Little. 2021. Missing data assumptions. Annual Review of Statistics and Its Application 8, 1 (2021), 89–107.",
+      "journal-title": "Annual Review of Statistics and Its Application"
+    },
+    {
+      "key": "e_1_2_1_32_1",
+      "doi-asserted-by": "crossref",
+      "unstructured": "Samuel Maddock Graham Cormode Tianhao Wang Carsten Maple and Somesh Jha. 2022. Federated boosted decision trees with differential privacy. In CCS. 2249–2263.",
+      "DOI": "10.1145/3548606.3560687"
+    },
+    {
+      "key": "e_1_2_1_33_1",
+      "volume-title": "FLIGAN: Enhancing federated learning with incomplete data using GAN. In EdgeSys. 1–6.",
+      "author": "Maliakel Paul Joe",
+      "year": "2024",
+      "unstructured": "Paul Joe Maliakel, Shashikant Ilager, and Ivona Brandic. 2024. FLIGAN: Enhancing federated learning with incomplete data using GAN. In EdgeSys. 1–6."
+    },
+    {
+      "key": "e_1_2_1_34_1",
+      "first-page": "4413",
+      "article-title": "MIWAE: Deep generative modelling and imputation of incomplete data sets",
+      "volume": "97",
+      "author": "Mattei Pierre-Alexandre",
+      "year": "2019",
+      "unstructured": "Pierre-Alexandre Mattei and Jes Frellsen. 2019. MIWAE: Deep generative modelling and imputation of incomplete data sets. In ICML, Vol. 97. 4413–4423.",
+      "journal-title": "ICML"
+    },
+    {
+      "key": "e_1_2_1_35_1",
+      "unstructured": "Brendan McMahan Eider Moore Daniel Ramage Seth Hampson and Blaise Aguera y Arcas. 2017. Communication-efficient learning of deep networks from decentralized data. In AISTATS. 1273–1282."
+    },
+    {
+      "key": "e_1_2_1_36_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1109/TKDE.2022.3186498"
+    },
+    {
+      "key": "e_1_2_1_37_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1109/TKDE.2025.3537403"
+    },
+    {
+      "key": "e_1_2_1_38_1",
+      "unstructured": "Rita P. Moro S. and P. Cortez. 2014. Bank marketing. UCI Machine Learning Repository."
+    },
+    {
+      "key": "e_1_2_1_39_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.14778/3675034.3675051"
+    },
+    {
+      "key": "e_1_2_1_40_1",
+      "first-page": "68",
+      "article-title": "The california consumer privacy act: Towards a european-style privacy regime in the united states",
+      "volume": "23",
+      "author": "Pardau Stuart L",
+      "year": "2018",
+      "unstructured": "Stuart L Pardau. 2018. The california consumer privacy act: Towards a european-style privacy regime in the united states. J. Tech. L. & Pol'y 23 (2018), 68.",
+      "journal-title": "J. Tech. L. & Pol'y"
+    },
+    {
+      "key": "e_1_2_1_41_1",
+      "doi-asserted-by": "crossref",
+      "first-page": "119",
+      "DOI": "10.1038/s41746-020-00323-1",
+      "article-title": "The future of digital health with federated learning",
+      "volume": "3",
+      "author": "Rieke Nicola",
+      "year": "2020",
+      "unstructured": "Nicola Rieke, Jonny Hancox, Wenqi Li, Fausto Milletarì, Holger R. Roth, Shadi Albarqouni, Spyridon Bakas, Mathieu N. Galtier, Bennett A. Landman, Klaus H. Maier-Hein, Sébastien Ourselin, Micah J. Sheller, Ronald M. Summers, Andrew Trask, Daguang Xu, Maximilian Baust, and M. Jorge Cardoso. 2020. The future of digital health with federated learning. NPJ Digit. Medicine 3, 1 (2020), 119.",
+      "journal-title": "NPJ Digit. Medicine"
+    },
+    {
+      "key": "e_1_2_1_42_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1093/biomet/63.3.581"
+    },
+    {
+      "key": "e_1_2_1_43_1",
+      "volume-title": "Saint: Improved neural networks for tabular data via row attention and contrastive pre-training. arXiv preprint arXiv:2106.01342",
+      "author": "Somepalli Gowthami",
+      "year": "2021",
+      "unstructured": "Gowthami Somepalli, Micah Goldblum, Avi Schwarzschild, C Bayan Bruss, and Tom Goldstein. 2021. Saint: Improved neural networks for tabular data via row attention and contrastive pre-training. arXiv preprint arXiv:2106.01342 (2021)."
+    },
+    {
+      "key": "e_1_2_1_44_1",
+      "first-page": "21013",
+      "article-title": "A tree-based model averaging approach for personalized treatment effect estimation from heterogeneous data sources",
+      "volume": "162",
+      "author": "Tan Xiaoqing",
+      "year": "2022",
+      "unstructured": "Xiaoqing Tan, Chung-Chou H. Chang, Ling Zhou, and Lu Tang. 2022. A tree-based model averaging approach for personalized treatment effect estimation from heterogeneous data sources. In ICML, Vol. 162. 21013–21036.",
+      "journal-title": "ICML"
+    },
+    {
+      "key": "e_1_2_1_45_1",
+      "unstructured": "Oscar Wahltinez K Murphy M Brenner et al. 2020. COVID-19 open-data: Curating a fine-grained global-scale data repository for SARS-CoV-2. 2020. Work in progress (2020)."
+    },
+    {
+      "key": "e_1_2_1_46_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1007/s00778-021-00700-6"
+    },
+    {
+      "key": "e_1_2_1_47_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1109/TIFS.2020.2988575"
+    },
+    {
+      "key": "e_1_2_1_48_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.14778/3407790.3407811"
+    },
+    {
+      "key": "e_1_2_1_49_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.14778/3603581.3603588"
+    },
+    {
+      "key": "e_1_2_1_50_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1016/j.patcog.2017.04.005"
+    },
+    {
+      "key": "e_1_2_1_51_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1109/TSC.2024.3394706"
+    },
+    {
+      "key": "e_1_2_1_52_1",
+      "unstructured": "Kunda Yan Sen Cui Abudukelimu Wuerkaixi Jingfeng Zhang Bo Han Gang Niu Masashi Sugiyama and Changshui Zhang. 2024. Balancing similarity and complementarity for federated learning. In ICML. 55739–55758."
+    },
+    {
+      "key": "e_1_2_1_53_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1007/s00365-006-0663-2"
+    },
+    {
+      "key": "e_1_2_1_54_1",
+      "volume-title": "GAIN: Missing data imputation using generative adversarial nets. In ICML. 5675–5684.",
+      "author": "Yoon Jinsung",
+      "year": "2018",
+      "unstructured": "Jinsung Yoon, James Jordon, and Mihaela Schaar. 2018. GAIN: Missing data imputation using generative adversarial nets. In ICML. 5675–5684."
+    },
+    {
+      "key": "e_1_2_1_55_1",
+      "first-page": "11033",
+      "article-title": "VIME: Extending the success of self- and semi-supervised learning to tabular domain",
+      "volume": "33",
+      "author": "Yoon Jinsung",
+      "year": "2020",
+      "unstructured": "Jinsung Yoon, Yao Zhang, James Jordon, and Mihaela van der Schaar. 2020. VIME: Extending the success of self- and semi-supervised learning to tabular domain. In NeurIPS, Vol. 33. 11033–11043.",
+      "journal-title": "NeurIPS"
+    },
+    {
+      "key": "e_1_2_1_56_1",
+      "first-page": "1",
+      "article-title": "Parrot: A progressive analysis system on large text collections. Data Sci",
+      "volume": "6",
+      "author": "Zhang Yazhong",
+      "year": "2021",
+      "unstructured": "Yazhong Zhang, Hanbing Zhang, Zhenying He, Yinan Jing, Kai Zhang, and X. Sean Wang. 2021. Parrot: A progressive analysis system on large text collections. Data Sci. Eng. 6, 1 (2021), 1–19.",
+      "journal-title": "Eng."
+    },
+    {
+      "key": "e_1_2_1_57_1",
+      "volume-title": "Chen",
+      "author": "Zhao Zilong",
+      "year": "2023",
+      "unstructured": "Zilong Zhao, Han Wu, Aad van Moorsel, and Lydia Y. Chen. 2023. GTV: Generating tabular data via vertical federated learning. CoRR abs/2302.01706 (2023)."
+    },
+    {
+      "key": "e_1_2_1_58_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1109/TSC.2023.3279839"
+    },
+    {
+      "key": "e_1_2_1_59_1",
+      "volume-title": "Yu Zheng, Xiao Wang, and Shirui Pan.",
+      "author": "Zheng Yizhen",
+      "year": "2023",
+      "unstructured": "Yizhen Zheng, He Zhang, Vincent Cheng-Siong Lee, Yu Zheng, Xiao Wang, and Shirui Pan. 2023. Finding the missing-half: Graph complementary learning for homophily-prone and heterophily-prone graphs. In ICML. 42492–42505."
+    },
+    {
+      "key": "e_1_2_1_60_1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1016/j.knosys.2021.107261"
+    }
+  ],
+  "container-title": [
+    "Proceedings of the VLDB Endowment"
+  ],
+  "original-title": [],
+  "language": "en",
+  "link": [
+    {
+      "URL": "https://dl.acm.org/doi/pdf/10.14778/3748191.3748213",
+      "content-type": "unspecified",
+      "content-version": "vor",
+      "intended-application": "similarity-checking"
+    }
+  ],
+  "deposited": {
+    "date-parts": [
+      [
+        2025,
+        9,
+        4
+      ]
+    ],
+    "date-time": "2025-09-04T13:51:52Z",
+    "timestamp": 1756993912000
+  },
+  "score": 1,
+  "resource": {
+    "primary": {
+      "URL": "https://dl.acm.org/doi/10.14778/3748191.3748213"
+    }
+  },
+  "subtitle": [],
+  "short-title": [],
+  "issued": {
+    "date-parts": [
+      [
+        2025,
+        6
+      ]
+    ]
+  },
+  "references-count": 60,
+  "journal-issue": {
+    "issue": "10",
+    "published-print": {
+      "date-parts": [
+        [
+          2025,
+          6
+        ]
+      ]
+    }
+  },
+  "alternative-id": [
+    "10.14778/3748191.3748213"
+  ],
+  "URL": "https://doi.org/10.14778/3748191.3748213",
+  "relation": {},
+  "ISSN": [
+    "2150-8097"
+  ],
+  "issn-type": [
+    {
+      "value": "2150-8097",
+      "type": "print"
+    }
+  ],
+  "subject": [],
+  "published": {
+    "date-parts": [
+      [
+        2025,
+        6
+      ]
+    ]
+  },
+  "assertion": [
+    {
+      "value": "2025-09-04",
+      "order": 3,
+      "name": "published",
+      "label": "Published",
+      "group": {
+        "name": "publication_history",
+        "label": "Publication History"
+      }
+    }
+  ]
+}

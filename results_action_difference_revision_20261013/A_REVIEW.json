@@ -1,0 +1,24 @@
+{
+  "status": "PASS",
+  "observed_D": 789,
+  "complete_D": 799,
+  "missing_D": 10,
+  "total_difference": 0,
+  "activation": 0,
+  "mechanism_difference": 0,
+  "classification": {
+    "CPU_TIMEOUT": 346,
+    "UNKNOWN_FIXED_TIME_2": 427,
+    "RULE_FORCED": 16
+  },
+  "same_branch_max_difference": 10,
+  "same_branch_max_ratio": 0.012515644555694618,
+  "required_difference_count": 40,
+  "k_zero": 10183,
+  "k_total": 10496,
+  "k_zero_ratio": 0.9701791158536586,
+  "k_denominator": "tracked plan-scenario records, not decisions",
+  "timeout_ratio": 0.4385297845373891,
+  "T100_complete": false,
+  "source_csv_sha256": "fe43dc22bb5a1610e0bceaaac06546b32379da619b17d5ae9c6541375b721706"
+}

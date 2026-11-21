@@ -1,0 +1,16 @@
+dataset,comparison,metric,effect_size,mean_diff
+sensorscope,raven_vs_fedavg_window,RMSE_mu_phys,-0.11513895502976618,-0.0009045538998667446
+sensorscope,raven_vs_fedasync_window,RMSE_mu_phys,-0.13336828771367742,-0.0010930302340689923
+sensorscope,raven_vs_flamf_timealign_adapted,RMSE_mu_phys,-0.20206725129478428,-0.0015272165493052103
+sensorscope,raven_vs_local_hajek,RMSE_mu_phys,-0.11513895502976618,-0.0009045538998667446
+sensorscope,raven_vs_twostage_hajek,RMSE_mu_phys,0.3664104076592273,0.007126892742085822
+uair,raven_vs_fedavg_window,RMSE_mu_phys,0.2404352237668829,0.049940251611804244
+uair,raven_vs_fedasync_window,RMSE_mu_phys,0.23513583320486067,0.04921584010047688
+uair,raven_vs_flamf_timealign_adapted,RMSE_mu_phys,0.2207397537186723,0.046521603092742225
+uair,raven_vs_local_hajek,RMSE_mu_phys,0.2404352237668829,0.049940251611804244
+uair,raven_vs_twostage_hajek,RMSE_mu_phys,-1.4231022647904548,-0.43142953455029537
+traffic,raven_vs_fedavg_window,RMSE_mu_phys,-0.05562952939758117,-0.016040424853520106
+traffic,raven_vs_fedasync_window,RMSE_mu_phys,-0.03583756634235143,-0.010321446813372858
+traffic,raven_vs_flamf_timealign_adapted,RMSE_mu_phys,0.03813746346791303,0.020322004514054016
+traffic,raven_vs_local_hajek,RMSE_mu_phys,1.5950897462758848,0.8481367218045136
+traffic,raven_vs_twostage_hajek,RMSE_mu_phys,-0.19330560246791387,-0.04877427416028013

@@ -1,0 +1,30 @@
+{
+  "decision": {
+    "action": "WAIT",
+    "reason": "UNSUPPORTED_PREDICTION/fixed_time_2/NO_COMPATIBLE_MARK:56975",
+    "selected_offset": null,
+    "plan_scores": [],
+    "p2_solves": 0,
+    "cache_hits": 0,
+    "scenario_digest": "",
+    "control_cpu_seconds": 1.25,
+    "wall_seconds": 1.385038399999985,
+    "forecast_only": true,
+    "evidence_role": "deterministic_interface_or_empirical_planning",
+    "variance_transition": "zero_unknown_gradient_increment"
+  },
+  "accounting": {
+    "status": "message",
+    "child_tree_cpu_seconds": 1.1875,
+    "parent_cpu_seconds": 0.0625,
+    "total_cpu_seconds": 1.25,
+    "wall_seconds": 1.385038399999985,
+    "exitcode": 0,
+    "child_terminated": false,
+    "training_steps": 0
+  },
+  "restored_now": 20.1,
+  "T_target": 100.0,
+  "SGD_executed": 0,
+  "no_model_or_lifecycle_change": true
+}

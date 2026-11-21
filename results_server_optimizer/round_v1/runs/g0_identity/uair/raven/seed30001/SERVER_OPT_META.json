@@ -1,0 +1,87 @@
+{
+  "arm": "raven",
+  "block": "uair",
+  "created_utc": "2026-10-08T08:32:07.138897+00:00",
+  "diag_first": [
+    {
+      "active": true,
+      "applied": true,
+      "g_norm": 2.7007502126778755,
+      "m_norm": NaN,
+      "opt_move_norm": 0.027007502126778753,
+      "sgd_move_norm": 0.027007502126778753,
+      "t": 0,
+      "v_norm": NaN,
+      "window_id": 0
+    },
+    {
+      "active": true,
+      "applied": true,
+      "g_norm": 0.9341772077676804,
+      "m_norm": NaN,
+      "opt_move_norm": 0.009341772077676806,
+      "sgd_move_norm": 0.009341772077676806,
+      "t": 0,
+      "v_norm": NaN,
+      "window_id": 1
+    },
+    {
+      "active": true,
+      "applied": true,
+      "g_norm": 0.6510827529662466,
+      "m_norm": NaN,
+      "opt_move_norm": 0.006510827529662466,
+      "sgd_move_norm": 0.006510827529662466,
+      "t": 0,
+      "v_norm": NaN,
+      "window_id": 2
+    }
+  ],
+  "diag_last": [
+    {
+      "active": true,
+      "applied": true,
+      "g_norm": 1.4823677793060357,
+      "m_norm": NaN,
+      "opt_move_norm": 0.014823677793060357,
+      "sgd_move_norm": 0.014823677793060357,
+      "t": 0,
+      "v_norm": NaN,
+      "window_id": 77
+    },
+    {
+      "active": true,
+      "applied": true,
+      "g_norm": 3.711408217649764,
+      "m_norm": NaN,
+      "opt_move_norm": 0.03711408217649764,
+      "sgd_move_norm": 0.03711408217649764,
+      "t": 0,
+      "v_norm": NaN,
+      "window_id": 78
+    },
+    {
+      "active": true,
+      "applied": true,
+      "g_norm": 0.7585596215870942,
+      "m_norm": NaN,
+      "opt_move_norm": 0.007585596215870943,
+      "sgd_move_norm": 0.007585596215870943,
+      "t": 0,
+      "v_norm": NaN,
+      "window_id": 79
+    }
+  ],
+  "local_steps": 2,
+  "n_windows_optimizer_applied": 66,
+  "runtime_seconds": 10.722492299999999,
+  "seed": 30001,
+  "server_opt": {
+    "beta1": 0.9,
+    "beta2": 0.99,
+    "eta_s": 0.01,
+    "mode": "sgd",
+    "tau": 0.001
+  },
+  "tag": "g0_identity"
+}

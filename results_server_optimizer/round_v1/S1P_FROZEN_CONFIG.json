@@ -1,0 +1,109 @@
+{
+  "created_utc": "2026-10-08T11:16:45.444695+00:00",
+  "grid_eta_s": [
+    0.001,
+    0.003,
+    0.01
+  ],
+  "per_block": {
+    "sensorscope": {
+      "eta_s_star": 0.01,
+      "levels": {
+        "0.001": {
+          "all_screen_seeds_usable": true,
+          "mean_val_RMSE_mu": 3.4287507881327777,
+          "n_blocked": 0,
+          "n_non_diverged": 5,
+          "n_screen_seeds": 5
+        },
+        "0.003": {
+          "all_screen_seeds_usable": true,
+          "mean_val_RMSE_mu": 3.446440478205382,
+          "n_blocked": 0,
+          "n_non_diverged": 5,
+          "n_screen_seeds": 5
+        },
+        "0.01": {
+          "all_screen_seeds_usable": true,
+          "mean_val_RMSE_mu": 3.415263775693982,
+          "n_blocked": 0,
+          "n_non_diverged": 5,
+          "n_screen_seeds": 5
+        }
+      },
+      "tie_candidates": [
+        0.01
+      ]
+    },
+    "traffic": {
+      "eta_s_star": 0.003,
+      "levels": {
+        "0.001": {
+          "all_screen_seeds_usable": true,
+          "mean_val_RMSE_mu": 0.8643880405673758,
+          "n_blocked": 0,
+          "n_non_diverged": 5,
+          "n_screen_seeds": 5
+        },
+        "0.003": {
+          "all_screen_seeds_usable": true,
+          "mean_val_RMSE_mu": 0.8198046723735383,
+          "n_blocked": 0,
+          "n_non_diverged": 5,
+          "n_screen_seeds": 5
+        },
+        "0.01": {
+          "all_screen_seeds_usable": true,
+          "mean_val_RMSE_mu": 0.907196502773617,
+          "n_blocked": 0,
+          "n_non_diverged": 5,
+          "n_screen_seeds": 5
+        }
+      },
+      "tie_candidates": [
+        0.003
+      ]
+    },
+    "uair": {
+      "eta_s_star": 0.003,
+      "levels": {
+        "0.001": {
+          "all_screen_seeds_usable": true,
+          "mean_val_RMSE_mu": 1.2644849348292768,
+          "n_blocked": 0,
+          "n_non_diverged": 5,
+          "n_screen_seeds": 5
+        },
+        "0.003": {
+          "all_screen_seeds_usable": true,
+          "mean_val_RMSE_mu": 1.2473460841447461,
+          "n_blocked": 0,
+          "n_non_diverged": 5,
+          "n_screen_seeds": 5
+        },
+        "0.01": {
+          "all_screen_seeds_usable": true,
+          "mean_val_RMSE_mu": 1.267419881996209,
+          "n_blocked": 0,
+          "n_non_diverged": 5,
+          "n_screen_seeds": 5
+        }
+      },
+      "tie_candidates": [
+        0.003
+      ]
+    }
+  },
+  "schema": "S1P_STAGE_A_SELECTION_V1",
+  "screen_seeds": [
+    30001,
+    30002,
+    30003,
+    30004,
+    30005
+  ],
+  "selection_rule": "per block: argmin of the mean validation RMSE_mu over the 5 screen seeds among non-diverged levels; ties within 0.1 % go to the smaller eta_s",
+  "test_split_read": false,
+  "tie_rel": 0.001,
+  "validation_metric": "RMSE_mu on the validation split, weights mu_g / count_g with mu_g from TargetBuilder(split='validation') on target_group_main"
+}

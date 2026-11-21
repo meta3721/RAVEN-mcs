@@ -1,0 +1,35 @@
+dataset,method,seed_block,number_of_new_runs,already_available_and_reusable,needs_training,required_by_protocol,reason,classification
+sensorscope,fedavg_window,30001-30020,20,False,True,True,new E3 Complete-aligned formal block after Canary,NEW_RUN_REQUIRED
+uair,fedavg_window,30001-30020,20,False,True,True,new E3 Complete-aligned formal block after Canary,NEW_RUN_REQUIRED
+traffic,fedavg_window,30001-30020,0,True,False,True,REUSE_ONLY_NO_RERUN sealed E2 Traffic Complete-aligned,REUSE_ONLY_NO_RERUN
+sensorscope,fedasync_window,30001-30020,20,False,True,True,new E3 Complete-aligned formal block after Canary,NEW_RUN_REQUIRED
+uair,fedasync_window,30001-30020,20,False,True,True,new E3 Complete-aligned formal block after Canary,NEW_RUN_REQUIRED
+traffic,fedasync_window,30001-30020,0,True,False,True,REUSE_ONLY_NO_RERUN sealed E2 Traffic Complete-aligned,REUSE_ONLY_NO_RERUN
+sensorscope,flamf_timealign_adapted,30001-30020,20,False,True,True,new E3 Complete-aligned formal block after Canary,NEW_RUN_REQUIRED
+uair,flamf_timealign_adapted,30001-30020,20,False,True,True,new E3 Complete-aligned formal block after Canary,NEW_RUN_REQUIRED
+traffic,flamf_timealign_adapted,30001-30020,0,True,False,True,REUSE_ONLY_NO_RERUN sealed E2 Traffic Complete-aligned,REUSE_ONLY_NO_RERUN
+sensorscope,local_hajek,30001-30020,20,False,True,True,new E3 Complete-aligned formal block after Canary,NEW_RUN_REQUIRED
+uair,local_hajek,30001-30020,20,False,True,True,new E3 Complete-aligned formal block after Canary,NEW_RUN_REQUIRED
+traffic,local_hajek,30001-30020,20,False,True,True,new E3 Complete-aligned formal block after Canary,NEW_RUN_REQUIRED
+sensorscope,twostage_hajek,30001-30020,20,False,True,True,new E3 Complete-aligned formal block after Canary,NEW_RUN_REQUIRED
+uair,twostage_hajek,30001-30020,20,False,True,True,new E3 Complete-aligned formal block after Canary,NEW_RUN_REQUIRED
+traffic,twostage_hajek,30001-30020,0,True,False,True,REUSE_ONLY_NO_RERUN sealed E2 Traffic Complete-aligned,REUSE_ONLY_NO_RERUN
+sensorscope,inst_cal,30001-30020,20,False,True,True,new E3 Complete-aligned formal block after Canary,NEW_RUN_REQUIRED
+uair,inst_cal,30001-30020,20,False,True,True,new E3 Complete-aligned formal block after Canary,NEW_RUN_REQUIRED
+traffic,inst_cal,30001-30020,20,False,True,True,new E3 Complete-aligned formal block after Canary,NEW_RUN_REQUIRED
+sensorscope,debt_cal,30001-30020,20,False,True,True,new E3 Complete-aligned formal block after Canary,NEW_RUN_REQUIRED
+uair,debt_cal,30001-30020,20,False,True,True,new E3 Complete-aligned formal block after Canary,NEW_RUN_REQUIRED
+traffic,debt_cal,30001-30020,20,False,True,True,new E3 Complete-aligned formal block after Canary,NEW_RUN_REQUIRED
+sensorscope,raven,30001-30020,20,False,True,True,new E3 Complete-aligned formal block after Canary,NEW_RUN_REQUIRED
+uair,raven,30001-30020,20,False,True,True,new E3 Complete-aligned formal block after Canary,NEW_RUN_REQUIRED
+traffic,raven,30001-30020,0,True,False,True,REUSE_ONLY_NO_RERUN sealed E2 Traffic Complete-aligned,REUSE_ONLY_NO_RERUN
+sensorscope,raven_simoracle,30001-30020,20,False,True,True,new E3 Complete-aligned formal block after Canary,NEW_RUN_REQUIRED
+uair,raven_simoracle,30001-30020,20,False,True,True,new E3 Complete-aligned formal block after Canary,NEW_RUN_REQUIRED
+traffic,raven_simoracle,30001-30020,20,False,True,True,new E3 Complete-aligned formal block after Canary,NEW_RUN_REQUIRED
+sensorscope,central_all,30001-30020,20,False,True,True,new E3 Complete-aligned formal block after Canary,NEW_RUN_REQUIRED
+uair,central_all,30001-30020,20,False,True,True,new E3 Complete-aligned formal block after Canary,NEW_RUN_REQUIRED
+traffic,central_all,30001-30020,20,False,True,True,new E3 Complete-aligned formal block after Canary,NEW_RUN_REQUIRED
+sensorscope,central_delivered,30001-30020,20,False,True,True,new E3 Complete-aligned formal block after Canary,NEW_RUN_REQUIRED
+uair,central_delivered,30001-30020,20,False,True,True,new E3 Complete-aligned formal block after Canary,NEW_RUN_REQUIRED
+traffic,central_delivered,30001-30020,20,False,True,True,new E3 Complete-aligned formal block after Canary,NEW_RUN_REQUIRED
+all,flamf_original,N/A,0,False,False,False,EXCLUDED_WITH_REASON,EXCLUDED

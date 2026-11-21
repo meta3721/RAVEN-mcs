@@ -1,0 +1,15 @@
+{
+  "dataset": "uair",
+  "model": "ndmf",
+  "optimizer": "sgd",
+  "lr": 0.03,
+  "seeds": [
+    41001,
+    41002,
+    41003
+  ],
+  "budget": 200,
+  "selection": "same best Central-delivered configuration, no new search",
+  "purpose": "information-versus-fitting diagnostic for failed dataset",
+  "test_scoring": false
+}

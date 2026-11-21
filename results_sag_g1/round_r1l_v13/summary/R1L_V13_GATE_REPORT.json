@@ -1,0 +1,250 @@
+{
+  "gates": [
+    {
+      "description": "R1l-v1.2 mathematical/theory core unchanged",
+      "evidence_file": "round_r1l_v13/legacy_r1l_v12_freeze/summary/R1L_V12_VERDICT.json",
+      "expected": "true",
+      "gate_id": "R1L-V13-T0",
+      "metric": "pass",
+      "observed": "True",
+      "pass": true
+    },
+    {
+      "description": "raven_mcs is unique paper canonical key",
+      "evidence_file": "round_r1l_v13/interface/R1L_V13_METHOD_RESOLUTION_TABLE.csv",
+      "expected": "true",
+      "gate_id": "R1L-V13-T1",
+      "metric": "pass",
+      "observed": "True",
+      "pass": true
+    },
+    {
+      "description": "raven_mcs resolves to aggregate_coverage",
+      "evidence_file": "round_r1l_v13/interface/R1L_V13_METHOD_RESOLUTION_TABLE.csv",
+      "expected": "true",
+      "gate_id": "R1L-V13-T2",
+      "metric": "pass",
+      "observed": "True",
+      "pass": true
+    },
+    {
+      "description": "raven_mcs does not resolve to always_on",
+      "evidence_file": "round_r1l_v13/interface/R1L_V13_METHOD_RESOLUTION_TABLE.csv",
+      "expected": "true",
+      "gate_id": "R1L-V13-T3",
+      "metric": "pass",
+      "observed": "True",
+      "pass": true
+    },
+    {
+      "description": "raven_mcs_formal is identical formal alias",
+      "evidence_file": "round_r1l_v13/interface/R1L_V13_METHOD_RESOLUTION_TABLE.csv",
+      "expected": "true",
+      "gate_id": "R1L-V13-T4",
+      "metric": "pass",
+      "observed": "True",
+      "pass": true
+    },
+    {
+      "description": "legacy always-on method explicitly isolated",
+      "evidence_file": "round_r1l_v13/interface/R1L_V13_METHOD_RESOLUTION_TABLE.csv",
+      "expected": "true",
+      "gate_id": "R1L-V13-T5",
+      "metric": "pass",
+      "observed": "True",
+      "pass": true
+    },
+    {
+      "description": "formal CLI/config default is raven_mcs",
+      "evidence_file": "round_r1l_v13/source_snapshot/r1m_method_freeze.py",
+      "expected": "true",
+      "gate_id": "R1L-V13-T6",
+      "metric": "pass",
+      "observed": "True",
+      "pass": true
+    },
+    {
+      "description": "R1m method freeze uses raven_mcs",
+      "evidence_file": "round_r1l_v13/interface/R1L_V13_R1M_METHOD_FREEZE.md",
+      "expected": "true",
+      "gate_id": "R1L-V13-T7",
+      "metric": "pass",
+      "observed": "True",
+      "pass": true
+    },
+    {
+      "description": "window_runner source included",
+      "evidence_file": "round_r1l_v13/source_snapshot/R1L_V13_SOURCE_SNAPSHOT_MANIFEST.csv",
+      "expected": "true",
+      "gate_id": "R1L-V13-T8",
+      "metric": "pass",
+      "observed": "True",
+      "pass": true
+    },
+    {
+      "description": "certificates.py source included",
+      "evidence_file": "round_r1l_v13/source_snapshot/R1L_V13_SOURCE_SNAPSHOT_MANIFEST.csv",
+      "expected": "true",
+      "gate_id": "R1L-V13-T9",
+      "metric": "pass",
+      "observed": "True",
+      "pass": true
+    },
+    {
+      "description": "aggregate certificate source included",
+      "evidence_file": "round_r1l_v13/source_snapshot/R1L_V13_SOURCE_SNAPSHOT_MANIFEST.csv",
+      "expected": "true",
+      "gate_id": "R1L-V13-T10",
+      "metric": "pass",
+      "observed": "True",
+      "pass": true
+    },
+    {
+      "description": "all formal routing dependencies included",
+      "evidence_file": "round_r1l_v13/audit/R1L_V13_TRANSITIVE_SOURCE_CLOSURE.csv",
+      "expected": "true",
+      "gate_id": "R1L-V13-T11",
+      "metric": "pass",
+      "observed": "True",
+      "pass": true
+    },
+    {
+      "description": "transitive source closure PASS",
+      "evidence_file": "round_r1l_v13/audit/R1L_V13_TRANSITIVE_SOURCE_CLOSURE.csv",
+      "expected": "true",
+      "gate_id": "R1L-V13-T12",
+      "metric": "pass",
+      "observed": "True",
+      "pass": true
+    },
+    {
+      "description": "formal execution chain independently traceable",
+      "evidence_file": "round_r1l_v13/interface/R1L_V13_FORMAL_EXECUTION_CHAIN.md",
+      "expected": "true",
+      "gate_id": "R1L-V13-T13",
+      "metric": "pass",
+      "observed": "True",
+      "pass": true
+    },
+    {
+      "description": "Gate_t controls Design_t",
+      "evidence_file": "round_r1l_v13/source_snapshot/r1l_design.py",
+      "expected": "true",
+      "gate_id": "R1L-V13-T14",
+      "metric": "pass",
+      "observed": "True",
+      "pass": true
+    },
+    {
+      "description": "Design_t controls window-close branch",
+      "evidence_file": "round_r1l_v13/source_snapshot/window_runner.py",
+      "expected": "true",
+      "gate_id": "R1L-V13-T15",
+      "metric": "pass",
+      "observed": "True",
+      "pass": true
+    },
+    {
+      "description": "no static gate override",
+      "evidence_file": "round_r1l_v13/audit/R1L_V13_LEGACY_GATE_FORMAL_PATH_AUDIT.csv",
+      "expected": "true",
+      "gate_id": "R1L-V13-T16",
+      "metric": "pass",
+      "observed": "True",
+      "pass": true
+    },
+    {
+      "description": "no dataset-name gate override",
+      "evidence_file": "round_r1l_v13/source_snapshot/r1l_design.py",
+      "expected": "true",
+      "gate_id": "R1L-V13-T17",
+      "metric": "pass",
+      "observed": "True",
+      "pass": true
+    },
+    {
+      "description": "no alias cycle",
+      "evidence_file": "round_r1l_v13/interface/R1L_V13_METHOD_RESOLUTION_TABLE.csv",
+      "expected": "true",
+      "gate_id": "R1L-V13-T18",
+      "metric": "pass",
+      "observed": "True",
+      "pass": true
+    },
+    {
+      "description": "legacy method cannot become paper default",
+      "evidence_file": "round_r1l_v13/interface/R1L_V13_METHOD_RESOLUTION_TABLE.csv",
+      "expected": "true",
+      "gate_id": "R1L-V13-T19",
+      "metric": "pass",
+      "observed": "True",
+      "pass": true
+    },
+    {
+      "description": "Section VII remains PRE-R1m legacy",
+      "evidence_file": "round_r1l_v13/source_snapshot/main.tex",
+      "expected": "true",
+      "gate_id": "R1L-V13-T20",
+      "metric": "pass",
+      "observed": "True",
+      "pass": true
+    },
+    {
+      "description": "no new experiment",
+      "evidence_file": "round_r1l_v13/summary/R1L_V13_VERDICT.json",
+      "expected": "true",
+      "gate_id": "R1L-V13-T21",
+      "metric": "pass",
+      "observed": "True",
+      "pass": true
+    },
+    {
+      "description": "no R1m started",
+      "evidence_file": "round_r1l_v13/summary/R1L_V13_VERDICT.json",
+      "expected": "true",
+      "gate_id": "R1L-V13-T22",
+      "metric": "pass",
+      "observed": "True",
+      "pass": true
+    },
+    {
+      "description": "no SAG",
+      "evidence_file": "round_r1l_v13/summary/R1L_V13_VERDICT.json",
+      "expected": "true",
+      "gate_id": "R1L-V13-T23",
+      "metric": "pass",
+      "observed": "True",
+      "pass": true
+    },
+    {
+      "description": "no 5-seed",
+      "evidence_file": "round_r1l_v13/summary/R1L_V13_VERDICT.json",
+      "expected": "true",
+      "gate_id": "R1L-V13-T24",
+      "metric": "pass",
+      "observed": "True",
+      "pass": true
+    },
+    {
+      "description": "all evidence paths package-local",
+      "evidence_file": "round_r1l_v13/audit/R1L_V13_EVIDENCE_PATH_AUDIT.csv",
+      "expected": "true",
+      "gate_id": "R1L-V13-T25",
+      "metric": "pass",
+      "observed": "True",
+      "pass": true
+    },
+    {
+      "description": "final verdict artifact-derived",
+      "evidence_file": "round_r1l_v13/summary/R1L_V13_GATE_REPORT.json",
+      "expected": "true",
+      "gate_id": "R1L-V13-T26",
+      "metric": "pass",
+      "observed": "True",
+      "pass": true
+    }
+  ],
+  "n_fail": 0,
+  "n_pass": 27,
+  "verdict": "THEORY_CLOSURE_PASS"
+}

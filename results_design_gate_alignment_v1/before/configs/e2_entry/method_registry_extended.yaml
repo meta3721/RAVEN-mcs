@@ -1,0 +1,17 @@
+{
+  "deprecated_aliases": [
+    "timealign_agg"
+  ],
+  "diagnostic_only_methods": [
+    "local_hajek",
+    "twostage_hajek"
+  ],
+  "name": "E2-B EXTENDED DIAGNOSTIC",
+  "primary_methods": [
+    "fedavg_window",
+    "fedasync_window",
+    "flamf_timealign_adapted"
+  ],
+  "raven_in_primary": false,
+  "timealign_executable_id": "flamf_timealign_adapted"
+}

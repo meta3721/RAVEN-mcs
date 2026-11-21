@@ -1,0 +1,72 @@
+{
+  "c1_kill_recorded_not_raise": false,
+  "do_not_rewrite_xxii": true,
+  "experiment_id": "PATH-A-MEASURED-LAYER-HAJEK",
+  "hajek_bar": true,
+  "hybrid": true,
+  "kill_bar": -0.005,
+  "measured_o": true,
+  "measured_u": false,
+  "n_expected": 50,
+  "n_ledger_rows": 50,
+  "not_mixed_into_table_ii": true,
+  "p_obs_bernoulli": false,
+  "paired": [
+    {
+      "Delta_c_s_paired_mean_diff": 0.03549895475818074,
+      "Delta_c_s_paired_rel_mean": 0.08384100841296635,
+      "Delta_group_paired_mean_diff": 0.013219213496030387,
+      "Delta_group_paired_rel_mean": 0.2554967245527968,
+      "RMSE_mu_paired_mean_diff": -0.0004934327393507964,
+      "RMSE_mu_paired_rel_mean": -0.0005135298942948168,
+      "WorstGroupRMSE_paired_mean_diff": -0.002439454203831515,
+      "WorstGroupRMSE_paired_rel_mean": -0.0022375113108809444,
+      "comparator": "twostage_hajek",
+      "n_paired": 10,
+      "scd_method": "raven"
+    },
+    {
+      "Delta_c_s_paired_mean_diff": -0.5793909813946331,
+      "Delta_c_s_paired_rel_mean": -0.5561758965112035,
+      "Delta_group_paired_mean_diff": -0.1399021554160596,
+      "Delta_group_paired_rel_mean": -0.6043667386575361,
+      "RMSE_mu_paired_mean_diff": 0.004166023520621421,
+      "RMSE_mu_paired_rel_mean": 0.004361557511083137,
+      "WorstGroupRMSE_paired_mean_diff": 0.014379187794607406,
+      "WorstGroupRMSE_paired_rel_mean": 0.013452870182536322,
+      "comparator": "fedau_window",
+      "n_paired": 10,
+      "scd_method": "raven"
+    },
+    {
+      "Delta_c_s_paired_mean_diff": -0.5869914244179052,
+      "Delta_c_s_paired_rel_mean": -0.5593781297108815,
+      "Delta_group_paired_mean_diff": -0.14811941309004822,
+      "Delta_group_paired_rel_mean": -0.6195831763891515,
+      "RMSE_mu_paired_mean_diff": 0.004117822226793277,
+      "RMSE_mu_paired_rel_mean": 0.004311095948803336,
+      "WorstGroupRMSE_paired_mean_diff": 0.014283469284662443,
+      "WorstGroupRMSE_paired_rel_mean": 0.013362539226127537,
+      "comparator": "obsuse_window",
+      "n_paired": 10,
+      "scd_method": "raven"
+    },
+    {
+      "Delta_c_s_paired_mean_diff": -0.27813597891718866,
+      "Delta_c_s_paired_rel_mean": -0.3760758538543326,
+      "Delta_group_paired_mean_diff": 0.04911315481130734,
+      "Delta_group_paired_rel_mean": 2.835475800893936,
+      "RMSE_mu_paired_mean_diff": 0.0018987304012315742,
+      "RMSE_mu_paired_rel_mean": 0.0019818066751846005,
+      "WorstGroupRMSE_paired_mean_diff": 0.009011152629287155,
+      "WorstGroupRMSE_paired_rel_mean": 0.008373595723219572,
+      "comparator": "fedavg_window",
+      "n_paired": 10,
+      "scd_method": "raven"
+    }
+  ],
+  "scd_method": "raven",
+  "status": "PASS",
+  "updated_utc": "2026-09-11T13:41:42.600781+00:00",
+  "y_field": "no2"
+}

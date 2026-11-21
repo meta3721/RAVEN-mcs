@@ -1,0 +1,9 @@
+2026-10-09T08:54:07.406804+00:00 TE1 start | block=traffic eta_s=0.003 local_steps=2 exemption=True
+2026-10-09T08:54:07.406804+00:00 config check: installs {"mode": "adam", "eta_s": 0.003, "beta1": 0.9, "beta2": 0.99, "tau": 0.001} == S1' frozen {"beta1": 0.9, "beta2": 0.99, "eta_s": 0.003, "mode": "adam", "tau": 0.001}; local_steps 2 == 2
+2026-10-09T08:54:07.429885+00:00 section-2 STOP check: clear (no seed30006..30020 under the S1' tree)
+2026-10-09T08:54:49.863889+00:00   G0 fedavg_window: RMSE_mu 0.8274680256045374 vs 0.8274680256045374 bit_match=True differing_fields=['runtime_seconds']
+2026-10-09T08:55:29.731918+00:00   G0 raven_simoracle: RMSE_mu 0.8102506853916549 vs 0.8102506853916549 bit_match=True differing_fields=['runtime_seconds']
+2026-10-09T08:55:29.733923+00:00 G0 PASS on both arms
+2026-10-09T08:55:34.903730+00:00 G-const frozen: n=6192 mean=0.00877759 c_val=0.99448683 ceiling=1.988974 weight_sha=31b71588621220f6 stable=True
+2026-10-09T08:55:49.456874+00:00 screen stability written (5 seeds x 2 arms, no GO column): seed30001/fedavg=pass, seed30001/raven=pass, seed30002/fedavg=pass, seed30002/raven=pass, seed30003/fedavg=pass, seed30003/raven=pass, seed30004/fedavg=pass, seed30004/raven=pass, seed30005/fedavg=pass, seed30005/raven=pass
+2026-10-09T08:55:49.456874+00:00 running 15 confirm pairs (both arms) ...

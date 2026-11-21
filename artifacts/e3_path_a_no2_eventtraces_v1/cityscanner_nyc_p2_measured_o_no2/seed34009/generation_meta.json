@@ -1,0 +1,14 @@
+{
+  "mean_O_on_R": 0.8734838773296519,
+  "method_argument_ignored": true,
+  "n_clients": 351,
+  "n_event_rows": 4144,
+  "n_long_rows": 10141,
+  "n_train_slots": 1441,
+  "n_windows": 100,
+  "o_source": "measured o_observed from finite no2",
+  "p_obs_bernoulli": false,
+  "r_source": "occupancy_units.parquet union GPS",
+  "s_max": 5,
+  "u_source": "e3.real_runner.stage2_r3.compute_usable_r3"
+}

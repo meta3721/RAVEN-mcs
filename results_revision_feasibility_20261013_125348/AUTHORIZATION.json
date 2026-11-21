@@ -1,0 +1,19 @@
+{
+  "limit_CPU_seconds": 240,
+  "interactive_tail_reserve": 30,
+  "prior_charged_CPU": 1862.296875,
+  "new_training": 0,
+  "local_SGD": 0,
+  "GPU": 0,
+  "q_fit": 0,
+  "real_acquisition": 0,
+  "remaining_seeds_authorized": false,
+  "planning_CPU_limit": 2,
+  "execution_order": [
+    "S1",
+    "S2",
+    "S3_if_S2_passes",
+    "S4"
+  ],
+  "source_instruction": "C:/Users/szr/Desktop/record/1/research-protocols/conditional-bundle-revision-feasibility-instruction-20261013.md"
+}

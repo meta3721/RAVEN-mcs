@@ -1,0 +1,20 @@
+feature,source,availability_time,lag,allowed,reason
+log1p_hist_active_count,F_r_minus + public a/time,F_r_minus_or_pre_window,0_to_8,True,causal public/history
+lag1_active,F_r_minus + public a/time,F_r_minus_or_pre_window,0_to_8,True,causal public/history
+lag2_active,F_r_minus + public a/time,F_r_minus_or_pre_window,0_to_8,True,causal public/history
+rolling_active_rate_L8,F_r_minus + public a/time,F_r_minus_or_pre_window,0_to_8,True,causal public/history
+rolling_pi_opp_mean_L8,F_r_minus + public a/time,F_r_minus_or_pre_window,0_to_8,True,causal public/history
+rolling_pi_opp_trend_L8,F_r_minus + public a/time,F_r_minus_or_pre_window,0_to_8,True,causal public/history
+hour_of_day_unit,F_r_minus + public a/time,F_r_minus_or_pre_window,0_to_8,True,causal public/history
+weekend_flag,F_r_minus + public a/time,F_r_minus_or_pre_window,0_to_8,True,causal public/history
+availability_level,F_r_minus + public a/time,F_r_minus_or_pre_window,0_to_8,True,causal public/history
+rolling_active_rate_times_a,F_r_minus + public a/time,F_r_minus_or_pre_window,0_to_8,True,causal public/history
+C_oracle_safe,forbidden,current_or_post,0,False,current-window / oracle leakage
+Y_oracle,forbidden,current_or_post,0,False,current-window / oracle leakage
+available_entities,forbidden,current_or_post,0,False,current-window / oracle leakage
+current_O,forbidden,current_or_post,0,False,current-window / oracle leakage
+current_R,forbidden,current_or_post,0,False,current-window / oracle leakage
+current_U,forbidden,current_or_post,0,False,current-window / oracle leakage
+current_mask,forbidden,current_or_post,0,False,current-window / oracle leakage
+current_pi_opp_realized,forbidden,current_or_post,0,False,current-window / oracle leakage
+oracle_safe,forbidden,current_or_post,0,False,current-window / oracle leakage

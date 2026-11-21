@@ -1,0 +1,196 @@
+{
+  "gates": [
+    {
+      "description": "frozen legacy semantics",
+      "evidence_file": "R1L_INPUT_FREEZE_MANIFEST.csv",
+      "expected": "true",
+      "gate_id": "R1L-T0",
+      "metric": "ok",
+      "observed": "True",
+      "pass": true
+    },
+    {
+      "description": "C_t uniquely defined",
+      "evidence_file": "theory/R1L_SYMBOL_GLOSSARY.md",
+      "expected": "one",
+      "gate_id": "R1L-T1",
+      "metric": "C_t",
+      "observed": "one",
+      "pass": true
+    },
+    {
+      "description": "pairwise formal core retired",
+      "evidence_file": "theory/R1L_THEORY_STACK.json",
+      "expected": "false",
+      "gate_id": "R1L-T2",
+      "metric": "core",
+      "observed": "False",
+      "pass": true
+    },
+    {
+      "description": "Prop 1 complete",
+      "evidence_file": "proofs/PROP1_POSITIVE_PAIRWISE_LCB_BARRIER.md",
+      "expected": "complete",
+      "gate_id": "R1L-T3",
+      "metric": "proof",
+      "observed": "complete",
+      "pass": true
+    },
+    {
+      "description": "predictor information boundary",
+      "evidence_file": "interface/R1L_ALGORITHM_INTERFACE.md",
+      "expected": "forbidden",
+      "gate_id": "R1L-T4",
+      "metric": "mask",
+      "observed": "forbidden",
+      "pass": true
+    },
+    {
+      "description": "score definition frozen",
+      "evidence_file": "proofs/THEOREM1_STABLE_REGIME_AGGREGATE_LCB.md",
+      "expected": "C_hat - C",
+      "gate_id": "R1L-T5",
+      "metric": "S_t",
+      "observed": "C_hat - C",
+      "pass": true
+    },
+    {
+      "description": "finite-sample quantile frozen",
+      "evidence_file": "theory/R1L_QUANTILE_NMIN_AUDIT.json",
+      "expected": "19",
+      "gate_id": "R1L-T6",
+      "metric": "k_n",
+      "observed": "19",
+      "pass": true
+    },
+    {
+      "description": "n_min=19",
+      "evidence_file": "src/raven_mcs/sag/r1l_spec.py",
+      "expected": "19",
+      "gate_id": "R1L-T7",
+      "metric": "n_min",
+      "observed": "19",
+      "pass": true
+    },
+    {
+      "description": "Assumption A explicit",
+      "evidence_file": "proofs/THEOREM1_STABLE_REGIME_AGGREGATE_LCB.md",
+      "expected": "exchangeable",
+      "gate_id": "R1L-T8",
+      "metric": "A",
+      "observed": "exchangeable",
+      "pass": true
+    },
+    {
+      "description": "Theorem 1 complete",
+      "evidence_file": "proofs/THEOREM1_STABLE_REGIME_AGGREGATE_LCB.md",
+      "expected": "zero",
+      "gate_id": "R1L-T9",
+      "metric": "clip",
+      "observed": "zero",
+      "pass": true
+    },
+    {
+      "description": "Corollary 2 complete",
+      "evidence_file": "proofs/COROLLARY2_FALSE_SAFE_GATE.md",
+      "expected": "alpha",
+      "gate_id": "R1L-T10",
+      "metric": "fs",
+      "observed": "alpha",
+      "pass": true
+    },
+    {
+      "description": "Prop 2 complete",
+      "evidence_file": "proofs/PROP2_ARBITRARY_DRIFT_BOUNDARY.md",
+      "expected": "A/B",
+      "gate_id": "R1L-T11",
+      "metric": "worlds",
+      "observed": "A/B",
+      "pass": true
+    },
+    {
+      "description": "state machine frozen",
+      "evidence_file": "interface/R1L_STATE_MACHINE.md",
+      "expected": "3",
+      "gate_id": "R1L-T12",
+      "metric": "states",
+      "observed": "3",
+      "pass": true
+    },
+    {
+      "description": "RESET/WARMUP Gate OFF",
+      "evidence_file": "interface/R1L_STATE_MACHINE_EXAMPLES.json",
+      "expected": "false",
+      "gate_id": "R1L-T13",
+      "metric": "gate",
+      "observed": "False",
+      "pass": true
+    },
+    {
+      "description": "no arbitrary-nonstationarity overclaim",
+      "evidence_file": "theory/R1L_FORBIDDEN_CLAIMS.md",
+      "expected": "forbidden",
+      "gate_id": "R1L-T14",
+      "metric": "claim1",
+      "observed": "forbidden",
+      "pass": true
+    },
+    {
+      "description": "no current-window leakage",
+      "evidence_file": "interface/R1L_ALGORITHM_INTERFACE.md",
+      "expected": "absent",
+      "gate_id": "R1L-T15",
+      "metric": "mask",
+      "observed": "absent",
+      "pass": true
+    },
+    {
+      "description": "symbol consistency",
+      "evidence_file": "theory/R1L_THEORY_ALGORITHM_CHECKLIST.md",
+      "expected": "20",
+      "gate_id": "R1L-T16",
+      "metric": "n",
+      "observed": "20",
+      "pass": true
+    },
+    {
+      "description": "appendix proofs complete",
+      "evidence_file": "TO_OVERLEAF_paper_tmc_r1_clean/appendix.tex",
+      "expected": "0",
+      "gate_id": "R1L-T17",
+      "metric": "sketch",
+      "observed": "0",
+      "pass": true
+    },
+    {
+      "description": "no experiment in R1l",
+      "evidence_file": "summary/R1L_VERDICT.json",
+      "expected": "false",
+      "gate_id": "R1L-T18",
+      "metric": "exp",
+      "observed": "False",
+      "pass": true
+    },
+    {
+      "description": "restart protocol defined",
+      "evidence_file": "interface/R1L_POST_THEORY_RESTART_PROTOCOL.md",
+      "expected": "R1m",
+      "gate_id": "R1L-T19",
+      "metric": "next",
+      "observed": "R1m",
+      "pass": true
+    },
+    {
+      "description": "paper III-VI + algorithm sealed",
+      "evidence_file": "TO_OVERLEAF_paper_tmc_r1_clean/main.tex",
+      "expected": "sealed",
+      "gate_id": "R1L-T20",
+      "metric": "labels",
+      "observed": "sealed",
+      "pass": true
+    }
+  ],
+  "n_fail": 0,
+  "n_pass": 21,
+  "verdict": "THEORY_CLOSURE_PASS"
+}

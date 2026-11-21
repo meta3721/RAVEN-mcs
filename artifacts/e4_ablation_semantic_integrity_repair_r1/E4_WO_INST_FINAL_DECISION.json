@@ -1,0 +1,6 @@
+{
+  "authorized_corrective_reruns": 40,
+  "decision": "WO_INST_EXISTING_40_RUNS_INVALID_TARGETED_RERUN_REQUIRED",
+  "proven_invalid": true,
+  "reason": "Parent raven_wo_inst skipped P2 by setting alpha=beta when uses_instant_calibration=False, violating preserve-P2-machinery semantics."
+}

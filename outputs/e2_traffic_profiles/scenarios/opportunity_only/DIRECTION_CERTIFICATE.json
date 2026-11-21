@@ -1,0 +1,71 @@
+{
+  "directions": {
+    "d_opp": -1,
+    "d_p": 0,
+    "d_q": 0
+  },
+  "display_name": "Opportunity-only",
+  "expected": {
+    "D_arr": 0.20739150033467343,
+    "D_obs": 0.20739150033467343,
+    "D_opp": 0.20739150033467343,
+    "checks": {
+      "arr_follows_opp": "True",
+      "hard_same_sign_as_expected": "True",
+      "obs_no_new_direction": true,
+      "opp_stronger_than_balanced": true,
+      "opp_underrepresent_tail": true
+    },
+    "expected_status": "PASS",
+    "head_mass_ratio": 1.4147830006695994,
+    "signed": {
+      "arr": 0.41478300066959917,
+      "obs": 0.41478300066959883,
+      "opp": 0.4147830006695987
+    },
+    "tail_mass_ratio": 0.585216999330401
+  },
+  "expected_direction": "underrepresent_tail_via_opportunity",
+  "grid_search_count": 0,
+  "hard_direction_pass": true,
+  "hard_pooled": {
+    "D_TV": 0.8179457364344367,
+    "antithetic_average": false,
+    "head_mass_ratio": 1.4199764058199915,
+    "pooled_arrival_mass": 5086.0,
+    "seed_count": 3,
+    "signed_head_minus_tail": 0.4199764058199425,
+    "tail_mass_ratio": 0.5800235941801065
+  },
+  "intercepts": {
+    "obs": -1.386294361122964,
+    "opp": 0.25480574768721453,
+    "q": 0.4054651081105476
+  },
+  "label": "S2",
+  "parameter_set_count": 1,
+  "profile_id": "PROFILE-S2",
+  "rates": {
+    "mean_observation": 0.19998932713106646,
+    "mean_opportunity": 0.5484754521963824,
+    "mean_usable": 0.5976689072968243,
+    "rate_pass": true,
+    "soft_mean_p_obs": 0.19999999999950827,
+    "soft_mean_p_opp": 0.5499999999999831,
+    "soft_mean_q": 0.6000000000005721
+  },
+  "scenario_id": "opportunity_only",
+  "seeds": [
+    28201,
+    28202,
+    28203
+  ],
+  "status": "PASS",
+  "strength": {
+    "kappa_opp": 1.0,
+    "kappa_p": 1.0,
+    "kappa_q": 1.0
+  },
+  "structural_pass": true,
+  "trace_count": 3
+}

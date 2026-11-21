@@ -1,0 +1,35 @@
+{
+  "rows": [
+    {
+      "dataset": "sensorscope",
+      "events_sha256": "72f08e6e606d118151beda681a03eb0eca14587b840cbdea4ccfffc5279fa62d",
+      "m_mc": 2000,
+      "num_windows": 100,
+      "seed": 31001,
+      "shared_across_methods": true,
+      "status": "REUSED",
+      "trace_hash": "5dd97552978978e7b4ebe36c890d24a199c8ab5b0c9c2b17fc79b58acd30af89"
+    },
+    {
+      "dataset": "uair",
+      "events_sha256": "f039d2f8f35786c0c555f13ac7bdd325ac5514708a6c1649f4992b4e9003b13b",
+      "m_mc": 2000,
+      "num_windows": 80,
+      "seed": 31001,
+      "shared_across_methods": true,
+      "status": "REUSED",
+      "trace_hash": "ed1c15458db42909a52636f464e66d87ae2c4a7424cf30a23add47e4ec28e176"
+    },
+    {
+      "dataset": "traffic",
+      "events_sha256": "50b53e2dfa5d9b0f297fa4ee016290ad7ffe2b9cb06505514cad0013ced5f903",
+      "m_mc": 2000,
+      "num_windows": 100,
+      "seed": 31001,
+      "shared_across_methods": true,
+      "status": "REUSED",
+      "trace_hash": "90ada815ce6eafe71facb401e16cf8631d62b9fb0fb496b28d11f27d3f3e72b9"
+    }
+  ],
+  "status": "PASS"
+}

@@ -1,0 +1,17 @@
+{
+  "expected_direction_pass_count": 6,
+  "hard_direction_pass_count": 6,
+  "nondegeneracy": true,
+  "pass_count": 6,
+  "registry_sha256": "08b4cf56cef192bc1fa1b6df4ac4685ee11b317c693409c1d2f1c3832af11eed",
+  "s6_cancellation": true,
+  "scenarios": {
+    "balanced": "PASS",
+    "complete_aligned": "PASS",
+    "complete_counteracting": "PASS",
+    "observation_only": "PASS",
+    "opportunity_only": "PASS",
+    "usable_only": "PASS"
+  },
+  "status": "PASS"
+}

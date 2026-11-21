@@ -1,0 +1,4 @@
+table_id,title,section,rq,source_csv,source_sha256,metrics,datasets,methods,claim_ids,mandatory,main_text,final_status
+TABLE-I,Datasets and protocols,VII-A,setup,05_PROVENANCE/FINAL_TABLE_SOURCES/TABLE_I_DATASET_PROTOCOL.csv,563508ecf6bdeb48ae3cbcb567df50312f82995f954d4db19ed99f0f2d3940af,setup,"SensorScope,U-Air,NSW-Traffic",nan,setup,True,True,MAIN_SOURCE_FROZEN
+TABLE-II,Main effectiveness,VII-C,RQ2,01_REBUILT_TABLE_II/TABLE_II_MAIN_EFFECTIVENESS_REPAIRED_R1.csv,826d1e7fac6f1a49f4166b51d7cc2af5029819f04fec18506591de287fb92184,"RMSE_mu,Tail_RMSE,Delta_group,Delta_c_s","SensorScope,U-Air",core E3 + optional Inst/Debt-Cal,"C3,C4",True,True,MAIN_SOURCE_FROZEN
+TABLE-III,Core ablation,VII-D,RQ3,05_PROVENANCE/FINAL_TABLE_SOURCES/TABLE_III_CORE_ABLATION.csv,22ca24061b48ceda9414c751fb5335834968c7c6cd5a6d77a1d9b0bb95756a7a,"Delta_group,Delta_c_s,RMSE_mu,Tail_RMSE","SensorScope,U-Air",RAVEN + five w/o-X,C5-C8,True,True,MAIN_SOURCE_FROZEN

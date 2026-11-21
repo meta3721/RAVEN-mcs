@@ -1,0 +1,31 @@
+{
+  "allowed_metadata": [
+    "unit_id",
+    "split",
+    "support_flag",
+    "spatial_id",
+    "absolute_time",
+    "opportunity_stratum",
+    "frozen_client_map",
+    "frozen_h_map"
+  ],
+  "atomic_mass_construction": "mu_g from train-split TOD occupancy; varpi_i = mu_h(i) / n_{I_dep, h(i)} on I_dep",
+  "atomic_support": "test_split AND support_flag, public covariates only",
+  "forbidden_outcome_information": [
+    "labels",
+    "test_Y",
+    "test_predictions",
+    "test_residuals",
+    "RMSE",
+    "Delta_group",
+    "gate_ON_OFF",
+    "current_window_R_O_U"
+  ],
+  "frozen": true,
+  "group_mass_source": "train_split_supported_atomic_uniform_then_h_marginal",
+  "hash": "86fd55f7e0bf8499944433de16324bd4687befd5568892613ee87acacad3ad07",
+  "rule_id": "TARGET_LAW_RULE_V1",
+  "scientific_population": "public_evaluation_deployment_supported_atoms",
+  "status": "FROZEN",
+  "train_val_test_relation": "mu_g frozen on train public support; I_dep is test public support; val unused"
+}

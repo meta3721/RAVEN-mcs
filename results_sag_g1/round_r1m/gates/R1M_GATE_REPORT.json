@@ -1,0 +1,222 @@
+{
+  "gates": [
+    {
+      "evidence": "target=86fd55f7e0bf tau=0.05 alpha=0.05 n_min=19",
+      "id": "R1M-S0",
+      "name": "R1l theory freeze unchanged",
+      "pass": true
+    },
+    {
+      "evidence": "aggregate_coverage",
+      "id": "R1M-S1",
+      "name": "raven_mcs resolves to aggregate_coverage",
+      "pass": true
+    },
+    {
+      "evidence": "raven.legacy_only",
+      "id": "R1M-S2",
+      "name": "legacy gate bypass absent",
+      "pass": true
+    },
+    {
+      "evidence": "[1.0, 0.8, 0.6, 0.4, 0.2]",
+      "id": "R1M-S3",
+      "name": "stress grid unchanged",
+      "pass": true
+    },
+    {
+      "evidence": "82444e4f49534485",
+      "id": "R1M-S4",
+      "name": "oracle ground truth frozen",
+      "pass": true
+    },
+    {
+      "evidence": "AGGREGATE_COVERAGE_RIDGE_V1",
+      "id": "R1M-S5",
+      "name": "predictor family frozen",
+      "pass": true
+    },
+    {
+      "evidence": "6cd0b52dd7ce8f06",
+      "id": "R1M-S6",
+      "name": "feature spec frozen",
+      "pass": true
+    },
+    {
+      "evidence": "1.0",
+      "id": "R1M-S7",
+      "name": "ridge alpha fixed",
+      "pass": true
+    },
+    {
+      "evidence": "R1M_PREDICTOR_SNAPSHOT_AUDIT.csv",
+      "id": "R1M-S8",
+      "name": "predictor snapshot frozen per block",
+      "pass": true
+    },
+    {
+      "evidence": "R1M_RESET_AUDIT.csv",
+      "id": "R1M-S9",
+      "name": "refit only after RESET",
+      "pass": true
+    },
+    {
+      "evidence": "19",
+      "id": "R1M-S10",
+      "name": "n_min=19",
+      "pass": true
+    },
+    {
+      "evidence": "k_n unclipped",
+      "id": "R1M-S11",
+      "name": "finite-sample k_n not clipped",
+      "pass": true
+    },
+    {
+      "evidence": "R1M_CALIBRATION_BUFFER_AUDIT.csv",
+      "id": "R1M-S12",
+      "name": "same-a same-block calibration only",
+      "pass": true
+    },
+    {
+      "evidence": "current_window_in_buffer",
+      "id": "R1M-S13",
+      "name": "no current-window calibration leakage",
+      "pass": true
+    },
+    {
+      "evidence": "future_score_count",
+      "id": "R1M-S14",
+      "name": "no future leakage",
+      "pass": true
+    },
+    {
+      "evidence": "max(0, C_hat-q)",
+      "id": "R1M-S15",
+      "name": "C_LCB formula correct",
+      "pass": true
+    },
+    {
+      "evidence": "Gate=1{C_LCB>=tau}",
+      "id": "R1M-S16",
+      "name": "Gate_t from C_LCB only",
+      "pass": true
+    },
+    {
+      "evidence": "Design_t := Gate_t",
+      "id": "R1M-S17",
+      "name": "Design_t equals Gate_t",
+      "pass": true
+    },
+    {
+      "evidence": "MISCOVERAGE_TRIGGERED_RESET_V1",
+      "id": "R1M-S18",
+      "name": "RESET rule frozen",
+      "pass": true
+    },
+    {
+      "evidence": "n_reset_events=10",
+      "id": "R1M-S19",
+      "name": "RESET only after completed miscoverage",
+      "pass": true
+    },
+    {
+      "evidence": "next window RESET then WARMUP",
+      "id": "R1M-S20",
+      "name": "RESET restarts WARMUP",
+      "pass": true
+    },
+    {
+      "evidence": "n=62",
+      "id": "R1M-S21",
+      "name": "primary SensorScope a=.4 complete",
+      "pass": true
+    },
+    {
+      "evidence": "n=53",
+      "id": "R1M-S22",
+      "name": "secondary U-Air a=.2 complete",
+      "pass": true
+    },
+    {
+      "evidence": "n=575",
+      "id": "R1M-S23",
+      "name": "full stress track complete",
+      "pass": true
+    },
+    {
+      "evidence": "0.9588477366255144",
+      "id": "R1M-S24",
+      "name": "validity quantified",
+      "pass": true
+    },
+    {
+      "evidence": "0.0",
+      "id": "R1M-S25",
+      "name": "false-safe quantified",
+      "pass": true
+    },
+    {
+      "evidence": "0.2553191489361702",
+      "id": "R1M-S26",
+      "name": "false-unsafe quantified",
+      "pass": true
+    },
+    {
+      "evidence": "0.4226086956521739",
+      "id": "R1M-S27",
+      "name": "duty cycle quantified",
+      "pass": true
+    },
+    {
+      "evidence": "0.0",
+      "id": "R1M-S28",
+      "name": "non-vacuity quantified",
+      "pass": true
+    },
+    {
+      "evidence": "R1M_BINOMIAL_SAFETY_INTERVALS.csv",
+      "id": "R1M-S29",
+      "name": "binomial intervals reported",
+      "pass": true
+    },
+    {
+      "evidence": "alpha frozen before results",
+      "id": "R1M-S30",
+      "name": "no post-hoc predictor tuning",
+      "pass": true
+    },
+    {
+      "evidence": "MISCOVERAGE_TRIGGERED_RESET_V1",
+      "id": "R1M-S31",
+      "name": "no post-hoc RESET tuning",
+      "pass": true
+    },
+    {
+      "evidence": "R1M_SOURCE_SNAPSHOT_MANIFEST.csv",
+      "id": "R1M-S32",
+      "name": "source snapshot complete",
+      "pass": true
+    },
+    {
+      "evidence": "sag_started=False",
+      "id": "R1M-S33",
+      "name": "no SAG",
+      "pass": true
+    },
+    {
+      "evidence": "five_seed_started=False",
+      "id": "R1M-S34",
+      "name": "no 5-seed",
+      "pass": true
+    },
+    {
+      "evidence": "R1M_CERTIFICATE_TOO_CONSERVATIVE",
+      "id": "R1M-S35",
+      "name": "final verdict artifact-derived",
+      "pass": true
+    }
+  ],
+  "n_fail": 0,
+  "n_pass": 36
+}

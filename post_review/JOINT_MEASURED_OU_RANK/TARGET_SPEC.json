@@ -1,0 +1,81 @@
+{
+  "experiment_id": "JOINT-MEASURED-O-CS-NYC-P2",
+  "status": "LOCKED",
+  "chosen_option": "CS_NYC_P2_DUAL_SENSOR_MEASURED_O",
+  "dataset_id": "cityscanner_nyc_p2_measured_o",
+  "why": "Measured observation from dual-sensor GPS streams on the already-licensed City Scanner NYC Pilot2 record. Not Bernoulli p_obs. U remains controlled. Not end-to-end MCS. Not a T-Drive network log.",
+  "public_source": {
+    "paper": "Wang et al., Scientific Data 10:524 (2023)",
+    "paper_doi": "10.1038/s41597-023-02425-3",
+    "zenodo_doi": "10.5281/zenodo.7961851",
+    "zenodo_license": "cc-by-4.0"
+  },
+  "files_in": [
+    "NYC_Pilot2_PM_Part1.csv",
+    "NYC_Pilot2_PM_Part2.csv",
+    "NYC_Pilot2_PM_Part3.csv",
+    "NYC_Pilot2_NO2_Part1.csv",
+    "NYC_Pilot2_NO2_Part2.csv"
+  ],
+  "files_out": [
+    "NYC_Pilot1_PM.csv",
+    "Boston_Pilot1_PM_NO2.csv",
+    "Beirut_Pilot1_PM.csv"
+  ],
+  "y_field": "pm25",
+  "y_unit": "ug_per_m3",
+  "y_aggregation": "mean of finite calibrated pm25 inside cell x slot when O=1; do not impute Y when O=0",
+  "h_definition": "nyc_grid_4_quadrant_median_gx_gy_all_union_cells_no_Y",
+  "not_utc_h1h4": true,
+  "s_definition": "region::block::weekday",
+  "pi_i_tar": "mu_of_region_h_i",
+  "pi_target_builder": "build_pi_target",
+  "support_compatible_mixture": false,
+  "atomic_unit": "500m_cell x 30min_slot with GPS from PM (kept) or NO2 stream",
+  "spatial_unit": "grid_cell_500m",
+  "time_unit": "30min",
+  "grid": {
+    "cell_meters": 500,
+    "origin": "equirectangular from union GPS bbox of Pilot2 kept PM and Pilot2 NO2 GPS; origin uses floor of min lon/lat; no Y"
+  },
+  "slot_minutes": 30,
+  "client_definition": "spatial_id (grid cell), NOT vehicle id",
+  "r_layer": "REAL_FROM_UNION_PM_NO2_GPS",
+  "r_rule": "client occupies unit iff that cell has >=1 finite GPS sample from kept PM or from the NO2 stream in that 30min slot",
+  "o_layer": "MEASURED_FINITE_PM25",
+  "o_rule": "O=1 iff the cell-slot has >=1 finite pm25 in [0, 1000]; else O=0. Do not use p_obs=0.35.",
+  "u_layer": "CONTROLLED_EXPERIMENTAL compute_usable_r3 s_max=5",
+  "hybrid_label_required": true,
+  "label_must_say": "measured-O hybrid, controlled U, not jointly measured network, not end-to-end MCS",
+  "not_end_to_end_mcs": true,
+  "num_windows": 100,
+  "local_steps": 2,
+  "p_obs": null,
+  "s_max": 5,
+  "seeds_formal": [33001, 33002, 33003, 33004, 33005, 33006, 33007, 33008, 33009, 33010],
+  "canary_seed": 33001,
+  "reuse_tdrive_or_p2_or_c1_traces": false,
+  "do_not_edit_table_ii": true,
+  "do_not_edit_tdrive_hybrid_cells": true,
+  "do_not_edit_cityscanner_hybrid_cells": true,
+  "do_not_overwrite_seal": true,
+  "processed_dir": "data/processed/cityscanner_nyc_p2_measured_o/",
+  "trace_dir": "artifacts/e3_joint_ou_cs_p2_eventtraces_v1/",
+  "results_dir": "results_joint_ou/round_v1/",
+  "keep_o0_units_in_eventtrace_without_inventing_y": true,
+  "c1_kill_rule": "SCD paired mean relative vs BOTH fedau_window and obsuse_window is <= -0.005 on WorstGroupRMSE OR on RMSE_mu",
+  "physical_filters_frozen": [
+    "PM stream: drop non-finite lat/lon/time; drop pm25 non-finite or outside [0, 1000] from Y and from PM-side O; those GPS rows do not create R",
+    "NO2 stream: drop non-finite lat/lon/time from R; NO2 value is not Y under option A",
+    "do not retune filters after RMSE"
+  ],
+  "ingest_abort_if": [
+    "unique occupied union cells < 20",
+    "unique occupied 30min slots < 120",
+    "measured O=0 fraction < 0.02 (layer collapsed; stop, do not Bernoulli-substitute)",
+    "any region of h(i) has zero test units",
+    "vehicle ids used as FL clients",
+    "p_obs Bernoulli reintroduced on this EventTrace"
+  ],
+  "human_signoff": "User locked A (2026-09-11): NYC Pilot2 dual-sensor measured O, Y=PM2.5, R=PM∪NO2 GPS, U=compute_usable_r3, cells as clients, 500m/30min, seeds 33001-33010. Independent table. Do not mix into Table II."
+}

@@ -1,0 +1,30 @@
+{
+  "status": "PASS",
+  "prior_reports_read": [
+    "ACTION_DIFFERENCE_CANDIDATE.md",
+    "BUDGET_CHECKPOINT_FIX.md",
+    "BUDGET_LEDGER.md",
+    "CANDIDATE_CHECK_FROZEN.md",
+    "EXISTING_STATE_PROBE.md",
+    "FAILURE_REPORT.md",
+    "FAILURE_REVIEW.md",
+    "NEXT_STAGE_REQUEST.md"
+  ],
+  "checks": {
+    "actual_ell": true,
+    "P2_debt": true,
+    "R_E": true,
+    "old_config_version_frozen": true,
+    "old_future_constructor": true,
+    "registered_q_frozen": true,
+    "at_most_once": true,
+    "empty_leaves_state": true,
+    "actual_release_updates_debt": true
+  },
+  "protected_count": 1185,
+  "old_candidate_status": "FAIL_NO_CERTIFIABLE_ACTION_ON_FROZEN_EARLY_CASE",
+  "prior_charged": 4535.09375,
+  "no_new_controller": true,
+  "no_future_or_private_event_inputs": true,
+  "mode": "source_and_report_audit_only"
+}

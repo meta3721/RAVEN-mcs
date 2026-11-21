@@ -1,0 +1,26 @@
+\begin{table*}[t]
+\centering
+\caption{Layered correction chain including ObsUse-Window
+(mean $\pm$ std over 20 paired seeds). Lower is better.}
+\label{tab:e3_obsuse}
+\begin{tabular}{llcccc}
+\toprule
+Dataset & Method & $\mathrm{RMSE}_{\mu}$ & Tail RMSE &
+$\Delta_{\mathrm{group}}$ & $\Delta_{c\text{-}s}$\\
+\midrule
+\multirow{5}{*}{SensorScope}
+& FedAvg-Window    & 7.9389 $\pm$ 0.0459 & 8.4610 $\pm$ 0.0466 & 1.0558 $\pm$ 0.0288 & 1.2903 $\pm$ 0.0306\\
+& FedAU-Window     & 7.9364 $\pm$ 0.0507 & 8.4584 $\pm$ 0.0516 & 1.0719 $\pm$ 0.0263 & 1.3057 $\pm$ 0.0313\\
+& ObsUse-Window    & 7.9293 $\pm$ 0.0513 & 8.4513 $\pm$ 0.0522 & 1.0650 $\pm$ 0.0272 & 1.3062 $\pm$ 0.0311\\
+& TwoStage-Hajek   & 7.9309 $\pm$ 0.0543 & 8.4528 $\pm$ 0.0553 & 1.0353 $\pm$ 0.0347 & 1.2910 $\pm$ 0.0324\\
+& RAVEN-MCS        & 7.9380 $\pm$ 0.0473 & 8.4600 $\pm$ 0.0481 & 1.0139 $\pm$ 0.0305 & 1.2644 $\pm$ 0.0312\\
+\midrule
+\multirow{5}{*}{U-Air}
+& FedAvg-Window    & 1.1882 $\pm$ 0.0649 & 1.1968 $\pm$ 0.0686 & 1.1218 $\pm$ 0.0417 & 1.2621 $\pm$ 0.0309\\
+& FedAU-Window     & 1.1128 $\pm$ 0.0600 & 1.1171 $\pm$ 0.0640 & 1.0557 $\pm$ 0.0370 & 1.3291 $\pm$ 0.0360\\
+& ObsUse-Window    & 1.1120 $\pm$ 0.0600 & 1.1163 $\pm$ 0.0640 & 1.0413 $\pm$ 0.0374 & 1.3235 $\pm$ 0.0349\\
+& TwoStage-Hajek   & 1.2160 $\pm$ 0.0716 & 1.2260 $\pm$ 0.0754 & 1.1196 $\pm$ 0.0445 & 1.2406 $\pm$ 0.0297\\
+& RAVEN-MCS        & 1.1911 $\pm$ 0.0659 & 1.1999 $\pm$ 0.0697 & 1.0924 $\pm$ 0.0479 & 1.2334 $\pm$ 0.0320\\
+\bottomrule
+\end{tabular}
+\end{table*}

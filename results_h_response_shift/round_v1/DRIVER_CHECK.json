@@ -1,0 +1,38 @@
+{
+  "pass": true,
+  "tolerance": 1e-06,
+  "rows": [
+    {
+      "dataset": "sensorscope",
+      "method": "fedavg_window",
+      "rerun": 7.914361980993586,
+      "reference": 7.914361980993586,
+      "abs_diff": 0.0,
+      "status": "PASS"
+    },
+    {
+      "dataset": "sensorscope",
+      "method": "raven_simoracle",
+      "rerun": 7.903624828633094,
+      "reference": 7.903624828633094,
+      "abs_diff": 0.0,
+      "status": "PASS"
+    },
+    {
+      "dataset": "uair",
+      "method": "fedavg_window",
+      "rerun": 1.1712625825964957,
+      "reference": 1.1712625825964957,
+      "abs_diff": 0.0,
+      "status": "PASS"
+    },
+    {
+      "dataset": "uair",
+      "method": "raven_simoracle",
+      "rerun": 1.1968560479817063,
+      "reference": 1.1968560479817063,
+      "abs_diff": 0.0,
+      "status": "PASS"
+    }
+  ]
+}

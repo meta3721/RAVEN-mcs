@@ -1,0 +1,137 @@
+[
+  {
+    "order": 1,
+    "seed": 33001,
+    "arm": "I-Proj-ZS",
+    "closes": 100,
+    "status": "COMPLETE",
+    "restore_pass": false,
+    "restore_applicability": "NOT_REQUIRED"
+  },
+  {
+    "order": 2,
+    "seed": 33001,
+    "arm": "F1-Proj-ZS",
+    "closes": 100,
+    "status": "COMPLETE",
+    "restore_pass": true,
+    "restore_applicability": "REQUIRED"
+  },
+  {
+    "order": 3,
+    "seed": 33001,
+    "arm": "F2-Proj-ZS",
+    "closes": 100,
+    "status": "COMPLETE",
+    "restore_pass": true,
+    "restore_applicability": "REQUIRED"
+  },
+  {
+    "order": 4,
+    "seed": 33001,
+    "arm": "TwoStage-H\u00e1jek",
+    "closes": 100,
+    "status": "COMPLETE",
+    "restore_pass": false,
+    "restore_applicability": "NOT_REQUIRED"
+  },
+  {
+    "order": 5,
+    "seed": 33001,
+    "arm": "FedAvg-Window",
+    "closes": 100,
+    "status": "COMPLETE",
+    "restore_pass": false,
+    "restore_applicability": "NOT_REQUIRED"
+  },
+  {
+    "order": 6,
+    "seed": 33002,
+    "arm": "I-Proj-ZS",
+    "closes": 100,
+    "status": "COMPLETE",
+    "restore_applicability": "NOT_REQUIRED",
+    "restore_pass": false
+  },
+  {
+    "order": 7,
+    "seed": 33002,
+    "arm": "F1-Proj-ZS",
+    "closes": 100,
+    "status": "COMPLETE",
+    "restore_applicability": "REQUIRED",
+    "restore_pass": true
+  },
+  {
+    "order": 8,
+    "seed": 33002,
+    "arm": "F2-Proj-ZS",
+    "closes": 100,
+    "status": "COMPLETE",
+    "restore_applicability": "REQUIRED",
+    "restore_pass": true
+  },
+  {
+    "order": 9,
+    "seed": 33002,
+    "arm": "TwoStage-H\u00e1jek",
+    "closes": 100,
+    "status": "COMPLETE",
+    "restore_applicability": "NOT_REQUIRED",
+    "restore_pass": false
+  },
+  {
+    "order": 10,
+    "seed": 33002,
+    "arm": "FedAvg-Window",
+    "closes": 100,
+    "status": "COMPLETE",
+    "restore_applicability": "NOT_REQUIRED",
+    "restore_pass": false
+  },
+  {
+    "order": 11,
+    "seed": 33003,
+    "arm": "I-Proj-ZS",
+    "closes": 100,
+    "status": "COMPLETE",
+    "restore_applicability": "NOT_REQUIRED",
+    "restore_pass": false
+  },
+  {
+    "order": 12,
+    "seed": 33003,
+    "arm": "F1-Proj-ZS",
+    "closes": 100,
+    "status": "COMPLETE",
+    "restore_applicability": "REQUIRED",
+    "restore_pass": true
+  },
+  {
+    "order": 13,
+    "seed": 33003,
+    "arm": "F2-Proj-ZS",
+    "closes": 100,
+    "status": "COMPLETE",
+    "restore_applicability": "REQUIRED",
+    "restore_pass": true
+  },
+  {
+    "order": 14,
+    "seed": 33003,
+    "arm": "TwoStage-H\u00e1jek",
+    "closes": 100,
+    "status": "COMPLETE",
+    "restore_applicability": "NOT_REQUIRED",
+    "restore_pass": false
+  },
+  {
+    "order": 15,
+    "seed": 33003,
+    "arm": "FedAvg-Window",
+    "closes": 100,
+    "status": "COMPLETE",
+    "restore_applicability": "NOT_REQUIRED",
+    "restore_pass": false
+  }
+]

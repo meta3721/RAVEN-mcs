@@ -1,0 +1,51 @@
+{
+  "checks": {
+    "MASKS.json": {
+      "content_sha256": "6b456bd378e92ead19345239801c5f4462b06c81f9219a611cd187adff383e18",
+      "expected": "6b456bd378e92ead19345239801c5f4462b06c81f9219a611cd187adff383e18",
+      "pass": true
+    },
+    "RHO.csv": {
+      "expected": "302cd48c779e9a2a8078fd991ddcd834abf1fd838d7826dd96bfa6241fdc5ecd",
+      "file_sha256": "302cd48c779e9a2a8078fd991ddcd834abf1fd838d7826dd96bfa6241fdc5ecd",
+      "pass": true
+    },
+    "TARGET_WIRING.json": {
+      "content_sha256": "b9de9d9b7d7e782369400b77bed5f0b1d16c8e70104706b80d3ebb978655e125",
+      "expected": "b9de9d9b7d7e782369400b77bed5f0b1d16c8e70104706b80d3ebb978655e125",
+      "pass": true
+    }
+  },
+  "confirmed_items_2_to_4": {
+    "gate_failure_action": "stop_round",
+    "rho_frame": "train_atoms",
+    "rho_m0_tolerance_reference": "unrounded",
+    "theta_check_endpoints": [
+      "RMSE_mu",
+      "Tail_RMSE"
+    ],
+    "theta_rescore_endpoints": [
+      "RMSE_mu",
+      "Delta_group",
+      "Delta_c_s",
+      "Tail_RMSE"
+    ]
+  },
+  "confirmed_items_pass": true,
+  "created_utc": "2026-10-07T02:48:17.085010+00:00",
+  "instruction_sha256": "ffb4bde64af8b6c4d6c647bc0d8b90e2191b945946e1cedc76e47dc08f1d189d",
+  "levels": {
+    "sensorscope": [
+      "0",
+      "0.1",
+      "0.25",
+      "0.4"
+    ],
+    "uair": [
+      "0",
+      "0.1",
+      "0.2"
+    ]
+  },
+  "pass": true
+}

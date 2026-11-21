@@ -1,0 +1,53 @@
+B1/B2 deployment follow-up (checkpoints + stored metrics, 20 seeds).
+B1 worst-group RMSE: unweighted RMSE per h(i) group with n>=5.
+high-mu group/pair RMSE: runner mu-weights on units whose group/pair mass >= median.
+Tail_RMSE is NOT used as worst-group.
+
+SANITY
+- 400/400 checkpoints loaded.
+- Recomputed RMSE_mu vs stored: 382/400 agree to 1e-6 (median abs diff 3.8e-10).
+- 18/400 differ (max 0.058). Paired B1 uses one reload path for all methods,
+  so method comparisons remain internally consistent. B2 uses stored RMSE_mu
+  (the paper metric) against stored Delta_c_s.
+
+EVAL PACK
+- sensorscope test n=3410, 220 groups, high-mu group units=1980, pair units=1760
+- uair test n=1908, 144 groups, high-mu group units=1044, pair units=1728
+
+B1 worst_group_rmse (lower better)
+SensorScope complete_aligned: all five methods ~9.05, no Holm-sig difference.
+  FedAvg 9.0561+/-0.0491; FedAU 9.0541+/-0.0529; ObsUse 9.0468+/-0.0527;
+  TwoStage 9.0474+/-0.0549; RAVEN 9.0551+/-0.0500
+SensorScope drifting: same, no Holm-sig difference (RAVEN 9.0237).
+U-Air complete_aligned:
+  FedAU 1.6075 and ObsUse 1.6068 Holm-sig LOWER than RAVEN 1.7048 (20/20, p_holm=7.6e-6)
+  vs FedAvg 1.7009: not significant
+  vs TwoStage 1.7345: Holm-sig RAVEN lower (19/20)
+U-Air drifting:
+  FedAvg 1.6094, FedAU 1.6084, ObsUse 1.6074 all Holm-sig LOWER than RAVEN 1.6948 (20/20)
+  vs TwoStage 1.7297: Holm-sig RAVEN lower (20/20)
+high_mu_group_rmse and high_mu_pair_rmse and p90_group_rmse tell the same story.
+
+B2 association (rho>0 would mean worse Delta_c-s with worse RMSE_mu)
+Scientifically relevant test = within-seed Spearman across the five methods:
+  SS complete_aligned mean Spearman=-0.09
+  SS drifting mean Spearman=-0.125
+  U-Air complete_aligned mean Spearman=-0.785
+  U-Air drifting mean Spearman=-0.73
+Pooled method x seed Spearman is confounded by seed-level variation:
+  SS complete_aligned +0.265 (p=0.0076) -- the ONLY significant positive
+  SS drifting -0.265; U-Air complete_aligned -0.427; U-Air drifting -0.326
+Paired gaps vs FedAvg are all non-significant.
+Method-mean n=5 Spearman is -0.8 on three of four blocks (p=0.10, underpowered).
+
+Author verdict (honest):
+- B1 NOT SUPPORTED. Worst-group RMSE does not follow Delta_c-s. On U-Air,
+  participation reweighting (FedAU/ObsUse) has the better worst group, matching
+  RMSE_mu, not the structural ranking. On SensorScope the methods tie.
+- B2 NOT SUPPORTED as a positive structure-to-prediction link. Within a seed,
+  methods with worse Delta_c-s tend to have better RMSE_mu on U-Air (FedAU
+  pattern) and no relationship on SensorScope.
+- VERDICT_B1=NOT_SUPPORTED
+- VERDICT_B2=NOT_SUPPORTED
+- Paper: replace the "worst-group not recomputed" sentence with this negative
+  result. Do not claim a deployment-error gain. Do not use Tail_RMSE.

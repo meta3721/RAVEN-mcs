@@ -1,0 +1,236 @@
+{
+  "e3/raven": {
+    "tree": "e3",
+    "arm": "raven",
+    "n_seeds": 20,
+    "theta": {
+      "RMSE_mu": 1.17460201786782,
+      "WorstGroupRMSE": 1.2388759154286328,
+      "Head_RMSE": 1.1671298863771946,
+      "Tail_RMSE": 1.181751969137001
+    },
+    "tree_means": {
+      "RMSE_mu": 1.191113924600986,
+      "Head_RMSE": 1.1819554987949457,
+      "Tail_RMSE": 1.1998575601072905
+    },
+    "corrected_mean": {
+      "RMSE_mu": 1.195365574077496,
+      "Head_RMSE": 1.1859730325988722,
+      "Tail_RMSE": 1.204332273312707
+    },
+    "rel_change_pct": {
+      "RMSE_mu": 0.3569473405269929,
+      "Head_RMSE": 0.3399056739464897,
+      "Tail_RMSE": 0.37293703471072565
+    }
+  },
+  "e3/inst_cal": {
+    "tree": "e3",
+    "arm": "inst_cal",
+    "n_seeds": 20,
+    "theta": {
+      "RMSE_mu": 1.1745885972424286,
+      "WorstGroupRMSE": 1.2388608439218114,
+      "Head_RMSE": 1.1671172271862869,
+      "Tail_RMSE": 1.1817378226561253
+    },
+    "tree_means": {
+      "RMSE_mu": 1.1911226101058785,
+      "Head_RMSE": 1.1819635356447864,
+      "Tail_RMSE": 1.1998668617985018
+    },
+    "corrected_mean": {
+      "RMSE_mu": 1.1953736065323175,
+      "Head_RMSE": 1.1859804528010867,
+      "Tail_RMSE": 1.2043408871849504
+    },
+    "rel_change_pct": {
+      "RMSE_mu": 0.35688991127967357,
+      "Head_RMSE": 0.3398511912729139,
+      "Tail_RMSE": 0.37287681899493347
+    }
+  },
+  "e3/local_hajek": {
+    "tree": "e3",
+    "arm": "local_hajek",
+    "n_seeds": 20,
+    "theta": {
+      "RMSE_mu": 1.1721932569542286,
+      "WorstGroupRMSE": 1.2362018602248457,
+      "Head_RMSE": 1.1648484336505804,
+      "Tail_RMSE": 1.179221463358327
+    },
+    "tree_means": {
+      "RMSE_mu": 1.1882377206580423,
+      "Head_RMSE": 1.1792296668221072,
+      "Tail_RMSE": 1.1968390299611786
+    },
+    "corrected_mean": {
+      "RMSE_mu": 1.192250922356277,
+      "Head_RMSE": 1.183023190341415,
+      "Tail_RMSE": 1.2010614813895648
+    },
+    "rel_change_pct": {
+      "RMSE_mu": 0.3377440076563219,
+      "Head_RMSE": 0.321695054495276,
+      "Tail_RMSE": 0.3528002782899834
+    }
+  },
+  "e3/twostage_hajek": {
+    "tree": "e3",
+    "arm": "twostage_hajek",
+    "n_seeds": 20,
+    "theta": {
+      "RMSE_mu": 1.1939199508955938,
+      "WorstGroupRMSE": 1.2603532950466103,
+      "Head_RMSE": 1.1854123108018815,
+      "Tail_RMSE": 1.2020553222612211
+    },
+    "tree_means": {
+      "RMSE_mu": 1.215961202865051,
+      "Head_RMSE": 1.2054733041164158,
+      "Tail_RMSE": 1.2259670437620116
+    },
+    "corrected_mean": {
+      "RMSE_mu": 1.22019813964517,
+      "Head_RMSE": 1.2094754494834983,
+      "Tail_RMSE": 1.2304277783119968
+    },
+    "rel_change_pct": {
+      "RMSE_mu": 0.34844341827155806,
+      "Head_RMSE": 0.33199784295645707,
+      "Tail_RMSE": 0.363854360741782
+    }
+  },
+  "e3/raven_simoracle": {
+    "tree": "e3",
+    "arm": "raven_simoracle",
+    "n_seeds": 20,
+    "theta": {
+      "RMSE_mu": 1.1773206686750515,
+      "WorstGroupRMSE": 1.2419252583082268,
+      "Head_RMSE": 1.1696971760334092,
+      "Tail_RMSE": 1.1846148142561652
+    },
+    "tree_means": {
+      "RMSE_mu": 1.1914468071989643,
+      "Head_RMSE": 1.1822627857232608,
+      "Tail_RMSE": 1.2002148381640114
+    },
+    "corrected_mean": {
+      "RMSE_mu": 1.1958297193886647,
+      "Head_RMSE": 1.186405064708762,
+      "Tail_RMSE": 1.2048269942124326
+    },
+    "rel_change_pct": {
+      "RMSE_mu": 0.36786469720829157,
+      "Head_RMSE": 0.35036871967234895,
+      "Tail_RMSE": 0.38427753946755283
+    }
+  },
+  "e4/raven_wo_inst": {
+    "tree": "e4",
+    "arm": "raven_wo_inst",
+    "n_seeds": 20,
+    "theta": {
+      "RMSE_mu": 1.1939199508955938,
+      "WorstGroupRMSE": 1.2603532950466103,
+      "Head_RMSE": 1.1854123108018815,
+      "Tail_RMSE": 1.2020553222612211
+    },
+    "tree_means": {
+      "RMSE_mu": 1.215961202865051,
+      "Head_RMSE": 1.2054733041164158,
+      "Tail_RMSE": 1.2259670437620116
+    },
+    "corrected_mean": {
+      "RMSE_mu": 1.22019813964517,
+      "Head_RMSE": 1.2094754494834983,
+      "Tail_RMSE": 1.2304277783119968
+    },
+    "rel_change_pct": {
+      "RMSE_mu": 0.34844341827155806,
+      "Head_RMSE": 0.33199784295645707,
+      "Tail_RMSE": 0.363854360741782
+    }
+  },
+  "e4/raven_wo_obs": {
+    "tree": "e4",
+    "arm": "raven_wo_obs",
+    "n_seeds": 20,
+    "theta": {
+      "RMSE_mu": 1.174576049390784,
+      "WorstGroupRMSE": 1.238844401453999,
+      "Head_RMSE": 1.167107635219703,
+      "Tail_RMSE": 1.1817224639280866
+    },
+    "tree_means": {
+      "RMSE_mu": 1.190998152727363,
+      "Head_RMSE": 1.1818470468938496,
+      "Tail_RMSE": 1.1997348279527853
+    },
+    "corrected_mean": {
+      "RMSE_mu": 1.1952486318424205,
+      "Head_RMSE": 1.1858635089475813,
+      "Tail_RMSE": 1.2042082777416971
+    },
+    "rel_change_pct": {
+      "RMSE_mu": 0.35688377058553594,
+      "Head_RMSE": 0.3398461809662996,
+      "Tail_RMSE": 0.37286987796672455
+    }
+  },
+  "e4/raven_wo_use": {
+    "tree": "e4",
+    "arm": "raven_wo_use",
+    "n_seeds": 20,
+    "theta": {
+      "RMSE_mu": 1.1752961999759688,
+      "WorstGroupRMSE": 1.2396452383225682,
+      "Head_RMSE": 1.1677927117701905,
+      "Tail_RMSE": 1.1824759604988582
+    },
+    "tree_means": {
+      "RMSE_mu": 1.1913994783294768,
+      "Head_RMSE": 1.1822232147609917,
+      "Tail_RMSE": 1.2001601453341628
+    },
+    "corrected_mean": {
+      "RMSE_mu": 1.195667652485065,
+      "Head_RMSE": 1.1862578280166254,
+      "Tail_RMSE": 1.20465081457295
+    },
+    "rel_change_pct": {
+      "RMSE_mu": 0.35824878499802104,
+      "Head_RMSE": 0.34127339112092914,
+      "Tail_RMSE": 0.374172501582013
+    }
+  },
+  "e4/raven_wo_debt": {
+    "tree": "e4",
+    "arm": "raven_wo_debt",
+    "n_seeds": 20,
+    "theta": {
+      "RMSE_mu": 1.1745885972424286,
+      "WorstGroupRMSE": 1.2388608439218114,
+      "Head_RMSE": 1.1671172271862869,
+      "Tail_RMSE": 1.1817378226561253
+    },
+    "tree_means": {
+      "RMSE_mu": 1.1911226101058785,
+      "Head_RMSE": 1.1819635356447864,
+      "Tail_RMSE": 1.1998668617985018
+    },
+    "corrected_mean": {
+      "RMSE_mu": 1.1953736065323175,
+      "Head_RMSE": 1.1859804528010867,
+      "Tail_RMSE": 1.2043408871849504
+    },
+    "rel_change_pct": {
+      "RMSE_mu": 0.35688991127967357,
+      "Head_RMSE": 0.3398511912729139,
+      "Tail_RMSE": 0.37287681899493347
+    }
+  }
+}

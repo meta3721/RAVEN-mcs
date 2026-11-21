@@ -1,0 +1,40 @@
+{
+  "model": "ndmf",
+  "selected": [
+    {
+      "dataset": "sensorscope",
+      "optimizer": "adam",
+      "lr": 0.003,
+      "n": 3,
+      "mean_RMSE": 2.6674717721985313,
+      "mean_relative_gain": 0.10157517467259829,
+      "all_plateau": true,
+      "min_seed_gain": 0.07802993840541576,
+      "eligible": true
+    },
+    {
+      "dataset": "traffic",
+      "optimizer": "adam",
+      "lr": 0.003,
+      "n": 3,
+      "mean_RMSE": 202.05542456470798,
+      "mean_relative_gain": 0.47207375246007127,
+      "all_plateau": true,
+      "min_seed_gain": 0.44987445128254855,
+      "eligible": true
+    },
+    {
+      "dataset": "uair",
+      "optimizer": "sgd",
+      "lr": 0.03,
+      "n": 3,
+      "mean_RMSE": 20.501519507819705,
+      "mean_relative_gain": -0.009639473955379674,
+      "all_plateau": true,
+      "min_seed_gain": -0.01859218195784978,
+      "eligible": false
+    }
+  ],
+  "all_three_datasets_pass": false,
+  "test_access": false
+}

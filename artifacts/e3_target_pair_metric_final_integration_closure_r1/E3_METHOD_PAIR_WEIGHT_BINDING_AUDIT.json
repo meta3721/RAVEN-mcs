@@ -1,0 +1,103 @@
+{
+  "rows": [
+    {
+      "alpha_key_type": "client_id",
+      "alpha_source": "WindowMetrics.alpha aligned to WindowMetrics.active_clients",
+      "exact_normalization": "w renormalized to sum 1 over observed units; Pi_hat via (1/S_R) then prob-normalize for L1",
+      "fallback_allowed": false,
+      "integration_test_status": "PASS",
+      "method": "debt_cal",
+      "silent_uniform_alpha_forbidden": true,
+      "w_key_type": "atomic_unit_id",
+      "w_source": "diagnostics.a_bar keyed by observed_unit_ids"
+    },
+    {
+      "alpha_key_type": "client_id",
+      "alpha_source": "WindowMetrics.alpha aligned to WindowMetrics.active_clients",
+      "exact_normalization": "w renormalized to sum 1 over observed units; Pi_hat via (1/S_R) then prob-normalize for L1",
+      "fallback_allowed": true,
+      "integration_test_status": "PASS",
+      "method": "fedasync_window",
+      "silent_uniform_alpha_forbidden": true,
+      "w_key_type": "atomic_unit_id",
+      "w_source": "equal local weights (frozen non-Hajek baseline definition)"
+    },
+    {
+      "alpha_key_type": "client_id",
+      "alpha_source": "WindowMetrics.alpha aligned to WindowMetrics.active_clients",
+      "exact_normalization": "w renormalized to sum 1 over observed units; Pi_hat via (1/S_R) then prob-normalize for L1",
+      "fallback_allowed": true,
+      "integration_test_status": "PASS",
+      "method": "fedavg_window",
+      "silent_uniform_alpha_forbidden": true,
+      "w_key_type": "atomic_unit_id",
+      "w_source": "equal local weights (frozen non-Hajek baseline definition)"
+    },
+    {
+      "alpha_key_type": "client_id",
+      "alpha_source": "WindowMetrics.alpha aligned to WindowMetrics.active_clients",
+      "exact_normalization": "w renormalized to sum 1 over observed units; Pi_hat via (1/S_R) then prob-normalize for L1",
+      "fallback_allowed": true,
+      "integration_test_status": "PASS",
+      "method": "flamf_timealign_adapted",
+      "silent_uniform_alpha_forbidden": true,
+      "w_key_type": "atomic_unit_id",
+      "w_source": "equal local weights (frozen non-Hajek baseline definition)"
+    },
+    {
+      "alpha_key_type": "client_id",
+      "alpha_source": "WindowMetrics.alpha aligned to WindowMetrics.active_clients",
+      "exact_normalization": "w renormalized to sum 1 over observed units; Pi_hat via (1/S_R) then prob-normalize for L1",
+      "fallback_allowed": false,
+      "integration_test_status": "PASS",
+      "method": "inst_cal",
+      "silent_uniform_alpha_forbidden": true,
+      "w_key_type": "atomic_unit_id",
+      "w_source": "diagnostics.a_bar keyed by observed_unit_ids"
+    },
+    {
+      "alpha_key_type": "client_id",
+      "alpha_source": "WindowMetrics.alpha aligned to WindowMetrics.active_clients",
+      "exact_normalization": "w renormalized to sum 1 over observed units; Pi_hat via (1/S_R) then prob-normalize for L1",
+      "fallback_allowed": false,
+      "integration_test_status": "PASS",
+      "method": "local_hajek",
+      "silent_uniform_alpha_forbidden": true,
+      "w_key_type": "atomic_unit_id",
+      "w_source": "diagnostics.a_bar keyed by observed_unit_ids"
+    },
+    {
+      "alpha_key_type": "client_id",
+      "alpha_source": "WindowMetrics.alpha aligned to WindowMetrics.active_clients",
+      "exact_normalization": "w renormalized to sum 1 over observed units; Pi_hat via (1/S_R) then prob-normalize for L1",
+      "fallback_allowed": false,
+      "integration_test_status": "PASS",
+      "method": "raven",
+      "silent_uniform_alpha_forbidden": true,
+      "w_key_type": "atomic_unit_id",
+      "w_source": "diagnostics.a_bar keyed by observed_unit_ids"
+    },
+    {
+      "alpha_key_type": "client_id",
+      "alpha_source": "WindowMetrics.alpha aligned to WindowMetrics.active_clients",
+      "exact_normalization": "w renormalized to sum 1 over observed units; Pi_hat via (1/S_R) then prob-normalize for L1",
+      "fallback_allowed": false,
+      "integration_test_status": "PASS",
+      "method": "raven_simoracle",
+      "silent_uniform_alpha_forbidden": true,
+      "w_key_type": "atomic_unit_id",
+      "w_source": "diagnostics.a_bar keyed by observed_unit_ids"
+    },
+    {
+      "alpha_key_type": "client_id",
+      "alpha_source": "WindowMetrics.alpha aligned to WindowMetrics.active_clients",
+      "exact_normalization": "w renormalized to sum 1 over observed units; Pi_hat via (1/S_R) then prob-normalize for L1",
+      "fallback_allowed": false,
+      "integration_test_status": "PASS",
+      "method": "twostage_hajek",
+      "silent_uniform_alpha_forbidden": true,
+      "w_key_type": "atomic_unit_id",
+      "w_source": "diagnostics.a_bar keyed by observed_unit_ids"
+    }
+  ]
+}

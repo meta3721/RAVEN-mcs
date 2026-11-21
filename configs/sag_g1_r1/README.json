@@ -1,0 +1,5 @@
+{
+  "note": "R1 diagnostic uses frozen G0 thresholds unchanged. pi_safe is provisional and not a frozen tau.",
+  "thresholds_source": "configs/sag_g0/thresholds.json",
+  "do_not_retune": ["tau_cov", "tau_ret", "tau_ESS", "tau_clip", "tau_A", "tau_safe", "delta_cal"]
+}

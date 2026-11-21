@@ -1,0 +1,1878 @@
+
+=== PAGE 1 ===
+A Fair Federated Learning Method for Handling
+Client Participation Probability Inconsistencies in
+Heterogeneous Environments
+Siyuan Wu1, Y ongzhe Jia1, Haolong Xiang 2, Xiaolong Xu 2,
+Xuyun Zhang3, Lianyong Qi 4, Wanchun Dou1,∗
+1State Key Laboratory for Novel Software Technology, Nanjing University, China
+2School of Computer and Software,
+Nanjing University of Information Science and Technology, China
+3School of Computing, Macquarie University, Australia
+4College of Computer Science and Technology, China University of Petroleum (East China), China
+Abstract
+Federated learning (FL) is a distributed machine learning paradigm that enables
+multiple clients to collaboratively train a shared model without exposing their raw
+data. However, existing FL research has primarily focused on optimizing learning
+performance based on the assumption of uniform client participation, with few
+studies delving into performance fairness under inconsistent client participation,
+particularly in model-heterogeneous FL environments. In view of this challenge,
+we propose PHP-FL, a novel model-heterogeneous FL method that explicitly ad-
+dresses scenarios with varying client participation probabilities to enhance both
+model accuracy and performance fairness. Speciﬁcally, we introduce a Dual-End
+Aligned ensemble Learning (DEAL) module, where small auxiliary models on
+clients are used for dual-end knowledge alignment and local ensemble learning,
+effectively tackling model heterogeneity without a public dataset. Furthermore,
+to mitigate update conﬂicts caused by inconsistent participation probabilities, we
+propose an Importance-driven Selective Parameter Update (ISPU) module, which
+accurately updates critical local parameters based on training progress. Finally,
+we implement PHP-FL on a lightweight FL platform with heterogeneous clients
+across three different client participation patterns. Extensive experiments under
+heterogeneous settings and diverse client participation patterns demonstrate that
+PHP-FL achieves state-of-the-art performance in both accuracy and fairness. Our
+code is available at: https://github.com/Siyuan01/PHP-FL-main .
+1 Introduction
+Federated Learning (FL) has emerged as a promising paradigm for enabling decentralized model
+training across multiple clients without directly sharing their private data [ 1, 2]. By collaboratively
+learning a global model while keeping data localized, FL offers strong privacy guarantees and broad
+applicability across various domains such as mobile devices, healthcare, and ﬁnance [ 3–5].
+Despite signiﬁcant progress, traditional FL methods still face two critical challenges: I) Model het-
+erogeneity. Traditional FL assumes that all clients share an identical local model architecture, which
+is often impractical in real-world due to the diversity in client capabilities. To address this, Model-
+Heterogeneous Federated Learning (MH-FL) has emerged as a promising research paradigm [ 2, 6–
+9], which allows each client to maintain a personalized model tailored to its own resource constraints
+∗Corresponding author: Wanchun Dou (douwc@nju.edu.cn)
+39th Conference on Neural Information Processing Systems (NeurIPS 2025).
+
+=== PAGE 2 ===
+1 5 9 13 17
+Client ID
+0
+20
+40
+60
+80
+100Participation Probability (%)
+Mean: 50.00
+(a) Uniform pattern
+1 5 9 13 17
+Client ID
+0
+20
+40
+60
+80
+100Participation Probability (%)
+Mean: 47.33 (b) Normal pattern
+1 5 9 13 17
+Client ID
+0
+20
+40
+60
+80
+100Participation Probability (%)
+Mean: 50.00 (c) Linear pattern
+Uniform Normal Linear10
+30
+50
+70
+90Client Accuracy (%)
+FML PHP-FL (d) Client accuracy
+Figure 1: Left three: three client participation probability patterns (average value is approximately
+50%). Right: client accuracy under patterns (a)-(c). Refer to Section 5.1 for experimental details.
+or task requirements. However, most existing MH-FL methods [10–13] primarily aim to ensure com-
+patibility between diverse model architectures, yet overlook the fairness issues posed arising from
+inconsistent client participation probabilities in practical deployments. This oversight can result in
+biased models that favor frequently participating clients, ultimately compromising the robustness
+and fairness of the FL system. II) Unfairness caused by inconsistent client participation. Most
+existing FL research [ 1, 9, 12–16] implicitly assume a uniform client participation pattern, where
+all clients are equally likely to participate in each training round, as illustrated in Figure 1a. In
+practical deployments, clients often face heterogeneous conditions, such as intermittent connectiv-
+ity, ﬂuctuating network bandwidth, and network coverage of base stations [ 17–20]. These internal
+and external factors lead to client unavailability and result in non-uniform participation probabil-
+ities, as exempliﬁed in Figure 1b and 1c, which may critically degrade both the overall accuracy
+and fairness of the FL system. Figure 1d compares the ﬁnal client accuracy distributions between
+FML [21] (a representative MH-FL method) and our method PHP-FL under three participation pat-
+terns. While FML suffers signiﬁcant performance degradation in the normal and linear patterns
+compared to the uniform participation, PHP-FL maintains stable accuracy with only marginal drops.
+Furthermore, PHP-FL demonstrates tighter accuracy distributions, indicating better performance
+fairness. Although some studies [ 22–25] improve overall system performance by proactively se-
+lecting high-availability clients and discarding less efﬁcient ones, such strategies often compromise
+fairness across clients. Furthermore, numerous fair federated learning methods aim to enhance per-
+formance fairness through personalized model [ 14, 26] or weight recalibration [ 27, 28]. Neverthe-
+less, they typically operate under the assumption of uniform client participation, failing to address
+the challenge of inconsistent client availability. Despite its importance, this issue has received lim-
+ited attention in the literature, particularly in the context of MH-FL, where the interplay between
+model heterogeneity and participation imbalance exacerbates the learning challenge.
+To address these challenges, we propose PHP-FL, a fair federated learning method designed to
+address scenarios with varying client participation probabilities in model-heterogeneous environ-
+ments. Speciﬁcally, to effectively tackle model heterogeneity without relying on public datasets,
+we introduce a Dual-End Aligned ensemble Learning (DEAL) module, which leverages lightweight
+auxiliary models on clients to align heterogeneous local models and enable ensemble learning to
+improve the performance of local tasks. Furthermore, to mitigate the adverse effects of update con-
+ﬂicts that caused by inconsistent client participation probabilities, we propose a Importance-driven
+Selective Parameter Update (ISPU) module. The ISPU module adaptively updates only the most
+critical task-relevant parameters based on training progress, allowing clients with different participa-
+tion frequencies to selectively absorb varying ratios of global knowledge. This design helps reduce
+gradient conﬂicts and enhancing fairness. Our main contributions are as follows:
+• To the best of our knowledge, this is the ﬁrst work to explicitly address performance unfair-
+ness caused by inconsistent client participation probabilities in practical FL systems with
+heterogeneous local models.
+• We propose PHP-FL, a novel model-heterogeneous federated learning method designed
+to address inconsistent client participation probabilities, aiming to jointly improve both
+overall accuracy and performance fairness across clients.
+• We evaluate PHP-FL through extensive experiments on a lightweight FL platform simulat-
+ing multiple realistic participation patterns. Empirical results on the Fashion-MNIST and
+CIFAR-10 datasets demonstrate its state-of-the-art performance, while the ablation study
+further validates the effectiveness of each proposed module.
+2
+
+=== PAGE 3 ===
+2 Related Works
+Model-Heterogeneous Federated Learning. Model-Heterogeneous Federated Learning (MH-
+FL) has emerged as a promising research direction [ 11, 6, 8, 9, 2, 13]. Existing work in this area can
+be broadly categorized into knowledge distillation -based (KD) methods, representation alignment
+methods, and partial model sharing methods. KD is one of the most widely adopted techniques
+in MH-FL. The studies in [ 29–31] enable clients with different architectures to distill knowledge
+through a shared or public dataset. However, such reliance on public data limits applicability in
+privacy-sensitive settings. Another popular line of work, like [ 15, 12, 16], focuses on representa-
+tion alignment, which aligns feature representations or prototypes rather than raw model parameters,
+allowing clients to maintain model diversity while contributing to a shared learning objective. Fur-
+thermore, some studies [ 7, 32–34] adopt partial model sharing strategies, where clients share only
+speciﬁc model components ( e.g., a shared backbone or predictor) while keeping the other parts dis-
+tinct, thereby enabling partial compatibility across models. However, few MH-FL methods explicitly
+address fairness for clients under inconsistent participation probabilities, a critical requirement for
+equitable and robust deployment.
+Fairness in Federated Learning. Existing research on fairness in federated learning has primarily
+focused on three key dimensions: (1) Contribution Fairness [4, 35, 36], which involves evaluating
+each client’s contribution to the global model to guide equitable beneﬁt distribution, often using
+techniques like Shapley value or inﬂuence functions [ 37, 38]; (2) Model Fairness [39, 40], which
+addresses inherent biases in model predictions concerning sensitive attributes, thereby promoting
+fairness at the prediction level; and (3) Performance Fairness [14, 20, 27, 41, 28], which aims to
+ensure uniform model performance across clients, typically by minimizing the variance or standard
+deviation of test accuracy among clients. As prior studies [ 42, 43] demonstrate, these fairness met-
+rics often conﬂict, making it infeasible for a model to simultaneously achieve optimal performance
+across all dimensions. Our work, therefore, speciﬁcally targets performance fairness, aiming to en-
+sure uniform performance across clients while concurrently optimizing overall performance under
+inconsistent participation probabilities in MH-FL. While another line of research [ 20, 44, 45] ad-
+dresses client unavailability by primarily focusing on maintaining the average performance across
+clients, they do not explicitly ensure performance-level fairness. Furthermore, these methods are
+typically designed for homogeneous settings and face signiﬁcant challenges when generalizing to
+heterogeneous federated learning environments, where client capabilities vary substantially.
+3 Preliminaries
+The Global Objective of Federated Learning. Following typical federated learning [ 1, 26] set-
+tings, we consider a set of K clients (index by i) with local datasets {D1, D2, ..., DK}, where
+Di = {(xj, yj)}ni
+j=1 and ni = |Di|. In a heterogeneous FL environment, each client i maintains
+a unique model wi, parameterized by θi ∈ Rdi , with dimensional heterogeneity ( di ̸= dj) arising
+from hardware constraints (e.g., compute/memory limits) or personalized model specialization. This
+implies dim(θi) ̸= dim(θj), ∃i ̸= j ∈ [K]. The global objective function can be expressed as:
+min
+{wi}K
+i=1
+F ({wi})K
+i=1 =
+KX
+i=1
+piFi(wi),
+KX
+i=1
+pi = 1, (1)
+where pi is the weight of client i, {wi}K
+i=1 represents the set of the client’s local models, and
+Fi(wi) = 1
+ni
+Pni
+j=1 L(wi(θi; xj), yj) is the local objective for client i with loss function L.
+Inconsistent Client Participation Probability. To simulate realistic client availability in feder-
+ated learning, we consider three types of client participation probability patterns. Let pi,t denote the
+probability that client i actively participates in communication round t:
+Deﬁnition 1 (Uniform Pattern) All clients share an identical and ﬁxed probability a ∈ (0, 1] of
+participating in each round , i.e., pi,t = a, ∀i ∈ {1, 2, . . . , n}, ∀t.
+Deﬁnition 2 (Normal Pattern) The participation probabilities are drawn from a truncated normal
+distribution to simulate natural heterogeneity: pi,t ∼ N (µ, σ), and pi,t is clipped to (0, 1].
+3
+
+=== PAGE 4 ===
+Deﬁnition 3 (Linear Pattern) Client participation probabilities are distributed according to an in-
+creasing arithmetic sequence: pi,t = a + (i − 1)d, i = 1 , 2, . . . , n, ∀t , where a is the ﬁrst term
+and d is the common difference. In this pattern, the initial sequence satisﬁes 0 < p 1,t < p 2,t < · · · <
+pK,t ≤ 1 for round t. This sequence {pi,t}K
+i=1 is then randomly shufﬂed prior to use to eliminate
+any inherent ordering bias among clients. It models systematic heterogeneity such as time-varying
+connectivity or device capacity.
+Note that pi,t is independent of the history and other clients. The three distinct patterns considered
+enable a comprehensive analysis of how heterogeneous client participation affects both fairness and
+overall performance in federated learning.
+Design Goals. In this paper, we aim to design a MH-FL method under inconsistent client par-
+ticipation probabilities that not only optimizes the average performance across all clients but also
+enhances performance fairness . Formally, let ai(i = 1 , . . . , K) represent the test accuracy on the
+i-th client’s local test dataset. The Accuracy Metric (AM) is deﬁned as: AM = 1
+K
+PK
+k=1 ak. The
+Fairness Metric (FM) is deﬁned as: F M = Std( a1, . . . , aK), where Std(·) denotes the standard
+deviation. To this end, our approach seeks to maximize the average local accuracy (AM) while
+minimizing the performance disparity (FM), ensuring both high overall performance and fair perfor-
+mance distribution across clients.
+4 Methodology
+4.1 Overview of PHP-FL
+Our method consists of two key modules: dual-end aligned ensemble learning (DEAL in Sec-
+tion 4.2), and importance-driven selective parameter update (ISPU in Section 4.3). The DEAL
+module employs a small homogeneous auxiliary model to perform bidirectional representation-logit
+alignment between local and auxiliary models, which resolves model heterogeneity and enhances
+overall performance via ensemble learning. To handle inconsistent client participation, the ISPU
+module selectively updates task-relevant critical parameters using an importance-based masking
+mechanism. This approach applies larger updates to stragglers to accelerate overall convergence,
+while reducing updates for frequent participants to prevent adverse effects from the stragglers. This
+ensures efﬁcient knowledge fusion and fair parameter evolution across clients.
+As shown in Figure 2, the training process in each communication round t of PHP-FL can be sum-
+marized as follows: 2 ¶ The server ﬁrst computes the client-speciﬁc auxiliary model Gt−1 ⊙ M h
+i
+for the active client i ∈ A t by pruning non-essential parameters using historical binary mask M h
+i .
+· Then active clients initialize the personalized auxiliary models ˆgt−1
+i . ¸ PHP-FL decomposes
+both the local model wi and the auxiliary model gi into a backbone and a predictor, which are used
+for representation extraction and soft prediction, respectively. At the beginning of local training,
+the DEAL module ﬁrst optimizes the ensemble weights λi on the adaptation set Da
+i , while wt
+i and
+ˆgt−1
+i are frozen. ¹ Local training then proceeds using the customized loss Lw, which comprises
+two components: (1) The dual-end alignment loss LDEAL, enabling bidirectional knowledge align-
+ment through data-free distillation and representation matching. (2) The ensemble learning loss
+LENS, which further enhances overall model performance. º Following the local training, the ISPU
+module calculates an update ratio αt
+i based on the client’s total training rounds. It then estimates
+the top-αt
+i important parameters of gt
+i using the ℓ1-norm and generates a binary mask M t
+i . Finally,
+each active client uploads both its updated local auxiliary model gt
+i and the binary mask M t
+i to the
+server. » The server updates the historical mask M h
+i ∈ Mhist for each active client i by replacing its
+entry with the newly received M t
+i . Then the received auxiliary models are aggregated via a simple
+averaging technique to obtain the global auxiliary model Gt for round t + 1.
+4.2 Dual-End Aligned Ensemble Learning
+To address system heterogeneity without relying on public datasets, previous works such as [ 12, 15]
+decompose the model w3 (parameterized by θ) into a backbone wb and a predictor wp , and perform
+2Algorithm 1 in Appendix A describes the PHP-FL algorithm.
+3We omit the client index i and the communication round index t for notation simplicity.
+4
+
+=== PAGE 5 ===
+ServerActiveClient𝒊∈𝓐𝒕
+❶𝒢!34
+⨀
+❻𝑀"6
+❷⨀⊕
+❸BackbonePredictor𝐷"( 𝜆"
+1−𝜆"#𝑦$%&'
+𝑦$%&'
+＋𝓛𝑴𝑴𝑫𝓓𝒌𝒍 𝓛𝝎𝑬𝑵𝑺
+❺𝑀"!
+𝐷"# 𝝀𝒊
+1−𝝀𝒊#𝑦$%&'𝓛𝑪𝑬𝝀＋𝒘"! ModelInference
+Model
+Mask
+❹
+⋯Agg
+⋯ ⋯
+Element-wiseoperationMaskandlocalauxiliarymodel
+𝒢!34⨀𝑀!#
+Prunedglobalauxiliarymodel
+＋Logits-wiseaddition
+LogitsRep
+1𝒈"!#$𝒈"!#$ 𝒢!#$⨀𝑀"6¬𝑀"%
+Logits
+1𝒈"!#$
+Pruning
+Pruning
+Calculateupdateratio𝛼"!𝒈"!
+Top-𝛼"!
+Latestrecordsofthemask𝑀6"8!
+Localauxiliarymodelsfrom𝓐𝒕
+ℓ$-𝑛𝑜𝑟𝑚
+Personalized pruning
+Figure 2: The overview of PHP-FL.
+aggregation based on intermediate representations z = wb(θb; xj) produced by the backbone. How-
+ever, it’s challenging to classify representations generated by heterogeneous backbones for local
+predictors. Inspired by the spirit of the mutual learning, some works [ 46, 47] leverage logits-level
+knowledge distillation, where each client co-trains a heterogeneous local model w and a lightweight
+homogeneous global model g (parameterized by ϕ) by aligning only the ﬁnal outputs of the predic-
+tors. Unfortunately, this limited alignment fails to facilitate meaningful knowledge transfer to the
+backbone component, resulting in suboptimal representation learning. To address these limitations,
+we propose a DEAL module. In DEAL, both the backbone and predictor components between local
+and auxiliary models are explicitly aligned. This dual-end alignment ensures effective and rapid
+fusion of local and global knowledge. To this end, we design the following loss function:
+Lw
+DEAL = 1
+|Di|
+X
+j∈Di
+[LMMD(wb(θb; xj), gb(ϕb; xj))| {z }
+Backbone Alignment
++ DKL (w(θ; xj)∥g(ϕ; xj))| {z }
+Predictor Alignment
+], (2)
+where DKL is Kullback-Leibler (KL) divergence. The Maximum Mean Discrepancy (MMD) loss
+LMMD between two sets of representations z1 ∈ Rn×d1 and z2 ∈ Rm×d2 using a Gaussian radial
+basis function (RBF) kernel is computed as:
+LMMD(z1, z2) = 1
+n2
+nX
+i,j=1
+k(f (z(i)
+1 ), f(z(j)
+1 )) + 1
+m2
+mX
+i,j=1
+k(h(z(i)
+2 ), h(z(j)
+2 ))
+− 2
+nm
+nX
+i=1
+mX
+j=1
+k(f (z(i)
+1 ), h(z(j)
+2 )),
+(3)
+where f : Rd1 → Rd and h : Rd2 → Rd represent customizable projection functions designed
+to standardize feature dimensions, enabling cross-architecture feature alignment between the local
+model w and global model g when their structures are heterogeneous. The Gaussian RBF kernel
+k(z, z′) = exp
+ 
+−γ∥z − z′∥2
+measures similarity between representations, with γ = 1/(2σ2) con-
+trolling the kernel bandwidth. This non-parametric metric effectively captures the distance between
+the distributions of z1 and z2 in the Reproducing Kernel Hilbert space (RKHS). MMD is able to
+effectively align feature distributions by comparing global statistics via kernel-based embeddings,
+handles non-IID data robustly, and enables stable optimization [ 48].
+5
+
+=== PAGE 6 ===
+Next, to fully leverage the classiﬁcation capabilities of both local models and global auxiliary mod-
+els, we adopt model ensembling [ 49, 47, 13] to enhance performance on local tasks:
+Lw
+EN S = 1
+|Di|
+X
+j∈Di
+[LCE(w(θ; xj), yj) + LCE(λw(θ; xj) + (1 − λ)g(ϕ; xj), yj)], (4)
+where LCE denotes the cross-entropy loss between the predicted label and the ground-truth label.
+Furthermore, to address the challenges posed by the potential heterogeneous system capabilities
+between each local model w and the global model g, we set λ as a trainable parameter for each
+client and randomly hold out a tiny adaptability set Da
+i from the training set Di (e.g., 10%) for its
+optimization at the beginning of every communication round. The remaining set on each client for
+training is denoted as the study set Ds
+i . This round-wise resampling of the adaptability set guar-
+antees that the ensemble weight λi is continuously optimized on fresh and unbiased data, thereby
+effectively mitigating overﬁtting risks. The learning process of λ on each client is:
+λt ← λt−1 − ηλ
+1
+|Da
+i |
+X
+j∈Da
+i
+∇λt−1 E(xj ,yj )∼Da
+i
+LCE(λt−1w(θ; xj) + (1 − λt−1)g(ϕ; xj), yj), (5)
+where ηλ is the learning rate for λ. Finally, the total training objective of the local model w combines
+the dual-end alignment loss and the ensemble learning loss:
+Lw = Lw
+DEAL + Lw
+EN S, (6)
+For symmetry, an analogous loss Lg is also computed but omitted here for brevity, as it follows
+the same formulation with reversed inputs. The total losses Lg and Lw are used to simultaneously
+update the homogeneous auxiliary model and the heterogeneous client local model, with learning
+rates ηg and ηw, respectively, as follows:
+wt ← wt−1 − ηw
+1
+|Ds
+i |
+X
+j∈Ds
+i
+∇wt−1 E(xj ,yj )∼Ds
+i
+Lw(wt−1, gt−1, λt, xj, yj),
+gt ← gt−1 − ηg
+1
+|Ds
+i |
+X
+j∈Ds
+i
+∇gt−1 E(xj ,yj )∼Ds
+i
+Lg(gt−1, wt−1, λt, xj, yj).
+(7)
+During the inference stage, clients use the weighted model ensemble for prediction:
+ˆypred
+j = arg max(λw(θ; xj) + (1 − λ)g(ϕ; xj)). (8)
+This adaptive weighting mechanism automatically balances the contributions of both models based
+on their current performance. It is particularly effective under system heterogeneity, where devices
+may have varying computational capabilities.
+4.3 Importance-Driven Selective Parameter Update
+To enable straggling clients to quickly catch up upon rejoining training while preserving the learn-
+ing momentum of more active clients, we propose a novel selective parameter update module, ISPU,
+which selectively updates task-relevant parameters and suppresses noisy or redundant updates. In-
+stead of directly overwriting the local auxiliary model gt−1
+i with the global model Gt−1, we perform
+a model fusion by identifying the most signiﬁcant parameters in gt−1
+i . The update ratio αt
+i is adap-
+tively determined by a sigmoid-based scheduling function according to the training progress:
+αt
+i = 1
+1 + exp
+
+δ ·
+ Ni(t)
+t + 1 − 0.5
+ · τ (9)
+where Ni(t) = Pt
+r=1 /x31{i ∈ A r} denotes the cumulative number of rounds in which client i has
+participated up to round t and /x31{·} is the indicator function. Here, τ ∈ (0, 1] represents the prun-
+ing threshold and δ is a tunable sharpness hyperparameter. We then apply a binary mask on the
+parameters of gt−1
+i to retain only the critical parameters and replace them with the corresponding
+parameters from the global model Gt−1. Common pruning metrics include the ℓ-norm [50, 3], Fisher
+Information Matrix (FIM) [ 51, 52], and sensitivity-based measures [ 53, 54]. Speciﬁcally, we adopt
+6
+
+=== PAGE 7 ===
+the ℓ1-norm to evaluate the importance of parameters, which has been proven to be an effective
+technique for assessing parameter signiﬁcance [ 55, 3]. Compared to other metrics, this formulation
+better captures the importance of task-relevant parameters. After local training, the binary mask M t
+i
+is constructed to update only the top- αt
+i important parameters of gt
+i in the next participation round:
+M t
+i,d =
+1, if d-th parameter ∈ top-αt
+i largest of gt
+i
+0, otherwise (10)
+This parameter-wise ﬁltering mechanism helps frequently active clients preserve their learned
+knowledge while allowing infrequent clients to assimilate global updates more effectively, enabling
+rapid catch-up and mitigating knowledge drift. Speciﬁcally, at the beginning of round t, the local
+auxiliary model gt−1
+i of each active client i ∈ A t is updated as follows:
+ˆgt−1
+i = gt−1
+i ⊙ ¬M h
+i + Gt−1 ⊙ M h
+i , (11)
+where M h
+i is the mask matrix obtained by client i from its most recent training round and ¬M
+denotes the bit-wise inverse of the mask M . This approach ensures clients preserve critical knowl-
+edge via high-importance parameters, ﬁlters out conﬂicts from heterogeneous data and inconsistent
+training progress.
+5 Experiments
+5.1 Experiments Details
+Datasets. We evaluate our proposed PHP-FL on two standard image classiﬁcation benchmarks:
+Fashion-MNIST4 [56] and CIFAR-105 [57]. For both datasets, we adopt a 4:1 ratio to split samples
+into training and test sets. Following previous studies [ 12, 58, 59], we simulate heterogeneous data
+distributions by allocating class j proportions to each client k according to a Dirichlet distribution
+(pj,k ∼ Dir(β)), where a smaller β implies more extreme data heterogeneity across clients. We
+adopt β = 0 .1 for Fashion-MNIST and β = 0 .5 for CIFAR-10, respectively. Notably, each client’s
+local training and test sets share the same distribution.
+Models. Our experimental setup employs four heterogeneous model architectures: (1)
+GoogleNet [ 60], (2) DenseNet-121 [ 61], (3) EfﬁcientNet-B1 [ 62], and (4) ResNet-18 [ 63]. Each
+client is assigned one of these models based on its identiﬁer i, following a round-robin strategy
+where client i receives the model corresponding to i mod 4 . Comprehensive comparative results of
+homogeneous model architectures are provided in Appendix C.2.
+Comparison Baselines. In the heterogeneous model experiments, we comprehensively evaluate
+our method against six state-of-the-art heterogeneous federated learning algorithms without rely-
+ing on public data, including FML [ 21], FedGen [ 10], FedKD [ 11], FedAPEN [ 47], FedTGP [ 12],
+FedMRL [13]. In addition, we also compare a standalone baseline where clients train locally without
+any aggregation or communication.
+Implementation Details. Our experimental framework is built on a lightweight MH-FL platform
+HtFLlib [ 64] using PyTorch 2.2.2 [ 65] with NVIDIA RTX 3090 GPU. We employ SGD as our
+optimizer with a learning rate of 0.001 and a local batch size of 64. The global training process
+consists of 100 communication rounds, with a total of 20 clients. During each federated training
+round, clients perform 5 local epochs of training. In each round, client participation follows the
+three patterns introduced in Section 3. We repeated all experiments three times with different random
+seeds and present the averaged results. More details are provided in Appendix B.
+Evaluation Metrics. As deﬁned in Section 3, we evaluate the performance using the average Top-
+1 accuracy (AM) across all clients. In evaluating the fairness of the clients, we adopt the standard
+deviation (FM) of client accuracy when the Top-1 test accuracy is achieved. In PHP-FL, the test
+accuracy and fairness for each client are derived from the ensemble output of its local and auxiliary
+models, as computed by Eq. 8.
+4https://github.com/zalandoresearch/fashion-mnist?tab=readme-ov-file
+5https://www.cs.toronto.edu/~kriz/cifar.html
+7
+
+=== PAGE 8 ===
+Table 1: Comparison with the state-of-the-art methods on Fashion-MNIST in the heterogeneous
+setting. Best in bold and second with underline. ↑ indicates improved accuracy (%) and ↓ indicates improved
+standard deviation (%) of accuracy compared with the best baseline, respectively.
+Methods
+Uniform [a = 0 .5] Normal [µ = 0 .5, σ = 0 .2] Linear
+[
+a = 0 .05 , d = K − 2
+K (K − 1)
+]
+Methods
+AM (%) ↑ FM (%) ↓ AM (%) ↑ FM (%) ↓ AM (%) ↑ FM (%) ↓
+Standalone 95.88 ± 0.19 9.26 ± 1.37 96.89 ± 0.19 9.37 ± 1.22 95.77 ± 0.05 9.86 ± 0.53
+FML [arXiv20] 89.09 ± 0.66 23.13 ± 1.18 88.71 ± 0.23 23.32 ± 1.11 88.15 ± 0.73 25.21 ± 2.76
+FedGen [ICML21] 93.97 ± 1.13 22.78 ± 1.46 93.81 ± 0.99 23.25 ± 1.52 93.72 ± 0.93 23.80 ± 1.90
+FedKD [NC22] 95.67 ± 0.31 9.20 ± 0.92 95.65 ± 0.30 9.02 ± 1.16 95.57 ± 0.18 9.30 ± 0.78
+FedAPEN [KDD23] 96.79 ± 0.06 6.74 ± 0.26 96.79 ± 0.07 6.50 ± 0.60 96.73 ± 0.06 6.89 ± 0.08
+FedTGP [AAAI24] 94.35 ± 2.57 10.94 ± 2.47 94.06 ± 2.38 11.32 ± 2.25 94.21 ± 2.48 11.50 ± 2.18
+FedMRL [NIPS24] 96.06 ± 0.45 9.07 ± 1.65 96.05 ± 0.43 9.25 ± 1.39 95.78 ± 0.09 9.81 ± 0.64
+PHP-FL (Ours) 97.64 ± 0.04 4.15 ± 0.18 97.59 ± 0.04 4.24 ± 0.05 97.58 ± 0.03 4.29 ± 0.04
+↑ 0.85 ↓ 2.59 ↑ 0.80 ↓ 2.26 ↑ 0.95 ↓ 2.60
+Table 2: Comparison with the state-of-the-art methods on CIFAR-10 in the heterogeneous setting.
+Best in bold and second with underline. ↑ indicates improved accuracy (%) and ↓ indicates improved standard
+deviation (%) of accuracy compared with the best baseline, respectively.
+Methods
+Uniform [a = 0 .5] Normal [µ = 0 .5, σ = 0 .2] Linear
+[
+a = 0 .05 , d = K − 2
+K (K − 1)
+]
+Methods
+AM (%) ↑ FM (%) ↓ AM (%) ↑ FM (%) ↓ AM (%) ↑ FM (%) ↓
+Standalone 56.66 ± 0.32 10.28 ± 0.32 56.77 ± 0.40 10.19 ± 0.36 56.61 ± 0.30 10.21 ± 0.32
+FML [arXiv20] 46.61 ± 0.61 15.18 ± 0.34 46.16 ± 1.02 15.78 ± 0.75 46.04 ± 1.16 15.85 ± 0.83
+FedGen [ICML21] 54.27 ± 0.15 10.29 ± 0.26 54.38 ± 0.02 10.33 ± 0.31 54.50 ± 0.18 10.45 ± 0.46
+FedKD [NC22] 54.86 ± 0.43 10.43 ± 0.23 54.82 ± 0.37 10.36 ± 0.33 54.55 ± 0.13 10.45 ± 0.21
+FedAPEN [KDD23] 60.30 ± 0.33 9.40 ± 0.30 60.35 ± 0.31 9.45 ± 0.31 60.40 ± 0.31 9.40 ± 0.30
+FedTGP [AAAI24] 53.39 ± 0.53 9.73 ± 0.61 53.40 ± 0.52 10.62 ± 1.17 52.85 ± 1.16 10.28 ± 0.78
+FedMRL [NIPS24] 52.80 ± 0.63 12.81 ± 1.17 52.61 ± 0.77 12.85 ± 1.20 53.11 ± 0.63 12.95 ± 1.27
+PHP-FL (Ours) 66.85 ± 0.36 8.07 ± 0.25 66.94 ± 0.39 8.07 ± 0.24 66.78 ± 0.36 8.09 ± 0.27
+↑ 6.55 ↓ 1.38 ↑ 6.59 ↓ 1.29 ↑ 6.38 ↓ 1.31
+5.2 Comparison to State-of-the-Arts Methods
+We evaluate PHP-FL against several state-of-the-art methods in Tables 1 and 2. The experiments are
+conducted under three distinct client participation patterns: uniform, normal, and linear, represent-
+ing diverse real-world scenarios. Across all settings, PHP-FL consistently demonstrates superior
+performance. It achieves the highest average accuracy (highest AM values) while simultaneously
+exhibiting the best fairness (lowest FM values). Compared to the strongest baseline FedAPEN,
+PHP-FL achieves notable improvements in average performance, boosting AM by up to 0.87% on
+Fashion-MNIST and a substantial 6.51% on CIFAR-10. At the same time, it enhances fairness by
+reducing FM by up to 2.48% and 1.33% on the respective datasets, demonstrating the robustness and
+effectiveness of PHP-FL in addressing model heterogeneity and unfairness caused by inconsistent
+client participation. Appendix C.1 further shows its faster convergence and superior performance
+through accuracy and standard deviation curves.
+5.3 Ablation Study
+In Table 3, we present an ablation study to evaluate the contribution of the DEAL and ISPU mod-
+ules in PHP-FL under the normal participation pattern. When both modules are disabled, the per-
+formance signiﬁcantly degrades, especially on CIFAR-10, where the accuracy drops to 59.88%.
+8
+
+=== PAGE 9 ===
+75
+80
+85
+90
+(a) AM (%) @ = 0.1
+84.89
+80.69
+78.34
+84.08
+85.97
+78.20
+84.58
+88.06
+20
+30
+40
+50
+(b) AM (%) @ = 5
+34.81
+23.69
+34.1532.48
+38.67
+33.0931.48
+47.50
+10
+15
+20
+25
+(c) FM (%) @ = 0.1
+14.57
+18.01
+20.93
+14.94
+13.58
+22.93
+15.66
+11.74
+2.5
+5.0
+7.5
+10.0
+(d) FM (%) @ = 5
+4.89
+6.19
+4.674.54
+5.43
+4.37
+8.29
+4.21
+Standalone
+FML
+FedGen
+FedKD
+FedAPEN
+FedTGP
+FedMRL
+PHP-FL (Ours)
+Figure 3: Comparison results on CIFAR-10 under varying degrees of data distribution heterogeneity
+across clients. All other settings follow their default conﬁgurations.
+1e-3 0.01 0.1 0.2 0.4 0.6 0.8 1
+0.95
+0.96
+0.97
+0.98
+0.98
+0.99Accuracy
+Acc
+Std
+0.03
+0.04
+0.06
+0.07
+0.09
+Standard Deviation
+(a) Fashion-MNIST
+1e-3 0.01 0.1 0.2 0.4 0.6 0.8 1
+0.61
+0.63
+0.65
+0.66
+0.67
+0.69Accuracy
+Acc
+Std
+0.06
+0.07
+0.09
+0.10
+0.12
+Standard Deviation
+ (b) CIFAR-10
+0 20 40 60 80 100
+Communication Rounds
+0.3
+0.4
+0.5
+0.6
+0.7Average Client Ensemble Weight
+Fashion-MNIST
+CIFAR-10 (c) Average weight λ
+Figure 4: Left two: effect of τ on performance. Right: average weight λ of clients in each round.
+Introducing the ISPU module alone brings a modest improvement, highlighting its effectiveness in
+mitigating update conﬂicts from inconsistent client participation.
+Table 3: Ablation study of key modules of PHP-FL
+under the normal pattern.
+DEAL ISPU Fashion-MNIST CIFAR-10DEAL ISPU AM (%) FM (%) AM (%) FM (%)
+7 7 92.86 9.10 59.88 11.24
+7 3 96.72 5.07 62.05 9.47
+3 7 96.98 5.73 63.08 8.16
+3 3 97.59 4.24 66.94 8.07
+Besides, enabling only the DEAL module
+yields a more pronounced performance gains.
+This is achieved by effectively addressing sys-
+tem heterogeneity through data-free knowledge
+alignment and ensemble learning. Notably,
+enabling both DEAL and ISPU achieves the
+best performance on both datasets, with 97.59%
+accuracy on Fashion-MNIST and 66.94% on
+CIFAR-10, demonstrating their complementar-
+ity and the necessity of their joint design.
+5.4 Case Studies
+Robustness to Non-IIDness. To evaluate PHP-FL’s robustness under varying data heterogeneity,
+we conducted additional experiments on CIFAR-10 using the Dirichlet distribution with β = 0 .1
+(high heterogeneity) and β = 5 (low heterogeneity). As shown in Figure 3, PHP-FL consistently
+outperforms all baselines across both settings. Under high heterogeneity, PHP-FL surpasses the best-
+performing baseline by 2.09% in accuracy (AM) and reduces the fairness metric (FM) by 1.84%.
+This advantage becomes even more pronounced under low heterogeneity, where PHP-FL achieves
+a remarkable 8.83% accuracy gain over the next best method while maintaining the best fairness
+performance. These results clearly show that PHP-FL is not only robust to different levels of data
+heterogeneity but consistently achieves state-of-the-art performance in both accuracy and fairness.
+Effect of the Pruning Threshold τ on Performance. To investigate the effect of the hyperparam-
+eter τ , we conduct experiments on Fashion-MNIST and CIFAR-10 under the normal pattern. As
+shown in Figure 4a and 4b, on the CIFAR-10 dataset, the accuracy ﬁrst increases and then decreases,
+while the standard deviation initially decreases and then increases, with both metrics achieving their
+best values when τ is set to 0.2. For the Fashion-MNIST dataset, the performance remains relatively
+9
+
+=== PAGE 10 ===
+0.30 0.40 0.50 0.60 0.70 0.80 0.90
+Accuracy
+0
+1
+2
+3
+4
+5
+6
+7
+8Number of Clients
+KDE
+FedAPEN
+0.30 0.40 0.50 0.60 0.70 0.80 0.90
+Accuracy
+0
+1
+2
+3
+4
+5
+6
+7
+8Number of Clients
+KDE
+FedMRL
+0.30 0.40 0.50 0.60 0.70 0.80 0.90
+Accuracy
+0
+1
+2
+3
+4
+5
+6
+7
+8Number of Clients
+KDE
+PHP-FL
+Figure 5: The client accuracy distribution at the best achieved AM (best mean accuracy) on CIFAR-
+10 dataset under the uniform participation pattern for PHP-FL and two other baseline methods.
+stable across different τ , and similarly, the best results are also observed at τ = 0 .2. Therefore, we
+choose τ = 0.2 as the default conﬁguration for all experiments.
+Effect of Adaptive Ensemble Weights. We analyze the behavior of the adaptive ensemble weight
+λ by tracking its average value across clients throughout training under the uniform pattern. As
+depicted in Figure 4c, the dynamics of λ differ signiﬁcantly between datasets. For CIFAR-10, the
+average λ is initialized as 0.5 but quickly decreases and stabilizes around 0.43, indicating a consis-
+tent preference for the global model g within the ensemble on this more complex dataset. In contrast,
+on Fashion-MNIST, the average λ steadily increases from 0.5 to approximately 0.58 by the end of
+training, signifying a growing reliance on the specialized local models w. This demonstrates that
+the adaptive mechanism effectively captures dataset-speciﬁc characteristics, dynamically adjusting
+the ensemble balance between local and global models to leverage their respective strengths during
+the learning process.
+Visualization of Client Accuracy Distribution. To visualize the client accuracy distribution un-
+der the normal participation pattern, we plot histograms and Kernel Density Estimation (KDE) [ 66]
+curves for different methods on CIFAR-10 dataset. As shown in Figure 5, PHP-FL achieves a more
+concentrated accuracy distribution compared to FedAPEN and FedMRL, with clients generally at-
+taining higher accuracy. Moreover, the differences in client performance are signiﬁcantly reduced
+under PHP-FL, highlighting its superiority in both enhancing average performance and promoting
+fairness across clients.
+6 Conclusion
+In this paper, we propose PHP-FL, a novel model-heterogeneous federated learning method address-
+ing the critical challenge of enhancing both accuracy and fairness under inconsistent client partic-
+ipation probabilities. PHP-FL achieves this through two integrated modules: (1) the DEAL mod-
+ule, which harmonizes heterogeneous models via data-free knowledge alignment; and (2) the ISPU
+module, which selectively updates task-relevant parameters to mitigate update conﬂicts. Evaluated
+across diverse participation patterns, PHP-FL demonstrates state-of-the-art performance for both ac-
+curacy and fairness. Ablation study further validates the effectiveness of each module. Our research
+narrows the divide between idealized uniform participation scenarios and practical heterogeneous
+FL systems, providing a lightweight yet robust solution suitable for real-world implementation.
+Limitations. Despite the promising results, PHP-FL has two main limitations:
+First, compared to approaches that exchange only lightweight information ( e.g., logits, proto-
+types [29, 12], or partial model parameters [ 10, 11]), our method introduces non-negligible compu-
+tation and communication overheads. 6 Although employing a smaller auxiliary model can alleviate
+this burden, the additional costs from ensemble training and selective parameter updates still persist.
+Second, our evaluation is conducted on a constrained set of model heterogeneity types, datasets,
+and client participation patterns. Although PHP-FL demonstrates robust performance within these
+scenarios, its generalizability should be further veriﬁed on more diverse and large-scale benchmarks.
+6For an analysis of the communication and computation costs, please refer to Appendix C.7.
+10
+
+=== PAGE 11 ===
+Acknowledgments and Disclosure of Funding
+This work was supported by the National Key Research and Development Program of China under
+Grant No.2024YFE0204500, and in part by the National Natural Science Foundation of China under
+Grant No.92267104.
+References
+[1] Brendan McMahan, Eider Moore, Daniel Ramage, Seth Hampson, and Blaise Aguera y Ar-
+cas. Communication-efﬁcient learning of deep networks from decentralized data. In Artiﬁcial
+intelligence and statistics, pages 1273–1282. PMLR, 2017.
+[2] Mang Y e, Xiuwen Fang, Bo Du, Pong C Y uen, and Dacheng Tao. Heterogeneous federated
+learning: State-of-the-art and research challenges. ACM Computing Surveys, 56(3):1–44, 2023.
+[3] Y ongzhe Jia, Xuyun Zhang, Hongsheng Hu, Kim-Kwang Raymond Choo, Lianyong Qi, Xiao-
+long Xu, Amin Beheshti, and Wanchun Dou. Dapperﬂ: Domain adaptive federated learning
+with model fusion pruning for edge devices. Advances in Neural Information Processing Sys-
+tems, 37:13099–13123, 2024.
+[4] Jingwei Liu, Y ating Li, Mengjiao Zhao, Lei Liu, and Neeraj Kumar. Epfﬂ: enhancing privacy
+and fairness in federated learning for distributed e-healthcare data sharing services. IEEE
+Transactions on Dependable and Secure Computing , 2024.
+[5] Pushpita Chatterjee, Debashis Das, and Danda B Rawat. Federated learning empowered rec-
+ommendation model for ﬁnancial consumer services. IEEE Transactions on Consumer Elec-
+tronics, 70(1):2508–2516, 2023.
+[6] Shuai Wang, Y exuan Fu, Xiang Li, Y unshi Lan, Ming Gao, et al. Dfrd: Data-free robustness
+distillation for heterogeneous federated learning. Advances in Neural Information Processing
+Systems, 36:17854–17866, 2023.
+[7] Liping Yi, Gang Wang, Xiaoguang Liu, Zhuan Shi, and Han Y u. Fedgh: Heterogeneous fed-
+erated learning with generalized global header. In Proceedings of the 31st ACM International
+Conference on Multimedia, pages 8686–8696, 2023.
+[8] Xiuwen Fang and Mang Y e. Noise-robust federated learning with model heterogeneous clients.
+IEEE Transactions on Mobile Computing , 2024.
+[9] Siyuan Wu, Hao Tian, Weiran Zhang, Tingtong Zhu, Fuwen Tian, Zhehong Wang, and
+Wanchun Dou. A heterogeneous federated learning method based on dual teachers knowl-
+edge distillation. In International Conference on Advanced Data Mining and Applications ,
+pages 192–207. Springer, 2024.
+[10] Zhuangdi Zhu, Junyuan Hong, and Jiayu Zhou. Data-free knowledge distillation for hetero-
+geneous federated learning. In International conference on machine learning , pages 12878–
+12889. PMLR, 2021.
+[11] Chuhan Wu, Fangzhao Wu, Lingjuan Lyu, Y ongfeng Huang, and Xing Xie. Communication-
+efﬁcient federated learning via knowledge distillation. Nature communications , 13(1):2032,
+2022.
+[12] Jianqing Zhang, Y ang Liu, Y ang Hua, and Jian Cao. Fedtgp: Trainable global prototypes with
+adaptive-margin-enhanced contrastive learning for data and model heterogeneity in federated
+learning. In Proceedings of the AAAI conference on artiﬁcial intelligence , volume 38, pages
+16768–16776, 2024.
+[13] Liping Yi, Han Y u, Chao Ren, Gang Wang, Xiaoxiao Li, et al. Federated model heteroge-
+neous matryoshka representation learning. Advances in Neural Information Processing Sys-
+tems, 37:66431–66454, 2024.
+11
+
+=== PAGE 12 ===
+[14] Tian Li, Shengyuan Hu, Ahmad Beirami, and Virginia Smith. Ditto: Fair and robust feder-
+ated learning through personalization. In International conference on machine learning, pages
+6357–6368. PMLR, 2021.
+[15] Y ue Tan, Guodong Long, Lu Liu, Tianyi Zhou, Qinghua Lu, Jing Jiang, and Chengqi Zhang.
+Fedproto: Federated prototype learning across heterogeneous clients. In Proceedings of the
+AAAI Conference on Artiﬁcial Intelligence , volume 36, pages 8432–8440, 2022.
+[16] Jianqiao Zhang, Caifeng Shan, and Jungong Han. Fedgmkd: An efﬁcient prototype feder-
+ated learning framework through knowledge distillation and discrepancy-aware aggregation.
+Advances in Neural Information Processing Systems , 37:118326–118356, 2024.
+[17] Michal Y emini, Rajarshi Saha, Emre Ozfatura, Deniz Gündüz, and Andrea J Goldsmith. Ro-
+bust federated learning with connectivity failures: A semi-decentralized framework with col-
+laborative relaying. arXiv preprint arXiv:2202.11850, 2022.
+[18] Hao Y e, Le Liang, and Geoffrey Y e Li. Decentralized federated learning with unreliable com-
+munications. IEEE journal of selected topics in signal processing , 16(3):487–500, 2022.
+[19] Ming Wen, Chengchang Liu, and Y uedong Xu. Communication efﬁcient distributed newton
+method over unreliable networks. In Proceedings of the AAAI Conference on Artiﬁcial Intelli-
+gence, volume 38, pages 15832–15840, 2024.
+[20] Ming Xiang, Stratis Ioannidis, Edmund Y eh, Carlee Joe-Wong, and Lili Su. Efﬁcient federated
+learning against heterogeneous and non-stationary client unavailability. Advances in Neural
+Information Processing Systems, 37:104281–104328, 2024.
+[21] Tao Shen, Jie Zhang, Xinkang Jia, Fengda Zhang, Gang Huang, Pan Zhou, Kun Kuang, Fei
+Wu, and Chao Wu. Federated mutual learning. arXiv preprint arXiv:2006.16765, 2020.
+[22] Y ae Jee Cho, Jianyu Wang, and Gauri Joshi. Towards understanding biased client selection in
+federated learning. In International Conference on Artiﬁcial Intelligence and Statistics , pages
+10351–10375. PMLR, 2022.
+[23] Tiansheng Huang, Weiwei Lin, Wentai Wu, Ligang He, Keqin Li, and Albert Y Zomaya.
+An efﬁciency-boosting client selection scheme for federated learning with fairness guarantee.
+IEEE Transactions on Parallel and Distributed Systems , 32(7):1552–1564, 2020.
+[24] Rituparna Saha, Sudip Misra, Aishwariya Chakraborty, Chandranath Chatterjee, and Pallav Ku-
+mar Deb. Data-centric client selection for federated learning over distributed edge networks.
+IEEE Transactions on Parallel and Distributed Systems , 34(2):675–686, 2023.
+[25] Zhiyuan Ning, Chunlin Tian, Meng Xiao, Wei Fan, Pengyang Wang, Li Li, Pengfei Wang, and
+Y uanchun Zhou. Fedgcs: A generative framework for efﬁcient client selection in federated
+learning via gradient-based optimization. arXiv preprint arXiv:2405.06312, 2024.
+[26] Tian Li, Anit Kumar Sahu, Manzil Zaheer, Maziar Sanjabi, Ameet Talwalkar, and Virginia
+Smith. Federated optimization in heterogeneous networks. Proceedings of Machine learning
+and systems, 2:429–450, 2020.
+[27] Tian Li, Maziar Sanjabi, Ahmad Beirami, and Virginia Smith. Fair resource allocation in
+federated learning. arXiv preprint arXiv:1905.10497, 2019.
+[28] Y uhang Chen, Wenke Huang, and Mang Y e. Fair federated learning under domain skew with
+local consistency and domain diversity. In Proceedings of the IEEE/CVF Conference on Com-
+puter Vision and Pattern Recognition, pages 12077–12086, 2024.
+[29] Daliang Li and Junpu Wang. Fedmd: Heterogenous federated learning via model distillation.
+arXiv preprint arXiv:1910.03581, 2019.
+[30] Tao Lin, Lingjing Kong, Sebastian U Stich, and Martin Jaggi. Ensemble distillation for ro-
+bust model fusion in federated learning. Advances in Neural Information Processing Systems ,
+33:2351–2363, 2020.
+12
+
+=== PAGE 13 ===
+[31] Wenke Huang, Mang Y e, and Bo Du. Learn from others and be yourself in heterogeneous
+federated learning. In Proceedings of the IEEE/CVF Conference on Computer Vision and
+Pattern Recognition, pages 10143–10153, 2022.
+[32] Jaehee Jang, Heoneok Ha, Dahuin Jung, and Sungroh Y oon. Fedclassavg: Local representation
+learning for personalized federated learning on heterogeneous neural networks. In Proceedings
+of the 51st International Conference on Parallel Processing , pages 1–10, 2022.
+[33] Guangyu Sun, Matias Mendieta, Jun Luo, Shandong Wu, and Chen Chen. Fedperﬁx: Towards
+partial model personalization of vision transformers in federated learning. In Proceedings of
+the IEEE/CVF international conference on computer vision , pages 4988–4998, 2023.
+[34] Feijie Wu, Xingchen Wang, Y aqing Wang, Tianci Liu, Lu Su, and Jing Gao. FIARSE: Model-
+heterogeneous federated learning via importance-aware submodel extraction. In The Thirty-
+eighth Annual Conference on Neural Information Processing Systems , 2024.
+[35] Jingwen Zhang, Y uezhou Wu, and Rong Pan. Incentive mechanism for horizontal federated
+learning based on reputation and reverse auction. In Proceedings of the Web Conference 2021,
+pages 947–956, 2021.
+[36] Meirui Jiang, Holger R Roth, Wenqi Li, Dong Y ang, Can Zhao, Vishwesh Nath, Daguang Xu,
+Qi Dou, and Ziyue Xu. Fair federated medical image segmentation via client contribution
+estimation. In Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern
+Recognition, pages 16302–16311, 2023.
+[37] Ruoxi Jia, David Dao, Boxin Wang, Frances Ann Hubis, Nick Hynes, Nezihe Merve Gürel,
+Bo Li, Ce Zhang, Dawn Song, and Costas J Spanos. Towards efﬁcient data valuation based
+on the shapley value. In The 22nd International Conference on Artiﬁcial Intelligence and
+Statistics, pages 1167–1176. PMLR, 2019.
+[38] Nurbek Tastan, Samar Fares, Toluwani Aremu, Samuel Horvath, and Karthik Nandakumar.
+Redeﬁning contributions: Shapley-driven federated learning. In International Joint Conference
+on Artiﬁcial Intelligence (IJCAI) , 2024.
+[39] Y ahya H Ezzeldin, Shen Y an, Chaoyang He, Emilio Ferrara, and A Salman Avestimehr.
+Fairfed: Enabling group fairness in federated learning. In Proceedings of the AAAI confer-
+ence on artiﬁcial intelligence , volume 37, pages 7494–7502, 2023.
+[40] Zeqing He, Zhibo Wang, Xiaowei Dong, Peng Sun, Ju Ren, and Kui Ren. Towards fair feder-
+ated learning via unbiased feature aggregation. IEEE Transactions on Dependable and Secure
+Computing, 2025.
+[41] Zheng Wang, Xiaoliang Fan, Jianzhong Qi, Chenglu Wen, Cheng Wang, and Rongshan Y u.
+Federated learning with fair averaging. arXiv preprint arXiv:2104.14937, 2021.
+[42] Mingyang Wan, Daochen Zha, Ninghao Liu, and Na Zou. In-processing modeling techniques
+for machine learning fairness: A survey. ACM Transactions on Knowledge Discovery from
+Data, 17(3):1–27, 2023.
+[43] Reuben Binns. On the apparent conﬂict between individual and group fairness. In Proceedings
+of the 2020 conference on fairness, accountability, and transparency , pages 514–524, 2020.
+[44] Xinran Gu, Kaixuan Huang, Jingzhao Zhang, and Longbo Huang. Fast federated learning in
+the presence of arbitrary device unavailability. Advances in Neural Information Processing
+Systems, 34:12052–12064, 2021.
+[45] Shiqiang Wang and Mingyue Ji. A lightweight method for tackling unknown participation
+statistics in federated averaging. In The Twelfth International Conference on Learning Repre-
+sentations, 2024.
+[46] Eunjeong Jeong, Seungeun Oh, Hyesung Kim, Jihong Park, Mehdi Bennis, and Seong-Lyun
+Kim. Communication-efﬁcient on-device machine learning: Federated distillation and aug-
+mentation under non-iid private data. arXiv preprint arXiv:1811.11479, 2018.
+13
+
+=== PAGE 14 ===
+[47] Zhen Qin, Shuiguang Deng, Mingyu Zhao, and Xueqiang Y an. Fedapen: Personalized cross-
+silo federated learning with adaptability to statistical heterogeneity. In Proceedings of the 29th
+ACM SIGKDD conference on knowledge discovery and data mining , pages 1954–1964, 2023.
+[48] Arthur Gretton, Karsten M Borgwardt, Malte J Rasch, Bernhard Schölkopf, and Alexander
+Smola. A kernel two-sample test. The Journal of Machine Learning Research, 13(1):723–773,
+2012.
+[49] Devansh Arpit, Huan Wang, Yingbo Zhou, and Caiming Xiong. Ensemble of averages: Im-
+proving model selection and boosting performance in domain generalization. Advances in
+Neural Information Processing Systems, 35:8265–8277, 2022.
+[50] Xiaopeng Jiang and Cristian Borcea. Complement sparsiﬁcation: Low-overhead model prun-
+ing for federated learning. In Proceedings of the AAAI Conference on Artiﬁcial Intelligence ,
+volume 37, pages 8087–8095, 2023.
+[51] Liyang Liu, Shilong Zhang, Zhanghui Kuang, Aojun Zhou, Jing-Hao Xue, Xinjiang Wang,
+Yimin Chen, Wenming Y ang, Qingmin Liao, and Wayne Zhang. Group ﬁsher pruning for prac-
+tical network compression. In International Conference on Machine Learning , pages 7021–
+7032. PMLR, 2021.
+[52] Xiyuan Y ang, Wenke Huang, and Mang Y e. Fedas: Bridging inconsistency in personalized
+federated learning. In Proceedings of the IEEE/CVF Conference on Computer Vision and
+Pattern Recognition, pages 11986–11995, 2024.
+[53] Michael Santacroce, Zixin Wen, Y elong Shen, and Y uanzhi Li. What matters in the structured
+pruning of generative language models? arXiv preprint arXiv:2302.03773, 2023.
+[54] Xinghao Wu, Xuefeng Liu, Jianwei Niu, Guogang Zhu, and Shaojie Tang. Bold but cautious:
+Unlocking the potential of personalized federated learning through cautiously aggressive col-
+laboration. In Proceedings of the IEEE/CVF international conference on computer vision ,
+pages 19375–19384, 2023.
+[55] Zhuang Liu, Jianguo Li, Zhiqiang Shen, Gao Huang, Shoumeng Y an, and Changshui Zhang.
+Learning efﬁcient convolutional networks through network slimming. In 2017 IEEE Interna-
+tional Conference on Computer Vision (ICCV) , pages 2755–2763, 2017.
+[56] Han Xiao, Kashif Rasul, and Roland V ollgraf. Fashion-mnist: a novel image dataset for bench-
+marking machine learning algorithms. arXiv preprint arXiv:1708.07747, 2017.
+[57] Alex Krizhevsky, Geoffrey Hinton, et al. Learning multiple layers of features from tiny images.
+2009.
+[58] Qinbin Li, Yiqun Diao, Quan Chen, and Bingsheng He. Federated learning on non-iid data si-
+los: An experimental study. In 2022 IEEE 38th International Conference on Data Engineering
+(ICDE), pages 965–978. IEEE, 2022.
+[59] Jianqing Zhang, Y ang Hua, Hao Wang, Tao Song, Zhengui Xue, Ruhui Ma, Jian Cao, and
+Haibing Guan. Gpﬂ: Simultaneously learning global and personalized feature information for
+personalized federated learning. In Proceedings of the IEEE/CVF International Conference on
+Computer Vision, pages 5041–5051, 2023.
+[60] Christian Szegedy, Wei Liu, Y angqing Jia, Pierre Sermanet, Scott Reed, Dragomir Anguelov,
+Dumitru Erhan, Vincent V anhoucke, and Andrew Rabinovich. Going deeper with convolutions.
+In Proceedings of the IEEE conference on computer vision and pattern recognition , pages 1–9,
+2015.
+[61] Gao Huang, Zhuang Liu, Laurens V an Der Maaten, and Kilian Q Weinberger. Densely con-
+nected convolutional networks. In Proceedings of the IEEE conference on computer vision and
+pattern recognition, pages 4700–4708, 2017.
+[62] Mingxing Tan and Quoc Le. Efﬁcientnet: Rethinking model scaling for convolutional neural
+networks. In International conference on machine learning , pages 6105–6114. PMLR, 2019.
+14
+
+=== PAGE 15 ===
+[63] Kaiming He, Xiangyu Zhang, Shaoqing Ren, and Jian Sun. Deep residual learning for image
+recognition. In Proceedings of the IEEE conference on computer vision and pattern recogni-
+tion, pages 770–778, 2016.
+[64] Jianqing Zhang, Y ang Liu, Y ang Hua, Hao Wang, Tao Song, Zhengui Xue, Ruhui Ma, and Jian
+Cao. Pﬂlib: A beginner-friendly and comprehensive personalized federated learning library
+and benchmark. Journal of Machine Learning Research , 26(50):1–10, 2025.
+[65] Adam Paszke, Sam Gross, Francisco Massa, Adam Lerer, James Bradbury, Gregory Chanan,
+Trevor Killeen, Zeming Lin, Natalia Gimelshein, Luca Antiga, et al. Pytorch: An imperative
+style, high-performance deep learning library. Advances in neural information processing
+systems, 32, 2019.
+[66] Emanuel Parzen. On estimation of a probability density function and mode. The annals of
+mathematical statistics, 33(3):1065–1076, 1962.
+[67] Keith Bonawitz, Vladimir Ivanov, Ben Kreuter, Antonio Marcedone, H Brendan McMahan,
+Sarvar Patel, Daniel Ramage, Aaron Segal, and Karn Seth. Practical secure aggregation for
+privacy-preserving machine learning. In proceedings of the 2017 ACM SIGSAC Conference on
+Computer and Communications Security , pages 1175–1191, 2017.
+[68] Galen Andrew, Om Thakkar, Brendan McMahan, and Swaroop Ramaswamy. Differentially
+private learning with adaptive clipping. Advances in Neural Information Processing Systems ,
+34:17455–17466, 2021.
+15
+
+=== PAGE 16 ===
+NeurIPS Paper Checklist
+1. Claims
+Question: Do the main claims made in the abstract and introduction accurately reﬂect the
+paper’s contributions and scope?
+Answer: [Y es]
+Justiﬁcation: The Abstract and Introduction Sections accurately reﬂect the paper’s contri-
+butions and scope.
+Guidelines:
+• The answer NA means that the abstract and introduction do not include the claims
+made in the paper.
+• The abstract and/or introduction should clearly state the claims made, including the
+contributions made in the paper and important assumptions and limitations. A No or
+NA answer to this question will not be perceived well by the reviewers.
+• The claims made should match theoretical and experimental results, and reﬂect how
+much the results can be expected to generalize to other settings.
+• It is ﬁne to include aspirational goals as motivation as long as it is clear that these
+goals are not attained by the paper.
+2. Limitations
+Question: Does the paper discuss the limitations of the work performed by the authors?
+Answer: [Y es]
+Justiﬁcation: The discussion about the limitations of this work is provided in the Conclu-
+sion.
+Guidelines:
+• The answer NA means that the paper has no limitation while the answer No means
+that the paper has limitations, but those are not discussed in the paper.
+• The authors are encouraged to create a separate "Limitations" section in their paper.
+• The paper should point out any strong assumptions and how robust the results are to
+violations of these assumptions (e.g., independence assumptions, noiseless settings,
+model well-speciﬁcation, asymptotic approximations only holding locally). The au-
+thors should reﬂect on how these assumptions might be violated in practice and what
+the implications would be.
+• The authors should reﬂect on the scope of the claims made, e.g., if the approach was
+only tested on a few datasets or with a few runs. In general, empirical results often
+depend on implicit assumptions, which should be articulated.
+• The authors should reﬂect on the factors that inﬂuence the performance of the ap-
+proach. For example, a facial recognition algorithm may perform poorly when image
+resolution is low or images are taken in low lighting. Or a speech-to-text system might
+not be used reliably to provide closed captions for online lectures because it fails to
+handle technical jargon.
+• The authors should discuss the computational efﬁciency of the proposed algorithms
+and how they scale with dataset size.
+• If applicable, the authors should discuss possible limitations of their approach to ad-
+dress problems of privacy and fairness.
+• While the authors might fear that complete honesty about limitations might be used by
+reviewers as grounds for rejection, a worse outcome might be that reviewers discover
+limitations that aren’t acknowledged in the paper. The authors should use their best
+judgment and recognize that individual actions in favor of transparency play an impor-
+tant role in developing norms that preserve the integrity of the community. Reviewers
+will be speciﬁcally instructed to not penalize honesty concerning limitations.
+3. Theory assumptions and proofs
+Question: For each theoretical result, does the paper provide the full set of assumptions and
+a complete (and correct) proof?
+16
+
+=== PAGE 17 ===
+Answer: [NA]
+Justiﬁcation: This paper does not include theoretical results.
+Guidelines:
+• The answer NA means that the paper does not include theoretical results.
+• All the theorems, formulas, and proofs in the paper should be numbered and cross-
+referenced.
+• All assumptions should be clearly stated or referenced in the statement of any theo-
+rems.
+• The proofs can either appear in the main paper or the supplemental material, but if
+they appear in the supplemental material, the authors are encouraged to provide a
+short proof sketch to provide intuition.
+• Inversely, any informal proof provided in the core of the paper should be comple-
+mented by formal proofs provided in appendix or supplemental material.
+• Theorems and Lemmas that the proof relies upon should be properly referenced.
+4. Experimental result reproducibility
+Question: Does the paper fully disclose all the information needed to reproduce the main
+experimental results of the paper to the extent that it affects the main claims and/or conclu-
+sions of the paper (regardless of whether the code and data are provided or not)?
+Answer: [Y es]
+Justiﬁcation: This paper presents comprehensive details of the experimental setup, and
+further provides the hyperparameters of baseline methods. This paper also provides an
+URL link to our released code.
+Guidelines:
+• The answer NA means that the paper does not include experiments.
+• If the paper includes experiments, a No answer to this question will not be perceived
+well by the reviewers: Making the paper reproducible is important, regardless of
+whether the code and data are provided or not.
+• If the contribution is a dataset and/or model, the authors should describe the steps
+taken to make their results reproducible or veriﬁable.
+• Depending on the contribution, reproducibility can be accomplished in various ways.
+For example, if the contribution is a novel architecture, describing the architecture
+fully might sufﬁce, or if the contribution is a speciﬁc model and empirical evaluation,
+it may be necessary to either make it possible for others to replicate the model with
+the same dataset, or provide access to the model. In general. releasing code and data
+is often one good way to accomplish this, but reproducibility can also be provided via
+detailed instructions for how to replicate the results, access to a hosted model (e.g., in
+the case of a large language model), releasing of a model checkpoint, or other means
+that are appropriate to the research performed.
+• While NeurIPS does not require releasing code, the conference does require all sub-
+missions to provide some reasonable avenue for reproducibility, which may depend
+on the nature of the contribution. For example
+(a) If the contribution is primarily a new algorithm, the paper should make it clear
+how to reproduce that algorithm.
+(b) If the contribution is primarily a new model architecture, the paper should describe
+the architecture clearly and fully.
+(c) If the contribution is a new model (e.g., a large language model), then there should
+either be a way to access this model for reproducing the results or a way to re-
+produce the model (e.g., with an open-source dataset or instructions for how to
+construct the dataset).
+(d) We recognize that reproducibility may be tricky in some cases, in which case au-
+thors are welcome to describe the particular way they provide for reproducibility.
+In the case of closed-source models, it may be that access to the model is limited in
+some way (e.g., to registered users), but it should be possible for other researchers
+to have some path to reproducing or verifying the results.
+17
+
+=== PAGE 18 ===
+5. Open access to data and code
+Question: Does the paper provide open access to the data and code, with sufﬁcient instruc-
+tions to faithfully reproduce the main experimental results, as described in supplemental
+material?
+Answer: [Y es]
+Justiﬁcation: This paper provides an URL link to our released code. The public datasets
+used in this paper are properly referenced.
+Guidelines:
+• The answer NA means that paper does not include experiments requiring code.
+• Please see the NeurIPS code and data submission guidelines ( https://nips.cc/
+public/guides/CodeSubmissionPolicy) for more details.
+• While we encourage the release of code and data, we understand that this might not
+be possible, so No is an acceptable answer. Papers cannot be rejected simply for not
+including code, unless this is central to the contribution (e.g., for a new open-source
+benchmark).
+• The instructions should contain the exact command and environment needed to run to
+reproduce the results. See the NeurIPS code and data submission guidelines ( https:
+//nips.cc/public/guides/CodeSubmissionPolicy) for more details.
+• The authors should provide instructions on data access and preparation, including how
+to access the raw data, preprocessed data, intermediate data, and generated data, etc.
+• The authors should provide scripts to reproduce all experimental results for the new
+proposed method and baselines. If only a subset of experiments are reproducible, they
+should state which ones are omitted from the script and why.
+• At submission time, to preserve anonymity, the authors should release anonymized
+versions (if applicable).
+• Providing as much information as possible in supplemental material (appended to the
+paper) is recommended, but including URLs to data and code is permitted.
+6. Experimental setting/details
+Question: Does the paper specify all the training and test details (e.g., data splits, hyper-
+parameters, how they were chosen, type of optimizer, etc.) necessary to understand the
+results?
+Answer: [Y es]
+Justiﬁcation: This paper presents comprehensive details of the experimental setup in the
+Experimental Section and further provides the hyperparameters of baseline methods in Ap-
+pendix.
+Guidelines:
+• The answer NA means that the paper does not include experiments.
+• The experimental setting should be presented in the core of the paper to a level of
+detail that is necessary to appreciate the results and make sense of them.
+• The full details can be provided either with the code, in appendix, or as supplemental
+material.
+7. Experiment statistical signiﬁcance
+Question: Does the paper report error bars suitably and correctly deﬁned or other appropri-
+ate information about the statistical signiﬁcance of the experiments?
+Answer: [Y es]
+Justiﬁcation: The paper reports experimental results averaged over 3 runs with correspond-
+ing standard deviations in the main results.
+Guidelines:
+• The answer NA means that the paper does not include experiments.
+• The authors should answer "Y es" if the results are accompanied by error bars, conﬁ-
+dence intervals, or statistical signiﬁcance tests, at least for the experiments that support
+the main claims of the paper.
+18
+
+=== PAGE 19 ===
+• The factors of variability that the error bars are capturing should be clearly stated (for
+example, train/test split, initialization, random drawing of some parameter, or overall
+run with given experimental conditions).
+• The method for calculating the error bars should be explained (closed form formula,
+call to a library function, bootstrap, etc.)
+• The assumptions made should be given (e.g., Normally distributed errors).
+• It should be clear whether the error bar is the standard deviation or the standard error
+of the mean.
+• It is OK to report 1-sigma error bars, but one should state it. The authors should prefer-
+ably report a 2-sigma error bar than state that they have a 96% CI, if the hypothesis of
+Normality of errors is not veriﬁed.
+• For asymmetric distributions, the authors should be careful not to show in tables or
+ﬁgures symmetric error bars that would yield results that are out of range (e.g. negative
+error rates).
+• If error bars are reported in tables or plots, The authors should explain in the text how
+they were calculated and reference the corresponding ﬁgures or tables in the text.
+8. Experiments compute resources
+Question: For each experiment, does the paper provide sufﬁcient information on the com-
+puter resources (type of compute workers, memory, time of execution) needed to reproduce
+the experiments?
+Answer: [Y es]
+Justiﬁcation: This paper describes the experimental environment in the Experiments Sec-
+tion and our code.
+Guidelines:
+• The answer NA means that the paper does not include experiments.
+• The paper should indicate the type of compute workers CPU or GPU, internal cluster,
+or cloud provider, including relevant memory and storage.
+• The paper should provide the amount of compute required for each of the individual
+experimental runs as well as estimate the total compute.
+• The paper should disclose whether the full research project required more compute
+than the experiments reported in the paper (e.g., preliminary or failed experiments
+that didn’t make it into the paper).
+9. Code of ethics
+Question: Does the research conducted in the paper conform, in every respect, with the
+NeurIPS Code of Ethics https://neurips.cc/public/EthicsGuidelines?
+Answer: [Y es]
+Justiﬁcation: This paper fully complies with the NeurIPS Code of Ethics in all respects.
+Guidelines:
+• The answer NA means that the authors have not reviewed the NeurIPS Code of Ethics.
+• If the authors answer No, they should explain the special circumstances that require a
+deviation from the Code of Ethics.
+• The authors should make sure to preserve anonymity (e.g., if there is a special consid-
+eration due to laws or regulations in their jurisdiction).
+10. Broader impacts
+Question: Does the paper discuss both potential positive societal impacts and negative
+societal impacts of the work performed?
+Answer: [No]
+Justiﬁcation: There is no societal impact of the work performed.
+Guidelines:
+• The answer NA means that there is no societal impact of the work performed.
+19
+
+=== PAGE 20 ===
+• If the authors answer NA or No, they should explain why their work has no societal
+impact or why the paper does not address societal impact.
+• Examples of negative societal impacts include potential malicious or unintended uses
+(e.g., disinformation, generating fake proﬁles, surveillance), fairness considerations
+(e.g., deployment of technologies that could make decisions that unfairly impact spe-
+ciﬁc groups), privacy considerations, and security considerations.
+• The conference expects that many papers will be foundational research and not tied
+to particular applications, let alone deployments. However, if there is a direct path to
+any negative applications, the authors should point it out. For example, it is legitimate
+to point out that an improvement in the quality of generative models could be used to
+generate deepfakes for disinformation. On the other hand, it is not needed to point out
+that a generic algorithm for optimizing neural networks could enable people to train
+models that generate Deepfakes faster.
+• The authors should consider possible harms that could arise when the technology is
+being used as intended and functioning correctly, harms that could arise when the
+technology is being used as intended but gives incorrect results, and harms following
+from (intentional or unintentional) misuse of the technology.
+• If there are negative societal impacts, the authors could also discuss possible mitiga-
+tion strategies (e.g., gated release of models, providing defenses in addition to attacks,
+mechanisms for monitoring misuse, mechanisms to monitor how a system learns from
+feedback over time, improving the efﬁciency and accessibility of ML).
+11. Safeguards
+Question: Does the paper describe safeguards that have been put in place for responsible
+release of data or models that have a high risk for misuse (e.g., pretrained language models,
+image generators, or scraped datasets)?
+Answer: [No]
+Justiﬁcation: This paper poses no such risks.
+Guidelines:
+• The answer NA means that the paper poses no such risks.
+• Released models that have a high risk for misuse or dual-use should be released with
+necessary safeguards to allow for controlled use of the model, for example by re-
+quiring that users adhere to usage guidelines or restrictions to access the model or
+implementing safety ﬁlters.
+• Datasets that have been scraped from the Internet could pose safety risks. The authors
+should describe how they avoided releasing unsafe images.
+• We recognize that providing effective safeguards is challenging, and many papers do
+not require this, but we encourage authors to take this into account and make a best
+faith effort.
+12. Licenses for existing assets
+Question: Are the creators or original owners of assets (e.g., code, data, models), used in
+the paper, properly credited and are the license and terms of use explicitly mentioned and
+properly respected?
+Answer: [Y es]
+Justiﬁcation: The assets used in this paper are properly credited. The license and terms of
+use are explicitly mentioned and properly respected.
+Guidelines:
+• The answer NA means that the paper does not use existing assets.
+• The authors should cite the original paper that produced the code package or dataset.
+• The authors should state which version of the asset is used and, if possible, include a
+URL.
+• The name of the license (e.g., CC-BY 4.0) should be included for each asset.
+• For scraped data from a particular source (e.g., website), the copyright and terms of
+service of that source should be provided.
+20
+
+=== PAGE 21 ===
+• If assets are released, the license, copyright information, and terms of use in the pack-
+age should be provided. For popular datasets, paperswithcode.com/datasets has
+curated licenses for some datasets. Their licensing guide can help determine the li-
+cense of a dataset.
+• For existing datasets that are re-packaged, both the original license and the license of
+the derived asset (if it has changed) should be provided.
+• If this information is not available online, the authors are encouraged to reach out to
+the asset’s creators.
+13. New assets
+Question: Are new assets introduced in the paper well documented and is the documenta-
+tion provided alongside the assets?
+Answer: [NA]
+Justiﬁcation: This paper does not release new assets.
+Guidelines:
+• The answer NA means that the paper does not release new assets.
+• Researchers should communicate the details of the dataset/code/model as part of their
+submissions via structured templates. This includes details about training, license,
+limitations, etc.
+• The paper should discuss whether and how consent was obtained from people whose
+asset is used.
+• At submission time, remember to anonymize your assets (if applicable). Y ou can
+either create an anonymized URL or include an anonymized zip ﬁle.
+14. Crowdsourcing and research with human subjects
+Question: For crowdsourcing experiments and research with human subjects, does the pa-
+per include the full text of instructions given to participants and screenshots, if applicable,
+as well as details about compensation (if any)?
+Answer: [NA]
+Justiﬁcation: This paper does not involve crowdsourcing nor research with human subjects.
+Guidelines:
+• The answer NA means that the paper does not involve crowdsourcing nor research
+with human subjects.
+• Including this information in the supplemental material is ﬁne, but if the main contri-
+bution of the paper involves human subjects, then as much detail as possible should
+be included in the main paper.
+• According to the NeurIPS Code of Ethics, workers involved in data collection, cura-
+tion, or other labor should be paid at least the minimum wage in the country of the
+data collector.
+15. Institutional review board (IRB) approvals or equivalent for research with human
+subjects
+Question: Does the paper describe potential risks incurred by study participants, whether
+such risks were disclosed to the subjects, and whether Institutional Review Board (IRB)
+approvals (or an equivalent approval/review based on the requirements of your country or
+institution) were obtained?
+Answer: [NA]
+Justiﬁcation: This paper does not involve crowdsourcing nor research with human subjects.
+Guidelines:
+• The answer NA means that the paper does not involve crowdsourcing nor research
+with human subjects.
+• Depending on the country in which research is conducted, IRB approval (or equiva-
+lent) may be required for any human subjects research. If you obtained IRB approval,
+you should clearly state this in the paper.
+21
+
+=== PAGE 22 ===
+• We recognize that the procedures for this may vary signiﬁcantly between institutions
+and locations, and we expect authors to adhere to the NeurIPS Code of Ethics and the
+guidelines for their institution.
+• For initial submissions, do not include any information that would break anonymity
+(if applicable), such as the institution conducting the review.
+16. Declaration of LLM usage
+Question: Does the paper describe the usage of LLMs if it is an important, original, or
+non-standard component of the core methods in this research? Note that if the LLM is used
+only for writing, editing, or formatting purposes and does not impact the core methodology,
+scientiﬁc rigorousness, or originality of the research, declaration is not required.
+Answer: [NA]
+Justiﬁcation: The core method development in this research does not involve LLMs as any
+important, original, or non-standard components.
+Guidelines:
+• The answer NA means that the core method development in this research does not
+involve LLMs as any important, original, or non-standard components.
+• Please refer to our LLM policy ( https://neurips.cc/Conferences/2025/LLM)
+for what should or should not be described.
+22
+
+=== PAGE 23 ===
+APPENDIX
+A Pseudo codes of PHP-FL
+The algorithm is outlined in Algorithm 1. Please refer to Section 4.1 for more details.
+Algorithm 1: PHP-FL
+Input: Auxiliary small models {g0
+i }K
+i=1, Local models {w0
+i }K
+i=1, Total number of rounds T ,
+Dataset partitions {Di}K
+i=1.
+Output: Optimized local models {wT
+i }K
+i=1 and auxiliary small models {gT
+i }K
+i=1.
+Initialize historical mask {M h
+i }K
+i=1 ← 1|g| and global model G0;
+for round t = 1 to T do
+Server Side:
+Collect the IDs of active clients At ⊆ {1, ..., K};
+Broadcast the pruned auxiliary small model Gt−1 ⊙ M h
+i to client i ∈ A t;
+{gt
+i , M t
+i }i∈At ← Client Update;
+Update the historical mask M h
+i ∈ Mhist for clients in At: M h
+i ← M t
+i .
+Aggregate auxiliary small models: Gt = 1
+|At|
+P
+i∈At gt
+i ;
+Client Update:
+for each client i ∈ A t in parallel do
+Download Gt−1 ⊙ M h
+i from server;
+ˆgt−1
+i ← initialize local auxiliary model by Eq. 11;
+Randomly divides the training set Di into Da
+i and Ds
+i ;
+for batch (x, y) ∈ Da
+i do
+λt
+i ← update ensemble weight by Eq. 5;
+end
+for batch (x, y) ∈ Ds
+i do
+Lw ←Calculate local training loss by Eq. 6;
+Lg ← Calculate the symmetrical loss similar to Eq. 6;
+wt
+i, gt
+i ← update the local model and local auxiliary model by Eq. 7;
+end
+αt
+i ← calculate update ratio by Eq. 9;
+M t
+i ← obtain binary mask by Eq. 10 ;
+Upload gt
+i and the binary mask M t
+i to server;
+end
+end
+B Additional Experimental Details
+B.1 Hyperparameter Settings
+We provide a detailed summary of the hyperparameter conﬁgurations used in our experiments in
+Table 4. These settings are carefully selected to ensure fair comparison across different baselines. 7
+For the proposed PHP-FL, the standardized feature dimension d is set to 512. The adaptability set
+Da
+i consists of 10% randomly sampled data from the training set Di. The ensemble weight λt
+i is
+trained for 10 epochs in each round. Additionally, following the hyperparameter search detailed
+in Section 5.4 and C.6, the pruning threshold τ and the sharpness factor δ are set to 0.2 and 5,
+respectively. Unless otherwise speciﬁed, all experiments follow the same training setting.
+7Note that these parameter names in different methods are consistent with the original references and are
+independent of the notation used in our work.
+23
+
+=== PAGE 24 ===
+Table 4: Hyperparameter settings used in our experiments.
+Type Hyperparameters Value
+FL training
+settings
+Local learning rate η 0.001
+Batch size 64
+Local epochs per round E 5
+Total rounds T 100
+Number of clients K 20
+Framework-
+speciﬁc
+α in FML 0.5
+β in FML 0.5
+Server learning epochs in FedGen 100
+Server learning rate in FedGen 0.1
+dη in FedGen 32
+dh in FedGen 512
+Tstart in FedKD 0.95
+Tend in FedKD 0.98
+ηs in FedKD 0.001
+Adaptation set ratio in FedAPEN 10%
+Server learning epochs in FedTGP 100
+τ in FedTGP 100
+λ in FedTGP 0.1
+d1 in FedMRL 128
+λ in Ditto 0.1
+α for CIFAR-10 in FedFV 0.1
+α for Fashion-MNIST in FedFV 0
+τ for CIFAR-10 in FedFV 10
+τ for Fashion-MNIST in FedFV 0
+β in FedHEAL 0.4
+τ in FedHEAL 0.4
+K in FedAU 1
+B.2 Visualization of Data Distributions
+To intuitively illustrate the data heterogeneity across clients in our federated learning setting, we
+plot scatter diagrams based on the CIFAR-10 and Fashion-MNIST datasets in Figure 6. Speciﬁcally,
+we simulate heterogeneous data distributions by allocating the proportion of class j to each client k
+according to a Dirichlet distribution ( pj,k ∼ Dir(β)), where a smaller β indicates more extreme data
+heterogeneity across clients. In our experiments, we set β = 0 .1 for Fashion-MNIST and β = 0 .5
+for CIFAR-10, respectively.
+B.3 Model Architectures Used in Experiments
+we utilize four widely recognized Convolutional Neural Network (CNN) architectures with varying
+designs and complexities. We report the corresponding parameter counts of each model in Table 5.
+These serve as the local models for clients in our heterogeneous federated learning setup:
+• GoogLeNet [60]: Introduced the inception module, which performs convolutions with
+multiple ﬁlter sizes in parallel within the same block. It was designed for computational
+efﬁciency and won the ILSVRC 2014 challenge.
+• DenseNet-121 [61]: Characterized by its dense connectivity pattern, where each layer re-
+ceives feature maps from all preceding layers within a dense block. This encourages feature
+reuse, strengthens gradient ﬂow, and improves parameter efﬁciency. The ‘121’ denotes the
+number of layers with weights.
+• EfﬁcientNet-B1 [62]: Developed using neural architecture search and a compound scaling
+method that uniformly scales network width, depth, and resolution. It aims to balance
+model accuracy with computational efﬁciency (FLOPS and parameters). B1 is a speciﬁc
+scaled version providing a good trade-off.
+24
+
+=== PAGE 25 ===
+/uni00000013/uni00000014/uni00000015/uni00000016/uni00000017/uni00000018/uni00000019/uni0000001a/uni0000001b/uni0000001c/uni00000014/uni00000013/uni00000014/uni00000014/uni00000014/uni00000015/uni00000014/uni00000016/uni00000014/uni00000017/uni00000014/uni00000018/uni00000014/uni00000019/uni00000014/uni0000001a/uni00000014/uni0000001b/uni00000014/uni0000001c
+/uni00000026/uni0000004f/uni0000004c/uni00000048/uni00000051/uni00000057/uni00000003/uni0000002c/uni00000027
+/uni00000013
+/uni00000014
+/uni00000015
+/uni00000016
+/uni00000017
+/uni00000018
+/uni00000019
+/uni0000001a
+/uni0000001b
+/uni0000001c/uni00000026/uni0000004f/uni00000044/uni00000056/uni00000056/uni00000003/uni0000002c/uni00000027
+(a) Fashion-MNIST
+/uni00000013/uni00000014/uni00000015/uni00000016/uni00000017/uni00000018/uni00000019/uni0000001a/uni0000001b/uni0000001c/uni00000014/uni00000013/uni00000014/uni00000014/uni00000014/uni00000015/uni00000014/uni00000016/uni00000014/uni00000017/uni00000014/uni00000018/uni00000014/uni00000019/uni00000014/uni0000001a/uni00000014/uni0000001b/uni00000014/uni0000001c
+/uni00000026/uni0000004f/uni0000004c/uni00000048/uni00000051/uni00000057/uni00000003/uni0000002c/uni00000027
+/uni00000013
+/uni00000014
+/uni00000015
+/uni00000016
+/uni00000017
+/uni00000018
+/uni00000019
+/uni0000001a
+/uni0000001b
+/uni0000001c/uni00000026/uni0000004f/uni00000044/uni00000056/uni00000056/uni00000003/uni0000002c/uni00000027 (b) CIFAR-10
+Figure 6: The data distribution of 20 clients in our experiments.
+• ResNet-18 [63]: Employs residual connections (skip connections) that allow gradients to
+bypass layers, enabling the training of much deeper networks by mitigating the vanish-
+ing gradient problem. ResNet-18 is a relatively shallow variant with 18 layers containing
+weights.
+For a fair comparison, we adopt GoogLeNet [ 60] as the auxiliary model architecture for all methods
+that utilize an auxiliary model, including our proposed method PHP-FL, since it has the smallest
+number of parameters among the four candidate models.
+Table 5: Parameter counts of the evaluated models. “M” is short for million.
+Model Parameter counts
+GoogleNet [60] 5.61M
+DenseNet-121 [61] 6.96M
+EfﬁcientNet-B1 [62] 6.52M
+ResNet-18 [63] 11.18M
+C Additional Experimental Results
+C.1 Comparison of Training Curves for Accuracy and Standard Deviation
+To evaluate the convergence behavior and training stability of PHP-FL, we compare the training
+curves in terms of average accuracy and standard deviation across training rounds on Fashion-
+MNIST and CIFAR-10 under the uniform pattern. As shown in Figure 7 and 8, the results on
+both datasets demonstrate that the proposed method PHP-FL signiﬁcantly accelerates convergence
+compared to baselines, while maintaining a low and stable standard deviation throughout training,
+which effectively enhances performance and fairness across clients.
+C.2 Comparison to More State-of-the-Arts Methods in the Homogeneous Setting
+To further validate the generality and effectiveness of PHP-FL, we conduct additional experiments
+in the homogeneous setting and report the results in Table 6. Speciﬁcally, all clients adopt the iden-
+tical GoogLeNet architectures [ 60]. Additional compared methods include FedFV [ 41] and Fed-
+HEAL [28], which are designed to improve client fairness ( Fair-FL), as well as FedAWE [ 20] and
+FedAU [45], which address client unavailability ( CU-FL). As shown in Table 6, PHP-FL achieves
+the highest average accuracy (AM) across all patterns, while also maintaining a highly competitive
+performance fairness (FM). Although FedHEAL exhibits slightly better fairness, its average accu-
+racy is signiﬁcantly inferior compared to PHP-FL. This highlights that PHP-FL not only delivers
+the highest average performance but also achieves fairness that is highly competitive with the best
+fair-FL methods, striking an exceptional balance that surpasses existing methods in overall effective-
+ness even in the homogeneous setting. These results underscore the robustness and practicality of
+PHP-FL even in homogeneous FL scenarios, reafﬁrming its overall superiority.
+25
+
+=== PAGE 26 ===
+0 20 40 60 80 100
+Step
+0.60
+0.65
+0.70
+0.75
+0.80
+0.85
+0.90
+0.95
+1.00Accuracy
+Ours
+FedMRL
+Local
+FedTGP
+FedGen
+FML
+FedKD
+FedAPEN
+(a) Average accuracy
+0 20 40 60 80 100
+Step
+0.0
+0.1
+0.2
+0.3
+0.4
+0.5Standard Deviation
+Ours
+FedMRL
+Local
+FedTGP
+FedGen
+FML
+FedKD
+FedAPEN (b) Standard deviation
+Figure 7: Comparison of training curves on Fashion-MNIST.
+0 20 40 60 80 100
+Step
+0.0
+0.1
+0.2
+0.3
+0.4
+0.5
+0.6
+0.7Accuracy
+Ours
+FedTGP
+FedGen
+FedMRL
+Local
+FML
+FedKD
+FedAPEN
+(a) Average accuracy
+0 20 40 60 80 100
+Step
+0.05
+0.10
+0.15
+0.20
+0.25
+0.30Standard Deviation
+Ours
+FedTGP
+FedGen
+FedMRL
+Local
+FML
+FedKD
+FedAPEN (b) Standard deviation
+Figure 8: Comparison of training curves on CIFAR-10.
+Table 6: Comparison with the state-of-the-art methods on CIFAR-10 in the homogeneous setting.
+Best in bold and second with underline .
+Type Methods Uniform [a = 0 .5] Normal [µ = 0 .5, σ = 0 .2] Linear
+[
+a = 0 .05, d = K −2
+K (K −1)
+]
+Type Methods
+AM (%) ↑ FM (%) ↓ AM (%) ↑ FM (%) ↓ AM (%) ↑ FM (%) ↓
+MH-FL
+FML [arXiv20] 41.31 ±0.46 13.28 ±0.31 41.00 ±0.48 13.46 ±0.35 39.21 ±2.80 13.37 ±0.30
+FedGen [ICML21] 61.79 ±0.13 8.80 ±0.46 61.73 ±0.15 8.95 ±0.25 61.60 ±0.29 8.99 ±0.20
+FedKD [NC22] 61.26 ±0.08 10.03 ±0.10 60.96 ±0.38 9.93 ±0.11 60.73 ±0.70 10.01 ±0.09
+FedAPEN [KDD23] 66.49 ±0.30 8.14 ±0.16 66.54 ±0.31 8.26 ±0.18 66.60 ±0.35 8.25 ±0.17
+FedTGP [AAAI24] 60.12 ±0.48 9.97 ±0.46 60.15 ±0.46 10.20 ±0.31 59.88 ±0.69 10.14 ±0.31
+FedMRL [NIPS24] 62.86 ±0.62 8.60 ±0.16 62.86 ±0.62 8.95 ±0.58 62.58 ±0.54 8.80 ±0.38
+Fair-FL FedFV [IJCAI21] 59.75 ±0.87 11.03 ±1.63 60.05 ±1.31 10.54 ±2.02 58.32 ±1.45 11.08 ±1.60
+FedHEAL [CVPR24] 59.43 ±0.83 7.03 ±0.76 59.36 ±0.75 7.93 ±1.14 59.15 ±0.57 7.94 ±1.15
+CU-FL FedAWE [NIPS24] 62.75 ±0.09 9.39 ±0.30 62.68 ±0.13 9.31 ±0.25 62.54 ±0.31 9.36 ±0.28
+FedAU [ICLR24] 62.79 ±0.20 9.17 ±0.19 62.72 ±0.25 9.21 ±0.29 62.59 ±0.47 9.35 ±0.15
+All PHP-FL (Ours) 67.99 ±0.16 8.05 ±0.19 67.88 ±0.32 8.08 ±0.16 67.84 ±0.13 8.12 ±0.12
+26
+
+=== PAGE 27 ===
+C.3 Performance with Varying Numbers of Clients
+In this Section, we compare the performance of different methods with varying numbers of clients
+on CIFAR-10. Speciﬁcally, the uniform pattern involves 10 clients with full participation in every
+round; the normal pattern consists of 50 clients whose participation probabilities are sampled from
+a normal distribution ( µ = 0 .2, σ = 0 .2), resulting in an average of 10 clients per round; and
+the linear pattern also includes 50 clients, with participation probabilities increasing linearly from
+0.02 by a step of 0.36
+K−1 , yielding the same average of 10 clients per round. As shown in Table 7,
+PHP-FL consistently achieves the best accuracy (AM) and performance fairness (FM) across all
+three patterns. Notably, compared to the strongest baseline FedAPEN, our method improves AM by
+6.62%, 6.47%, and 6.12% under the uniform, normal, and linear settings, respectively, while also
+reducing FM, demonstrating superior robustness and fairness with varying numbers of clients.
+Table 7: Comparison with the state-of-the-art methods with varying numbers of clients on CIFAR-
+10 in the heterogeneous setting. Best in bold and second with underline .
+Methods
+Uniform [a = 1 .0] Normal [µ = 0 .2 , σ = 0 .2] Linear
+[
+a = 0 .02 , d = 0 .36
+K − 1
+]
+Methods
+AM (%) ↑ FM (%) ↓ AM (%) ↑ FM (%) ↓ AM (%) ↑ FM (%) ↓
+Standalone 58.89 ± 0.20 10.53 ± 0.24 50.73 ± 1.29 14.04 ± 1.40 51.81 ± 0.30 12.81 ± 0.47
+FML [arXiv20] 46.61 ± 0.61 15.18 ± 0.34 36.59 ± 1.17 17.35 ± 1.22 35.26 ± 0.22 17.10 ± 0.16
+FedGen [ICML21] 57.82 ± 0.06 9.45 ± 0.29 43.70 ± 1.03 15.10 ± 1.26 43.35 ± 1.08 14.92 ± 0.53
+FedKD [NC22] 57.46 ± 0.45 11.26 ± 0.33 49.27 ± 0.93 13.98 ± 0.63 49.07 ± 0.62 13.99 ± 0.71
+FedAPEN [KDD23] 63.90 ± 0.10 9.05 ± 0.51 52.99 ± 1.23 13.68 ± 1.77 53.76 ± 0.39 12.74 ± 0.27
+FedTGP [AAAI24] 58.45 ± 0.69 9.88 ± 0.37 40.15 ± 0.32 14.74 ± 0.69 38.18 ± 1.04 16.08 ± 1.48
+FedMRL [NIPS24] 58.33 ± 0.20 14.23 ± 0.63 49.32 ± 1.34 13.64 ± 1.01 49.26 ± 0.74 13.26 ± 0.27
+PHP-FL (Ours) 70.52 ± 0.03 7.97 ± 0.49 59.46 ± 0.83 12.69 ± 1.41 59.88 ± 0.26 11.22 ± 0.37
+Table 8: Comparison results on CIFAR-10 dataset under the Markovian participation pattern. All
+other settings follow their default conﬁgurations.
+Method Standalone FML FedGen FedKD FedAPEN FedTGP FedMRL PHP-FL (Ours)
+AM (%) ↑ 52.77 ± 1.44 42.73 ± 0.96 51.93 ± 0.84 51.31 ± 0.80 57.84 ± 0.53 50.55 ± 1.79 49.02 ± 1.74 64.04 ± 0.73
+FM (%) ↓ 16.10 ± 2.50 19.29 ± 2.04 14.91 ± 0.38 16.82 ± 1.45 13.99 ± 3.34 12.14 ± 1.66 15.86 ± 0.08 11.69 ± 1.35
+C.4 Performance under the Markovian Participation Pattern
+To better reﬂect dynamic client availability in real-word scenarios, we have conducted additional
+experiments under the Markovian participation pattern following FedAU [ 45]. In this pattern, each
+client follows a two-state Markov chain to determine its participation status in each training round,
+where the two states correspond to “participating” and “not participating” in the current training
+round. This modeling introduces temporal correlation in client participation behavior while main-
+taining sufﬁcient randomness, offering a more realistic simulation compared to independently sam-
+pled participation patterns.
+For the parameter settings of the Markovian pattern experiment, we constrain the maximum transi-
+tion probability from the non-participating state to the participating state to 0.05, thereby avoiding
+excessively frequent state changes and ensuring realistic participation dynamics. The initial state of
+each client’s Markov chain is randomly sampled according to the stationary probability, which is
+set to 0.5 to ensure that approximately half of the clients participate in each round on average. The
+transition probabilities are carefully calibrated to maintain this stationary distribution throughout
+the training process, ensuring system stability while introducing participation heterogeneity across
+clients. As shown in Table 8, the experimental results under the Markovian participation pattern
+further validate PHP-FLs robustness, consistently achieving superior accuracy and fairness despite
+the increased dynamic and unpredictable client availability.
+27
+
+=== PAGE 28 ===
+C.5 Effectiveness of Adaptive Selective Updates in the ISPU Module
+To further validate the design rationality of the adaptive selective parameter update mechanism in
+our ISPU module, we conduct an ablation study comparing different update strategies for the local
+auxiliary model g, focusing on the update ratio α. Speciﬁcally, we evaluate the following variants:
+• Fixed update. Updates a ﬁxed ratio of the most important parameters, with α set to a
+constant and we adopt α = 0.5.
+• Full Update. Updates all parameters without selection, which is equivalent to α = 1.
+• Random Update. All parameters are stochastically updated with probability α, where α
+is dynamically determined by our proposed method using Eq. 9.
+• Adaptive update (Ours). Dynamically adjusts α using Eq. 9 based on client participation
+history and parameter importance.
+As shown in Table 9, our adaptive update mechanism consistently achieves the best accuracy and
+performance fairness. Full update shows the poorest performance, and while ﬁxed Update offers
+some stability, it is surpassed by the adaptive methods. Random update achieves competitive ac-
+curacy but inferior fairness compared to our method. The ﬁndings highlight the superiority of our
+adaptive selective update mechanism within the ISPU module.
+Table 9: Effectiveness of Adaptive Selective Updates in the ISPU module. Results are evaluated
+under the linear participation pattern on Fashion-MNIST and CIFAR-10. Best in bold.
+Different variants Fashion-MNIST CIFAR-10Different variants
+AM (%) ↑ FM (%) ↓ AM (%) ↑ FM (%) ↓
+Fixed Update (α = 0.5) 97.43 4.41 64.11 9.14
+Full Update (α = 1.0) 96.82 5.73 62.81 8.65
+Random Update (dynamic α) 97.28 6.23 65.97 8.97
+Adaptive Update (Ours with dynamic α) 97.58 4.29 66.78 8.09
+C.6 Effect of the Sharpness Factor on Performance
+In our proposed PHP-FL, the hyperparameter δ in Eq. 9 controls the sharpness of the mapping
+from local participation frequency to the update ratio α in the ISPU module. A larger δ causes
+α to approach 1 for frequently participating clients and 0 for infrequent ones, whereas a smaller
+δ smooths the adjustment, pushing α toward 0.5. As shown in Table 10, performance is relatively
+stable across a range of δ values, but we observe that δ = 5 consistently achieves near-optimal results
+in both accuracy and fairness across Fashion-MNIST and CIFAR-10. Therefore, we set δ = 5 in our
+experimental conﬁguration.
+Table 10: Effect of the hyperparameter δ on performance. Best in bold and second with underline .
+Dataset Metric δ = 0.1 δ = 0.5 δ = 1 δ = 5 δ = 10 δ = 50 δ = 100
+Fashion-MNIST AM (%) ↑ 97.54 97.62 97.59 97.61 97.59 97.52 97.51
+FM (%) ↓ 4.25 4.13 4.39 4.12 4.60 4.35 4.43
+CIFAR-10 AM (%) ↑ 67.24 67.28 67.06 67.27 66.36 67.17 66.82
+FM (%) ↓ 8.44 8.10 8.12 8.01 8.51 8.49 8.55
+C.7 Cost and Efﬁciency Analysis
+Communication Cost. We compare the per-round communication cost with baselines in terms of
+the number of parameters transmitted between 20 clients and the server on CIFAR-10. As shown
+in Table 11, among the evaluated baselines, methods such as FedGen and FedTGP demonstrate
+signiﬁcantly lower communication costs due to their use of partial model sharing and lightweight
+28
+
+=== PAGE 29 ===
+prototypes. Unfortunately, methods relying on auxiliary model transmission ( e.g., FML, FedKD,
+FedAPEN, and FedMRL) exhibit communication cost exceeding 200M parameters per round. In
+contrast, PHP-FL requires only 112.52M parameters per round, which is nearly half the cost of other
+auxiliary model-based approaches such as FedAPEN and FedMRL. This reduction is primarily due
+to clients downloading only the pruned global auxiliary model parameters instead of the full model.
+Computation Cost. We also report the total computation cost per round across all clients in terms
+of FLOPs (ﬂoating-point operations), 8 as summarized in Table 11. Following [ 12], other operations
+such as data preprocessing are not included in the FLOPs calculation. To ensure a fair comparison,
+this experiment involves 20 clients with full participation in each round. All other conﬁgurations
+remain aligned with the main experiments.
+According to Table 11, PHP-FL incurs the per-round computation cost at 813.71GFLOPs. This
+increase is marginal when compared with other auxiliary model-based methods such as FML
+(753.51G), FedKD (753.51G), FedAPEN (771.01G), and FedMRL (757.34G). Compared to Fed-
+Gen (391.38G) and FedTGP (387.99G), the increased computation cost primarily arises from the
+training of additional auxiliary models. Besides, the slightly higher cost of the proposed PHP-FL
+is mainly attributed to the extra training required for ensemble weights. While FedTGP achieves
+the lowest computation cost, its accuracy signiﬁcantly lags. Despite this slight increase in cost com-
+pared with other auxiliary model-based methods, PHP-FL achieves signiﬁcantly the best results in
+both accuracy and performance fairness, as shown in the main experiments. The results underscore
+a compelling trade-off, with our method delivering notable performance gains at the cost of only a
+slight increase in computation.
+Table 11: Comparison of communication and computation costs per round on CIFAR-10, where
+communication cost is measured by the number of parameters transmitted between 20 clients and
+the server, and computation cost is evaluated as the total number of FLOPs executed across all 20
+clients. ‘M’ and ‘G’ denote million and giga, respectively. For FedKD, the SVD computation cost
+is excluded from this analysis.
+Method Communication Cost Computation Cost
+FML [arXiv20] 224.20M 753.51G
+FedGen [ICML21] 5.92M 391.38G
+FedKD [NC22] 200.26M 753.51G
+FedAPEN [KDD23] 224.20M 771.01G
+FedTGP [AAAI24] 0.192M 387.99G
+FedMRL [NeurIPS24] 224.05M 757.34G
+PHP-FL (Ours) 112.52M 813.71G
+Efﬁciency Analysis. In addition, we conducted further experiments to measure the total costs
+(communication rounds, computation cost, and communication cost) required to reach 50% accuracy
+compared to baselines. As shown in Figure 9, while PHP-FL’s per-round communication cost is
+higher than non auxiliary model-based methods ( e.g., FedGen and FedTGP) due to the transmission
+of auxiliary model, it reaches target accuracy in just 2 rounds, whereas all baselines require at least
+5 rounds. Consequently, the total communication and computation costs are substantially lower.
+Furthermore, the per-round costs can be readily optimized in practice by employing smaller auxiliary
+models or mask quantization ( e.g., bitwidth reduction). Thus, PHP-FL offers a far more efﬁcient
+path to convergence in practical deployments.
+D Discussion
+Communication Cost. In the auxiliary model-based methods, active clients often need to upload
+L = |g| parameters of the global auxiliary model in each communication round, which are typi-
+cally represented in full-precision ﬂoating-point format. Our method similarly requires uploading
+8We calculate FLOPs using the thop library: https://github.com/Lyken17/pytorch-OpCounter.
+29
+
+=== PAGE 30 ===
+0
+15
+30
+45
+Communication Rounds
+19
+10
+5
+43
+6
+2
+0
+6
+12
+18TFLOPs
+Computation Cost
+7.44 7.54
+3.86
+16.68
+4.54
+1.63
+0
+800
+1600
+2400MB
+Communication Cost
+112
+2003
+1121
+8.26
+1344
+225
+FedGen FedKD FedAPEN FedTGP FedMRL PHP-FL (Ours)
+Figure 9: From left to right: Communication rounds, total number of transmitted parameters, and
+computation FLOPs required to achieve the 50% accuracy on CIFAR-10 under the uniform pattern.
+the global auxiliary model but with an additional binary mask matrix M of the same dimension
+L. Fortunately, since each element in M is a binary value (0 or 1), it only incues 1 bit per pa-
+rameter, rendering the added communication overhead negligible compared to the transmission of
+full-precision parameters. Moreover, when downloading the global auxiliary model, clients only
+need to receive α · L (α ∈ (0, 1)) parameters, where the pruning threshold τ in Eq 9 can be adjusted
+as needed. This ﬂexibility allows us to further reduce communication costs dynamically.
+Participation Patterns. We clearly state that we make no assumptions about the distribution of
+client participation patterns and allow them to be arbitrary throughout the training process. More-
+over, similar to [ 45], we do not require any prior knowledge of the client sampling process for the
+proposed method PHP-FL.
+Privacy. Similar to FedAvg [ 1], PHP-FL does not require sharing raw data or client-speciﬁc het-
+erogeneous model parameters. Instead, only the lightweight, homogeneous auxiliary models and
+the mask matrix related to model parameters are uploaded to the server. This design ensures that
+sensitive local model structures and data remain on the client side, making PHP-FL suitable for
+privacy-critical applications. Therefore, PHP-FL is compatible with standard privacy-preserving
+mechanisms such as secure aggregation [ 67]. Differentially private variants of FedAvg [ 68] can be
+seamlessly integrated similarly.
+30

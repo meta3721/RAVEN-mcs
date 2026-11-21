@@ -1,0 +1,55 @@
+{
+  "columns": [
+    "unit_id",
+    "spatial_id",
+    "absolute_time",
+    "time_index",
+    "target_value",
+    "split",
+    "target_group",
+    "opportunity_stratum",
+    "public_features",
+    "support_flag",
+    "is_warmup"
+  ],
+  "dtypes": {
+    "absolute_time": "datetime64[ns, UTC]",
+    "is_warmup": "bool",
+    "opportunity_stratum": "string",
+    "public_features": "str",
+    "spatial_id": "str",
+    "split": "string",
+    "support_flag": "bool",
+    "target_group": "string",
+    "target_value": "float64",
+    "time_index": "int64",
+    "unit_id": "string"
+  },
+  "null_counts": {
+    "absolute_time": 0,
+    "is_warmup": 0,
+    "opportunity_stratum": 0,
+    "public_features": 0,
+    "spatial_id": 0,
+    "split": 0,
+    "support_flag": 0,
+    "target_group": 0,
+    "target_value": 0,
+    "time_index": 0,
+    "unit_id": 0
+  },
+  "path": "data/processed/traffic/atomic_units.parquet",
+  "row_count": 30960,
+  "schema_hash": "e893a68c1e5805cd4194aeb116b1266162683ac24c68c5e3cf17eba12816abb4",
+  "sha256": "db45a2ecc66c27abeaf58b0c03ce66de7bfaf6727f4523ea06ef226a9ce3de50",
+  "size_bytes": 326389,
+  "source_provenance": {
+    "adapter": "src/raven_mcs/data/traffic.py",
+    "config": "configs/dataset/traffic.yaml",
+    "raw_hourly": "data/raw/traffic/road_traffic_counts_hourly_permanent.zip",
+    "raw_reference": "data/raw/traffic/road_traffic_counts_station_reference.csv",
+    "target_name": "traffic_volume",
+    "target_unit": "vehicles_per_hour"
+  },
+  "status": "PASS"
+}

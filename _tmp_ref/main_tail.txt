@@ -1,0 +1,251 @@
+12
+
+TABLE II T-DRIVE HYBRID RANKING UNDER REAL TAXI R (MEAN ± STD, 10
+SEEDS, 178 WINDOWS). LOWER IS BETTER. O AND U ARE COMPLETE-ALIGNED CONTROLS. RAVEN-NODESIGN ( = 1) IS NOT TARGET-MASS RECONSTRUCTION; RAVEN-DESIGN (DESIGN ON) IS ALSO REPORTED ON U-AIR. WORSTGROUPRMSE IS THE MAXIMUM OVER UTC H1-H4. RAVEN-NODESIGN IS OUTSIDE THE DESCRIPTIVE +0.5%
+WORST-GROUP TOLERANCE VERSUS FEDAU-WINDOW AND OBSUSE-WINDOW; THIS TABLE IS NOT MIXED INTO TABLE III.
+
+Method
+
+RMSEµ WorstGroupRMSE group c-s
+
+FedAvg-Window TwoStage-Ha´jek FedAU-Window ObsUse-Window RAVEN-NoDesign RAVEN-Design
+
+1.1042 ±0.0022 1.1254 ±0.0142 1.0898 ±0.0050 1.0896 ±0.0049 1.1069 ±0.0028 1.1242 ±0.0159
+
+1.3064 ±0.0035 1.3373 ±0.0198 1.2801 ±0.0109 1.2796 ±0.0108 1.3106 ±0.0044 1.3355 ±0.0225
+
+0.5232 0.5948 ±0.0124
+0.5232
+0.5232
+0.5232 0.5948 ±0.0124
+
+1.9758 ±0.0004 1.9642 ±0.0007 1.9915 ±0.0012 1.9916 ±0.0012 1.9936 ±0.0003 1.9774 ±0.0006
+
+Design on, the ranking uses RAVEN-Design. That map is not the SensorScope/U-Air client-stratum lookup. the NSWTraffic four-region ranking table in the supplemental material is a protocol ranking, not mixed into Table III and not a confirmation of that table or of a transferred support object. TwoStage-Ha´jek is lowest on RMSEµ and WorstGroupRMSE. FedAU-Window is lowest on group (0.0606 versus 0.1048 for RAVEN-Design). RAVEN-Design stays within the descriptive +0.5% worst-group tolerance versus FedAU-Window and ObsUse-Window.
+Hybrid ranking under City Scanner visit occupancy. the City Scanner visit-occupancy ranking table of the supplemental material ranks the same windowed family on occupied New York PM2.5 cells, with real visit occupancy R, Completealigned O/U controls, and RAVEN-Design with Design on. The target map uses test-group shares µh(i) on training atoms, with all four regions positive, not the station client-stratum lookup. Paired mean relative error versus FedAU-Window and ObsUse-Window is -1.71% and -1.34% on RMSEµ, and -1.56% and -1.23% on worst-group RMSE. FedAvgWindow remains lowest on both prediction endpoints (0.2379 and 0.2489), while RAVEN-Design is smallest on group (0.0706). Clients are occupied cells, not vehicles. The ranking is not mixed into Table III or Table II. The target-coverage and City Scanner section of the supplemental material lists the frozen coverage statistic per block.
+Hybrid ranking under measured City Scanner observation. the Pilot 2 measured-O ranking table of the supplemental material ranks the same windowed family on New York Pilot 2 occupancy with measured O and controlled U . TwoStage-Ha´jek is lowest on RMSEµ and WorstGroupRMSE. RAVEN-Design is smallest on group and lower than FedAUWindow, ObsUse-Window, and FedAvg-Window on both prediction endpoints (paired mean relative -0.43%, -0.45%, and -0.65% on RMSEµ). Clients are occupied cells, not vehicles. The ranking is not mixed into Table III, Table II, or the City Scanner visit-occupancy ranking table of the supplemental material.
+
+C. Structural Alignment, Target RMSE, and Worst-Group Risk
+Table III is the protocol development table. It reports both Design settings on both blocks. On SensorScope, Design reduces group/c-s from FedAvg's 1.0558/1.2903 to 1.0139/1.2644 (3.96%/2.01%); the Design-off row gives 1.0265/1.2719, so the two settings differ by 1.237% and 0.597% (paired, 20 seeds) while their RMSEµ is indistinguishable (7.9380 versus 7.9384, 0.3). Four-block worst-group RMSE is interchangeable with FedAU-Window and ObsUseWindow (TEST -0.01% and +0.05%; ALL20 +0.02% and +0.10%).
+On U-Air the two settings separate. Design-off obtains group = 1.0165 and RMSEµ = 1.1131, versus 1.0924 and 1.1911 with Design on. Fig. 4 diagnoses the reversal: estimated Design and oracle Design both worsen the primaries by about 7% relative to No-Design, so the harm is support-incompatible tar, not plug-in failure. Design still improves c-s on UAir (1.2334 versus 1.2949, 4.990%, 17.1), so the U-Air choice is an endpoint-dependent trade and not a dominated setting. On the four-block worst-group endpoint, the TEST mean relative differences versus FedAU-Window and ObsUseWindow are +0.48% and +0.44% (seeds 30011-30020). The same paired relatives over all 20 table seeds are +0.002% and +0.075%. Both slices stay within the descriptive +0.5% tolerance. That U-Air comparison is a fallback evaluation, not a target-mass claim. Holm-adjusted tests on the 20-seed WorstGroupRMSE family against those two are not significant. Within the Design-on family, RAVEN-Design lowers worst-group RMSE by 2.46% against TwoStage-Ha´jek on the TEST seeds (10/10). Both settings reconstruct target mass, so this is a family-internal comparison rather than a baseline win. Against the no-Design baselines, RAVEN-NoDesign ties all six on prediction and on worst-group RMSE, with no Holmsignificant difference in either direction. The two settings separate on structure: RAVEN-NoDesign lowers group by 2.4% to 3.7% and c-s by 1.4% to 2.6% against FedAvg, FedAsync, TimeAlign, FedAU and ObsUse, all 20/20, and ties Debt-Cal on both. Design-on does not improve on those baselines: its worst-group RMSE is 1.2630 against FedAvg 1.1690. We do not claim a best worst-group method.
+The sealed same-backbone family, including FedAsync, TimeAlign, Inst-Cal, and Debt-Cal, is in the supplemental material. On U-Air those RAVEN bars are Design-on, not the RAVEN-NoDesign rows of Table III. Local-Ha´jek coincides with FedAvg on U-Air because both restrict the active set to the Design support and the realized within-client Ha´jek weights are uniform (supplemental material).
+These findings agree with the scope of the theory. Proposition 2 recovers compatible target moments or target-group mass for the ideal pooled sequential correction under A1- A3 with the target-mass opportunity ratio; it does not prove optimization of Rµ(), and it does not claim that every finite-window reference vector exactly equals µ. Proposition 3 applies only when A5 and A6 hold and Ar is fixed; that is the SensorScope Design-on regime, not the U-Air Designon regime. The support-hypothesis audit in the supplemental material reports A5 holding and A6 failing on both datasets,
+
+13
+
+TABLE III DEVELOPMENT TABLE FOR THE MAIN COMPARISON UNDER ALWAYS-ON
+PROTOCOL R (MEAN ± STD, 20 SEEDS; LOWER IS BETTER). THIS IS A DEVELOPMENT TABLE ON STATION TRACES WHOSE O AND U LAYERS ARE
+PROTOCOL-CONSTRUCTED, NOT A REAL-MOBILITY RANKING. BOTH DESIGN SETTINGS ARE REPORTED ON BOTH BLOCKS, SO THE TABLE IS A WITHIN-DATASET FACTOR RATHER THAN A SINGLE CONFIGURATION. ON
+SENSORSCOPE, DESIGN IMPROVES group BY 1.237% AND c-s BY 0.597% AT UNCHANGED PREDICTION (+0.005% OF RMSEµ); ON U-AIR IT COSTS 6.553% OF RMSEµ, 6.943% OF group, AND 6.875% OF TAIL
+RMSE WHILE IMPROVING c-s BY 4.990% (PAIRED, 20 SEEDS). WORSTGROUPRMSE IS THE MAXIMUM OVER THE FOUR UTC GROUPS.
+FEDAU-WINDOW AND OBSUSE-WINDOW ARE WINDOWED ADAPTATIONS. BOTH RAVEN SETTINGS STAY WITHIN THE DESCRIPTIVE
++0.5% WORST-GROUP TOLERANCE VERSUS THOSE TWO ON SENSORSCOPE AND ON U-AIR (TEST SEEDS 30011-30020). WE DO NOT CLAIM A HOLM-SIGNIFICANT RMSE WIN. A SUPPLEMENTAL PROTOCOL
+TABLE USES INTERMITTENT OCCUPANCY.
+
+Dataset Method
+
+RMSEµ WorstGroupRMSE group c-s
+
+SensorScope
+
+FedAvg-Window TwoStage-Ha´jek FedAU-Window ObsUse-Window RAVEN-Design RAVEN-NoDesign
+
+7.9389 ±0.0459 7.9309 ±0.0543 7.9364 ±0.0507 7.9293 ±0.0513 7.9380 ±0.0473 7.9384 ±0.0468
+
+8.6716 ±0.0471 8.6633 ±0.0556 8.6691 ±0.0522 8.6618 ±0.0528 8.6707 ±0.0486 8.6711 ±0.0481
+
+1.0558
+±0.0288 1.0353
+±0.0347 1.0719
+±0.0263 1.0650
+±0.0272 1.0139
+±0.0305 1.0265
+±0.0278
+
+1.2903
+±0.0306 1.2910
+±0.0324 1.3057
+±0.0313 1.3062
+±0.0311 1.2644
+±0.0312 1.2719
+±0.0308
+
+U-Air
+
+FedAvg-Window TwoStage-Ha´jek FedAU-Window ObsUse-Window RAVEN-Design RAVEN-NoDesign
+
+1.1119 ±0.0603 1.2160 ±0.0716 1.1128 ±0.0600 1.1120 ±0.0600 1.1911 ±0.0659 1.1131 ±0.0638
+
+1.1690 ±0.0692 1.2907 ±0.0753 1.1701 ±0.0689 1.1692 ±0.0689 1.2630 ±0.0716 1.1703 ±0.0734
+
+1.0446
+±0.0397 1.1196
+±0.0445 1.0557
+±0.0370 1.0413
+±0.0374 1.0924
+±0.0479 1.0165
+±0.0458
+
+1.3138
+±0.0337 1.2406
+±0.0297 1.3291
+±0.0360 1.3235
+±0.0349 1.2334
+±0.0320 1.2949
+±0.0293
+
+Design reduces structural mismatch relative to FedAvg and stays within the +0.5% worst-group tolerance; that is not an RMSE win. On U-Air, RAVEN-NoDesign improves primaries and worst-group RMSE relative to the Design-on setting. Against the no-Design baselines it is a tie on both prediction and worst-group RMSE, and the structural advantage holds against five of the six, with Debt-Cal tying on both endpoints. Versus FedAU-Window and ObsUse-Window, TEST mean relative worst-group differences are +0.48% and +0.44%; target RMSE is interchangeable, not a Holm-significant win. The under-served-block check did not produce a second external win. Under intermittent occupancy (supplemental material), the +0.5% tolerance and the U-Air Design reversal keep their sign; the SensorScope c-s gap versus FedAvg does not.
+D. A Pre-Registered Under-Served-Block Check
+Four-block WorstGroupRMSE can coincide with the intrinsically hardest UTC group rather than the group whose public mass most exceeds opportunity mass. After freezing the heuristic assignment, we scored a second validation-only endpoint g = arg maxb(µbblk - bopp,4) (SensorScope g = 2, gap +0.114; U-Air g = 3, gap +0.172). A win requires mean paired relative RMSE versus FedAU-Window and versus ObsUse-Window of at most -0.5%. Neither dataset meets that rule (SensorScope +0.05%/ + 0.15%; U-Air -0.44%/ - 0.27%); both satisfy no-harm ( +0.5%). The test seeds were not opened. the under-served-block table of the supplemental material in the supplemental material records the look. The descriptive +0.5% worst-group tolerance remains the only external endpoint statement.
+
+rel. change (%) rel. change (%)
+
++7.50% +7.48% Estimated Design Oracle Design
+6
+
+4
+
+2
+
+0
+
+-1.23% -1.03%
+SensorScope
+
+U-Air
+
+(a) ¢group vs No-Design
+
++7.07% +7.11% 7
+
+6
+
+5
+
+4
+
+3
+
+2
+
+1
+
+0 -0.01% -0.01% SensorScope
+
+U-Air
+
+(b) RMSE¹ vs No-Design
+
+Fig. 4. Design versus No-Design, estimated and oracle propensities (20 seeds; positive = Design worse). On SensorScope, Design slightly reduces group (-1.23% estimated, -1.03% oracle) with a flat RMSE. On U-Air, estimated and oracle Design both worsen group by about 7.5% and RMSE by about 7.1%. Algorithm 1 runs RAVEN-NoDesign on U-Air; this figure diagnoses the reversal, not the selection rule. The U-Air Design-on c-s gain remains in Table IV.
+
+so on these traces Proposition 3 is used in the form that carries the clipping residual rather than the form that cancels it. The main comparison evaluates the finite-window system after the feasibility-aware calibration in (P2). Development-table findings. On SensorScope, RAVEN-
+
+E. What the Correction and Calibration Components Do
+The component-removal ablation drops Design, Obs, Use, Inst, or Debt under the same Complete-aligned selection trace and paired seeds. Table IV reports the relative change remove(M ) = (Mablated - Mfull)/Mfull × 100%, so a positive number means that removing the component worsens the metric; the magnified component-removal figure in the supplemental material visualizes the same one-factor removals. The Inst ablation uses the one-factor removal under the same paired seeds, and all significance statements below use the pre-specified Holm families.
+a) Design correction.: Removing Design worsens c-s by 0.597% on SensorScope and 4.990% on U-Air, both Holmsignificant. On U-Air the same ablation improves group by 6.943% and RMSEµ by 6.553%. The U-Air ranking uses the Design-off setting, not because estimated propensities fail (Fig. 4). The 25.5% figure is the realized always-on EventTrace occurrence share (13040 of 51200 appearances), not an input of Algorithm 1, and is reported with the Ar overlap 51.6%. Oracle Design tracks estimated Design. SensorScope keeps Design on. A 774-window check found identical R/O/U and registration events, with differences beginning only at the positive-weight/P2-support layer (supplemental material). The non-Design components are magnified in the U-Air ablation figure of the supplemental material.
+
+14
+
+TABLE IV
+COMPONENT-REMOVAL ABLATION: RELATIVE CHANGE (%) AFTER
+REMOVING ONE RAVEN COMPONENT. POSITIVE MEANS THE ABLATION WORSENS THE METRIC; NEGATIVE MEANS IT IMPROVES THE METRIC. 
+DENOTES HOLM-ADJUSTED p < 0.05.
+
+Dataset SensorScope
+U-Air
+
+Removed
+Design Obs Use Inst Debt
+Design Obs Use Inst Debt
+
+group
++1.237 +0.096 +0.026 -0.260
++0.014
+-6.943 +0.123
++0.014 -0.089 +0.004
+
+c-s
++0.597 -0.070
++0.026 +0.310 +0.004
++4.990 +0.022 -0.014 -0.143
++0.002
+
+RMSEµ
++0.005 +0.012 +0.012 -0.002 < 0.001
+-6.553 -0.010 +0.024
++0.131 < 0.001
+
+Tail RMSE
++0.005 +0.011 +0.012 -0.002 < 0.001
+-6.875 -0.010 +0.025
++0.136 < 0.001
+
+b) Observation and usable-update correction.: Observation correction has a smaller, endpoint-specific effect. On U-Air, removing Obs worsens group by 0.123% (Holmsignificant), while its c-s and prediction effects are not significant. On SensorScope, the +0.096% group change is not significant after Holm correction, whereas c-s slightly improves by 0.070% when Obs is removed. Thus Obs is best characterized as another endpoint trade-off. In contrast, removing Use produces no significant change in any of the four core endpoints on either dataset. The ablation therefore does not establish the marginal indispensability of usable-update correction in this Complete-aligned family; the theoretical selection layer remains distinct, but its isolated empirical effect is not clearly established here.
+c) Instantaneous calibration and debt.: Inst also exhibits a trade-off. On SensorScope, removing it worsens c-s by 0.310% (significant), while the -0.260% change in group is not significant after Holm correction. On U-Air, the small structural changes are not significant, but removing Inst worsens RMSEµ and tail RMSE by 0.131% and 0.136%, respectively (both pHolm = 0.0194). Hence Inst exhibits an endpoint trade-off, rather than a purely structural role.
+Debt has the narrowest but most consistent role. Removing it significantly increases both structural mismatches on both datasets, but only by 0.0141%/0.0040% on SensorScope and 0.0043%/0.0024% on U-Air, well below the 0.5% pairedrelative minimum practical effect used elsewhere; prediction changes are negligible. This matches long-term accounting in (27), not a standalone performance driver, and does not establish QR1 = o(SR). Component-removal finding. RAVEN is a coupled correction-and-calibration system, not five monotone boosters. As a reconstruction factor, Design helps SensorScope and reverses U-Air primaries while still buying c-s. Removing Design on SensorScope worsens group by 1.237% (Holmsignificant) while RMSEµ changes by 0.005%, so group is not evidence that completion became more accurate. Obs has weaker endpoint-specific effects. Usable-update correction is kept as a sequential selection layer; the ablation does not show an isolated effect. Inst trades finite-window structure against prediction. Target debt is a consistent accounting term
+
+whose isolated changes stay well below the 0.5% practical threshold.
+F. Recoverable-Gain Ceiling
+Only the part of the prediction error that a selectionaware reweighting could remove in principle is reachable by any correction in this family. We measure that part by replacing the estimated propensities with their true values and reporting H = (RMSEµ(FedAvg) - RMSEµ(oracle))/RMSEµ(FedAvg) over a stress grid that varies the opportunity tilt, the tail observation scale, the model capacity and the target. The GO rule was frozen before the runs: GO if any condition reaches H  0.5% with a positive interval lower bound. It did not fire. SensorScope is conclusive at a paired-difference minimum detectable effect of 0.17-0.36 percentage points, with all six estimates inside [-0.03%, +0.08%]. U-Air was re-run at 20 seeds, 270 runs and 45 regenerated traces, where every estimate satisfies |H|  0.217% and every 95% interval contains zero; its realized detectable effect is 0.70-0.80 points, so that block excludes effects above about 0.7% and does not resolve the 0.5% bar on its own. Hardening the observation propensity to vary within a stratum and to correlate with the label raises the oracle gap by 15-21×, to 0.104% on SensorScope and 0.251% on U-Air, both inside the same bound. The ceiling is therefore a property of these endpoints rather than of a regime that was made too easy, and it bounds what any later claim about the correction family can reach on these blocks.
+G. Limitations
+RAVEN-Design and City Scanner report Design on. RAVEN-NoDesign reports Design off on U-Air and T-Drive (o = 1). Both settings are reported on the blocks where the trade-off is material. On Table III, SensorScope RAVENDesign and U-Air RAVEN-NoDesign stay within the descriptive +0.5% TEST tolerance versus FedAU-Window and ObsUse-Window; we do not claim a Holm-significant RMSE win. Table III is a development table under always-on protocol R on station traces, not a real-mobility ranking. Table II is outside that tolerance: FedAU-Window and ObsUse-Window remain strongest under real taxi R. the NSW-Traffic four-region, City Scanner visit-occupancy, and the Pilot 2 measured-O ranking table of the supplemental material are not mixed into Table III. The Design factor is an explicit configuration on each block's own tar map; neither setting is derived from a data statistic, and neither verifies positivity on target-positive pairs. A1-A2 remain support and confounding boundaries, and A6 is not verified on the released traces, so Proposition 3 is used with its clipping residual rather than with a vanishing one. The 25.5% figure is EventTrace occurrence (13040 of 51200), not the target-coverage statistic of the supplemental material. On a frozen coverage-stress oracle, pooled CERTIFIED validity is 0.959 and U-Air a = 1.00 is 0.750. Adaptive RESET/CERTIFIED switching is not proven valid, and Design is not opened from Gatet. Federated learning itself does not provide a privacy guarantee.
+
+15
+
+VIII. CONCLUSION
+Windowed-asynchronous federated MCS completion should align selected mass with the public deployment target, not with the arrival law of usable updates. RAVEN-Design reconstructs compatible target mass and calibrates that reference inside the current feasible window. RAVEN-NoDesign uses  = 1 and does not reconstruct target mass on that layer. When the two laws differ, their risks are not interchangeable. The ideal sequential correction recovers compatible target moments or group mass under A1-A3; it does not prove optimization of deployment-target risk. Calibration is uniquely solvable, and the clipped plug-in is a stable perturbation of the same-window reference when target support is compatible.
+On the protocol development table, SensorScope RAVENDesign reports structural alignment and a descriptive +0.5% worst-group tolerance, not an RMSE win. U-Air and T-Drive report RAVEN-NoDesign. Hybrid tables are mobility ceilings, not confirmations of Table III: FedAU-Window and ObsUseWindow remain strongest on T-Drive (Table II), FedAvgWindow is lowest on the City Scanner visit-occupancy ranking, and TwoStage-Ha´jek is lowest on Pilot 2 measured O; both rankings are reported in the supplemental material. O and U are protocol-constructed except Pilot 2 measured O. Usable-update correction has no isolated effect in the tested family; target debt remains internal accounting. No ranking jointly measures R, O, and U .
+DATA AND CODE AVAILABILITY
+SensorScope, U-Air, NSW-Traffic, and T-Drive are public and cited in Section VII-A. T-Drive use follows the published Microsoft Research terms [51]. City Scanner New York PM2.5 [52] (Zenodo 10.5281/zenodo.7961851, CC BY 4.0) is ranked in the City Scanner visit-occupancy ranking table of the supplemental material and the Pilot 2 measured-O ranking table of the supplemental material. The bundle RAVEN_MCS_PUBLIC_REPRO_R1 contains paired seeds, frozen targets, EventTraces, tabulated figure and table sources, SCD_PHI.csv, canonical Table II (TABLE_II_MAIN_EFFECTIVENESS.csv), the 20-seed WorstGroupRMSE Holm family versus FedAU-Window and ObsUse-Window, ALL20/TEST10 slice relatives, T-Drive hybrid ranking CSVs, the NSW four-region files, City Scanner visit-occupancy ranking CSVs (cityscanner/), and Pilot 2 measured-O ranking CSVs (cityscanner_p2/). A verifier reconstructs tabulated cells from those CSVs; the bundle is not a pinned retraining archive, and NSW four-region is not a confirmation experiment.
+REFERENCES
+[1] R. K. Ganti, F. Ye, and H. Lei, "Mobile crowdsensing: Current state and future challenges," IEEE Communications Magazine, vol. 49, no. 11, pp. 32-39, 2011.
+[2] B. Guo, Z. Wang, Z. Yu, Y. Wang, N. Y. Yen, R. Huang, and X. Zhou, "Mobile crowd sensing and computing: The review of an emerging human-powered sensing paradigm," ACM Computing Surveys, vol. 48, no. 1, pp. 1-31, 2015, art. no. 7.
+[3] H. Ma, D. Zhao, and P. Yuan, "Opportunities in mobile crowd sensing," IEEE Communications Magazine, vol. 52, no. 8, pp. 29-35, 2014.
+
+[4] E. Wang, M. Zhang, W. Liu, H. Xiong, B. Yang, Y. Yang, and J. Wu, "Outlier-concerned data completion exploiting intra- and interdata correlations in sparse crowdsensing," IEEE/ACM Transactions on Networking, vol. 31, no. 2, pp. 648-663, 2023.
+[5] C. Li, Z. Li, S. Long, P. Qiao, Y. Yuan, and G. Wang, "Robust data inference and cost-effective cell selection for sparse mobile crowdsensing," IEEE/ACM Transactions on Networking, vol. 32, no. 5, pp. 3760-3775, 2024.
+[6] E. Wang, W. Liu, W. Liu, C. Xiang, B. Yang, and Y. Yang, "Spatiotemporal transformer for data inference and long prediction in sparse mobile crowdsensing," in IEEE INFOCOM 2023 - IEEE Conference on Computer Communications. IEEE, 2023, pp. 1-10.
+[7] E. Wang, M. Zhang, B. Yang, X. Yang, Z. Song, and Y. Yang, "Fewshot data completion for new tasks in sparse crowdsensing," in IEEE INFOCOM 2024 - IEEE Conference on Computer Communications. IEEE, 2024, pp. 1831-1840.
+[8] E. Wang, Z. Song, M. Wu, W. Liu, B. Yang, Y. Yang, and J. Wu, "A new data completion perspective on sparse crowdsensing: Spatiotemporal evolutionary inference approach," IEEE Transactions on Mobile Computing, vol. 24, no. 3, pp. 1357-1371, 2025.
+[9] Y. Xu, J. Liu, E. Wang, B. Yang, D. Luan, Y. Yang, and J. Deng, "Rethinking the effect of sparse data completion on sparse mobile crowdsensing tasks," IEEE Transactions on Mobile Computing, vol. 24, no. 6, pp. 5094-5105, 2025.
+[10] W. Liu, H. Du, E. Wang, J. Lv, W. Liu, B. Yang, and J. Wu, "Spatio-temporal pyramid-based multi-scale data completion in sparse crowdsensing," IEEE Transactions on Mobile Computing, vol. 25, no. 1, pp. 1270-1286, 2026.
+[11] M. Zhang, W. Li, E. Wang, and J. Wu, "MapT-STC: A one-shot spatiotemporal data completion framework for cold-start tasks in sparse crowdsensing," IEEE Transactions on Mobile Computing, vol. 25, no. 9, pp. 14 336-14 351, Sep. 2026.
+[12] B. McMahan, E. Moore, D. Ramage, S. Hampson, and B. Aguera y Arcas, "Communication-efficient learning of deep networks from decentralized data," in Proceedings of the 20th International Conference on Artificial Intelligence and Statistics, ser. Proceedings of Machine Learning Research, vol. 54. PMLR, 2017, pp. 1273-1282.
+[13] Q. Yang, Y. Liu, T. Chen, and Y. Tong, "Federated machine learning: Concept and applications," ACM Transactions on Intelligent Systems and Technology, vol. 10, no. 2, pp. 1-19, 2019, art. no. 12.
+[14] P. Kairouz, H. B. McMahan, B. Avent et al., "Advances and open problems in federated learning," Foundations and Trends in Machine Learning, vol. 14, no. 1-2, pp. 1-210, 2021.
+[15] T. Li, A. K. Sahu, A. Talwalkar, and V. Smith, "Federated learning: Challenges, methods, and future directions," IEEE Signal Processing Magazine, vol. 37, no. 3, pp. 50-60, 2020.
+[16] E. Wang, B. Li, W. Liu, Z. Han, C. Wang, X. Li, and J. Wu, "Federated learning-based distributed data completion in sparse mobile crowdsensing," IEEE Transactions on Mobile Computing, vol. 25, no. 5, pp. 6784-6800, 2026.
+[17] C. Xie, O. Koyejo, and I. Gupta, "Asynchronous federated optimization," in Proceedings of the 12th Annual Workshop on Optimization for Machine Learning (OPT 2020), 2019, arXiv:1903.03934.
+[18] J. Liu, H. Xu, L. Wang, Y. Xu, C. Qian, J. Huang, and H. Huang, "Adaptive asynchronous federated learning in resource-constrained edge computing," IEEE Transactions on Mobile Computing, vol. 22, no. 2, pp. 674-690, 2023.
+[19] S. Sun, Z. Zhang, Q. Pan, M. Liu, Y. Wang, T. He, Y. Chen, and Z. Wu, "Staleness-controlled asynchronous federated learning: Accuracy and efficiency tradeoff," IEEE Transactions on Mobile Computing, vol. 23, no. 12, pp. 12 621-12 634, 2024.
+[20] E. Wang, W. Liu, W. Liu, Y. Yang, B. Yang, and J. Wu, "Spatiotemporal urban inference and prediction in sparse mobile crowdsensing: A graph neural network approach," IEEE Transactions on Mobile Computing, vol. 22, no. 11, pp. 6784-6799, 2023.
+[21] S. Wang and M. Ji, "A unified analysis of federated learning with arbitrary client participation," in Advances in Neural Information Processing Systems, vol. 35, 2022, pp. 19 124-19 137.
+[22] D. Jhunjhunwala, P. Sharma, A. Nagarkatti, and G. Joshi, "Fedvarp: Tackling the variance due to partial client participation in federated learning," in Proceedings of the Thirty-Eighth Conference on Uncertainty in Artificial Intelligence, ser. Proceedings of Machine Learning Research, vol. 180. PMLR, 2022, pp. 906-916.
+[23] F. Wu, S. Guo, Z. Qu, S. He, Z. Liu, and J. Gao, "Anchor sampling for federated learning with partial client participation," in Proceedings of the 40th International Conference on Machine Learning, ser. Proceedings of Machine Learning Research, vol. 202. PMLR, 2023, pp. 37 379-37 416.
+
+16
+
+[24] S. Wang and M. Ji, "A lightweight method for tackling unknown participation statistics in federated averaging," in The Twelfth International Conference on Learning Representations, 2024, pp. 854-893.
+[25] Z. Sun, Z. Zhang, Z. Xu, G. Joshi, P. Sharma, and E. Wei, "Debiasing federated learning with correlated client participation," in The Thirteenth International Conference on Learning Representations, 2025, pp. 28 564-28 595.
+[26] M. Mohri, G. Sivek, and A. T. Suresh, "Agnostic federated learning," in Proceedings of the 36th International Conference on Machine Learning, ser. Proceedings of Machine Learning Research, vol. 97. PMLR, 2019, pp. 4615-4625.
+[27] Y. Chen, J. Lu, S. Cao, D. Wang, G. Li, and G. Wen, "FedCure: Mitigating participation bias in semi-asynchronous federated learning with non-IID data," in Proceedings of the AAAI Conference on Artificial Intelligence, vol. 40, no. 25, 2026, pp. 20 418-20 426.
+[28] G. Morishita, "Who trains matters: Federated learning under enrollment and participation selection biases," arXiv preprint arXiv:2604.26604, Apr 2026.
+[29] W. Liu, E. Wang, B. Yang, Y. Yang, and J. Wu, "Data pricing via uncertainty quantification for sparse mobile crowdsensing," IEEE Transactions on Services Computing, vol. 19, no. 2, pp. 1062-1074, 2026.
+[30] Y. Liu, Z. He, J. Liang, Z. Li, and Q. Deng, "Multidimensional trust evaluation and task match based workers recruitment scheme for mcs," IEEE Transactions on Dependable and Secure Computing, vol. 23, no. 3, pp. 5058-5074, 2026.
+[31] M. Zhang, X. Li, B. Luo, Y. Ren, Y. Miao, X. Liu, and R. H. Deng, "An incentive mechanism for privacy preserved data trading with verifiable data disturbance," IEEE Transactions on Dependable and Secure Computing, vol. 22, no. 4, pp. 3960-3976, 2025.
+[32] J. Lu, T. Huang, S. Cao, S. Yu, R. Jia, and M. Li, "Piece: Incentivizing personalized privacy-preserving for multi-version model marketplace in federated learning," IEEE Transactions on Information Forensics and Security, vol. 20, pp. 9387-9398, 2025.
+[33] P. Zhang, Z. Zhang, Y. Cao, X. Cheng, Y. Zhu, Z. Liu, and J. Zhang, "Locally differentially private truth discovery for sparse crowdsensing," IEEE Transactions on Knowledge and Data Engineering, vol. 38, no. 2, pp. 1189-1205, 2026.
+[34] M. S. Islam et al., "SEAFL: Enhancing efficiency in semi-asynchronous federated learning through adaptive aggregation and selective training," arXiv preprint arXiv:2503.05755, 2025.
+[35] M. Li, Z. Wang, C. Ma, C. Jia, L. Qi, and R. Du, "STDFL: A spatio-temporal-aware dynamic federated learning framework for spatial crowdsourcing," IEEE Transactions on Mobile Computing, vol. 25, no. 9, pp. 13 559-13 576, 2026.
+[36] C. Lu, Y. Yu, S. P. Karimireddy, M. Jordan, and R. Raskar, "Federated conformal predictors for distributed uncertainty quantification," in Proceedings of the 40th International Conference on Machine Learning, ser. Proceedings of Machine Learning Research, vol. 202. PMLR, 2023, pp. 22 942-22 964.
+[37] V. Plassier, M. Makni, A. Rubashevskii, E. Moulines, and M. Panov, "Conformal prediction for federated uncertainty quantification under label shift," in Proceedings of the 40th International Conference on Machine Learning, ser. Proceedings of Machine Learning Research, vol. 202. PMLR, 2023, pp. 27 907-27 947.
+[38] T. Li, A. K. Sahu, M. Zaheer, M. Sanjabi, A. Talwalkar, and V. Smith, "Federated optimization in heterogeneous networks," in Proceedings of Machine Learning and Systems, vol. 2, 2020, pp. 429-450.
+[39] S. P. Karimireddy, S. Kale, M. Mohri, S. Reddi, S. Stich, and A. T. Suresh, "SCAFFOLD: Stochastic controlled averaging for federated learning," in Proceedings of the 37th International Conference on Machine Learning, ser. Proceedings of Machine Learning Research, vol. 119. PMLR, 2020, pp. 5132-5143.
+[40] D. J. Goetze, D. J. Felten, J. R. Albrecht, and R. Bhattacharya, "FLOSS: Federated learning with opt-out and straggler support," in Proceedings of the 4th Workshop on Practical Adoption Challenges of ML for Systems, ser. PACMI '25. Seoul, Republic of Korea: ACM, 2025, pp. 69-74. [Online]. Available: https://doi.org/10.1145/3766882.3767180
+[41] E. Listo Zec, A. Breitholtz, and F. D. Johansson, "Overcoming label shift in target-aware federated learning," arXiv preprint arXiv:2411.03799, Nov 2024, tMLR submission (OpenReview: dQAsAmb1Xb); arXiv 2411.03799v2, 26 Aug 2025; no TMLR volume at close.
+[42] D. G. Horvitz and D. J. Thompson, "A generalization of sampling without replacement from a finite universe," Journal of the American Statistical Association, vol. 47, no. 260, pp. 663-685, 1952.
+[43] J. Ha´jek, "Comment on "an essay on the logical foundations of survey sampling, part one"," in Foundations of Statistical Inference, V. P.
+
+Godambe and D. A. Sprott, Eds. Toronto: Holt, Rinehart and Winston, 1971, pp. 236-242. [44] H. Shimodaira, "Improving predictive inference under covariate shift by weighting the log-likelihood function," Journal of Statistical Planning and Inference, vol. 90, no. 2, pp. 227-244, 2000. [45] J. M. Robins, A. Rotnitzky, and L. P. Zhao, "Estimation of regression coefficients when some regressors are not always observed," Journal of the American Statistical Association, vol. 89, no. 427, pp. 846-866, 1994. [46] J. Byrd and Z. Lipton, "What is the effect of importance weighting in deep learning?" in Proceedings of the 36th International Conference on Machine Learning, ser. Proceedings of Machine Learning Research, vol. 97. PMLR, 2019, pp. 872-881. [47] F. Ingelrest, G. Barrenetxea, G. Schaefer, M. Vetterli, O. Couach, and M. Parlange, "SensorScope: Application-specific sensor network for environmental monitoring," ACM Transactions on Sensor Networks, vol. 6, no. 2, pp. 1-32, 2010, art. no. 17. [48] G. Barrenetxea, "SensorScope data," Zenodo, 2019. [Online]. Available: https://doi.org/10.5281/zenodo.2654726 [49] Y. Zheng, F. Liu, and H.-P. Hsieh, "U-Air: When urban air quality inference meets big data," in Proceedings of the 19th ACM SIGKDD International Conference on Knowledge Discovery and Data Mining. ACM, 2013, pp. 1436-1444. [50] Transport for NSW, "NSW roads traffic volume counts," TfNSW Open Data Hub, 2024, accessed: Aug. 14, 2026. [Online]. Available: https://opendata.transport.nsw.gov.au/data/dataset/ nsw-roads-traffic-volume-counts-api [51] J. Yuan, Y. Zheng, C. Zhang, W. Xie, X. Xie, G. Sun, and Y. Huang, "T-Drive: Driving directions based on taxi trajectories," in Proceedings of the 18th SIGSPATIAL International Conference on Advances in Geographic Information Systems, 2010, pp. 99-108, public Microsoft Research trajectory sample. [Online]. Available: https://www.microsoft. com/en-us/research/publication/t-drive-trajectory-data-sample/ [52] A. Wang, S. Mora, Y. Machida, P. deSouza, S. Paul, O. Oyinlola, F. Duarte, and C. Ratti, "Hyperlocal environmental data with a mobile platform in urban environments," Scientific Data, vol. 10, p. 524, 2023, NYC PM2.5 files: Zenodo 10.5281/zenodo.7961851, CC BY 4.0. [53] F. Wilcoxon, "Individual comparisons by ranking methods," Biometrics Bulletin, vol. 1, no. 6, pp. 80-83, 1945. [54] S. Holm, "A simple sequentially rejective multiple test procedure," Scandinavian Journal of Statistics, vol. 6, no. 2, pp. 65-70, 1979.
+
+

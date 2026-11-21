@@ -1,0 +1,8 @@
+{
+  "pid": 29588,
+  "command": [
+    "C:\\Cursor\\raven.mcs\\.venv_new\\Scripts\\python.exe",
+    "-c",
+    "import ast; from pathlib import Path; from raven_mcs.control.persistence import computational_sources; paths=list(computational_sources(Path.cwd()))+list(Path('tests/control_b0').glob('*.py'))+[Path('scripts/validate_conditional_bundle_b0.py')]; [ast.parse(p.read_text(encoding='utf-8'),filename=str(p)) for p in paths]; print('SYNTAX_OK',len(paths))"
+  ]
+}

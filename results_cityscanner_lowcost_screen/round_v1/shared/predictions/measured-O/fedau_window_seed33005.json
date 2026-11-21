@@ -1,0 +1,26 @@
+{
+  "block": "measured-O",
+  "method": "fedau_window",
+  "seed": 33005,
+  "checkpoint_sha256": "05b133f9086cd175b36493c648ce7fadf62b3b549ba950ae7b1054fc7efa7baa",
+  "mean_repr": "5.380552982469783",
+  "std_repr": "2.380763274566125",
+  "checkpoint_path": "results_joint_ou/round_v1/runs/cityscanner_nyc_p2_measured_o/fedau_window/seed33005/checkpoints/final.pt",
+  "checkpoint_bytes": 165846,
+  "h_encoding": {
+    "region0": 0,
+    "region1": 1,
+    "region2": 2,
+    "region3": 3
+  },
+  "splits": [
+    "validation",
+    "test"
+  ],
+  "n_rows": 3776,
+  "validation_id_hash": "b994c7f2fe0254b28ed6c19c4c9c8d871957146bccd5ff7c9b737a603a98754e",
+  "test_id_hash": "2d04a448b3cca70e324870d27032a5d2f35bc8b3f9379c8d534427e0243af045",
+  "reproduction_pass": true,
+  "batch_check_max_abs_diff": null,
+  "created_utc": "2026-10-19T00:35:36.879299+00:00"
+}

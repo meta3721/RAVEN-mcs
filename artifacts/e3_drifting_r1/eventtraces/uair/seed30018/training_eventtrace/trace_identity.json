@@ -1,0 +1,20 @@
+{
+  "events_sha256": "758c5795a56a7b5197cbc888f6eb44176c6e33b1374f2b6c44364c498f51f586",
+  "metadata": {
+    "dataset": "uair",
+    "generator": "e3-complete-aligned-r3-v1",
+    "notes": [
+      "joint pi_opp",
+      "atomic p_obs",
+      "staleness>S_max possible",
+      "MC q",
+      "opportunity_drift"
+    ],
+    "num_clients": 8,
+    "num_windows": 80,
+    "s_max": 5,
+    "seed": 30018
+  },
+  "metadata_sha256": "29a1317cd4d3117b315819cea1f4e448981efa927b7d431c15b852cadcb65ceb",
+  "trace_hash": "96499fd12f21b50fdb2c20c22fd73a571ed42509c8abcf4d9c5050b9911a2efc"
+}

@@ -1,0 +1,129 @@
+{
+  "rows": [
+    {
+      "alpha_w_binding": true,
+      "head_tail": true,
+      "method": "fedavg_window",
+      "metric_applicability": true,
+      "pair_support": true,
+      "production_target_wiring": true,
+      "real_training": true,
+      "rmse_rho": true,
+      "status": "READY_FOR_REAL_CANARY"
+    },
+    {
+      "alpha_w_binding": true,
+      "head_tail": true,
+      "method": "fedasync_window",
+      "metric_applicability": true,
+      "pair_support": true,
+      "production_target_wiring": true,
+      "real_training": true,
+      "rmse_rho": true,
+      "status": "READY_FOR_REAL_CANARY"
+    },
+    {
+      "alpha_w_binding": true,
+      "head_tail": true,
+      "method": "flamf_timealign_adapted",
+      "metric_applicability": true,
+      "pair_support": true,
+      "production_target_wiring": true,
+      "real_training": true,
+      "rmse_rho": true,
+      "status": "READY_FOR_REAL_CANARY"
+    },
+    {
+      "alpha_w_binding": true,
+      "head_tail": true,
+      "method": "local_hajek",
+      "metric_applicability": true,
+      "pair_support": true,
+      "production_target_wiring": true,
+      "real_training": true,
+      "rmse_rho": true,
+      "status": "READY_FOR_REAL_CANARY"
+    },
+    {
+      "alpha_w_binding": true,
+      "head_tail": true,
+      "method": "twostage_hajek",
+      "metric_applicability": true,
+      "pair_support": true,
+      "production_target_wiring": true,
+      "real_training": true,
+      "rmse_rho": true,
+      "status": "READY_FOR_REAL_CANARY"
+    },
+    {
+      "alpha_w_binding": true,
+      "head_tail": true,
+      "method": "inst_cal",
+      "metric_applicability": true,
+      "pair_support": true,
+      "production_target_wiring": true,
+      "real_training": true,
+      "rmse_rho": true,
+      "status": "READY_FOR_REAL_CANARY"
+    },
+    {
+      "alpha_w_binding": true,
+      "head_tail": true,
+      "method": "debt_cal",
+      "metric_applicability": true,
+      "pair_support": true,
+      "production_target_wiring": true,
+      "real_training": true,
+      "rmse_rho": true,
+      "status": "READY_FOR_REAL_CANARY"
+    },
+    {
+      "alpha_w_binding": true,
+      "head_tail": true,
+      "method": "raven",
+      "metric_applicability": true,
+      "pair_support": true,
+      "production_target_wiring": true,
+      "real_training": true,
+      "rmse_rho": true,
+      "status": "READY_FOR_REAL_CANARY"
+    },
+    {
+      "alpha_w_binding": true,
+      "head_tail": true,
+      "method": "raven_simoracle",
+      "metric_applicability": true,
+      "pair_support": true,
+      "production_target_wiring": true,
+      "real_training": true,
+      "rmse_rho": true,
+      "status": "READY_FOR_REAL_CANARY"
+    },
+    {
+      "alpha_w_binding": false,
+      "head_tail": true,
+      "method": "central_all",
+      "metric_applicability": true,
+      "pair_support": false,
+      "production_target_wiring": true,
+      "real_training": true,
+      "rmse_rho": true,
+      "status": "READY_FOR_REAL_CANARY"
+    },
+    {
+      "alpha_w_binding": false,
+      "head_tail": true,
+      "method": "central_delivered",
+      "metric_applicability": true,
+      "pair_support": false,
+      "production_target_wiring": true,
+      "real_training": true,
+      "rmse_rho": true,
+      "status": "READY_FOR_REAL_CANARY"
+    },
+    {
+      "method": "flamf_original",
+      "status": "EXCLUDED_WITH_REASON"
+    }
+  ]
+}

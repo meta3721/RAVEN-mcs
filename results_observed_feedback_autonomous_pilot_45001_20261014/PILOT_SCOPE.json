@@ -1,0 +1,47 @@
+{
+  "batch": "user20261014_autonomous_pilot_45001",
+  "seed": 45001,
+  "strategies": [
+    "OF-v1",
+    "fixed_time_0.5",
+    "fixed_time_2",
+    "OF-no-Q-stop"
+  ],
+  "order": [
+    "OF-v1",
+    "fixed_time_0.5",
+    "fixed_time_2",
+    "OF-no-Q-stop"
+  ],
+  "source": "user_20261014_OF_v1_autonomous_pilot",
+  "stage": "P1_autonomous_P3_pre_pilot",
+  "T": 100,
+  "CPU_limit": 3000,
+  "wall_limit": 14400,
+  "arm_wall_limit": 7200,
+  "max_steps_each": 5000,
+  "max_steps_all": 20000,
+  "GPU": 0,
+  "constants": {
+    "theta": 0.02,
+    "kappa": 0.1,
+    "nu": 0.2
+  },
+  "main_baseline": "fixed_time_0.5",
+  "screen": {
+    "wait_route": {
+      "rW_min": 0.05,
+      "dG_max": 0.01
+    },
+    "match_route": {
+      "rG_min": 0.02,
+      "W_ratio_max": 1.05
+    }
+  },
+  "q_role": "diagnostic_prior_not_calibrated",
+  "q_value": 0.5,
+  "calibration_only": true,
+  "SGD": "existing CommonNDMF/ClientTrainer local1 LR.01 server.01",
+  "no_search": true,
+  "no_automatic_expansion": true
+}

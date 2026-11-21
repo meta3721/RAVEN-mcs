@@ -1,0 +1,22 @@
+{
+  "a_max": 40.0,
+  "local_steps": 2,
+  "method": "fedavg_window",
+  "probability_bounds": {
+    "obs": [
+      0.05,
+      0.95
+    ],
+    "opp": [
+      0.05,
+      0.95
+    ],
+    "q": [
+      0.05,
+      0.95
+    ]
+  },
+  "profile_id": "PROFILE-S1",
+  "scenario_id": "balanced",
+  "seed": 29001
+}

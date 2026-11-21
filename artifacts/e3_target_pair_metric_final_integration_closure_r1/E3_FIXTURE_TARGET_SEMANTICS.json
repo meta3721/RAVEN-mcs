@@ -1,0 +1,56 @@
+{
+  "atomic_unit_definition": "i=(spatial_unit, timestamp)",
+  "dataset": "fixture",
+  "group_definition": "h(i)=(spatial_unit, time_of_day_block)",
+  "group_id_pattern": "spatial_id::block{0..3}",
+  "hashes": {
+    "atomic_support_hash": "ac0464b6cae7b9a01dd1c9d7bdebef87b6ae8ad42fe492e579ac3853de62fdca",
+    "group_map_hash": "e34c70cfdf17a10de67ab272e2e821b3f1b8e239490a10df9f6423ec7e92ca36",
+    "head_tail_hash": "9af753d6c2d09e8a9dbcf6bc46cd754dad77b2776d24ad986e92f6c3221eeb6d",
+    "mu_vector_hash": "c9866bd3c9fa38ca57482eadd81e71a5502869e9a4bc100d76e3ac8dc051ea14"
+  },
+  "head_groups": [
+    "n0::block0",
+    "n0::block1",
+    "n1::block0",
+    "n1::block1",
+    "n2::block0",
+    "n2::block1"
+  ],
+  "head_tail_rule": "time_block in {0,1}=Head; {2,3}=Tail (protocol, not performance)",
+  "mu": {
+    "n0::block0": 0.08333333333333333,
+    "n0::block1": 0.08333333333333333,
+    "n0::block2": 0.08333333333333333,
+    "n0::block3": 0.08333333333333333,
+    "n1::block0": 0.08333333333333333,
+    "n1::block1": 0.08333333333333333,
+    "n1::block2": 0.08333333333333333,
+    "n1::block3": 0.08333333333333333,
+    "n2::block0": 0.08333333333333333,
+    "n2::block1": 0.08333333333333333,
+    "n2::block2": 0.08333333333333333,
+    "n2::block3": 0.08333333333333333
+  },
+  "mu_construction": "uniform over supported TEST atomic units; mu_g = count(g)/count(all)",
+  "mu_not_from": [
+    "training label magnitude",
+    "training performance",
+    "delivered-observation frequency",
+    "post hoc E3 results"
+  ],
+  "mu_sum": 1.0,
+  "n_groups": 12,
+  "n_spatial_units_in_test": 3,
+  "n_test_atomic_supported": 12,
+  "status": "FIXTURE_TARGET_SEMANTICS_READY",
+  "tail_groups": [
+    "n0::block2",
+    "n0::block3",
+    "n1::block2",
+    "n1::block3",
+    "n2::block2",
+    "n2::block3"
+  ],
+  "uses_e1_time_only_target": false
+}

@@ -1,0 +1,141 @@
+[
+  {
+    "query_key": [
+      "56975",
+      "tier-2",
+      "net-tier-2"
+    ],
+    "opportunity": {
+      "client": "56975",
+      "device_class": "tier-2",
+      "key": "004::56975",
+      "known_at": 4.25,
+      "network_class": "net-tier-2",
+      "time": 4.25
+    },
+    "R0_keys": [
+      "004::56975",
+      "008::56975"
+    ],
+    "frozen_service_records": [
+      {
+        "registration": {
+          "client": "56975",
+          "device_class": "tier-2",
+          "downloaded_version": 11,
+          "key": "012::56975",
+          "network_class": "net-tier-2",
+          "registered_at": 12.25
+        },
+        "outcome": "notified_failure",
+        "observed_until": 12.926845195229863
+      }
+    ]
+  },
+  {
+    "query_key": [
+      "56602",
+      "tier-0",
+      "net-tier-0"
+    ],
+    "opportunity": {
+      "client": "56602",
+      "device_class": "tier-0",
+      "key": "006::56602",
+      "known_at": 6.18,
+      "network_class": "net-tier-0",
+      "time": 6.18
+    },
+    "R0_keys": [
+      "006::56602"
+    ],
+    "frozen_service_records": [
+      {
+        "registration": {
+          "client": "56602",
+          "device_class": "tier-0",
+          "downloaded_version": 6,
+          "key": "007::56602",
+          "network_class": "net-tier-0",
+          "registered_at": 7.18
+        },
+        "outcome": "notified_failure",
+        "observed_until": 7.732489051776719
+      },
+      {
+        "registration": {
+          "client": "56602",
+          "device_class": "tier-0",
+          "downloaded_version": 7,
+          "key": "008::56602",
+          "network_class": "net-tier-0",
+          "registered_at": 8.180000000000001
+        },
+        "outcome": "notified_failure",
+        "observed_until": 9.396873306131111
+      },
+      {
+        "registration": {
+          "client": "56602",
+          "device_class": "tier-0",
+          "downloaded_version": 7,
+          "key": "010::56602",
+          "network_class": "net-tier-0",
+          "registered_at": 10.180000000000001
+        },
+        "outcome": "notified_failure",
+        "observed_until": 11.36642287196002
+      },
+      {
+        "registration": {
+          "client": "56602",
+          "device_class": "tier-0",
+          "downloaded_version": 8,
+          "key": "011::56602",
+          "network_class": "net-tier-0",
+          "registered_at": 11.180000000000001
+        },
+        "outcome": "notified_failure",
+        "observed_until": 12.122163644339295
+      }
+    ]
+  },
+  {
+    "query_key": [
+      "57051",
+      "tier-2",
+      "net-tier-2"
+    ],
+    "opportunity": {
+      "client": "57051",
+      "device_class": "tier-2",
+      "key": "006::57051",
+      "known_at": 6.26,
+      "network_class": "net-tier-2",
+      "time": 6.26
+    },
+    "R0_keys": [
+      "006::57051"
+    ],
+    "frozen_service_records": []
+  },
+  {
+    "query_key": [
+      "57106",
+      "tier-2",
+      "net-tier-2"
+    ],
+    "opportunity": {
+      "client": "57106",
+      "device_class": "tier-2",
+      "key": "008::57106",
+      "known_at": 8.3,
+      "network_class": "net-tier-2",
+      "time": 8.3
+    },
+    "R0_keys": [
+      "008::57106"
+    ],
+    "frozen_service_records": []
+  }
+]

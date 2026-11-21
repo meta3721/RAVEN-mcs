@@ -1,0 +1,5 @@
+{
+  "LEVEL_1_PERSISTED_VECTOR_FEASIBILITY": "The returned alpha vector satisfies persisted simplex, nonnegativity, upper-bound and ESS residual checks.",
+  "LEVEL_2_NUMERICAL_CERTIFICATION": "A zero residual is CERTIFIED_FEASIBLE; otherwise residual within the frozen tolerance is CERTIFIED_WITHIN_NUMERICAL_TOLERANCE.",
+  "LEVEL_3_EXACT_OPTIMALITY": "Requires native solver status and full objective state; neither is available in sealed outputs, so it is NOT_RECONSTRUCTABLE."
+}

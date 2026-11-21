@@ -1,0 +1,58 @@
+{
+  "atomic_units": {
+    "column_count": 11,
+    "column_names": [
+      "unit_id",
+      "spatial_id",
+      "absolute_time",
+      "time_index",
+      "target_value",
+      "split",
+      "target_group",
+      "opportunity_stratum",
+      "public_features",
+      "support_flag",
+      "is_warmup"
+    ],
+    "duplicate_unit_id": 0,
+    "hash_match": true,
+    "n_missing_target": 0,
+    "n_spatial_id": 9994,
+    "n_time_index": 297,
+    "path": "data/processed/tdrive_speed/atomic_units.parquet",
+    "row_count": 435516,
+    "sha256": "949cd8c7210941b066d300e7cec327c485c5cc6aa6110ce790fdbf0db8a1e414",
+    "sha256_manifest": "949cd8c7210941b066d300e7cec327c485c5cc6aa6110ce790fdbf0db8a1e414",
+    "split_counts": {
+      "test": 74569,
+      "train": 285659,
+      "validation": 75288
+    },
+    "time_range": [
+      "2008-02-02 13:30:00+00:00",
+      "2008-02-08 17:30:00+00:00"
+    ],
+    "warmup_count": 56511
+  },
+  "client_measurements": {
+    "column_count": 6,
+    "column_names": [
+      "client_id",
+      "unit_id",
+      "potential_measurement",
+      "controlled_generator_parameters",
+      "split",
+      "source_trace_id"
+    ],
+    "duplicate_client_unit": 0,
+    "hash_match": true,
+    "n_clients": 5867,
+    "n_missing_measurement": 0,
+    "path": "data/processed/tdrive_speed/client_measurements.parquet",
+    "row_count": 2236407,
+    "sha256": "6744a86dc97ec497295fedf3dd7efa2756680742b05320497cdc2c96ed049bb5",
+    "sha256_manifest": "6744a86dc97ec497295fedf3dd7efa2756680742b05320497cdc2c96ed049bb5"
+  },
+  "rewritten_in_r1": false,
+  "status": "HASH_BOUND"
+}

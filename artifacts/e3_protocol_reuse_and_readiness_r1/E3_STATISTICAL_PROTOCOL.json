@@ -1,0 +1,52 @@
+{
+  "EPS_ZERO": 1e-12,
+  "all_ties_policy": {
+    "p_holm": 1.0,
+    "p_raw": 1.0,
+    "status": "ALL_TIES"
+  },
+  "created_utc": "2026-08-09T15:41:08.403796+00:00",
+  "eps_applied_before": [
+    "win/tie/loss",
+    "sign tests",
+    "Wilcoxon",
+    "effect direction"
+  ],
+  "formal_seeds": [
+    30001,
+    30002,
+    30003,
+    30004,
+    30005,
+    30006,
+    30007,
+    30008,
+    30009,
+    30010,
+    30011,
+    30012,
+    30013,
+    30014,
+    30015,
+    30016,
+    30017,
+    30018,
+    30019,
+    30020
+  ],
+  "multiplicity_families_frozen_before_outcomes": true,
+  "paired_comparisons": "same seed + same dataset + same EventTrace family",
+  "primary_holm_family_example": "per dataset/metric: RAVEN vs each MAIN_TABLE baseline",
+  "reports_per_metric": [
+    "mean",
+    "std",
+    "median",
+    "95% CI",
+    "paired mean/median difference",
+    "win/tie/loss",
+    "Wilcoxon signed-rank",
+    "effect size",
+    "Holm-adjusted p-value"
+  ],
+  "seed_reuse_policy": "Reuse 30001..30020 where scientific identity permits (Traffic Complete-aligned). Do not choose seeds from outcomes."
+}

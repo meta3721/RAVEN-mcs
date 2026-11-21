@@ -1,0 +1,12 @@
+{
+  "atomic_table_path": "data/processed/traffic/atomic_units.parquet",
+  "atomic_table_sha256": "db45a2ecc66c27abeaf58b0c03ce66de7bfaf6727f4523ea06ef226a9ce3de50",
+  "atomic_unit_definition": "(station_id, hourly timestamp)",
+  "atomic_window_assignment_sha256": "e71b73459c80db341eb6a13cb616c410ed4eaa0a93deece1a7866f4813a1fbf9",
+  "client_definition": "traffic counting station",
+  "e1_formal_commit": "e8bd1fc777431c2609def257a04fba093f0daf24",
+  "global_windows_sha256": "27e3556d6d1ca160c150dfbd3b6f29bc181477dc9fcd0c1a6966a2f61c13b7ab",
+  "station_coordinate_sha256": "d4b4805b9e115672e0409f4c25711cf37b3f79457ff665c4bc54148820bd27a0",
+  "status": "FROZEN_UNCHANGED",
+  "target_field": "target_value"
+}

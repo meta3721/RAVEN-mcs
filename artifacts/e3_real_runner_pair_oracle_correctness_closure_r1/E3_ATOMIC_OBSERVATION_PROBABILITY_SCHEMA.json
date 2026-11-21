@@ -1,0 +1,10 @@
+{
+  "max_p": 0.35,
+  "mean_may_exist_separately": true,
+  "min_p": 0.1925,
+  "n_rows": 4,
+  "oracle_weighting_uses_atomic_not_mean": true,
+  "path": "eventtrace_r3/atomic_p_obs_true.parquet",
+  "schema": "(client_id, window, atomic_unit_id) -> p_obs_true",
+  "status": "ATOMIC_POBS_READY"
+}

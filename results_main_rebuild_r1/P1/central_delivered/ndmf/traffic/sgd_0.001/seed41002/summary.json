@@ -1,0 +1,20 @@
+{
+  "dataset": "traffic",
+  "seed": 41002,
+  "model": "ndmf",
+  "optimizer": "sgd",
+  "lr": 0.001,
+  "RMSE_mu": 313.79351577369874,
+  "best_pass": 197,
+  "best_at_100": 329.8060794277837,
+  "improvement_100_to_200": 0.04855145084610592,
+  "plateau_pass": false,
+  "strongest_baseline": "seasonal_naive_week",
+  "baseline_RMSE": 368.9324911844019,
+  "relative_gain": 0.1494554606282787,
+  "meaningful_validation_pass": true,
+  "elapsed_seconds": 15.889999999999418,
+  "samples_processed": 256200,
+  "optimizer_steps": 4200,
+  "run": "P1\\central_delivered\\ndmf\\traffic\\sgd_0.001\\seed41002"
+}

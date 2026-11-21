@@ -1,0 +1,52 @@
+{
+  "rows": [
+    {
+      "central": true,
+      "dataset": "sensorscope",
+      "eventtrace": true,
+      "formal_horizon": true,
+      "head_tail": true,
+      "metrics_schema": "E3_REAL_METRIC_OUTPUT_SCHEMA_V5",
+      "p_obs": true,
+      "pi_opp": true,
+      "q": true,
+      "rho": true,
+      "seeds": "30001-30020",
+      "status": "READY_FOR_REAL_CANARY",
+      "structural_pair_metric": "Delta_c_s",
+      "target": true
+    },
+    {
+      "central": true,
+      "dataset": "uair",
+      "eventtrace": true,
+      "formal_horizon": true,
+      "head_tail": true,
+      "metrics_schema": "E3_REAL_METRIC_OUTPUT_SCHEMA_V5",
+      "p_obs": true,
+      "pi_opp": true,
+      "q": true,
+      "rho": true,
+      "seeds": "30001-30020",
+      "status": "READY_FOR_REAL_CANARY",
+      "structural_pair_metric": "Delta_c_s",
+      "target": true
+    },
+    {
+      "central": true,
+      "dataset": "traffic",
+      "eventtrace": true,
+      "formal_horizon": true,
+      "head_tail": true,
+      "metrics_schema": "E3_REAL_METRIC_OUTPUT_SCHEMA_V5",
+      "p_obs": true,
+      "pi_opp": true,
+      "q": true,
+      "rho": true,
+      "seeds": "30001-30020",
+      "status": "READY_FOR_REAL_CANARY",
+      "structural_pair_metric": "Delta_c_s",
+      "target": true
+    }
+  ]
+}

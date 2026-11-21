@@ -1,0 +1,5 @@
+src,rule,vs_v2_rung,n,max_err,tol,pass,role
+raven_wo_use,B2,L3,20,5.270761604947438e-11,1e-09,True,like-for-like (v2 used the R_on ruler arm's beta_hat)
+raven_wo_use,B3,L5,20,0.0,1e-07,True,like-for-like (v2 used the R_on ruler arm's beta_hat)
+raven,B2,L3,20,0.002619535527237371,1e-09,False,literal v3 prompt wording
+raven,B3,L5,20,0.0024567700421018746,1e-07,False,literal v3 prompt wording

@@ -1,0 +1,20 @@
+{
+  "canary_seed": 31001,
+  "execute_in_this_round": false,
+  "no_performance_conclusion": true,
+  "round": "E3-MULTIDATASET-REAL-RUNNER-CANARY-R1",
+  "status": "PLAN_READY_NOT_EXECUTED",
+  "traffic_reuse": "REUSE_ONLY_NO_RERUN for sealed five-method block",
+  "verifies": [
+    "spatial×time target",
+    "Head/Tail",
+    "RMSE_mu/rho with w_i=rho_g/n_g",
+    "Delta_c_s (not atomic Delta_pair)",
+    "atomic p_obs production path",
+    "joint pi_opp production path",
+    "mechanism-specific N/A for Q/S",
+    "SimOracle M_MC=2000",
+    "Central N/A",
+    "Ledger/checkpoint"
+  ]
+}

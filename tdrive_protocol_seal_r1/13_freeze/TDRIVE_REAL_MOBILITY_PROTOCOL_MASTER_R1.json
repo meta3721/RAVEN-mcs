@@ -1,0 +1,510 @@
+{
+  "O": {
+    "adapter_layer": {
+      "classification": "DETERMINISTIC_DATA_QUALITY",
+      "rule": "a client_measurements row exists only after valid speed in [5,120] km/h and gap filters"
+    },
+    "eventtrace_layer": {
+      "classification": "CONTROLLED_EXPERIMENTAL",
+      "label": "REAL_MOBILITY_OPPORTUNITY + DETERMINISTIC_DATA_QUALITY + CONTROLLED_OBSERVATION",
+      "rule": "Complete-aligned controlled Bernoulli p_obs=0.35 on each R=1 unit, seed-specific, method-independent"
+    },
+    "forbidden_wording": "Do not describe controlled p_obs as real-world recorded sensor failure.",
+    "status": "FROZEN"
+  },
+  "R": {
+    "classification": "REAL_FROM_TDRIVE",
+    "definition": "R_{k,i}=1 iff processed client_measurements contains (client_id=k, unit_id=i)",
+    "depends_on": [
+      "trajectory",
+      "time",
+      "spatial geometry",
+      "public cleaning rules",
+      "fleet split seed 26001"
+    ],
+    "does_not_depend_on": [
+      "model prediction",
+      "test error",
+      "future label",
+      "local-update result",
+      "RAVEN weights",
+      "method identity",
+      "formal seed 30001-30010"
+    ],
+    "n_clients": 5867,
+    "n_r_ones": 2236407,
+    "scientific_meaning": "client-fleet taxi k occupied the 500 m cell of i during i's 30-min slot after frozen trajectory-quality rules, and i has a reference-fleet speed target",
+    "status": "FROZEN"
+  },
+  "U": {
+    "classification": "CONTROLLED_EXPERIMENTAL",
+    "compute_success_rule": "E3 complete_aligned device-tier Bernoulli (tiers 0/1/2 with p=0.70/0.90/0.98) and nonempty observations",
+    "deadline_rule": "arrival_time < window_deadline (window_duration=1.0, strict less-than next window)",
+    "label_leakage_audit": "PASS_PRESTATE_ONLY",
+    "network_success_rule": "E3 complete_aligned tier Bernoulli conditional on compute_success (p=0.80/0.95/0.99)",
+    "prestate_feature_boundary": "device_tier, registration_time, window_id, has_observations; no Y, no predictions, no test errors",
+    "q_use_feature_list": [
+      "device_tier",
+      "registration_time",
+      "window_deadline",
+      "compute_duration",
+      "network_duration",
+      "tau",
+      "has_observations"
+    ],
+    "source": "src/raven_mcs/e3/real_runner/stage2_r3.py compute_usable_r3",
+    "staleness_rule": "U=1 requires tau<=s_max=5; tau sampled with P(age>s_max)≈0.20",
+    "status": "FROZEN",
+    "tdrive_contains_real_compute_network_deadline": false
+  },
+  "atomic_units": {
+    "atomic_key": "unit_id = {spatial_id}_t{time_index:05d}  <=>  i=(spatial_id, time_slot)",
+    "number_atomic_units": 435516,
+    "number_missing_targets": 0,
+    "number_nonmissing_targets": 435516,
+    "paper_interpretation": "An atomic unit is a 500 m Beijing grid cell in a 30-minute slot whose speed target is the mean reference-fleet speed.",
+    "row_uniqueness": true,
+    "status": "FROZEN",
+    "target_name": "speed",
+    "target_unit": "km_per_h"
+  },
+  "client_identity": {
+    "client_key": "vehicle::{vehicle_id}",
+    "fleet_split": {
+      "n_client_vehicles": 5877,
+      "n_reference_vehicles": 2518,
+      "reference_fraction": 0.3,
+      "seed": 26001,
+      "stratification": "trajectory length"
+    },
+    "hash": "37d8072903a41c6397268b0d436d53930cb2229ad11f55616f7d00a0f3d8d8cb",
+    "mapping_rule": "federated client = client-fleet taxi; reference-fleet taxis construct Y only and are not clients",
+    "number_clients": 5867,
+    "status": "FROZEN",
+    "whether_any_remapping_is_applied": false,
+    "whether_identity_is_real_vehicle": true
+  },
+  "configs": {
+    "P2_constraints": {
+      "ESS_constraints": 3.0,
+      "alpha_bounds": 0.5,
+      "e_min": 3.0
+    },
+    "debt_policy": "full RAVEN debt",
+    "design_obs_use_ipw": true,
+    "instant_calibration": true,
+    "lambda_beta": 1.0,
+    "lambda_group": 1.0,
+    "lambda_s": 0.1,
+    "lambda_v": 0.1,
+    "local_training_parameters": {
+      "backbone": "common NDMF / E3 real-runner defaults",
+      "local_steps": 2
+    },
+    "policy": "TRANSFER_FROM_E3_E4_FULL_RAVEN",
+    "q_policy": "usable IPW from controlled complete_aligned q; prestate only",
+    "solver_policy": "existing p2_cvxpy frozen implementation",
+    "source": "artifacts/e4_wo_inst_reference_penalty_final_correction_r1/E4_WO_INST_FINAL_ONE_FACTOR_SPEC.json required_identities plus lambda_group=1.0 full RAVEN",
+    "status": "FROZEN",
+    "tdrive_test_tuned": false,
+    "tdrive_validation_frozen_config_exists": false,
+    "weight_clipping": {
+      "alpha_max": 0.5
+    },
+    "window_policy": "one window per unique train time slot; WINDOW_DURATION=1.0"
+  },
+  "dataset_identity": {
+    "adapter": "TDriveSpeedAdapter",
+    "all_raw_hashes_match_manifest": true,
+    "bbox": {
+      "lat_max": 40.2,
+      "lat_min": 39.6,
+      "lon_max": 116.8,
+      "lon_min": 116.0
+    },
+    "canonical_id": "tdrive_speed",
+    "coordinate_system": "WGS84 longitude/latitude degrees",
+    "data_hash": "7a0e197eeb8ba5230b364ae08d66b53ffbfdb82fc9caf5458a8c5557004387e8",
+    "dataset_name": "T-Drive-Speed",
+    "file_count": 10,
+    "known_source_cleaning_already_applied": [
+      "bbox clip 116.0-116.8E, 39.6-40.2N",
+      "speed 5-120 km/h",
+      "dt in (0, 0.25] hours"
+    ],
+    "license_source_notes": "microsoft-research-license",
+    "manifest_sha256": "31f4a212b316ff0c2e2ba3d6c30a2a1886e35f650c7be4de5032502ff78f1dd1",
+    "preparation_seed": 26001,
+    "provenance": {
+      "accessed_at": "2026-07-31T02:52:15+00:00",
+      "dataset": "tdrive_speed",
+      "errors": [],
+      "files": [
+        {
+          "downloaded_at": "2026-07-31T02:51:22+00:00",
+          "expected_md5": null,
+          "filename": "014.zip",
+          "http_status": 200,
+          "md5": "7a9201d8f4440a61969769499601ff4f",
+          "size_bytes": 1786189,
+          "status": "downloaded",
+          "url": "https://www.microsoft.com/en-us/research/wp-content/uploads/2016/02/014.zip"
+        },
+        {
+          "downloaded_at": "2026-07-31T02:51:28+00:00",
+          "expected_md5": null,
+          "filename": "013.zip",
+          "http_status": 200,
+          "md5": "bb0b7a6a2b2eae7073f80a5cf3bf6041",
+          "size_bytes": 7511662,
+          "status": "downloaded",
+          "url": "https://www.microsoft.com/en-us/research/wp-content/uploads/2016/02/013.zip"
+        },
+        {
+          "downloaded_at": "2026-07-31T02:51:34+00:00",
+          "expected_md5": null,
+          "filename": "012.zip",
+          "http_status": 200,
+          "md5": "2dcc35df6df79541341694613f0df4de",
+          "size_bytes": 8765021,
+          "status": "downloaded",
+          "url": "https://www.microsoft.com/en-us/research/wp-content/uploads/2016/02/012.zip"
+        },
+        {
+          "downloaded_at": "2026-07-31T02:51:40+00:00",
+          "expected_md5": null,
+          "filename": "011.zip",
+          "http_status": 200,
+          "md5": "b8161f3ef39092e859f196d7d9ef4f8e",
+          "size_bytes": 10330098,
+          "status": "downloaded",
+          "url": "https://www.microsoft.com/en-us/research/wp-content/uploads/2016/02/011.zip"
+        },
+        {
+          "downloaded_at": "2026-07-31T02:51:46+00:00",
+          "expected_md5": null,
+          "filename": "010.zip",
+          "http_status": 200,
+          "md5": "0c72aefa790c0311bd4bf3adc27c27c9",
+          "size_bytes": 10732764,
+          "status": "downloaded",
+          "url": "https://www.microsoft.com/en-us/research/wp-content/uploads/2016/02/010.zip"
+        },
+        {
+          "downloaded_at": "2026-07-31T02:51:51+00:00",
+          "expected_md5": null,
+          "filename": "09.zip",
+          "http_status": 200,
+          "md5": "f48319d79890243d49157a875e5afede",
+          "size_bytes": 11771101,
+          "status": "downloaded",
+          "url": "https://www.microsoft.com/en-us/research/wp-content/uploads/2016/02/09.zip"
+        },
+        {
+          "downloaded_at": "2026-07-31T02:51:57+00:00",
+          "expected_md5": null,
+          "filename": "08.zip",
+          "http_status": 200,
+          "md5": "f8f359a0bd57eb6c1138950d2014b382",
+          "size_bytes": 13519832,
+          "status": "downloaded",
+          "url": "https://www.microsoft.com/en-us/research/wp-content/uploads/2016/02/08.zip"
+        },
+        {
+          "downloaded_at": "2026-07-31T02:52:03+00:00",
+          "expected_md5": null,
+          "filename": "07.zip",
+          "http_status": 200,
+          "md5": "79ccabe5ff217737ea6c71eb66a88a57",
+          "size_bytes": 11720280,
+          "status": "downloaded",
+          "url": "https://www.microsoft.com/en-us/research/wp-content/uploads/2016/02/07.zip"
+        },
+        {
+          "downloaded_at": "2026-07-31T02:52:08+00:00",
+          "expected_md5": null,
+          "filename": "06.zip",
+          "http_status": 200,
+          "md5": "c2775a3154787850b30163bdcc4d12d3",
+          "size_bytes": 7827329,
+          "status": "downloaded",
+          "url": "https://www.microsoft.com/en-us/research/wp-content/uploads/2016/02/06.zip"
+        }
+      ],
+      "license": "microsoft-research-license",
+      "ok": true,
+      "source_name": "Microsoft Research T-Drive trajectory sample",
+      "source_url": "https://www.microsoft.com/en-us/research/publication/t-drive-trajectory-data-sample/"
+    },
+    "raw_dataset_sha256_if_available": "1e80ad548200e49db2fb3efc9336fcd8a4bf7944744e9556c8cd33eb6331e585",
+    "raw_root": "data/raw/tdrive_speed",
+    "source_description": "Microsoft Research T-Drive trajectory sample (Beijing taxis)",
+    "status": "HASH_BOUND",
+    "timezone_semantics": "Raw timestamps are naive Beijing wall-clock values; adapter labels them UTC without offset conversion.",
+    "total_size_bytes": 83967733
+  },
+  "eventtrace_schema": "06_eventtrace/TDRIVE_EVENTTRACE_SCHEMA.json",
+  "future_canary": "11_future_run_matrix/TDRIVE_FUTURE_CANARY_PLAN.csv",
+  "future_formal_50": "11_future_run_matrix/TDRIVE_FUTURE_FORMAL_RUN_MATRIX_50.csv",
+  "h_i": {
+    "definition": "four Beijing-local time-of-day groups H1-H4 from processed wall-clock hour",
+    "groups": [
+      {
+        "block": 0,
+        "h_id": "H1",
+        "hour_end": 6,
+        "hour_start": 0,
+        "mu": 0.08786493046708417,
+        "n_test_units": 6552
+      },
+      {
+        "block": 1,
+        "h_id": "H2",
+        "hour_end": 12,
+        "hour_start": 6,
+        "mu": 0.1622524105191165,
+        "n_test_units": 12099
+      },
+      {
+        "block": 2,
+        "h_id": "H3",
+        "hour_end": 18,
+        "hour_start": 12,
+        "mu": 0.514396062707023,
+        "n_test_units": 38358
+      },
+      {
+        "block": 3,
+        "h_id": "H4",
+        "hour_end": 24,
+        "hour_start": 18,
+        "mu": 0.23548659630677626,
+        "n_test_units": 17560
+      }
+    ],
+    "h_distinct_from_s": true,
+    "label": "PRE_REGISTERED_PROTOCOL_FALLBACK",
+    "performance_tuned": false,
+    "processed_target_group_field": "recovered as spatial_id::block{b}; NOT paper h(i)",
+    "reason": "No public_target.json or provenance-linked paper h(i) exists for T-Drive. Processed target_group couples spatial_id into the group and is too close to s(i).",
+    "status": "FROZEN",
+    "uses_speed_labels": false
+  },
+  "m_mc": 2000,
+  "mean_observation_rate": 0.35,
+  "methods": [
+    {
+      "canonical": "fedavg_window",
+      "display": "FedAvg-Window",
+      "role": "baseline",
+      "slot": "M1"
+    },
+    {
+      "canonical": "fedasync_window",
+      "display": "FedAsync-Window",
+      "role": "baseline",
+      "slot": "M2"
+    },
+    {
+      "alias_note": "E3 canonical ID flamf_timealign_adapted; do not substitute timealign_agg or flamf_original",
+      "canonical": "flamf_timealign_adapted",
+      "display": "TimeAlign-Agg",
+      "role": "baseline",
+      "slot": "M3"
+    },
+    {
+      "canonical": "twostage_hajek",
+      "display": "TwoStage-Hajek",
+      "role": "baseline",
+      "slot": "M4"
+    },
+    {
+      "canonical": "raven",
+      "display": "RAVEN-MCS",
+      "role": "focal",
+      "slot": "M5"
+    }
+  ],
+  "metrics": [
+    "Delta_group",
+    "Delta_c_s",
+    "RMSE_mu"
+  ],
+  "mu": {
+    "construction": "deterministic frequency of test-split atomic units over fallback h(i)",
+    "n_test_units": 74569,
+    "status": "FROZEN",
+    "sum_mu": 1.0,
+    "sum_ok": true,
+    "tolerance": 1e-12,
+    "uses_prediction_errors": false,
+    "uses_speed_labels": false
+  },
+  "paper_claim_ceiling": "external validation of structural target-alignment under real taxi-mobility opportunity; not RMSE universality",
+  "processed_dataset_identity": {
+    "atomic_units": {
+      "column_count": 11,
+      "column_names": [
+        "unit_id",
+        "spatial_id",
+        "absolute_time",
+        "time_index",
+        "target_value",
+        "split",
+        "target_group",
+        "opportunity_stratum",
+        "public_features",
+        "support_flag",
+        "is_warmup"
+      ],
+      "duplicate_unit_id": 0,
+      "hash_match": true,
+      "n_missing_target": 0,
+      "n_spatial_id": 9994,
+      "n_time_index": 297,
+      "path": "data/processed/tdrive_speed/atomic_units.parquet",
+      "row_count": 435516,
+      "sha256": "949cd8c7210941b066d300e7cec327c485c5cc6aa6110ce790fdbf0db8a1e414",
+      "sha256_manifest": "949cd8c7210941b066d300e7cec327c485c5cc6aa6110ce790fdbf0db8a1e414",
+      "split_counts": {
+        "test": 74569,
+        "train": 285659,
+        "validation": 75288
+      },
+      "time_range": [
+        "2008-02-02 13:30:00+00:00",
+        "2008-02-08 17:30:00+00:00"
+      ],
+      "warmup_count": 56511
+    },
+    "client_measurements": {
+      "column_count": 6,
+      "column_names": [
+        "client_id",
+        "unit_id",
+        "potential_measurement",
+        "controlled_generator_parameters",
+        "split",
+        "source_trace_id"
+      ],
+      "duplicate_client_unit": 0,
+      "hash_match": true,
+      "n_clients": 5867,
+      "n_missing_measurement": 0,
+      "path": "data/processed/tdrive_speed/client_measurements.parquet",
+      "row_count": 2236407,
+      "sha256": "6744a86dc97ec497295fedf3dd7efa2756680742b05320497cdc2c96ed049bb5",
+      "sha256_manifest": "6744a86dc97ec497295fedf3dd7efa2756680742b05320497cdc2c96ed049bb5"
+    },
+    "rewritten_in_r1": false,
+    "status": "HASH_BOUND"
+  },
+  "protocol_id": "TDRIVE_REAL_MOBILITY_PROTOCOL_R1",
+  "round": "RAVEN-MCS-TDRIVE-REAL-MOBILITY-PROTOCOL-SEAL-R1",
+  "s_i": {
+    "definition": "s(i) = spatial_id :: block{0-3} :: {weekday|weekend}",
+    "h_definition": "H1-H4 time-of-day only",
+    "h_equals_s": false,
+    "n_strata": 46082,
+    "performance_tuned": false,
+    "s_definition": "spatial cell × 4 TOD blocks × weekday/weekend",
+    "source": "processed opportunity_stratum field (provenance-linked)",
+    "status": "FROZEN"
+  },
+  "s_max": 5,
+  "scenario": "complete_aligned",
+  "seeds": [
+    30001,
+    30002,
+    30003,
+    30004,
+    30005,
+    30006,
+    30007,
+    30008,
+    30009,
+    30010
+  ],
+  "source_hashes": {
+    "configs/dataset/tdrive_speed.yaml": "3d2c53b34f2e20ae3a10de98cd6dd1acc6059ed304063bbc789a70f0dfc30b76",
+    "data/manifests/tdrive_speed_manifest.json": "31f4a212b316ff0c2e2ba3d6c30a2a1886e35f650c7be4de5032502ff78f1dd1",
+    "data/processed/tdrive_speed/atomic_units.parquet": "949cd8c7210941b066d300e7cec327c485c5cc6aa6110ce790fdbf0db8a1e414",
+    "data/processed/tdrive_speed/client_measurements.parquet": "6744a86dc97ec497295fedf3dd7efa2756680742b05320497cdc2c96ed049bb5",
+    "src/raven_mcs/data/controlled.py": "9ecf0a4bbebf0fb145c2a032fe88fbcb0cd9e4d830d35f3fa61df801e10e2aee",
+    "src/raven_mcs/data/split.py": "5a6670a9f206e162b93ced644e8d31271454dce51ad5b7e2cccc6a0170ee367b",
+    "src/raven_mcs/data/tdrive.py": "1a3b9d5edd4672f403a859ebdc98db053a1ab44d9c421ef7d5f946837f4afd77",
+    "src/raven_mcs/e3/delta_cs_rho/delta_cs_v6.py": "580bd1d6d2d0c4c178b16ab9a9ee5f16541fcec617f0551a568fdbcc875398d3",
+    "src/raven_mcs/e3/formal/stats.py": "c1e9685c62649628eec0847bd4d29a4da621c6f66c4775fd05513c8e599e4673",
+    "src/raven_mcs/e3/real_runner/stage2_r3.py": "60194a3048c90def6a0430f62f535b722a7445ee809cf317b6b7f2a0e3102c4a",
+    "src/raven_mcs/metrics/accuracy.py": "18c5dc9636673e68bd48210297b6c8bdb11c759ab466fef4501837f50b091ba9",
+    "src/raven_mcs/metrics/distribution.py": "23178fb519cacb6f746b1fb10f748191b582dd8ec48d65c15ac0ca7916e5c8c8",
+    "src/raven_mcs/simulation/event_trace.py": "39b87ea551c7b9637665779144d0e70a6bc9ecdafb3d63f057c4abd38d31e86b",
+    "src/raven_mcs/tdrive_protocol_seal_r1/constants.py": "e169eeb2ebe0ac8a38a49e9d987207ed478b299ebbc238ccaa45e943a9bade64",
+    "src/raven_mcs/tdrive_protocol_seal_r1/eventtrace_generator.py": "8ddb2fe0c5526100e64ea231d62a04c6148bdc6aaf18f9201d3b50e31145782d",
+    "src/raven_mcs/tdrive_protocol_seal_r1/pipeline.py": "64028057b4f93de31c58a1812e6167c225cbbfee903ddb8f73d5b352b0eeb314"
+  },
+  "spatial_grid": {
+    "bounding_box": {
+      "lat_max": 40.2,
+      "lat_min": 39.6,
+      "lon_max": 116.8,
+      "lon_min": 116.0
+    },
+    "cell_meters": 500,
+    "coordinate_reference": "WGS84 lon/lat degrees",
+    "empty_cell_rule": "cells with no reference-fleet valid speed are absent from atomic_units",
+    "grid_type": "regular equirectangular 500 m cells over Beijing bbox",
+    "lat_deg_per_cell": 0.0044915558749550845,
+    "lon_deg_per_cell": 0.005854744398030815,
+    "number_of_retained_cells": 9994,
+    "out_of_bounds_rule": "GPS points outside bbox are dropped at parse time",
+    "performance_tuned": false,
+    "source_config_hash": "3d2c53b34f2e20ae3a10de98cd6dd1acc6059ed304063bbc789a70f0dfc30b76",
+    "spatial_id_construction": "g{x:04d}_{y:04d} with x=floor((lon-116.0)/lon_deg), y=floor((lat-39.6)/lat_deg)",
+    "status": "FROZEN",
+    "unique_grid_linked_to_processed": true
+  },
+  "split": {
+    "e9_yaml_not_used_as_protocol": true,
+    "label": "RECOVERED_PROCESSED_TEMPORAL_SPLIT",
+    "n_test_slots": 59,
+    "n_test_units": 74569,
+    "n_train_slots": 178,
+    "n_train_units": 285659,
+    "n_validation_slots": 60,
+    "n_validation_units": 75288,
+    "not": "PRE_REGISTERED_CHRONOLOGICAL_FALLBACK",
+    "performance_tuned": false,
+    "rule": "TemporalSplitConfig 60/20/20 by unique absolute time slots; warmup = first 20% of train slots but remains split=train",
+    "source": "processed split column uniquely linked to atomic_units.parquet",
+    "split_id": "processed_temporal_60_20_20_slot",
+    "status": "FROZEN"
+  },
+  "statistical_protocol": "09_statistics/TDRIVE_STATISTICAL_PROTOCOL_SEAL.json",
+  "status_placeholder": "see TDRIVE_PROTOCOL_GATES_R1.json",
+  "time_slots": {
+    "day_boundary_rule": "calendar day of the processed timestamp (UTC-tagged hour/dow)",
+    "empty_slot_rule": "slots with no reference-fleet Y are absent; client measurements inner-join those slots",
+    "n_time_slots": 297,
+    "performance_tuned": false,
+    "slot_boundary_rule": "pandas floor to 30-minute bins of processed timestamps",
+    "slot_duration_minutes": 30,
+    "source_config_hash": "3d2c53b34f2e20ae3a10de98cd6dd1acc6059ed304063bbc789a70f0dfc30b76",
+    "status": "FROZEN",
+    "time_block_rule": "hour // 6 with 4 blocks (00-06, 06-12, 12-18, 18-24)",
+    "timezone": "Beijing local wall-clock coinciding with processed UTC-tagged timestamps",
+    "unique_slot_linked_to_processed": true,
+    "weekday_weekend_rule": "weekend iff dayofweek >= 5 on the processed timestamp"
+  },
+  "timezone": {
+    "conversion_applied": false,
+    "conversion_rule": "pd.to_datetime(..., utc=True) labels naive strings as UTC without shifting clock fields",
+    "do_not_apply_plus_eight": true,
+    "paper_timezone": "Beijing local wall-clock coinciding with processed timestamps",
+    "processed_timezone": "pandas UTC-tagged timestamps equal to the naive raw clock (no +8 conversion)",
+    "raw_timezone": "naive timestamps in the official T-Drive sample; scientifically Beijing local wall-clock",
+    "source_evidence": "src/raven_mcs/data/tdrive.py _load_tdrive_points / _parse_trajectory_bytes; time_of_day_block uses tz_convert('UTC').hour",
+    "status": "FROZEN"
+  },
+  "window_duration": 1.0
+}

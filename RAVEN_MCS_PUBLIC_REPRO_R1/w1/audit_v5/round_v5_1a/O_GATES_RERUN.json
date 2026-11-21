@@ -1,0 +1,782 @@
+{
+  "round": "round_v5_1a",
+  "oracle": "scripts/w1_v51a_oracle.py (AM-6)",
+  "tol_primal": 1e-13,
+  "tol_stationarity": 1e-12,
+  "tol_cs": 1e-12,
+  "tol_objective": 1e-12,
+  "eps_impl": 5e-06,
+  "O-G2": {
+    "rows": [
+      {
+        "K": 1,
+        "a_bar": 1.0,
+        "e_bar": 1.0,
+        "max_abs_diff": 0.0,
+        "kind": "degenerate_uniform",
+        "pass": true
+      },
+      {
+        "K": 2,
+        "a_bar": 0.5,
+        "e_bar": 2.0,
+        "max_abs_diff": 0.0,
+        "kind": "uniform_control",
+        "pass": true
+      },
+      {
+        "K": 3,
+        "a_bar": 0.5,
+        "e_bar": 3.0,
+        "max_abs_diff": 0.0,
+        "kind": "uniform_control",
+        "pass": true
+      },
+      {
+        "K": 4,
+        "a_bar": 0.5,
+        "e_bar": 3.0,
+        "max_abs_diff": 0.0,
+        "kind": "uniform_control",
+        "pass": true
+      },
+      {
+        "K": 5,
+        "a_bar": 0.5,
+        "e_bar": 3.0,
+        "max_abs_diff": 0.0,
+        "kind": "uniform_control",
+        "pass": true
+      },
+      {
+        "K": 6,
+        "a_bar": 0.5,
+        "e_bar": 3.0,
+        "max_abs_diff": 0.0,
+        "kind": "uniform_control",
+        "pass": true
+      },
+      {
+        "K": 7,
+        "a_bar": 0.5,
+        "e_bar": 3.0,
+        "max_abs_diff": 0.0,
+        "kind": "uniform_control",
+        "pass": true
+      },
+      {
+        "K": 8,
+        "a_bar": 0.5,
+        "e_bar": 3.0,
+        "max_abs_diff": 0.0,
+        "kind": "uniform_control",
+        "pass": true
+      },
+      {
+        "K": 9,
+        "a_bar": 0.5,
+        "e_bar": 3.0,
+        "max_abs_diff": 0.0,
+        "kind": "uniform_control",
+        "pass": true
+      },
+      {
+        "K": 10,
+        "a_bar": 0.5,
+        "e_bar": 3.0,
+        "max_abs_diff": 0.0,
+        "kind": "uniform_control",
+        "pass": true
+      },
+      {
+        "K": 11,
+        "a_bar": 0.5,
+        "e_bar": 3.0,
+        "max_abs_diff": 0.0,
+        "kind": "uniform_control",
+        "pass": true
+      },
+      {
+        "K": 12,
+        "a_bar": 0.5,
+        "e_bar": 3.0,
+        "max_abs_diff": 0.0,
+        "kind": "uniform_control",
+        "pass": true
+      },
+      {
+        "K": 13,
+        "a_bar": 0.5,
+        "e_bar": 3.0,
+        "max_abs_diff": 0.0,
+        "kind": "uniform_control",
+        "pass": true
+      },
+      {
+        "K": 14,
+        "a_bar": 0.5,
+        "e_bar": 3.0,
+        "max_abs_diff": 0.0,
+        "kind": "uniform_control",
+        "pass": true
+      },
+      {
+        "K": 15,
+        "a_bar": 0.5,
+        "e_bar": 3.0,
+        "max_abs_diff": 0.0,
+        "kind": "uniform_control",
+        "pass": true
+      },
+      {
+        "K": 16,
+        "a_bar": 0.5,
+        "e_bar": 3.0,
+        "max_abs_diff": 0.0,
+        "kind": "uniform_control",
+        "pass": true
+      },
+      {
+        "K": 17,
+        "a_bar": 0.5,
+        "e_bar": 3.0,
+        "max_abs_diff": 0.0,
+        "kind": "uniform_control",
+        "pass": true
+      },
+      {
+        "K": 18,
+        "a_bar": 0.5,
+        "e_bar": 3.0,
+        "max_abs_diff": 0.0,
+        "kind": "uniform_control",
+        "pass": true
+      },
+      {
+        "K": 19,
+        "a_bar": 0.5,
+        "e_bar": 3.0,
+        "max_abs_diff": 0.0,
+        "kind": "uniform_control",
+        "pass": true
+      },
+      {
+        "K": 20,
+        "a_bar": 0.5,
+        "e_bar": 3.0,
+        "max_abs_diff": 0.0,
+        "kind": "uniform_control",
+        "pass": true
+      },
+      {
+        "K": 21,
+        "a_bar": 0.5,
+        "e_bar": 3.0,
+        "max_abs_diff": 0.0,
+        "kind": "uniform_control",
+        "pass": true
+      },
+      {
+        "K": 22,
+        "a_bar": 0.5,
+        "e_bar": 3.0,
+        "max_abs_diff": 0.0,
+        "kind": "uniform_control",
+        "pass": true
+      },
+      {
+        "K": 23,
+        "a_bar": 0.5,
+        "e_bar": 3.0,
+        "max_abs_diff": 0.0,
+        "kind": "uniform_control",
+        "pass": true
+      },
+      {
+        "K": 24,
+        "a_bar": 0.5,
+        "e_bar": 3.0,
+        "max_abs_diff": 0.0,
+        "kind": "uniform_control",
+        "pass": true
+      },
+      {
+        "K": 25,
+        "a_bar": 0.5,
+        "e_bar": 3.0,
+        "max_abs_diff": 0.0,
+        "kind": "uniform_control",
+        "pass": true
+      },
+      {
+        "K": 26,
+        "a_bar": 0.5,
+        "e_bar": 3.0,
+        "max_abs_diff": 0.0,
+        "kind": "uniform_control",
+        "pass": true
+      },
+      {
+        "K": 27,
+        "a_bar": 0.5,
+        "e_bar": 3.0,
+        "max_abs_diff": 0.0,
+        "kind": "uniform_control",
+        "pass": true
+      },
+      {
+        "K": 28,
+        "a_bar": 0.5,
+        "e_bar": 3.0,
+        "max_abs_diff": 0.0,
+        "kind": "uniform_control",
+        "pass": true
+      },
+      {
+        "K": 29,
+        "a_bar": 0.5,
+        "e_bar": 3.0,
+        "max_abs_diff": 0.0,
+        "kind": "uniform_control",
+        "pass": true
+      },
+      {
+        "K": 30,
+        "a_bar": 0.5,
+        "e_bar": 3.0,
+        "max_abs_diff": 0.0,
+        "kind": "uniform_control",
+        "pass": true
+      },
+      {
+        "K": 31,
+        "a_bar": 0.5,
+        "e_bar": 3.0,
+        "max_abs_diff": 0.0,
+        "kind": "uniform_control",
+        "pass": true
+      },
+      {
+        "K": 32,
+        "a_bar": 0.5,
+        "e_bar": 3.0,
+        "max_abs_diff": 0.0,
+        "kind": "uniform_control",
+        "pass": true
+      },
+      {
+        "K": 33,
+        "a_bar": 0.5,
+        "e_bar": 3.0,
+        "max_abs_diff": 0.0,
+        "kind": "uniform_control",
+        "pass": true
+      },
+      {
+        "K": 34,
+        "a_bar": 0.5,
+        "e_bar": 3.0,
+        "max_abs_diff": 0.0,
+        "kind": "uniform_control",
+        "pass": true
+      },
+      {
+        "K": 35,
+        "a_bar": 0.5,
+        "e_bar": 3.0,
+        "max_abs_diff": 0.0,
+        "kind": "uniform_control",
+        "pass": true
+      },
+      {
+        "K": 36,
+        "a_bar": 0.5,
+        "e_bar": 3.0,
+        "max_abs_diff": 0.0,
+        "kind": "uniform_control",
+        "pass": true
+      },
+      {
+        "K": 37,
+        "a_bar": 0.5,
+        "e_bar": 3.0,
+        "max_abs_diff": 0.0,
+        "kind": "uniform_control",
+        "pass": true
+      },
+      {
+        "K": 38,
+        "a_bar": 0.5,
+        "e_bar": 3.0,
+        "max_abs_diff": 0.0,
+        "kind": "uniform_control",
+        "pass": true
+      },
+      {
+        "K": 39,
+        "a_bar": 0.5,
+        "e_bar": 3.0,
+        "max_abs_diff": 0.0,
+        "kind": "uniform_control",
+        "pass": true
+      },
+      {
+        "K": 40,
+        "a_bar": 0.5,
+        "e_bar": 3.0,
+        "max_abs_diff": 0.0,
+        "kind": "uniform_control",
+        "pass": true
+      },
+      {
+        "K": 41,
+        "a_bar": 0.5,
+        "e_bar": 3.0,
+        "max_abs_diff": 0.0,
+        "kind": "uniform_control",
+        "pass": true
+      },
+      {
+        "K": 42,
+        "a_bar": 0.5,
+        "e_bar": 3.0,
+        "max_abs_diff": 0.0,
+        "kind": "uniform_control",
+        "pass": true
+      },
+      {
+        "K": 43,
+        "a_bar": 0.5,
+        "e_bar": 3.0,
+        "max_abs_diff": 0.0,
+        "kind": "uniform_control",
+        "pass": true
+      },
+      {
+        "K": 44,
+        "a_bar": 0.5,
+        "e_bar": 3.0,
+        "max_abs_diff": 0.0,
+        "kind": "uniform_control",
+        "pass": true
+      },
+      {
+        "K": 45,
+        "a_bar": 0.5,
+        "e_bar": 3.0,
+        "max_abs_diff": 0.0,
+        "kind": "uniform_control",
+        "pass": true
+      },
+      {
+        "K": 46,
+        "a_bar": 0.5,
+        "e_bar": 3.0,
+        "max_abs_diff": 0.0,
+        "kind": "uniform_control",
+        "pass": true
+      },
+      {
+        "K": 47,
+        "a_bar": 0.5,
+        "e_bar": 3.0,
+        "max_abs_diff": 0.0,
+        "kind": "uniform_control",
+        "pass": true
+      },
+      {
+        "K": 48,
+        "a_bar": 0.5,
+        "e_bar": 3.0,
+        "max_abs_diff": 0.0,
+        "kind": "uniform_control",
+        "pass": true
+      },
+      {
+        "K": 49,
+        "a_bar": 0.5,
+        "e_bar": 3.0,
+        "max_abs_diff": 0.0,
+        "kind": "uniform_control",
+        "pass": true
+      },
+      {
+        "K": 50,
+        "a_bar": 0.5,
+        "e_bar": 3.0,
+        "max_abs_diff": 0.0,
+        "kind": "uniform_control",
+        "pass": true
+      },
+      {
+        "K": 51,
+        "a_bar": 0.5,
+        "e_bar": 3.0,
+        "max_abs_diff": 0.0,
+        "kind": "uniform_control",
+        "pass": true
+      },
+      {
+        "K": 52,
+        "a_bar": 0.5,
+        "e_bar": 3.0,
+        "max_abs_diff": 0.0,
+        "kind": "uniform_control",
+        "pass": true
+      },
+      {
+        "K": 53,
+        "a_bar": 0.5,
+        "e_bar": 3.0,
+        "max_abs_diff": 0.0,
+        "kind": "uniform_control",
+        "pass": true
+      },
+      {
+        "K": 54,
+        "a_bar": 0.5,
+        "e_bar": 3.0,
+        "max_abs_diff": 0.0,
+        "kind": "uniform_control",
+        "pass": true
+      },
+      {
+        "K": 55,
+        "a_bar": 0.5,
+        "e_bar": 3.0,
+        "max_abs_diff": 0.0,
+        "kind": "uniform_control",
+        "pass": true
+      },
+      {
+        "K": 56,
+        "a_bar": 0.5,
+        "e_bar": 3.0,
+        "max_abs_diff": 0.0,
+        "kind": "uniform_control",
+        "pass": true
+      },
+      {
+        "K": 57,
+        "a_bar": 0.5,
+        "e_bar": 3.0,
+        "max_abs_diff": 0.0,
+        "kind": "uniform_control",
+        "pass": true
+      },
+      {
+        "K": 58,
+        "a_bar": 0.5,
+        "e_bar": 3.0,
+        "max_abs_diff": 0.0,
+        "kind": "uniform_control",
+        "pass": true
+      },
+      {
+        "K": 59,
+        "a_bar": 0.5,
+        "e_bar": 3.0,
+        "max_abs_diff": 0.0,
+        "kind": "uniform_control",
+        "pass": true
+      },
+      {
+        "K": 60,
+        "a_bar": 0.5,
+        "e_bar": 3.0,
+        "max_abs_diff": 0.0,
+        "kind": "uniform_control",
+        "pass": true
+      },
+      {
+        "K": 61,
+        "a_bar": 0.5,
+        "e_bar": 3.0,
+        "max_abs_diff": 0.0,
+        "kind": "uniform_control",
+        "pass": true
+      },
+      {
+        "K": 62,
+        "a_bar": 0.5,
+        "e_bar": 3.0,
+        "max_abs_diff": 0.0,
+        "kind": "uniform_control",
+        "pass": true
+      },
+      {
+        "K": 63,
+        "a_bar": 0.5,
+        "e_bar": 3.0,
+        "max_abs_diff": 0.0,
+        "kind": "uniform_control",
+        "pass": true
+      },
+      {
+        "K": 64,
+        "a_bar": 0.5,
+        "e_bar": 3.0,
+        "max_abs_diff": 0.0,
+        "kind": "uniform_control",
+        "pass": true
+      }
+    ],
+    "observed": 0.0,
+    "pass": true,
+    "tolerance": 0.0,
+    "tolerance_source": "protocol v5.1 2.2 O-G2: beta = uniform must return the uniform weights exactly when they are feasible"
+  },
+  "O-G0": {
+    "n_runs": 80,
+    "n_windows": 6558,
+    "observed_primal": 6.661338147750939e-16,
+    "observed_stationarity": 0.6666666677752078,
+    "observed_cs": 4.8834545747478456e-17,
+    "pass": false,
+    "tolerance_primal": 1e-13,
+    "tolerance_stationarity": 1e-12,
+    "tolerance_cs": 1e-12,
+    "n_failing_runs": 80,
+    "worst_windows": [
+      {
+        "ds": "sensorscope",
+        "arm": "proj_beta_debt",
+        "seed": 30005,
+        "j": 82,
+        "K": 3,
+        "kind": "ball",
+        "primal": 0.0,
+        "stationarity": 0.6666666677752078,
+        "stat_raw": 0.6666666677752078,
+        "stat_fit": 0.666666670142614,
+        "cs": 0.0
+      },
+      {
+        "ds": "sensorscope",
+        "arm": "proj_beta_debt",
+        "seed": 30011,
+        "j": 85,
+        "K": 3,
+        "kind": "ball",
+        "primal": 0.0,
+        "stationarity": 0.6666666676509893,
+        "stat_raw": 0.6666666676509893,
+        "stat_fit": 0.6666666693544234,
+        "cs": 0.0
+      },
+      {
+        "ds": "uair",
+        "arm": "proj_beta_debt",
+        "seed": 30005,
+        "j": 56,
+        "K": 3,
+        "kind": "ball",
+        "primal": 0.0,
+        "stationarity": 0.6666666674665972,
+        "stat_raw": 0.6666666674665972,
+        "stat_fit": 0.6666666722726433,
+        "cs": 0.0
+      },
+      {
+        "ds": "sensorscope",
+        "arm": "proj_beta_debt",
+        "seed": 30008,
+        "j": 79,
+        "K": 3,
+        "kind": "ball",
+        "primal": 0.0,
+        "stationarity": 0.666666667341246,
+        "stat_raw": 0.666666667341246,
+        "stat_fit": 0.666666669521863,
+        "cs": 0.0
+      },
+      {
+        "ds": "uair",
+        "arm": "proj_beta_debt",
+        "seed": 30014,
+        "j": 54,
+        "K": 3,
+        "kind": "ball",
+        "primal": 0.0,
+        "stationarity": 0.6666666673393655,
+        "stat_raw": 0.6666666673393655,
+        "stat_fit": 0.666666669817396,
+        "cs": 2.7755575578025285e-17
+      },
+      {
+        "ds": "uair",
+        "arm": "proj_beta_debt",
+        "seed": 30004,
+        "j": 58,
+        "K": 3,
+        "kind": "ball",
+        "primal": 0.0,
+        "stationarity": 0.6666666672641892,
+        "stat_raw": 0.6666666672641892,
+        "stat_fit": 0.6666666691763509,
+        "cs": 0.0
+      },
+      {
+        "ds": "sensorscope",
+        "arm": "proj_beta_debt",
+        "seed": 30009,
+        "j": 67,
+        "K": 3,
+        "kind": "ball",
+        "primal": 0.0,
+        "stationarity": 0.6666666672511595,
+        "stat_raw": 0.6666666672511595,
+        "stat_fit": 0.6666666692652059,
+        "cs": 0.0
+      },
+      {
+        "ds": "uair",
+        "arm": "proj_beta_debt",
+        "seed": 30017,
+        "j": 39,
+        "K": 3,
+        "kind": "ball",
+        "primal": 0.0,
+        "stationarity": 0.6666666672219005,
+        "stat_raw": 0.6666666672219005,
+        "stat_fit": 0.6666666692562283,
+        "cs": 0.0
+      },
+      {
+        "ds": "uair",
+        "arm": "proj_beta_debt",
+        "seed": 30008,
+        "j": 67,
+        "K": 3,
+        "kind": "ball",
+        "primal": 0.0,
+        "stationarity": 0.6666666670486878,
+        "stat_raw": 0.6666666670486878,
+        "stat_fit": 0.6666666687397547,
+        "cs": 0.0
+      },
+      {
+        "ds": "sensorscope",
+        "arm": "proj_beta_debt",
+        "seed": 30001,
+        "j": 89,
+        "K": 3,
+        "kind": "ball",
+        "primal": 0.0,
+        "stationarity": 0.6666666670348284,
+        "stat_raw": 0.6666666670348284,
+        "stat_fit": 0.6666666708297209,
+        "cs": 0.0
+      }
+    ],
+    "tolerance_source": "protocol v5.1 2.2 O-G0: per window, primal <= 1e-13, stationarity <= 1e-12, complementary slackness <= 1e-12"
+  },
+  "O-G1": {
+    "n_windows": 200,
+    "observed_max_gap": 9.636328410569939e-12,
+    "n_cvxpy_status_optimal": 65,
+    "n_cvxpy_status_optimal_inaccurate": 135,
+    "max_cvxpy_raw_feasibility": 5.1572869919080944e-08,
+    "max_cvxpy_gap_vs_raw_infeasible_point": 6.170725514779117e-07,
+    "max_alpha_linf_vs_projected": 2.727386088696715e-06,
+    "pass": false,
+    "tolerance": 1e-12,
+    "tolerance_source": "protocol v5.1 2.2 O-G1: oracle objective <= fresh CVXPY CLARABEL value (projected back onto C_r) + 1e-12"
+  },
+  "self_check_debt_algebra": {
+    "identity": "(1/(2k))||a-beta||^2 - Q^T M a = (1/(2k))||a - (beta + k M^T Q)||^2 + const",
+    "kappa": 1000.0,
+    "identity_abs_error": 3.469446951953614e-18,
+    "kind": "ball",
+    "obj_oracle": -0.014423866918130305,
+    "obj_best_perturbation": -0.014423866918130305,
+    "best_improvement": 0.0,
+    "n_feasible_perturbations": 122094,
+    "perturbation_not_better_1e-12": true
+  },
+  "O-gate": {
+    "threshold_eps_impl": 5e-06,
+    "per_cell": {
+      "proj_beta|sensorscope": {
+        "max_eps_impl": 9.074812489018313e-06,
+        "max_eps_impl_group": 3.963335704737503e-06,
+        "max_eps_impl_cs": 9.074812489018313e-06,
+        "verdict": "approximate",
+        "n_certified_seeds": 19,
+        "n_seeds": 20,
+        "max_alpha_linf_trained": 0.0,
+        "max_alpha_linf_ref": 0.00018504387143530865,
+        "max_eps_ref_group": 4.5709589434617115e-06,
+        "max_eps_ref_cs": 9.074604012226928e-06,
+        "first_q_div_min": null
+      },
+      "proj_beta_debt|sensorscope": {
+        "max_eps_impl": 2.4200092014536878e-05,
+        "max_eps_impl_group": 2.4200092014536878e-05,
+        "max_eps_impl_cs": 1.259208721582361e-05,
+        "verdict": "approximate",
+        "n_certified_seeds": 1,
+        "n_seeds": 20,
+        "max_alpha_linf_trained": 0.0,
+        "max_alpha_linf_ref": 0.005738117518571451,
+        "max_eps_ref_group": 0.00010394816169212451,
+        "max_eps_ref_cs": 4.8758177501273536e-05,
+        "first_q_div_min": 3
+      },
+      "proj_beta|uair": {
+        "max_eps_impl": 1.0309369032901472e-05,
+        "max_eps_impl_group": 9.916003741672341e-06,
+        "max_eps_impl_cs": 1.0309369032901472e-05,
+        "verdict": "approximate",
+        "n_certified_seeds": 13,
+        "n_seeds": 20,
+        "max_alpha_linf_trained": 0.0,
+        "max_alpha_linf_ref": 0.00021442783388225806,
+        "max_eps_ref_group": 1.0944150026226396e-05,
+        "max_eps_ref_cs": 1.03119281291697e-05,
+        "first_q_div_min": null
+      },
+      "proj_beta_debt|uair": {
+        "max_eps_impl": 2.402546955471152e-05,
+        "max_eps_impl_group": 2.3030792502876096e-05,
+        "max_eps_impl_cs": 2.402546955471152e-05,
+        "verdict": "approximate",
+        "n_certified_seeds": 1,
+        "n_seeds": 20,
+        "max_alpha_linf_trained": 0.0,
+        "max_alpha_linf_ref": 0.0011723358081012838,
+        "max_eps_ref_group": 6.560441057468225e-05,
+        "max_eps_ref_cs": 5.88704633173176e-05,
+        "first_q_div_min": 5
+      }
+    },
+    "observed": 2.4200092014536878e-05,
+    "pass": false,
+    "tolerance_source": "protocol v5.1 2.3: certified iff max over seeds of eps_impl <= 5e-6, else approximate"
+  },
+  "G-self_AM1": {
+    "observed_alpha_linf": 0.0,
+    "observed_endpoint_err": 5.773159728050814e-15,
+    "tolerance_alpha_linf": 1e-08,
+    "tolerance_endpoint": 1e-12,
+    "tolerance_source": "AM-1: alpha L-inf <= 1e-8 and both endpoints <= 1e-12 vs final_metrics",
+    "pass": true
+  },
+  "B-G1": {
+    "observed": 0,
+    "tolerance": 0,
+    "tolerance_source": "exact active-set identity vs artifacts/e3_formal_runs_r1/runs/<ds>/raven/seed<seed>/window_metrics.json",
+    "pass": true
+  },
+  "seconds": 231.7208620000165,
+  "A1P_STRUCT": {
+    "rows": 20,
+    "verdict_changes": 0,
+    "changed_rows": [],
+    "max_abs_d_pp": 0.0006179084701962712,
+    "max_abs_d_pp_by_endpoint": {
+      "Delta_group": 0.0006179084701962712,
+      "Delta_c_s": 0.0003376381070840373
+    }
+  }
+}

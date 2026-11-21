@@ -1,0 +1,22 @@
+gate,scope,observed,tolerance,tolerance_source,pass
+B-G1,120 runs: 3 arms x 2 datasets x 20 seeds,0.0,0.0,exact active-set identity vs artifacts/e3_formal_runs_r1/runs/<ds>/raven/seed<seed>/window_metrics.json,True
+G-self,120 runs (alpha L-inf vs final_metrics),0.0,1e-08,AM-1: alpha L-inf <= 1e-8 and both endpoints <= 1e-12 vs final_metrics,True
+G-self,"120 runs (max over |d_group|, |d_c-s|)",5.773159728050814e-15,1e-12,AM-1: alpha L-inf <= 1e-8 and both endpoints <= 1e-12 vs final_metrics,True
+O-G0,80 runs / 6558 windows (2 arms x 2 datasets x 20 seeds) / primal,6.661338147750939e-16,1e-13,"protocol v5.1 2.2 O-G0: per window, primal <= 1e-13, stationarity <= 1e-12, complementary slackness <= 1e-12",True
+O-G0,80 runs / 6558 windows (2 arms x 2 datasets x 20 seeds) / stationarity,0.6666666677752078,1e-12,"protocol v5.1 2.2 O-G0: per window, primal <= 1e-13, stationarity <= 1e-12, complementary slackness <= 1e-12",False
+O-G0,80 runs / 6558 windows (2 arms x 2 datasets x 20 seeds) / complementary slackness,4.8834545747478456e-17,1e-12,"protocol v5.1 2.2 O-G0: per window, primal <= 1e-13, stationarity <= 1e-12, complementary slackness <= 1e-12",True
+O-G1,"200 sampled windows (fresh CVXPY CLARABEL, projected back onto C_r)",9.636328410569939e-12,1e-12,protocol v5.1 2.2 O-G1: oracle objective <= fresh CVXPY CLARABEL value (projected back onto C_r) + 1e-12,False
+O-G2,K = 1..64 uniform control,0.0,0.0,protocol v5.1 2.2 O-G2: beta = uniform must return the uniform weights exactly when they are feasible,True
+O-debt-algebra,identity residual on a real window,3.469446951953614e-18,1e-12,AM-6: the debt oracle equals the minimiser of -Q^T M a + (1/(2k))||a - beta||^2 on C_r,True
+O-debt-algebra,best feasible perturbation improvement (122094 sampled),0.0,0.0,no feasible point may beat the oracle point,True
+O-evid-brute,"small-K brute force, 142 cases (K = 2..5)",9.947598300641403e-14,1e-14,"AM-6 evidence: oracle objective <= dense (lam, tau) grid minimum over feasible points + 1e-14",False
+O-evid-brute,"small-K brute force, worst ||alpha_oracle - alpha_grid||_inf",2.1069599245859827e-08,1e-12,AM-6 evidence: point agreement with the refined grid solution,False
+O-evid-perturb,"perturbation test, 200 windows",8.310179322457145e-08,1e-12,AM-6 evidence: no sampled feasible perturbation lowers the objective by > 1e-12,False
+O-evid-dual,"Fenchel duality gap, 200 windows",1.7829380638545445e-08,1e-12,AM-6 evidence: f(x) - d(grad f(x)) <= 1e-12,False
+O-gate,"all 160 measured runs (max over eps_impl_group, eps_impl_cs)",2.4200092014536878e-05,5e-06,"protocol v5.1 2.3: certified iff max over seeds of eps_impl <= 5e-6, else approximate",False
+O-gate,proj_beta|sensorscope,9.074812489018313e-06,5e-06,"protocol v5.1 2.3: certified iff max over seeds of eps_impl <= 5e-6, else approximate",False
+O-gate,proj_beta_debt|sensorscope,2.4200092014536878e-05,5e-06,"protocol v5.1 2.3: certified iff max over seeds of eps_impl <= 5e-6, else approximate",False
+O-gate,proj_beta|uair,1.0309369032901472e-05,5e-06,"protocol v5.1 2.3: certified iff max over seeds of eps_impl <= 5e-6, else approximate",False
+O-gate,proj_beta_debt|uair,2.402546955471152e-05,5e-06,"protocol v5.1 2.3: certified iff max over seeds of eps_impl <= 5e-6, else approximate",False
+A1-STRUCT,"20 recomputed v4 rows (Delta_group, Delta_c-s)",0.0006179084701962712,,"AM-6: same contrasts / bootstrap / Holm families as v4; reported, not gated",True
+A1-STRUCT,verdict changes vs round v4,0.0,0.0,"AM-6: a verdict change is reported, not smoothed over",True

@@ -1,0 +1,41 @@
+{
+  "M_MC": 2000,
+  "M_MC_CHECK": 10000,
+  "created_utc": "2026-08-09T16:46:02.752537+00:00",
+  "mc_seed_policy": "derived from run seed; fixed-prestate features only",
+  "rows": [
+    {
+      "M_MC": 2000,
+      "M_MC_CHECK": 10000,
+      "dataset": "sensorscope",
+      "eventtrace_comparison_fair": true,
+      "oracle_independent_of_test_leakage": true,
+      "oracle_status": "VALID_CONTROLLED_ORACLE",
+      "p_generation_probability_known": true,
+      "q_fixed_prestate_monte_carlo": true,
+      "true_opportunity_probability_defined": true
+    },
+    {
+      "M_MC": 2000,
+      "M_MC_CHECK": 10000,
+      "dataset": "uair",
+      "eventtrace_comparison_fair": true,
+      "oracle_independent_of_test_leakage": true,
+      "oracle_status": "VALID_CONTROLLED_ORACLE",
+      "p_generation_probability_known": true,
+      "q_fixed_prestate_monte_carlo": true,
+      "true_opportunity_probability_defined": true
+    },
+    {
+      "M_MC": 2000,
+      "M_MC_CHECK": 10000,
+      "dataset": "traffic",
+      "eventtrace_comparison_fair": true,
+      "oracle_independent_of_test_leakage": true,
+      "oracle_status": "VALID_CONTROLLED_ORACLE",
+      "p_generation_probability_known": true,
+      "q_fixed_prestate_monte_carlo": true,
+      "true_opportunity_probability_defined": true
+    }
+  ]
+}

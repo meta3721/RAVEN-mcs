@@ -1,0 +1,16 @@
+\noindent\textbf{Why the weights leave the prediction endpoint flat.}
+On SensorScope and U-Air the feasible set leaves (P2) little to choose.  With
+the frozen $E_{\min}=3$, the bound in \eqref{eq:Cr} is
+$\overline E_r=\min(3,K_r)$, and since $\|\boldsymbol\alpha\|_2^2\ge1/K_r$ on
+the simplex with equality only at $\mathbf 1/K_r$, a window with $K_r\le3$
+admits the uniform weights alone.  Over the $20$ frozen seeds, $78.6\%$ of the
+$1877$ active windows on SensorScope have $K_r\le3$; on U-Air the share is
+$90.2\%$ of $1402$ windows with Design on and $79.0\%$ of $1515$ with Design
+off.  In those windows (P2) returns uniform weights whatever its objective,
+which is consistent with the small margin of the projection over uniform server
+weights on the group endpoint ($+0.768$ and $+0.286$~pp above).  The target
+leaves little room at the criterion level as well: its largest group carries
+$0.53\%$ of the mass on SensorScope ($220$ groups) and $0.79\%$ on U-Air
+($144$ groups).  The factor that moves $\mathrm{RMSE}_{\mu}$ by several points
+on U-Air is Design, and it acts on which client windows are active, as the two
+window counts show, rather than on the weights inside a window.

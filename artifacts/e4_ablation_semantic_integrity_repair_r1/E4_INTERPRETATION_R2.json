@@ -1,0 +1,30 @@
+{
+  "claims": {
+    "Debt": {
+      "status": "STRUCTURAL_ONLY",
+      "wording": "Debt shows a small structural effect without robust prediction degradation."
+    },
+    "Design": {
+      "status": "ENDPOINT_TRADEOFF",
+      "wording": "Design shows mixed structural directions across endpoints/datasets (endpoint tradeoff)."
+    },
+    "Inst": {
+      "status": "STRUCTURAL_ONLY",
+      "wording": "Inst shows structural evidence without robust prediction degradation."
+    },
+    "Obs": {
+      "status": "ENDPOINT_TRADEOFF",
+      "wording": "Obs shows mixed structural directions across endpoints/datasets (endpoint tradeoff)."
+    },
+    "Use": {
+      "status": "NO_CLEAR_EFFECT",
+      "wording": "Use shows no clear sealed E4 effect under the pre-registered Holm families."
+    }
+  },
+  "created_utc": "2026-08-12T12:11:44.117298+00:00",
+  "design_note": "Design retained as ENDPOINT_TRADEOFF when mixed structural directions; no Design rerun.",
+  "inst_note": "Inst claims recomputed from 40 corrective raven_wo_inst runs with P2 invoked.",
+  "next_step_decision": "DO_NOT_LAUNCH_E5",
+  "next_step_rationale": "Semantic integrity repair closes the invalid Inst evidence and reclassifies claims. Do not auto-launch E5 from this round; decide E5 only after paper-facing review of R2 claims.",
+  "round": "E4-ABLATION-SEMANTIC-INTEGRITY-REPAIR-R1"
+}

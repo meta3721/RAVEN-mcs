@@ -1,0 +1,65 @@
+{
+  "ablations": [
+    {
+      "all_other_raven_flags_unchanged": true,
+      "disabled_flag": "uses_design_ratio",
+      "method": "raven_wo_design"
+    },
+    {
+      "all_other_raven_flags_unchanged": true,
+      "disabled_flag": "uses_observation_ipw",
+      "method": "raven_wo_obs"
+    },
+    {
+      "all_other_raven_flags_unchanged": true,
+      "disabled_flag": "uses_usable_ipw",
+      "method": "raven_wo_use"
+    },
+    {
+      "all_other_raven_flags_unchanged": true,
+      "disabled_flag": "uses_instant_calibration",
+      "method": "raven_wo_inst"
+    },
+    {
+      "all_other_raven_flags_unchanged": true,
+      "disabled_flag": "uses_debt",
+      "method": "raven_wo_debt"
+    }
+  ],
+  "datasets": [
+    "sensorscope",
+    "uair"
+  ],
+  "e3_eventtrace_root": "artifacts/e3_formal_runs_r1/eventtraces",
+  "e3_reference_root": "artifacts/e3_formal_runs_r1/runs",
+  "formal_seeds": [
+    30001,
+    30002,
+    30003,
+    30004,
+    30005,
+    30006,
+    30007,
+    30008,
+    30009,
+    30010,
+    30011,
+    30012,
+    30013,
+    30014,
+    30015,
+    30016,
+    30017,
+    30018,
+    30019,
+    30020
+  ],
+  "local_steps": 2,
+  "no_retuning": true,
+  "one_factor_at_a_time": true,
+  "reference_method": "raven",
+  "reuse_only": true,
+  "round": "E4-CORE-MECHANISM-ABLATION-R1",
+  "scenario": "complete_aligned",
+  "smoke_seed": 32001
+}

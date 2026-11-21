@@ -1,0 +1,20 @@
+{
+  "arm_intended": "raven_wo_design_wo_inst",
+  "blast_radius": "RavenWoInstAggregator hardcodes lambda_group=0.0, so ANY arm built on it is unrunnable: the published E4 arm `raven_wo_inst` cannot be regenerated. `twostage_hajek`, whose stored numbers are bit-identical to raven_wo_inst, uses TwoStageHajekAggregator instead and DOES run (G1c re-ran it 6/6 bit-exact), so the block is specific to the wo_inst class.",
+  "error": "lambda_group must be >= max_server_learning_rate (got 0.0 < 1.0)",
+  "generated": "2026-09-27T05:28:29.934895+00:00",
+  "raised_from": {
+    "call": "src/raven_mcs/sag/counterfactual_audit.py:106 _solve_alpha -> solve_p2",
+    "guard": "src/raven_mcs/training/window_runner.py:1016,1252  if not lowmem: _run_counterfactual()",
+    "validator": "src/raven_mcs/aggregation/feasibility.py:41 validate_p2_lambdas"
+  },
+  "root_cause": "The uncommitted feasibility.py diff added `instant_calibration: bool = True` to validate_p2_lambdas and made the lambda_group >= max_server_learning_rate check conditional on it, with a docstring naming 'the raven_wo_inst ablation path' as the reason. The caller in counterfactual_audit._solve_alpha does not pass instant_calibration=False, so the default True applies and lambda_g=0 is rejected. The diff is half-applied.",
+  "status": "BLOCKED",
+  "unblocking_options": [
+    "authorize completing the half-applied diff: pass instant_calibration=False from counterfactual_audit._solve_alpha when lambda_group == 0 (a src/ change, outside route A's SS14 boundary)",
+    "authorize a runtime shim of counterfactual_audit.solve_p2 in the driver (no src/ change, but it alters the audit path, so the arm's gate must be always_off)",
+    "run the 2x2 with window_runner's lowmem=True so _run_counterfactual is skipped (changes the run configuration relative to the published arms)"
+  ],
+  "verified_by": "scripts/run_active_set_repair.py --stage c3 (raises on RavenWoInstAggregator)",
+  "why_it_blocks_C3": "The missing 2x2 cell (design off x instant calibration off) can only be built on RavenWoInstAggregator, because `instant_calibration=False` is a constructor argument of that class, not a policy field."
+}

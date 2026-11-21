@@ -1,0 +1,87 @@
+{
+  "field_separation": {
+    "U_realized": "U",
+    "mu_target": "target semantics files",
+    "p_obs_true": "opportunity_features.p_obs_true (+ oracle_p alias for observation truth only)",
+    "pi_opp_true": "opportunity_features.pi_opp_true",
+    "q_use_true": "opportunity_features.q_use_true (+ oracle_q)"
+  },
+  "hard_rule": "no two semantically distinct objects may share the same field name or be silently substituted",
+  "objects": [
+    {
+      "applicable_datasets": [
+        "sensorscope",
+        "uair",
+        "traffic"
+      ],
+      "code_field": "target_mu / E3_*_TARGET_SEMANTICS_R2.mu",
+      "generation_estimation_source": "TargetBuilder on test support",
+      "known_to_which_method": "all",
+      "leakage_boundary": "support public; labels not used in construction",
+      "mathematical_meaning": "deployment target group masses over test support",
+      "name": "mu_target",
+      "stage": "evaluation",
+      "true_or_estimated": "frozen_public"
+    },
+    {
+      "applicable_datasets": [
+        "sensorscope",
+        "uair",
+        "traffic"
+      ],
+      "code_field": "opportunity_features.pi_opp_true / opportunity_events.pi_opp",
+      "generation_estimation_source": "complete_aligned_r2.build_pi_opp",
+      "known_to_which_method": "simulator/oracle; estimated online for methods",
+      "leakage_boundary": "prestate strata only",
+      "mathematical_meaning": "opportunity selection probability over client×stratum",
+      "name": "pi_opp",
+      "stage": "stage1_opportunity",
+      "true_or_estimated": "true_in_controlled_generator"
+    },
+    {
+      "applicable_datasets": [
+        "sensorscope",
+        "uair",
+        "traffic"
+      ],
+      "code_field": "opportunity_features.p_obs_true ; EventTrace.oracle_p stores p_obs_true",
+      "generation_estimation_source": "complete_aligned_r2 observation layer",
+      "known_to_which_method": "simulator/oracle",
+      "leakage_boundary": "no Y/future",
+      "mathematical_meaning": "P(O=1 | opportunity, legal prestate)",
+      "name": "p_obs",
+      "stage": "stage1_observation",
+      "true_or_estimated": "true_in_controlled_generator"
+    },
+    {
+      "applicable_datasets": [
+        "sensorscope",
+        "uair",
+        "traffic"
+      ],
+      "code_field": "opportunity_features.q_use_true ; EventTrace.oracle_q",
+      "generation_estimation_source": "stage2_usable.compute_usable_indicator",
+      "known_to_which_method": "estimated for methods; true for SimOracle",
+      "leakage_boundary": "registration/prestate features only",
+      "mathematical_meaning": "usable-update propensity / true q",
+      "name": "q_use",
+      "stage": "stage2_usable",
+      "true_or_estimated": "true_or_estimated"
+    },
+    {
+      "applicable_datasets": [
+        "sensorscope",
+        "uair",
+        "traffic"
+      ],
+      "code_field": "EventTrace.U",
+      "generation_estimation_source": "stage2 deadline semantics",
+      "known_to_which_method": "all after window close",
+      "leakage_boundary": "must not enter q features contemporaneously",
+      "mathematical_meaning": "realized usable indicator",
+      "name": "U_realized",
+      "stage": "stage2_outcome",
+      "true_or_estimated": "realized"
+    }
+  ]
+}

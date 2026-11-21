@@ -1,0 +1,18 @@
+{
+  "csv_relative": "D:/Cursor/raven.mcs/paper_ready_r2/06_table_sources/TABLE_DATASET_SUMMARY_R2.csv",
+  "csv_sha256": "3fda564ab2671fd1b9358ac52b2da1443c6eba3b80f44bdfc4338f2ab119a775",
+  "excluded_rows": "no guessed sampling intervals; T-Drive opportunity/EventTrace/split remain MISSING_NOT_RECORDED where unfrozen",
+  "filters": "frozen/read-only evidence only; T-Drive readiness metadata only (no formal results)",
+  "included_seeds": [],
+  "metric_definitions": {},
+  "source_files": [
+    "data/raw/{sensorscope,uair,traffic}/provenance.json",
+    "configs/frozen/e3_multidataset_protocol_closure/{sensorscope,uair,traffic}/*.json",
+    "data/processed/*/atomic_units.parquet",
+    "configs/dataset/tdrive_speed.yaml",
+    "artifacts/e2_traffic_formal_runs_r1/SOURCE_HASHES.json"
+  ],
+  "statistical_method": "n/a (metadata table)",
+  "transformations": "copy sealed numeric/string fields; sha256 processed parquet; never guess missing fields",
+  "version": "R2"
+}

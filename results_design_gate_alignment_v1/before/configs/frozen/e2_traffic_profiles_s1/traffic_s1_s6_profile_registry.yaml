@@ -1,0 +1,206 @@
+protocol: E2_TRAFFIC_PROFILE_S1_FINAL_FREEZE_R1
+status: FROZEN
+selected_strength: PROFILE-S1
+selection_reason: deterministic_support_fallback
+kappa_opp: 0.5
+kappa_obs: 0.5
+kappa_q: 0.5
+probability_bounds: &id001
+  opp:
+  - 0.05
+  - 0.95
+  obs:
+  - 0.05
+  - 0.95
+  q:
+  - 0.05
+  - 0.95
+rate_targets:
+  opportunity: 0.55
+  observation: 0.2
+  usable: 0.6
+design_seeds:
+- 28201
+- 28202
+- 28203
+no_per_seed_intercept_recalibration: true
+strength_grid_search_count: 0
+scenarios:
+  balanced:
+    label: S1
+    scenario_id: balanced
+    display_name: Balanced
+    d_opp: 0
+    d_p: 0
+    d_q: 0
+    kappa_opp: 0.5
+    kappa_obs: 0.5
+    kappa_q: 0.5
+    a_opp: 0.20067069546030325
+    a_obs: -1.386294361122964
+    a_q: 0.4054651081105476
+    intercept_opp: 0.20067069546030325
+    intercept_obs: -1.386294361122964
+    intercept_q: 0.4054651081105476
+    intercept_solve_count: 1
+    probability_bounds: *id001
+    exact_expected_signed:
+      opp: 0.0
+      obs: 0.0
+      arr: 0.0
+    pooled_hard_signed:
+      opp: -0.003425621773815113
+      obs: -0.00465766185374944
+      arr: 0.005667383232362655
+    direction_status: PASS
+  opportunity_only:
+    label: S2
+    scenario_id: opportunity_only
+    display_name: Opportunity-only
+    d_opp: -1
+    d_p: 0
+    d_q: 0
+    kappa_opp: 0.5
+    kappa_obs: 0.5
+    kappa_q: 0.5
+    a_opp: 0.21342481271631186
+    a_obs: -1.386294361122964
+    a_q: 0.4054651081105476
+    intercept_opp: 0.21342481271631186
+    intercept_obs: -1.386294361122964
+    intercept_q: 0.4054651081105476
+    intercept_solve_count: 1
+    probability_bounds: *id001
+    exact_expected_signed:
+      opp: 0.22028632018950411
+      obs: 0.22028632018950367
+      arr: 0.22028632018950423
+    pooled_hard_signed:
+      opp: 0.2186653475608319
+      obs: 0.2186915887850467
+      arr: 0.22500000000000003
+    direction_status: PASS
+  observation_only:
+    label: S3
+    scenario_id: observation_only
+    display_name: Observation-only
+    d_opp: 0
+    d_p: -1
+    d_q: 0
+    kappa_opp: 0.5
+    kappa_obs: 0.5
+    kappa_q: 0.5
+    a_opp: 0.20067069546030325
+    a_obs: -1.4611196666578508
+    a_q: 0.4054651081105476
+    intercept_opp: 0.20067069546030325
+    intercept_obs: -1.4611196666578508
+    intercept_q: 0.4054651081105476
+    intercept_solve_count: 1
+    probability_bounds: *id001
+    exact_expected_signed:
+      opp: 0.0
+      obs: 0.38327037485301174
+      arr: 0.38327037485301163
+    pooled_hard_signed:
+      opp: -0.003425621773815113
+      obs: 0.3803967327887982
+      arr: 0.3870967741935485
+    direction_status: PASS
+  usable_only:
+    label: S4
+    scenario_id: usable_only
+    display_name: Usable-only
+    d_opp: 0
+    d_p: 0
+    d_q: -1
+    kappa_opp: 0.5
+    kappa_obs: 0.5
+    kappa_q: 0.5
+    a_opp: 0.20067069546030325
+    a_obs: -1.386294361122964
+    a_q: 0.4309227386556813
+    intercept_opp: 0.20067069546030325
+    intercept_obs: -1.386294361122964
+    intercept_q: 0.4309227386556813
+    intercept_solve_count: 1
+    probability_bounds: *id001
+    exact_expected_signed:
+      opp: 0.0
+      obs: 0.0
+      arr: 0.19543741943002801
+    pooled_hard_signed:
+      opp: -0.003425621773815113
+      obs: -0.00465766185374944
+      arr: 0.20252415697101167
+    direction_status: PASS
+  complete_aligned:
+    label: S5
+    scenario_id: complete_aligned
+    display_name: Complete-aligned
+    d_opp: -1
+    d_p: -1
+    d_q: -1
+    kappa_opp: 0.5
+    kappa_obs: 0.5
+    kappa_q: 0.5
+    a_opp: 0.21342481271631186
+    a_obs: -1.5668684648176168
+    a_q: 0.19318426892596108
+    intercept_opp: 0.21342481271631186
+    intercept_obs: -1.5668684648176168
+    intercept_q: 0.19318426892596108
+    intercept_solve_count: 1
+    probability_bounds: *id001
+    exact_expected_signed:
+      opp: 0.22028632018950411
+      obs: 0.5619608252150979
+      arr: 0.6973412301017547
+    pooled_hard_signed:
+      opp: 0.2186653475608319
+      obs: 0.5627700572229359
+      arr: 0.7038167938931297
+    direction_status: PASS
+  complete_counteracting:
+    label: S6
+    scenario_id: complete_counteracting
+    display_name: Complete-counteracting
+    d_opp: -1
+    d_p: -1
+    d_q: 1
+    kappa_opp: 0.5
+    kappa_obs: 0.5
+    kappa_q: 0.5
+    a_opp: 0.21342481271631186
+    a_obs: -1.5668684648176168
+    a_q: 0.656861230368122
+    intercept_opp: 0.21342481271631186
+    intercept_obs: -1.5668684648176168
+    intercept_q: 0.656861230368122
+    intercept_solve_count: 1
+    probability_bounds: *id001
+    exact_expected_signed:
+      opp: 0.22028632018950411
+      obs: 0.5619608252150979
+      arr: 0.43294657914805923
+    pooled_hard_signed:
+      opp: 0.2186653475608319
+      obs: 0.5627700572229359
+      arr: 0.4331235247836349
+    direction_status: PASS
+profile_s2_blocked_reason:
+  prior_strength: PROFILE-S2
+  prior_status: BLOCKED_SUPPORT_DEGENERACY
+  blocking_scenario: S5_COMPLETE_ALIGNED
+  minimum_positive_stratum_expected_arrivals: 1.5499
+  required_minimum: 5
+  observation_lower_clip_rate: 0.5
+  profile_s2_not_authorized_for_runner: true
+  profile_s2_results_not_for_method_comparison: true
+  profile_s2_must_not_be_reused: true
+  tombstoned_at_utc: '2026-08-06T13:19:23.383044+00:00'
+exact_expected_mass_algorithm: subset_enumeration_2^m_m_le_6
+freeze_commit: e56687813f2bcb919a9208391f68a4db3488602e
+frozen_at_utc: '2026-08-06T13:22:28.997010+00:00'
+clip_support_audit_sha256: 55f3aa7b27d6bd8daddb94868eeabf519790277f693fddef80f5c0ab65a24165
+exact_expected_mass_audit_sha256: 2cbffa14691035d8cd90b0725871cb06263510bc12f00b8b93f6ad5653f98aed

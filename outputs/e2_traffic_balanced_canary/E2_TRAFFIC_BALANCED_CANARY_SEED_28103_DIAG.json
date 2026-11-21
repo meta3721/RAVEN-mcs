@@ -1,0 +1,83 @@
+{
+  "D_TV_client_stratum_hard": 0.18840758724479695,
+  "D_TV_group_hard": 0.010378510378510383,
+  "D_TV_stratum_hard": 0.06189340375386884,
+  "antithetic_arm_count": 1,
+  "arms": 1,
+  "arr_audit": {
+    "empirical_from_A_O_U": true,
+    "expected_alias_used": false,
+    "hard_arrival_event_count": 1638,
+    "total_hard_arrival_mass": 1638.0
+  },
+  "atomic_units": 25800,
+  "balanced_pass": true,
+  "clients": 43,
+  "cross_window_duplicate_count": 0,
+  "eligible_client_window_count": 2118,
+  "failed_attempt_omission_count": 0,
+  "failed_attempts_retained": 848,
+  "hard_arrival_mass": 1638.0,
+  "head_mass_ratio": 1.0207570207570205,
+  "ineligible_client_window_count": 2182,
+  "multiply_assigned_atomic_count": 0,
+  "obs_audit": {
+    "actual_O_events_saved": 14118,
+    "expected_observation_rate": 0.2,
+    "exposure_event_count": 14118,
+    "observation_intercept": -1.386294361122964,
+    "realized_observation_rate": 0.19570760730981726
+  },
+  "observed_count_in_q": 0,
+  "opp_audit": {
+    "base_opportunity_uniforms_used_count": 25800,
+    "calibrated_mass_probability": true,
+    "duplicate_unit_id_within_window_count": 0,
+    "event_mass": 1.0,
+    "selected_event_count": 14118,
+    "unknown_unit_count": 0,
+    "unsupported_selected_count": 0
+  },
+  "q_features_used": [
+    "client_id",
+    "pre_outcome_risk_set_size",
+    "stage2_eligible",
+    "window_id",
+    "z_tail"
+  ],
+  "rate_pass": true,
+  "realized_conditional_observation_rate": 0.19570760730981726,
+  "realized_conditional_usable_rate": 0.5996222851746931,
+  "realized_opportunity_rate": 0.5472093023255814,
+  "seed": 28103,
+  "stage2_eligibility_violation_count": 0,
+  "status": "PASS",
+  "structural_pass": true,
+  "tail_mass_ratio": 0.979242979242979,
+  "target_value_leakage_count": 0,
+  "unsupported_arrival_count": 0,
+  "usable_failure_count": 848,
+  "usable_success_count": 1270,
+  "use_audit": {
+    "actual_U_events_saved": 4300,
+    "eligibility_rule": "observed_count > 0",
+    "expected_usable_rate": 0.6,
+    "extra_failed_attempt_count": 0,
+    "failed_attempt_omission_count": 0,
+    "forbidden_feature_count": 0,
+    "missing_failed_attempt_count": 0,
+    "not_eligible_count": 2182,
+    "q_features_used": [
+      "client_id",
+      "pre_outcome_risk_set_size",
+      "stage2_eligible",
+      "window_id",
+      "z_tail"
+    ],
+    "q_leakage_count": 0,
+    "realized_usable_rate": 0.5996222851746931,
+    "stage2_eligible_count": 2118,
+    "usable_intercept": 0.4054651081105476
+  },
+  "windows": 100
+}

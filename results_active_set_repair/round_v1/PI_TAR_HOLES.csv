@@ -1,0 +1,5 @@
+block,status,n_strata,support_pairs,zero_pi_tar_pairs,zero_fraction,reason
+uair,OK,288.0,288.0,72.0,0.25,
+sensorscope,OK,440.0,440.0,0.0,0.0,
+traffic,OK,32.0,344.0,0.0,0.0,
+tdrive_speed,NOT_COUNTED,,,,,"load_spatial_to_client has no tdrive branch (dataset_load.py:76-85), so the runner's pi^tar support cannot be rebuilt for this block, and no stored hybrid pi^tar artifact exists under results_tdrive_rank/ or manuscript_evidence_closure_r1/09_tdrive_decision/. T-Drive is outside route A's rebuild set."

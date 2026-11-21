@@ -1,0 +1,20 @@
+{
+  "dataset": "traffic",
+  "seed": 41003,
+  "model": "history",
+  "optimizer": "sgd",
+  "lr": 0.03,
+  "RMSE_mu": 391.4188189190556,
+  "best_pass": 93,
+  "best_at_100": 391.4188189190556,
+  "improvement_100_to_200": 0.0,
+  "plateau_pass": true,
+  "strongest_baseline": "seasonal_naive_week",
+  "baseline_RMSE": 396.8452547873649,
+  "relative_gain": 0.01367393411625118,
+  "meaningful_validation_pass": false,
+  "elapsed_seconds": 14.843999999997322,
+  "samples_processed": 251000,
+  "optimizer_steps": 4000,
+  "run": "P1\\central_delivered\\history\\traffic\\sgd_0.03\\seed41003"
+}

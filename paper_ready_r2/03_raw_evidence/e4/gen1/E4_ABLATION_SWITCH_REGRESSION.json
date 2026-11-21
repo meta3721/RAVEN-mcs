@@ -1,0 +1,81 @@
+{
+  "created_utc": "2026-08-12T11:58:10.449217+00:00",
+  "full_mode_p2_fixture": {
+    "aggregator": "RavenAggregator",
+    "alpha_sum": 1.0,
+    "instant_calibration": true,
+    "p2_invocations": 1,
+    "passes": true
+  },
+  "rows": [
+    {
+      "aggregator": "RavenAggregator",
+      "all_true": true,
+      "flags": {
+        "uses_debt": true,
+        "uses_design_ratio": true,
+        "uses_instant_calibration": true,
+        "uses_observation_ipw": true,
+        "uses_usable_ipw": true
+      },
+      "method": "raven"
+    },
+    {
+      "aggregator": "RavenAggregator",
+      "aggregator_ok": true,
+      "disabled_flag": "uses_design_ratio",
+      "exactly_one_flip": true,
+      "flips": [
+        "uses_design_ratio"
+      ],
+      "is_raven_family": true,
+      "method": "raven_wo_design"
+    },
+    {
+      "aggregator": "RavenAggregator",
+      "aggregator_ok": true,
+      "disabled_flag": "uses_observation_ipw",
+      "exactly_one_flip": true,
+      "flips": [
+        "uses_observation_ipw"
+      ],
+      "is_raven_family": true,
+      "method": "raven_wo_obs"
+    },
+    {
+      "aggregator": "RavenAggregator",
+      "aggregator_ok": true,
+      "disabled_flag": "uses_usable_ipw",
+      "exactly_one_flip": true,
+      "flips": [
+        "uses_usable_ipw"
+      ],
+      "is_raven_family": true,
+      "method": "raven_wo_use"
+    },
+    {
+      "aggregator": "RavenWoInstAggregator",
+      "aggregator_ok": true,
+      "disabled_flag": "uses_instant_calibration",
+      "exactly_one_flip": true,
+      "flips": [
+        "uses_instant_calibration"
+      ],
+      "is_raven_family": true,
+      "is_wo_inst_aggregator": true,
+      "method": "raven_wo_inst"
+    },
+    {
+      "aggregator": "RavenAggregator",
+      "aggregator_ok": true,
+      "disabled_flag": "uses_debt",
+      "exactly_one_flip": true,
+      "flips": [
+        "uses_debt"
+      ],
+      "is_raven_family": true,
+      "method": "raven_wo_debt"
+    }
+  ],
+  "status": "PASS"
+}

@@ -1,0 +1,45 @@
+{
+  "created_utc": "2026-10-07T01:48:03.603817+00:00",
+  "datasets": {
+    "sensorscope": {
+      "l1_arrR_mu": 0.5051876832844575,
+      "l1_arr_mu": 0.7095685599534082,
+      "mu_artifact": "artifacts/e3_semantic_alignment_and_runner_integration_closure_r1/E3_SENSORSCOPE_TARGET_SEMANTICS_R2.json",
+      "mu_artifact_sha256": "c6194f2aebffe38ee0feed7d83bbebf318e901d5aa788bfb102d01915b159ef6",
+      "n_groups": 220,
+      "pi_arr": {
+        "n_test_units_dropped": 0,
+        "n_units": 19396,
+        "n_unmapped": 0
+      },
+      "pi_arr_R": {
+        "n_test_units_dropped": 0,
+        "n_units": 64000,
+        "n_unmapped": 0
+      },
+      "tv_arrR_mu": 0.25259384164222876,
+      "tv_arr_mu": 0.3547842799767041
+    },
+    "uair": {
+      "l1_arrR_mu": 0.5743366745283018,
+      "l1_arr_mu": 0.851010781671159,
+      "mu_artifact": "artifacts/e3_semantic_alignment_and_runner_integration_closure_r1/E3_UAIR_TARGET_SEMANTICS_R2.json",
+      "mu_artifact_sha256": "c158ec34582e1124e3b7f72e6ac55dd1b2130a5cf9f030a5ac231e81e8ac39b8",
+      "n_groups": 144,
+      "pi_arr": {
+        "n_test_units_dropped": 0,
+        "n_units": 15680,
+        "n_unmapped": 0
+      },
+      "pi_arr_R": {
+        "n_test_units_dropped": 0,
+        "n_units": 51200,
+        "n_unmapped": 0
+      },
+      "tv_arrR_mu": 0.2871683372641509,
+      "tv_arr_mu": 0.4255053908355795
+    }
+  },
+  "instruction_sha256": "ffb4bde64af8b6c4d6c647bc0d8b90e2191b945946e1cedc76e47dc08f1d189d",
+  "written_before_any_score": true
+}

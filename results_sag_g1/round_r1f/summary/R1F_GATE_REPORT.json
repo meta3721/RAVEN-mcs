@@ -1,0 +1,196 @@
+{
+  "gates": [
+    {
+      "description": "Input artifact freeze integrity",
+      "evidence_file": "C:\\Cursor\\raven.mcs\\results_sag_g1\\round_r1f\\R1F_INPUT_ARTIFACT_MANIFEST.csv",
+      "expected": "0",
+      "gate_id": "R1F-S0",
+      "metric": "missing_artifacts",
+      "observed": "0",
+      "pass": true
+    },
+    {
+      "description": "TARGET_LAW_RULE_V1 unchanged",
+      "evidence_file": "R1F_FREEZE_AUDIT.md",
+      "expected": "true",
+      "gate_id": "R1F-S1",
+      "metric": "target_hash_match",
+      "observed": "True",
+      "pass": true
+    },
+    {
+      "description": "PI_SAFE_RULE_V1 unchanged",
+      "evidence_file": "R1F_FREEZE_AUDIT.md",
+      "expected": "aa574c33b577965a78a9e6eb7d14877ac78add0fee4ab3e9c95deb47926891c7",
+      "gate_id": "R1F-S2",
+      "metric": "pi_safe_rule_hash",
+      "observed": "aa574c33b577965a78a9e6eb7d14877ac78add0fee4ab3e9c95deb47926891c7",
+      "pass": true
+    },
+    {
+      "description": "tau_cov unchanged",
+      "evidence_file": "configs/sag_g0/thresholds.json",
+      "expected": "0.05",
+      "gate_id": "R1F-S3",
+      "metric": "tau_cov",
+      "observed": "0.05",
+      "pass": true
+    },
+    {
+      "description": "E3 EventTrace unchanged",
+      "evidence_file": "audit/R1F_FREEZE_AUDIT.json",
+      "expected": "false",
+      "gate_id": "R1F-S4",
+      "metric": "e3_modified",
+      "observed": "False",
+      "pass": true
+    },
+    {
+      "description": "Warm-up window accounting consistent",
+      "evidence_file": "oracle_ceiling/ORACLE_COVERAGE_CEILING_BY_WINDOW.csv",
+      "expected": "{'sensorscope': 84, 'uair': 64}",
+      "gate_id": "R1F-S5",
+      "metric": "n_warmup",
+      "observed": "{'sensorscope': 84, 'uair': 64}",
+      "pass": true
+    },
+    {
+      "description": "C_real_support recomputed",
+      "evidence_file": "oracle_ceiling/ORACLE_COVERAGE_CEILING_BY_WINDOW.csv",
+      "expected": "C_real_support",
+      "gate_id": "R1F-S6",
+      "metric": "column_present",
+      "observed": "present",
+      "pass": true
+    },
+    {
+      "description": "C_oracle_safe recomputed",
+      "evidence_file": "oracle_ceiling/ORACLE_COVERAGE_CEILING_BY_WINDOW.csv",
+      "expected": "C_oracle_safe",
+      "gate_id": "R1F-S7",
+      "metric": "column_present",
+      "observed": "present",
+      "pass": true
+    },
+    {
+      "description": "Oracle ceiling inequality validated",
+      "evidence_file": "oracle_ceiling/ORACLE_CEILING_DERIVATION.md",
+      "expected": "all windows",
+      "gate_id": "R1F-S8",
+      "metric": "C_oracle_safe<=C_real_support",
+      "observed": "validated",
+      "pass": true
+    },
+    {
+      "description": "Threshold pass rate computed",
+      "evidence_file": "summary/ORACLE_COVERAGE_CEILING_SUMMARY.csv",
+      "expected": "computed",
+      "gate_id": "R1F-S9",
+      "metric": "fraction_oracle_pass",
+      "observed": "computed",
+      "pass": true
+    },
+    {
+      "description": "Gap decomposition exact",
+      "evidence_file": "oracle_ceiling/ORACLE_THRESHOLD_GAP_DECOMPOSITION.csv",
+      "expected": "exact",
+      "gate_id": "R1F-S10",
+      "metric": "algebraic_identity",
+      "observed": "validated",
+      "pass": true
+    },
+    {
+      "description": "SensorScope compatibility classified",
+      "evidence_file": "summary/ORACLE_COVERAGE_CEILING_SUMMARY.csv",
+      "expected": "classified",
+      "gate_id": "R1F-S11",
+      "metric": "compatibility",
+      "observed": "E3_THRESHOLD_INCOMPATIBLE",
+      "pass": true
+    },
+    {
+      "description": "U-Air compatibility classified",
+      "evidence_file": "summary/ORACLE_COVERAGE_CEILING_SUMMARY.csv",
+      "expected": "classified",
+      "gate_id": "R1F-S12",
+      "metric": "compatibility",
+      "observed": "E3_THRESHOLD_MARGINAL",
+      "pass": true
+    },
+    {
+      "description": "E3 protocol semantics audited",
+      "evidence_file": "compatibility/E3_PROTOCOL_SEMANTICS_AUDIT.md",
+      "expected": "present",
+      "gate_id": "R1F-S13",
+      "metric": "file_exists",
+      "observed": "present",
+      "pass": true
+    },
+    {
+      "description": "No predictor repair executed",
+      "evidence_file": "audit/R1F_FREEZE_AUDIT.json",
+      "expected": "false",
+      "gate_id": "R1F-S14",
+      "metric": "predictor_repair_executed",
+      "observed": "False",
+      "pass": true
+    },
+    {
+      "description": "No calibration repair executed",
+      "evidence_file": "audit/R1F_FREEZE_AUDIT.json",
+      "expected": "false",
+      "gate_id": "R1F-S15",
+      "metric": "calibration_repair_executed",
+      "observed": "False",
+      "pass": true
+    },
+    {
+      "description": "No threshold tuning",
+      "evidence_file": "audit/R1F_FREEZE_AUDIT.json",
+      "expected": "0.05",
+      "gate_id": "R1F-S16",
+      "metric": "tau_cov",
+      "observed": "0.05",
+      "pass": true
+    },
+    {
+      "description": "No E3 modification",
+      "evidence_file": "audit/R1F_FREEZE_AUDIT.json",
+      "expected": "false",
+      "gate_id": "R1F-S17",
+      "metric": "e3_modified",
+      "observed": "False",
+      "pass": true
+    },
+    {
+      "description": "No SAG execution",
+      "evidence_file": "audit/R1F_FREEZE_AUDIT.json",
+      "expected": "false",
+      "gate_id": "R1F-S18",
+      "metric": "sag_started",
+      "observed": "False",
+      "pass": true
+    },
+    {
+      "description": "No 5-seed execution",
+      "evidence_file": "audit/R1F_FREEZE_AUDIT.json",
+      "expected": "false",
+      "gate_id": "R1F-S19",
+      "metric": "five_seed_started",
+      "observed": "False",
+      "pass": true
+    },
+    {
+      "description": "Final verdict artifact-derived",
+      "evidence_file": "summary/R1F_VERDICT.json",
+      "expected": "from artifacts",
+      "gate_id": "R1F-S20",
+      "metric": "verdict",
+      "observed": "E3_THRESHOLD_INCOMPATIBLE",
+      "pass": true
+    }
+  ],
+  "n_fail": 0,
+  "n_pass": 21,
+  "verdict": "E3_THRESHOLD_INCOMPATIBLE"
+}

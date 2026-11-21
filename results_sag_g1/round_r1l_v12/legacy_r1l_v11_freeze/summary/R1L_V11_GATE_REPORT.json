@@ -1,0 +1,214 @@
+{
+  "gates": [
+    {
+      "description": "legacy frozen semantics",
+      "evidence_file": "round_r1l_v11/legacy_r1l_v10_freeze/summary/R1L_VERDICT.json",
+      "expected": "true",
+      "gate_id": "R1L-V11-T0",
+      "metric": "pass",
+      "observed": "True",
+      "pass": true
+    },
+    {
+      "description": "Theorem 1 ties proof corrected",
+      "evidence_file": "round_r1l_v11/proofs/THEOREM1_STABLE_REGIME_AGGREGATE_LCB.md",
+      "expected": "true",
+      "gate_id": "R1L-V11-T1",
+      "metric": "pass",
+      "observed": "True",
+      "pass": true
+    },
+    {
+      "description": "randomized-rank argument complete",
+      "evidence_file": "round_r1l_v11/proofs/THEOREM1_STABLE_REGIME_AGGREGATE_LCB.md",
+      "expected": "true",
+      "gate_id": "R1L-V11-T2",
+      "metric": "pass",
+      "observed": "True",
+      "pass": true
+    },
+    {
+      "description": "event inclusion direction correct",
+      "evidence_file": "round_r1l_v11/proofs/THEOREM1_STABLE_REGIME_AGGREGATE_LCB.md",
+      "expected": "true",
+      "gate_id": "R1L-V11-T3",
+      "metric": "pass",
+      "observed": "True",
+      "pass": true
+    },
+    {
+      "description": "availability corollary designated entity",
+      "evidence_file": "round_r1l_v11/proofs/COROLLARY1_AVAILABILITY_BARRIER.md",
+      "expected": "true",
+      "gate_id": "R1L-V11-T4",
+      "metric": "pass",
+      "observed": "True",
+      "pass": true
+    },
+    {
+      "description": "no overbroad at-least-one claim",
+      "evidence_file": "round_r1l_v11/source_snapshot/main.tex",
+      "expected": "true",
+      "gate_id": "R1L-V11-T5",
+      "metric": "pass",
+      "observed": "True",
+      "pass": true
+    },
+    {
+      "description": "CERTIFIED does not imply exchangeability",
+      "evidence_file": "round_r1l_v11/interface/R1L_STATE_MACHINE.md",
+      "expected": "true",
+      "gate_id": "R1L-V11-T6",
+      "metric": "pass",
+      "observed": "True",
+      "pass": true
+    },
+    {
+      "description": "Theorem 1 conditional on Assumption A",
+      "evidence_file": "round_r1l_v11/proofs/THEOREM1_STABLE_REGIME_AGGREGATE_LCB.md",
+      "expected": "true",
+      "gate_id": "R1L-V11-T7",
+      "metric": "pass",
+      "observed": "True",
+      "pass": true
+    },
+    {
+      "description": "predictor snapshot frozen within block",
+      "evidence_file": "round_r1l_v11/interface/R1L_ALGORITHM_INTERFACE.md",
+      "expected": "true",
+      "gate_id": "R1L-V11-T8",
+      "metric": "pass",
+      "observed": "True",
+      "pass": true
+    },
+    {
+      "description": "refit only after RESET",
+      "evidence_file": "round_r1l_v11/interface/R1L_ALGORITHM_INTERFACE.md",
+      "expected": "true",
+      "gate_id": "R1L-V11-T9",
+      "metric": "pass",
+      "observed": "True",
+      "pass": true
+    },
+    {
+      "description": "calibration buffer reset",
+      "evidence_file": "round_r1l_v11/interface/R1L_ALGORITHM_INTERFACE.md",
+      "expected": "true",
+      "gate_id": "R1L-V11-T10",
+      "metric": "pass",
+      "observed": "True",
+      "pass": true
+    },
+    {
+      "description": "n_min remains 19",
+      "evidence_file": "round_r1l_v11/source_snapshot/r1l_spec.py",
+      "expected": "true",
+      "gate_id": "R1L-V11-T11",
+      "metric": "pass",
+      "observed": "True",
+      "pass": true
+    },
+    {
+      "description": "false-safe corollary unchanged",
+      "evidence_file": "round_r1l_v11/proofs/COROLLARY2_FALSE_SAFE_GATE.md",
+      "expected": "true",
+      "gate_id": "R1L-V11-T12",
+      "metric": "pass",
+      "observed": "True",
+      "pass": true
+    },
+    {
+      "description": "arbitrary-drift proposition unchanged",
+      "evidence_file": "round_r1l_v11/proofs/PROP2_ARBITRARY_DRIFT_BOUNDARY.md",
+      "expected": "true",
+      "gate_id": "R1L-V11-T13",
+      "metric": "pass",
+      "observed": "True",
+      "pass": true
+    },
+    {
+      "description": "Section VII legacy/pre-R1m",
+      "evidence_file": "round_r1l_v11/source_snapshot/main.tex",
+      "expected": "true",
+      "gate_id": "R1L-V11-T14",
+      "metric": "pass",
+      "observed": "True",
+      "pass": true
+    },
+    {
+      "description": "evidence paths self-contained",
+      "evidence_file": "round_r1l_v11/audit/R1L_V11_EVIDENCE_PATH_AUDIT.csv",
+      "expected": "true",
+      "gate_id": "R1L-V11-T15",
+      "metric": "pass",
+      "observed": "True",
+      "pass": true
+    },
+    {
+      "description": "no experiment run",
+      "evidence_file": "round_r1l_v11/summary/R1L_V11_VERDICT.json",
+      "expected": "true",
+      "gate_id": "R1L-V11-T16",
+      "metric": "pass",
+      "observed": "True",
+      "pass": true
+    },
+    {
+      "description": "no R1m started",
+      "evidence_file": "round_r1l_v11/summary/R1L_V11_VERDICT.json",
+      "expected": "true",
+      "gate_id": "R1L-V11-T17",
+      "metric": "pass",
+      "observed": "True",
+      "pass": true
+    },
+    {
+      "description": "no SAG",
+      "evidence_file": "round_r1l_v11/summary/R1L_V11_VERDICT.json",
+      "expected": "true",
+      "gate_id": "R1L-V11-T18",
+      "metric": "pass",
+      "observed": "True",
+      "pass": true
+    },
+    {
+      "description": "no 5-seed",
+      "evidence_file": "round_r1l_v11/summary/R1L_V11_VERDICT.json",
+      "expected": "true",
+      "gate_id": "R1L-V11-T19",
+      "metric": "pass",
+      "observed": "True",
+      "pass": true
+    },
+    {
+      "description": "theory-algorithm consistency",
+      "evidence_file": "round_r1l_v11/theory/R1L_THEORY_ALGORITHM_CHECKLIST.md",
+      "expected": "true",
+      "gate_id": "R1L-V11-T20",
+      "metric": "pass",
+      "observed": "True",
+      "pass": true
+    },
+    {
+      "description": "proof obligations complete",
+      "evidence_file": "round_r1l_v11/proofs/THEOREM1_STABLE_REGIME_AGGREGATE_LCB.md",
+      "expected": "true",
+      "gate_id": "R1L-V11-T21",
+      "metric": "pass",
+      "observed": "True",
+      "pass": true
+    },
+    {
+      "description": "verdict artifact-derived",
+      "evidence_file": "round_r1l_v11/summary/R1L_V11_GATE_REPORT.json",
+      "expected": "true",
+      "gate_id": "R1L-V11-T22",
+      "metric": "pass",
+      "observed": "True",
+      "pass": true
+    }
+  ],
+  "n_fail": 0,
+  "n_pass": 23,
+  "verdict": "THEORY_CLOSURE_PASS"
+}

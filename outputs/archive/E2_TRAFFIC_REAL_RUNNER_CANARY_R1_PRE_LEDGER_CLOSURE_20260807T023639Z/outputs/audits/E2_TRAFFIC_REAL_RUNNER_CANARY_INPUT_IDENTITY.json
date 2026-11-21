@@ -1,0 +1,112 @@
+{
+  "created_utc": "2026-08-06T20:44:32.859377+00:00",
+  "methods": [
+    "fedavg_window",
+    "fedasync_window",
+    "flamf_timealign_adapted",
+    "twostage_hajek",
+    "raven"
+  ],
+  "mismatch_count": 0,
+  "n_atomic_rows": 30960,
+  "n_clients_expected": 43,
+  "n_protocol_atoms": 25800,
+  "n_protocol_atoms_expected": 25800,
+  "n_spatial": 43,
+  "n_windows_expected": 100,
+  "protocol": "E2_TRAFFIC_REAL_RUNNER_CANARY_R1",
+  "registry_sha256": "7d9b8292522b6fbcc15d83ebb065fc8a73b79787ed643aea49c48f30596acbc7",
+  "rows": [
+    {
+      "exists": true,
+      "immutable_flag": true,
+      "mismatch": 0,
+      "name": "traffic_atomic",
+      "path": "data/processed/traffic/atomic_units.parquet",
+      "sha256": "db45a2ecc66c27abeaf58b0c03ce66de7bfaf6727f4523ea06ef226a9ce3de50"
+    },
+    {
+      "exists": true,
+      "immutable_flag": true,
+      "mismatch": 0,
+      "name": "public_target_atomic",
+      "path": "configs/frozen/e2_traffic_public_target/atomic_public_target.parquet",
+      "sha256": "b32fee4dd3e82e5894b27739b1ad0440ae12573ac877c7fccb565f646b54c374"
+    },
+    {
+      "exists": true,
+      "immutable_flag": true,
+      "mismatch": 0,
+      "name": "public_target_group_mass",
+      "path": "configs/frozen/e2_traffic_public_target/target_group_mass.parquet",
+      "sha256": "7b8cb2691cfe47312296bca653c52b19a8792c16ebe0f3b9c23c5422ef8b26bd"
+    },
+    {
+      "exists": true,
+      "immutable_flag": true,
+      "mismatch": 0,
+      "name": "client_stratum_target",
+      "path": "configs/frozen/e2_traffic_public_target/client_stratum_target.parquet",
+      "sha256": "cd667781b77183dcac05dcdc38868d5daf3a58ddb9253a25a0dfff3793d4ca82"
+    },
+    {
+      "exists": true,
+      "immutable_flag": true,
+      "mismatch": 0,
+      "name": "profile_s1_registry",
+      "path": "configs/frozen/e2_traffic_profiles_s1/traffic_s1_s6_profile_registry.json",
+      "sha256": "7d9b8292522b6fbcc15d83ebb065fc8a73b79787ed643aea49c48f30596acbc7"
+    },
+    {
+      "exists": true,
+      "immutable_flag": true,
+      "mismatch": 0,
+      "name": "direction_certificate",
+      "path": "configs/frozen/e2_traffic_profiles_s1/traffic_s1_s6_direction_certificate.json",
+      "sha256": "c40c05e0327ce08d74e40ca50af274a9e1678877f9e37218e9fb6b1d68539332"
+    },
+    {
+      "exists": true,
+      "immutable_flag": true,
+      "mismatch": 0,
+      "name": "runner_identity",
+      "path": "configs/frozen/e2_traffic_profiles_s1/traffic_s1_s6_runner_identity.json",
+      "sha256": "71705bb7bbf76b598a56bf4b40495bc48f5aa89eb7a0992a8c7693345db183fb"
+    },
+    {
+      "exists": true,
+      "immutable_flag": true,
+      "mismatch": 0,
+      "name": "method_policy",
+      "path": "src/raven_mcs/aggregation/method_policy.py",
+      "sha256": "4e381b684b83de0c529ee39be1cffd98bbf08342f2d99f85e9c22f878cb3d22f"
+    },
+    {
+      "exists": true,
+      "immutable_flag": true,
+      "mismatch": 0,
+      "name": "e1_protocol",
+      "path": "configs/frozen/e1_r2_protocol.yaml",
+      "sha256": "393a262b9ada12696762b2d41dac662bac47636ec0728eed3f1a492b4d7bd3ee"
+    },
+    {
+      "exists": true,
+      "immutable_flag": true,
+      "mismatch": 0,
+      "name": "seed_registry_note",
+      "path": "configs/frozen/e2_traffic_profiles_s1/traffic_s1_s6_profile_registry.json",
+      "sha256": "7d9b8292522b6fbcc15d83ebb065fc8a73b79787ed643aea49c48f30596acbc7"
+    }
+  ],
+  "scenarios": [
+    "balanced",
+    "opportunity_only",
+    "observation_only",
+    "usable_only",
+    "complete_aligned",
+    "complete_counteracting"
+  ],
+  "seed": 29001,
+  "selected_strength": "PROFILE-S1",
+  "status": "PASS"
+}

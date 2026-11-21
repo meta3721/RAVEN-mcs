@@ -1,0 +1,268 @@
+{
+  "hashes": {
+    "atomic_sha256": "949cd8c7210941b066d300e7cec327c485c5cc6aa6110ce790fdbf0db8a1e414",
+    "atomic_match": true,
+    "measurements_sha256": "6744a86dc97ec497295fedf3dd7efa2756680742b05320497cdc2c96ed049bb5",
+    "measurements_match": true,
+    "rewritten_in_r1": false,
+    "status": "HASH_BOUND"
+  },
+  "tdrive": {
+    "n_train_atomic": 285659,
+    "n_test_atomic": 74569,
+    "n_train_R_events": 1751641,
+    "n_clients_with_R": 5837,
+    "n_client_windows": 441898,
+    "n_train_slots": 178,
+    "slot_hours_median": 0.5,
+    "n_spatial_cells_atomic": 9994,
+    "n_spatial_cells_train_atomic": 8848,
+    "n_spatial_cells_train_R": 4842,
+    "cell_coverage_vs_train_atomic": 0.5472423146473779,
+    "unit_coverage_vs_train_atomic": 0.7840887211675459,
+    "mean_R_per_train_unit": 6.131930028460507,
+    "mu_test_empirical": {
+      "H1": 0.08786493046708417,
+      "H2": 0.1622524105191165,
+      "H3": 0.514396062707023,
+      "H4": 0.23548659630677626
+    },
+    "mu_test_seal": {
+      "H1": 0.08786493046708417,
+      "H2": 0.1622524105191165,
+      "H3": 0.514396062707023,
+      "H4": 0.23548659630677626
+    },
+    "mu_tv_empirical_vs_seal": 0.0,
+    "pi_opp_real_R": {
+      "H1": 0.0975302587687774,
+      "H2": 0.15070725108626712,
+      "H3": 0.3843641476763789,
+      "H4": 0.3673983424685766
+    },
+    "pi_opp_balanced_unit": {
+      "H1": 0.17157519980116154,
+      "H2": 0.18942515376725397,
+      "H3": 0.3075415092820461,
+      "H4": 0.3314581371495384
+    },
+    "pi_opp_balanced_flat": {
+      "H1": 0.25,
+      "H2": 0.25,
+      "H3": 0.25,
+      "H4": 0.25
+    },
+    "tv_real_vs_mu": 0.14157707446349355,
+    "tv_balanced_unit_vs_mu": 0.20685455342497694,
+    "tv_balanced_flat_vs_mu": 0.26439606270702304,
+    "n_zero_support_h_on_test": 0,
+    "n_train_R_strata": 24832,
+    "n_test_strata": 17483,
+    "n_train_only_R_strata": 13751,
+    "frac_train_R_strata_zero_test": 0.5537612757731959,
+    "frac_train_R_units_zero_test_stratum": 0.44337044941111337,
+    "client_active_fraction": {
+      "n": 178,
+      "mean": 0.4253166067685224,
+      "std": 0.22656800814183586,
+      "min": 0.005996230940551653,
+      "p10": 0.07377077265718691,
+      "p50": 0.5067671749186227,
+      "p90": 0.6617097824224774,
+      "max": 0.6974473188281651
+    },
+    "slots_active_per_client": {
+      "n": 5837,
+      "mean": 75.70635600479699,
+      "std": 30.525314762711538,
+      "min": 1.0,
+      "p10": 37.0,
+      "p50": 75.0,
+      "p90": 117.0,
+      "max": 165.0
+    },
+    "interarrival_slots": {
+      "n": 436061,
+      "mean": 2.030523252480731,
+      "std": 4.5693135357438175,
+      "min": 1.0,
+      "p10": 1.0,
+      "p50": 1.0,
+      "p90": 2.0,
+      "max": 142.0
+    },
+    "interarrival_hours": {
+      "n": 436061,
+      "mean": 1.0152616262403655,
+      "std": 2.2846567678719087,
+      "min": 0.5,
+      "p10": 0.5,
+      "p50": 0.5,
+      "p90": 1.0,
+      "max": 71.0
+    },
+    "burstiness_pooled_gaps": 0.3846747070765151,
+    "burstiness_per_client": {
+      "n": 5774,
+      "mean": 0.27185359387099034,
+      "std": 0.1799781203333914,
+      "min": -1.0,
+      "p10": 0.032195932877861676,
+      "p50": 0.3229798963183914,
+      "p90": 0.4232049352108655,
+      "max": 0.6425795112096995
+    },
+    "n_clients_with_gap": 5802,
+    "dropout_early_not_late": 451,
+    "dropout_rate_among_early": 0.0782307025151778,
+    "stratum_visit_gini": 0.7501734847573522,
+    "stratum_visit_entropy": 9.017966729425853,
+    "stratum_visit_cv": 1.9214854168730808,
+    "stratum_top_decile_share": 0.5739349558499716,
+    "spatial_R_cv": 2.141051931325341
+  },
+  "protocol": {
+    "sensorscope": {
+      "dataset": "sensorscope",
+      "source": "e3-complete-aligned EventTrace risk sets (protocol-generated R)",
+      "seed": 30001,
+      "n_clients": 8,
+      "n_windows": 100,
+      "n_R_client_units": 3200,
+      "mean_client_active_fraction": 1.0,
+      "interarrival_windows": {
+        "n": 792,
+        "mean": 1.0,
+        "std": 0.0,
+        "min": 1.0,
+        "p10": 1.0,
+        "p50": 1.0,
+        "p90": 1.0,
+        "max": 1.0
+      },
+      "burstiness_pooled_gaps": -1.0,
+      "mu_test": {
+        "H1": 0.2903225806451613,
+        "H2": 0.2903225806451613,
+        "H3": 0.22580645161290322,
+        "H4": 0.1935483870967742
+      },
+      "pi_opp_protocol": {
+        "H1": 0.40375,
+        "H2": 0.36875,
+        "H3": 0.1,
+        "H4": 0.1275
+      },
+      "pi_opp_balanced_unit": {
+        "H1": 0.25668449197860965,
+        "H2": 0.24064171122994651,
+        "H3": 0.24598930481283424,
+        "H4": 0.25668449197860965
+      },
+      "tv_protocol_vs_mu": 0.1918548387096774,
+      "tv_balanced_unit_vs_mu": 0.08331895808176647,
+      "frac_train_R_strata_zero_test": 0.0,
+      "cell_coverage_vs_train_atomic": 1.0,
+      "g1_opp_tv_realized_vs_target": 0.28929050586510274,
+      "g1_frac_pi_tar_zero": 0.0
+    },
+    "uair": {
+      "dataset": "uair",
+      "source": "e3-complete-aligned EventTrace risk sets (protocol-generated R)",
+      "seed": 30001,
+      "n_clients": 8,
+      "n_windows": 80,
+      "n_R_client_units": 2560,
+      "mean_client_active_fraction": 1.0,
+      "interarrival_windows": {
+        "n": 632,
+        "mean": 1.0,
+        "std": 0.0,
+        "min": 1.0,
+        "p10": 1.0,
+        "p50": 1.0,
+        "p90": 1.0,
+        "max": 1.0
+      },
+      "burstiness_pooled_gaps": -1.0,
+      "mu_test": {
+        "H1": 0.2641509433962264,
+        "H2": 0.22641509433962265,
+        "H3": 0.22641509433962265,
+        "H4": 0.2830188679245283
+      },
+      "pi_opp_protocol": {
+        "H1": 0.36875,
+        "H2": 0.4,
+        "H3": 0.1203125,
+        "H4": 0.1109375
+      },
+      "pi_opp_balanced_unit": {
+        "H1": 0.26582278481012656,
+        "H2": 0.26582278481012656,
+        "H3": 0.24050632911392406,
+        "H4": 0.22784810126582278
+      },
+      "tv_protocol_vs_mu": 0.278183962264151,
+      "tv_balanced_unit_vs_mu": 0.05517076665870549,
+      "frac_train_R_strata_zero_test": 0.2672413793103448,
+      "cell_coverage_vs_train_atomic": 1.0,
+      "g1_opp_tv_realized_vs_target": 0.4243892492138365,
+      "g1_frac_pi_tar_zero": 0.2546875
+    }
+  },
+  "u_layer": {
+    "classification": "CONTROLLED_EXPERIMENTAL",
+    "source": "raven_mcs.e3.real_runner.stage2_r3.compute_usable_r3",
+    "p_obs": 0.35,
+    "s_max": 5,
+    "n": 20000,
+    "seed": 30001,
+    "observation_rate": 0.3477,
+    "usable_update_rate_given_R": 0.14715,
+    "usable_update_rate_given_O": 0.42320966350301986,
+    "deadline_miss_rate_given_R": 0.10005,
+    "staleness_fail_rate_given_R": 0.17805,
+    "compute_fail_rate_given_R": 0.7043,
+    "network_fail_rate_given_R": 0.72665,
+    "deadline_miss_rate_given_O": 0.28774805867126835,
+    "staleness_fail_rate_given_O": 0.17745182628702905,
+    "compute_fail_rate_given_O": 0.14955421340235836,
+    "network_fail_rate_given_O": 0.21383376473971816,
+    "tau_mean": 3.22135,
+    "tau_p90": 7.0,
+    "frac_tau_gt_smax": 0.17805,
+    "not_real_tdrive_device_logs": true,
+    "expected_usable_updates": 65025.2907
+  },
+  "decision": {
+    "verdict": "G3_ACCEPTED",
+    "reason": "4-block TV exceeds 0.05 on real T-Drive R and on both protocol-generated datasets",
+    "evidence_level": "A",
+    "rq1": {
+      "tdrive_real": 0.14157707446349355,
+      "tdrive_balanced_unit": 0.20685455342497694,
+      "sensorscope_protocol": 0.1918548387096774,
+      "uair_protocol": 0.278183962264151,
+      "threshold": 0.05
+    },
+    "rq1_clears_threshold": {
+      "tdrive_real": true,
+      "sensorscope_protocol": true,
+      "uair_protocol": true
+    },
+    "rq2": {
+      "method_ranking_on_tdrive": "NOT_RUN",
+      "n_zero_support_h_on_test": 0,
+      "frac_train_R_units_zero_test_stratum": 0.44337044941111337,
+      "frac_train_R_strata_zero_test": 0.5537612757731959,
+      "g1_uair_frac_pi_tar_zero": 0.2546875,
+      "g1_sensorscope_frac_pi_tar_zero": 0.0,
+      "predicted_design_default": "if Design keys on s=spatial\u00d7block\u00d7weekday test mass, expect U-Air-like support shift; H1-H4 support is complete. Do not change Path B from this diagnostic alone."
+    },
+    "u_layer_controlled": true,
+    "usable_update_rate_given_R": 0.14715,
+    "seal_dir_written": false,
+    "formal_tdrive_training": false
+  }
+}

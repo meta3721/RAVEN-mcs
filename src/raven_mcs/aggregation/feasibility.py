@@ -26,12 +26,21 @@ def validate_p2_lambdas(
     lambda_beta: float,
     lambda_group: float,
     max_server_learning_rate: float,
+    instant_calibration: bool = True,
 ) -> None:
-    """Require λ_β>0 and λ_g ≥ max server learning rate."""
+    """Require λ_β>0; require λ_g ≥ max server LR when instant calibration is on.
+
+    The raven_wo_inst ablation path may pass instant_calibration=False so that
+    λ_g=0 is legal (group-calibration term disabled). Full RAVEN keeps the
+    default instant_calibration=True gate unchanged.
+    """
     if not (lambda_beta > 0):
         raise ValueError("lambda_beta must be > 0 for P2 uniqueness")
-    if lambda_group < max_server_learning_rate:
-        raise ValueError(
-            "lambda_group must be >= max_server_learning_rate "
-            f"(got {lambda_group} < {max_server_learning_rate})"
-        )
+    if instant_calibration:
+        if lambda_group < max_server_learning_rate:
+            raise ValueError(
+                "lambda_group must be >= max_server_learning_rate "
+                f"(got {lambda_group} < {max_server_learning_rate})"
+            )
+    elif lambda_group < 0:
+        raise ValueError("lambda_group must be >= 0 when instant_calibration=False")

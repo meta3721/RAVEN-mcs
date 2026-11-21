@@ -1,0 +1,123 @@
+% Supplemental material (separate PDF). Compile after main.tex so xr can read main.aux.
+\documentclass[letterpaper,journal]{IEEEtran}
+%\usepackage{ctex}
+\usepackage{amsmath,amsfonts}
+\usepackage{amsthm}
+\usepackage{algorithmic}
+\usepackage{algorithm}
+\usepackage{array}
+\usepackage[caption=false,font=normalsize,labelfont=sf,textfont=sf]{subfig}
+\usepackage{textcomp}
+\usepackage{stfloats}
+\usepackage{url}
+\usepackage{verbatim}
+\usepackage{graphicx}
+\usepackage{epsfig}
+% \usepackage{subfigure}
+\usepackage{epstopdf}
+\usepackage{cite}
+\usepackage{booktabs}
+\usepackage{multirow} 
+\usepackage{amssymb} 
+\newtheorem{definition}{Definition}  
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}{Proposition}
+\newtheorem*{proposition*}{Proposition}
+
+\newtheorem{assumption}{Assumption}
+\newtheorem{lemma}{Lemma}
+\newtheorem{corollary}{Corollary}
+\newtheorem{remark}{Remark}
+% End-of-proof marker. \qed ends the paragraph and sets the box flush right on
+% its own line, so the sentence that follows a proof starts as a new paragraph.
+% (amsthm defines \qedhere but not a top-level \qed.)
+\providecommand{\qed}{\hfill$\square$\par}
+%\usepackage{appendix}
+\usepackage{placeins}
+\graphicspath{{./figures/}{./images/}}
+\hyphenation{op-tical net-works semi-conduc-tor IEEE-Xplore}
+
+\makeatletter
+\newcommand{\rmnum}[1]{\romannumeral #1}
+\newcommand{\Rmnum}[1]{\expandafter\@slowromancap\romannumeral #1@}
+\makeatother
+
+\renewcommand{\topfraction}{0.99}
+\renewcommand{\bottomfraction}{0.99}
+\renewcommand{\textfraction}{0.01}
+\renewcommand{\floatpagefraction}{0.99}
+\renewcommand{\dbltopfraction}{0.9}
+\renewcommand{\dblfloatpagefraction}{0.9}
+\setlength{\dbltextfloatsep}{8pt plus 2pt}
+\setcounter{topnumber}{5}
+\setcounter{bottomnumber}{5}
+\setcounter{totalnumber}{10}
+
+
+\usepackage{xr}
+\externaldocument{main}
+
+\begin{document}
+
+\title{Supplemental Material for\\
+RAVEN-MCS: Target-Mass-Calibrated Windowed-Asynchronous Federated Data Completion for Mobile Crowdsensing under Two-Stage Non-Random Selection}
+
+\author{**** and Anfeng Liu}
+
+\maketitle
+
+\noindent\textit{This file is supplemental material for the companion main paper
+and must be uploaded as a separate PDF. It is not a standalone submission.}
+
+% Continue figure/table/equation numbers from the companion main paper.
+% Main now has 4 figures, 4 tables, 1 algorithm (window-close Design rule) and
+% the support-gate / switch-point equations (42)-(43).
+% Numbered statements in main: Prop. 1--3, Thm. 1--2, Assumption 1.
+\setcounter{figure}{4}
+\setcounter{table}{4}
+\setcounter{algorithm}{1}
+\setcounter{equation}{43}
+\setcounter{proposition}{4}
+\setcounter{theorem}{2}
+\setcounter{corollary}{0}
+\setcounter{assumption}{1}
+
+\input{appendix}
+
+% Trained-rule probe deferred from the results section of the main paper.  It is
+% placed after \input{appendix} so that the appendix keeps its own section
+% numbering, and it adds no numbered statement, so the counters set above stay
+% valid for the appendix.
+\section{Exploratory Trained-Rule Probe}
+\label{app:trained_rule_probe}
+
+\subsection{The $\kappa=1000$ projection-with-debt rule}
+\label{app:kappa_probe}
+
+The projection-with-debt rule is a new rule of this study, not the frozen RAVEN
+configuration, and it is reported as exploratory: it sets the debt weight to
+$\kappa=1000$ instead of the frozen value, and that weight was chosen on the
+tuning seeds.  Against the projection alone it adds $+1.347$ pp and $+0.580$ pp
+(Holm $\approx10^{-5}$ on both), on SensorScope and U-Air respectively; at the
+frozen debt strength the same contrast is $+0.0073$ pp ($[0.0064,0.0083]$) on
+SensorScope, inside the equivalence band of
+Section~\ref{subsec:equivalence_band} in the main paper.  Its implementation
+gate is not met.  The trained rules are reported as approximate against an exact
+projection oracle, measured by $\varepsilon_{\mathrm{impl}}$, the distance
+between a trained rule's server weights and the exact minimizer of its
+projection problem, in percentage points of group mass rather than as a
+relative tolerance.  Over all $240$ rule runs
+$\varepsilon_{\mathrm{impl}}\le2.42\times10^{-5}$ percentage points, at most
+$0.11\%$ of any of the four Inst readings and $2.16\%$, $7.62\%$, $2.73\%$ and
+$4.89\%$ of the four debt readings.  The two U-Air debt readings are the
+exception, where the gap exceeds the reading it is compared against.  Elsewhere
+it is orders of magnitude below the effect, so no sign or reading changes.
+These deltas belong to the new rule, and none of them is a measurement of
+RAVEN's performance.
+
+% The appendix cites a small number of works. Carrying its own bibliography
+% keeps this file compilable on its own, without main.aux.
+\bibliographystyle{IEEEtran}
+\bibliography{reference}
+
+\end{document}

@@ -1,0 +1,21 @@
+{
+  "n_rows": 600,
+  "summary": {
+    "accepted_logical_run_count": 600,
+    "corrupt_ledger_lines": 0,
+    "duplicate_start_event_count": 1,
+    "duplicate_start_run_ids": [
+      "formal_seed30001_observation_only_raven__attempt1"
+    ],
+    "excess_start_event_count": 1,
+    "failed_finished_attempt_count": 0,
+    "finish_event_count": 600,
+    "interrupted_start_event_count": 1,
+    "ledger_rewritten": false,
+    "note": "Historical ledger unchanged. Known anomaly is a duplicate START on the same run_id (interrupted attempt) with a later successful FINISH; accepted logical runs=600.",
+    "orphan_finish_event_count": 0,
+    "orphan_start_event_count": 0,
+    "orphan_start_run_ids": [],
+    "start_event_count": 601
+  }
+}

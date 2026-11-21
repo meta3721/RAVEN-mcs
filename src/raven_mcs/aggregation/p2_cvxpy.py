@@ -53,6 +53,7 @@ def solve_p2(
     max_server_learning_rate: float,
     tolerance: float = 1e-6,
     backend: str = "CLARABEL",
+    instant_calibration: bool = True,
 ) -> P2Result:
     """
     Minimize
@@ -66,6 +67,7 @@ def solve_p2(
         lambda_beta=lambda_beta,
         lambda_group=lambda_group,
         max_server_learning_rate=max_server_learning_rate,
+        instant_calibration=instant_calibration,
     )
     m = np.asarray(coverage_matrix, dtype=np.float64)
     target = np.asarray(mu, dtype=np.float64)
@@ -73,6 +75,13 @@ def solve_p2(
     q = np.asarray(debt, dtype=np.float64)
     v_diag = np.asarray(variance_diag, dtype=np.float64)
     tau = np.asarray(staleness, dtype=np.float64)
+    if not np.all(np.isfinite(v_diag)):
+        v_diag = np.where(np.isfinite(v_diag), v_diag, 1.0)
+    v_diag = np.maximum(v_diag, 0.0)
+    if not np.all(np.isfinite(m)) or not np.all(np.isfinite(target)) or not np.all(
+        np.isfinite(beta)
+    ) or not np.all(np.isfinite(q)) or not np.all(np.isfinite(tau)):
+        raise ValueError("P2 inputs must be finite")
     if m.ndim != 2:
         raise ValueError("coverage_matrix must be groups × clients")
     n_groups, n_active = m.shape

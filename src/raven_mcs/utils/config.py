@@ -81,6 +81,22 @@ def resolve_run_config(
     if overrides:
         cfg = deep_merge(cfg, overrides)
 
+    from raven_mcs.aggregation.method_policy import get_method_policy
+    from raven_mcs.sag.r1l_design import configuration_for_method
+    method_name = str(cfg["method"])
+    policy = get_method_policy(method_name)
+    configuration = configuration_for_method(
+        method_name, cfg.get("design"), source=cfg.get("design_source", "explicit_run_config"),
+    )
+    if policy.design_control == "configured":
+        cfg["design_configuration"] = configuration.to_dict()
+        cfg["method_version"] = policy.method_version
+        cfg["coverage_role"] = "diagnostic_only"
+    elif policy.method_version == "coverage-controlled-v1":
+        cfg["design_configuration"] = None
+        cfg["method_version"] = policy.method_version
+        cfg["coverage_role"] = "controls_legacy_design"
+
     seed_bundle = SeedBundle.from_config(cfg["seed"], cfg.get("seeds"))
     cfg["seeds"] = seed_bundle.as_dict()
     if validate:

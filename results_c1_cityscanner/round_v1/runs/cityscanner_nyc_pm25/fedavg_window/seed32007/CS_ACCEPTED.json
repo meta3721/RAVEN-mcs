@@ -1,0 +1,23 @@
+{
+  "Delta_c_s": 0.8095418197957976,
+  "Delta_group": 0.15519294686391774,
+  "MAE_mu": 0.16464907405467288,
+  "RMSE_mu": 0.17955041498149302,
+  "WorstGroupRMSE": 0.18907339392905012,
+  "WorstGroupRMSE_R0": 0.1710992775464241,
+  "WorstGroupRMSE_R1": 0.1792883516384968,
+  "WorstGroupRMSE_R2": 0.17897385597286,
+  "WorstGroupRMSE_R3": 0.18907339392905012,
+  "dataset": "cityscanner_nyc_pm25",
+  "design_on": true,
+  "device": "cpu",
+  "eventtrace_hash": "acebd21177c4dd4bd025a0cd053b4c11dbf3970cfb6482ffb16e59ef738d7247",
+  "gate_unused": true,
+  "git_commit": "2e47464c2c15d7dae4ceb059592782b9542de625",
+  "hybrid": true,
+  "method": "fedavg_window",
+  "n_windows": 100,
+  "path_status": "REAL_PATH_EXECUTED",
+  "runtime_seconds": 40.083545100002084,
+  "seed": 32007
+}

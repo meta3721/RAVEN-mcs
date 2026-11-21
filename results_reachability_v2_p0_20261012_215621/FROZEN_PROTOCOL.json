@@ -1,0 +1,152 @@
+{
+  "protocol_id": "cross-window-reachability-main-experiment-protocol/v2",
+  "source_authority": "user pasted request",
+  "source_path": "C:\\Users\\szr\\.codex\\attachments\\a5870376-44bb-4987-9007-d25cbbbf8d40\\已粘贴的文本.txt",
+  "source_sha256": "ca4585622e0e6518871111fc3ee62a64c7f65d8b458175b15f62a7edd60d82b4",
+  "recorded_at": "2026-10-12T21:56:21.566330+08:00",
+  "status": "WAITING_USER_REVIEW",
+  "freeze_scope": "user-supplied stage order, limits and acceptance criteria only; candidate/entry not frozen",
+  "candidate_frozen": false,
+  "candidate": {
+    "name": "reachability_stop",
+    "version": null,
+    "implementation": null,
+    "pseudocode": null,
+    "difference_from_old_v1": null
+  },
+  "aggregator": {
+    "method": "raven_mcs",
+    "version": "configured-design-v1",
+    "design": "on",
+    "coverage_role": "diagnostic_only",
+    "existing_identity_evidence": "results_design_gate_alignment_v1/ALIGNMENT_STATUS.json",
+    "tests_reused": 226,
+    "tests_repeated": 0
+  },
+  "datasets": {
+    "traffic": {
+      "role": "development and eligible prediction platform",
+      "target": "traffic_volume",
+      "unit": "vehicles_per_hour",
+      "station_is_client": true
+    },
+    "sensorscope": {
+      "role": "control; prediction conditional on P4/P5",
+      "target": "ambient_temperature",
+      "unit": "degree_Celsius"
+    },
+    "uair": {
+      "role": "unlabelled reachability/failure analysis only",
+      "prediction_authorized": false
+    }
+  },
+  "development_seeds": [
+    41001,
+    41002,
+    41003
+  ],
+  "confirmation_candidate_seeds": [
+    42001,
+    42002,
+    42003,
+    42004,
+    42005,
+    42006,
+    42007,
+    42008,
+    42009,
+    42010,
+    42011,
+    42012,
+    42013,
+    42014,
+    42015,
+    42016,
+    42017,
+    42018,
+    42019,
+    42020
+  ],
+  "confirmation_seed_cleanliness": "NOT_AUDITED_AFTER_FIRST_P0_FAILURE; not approved for confirmation",
+  "phase_order": [
+    "P0",
+    "P1",
+    "P2",
+    "P3",
+    "P4",
+    "P5",
+    "P6",
+    "P7"
+  ],
+  "limits": {
+    "P0_P3_cpu_device_hours": 8,
+    "P4_P5_complete_training_trajectories": 60,
+    "P4_P5_device_hours": 12,
+    "fixed_strategy_configurations_max": 6,
+    "P6_trajectories_max_two_platforms": 480,
+    "P6_traffic_only_max": 240,
+    "P7_base_ablation_trajectories_max_two_platforms": 160
+  },
+  "stage_checks": {
+    "P0": {
+      "success": "unique executable candidate, configured identity, real interfaces, safe outputs, reviewable external baseline adaptations, substantive difference or explicit rerun approval",
+      "first_failure": "没有候选算法",
+      "interpretation": "no uniquely specified executable stopping candidate could be frozen from the inspected current project; this is an information/definition failure, not a scientific performance verdict"
+    },
+    "P1": {
+      "windows": 16,
+      "score_relative_tolerance": 1e-06,
+      "accepted_weight_constraint_residual_max": 1e-07
+    },
+    "P2": {
+      "conditions": 6,
+      "independent_trajectories_per_condition": 100,
+      "geometry_tolerance": 1e-06,
+      "neural_training": false,
+      "promised_anytime_alpha": 0.05
+    },
+    "P3": {
+      "batch_seeds": 3,
+      "wait_route_min_gain": 0.05,
+      "wait_route_G_absolute_guard": 0.01,
+      "geometry_route_min_gain": 0.02,
+      "geometry_route_W_ratio_guard": 1.05,
+      "direction_consistency_min": 2,
+      "decision_difference_fraction_min": 0.05
+    },
+    "P4": {
+      "effective_passes": 200,
+      "simple_baseline_min_RMSE_improvement": 0.02,
+      "median_100_to_200_remaining_improvement_max": 0.005
+    },
+    "P5": {
+      "paired_relative_RMSE_degradation_mean_max": 0.01,
+      "wait_route_min_gain": 0.1,
+      "geometry_route_min_gain": 0.02,
+      "complete_external_baselines_min": 2
+    },
+    "P6": {
+      "seeds_default": 20,
+      "one_sided_confidence": 0.95,
+      "paired_RMSE_degradation_upper_max": 0.01,
+      "benefit_lower_bound_min_exclusive": 0,
+      "G_absolute_degradation_upper_max": 0.01,
+      "W_relative_degradation_upper_max": 0.05
+    }
+  },
+  "unfrozen_required_fields": [
+    "candidate algorithm/version/pseudocode",
+    "dynamic message and U/q process",
+    "actual simulation time unit and horizon T",
+    "sample/attempt/communication caps",
+    "controller decision CPU cap",
+    "exact fixed baseline search set within six",
+    "external algorithm versions and implementations",
+    "paired CI computation details",
+    "confirmation seed contamination audit",
+    "production manifest/checkpoint path validation"
+  ],
+  "new_result_dir": "C:\\Cursor\\raven.mcs\\results_reachability_v2_p0_20261012_215621",
+  "markdown_dir": "C:\\Cursor\\raven.mcs\\ccf-review-report\\reachability_v2_p0_20261012_215621",
+  "large_scale_ready": false
+}

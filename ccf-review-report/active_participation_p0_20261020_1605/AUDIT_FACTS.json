@@ -1,0 +1,242 @@
+{
+  "free_bytes_start": 8135458816,
+  "prediction_results_opened": false,
+  "validation_test_target_values_used": false,
+  "identity": {
+    "identity_data_hash": "06e2953afad17b27facfbf593d399be92255775c5c298e5c89924903a30a2de8",
+    "ingest_data_hash": "06e2953afad17b27facfbf593d399be92255775c5c298e5c89924903a30a2de8",
+    "identity_occupancy_sha256": "8b1deff66f1a23973d87b44f1e6da69cc2291ee8da77dc7d1db4f222ac3f96af",
+    "ingest_occupancy_sha256": "8b1deff66f1a23973d87b44f1e6da69cc2291ee8da77dc7d1db4f222ac3f96af",
+    "recomputed_occupancy_sha256": "8b1deff66f1a23973d87b44f1e6da69cc2291ee8da77dc7d1db4f222ac3f96af",
+    "hash_match": true
+  },
+  "time": {
+    "warmup_rows": 1722,
+    "warmup_max_utc": "2021-09-22 23:00:00+00:00",
+    "frozen_warmup_bound_utc": "2021-09-22 23:00:00+00:00",
+    "warmup_bound_match": true,
+    "train_min_utc": "2021-09-10 12:00:00+00:00",
+    "train_max_utc": "2021-11-05 12:00:00+00:00",
+    "validation_min_utc": "2021-11-05 12:30:00+00:00",
+    "validation_max_utc": "2021-11-21 17:00:00+00:00",
+    "test_min_utc": "2021-11-21 17:30:00+00:00",
+    "test_max_utc": "2021-12-15 15:00:00+00:00",
+    "warmup_outside_train": 0,
+    "split_time_overlap": {
+      "train_validation": 0,
+      "train_test": 0,
+      "validation_test": 0
+    }
+  },
+  "o_and_ids": {
+    "occupancy_rows": 14960,
+    "o1_rows": 13029,
+    "o0_rows": 1931,
+    "o0_unit_ids_in_atomic": 0,
+    "o0_unit_ids_in_client_measurements": 0,
+    "atomic_rows": 13029,
+    "atomic_unit_duplicates": 0,
+    "occupancy_unit_duplicates": 0,
+    "client_pair_duplicates": 0,
+    "atomic_not_in_occupancy": 0,
+    "client_units_not_in_atomic": 0,
+    "occupancy_client_equals_spatial": true,
+    "client_id_startswith_NYCP": 0,
+    "spatial_id_startswith_NYCP": 0,
+    "train_atomic_nonfinite": 0,
+    "train_client_nonfinite": 0,
+    "groups": [
+      "region0",
+      "region1",
+      "region2",
+      "region3"
+    ]
+  },
+  "scaler_warmup_only": {
+    "n": 1722,
+    "all_finite": true,
+    "mean": 7.235721204740506,
+    "std_population": 2.5343724212040586,
+    "executed_training": false
+  },
+  "vocabulary": {
+    "warmup_spatial_ids": 118,
+    "all_atomic_spatial_ids": 348,
+    "parameter_count_warmup_vocab": 33121,
+    "parameter_count_all_atomic_vocab": 40481,
+    "existing_processed_dataset_uses": "all atomic spatial ids, including validation and test",
+    "p0_contract_uses": "warmup train spatial ids only"
+  },
+  "eligibility": {
+    "frozen_days": 43,
+    "days_present_in_occupancy": 43,
+    "days_pass_gate": 42,
+    "days_required": 35,
+    "K_eligible_min": 1,
+    "K_eligible_median": 42.0,
+    "K_eligible_max": 83,
+    "K_inventory_min": 1,
+    "K_inventory_median": 50.0,
+    "K_inventory_max": 141,
+    "days_four_eligible_groups": 39,
+    "exclusion_client_day_counts": {
+      "spatial_absent_from_warmup_vocabulary": 514
+    },
+    "candidate_rows": 2339,
+    "eligible_client_days": 1825
+  },
+  "history_upper_bound": {
+    "eligible_client_days": 1825,
+    "with_any_earlier_eligible_appearance": 1724,
+    "fraction_any_earlier": 0.9446575342465754,
+    "with_earlier_eligible_appearance_within_7_days": 1658,
+    "fraction_within_7_days": 0.9084931506849315,
+    "median_gap_days_among_repeats": 1.0,
+    "meaning": "upper bound on history availability; a prior appearance is not a received update"
+  },
+  "sampling": {
+    "tolerance": 1e-10,
+    "enumeration_clients_max": 5,
+    "method": "fixed-size systematic sampling; inclusion checked by exact piecewise measure, not by draw frequency",
+    "tests": [
+      {
+        "name": "select_all",
+        "sample_sizes": [
+          4
+        ],
+        "duplicate_selection": false,
+        "design_measure": 1.0,
+        "inclusion": [
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "inclusion_sum": 4.0,
+        "inclusion_gap": 0.0,
+        "probability_bounds_ok": true,
+        "inverse_probability_evaluated": true,
+        "ht_gap": 0.0,
+        "pass": true
+      },
+      {
+        "name": "zero_budget",
+        "sample_sizes": [
+          0
+        ],
+        "duplicate_selection": false,
+        "design_measure": 1.0,
+        "inclusion": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "inclusion_sum": 0.0,
+        "inclusion_gap": 0.0,
+        "probability_bounds_ok": true,
+        "inverse_probability_evaluated": false,
+        "ht_gap": null,
+        "pass": true
+      },
+      {
+        "name": "k1_select_all",
+        "sample_sizes": [
+          1
+        ],
+        "duplicate_selection": false,
+        "design_measure": 1.0,
+        "inclusion": [
+          1.0
+        ],
+        "inclusion_sum": 1.0,
+        "inclusion_gap": 0.0,
+        "probability_bounds_ok": true,
+        "inverse_probability_evaluated": true,
+        "ht_gap": 0.0,
+        "pass": true
+      },
+      {
+        "name": "saturated_nonuniform",
+        "sample_sizes": [
+          2
+        ],
+        "duplicate_selection": false,
+        "design_measure": 1.0,
+        "inclusion": [
+          0.23333333333333334,
+          0.3666666666666667,
+          0.5,
+          0.9
+        ],
+        "inclusion_sum": 2.0,
+        "inclusion_gap": 1.1102230246251565e-16,
+        "probability_bounds_ok": true,
+        "inverse_probability_evaluated": true,
+        "ht_gap": 8.881784197001252e-16,
+        "pass": true
+      },
+      {
+        "name": "group_quota_redistribution",
+        "sample_sizes": [
+          4
+        ],
+        "duplicate_selection": false,
+        "design_measure": 1.0,
+        "inclusion": [
+          1.0,
+          1.0,
+          0.5333333333333333,
+          0.5333333333333333,
+          0.9333333333333333
+        ],
+        "inclusion_sum": 4.0,
+        "inclusion_gap": 0.0,
+        "probability_bounds_ok": true,
+        "inverse_probability_evaluated": true,
+        "ht_gap": 0.0,
+        "group_count_mismatch_atoms": 0,
+        "pass": true
+      },
+      {
+        "name": "missing_group_fallback",
+        "sample_sizes": [
+          1
+        ],
+        "duplicate_selection": false,
+        "design_measure": 1.0,
+        "inclusion": [
+          0.3333333333333333,
+          0.3333333333333333,
+          0.3333333333333333
+        ],
+        "inclusion_sum": 1.0,
+        "inclusion_gap": 5.551115123125783e-17,
+        "probability_bounds_ok": true,
+        "inverse_probability_evaluated": true,
+        "ht_gap": 0.0,
+        "pass": true,
+        "quota_mode": "fallback_global_quality_pps",
+        "allocation": {
+          "region0": 0,
+          "region1": 0,
+          "region2": 0,
+          "region3": 0
+        },
+        "missing_target_mass": 0.25
+      }
+    ],
+    "max_inclusion_gap": 1.1102230246251565e-16,
+    "max_ht_gap": 8.881784197001252e-16,
+    "pass": true
+  },
+  "resource": {
+    "cpu_seconds": 2.71875,
+    "wall_seconds": 2.882865800002037,
+    "rss_bytes": 116031488,
+    "peak_rss_bytes": 116031488,
+    "free_bytes_end": 8128659456,
+    "cpu_budget_seconds": 120.0,
+    "wall_budget_seconds": 300.0,
+    "rss_cap_bytes": 1073741824
+  }
+}

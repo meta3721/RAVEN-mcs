@@ -1,0 +1,36 @@
+{
+  "average_candidates_per_client_window": 223.29475,
+  "duplicate_mass_count": 0,
+  "event_mass_equals_one_for_hard_count_model": true,
+  "expected_hard_arrival_count": 58949.814,
+  "expected_hard_arrival_mass": 17.28733548387097,
+  "expected_observation_count": 98249.69,
+  "expected_observation_mass": 28.81222580645162,
+  "expected_opportunity_count": 491248.45,
+  "expected_opportunity_mass": 144.06112903225804,
+  "finite_status": true,
+  "mass_unit_definition": "E1 target_weight on schedule; hard count model uses event_mass=1",
+  "max_candidates_per_client_window": 682,
+  "median_candidates_per_client_window": 187.0,
+  "min_candidates_per_client_window": 20,
+  "minimum_expected_arrivals_per_raw_stratum_count_proxy": 0.6316200000005633,
+  "minimum_expected_arrivals_per_raw_stratum_mass": 0.002806451612903226,
+  "rates": {
+    "p_obs": 0.2,
+    "p_opp": 0.55,
+    "q_use": 0.6
+  },
+  "realized_arrival_count": null,
+  "realized_observation_count": null,
+  "realized_opportunity_count": null,
+  "stage_naming": [
+    "candidate",
+    "opportunity",
+    "observation",
+    "hard_arrival"
+  ],
+  "status": "PASS",
+  "synthetic_event_count": 0,
+  "total_candidate_count": 893179,
+  "total_candidate_mass": 261.9293255129629
+}

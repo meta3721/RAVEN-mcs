@@ -1,0 +1,32 @@
+# FROZEN_METRIC_DEFINITIONS
+
+## Head_RMSE
+- **definition_source**: `src/raven_mcs/e2/traffic_profiles/runner_consistency.py::HEAD_GROUPS`
+- **population**: `frozen target groups block0+block1`
+- **partition**: `['block1', 'block0']`
+- **formula**: `sqrt(mean(RMSE_block^2 for block in HEAD_GROUPS)) under equal mu_g=0.25`
+- **weighting**: `equal group mass (frozen target_group_mass)`
+- **prediction_target**: `same final-model test predictions underlying stored group_rmse`
+- **status**: `DEFINITION_RECOVERED`
+
+## Tail_RMSE
+- **definition_source**: `src/raven_mcs/e2/traffic_profiles/runner_consistency.py::TAIL_GROUPS`
+- **population**: `frozen target groups block2+block3`
+- **partition**: `['block2', 'block3']`
+- **formula**: `sqrt(mean(RMSE_block^2 for block in TAIL_GROUPS)) under equal mu_g=0.25`
+- **weighting**: `equal group mass`
+- **status**: `DEFINITION_RECOVERED`
+
+## Delta_group
+- **definition_source**: `src/raven_mcs/metrics/distribution.py::delta_group + window_runner.omega_bar`
+- **formula**: `||omega_bar - mu||_1`
+- **omega_hat**: `eta-weighted average of coverage_mix(M_r, alpha_r) over active windows`
+- **mu**: `frozen target_group_mass.parquet [0.25]*4`
+- **norm**: `L1`
+- **status**: `DEFINITION_RECOVERED`
+
+## Delta_pair
+- **definition_source**: `src/raven_mcs/metrics/distribution.py::delta_pair`
+- **formula**: `||Pi_hat - pi_tar||_1`
+- **status**: `DEFINITION_NOT_RECOVERABLE_FOR_TRAFFIC_FORMAL`
+- **reason**: `delta_pair has no call sites in traffic formal runner; Pi_hat never materialized in frozen outputs`

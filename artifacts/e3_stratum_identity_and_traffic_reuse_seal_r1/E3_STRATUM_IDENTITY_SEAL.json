@@ -1,0 +1,72 @@
+{
+  "datasets": {
+    "sensorscope": {
+      "coarse_spatial_region_rule": "station itself (no further coarsening)",
+      "current_mapping_hash": "b42c24882fd3da89877f33697c97fb92d61480364fbfb3176291766b2a947f58",
+      "dataset": "sensorscope",
+      "equality_compatibility": "MATCHES_PRIOR_FROZEN_STATION_LEVEL",
+      "exact_s_mapping": "spatial_id::block{k}::{weekday|weekend}",
+      "identity_status": "FROZEN_IDENTITY_CONFIRMED",
+      "no_new_clustering": true,
+      "nonempty_stratum_cardinality": 440,
+      "previous_frozen_artifact": "configs/frozen/e3_multidataset_protocol_closure/sensorscope/opportunity_strata.json",
+      "raw_spatial_unit": "station_id / spatial_id",
+      "source_files": [
+        "configs/frozen/e3_multidataset_protocol_closure/sensorscope/opportunity_strata.json",
+        "src/raven_mcs/data/matrix_adapter.py"
+      ],
+      "source_hashes": {
+        "opportunity_strata.json": "a6bb3935f8968aa18512adb8a57e6b780ad06afeb9c04f4b7229b6b03232ef7d"
+      },
+      "time_block_rule": "UTC hour//6 → block0..3",
+      "total_raw_stratum_cardinality": 440,
+      "weekday_weekend_rule": "weekday_label"
+    },
+    "traffic": {
+      "coarse_spatial_region_rule": "frozen E2 public-target 4 real regions",
+      "dataset": "traffic",
+      "exact_s_mapping": "region_id::block{k}::{weekday|weekend}",
+      "identity_status": "FROZEN_IDENTITY_RECOVERED",
+      "mapping_hash": "490dc6130eb05731d81b170a3ace501c7e33d150bc2949506c7a5378054a343f",
+      "nonempty_stratum_cardinality": 32,
+      "previous_frozen_artifact": "configs/frozen/e2_traffic_public_target/station_region_identity.json",
+      "raw_processed_had_344": true,
+      "raw_spatial_unit": "counting station spatial_id (43)",
+      "region_count": 4,
+      "rejects_station_level_344": true,
+      "source_files": [
+        "configs/frozen/e2_traffic_public_target/station_region_identity.json",
+        "src/raven_mcs/e2/traffic_public_target/core.py",
+        "src/raven_mcs/e3/stratum_seal/traffic_regions.py"
+      ],
+      "station_count": 43,
+      "time_block_rule": "UTC hour//6 → block0..3",
+      "total_raw_stratum_cardinality": 32,
+      "weekday_weekend_rule": "weekday|weekend"
+    },
+    "uair": {
+      "coarse_spatial_region_rule": "spatial_id itself (no further coarsening)",
+      "current_mapping_hash": "82daff8e78703319675b18ac22ac614d9d406abab909d4bd1fda83ba9cf4101b",
+      "dataset": "uair",
+      "equality_compatibility": "MATCHES_PRIOR_FROZEN_STATION_LEVEL",
+      "exact_s_mapping": "spatial_id::block{k}::{weekday|weekend}",
+      "identity_status": "FROZEN_IDENTITY_CONFIRMED",
+      "no_new_clustering": true,
+      "nonempty_stratum_cardinality": 288,
+      "previous_frozen_artifact": "configs/frozen/e3_multidataset_protocol_closure/uair/opportunity_strata.json",
+      "raw_spatial_unit": "station/node spatial_id",
+      "source_files": [
+        "configs/frozen/e3_multidataset_protocol_closure/uair/opportunity_strata.json",
+        "src/raven_mcs/data/matrix_adapter.py"
+      ],
+      "source_hashes": {
+        "opportunity_strata.json": "fb5b6f40db00dafd9677f0b502c9c85f62a67f5d7a0be941321d79340c92be4c"
+      },
+      "time_block_rule": "UTC hour//6 → block0..3",
+      "total_raw_stratum_cardinality": 288,
+      "weekday_weekend_rule": "weekday_label"
+    }
+  },
+  "round": "E3-STRATUM-IDENTITY-AND-TRAFFIC-REUSE-SEAL-R1",
+  "status": "SEALED"
+}

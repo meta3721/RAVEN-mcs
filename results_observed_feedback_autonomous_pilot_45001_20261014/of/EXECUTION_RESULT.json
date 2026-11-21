@@ -1,0 +1,42 @@
+{
+  "status": "STARTED_PREFIX_INCOMPLETE",
+  "failure": {
+    "error": "RuntimeError('root budget stale; no new operation')",
+    "traceback": "Traceback (most recent call last):\n  File \"C:\\Cursor\\raven.mcs\\scripts\\run_observed_feedback_autonomous_pilot.py\", line 84, in main\n    if not p.notices_through(at):raise RuntimeError('PILOT_PAUSE_NOT_CLEARED')\n           ^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Cursor\\raven.mcs\\src\\raven_mcs_observed_feedback\\acquisition.py\", line 131, in notices_through\n    self.register_current()\n  File \"C:\\Cursor\\raven.mcs\\scripts\\observed_feedback_pilot_common.py\", line 90, in register_current\n    super().register_current()\n  File \"C:\\Cursor\\raven.mcs\\src\\raven_mcs_observed_feedback\\acquisition.py\", line 92, in register_current\n    key,records,tail,tier=self.invoke('events',registration)\n                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Cursor\\raven.mcs\\src\\raven_mcs_observed_feedback\\acquisition.py\", line 66, in invoke\n    def invoke(self,category,fn,ceiling=2.):return self.operation(category,fn,ceiling) if self.operation else fn()\n                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Cursor\\raven.mcs\\scripts\\run_observed_feedback_autonomous_pilot.py\", line 78, in guarded_operation\n    return original_operation(category,fn,ceiling,online)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Cursor\\raven.mcs\\scripts\\observed_feedback_pilot_account.py\", line 7, in operation\n    try:return super().operation(category,fn,ceiling,online)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Cursor\\raven.mcs\\src\\raven_mcs_observed_feedback\\accounting.py\", line 38, in operation\n    if error:raise error\n             ^^^^^^^^^^^\n  File \"C:\\Cursor\\raven.mcs\\src\\raven_mcs_observed_feedback\\accounting.py\", line 22, in operation\n    if not self.root.can_plan(0 if category=='save' else self.reserve,operation_root_ceiling=ceiling):raise BudgetStop('ROOT_HEADROOM_'+category)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Cursor\\raven.mcs\\src\\raven_mcs_execution\\budget.py\", line 39, in can_plan\n    return self.read()['effective_remaining']>=save_reserve+operation_root_ceiling\n           ^^^^^^^^^^^\n  File \"C:\\Cursor\\raven.mcs\\src\\raven_mcs_observed_feedback\\budget_client.py\", line 42, in read\n    if age>1:raise RuntimeError('root budget stale; no new operation')\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nRuntimeError: root budget stale; no new operation\n",
+    "time": 33.29,
+    "SGD": 1134,
+    "next_grid_tick": 333
+  },
+  "actual_SGD": 1134,
+  "GPU": 0,
+  "q_fit": 0,
+  "now": 33.29,
+  "next_grid_tick": 333,
+  "last_complete_marker": "C:\\Cursor\\raven.mcs\\results_observed_feedback_autonomous_pilot_45001_20261014\\of\\trajectory\\stopped_0333_07272.complete.json",
+  "last_saved_time": 33.29,
+  "parent_run_id": null,
+  "parent_checkpoint": null,
+  "decision_start_tick": 1,
+  "source_packages_changed": false,
+  "strategy": "OF-v1",
+  "seed": 45001,
+  "spent": {
+    "setup": 0.0,
+    "initialization": 20.609375,
+    "online": 6.90625,
+    "training": 16.375,
+    "events": 74.390625,
+    "save": 28.53125,
+    "repair": 0.0
+  },
+  "maxima": {
+    "initialization": 1.504375,
+    "save": 4.645,
+    "events": 0.5825,
+    "training": 0.629375,
+    "online": 0.160625
+  },
+  "worker_PID": 9752,
+  "session_id": "of",
+  "state": "WAITING_USER_REVIEW"
+}

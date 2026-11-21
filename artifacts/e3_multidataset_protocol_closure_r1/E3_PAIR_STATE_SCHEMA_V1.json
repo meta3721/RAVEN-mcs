@@ -1,0 +1,36 @@
+{
+  "aggregation": {
+    "Pi_hat": "sum estimated_pair_mass over windows with validity_mask, then renormalize",
+    "pi_tar": "sum target_pair_mass over same support, then renormalize"
+  },
+  "formula": {
+    "Delta_c_s": "sum_{k,s} |Pi_hat_ks - pi_tar_ks|",
+    "Delta_pair": "||Pi_hat - pi_tar||_1",
+    "code": [
+      "raven_mcs.metrics.distribution.delta_pair",
+      "raven_mcs.metrics.distribution.delta_c_s"
+    ]
+  },
+  "information_boundary": [
+    "no future/test labels in estimated_pair_mass construction",
+    "target_pair_mass from frozen public target only",
+    "no post-delivery private features"
+  ],
+  "required_columns": [
+    "dataset",
+    "seed",
+    "scenario",
+    "method",
+    "window",
+    "pair_id",
+    "source_group",
+    "target_group",
+    "observed_pair_mass",
+    "estimated_pair_mass",
+    "target_pair_mass",
+    "support_mask",
+    "normalization_denominator",
+    "validity_mask"
+  ],
+  "schema_version": "E3_PAIR_STATE_SCHEMA_V1"
+}

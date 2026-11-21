@@ -1,0 +1,256 @@
+{
+  "all_canonical_methods_reference": [
+    "fedavg_window",
+    "fedasync_window",
+    "flamf_timealign_adapted",
+    "local_hajek",
+    "twostage_hajek",
+    "inst_cal",
+    "debt_cal",
+    "raven",
+    "raven_simoracle",
+    "central_all",
+    "central_delivered"
+  ],
+  "canary_seed": 31001,
+  "excluded_flamf_original": true,
+  "n_logical_runs": 28,
+  "phase1": 11,
+  "phase2": 17,
+  "rows": [
+    {
+      "dataset": "sensorscope",
+      "logical_run_id": "e3::sensorscope::complete_aligned::fedavg_window::seed31001",
+      "method": "fedavg_window",
+      "phase": 1,
+      "scenario": "complete_aligned",
+      "seed": 31001
+    },
+    {
+      "dataset": "sensorscope",
+      "logical_run_id": "e3::sensorscope::complete_aligned::raven::seed31001",
+      "method": "raven",
+      "phase": 1,
+      "scenario": "complete_aligned",
+      "seed": 31001
+    },
+    {
+      "dataset": "sensorscope",
+      "logical_run_id": "e3::sensorscope::complete_aligned::raven_simoracle::seed31001",
+      "method": "raven_simoracle",
+      "phase": 1,
+      "scenario": "complete_aligned",
+      "seed": 31001
+    },
+    {
+      "dataset": "sensorscope",
+      "logical_run_id": "e3::sensorscope::complete_aligned::central_delivered::seed31001",
+      "method": "central_delivered",
+      "phase": 1,
+      "scenario": "complete_aligned",
+      "seed": 31001
+    },
+    {
+      "dataset": "uair",
+      "logical_run_id": "e3::uair::complete_aligned::fedavg_window::seed31001",
+      "method": "fedavg_window",
+      "phase": 1,
+      "scenario": "complete_aligned",
+      "seed": 31001
+    },
+    {
+      "dataset": "uair",
+      "logical_run_id": "e3::uair::complete_aligned::raven::seed31001",
+      "method": "raven",
+      "phase": 1,
+      "scenario": "complete_aligned",
+      "seed": 31001
+    },
+    {
+      "dataset": "uair",
+      "logical_run_id": "e3::uair::complete_aligned::raven_simoracle::seed31001",
+      "method": "raven_simoracle",
+      "phase": 1,
+      "scenario": "complete_aligned",
+      "seed": 31001
+    },
+    {
+      "dataset": "uair",
+      "logical_run_id": "e3::uair::complete_aligned::central_delivered::seed31001",
+      "method": "central_delivered",
+      "phase": 1,
+      "scenario": "complete_aligned",
+      "seed": 31001
+    },
+    {
+      "dataset": "traffic",
+      "logical_run_id": "e3::traffic::complete_aligned::local_hajek::seed31001",
+      "method": "local_hajek",
+      "phase": 1,
+      "scenario": "complete_aligned",
+      "seed": 31001
+    },
+    {
+      "dataset": "traffic",
+      "logical_run_id": "e3::traffic::complete_aligned::raven_simoracle::seed31001",
+      "method": "raven_simoracle",
+      "phase": 1,
+      "scenario": "complete_aligned",
+      "seed": 31001
+    },
+    {
+      "dataset": "traffic",
+      "logical_run_id": "e3::traffic::complete_aligned::central_delivered::seed31001",
+      "method": "central_delivered",
+      "phase": 1,
+      "scenario": "complete_aligned",
+      "seed": 31001
+    },
+    {
+      "dataset": "sensorscope",
+      "logical_run_id": "e3::sensorscope::complete_aligned::fedasync_window::seed31001",
+      "method": "fedasync_window",
+      "phase": 2,
+      "scenario": "complete_aligned",
+      "seed": 31001
+    },
+    {
+      "dataset": "sensorscope",
+      "logical_run_id": "e3::sensorscope::complete_aligned::flamf_timealign_adapted::seed31001",
+      "method": "flamf_timealign_adapted",
+      "phase": 2,
+      "scenario": "complete_aligned",
+      "seed": 31001
+    },
+    {
+      "dataset": "sensorscope",
+      "logical_run_id": "e3::sensorscope::complete_aligned::local_hajek::seed31001",
+      "method": "local_hajek",
+      "phase": 2,
+      "scenario": "complete_aligned",
+      "seed": 31001
+    },
+    {
+      "dataset": "sensorscope",
+      "logical_run_id": "e3::sensorscope::complete_aligned::twostage_hajek::seed31001",
+      "method": "twostage_hajek",
+      "phase": 2,
+      "scenario": "complete_aligned",
+      "seed": 31001
+    },
+    {
+      "dataset": "sensorscope",
+      "logical_run_id": "e3::sensorscope::complete_aligned::inst_cal::seed31001",
+      "method": "inst_cal",
+      "phase": 2,
+      "scenario": "complete_aligned",
+      "seed": 31001
+    },
+    {
+      "dataset": "sensorscope",
+      "logical_run_id": "e3::sensorscope::complete_aligned::debt_cal::seed31001",
+      "method": "debt_cal",
+      "phase": 2,
+      "scenario": "complete_aligned",
+      "seed": 31001
+    },
+    {
+      "dataset": "sensorscope",
+      "logical_run_id": "e3::sensorscope::complete_aligned::central_all::seed31001",
+      "method": "central_all",
+      "phase": 2,
+      "scenario": "complete_aligned",
+      "seed": 31001
+    },
+    {
+      "dataset": "uair",
+      "logical_run_id": "e3::uair::complete_aligned::fedasync_window::seed31001",
+      "method": "fedasync_window",
+      "phase": 2,
+      "scenario": "complete_aligned",
+      "seed": 31001
+    },
+    {
+      "dataset": "uair",
+      "logical_run_id": "e3::uair::complete_aligned::flamf_timealign_adapted::seed31001",
+      "method": "flamf_timealign_adapted",
+      "phase": 2,
+      "scenario": "complete_aligned",
+      "seed": 31001
+    },
+    {
+      "dataset": "uair",
+      "logical_run_id": "e3::uair::complete_aligned::local_hajek::seed31001",
+      "method": "local_hajek",
+      "phase": 2,
+      "scenario": "complete_aligned",
+      "seed": 31001
+    },
+    {
+      "dataset": "uair",
+      "logical_run_id": "e3::uair::complete_aligned::twostage_hajek::seed31001",
+      "method": "twostage_hajek",
+      "phase": 2,
+      "scenario": "complete_aligned",
+      "seed": 31001
+    },
+    {
+      "dataset": "uair",
+      "logical_run_id": "e3::uair::complete_aligned::inst_cal::seed31001",
+      "method": "inst_cal",
+      "phase": 2,
+      "scenario": "complete_aligned",
+      "seed": 31001
+    },
+    {
+      "dataset": "uair",
+      "logical_run_id": "e3::uair::complete_aligned::debt_cal::seed31001",
+      "method": "debt_cal",
+      "phase": 2,
+      "scenario": "complete_aligned",
+      "seed": 31001
+    },
+    {
+      "dataset": "uair",
+      "logical_run_id": "e3::uair::complete_aligned::central_all::seed31001",
+      "method": "central_all",
+      "phase": 2,
+      "scenario": "complete_aligned",
+      "seed": 31001
+    },
+    {
+      "dataset": "traffic",
+      "logical_run_id": "e3::traffic::complete_aligned::inst_cal::seed31001",
+      "method": "inst_cal",
+      "phase": 2,
+      "scenario": "complete_aligned",
+      "seed": 31001
+    },
+    {
+      "dataset": "traffic",
+      "logical_run_id": "e3::traffic::complete_aligned::debt_cal::seed31001",
+      "method": "debt_cal",
+      "phase": 2,
+      "scenario": "complete_aligned",
+      "seed": 31001
+    },
+    {
+      "dataset": "traffic",
+      "logical_run_id": "e3::traffic::complete_aligned::central_all::seed31001",
+      "method": "central_all",
+      "phase": 2,
+      "scenario": "complete_aligned",
+      "seed": 31001
+    }
+  ],
+  "sensorscope": 11,
+  "traffic": 6,
+  "traffic_do_not_rerun": [
+    "fedavg_window",
+    "fedasync_window",
+    "flamf_timealign_adapted",
+    "twostage_hajek",
+    "raven"
+  ],
+  "uair": 11
+}

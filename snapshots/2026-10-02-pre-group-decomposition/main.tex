@@ -1,0 +1,2256 @@
+\documentclass[letterpaper,journal]{IEEEtran}
+%\usepackage{ctex}
+\usepackage{amsmath,amsfonts}
+\usepackage{amsthm}
+\usepackage{algorithmic}
+\usepackage{algorithm}
+\usepackage{array}
+\usepackage[caption=false,font=normalsize,labelfont=sf,textfont=sf]{subfig}
+\usepackage{textcomp}
+\usepackage{stfloats}
+\usepackage{url}
+\usepackage{verbatim}
+\usepackage{graphicx}
+\usepackage{epsfig}
+% \usepackage{subfigure}
+\usepackage{epstopdf}
+\usepackage{cite}
+\usepackage{booktabs}
+\usepackage{multirow} 
+\usepackage{amssymb} 
+\newtheorem{definition}{Definition}  
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}{Proposition}
+\newtheorem*{proposition*}{Proposition}
+
+\newtheorem{assumption}{Assumption}
+\newtheorem{lemma}{Lemma}
+\newtheorem{corollary}{Corollary}
+\newtheorem{remark}{Remark}
+%\usepackage{appendix}
+\usepackage{placeins}
+\usepackage{xr}
+\externaldocument{supplemental}
+\graphicspath{{./figures/}{./images/}}
+\hyphenation{op-tical net-works semi-conduc-tor IEEE-Xplore}
+
+\makeatletter
+\newcommand{\rmnum}[1]{\romannumeral #1}
+\newcommand{\Rmnum}[1]{\expandafter\@slowromancap\romannumeral #1@}
+\makeatother
+
+\renewcommand{\topfraction}{0.99}
+\renewcommand{\bottomfraction}{0.99}
+\renewcommand{\textfraction}{0.01}
+\renewcommand{\floatpagefraction}{0.99}
+\renewcommand{\dbltopfraction}{0.9}
+\renewcommand{\dblfloatpagefraction}{0.9}
+\setlength{\dbltextfloatsep}{8pt plus 2pt}
+\setcounter{topnumber}{5}
+\setcounter{bottomnumber}{5}
+\setcounter{totalnumber}{10}
+
+% Let TeX stretch long unbreakable material (wide equations, long identifiers)
+% instead of letting it project a fraction of a point into the margin.
+\setlength{\emergencystretch}{2em}
+
+\begin{document}
+
+\title{RAVEN-MCS: Target-Mass-Calibrated Windowed-Asynchronous Federated Data Completion for Mobile Crowdsensing under Two-Stage Non-Random Selection}
+
+\author{**** and Anfeng Liu%
+\thanks{This work was supported in part by the National Natural Science Foundation of China (U24A20248).}%
+\thanks{*** and Anfeng Liu are with the School of Electronic Information, Central South University, Changsha, 410083, China (E-mail: ****@csu.edu.cn, afengliu@mail.csu.edu.cn).}%
+}
+
+%\IEEEpubid{xxxx--xxxx/0x\$xx.00~\copyright~201x IEEE}
+
+\maketitle
+
+
+\begin{abstract}
+Mobile crowdsensing completion is trained on updates selected by
+opportunity, observation, and usable-update delivery.  That arrival law
+need not match the public deployment target.  RAVEN-MCS treats
+windowed-asynchronous federated completion as target-mass alignment.
+The server updates once at window close, forms a selection-corrected
+reference from legal pre-outcome R/O/U histories, and calibrates it
+inside the current feasible window.  When the two laws differ, their
+risks are not interchangeable.  The ideal sequential correction recovers
+compatible target moments or group mass under support and identification;
+it does not prove optimization of deployment-target risk.  Calibration is
+uniquely solvable, and the clipped plug-in is a stable perturbation of
+that reference when target support is compatible.  The Design factor is an
+explicit configuration: RAVEN-Design uses the lagged opportunity/design
+ratio, RAVEN-NoDesign leaves that factor at one and does not reconstruct
+target mass.  Both settings are reported on every block rather than chosen
+by a data-derived rule, because they trade off across endpoints: Design is
+worth $1.24\%$ of group mismatch on SensorScope at unchanged prediction, and
+on U-Air it costs $6.55\%$ of RMSE while improving cross-sensor mismatch by
+$4.99\%$.  A SensorScope development table under
+a protocol-constructed Complete-aligned selection reports RAVEN-Design as
+structural alignment
+with a descriptive $+0.5\%$ worst-group tolerance, not an RMSE win.
+On a T-Drive taxi replay,
+FedAU-Window and ObsUse-Window remain strongest, and the Design-off setting does
+not meet that tolerance versus those two.  No ranking jointly measures
+$R$, $O$, and $U$.
+\end{abstract}
+
+\begin{IEEEkeywords}
+Mobile crowdsensing, federated learning, data completion, windowed asynchronous learning, non-random selection, selection bias, target-mass alignment.
+\end{IEEEkeywords}
+
+
+\section{Introduction}
+\label{sec:introduction}
+
+Mobile crowdsensing (MCS) collects urban and environmental data from mobile
+devices without a dense dedicated infrastructure
+\cite{ganti2011mobile,guo2015mobile,ma2014opportunities}.
+Continuous sensing is costly and participation is intermittent, so practical
+systems observe only a sparse field and rely on completion
+\cite{wang2023outlier,li2024robust,wang2023transformer,wang2024fewshot,wang2025evolutionary,xu2025rethinking,liu2026pyramid,zhang2026mapt}.
+Federated learning trains those models without centralizing raw records
+\cite{mcmahan2017communication,yang2019federated,kairouz2021advances,li2020federated},
+including asynchronous aggregation for irregular or stale updates
+\cite{wang2026federated,xie2019asynchronous,liu2023adaptive,sun2024staleness}.
+The system studied here is \emph{windowed asynchronous}: updates may arrive at
+different times inside a window, but the server applies one global update at
+window close.  This is not immediate-update FedAsync.
+
+A less visible issue arises before aggregation: \emph{the data that reach the
+server are not necessarily sampled from the distribution that the deployed
+predictor is intended to serve}.  Consider an atomic sensing target $i$.  A
+mobile client must first have an opportunity to cover $i$; the target must then
+actually be observed; finally, the client's local update must complete
+computation and communication before the server's usable-update deadline.
+Thus, the two-stage MCS process contains three distinct selection layers:
+mobile opportunity $R$, observation $O$, and usable update $U$.  Their
+probabilities depend on mobility, sensing conditions, resource state, network
+quality, deadlines, and staleness.  Even when each individual layer is
+operationally reasonable, their composition can make the distribution of
+observed and successfully delivered data differ from the public deployment
+target.  Optimizing the distribution induced by arriving updates can therefore
+optimize the \emph{wrong population risk}.
+
+Existing work leaves an important gap at this point.  Sparse MCS completion
+primarily asks how to infer missing values from the available observations
+\cite{wang2023spatiotemporal,li2024robust}; asynchronous federated completion
+asks how to learn effectively from irregular or stale client updates
+\cite{wang2026federated,sun2024staleness}; and participation-aware FL studies
+partial, arbitrary, or biased client participation
+\cite{wang2022unified,jhunjhunwala2022fedvarp,wu2023anchor,wang2024lightweight,sun2025debiasing,mohri2019agnostic,chen2026fedcure,morishita2026who}.
+These directions establish that sparsity, asynchrony, and non-uniform
+participation matter, but they do not by themselves resolve the following MCS
+problem: \emph{how should one align asynchronous federated data completion with
+a deployment target when sensing-side availability and update-side usability
+jointly select the data that enter learning?}  In particular, correcting only
+the final client-participation distribution does not identify whether the
+distortion arose from mobile opportunity, actual observation, or usable-update
+censoring; conversely, reconstructing a statistically correct target mass does
+not imply that this mass is realizable by the clients available in a finite
+mobile window.
+
+We develop \textbf{RAVEN-MCS}, short for
+\textbf{Reference Alignment Via Exposure-aware Normalization for Mobile
+CrowdSensing}.  RAVEN-MCS treats deployment-target mass alignment, rather than raw
+update frequency, as the reference semantics of asynchronous federated data
+completion.  As illustrated in Fig.~\ref{fig:raven_overview}, the method first
+separates the public deployment target from the arrival/usable-update law.  It
+then factors the opportunity, observation, and usable-update layers under
+their legal pre-outcome information boundaries (selection-time covariates,
+not outcome or test labels).  RAVEN-Design uses the lagged target-mass
+opportunity ratio.  When a frozen zero-target heuristic is
+positive, RAVEN-NoDesign leaves that factor at one and is not a
+target-mass estimator.
+The resulting statistical reference may still be unattainable in a particular
+mobile window.  RAVEN-MCS therefore maps the corrected reference to a feasible
+aggregation decision through instantaneous target calibration, a strongly
+convex calibration program, and long-term target debt.
+This separation yields three distinct questions:
+\emph{what target should be served}, \emph{what target mass the selected data
+represent}, and \emph{what target composition can be feasibly realized now}.
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=\textwidth]{fig1_raven_problem_framework.pdf}
+\caption{RAVEN-MCS aligns asynchronous federated completion with a public
+deployment target.  (a)~Three selection layers induce an arrival law that
+need not match the deployment target.
+(b)~RAVEN-Design forms a selection-corrected target-mass reference and
+calibrates it in the current feasible support.  RAVEN-NoDesign uses
+$\widehat\zeta=1$ and is not target-mass reconstruction.
+(P2) is the per-window calibration program that maps this reference onto the
+feasible aggregation set; it is defined in Section~\ref{sec:calibration}.}
+\label{fig:raven_overview}
+\end{figure*}
+
+Our main contributions are as follows.
+
+\begin{itemize}
+    \item \textbf{Deployment-target risk semantics under two-stage non-random
+    selection.}
+    We formulate asynchronous federated MCS completion as a
+    deployment-target alignment problem rather than an arrival-centered
+    learning problem.  The formulation distinguishes the atomic deployment law
+    from the law induced by mobile opportunity, observation, and usable-update
+    selection, and defines structural mismatch at both deployment-group and
+    client--opportunity-stratum levels.  We prove that when the deployment and
+    arrival laws differ, their induced risk functionals are not generally
+    interchangeable.  This provides the formal basis for asking whether a model
+    is trained for the population it is actually intended to serve, not whether
+    completion RMSE is optimized.
+
+    \item \textbf{Selection-layer-aware target reconstruction.}
+    We develop an exposure-aware normalized reconstruction that keeps the
+    opportunity/design, observation, and usable-update mechanisms separate
+    instead of collapsing them into a single missingness probability.  The
+    correction uses only legal pre-outcome information and local
+    H\'ajek normalization, and yields a selection-corrected reference mass
+    for aggregation.  Usable-update correction is retained as a third
+    sequential factor, not as an isolated empirical driver.
+    Under compatible target support, sequential pre-outcome ignorability,
+    and correct ideal selection ratios, we show that the ideal pooled
+    normalized sequential estimator,
+    with the target-mass opportunity ratio, recovers compatible target moments
+    or target-group mass.  That is not a
+    proof that sequential correction optimizes deployment-target risk, nor a
+    claim of unbiased local gradients or convergence under asynchrony.
+    Clipping is a finite-sample
+    stabilizer, not an unbiasedness claim.  That reconstruction is
+    RAVEN-Design, the setting in which the Design factor is on.  With the
+    factor off, the implemented configuration is RAVEN-NoDesign: the
+    opportunity factor is one, and the result is not a target-mass
+    reconstruction.  The factor is an explicit configuration that the deployment
+    fixes before the window opens, by the support gate of \eqref{eq:design_gate}
+    when it needs one setting, and both settings are reported.  A finite-sample
+    coverage bound is audited as an empirical diagnostic in the
+    supplemental material.
+
+    \item \textbf{Feasibility-aware instantaneous and long-term target
+    calibration.}
+    We show that statistically reconstructed target mass and instantaneous
+    mobile realizability are different problems.  RAVEN-MCS therefore
+    calibrates the corrected reference inside the current feasible aggregation
+    set while accounting for target mismatch, reference fidelity, uncertainty,
+    and staleness, and carries unresolved group under-service through a
+    long-term target-debt process.  The resulting calibration program has a
+    nonempty compact convex feasible set and a unique global minimizer under the
+    stated conditions.  When the active set is held fixed and target support is
+    compatible, the implemented RAVEN-Design clipped plug-in is a Lipschitz perturbation of
+    the same-window ideal reference, and the feasibility-aware calibration
+    program of Section~\ref{sec:calibration} does not amplify that error.
+    Target debt is an internal accounting recursion for residual
+    group under-service, not a standalone performance contribution;
+    empirically, instantaneous calibration and debt are not prediction
+    drivers.
+\end{itemize}
+
+RAVEN's novelty is therefore not inverse-probability weighting or H\'ajek
+normalization as such.  It is the combination of deployment-target semantics,
+selection-layer legal histories, and finite-support calibration.
+Isolated usable-update and debt terms are retained for sequential
+factorization and accounting; they are not the empirical claim.
+
+We evaluate these contributions with a no-harm control, a risk-semantic
+block, and a SensorScope/U-Air development table under always-on protocol
+$R$ on station traces (Table~\ref{tab:main_effectiveness}).
+Independent hybrid ceilings---a T-Drive taxi replay under real $R$ with
+controlled $O$ and $U$, an NSW-Traffic four-region protocol table, a
+City Scanner New York {PM}$_{2.5}$ visit-occupancy table
+the City Scanner visit-occupancy ranking table in the supplemental material, and a Pilot~2 table with measured
+observation the City Scanner Pilot~2 measured-$O$ ranking table in the supplemental material---are not mixed
+into that development table.
+The Design factor is set explicitly on each block, and both settings are
+reported where the trade-off is material
+(Table~\ref{tab:main_effectiveness} and Section~\ref{subsec:eval_rq2}).
+NSW-Traffic and City Scanner use locally constructed target maps, not a
+transferred SensorScope/U-Air lookup object.
+On T-Drive, FedAU-Window and
+ObsUse-Window remain strongest, and the Design-off setting does not meet the
+descriptive $+0.5\%$ worst-group tolerance versus those two.
+A supplemental occupancy-robustness block thins protocol $R$ on the same
+station clients.  A coverage Gate is audited only as a diagnostic and
+does not switch Design.
+
+
+\section{Related Work}
+\label{sec:related_work}
+
+Sparse MCS completion infers unsensed cells from a partial spatiotemporal
+field
+\cite{ganti2011mobile,guo2015mobile,ma2014opportunities,wang2023spatiotemporal,wang2023outlier,wang2023transformer,wang2024fewshot,li2024robust,wang2025evolutionary,xu2025rethinking,liu2026pyramid,zhang2026mapt,liu2026pricing}.
+Recruitment, incentives, and privacy
+\cite{liu2026multidimensional,zhang2025incentive,lu2025piece,zhang2026locally}
+are orthogonal; they do not formulate deployment-target risk under sequential
+selection.
+
+Federated completion keeps sensing records on clients
+\cite{mcmahan2017communication,yang2019federated,kairouz2021advances,li2020federated}.
+Wang \emph{et al.}~\cite{wang2026federated} combine local completion with a
+time-aware architecture and asynchronous aggregation for sparse MCS, in the
+spirit of which we study windowed rather than immediate-update asynchrony.
+FedAsync and staleness-aware variants update as models arrive
+\cite{xie2019asynchronous,liu2023adaptive,sun2024staleness,islam2025seafl,li2026stdfl}.
+Those works ask how to learn from the updates that participate.  RAVEN-MCS
+additionally models which target mass those updates represent.
+
+Federated conformal prediction builds label-set coverage under
+heterogeneity or label shift
+\cite{lu2023federated,plassier2023conformal}.  The diagnostic Gate in
+Section~\ref{subsec:agg_certificate_alg} is a window-level lower bound on
+realized aggregate opportunity coverage $C_t$, not a prediction set and
+not the Design rule.
+
+Non-uniform participation is the complementary FL object.  Unified
+convergence under arbitrary participation, FedVARP, and anchor sampling
+address partial client presence
+\cite{wang2022unified,jhunjhunwala2022fedvarp,wu2023anchor}.
+FedAU estimates aggregation weights from participation history so that
+unknown participation does not replace the original FL objective
+\cite{wang2024lightweight}.  Correlated availability and hierarchical
+semi-asynchronous bias have likewise been debiased
+\cite{sun2025debiasing,chen2026fedcure}; agnostic FL optimizes a worst-case
+client mixture \cite{mohri2019agnostic}.  FedProx and SCAFFOLD address
+client drift \cite{li2020fedprox,karimireddy2020scaffold}.  These methods
+correct participation.  RAVEN-MCS additionally separates sensing-side
+opportunity and observation from update-side usability.
+Closest in the two-stage FL vocabulary is FedIPW
+\cite{morishita2026who}, which factors enrollment then round-level
+participation toward a target-population mean client update.  That
+factorization is still on the client roster: it does not factor MCS
+opportunity or observation of sensing units, and the aligned object is not
+a public deployment measure over $h(i)$.  We cite it as the nearest
+enrollment--participation IPW, not as an MCS completion baseline.
+FLOSS~\cite{goetze2025floss} reweights aggregation for client opt-out and
+stragglers.  FLOSS and FedIPW are client-level participation corrections;
+the aligned object here is MCS unit-level R/O/U selection of sensing units.
+FedPALS~\cite{listozec2024overcoming} aggregates toward a known target
+\emph{label} distribution under label shift.  That object is class-label
+marginals, not MCS opportunity or observation of sensing units, and the
+aligned quantity is not the public deployment measure over $h(i)$; we do
+not run it as a comparator.
+Classical survey estimators supply the H\'ajek building blocks
+\cite{horvitz1952generalization,hajek1971comment,shimodaira2000covariate,robins1994estimation};
+importance weighting can lose effect in over-parameterized networks
+\cite{byrd2019importance}, which is not claimed here.
+A nearest-neighbor comparison on target, selection, sensing-side
+correction, and finite-window calibration is in the supplemental material
+the nearest-neighbour comparison table in the supplemental material.
+
+
+\section{System Model and Target-Mass Formulation}
+\label{sec:system_model}
+
+\subsection{Windowed Asynchronous Mobile Crowdsensing}
+\label{subsec:windowed_mcs}
+
+We consider a mobile crowdsensing (MCS) system with a server and a set of
+clients $\mathcal{K}=\{1,\ldots,K\}$.  The common prediction domain is
+partitioned into atomic units $i\in\mathcal{I}$; an atomic unit may be written as
+$i=(n,t)$, where $n$ is a spatial unit and $t$ is an absolute time index.  Each
+unit carries a target value $Y_i\in\mathcal{Y}\subseteq\mathbb{R}$, revealed only
+if observed, and a label-free deployment context $C_i^{\mathrm{dep}}$.  All
+clients contribute to one completion predictor $f_{\theta}$ with parameters
+$\theta\in\Theta\subseteq\mathbb{R}^{d}$, returning
+$\widehat Y_i=f_{\theta}(i;C_i^{\mathrm{dep}})\in\mathcal{Y}$ and updated by
+local training and aggregation.
+A client-side observation of unit $i$ is denoted by $Z_{k,r,i}$ when it is
+available to client $k$ in server window $r$.
+
+Server time is divided into aggregation windows
+$\mathcal{W}_r=[T_r,T_{r+1})$ for $r=0,1,\ldots$.
+The server keeps the parameter vector $\theta_r\in\Theta$ fixed during
+$\mathcal{W}_r$.  Client $k$ may start local training from a previously
+downloaded model $\theta_{\sigma_{k,r}}$,
+where $\sigma_{k,r}\le r$.  We use
+$\tau_{k,r}\triangleq r-\sigma_{k,r}$
+as the model-version staleness of that attempt.  Updates may arrive at
+different times within one window, but individual arrivals do not
+immediately modify the global model.  The server closes the window,
+determines which registered attempts are usable, computes one
+aggregation vector, and then performs the single transition
+$\theta_r\rightarrow\theta_{r+1}$.  This \emph{windowed-asynchronous}
+semantics is distinct from immediate-update FedAsync, in which an
+arrival would revise the global model before the window closes.  It
+keeps exogenous mobile/update events independent of the method-specific
+aggregation weights.
+
+\subsection{Two-Stage, Three-Layer Non-Random Selection}
+\label{subsec:selection_process}
+
+The title's \emph{two-stage selection} consists of a sensing-side stage and an
+update-side stage.  The sensing-side stage itself has two layers: mobile
+opportunity and actual observation.  The update-side stage determines whether a
+registered client attempt becomes usable before window closure.
+
+For client $k$, window $r$, and unit $i$, let
+$R_{k,r,i}\in\{0,1\}$ be the realized mobile opportunity indicator.
+It indicates whether $(k,i)$ belongs to the opportunity/risk set in
+window $r$ before the current sensing outcome is revealed.
+Conditional on $R_{k,r,i}=1$,
+$O_{k,r,i}\in\{0,1\}$
+indicates whether unit $i$ is actually observed.  A client with a
+nonempty observed buffer registers an update attempt; the set of
+registered clients is $\mathcal{E}_r$.  For $k\in\mathcal{E}_r$, the
+attempted update is usable ($U_{k,r}=1$) only if computation and
+transmission succeed, the update arrives by $T_{r+1}$, and its
+staleness satisfies $\tau_{k,r}\le S_{\max}$, where $S_{\max}$ is the block's
+frozen maximum admissible model-version staleness.  Otherwise,
+$U_{k,r}=0$.  We first define the usable set
+$\mathcal{U}_r\triangleq\{k\in\mathcal{E}_r:U_{k,r}=1\}$.
+After selection-corrected masses are formed in
+Section~\ref{sec:reconstruction}, zero-mass clients are removed and the
+actual aggregation set $\mathcal{A}_r\subseteq\mathcal{U}_r$ is formed.
+Failures, timeouts, network interruptions, and stale arrivals remain
+recorded as $U_{k,r}=0$ rather than disappearing from the selection
+log.
+
+We distinguish two structural mappings from units to finite label-free index
+sets: the \emph{deployment-target group} $h:\mathcal{I}\to\mathcal{G}$ and the
+\emph{opportunity stratum} $s:\mathcal{I}\to\mathcal{S}$, with $\mathcal{G}$ the
+finite set of deployment groups and $\mathcal{S}$ the finite set of
+opportunity strata.  The group mapping specifies which deployment
+mass the predictor should serve, whereas the stratum mapping pools
+repeatable mobile exposure patterns for selection modeling.  The two
+mappings are different scientific objects, so $h(i)\neq s(i)$ in
+general.  Both mappings are frozen from public/training-side
+information and do not use test-label values.
+
+For theoretical bookkeeping, let the normalized opportunity-event law in
+window $r$ be
+\begin{equation}
+ P_r^{\mathrm{opp}}(k,i)
+ =
+ \pi^{\mathrm{opp}}_{k,s(i),r}
+ \nu^{\mathrm{opp}}_{k,r}(i\mid s(i)),
+ \qquad
+ \sum_{k,i}P_r^{\mathrm{opp}}(k,i)=1,
+ \label{eq:opp_event_law}
+\end{equation}
+where $\pi^{\mathrm{opp}}_{k,s,r}$ is the client--stratum opportunity mass and
+$\nu^{\mathrm{opp}}_{k,r}(i\mid s)$ is the conditional atomic opportunity law.
+The realized risk-set indicators $R_{k,r,i}$ are the implementation-level
+bookkeeping of the opportunity events induced by this mobile exposure process;
+they are not assumed to be mutually independent Bernoulli draws.
+
+The subsequent selection probabilities are conditional probabilities under the
+same selection process, with $\Pr\{\cdot\}$ that probability.
+\begin{align}
+ p^{\mathrm{obs}}_{k,r,i}
+ &\triangleq
+ \Pr\!\left(
+ O_{k,r,i}=1
+ \mid
+ R_{k,r,i}=1,\mathcal{H}^{\mathrm{obs}}_{k,r,i}
+ \right),
+ \label{eq:pobs_def}\\
+ q^{\mathrm{use}}_{k,r}
+ &\triangleq
+ \Pr\!\left(
+ U_{k,r}=1
+ \mid
+ k\in\mathcal{E}_r,\mathcal{H}^{\mathrm{use}}_{k,r}
+ \right).
+ \label{eq:quse_def}
+\end{align}
+The observation history $\mathcal{H}^{\mathrm{obs}}_{k,r,i}$ contains
+only information available before $O_{k,r,i}$ is realized.  The
+usable-update history $\mathcal{H}^{\mathrm{use}}_{k,r}$ is measured
+after the sensing-side stage but before $U_{k,r}$ is realized.  It may
+therefore contain the already observed registration state, but not the
+realized computation/transmission outcomes, future events, or the
+current update vector used for aggregation.  This sequential
+information boundary is part of the statistical model.
+
+\subsection{Public Deployment Target and Compatible Target Measures}
+\label{subsec:target_measures}
+
+We begin with a public, label-independent atomic deployment target over the
+deployment domain $\mathcal{I}_{\mathrm{dep}}\subseteq\mathcal{I}$,
+\begin{equation}
+    \varpi_i^{\mathrm{tar}}\ge0,
+    \qquad
+    \sum_{i\in\mathcal{I}_{\mathrm{dep}}}
+    \varpi_i^{\mathrm{tar}}=1.
+    \label{eq:atomic_target}
+\end{equation}
+Its deployment-group marginal is
+$\mu_g=\sum_{i:h(i)=g}\varpi_i^{\mathrm{tar}}$, so
+$\boldsymbol{\mu}\in\Delta^{|\mathcal{G}|-1}$.
+These quantities define the application-level target served by the deployed
+predictor.  Opportunity correction uses a compatible client--stratum target
+$\pi^{\mathrm{tar}}_{k,i}$ built from the stratum mass of $s(i)$, a frozen
+public client share, and the conditional atomic law on $s(i)$
+(supplemental material).  Deployment groups $h(i)$ and opportunity strata
+$s(i)$ need not coincide.  Compatibility requires
+\begin{equation}
+    \sum_k\pi^{\mathrm{tar}}_{k,i}
+    =
+    \varpi_i^{\mathrm{tar}},
+    \qquad
+    \sum_{k,s}\pi^{\mathrm{tar}}_{k,s}=1.
+    \label{eq:target_compatibility}
+\end{equation}
+Equation~\eqref{eq:target_compatibility} is the bridge between the
+deployment-risk target and the client--stratum target used for Design
+and coverage.  Define $I_{\mathrm{tar}}=\{(k,s):\pi^{\mathrm{tar}}_{k,s}>0\}$.
+The unit lookup used by the target-coverage statistic of the supplemental
+material, and the pair opportunity mass used by
+$C_t$, are constructed in the supplemental material.
+All target quantities are frozen before test-label evaluation.
+
+\subsection{Aggregate Coverage Certification Object}
+\label{subsec:agg_coverage_object}
+
+Realized aggregate coverage is
+\begin{equation}
+ C_t
+ =
+ \sum_{(k,s)\in I_{\mathrm{tar}}}
+ \pi^{\mathrm{tar}}_{k,s}
+ \,
+ \mathbf{1}\!\left\{\pi^{\mathrm{opp}}_{k,s,t}\ge\pi_{\mathrm{safe}}\right\},
+ \label{eq:agg_Ct}
+\end{equation}
+where $\pi^{\mathrm{opp}}_{k,s,t}$ is the lagged opportunity mass of
+that pair, $\pi_{\mathrm{safe}}$ is a frozen threshold, and
+$\mathbf{1}\{\cdot\}$ is the indicator of the event in braces.
+A diagnostic Gate on a lower bound of $C_t$ does not switch Design.
+
+\subsection{Deployment-Target Risk Versus Arrival Risk}
+\label{subsec:target_risk}
+
+For the squared loss
+$\ell(\widehat Y,Y)=\tfrac{1}{2}(\widehat Y-Y)^2$, the deployment-target risk is
+\begin{equation}
+ \mathcal{R}_{\mu}(\theta)
+ =
+ \sum_{i\in\mathcal{I}_{\mathrm{dep}}}
+ \varpi_i^{\mathrm{tar}}
+ \ell\!\left(
+ f_{\theta}(i;C_i^{\mathrm{dep}}),Y_i
+ \right).
+ \label{eq:target_risk}
+\end{equation}
+By contrast, the data reaching learning are distributed according to the
+opportunity, observation, and usable-update mechanisms.
+
+For evaluation, quantities without a window index denote the frozen
+evaluation-period marginals of their corresponding pre-outcome mechanisms.
+Under \eqref{eq:opp_event_law}--\eqref{eq:quse_def}, the joint sequential
+probability that client $k$ contributes unit $i$ to learning is
+$P^{\mathrm{opp}}(k,i)\,p^{\mathrm{obs}}_{k,i}\,q^{\mathrm{use}}_{k}$.
+The label-free atomic arrival intensity is the corresponding sum, and the
+evaluation plug-in is
+\begin{equation}
+ \widehat r_i^{\mathrm{arr}}
+ =
+ \sum_k
+ \widehat\pi^{\mathrm{opp}}_{k,s(i)}
+ \widehat\nu^{\mathrm{opp}}_{k}(i\mid s(i))
+ \widehat p^{\mathrm{obs}}_{k,i}
+ \widehat q^{\mathrm{use}}_{k,s(i)},
+ \label{eq:arrival_intensity}
+\end{equation}
+where $\widehat q^{\mathrm{use}}_{k,s}$ is the corresponding
+evaluation-period marginal of the legal pre-$U$ usable-update model over
+registered attempts associated with stratum $s$.  Normalize
+\begin{equation}
+ \widetilde\rho_i^{\mathrm{arr}}
+ =
+ \frac{\widehat r_i^{\mathrm{arr}}}
+ {\sum_{j\in\mathcal{I}_{\mathrm{dep}}}\widehat r_j^{\mathrm{arr}}},
+ \label{eq:arrival_distribution}
+\end{equation}
+and define
+\begin{equation}
+ \mathcal{R}_{\rho}(\theta)
+ =
+ \sum_{i\in\mathcal{I}_{\mathrm{dep}}}
+ \widetilde\rho_i^{\mathrm{arr}}
+ \ell\!\left(
+ f_{\theta}(i;C_i^{\mathrm{dep}}),Y_i
+ \right).
+ \label{eq:arrival_risk}
+\end{equation}
+The two risks answer different questions.  The deployment-target risk
+$\mathcal{R}_{\mu}$ measures how accurately the predictor serves the deployment
+population it is intended for; the arrival risk $\mathcal{R}_{\rho}$ measures how
+accurately it fits the updates that actually reach training.  The loss and the
+predictor are the same in both; only the weighting law differs.  Since
+opportunity, observation, and usable-update selection are non-random, those two
+populations need not coincide, so accuracy on the arriving updates need not
+transfer to the deployment population.  RAVEN-MCS therefore treats
+deployment-target mass alignment, rather than usable-update frequency, as the
+reference semantics of the learning problem.
+
+\subsection{Structural Alignment Objective}
+\label{subsec:design_objective}
+
+Section~\ref{sec:reconstruction} will construct two corrected within-client
+compositions: a deployment-group composition
+$\mathbf{c}^{g}_{k,r}\in\Delta^{|\mathcal{G}|-1}$ and an opportunity-stratum
+composition $\mathbf{c}^{s}_{k,r}\in\Delta^{|\mathcal{S}|-1}$.  For the final
+aggregation set $\mathcal{A}_r$, define
+$M_r=[\mathbf{c}^{g}_{k,r}]_{k\in\mathcal{A}_r}$.
+Given feasible aggregation weights $\boldsymbol\alpha_r\in\mathcal{C}_r$, the
+effective deployment-group composition in an active window is
+$\boldsymbol\omega_r=M_r\boldsymbol\alpha_r$.  The feasible set
+$\mathcal{C}_r$ is \eqref{eq:Cr}, and $\boldsymbol\alpha_r$ is determined by the
+calibration program (P2) of Section~\ref{subsec:P2} rather than supplied as an
+input.
+
+Let $\eta_r>0$ denote the server step size and define
+$I_r=\mathbf{1}\{|\mathcal{A}_r|>0\}$ and
+$S_R=\sum_{r=0}^{R-1}\eta_r I_r$.
+For $S_R>0$,
+\begin{equation}
+    \overline{\boldsymbol\omega}_R
+    =
+    \frac{1}{S_R}
+    \sum_{r=0}^{R-1}
+    \eta_r I_r\boldsymbol\omega_r.
+    \label{eq:omega_bar}
+\end{equation}
+We measure the group-level structural mismatch
+$\Delta_{\mathrm{group}}(R)=\left\|
+\overline{\boldsymbol\omega}_R-\boldsymbol\mu
+\right\|_1$,
+the $\ell_1$ distance between the time-averaged effective deployment-group
+composition and the deployment target.  Both sides are probability vectors
+over $\mathcal{G}$, so $0\le\Delta_{\mathrm{group}}\le2$.
+
+For client--stratum structure, extend $\alpha_{k,r}=0$ to
+$k\notin\mathcal{A}_r$ and define
+\begin{equation}
+ \widehat\Pi_{k,s}(R)
+ =
+ \frac{1}{S_R}
+ \sum_{r=0}^{R-1}
+ \eta_r I_r\,
+ \alpha_{k,r}\,
+ c^{s}_{k,r,s}.
+ \label{eq:Pi_hat_ks}
+\end{equation}
+Because each active-window $\boldsymbol\alpha_r$ and each
+$\mathbf{c}^{s}_{k,r}$ are probability vectors,
+$\sum_{k,s}\widehat\Pi_{k,s}(R)=1$.  We therefore measure
+\begin{equation}
+ \Delta_{c\text{-}s}(R)
+ =
+ \sum_{k,s}
+ \left|
+ \widehat\Pi_{k,s}(R)-\pi^{\mathrm{tar}}_{k,s}
+ \right|.
+ \label{eq:delta_cs}
+\end{equation}
+The overall design goal is to keep $\mathcal{R}_{\mu}$ low while
+reducing $\Delta_{\mathrm{group}}$ and $\Delta_{c\text{-}s}$ under
+time-varying mobile feasibility and legal pre-outcome information.
+
+
+\section{Selection-Layer-Aware Target Reconstruction}
+\label{sec:reconstruction}
+
+RAVEN-MCS (Reference Alignment Via Exposure-aware Normalization) first forms a
+selection-corrected reference for the mass the usable data represent.
+Opportunity, observation, and usable-update selection are kept separate
+because they have different conditioning sets and therefore cannot be
+replaced by a single generic missingness probability.
+
+\subsection{Opportunity/Design Correction}
+\label{subsec:design_correction}
+
+For a target-supported client--atomic pair, the ideal opportunity/design ratio is
+\begin{equation}
+ \zeta^{o}_{k,r,i}
+ =
+ \frac{\pi^{\mathrm{tar}}_{k,s(i)}}
+      {\pi^{\mathrm{opp}}_{k,s(i),r}}
+ \frac{\nu^{\mathrm{tar}}_{i\mid s(i)}}
+      {\nu^{\mathrm{opp}}_{k,r}(i\mid s(i))}
+ =
+ \frac{\pi^{\mathrm{tar}}_{k,i}}
+      {P_r^{\mathrm{opp}}(k,i)}.
+ \label{eq:design_ratio_general}
+\end{equation}
+Under within-stratum exchangeability,
+$\nu^{\mathrm{opp}}_{k,r}(i\mid s)=\nu^{\mathrm{tar}}_{i\mid s}$, this reduces to
+\begin{equation}
+ \widehat\zeta^{o}_{k,r,s}
+ =
+ \frac{\pi^{\mathrm{tar}}_{k,s}}
+ {\max\{\widehat\pi^{\mathrm{opp}}_{k,s,r},\pi_{\min}\}}.
+ \label{eq:design_ratio_simple}
+\end{equation}
+The opportunity estimate is lagged: current-window outcomes cannot alter the
+weight applied to that same window.  One admissible implementation uses
+\begin{align*}
+ C^{\mathrm{opp}}_{k,s,r}
+ &=
+ \rho_{\mathrm{opp}}C^{\mathrm{opp}}_{k,s,r-1}
+ +N^{\mathrm{opp}}_{k,s,r-1},\\
+ \widehat\pi^{\mathrm{opp}}_{k,s,r}
+ &=
+ \frac{C^{\mathrm{opp}}_{k,s,r}+\epsilon_{\mathrm{opp}}}
+ {\sum_{j,u}
+ (C^{\mathrm{opp}}_{j,u,r}+\epsilon_{\mathrm{opp}})}.
+\end{align*}
+Other pre-outcome estimators are compatible with the framework if they preserve
+the same support and information boundary.
+
+The Design factor $D_t\in\{\mathrm{on},\mathrm{off}\}$ of
+\eqref{eq:design_factor} applies \eqref{eq:design_ratio_simple} when it is
+on, and that setting is RAVEN-Design.
+With the factor off,
+Algorithm~\ref{alg:window_close} runs RAVEN-NoDesign and sets $\widehat\zeta^{o}_{k,r,i}=1$ on
+observed pairs.  The factor is a configuration of the deployment, supplied to
+Algorithm~\ref{alg:window_close} before the window opens, not a statistic
+computed from the data; the same two settings are reported on every block.
+The off setting is an uncorrected opportunity factor: it
+does not replace $\pi^{\mathrm{opp}}$ by $\pi^{\mathrm{tar}}$, and it does
+not reconstruct target mass on the opportunity/design layer.
+
+\subsection{Observation Correction and Local H\'ajek Normalization}
+\label{subsec:observation_hajek}
+
+The ideal first-stage weight for a realized opportunity is
+$a^\star_{k,r,i}=\zeta^{o}_{k,r,i}/p^{\mathrm{obs}}_{k,r,i}$.
+The implemented plug-in weight is stabilized as
+\begin{equation}
+ a_{k,r,i}
+ =
+ \min\!\left\{
+ a_{\max},
+ \frac{\widehat\zeta^{o}_{k,r,i}}
+ {\max\{\widehat p^{\mathrm{obs}}_{k,r,i},p_{\min}\}}
+ \right\}.
+ \label{eq:a_stabilized}
+\end{equation}
+Define the corrected total mass
+\begin{equation}
+    m_{k,r}
+    =
+    \sum_i
+    R_{k,r,i}O_{k,r,i}a_{k,r,i},
+    \label{eq:m_total}
+\end{equation}
+the corrected deployment-group mass
+\begin{equation}
+ m^{g}_{k,r,g}
+ =
+ \sum_i
+ R_{k,r,i}O_{k,r,i}a_{k,r,i}
+ \mathbf{1}\{h(i)=g\},
+ \label{eq:m_group}
+\end{equation}
+and the corrected opportunity-stratum mass
+\begin{equation}
+ m^{s}_{k,r,s}
+ =
+ \sum_i
+ R_{k,r,i}O_{k,r,i}a_{k,r,i}
+ \mathbf{1}\{s(i)=s\}.
+ \label{eq:m_stratum}
+\end{equation}
+RAVEN aggregates only target-relevant usable clients:
+$\mathcal{A}_r\triangleq\{k\in\mathcal{U}_r:m_{k,r}>0\}$.
+Every $k\in\mathcal{A}_r$ has well-defined normalized record weights
+$\overline a_{k,r,i}=\frac{R_{k,r,i}O_{k,r,i}a_{k,r,i}}{m_{k,r}}$.
+Its deployment-group composition is
+$c^{g}_{k,r,g}=\frac{m^{g}_{k,r,g}}{m_{k,r}}$, and its
+opportunity-stratum composition is
+$c^{s}_{k,r,s}=\frac{m^{s}_{k,r,s}}{m_{k,r}}$.
+Both composition vectors sum to one for $k\in\mathcal{A}_r$.
+
+The local effective sample size is
+\begin{equation}
+ n^{\mathrm{eff}}_{k,r}
+ =
+ \frac{m_{k,r}^2}
+ {\sum_i
+  (R_{k,r,i}O_{k,r,i}a_{k,r,i})^2}
+ =
+ \frac{1}{\sum_i\overline a_{k,r,i}^2}.
+ \label{eq:neff}
+\end{equation}
+It measures weight concentration and is deliberately distinct from the
+target-equivalent corrected mass $m_{k,r}$.
+
+The local completion objective is
+\begin{equation}
+ \widehat F^{H}_{k,r}(\theta)
+ =
+ \sum_i
+ \overline a_{k,r,i}
+ \frac{1}{2}
+ \left(
+ f_{\theta}(i;C_i^{\mathrm{dep}})
+ -
+ Z_{k,r,i}
+ \right)^2.
+ \label{eq:local_hajek_objective}
+\end{equation}
+Starting from $\theta_{\sigma_{k,r}}$, client $k$ performs
+$E_{\mathrm{loc}}$ local steps of $\ell$ with step size $\gamma_r>0$, reaching
+$\theta^{(E_{\mathrm{loc}})}_{k,r}$.  Its normalized model
+displacement is
+\begin{equation}
+ \mathbf{u}_{k,r}
+ =
+ \frac{
+ \theta_{\sigma_{k,r}}
+ -
+ \theta^{(E_{\mathrm{loc}})}_{k,r}
+ }{\gamma_r E_{\mathrm{loc}}}.
+ \label{eq:normalized_update}
+\end{equation}
+
+\subsection{Usable-Update Correction and Reference Aggregation Mass}
+\label{subsec:usable_correction}
+
+For a registered attempt, $\widehat q^{\mathrm{use}}_{k,r}$ is estimated only
+from variables measurable before $U_{k,r}$ is realized.  For
+$k\in\mathcal{A}_r$, define
+\begin{equation}
+ d_{k,r}
+ =
+ \min\!\left\{
+ d_{\max},
+ \frac{1}
+ {\max\{\widehat q^{\mathrm{use}}_{k,r},q_{\min}\}}
+ \right\},
+ \label{eq:d_use}
+\end{equation}
+and $b_{k,r}=m_{k,r}d_{k,r}$.
+The selection-corrected reference aggregation vector is
+\begin{equation}
+ \widehat\beta_{k,r}
+ =
+ \frac{b_{k,r}}
+ {\sum_{j\in\mathcal{A}_r}b_{j,r}},
+ \qquad
+ k\in\mathcal{A}_r.
+ \label{eq:beta_ref}
+\end{equation}
+Thus $\widehat{\boldsymbol\beta}_r$ is a probability vector on
+$\mathcal{A}_r$.  The ideal untruncated factorization of
+$\beta^\star\overline a^\star$ is in the supplemental material; the
+implemented $\widehat{\boldsymbol\beta}_r$ is a stabilized plug-in and is
+not claimed to preserve exact unbiasedness when clipping is active.
+The corrected deployment-group composition represented by the usable
+data before server calibration is
+$\boldsymbol\omega_r^{\mathrm{ref}}=M_r\widehat{\boldsymbol\beta}_r$.
+Even a statistically valid reconstruction need not satisfy
+$\boldsymbol\omega_r^{\mathrm{ref}}=\boldsymbol\mu$ in a finite mobile
+window.  The current feasible client set can lack target support.
+
+\subsection{Information Boundary and Stabilization}
+\label{subsec:information_boundary}
+
+Every correction applied in window $r$ is measurable before its own random
+outcome.  Opportunity estimates use lagged opportunity history,
+observation propensities exclude the current sensing outcome and label,
+and usable-update propensities exclude the realized $U$ outcome and
+future events.  The server determines $\boldsymbol\alpha_r$ without
+inspecting the coordinates, norm, or direction of a current random
+update for the purpose of assigning that update's weight.  The clipping
+constants in \eqref{eq:a_stabilized} and \eqref{eq:d_use} are
+finite-sample bias--variance stabilizers.  Exact identification in
+Section~\ref{sec:theory} concerns the ideal ratios, or equivalently
+regimes in which the stabilizing bounds are inactive on target support.
+
+\subsection{Why Pairwise Positive Lower Bounds Are Not the Formal Certificate}
+\label{subsec:pairwise_barrier}
+
+A deterministic pre-window pairwise lower bound is structurally vacuous
+under hidden zero-opportunity events by
+the positive pairwise lower-bound barrier proposition in the supplemental material;
+the availability-induced barrier corollary of the supplemental material places the frozen stress levels
+$a\in\{0.80,0.60,0.40,0.20\}$ in that region.  Pairwise positive LCBs are
+not the aggregate object \eqref{eq:agg_Ct} and do not switch Design.
+
+
+\section{Feasibility-Aware Target Calibration}
+\label{sec:calibration}
+
+Selection reconstruction determines what the usable data statistically
+represent.  It does not guarantee that the intended deployment target is
+instantaneously realizable from the currently available clients.  RAVEN
+therefore treats $\widehat{\boldsymbol\beta}_r$ as a corrected reference and
+calibrates it within the support feasible at window closure.
+
+\subsection{Feasible Aggregation Set}
+\label{subsec:feasible_set}
+
+Let $K_r=|\mathcal{A}_r|$ in an active window and retain
+$M_r=[\mathbf{c}^{g}_{k,r}]_{k\in\mathcal{A}_r}$.  The server chooses
+$\boldsymbol\alpha_r\in\mathbb{R}^{K_r}$ from
+\begin{equation}
+ \mathcal{C}_r
+ =
+ \left\{
+ \boldsymbol\alpha:
+ \mathbf{1}^{\top}\boldsymbol\alpha=1,\;
+ 0\le\alpha_k\le\overline\alpha_r,\;
+ \|\boldsymbol\alpha\|_2^2\le\frac{1}{\overline E_r}
+ \right\},
+ \label{eq:Cr}
+\end{equation}
+where the coordinate cap $\overline\alpha_r$ and $\ell_2$ support bound
+$\overline E_r$ are frozen functions of $K_r$
+the effective-support cap of the supplemental material.
+Here $0<\alpha_{\max}\le1$ and $E_{\min}\ge1$ are frozen design parameters.
+The coordinate cap controls single-client dominance, while the
+$\ell_2$ constraint imposes a minimum effective aggregation support.  The
+uniform vector $\mathbf{1}/K_r$ belongs to $\mathcal{C}_r$, so every active
+window has at least one feasible aggregation vector.
+
+RAVEN also uses pre-aggregation uncertainty only.  A lagged variance proxy is
+\begin{equation}
+ v_{k,r}
+ =
+ \frac{
+ \overline S_{k,r^-}^{\,2}
+ }{
+ \max\{n^{\mathrm{eff}}_{k,r},1\}
+ }
+ +
+ v_{\mathrm{floor}},
+ \qquad
+ V_r=\operatorname{diag}(v_{k,r})\succeq0,
+ \label{eq:variance_proxy}
+\end{equation}
+where $\overline S_{k,r^-}^{\,2}$ is available before the current random update
+is weighted.  Let $\overline{\boldsymbol\tau}_r\ge0$ denote the frozen
+pre-aggregation staleness vector.
+
+\subsection{Long-Term Target Debt}
+\label{subsec:debt}
+
+Finite-window feasibility can make
+$M_r\boldsymbol\alpha=\boldsymbol\mu$ impossible.  RAVEN maintains a
+nonnegative target-debt vector
+$\mathbf{Q}_r\in\mathbb{R}^{|\mathcal{G}|}_+$, initialized by
+$\mathbf{Q}_0=\mathbf{0}$.  In an active window,
+$\mathbf{Q}_{r+1}=\left[\mathbf{Q}_r+\eta_r(\boldsymbol\mu-\boldsymbol\omega_r)\right]_+$,
+with $\boldsymbol\omega_r=M_r\boldsymbol\alpha_r$.
+If the window is inactive, $\mathbf{Q}_{r+1}=\mathbf{Q}_r$.  A positive
+$Q_{r,g}$ records accumulated under-service of deployment group $g$ without
+pretending that unavailable target mass can be synthesized in the current
+window.
+
+For every prefix with $S_R>0$, the recursion implies the deterministic
+accounting relation
+\begin{equation}
+ \left\|
+ \overline{\boldsymbol\omega}_R-\boldsymbol\mu
+ \right\|_1
+ \le
+ \frac{
+ 2\|\mathbf{Q}_R\|_1
+ }{S_R}.
+ \label{eq:debt_bound}
+\end{equation}
+The full derivation is in the target-debt accounting proof of the supplemental material.
+
+\subsection{Feasibility-Aware Calibration Program}
+\label{subsec:P2}
+
+For every active window, RAVEN solves
+$\text{(P2)}\ \min_{\boldsymbol\alpha\in\mathcal{C}_r}J_r(\boldsymbol\alpha)$.
+The objective is
+\begin{align}
+ J_r(\boldsymbol\alpha)
+ ={}&-\mathbf{Q}_r^{\top}M_r\boldsymbol\alpha
+ +\frac{\lambda_g}{2}
+ \|M_r\boldsymbol\alpha-\boldsymbol\mu\|_2^2
+ \nonumber\\
+ &+\frac{\lambda_{\beta}}{2}
+ \|\boldsymbol\alpha-\widehat{\boldsymbol\beta}_r\|_2^2
+ \nonumber\\
+ &+\frac{\lambda_v}{2}
+ \boldsymbol\alpha^{\top}V_r\boldsymbol\alpha
+ +\lambda_s\overline{\boldsymbol\tau}_r^{\top}\boldsymbol\alpha.
+\label{eq:P2_objective}
+\end{align}
+The debt term prioritizes accumulated under-served groups; the group,
+reference, variance, and staleness terms are coordinated terms of one
+program.  $\widehat{\boldsymbol\beta}_r$ is the selection-corrected
+reference; $\boldsymbol\alpha_r$ is the feasible aggregation decision.
+
+\subsection{Global Update and Window Logic}
+\label{subsec:global_update}
+
+Let $\boldsymbol\alpha_r^\star$ denote the solution of (P2).  The server update
+is
+\begin{equation}
+ \theta_{r+1}
+ =
+ \theta_r
+ -
+ \eta_r
+ \sum_{k\in\mathcal{A}_r}
+ \alpha^\star_{k,r}\mathbf{u}_{k,r}.
+ \label{eq:server_update}
+\end{equation}
+After aggregation, the server updates the debt via
+$\mathbf{Q}_{r+1}=\left[\mathbf{Q}_r+\eta_r(\boldsymbol\mu-\boldsymbol\omega_r)\right]_+$,
+where $\boldsymbol\omega_r=M_r\boldsymbol\alpha_r$, and advances lagged
+selection and variance states.  If $\mathcal{A}_r=\varnothing$, the
+window is inactive: $\theta_{r+1}=\theta_r$, $\mathbf{Q}_{r+1}=\mathbf{Q}_r$,
+and the window does not enter $S_R$.  Algorithm~\ref{alg:window_close}
+records this order: reconstruct $\widehat{\boldsymbol\beta}_r$, solve (P2) for
+$\boldsymbol\alpha_r^\star$, then aggregate and update debt.
+
+\subsection{Finite-Sample Aggregate Coverage Certificate}
+\label{subsec:agg_certificate_alg}
+
+The Design factor $\eqref{eq:design_factor}$ is configured on or off.  On, it
+is RAVEN-Design and uses lagged opportunity ratios; off, it is RAVEN-NoDesign
+and uses the uncorrected factor $1$.  A diagnostic Gate,
+detailed in the supplemental material as the aggregate coverage certificate algorithm of the supplemental material,
+uses only pre-window information $F_{t-}$ with
+\begin{equation}
+ k_n=\lceil(n+1)(1-\alpha)\rceil,
+ \qquad
+ \alpha=0.05,
+ \label{eq:agg_kn}
+\end{equation}
+and
+\begin{equation}
+ C^{\mathrm{LCB}}_t=\max\{0,\widehat C_t-q_t\},
+ \label{eq:agg_CLCB}
+\end{equation}
+so $\mathrm{Gate}_t=\mathbf{1}\{C^{\mathrm{LCB}}_t\ge\tau_{\mathrm{cov}}\}$ with
+$\tau_{\mathrm{cov}}=0.05$.  WARMUP and RESET force the Gate off.  It does
+not switch Design.
+
+Let $D_t\in\{\mathrm{on},\mathrm{off}\}$ be the Design factor of window $t$:
+a configuration of the deployment, fixed before the window opens and recorded
+with it.  The implemented opportunity/design factor is
+\begin{equation}
+\widehat\zeta^{o}_{k,t,i}
+=
+\begin{cases}
+\dfrac{\pi^{\mathrm{tar}}_{k,s(i)}}
+{\max\{\widehat\pi^{\mathrm{opp}}_{k,t,s(i)},\pi_{\min}\}}, & D_t=\mathrm{on},\\[1.5mm]
+1, & D_t=\mathrm{off}.
+\end{cases}
+\label{eq:design_factor}
+\end{equation}
+With $D_t=\mathrm{on}$ this is the lagged ratio
+\eqref{eq:design_ratio_simple}, the setting called RAVEN-Design; with
+$D_t=\mathrm{off}$ it is the uncorrected factor one, called RAVEN-NoDesign,
+and the result is not target-mass reconstruction.
+\eqref{eq:design_factor} is the only place the two settings differ: the
+observation, usable-update, calibration, and debt steps are identical.
+We report both settings on every block rather than a single selected setting,
+because the choice trades off across endpoints
+(Section~\ref{subsec:eval_rq2}); a deployment that needs one setting fixes it by
+the support gate of \eqref{eq:design_gate}, which reads only public pre-window
+information and states a stopping condition rather than a preference between the
+endpoints.
+The supplemental material reports the share of training risk units whose
+attached client--stratum carries zero public target mass, which is the input of
+that gate and nothing more.
+
+\begin{algorithm}[t]
+\caption{Window-close RAVEN-MCS with the Design factor as an explicit configuration}
+\label{alg:window_close}
+\begin{algorithmic}[1]
+\REQUIRE window $t$; recorded $R_{k,t,i}$, $O_{k,t,i}$, $U_{k,t}$;
+public $\boldsymbol\mu$; debt $\mathbf{Q}_t$; model $\theta_t$;
+frozen public $\pi^{\mathrm{tar}}$; Design factor $D_t\in\{\mathrm{on},\mathrm{off}\}$
+\ENSURE $\theta_{t+1}$, $\mathbf{Q}_{t+1}$
+\STATE Form $\mathcal{E}_t$ and
+$\mathcal{U}_t=\{k\in\mathcal{E}_t:U_{k,t}=1\}$.
+\IF{$D_t=\mathrm{on}$}
+\STATE Compute lagged opportunity/design ratios
+$\widehat\zeta^{o}_{k,t,i}$ \COMMENT{RAVEN-Design}
+\ELSE
+\STATE Set $\widehat\zeta^{o}_{k,t,i}\leftarrow 1$ on observed pairs \COMMENT{RAVEN-NoDesign}
+\ENDIF
+\STATE Compute observation weights $a_{k,t,i}$ and masses $m_{k,t}$;
+set $\mathcal{A}_t=\{k\in\mathcal{U}_t:m_{k,t}>0\}$.
+\IF{$\mathcal{A}_t=\varnothing$}
+\STATE Set $\theta_{t+1}\leftarrow\theta_t$,
+$\mathbf{Q}_{t+1}\leftarrow\mathbf{Q}_t$, and stop.
+\ELSE
+\STATE Compute usable-update factors $d_{k,t}$ and reference
+$\widehat{\boldsymbol\beta}_t$.
+\STATE Form $\mathcal{C}_t$ and lagged $V_t$,
+$\overline{\boldsymbol\tau}_t$; solve (P2) for
+$\boldsymbol\alpha_t^\star$.
+\STATE $\theta_{t+1}\leftarrow\theta_t
+-\eta_t\sum_{k\in\mathcal{A}_t}\alpha^\star_{k,t}\mathbf{u}_{k,t}$.
+\STATE $\boldsymbol\omega_t\leftarrow M_t\boldsymbol\alpha_t^\star$,
+$\mathbf{Q}_{t+1}\leftarrow
+[\mathbf{Q}_t+\eta_t(\boldsymbol\mu-\boldsymbol\omega_t)]_+$.
+\STATE Advance lagged selection and variance states.
+\ENDIF
+\end{algorithmic}
+\end{algorithm}
+
+
+\section{Theoretical Analysis}
+\label{sec:theory}
+
+We state the results used by the mainline.  Proposition~\ref{prop:reconstruction}
+recovers compatible target moments or group mass under A1--A3 for the
+ideal Design-on sequential estimator; it does not
+prove optimization of deployment-target risk, unbiased local gradients, or
+convergence under asynchrony.
+
+\subsection{Assumptions}
+\label{subsec:assumptions}
+
+\noindent\textbf{A1 (Compatible target support and positivity).}
+Public targets satisfy \eqref{eq:atomic_target} and
+\eqref{eq:target_compatibility}.  Inverse factors are applied only where
+$P_r^{\mathrm{opp}}$, $p^{\mathrm{obs}}$, and $q^{\mathrm{use}}$ are
+strictly positive on target-supported events.
+
+\noindent\textbf{A2 (Sequential pre-outcome ignorability).}
+Conditional on the legal history at each stage, $O$ and $U$ are
+conditionally mean-ignorable for the reconstructed moment.  The $O$ model
+uses only $\mathcal{H}^{\mathrm{obs}}$; the $U$ model may use the realized
+sensing-side registration state, but not the future $U$ outcome
+(display in the supplemental material).
+
+\noindent\textbf{A3 (Correct ideal ratios and cluster-level regularity).}
+Ideal ratios equal their population counterparts, or stabilizing bounds are
+inactive on relevant support.  As $N_R^{\mathrm{opp}}\rightarrow\infty$,
+weighted cluster sums obey a weak law and the H\'ajek denominator stays
+strictly positive.
+
+\noindent\textbf{A4 (Convex calibration).}
+In every active window, $K_r\ge1$, $0<\alpha_{\max}\le1$, $E_{\min}\ge1$,
+$V_r\succeq0$, $\lambda_{\beta}>0$, and
+$\lambda_g,\lambda_v,\lambda_s\ge0$.  The feasible set is \eqref{eq:Cr}.
+
+\noindent\textbf{A5 (Positivity and shared support).}
+Every event that enters the estimator, i.e.\ each target-supported event of
+A1 that belongs to the realized active set $\mathcal{A}_r$, has strictly
+positive opportunity, observation, and usable-update margins, so that the
+three inversions in \eqref{eq:chi_event} are well defined there.  The ideal and
+the practical reference share $\mathcal{A}_r$, $M_r$, and $\mathcal{C}_r$,
+and the unnormalized H\'ajek mass obeys
+$\mathbf{1}^{\top}b\ge B_{\min}>0$.  The shared-support clause of A5 fails
+if Design changes $\widehat\zeta$ on $\{\pi^{\mathrm{tar}}=0\}$, which is why
+RAVEN-NoDesign uses $\widehat\zeta=1$.
+
+\noindent\textbf{A6a (Inactive stabilization at the true margins).}
+On A5's active support the true margins clear every stabilizer of
+\eqref{eq:design_ratio_simple}, \eqref{eq:a_stabilized}, and \eqref{eq:d_use}:
+$\pi^{\mathrm{opp}}\ge\pi_{\min}$, $p^{\mathrm{obs}}\ge p_{\min}$,
+$\pi^{\mathrm{tar}}/(\pi^{\mathrm{opp}}p^{\mathrm{obs}})\le a_{\max}$ with
+Design on and $1/p^{\mathrm{obs}}\le a_{\max}$ with Design off, and
+$1/q^{\mathrm{use}}\le d_{\max}$; when $d_{\max}\le1/q_{\min}$, as for the
+frozen constants, the last clause also gives $q^{\mathrm{use}}\ge q_{\min}$.
+The ceiling clause is stated on the composite weight rather than on
+$1/p^{\mathrm{obs}}$: \eqref{eq:a_stabilized} already carries
+$\widehat\zeta^{o}$, so bounding $1/p^{\mathrm{obs}}$ alone leaves it
+unbounded.
+A6a is exactly what makes the map return the ideal untruncated ratios, and
+hence what makes \eqref{eq:eps_stab} vanish.
+
+\noindent\textbf{A6b (Bounded interpolation error).}
+On A5's active support the pre-outcome estimates satisfy
+$|\widehat\pi^{\mathrm{opp}}-\pi^{\mathrm{opp}}|\le\varepsilon_\pi$,
+$|\widehat p^{\mathrm{obs}}-p^{\mathrm{obs}}|\le\varepsilon_p$, and
+$|\widehat q^{\mathrm{use}}-q^{\mathrm{use}}|\le\varepsilon_q$.
+
+\subsection{Target Risk Is Not Arrival Risk}
+\label{subsec:prop_risk}
+
+\begin{proposition}[Target-vs-arrival risk distinction]
+\label{prop:risk}
+Let $\boldsymbol\varpi^{\mathrm{tar}}$ and
+$\widetilde{\boldsymbol\rho}^{\mathrm{arr}}$ be two normalized laws on the same
+finite supported atomic domain.  If
+$\boldsymbol\varpi^{\mathrm{tar}}\neq\widetilde{\boldsymbol\rho}^{\mathrm{arr}}$,
+then the two risk functionals are not interchangeable in general: there exists
+a bounded nonnegative error profile $e_i$ such that
+\begin{equation}
+ \sum_i
+ \varpi_i^{\mathrm{tar}}e_i
+ \neq
+ \sum_i
+ \widetilde\rho_i^{\mathrm{arr}}e_i.
+ \label{eq:prop1_nonidentity}
+\end{equation}
+Conversely, equality of the two weighted expectations for every bounded error
+profile implies equality of the two underlying laws.
+\end{proposition}
+
+\noindent\emph{Proof.}
+See the supplemental material.\hfill$\square$
+
+Proposition~\ref{prop:risk} is a functional distinction, not a claim that
+every predictor or minimizer must differ numerically.
+
+\subsection{Normalized Sequential Target Reconstruction}
+\label{subsec:prop_reconstruction}
+
+For the ideal analysis, let $\mathcal{O}_r$ denote the multiset of realized
+opportunity events in window $r$.  Each event $e\in\mathcal{O}_r$ carries a
+mark $(k_e,i_e)$ with marginal opportunity law
+$P_r^{\mathrm{opp}}(k_e,i_e)$ in \eqref{eq:opp_event_law}.  Observation and
+usable-update selection then occur sequentially according to
+\eqref{eq:pobs_def}--\eqref{eq:quse_def}.  Define
+\begin{equation}
+ \chi_e
+ =
+ O_e U_{k_e,r}
+ \frac{
+ \pi^{\mathrm{tar}}_{k_e,i_e}
+ }{
+ P_r^{\mathrm{opp}}(k_e,i_e)
+ p^{\mathrm{obs}}_{k_e,r,i_e}
+ q^{\mathrm{use}}_{k_e,r}
+ }.
+ \label{eq:chi_event}
+\end{equation}
+
+\begin{proposition}[Normalized target reconstruction]
+\label{prop:reconstruction}
+Under A1--A3, for any bounded test function $\psi(k,i)$ distinct from the
+Design factor of \eqref{eq:design_factor},
+\begin{equation}
+ \widehat\Phi_R
+ =
+ \frac{
+ \sum_{r<R}
+ \sum_{e\in\mathcal{O}_r}
+ \chi_e\psi(k_e,i_e)
+ }{
+ \sum_{r<R}
+ \sum_{e\in\mathcal{O}_r}
+ \chi_e
+ }
+ \xrightarrow{p}
+ \Phi^{\mathrm{tar}},
+ \label{eq:hajek_phi}
+\end{equation}
+where
+\begin{equation}
+ \Phi^{\mathrm{tar}}
+ =
+ \sum_{k,i}
+ \pi^{\mathrm{tar}}_{k,i}\psi(k,i).
+ \label{eq:target_phi}
+\end{equation}
+Therefore, client--stratum indicators recover
+$\pi^{\mathrm{tar}}_{k,s}$.  By the compatibility identity
+\eqref{eq:target_compatibility}, choosing
+$\psi(k,i)=\mathbf{1}\{h(i)=g\}$ then recovers the deployment-group mass
+$\mu_g$.  The result is moment and group-mass recovery under A1--A3, not
+optimization of $\mathcal{R}_{\mu}(\theta)$.
+\end{proposition}
+
+\noindent\emph{Proof.}
+See the supplemental material.\hfill$\square$
+
+Proposition~\ref{prop:reconstruction} identifies the ideal pooled correction
+with the target-mass opportunity ratio (RAVEN-Design),
+not every finite-window $\boldsymbol\beta_r^\star$; that gap is why
+Section~\ref{sec:calibration} calibrates inside the current support.
+It does not prove that the sequential estimator optimizes deployment-target
+risk.
+
+\subsection{Existence and Uniqueness of Feasible Calibration}
+\label{subsec:theorem_calibration}
+
+\begin{theorem}[Unique solution of the calibration program]
+\label{thm:calibration}
+Under A4, every active window has a nonempty compact convex feasible set
+$\mathcal{C}_r$, and the calibration program
+$\min_{\boldsymbol\alpha\in\mathcal{C}_r}J_r(\boldsymbol\alpha)$
+has a unique global minimizer $\boldsymbol\alpha_r^\star$.
+\end{theorem}
+
+\noindent\emph{Proof.}
+See the supplemental material.\hfill$\square$
+
+The theorem concerns the program, not post-hoc exact optimality of every
+logged solve.
+
+\subsection{Practical Plug-in Perturbation}
+\label{subsec:prop_plugin}
+
+Let $\mathcal{T}$ be the implemented stabilization map: the composition of
+\eqref{eq:design_ratio_simple}, \eqref{eq:a_stabilized}, and \eqref{eq:d_use}
+with the normalization \eqref{eq:beta_ref}.  Write
+$\boldsymbol\beta_r^{\mathcal T}$ for the reference $\mathcal{T}$ returns at
+the \emph{true} margins on $\mathcal{A}_r$, and $\boldsymbol\beta_r^\star$
+for the ideal untruncated reference of the supplemental material.  The
+stabilization error is
+\begin{equation}
+\varepsilon_{\mathrm{stab},r}
+=
+\bigl\|\boldsymbol\beta_r^{\mathcal T}-\boldsymbol\beta_r^\star\bigr\|_1 .
+\label{eq:eps_stab}
+\end{equation}
+It vanishes exactly when $\mathcal{T}$ reproduces the ideal ratios on the
+active support, and it depends only on the true margins, $\pi^{\mathrm{tar}}$
+and the frozen constants, so it is measurable on a released trace.  Let
+$n_r=\max_{k\in\mathcal{A}_r}\sum_i R_{k,r,i}O_{k,r,i}$ and
+$K_r=|\mathcal{A}_r|$.
+
+\begin{proposition}[Practical plug-in perturbation]
+\label{prop:practical_plugin}
+Assume A1, A4, A5, and A6b.  Let the stabilized window mass obey
+$\mathbf{1}^{\top}b_r^{\mathcal T}\ge B_{\min}>0$ at the true margins, and let
+the ideal and the implemented reference share $\mathcal{A}_r$, $M_r$, and
+$\mathcal{C}_r$.  Let $\boldsymbol\beta_r^\star$ be the
+same-window ideal untruncated reference and
+$\widehat{\boldsymbol\beta}_r$ the implemented clipped plug-in.  Let
+$\boldsymbol\alpha^\star(\boldsymbol\beta)$ denote the unique P2 minimizer
+at that fixed window state.  Then
+\begin{align}
+\bigl\|\widehat{\boldsymbol\beta}_r-\boldsymbol\beta_r^\star\bigr\|_1
+&\le
+C_1\bigl(\varepsilon_\pi+\varepsilon_p+\varepsilon_q\bigr)
++\varepsilon_{\mathrm{stab},r},
+\label{eq:g4_beta}\\
+\bigl\|\widehat{\boldsymbol\alpha}_r-\boldsymbol\alpha_r^\star\bigr\|_2
+&\le
+\bigl\|\widehat{\boldsymbol\beta}_r-\boldsymbol\beta_r^\star\bigr\|_2,
+\label{eq:g4_alpha}\\
+\bigl\|M_r(\widehat{\boldsymbol\alpha}_r-\boldsymbol\alpha_r^\star)\bigr\|_2
+&\le
+\|M_r\|_2\,
+\bigl\|\widehat{\boldsymbol\beta}_r-\boldsymbol\beta_r^\star\bigr\|_2,
+\label{eq:g4_comp}
+\end{align}
+where $C_1$ is the explicit Lipschitz envelope of the stabilized H\'ajek map
+(supplemental material), with
+$L_\pi=\pi^{\mathrm{tar}}_{\max}/(\pi_{\min}^2p_{\min})$,
+$L_p=\pi^{\mathrm{tar}}_{\max}/(\pi_{\min}p_{\min}^2)$,
+$L_q=\min\{q_{\min}^{-2},d_{\max}^2\}$, and
+$C_1=(2K_rn_r/B_{\min})(d_{\max}\max\{L_\pi,L_p\}+a_{\max}L_q)$; under Design
+off $\zeta\equiv1$, so $L_\pi=0$ and $L_p=1/p_{\min}^2$.  The result is a
+stability bound: it does not assert unbiasedness, identification on
+$\{\pi^{\mathrm{tar}}=0\}$, or robustness to a change of $\mathcal{A}_r$.  It
+holds with or without A6a, which is exactly what drives
+$\varepsilon_{\mathrm{stab},r}$ to zero.
+\end{proposition}
+
+\noindent\emph{Proof.}
+See the supplemental material.\hfill$\square$
+
+Two corollaries fix how the bound is read.  (a) If A6a holds,
+$\boldsymbol\beta_r^{\mathcal T}=\boldsymbol\beta_r^\star$ and
+$\varepsilon_{\mathrm{stab},r}=0$, so \eqref{eq:g4_beta} returns to the sharp
+form $C_1(\varepsilon_\pi+\varepsilon_p+\varepsilon_q)$.  (b) Under Design off
+the observation side contributes nothing to $\varepsilon_{\mathrm{stab},r}$
+exactly when $p^{\mathrm{obs}}\ge p_{\min}$ and
+$1/p^{\mathrm{obs}}\le a_{\max}$, leaving the usable-update stage as the only
+source.  The proposition is therefore not conditional on A6a, and since A6a
+fails on the blocks of the main comparison this bound does not explain the
+U-Air full-Design reversal.  $C_1$ is a worst-case envelope and not a numerical
+certificate: at $\pi_{\min}=10^{-6}$ and $p_{\min}=0.05$ the Design-on
+$L_\pi\le2\times10^{13}$, so the informative part of \eqref{eq:g4_beta} is
+$\varepsilon_{\mathrm{stab},r}$.
+
+\subsection{Aggregate Coverage Guarantees}
+\label{subsec:agg_coverage_theory}
+
+The reconstruction results above do not by themselves yield a finite-sample
+coverage certificate.  Deterministic pre-window pairwise LCBs are vacuous
+under hidden zero-opportunity events, and the frozen stress levels
+$a\in\{0.80,0.60,0.40,0.20\}$ fall in that region
+(Section~\ref{subsec:pairwise_barrier}).  In a certified regime the
+false-safe probability of an empirical diagnostic Gate is bounded by
+$\alpha$, by the false-safe Gate corollary in the supplemental material; and
+no method can simultaneously provide nontrivial per-window certification and
+universal protection against arbitrary unannounced regime shifts, by the
+arbitrary-drift applicability boundary proposition in the supplemental
+material.
+
+\begin{assumption}[Local score exchangeability within a certified stable regime]
+\label{ass:score-exchangeability}
+Conditioned on the frozen public regime descriptor $g$, the current score
+$S_t$ and the $n$ historical calibration scores are exchangeable.  Operational
+regime certification does not prove this assumption; it only defines the
+pre-registered subset of windows for which the assumption is posited.
+\end{assumption}
+
+\begin{theorem}[Stable-regime aggregate lower coverage]
+\label{thm:agg-lcb}
+Assume window $t$ is in operational state CERTIFIED, $n\ge n_{\min}=19$,
+Assumption~\ref{ass:score-exchangeability} holds, $\widehat C_t=f_b(F_{t-})$
+uses the frozen predictor snapshot of the current block, and the calibration
+scores are strictly historical same-block scores.  Let
+$q_t=S_{(k_n)}^{\mathrm{cal}}$ with $k_n$ from \eqref{eq:agg_kn}, and define
+$C^{\mathrm{LCB}}_t$ by \eqref{eq:agg_CLCB}.  Then
+\begin{equation}
+ P\bigl(C^{\mathrm{LCB}}_t\le C_t\mid g\bigr)\ge 1-\alpha.
+ \label{eq:agg_thm1}
+\end{equation}
+For $\alpha=0.05$ the right-hand side is $0.95$.  The theorem remains
+conditional on Assumption~\ref{ass:score-exchangeability} even when the
+algorithmic state is CERTIFIED.
+\end{theorem}
+
+\noindent\emph{Proof.}
+See the supplemental material.\hfill$\square$
+
+If Assumption~\ref{ass:score-exchangeability} holds, Theorem~\ref{thm:agg-lcb}
+bounds the Gate in that certified regime.  Adaptive RESET/CERTIFIED switching
+is not proven valid, and Algorithm~\ref{alg:window_close} does not open Design
+from $\mathrm{Gate}_t$.
+
+\section{Evaluation}
+\label{sec:evaluation}
+
+We evaluate RAVEN-MCS on risk interchangeability, RAVEN-Design versus
+the RAVEN-NoDesign setting, and component roles.
+
+\begin{itemize}
+    \item \textbf{Risk interchangeability:} Does two-stage non-random
+    selection create a deployment-target mismatch, including under real
+    taxi opportunity?
+    \item \textbf{RAVEN-Design and RAVEN-NoDesign:} On the protocol-$R$
+    development table, does RAVEN-Design reduce structural mismatch, and
+    how do the two Design settings trade off against each other and against
+    prediction?
+    \item \textbf{Component roles:} Which terms move structural
+    diagnostics versus prediction, and when is Design useful as a
+    reconstruction factor?
+\end{itemize}
+
+The balanced control is a no-harm check.  A risk-interchangeability experiment tests whether arrival-weighted and
+deployment-target-weighted risks are interchangeable.  A T-Drive taxi
+replay then checks the same four-block mismatch under real $R$ and ranks
+the same family with controlled $O$ and $U$.  FedAU-Window and ObsUse-Window
+remain strongest there; those rows are not mixed into
+Table~\ref{tab:main_effectiveness}.
+the City Scanner visit-occupancy ranking table of the supplemental material ranks the same family under real
+visit occupancy and is likewise not mixed into
+Table~\ref{tab:main_effectiveness}.
+the Pilot~2 measured-$O$ ranking table of the supplemental material ranks Pilot~2 with measured
+$O$ and controlled $U$, and is not mixed into that table either.
+The main comparison is a development table: it reports both Design settings
+on both blocks
+under always-on protocol $R$ on station traces; it is not a jointly
+measured mobile ranking.  The supplemental material reports an
+intermittent-occupancy protocol table on the same station clients.  A
+component-removal ablation drops one component at a time: on SensorScope,
+Design moves $\Delta_{\mathrm{group}}$ while $\mathrm{RMSE}_{\mu}$ stays
+essentially flat, so $\Delta_{\mathrm{group}}$ is a structural diagnostic.
+
+\subsection{Experimental Setup}
+\label{subsec:eval_setup}
+
+\subsubsection{Datasets and target semantics}
+
+Table~\ref{tab:datasets} summarizes the evaluated datasets.  SensorScope
+\cite{ingelrest2010sensorscope,barrenetxea2019sensorscope}\footnote{\url{https://doi.org/10.5281/zenodo.2654726}}
+and U-Air
+\cite{zheng2013uair}\footnote{\url{http://urban-computing.com/data}}
+provide the main comparison and ablation evidence and the coverage-stress audit.
+Original SensorScope and U-Air traces are not claimed to contain mobile
+clients.  For both, the deployment-group mapping $h(i)$ is the spatial unit
+crossed with the four UTC time blocks (00--06, 06--12, 12--18, and 18--24),
+giving $220$ groups on SensorScope and $144$ on U-Air, with label-free
+masses.  Their opportunity strata $s(i)$ are finer: spatial identity
+$\times$ four time blocks $\times$ weekday/weekend.
+Accordingly, $h(i)$ and $s(i)$ retain the distinct semantics required by
+Section~\ref{subsec:selection_process}.  SensorScope contains 55 station-level
+spatial identities and at most 440 opportunity strata, whereas U-Air contains
+36 spatial identities and at most 288 strata.
+
+NSW-Traffic
+\cite{tfnsw2024traffic}\footnote{\url{https://opendata.transport.nsw.gov.au/data/dataset/nsw-roads-traffic-volume-counts-api}}
+has 43 stations, four coordinate regions, and at most 32 strata.  It
+supplies the risk-interchangeability evidence and an independent four-region protocol ranking
+(the NSW-Traffic four-region ranking table in the supplemental material), not mixed into
+Table~\ref{tab:main_effectiveness} and not a confirmation of that table.  Cross-vintage Traffic outputs are
+not used for method inference.
+
+T-Drive
+\cite{yuan2010tdrive}\footnote{\url{https://www.microsoft.com/en-us/research/publication/t-drive-trajectory-data-sample/}}
+is the public Microsoft Research taxi-trajectory sample; use follows that
+source's published terms.  Processed trajectories yield $R$ on $9994$
+cells and $5837$ taxis, with Complete-aligned $O$ and $U$ controls and
+the same four UTC groups $h(i)$.  The ranking uses the Design-off setting
+there; Design-on is also reported.  FedAU-Window and ObsUse-Window remain strongest
+on that hybrid ranking.
+
+City Scanner New York {PM}$_{2.5}$ is an independent hybrid ranking
+the City Scanner visit-occupancy ranking table in the supplemental material.  Occupied cells are the federated
+clients, $R$ is visit occupancy, RAVEN-Design is used ($0$ of $9343$ train
+units), and $O$/$U$ remain controlled.
+A second City Scanner ranking uses New York Pilot~2 only
+the City Scanner Pilot~2 measured-$O$ ranking table in the supplemental material.
+Occupied cells remain the federated clients.
+$R$ is visit occupancy on the union of kept-{PM} and {NO}$_2$ GPS streams.
+$O$ is measured from finite {PM}$_{2.5}$ in $[0,1000]$
+($1931$ of $14960$ occupied cell-slots unobserved).
+$U$ remains a Complete-aligned control ($S_{\max}=5$).
+RAVEN-Design is used ($0$ of $10141$ train occupancy units).
+
+\begin{table*}[t]
+\centering
+\caption{Datasets and roles.  Targets use public or training-side
+information, never test labels.  T-Drive is a hybrid ranking under real
+$R$ with controlled $O$ and $U$.  NSW four-region
+(the NSW-Traffic four-region ranking table in the supplemental material), City Scanner {PM}$_{2.5}$
+the City Scanner visit-occupancy ranking table in the supplemental material, and City Scanner Pilot~2 measured
+$O$ the City Scanner Pilot~2 measured-$O$ ranking table in the supplemental material are not mixed into
+Table~\ref{tab:main_effectiveness}.}
+\label{tab:datasets}
+\scriptsize
+\setlength{\tabcolsep}{3.2pt}
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}lcccccc}
+\toprule
+Dataset & Spatial IDs & Train/Val/Test & WG blocks &
+$s(i)$ & Max $s$ & Role\\
+\midrule
+SensorScope~\cite{ingelrest2010sensorscope} & 55 & 10285/3465/3410 & 4 &
+station $\times$ block $\times$ day & 440 & main comparison; ablation\\
+U-Air~\cite{zheng2013uair} & 36 & 5688/1908/1908 & 4 &
+spatial ID $\times$ block $\times$ day & 288 & main comparison; ablation\\
+NSW-Traffic~\cite{tfnsw2024traffic} & 43 & 18576/6192/6192 & 4 &
+region $\times$ block $\times$ day & 32 & risk interchangeability; four-region protocol\\
+T-Drive~\cite{yuan2010tdrive} & 9994 cells & 285659/--/74569 & 4 &
+cell $\times$ block $\times$ day & -- & hybrid (real $R$)\\
+City Scanner~\cite{wang2023cityscanner} & 446 cells & 9343/3290/2090 & 4 &
+region $\times$ block $\times$ day & 32 & hybrid (real $R$)\\
+City Scanner P2 & 416 cells & 10141/2835/1984 & 4 &
+region $\times$ block $\times$ day & 32 & hybrid (meas.\ $O$)\\
+\bottomrule
+\end{tabular*}
+\end{table*}
+
+\subsubsection{Selection protocol and compared methods}
+
+The main comparison and ablation condition is \emph{Complete-aligned}: protocol $R$, $O$,
+and $U$ are all active and non-random in the same direction.  On
+SensorScope and U-Air, protocol $R$ is always-on.  A supplemental ranking
+thins that $R$ to the published T-Drive active fraction $0.425$.
+
+These layers are not measured in every block.  Opportunity is real on T-Drive,
+from taxi trajectories, and on the two City Scanner blocks, from visit
+occupancy.  Observation is measured on City Scanner Pilot~2 only, and
+usable-update delivery is measured in no block.  The SensorScope, U-Air, and
+NSW-Traffic protocol blocks are semi-synthetic.  Their strata and target maps
+come from the frozen public data, while all three selection layers are
+constructed, and the tables label these layers as controls.  In those blocks
+opportunity is always-on and its stratum is drawn from a joint opportunity law
+with equal client mass and a factor $\exp(-1.25)$ against UTC blocks 2 and 3.
+Observation is Bernoulli at rate $0.35$, reduced to $0.1925$ on the same two
+blocks.  The usable-update decision is a device-tier compute and network
+process that disadvantages those blocks, with staleness capped at
+$S_{\max}=5$, and each client-window draws at most four risk units.  Both
+construction parameters are constant within a stratum rather than varying per
+unit: the observation rate depends only on the UTC block, which the
+opportunity stratum already fixes, and the usable-update rate is drawn once
+per client-window and shared by every risk unit in it.  The reported
+predictive gains describe this construction, not the range attainable when
+selection varies at the unit level.  The
+compounding direction is therefore part of the construction rather than a
+measured property of these traces, and the structural-alignment results of
+Table~\ref{tab:main_effectiveness} are conditional on it.
+
+The main blocks assume within-stratum exchangeability,
+$\nu^{\mathrm{opp}}_{k,r}(i\mid s)=\nu^{\mathrm{tar}}_{i\mid s}$, which is the
+condition under which the design ratio reduces to
+\eqref{eq:design_ratio_simple}.  Paired methods share the same recorded selection trace.
+The five principal same-backbone baselines are
+FedAvg-Window~\cite{mcmahan2017communication},
+FedAsync-Window~\cite{xie2019asynchronous},
+TimeAlign-Agg (a windowed time-aware aggregator in the spirit of
+\cite{wang2026federated}, not an official reproduction),
+Local-H\'ajek (within-client inverse-probability / H\'ajek
+normalization~\cite{horvitz1952generalization,hajek1971comment}), and
+TwoStage-H\'ajek (sequential H\'ajek on opportunity and
+observation).  The main table additionally
+reports two windowed participation baselines, FedAU-Window and
+ObsUse-Window.  FedAU-Window adapts participation debiasing
+\cite{wang2024lightweight} to window-close aggregation
+(the windowed-adaptation specifications in the supplemental material).
+ObsUse-Window applies the observation and usable-update
+corrections without Design, P2, or debt.  None is an official
+reproduction.  FedCure~\cite{chen2026fedcure} is not included.  Inst-Cal and Debt-Cal
+expose the transition from reconstruction to calibration and are
+reported in the appendix.  Central-All, Central-Delivered, and
+RAVEN-SimOracle are reference-only methods.
+
+The main comparison and the ablation report both Design settings on both
+blocks.  Algorithm~\ref{alg:window_close} takes $D_t$ as a configuration;
+neither setting is derived from the data.  On SensorScope, Design is worth
+$1.237\%$ of $\Delta_{\mathrm{group}}$ and $0.597\%$ of
+$\Delta_{c\text{-}s}$ at unchanged prediction ($+0.005\%$ of
+$\mathrm{RMSE}_{\mu}$, $0.3\sigma$); on U-Air it costs $6.885\%$ of
+$\mathrm{RMSE}_{\mu}$, $6.943\%$ of $\Delta_{\mathrm{group}}$, and $7.221\%$
+of tail RMSE while improving $\Delta_{c\text{-}s}$ by $4.990\%$.  All four
+paired comparisons use the same 20 seeds.  The choice is therefore an
+endpoint-dependent deployment decision, and is reported rather than made by
+the method.  A support-compatible mixture target failed a
+SensorScope no-harm check and is not a table method.
+
+All experiments use 20 paired seeds except the balanced control (five) and four ten-seed tables (the T-Drive
+ranking here, three in the supplement).  Those seeds capture algorithmic and EventTrace randomness, not independent
+cities.  No test result tunes the selection process, parameters, groups, or strata.
+
+\subsubsection{Metrics and statistical policy}
+
+Prediction is measured on the supported test units by
+\[
+ \mathrm{RMSE}_{\mu}
+ =
+ \Bigl[\sum_{i\in\mathcal{I}_{\mathrm{test}}}
+ \frac{\mu^{\mathrm{eval}}_{h(i)}}{n_{h(i)}}
+ \bigl(\widehat Y_i-Y_i\bigr)^2\Bigr]^{1/2},
+\]
+where $n_g$ is the test-unit count in group $g$, $\boldsymbol\mu$ is the
+deployment-target marginal $\mu_g=\sum_{i:h(i)=g}\varpi_i^{\mathrm{tar}}$,
+$\boldsymbol\mu^{\mathrm{eval}}$ is the evaluation group mass normalized on
+the supported test units, and $\boldsymbol\mu^{\mathrm{blk}}$ aggregates
+$\boldsymbol\mu$ to the four UTC blocks.  On SensorScope and U-Air
+$\boldsymbol\mu^{\mathrm{eval}}$ is uniform on the supported test units, so
+$\mathrm{RMSE}_{\mu}$ is the unweighted pooled RMSE.
+The U-Air and NSW-Traffic targets are standardized by their training-split
+scales ($\sigma=17.363$ and $575.776$), so those $\mathrm{RMSE}_{\mu}$ entries
+are dimensionless, while SensorScope is reported in physical units.  Columns
+that are ratios of two runs, such as $\Delta_{\mathrm{group}}$ and
+$\Delta_{c\text{-}s}$, are invariant to this standardization.
+$\mathrm{WorstGroupRMSE}$ is the largest of the four UTC-block scores, each
+restricting the same weights to its own test units and renormalizing them
+inside the block.  The four scores are in the per-group table of the
+supplemental material.  The under-served-block score uses the block whose
+$\mu^{\mathrm{blk}}_b$ most exceeds opportunity mass
+(Section~\ref{subsec:eval_underserved}).
+$\mathrm{Tail\_RMSE}$ applies that block functional to the frozen late-day
+blocks $2$ and $3$ ($12$--$24$~UTC), fixed before the runs, not ranked by
+error or arrival ratio.
+For the risk-interchangeability test only, $\mathrm{RMSE}_{\rho}$ replaces the
+evaluation weights by the atomic arrival weights of
+\eqref{eq:arrival_distribution}.  Structural
+alignment is $\Delta_{\mathrm{group}}(R)=\left\|\overline{\boldsymbol\omega}_R-\boldsymbol\mu\right\|_1$
+and $\Delta_{c\text{-}s}$ in \eqref{eq:delta_cs}.  Smaller is better.
+
+All formal method comparisons are paired by seed.  We use the paired
+Wilcoxon protocol~\cite{wilcoxon1945individual} and apply Holm
+correction~\cite{holm1979simple} within the predeclared comparison
+families at $\alpha=0.05$; absolute differences below
+$10^{-12}$ are treated as numerical ties.  Tables report
+mean $\pm$ standard deviation.  On four-block $\mathrm{WorstGroupRMSE}$,
+RAVEN-Design (SensorScope) and RAVEN-NoDesign (U-Air) are each compared with FedAU-Window and ObsUse-Window by a
+pre-specified $+0.5\%$ mean-relative point-estimate tolerance: the mean
+of the paired relative differences must be at most $+0.5\%$.
+That ranking prose uses TEST seeds $30011$--$30020$; Table~\ref{tab:main_effectiveness} reports 20-seed means.
+Holm tests versus those two comparators use the four 20-seed
+$\mathrm{WorstGroupRMSE}$ comparisons.
+This descriptive tolerance rule is not a formal non-inferiority test
+and carries no coverage guarantee.  The U-Air comparison is a fallback
+evaluation there, not a target-mass claim.  A later under-served-block check uses the same
+$0.5\%$ mean-relative rule on validation only; a win would have required
+the table RAVEN configuration to beat both FedAU-Window and ObsUse-Window by at least $0.5\%$.
+For P2, warning-affected allocations satisfy
+the recorded feasibility constraints; the stored outputs do not
+support retrospective certification of exact numerical optimality.
+
+\subsection{Risk Interchangeability under Two-Stage Selection}
+\label{subsec:eval_rq1}
+
+Under the balanced control, TimeAlign obtains mean deployment-target
+RMSE $7.7108\pm0.0272$ and RAVEN $7.7154\pm0.0337$ (mean relative
+degradation $0.0599\%$; one-sided 95\% upper bound $0.134\%$, below the
+3\% no-harm margin).  The balanced control is a sanity check, not a superiority test.
+
+We then test the premise of Proposition~1 using the NSW-Traffic risk-interchangeability
+experiment.  For each method and seed, write
+$\Delta_{\mu}=\mathrm{RMSE}_{\mu}^{\mathrm{aligned}}
+-\mathrm{RMSE}_{\mu}^{\mathrm{balanced}}$ and
+$\Delta_{\rho}=\mathrm{RMSE}_{\rho}^{\mathrm{aligned}}
+-\mathrm{RMSE}_{\rho}^{\mathrm{balanced}}$, and the pre-specified
+difference-of-differences $D_{\mathrm{aligned}}=\Delta_{\mu}-\Delta_{\rho}$.
+If the two risk views reacted interchangeably to the same selection shift,
+$D_{\mathrm{aligned}}$ would concentrate around zero.
+
+Instead, Fig.~\ref{fig:risk_noninterchangeability} shows a stable negative
+shift for all five methods.  Mean $D_{\mathrm{aligned}}$ ranges from
+$-0.0209$ to $-0.0214$; 17--18 of the 20 paired seeds are negative for each
+method, and the paired Wilcoxon tests against zero give
+$p=4.83\times10^{-4}$--$5.86\times10^{-4}$.  The mean target-risk change is
+only about $8\times10^{-4}$, whereas the mean arrival-risk change is about
+$2.2\times10^{-2}$.  Thus the same two-stage selection shift changes the
+arrival-weighted and deployment-target-weighted views by materially different
+amounts.  Complete method-level risk-interchangeability statistics are in the risk-semantic appendix of the supplemental material.
+
+\begin{figure}[t]
+\raggedright
+\includegraphics[width=\columnwidth]{fig2_e2_risk_noninterchangeability.pdf}
+\caption{Risk interchangeability on complete-aligned NSW-Traffic.  (a)~Seed-level
+$D_{\mathrm{aligned}}=\Delta\mathrm{RMSE}_{\mu}-\Delta\mathrm{RMSE}_{\rho}$
+over 20 paired seeds.  (b)~Count of negative seeds (not a method ranking).
+A negative value means that the arrival-weighted risk changes more than the
+deployment-target risk under the same selection shift.  Local-H\'ajek is omitted
+here because the risk-semantic experiment reports the five methods used in that test.}
+\label{fig:risk_noninterchangeability}
+\end{figure}
+
+\noindent\textbf{Risk-interchangeability finding.}
+The risk-interchangeability experiment supports Proposition~1: under two-stage non-random selection, the
+arrival law need not be an interchangeable proxy for the deployment
+target.  It is not a method-ranking test.
+
+The same four-block mismatch appears under real taxi opportunity.
+Fig.~\ref{fig:g3_tdrive} compares the public H1--H4 masses with the
+mass induced by processed T-Drive trajectories.  Real $R$ is intermittent (mean client active fraction $0.425$,
+burstiness $+0.38$, cell coverage $0.547$).  Four-block
+$\mathrm{TV}(\pi^{\mathrm{opp}},\boldsymbol\mu)$ is $0.142$ on T-Drive,
+$0.192$ on protocol SensorScope, and $0.278$ on protocol U-Air, all above
+$0.05$.  $O$ and $U$ remain Complete-aligned controls.
+Design is off on this block.
+
+\begin{figure}[t]
+\raggedright
+\includegraphics[width=\columnwidth]{fig_g3_tdrive_h_mass.pdf}
+\caption{T-Drive real-mobility opportunity.  (a)~Public $\boldsymbol\mu$,
+taxi opportunity, and a unit-balanced reference; real $R$ under-serves
+H3 and over-serves H4.  (b)~Four-block
+$\mathrm{TV}(\pi^{\mathrm{opp}},\boldsymbol\mu)$.
+Design is off; the RAVEN-NoDesign ranking is in
+Table~\ref{tab:tdrive_hybrid}.}
+\label{fig:g3_tdrive}
+\end{figure}
+
+\noindent\textbf{Hybrid ranking under real taxi opportunity.}
+Table~\ref{tab:tdrive_hybrid} ranks the same windowed family under
+real taxi $R$ with Complete-aligned $O/U$ controls.
+FedAU-Window and ObsUse-Window remain strongest.
+RAVEN-NoDesign does not meet the $+0.5\%$ mean-relative
+tolerance versus those two (paired relative $+2.39\%$ and $+2.43\%$;
+versus FedAvg $+0.32\%$).  Design on raises
+$\mathrm{RMSE}_{\mu}$, worst-group RMSE, and $\Delta_{\mathrm{group}}$,
+as on U-Air.  RAVEN-NoDesign leaves the four-block
+structural gap unchanged relative to FedAvg.
+
+\begin{table}[!htbp]
+\centering
+\caption{T-Drive hybrid ranking under real taxi $R$
+(mean $\pm$ std, 10 seeds, $178$ windows).  Lower is better.
+$O$ and $U$ are Complete-aligned controls.
+RAVEN-NoDesign ($\widehat\zeta=1$) is not target-mass reconstruction;
+RAVEN-Design (Design on) is also reported on U-Air.
+WorstGroupRMSE is the maximum over UTC H1--H4.
+RAVEN-NoDesign is outside the descriptive $+0.5\%$ worst-group tolerance versus
+FedAU-Window and ObsUse-Window; this table is not mixed into
+Table~\ref{tab:main_effectiveness}.}
+\label{tab:tdrive_hybrid}
+\scriptsize
+\setlength{\tabcolsep}{1pt}
+\begin{tabular}{lcccc}
+\toprule
+Method & $\mathrm{RMSE}_{\mu}$ & WorstGroupRMSE &
+$\Delta_{\mathrm{group}}$ & $\Delta_{c\text{-}s}$\\
+\midrule
+FedAvg-Window     & \shortstack{$1.1042$\\$\pm0.0022$} & \shortstack{$1.3064$\\$\pm0.0035$} & $0.5232$ & \shortstack{$1.9758$\\$\pm0.0004$}\\
+TwoStage-H\'ajek    & \shortstack{$1.1254$\\$\pm0.0142$} & \shortstack{$1.3373$\\$\pm0.0198$} & \shortstack{$0.5948$\\$\pm0.0124$} & \shortstack{$1.9642$\\$\pm0.0007$}\\
+FedAU-Window      & \shortstack{$1.0898$\\$\pm0.0050$} & \shortstack{$1.2801$\\$\pm0.0109$} & $0.5232$ & \shortstack{$1.9915$\\$\pm0.0012$}\\
+ObsUse-Window     & \shortstack{$1.0896$\\$\pm0.0049$} & \shortstack{$1.2796$\\$\pm0.0108$} & $0.5232$ & \shortstack{$1.9916$\\$\pm0.0012$}\\
+RAVEN-NoDesign & \shortstack{$1.1069$\\$\pm0.0028$} & \shortstack{$1.3106$\\$\pm0.0044$} & $0.5232$ & \shortstack{$1.9936$\\$\pm0.0003$}\\
+RAVEN-Design & \shortstack{$1.1242$\\$\pm0.0159$} & \shortstack{$1.3355$\\$\pm0.0225$} & \shortstack{$0.5948$\\$\pm0.0124$} & \shortstack{$1.9774$\\$\pm0.0006$}\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\noindent\textbf{Independent four-region ranking on NSW-Traffic.}
+The heuristic is applied to a locally frozen four-region map
+with Design on, the ranking uses RAVEN-Design.
+That map is not the SensorScope/U-Air client--stratum lookup.
+the NSW-Traffic four-region ranking table in the supplemental material is a protocol ranking, not mixed
+into Table~\ref{tab:main_effectiveness} and not a confirmation of that
+table or of a transferred support object.
+TwoStage-H\'ajek is lowest on $\mathrm{RMSE}_{\mu}$ and WorstGroupRMSE.
+FedAU-Window is lowest on $\Delta_{\mathrm{group}}$ ($0.0606$ versus
+$0.1048$ for RAVEN-Design).  RAVEN-Design
+stays within the descriptive $+0.5\%$ worst-group tolerance versus
+FedAU-Window and ObsUse-Window.
+
+\noindent\textbf{Hybrid ranking under City Scanner visit occupancy.}
+the City Scanner visit-occupancy ranking table of the supplemental material ranks the same windowed family on
+occupied New York {PM}$_{2.5}$ cells, with real visit occupancy $R$,
+Complete-aligned $O/U$ controls, and RAVEN-Design with Design on.
+The target map uses test-group shares $\mu_{h(i)}$ on training atoms, with
+all four regions positive, not the station client--stratum lookup.
+Paired mean relative error versus FedAU-Window and ObsUse-Window is $-1.71\%$
+and $-1.34\%$ on $\mathrm{RMSE}_{\mu}$, and $-1.56\%$ and $-1.23\%$ on
+worst-group RMSE.
+FedAvg-Window remains lowest on both prediction endpoints
+($0.2379$ and $0.2489$), while RAVEN-Design is smallest on
+$\Delta_{\mathrm{group}}$ ($0.0706$).
+Clients are occupied cells, not vehicles.
+The ranking is not mixed into Table~\ref{tab:main_effectiveness} or
+Table~\ref{tab:tdrive_hybrid}.
+The target-coverage and City Scanner section of the supplemental material lists the frozen coverage statistic per block.
+
+\noindent\textbf{Hybrid ranking under measured City Scanner observation.}
+the Pilot~2 measured-$O$ ranking table of the supplemental material ranks the same windowed family on
+New York Pilot~2 occupancy with measured $O$ and controlled $U$.
+TwoStage-H\'ajek is lowest on $\mathrm{RMSE}_{\mu}$ and WorstGroupRMSE.
+RAVEN-Design is smallest on $\Delta_{\mathrm{group}}$ and
+lower than FedAU-Window, ObsUse-Window, and FedAvg-Window on both prediction endpoints
+(paired mean relative $-0.43\%$, $-0.45\%$, and $-0.65\%$ on
+$\mathrm{RMSE}_{\mu}$).
+Clients are occupied cells, not vehicles.
+The ranking is not mixed into Table~\ref{tab:main_effectiveness},
+Table~\ref{tab:tdrive_hybrid}, or the City Scanner visit-occupancy ranking table of the supplemental material.
+
+\subsection{Structural Alignment, Target RMSE, and Worst-Group Risk}
+\label{subsec:eval_rq2}
+
+Table~\ref{tab:main_effectiveness} is the protocol development table.  It
+reports both Design settings on both blocks.
+On SensorScope, Design reduces
+$\Delta_{\mathrm{group}}$/$\Delta_{c\text{-}s}$ from FedAvg's
+$1.0558/1.2903$ to $1.0139/1.2644$ ($3.96\%/2.01\%$); the Design-off row gives
+$1.0265/1.2719$, so the two settings differ by $1.237\%$ and $0.597\%$
+(paired, 20 seeds) while their $\mathrm{RMSE}_{\mu}$ is indistinguishable
+($7.9380$ versus $7.9384$, $0.3\sigma$).  Four-block
+worst-group RMSE is interchangeable with FedAU-Window and ObsUse-Window
+(TEST $-0.01\%$ and $+0.05\%$; ALL20 $+0.02\%$ and $+0.10\%$).
+
+On U-Air the two settings separate.  Design-off obtains
+$\Delta_{\mathrm{group}}=1.0165$ and $\mathrm{RMSE}_{\mu}=1.1131$,
+versus $1.0924$ and $1.1954$ with Design on.  Fig.~\ref{fig:w1_design_gate}
+diagnoses the reversal: estimated Design and oracle Design both worsen the
+primaries by about $7\%$ relative to No-Design, so the harm is
+support-incompatible $\pi^{\mathrm{tar}}$, not plug-in failure.
+Design still improves $\Delta_{c\text{-}s}$ on U-Air ($1.2334$ versus
+$1.2949$, $4.990\%$, $17.1\sigma$), so the U-Air choice is an
+endpoint-dependent trade and not a dominated setting.  On the
+four-block worst-group endpoint, the TEST mean relative differences versus
+FedAU-Window and ObsUse-Window are $+0.48\%$ and $+0.44\%$
+(seeds $30011$--$30020$).
+The same paired relatives over all $20$ table seeds are $+0.002\%$ and
+$+0.075\%$.
+Both slices stay within the descriptive $+0.5\%$ tolerance.  That U-Air comparison is a
+fallback evaluation, not a target-mass claim.
+Holm-adjusted tests on the $20$-seed $\mathrm{WorstGroupRMSE}$ family against
+those two are not significant.
+Within the Design-on family, RAVEN-Design lowers worst-group RMSE by $2.46\%$
+against TwoStage-H\'ajek on the TEST seeds ($10/10$).  Both settings reconstruct
+target mass, so this is a family-internal comparison rather than a baseline win.
+Against the no-Design baselines, RAVEN-NoDesign ties all six on prediction and
+on worst-group RMSE, with no Holm-significant difference in either direction.
+The two settings separate on structure: RAVEN-NoDesign lowers
+$\Delta_{\mathrm{group}}$ by $2.4\%$ to $3.7\%$ and $\Delta_{c\text{-}s}$ by
+$1.4\%$ to $2.6\%$ against FedAvg, FedAsync, TimeAlign, FedAU and ObsUse, all
+$20/20$, and ties Debt-Cal on both.  Design-on does not improve on those
+baselines: its worst-group RMSE is $1.2630$ against FedAvg $1.1690$.  We do not
+claim a best worst-group method.
+
+The sealed same-backbone family, including FedAsync, TimeAlign,
+Inst-Cal, and Debt-Cal, is in the supplemental material.  On U-Air
+those RAVEN bars are Design-on, not the RAVEN-NoDesign rows of
+Table~\ref{tab:main_effectiveness}.  Local-H\'ajek coincides with
+FedAvg-Window wherever the two keep the same active set, because the realized
+within-client H\'ajek weights are uniform on these traces (supplemental
+material); on U-Air the supplemental rows differ because Local-H\'ajek
+restricts the set to the target-mass support while FedAvg-Window keeps every
+delivered client.
+
+\begin{table}[!htbp]
+\centering
+\caption{Development table for the main comparison under always-on protocol $R$
+(mean $\pm$ std, 20 seeds; lower is better).
+This is a development table on station traces whose $O$ and $U$ layers are
+protocol-constructed, not a
+real-mobility ranking.
+Both Design settings are reported on both blocks, so the table is a
+within-dataset factor rather than a single configuration.
+On SensorScope, Design improves $\Delta_{\mathrm{group}}$ by $1.237\%$ and
+$\Delta_{c\text{-}s}$ by $0.597\%$ at unchanged prediction
+($+0.005\%$ of $\mathrm{RMSE}_{\mu}$); on U-Air it costs $6.885\%$ of
+$\mathrm{RMSE}_{\mu}$, $6.943\%$ of $\Delta_{\mathrm{group}}$, and
+$7.221\%$ of tail RMSE while improving $\Delta_{c\text{-}s}$ by $4.990\%$
+(paired, 20 seeds).
+WorstGroupRMSE is the maximum over the four UTC groups.
+FedAU-Window and ObsUse-Window are windowed adaptations.
+On SensorScope both RAVEN settings, and on U-Air RAVEN-NoDesign, stay
+within the descriptive $+0.5\%$ worst-group tolerance versus those two
+(TEST seeds $30011$--$30020$); U-Air RAVEN-Design is outside it at $+7.9\%$ and $+8.0\%$.
+We do not claim a Holm-significant RMSE win.
+A supplemental protocol table uses intermittent occupancy.}
+\label{tab:main_effectiveness}
+\scriptsize
+\setlength{\tabcolsep}{1pt}
+\begin{tabular}{llcccc}
+\toprule
+Dataset & Method & $\mathrm{RMSE}_{\mu}$ & WorstGroupRMSE &
+$\Delta_{\mathrm{group}}$ & $\Delta_{c\text{-}s}$\\
+\midrule
+\multirow{6}{*}{SensorScope}
+& FedAvg-Window     & \shortstack{$7.9389$\\$\pm0.0459$} & \shortstack{$8.6716$\\$\pm0.0471$} & \shortstack{$1.0558$\\$\pm0.0288$} & \shortstack{$1.2903$\\$\pm0.0306$}\\
+& TwoStage-H\'ajek    & \shortstack{$7.9309$\\$\pm0.0543$} & \shortstack{$8.6633$\\$\pm0.0556$} & \shortstack{$1.0353$\\$\pm0.0347$} & \shortstack{$1.2910$\\$\pm0.0324$}\\
+& FedAU-Window      & \shortstack{$7.9364$\\$\pm0.0507$} & \shortstack{$8.6691$\\$\pm0.0522$} & \shortstack{$1.0719$\\$\pm0.0263$} & \shortstack{$1.3057$\\$\pm0.0313$}\\
+& ObsUse-Window     & \shortstack{$7.9293$\\$\pm0.0513$} & \shortstack{$8.6618$\\$\pm0.0528$} & \shortstack{$1.0650$\\$\pm0.0272$} & \shortstack{$1.3062$\\$\pm0.0311$}\\
+& RAVEN-Design & \shortstack{$7.9380$\\$\pm0.0473$} & \shortstack{$8.6707$\\$\pm0.0486$} & \shortstack{$\mathbf{1.0139}$\\$\pm0.0305$} & \shortstack{$\mathbf{1.2644}$\\$\pm0.0312$}\\
+& RAVEN-NoDesign & \shortstack{$7.9384$\\$\pm0.0468$} & \shortstack{$8.6711$\\$\pm0.0481$} & \shortstack{$1.0265$\\$\pm0.0278$} & \shortstack{$1.2719$\\$\pm0.0308$}\\
+\midrule
+\multirow{6}{*}{U-Air}
+& FedAvg-Window     & \shortstack{$1.1119$\\$\pm0.0603$} & \shortstack{$1.1690$\\$\pm0.0692$} & \shortstack{$1.0446$\\$\pm0.0397$} & \shortstack{$1.3138$\\$\pm0.0337$}\\
+& TwoStage-H\'ajek    & \shortstack{$1.2202$\\$\pm0.0672$} & \shortstack{$1.2907$\\$\pm0.0753$} & \shortstack{$1.1196$\\$\pm0.0445$} & \shortstack{$1.2406$\\$\pm0.0297$}\\
+& FedAU-Window      & \shortstack{$1.1128$\\$\pm0.0600$} & \shortstack{$1.1701$\\$\pm0.0689$} & \shortstack{$1.0557$\\$\pm0.0370$} & \shortstack{$1.3291$\\$\pm0.0360$}\\
+& ObsUse-Window     & \shortstack{$1.1120$\\$\pm0.0600$} & \shortstack{$1.1692$\\$\pm0.0689$} & \shortstack{$1.0413$\\$\pm0.0374$} & \shortstack{$1.3235$\\$\pm0.0349$}\\
+& RAVEN-Design & \shortstack{$1.1954$\\$\pm0.0635$} & \shortstack{$1.2630$\\$\pm0.0716$} & \shortstack{$1.0924$\\$\pm0.0479$} & \shortstack{$\mathbf{1.2334}$\\$\pm0.0320$}\\
+& RAVEN-NoDesign & \shortstack{$1.1131$\\$\pm0.0638$} & \shortstack{$1.1703$\\$\pm0.0734$} & \shortstack{$\mathbf{1.0165}$\\$\pm0.0458$} & \shortstack{$1.2949$\\$\pm0.0293$}\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{figure}[t]
+\raggedright
+\includegraphics[width=\columnwidth]{fig_w1_design_gate.pdf}
+\caption{Design versus No-Design, estimated and oracle propensities
+(20 seeds; positive $=$ Design worse).  On SensorScope, Design slightly
+reduces $\Delta_{\mathrm{group}}$ ($-1.23\%$ estimated, $-1.03\%$
+oracle) with a flat RMSE.  On U-Air, estimated and oracle Design both
+worsen $\Delta_{\mathrm{group}}$ and $\mathrm{RMSE}_{\mu}$ by about
+$7.5\%$.  Algorithm~\ref{alg:window_close} runs RAVEN-NoDesign on U-Air;
+this figure diagnoses the reversal, not the
+selection rule.  The U-Air Design-on $\Delta_{c\text{-}s}$ gain remains in
+Table~\ref{tab:e4_ablation}.}
+\label{fig:w1_design_gate}
+\end{figure}
+
+These findings agree with the scope of the theory.  Proposition~2 recovers
+compatible target moments or target-group mass for the \emph{ideal pooled}
+sequential correction under A1--A3 with the target-mass opportunity ratio;
+it does not prove optimization of
+$\mathcal{R}_{\mu}(\theta)$, and it does not claim that every finite-window
+reference vector exactly equals $\boldsymbol{\mu}$.  Proposition~\ref{prop:practical_plugin}
+applies when A5 and A6b hold and $\mathcal{A}_r$ is fixed, with the
+stabilization error \eqref{eq:eps_stab} carried explicitly; A6a is the
+additional condition that makes that error vanish.  The
+support-hypothesis audit in the supplemental material reports A5 holding, A6b
+untested, and A6a failing on both datasets, so on these traces
+Proposition~\ref{prop:practical_plugin} is used in the form that carries
+$\varepsilon_{\mathrm{stab}}$, whose value the same audit reports, rather than
+in the form that cancels it.  The main comparison evaluates the
+finite-window system after the feasibility-aware calibration in (P2).
+
+\noindent\textbf{Development-table findings.}
+On SensorScope, RAVEN-Design reduces structural mismatch relative to
+FedAvg and stays within the $+0.5\%$ worst-group tolerance; that is not
+an RMSE win.  On U-Air,
+RAVEN-NoDesign improves primaries and worst-group RMSE relative to the
+Design-on setting.  Against the no-Design baselines it is a tie on both
+prediction and worst-group RMSE, and the structural advantage holds against
+five of the six, with Debt-Cal tying on both endpoints.  Versus FedAU-Window and
+ObsUse-Window,
+TEST mean relative worst-group differences are $+0.48\%$ and $+0.44\%$;
+target RMSE is interchangeable, not a Holm-significant win.
+The under-served-block check did not produce a second external win.
+Under intermittent occupancy (supplemental material), the $+0.5\%$
+tolerance and the U-Air Design reversal keep their sign; the SensorScope
+$\Delta_{c\text{-}s}$ gap versus FedAvg does not.
+
+\subsection{A Pre-Registered Under-Served-Block Check}
+\label{subsec:eval_underserved}
+
+Four-block $\mathrm{WorstGroupRMSE}$ can coincide with the intrinsically
+hardest UTC group rather than the group whose public mass most exceeds
+opportunity mass.  After freezing the heuristic assignment, we scored a
+second validation-only endpoint
+$g^{\star}=\arg\max_b(\mu^{\mathrm{blk}}_b-\pi^{\mathrm{opp},4}_b)$
+(SensorScope $g^{\star}=2$, gap $+0.114$; U-Air $g^{\star}=3$, gap
+$+0.172$).  A win requires mean paired relative RMSE versus FedAU-Window
+\emph{and} versus ObsUse-Window of at most $-0.5\%$.
+Neither dataset meets that rule (SensorScope $+0.05\%/+0.15\%$;
+U-Air $-0.44\%/-0.27\%$); both satisfy no-harm ($\le+0.5\%$).
+The test seeds were not opened.  the under-served-block table of the supplemental material in
+the supplemental material records the look.  The descriptive
+$+0.5\%$ worst-group tolerance remains the only external endpoint statement.
+
+\subsection{What the Correction and Calibration Components Do}
+\label{subsec:eval_rq3}
+
+The component-removal ablation drops Design, Obs, Use, Inst, or Debt under the same
+Complete-aligned selection trace and paired seeds.
+Table~\ref{tab:e4_ablation} reports the relative change
+$\delta_{\mathrm{remove}}(M)
+=(M_{\mathrm{ablated}}-M_{\mathrm{full}})/M_{\mathrm{full}}\times100\%$,
+so a positive number means that removing the component worsens the metric;
+the magnified component-removal figure in the supplemental material visualizes the
+same one-factor removals.
+The Inst ablation uses the one-factor removal under the same paired seeds, and
+all significance statements below use the pre-specified Holm families.
+
+\begin{table}[!htbp]
+\centering
+\caption{Component-removal ablation: relative change (\%) after removing one RAVEN component.
+Positive means the ablation worsens the metric; negative means it improves the
+metric.  $^\ast$ denotes Holm-adjusted $p<0.05$.}
+\label{tab:e4_ablation}
+\setlength{\tabcolsep}{3.5pt}
+\begin{tabular}{llrrrr}
+\toprule
+Dataset & Removed & $\Delta_{\mathrm{group}}$ &
+$\Delta_{c\text{-}s}$ & $\mathrm{RMSE}_{\mu}$ & Tail RMSE\\
+\midrule
+\multirow{5}{*}{SensorScope}
+& Design & $+1.237^\ast$ & $+0.597^\ast$ & $+0.005$ & $+0.005$\\
+& Obs    & $+0.096$       & $-0.070^\ast$ & $+0.012$ & $+0.011$\\
+& Use    & $+0.026$       & $+0.026$       & $+0.012$ & $+0.012$\\
+& Inst   & $-0.260$       & $+0.310^\ast$ & $-0.002$ & $-0.002$\\
+& Debt   & $+0.014^\ast$ & $+0.004^\ast$ & $<0.001$ & $<0.001$\\
+\midrule
+\multirow{5}{*}{U-Air}
+& Design & $-6.943^\ast$ & $+4.990^\ast$ & $-6.885^\ast$ & $-7.221^\ast$\\
+& Obs    & $+0.123^\ast$ & $+0.022$       & $-0.010$       & $-0.010$\\
+& Use    & $+0.014$       & $-0.014$       & $+0.025$       & $+0.026$\\
+& Inst   & $-0.089$       & $-0.143$       & $+0.143^\ast$ & $+0.149^\ast$\\
+& Debt   & $+0.004^\ast$ & $+0.002^\ast$ & $<0.001$ & $<0.001$\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\paragraph{Design correction.}
+Removing Design worsens $\Delta_{c\text{-}s}$ by $0.597\%$ on SensorScope and
+$4.990\%$ on U-Air, both Holm-significant.  On U-Air the same ablation
+improves $\Delta_{\mathrm{group}}$ by $6.943\%$ and
+$\mathrm{RMSE}_{\mu}$ by $6.885\%$.  The U-Air ranking uses the Design-off
+setting, not because estimated propensities fail
+(Fig.~\ref{fig:w1_design_gate}).  The $25.5\%$ figure is the realized always-on
+EventTrace occurrence share ($13040$ of $51200$ appearances), not an
+input of Algorithm~\ref{alg:window_close}, and is reported with the $\mathcal{A}_r$ overlap
+$51.6\%$.  Oracle Design tracks estimated
+Design.  SensorScope keeps Design on.  A 774-window check found identical
+R/O/U and registration events, with differences beginning only at the
+positive-weight/P2-support layer
+(supplemental material).
+The non-Design components are magnified in the U-Air ablation figure of the supplemental material.
+
+\paragraph{Setting the Design factor.}
+A deployment that needs one setting rather than the full factorial can fix it
+before the window opens from public information, in two steps.  The first is a
+support gate.  Writing $n^{\mathrm{zero}}_r$ for the delivered training risk units
+of block $r$ whose attached client--stratum carries zero public target mass and
+$n_r$ for all delivered units, define
+\begin{equation}
+\rho_r=\frac{n^{\mathrm{zero}}_r}{n_r},
+\qquad
+D_r=\mathrm{on}\iff\rho_r=0 .
+\label{eq:design_gate}
+\end{equation}
+Design is on exactly when no delivered unit sits on a stratum that the public
+target map declares empty.  On the reported blocks the gate returns on for
+SensorScope, NSW-Traffic and both City Scanner rankings, and off for U-Air
+($35.4\%$) and T-Drive ($47.4\%$), which are the settings those rankings use.
+The gate is a stopping condition rather than a preference between endpoints: it
+withholds the factor precisely where the ablation measures the largest effect in
+this study, the $6.943\%$ of $\Delta_{\mathrm{group}}$ and $6.885\%$ of
+$\mathrm{RMSE}_{\mu}$ that Design costs on U-Air by removing the pairs whose
+public target mass is zero (Section~\ref{subsec:eval_rq2}).  The second step is
+the switch point.  Writing $M_{e,r}(D)$ for the value of endpoint
+$e\in\mathcal{E}=\{\Delta_{\mathrm{group}},\Delta_{c\text{-}s},
+\mathrm{RMSE}_{\mu},\mathrm{Tail}\}$ under setting $D$, and weighting the four
+endpoints relative to their Design-on values,
+\begin{equation}
+\begin{aligned}
+\widehat J_r(D)&=\sum_{e\in\mathcal{E}}w_e\,\frac{M_{e,r}(D)}{M_{e,r}(\mathrm{on})},\\
+D_r^{\star}&=\arg\min_{D\in\{\mathrm{on},\mathrm{off}\}}\widehat J_r(D),
+\end{aligned}
+\label{eq:design_switch}
+\end{equation}
+the two settings are indifferent when
+$w_c\,4.990=w_g\,6.943+w_\mu\,6.885+w_t\,7.221$, so a deployment that reads
+structure only keeps Design on if and only if $w_c/w_g>1.39$, while one that
+reads $\mathrm{RMSE}_{\mu}$ alone keeps it off.  On SensorScope all four terms
+move the same way, so Design on is optimal for every weight vector.  The switch
+point is measured on these two blocks and is a decision standard for blocks of
+this kind, not a universal law.  Both settings remain reported on both blocks,
+and Table~\ref{tab:e4_ablation} records what the gate forgoes on U-Air, the
+$4.990\%$ $\Delta_{c\text{-}s}$ gain.
+
+\paragraph{Observation and usable-update correction.}
+Observation correction has a smaller, endpoint-specific effect.  On U-Air,
+removing Obs worsens $\Delta_{\mathrm{group}}$ by $0.123\%$
+(Holm-significant), while its $\Delta_{c\text{-}s}$ and prediction effects are
+not significant.  On SensorScope, the $+0.096\%$ group change is not
+significant after Holm correction, whereas
+$\Delta_{c\text{-}s}$ slightly improves by $0.070\%$ when Obs is removed.
+Thus Obs is best characterized as another endpoint trade-off.  In contrast,
+removing Use produces no significant change in any of the four core endpoints
+on either dataset.  The ablation therefore does not establish the marginal
+indispensability of usable-update correction in this Complete-aligned family;
+the theoretical selection layer remains distinct, but its isolated empirical
+effect is not clearly established here.
+
+\paragraph{Instantaneous calibration and debt.}
+Inst also exhibits a trade-off.  On SensorScope, removing it worsens
+$\Delta_{c\text{-}s}$ by $0.310\%$ (significant), while the
+$-0.260\%$ change in $\Delta_{\mathrm{group}}$ is not significant after Holm
+correction.  On U-Air, the small structural
+changes are not significant, but removing Inst worsens
+$\mathrm{RMSE}_{\mu}$ and tail RMSE by $0.143\%$ and $0.149\%$,
+respectively (both $p_{\mathrm{Holm}}=0.0194$).  Hence Inst exhibits an
+endpoint trade-off, rather than a purely structural role.
+
+Debt has the narrowest but most consistent role.  Removing it significantly
+increases both structural mismatches on both datasets, but only by
+$0.0141\%/0.0040\%$ on SensorScope and
+$0.0043\%/0.0024\%$ on U-Air, well below the $0.5\%$ paired-relative
+minimum practical effect used elsewhere; prediction changes are negligible.
+This matches long-term accounting in \eqref{eq:debt_bound}, not a
+standalone performance driver, and does not establish
+$\|\mathbf Q_R\|_1=o(S_R)$.
+
+\noindent\textbf{Component-removal finding.}
+RAVEN is a coupled correction-and-calibration system, not five monotone
+boosters.  As a reconstruction factor, Design helps SensorScope and
+reverses U-Air primaries while still buying $\Delta_{c\text{-}s}$.
+Removing Design on SensorScope worsens $\Delta_{\mathrm{group}}$ by
+$1.237\%$ (Holm-significant) while $\mathrm{RMSE}_{\mu}$ changes by
+$0.005\%$, so $\Delta_{\mathrm{group}}$ is not evidence that completion
+became more accurate.
+Obs has weaker endpoint-specific effects.  Usable-update correction is
+kept as a sequential selection layer; the ablation does not show an isolated
+effect.  Inst trades finite-window structure against prediction.
+Target debt is a consistent accounting term whose isolated changes stay
+well below the $0.5\%$ practical threshold.
+
+\subsection{Recoverable-Gain Ceiling}
+\label{subsec:ceiling}
+
+The recoverable gain is bounded inside the aggregate class that the method
+defines: weights in $\mathcal{C}_r$ of \eqref{eq:Cr}, selected by (P2), and
+scored by the deployment-target criterion $\mathrm{RMSE}_{\mu}$.  Two measured
+quantities bound it.  The first is the headroom from the uncorrected member
+(FedAvg-Window) to the best member evaluated on true margins, reported as
+$H=(\mathrm{RMSE}_{\mu}(\text{FedAvg})-\mathrm{RMSE}_{\mu}(\text{oracle}))/\mathrm{RMSE}_{\mu}(\text{FedAvg})$
+over a stress grid that varies the opportunity tilt, the tail observation scale,
+the model capacity and the target.  The GO rule was frozen before the runs: GO if
+any condition reaches $H\ge0.5\%$ with a positive interval lower bound.  It did
+not fire.  SensorScope is conclusive at a paired-difference minimum detectable
+effect of $0.17$--$0.36$ percentage points, with all six estimates inside
+$[-0.03\%,+0.08\%]$.  U-Air was re-run at $20$ seeds, $270$ runs and $45$
+regenerated traces, where every estimate satisfies $|H|\le0.217\%$ and every
+$95\%$ interval contains zero.  Its realized detectable effect is $0.70$--$0.80$
+points, so that block excludes effects above about $0.7\%$ and does not resolve
+the $0.5\%$ bar on its own.  Hardening the observation propensity to vary within
+a stratum and to correlate with the label raises the oracle gap by
+$15$--$21\times$, to $0.104\%$ on SensorScope and $0.251\%$ on U-Air, both inside
+the same bound.  The gap is therefore a property of these endpoints rather
+than of a regime that was made too easy.
+
+The second quantity is the cost of estimating the margins themselves, measured
+inside one calibrated member so that only the observation and usable-update
+margins change.  Replacing those two margins with their true values moves
+$\mathrm{RMSE}_{\mu}$ by $-0.008\%$ on SensorScope, oracle value minus calibrated
+value, with a $95\%$ interval of $[-0.041\%,+0.025\%]$, and by $+0.040\%$ on
+U-Air ($[-0.090\%,+0.171\%]$), paired over $20$ seeds.  On SensorScope every
+member of the class we evaluate stays inside $0.08\%$ under the same
+substitution.  On U-Air three of the four members stay inside $0.3\%$, while
+TwoStage-H\'ajek sits $2.04\%$ above the oracle-margin member
+($[1.33\%,2.75\%]$).  The substitution is not small before aggregation: the
+estimated reference differs from the true-margin reference by a median of
+$0.077$ in $\ell_1$ and by up to $1.15$ over the active windows, and it reaches
+the aggregate composition at the same order for the members whose weights
+normalize that reference.  Accurate margin estimates are therefore not what
+holds the prediction endpoint flat; three of the four members are insensitive to
+a large change in their own aggregation weights.
+At the composition level the perturbation is already bounded: \eqref{eq:g4_comp}
+limits the aggregate difference induced by the margin estimates to $\|M_r\|_2$
+times the reference perturbation controlled by
+Proposition~\ref{prop:practical_plugin}.  A metric-level bound of the same form
+would require a transfer assumption between the training and the deployment
+distributions, which Proposition~2 does not make, so the metric-level ceiling
+above is measured, at the minimum detectable effects stated.
+
+\subsection{Limitations}
+\label{subsec:limitations}
+
+RAVEN-Design and City Scanner
+report Design on, and RAVEN-NoDesign reports Design off on U-Air and T-Drive
+($\widehat\zeta^{o}=1$): these are the settings the support gate of
+\eqref{eq:design_gate} returns on those blocks.  Both settings are reported on
+the blocks where the trade-off is material.
+On Table~\ref{tab:main_effectiveness}, SensorScope RAVEN-Design and U-Air
+RAVEN-NoDesign stay within the descriptive $+0.5\%$ TEST tolerance versus
+FedAU-Window and ObsUse-Window; we do not claim a Holm-significant RMSE win.
+Table~\ref{tab:main_effectiveness} is a development table under
+always-on protocol $R$ on station traces, not a real-mobility ranking.
+Table~\ref{tab:tdrive_hybrid} is outside that tolerance:
+FedAU-Window and ObsUse-Window remain strongest under real taxi $R$.
+the NSW-Traffic four-region, City Scanner visit-occupancy, and
+the Pilot~2 measured-$O$ ranking table of the supplemental material are not mixed into
+Table~\ref{tab:main_effectiveness}.
+The Design factor is an explicit configuration on each block's own
+$\pi^{\mathrm{tar}}$ map; neither setting is derived from a data statistic,
+and neither verifies positivity on target-positive pairs.
+A1--A2 remain support and confounding boundaries, and A6a does not hold
+on the released traces, so Proposition~\ref{prop:practical_plugin} is used
+in its $\varepsilon_{\mathrm{stab}}$ form \eqref{eq:eps_stab} rather than in
+the form that cancels the stabilization error.
+The $25.5\%$ figure is EventTrace occurrence ($13040$ of $51200$), not
+the target-coverage statistic of the supplemental material.
+On a frozen coverage-stress oracle, pooled CERTIFIED validity is $0.959$
+and U-Air $a=1.00$ is $0.750$.  Adaptive RESET/CERTIFIED switching is not
+proven valid, and Design is not opened from $\mathrm{Gate}_t$.
+Federated learning itself does not provide a privacy guarantee.
+
+
+\section{Conclusion}
+\label{sec:conclusion}
+
+Windowed-asynchronous federated MCS completion should align selected mass
+with the public deployment target, not with the arrival law of usable
+updates.  RAVEN-Design reconstructs compatible target mass and
+calibrates that reference inside the current feasible window.
+RAVEN-NoDesign uses $\widehat\zeta=1$ and does not reconstruct target mass on that
+layer.  When the two laws differ, their risks are not
+interchangeable.  The ideal sequential correction recovers compatible
+target moments or group mass under A1--A3; it does not prove optimization
+of deployment-target risk.  Calibration is uniquely solvable, and the
+clipped plug-in is a stable perturbation of the same-window reference
+when target support is compatible.
+
+On the protocol development table, SensorScope RAVEN-Design reports
+structural alignment and a descriptive $+0.5\%$ worst-group tolerance,
+not an RMSE win.  U-Air and T-Drive report RAVEN-NoDesign.  Hybrid tables
+are mobility ceilings, not confirmations of
+Table~\ref{tab:main_effectiveness}: FedAU-Window and ObsUse-Window remain
+strongest on T-Drive (Table~\ref{tab:tdrive_hybrid}), FedAvg-Window is
+lowest on the City Scanner visit-occupancy ranking, and TwoStage-H\'ajek is
+lowest on Pilot~2 measured $O$; both rankings are reported in the
+supplemental material.
+$O$ and $U$ are protocol-constructed except Pilot~2 measured $O$.
+Usable-update correction has no isolated effect in the tested family;
+target debt remains internal accounting.
+No ranking jointly measures $R$, $O$, and $U$.
+
+\section*{Data and Code Availability}
+SensorScope, U-Air, NSW-Traffic, and T-Drive are public and cited in
+Section~\ref{subsec:eval_setup}.  T-Drive use follows the published
+Microsoft Research terms~\cite{yuan2010tdrive}.
+City Scanner New York {PM}$_{2.5}$~\cite{wang2023cityscanner}
+(Zenodo 10.5281/zenodo.7961851, CC BY 4.0) is ranked in
+the City Scanner visit-occupancy ranking table of the supplemental material and
+the Pilot~2 measured-$O$ ranking table of the supplemental material.
+The bundle \texttt{RAVEN\_MCS\_PUBLIC\_REPRO\_R1} contains paired seeds,
+frozen targets, EventTraces, tabulated figure and table sources,
+\texttt{SCD\_PHI.csv}, canonical Table~II
+(\texttt{TABLE\_II\_MAIN\_EFFECTIVENESS.csv}),
+the $20$-seed $\mathrm{WorstGroupRMSE}$ Holm family versus FedAU-Window and
+ObsUse-Window, ALL20/TEST10 slice relatives, T-Drive hybrid ranking
+CSVs, the NSW four-region files, City Scanner visit-occupancy ranking
+CSVs (\texttt{cityscanner/}), and Pilot~2 measured-$O$ ranking CSVs
+(\texttt{cityscanner\_p2/}).
+A verifier reconstructs tabulated cells from those CSVs; the
+bundle is not a pinned retraining archive, and NSW four-region is not a
+confirmation experiment.
+
+\bibliographystyle{IEEEtran}
+\bibliography{reference}
+
+\end{document}

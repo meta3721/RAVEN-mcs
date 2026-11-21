@@ -1,0 +1,42 @@
+{
+  "formula": {
+    "Delta_pair": "||Pi_hat - pi_tar||_1",
+    "Pi_hat_k_i": "(1/S_R) sum_r eta_r I_r alpha_{k,r}^{(m)} w_{k,r,i}^{(m)}",
+    "code": "raven_mcs.metrics.distribution.delta_pair"
+  },
+  "method_dependence": [
+    "alpha_method",
+    "w_method"
+  ],
+  "outputs": [
+    "pair_state.parquet",
+    "delta_pair_summary.json"
+  ],
+  "pair_identity": "(client_id, atomic_unit_id)",
+  "required_columns": [
+    "dataset",
+    "seed",
+    "scenario",
+    "method",
+    "window",
+    "client_id",
+    "atomic_unit_id",
+    "spatial_unit",
+    "timestamp",
+    "target_group",
+    "opportunity_stratum",
+    "eta_r",
+    "I_r",
+    "alpha_method",
+    "w_method",
+    "contribution",
+    "target_pair_mass",
+    "pair_support_mask",
+    "normalization_denominator",
+    "eventtrace_hash",
+    "config_hash",
+    "method_source_hash",
+    "schema_version"
+  ],
+  "schema_version": "E3_PAIR_STATE_SCHEMA_V3"
+}

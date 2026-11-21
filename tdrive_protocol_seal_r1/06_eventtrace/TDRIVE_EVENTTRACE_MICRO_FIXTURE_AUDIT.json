@@ -1,0 +1,67 @@
+{
+  "audit": {
+    "hashing_rule": "raven_mcs.simulation.event_trace.freeze_event_trace / compute_trace_hash",
+    "mean_observation_rate": 0.35,
+    "method_argument_ignored": true,
+    "n_clients": 2,
+    "n_event_rows": 4,
+    "n_long_rows": 8,
+    "n_windows": 3,
+    "o_source": "controlled Bernoulli p_obs on R=1",
+    "r_source": "client_measurements inner-joined to train atomic units",
+    "s_max": 5,
+    "u_source": "e3.real_runner.stage2_r3.compute_usable_r3"
+  },
+  "checks": {
+    "controlled_o_or_u_changes_with_seed": true,
+    "deterministic_replay": true,
+    "h_deterministic": true,
+    "method_independence": true,
+    "no_model_fitting": true,
+    "no_post_outcome_fields": true,
+    "r_identical_across_seeds": true,
+    "s_from_processed": true,
+    "same_seed_same_trace": true
+  },
+  "identity_payload_sha256": "ca260e3dd363e680e6337b0dcf33d8e89a8490cfa74560c1ba0dd4effacb23f4",
+  "metadata_a": {
+    "dataset": "tdrive_speed",
+    "generator": "tdrive-complete-aligned-r1-v1",
+    "notes": [
+      "R from processed client-fleet measurements",
+      "O/U Complete-aligned controlled transfer from E3",
+      "method-independent"
+    ],
+    "num_clients": 2,
+    "num_windows": 3,
+    "s_max": 5,
+    "seed": 31999
+  },
+  "n_atomic_units": 8,
+  "n_spatial_cells": 4,
+  "n_taxis": 2,
+  "n_time_slots": 3,
+  "paper_use": "NOT_FOR_PAPER_USE",
+  "seed": 31999,
+  "status": "PASS",
+  "subset_clients": [
+    "vehicle::8708",
+    "vehicle::4447",
+    "vehicle::7362"
+  ],
+  "subset_spatials": [
+    "g0051_0072",
+    "g0051_0071",
+    "g0051_0076",
+    "g0051_0073"
+  ],
+  "subset_time_indices": [
+    0,
+    1,
+    2
+  ],
+  "trace_hash_other_method": "0a125979e1f0a9d0badfff4fba479b7b64fa924d603ad89ab047a13561b51ec3",
+  "trace_hash_other_seed": "0be75a05ae49c6af0082c6be90193bc82ea627248ea53cf699f90c65c9e5a11b",
+  "trace_hash_replay": "0a125979e1f0a9d0badfff4fba479b7b64fa924d603ad89ab047a13561b51ec3",
+  "trace_hash_seed": "0a125979e1f0a9d0badfff4fba479b7b64fa924d603ad89ab047a13561b51ec3"
+}

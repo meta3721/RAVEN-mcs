@@ -1,0 +1,6 @@
+dataset,method,n,rmse_mu_mean,rmse_mu_std,worstgroup_mean,worstgroup_std,delta_group_mean,delta_group_std,delta_cs_mean,delta_cs_std
+cityscanner_nyc_p2_measured_o_no2,fedavg_window,10,0.9578,0.0013,1.0747,0.0067,0.0368,0.0218,0.7394,0.0183
+cityscanner_nyc_p2_measured_o_no2,twostage_hajek,10,0.9602,0.0022,1.0862,0.0110,0.0727,0.0235,0.4258,0.0195
+cityscanner_nyc_p2_measured_o_no2,fedau_window,10,0.9555,0.0010,1.0693,0.0021,0.2258,0.0479,1.0407,0.0375
+cityscanner_nyc_p2_measured_o_no2,obsuse_window,10,0.9556,0.0010,1.0694,0.0021,0.2340,0.0472,1.0483,0.0382
+cityscanner_nyc_p2_measured_o_no2,raven,10,0.9597,0.0020,1.0837,0.0102,0.0859,0.0128,0.4613,0.0178

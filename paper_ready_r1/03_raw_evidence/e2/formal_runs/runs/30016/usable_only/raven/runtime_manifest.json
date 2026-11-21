@@ -1,0 +1,80 @@
+{
+  "attempt": 1,
+  "completed_windows": 100,
+  "end_time_utc": "2026-08-08T20:49:22.825540+00:00",
+  "eventtrace_dir": "artifacts/e2_traffic_formal_runs_r1/eventtraces/30016/usable_only/training_eventtrace",
+  "eventtrace_events_sha256": "1549ee0a72e7a56096e6e43c4e304415701d3bd3f3396a959097a93cbbb2ed1d",
+  "eventtrace_identity": {
+    "events_sha256": "1549ee0a72e7a56096e6e43c4e304415701d3bd3f3396a959097a93cbbb2ed1d",
+    "metadata": {
+      "dataset": "traffic",
+      "generator": "traffic-profile-s1-hard-aou-bridge-v1",
+      "notes": [
+        "scenario=usable_only",
+        "PROFILE-S1",
+        "station=client"
+      ],
+      "num_clients": 43,
+      "num_windows": 100,
+      "s_max": 5,
+      "seed": 30016
+    },
+    "metadata_sha256": "8bea49877230dd3a4d867af72f6cd16f70704e4a3866c16f81dc6ba49070fd48",
+    "trace_hash": "09402d7578089eb1b5313be5002e66ac7b1dac8869e2296e2297d6595aed85ae"
+  },
+  "exit_code": 0,
+  "failure_reason": null,
+  "final_metrics": {
+    "Gap_mis": -0.041274773540875165,
+    "P2_solver_failure_count": 0,
+    "RMSE_mu": 1.0063112822359899,
+    "RMSE_rho": 1.047586055776865,
+    "active_window_count": 100,
+    "arrival_weight_sum": 1.0,
+    "clip_rate_stage1": 0.021042874046170192,
+    "clip_rate_stage2": 0.0,
+    "completed_windows": 100,
+    "denominator_zero_count": 0,
+    "effective_sample_size_mean": 1.304327808471455,
+    "empirical_risk_objective": 1.047586055776865,
+    "failed_attempt_count": 873,
+    "group_rmse": {
+      "block0": 0.8011855905684382,
+      "block1": 1.207821801378407,
+      "block2": 1.198371648039197,
+      "block3": 0.716814568614583
+    },
+    "hard_arrival_count": 1691,
+    "nonfinite_loss_count": 0,
+    "nonfinite_model_parameter_count": 0,
+    "policy": {
+      "uses_debt": true,
+      "uses_design_ratio": true,
+      "uses_hajek_local_loss": true,
+      "uses_instant_calibration": true,
+      "uses_observation_ipw": true,
+      "uses_staleness_penalty": true,
+      "uses_usable_ipw": true,
+      "uses_variance_penalty": true
+    },
+    "stale_update_count": 1053,
+    "target_risk_objective": 1.0063112822359899,
+    "target_weight_sum": 1.0
+  },
+  "local_steps": 2,
+  "method": "raven",
+  "method_display": "RAVEN",
+  "n_groups": 4,
+  "peak_memory_mb": null,
+  "profile_id": "PROFILE-S1",
+  "retry_count": 0,
+  "runtime_seconds": 73.55933359999472,
+  "s_max": 5,
+  "scenario": "usable_only",
+  "scenario_label": "S4",
+  "seed": 30016,
+  "seed_replacement_count": 0,
+  "start_time_utc": "2026-08-08T20:48:09.253395+00:00",
+  "status": "PASS",
+  "warnings": []
+}

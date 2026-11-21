@@ -1,0 +1,58 @@
+{
+  "pass": false,
+  "stage": "B",
+  "rule": "R: for fedavg_window only, a client-window whose (client_id, opportunity_stratum) has pi_tar = 0 is not in A_r, implemented by zeroing U on those event rows in a copied trace",
+  "what_passed": {
+    "active_client_set_equal_on_every_window": true,
+    "dgroup_abs_diff_within_1e-9": true
+  },
+  "what_failed": {
+    "rmse_abs_diff_within_1e-9": false
+  },
+  "rows": [
+    {
+      "seed": 30001,
+      "RMSE_mu_v2": 1.2087917088362539,
+      "RMSE_mu_frozen": 1.210848485707097,
+      "rmse_abs_diff": 0.0020567768708430467,
+      "rmse_rel_pct_vs_frozen": -0.16986244729388703,
+      "Delta_group_v2": 1.1131258678428484,
+      "Delta_group_frozen": 1.1131258678428484,
+      "dgroup_abs_diff": 0.0,
+      "Head_RMSE_v2": 1.1993863226263677,
+      "Head_RMSE_frozen": 1.2013683736925316,
+      "Tail_RMSE_v2": 1.2177800937244936,
+      "Tail_RMSE_frozen": 1.2199078552171159,
+      "n_windows_active_v2": 66,
+      "n_windows_active_frozen": 66,
+      "active_set_equal": true,
+      "n_windows_differing": 0,
+      "differing_windows": [],
+      "round_v1_rerun_RMSE_mu": 1.1712625825964957,
+      "round_u1_rerun_RMSE_mu": null
+    },
+    {
+      "seed": 30006,
+      "RMSE_mu_v2": 1.283747764123245,
+      "RMSE_mu_frozen": 1.2856115928072611,
+      "rmse_abs_diff": 0.0018638286840160223,
+      "rmse_rel_pct_vs_frozen": -0.1449760327647767,
+      "Delta_group_v2": 1.1951358777035557,
+      "Delta_group_frozen": 1.1951358777035557,
+      "dgroup_abs_diff": 0.0,
+      "Head_RMSE_v2": 1.2693076919034543,
+      "Head_RMSE_frozen": 1.27095416952866,
+      "Tail_RMSE_v2": 1.297501140017893,
+      "Tail_RMSE_frozen": 1.2995699125252378,
+      "n_windows_active_v2": 69,
+      "n_windows_active_frozen": 69,
+      "active_set_equal": true,
+      "n_windows_differing": 0,
+      "differing_windows": [],
+      "round_v1_rerun_RMSE_mu": null,
+      "round_u1_rerun_RMSE_mu": 1.1502492213912836
+    }
+  ],
+  "pre_registered_consequence": "any miss stops the round; no waiver added, rule R unchanged, the other 18 C0 seeds and C1-C5 not started",
+  "utc_note": "Stage B executed 2026-10-05; two runs only."
+}

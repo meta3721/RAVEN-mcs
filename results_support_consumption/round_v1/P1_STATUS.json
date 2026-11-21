@@ -1,0 +1,34 @@
+{
+  "stage": "P1",
+  "status": "NO_STRUCTURAL_ADVANTAGE",
+  "judgment": {
+    "status": "NO_STRUCTURAL_ADVANTAGE",
+    "unmet": [
+      {
+        "seed": "pooled",
+        "metric": "complementary_rate",
+        "value": 0.09,
+        "threshold": 0.1
+      }
+    ],
+    "identical": [],
+    "dominated": [
+      33002
+    ],
+    "pooled_complement_rate": 0.09
+  },
+  "training": false,
+  "prediction_gain": false,
+  "sample": {
+    "cpu_seconds": 8.765625,
+    "wall_seconds": 9.152863499999512,
+    "remaining_cpu": 591.234375,
+    "remaining_wall": 1190.8471365000005,
+    "rss_bytes": 237084672,
+    "peak_rss_bytes": 241733632,
+    "available_bytes": 4445396992,
+    "min_available_bytes": 4435218432,
+    "descendant_count": 0,
+    "complete": true
+  }
+}

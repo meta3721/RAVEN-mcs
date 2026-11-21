@@ -1,0 +1,36 @@
+{
+  "N3_prime": {
+    "sensorscope": {
+      "c_central_delivered": 7.952597152468874,
+      "eta_s_star": 0.01,
+      "frozen_fedavg_window": 7.908941521700865,
+      "new_fedavg": 7.84527305561617,
+      "ratio_to_c": 0.9865045223849438,
+      "threshold_1p01c": 8.032123123993562,
+      "verdict": "PASS",
+      "vs_frozen_fedavg_rel": -0.008050187994183444
+    },
+    "traffic": {
+      "c_central_delivered": 0.9737694569747332,
+      "eta_s_star": 0.003,
+      "frozen_fedavg_window": null,
+      "new_fedavg": 0.8350944692092265,
+      "ratio_to_c": 0.8575895076886716,
+      "threshold_1p01c": 0.9835071515444805,
+      "verdict": "PASS",
+      "vs_frozen_fedavg_rel": null
+    },
+    "uair": {
+      "c_central_delivered": 1.1735735654775155,
+      "eta_s_star": 0.003,
+      "frozen_fedavg_window": 1.1599245853724733,
+      "new_fedavg": 0.9774940049430552,
+      "ratio_to_c": 0.8329209464984179,
+      "threshold_1p01c": 1.1853093011322906,
+      "verdict": "PASS",
+      "vs_frozen_fedavg_rel": -0.15727796680060568
+    }
+  },
+  "created_utc": "2026-10-08T11:16:45.451700+00:00",
+  "frozen_config_sha256": "a041ba42e9c139f70356a5cbe0213cb15f6819123dd16e4b678a45ed82df4cde"
+}

@@ -1,0 +1,17 @@
+dataset,metric,comparison,holm_family,n,mean_diff_left_minus_right,effect_size,wins,ties,losses,p_raw,p_holm,test_status,significant_holm_0.05
+sensorscope,RMSE_mu,raven_vs_fedau,sensorscope:raven_vs_fedau:4metrics,20,0.0016022462820988626,0.08643764872196871,9,0,11,0.7561664581298828,1.0,WILCOXON,False
+sensorscope,RMSE_mu,fedau_vs_fedavg,sensorscope:fedau_vs_fedavg:4metrics,20,-0.002506800181965607,-0.1597782651128167,12,0,8,0.5458755493164062,1.0,WILCOXON,False
+sensorscope,Tail_RMSE,raven_vs_fedau,sensorscope:raven_vs_fedau:4metrics,20,0.0016147911449720276,0.08536323870096305,9,0,11,0.7561664581298828,1.0,WILCOXON,False
+sensorscope,Tail_RMSE,fedau_vs_fedavg,sensorscope:fedau_vs_fedavg:4metrics,20,-0.0025382640614654227,-0.15856372155322918,12,0,8,0.5458755493164062,1.0,WILCOXON,False
+sensorscope,Delta_group,raven_vs_fedau,sensorscope:raven_vs_fedau:4metrics,20,-0.05792461548180091,-3.4933141436757382,20,0,0,1.9073486328125e-06,7.62939453125e-06,WILCOXON,True
+sensorscope,Delta_group,fedau_vs_fedavg,sensorscope:fedau_vs_fedavg:4metrics,20,0.016093541426039682,0.9518252589770444,4,0,16,0.000850677490234375,0.002552032470703125,WILCOXON,True
+sensorscope,Delta_c_s,raven_vs_fedau,sensorscope:raven_vs_fedau:4metrics,20,-0.04130767182128403,-3.3974021556204734,20,0,0,1.9073486328125e-06,7.62939453125e-06,WILCOXON,True
+sensorscope,Delta_c_s,fedau_vs_fedavg,sensorscope:fedau_vs_fedavg:4metrics,20,0.015369159436747826,1.1597405169955477,3,0,17,0.0001678466796875,0.00067138671875,WILCOXON,True
+uair,RMSE_mu,raven_vs_fedau,uair:raven_vs_fedau:4metrics,20,0.07830119113257042,2.176241885702072,0,0,20,1.9073486328125e-06,7.62939453125e-06,WILCOXON,True
+uair,RMSE_mu,fedau_vs_fedavg,uair:fedau_vs_fedavg:4metrics,20,-0.0754249871896267,-2.0225269342367564,20,0,0,1.9073486328125e-06,7.62939453125e-06,WILCOXON,True
+uair,Tail_RMSE,raven_vs_fedau,uair:raven_vs_fedau:4metrics,20,0.08271748944453862,2.182329439224542,0,0,20,1.9073486328125e-06,7.62939453125e-06,WILCOXON,True
+uair,Tail_RMSE,fedau_vs_fedavg,uair:fedau_vs_fedavg:4metrics,20,-0.07969895929842664,-2.0278421442749233,20,0,0,1.9073486328125e-06,7.62939453125e-06,WILCOXON,True
+uair,Delta_group,raven_vs_fedau,uair:raven_vs_fedau:4metrics,20,0.036691339469462056,1.4189088217796353,2,0,18,9.5367431640625e-06,9.5367431640625e-06,WILCOXON,True
+uair,Delta_group,fedau_vs_fedavg,uair:fedau_vs_fedavg:4metrics,20,-0.06609099368530189,-2.767406841172501,20,0,0,1.9073486328125e-06,7.62939453125e-06,WILCOXON,True
+uair,Delta_c_s,raven_vs_fedau,uair:raven_vs_fedau:4metrics,20,-0.09571278092332516,-4.571247165092024,20,0,0,1.9073486328125e-06,7.62939453125e-06,WILCOXON,True
+uair,Delta_c_s,fedau_vs_fedavg,uair:fedau_vs_fedavg:4metrics,20,0.06697092476252588,3.925371951315282,0,0,20,1.9073486328125e-06,7.62939453125e-06,WILCOXON,True

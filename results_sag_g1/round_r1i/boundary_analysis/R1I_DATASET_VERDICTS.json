@@ -1,0 +1,28 @@
+{
+  "by_dataset": [
+    {
+      "MILD_SAFE_EXISTS": true,
+      "SEVERE_UNSAFE_EXISTS": true,
+      "all_safe": false,
+      "all_unsafe": false,
+      "dataset": "sensorscope",
+      "monotone_transition": true,
+      "n_boundary_near": 44,
+      "n_boundary_rich_levels": 1,
+      "n_crossing_windows": 62,
+      "verdict": "BOUNDARY_USABLE"
+    },
+    {
+      "MILD_SAFE_EXISTS": true,
+      "SEVERE_UNSAFE_EXISTS": false,
+      "all_safe": false,
+      "all_unsafe": false,
+      "dataset": "uair",
+      "monotone_transition": true,
+      "n_boundary_near": 27,
+      "n_boundary_rich_levels": 1,
+      "n_crossing_windows": 33,
+      "verdict": "BOUNDARY_PARTIALLY_USABLE"
+    }
+  ]
+}

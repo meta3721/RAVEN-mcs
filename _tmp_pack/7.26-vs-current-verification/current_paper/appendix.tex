@@ -1,0 +1,2358 @@
+\appendices
+\section{Complete Proofs for Sections III--VI}
+\label{app:complete_proofs}
+
+This appendix provides the complete proofs deferred from
+Section~VI.  All notation and assumptions are inherited from
+Sections~III--VI.  In particular,
+$\boldsymbol\varpi^{\mathrm{tar}}$ is the public atomic deployment-target law,
+and $\pi^{\mathrm{tar}}_{k,i}$ is the compatible client--atomic target law.
+$P_r^{\mathrm{opp}}(k,i)$ is the opportunity-event law, while
+$p^{\mathrm{obs}}_{k,r,i}$ and $q^{\mathrm{use}}_{k,r}$ are sequential
+pre-outcome selection probabilities.  Finally, $\mathcal{C}_r$ is the feasible
+aggregation set of (P2).
+
+\subsection{Deferred Constructions from the Main Text}
+\label{app:deferred_constructions}
+
+The compatible client--stratum target used for opportunity correction is
+\begin{equation}
+    \Lambda_s^{\mathrm{tar}}
+    =
+    \sum_{i:s(i)=s}\varpi_i^{\mathrm{tar}}.
+    \label{eq:target_stratum_mass}
+\end{equation}
+For $\Lambda_s^{\mathrm{tar}}>0$,
+\begin{equation}
+    \nu^{\mathrm{tar}}_{i\mid s}
+    =
+    \frac{\varpi_i^{\mathrm{tar}}}
+         {\Lambda_s^{\mathrm{tar}}},
+    \qquad s(i)=s,
+    \label{eq:target_conditional_atomic}
+\end{equation}
+and $\lambda^{\mathrm{tar}}_{k\mid s}\ge0$ is a frozen public client share
+with $\sum_k\lambda^{\mathrm{tar}}_{k\mid s}=1$.  Then
+\begin{equation}
+ \pi^{\mathrm{tar}}_{k,s}
+ =
+ \begin{cases}
+ \Lambda_s^{\mathrm{tar}}\lambda^{\mathrm{tar}}_{k\mid s},
+ & \Lambda_s^{\mathrm{tar}}>0,\\
+ 0, & \Lambda_s^{\mathrm{tar}}=0,
+ \end{cases}
+ \label{eq:target_ks_mass}
+\end{equation}
+and
+\begin{equation}
+ \pi^{\mathrm{tar}}_{k,i}
+ =
+ \begin{cases}
+ \pi^{\mathrm{tar}}_{k,s(i)}
+ \nu^{\mathrm{tar}}_{i\mid s(i)},
+ & \Lambda_{s(i)}^{\mathrm{tar}}>0,\\
+ 0, & \Lambda_{s(i)}^{\mathrm{tar}}=0.
+ \end{cases}
+ \label{eq:target_ki_mass}
+\end{equation}
+
+\subsubsection{Target-Positive Pairs, Coverage, and the Heuristic Lookup}
+\label{app:itar_lookup}
+The set $I_{\mathrm{tar}}=\{(k,s):\pi^{\mathrm{tar}}_{k,s}>0\}$ and the
+coverage $C_t$ in (6) use $\pi^{\mathrm{tar}}_{k,s}$ from
+\eqref{eq:target_ks_mass}.  For unit $i$, $k(i)$ is the unique FL client
+attached to $i$ on the frozen occupancy map: the spatial identity of $i$
+under the same client map that builds \eqref{eq:target_ks_mass}.
+SensorScope and U-Air attach stations; T-Drive and City Scanner attach
+occupied cells.  The heuristic lookup is $\pi^{\mathrm{tar}}(k(i),s(i))$ on
+that map; a missing key is $0$.  When several clients realize
+opportunity on the same unit, $\phi$ still uses only the attached
+client.  The count $\phi$ in (32) is the train-unit
+fraction of those zeros, not $\#\{i:\varpi_i^{\mathrm{tar}}=0\}$, and
+not a positivity check on target-positive pairs.
+The pair opportunity mass $\pi^{\mathrm{opp}}_{k,s,t}$ is
+$F_{t-}$-measurable on the same client--stratum key.
+Because $\sum_{k,s}\pi^{\mathrm{tar}}_{k,s}=1$, (6) equals
+the ratio of certified mass to total positive target mass.
+Per-block lookup constructions and the published $\phi$ counts are in
+Table~\ref{tab:scd_phi_freeze}.
+
+A2's usable-update mean-ignorability display is
+\begin{equation}
+ \mathbb{E}\!\left[
+ \left.
+ \frac{U_{k,r}}{q^{\mathrm{use}}_{k,r}}
+ \right|
+ \mathcal{H}^{\mathrm{use}}_{k,r},
+ O_e=1,k_e=k,i_e=i
+ \right]
+ =1.
+ \label{eq:A2_use_mean_ignorability}
+\end{equation}
+The coordinate cap and $\ell_2$ support bound in (25) are
+\begin{equation}
+\begin{aligned}
+ \overline\alpha_r
+ &=
+ \min\!\left\{
+ 1,
+ \max\!\left\{
+ \alpha_{\max},
+ \frac{1}{K_r}
+ \right\}
+ \right\},\\
+ \overline E_r
+ &=
+ \min\{E_{\min},K_r\}.
+\end{aligned}
+ \label{eq:cap_ess}
+\end{equation}
+The Lipschitz constant in (38) is
+\begin{multline}
+C_1
+=
+\frac{2K_r n_r}{B_{\min}}
+\max\Biggl\{
+\frac{d_{\max}}{\pi_{\min}^2 p_{\min}},\;
+\frac{d_{\max}}{\pi_{\min}p_{\min}p_{\min}^{\mathrm{true}}},\\
+\frac{a_{\max}}{q_{\min}q_{\min}^{\mathrm{true}}},\;
+a_{\max}+d_{\max}
+\Biggr\}.
+\label{eq:g4_c1}
+\end{multline}
+The ideal untruncated factorization of the sequential weight is
+\begin{equation}
+ \beta^\star_{k,r}\overline a^\star_{k,r,i}
+ \propto
+ R_{k,r,i}O_{k,r,i}U_{k,r}
+ \frac{\zeta^{o}_{k,r,i}}
+ {p^{\mathrm{obs}}_{k,r,i}q^{\mathrm{use}}_{k,r}},
+ \label{eq:factorized_global_weight}
+\end{equation}
+where
+$m^\star_{k,r}=\sum_i R_{k,r,i}O_{k,r,i}a^\star_{k,r,i}$,
+$\overline a^\star_{k,r,i}=R_{k,r,i}O_{k,r,i}a^\star_{k,r,i}/m^\star_{k,r}$,
+$d^\star_{k,r}=1/q^{\mathrm{use}}_{k,r}$, and
+$\beta^\star_{k,r}=U_{k,r}m^\star_{k,r}d^\star_{k,r}/
+\sum_j U_{j,r}m^\star_{j,r}d^\star_{j,r}$.
+
+\subsection{Proof of Proposition~1}
+\label{app:proof_prop1}
+
+\begin{proposition*}[Target-vs-arrival risk distinction]
+Let $\boldsymbol\varpi^{\mathrm{tar}}$ and
+$\widetilde{\boldsymbol\rho}^{\mathrm{arr}}$ be two normalized laws on the same
+finite supported atomic domain.  If
+$\boldsymbol\varpi^{\mathrm{tar}}\neq
+\widetilde{\boldsymbol\rho}^{\mathrm{arr}}$, then there exists a bounded
+nonnegative error profile $e_i$ such that
+\begin{equation}
+    \sum_i \varpi_i^{\mathrm{tar}}e_i
+    \neq
+    \sum_i \widetilde\rho_i^{\mathrm{arr}}e_i.
+    \label{eq:app_prop1_claim}
+\end{equation}
+Conversely, equality of the two weighted expectations for every bounded error
+profile implies equality of the two underlying laws.
+\end{proposition*}
+
+\noindent\emph{Proof.}
+Define $d_i\triangleq\varpi_i^{\mathrm{tar}}-\widetilde\rho_i^{\mathrm{arr}}$.
+Because both vectors are probability laws,
+\begin{equation}
+    \sum_i d_i=0.
+    \label{eq:app_prop1_zero_sum}
+\end{equation}
+The assumption
+$\boldsymbol\varpi^{\mathrm{tar}}\neq
+\widetilde{\boldsymbol\rho}^{\mathrm{arr}}$
+implies that $d_i\neq0$ for at least one atomic unit.  Hence the set
+$B_+\triangleq\{i:d_i>0\}$
+is nonempty.  Indeed, if $d_i\le0$ for every $i$, then
+\eqref{eq:app_prop1_zero_sum} would force $d_i=0$ for every $i$, contradicting
+the assumed inequality of the two laws.
+
+Choose the bounded nonnegative profile
+$e_i=\mathbf{1}\{i\in B_+\}$.
+Then
+\begin{align}
+ &
+ \sum_i
+ \varpi_i^{\mathrm{tar}}e_i
+ -
+ \sum_i
+ \widetilde\rho_i^{\mathrm{arr}}e_i
+ \nonumber\\
+ &\qquad=
+ \sum_{i\in B_+}
+ \left(
+ \varpi_i^{\mathrm{tar}}
+ -
+ \widetilde\rho_i^{\mathrm{arr}}
+ \right)
+ =
+ \sum_{i\in B_+}d_i
+ >0.
+ \label{eq:app_prop1_difference}
+\end{align}
+Therefore, the two weighted expectations differ for the bounded nonnegative
+profile $e_i=\mathbf{1}\{i\in B_+\}$.  This proves the forward direction.
+
+For the converse, suppose
+\begin{equation}
+    \sum_i \varpi_i^{\mathrm{tar}}e_i
+    =
+    \sum_i \widetilde\rho_i^{\mathrm{arr}}e_i
+    \label{eq:app_prop1_all_equal}
+\end{equation}
+for every bounded error profile $e$.  Fix an arbitrary atomic unit $j$ and set
+$e_i^{(j)}=\mathbf{1}\{i=j\}$.
+Substituting $e_i^{(j)}$ into
+\eqref{eq:app_prop1_all_equal} gives
+$\varpi_j^{\mathrm{tar}}=\widetilde\rho_j^{\mathrm{arr}}$.
+Since $j$ was arbitrary, the equality holds for every coordinate.  Hence
+$\boldsymbol\varpi^{\mathrm{tar}}=\widetilde{\boldsymbol\rho}^{\mathrm{arr}}$.
+This proves the converse. \hfill$\square$
+
+\paragraph{Interpretation.}
+The proposition proves that the two probability laws induce different linear
+risk functionals whenever the laws differ.  It does not claim that a particular
+fixed predictor must exhibit a nonzero numerical gap.  Nor does it claim that
+the minimizers must differ for every restricted model class.
+
+
+\subsection{Proof of Proposition~2}
+\label{app:proof_prop2}
+
+\begin{proposition*}[Normalized target reconstruction]
+Under A1--A3, for any bounded test function $\psi(k,i)$, distinct from
+the Design fraction $\phi$ in (32), the H\'ajek ratio in
+(35) converges in probability to
+\begin{equation}
+    \Phi^{\mathrm{tar}}
+    =
+    \sum_{k,i}
+    \pi^{\mathrm{tar}}_{k,i}\psi(k,i).
+    \label{eq:app_target_phi}
+\end{equation}
+\end{proposition*}
+
+\noindent\emph{Proof.}
+We first record two identities used by the proof.
+
+\subsubsection{Target-Measure Compatibility}
+
+For every stratum $s$ with $\Lambda_s^{\mathrm{tar}}>0$,
+\eqref{eq:target_conditional_atomic} gives
+\begin{equation}
+    \sum_{i:s(i)=s}
+    \nu^{\mathrm{tar}}_{i\mid s}
+    =
+    \frac{
+    \sum_{i:s(i)=s}\varpi_i^{\mathrm{tar}}
+    }{
+    \Lambda_s^{\mathrm{tar}}
+    }
+    =1.
+    \label{eq:app_nu_normalization}
+\end{equation}
+For an atomic unit $i$ whose stratum has positive target mass, using
+$\pi^{\mathrm{tar}}_{k,s}
+=\Lambda_s^{\mathrm{tar}}
+\lambda^{\mathrm{tar}}_{k\mid s}$ and
+$\sum_k\lambda^{\mathrm{tar}}_{k\mid s}=1$ gives
+\begin{align}
+ \sum_k\pi^{\mathrm{tar}}_{k,i}
+ &=
+ \sum_k
+ \pi^{\mathrm{tar}}_{k,s(i)}
+ \nu^{\mathrm{tar}}_{i\mid s(i)}
+ \nonumber\\
+ &=
+ \Lambda_{s(i)}^{\mathrm{tar}}
+ \nu^{\mathrm{tar}}_{i\mid s(i)}
+ \sum_k
+ \lambda^{\mathrm{tar}}_{k\mid s(i)}
+ \nonumber\\
+ &=
+ \Lambda_{s(i)}^{\mathrm{tar}}
+ \frac{\varpi_i^{\mathrm{tar}}}
+ {\Lambda_{s(i)}^{\mathrm{tar}}}
+ =
+ \varpi_i^{\mathrm{tar}}.
+ \label{eq:app_target_compatibility_positive}
+\end{align}
+If instead $\Lambda_{s(i)}^{\mathrm{tar}}=0$, then nonnegativity and
+\eqref{eq:target_stratum_mass} imply $\varpi_i^{\mathrm{tar}}=0$.  The
+zero-stratum convention in
+\eqref{eq:target_ks_mass}--\eqref{eq:target_ki_mass}
+gives $\pi^{\mathrm{tar}}_{k,i}=0$ for every $k$.  Hence, in both cases,
+\begin{equation}
+ \sum_k\pi^{\mathrm{tar}}_{k,i}
+ =\varpi_i^{\mathrm{tar}}.
+ \label{eq:app_target_compatibility}
+\end{equation}
+Summing over $i$ also yields
+\begin{equation}
+    \sum_{k,i}\pi^{\mathrm{tar}}_{k,i}
+    =
+    \sum_i\varpi_i^{\mathrm{tar}}
+    =1.
+    \label{eq:app_pi_normalized}
+\end{equation}
+
+\subsubsection{Sequential Inverse-Selection Identity}
+
+Consider an opportunity event $e\in\mathcal{O}_r$ with mark
+$(k_e,i_e)=(k,i)$.  For compactness, write
+$p_e\triangleq p^{\mathrm{obs}}_{k,r,i}$ and
+$q_{k,r}\triangleq q^{\mathrm{use}}_{k,r}$.
+Under A1, both denominators are strictly positive on the target-supported event.
+
+Let $\mathcal{H}^{\mathrm{obs}}_e$ denote the legal history immediately before
+the observation outcome.  By the definition of $p_e$ and A2,
+\begin{equation}
+    \mathbb{E}
+    \left[
+    \left.
+    \frac{O_e}{p_e}
+    \right|
+    k_e=k,\,
+    i_e=i,\,
+    \mathcal{H}^{\mathrm{obs}}_e
+    \right]
+    =1.
+    \label{eq:app_obs_ipw}
+\end{equation}
+If $O_e=1$, client $k$ has at least one observed item and is therefore in the
+registered-attempt set $\mathcal{E}_r$.  Conditional on the legal pre-$U$
+history $\mathcal{H}^{\mathrm{use}}_{k,r}$, the definition of $q_{k,r}$ and A2
+give
+\begin{equation}
+    \mathbb{E}
+    \left[
+    \left.
+    \frac{U_{k,r}}{q_{k,r}}
+    \right|
+    k\in\mathcal{E}_r,\,
+    \mathcal{H}^{\mathrm{use}}_{k,r}
+    \right]
+    =1.
+    \label{eq:app_use_ipw}
+\end{equation}
+The usable-update indicator may be shared by several observed opportunity
+events of the same client-window.  This induces within-window dependence, but
+it does not invalidate the conditional identity
+\eqref{eq:app_use_ipw}.  A3 handles such dependence at the
+cluster/window level.
+
+Applying the tower property in the temporal order
+opportunity $\rightarrow$ observation $\rightarrow$ registration/use, and using
+\eqref{eq:A2_use_mean_ignorability} on the $O_e=1$ branch, gives
+\begin{align}
+ &\mathbb{E}\!\left[
+ \left.
+ \frac{O_eU_{k,r}}{p_eq_{k,r}}
+ \right|
+ k_e=k,\,i_e=i,\,\mathcal{H}^{\mathrm{obs}}_e
+ \right]
+ \nonumber\\
+ &\qquad=
+ \mathbb{E}\!\left[
+ \left.
+ \frac{O_e}{p_e}
+ \right|
+ k_e=k,\,i_e=i,\,\mathcal{H}^{\mathrm{obs}}_e
+ \right]
+ =1.
+ \label{eq:app_sequential_identity}
+\end{align}
+The inner conditional expectation is evaluated only on the $O_e=1$ branch,
+where client $k$ is registered.  It equals one by the strengthened
+mean-ignorability condition \eqref{eq:A2_use_mean_ignorability}.  The outer
+expectation is then \eqref{eq:app_obs_ipw}.
+
+With these two identities in hand, we prove the proposition.
+For event $e\in\mathcal{O}_r$, recall
+\begin{equation}
+ \chi_e
+ =
+ O_eU_{k_e,r}
+ \frac{
+ \pi^{\mathrm{tar}}_{k_e,i_e}
+ }{
+ P_r^{\mathrm{opp}}(k_e,i_e)
+ p^{\mathrm{obs}}_{k_e,r,i_e}
+ q^{\mathrm{use}}_{k_e,r}
+ }.
+ \label{eq:app_chi}
+\end{equation}
+Condition first on the opportunity mark $(k_e,i_e)=(k,i)$.  Using
+\eqref{eq:app_sequential_identity},
+\begin{align}
+ &\mathbb{E}
+ \left[
+ \left.
+ \chi_e\psi(k_e,i_e)
+ \right|
+ k_e=k,\,
+ i_e=i
+ \right]
+ \nonumber\\
+ &=
+ \frac{
+ \pi^{\mathrm{tar}}_{k,i}
+ }{
+ P_r^{\mathrm{opp}}(k,i)
+ }
+ \psi(k,i)
+ \,
+ \mathbb{E}
+ \left[
+ \left.
+ \frac{
+ O_eU_{k,r}
+ }{
+ p^{\mathrm{obs}}_{k,r,i}
+ q^{\mathrm{use}}_{k,r}
+ }
+ \right|
+ k_e=k,\,
+ i_e=i
+ \right]
+ \nonumber\\
+ &=
+ \frac{
+ \pi^{\mathrm{tar}}_{k,i}
+ }{
+ P_r^{\mathrm{opp}}(k,i)
+ }
+ \psi(k,i).
+ \label{eq:app_conditional_weighted_moment}
+\end{align}
+By (1), the mark itself has opportunity law
+$P_r^{\mathrm{opp}}(k,i)$.  Averaging
+\eqref{eq:app_conditional_weighted_moment} over this law therefore yields
+\begin{align}
+ \mathbb{E}
+ \left[
+ \chi_e\psi(k_e,i_e)
+ \right]
+ &=
+ \sum_{k,i}
+ P_r^{\mathrm{opp}}(k,i)
+ \frac{
+ \pi^{\mathrm{tar}}_{k,i}
+ }{
+ P_r^{\mathrm{opp}}(k,i)
+ }
+ \psi(k,i)
+ \nonumber\\
+ &=
+ \sum_{k,i}
+ \pi^{\mathrm{tar}}_{k,i}\psi(k,i)
+ =
+ \Phi^{\mathrm{tar}}.
+ \label{eq:app_expected_numerator_event}
+\end{align}
+Likewise, taking $\psi\equiv1$ and using
+\eqref{eq:app_pi_normalized},
+\begin{equation}
+    \mathbb{E}[\chi_e]
+    =
+    \sum_{k,i}\pi^{\mathrm{tar}}_{k,i}
+    =1.
+    \label{eq:app_expected_denominator_event}
+\end{equation}
+
+Let
+\begin{equation}
+    N_R^{\mathrm{opp}}
+    \triangleq
+    \sum_{r=0}^{R-1}|\mathcal{O}_r|
+    \label{eq:app_total_opp_events}
+\end{equation}
+be the total number of opportunity events in the first $R$ windows.  Define
+\begin{align}
+ A_R(\psi)
+ &\triangleq
+ \sum_{r<R}
+ \sum_{e\in\mathcal{O}_r}
+ \chi_e\psi(k_e,i_e),
+ \label{eq:app_AR}\\
+ B_R
+ &\triangleq
+ \sum_{r<R}
+ \sum_{e\in\mathcal{O}_r}
+ \chi_e.
+ \label{eq:app_BR}
+\end{align}
+A3 explicitly requires the asymptotic regime
+$N_R^{\mathrm{opp}}\rightarrow\infty$.  It is precisely the regularity
+condition needed to pass from the eventwise identities above to the possibly
+dependent client-window process.  Along this growing sequence, it gives
+\begin{align}
+ \frac{A_R(\psi)}{N_R^{\mathrm{opp}}}
+ &\xrightarrow{p}
+ \Phi^{\mathrm{tar}},
+ \label{eq:app_AR_lln}\\
+ \frac{B_R}{N_R^{\mathrm{opp}}}
+ &\xrightarrow{p}
+ 1.
+ \label{eq:app_BR_lln}
+\end{align}
+The second limit is strictly positive.  Therefore, by the continuous mapping
+theorem (equivalently, Slutsky's theorem),
+\begin{align}
+ \widehat\Phi_R
+ &=
+ \frac{A_R(\psi)}{B_R}
+ =
+ \frac{
+ A_R(\psi)/N_R^{\mathrm{opp}}
+ }{
+ B_R/N_R^{\mathrm{opp}}
+ }
+ \xrightarrow{p}
+ \Phi^{\mathrm{tar}}.
+ \label{eq:app_hajek_limit}
+\end{align}
+This proves the main convergence statement.
+
+It remains to verify the two stated marginals.
+
+First, fix $(k_0,s_0)$ and choose
+\begin{equation}
+    \psi_{k_0,s_0}(k,i)
+    =
+    \mathbf{1}\{k=k_0,\ s(i)=s_0\}.
+    \label{eq:app_phi_client_stratum}
+\end{equation}
+If $\Lambda_{s_0}^{\mathrm{tar}}>0$, then
+\begin{align}
+ \Phi^{\mathrm{tar}}
+ &=
+ \sum_{i:s(i)=s_0}
+ \pi^{\mathrm{tar}}_{k_0,i}
+ \nonumber\\
+ &=
+ \pi^{\mathrm{tar}}_{k_0,s_0}
+ \sum_{i:s(i)=s_0}
+ \nu^{\mathrm{tar}}_{i\mid s_0}
+ =
+ \pi^{\mathrm{tar}}_{k_0,s_0},
+ \label{eq:app_recover_client_stratum_positive}
+\end{align}
+where the last equality follows from
+\eqref{eq:app_nu_normalization}.  If
+$\Lambda_{s_0}^{\mathrm{tar}}=0$, the zero-stratum convention gives both
+$\pi^{\mathrm{tar}}_{k_0,s_0}=0$ and
+$\pi^{\mathrm{tar}}_{k_0,i}=0$ for every $i$ in that stratum.  The same
+conclusion then holds.  Thus, in all cases,
+$\Phi^{\mathrm{tar}}=\pi^{\mathrm{tar}}_{k_0,s_0}$.
+
+Second, fix a deployment group $g$ and choose
+$\psi_g(k,i)=\mathbf{1}\{h(i)=g\}$.
+Using target compatibility
+\eqref{eq:app_target_compatibility},
+\begin{align}
+ \Phi^{\mathrm{tar}}
+ &=
+ \sum_{k,i}
+ \pi^{\mathrm{tar}}_{k,i}
+ \mathbf{1}\{h(i)=g\}
+ \nonumber\\
+ &=
+ \sum_{i:h(i)=g}
+ \sum_k
+ \pi^{\mathrm{tar}}_{k,i}
+ \nonumber\\
+ &=
+ \sum_{i:h(i)=g}
+ \varpi_i^{\mathrm{tar}}
+ =
+ \mu_g.
+ \label{eq:app_recover_group}
+\end{align}
+Hence, the ideal normalized sequential correction recovers both the
+client--stratum target moments and, through the compatibility bridge, the
+deployment-group mass.  It does not prove optimization of
+$\mathcal{R}_{\mu}(\theta)$. \hfill$\square$
+
+\paragraph{Scope of Proposition~2.}
+The result is an identification/consistency statement for the ideal pooled
+sequential ratios: compatible target moments or target-group mass under
+A1--A3.  It does not imply that every finite-window normalized
+reference $\boldsymbol\beta_r^\star$ exactly realizes the deployment target,
+and it does not prove deployment-target risk optimization, a $Z\!\to\!Y$
+outcome model, unbiased local gradients, or convergence under asynchrony
+and staleness.
+The current mobile support can make exact realization infeasible, even when
+the pooled sequential weights have the correct target-law interpretation.  This
+is the role of the feasibility-aware calibration in
+Section~V.  The result also does not assert exact
+unbiasedness of the finite-sample clipped plug-in implementation.  When the
+stabilization bounds are active, the practical estimator deliberately trades
+exact inverse-weight identification for controlled weight concentration.
+
+
+\subsection{Proof of Theorem~1}
+\label{app:proof_theorem1}
+
+\noindent\textbf{Theorem~1.}
+Under A4, every active window has a nonempty compact convex feasible set
+$\mathcal{C}_r$, and the calibration program
+$\min_{\boldsymbol\alpha\in\mathcal{C}_r}J_r(\boldsymbol\alpha)$
+has a unique global minimizer $\boldsymbol\alpha_r^\star$.
+
+\noindent\emph{Proof.}
+Fix an active window $r$.  Then
+\begin{equation}
+    K_r=|\mathcal{A}_r|\ge1.
+    \label{eq:app_K_positive}
+\end{equation}
+Consider the uniform vector
+\begin{equation}
+    \boldsymbol\alpha_r^{u}
+    =
+    \frac{1}{K_r}\mathbf{1}.
+    \label{eq:app_uniform_alpha}
+\end{equation}
+It satisfies
+\begin{equation}
+    \mathbf{1}^{\top}\boldsymbol\alpha_r^{u}=1
+    \quad\text{and}\quad
+    \alpha_{k,r}^{u}=\frac{1}{K_r}\ge0.
+    \label{eq:app_uniform_simplex}
+\end{equation}
+From \eqref{eq:cap_ess},
+\begin{equation}
+    \overline\alpha_r
+    =
+    \min\left\{
+    1,
+    \max\left\{
+    \alpha_{\max},
+    \frac{1}{K_r}
+    \right\}
+    \right\}.
+    \label{eq:app_alpha_bar}
+\end{equation}
+Since $K_r\ge1$ and $0<\alpha_{\max}\le1$,
+\begin{equation}
+    \frac{1}{K_r}\le\overline\alpha_r\le1.
+    \label{eq:app_uniform_box}
+\end{equation}
+Thus the box constraints are satisfied by
+$\boldsymbol\alpha_r^{u}$.
+
+Next,
+\begin{equation}
+    \left\|
+    \boldsymbol\alpha_r^{u}
+    \right\|_2^2
+    =
+    K_r\left(\frac{1}{K_r}\right)^2
+    =
+    \frac{1}{K_r}.
+    \label{eq:app_uniform_l2}
+\end{equation}
+Because
+\begin{equation}
+    \overline E_r
+    =
+    \min\{E_{\min},K_r\}
+    \le K_r,
+    \label{eq:app_Ebar_leq_K}
+\end{equation}
+we have
+\begin{equation}
+    \frac{1}{K_r}
+    \le
+    \frac{1}{\overline E_r}.
+    \label{eq:app_uniform_ess}
+\end{equation}
+Therefore
+\begin{equation}
+    \boldsymbol\alpha_r^{u}
+    \in
+    \mathcal{C}_r,
+    \label{eq:app_C_nonempty}
+\end{equation}
+so $\mathcal{C}_r$ is nonempty.
+
+The equality constraint
+$\mathbf{1}^{\top}\boldsymbol\alpha=1$ defines an affine set.  The coordinate
+constraints
+$0\le\alpha_k\le\overline\alpha_r$ define a closed convex box, and
+\begin{equation}
+    \left\{
+    \boldsymbol\alpha:
+    \|\boldsymbol\alpha\|_2^2
+    \le
+    1/\overline E_r
+    \right\}
+    \label{eq:app_l2_ball}
+\end{equation}
+is a closed convex Euclidean ball.  Their intersection is therefore closed and
+convex.  Moreover, the simplex and box constraints imply
+$0\le\alpha_k\le1$ for every coordinate, so the set is bounded.  Hence
+$\mathcal{C}_r$ is compact.
+
+We now analyze the objective.  Expanding only the terms that are quadratic in
+$\boldsymbol\alpha$, the Hessian of $J_r$ is
+\begin{equation}
+ \nabla^2J_r
+ =
+ \lambda_gM_r^{\top}M_r
+ +
+ \lambda_{\beta}I
+ +
+ \lambda_vV_r.
+ \label{eq:app_P2_hessian}
+\end{equation}
+The debt term
+$-\mathbf{Q}_r^{\top}M_r\boldsymbol\alpha$ and the staleness term
+$\lambda_s\overline{\boldsymbol\tau}_r^{\top}\boldsymbol\alpha$ are linear.
+They therefore contribute zero Hessian.  Under A4,
+\begin{equation}
+    M_r^{\top}M_r\succeq0,
+    \qquad
+    V_r\succeq0,
+    \qquad
+    \lambda_g,\lambda_v\ge0,
+    \qquad
+    \lambda_{\beta}>0.
+    \label{eq:app_psd_terms}
+\end{equation}
+Consequently, for every nonzero vector $\mathbf{x}\in\mathbb{R}^{K_r}$,
+\begin{align}
+ \mathbf{x}^{\top}\nabla^2J_r\mathbf{x}
+ &=
+ \lambda_g\|M_r\mathbf{x}\|_2^2
+ +
+ \lambda_{\beta}\|\mathbf{x}\|_2^2
+ +
+ \lambda_v\mathbf{x}^{\top}V_r\mathbf{x}
+ \nonumber\\
+ &\ge
+ \lambda_{\beta}\|\mathbf{x}\|_2^2
+ >0.
+ \label{eq:app_strong_convex}
+\end{align}
+Thus $J_r$ is $\lambda_{\beta}$-strongly convex on
+$\mathbb{R}^{K_r}$ and hence strictly convex on $\mathcal{C}_r$.
+
+Because $J_r$ is continuous and $\mathcal{C}_r$ is nonempty and compact, the
+Weierstrass theorem guarantees the existence of at least one minimizer.
+Strict convexity on the convex feasible set guarantees that two distinct
+minimizers cannot exist.  Therefore, (P2) has exactly one global minimizer,
+denoted by $\boldsymbol\alpha_r^\star$.  This completes the proof.
+\hfill$\square$
+
+\paragraph{Scope of Theorem~1.}
+The theorem proves existence and uniqueness of the mathematical optimizer of
+(P2).  It does not, by itself, certify that a finite-precision solver log
+reconstructs that optimizer exactly.  Numerical feasibility and post-hoc
+solver audit are separate empirical/provenance questions.
+
+
+\subsection{Proof of Proposition~3}
+\label{app:proof_prop3}
+
+\noindent\textbf{Proposition~3.}
+Assume A1, A4, and A5.  Then the implemented clipped plug-in
+$\widehat{\boldsymbol\beta}_r$ is a Lipschitz perturbation of the
+same-window ideal reference $\boldsymbol\beta_r^\star$, and the P2 map
+does not amplify that $\ell_2$ error on a fixed feasible set.
+
+\noindent\emph{Proof.}
+Fix an active window $r$ and the common set $\mathcal{A}_r$.
+Write $\widetilde a_{k,r,i}=\widehat\zeta^{o}_{k,r,i}/
+\max\{\widehat p^{\mathrm{obs}}_{k,r,i},p_{\min}\}$ and
+$\widetilde d_{k,r}=1/\max\{\widehat q^{\mathrm{use}}_{k,r},q_{\min}\}$,
+so that
+$a=\widetilde a-(\widetilde a-a_{\max})_+$ and
+$d=\widetilde d-(\widetilde d-d_{\max})_+$.
+The clipping residual $\varepsilon_{\mathrm{clip}}$ is the
+coordinatewise $\ell_{\infty}$ norm in (37); it is not set to zero.
+
+On target support, $\zeta=\pi^{\mathrm{tar}}/\pi^{\mathrm{opp}}$ and
+$\widehat\zeta=\pi^{\mathrm{tar}}/\max\{\widehat\pi^{\mathrm{opp}},
+\pi_{\min}\}$.  A5 and $\pi^{\mathrm{tar}}\le1$ give
+$\lvert\widehat\zeta-\zeta\rvert\le\varepsilon_\pi/\pi_{\min}^2$ and
+\begin{equation}
+ \bigl\lvert\widetilde a-a^\star\bigr\rvert
+ \le
+ \frac{\varepsilon_\pi}{\pi_{\min}^2 p_{\min}}
+ +\frac{\varepsilon_p}{\pi_{\min}\,p_{\min}\,p_{\min}^{\mathrm{true}}},
+ \qquad
+ \bigl\lvert\widetilde d-d^\star\bigr\rvert
+ \le
+ \frac{\varepsilon_q}{q_{\min}q_{\min}^{\mathrm{true}}}.
+ \label{eq:app_plugin_lipschitz}
+\end{equation}
+With $n_r=\max_{k\in\mathcal{A}_r}\sum_i R_{k,r,i}O_{k,r,i}$,
+$m_k\le n_r a_{\max}$, and
+$d^\star\le 1/q_{\min}^{\mathrm{true}}\le d_{\max}$,
+the unnormalized masses satisfy
+\begin{equation}
+ \|b-b^\star\|_1
+ \le
+ K_r n_r
+ \Bigl(
+ \tfrac{d_{\max}}{\pi_{\min}^2 p_{\min}}\varepsilon_\pi
+ +\tfrac{d_{\max}}{\pi_{\min}p_{\min}p_{\min}^{\mathrm{true}}}\varepsilon_p
+ +\tfrac{a_{\max}}{q_{\min}q_{\min}^{\mathrm{true}}}\varepsilon_q
+ +(a_{\max}+d_{\max})\varepsilon_{\mathrm{clip}}
+ \Bigr).
+ \label{eq:app_plugin_mass}
+\end{equation}
+The H\'ajek map $b\mapsto b/(\mathbf{1}^{\top}b)$ is
+$2/B_{\min}$-Lipschitz in $\ell_1$ on
+$\{b\ge0:\mathbf{1}^{\top}b\ge B_{\min}\}$, which yields
+(38) with the displayed $C_1$.
+The P2 bound (39) is the already-proved reference
+non-expansion \eqref{eq:app_reference_nonexpansive} on the common
+convex set $\mathcal{C}_r$.  The composition bound
+(40) is the operator $2$-norm.
+\hfill$\square$
+
+The constant $C_1$ is a worst-case envelope.  It is not a numerical
+RMSE certificate, and the argument does not apply when Design changes
+$\mathcal{A}_r$.
+
+
+\subsection{Proof of the Target-Debt Accounting Bound}
+\label{app:proof_debt_bound}
+
+The bound states that the prefix-averaged deployment composition
+$\overline{\boldsymbol\omega}_R$ cannot drift farther from the target
+$\boldsymbol\mu$ than twice the accumulated target debt per unit of active
+step mass.  Intuitively, the debt vector records, for each deployment group,
+how much service the group has cumulatively missed across windows.  The
+relation therefore turns that accounting into a deterministic control on
+structural mismatch: the group-average distance to the target is bounded by
+how much the process has fallen behind, normalized by how much it has run.
+The proof proceeds in three steps.  It first shows that the coordinate-wise
+debt dominates the cumulative signed discrepancy.  It then combines this
+domination with the zero-sum property of the discrepancy to bound its
+$\ell_1$ norm by twice the debt.  Finally, it divides by the active step
+mass $S_R$ to obtain the stated bound.
+
+We now prove the deterministic relation in
+(27).  Recall
+\begin{equation}
+    S_R
+    =
+    \sum_{r=0}^{R-1}\eta_rI_r,
+    \qquad
+    \overline{\boldsymbol\omega}_R
+    =
+    \frac{
+    \sum_{r=0}^{R-1}
+    \eta_rI_r\boldsymbol\omega_r
+    }{S_R},
+    \label{eq:app_debt_prefix_defs}
+\end{equation}
+for $S_R>0$.  In every active window,
+$\boldsymbol\alpha_r$ is a probability vector and each column
+$\mathbf{c}_{k,r}^{g}$ of $M_r$ is a deployment-group probability vector.
+Therefore
+\begin{equation}
+    \boldsymbol\omega_r
+    =
+    M_r\boldsymbol\alpha_r
+    \in
+    \Delta^{|\mathcal G|-1},
+    \label{eq:app_omega_simplex}
+\end{equation}
+and hence
+\begin{equation}
+    \mathbf{1}^{\top}\boldsymbol\omega_r
+    =
+    \mathbf{1}^{\top}\boldsymbol\mu
+    =1.
+    \label{eq:app_equal_mass}
+\end{equation}
+
+Define the cumulative signed target discrepancy
+\begin{equation}
+    \mathbf{D}_R
+    \triangleq
+    \sum_{r=0}^{R-1}
+    \eta_rI_r
+    \left(
+    \boldsymbol\mu-\boldsymbol\omega_r
+    \right).
+    \label{eq:app_DR}
+\end{equation}
+By \eqref{eq:app_debt_prefix_defs},
+\begin{equation}
+    \mathbf{D}_R
+    =
+    S_R
+    \left(
+    \boldsymbol\mu-\overline{\boldsymbol\omega}_R
+    \right).
+    \label{eq:app_DR_baromega}
+\end{equation}
+
+Fix a target-group coordinate $g$.  In an active window, the debt recursion is
+\begin{equation}
+    Q_{r+1,g}
+    =
+    \left[
+    Q_{r,g}
+    +
+    \eta_r
+    \left(
+    \mu_g-\omega_{r,g}
+    \right)
+    \right]_+.
+    \label{eq:app_debt_coordinate}
+\end{equation}
+Since $[x]_+\ge x$ for every scalar $x$,
+\begin{equation}
+    Q_{r+1,g}
+    \ge
+    Q_{r,g}
+    +
+    \eta_r
+    \left(
+    \mu_g-\omega_{r,g}
+    \right)
+    \label{eq:app_debt_one_step}
+\end{equation}
+holds for active windows.  In inactive windows,
+$Q_{r+1,g}=Q_{r,g}$ and $I_r=0$.  The same inequality can therefore be written
+uniformly as
+\begin{equation}
+    Q_{r+1,g}
+    \ge
+    Q_{r,g}
+    +
+    \eta_rI_r
+    \left(
+    \mu_g-\omega_{r,g}
+    \right).
+    \label{eq:app_debt_one_step_all}
+\end{equation}
+Telescoping from $r=0$ to $R-1$ and using $Q_{0,g}=0$ gives
+\begin{equation}
+    Q_{R,g}
+    \ge
+    D_{R,g}.
+    \label{eq:app_Q_dominates_D}
+\end{equation}
+Because $Q_{R,g}\ge0$, it follows that
+\begin{equation}
+    (D_{R,g})_+
+    \le
+    Q_{R,g}.
+    \label{eq:app_positive_part_domination}
+\end{equation}
+Summing over $g$,
+\begin{equation}
+    \|(\mathbf{D}_R)_+\|_1
+    \le
+    \|\mathbf{Q}_R\|_1.
+    \label{eq:app_positive_part_l1}
+\end{equation}
+
+Next, by \eqref{eq:app_equal_mass},
+\begin{align}
+    \mathbf{1}^{\top}\mathbf{D}_R
+    &=
+    \sum_{r=0}^{R-1}
+    \eta_rI_r
+    \mathbf{1}^{\top}
+    \left(
+    \boldsymbol\mu-\boldsymbol\omega_r
+    \right)
+    \nonumber\\
+    &=
+    \sum_{r=0}^{R-1}
+    \eta_rI_r(1-1)
+    =0.
+    \label{eq:app_DR_zero_sum}
+\end{align}
+For any finite-dimensional vector with zero coordinate sum, the positive and
+negative parts have equal $\ell_1$ mass:
+\begin{equation}
+    \|(\mathbf{D}_R)_+\|_1
+    =
+    \|(\mathbf{D}_R)_-\|_1,
+    \label{eq:app_pos_neg_equal}
+\end{equation}
+where $(\mathbf{x})_-=[-\mathbf{x}]_+$.  Therefore
+\begin{equation}
+\begin{aligned}
+    \|\mathbf{D}_R\|_1
+    &=
+    \|(\mathbf{D}_R)_+\|_1
+    +
+    \|(\mathbf{D}_R)_-\|_1\\
+    &=2\|(\mathbf{D}_R)_+\|_1
+    \le
+    2\|\mathbf{Q}_R\|_1.
+\end{aligned}
+    \label{eq:app_DR_l1_bound}
+\end{equation}
+Finally, substituting
+\eqref{eq:app_DR_baromega} into
+\eqref{eq:app_DR_l1_bound} and dividing by $S_R>0$ yields
+\begin{equation}
+    \left\|
+    \overline{\boldsymbol\omega}_R
+    -
+    \boldsymbol\mu
+    \right\|_1
+    \le
+    \frac{
+    2\|\mathbf{Q}_R\|_1
+    }{
+    S_R
+    }.
+    \label{eq:app_debt_bound_final}
+\end{equation}
+This is exactly the accounting relation stated in
+(27). \hfill$\square$
+
+\paragraph{Consequence.}
+If the cumulative debt is sublinear in active step mass, that is,
+$\|\mathbf{Q}_R\|_1=o(S_R)$, then
+\begin{equation}
+    \Delta_{\mathrm{group}}(R)
+    =
+    \left\|
+    \overline{\boldsymbol\omega}_R
+    -
+    \boldsymbol\mu
+    \right\|_1
+    \longrightarrow0.
+    \label{eq:app_debt_sublinear_consequence}
+\end{equation}
+This is a conditional implication of the deterministic bound.  It is not a
+separate claim that RAVEN guarantees sublinear debt under arbitrary mobile
+opportunity processes.
+
+
+
+\subsection{Supplementary Consequences of the Calibration Geometry}
+\label{app:supp_calibration_geometry}
+
+The following two properties are deterministic consequences of the feasible
+set and objective defined in Section~V.  They make the
+finite-window geometry explicit; they are not additional main-paper theorem
+claims.
+
+\paragraph{Feasible target image.}
+For an active window, define the set of deployment-group compositions that can
+be realized by the currently available clients as
+\begin{equation}
+ \Omega_r
+ \triangleq
+ \left\{
+ M_r\boldsymbol\alpha:
+ \boldsymbol\alpha\in\mathcal C_r
+ \right\}.
+ \label{eq:app_feasible_target_image}
+\end{equation}
+Under A4, $\mathcal C_r$ is nonempty, compact, and convex.  Since
+$\boldsymbol\alpha\mapsto M_r\boldsymbol\alpha$ is linear, $\Omega_r$ is also
+nonempty, compact, and convex.  Hence, the irreducible instantaneous
+feasibility gap
+\begin{equation}
+ d_r^{\mathrm{feas}}
+ \triangleq
+ \min_{\boldsymbol\omega\in\Omega_r}
+ \left\|
+ \boldsymbol\omega-\boldsymbol\mu
+ \right\|_2
+ \label{eq:app_feasibility_gap}
+\end{equation}
+is attained, and
+\begin{equation}
+ d_r^{\mathrm{feas}}=0
+ \quad\Longleftrightarrow\quad
+ \boldsymbol\mu\in\Omega_r.
+ \label{eq:app_exact_realizability}
+\end{equation}
+Thus, if $d_r^{\mathrm{feas}}>0$, no admissible aggregation rule with the same
+finite-window support and constraints can exactly realize
+$\boldsymbol\mu$ in that window.  P2 should therefore be interpreted as
+calibrating within the realizable image rather than synthesizing unavailable
+target support.\hfill$\square$
+
+\paragraph{Reference stability of P2.}
+Fix one active window, including $M_r$, $\mathbf Q_r$, $V_r$,
+$\overline{\boldsymbol\tau}_r$, $\mathcal C_r$, and all regularization
+coefficients.  Let $\boldsymbol\alpha^\star(\boldsymbol\beta)$ denote the
+unique P2 minimizer when the corrected reference is
+$\boldsymbol\beta$.  Then, for any two reference vectors
+$\boldsymbol\beta$ and $\boldsymbol\beta'$ on the same feasible support,
+\begin{equation}
+ \left\|
+ \boldsymbol\alpha^\star(\boldsymbol\beta)
+ -
+ \boldsymbol\alpha^\star(\boldsymbol\beta')
+ \right\|_2
+ \le
+ \left\|
+ \boldsymbol\beta-\boldsymbol\beta'
+ \right\|_2.
+ \label{eq:app_reference_nonexpansive}
+\end{equation}
+To see this, write the P2 objective as
+\begin{equation}
+ G_r(\boldsymbol\alpha)
+ +\frac{\lambda_\beta}{2}
+ \left\|
+ \boldsymbol\alpha-\boldsymbol\beta
+ \right\|_2^2,
+ \label{eq:app_p2_split}
+\end{equation}
+where $G_r$ contains the debt, group, variance, and staleness terms and is
+convex under A4.  Let
+$\mathbf x=\boldsymbol\alpha^\star(\boldsymbol\beta)$ and
+$\mathbf y=\boldsymbol\alpha^\star(\boldsymbol\beta')$.  Adding the two
+variational inequalities on the common convex set $\mathcal C_r$ gives
+\begin{align}
+ &\left\langle
+ \nabla G_r(\mathbf x)-\nabla G_r(\mathbf y),
+ \mathbf x-\mathbf y
+ \right\rangle
+ +\lambda_\beta\|\mathbf x-\mathbf y\|_2^2
+ \nonumber\\
+ &\qquad\le
+ \lambda_\beta
+ \left\langle
+ \boldsymbol\beta-\boldsymbol\beta',
+ \mathbf x-\mathbf y
+ \right\rangle.
+ \label{eq:app_reference_vi}
+\end{align}
+The first term on the left is nonnegative by monotonicity of the gradient of a
+convex function.  Cauchy--Schwarz therefore yields
+\eqref{eq:app_reference_nonexpansive}.\hfill$\square$  This property concerns only the P2 map
+when the feasible set and all other window states are fixed.  It is not a
+robustness guarantee to changes in the underlying mobile opportunity or
+selection process.
+
+\subsection{Proof-Obligation Summary}
+\label{app:proof_summary}
+
+The completed arguments establish the exact scope of the theory used in
+the main text:
+
+\begin{enumerate}
+    \item Proposition~1 proves that unequal deployment and arrival laws define
+    different risk functionals in general.
+    \item Proposition~2 proves consistency of the ideal normalized sequential
+    opportunity--observation--usable correction under A1--A3 for compatible
+    target moments or target-group mass.  It does not prove optimization of
+    deployment-target risk.
+    \item Proposition~3 proves that, under A1, A4, and A5, the implemented
+    clipped plug-in is a Lipschitz perturbation of the same-window ideal
+    reference, and that P2 does not amplify that error on a fixed
+    $\mathcal{A}_r$.
+    \item Theorem~1 proves existence and uniqueness of the solution to (P2)
+    under A4.
+    \item The debt recursion gives a deterministic long-term accounting bound.
+    Vanishing structural mismatch follows whenever debt grows sublinearly in
+    active step mass.
+\end{enumerate}
+
+None of these results asserts identification outside target support, robustness
+to arbitrary hidden confounding, exact unbiasedness under active clipping, or
+universal predictive superiority.
+
+
+\section{Complete Proofs for Aggregate Coverage Certification}
+\label{app:agg_coverage_proofs}
+
+This section records the complete proofs for
+Section~\mbox {III-D}--\mbox {VI-F}.
+Existing reconstruction proofs are unchanged.  The coverage-certificate
+numbering is independent of Proposition~1 and
+Theorem~1.  All arguments below are complete.
+
+\begin{algorithm}[t]
+\caption{Aggregate coverage certificate (diagnostic Gate)}
+\label{alg:agg_certificate}
+\begin{algorithmic}[1]
+\REQUIRE legal $F_{t-}$; public $a_t$; block snapshot $f_b$; same-block scores;
+previous CERTIFIED miscoverage flag; $\alpha=0.05$; $\tau_{\mathrm{cov}}=0.05$; $n_{\min}=19$
+\ENSURE $\mathrm{state}\in\{\mathrm{WARMUP},\mathrm{CERTIFIED},\mathrm{RESET}\}$,
+block\_id, predictor\_snapshot\_id, $\widehat C_t$, $n$, $q_t$ if CERTIFIED,
+$C^{\mathrm{LCB}}_t$, $\mathrm{Gate}_t$
+\IF{the previous completed CERTIFIED window satisfied $C^{\mathrm{LCB}}>C$}
+\STATE $\mathrm{state}\leftarrow\mathrm{RESET}$, $\mathrm{Gate}_t\leftarrow\mathrm{OFF}$
+\STATE Fit $f_{b+1}$ on completed past data only; freeze it; clear the buffer
+\STATE $\mathrm{state}\leftarrow\mathrm{WARMUP}$
+\ELSE
+\STATE Use the frozen snapshot $f_b$ of the current block
+\IF{$n<19$ or $k_n>n$}
+\STATE $\mathrm{state}\leftarrow\mathrm{WARMUP}$
+\STATE $C^{\mathrm{LCB}}_t\leftarrow 0$, $\mathrm{Gate}_t\leftarrow\mathrm{OFF}$
+\ELSE
+\STATE $\mathrm{state}\leftarrow\mathrm{CERTIFIED}$ \COMMENT{scope; does not prove Assumption A}
+\STATE $\widehat C_t\leftarrow f_b(F_{t-})$
+\STATE $q_t\leftarrow S_{(k_n)}^{\mathrm{cal}}$ \COMMENT{no clipping of $k_n$ to $n$}
+\STATE $C^{\mathrm{LCB}}_t\leftarrow\max\{0,\widehat C_t-q_t\}$
+\STATE $\mathrm{Gate}_t\leftarrow 1\{C^{\mathrm{LCB}}_t\ge\tau_{\mathrm{cov}}\}$
+\ENDIF
+\ENDIF
+\end{algorithmic}
+\end{algorithm}
+
+\begin{proposition}[Positive pairwise LCB barrier]
+\label{prop:pairwise-lcb-barrier}
+Let $X_t\ge 0$ denote the realized opportunity of one target pair in window
+$t$, and let $L_t=L(F_{t-})$ be a deterministic pre-window lower bound.  If
+$P(X_t=0\mid F_{t-})>\alpha$, then no strictly positive $L_t>0$ can satisfy
+$P(L_t\le X_t\mid F_{t-})\ge 1-\alpha$.
+\end{proposition}
+
+\begin{corollary}[Availability-induced pairwise barrier]
+\label{cor:availability-barrier}
+For a target pair $i=(k,s)$ let the designated stressed entity be $e(i)=k$
+(the pair's client).  Let $A_{e(i),t}\in\{0,1\}$ be that entity's availability
+in window $t$.  Assume $X_{i,t}>0\Rightarrow A_{e(i),t}=1$.  Under frozen
+availability stress, $P(A_{e(i),t}=1\mid F_{t-},a)\le a$, hence
+$P(X_{i,t}>0\mid F_{t-},a)\le a$.  If $a<1-\alpha$, no strictly positive
+deterministic $1-\alpha$ pairwise LCB is guaranteed for that pair under
+Proposition~\ref{prop:pairwise-lcb-barrier}.  The claim applies only to pairs
+obeying the designated-entity necessary condition.
+\end{corollary}
+
+\begin{corollary}[False-safe Gate bound]
+\label{cor:false-safe-gate}
+Under the conditions of Theorem~2,
+\begin{equation}
+ P\bigl(\mathrm{Gate}_t=1\text{ and }C_t<\tau_{\mathrm{cov}}\mid g\bigr)
+ \le\alpha.
+ \label{eq:agg_cor2}
+\end{equation}
+\end{corollary}
+
+\begin{proposition}[Arbitrary-drift applicability boundary]
+\label{prop:drift-boundary}
+Suppose two data-generating worlds share the same legal $F_{t-}$ but have
+$C_t=c_{\mathrm{high}}$ and $C_t=c_{\mathrm{low}}$ with
+$c_{\mathrm{low}}<\tau_{\mathrm{cov}}<c_{\mathrm{high}}$.  Any deterministic
+pre-window certificate outputs the same $C^{\mathrm{LCB}}_t$ in both worlds.
+If that output is at least $\tau_{\mathrm{cov}}$, the certificate is
+false-safe in the low world; if it is below $\tau_{\mathrm{cov}}$, it cannot
+certify the high world.  Without an assumption linking the current window to
+observable pre-window information, no method can simultaneously provide
+nontrivial per-window certification and universal protection against
+arbitrary unannounced regime shifts.
+\end{proposition}
+
+\subsection{Proof of Proposition~\ref{prop:pairwise-lcb-barrier}}
+\label{app:proof_pairwise_lcb}
+
+Fix a version of the regular conditional probability given $F_{t-}$.  On the
+event $\{L_t>0\}$, the inclusion $\{L_t\le X_t\}\subseteq\{X_t>0\}$ holds
+pathwise: if $X_t=0$, then $X_t<L_t$, so $L_t\le X_t$ fails.  Therefore
+\begin{align*}
+P(L_t\le X_t\mid F_{t-})
+&\le
+P(X_t>0\mid F_{t-}) \\
+&=
+1-P(X_t=0\mid F_{t-}) \\
+&<
+1-\alpha
+\end{align*}
+on the set where $P(X_t=0\mid F_{t-})>\alpha$ and $L_t>0$.  Hence no strictly
+positive deterministic $L(F_{t-})$ can meet the $1-\alpha$ conditional coverage
+requirement on such $F_{t-}$.  Any deterministic lower bound that does meet
+the requirement must satisfy $L_t=0$ on that $F_{t-}$, or the coverage claim
+is false.  This is a structural non-vacuity barrier, not a statement that
+pairwise diagnostics are useless.
+
+\subsection{Proof of Corollary~\ref{cor:availability-barrier}}
+\label{app:proof_availability_barrier}
+
+Let $i=(k,s)$ and $e(i)=k$ be the designated stressed entity of the pair.
+Assume $X_{i,t}>0\Rightarrow A_{e(i),t}=1$.  Then
+$\{X_{i,t}>0\}\subseteq\{A_{e(i),t}=1\}$, so
+\[
+ P(X_{i,t}>0\mid F_{t-},a)
+ \le
+ P(A_{e(i),t}=1\mid F_{t-},a).
+\]
+Frozen entity thinning gives $P(A_{e(i),t}=1\mid F_{t-},a)\le a$, hence
+$P(X_{i,t}>0\mid F_{t-},a)\le a$ and $P(X_{i,t}=0\mid F_{t-},a)\ge 1-a$.
+If $a<1-\alpha$, then $P(X_{i,t}=0\mid F_{t-},a)>\alpha$, and
+Proposition~\ref{prop:pairwise-lcb-barrier} applies to this pair.
+
+The argument is scoped to pairs obeying the designated-entity necessary
+condition.  It does not claim that unavailability of some unspecified member
+of an arbitrary entity group yields $P(\mathrm{active})\le a$.
+
+\subsection{$n_{\min}$ derivation}
+\label{app:nmin}
+
+A finite calibration quantile exists without clipping iff
+$k_n=\lceil(n+1)(1-\alpha)\rceil\le n$.  If $(n+1)(1-\alpha)>n$, the ceiling is
+at least $n+1$, so no finite order statistic of the calibration sample can
+serve as $q_t$.  The inequality rearranges to $n+1<1/\alpha$, or
+$n<1/\alpha-1$.  Thus a finite $q_t$ requires
+$n\ge\lceil 1/\alpha\rceil-1$.  For $\alpha=0.05$, $n_{\min}=19$.  Clipping
+$k_n$ to $n$ is exactly the $k_n=n+1$ / $q=+\infty$ case disguised as a finite
+quantile; it does not restore $1-\alpha$ coverage for $n<n_{\min}$.  In
+particular $n=8$ is not sufficient for a nominal $95\%$ finite-sample split
+conformal guarantee.
+
+\subsection{Proof of Theorem~2}
+\label{app:proof_agg_lcb}
+
+\paragraph{Auxiliary continuous tie-break and randomized rank.}
+Let $S_{j_1},\ldots,S_{j_n}$ be the calibration scores and $S_t$ the current
+score.  Assumption~1 says these $n+1$ random
+variables are exchangeable given $g$.  Draw auxiliary variables
+$U_{j_1},\ldots,U_{j_n},U_t$ i.i.d.\ Continuous$(0,1)$, independent of the
+scores, and order the pairs $(S_j,U_j)$ lexicographically.  The $n+1$ pairs
+are exchangeable given $g$ and almost surely distinct after tie-break, so the
+randomized rank $R_t^\star$ of $(S_t,U_t)$ is uniform on $\{1,\ldots,n+1\}$:
+$P(R_t^\star=r\mid g)=1/(n+1)$.  With
+$k_n=\lceil(n+1)(1-\alpha)\rceil$,
+\[
+ P(R_t^\star\le k_n\mid g)=\frac{k_n}{n+1}\ge 1-\alpha.
+\]
+CERTIFIED enforces $k_n\le n$, so $q_t=S_{(k_n)}^{\mathrm{cal}}$ exists as a
+calibration order statistic.
+
+\paragraph{Event inclusion.}
+We claim $\{R_t^\star\le k_n\}\subseteq\{S_t\le S_{(k_n)}^{\mathrm{cal}}\}$.
+If $S_t>S_{(k_n)}^{\mathrm{cal}}$, then at least $k_n$ calibration scores are
+strictly smaller than $S_t$, so the test pair ranks at least $k_n+1$ for every
+$U_t$, contradicting $R_t^\star\le k_n$.  Hence the inclusion holds, and
+\[
+ P(S_t\le q_t\mid g)
+ \ge
+ P(R_t^\star\le k_n\mid g)
+ \ge 1-\alpha.
+\]
+The opposite (invalid) direction is not used: if $A\subset B$ and
+$P(B)\ge 1-\alpha$, one cannot conclude $P(A)\ge 1-\alpha$.
+
+\paragraph{Score translation.}
+By definition $S_t=\widehat C_t-C_t$, so
+$\{S_t\le q_t\}=\{\widehat C_t-q_t\le C_t\}$.
+
+\paragraph{Clipping at zero.}
+Set $C^{\mathrm{LCB}}_t=\max\{0,\widehat C_t-q_t\}$.  Always $C_t\ge 0$.
+If $\widehat C_t-q_t\le 0$, then $C^{\mathrm{LCB}}_t=0\le C_t$ holds pathwise,
+whether or not $S_t\le q_t$.  If $\widehat C_t-q_t>0$, then
+$C^{\mathrm{LCB}}_t=\widehat C_t-q_t$, and $\{S_t\le q_t\}$ is exactly
+$\{C^{\mathrm{LCB}}_t\le C_t\}$.  In all cases
+$\{S_t\le q_t\}\subseteq\{C^{\mathrm{LCB}}_t\le C_t\}$.  Clipping cannot
+invalidate a valid lower bound.  Therefore
+\[
+ P\bigl(C^{\mathrm{LCB}}_t\le C_t\mid g\bigr)
+ \ge
+ P(S_t\le q_t\mid g)
+ \ge 1-\alpha.
+\]
+
+\paragraph{Frozen predictor snapshot.}
+$\widehat C_t=f_b(F_{t-})$ uses the frozen snapshot of block $b$.  Refitting
+the scoring rule on every window with new outcomes would leave the ordinary
+finite-sample exchangeable rank argument.  Current $C_t$ may enter the
+same-block calibration buffer only after window $t$ completes.  The current
+window is never used to form its own $q_t$.  Operational CERTIFIED does not
+prove Assumption~1; the theorem remains
+conditional on that assumption.
+
+This completes the proof.
+
+\subsection{Proof of Corollary~\ref{cor:false-safe-gate}}
+\label{app:proof_false_safe}
+
+On the event $\{\mathrm{Gate}_t=1,\,C_t<\tau_{\mathrm{cov}}\}$ one has
+$C^{\mathrm{LCB}}_t\ge\tau_{\mathrm{cov}}>C_t$, hence
+$C^{\mathrm{LCB}}_t>C_t$.  Therefore
+\[
+ \{\mathrm{Gate}_t=1,\,C_t<\tau_{\mathrm{cov}}\}
+ \subseteq
+ \{C^{\mathrm{LCB}}_t>C_t\}.
+\]
+Theorem~2 gives $P(C^{\mathrm{LCB}}_t\le C_t\mid g)\ge 1-\alpha$,
+so $P(C^{\mathrm{LCB}}_t>C_t\mid g)\le\alpha$.  The false-safe probability is
+at most $\alpha$.  In WARMUP and RESET, $\mathrm{Gate}_t$ is OFF by definition,
+so the false-safe event is empty on those windows.
+
+\subsection{Proof of Proposition~\ref{prop:drift-boundary}}
+\label{app:proof_drift_boundary}
+
+Let $\mathcal{A}$ be any map from $F_{t-}$ to a real number
+$C^{\mathrm{LCB}}_t$, possibly using extra bits independent of the current
+world.  Because Worlds A and B share $F_{t-}$, the law of
+$C^{\mathrm{LCB}}_t$ is identical in both worlds.  Write $L$ for that common
+output.  Exactly one of $L\ge\tau_{\mathrm{cov}}$ or $L<\tau_{\mathrm{cov}}$
+holds for each realization.  If $L\ge\tau_{\mathrm{cov}}$, then in World B one
+has $L\ge\tau_{\mathrm{cov}}>c_{\mathrm{low}}=C_t$, so Gate ON is false-safe.
+If $L<\tau_{\mathrm{cov}}$, then in World A the Gate is OFF even though
+$C_t=c_{\mathrm{high}}>\tau_{\mathrm{cov}}$, so the window is not certified.
+No choice of $L=L(F_{t-})$ avoids both failures.  This is an applicability
+boundary, not a defect of a particular predictor.  A detector that uses only
+$F_{t-}$ cannot protect the first unannounced shift window if that window is
+indistinguishable from the certified regime in $F_{t-}$.  After a detected
+change, RESET then WARMUP (Gate OFF) until $n\ge 19$ in the new regime is the
+correct operational response.  The detector does not restore
+Theorem~2 on the undetected first-shift window.
+
+The optional bounded-TV robustness extension is omitted: it would require a
+legally frozen pre-test $\epsilon_g$ with $\alpha'+\epsilon_g\le\alpha$, not
+estimated post hoc from the test sequence, plus a complete proof.  Those
+conditions are not met, so the core paper relies only on
+Theorem~2, Corollary~\ref{cor:false-safe-gate}, and
+Proposition~\ref{prop:drift-boundary}.
+
+
+\section{Supplementary Risk-Semantic Evidence}
+\label{app:risk_semantic_evidence}
+
+This appendix reports supplementary statistics that are useful for interpreting
+risk interchangeability but are not required in the main text.  No additional realization,
+retraining, or post-hoc model selection is introduced here.
+
+\subsection{Balanced No-Harm Control}
+\label{app:e1_balanced}
+
+Table~\ref{tab:app_e1_balanced} reports all five paired methods under the balanced
+Balanced control.  The selected TimeAlign reference has mean
+$\mathrm{RMSE}_\mu=7.7108$, while RAVEN-MCS obtains $7.7154$.  RAVEN's
+pre-specified mean relative degradation is $0.0599\%$; the one-sided 95\%
+upper bound is $0.134\%$, below the pre-specified $3\%$ no-harm margin.  The
+balanced experiment is therefore a sanity check, not evidence of statistical
+superiority.
+
+\begin{table}[!t]
+\centering
+\caption{Balanced control over the five pre-specified paired seeds.}
+\label{tab:app_e1_balanced}
+\footnotesize
+\setlength{\tabcolsep}{5pt}
+\begin{tabular*}{\columnwidth}{@{\extracolsep{\fill}}lcc}
+\toprule
+Method & $\mathrm{RMSE}_\mu$ & Seeds\\
+\midrule
+FedAvg-Window & $7.7220\pm0.0289$ & 5 \\
+FedAsync-Window & $7.7222\pm0.0287$ & 5 \\
+TimeAlign-Agg & $7.7108\pm0.0272$ & 5 \\
+TwoStage-H\'ajek & $7.7262\pm0.0291$ & 5 \\
+RAVEN-MCS & $7.7154\pm0.0337$ & 5 \\
+\bottomrule
+\end{tabular*}
+\end{table}
+
+\subsection{Complete Risk Non-Interchangeability Statistics}
+\label{app:e2_full_stats}
+
+Table~\ref{tab:app_e2_daligned} gives the complete method-level risk-interchangeability summary for
+the pre-specified difference-of-differences
+$D_{\mathrm{aligned}}=\Delta\mathrm{RMSE}_{\mu}
+-\Delta\mathrm{RMSE}_{\rho}$.  The negative mean is stable across all five
+methods, and 17--18 of 20 paired seeds are negative.  This supports the
+risk-semantic premise that arrival-weighted and deployment-target-weighted
+views react differently to the same structured selection shift.  It does not
+establish method-level superiority.
+
+\begin{table}[!t]
+\centering
+\caption{Complete-aligned risk non-interchangeability statistics.
+CI denotes the 95\% interval; $p$ is the paired Wilcoxon test of
+$D_{\mathrm{aligned}}$ against zero.}
+\label{tab:app_e2_daligned}
+\scriptsize
+\setlength{\tabcolsep}{2.5pt}
+\begin{tabular*}{\columnwidth}{@{\extracolsep{\fill}}lcccc}
+\toprule
+Method & $D_{\mathrm{aligned}}$ & 95\% CI & Neg. seeds & $p$\\
+\midrule
+FedAsync-Window & $-0.02115$ & $[-0.03158,-0.01073]$ & 18/20 & $4.83e-04$ \\
+FedAvg-Window & $-0.02115$ & $[-0.03158,-0.01071]$ & 18/20 & $4.83e-04$ \\
+TimeAlign-Agg & $-0.02137$ & $[-0.03185,-0.01090]$ & 17/20 & $4.83e-04$ \\
+RAVEN-MCS & $-0.02088$ & $[-0.03132,-0.01043]$ & 17/20 & $5.86e-04$ \\
+TwoStage-H\'ajek & $-0.02120$ & $[-0.03169,-0.01072]$ & 17/20 & $5.86e-04$ \\
+\bottomrule
+\end{tabular*}
+\end{table}
+
+
+\section{Local-H\'ajek Degeneracy Analysis}
+\label{app:local_hajek}
+
+The equality between Local-Hajek and FedAvg in the formal SensorScope/U-Air
+blocks is protocol-specific and should not be interpreted as a general
+equivalence.  The provenance audit covers
+9666 effective client-windows: 6070 on SensorScope and
+3596 on U-Air.  In every audited effective client-window, the realized
+within-client correction-weight range is 0.
+
+\begin{table}[!t]
+\centering
+\caption{Local-Hajek provenance audit.}
+\label{tab:app_local_hajek}
+\footnotesize
+\setlength{\tabcolsep}{5pt}
+\begin{tabular*}{\columnwidth}{@{\extracolsep{\fill}}lcc}
+\toprule
+Dataset & Effective client-windows & Weight range\\
+\midrule
+SensorScope & 6070 & $0$\\
+U-Air & 3596 & $0$\\
+\midrule
+Total & 9666 & $0$\\
+\bottomrule
+\end{tabular*}
+\end{table}
+
+The collapse follows directly from the normalized local objective.  Let
+$\mathcal I_{k,r}^{+}$ be the records retained by an effective client-window
+and let $N_{k,r}^{+}=|\mathcal I_{k,r}^{+}|$.  If the realized first-stage
+weight is constant over that set, i.e.,
+$a_{k,r,i}=a_{k,r}>0$ for all $i\in\mathcal I_{k,r}^{+}$, then
+\begin{equation}
+ \overline a_{k,r,i}
+ =
+ \frac{a_{k,r}}
+ {N_{k,r}^{+}a_{k,r}}
+ =
+ \frac{1}{N_{k,r}^{+}}.
+ \label{eq:app_local_hajek_uniform}
+\end{equation}
+Consequently,
+\begin{equation}
+ \widehat F^H_{k,r}(\theta)
+ =
+ \frac{1}{N_{k,r}^{+}}
+ \sum_{i\in\mathcal I_{k,r}^{+}}
+ \frac{1}{2}
+ \left(
+ f_\theta(i;C_i^{\mathrm{dep}})-Z_{k,r,i}
+ \right)^2,
+ \label{eq:app_local_hajek_collapse}
+\end{equation}
+which is exactly the uniform local objective used by the matched FedAvg
+backbone in these realized windows.\hfill$\square$  This derivation explains the observed
+numerical equality without weakening the general role of H\'ajek normalization
+when within-window correction weights are heterogeneous.
+
+
+\section{P2 Feasibility Diagnostics}
+\label{app:p2_diagnostics}
+
+Theorem~1 concerns the mathematical program.  Separately, the
+experimental audit reconstructs whether logged allocations satisfy the P2
+constraints whenever the necessary state is available.  Table~\ref{tab:app_p2_coverage}
+summarizes the dataset-level certificate coverage.
+
+\begin{table}[!t]
+\centering
+\caption{P2 feasibility-certificate coverage in the formal protocol blocks.}
+\label{tab:app_p2_coverage}
+\footnotesize
+\setlength{\tabcolsep}{4pt}
+\begin{tabular*}{\columnwidth}{@{\extracolsep{\fill}}lcccc}
+\toprule
+Dataset & Runs & Mean windows & Range & Status\\
+\midrule
+SensorScope & 180 & 93.85 & 88--98 & Certified \\
+U-Air & 180 & 70.10 & 63--75 & Certified \\
+\bottomrule
+\end{tabular*}
+\end{table}
+
+The solver log contains 778 numerical-inaccuracy warnings across
+85 affected formal runs.  The reconstruction audit covers
+6438 active P2 windows and certifies feasibility; the maximum
+reconstructed constraint residual is
+$2.686\times10^{-8}<10^{-7}$.  Feasibility is therefore certified;
+exact post-hoc optimality of every logged solve is not claimed.
+On later reconstructable logs, CLARABEL and SCS typically match to
+$10^{-8}$ in $\ell_1$; the worst window differs by $0.0056$ in
+allocation, which does not move the main-comparison or worst-group
+headlines.  A pre-registered window-level
+$10^{-4}/10^{-3}$ divergence rule is recorded as
+\texttt{G5\_SOLVER\_DIVERGE}; the stored P2 outputs were not re-solved under a different solver.
+
+\begin{table}[!t]
+\centering
+\caption{Warning-affected P2 audit and claim boundary.}
+\label{tab:app_p2_warning_audit}
+\footnotesize
+\setlength{\tabcolsep}{5pt}
+\begin{tabular*}{\columnwidth}{@{\extracolsep{\fill}}lc}
+\toprule
+Quantity & Frozen result\\
+\midrule
+Numerical-inaccuracy warnings & 778\\
+Affected formal runs & 85\\
+Audited active windows & 6438\\
+Maximum constraint residual & $2.686\times10^{-8}$\\
+Feasibility & Certified\\
+Exact post-hoc optimality & Not claimed\\
+\bottomrule
+\end{tabular*}
+\end{table}
+
+
+\FloatBarrier
+
+\section{Additional Existing Experimental Context}
+\label{app:additional_context}
+
+This appendix collects additional context that is useful for interpretation but
+would crowd the main RQ-focused evaluation.  Reference-only methods are marked
+by $^\dagger$ and are not included in the main inferential family.
+
+The sealed same-backbone protocol family below uses forced RAVEN-Design on U-Air;
+the main-text table methods are RAVEN-Design on SensorScope and
+RAVEN-NoDesign on U-Air
+(frozen heuristic $\phi$) in Table~III.
+
+\subsection{Windowed adaptations of FedAU, ObsUse, and TimeAlign}
+\label{app:adapted_baselines}
+FedAU-Window, ObsUse-Window, and TimeAlign-Agg are window-close
+adaptations, not official reproductions.
+FedAU~\cite{wang2024lightweight} targets the original federated averaging
+objective under unknown participation; these rules reweight usable clients
+and do not recover that objective.
+After window close, each EventTrace record of client \(k\) increments
+\(N^{\mathrm{att}}_k\), and \(N^{\mathrm{use}}_k\) if it is a registered
+usable update.  Window \(r\) uses earlier windows
+(\(\varepsilon=10^{-6}\); unseen rate \(1\)).
+Let \(n_{k,r}\) be the observed-unit count (empty buffer encoded as one),
+\(\widehat p^{\mathrm{obs}}_{k,r}\) the mean frozen observation propensity
+on the current risk set clipped below at \(0.05\) (or \(1\) if empty),
+\(S_k\) the covered slots on \(\mathcal{A}_r\), and
+\(\mathrm{overlap}(s)=\#\{j\in\mathcal{A}_r:s\in S_j\}\).
+\begin{align}
+ \widehat p^{\mathrm{part}}_{k,r}
+ &=
+ (N^{\mathrm{use}}_k+\varepsilon)/(N^{\mathrm{att}}_k+\varepsilon),
+ \label{eq:fedau_part_rate}\\
+ \alpha^{\mathrm{FedAU}}_{k,r}
+ &\propto n_{k,r}/\max\{\widehat p^{\mathrm{part}}_{k,r},\varepsilon\},
+ \label{eq:fedau_window_alpha}\\
+ \alpha^{\mathrm{ObsUse}}_{k,r}
+ &\propto n_{k,r}/(\widehat p^{\mathrm{obs}}_{k,r}\widehat p^{\mathrm{part}}_{k,r}),
+ \label{eq:obsuse_window_alpha}\\
+ \alpha^{\mathrm{TimeAlign}}_{k,r}
+ &\propto \sum_{s\in S_k}1/\mathrm{overlap}(s).
+ \label{eq:timealign_window_alpha}
+\end{align}
+FedAU-Window uses \eqref{eq:fedau_window_alpha} only.
+ObsUse-Window uses \eqref{eq:obsuse_window_alpha} and omits Design, (P2), and debt.
+TimeAlign-Agg (\texttt{flamf\_timealign\_adapted}) uses
+\eqref{eq:timealign_window_alpha} following~\cite{wang2026federated},
+without \(n_{k,r}\) or Design, and is not official FLAMF.
+Paired methods share the Common-NDMF backbone, step size, and selection
+trace (seeds \(30001\)--\(30020\)).  Existing tables already report
+these adaptations.
+
+\begin{table}[!t]
+\centering
+\caption{Nearest-neighbor comparison.  RAVEN's distinction is not IPW
+itself, but a public deployment target, sequential R/O/U legal
+histories, sensing-side correction, and finite-window calibration.
+FedIPW~\cite{morishita2026who} is the nearest two-stage FL IPW
+(enrollment then participation); it is not an MCS baseline.
+FLOSS~\cite{goetze2025floss} is client-level opt-out/straggler IPW.
+FedAU-Window and ObsUse-Window used in Section~VII are
+windowed implementations, not official reproductions.
+This table is not mixed into Table~III.}
+\label{tab:nearest_neighbor}
+\setlength{\tabcolsep}{3.2pt}
+{\footnotesize
+\begin{tabular*}{\columnwidth}{@{\extracolsep{\fill}}p{1.42cm}p{1.28cm}p{1.18cm}p{1.12cm}p{1.42cm}}
+\toprule
+Family & Target & Selection & Sensing-side & Finite-support cal.\\
+\midrule
+Covariate-shift FL & target/test domain & sample/client & no & no\\
+FedAU / participation debiasing & original FL objective & client participation & no & no\\
+FedIPW & pop.\ mean update & enroll then participate & no & no\\
+FLOSS & client roster & opt-out / straggler & no & no\\
+Correlated participation & long-run availability & client/update & no & limited\\
+Agnostic / targeted FL & client mixture & client distribution & no & not the issue\\
+Semi-async fairness/queue & participation fairness & client/update & no & queue \(\neq\) target debt\\
+\textbf{RAVEN-MCS} & public deployment \(\mu\) & R/O/U & yes & yes\\
+\bottomrule
+\end{tabular*}}
+\end{table}
+
+\begin{table}[t]
+\centering
+\caption{Validation-only under-served-block RMSE of the Table~III
+RAVEN configuration relative
+to FedAU-Window and ObsUse-Window (ten paired seeds; negative means
+the RAVEN row is better).  SensorScope uses RAVEN-Design; U-Air uses RAVEN-NoDesign.
+A win requires both columns $\le-0.5\%$.  Neither
+dataset meets that rule; both satisfy no-harm ($\le+0.5\%$).  The test
+look was not opened.  Not mixed into Table~III.}
+\label{tab:underserved_block}
+\setlength{\tabcolsep}{3.5pt}
+\begin{tabular}{lcccc}
+\toprule
+Dataset & $g^{\star}$ (UTC) & vs FedAU & vs ObsUse & Win / no-harm\\
+\midrule
+SensorScope & 2 (12--18) & $+0.05\%$ & $+0.15\%$ & No / Yes\\
+U-Air & 3 (18--24) & $-0.44\%$ & $-0.27\%$ & No / Yes\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\columnwidth]{fig3_e3_structural_mismatch.pdf}
+\caption{Sealed same-backbone structural alignment on SensorScope and
+U-Air (mean $\pm$ std over 20 paired seeds; lower is better).
+(a)(b)~SensorScope $\Delta_{\mathrm{group}}$ and $\Delta_{c\text{-}s}$;
+(c)(d)~U-Air $\Delta_{\mathrm{group}}$ and $\Delta_{c\text{-}s}$.
+SensorScope RAVEN-MCS is RAVEN-Design.  U-Air RAVEN-MCS in this
+figure is forced RAVEN-Design, not the RAVEN-NoDesign rows of
+Table~III.}
+\label{fig:e3_structural}
+\end{figure}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\columnwidth]{fig4_e3_prediction_risk.pdf}
+\caption{Sealed same-backbone deployment-target prediction risk
+(mean $\pm$ std over 20 paired seeds; lower is better).
+(a)(b)~SensorScope $\mathrm{RMSE}_{\mu}$ and Tail RMSE;
+(c)(d)~U-Air $\mathrm{RMSE}_{\mu}$ and Tail RMSE.
+U-Air RAVEN-MCS here is forced RAVEN-Design.  The RAVEN-NoDesign U-Air row
+($\mathrm{RMSE}_{\mu}=1.1131$) is in
+Table~III.}
+\label{fig:e3_prediction}
+\end{figure}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\columnwidth]{fig5_e4_component_ablation.pdf}
+\caption{One-factor component removal.  Positive bars mean that removing the
+component worsens the metric; $^\ast$ marks Holm-adjusted $p<0.05$.
+(a)(b)~SensorScope structural and prediction endpoints;
+(c)(d)~U-Air structural and prediction endpoints.
+Values with $|\delta|<0.05\%$ and no significance mark are left unlabeled.
+Sign reversals show endpoint- and dataset-dependent roles rather than
+uniformly additive benefits.  The corresponding numeric table remains
+Table~IV in the main paper.}
+\label{fig:e4_ablation}
+\end{figure}
+
+\begin{figure}[t]
+\raggedright
+\includegraphics[width=\columnwidth]{fig6_e4_uair_excl_design.pdf}
+\caption{U-Air component ablation excluding Design, magnified from
+Fig.~\ref{fig:e4_ablation}.  (a)~Structural mismatch;
+(b)~prediction risk.  Positive means removing the component worsens
+the metric; $^\ast$ marks Holm-adjusted $p<0.05$.}
+\label{fig:uair_excl_design}
+\end{figure}
+
+\subsection{Full Method Context on the Comparable Datasets}
+\label{app:e3_full_context}
+
+\begin{table}[!htbp]
+\centering
+\caption{SensorScope full method context (mean $\pm$ std over 20 seeds).
+Lower is better.  $^\dagger$ denotes reference-only context.
+RAVEN-Design is the Table~III method.}
+\label{tab:app_e3_sensorscope}
+\scriptsize
+\setlength{\tabcolsep}{3pt}
+\begin{tabular*}{\columnwidth}{@{\extracolsep{\fill}}lccc}
+\toprule
+Method & $\mathrm{RMSE}_{\mu}$ & $\Delta_{\mathrm{group}}$ & $\Delta_{c\text{-}s}$\\
+\midrule
+Central-All$^{\dagger}$ & $7.6004\pm0.0695$ & -- & -- \\
+Central-Delivered$^{\dagger}$ & $7.9291\pm0.0759$ & -- & -- \\
+FedAvg-Window & $7.9389\pm0.0459$ & $1.0558\pm0.0288$ & $1.2903\pm0.0306$ \\
+FedAsync-Window & $7.9391\pm0.0457$ & $1.0558\pm0.0287$ & $1.2906\pm0.0307$ \\
+TimeAlign-Agg & $7.9395\pm0.0455$ & $1.0561\pm0.0282$ & $1.2904\pm0.0304$ \\
+Local-Hajek & $7.9389\pm0.0459$ & $1.0558\pm0.0288$ & $1.2903\pm0.0306$ \\
+TwoStage-H\'ajek & $7.9309\pm0.0543$ & $1.0353\pm0.0347$ & $1.2910\pm0.0324$ \\
+Inst-Cal & $7.9380\pm0.0473$ & $1.0141\pm0.0305$ & $1.2644\pm0.0312$ \\
+Debt-Cal & $7.9399\pm0.0463$ & $1.0272\pm0.0275$ & $1.2710\pm0.0298$ \\
+RAVEN-Design & $7.9380\pm0.0473$ & $1.0139\pm0.0305$ & $1.2644\pm0.0312$ \\
+RAVEN-SimOracle$^{\dagger}$ & $7.9373\pm0.0455$ & $1.0160\pm0.0327$ & $1.2709\pm0.0301$ \\
+\bottomrule
+\end{tabular*}
+\end{table}
+
+\begin{table}[!htbp]
+\centering
+\caption{U-Air full method context (mean $\pm$ std over 20 seeds).
+Lower is better.  $^\dagger$ denotes reference-only context.
+RAVEN-Design (forced) is not the RAVEN-NoDesign U-Air assignment.}
+\label{tab:app_e3_uair}
+\scriptsize
+\setlength{\tabcolsep}{3pt}
+\begin{tabular*}{\columnwidth}{@{\extracolsep{\fill}}lccc}
+\toprule
+Method & $\mathrm{RMSE}_{\mu}$ & $\Delta_{\mathrm{group}}$ & $\Delta_{c\text{-}s}$\\
+\midrule
+Central-All$^{\dagger}$ & $1.0556\pm0.0566$ & -- & -- \\
+Central-Delivered$^{\dagger}$ & $1.1782\pm0.0981$ & -- & -- \\
+FedAvg-Window & $1.1882\pm0.0649$ & $1.1218\pm0.0417$ & $1.2621\pm0.0309$ \\
+FedAsync-Window & $1.1883\pm0.0648$ & $1.1223\pm0.0416$ & $1.2619\pm0.0310$ \\
+TimeAlign-Agg & $1.1884\pm0.0642$ & $1.1218\pm0.0417$ & $1.2630\pm0.0310$ \\
+Local-Hajek & $1.1882\pm0.0649$ & $1.1218\pm0.0417$ & $1.2621\pm0.0309$ \\
+TwoStage-H\'ajek & $1.2160\pm0.0716$ & $1.1196\pm0.0445$ & $1.2406\pm0.0297$ \\
+Inst-Cal & $1.1911\pm0.0659$ & $1.0924\pm0.0479$ & $1.2334\pm0.0320$ \\
+Debt-Cal & $1.1893\pm0.0654$ & $1.0976\pm0.0457$ & $1.2400\pm0.0314$ \\
+RAVEN-Design (forced) & $1.1911\pm0.0659$ & $1.0924\pm0.0479$ & $1.2334\pm0.0320$ \\
+RAVEN-SimOracle$^{\dagger}$ & $1.1914\pm0.0654$ & $1.0922\pm0.0483$ & $1.2342\pm0.0325$ \\
+\bottomrule
+\end{tabular*}
+\end{table}
+
+The central methods provide prediction-only reference context and therefore
+have no distributed structural-mismatch entry.  RAVEN-SimOracle is a controlled
+reference rather than a deployable baseline.  NSW-Traffic is intentionally not
+added to this homogeneous method table because its reused cross-vintage path is not
+scientifically comparable to the SensorScope/U-Air formal blocks.
+
+\subsection{NSW-Traffic Four-Region Protocol Ranking}
+\label{app:traffic_four_region}
+
+Table~\ref{tab:traffic_four_region} ranks the same windowed family on
+NSW-Traffic under a new public target map: four pre-specified coordinate
+regions, not the UTC H1--H4 groups of Table~III.
+The heuristic $\phi$ is applied to a locally frozen four-region map
+($\phi=0$, $0$ of $18576$ train units), so RAVEN-Design is used.
+$R$, $O$, and $U$ remain Complete-aligned protocol layers.
+This block is a new public target map on NSW-Traffic, not a third-city
+MCS system; it is not mixed into Table~III;
+and it is not comparable to the excluded cross-vintage Traffic path.
+$\mathrm{WorstGroupRMSE}$ is the maximum error over the four regions.
+RAVEN-Design versus FedAU-Window and ObsUse-Window stays within
+the descriptive $+0.5\%$ worst-group mean-relative point-estimate
+tolerance (paired relative $-0.57\%$ and $-0.54\%$).
+FedAU-Window and ObsUse-Window remain smaller on $\Delta_{\mathrm{group}}$.
+The block applies the named heuristic to a local map; it does not transfer
+the SensorScope/U-Air support statistic.
+
+\begin{table}[t]
+\centering
+\caption{NSW-Traffic ranking under a four-region public target map
+(mean $\pm$ std, 10 seeds, $100$ windows).  Lower is better.
+TwoStage-H\'ajek is lowest on $\mathrm{RMSE}_{\mu}$, WorstGroupRMSE, and
+$\Delta_{c\text{-}s}$; FedAU-Window is lowest on
+$\Delta_{\mathrm{group}}$.  RAVEN-Design stays within the
+descriptive $+0.5\%$ worst-group tolerance versus FedAU-Window and
+ObsUse-Window.}
+\label{tab:traffic_four_region}
+\scriptsize
+\setlength{\tabcolsep}{2.5pt}
+\begin{tabular}{@{}lcccc@{}}
+\toprule
+Method & $\mathrm{RMSE}_{\mu}$ & WorstGroupRMSE &
+$\Delta_{\mathrm{group}}$ & $\Delta_{c\text{-}s}$\\
+\midrule
+FedAvg-Window & \shortstack{$1.0180$\\ $\pm0.0089$} & \shortstack{$1.4245$\\ $\pm0.0172$} & \shortstack{$0.1877$\\ $\pm0.0263$} & \shortstack{$0.9597$\\ $\pm0.0290$}\\
+TwoStage-H\'ajek & \shortstack{$\mathbf{1.0095}$\\ $\pm0.0052$} & \shortstack{$\mathbf{1.4025}$\\ $\pm0.0128$} & \shortstack{$0.1908$\\ $\pm0.0233$} & \shortstack{$\mathbf{0.8362}$\\ $\pm0.0335$}\\
+FedAU-Window & \shortstack{$1.0131$\\ $\pm0.0078$} & \shortstack{$1.4110$\\ $\pm0.0185$} & \shortstack{$\mathbf{0.0606}$\\ $\pm0.0192$} & \shortstack{$0.9612$\\ $\pm0.0333$}\\
+ObsUse-Window & \shortstack{$1.0130$\\ $\pm0.0078$} & \shortstack{$1.4106$\\ $\pm0.0187$} & \shortstack{$0.0607$\\ $\pm0.0192$} & \shortstack{$0.9602$\\ $\pm0.0342$}\\
+RAVEN-Design & \shortstack{$1.0099$\\ $\pm0.0061$} & \shortstack{$1.4029$\\ $\pm0.0156$} & \shortstack{$0.1048$\\ $\pm0.0242$} & \shortstack{$0.8414$\\ $\pm0.0304$}\\
+\bottomrule
+\end{tabular}
+
+\begin{minipage}{\columnwidth}
+\raggedright\scriptsize
+$R$, $O$, and $U$ are Complete-aligned protocol layers.
+WorstGroupRMSE is the maximum over four coordinate regions, not UTC
+H1--H4.  RAVEN-Design is used ($\phi=0$, $0$ of $18576$).
+Not mixed into Table~III; not a confirmation of
+that table and not an end-to-end MCS ranking.
+No Holm-significant win is claimed.
+\end{minipage}
+\end{table}
+
+\subsection{Four-Block Per-Group RMSE}
+\label{app:block_rmse}
+
+Table~\ref{tab:app_block_rmse} reports the four UTC-block scores whose
+maximum is $\mathrm{WorstGroupRMSE}$ in
+Table~III.  The blocks are the public
+deployment groups $00$--$06$, $06$--$12$, $12$--$18$, and $18$--$24$~UTC.
+This table does not introduce a new ranking rule.  On both datasets the
+worst block is $g=2$ ($12$--$18$~UTC).  The pre-registered under-served
+block $g^{\star}$ coincides with that worst block on SensorScope and
+does not on U-Air.
+
+\begin{table*}[t]
+\centering
+\caption{Four-block $\mathrm{RMSE}_g$ (mean $\pm$ std over 20 paired
+seeds).  Lower is better.  $\mathrm{WorstGroupRMSE}=\max_g\mathrm{RMSE}_g$.
+SensorScope reports RAVEN-Design; U-Air reports RAVEN-NoDesign.  Forced RAVEN-Design is a labeled
+diagnostic row.  Source: G2 stored per-seed block scores.}
+\label{tab:app_block_rmse}
+\footnotesize
+\setlength{\tabcolsep}{4pt}
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}llccccc}
+\toprule
+Dataset & Method & $g{=}0$ & $g{=}1$ & $g{=}2$ & $g{=}3$ & WG\\
+\midrule
+\multirow{5}{*}{SS}
+& FedAvg-Window & $7.4912{\pm}0.0464$ & $7.5873{\pm}0.0444$ & $8.6716{\pm}0.0471$ & $8.2084{\pm}0.0460$ & $8.6716{\pm}0.0471$\\
+& TwoStage-H\'ajek & $7.4831{\pm}0.0549$ & $7.5795{\pm}0.0523$ & $8.6633{\pm}0.0556$ & $8.2004{\pm}0.0549$ & $8.6633{\pm}0.0556$\\
+& FedAU-Window & $7.4887{\pm}0.0512$ & $7.5848{\pm}0.0491$ & $8.6691{\pm}0.0522$ & $8.2059{\pm}0.0510$ & $8.6691{\pm}0.0522$\\
+& ObsUse-Window & $7.4815{\pm}0.0517$ & $7.5780{\pm}0.0496$ & $8.6618{\pm}0.0528$ & $8.1988{\pm}0.0516$ & $8.6618{\pm}0.0528$\\
+& RAVEN-Design & $7.4903{\pm}0.0479$ & $7.5864{\pm}0.0457$ & $8.6707{\pm}0.0486$ & $8.2075{\pm}0.0476$ & $8.6707{\pm}0.0486$\\
+\midrule
+\multirow{6}{*}{UA}
+& FedAvg-Window & $1.1751{\pm}0.0579$ & $1.1922{\pm}0.0606$ & $1.2596{\pm}0.0709$ & $1.1521{\pm}0.0628$ & $1.2596{\pm}0.0709$\\
+& TwoStage-H\'ajek & $1.2009{\pm}0.0623$ & $1.2194{\pm}0.0649$ & $1.2907{\pm}0.0753$ & $1.1800{\pm}0.0670$ & $1.2907{\pm}0.0753$\\
+& FedAU-Window & $1.1023{\pm}0.0545$ & $1.1153{\pm}0.0576$ & $1.1701{\pm}0.0689$ & $1.0729{\pm}0.0598$ & $1.1701{\pm}0.0689$\\
+& ObsUse-Window & $1.1016{\pm}0.0544$ & $1.1145{\pm}0.0576$ & $1.1692{\pm}0.0689$ & $1.0721{\pm}0.0598$ & $1.1692{\pm}0.0689$\\
+& RAVEN-Design (forced) & $1.1779{\pm}0.0583$ & $1.1953{\pm}0.0611$ & $1.2630{\pm}0.0716$ & $1.1552{\pm}0.0633$ & $1.2630{\pm}0.0716$\\
+& RAVEN-NoDesign & $1.1025{\pm}0.0578$ & $1.1155{\pm}0.0611$ & $1.1703{\pm}0.0734$ & $1.0732{\pm}0.0636$ & $1.1703{\pm}0.0734$\\
+\bottomrule
+\end{tabular*}
+\end{table*}
+
+\subsection{Runtime Diagnostic from Existing Risk-Semantic Logs}
+\label{app:runtime}
+
+Table~\ref{tab:app_runtime} reports measured wall-clock runtime only as an
+implementation diagnostic.  The ``all scenarios'' column aggregates six
+risk-semantic scenarios and 20 seeds (120 runs per method); the Complete-aligned column
+contains 20 runs per method.  These measurements are not a scalability claim.
+
+\begin{table}[!htbp]
+\centering
+\caption{Existing risk-semantic runtime diagnostic in seconds (mean $\pm$ std).}
+\label{tab:app_runtime}
+\footnotesize
+\setlength{\tabcolsep}{3.5pt}
+\begin{tabular*}{\columnwidth}{@{\extracolsep{\fill}}lcc}
+\toprule
+Method & All scenarios & Complete-aligned\\
+\midrule
+FedAvg-Window & $71.426\pm5.105$ & $69.278\pm2.287$ \\
+FedAsync-Window & $71.418\pm4.863$ & $70.186\pm3.531$ \\
+TimeAlign-Agg & $71.244\pm5.225$ & $69.217\pm2.554$ \\
+TwoStage-H\'ajek & $71.781\pm8.017$ & $69.829\pm3.670$ \\
+RAVEN-MCS & $72.669\pm4.243$ & $71.070\pm1.292$ \\
+\bottomrule
+\end{tabular*}
+\end{table}
+
+Across these runtime rows (Table~\ref{tab:app_runtime}) there are no recorded
+non-finite model parameters, non-finite losses, denominator-zero events, or
+recorded P2 solver failures.  The diagnostic supports implementation sanity only and does not
+establish asymptotic system efficiency.
+
+\subsection{Provenance of the w/o-Design Endpoint Trade-off}
+\label{app:design_provenance}
+
+The Design ablation in Section~\mbox {VII-E} exhibits an endpoint
+trade-off on U-Air.  A paired-window provenance audit covers
+774 windows.  Opportunity, observation, usable-update, and
+registration hashes are identical between full RAVEN and w/o-Design throughout
+the audited set.  Differences first arise from the positive design-weight/P2
+support induced after the Design ratio is removed.  This confirms that the
+ablation effect is a weight-support consequence of the intended intervention,
+not selection-trace leakage.
+
+\section{Intermittent Protocol Opportunity (INT-R)}
+\label{app:int_r}
+
+The main comparison and ablation ranking in Table~III uses
+Complete-aligned protocol opportunity that is always-on: every mapped
+client receives an opportunity event in every window.  That setting does
+not contain mobile clients, and it does not use T-Drive trajectories.
+This appendix reports a robustness ranking on the same SensorScope and
+U-Air station arrays, the same public four-block $\boldsymbol\mu$, and the
+same Complete-aligned observation and usable-update layers, after replacing
+always-on protocol $R$ by a client-window occupancy bit $A_{k,t}$.
+If $A_{k,t}=0$, that client-window writes no opportunity event.  If
+$A_{k,t}=1$, the existing Complete-aligned $O$/$U$ path is unchanged.
+Occupancy is a two-state Markov process, independent across the $K=8$
+logical clients, with mean active-fraction target $0.425$ taken from the
+already-published T-Drive scalar in Section~\mbox {VII-B}.  The
+same $(\alpha,\beta)$ pair is used on both datasets.  T-Drive GPS is not
+overlaid on the stations.  The heuristic $\phi$ is not retuned from
+these RMSE values: Algorithm~1 still selects RAVEN-Design
+if and only if $\phi=0$, so SensorScope remains RAVEN-Design and U-Air remains
+RAVEN-NoDesign.
+The coverage Gate audited in Section~\mbox {VII-F} is not used.
+
+A Goh--Barab\'asi burstiness target of $+0.38$ was also declared.  The
+stability screen required to keep single-seed active fractions inside
+$[0.35,0.50]$ selected a less sticky chain
+($\alpha\approx0.775$, $\beta\approx0.837$) whose pooled burstiness is
+about $0.20$.  This block therefore matches the published T-Drive
+\emph{active fraction}, not T-Drive burstiness, and it is not a taxi
+opportunity process.
+
+Table~\ref{tab:int_r_occ} records the occupancy audit on seeds
+$30001$, $30010$, and $30020$.  Mean active fraction on seed $30001$
+lies in $[0.35,0.50]$ on both datasets.  Four-block
+$\mathrm{TV}(\pi^{\mathrm{opp}},\boldsymbol\mu)$ remains above the
+pre-registered $0.05$ threshold ($0.309$ on SensorScope and $0.225$ on
+U-Air at seed $30001$), so intermittent occupancy does not erase the
+mismatch that Table~III is about.
+
+\begin{table}[!htbp]
+\centering
+\caption{INT-R occupancy audit on the shared EventTraces (eight logical
+clients).  Burstiness is Goh--Barab\'asi on pooled inter-active gaps.
+$\mathrm{TV}$ uses $A=1$ risk sets and train units only.}
+\label{tab:int_r_occ}
+\scriptsize
+\begin{tabular}{lcccc}
+\toprule
+Dataset & Seed & Active frac. & Burstiness & $\mathrm{TV}(\pi^{\mathrm{opp}},\boldsymbol\mu)$\\
+\midrule
+SensorScope & 30001 & $0.453$ & $0.198$ & $0.309$\\
+SensorScope & 30010 & $0.433$ & $0.223$ & $0.300$\\
+SensorScope & 30020 & $0.394$ & $0.251$ & $0.271$\\
+U-Air & 30001 & $0.495$ & $0.263$ & $0.225$\\
+U-Air & 30010 & $0.428$ & $0.190$ & $0.275$\\
+U-Air & 30020 & $0.403$ & $0.201$ & $0.205$\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Table~\ref{tab:int_r_e3} ranks the same methods as
+Table~III on those traces ($20$ paired seeds).
+Three always-on conclusions survive.  (i)~Four-block
+$\mathrm{WorstGroupRMSE}$ remains within the descriptive $+0.5\%$
+tolerance versus FedAU-Window
+and ObsUse-Window: SensorScope paired relative
+change $+0.08\%$ and $+0.12\%$; U-Air $-0.10\%$ and $-0.10\%$.  Holm tests
+against those two are not a unique-win claim.  (ii)~Forced RAVEN-Design on U-Air
+still worsens the primaries relative to RAVEN-NoDesign
+(paired $+3.65\%$ $\mathrm{RMSE}_{\mu}$ and $+4.07\%$
+$\mathrm{WorstGroupRMSE}$; $+9.14\%$ $\Delta_{\mathrm{group}}$), while
+slightly improving $\Delta_{c\text{-}s}$ ($-0.26\%$).  The always-on
+reversal was about $7\%$ on the primaries; the sign is unchanged.
+(iii)~SensorScope $\Delta_{\mathrm{group}}$ remains lower for
+RAVEN-Design than for FedAvg (paired $-1.04\%$).
+
+Two always-on headlines do \emph{not} carry over at the same strength.
+SensorScope $\Delta_{c\text{-}s}$ versus FedAvg shrinks to
+$-0.05\%$ (not distinguishable from zero at conventional $p=0.05$).
+Removing Design on SensorScope moves
+$\Delta_{\mathrm{group}}$ by only $+0.05\%$ (not significant), so the
+always-on ablation statement that Design is the useful SensorScope factor is
+not recovered under this occupancy process.  Absolute
+$\Delta_{\mathrm{group}}$ also sits higher for every method than in
+Table~III (about $1.33$ versus $1.01$ on
+SensorScope), which is expected when protocol $R$ is thinned; it is not
+a second ranking family and is not mixed into the main table.
+
+\begin{table}[!htbp]
+\centering
+\caption{INT-R robustness ranking under intermittent protocol $R$
+(mean $\pm$ std over 20 seeds).  Lower is better.  The frozen heuristic
+assignment is unchanged from Table~III.  Forced
+RAVEN-Design on U-Air is diagnostic.  This is protocol occupancy on station clients,
+not mobile-client MCS and not a T-Drive RMSE ranking.}
+\label{tab:int_r_e3}
+\scriptsize
+\setlength{\tabcolsep}{1pt}
+\begin{tabular}{llcccc}
+\toprule
+Dataset & Method & $\mathrm{RMSE}_{\mu}$ & WorstGroupRMSE &
+$\Delta_{\mathrm{group}}$ & $\Delta_{c\text{-}s}$\\
+\midrule
+\multirow{5}{*}{SensorScope}
+& FedAvg-Window     & \shortstack{$7.9373$\\ $\pm0.0960$} & \shortstack{$8.6716$\\ $\pm0.0976$} & \shortstack{$1.3411$\\ $\pm0.0580$} & \shortstack{$1.5866$\\ $\pm0.0445$}\\
+& TwoStage-H\'ajek    & \shortstack{$7.9362$\\ $\pm0.0956$} & \shortstack{$8.6696$\\ $\pm0.0957$} & \shortstack{$1.3558$\\ $\pm0.0545$} & \shortstack{$1.5941$\\ $\pm0.0415$}\\
+& FedAU-Window      & \shortstack{$7.9335$\\ $\pm0.1036$} & \shortstack{$8.6678$\\ $\pm0.1044$} & \shortstack{$1.3540$\\ $\pm0.0541$} & \shortstack{$1.5978$\\ $\pm0.0425$}\\
+& ObsUse-Window     & \shortstack{$7.9305$\\ $\pm0.1047$} & \shortstack{$8.6647$\\ $\pm0.1054$} & \shortstack{$1.3560$\\ $\pm0.0534$} & \shortstack{$1.5983$\\ $\pm0.0421$}\\
+& RAVEN-Design & \shortstack{$7.9407$\\ $\pm0.0957$} & \shortstack{$8.6746$\\ $\pm0.0972$} & \shortstack{$\mathbf{1.3272}$\\ $\pm0.0607$} & \shortstack{$1.5859$\\ $\pm0.0443$}\\
+\midrule
+\multirow{6}{*}{U-Air}
+& FedAvg-Window     & \shortstack{$1.1121$\\ $\pm0.0873$} & \shortstack{$1.1682$\\ $\pm0.1022$} & \shortstack{$1.3141$\\ $\pm0.0679$} & \shortstack{$1.5786$\\ $\pm0.0602$}\\
+& TwoStage-H\'ajek    & \shortstack{$1.1555$\\ $\pm0.1027$} & \shortstack{$1.2179$\\ $\pm0.1079$} & \shortstack{$1.4393$\\ $\pm0.0613$} & \shortstack{$1.5694$\\ $\pm0.0631$}\\
+& FedAU-Window      & \shortstack{$1.1126$\\ $\pm0.0845$} & \shortstack{$1.1689$\\ $\pm0.0985$} & \shortstack{$1.3319$\\ $\pm0.0690$} & \shortstack{$1.5951$\\ $\pm0.0597$}\\
+& ObsUse-Window     & \shortstack{$1.1126$\\ $\pm0.0853$} & \shortstack{$1.1689$\\ $\pm0.0995$} & \shortstack{$1.3304$\\ $\pm0.0693$} & \shortstack{$1.5947$\\ $\pm0.0604$}\\
+& RAVEN-Design (forced) & \shortstack{$1.1528$\\ $\pm0.1005$} & \shortstack{$1.2148$\\ $\pm0.1040$} & \shortstack{$1.4134$\\ $\pm0.0725$} & \shortstack{$\mathbf{1.5632}$\\ $\pm0.0663$}\\
+& RAVEN-NoDesign & \shortstack{$1.1120$\\ $\pm0.0880$} & \shortstack{$1.1680$\\ $\pm0.1031$} & \shortstack{$\mathbf{1.2959}$\\ $\pm0.0746$} & \shortstack{$1.5672$\\ $\pm0.0638$}\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\paragraph{Scope of the supplementary evidence.}
+The INT-R block uses the same two station datasets as
+Table~III with a different protocol opportunity
+process; it does not replace that table.  Cross-vintage Traffic
+outputs remain unused.
+
+\section{Coverage-Stress Audit of the Candidate Gate}
+\label{app:certificate_audit}
+
+The main paper reports pooled CERTIFIED validity $0.959$ and zero
+false-safe openings.  Those rates are empirical.  The adaptive
+RESET/CERTIFIED switching is not given a validity proof.
+Design remains the frozen heuristic assignment in
+Algorithm~1, not this Gate.
+
+\begin{table*}[t]
+\centering
+\caption{Coverage-stress audit of a candidate aggregate coverage Gate.
+Validity is the fraction of CERTIFIED windows with
+$C^{\mathrm{LCB}}\le C$.  FSR is the false-safe rate among CERTIFIED
+windows with $C<\tau_{\mathrm{cov}}$.  Gate ON is the fraction of all
+windows with $\mathrm{Gate}_t=1$.  SensorScope $a=0.40$ and U-Air
+$a=0.20$ keep Gate off because the LCB stays below $\tau_{\mathrm{cov}}$.
+U-Air $a=1.00$ misses the nominal $95\%$ empirical validity.}
+\label{tab:certificate_stress}
+\scriptsize
+\setlength{\tabcolsep}{3.2pt}
+\begin{tabular}{lcccccccc}
+\toprule
+Dataset & $a$ & $n$ & $n_{\mathrm{cert}}$ & Duty & Validity & FSR & Gate ON & Median $C^{\mathrm{LCB}}$\\
+\midrule
+\multirow{5}{*}{SensorScope}
+& $1.00$ & $62$ & $43$ & $0.694$ & $1.000$ & $0.000$ & $0.694$ & $0.124$\\
+& $0.80$ & $62$ & $29$ & $0.468$ & $0.966$ & $0.000$ & $0.452$ & $0.093$\\
+& $0.60$ & $62$ & $24$ & $0.387$ & $0.958$ & $0.000$ & $0.306$ & $0.065$\\
+& $0.40$ & $62$ & $24$ & $0.387$ & $0.958$ & $0.000$ & $0.000$ & $0.041$\\
+& $0.20$ & $62$ & $24$ & $0.387$ & $0.958$ & $0.000$ & $0.000$ & $0.017$\\
+\midrule
+\multirow{5}{*}{U-Air}
+& $1.00$ & $53$ & $8$ & $0.151$ & $0.750$ & $0.000$ & $0.151$ & $0.182$\\
+& $0.80$ & $53$ & $11$ & $0.208$ & $0.818$ & $0.000$ & $0.208$ & $0.129$\\
+& $0.60$ & $53$ & $15$ & $0.283$ & $0.933$ & $0.000$ & $0.245$ & $0.093$\\
+& $0.40$ & $53$ & $31$ & $0.585$ & $0.968$ & $0.000$ & $0.340$ & $0.051$\\
+& $0.20$ & $53$ & $34$ & $0.642$ & $1.000$ & $0.000$ & $0.000$ & $0.013$\\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+\begin{figure}[t]
+\raggedright
+\includegraphics[width=\columnwidth]{fig_certificate_audit.pdf}
+\caption{Finite-sample audit of the aggregate coverage certificate.
+(a)~CERTIFIED windows: realized coverage $C_t$ versus
+$C^{\mathrm{LCB}}_t$.  The dashed line is $y=x$; dotted lines mark
+$\tau_{\mathrm{cov}}=0.05$.
+(b)~SensorScope $a=0.40$ timeline.  Gray bands are WARMUP; the red mark
+is a retained CERTIFIED miscoverage that triggers RESET on the next
+window.  The LCB stays below $0.05$, so Gate remains off.}
+\label{fig:certificate_audit}
+\end{figure}
+
+\section{Frozen $\phi$ Assignments and City Scanner Hybrid Rankings}
+\label{app:cityscanner_phi}
+
+Table~\ref{tab:scd_phi_freeze} collects the train-unit zero-target
+fractions used by the frozen deployment heuristic in
+Algorithm~1.
+The heuristic selects RAVEN-Design if and only if
+$\phi=0$ in (32).  When $\phi>0$, RAVEN-NoDesign uses
+$\widehat\zeta^{o}=1$, an uncorrected opportunity factor, not
+target-mass reconstruction.  It does not verify positivity on
+target-positive pairs.
+The U-Air EventTrace occurrence share
+$13040/51200=25.5\%$ is not a row in this table.
+The coverage Gate does not switch Design.
+None of these counts uses $Y$ or RMSE.
+
+\begin{table}[t]
+\centering
+\caption{Frozen train-unit heuristic $\phi$ used by the RAVEN-Design / RAVEN-NoDesign rule.
+Zero test: frozen $\pi^{\mathrm{tar}}(k(i),s(i))$ for the occupancy-attached
+client; a missing key is $0$.
+The zero test does not verify positivity on target-positive pairs.
+RAVEN-Design if and only if $\phi=0$;
+when $\phi>0$, RAVEN-NoDesign uses an uncorrected opportunity factor
+($\widehat\zeta=1$).
+U-Air $25.5\%$ is EventTrace occurrence, not this switch.}
+\label{tab:scd_phi_freeze}
+\scriptsize
+\setlength{\tabcolsep}{3pt}
+\begin{tabular*}{\columnwidth}{@{\extracolsep{\fill}}lcccc}
+\toprule
+Block & $n_{\mathrm{train}}$ & $n_{\mathrm{zero}}$ & $\phi$ & Design\\
+\midrule
+SensorScope (Table~III) & $10285$ & $0$ & $0$ & on\\
+U-Air (Table~III) & $5688$ & $2016$ & $35.4\%$ & off\\
+T-Drive hybrid (Table~II) & $285659$ & $135268$ & $47.4\%$ & off\\
+NSW-Traffic four-region (Table~\ref{tab:traffic_four_region}) & $18576$ & $0$ & $0$ & on\\
+City Scanner NYC {PM}$_{2.5}$ (Table~\ref{tab:cityscanner_hybrid}) & $9343$ & $0$ & $0$ & on\\
+City Scanner P2 meas.\ $O$ (Table~\ref{tab:cityscanner_p2_measured_o}) & $10141$ & $0$ & $0$ & on\\
+\bottomrule
+\end{tabular*}
+\end{table}
+
+SensorScope and U-Air look up test-split client--stratum mass
+$\pi^{\mathrm{tar}}_{k,s}$.  T-Drive looks up test-split stratum
+frequency.  City Scanner blocks assign the test-group share $\mu_{h(i)}$
+to training atoms, with all four regions positive.  NSW-Traffic uses a
+four-region freeze.  These are distinct lookup objects.  A local
+$\phi=0$ on one map does not mean that the SensorScope/U-Air
+support statistic transferred.  City Scanner $\phi=0$ follows from
+positive regional $\mu$, not from checking target-positive pairs.
+
+\subsection{City Scanner New York {PM}$_{2.5}$}
+\label{app:cityscanner_nyc}
+
+This block applies the frozen heuristic $\phi$ to a locally constructed
+public drive-by
+{PM}$_{2.5}$ map~\cite{wang2023cityscanner}.
+The source files are the New York Pilot~1 and Pilot~2 {PM} CSVs on
+Zenodo~\footnote{\url{https://doi.org/10.5281/zenodo.7961851}}
+({CC BY} 4.0).  Boston, Beirut, and {NO}$_2$ files are not used.
+$Y$ is the mean of finite calibrated {PM}$_{2.5}$ ($\mu$g/m$^3$) inside
+an occupied $500$\,m $\times$ $30$\,min cell.
+GPS places visits only.
+Federated clients are occupied grid cells, not vehicles.
+Physical filters drop non-finite latitude, longitude, time, or
+\texttt{pm25}, and drop $\texttt{pm25}<0$ or $\texttt{pm25}>1000$.
+Empty cell-slots are absent, not imputed.
+
+The public target $h(i)$ is four quadrants from the median cell indices
+$(g_x,g_y)$ over all occupied cells, without $Y$.
+$\boldsymbol\mu$ is the test-split region share, without $Y$.
+Opportunity strata are $\mathrm{region}{::}\mathrm{block}{::}\mathrm{weekday}$
+(at most $32$).
+$R$ is real visit occupancy: a client occupies a unit if and only if
+that cell has at least one kept sample in that slot.
+$O$ and $U$ remain Complete-aligned controls
+($p_{\mathrm{obs}}=0.35$, $s_{\max}=5$).
+The ranking family is therefore hybrid, not end-to-end MCS.
+
+Processed counts: $14723$ atomic units, $446$ occupied cells, $2776$
+occupied slots, and train/validation/test $9343/3290/2090$.
+All four regions have test units
+($496$, $992$, $148$, $454$).
+Table~\ref{tab:scd_phi_freeze} records $\phi=0$ ($0$ of $9343$), frozen
+before RMSE, so RAVEN-Design is used.
+Shared EventTraces use seeds $32001$--$32010$ and $100$ windows obtained
+by chronological equal-count bins of the $1666$ train $30$\,min slots.
+The coverage Gate is unused.
+
+Table~\ref{tab:cityscanner_hybrid} ranks the same windowed family.
+$\mathrm{WorstGroupRMSE}$ is the maximum error over the four quadrants.
+RAVEN-Design is lower than FedAU-Window and ObsUse-Window on
+paired $\mathrm{RMSE}_{\mu}$ (mean relative $-1.71\%$ and $-1.34\%$)
+and on worst-group RMSE ($-1.56\%$ and $-1.23\%$).
+FedAvg-Window remains lowest on both prediction endpoints.
+RAVEN-Design is smallest on $\Delta_{\mathrm{group}}$.
+The block is not mixed into Table~III or
+Table~II, and it is not a confirmation of those
+tables.
+A separate Pilot~2 ranking with measured observation is
+Table~\ref{tab:cityscanner_p2_measured_o}.
+
+\begin{table}[t]
+\centering
+\caption{City Scanner New York {PM}$_{2.5}$ hybrid ranking
+(mean $\pm$ std, 10 seeds, $100$ windows).  Lower is better.
+FedAvg-Window is lowest on $\mathrm{RMSE}_{\mu}$ and WorstGroupRMSE;
+RAVEN-Design is lower than FedAU-Window and ObsUse-Window on
+those two and smallest on $\Delta_{\mathrm{group}}$.}
+\label{tab:cityscanner_hybrid}
+\scriptsize
+\setlength{\tabcolsep}{2.5pt}
+\begin{tabular}{@{}lcccc@{}}
+\toprule
+Method & $\mathrm{RMSE}_{\mu}$ & WorstGroupRMSE &
+$\Delta_{\mathrm{group}}$ & $\Delta_{c\text{-}s}$\\
+\midrule
+FedAvg-Window & \shortstack{$\mathbf{0.2379}$\\ $\pm0.0839$} & \shortstack{$\mathbf{0.2489}$\\ $\pm0.0856$} & \shortstack{$0.1953$\\ $\pm0.0342$} & \shortstack{$0.8123$\\ $\pm0.0191$}\\
+TwoStage-H\'ajek & \shortstack{$0.2510$\\ $\pm0.1044$} & \shortstack{$0.2629$\\ $\pm0.1068$} & \shortstack{$0.0952$\\ $\pm0.0307$} & \shortstack{$\mathbf{0.5305}$\\ $\pm0.0286$}\\
+FedAU-Window & \shortstack{$0.2582$\\ $\pm0.1028$} & \shortstack{$0.2700$\\ $\pm0.1048$} & \shortstack{$0.3216$\\ $\pm0.0412$} & \shortstack{$1.1403$\\ $\pm0.0538$}\\
+ObsUse-Window & \shortstack{$0.2566$\\ $\pm0.1004$} & \shortstack{$0.2685$\\ $\pm0.1023$} & \shortstack{$0.3187$\\ $\pm0.0414$} & \shortstack{$1.1369$\\ $\pm0.0547$}\\
+RAVEN-Design & \shortstack{$0.2549$\\ $\pm0.1057$} & \shortstack{$0.2671$\\ $\pm0.1079$} & \shortstack{$\mathbf{0.0706}$\\ $\pm0.0266$} & \shortstack{$0.5676$\\ $\pm0.0311$}\\
+\bottomrule
+\end{tabular}
+
+\begin{minipage}{\columnwidth}
+\raggedright\scriptsize
+$R$ is real visit occupancy; $O$/$U$ are Complete-aligned
+($p_{\mathrm{obs}}=0.35$, $s_{\max}=5$).
+WorstGroupRMSE is the maximum over four coordinate quadrants.
+RAVEN-Design is used ($\phi=0$, $0$ of $9343$).
+Clients are occupied cells, not vehicles.
+Not mixed into Table~III or
+Table~II.
+\end{minipage}
+\end{table}
+
+\subsection{City Scanner Pilot~2 with measured observation}
+\label{app:cityscanner_p2_measured_o}
+
+This block keeps the same frozen heuristic and the same windowed family, but
+changes how observation is realized.
+The source files are the New York Pilot~2 {PM} and {NO}$_2$ CSVs on
+Zenodo~\footnote{\url{https://doi.org/10.5281/zenodo.7961851}}
+({CC BY} 4.0).  Pilot~1, Boston, and Beirut are not used.
+$Y$ is the mean of finite calibrated {PM}$_{2.5}$ ($\mu$g/m$^3$) inside
+an occupied $500$\,m $\times$ $30$\,min cell.
+Federated clients are occupied grid cells, not vehicles.
+
+$R$ is real visit occupancy on the union of kept-{PM} GPS and {NO}$_2$ GPS
+at the same grid: a client occupies a unit if and only if that cell has at
+least one kept GPS sample in that slot.
+$O=1$ if and only if the cell-slot contains finite {PM}$_{2.5}$ in
+$[0,1000]$; this is not a Bernoulli $p_{\mathrm{obs}}$ control.
+{NO}$_2$ contributes GPS occupancy only and is not the completion target.
+$U$ remains a Complete-aligned control ($s_{\max}=5$).
+The ranking family is therefore hybrid, not an end-to-end MCS system and
+not a jointly measured observation-and-network process.
+
+Occupancy is $14960$ cell-slots, $416$ cells, and $2402$ slots
+($10141/2835/1984$ train/val/test), with measured $O=0$ on $1931$ slots
+($12.9\%$) and $13029$ labeled $O=1$ units.
+Region test occupancy is $1289$, $268$, $144$, and $283$.
+RAVEN-Design is used ($\phi=0$, $0$ of $10141$); seeds $33001$--$33010$ and
+$100$ windows from $1441$ train slots.
+Paired relative RMSE versus FedAU-Window, ObsUse-Window, and FedAvg-Window is
+$-0.43\%$, $-0.45\%$, and $-0.65\%$ (worst-group $-0.44\%$, $-0.47\%$,
+$-0.65\%$).
+Not mixed into Table~III,
+Table~II, or Table~\ref{tab:cityscanner_hybrid},
+and not a confirmation of those tables.
+
+\begin{table}[t]
+\centering
+\caption{City Scanner New York Pilot~2 ranking with measured observation
+(mean $\pm$ std, 10 seeds, $100$ windows).  Lower is better.
+TwoStage-H\'ajek is lowest on $\mathrm{RMSE}_{\mu}$ and WorstGroupRMSE;
+RAVEN-Design is smallest on $\Delta_{\mathrm{group}}$ and
+lower than FedAU-Window, ObsUse-Window, and FedAvg-Window on the two prediction
+endpoints.}
+\label{tab:cityscanner_p2_measured_o}
+\scriptsize
+\setlength{\tabcolsep}{2.5pt}
+\begin{tabular}{@{}lcccc@{}}
+\toprule
+Method & $\mathrm{RMSE}_{\mu}$ & WorstGroupRMSE &
+$\Delta_{\mathrm{group}}$ & $\Delta_{c\text{-}s}$\\
+\midrule
+FedAvg-Window & $0.7182{\pm}0.0208$ & $0.7359{\pm}0.0204$ & $0.0769{\pm}0.0231$ & $0.7066{\pm}0.0162$\\
+TwoStage-H\'ajek & $\mathbf{0.7097}{\pm}0.0204$ & $\mathbf{0.7273}{\pm}0.0200$ & $0.0607{\pm}0.0206$ & $\mathbf{0.3893}{\pm}0.0265$\\
+FedAU-Window & $0.7173{\pm}0.0289$ & $0.7351{\pm}0.0291$ & $0.2283{\pm}0.0433$ & $1.0034{\pm}0.0383$\\
+ObsUse-Window & $0.7175{\pm}0.0288$ & $0.7352{\pm}0.0290$ & $0.2314{\pm}0.0429$ & $1.0059{\pm}0.0380$\\
+RAVEN-Design & $0.7135{\pm}0.0206$ & $0.7311{\pm}0.0200$ & $\mathbf{0.0465}{\pm}0.0119$ & $0.4172{\pm}0.0214$\\
+\bottomrule
+\end{tabular}
+
+\begin{minipage}{\columnwidth}
+\raggedright\scriptsize
+$R$ is real visit occupancy on union GPS; $O$ is measured from finite
+{PM}$_{2.5}$; $U$ is Complete-aligned ($s_{\max}=5$).
+WorstGroupRMSE is the maximum over four coordinate quadrants.
+RAVEN-Design is used ($\phi=0$, $0$ of $10141$).
+Clients are occupied cells, not vehicles.
+Not mixed into Table~III,
+Table~II, or Table~\ref{tab:cityscanner_hybrid}.
+\end{minipage}
+\end{table}
+
+

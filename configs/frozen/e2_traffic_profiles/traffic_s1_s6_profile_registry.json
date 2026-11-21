@@ -1,0 +1,372 @@
+{
+  "clip_support_audit_sha256": "db86d417763b544bacd2ffe860898c303edf41e1edc9a122160df8c769e3d759",
+  "design_seeds": [
+    28201,
+    28202,
+    28203
+  ],
+  "exact_expected_mass_algorithm": "subset_enumeration_2^m_m_le_6",
+  "freeze_commit": "e56687813f2bcb919a9208391f68a4db3488602e",
+  "frozen_at_utc": "2026-08-06T11:21:21.459638+00:00",
+  "grid_search_count": 0,
+  "n_atoms": 25800,
+  "n_clients": 43,
+  "n_windows": 100,
+  "no_per_seed_intercept_recalibration": true,
+  "parameter_consistency_audit_sha256": "cf35801e5e16a59cf5795e0edd7a1d9b85e84f4bb8315fe8bc4e47a11b19fa20",
+  "parameter_sets_per_scenario": 1,
+  "probability_bounds": {
+    "obs": [
+      0.05,
+      0.95
+    ],
+    "opp": [
+      0.05,
+      0.95
+    ],
+    "q": [
+      0.05,
+      0.95
+    ]
+  },
+  "protocol": "E2_TRAFFIC_PROFILE_RUNNER_CONSISTENCY_HOTFIX_R1",
+  "rate_targets": {
+    "observation": 0.2,
+    "opportunity": 0.55,
+    "usable": 0.6
+  },
+  "scenarios": {
+    "balanced": {
+      "a_obs": -1.386294361122964,
+      "a_opp": 0.20067069546030325,
+      "a_q": 0.4054651081105476,
+      "d_opp": 0,
+      "d_p": 0,
+      "d_q": 0,
+      "direction_status": "PASS",
+      "display_name": "Balanced",
+      "exact_expected_signed": {
+        "arr": 0.0,
+        "obs": 0.0,
+        "opp": 0.0
+      },
+      "expected_D_arr": 0.0,
+      "expected_D_obs": 1.748276003132876e-16,
+      "expected_D_opp": 8.74138001566438e-17,
+      "expected_signed": {
+        "arr": 0.0,
+        "obs": 0.0,
+        "opp": 0.0
+      },
+      "intercept_obs": -1.386294361122964,
+      "intercept_opp": 0.20067069546030325,
+      "intercept_q": 0.4054651081105476,
+      "kappa_obs": 1.0,
+      "kappa_opp": 1.0,
+      "kappa_p": 1.0,
+      "kappa_q": 1.0,
+      "label": "S1",
+      "p_obs_formula": "sigmoid(a_obs + d_p * kappa_p * tail_score)",
+      "p_opp_formula": "sigmoid(a_opp + d_opp * kappa_opp * tail_score)",
+      "pooled_hard_D_TV": 0.8144961240312019,
+      "pooled_hard_signed": {
+        "arr": 0.005667383232362655,
+        "obs": -0.00465766185374944,
+        "opp": -0.003425621773815113
+      },
+      "probability_bounds": {
+        "obs": [
+          0.05,
+          0.95
+        ],
+        "opp": [
+          0.05,
+          0.95
+        ],
+        "q": [
+          0.05,
+          0.95
+        ]
+      },
+      "q_use_formula": "sigmoid(a_q + d_q * kappa_q * z_tail)",
+      "scenario_id": "balanced"
+    },
+    "complete_aligned": {
+      "a_obs": -2.0353580544110628,
+      "a_opp": 0.25480574768721453,
+      "a_q": -0.38230592474519653,
+      "d_opp": -1,
+      "d_p": -1,
+      "d_q": -1,
+      "direction_status": "PASS",
+      "display_name": "Complete-aligned",
+      "exact_expected_signed": {
+        "arr": 0.9524121211799603,
+        "obs": 0.8536957501671709,
+        "opp": 0.4147830006695987
+      },
+      "expected_D_arr": 0.47620606059009285,
+      "expected_D_obs": 0.4268478750834208,
+      "expected_D_opp": 0.20739150033467343,
+      "expected_signed": {
+        "arr": 0.9524121211799608,
+        "obs": 0.8536957501671709,
+        "opp": 0.4147830006695987
+      },
+      "intercept_obs": -2.0353580544110628,
+      "intercept_opp": 0.25480574768721453,
+      "intercept_q": -0.38230592474519653,
+      "kappa_obs": 1.0,
+      "kappa_opp": 1.0,
+      "kappa_p": 1.0,
+      "kappa_q": 1.0,
+      "label": "S5",
+      "p_obs_formula": "sigmoid(a_obs + d_p * kappa_p * tail_score)",
+      "p_opp_formula": "sigmoid(a_opp + d_opp * kappa_opp * tail_score)",
+      "pooled_hard_D_TV": 0.8218992248064829,
+      "pooled_hard_signed": {
+        "arr": 0.9531456640846402,
+        "obs": 0.8540299906279287,
+        "opp": 0.41538678978611143
+      },
+      "probability_bounds": {
+        "obs": [
+          0.05,
+          0.95
+        ],
+        "opp": [
+          0.05,
+          0.95
+        ],
+        "q": [
+          0.05,
+          0.95
+        ]
+      },
+      "q_use_formula": "sigmoid(a_q + d_q * kappa_q * z_tail)",
+      "scenario_id": "complete_aligned"
+    },
+    "complete_counteracting": {
+      "a_obs": -2.0353580544110628,
+      "a_opp": 0.25480574768721453,
+      "a_q": 1.2496681229208662,
+      "d_opp": -1,
+      "d_p": -1,
+      "d_q": 1,
+      "direction_status": "PASS",
+      "display_name": "Complete-counteracting",
+      "exact_expected_signed": {
+        "arr": 0.7745896039063368,
+        "obs": 0.8536957501671709,
+        "opp": 0.4147830006695987
+      },
+      "expected_D_arr": 0.3872948019530473,
+      "expected_D_obs": 0.4268478750834208,
+      "expected_D_opp": 0.20739150033467343,
+      "expected_signed": {
+        "arr": 0.7745896039063369,
+        "obs": 0.8536957501671709,
+        "opp": 0.4147830006695987
+      },
+      "intercept_obs": -2.0353580544110628,
+      "intercept_opp": 0.25480574768721453,
+      "intercept_q": 1.2496681229208662,
+      "kappa_obs": 1.0,
+      "kappa_opp": 1.0,
+      "kappa_p": 1.0,
+      "kappa_q": 1.0,
+      "label": "S6",
+      "p_obs_formula": "sigmoid(a_obs + d_p * kappa_p * tail_score)",
+      "p_opp_formula": "sigmoid(a_opp + d_opp * kappa_opp * tail_score)",
+      "pooled_hard_D_TV": 0.8250000000001825,
+      "pooled_hard_signed": {
+        "arr": 0.7753120665742026,
+        "obs": 0.8540299906279287,
+        "opp": 0.41538678978611143
+      },
+      "probability_bounds": {
+        "obs": [
+          0.05,
+          0.95
+        ],
+        "opp": [
+          0.05,
+          0.95
+        ],
+        "q": [
+          0.05,
+          0.95
+        ]
+      },
+      "q_use_formula": "sigmoid(a_q + d_q * kappa_q * z_tail)",
+      "scenario_id": "complete_counteracting"
+    },
+    "observation_only": {
+      "a_obs": -1.6815016441114494,
+      "a_opp": 0.20067069546030325,
+      "a_q": 0.4054651081105476,
+      "d_opp": 0,
+      "d_p": -1,
+      "d_q": 0,
+      "direction_status": "PASS",
+      "display_name": "Observation-only",
+      "exact_expected_signed": {
+        "arr": 0.6796311681865919,
+        "obs": 0.6796311681865919,
+        "opp": 0.0
+      },
+      "expected_D_arr": 0.3398155840932541,
+      "expected_D_obs": 0.3398155840932541,
+      "expected_D_opp": 8.74138001566438e-17,
+      "expected_signed": {
+        "arr": 0.6796311681865919,
+        "obs": 0.6796311681865919,
+        "opp": 0.0
+      },
+      "intercept_obs": -1.6815016441114494,
+      "intercept_opp": 0.20067069546030325,
+      "intercept_q": 0.4054651081105476,
+      "kappa_obs": 1.0,
+      "kappa_opp": 1.0,
+      "kappa_p": 1.0,
+      "kappa_q": 1.0,
+      "label": "S3",
+      "p_obs_formula": "sigmoid(a_obs + d_p * kappa_p * tail_score)",
+      "p_opp_formula": "sigmoid(a_opp + d_opp * kappa_opp * tail_score)",
+      "pooled_hard_D_TV": 0.8192248062017876,
+      "pooled_hard_signed": {
+        "arr": 0.6810916179337232,
+        "obs": 0.675548773330203,
+        "opp": -0.003425621773815113
+      },
+      "probability_bounds": {
+        "obs": [
+          0.05,
+          0.95
+        ],
+        "opp": [
+          0.05,
+          0.95
+        ],
+        "q": [
+          0.05,
+          0.95
+        ]
+      },
+      "q_use_formula": "sigmoid(a_q + d_q * kappa_q * z_tail)",
+      "scenario_id": "observation_only"
+    },
+    "opportunity_only": {
+      "a_obs": -1.386294361122964,
+      "a_opp": 0.25480574768721453,
+      "a_q": 0.4054651081105476,
+      "d_opp": -1,
+      "d_p": 0,
+      "d_q": 0,
+      "direction_status": "PASS",
+      "display_name": "Opportunity-only",
+      "exact_expected_signed": {
+        "arr": 0.4147830006695984,
+        "obs": 0.41478300066959883,
+        "opp": 0.4147830006695987
+      },
+      "expected_D_arr": 0.20739150033467343,
+      "expected_D_obs": 0.20739150033467343,
+      "expected_D_opp": 0.20739150033467343,
+      "expected_signed": {
+        "arr": 0.41478300066959917,
+        "obs": 0.41478300066959883,
+        "opp": 0.4147830006695987
+      },
+      "intercept_obs": -1.386294361122964,
+      "intercept_opp": 0.25480574768721453,
+      "intercept_q": 0.4054651081105476,
+      "kappa_obs": 1.0,
+      "kappa_opp": 1.0,
+      "kappa_p": 1.0,
+      "kappa_q": 1.0,
+      "label": "S2",
+      "p_obs_formula": "sigmoid(a_obs + d_p * kappa_p * tail_score)",
+      "p_opp_formula": "sigmoid(a_opp + d_opp * kappa_opp * tail_score)",
+      "pooled_hard_D_TV": 0.8179457364344367,
+      "pooled_hard_signed": {
+        "arr": 0.4199764058198978,
+        "obs": 0.416489988221437,
+        "opp": 0.41538678978611143
+      },
+      "probability_bounds": {
+        "obs": [
+          0.05,
+          0.95
+        ],
+        "opp": [
+          0.05,
+          0.95
+        ],
+        "q": [
+          0.05,
+          0.95
+        ]
+      },
+      "q_use_formula": "sigmoid(a_q + d_q * kappa_q * z_tail)",
+      "scenario_id": "opportunity_only"
+    },
+    "usable_only": {
+      "a_obs": -1.386294361122964,
+      "a_opp": 0.20067069546030325,
+      "a_q": 0.5127239094065317,
+      "d_opp": 0,
+      "d_p": 0,
+      "d_q": -1,
+      "direction_status": "PASS",
+      "display_name": "Usable-only",
+      "exact_expected_signed": {
+        "arr": 0.36577423215407634,
+        "obs": 0.0,
+        "opp": 0.0
+      },
+      "expected_D_arr": 0.18288711607707037,
+      "expected_D_obs": 1.748276003132876e-16,
+      "expected_D_opp": 8.74138001566438e-17,
+      "expected_signed": {
+        "arr": 0.36577423215407623,
+        "obs": 0.0,
+        "opp": 0.0
+      },
+      "intercept_obs": -1.386294361122964,
+      "intercept_opp": 0.20067069546030325,
+      "intercept_q": 0.5127239094065317,
+      "kappa_obs": 1.0,
+      "kappa_opp": 1.0,
+      "kappa_p": 1.0,
+      "kappa_q": 1.0,
+      "label": "S4",
+      "p_obs_formula": "sigmoid(a_obs + d_p * kappa_p * tail_score)",
+      "p_opp_formula": "sigmoid(a_opp + d_opp * kappa_opp * tail_score)",
+      "pooled_hard_D_TV": 0.8180620155041425,
+      "pooled_hard_signed": {
+        "arr": 0.37561942517343905,
+        "obs": -0.00465766185374944,
+        "opp": -0.003425621773815113
+      },
+      "probability_bounds": {
+        "obs": [
+          0.05,
+          0.95
+        ],
+        "opp": [
+          0.05,
+          0.95
+        ],
+        "q": [
+          0.05,
+          0.95
+        ]
+      },
+      "q_use_formula": "sigmoid(a_q + d_q * kappa_q * z_tail)",
+      "scenario_id": "usable_only"
+    }
+  },
+  "selected_strength_profile": "PROFILE-S2",
+  "status": "NOT_FROZEN"
+}

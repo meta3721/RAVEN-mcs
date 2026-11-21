@@ -1,0 +1,248 @@
+--- before/main.tex
++++ after/main.tex
+@@ -120,47 +120,43 @@
+ \section{Related Work}
+ \label{sec:related_work}
+ 
+-Sparse MCS research addresses evolutionary inference and sensing
++Sparse MCS completion addresses evolutionary inference and sensing
+ utility~\cite{wang2025evolutionary,xu2025rethinking}, few-shot and cold-start
+ transfer~\cite{wang2024fewshot,zhang2026mapt}, and uncertainty-based
+-pricing~\cite{liu2026pricing}. Representation methods use
+-pyramids~\cite{liu2026pyramid}, integrate non-aligned
+-observations~\cite{liu2025nonaligned}, or combine low-rank priors with
+-Transformers, as in StrucFormer~\cite{kang2025strucformer}. These methods
+-address representation rather than deployment mass.
+-
+-Distributed records and update timing motivate federated
+-completion~\cite{wang2026federated} and FedAsync~\cite{xie2019asynchronous}.
+-Staleness-aware methods improve timing and
+-efficiency~\cite{sun2024staleness,islam2025seafl,li2026stdfl}.
+-Heterogeneity is analyzed in DeFedAvg~\cite{wang2025defedavg}, while MasFL
+-controls staleness through historical momentum and AdaMasFL adds adaptive
+-gradient normalization~\cite{yan2025momentum}.
+-
+-Participation mechanisms are another source of FL bias, alongside demographic
+-and performance-related effects~\cite{benarba2025bias}. Arbitrary participation
+-has dedicated analyses~\cite{wang2022unified}, while FedAU estimates
+-participation weights~\cite{wang2024lightweight}. Other methods address
+-correlated participation, semi-asynchronous bias, and opt-out
++pricing~\cite{liu2026pricing}. Pyramidal~\cite{liu2026pyramid},
++non-aligned~\cite{liu2025nonaligned}, and low-rank Transformer
++representations~\cite{kang2025strucformer} address completion rather than
++deployment mass.
++
++Federated completion~\cite{wang2026federated},
++FedAsync~\cite{xie2019asynchronous}, and staleness-aware
++methods~\cite{sun2024staleness,islam2025seafl,li2026stdfl} address distributed
++records and irregular updates. DeFedAvg analyzes
++heterogeneity~\cite{wang2025defedavg}; MasFL uses historical momentum, and
++AdaMasFL adds adaptive normalization~\cite{yan2025momentum}.
++
++Participation bias~\cite{benarba2025bias} motivates arbitrary-participation
++analyses~\cite{wang2022unified}, FedAU's estimated
++weights~\cite{wang2024lightweight}, and corrections for correlated participation,
++semi-asynchronous bias, and opt-out
+ stragglers~\cite{sun2025debiasing,chen2026fedcure,goetze2025floss}.
+-Participation assumptions differ: FAST permits arbitrary participation between
+-snapshots but requires uniform client participation at snapshots
+-\cite{li2025fast}. FOCUS uses time-varying graphs and push--pull updates, with
+-linear rates under strong convexity or a Polyak--\L{}ojasiewicz condition and positive participation
+-probabilities~\cite{ying2025focus}. PHP-FL targets performance fairness with
+-unequal participation and heterogeneous models~\cite{wu2025phpfl}.
+-
+-Selection also affects information within client records. Cafe personalizes imputation using missingness complementarity and observed
+-sample size~\cite{min2025cafe}; DARN uses these signals for direct
+-incomplete-tabular prediction without imputation~\cite{zhang2025darn}.
+-
+-FedIPW~\cite{morishita2026who} factors enrollment and participation, with
+-population-summary calibration under limited information.
+-FedPALS~\cite{listozec2024overcoming} uses convex target-label matching and an
+-inverse sample-ESS penalty, including targets beyond the client convex hull.
+-RAVEN links atomic R/O/U reference reconstruction to feasible window mixtures
+-with hard client caps, client-level ESS, and target debt. IPW and H\'ajek estimation provide the tools
+-\cite{horvitz1952generalization,hajek1971comment,shimodaira2000covariate,robins1994estimation};
++FAST permits arbitrary participation between uniform snapshots~\cite{li2025fast}; FOCUS uses
++time-varying graphs and push--pull updates, with linear rates under strong
++convexity or Polyak--\L{}ojasiewicz conditions and positive participation
++probabilities~\cite{ying2025focus}. PHP-FL targets performance fairness under
++unequal participation and model heterogeneity~\cite{wu2025phpfl}.
++Cafe and DARN exploit missingness complementarity and sample size for
++personalized imputation~\cite{min2025cafe} and direct incomplete-tabular
++prediction~\cite{zhang2025darn}, respectively.
++
++FedIPW factors enrollment and participation and calibrates population
++summaries under limited information~\cite{morishita2026who}.
++FedPALS combines convex target-label matching with an inverse sample-ESS
++penalty, including targets outside the client convex
++hull~\cite{listozec2024overcoming}. RAVEN links atomic R/O/U reconstruction
++to feasible window mixtures under hard client caps, client-level ESS,
++and target debt. It builds on IPW and H\'ajek
++estimation~\cite{horvitz1952generalization,hajek1971comment,shimodaira2000covariate,robins1994estimation};
+ weighting need not improve neural-network prediction~\cite{byrd2019importance}.
+ 
+ \section{System Model and Target-Mass Formulation}
+@@ -201,10 +197,9 @@
+ $\tau_{k,r}=r-\sigma_{k,r}$.  At close, the server determines usable attempts
+ and performs one aggregation transition $\theta_r\to\theta_{r+1}$.
+ Individual arrivals do not trigger updates as in immediate-update FedAsync.
+-For comparison, the protocol freezes exogenous mobile/update events across
+-methods without assuming general statistical independence.
+-Local training and delivery remain asynchronous, while the server decides
+-aggregation weights jointly over the window's usable clients.
++Comparisons freeze exogenous mobile/update events across methods without
++assuming independence. Training and delivery are asynchronous; window-close
++aggregation jointly weights usable clients.
+ 
+ \subsection{Two-Stage, Three-Layer Non-Random Selection}
+ \label{subsec:selection_process}
+@@ -220,10 +215,8 @@
+ $\mathcal U_r=\{k\in\mathcal E_r:U_{k,r}=1\}$.  Removing zero-mass clients in
+ Section~\ref{sec:reconstruction} yields the aggregation set
+ $\mathcal A_r\subseteq\mathcal U_r$.
+-Usability is shared by the sensing records in a registered attempt, whereas
+-opportunity and observation are indexed by unit.  The registered, usable, and
+-positive-mass sets consequently have different roles in selection modeling,
+-reference normalization, and aggregation.
++Usability is shared within an attempt; opportunity and observation are
++unit-specific. Registration, usability, and positive mass define distinct sets.
+ 
+ The label-free maps $h:\mathcal I\to\mathcal G$ and
+ $s:\mathcal I\to\mathcal S$ specify deployment groups and opportunity strata.
+@@ -265,10 +258,7 @@
+ available before $O_{k,r,i}$.  The pre-$U$ history
+ $\mathcal H^{\mathrm{use}}_{k,r}$ may include the already realized sensing-side
+ registration state, but excludes the realized computation/transmission outcome,
+-future events, and the current update vector to be weighted.  Separate histories
+-preserve the sequential information boundary without assuming independent
+-selection layers.
+-The opportunity law describes how sensing units enter risk sets, not which
++future events, and the current update vector to be weighted.  The opportunity law describes how sensing units enter risk sets, not which
+ responses are subsequently observed.  A target group can span several
+ opportunity strata, so its desired mass cannot be substituted for a stratum's
+ selection probability.
+@@ -299,12 +289,9 @@
+     \sum_{k,s}\pi^{\mathrm{tar}}_{k,s}=1.
+     \label{eq:target_compatibility}
+ \end{equation}
+-This connects the deployment-risk target to the correction reference.
+-The atomic measure assigns importance to sensing units independently of client
+-allocation.  The compatible client--atomic measure distributes the same target
+-mass among clients, while its stratum marginal pools units for opportunity
+-correction.  Consistency across these levels specifies the deployment target
+-for corrected client-mass estimates.
++The atomic target fixes sensing-unit importance; its compatible client
++allocation and stratum marginal supply the reference for corrected
++client-mass estimates.
+ \appreffull{app:deferred_constructions} of the separate Supplementary Material uses public
+ client shares and conditional atomic target masses, all frozen before
+ test-label evaluation.  Design is configured before each window and fixed
+@@ -359,14 +346,10 @@
+  \right).
+  \label{eq:arrival_risk}
+ \end{equation}
+-The two risks differ in their weighting laws.  Sequential selection makes them
+-non-interchangeable in general, although the same predictor and loss may yield
+-equal values under both.  The arrival law above is a plug-in estimate of the
+-population law.
+-Normalization is over the deployment domain, so both risks refer to the same
+-sensing units.  Evaluation-period pooling specifies the comparison weights
+-without replacing the attempt-level conditional probability used for training-time
+-correction.
++Both risks evaluate the same deployment units under different weighting laws
++and can coincide for a fixed predictor. The plug-in arrival law pools
++evaluation-period marginals; it does not replace the attempt-level conditional
++usability probabilities used for training-time correction.
+ 
+ \subsection{Structural Alignment Objective}
+ \label{subsec:design_objective}
+@@ -602,8 +585,8 @@
+ \section{Feasibility-Aware Target Calibration}
+ \label{sec:calibration}
+ 
+-The server calibrates the reconstructed reference on available clients,
+-balancing reference fidelity, target composition, and accumulated under-service.
++Calibration balances reference fidelity, target composition, and accumulated
++under-service on available clients.
+ 
+ \subsection{Feasible Aggregation Set}
+ \label{subsec:feasible_set}
+@@ -727,12 +710,10 @@
+ \end{cases}
+ \label{eq:design_factor}
+ \end{equation}
+-RAVEN abbreviates RAVEN-MCS. For fixed-configuration comparisons, the framework with Design enabled throughout
+-the run is RAVEN-Design; with Design disabled it is RAVEN-NoDesign.
+-The former applies the lagged ratio in \eqref{eq:design_factor}; the latter sets
+-it to one, retaining the opportunity arrival law. All other correction,
+-calibration, and debt-update steps coincide.
+-On/off comparison arms fix the setting throughout a run.  The catalogue check
++RAVEN abbreviates RAVEN-MCS. RAVEN-Design fixes Design on throughout a run,
++applying the lagged ratio in \eqref{eq:design_factor}; RAVEN-NoDesign fixes it
++off, setting the ratio to one and retaining the opportunity arrival law.
++Other correction, calibration, and debt-update steps coincide. The catalogue check
+ \eqref{eq:design_gate} can inform configuration only when its catalogue and
+ public lookup already exist before opening, independently of coverage.
+ 
+@@ -1315,17 +1296,15 @@
+ 
+ In the visit-occupancy block, full RAVEN gives the lowest mean group
+ mismatch among the five methods: $.0706$ versus $.0952$ for TwoStage-H\'ajek,
+-the best group comparator, a $25.8\%$ reduction by ratio of means. This
+-improves alignment of the aggregated group composition with the deployment
+-target. TwoStage-H\'ajek minimizes client--stratum mismatch. RAVEN reduces paired RMSE by $1.71\%$ relative to FedAU and $1.34\%$ relative
++the best group comparator, a $25.8\%$ reduction by ratio of means. TwoStage-H\'ajek minimizes
++client--stratum mismatch. RAVEN reduces paired RMSE by $1.71\%$ relative to FedAU and $1.34\%$ relative
+ to ObsUse; the corresponding worst-group RMSE reductions are $1.56\%$ and
+ $1.23\%$, respectively. FedAvg leads both prediction endpoints,
+ with RAVEN's paired RMSE $5.59\%$ higher.
+ 
+ Under Pilot~2's distinct data and target map, full RAVEN again gives the lowest
+ mean group mismatch ($.0465$ versus TwoStage-H\'ajek's $.0607$), a
+-$23.3\%$ ratio-of-means reduction. The group-alignment advantage thus also
+-appears in the measured-observation protocol. RAVEN reduces paired RMSE by $.43\%$ relative to FedAU, $.45\%$ relative to
++$23.3\%$ ratio-of-means reduction. RAVEN reduces paired RMSE by $.43\%$ relative to FedAU, $.45\%$ relative to
+ ObsUse, and $.65\%$ relative to FedAvg. TwoStage-H\'ajek leads both prediction
+ endpoints and client--stratum alignment. The FedAU and ObsUse comparisons
+ miss the declared $\le-.5\%$ paired relative-error criterion.
+@@ -1490,8 +1469,6 @@
+ distortion changes reported error more than configuration selection.
+ 
+ 
+-Group alignment improves in the two City Scanner protocols, while station
+-and external comparisons show protocol-specific prediction and alignment rankings.
+ 
+ \subsection{Mechanism Contributions (RQ2)}
+ \label{subsec:rq2_mechanisms}
+@@ -1629,9 +1606,8 @@
+ Numerical endpoint and feasibility diagnostics:
+ \apprefs{app:kappa_probe}{app:p2_diagnostics}.
+ 
+-Count-to-Uniform and reference-projection increments are distinct; full RAVEN calibration
+-coordinates endpoint and runtime trade-offs. Component effects are endpoint-specific,
+-with a small standard-strength debt contribution.
++Component effects are endpoint-specific, with a small standard-strength debt
++contribution and distinct alignment/runtime trade-offs.
+ 
+ \subsection{Target Support and Feasible Adjustment (RQ3)}
+ \label{subsec:rq3_adjustment}
+@@ -1721,9 +1697,8 @@
+ Learning and update-rule budgets remain distinct
+ (\apprefs{app:learning_capacity}{app:update_rule_sensitivity}).
+ 
+-Support determines which group mass is represented, while caps and ESS limit
+-how far that mass can be adjusted. Feasible changes in client weights need
+-not change group composition or prediction error.
++Support and constraints limit group-mass adjustment; feasible weight changes
++need not change composition or prediction error.
+ 
+ \section{Conclusion}
+ \label{sec:conclusion}
+@@ -1760,6 +1735,7 @@
+ event traces, City Scanner result summaries, and matched-support scoring inputs.
+ These materials are retained locally; no public access link is provided.
+ 
++\FloatBarrier
+ \bibliographystyle{IEEEtran}
+ \bibliography{reference}
+ 

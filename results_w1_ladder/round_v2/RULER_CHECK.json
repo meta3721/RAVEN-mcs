@@ -1,0 +1,22 @@
+{
+  "round": "round_v2",
+  "g1_arms": [
+    "raven_wo_debt",
+    "raven_wo_use",
+    "raven_wo_obs"
+  ],
+  "g1_excluded_missing_states": [
+    "raven_wo_inst"
+  ],
+  "status": "G1_v2_pass",
+  "g1_count_mismatch_cells": 0,
+  "g1_mismatch_examples": [],
+  "invariance_max_M_diff": 0.0,
+  "invariance_max_w_diff": 5.551115123125783e-17,
+  "invariance_active_clients_all_equal": true,
+  "g2_rows": 320,
+  "g2_pass": 320,
+  "g2_max_d_group_err": 8.881784197001252e-16,
+  "g2_max_d_cs_err": 6.8833827526759706e-15,
+  "g2_notes": {}
+}

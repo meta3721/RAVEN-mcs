@@ -1,0 +1,8 @@
+round,dataset,method_or_configuration,source_revision_known,config_known,resolved_config_known,preprocessing_vintage_known,dataset_checksum_known,EventTrace_policy_known,target_semantics_known,stratum_semantics_known,classification,notes
+E1,Balanced,"FedAvg-Window, FedAsync-Window, TimeAlign-Agg, TwoStage-Hajek, RAVEN-MCS",True,True,False,False,False,True,True,False,PARTIAL_BUT_PAPER_SAFE,E1 synthetic/balanced sanity; dataset checksum not in sealed E1 identity_audit
+E2,NSW-Traffic,"fedavg_window, fedasync_window, flamf_timealign_adapted, twostage_hajek, raven",True,True,True,True,True,True,True,True,COMPLETE,
+E3,SensorScope,all E3 formal methods (see E3_FINAL_INTEGRATION_SOURCE_HASHES.json),True,True,True,True,True,True,True,True,COMPLETE,
+E3,U-Air,all E3 formal methods (see E3_FINAL_INTEGRATION_SOURCE_HASHES.json),True,True,True,True,True,True,True,True,COMPLETE,
+E4,SensorScope,RAVEN-MCS + 5 one-factor ablations; w/o-Inst Generation 2 only,True,True,False,True,True,True,True,True,COMPLETE,
+E4,U-Air,RAVEN-MCS + 5 one-factor ablations; w/o-Inst Generation 2 only,True,True,False,True,True,True,True,True,COMPLETE,
+T-Drive,T-Drive-Speed,"intended: FedAvg-Window, FedAsync-Window, TimeAlign-Agg, TwoStage-Hajek, RAVEN-MCS",False,True,False,False,False,True,True,True,PARTIAL_BUT_PAPER_SAFE,readiness-only row; missing freeze fields expected

@@ -1,0 +1,30 @@
+{
+  "status": "PASS",
+  "model_and_control_state_hash_equal": true,
+  "producer_and_RNG_state_hash_equal": true,
+  "source_closure_equal": true,
+  "data_identity_equal": true,
+  "target_identity_equal": true,
+  "restored_now": 1.07,
+  "restored_SGD": 32,
+  "model_version": 1,
+  "next_grid_tick": 11,
+  "next_clock": 1,
+  "next_client": 3,
+  "no_new_SGD_or_notices_before_equality": true,
+  "model_construction": "meta shape allocation populated directly with saved actual tensors; no45011 initialization or RNG draws",
+  "parent_run_id": "OF-v1/development_cost_and_bootstrap_fit_candidate/45011/results_observed_feedback_continuation_45011_20261014",
+  "parent_checkpoint": "C:\\Cursor\\raven.mcs\\results_observed_feedback_continuation_45011_20261014\\trajectory\\stopped_0011_0206.complete.json",
+  "decision_start_tick": 11,
+  "session_id": "results_observed_feedback_rolling_45011_20261014_s1",
+  "worker_PID": 23688,
+  "root_id": "e34754c502d74a39b01b1ba261018bc4",
+  "restore_UTC": "2026-10-14T09:47:27.936725+00:00",
+  "original_clock_namespace": {
+    "run_id": "OF-v1/development_cost_and_bootstrap_fit_candidate/45011/results_observed_feedback_continuation_45011_20261014",
+    "origin_utc": "2026-10-14T08:49:32.778907+00:00",
+    "unit": "controlled_service_unit",
+    "UTC_bridge": "actual notice publication UTC logged per event; controlled logical time is not elapsed UTC"
+  },
+  "wall_continuity": "manual downtime excluded; continuation is logical/service trajectory only"
+}

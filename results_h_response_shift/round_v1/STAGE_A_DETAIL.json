@@ -1,0 +1,28 @@
+{
+  "sensorscope": {
+    "n_groups": 220,
+    "n_groups_in_dataset_inventory": 220,
+    "n_groups_runtime": 220,
+    "target_group_is_composite_label": true,
+    "n_train_atomic_units": 10285,
+    "n_test_atomic_units": 3410,
+    "n_val_atomic_units": 3465,
+    "median_l1_conditional": 0.5674959215286464,
+    "median_l1_all_groups": 0.7538033132685085,
+    "median_mu_mass_on_absent_groups": 0.19706744868035175,
+    "stage_B": "allowed"
+  },
+  "uair": {
+    "n_groups": 144,
+    "n_groups_in_dataset_inventory": 144,
+    "n_groups_runtime": 144,
+    "target_group_is_composite_label": true,
+    "n_train_atomic_units": 5688,
+    "n_test_atomic_units": 1908,
+    "n_val_atomic_units": 1908,
+    "median_l1_conditional": 0.6014716062615842,
+    "median_l1_all_groups": 0.7989878144654088,
+    "median_mu_mass_on_absent_groups": 0.16352201257861632,
+    "stage_B": "allowed"
+  }
+}

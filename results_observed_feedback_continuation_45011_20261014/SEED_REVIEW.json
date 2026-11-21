@@ -1,0 +1,124 @@
+{
+  "seed": 45011,
+  "status": "NO_PRIOR_SELECTION_OR_EXECUTION_FOUND",
+  "conclusion": "Within the listed accessible identity records, no prior actual execution/fitting/selection conflict found",
+  "scope": [
+    "C:\\Cursor\\raven.mcs",
+    "C:\\Users\\szr\\Desktop\\record\\1\\results_reachability_stopping_v1",
+    "C:\\Cursor\\raven.mcs\\ccf-review-report",
+    "C:\\Cursor\\raven.mcs\\ccfa-review-reports",
+    "C:\\Users\\szr\\Desktop\\record\\1\\ccfa-review-reports"
+  ],
+  "inventory_count": 119117,
+  "identity_assets": 12687,
+  "matches": [
+    {
+      "path": "C:\\Cursor\\raven.mcs\\results_observed_feedback_acquisition_45011_20261014\\AUTHORIZATION.json",
+      "classification": "current_pending_authorization",
+      "identity": {
+        "method": "reachability_stop/observed-feedback-v1",
+        "seed": 45011,
+        "T": 100,
+        "role": "development_cost_and_bootstrap_fit_candidate",
+        "CPU_limit": 3600,
+        "caps": {
+          "setup": 180.0,
+          "initialization": 120.0,
+          "online": 1300.0,
+          "training": 900.0,
+          "events": 700.0,
+          "save": 300.0,
+          "repair": 100.0
+        },
+        "SGD_limit": 5000,
+        "GPU": 0,
+        "q_fit": 0,
+        "watchdog_seconds": 7200
+      }
+    },
+    {
+      "path": "C:\\Cursor\\raven.mcs\\results_observed_feedback_acquisition_45011_20261014\\FINAL_EXECUTION_RESULT.json",
+      "classification": "current_NOT_STARTED_no_actual_SGD",
+      "identity": {
+        "status": "ACQUISITION_INCOMPLETE",
+        "actual_45011_initialization": false,
+        "actual_45011_trajectory_started": false,
+        "SGD": 0
+      }
+    },
+    {
+      "path": "C:\\Cursor\\raven.mcs\\results_observed_feedback_acquisition_45011_20261014\\SGD0_RESULT.json",
+      "classification": "current_deterministic_mathematical_fixture_no_trajectory",
+      "identity": {
+        "SGD": 0,
+        "status": "PASS"
+      }
+    }
+  ],
+  "document_mentions": [
+    {
+      "path": "C:\\Cursor\\raven.mcs\\ccf-review-report\\observed_feedback_readiness_20261014\\FIRST_ACQUISITION_REQUEST.md",
+      "mentions": [
+        {
+          "line": 9,
+          "text": "\u5efa\u8baeseed45011\uff0c\u4ec5\u4e3a\u6761\u4ef6\u5efa\u8bae\u3001\u5c1a\u672a\u6388\u6743\u6216\u8ba4\u5b9a\u672a\u7528\uff1b\u6267\u884c\u524d\u5ba1\u8ba1\u9879\u76ee\u548c\u5916\u90e8\u5386\u53f2\u7ed3\u679c/\u534f\u8bae\u8d44\u4ea7\u7684\u7528\u9014\u4e0e\u51b2\u7a81\u300245001\u201345003\u4ecd\u9884\u7559\u5f00\u53d1\uff0c\u4e0d\u81ea\u52a8\u4f7f\u7528\u3002\u53d1\u73b0\u51b2\u7a81\u62a5\u544a\u4e14\u7b49\u5f85\uff0c\u4e0d\u80fd\u81ea\u884c\u6362seed\u300245011\u5982\u83b7\u51c6\uff0clearning/service\u5206\u522b\u7528\u660e\u786e\u5206\u79bb\u7684RNG\u6d41\u4e0e\u72b6\u6001\uff0c\u521d\u59cb\u6a21\u578b\u6765\u81ea\u4e8b\u524d\u8bb0\u5f55CommonNDMF\u6784\u9020\u53c2\u6570\u548c\u521d\u59cb\u5316\u6d41\u7684\u65b0\u6570\u503c\u6587\u4ef6\uff0chash/scaler/\u6570\u636e\u5212\u5206/\u76ee\u6807/\u76ee\u5f55\u5728\u6ce8\u518c\u524d\u51bb\u7ed3\u3002\u65e743001/44001\u7ec8\u6001\u3001\u6807\u7b7e\u6216\u8bad\u7ec3\u6743\u91cd\u4e0d\u4f5c\u4e3aOF\u6982\u7387\u6216\u65b0\u521d\u59cb\u5316\u8bc1\u636e\u3002"
+        }
+      ],
+      "classification": "document_proposed_authorization_or_current_SGD0; cross_checked_against_execution_identity"
+    },
+    {
+      "path": "C:\\Cursor\\raven.mcs\\ccf-review-report\\observed_feedback_persistent_cost_20261014\\FIRST_ACQUISITION_REQUEST.md",
+      "mentions": [
+        {
+          "line": 11,
+          "text": "\u4ece\u65b0\u6784\u9020\u7684CommonNDMF\u521d\u59cb\u5316\u5f00\u59cb\uff0c\u6a21\u578b\u6570\u503chash\u3001scaler\u3001\u67b6\u6784/\u4f18\u5316\u5668/\u5b8c\u6574\u5b66\u4e60\u4e0e\u89c2\u6d4b/service\u8eab\u4efd\u4e8b\u524d\u5b58\u6863\u3002\u521d\u59cb\u503c\u6e90\u4e3a45011\u72ec\u7acb\u521d\u59cb\u5316\u6d41\uff0c\u4e0d\u52a0\u8f7d43001/44001\u7ec8\u6001\u6216\u6807\u7b7e\u3002SeedSequence(45011)\u4e8b\u524d\u62c6\u5206model_init\u3001local_dropout\u3001opportunity/observation\u3001service\u56db\u79cd\u6d41\uff0c\u58f0\u660e\u5b9e\u73b0\u5e76\u4fdd\u5b58\u5404\u81ea\u72b6\u6001\uff1b\u903b\u8f91\u65f6\u949f\u4fdd\u6301\u672crun\u547d\u540d\u7a7a\u95f4\u3001origin_utc/\u5b9e\u9645UTC\u6865\uff0c\u4e0d\u80fd\u501f\u65e7run\u65f6\u95f4\u3002"
+        }
+      ],
+      "classification": "document_proposed_authorization_or_current_SGD0; cross_checked_against_execution_identity"
+    }
+  ],
+  "unresolved": [],
+  "missing_roots": [],
+  "omissions": [
+    {
+      "path": "C:\\Cursor\\raven.mcs\\results_observed_feedback_readiness_20261014\\COLD_NUMERIC_RESULT.json",
+      "reason": "large_identity_candidate_not_read",
+      "bytes": 1052658
+    },
+    {
+      "path": "C:\\Cursor\\raven.mcs\\results_server_optimizer\\round_v1\\backup_pre_guard_change\\BACKUP_MANIFEST.json",
+      "reason": "large_identity_candidate_not_read",
+      "bytes": 1613704
+    },
+    {
+      "path": "C:\\Cursor\\raven.mcs\\results_re_interval_development_44001_20261013\\trajectory\\SERVICE_FROZEN_AT_20.json",
+      "reason": "large_identity_candidate_not_read",
+      "bytes": 3764214
+    },
+    {
+      "path": "C:\\Cursor\\raven.mcs\\results_revision_feasibility_20261013_125348\\S2_RESULT.json",
+      "reason": "large_identity_candidate_not_read",
+      "bytes": 12227144
+    },
+    {
+      "path": "C:\\Cursor\\raven.mcs\\results_calibration_first_20261013\\trajectory\\SERVICE_FROZEN_AT_20.json",
+      "reason": "large_identity_candidate_not_read",
+      "bytes": 4391944
+    }
+  ],
+  "not_accessed": [
+    "arbitrary external history",
+    "binary tensor contents",
+    "full logs/decisions/prediction rows",
+    "protocol proposals outside execution/report roots"
+  ],
+  "CPU_local": 6.125,
+  "current_run": "NOT_STARTED; deterministic SGD0 fixture is not independent cost trajectory",
+  "explicit_current_assets": "Prior inventory excluded this then-current output; three known authoritative identities read directly, no rescan.",
+  "omission_disposition": {
+    "COLD_NUMERIC_RESULT": "deterministic K43 request; companion FROZEN_INPUT and EXECUTION_COST_PROTOCOL retained",
+    "BACKUP_MANIFEST": "source backup inventory, not run identity",
+    "SERVICE_FROZEN_AT_20": "44001/43001 histories; parent acquisition frozen plans and run results read",
+    "S2_RESULT": "revision feasibility stage; companion frozen plans/seed records read"
+  }
+}

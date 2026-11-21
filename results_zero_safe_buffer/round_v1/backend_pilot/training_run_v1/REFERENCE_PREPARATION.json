@@ -1,0 +1,31 @@
+{
+  "status": "REFERENCE_READY",
+  "memory_gate": {
+    "available_bytes": 6417756160,
+    "rss_bytes": 15925248,
+    "cpu_seconds": 0.046875,
+    "waited_seconds": 0.0,
+    "status": "OK"
+  },
+  "seeds": [
+    {
+      "seed": 33002,
+      "status": "REFERENCE_READY",
+      "n": 1661,
+      "trace_hash": "3f7be3fa580dc9475073ae80643e9f0f98a02ff565cf1f25d37902a03add9e36",
+      "source": "reference_replay.replay_seed",
+      "id_check": "assign_attempt_id on U=1 rows",
+      "path": "C:\\Cursor\\raven.mcs\\results_zero_safe_buffer\\round_v1\\backend_pilot\\training_run_v1\\frozen_reference_seed33002.json"
+    },
+    {
+      "seed": 33003,
+      "status": "REFERENCE_READY",
+      "n": 1630,
+      "trace_hash": "4cc2b1b9f34d2b9e0d44a6eca31c729034551b2d2cdcd154a92f0a8fd5979d5c",
+      "source": "reference_replay.replay_seed",
+      "id_check": "assign_attempt_id on U=1 rows",
+      "path": "C:\\Cursor\\raven.mcs\\results_zero_safe_buffer\\round_v1\\backend_pilot\\training_run_v1\\frozen_reference_seed33003.json"
+    }
+  ],
+  "training_executed": false
+}

@@ -1,0 +1,36 @@
+\begin{tabular}{llrrrr}
+\toprule
+scenario & method & RMSE_mu_mean & RMSE_rho_mean & Gap_mis_mean & ABS_GAP_mean_secondary \\
+\midrule
+balanced & fedavg_window & 1.004 & 1.008 & -0.004236 & 0.01998 \\
+balanced & fedasync_window & 1.004 & 1.008 & -0.004236 & 0.01998 \\
+balanced & flamf_timealign_adapted & 1.004 & 1.008 & -0.004219 & 0.01992 \\
+balanced & twostage_hajek & 1.004 & 1.009 & -0.004364 & 0.02 \\
+balanced & raven & 1.004 & 1.009 & -0.004489 & 0.01994 \\
+opportunity_only & fedavg_window & 1.004 & 1.014 & -0.009938 & 0.01787 \\
+opportunity_only & fedasync_window & 1.004 & 1.014 & -0.00994 & 0.01788 \\
+opportunity_only & flamf_timealign_adapted & 1.004 & 1.014 & -0.0101 & 0.01781 \\
+opportunity_only & twostage_hajek & 1.004 & 1.014 & -0.01008 & 0.01773 \\
+opportunity_only & raven & 1.004 & 1.014 & -0.01012 & 0.01781 \\
+observation_only & fedavg_window & 1.004 & 1.02 & -0.01522 & 0.02199 \\
+observation_only & fedasync_window & 1.004 & 1.02 & -0.01523 & 0.022 \\
+observation_only & flamf_timealign_adapted & 1.004 & 1.02 & -0.01524 & 0.022 \\
+observation_only & twostage_hajek & 1.004 & 1.02 & -0.01529 & 0.02183 \\
+observation_only & raven & 1.004 & 1.02 & -0.01535 & 0.02187 \\
+usable_only & fedavg_window & 1.004 & 1.014 & -0.009526 & 0.02082 \\
+usable_only & fedasync_window & 1.004 & 1.014 & -0.009542 & 0.02081 \\
+usable_only & flamf_timealign_adapted & 1.004 & 1.014 & -0.00949 & 0.02085 \\
+usable_only & twostage_hajek & 1.004 & 1.014 & -0.009685 & 0.02085 \\
+usable_only & raven & 1.004 & 1.014 & -0.00985 & 0.0207 \\
+complete_aligned & fedavg_window & 1.005 & 1.03 & -0.02538 & 0.02724 \\
+complete_aligned & fedasync_window & 1.005 & 1.03 & -0.02539 & 0.02725 \\
+complete_aligned & flamf_timealign_adapted & 1.005 & 1.031 & -0.02559 & 0.02717 \\
+complete_aligned & twostage_hajek & 1.005 & 1.031 & -0.02557 & 0.02715 \\
+complete_aligned & raven & 1.005 & 1.03 & -0.02537 & 0.02721 \\
+complete_counteracting & fedavg_window & 1.004 & 1.021 & -0.01671 & 0.02325 \\
+complete_counteracting & fedasync_window & 1.004 & 1.021 & -0.01672 & 0.02325 \\
+complete_counteracting & flamf_timealign_adapted & 1.004 & 1.021 & -0.01681 & 0.02315 \\
+complete_counteracting & twostage_hajek & 1.004 & 1.021 & -0.01686 & 0.02319 \\
+complete_counteracting & raven & 1.004 & 1.021 & -0.01688 & 0.0233 \\
+\bottomrule
+\end{tabular}

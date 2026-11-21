@@ -1,0 +1,21 @@
+{
+  "bounding_box": {
+    "lat_max": 40.2,
+    "lat_min": 39.6,
+    "lon_max": 116.8,
+    "lon_min": 116.0
+  },
+  "cell_meters": 500,
+  "coordinate_reference": "WGS84 lon/lat degrees",
+  "empty_cell_rule": "cells with no reference-fleet valid speed are absent from atomic_units",
+  "grid_type": "regular equirectangular 500 m cells over Beijing bbox",
+  "lat_deg_per_cell": 0.0044915558749550845,
+  "lon_deg_per_cell": 0.005854744398030815,
+  "number_of_retained_cells": 9994,
+  "out_of_bounds_rule": "GPS points outside bbox are dropped at parse time",
+  "performance_tuned": false,
+  "source_config_hash": "3d2c53b34f2e20ae3a10de98cd6dd1acc6059ed304063bbc789a70f0dfc30b76",
+  "spatial_id_construction": "g{x:04d}_{y:04d} with x=floor((lon-116.0)/lon_deg), y=floor((lat-39.6)/lat_deg)",
+  "status": "FROZEN",
+  "unique_grid_linked_to_processed": true
+}

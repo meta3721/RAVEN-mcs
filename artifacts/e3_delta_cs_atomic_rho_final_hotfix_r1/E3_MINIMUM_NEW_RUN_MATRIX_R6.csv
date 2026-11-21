@@ -1,0 +1,35 @@
+dataset,method,seed_block,number_of_new_runs,classification,reason
+sensorscope,fedavg_window,30001-30020,20,NEW_RUN_REQUIRED,new E3 formal after Canary
+uair,fedavg_window,30001-30020,20,NEW_RUN_REQUIRED,new E3 formal after Canary
+traffic,fedavg_window,30001-30020,0,REUSE_ONLY_NO_RERUN,sealed E2 Traffic block
+sensorscope,fedasync_window,30001-30020,20,NEW_RUN_REQUIRED,new E3 formal after Canary
+uair,fedasync_window,30001-30020,20,NEW_RUN_REQUIRED,new E3 formal after Canary
+traffic,fedasync_window,30001-30020,0,REUSE_ONLY_NO_RERUN,sealed E2 Traffic block
+sensorscope,flamf_timealign_adapted,30001-30020,20,NEW_RUN_REQUIRED,new E3 formal after Canary
+uair,flamf_timealign_adapted,30001-30020,20,NEW_RUN_REQUIRED,new E3 formal after Canary
+traffic,flamf_timealign_adapted,30001-30020,0,REUSE_ONLY_NO_RERUN,sealed E2 Traffic block
+sensorscope,local_hajek,30001-30020,20,NEW_RUN_REQUIRED,new E3 formal after Canary
+uair,local_hajek,30001-30020,20,NEW_RUN_REQUIRED,new E3 formal after Canary
+traffic,local_hajek,30001-30020,20,NEW_RUN_REQUIRED,new E3 formal after Canary
+sensorscope,twostage_hajek,30001-30020,20,NEW_RUN_REQUIRED,new E3 formal after Canary
+uair,twostage_hajek,30001-30020,20,NEW_RUN_REQUIRED,new E3 formal after Canary
+traffic,twostage_hajek,30001-30020,0,REUSE_ONLY_NO_RERUN,sealed E2 Traffic block
+sensorscope,inst_cal,30001-30020,20,NEW_RUN_REQUIRED,new E3 formal after Canary
+uair,inst_cal,30001-30020,20,NEW_RUN_REQUIRED,new E3 formal after Canary
+traffic,inst_cal,30001-30020,20,NEW_RUN_REQUIRED,new E3 formal after Canary
+sensorscope,debt_cal,30001-30020,20,NEW_RUN_REQUIRED,new E3 formal after Canary
+uair,debt_cal,30001-30020,20,NEW_RUN_REQUIRED,new E3 formal after Canary
+traffic,debt_cal,30001-30020,20,NEW_RUN_REQUIRED,new E3 formal after Canary
+sensorscope,raven,30001-30020,20,NEW_RUN_REQUIRED,new E3 formal after Canary
+uair,raven,30001-30020,20,NEW_RUN_REQUIRED,new E3 formal after Canary
+traffic,raven,30001-30020,0,REUSE_ONLY_NO_RERUN,sealed E2 Traffic block
+sensorscope,raven_simoracle,30001-30020,20,NEW_RUN_REQUIRED,new E3 formal after Canary
+uair,raven_simoracle,30001-30020,20,NEW_RUN_REQUIRED,new E3 formal after Canary
+traffic,raven_simoracle,30001-30020,20,NEW_RUN_REQUIRED,new E3 formal after Canary
+sensorscope,central_all,30001-30020,20,NEW_RUN_REQUIRED,new E3 formal after Canary
+uair,central_all,30001-30020,20,NEW_RUN_REQUIRED,new E3 formal after Canary
+traffic,central_all,30001-30020,20,NEW_RUN_REQUIRED,new E3 formal after Canary
+sensorscope,central_delivered,30001-30020,20,NEW_RUN_REQUIRED,new E3 formal after Canary
+uair,central_delivered,30001-30020,20,NEW_RUN_REQUIRED,new E3 formal after Canary
+traffic,central_delivered,30001-30020,20,NEW_RUN_REQUIRED,new E3 formal after Canary
+all,flamf_original,,0,EXCLUDED,EXCLUDED_WITH_REASON

@@ -1,0 +1,80 @@
+{
+  "status": "PASS",
+  "strategy": "OF-v1",
+  "initial_identity": {
+    "theta": "7145fe44138c8b33b5a19147e911078b2a2919d3e3d9bad6ebf902807c98218b",
+    "backend_hash": "ea25846d5ce0a1d0e9e0fcc662586cb6ad37d627f24ba691d6739805705a5cdc",
+    "torch_rng_hash": "38cd0a48f3d47fae82e0e333ca3c5dff5caabc5ba15f0789fbf1e07d51dbb755",
+    "data": "8b151b95c5e8c6cef65cb5796d2d3b978cbbf9d380e665f4553ca3052c108968",
+    "target": "578985ee99bdccc5f80c3169b54959f5d3b556629b1c21767c5001018a0e352a",
+    "config": {
+      "source": "user_20261014_OF_v1_autonomous_pilot",
+      "design": {
+        "enabled": true,
+        "source": "explicit_45001_all_four_arms_whole_run_on",
+        "method_version": "configured-design-v1"
+      },
+      "grid": 0.1,
+      "deadline": 4.0,
+      "age_max": 5,
+      "warmup": 20.0,
+      "age_weight": 0.02,
+      "wait_weight": 0.2,
+      "minimum_clients": 3,
+      "scoring_tolerance": 1e-07,
+      "planning_cpu_seconds": 2.0,
+      "theta": 0.02,
+      "kappa": 0.1,
+      "patience": 0.2,
+      "method_version": "reachability_stop/observed-feedback-v1"
+    },
+    "settings": {
+      "lambda_group": 1.0,
+      "lambda_beta": 1.0,
+      "lambda_variance": 0.1,
+      "lambda_staleness": 0.1,
+      "alpha_max": 0.5,
+      "e_min": 3.0,
+      "server_eta": 0.01,
+      "max_server_learning_rate": 1.0,
+      "d_max": 10.0,
+      "q_min": 0.05,
+      "v_floor": 0.0001
+    },
+    "streams": {
+      "model_init": {
+        "entropy": 45001,
+        "spawn_key": [
+          0
+        ],
+        "mapped_seed": 1924028772
+      },
+      "local_dropout": {
+        "entropy": 45001,
+        "spawn_key": [
+          1
+        ],
+        "mapped_seed": 3394465560
+      },
+      "opportunity_observation": {
+        "entropy": 45001,
+        "spawn_key": [
+          2
+        ],
+        "mapped_seed": 1792483554
+      },
+      "service": {
+        "entropy": 45001,
+        "spawn_key": [
+          3
+        ],
+        "mapped_seed": 2192394600
+      }
+    }
+  },
+  "initial_Q_zero": true,
+  "initial_L_empty": true,
+  "isolated_test": false,
+  "calibration_only": true,
+  "SGD": 0
+}

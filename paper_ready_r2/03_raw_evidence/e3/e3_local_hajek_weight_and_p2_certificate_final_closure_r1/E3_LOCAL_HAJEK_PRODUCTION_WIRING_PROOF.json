@@ -1,0 +1,9 @@
+{
+  "files": {
+    "src/raven_mcs/aggregation/method_policy.py": "4e381b684b83de0c529ee39be1cffd98bbf08342f2d99f85e9c22f878cb3d22f",
+    "src/raven_mcs/training/client.py": "2881d6035c124a754ee14f8a84b38cebe5686196d7da8f322e1bf860158cb4a7",
+    "src/raven_mcs/training/local_objective.py": "1feac1a6e20dcc223b183585cf3f9b8e78beba99bbca11b75b818c5a54dbfd81",
+    "src/raven_mcs/training/window_runner.py": "f7bff5e30c76898f5ab3e3998021f9b09e52ccf73f135b44bc4e141d9e13c436"
+  },
+  "proof": "WindowRunner guards a_bar with uses_hajek_local_loss and passes it to ClientTrainer, which feeds local_hajek_loss."
+}

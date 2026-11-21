@@ -1,0 +1,509 @@
+{
+  "old_q": {
+    "value": 0.430453776060771,
+    "frozen_at": 20.0,
+    "model_version": "B0_test_q_not_calibrated",
+    "policy_version": "reachability_stop/conditional-bundle-v2",
+    "evidence_id": "isolated_test_fixture",
+    "role": "isolated_test_input",
+    "feature_hash": "3a37927b5d5ffff390a819cdcbd654df3d27722f55ac2a3af2698e5d583b67de"
+  },
+  "new_q": {
+    "value": 0.31216866941715965,
+    "frozen_at": 20.1,
+    "model_version": "B0_second_fixture",
+    "policy_version": "reachability_stop/conditional-bundle-v2",
+    "evidence_id": "isolated_test_fixture",
+    "role": "isolated_test_input",
+    "feature_hash": "56f9b85cf0324049669da4c9846bb320ebbfe319ad94703e6ac06a6910230528"
+  },
+  "scenarios": [
+    [
+      {
+        "time": 20.2,
+        "kind": "register",
+        "registration": {
+          "key": "scheduled",
+          "client": "public_client",
+          "registered_at": 20.2,
+          "downloaded_version": 0,
+          "device_class": "public_device",
+          "network_class": "public_network"
+        },
+        "summary": null
+      },
+      {
+        "time": 20.2,
+        "kind": "completion",
+        "registration": {
+          "key": "old",
+          "client": "old_client",
+          "registered_at": 20.0,
+          "downloaded_version": 0,
+          "device_class": "public_device",
+          "network_class": "public_network"
+        },
+        "summary": {
+          "masses": [
+            4.0,
+            0.0
+          ],
+          "local_weights": [
+            0.1,
+            0.2,
+            0.3,
+            0.4
+          ],
+          "effective_n": 3.333333333333333,
+          "observed_count": 4,
+          "design_enabled": true,
+          "design_source": "B0_explicit_fixture",
+          "frozen_at": 19.0,
+          "estimator_version": "B0_lagged_fixture",
+          "ratio": [
+            0.2,
+            0.4,
+            0.6,
+            0.8
+          ],
+          "p_obs": [
+            0.5,
+            0.5,
+            0.5,
+            0.5
+          ],
+          "provenance": "isolated_valid_inputs",
+          "observed_positions": [
+            0,
+            1,
+            2,
+            3
+          ]
+        }
+      },
+      {
+        "time": 20.3,
+        "kind": "completion",
+        "registration": {
+          "key": "scheduled",
+          "client": "public_client",
+          "registered_at": 20.2,
+          "downloaded_version": 0,
+          "device_class": "public_device",
+          "network_class": "public_network"
+        },
+        "summary": {
+          "masses": [
+            4.0,
+            0.0
+          ],
+          "local_weights": [
+            0.1,
+            0.2,
+            0.3,
+            0.4
+          ],
+          "effective_n": 3.333333333333333,
+          "observed_count": 4,
+          "design_enabled": true,
+          "design_source": "B0_explicit_fixture",
+          "frozen_at": 19.0,
+          "estimator_version": "B0_lagged_fixture",
+          "ratio": [
+            0.2,
+            0.4,
+            0.6,
+            0.8
+          ],
+          "p_obs": [
+            0.5,
+            0.5,
+            0.5,
+            0.5
+          ],
+          "provenance": "isolated_valid_inputs",
+          "observed_positions": [
+            0,
+            1,
+            2,
+            3
+          ]
+        }
+      }
+    ],
+    [
+      {
+        "time": 20.2,
+        "kind": "register",
+        "registration": {
+          "key": "scheduled",
+          "client": "public_client",
+          "registered_at": 20.2,
+          "downloaded_version": 0,
+          "device_class": "public_device",
+          "network_class": "public_network"
+        },
+        "summary": null
+      },
+      {
+        "time": 20.2,
+        "kind": "completion",
+        "registration": {
+          "key": "old",
+          "client": "old_client",
+          "registered_at": 20.0,
+          "downloaded_version": 0,
+          "device_class": "public_device",
+          "network_class": "public_network"
+        },
+        "summary": {
+          "masses": [
+            4.0,
+            0.0
+          ],
+          "local_weights": [
+            0.1,
+            0.2,
+            0.3,
+            0.4
+          ],
+          "effective_n": 3.333333333333333,
+          "observed_count": 4,
+          "design_enabled": true,
+          "design_source": "B0_explicit_fixture",
+          "frozen_at": 19.0,
+          "estimator_version": "B0_lagged_fixture",
+          "ratio": [
+            0.2,
+            0.4,
+            0.6,
+            0.8
+          ],
+          "p_obs": [
+            0.5,
+            0.5,
+            0.5,
+            0.5
+          ],
+          "provenance": "isolated_valid_inputs",
+          "observed_positions": [
+            0,
+            1,
+            2,
+            3
+          ]
+        }
+      },
+      {
+        "time": 20.3,
+        "kind": "completion",
+        "registration": {
+          "key": "scheduled",
+          "client": "public_client",
+          "registered_at": 20.2,
+          "downloaded_version": 0,
+          "device_class": "public_device",
+          "network_class": "public_network"
+        },
+        "summary": {
+          "masses": [
+            4.0,
+            0.0
+          ],
+          "local_weights": [
+            0.1,
+            0.2,
+            0.3,
+            0.4
+          ],
+          "effective_n": 3.333333333333333,
+          "observed_count": 4,
+          "design_enabled": true,
+          "design_source": "B0_explicit_fixture",
+          "frozen_at": 19.0,
+          "estimator_version": "B0_lagged_fixture",
+          "ratio": [
+            0.2,
+            0.4,
+            0.6,
+            0.8
+          ],
+          "p_obs": [
+            0.5,
+            0.5,
+            0.5,
+            0.5
+          ],
+          "provenance": "isolated_valid_inputs",
+          "observed_positions": [
+            0,
+            1,
+            2,
+            3
+          ]
+        }
+      }
+    ],
+    [
+      {
+        "time": 20.2,
+        "kind": "register",
+        "registration": {
+          "key": "scheduled",
+          "client": "public_client",
+          "registered_at": 20.2,
+          "downloaded_version": 0,
+          "device_class": "public_device",
+          "network_class": "public_network"
+        },
+        "summary": null
+      },
+      {
+        "time": 20.2,
+        "kind": "completion",
+        "registration": {
+          "key": "old",
+          "client": "old_client",
+          "registered_at": 20.0,
+          "downloaded_version": 0,
+          "device_class": "public_device",
+          "network_class": "public_network"
+        },
+        "summary": {
+          "masses": [
+            4.0,
+            0.0
+          ],
+          "local_weights": [
+            0.1,
+            0.2,
+            0.3,
+            0.4
+          ],
+          "effective_n": 3.333333333333333,
+          "observed_count": 4,
+          "design_enabled": true,
+          "design_source": "B0_explicit_fixture",
+          "frozen_at": 19.0,
+          "estimator_version": "B0_lagged_fixture",
+          "ratio": [
+            0.2,
+            0.4,
+            0.6,
+            0.8
+          ],
+          "p_obs": [
+            0.5,
+            0.5,
+            0.5,
+            0.5
+          ],
+          "provenance": "isolated_valid_inputs",
+          "observed_positions": [
+            0,
+            1,
+            2,
+            3
+          ]
+        }
+      },
+      {
+        "time": 20.3,
+        "kind": "completion",
+        "registration": {
+          "key": "scheduled",
+          "client": "public_client",
+          "registered_at": 20.2,
+          "downloaded_version": 0,
+          "device_class": "public_device",
+          "network_class": "public_network"
+        },
+        "summary": {
+          "masses": [
+            4.0,
+            0.0
+          ],
+          "local_weights": [
+            0.1,
+            0.2,
+            0.3,
+            0.4
+          ],
+          "effective_n": 3.333333333333333,
+          "observed_count": 4,
+          "design_enabled": true,
+          "design_source": "B0_explicit_fixture",
+          "frozen_at": 19.0,
+          "estimator_version": "B0_lagged_fixture",
+          "ratio": [
+            0.2,
+            0.4,
+            0.6,
+            0.8
+          ],
+          "p_obs": [
+            0.5,
+            0.5,
+            0.5,
+            0.5
+          ],
+          "provenance": "isolated_valid_inputs",
+          "observed_positions": [
+            0,
+            1,
+            2,
+            3
+          ]
+        }
+      }
+    ],
+    [
+      {
+        "time": 20.2,
+        "kind": "register",
+        "registration": {
+          "key": "scheduled",
+          "client": "public_client",
+          "registered_at": 20.2,
+          "downloaded_version": 0,
+          "device_class": "public_device",
+          "network_class": "public_network"
+        },
+        "summary": null
+      },
+      {
+        "time": 20.2,
+        "kind": "completion",
+        "registration": {
+          "key": "old",
+          "client": "old_client",
+          "registered_at": 20.0,
+          "downloaded_version": 0,
+          "device_class": "public_device",
+          "network_class": "public_network"
+        },
+        "summary": {
+          "masses": [
+            4.0,
+            0.0
+          ],
+          "local_weights": [
+            0.1,
+            0.2,
+            0.3,
+            0.4
+          ],
+          "effective_n": 3.333333333333333,
+          "observed_count": 4,
+          "design_enabled": true,
+          "design_source": "B0_explicit_fixture",
+          "frozen_at": 19.0,
+          "estimator_version": "B0_lagged_fixture",
+          "ratio": [
+            0.2,
+            0.4,
+            0.6,
+            0.8
+          ],
+          "p_obs": [
+            0.5,
+            0.5,
+            0.5,
+            0.5
+          ],
+          "provenance": "isolated_valid_inputs",
+          "observed_positions": [
+            0,
+            1,
+            2,
+            3
+          ]
+        }
+      },
+      {
+        "time": 20.3,
+        "kind": "completion",
+        "registration": {
+          "key": "scheduled",
+          "client": "public_client",
+          "registered_at": 20.2,
+          "downloaded_version": 0,
+          "device_class": "public_device",
+          "network_class": "public_network"
+        },
+        "summary": {
+          "masses": [
+            4.0,
+            0.0
+          ],
+          "local_weights": [
+            0.1,
+            0.2,
+            0.3,
+            0.4
+          ],
+          "effective_n": 3.333333333333333,
+          "observed_count": 4,
+          "design_enabled": true,
+          "design_source": "B0_explicit_fixture",
+          "frozen_at": 19.0,
+          "estimator_version": "B0_lagged_fixture",
+          "ratio": [
+            0.2,
+            0.4,
+            0.6,
+            0.8
+          ],
+          "p_obs": [
+            0.5,
+            0.5,
+            0.5,
+            0.5
+          ],
+          "provenance": "isolated_valid_inputs",
+          "observed_positions": [
+            0,
+            1,
+            2,
+            3
+          ]
+        }
+      }
+    ]
+  ],
+  "decision": {
+    "action": "WAIT",
+    "reason": "conditional_bundle",
+    "selected_offset": 0.1,
+    "plan_scores": [
+      [
+        0.1,
+        0.8462500000000015
+      ],
+      [
+        0.5,
+        0.8462500000000015
+      ],
+      [
+        1.0,
+        0.8462500000000015
+      ],
+      [
+        2.0,
+        0.8462500000000015
+      ],
+      [
+        4.0,
+        0.8462500000000015
+      ]
+    ],
+    "p2_solves": 1,
+    "cache_hits": 19,
+    "scenario_digest": "92831e4019e030b1e8c12f9376054ede608629fb773eefae83b8b564404d4880",
+    "control_cpu_seconds": 0.0,
+    "wall_seconds": 0.0,
+    "forecast_only": true,
+    "evidence_role": "deterministic_interface_or_empirical_planning",
+    "variance_transition": "zero_unknown_gradient_increment"
+  }
+}

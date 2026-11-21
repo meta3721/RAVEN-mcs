@@ -1,0 +1,15 @@
+# 新增自主入口及必要检查
+
+实际入口[scripts/run_observed_feedback_autonomous_pilot.py](C:/Cursor/raven.mcs/scripts/run_observed_feedback_autonomous_pilot.py)，通过[scripts/observed_feedback_pilot_budget.py](C:/Cursor/raven.mcs/scripts/observed_feedback_pilot_budget.py)登记新连续账。策略参数仅允许四个冻结名称。初始化/外生流配对位于observed_feedback_pilot_common.py；根账与滚动预警采用独立pilot_account及已验root发布设施。
+
+authorization.py增加独立AutonomousPilotAuthorization（45001/用户source/P1阶段/四策略/T100/3000/5000每臂及20000整批），原45011授权逻辑保留。backend.py仅将明确pilot授权纳入相同真实训练保护；lifecycle.py增加策略适用身份核验和授权反序列化。新pilot_controller.py对OF委托原Controller，对fixed和κ=0执行相同强制优先级、完整当前P2与真实apply。未将isolated_test置true或用零更新替代实际训练。
+
+固定等待不调用P2；非空关闭调用完整P2并经同一runner执行模型/consume/版本/debt/variance/L，after-close仍更新lagged p。no-Q-stop保存完整P2的Q，绝不称删除全部debt。公开controller看当前snapshot；私有producer随机日志不进入决策。
+
+SGD0固定输入新增关键路径结果PASS：四种策略授权与序列化、旧45011保护、production prior拒绝、模型/缓存/池独立、共同warmup/deadline/MIN_CLIENTS/terminal、fixed等待零P2和真实非空P2/apply/consume；真实ClientTrainer仅拦截进入、未执行SGD。初次fixture把通知20.2错误配到time1，被未来消息检查拒绝；修正fixture顺序后通过，未删保护或改方法。CPU与错误日志均保留。[SGD0_AUTONOMOUS_CHECK.json](C:/Cursor/raven.mcs/results_observed_feedback_autonomous_pilot_45001_20261014/SGD0_AUTONOMOUS_CHECK.json)。
+
+修改前三个包的全部manifest列明源码已独立归档old_implementation/src，旧闭包逐文件hash通过；旧45011成对资产/指标/STOP/报告原样保存，不改为45001结果。新增策略计算模块和脚本有新闭包及独立身份；不是用新hash冒充旧实现。[old_implementation/ARCHIVE_CHECK.json](C:/Cursor/raven.mcs/results_observed_feedback_autonomous_pilot_45001_20261014/old_implementation/ARCHIVE_CHECK.json)、[IMPLEMENTATION_SCRIPT_FREEZE.json](C:/Cursor/raven.mcs/results_observed_feedback_autonomous_pilot_45001_20261014/IMPLEMENTATION_SCRIPT_FREEZE.json)。
+
+OF首段t33.29发生root预算读数过期，在新注册执行前拒绝并保存。设施修复仅对原“stale”错误等待新读数，不扩大1秒有效期、不接受旧读数；实际模型/control与producer/RNG恢复前hash相等，已完成OF。首份设施归档检查与一次缺失脚本调用失败均保留费用，修复后v2外部脚本冻结通过。科学包冻结后未改。
+
+本轮末次只读工具使用基础Python时触发numpy依赖缺失；改为直接加载未改的hashing文件、用相同成对内容条件读取原保存数据，再核验通过，首失败计费0.21875，成功4.171875。无训练/求解/回放。固定0.5的最终进程审计缺失属于未解决设施问题，未伪造方法验收通过。

@@ -1,0 +1,22 @@
+{
+  "Delta_pair": "NOT_AVAILABLE_FROM_THIS_PRODUCTION_REPRESENTATION",
+  "Delta_pair_status": "NOT_MATERIALIZED",
+  "applicability": "federated methods APPLICABLE; Central NOT_APPLICABLE",
+  "canonical_pair_id": "client_id::target_group",
+  "canonical_support": "client × spatial×time target_group",
+  "code": [
+    "raven_mcs.metrics.distribution.delta_c_s",
+    "raven_mcs.e3.target_pair.pair_state_v4.accumulate_pair_state_v4"
+  ],
+  "exact_formula": "sum_{k,s} |Pi_hat_ks - pi_tar_ks|  (= ||Pi_hat - pi_tar||_1 on client×group support)",
+  "final_metric_name": "Delta_c_s",
+  "map_eventtrace_atomic_to_support": "unit_id -> (client via spatial_to_client, target_group from atomic table)",
+  "method_dependent_effective_mass": "Pi_hat_ks = (1/S_R) sum_r eta_r I_r alpha_{k,r}^{(m)} w_{k,r,i}^{(m)} mapped to (k, target_group)",
+  "normalization": "Pi_hat probability-normalized before L1 vs pi_tar",
+  "orientation": "lower is better (closer to target pair/stratum mass)",
+  "paper_label": "Delta_{c-s}",
+  "schema_version": "E3_PAIR_STATE_SCHEMA_V5",
+  "status": "FROZEN",
+  "target_mass": "uniform mass over TEST atoms aggregated onto client×target_group",
+  "valid_range": "[0, 2]"
+}

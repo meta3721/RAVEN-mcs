@@ -1,0 +1,7 @@
+dataset,round,source_vintage,metric,scientifically_comparable,allowed_for_main_inference,allowed_for_reference_only,reason,source_evidence
+SensorScope,E3,E3_formal,all_main,True,True,False,Primary E3 mainline,E3_FORMAL_RUN_STATUS.csv
+U-Air,E3,E3_formal,all_main,True,True,False,Primary E3 mainline,E3_FORMAL_RUN_STATUS.csv
+NSW-Traffic,E2,E2_formal,"RMSE_mu,RMSE_rho,D_aligned",True,True,False,E2 risk non-interchangeability within PROFILE-S1,formal_results.csv
+NSW-Traffic,E3,E2_reused+E3_new,cross_method,False,False,True,NOT_COMPARABLE cross-vintage for E3 inference,E3_TRAFFIC_CROSS_VINTAGE_COMPARISON_POLICY.json
+Balanced,E1,E1_R2_FINAL_SEALED,no_harm,True,True,False,E1 sanity / no-harm,outputs/statistics/E1_R2_FINAL_SEALED
+SensorScope+U-Air,E4,E4_final_index_R2,ablation,True,True,False,240-cell final valid matrix; wo_inst Gen2 only,E4_FINAL_VALID_EVIDENCE_INDEX_R2.csv

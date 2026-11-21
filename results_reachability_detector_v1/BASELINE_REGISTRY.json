@@ -1,0 +1,62 @@
+{
+  "status": "PARTIAL_G0_STOP",
+  "detection": [
+    {
+      "name": "B-exact",
+      "estimand": "同运行时已知经验组成和实际权重约束的确定性距离优化",
+      "implementation": "src/raven_mcs/metrics/reachability_optimization.py",
+      "status": "尚未核验数值证书及当前流程兼容性；不能降格为 oracle"
+    },
+    {
+      "name": "B-point",
+      "estimand": "相同 H/点估计/约束；无不确定性修正",
+      "implementation": null,
+      "status": "PLANNED；不能授予序贯安全保证"
+    },
+    {
+      "name": "B-fixed",
+      "estimand": "同信息固定时点置信检测",
+      "implementation": null,
+      "status": "PLANNED；重复查看未校正时仅不安全对照"
+    },
+    {
+      "name": "B-anytime",
+      "estimand": "同置信集合，最大列半径距离修正",
+      "implementation": null,
+      "status": "PLANNED；G1 尚未开始"
+    },
+    {
+      "name": "B-robust",
+      "estimand": "同置信集合完整鲁棒可行性",
+      "implementation": null,
+      "status": "适用性及可实现性未完成，不能宣称已比较最强基线"
+    },
+    {
+      "name": "B-current-coverage",
+      "estimand": "现有覆盖 Gate；不同检测对象",
+      "implementation": "src/raven_mcs/sag/r1l_design.py",
+      "status": "仅诊断对照；当前实现还控制 Design，存在身份冲突"
+    }
+  ],
+  "task": {
+    "name": "Traffic Uniform development, seed41001",
+    "status": "TASK_BASELINE_NOT_CONFIRMED",
+    "RMSE_mu": 253.1132,
+    "unit": "vehicles/h",
+    "source": "results_main_rebuild_r1/EXECUTION_REPORT.md",
+    "method_identity": "aggregate_coverage local-loss cache; not configured-Design",
+    "central_202_0554_is_federated_baseline": false,
+    "development_47_01_percent_is_new_RAVEN_gain": false,
+    "R2_simple_baseline_rows": 54,
+    "R2_source": "results_main_rebuild_r1/P0_VALIDATION_BASELINES_R2.csv"
+  },
+  "literature_verification": {
+    "status": "CANCELLED_AFTER_FIRST_G0_FAILURE",
+    "sources_prescribed_by_protocol": [
+      "Howard et al. arXiv:1810.08240",
+      "FedPALS arXiv:2411.03799v2",
+      "sequential feasibility / robust optimization neighbors"
+    ],
+    "new_searches_performed": 0
+  }
+}

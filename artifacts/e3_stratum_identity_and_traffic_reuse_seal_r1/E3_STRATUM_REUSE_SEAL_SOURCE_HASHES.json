@@ -1,0 +1,269 @@
+{
+  "created_utc": "2026-08-10T11:55:34.171890+00:00",
+  "files": {
+    "configs/frozen/e3_multidataset_protocol_closure/traffic/opportunity_strata.json": "07682135c23f78654551319e7bb8f6a73e15eb8661784b7182fb26394e69a85d",
+    "src/raven_mcs/correction/pi_target.py": "56e1b7c29015b7a1c335aca3a7122ec6872a5322bdb2c28882541339e3262727",
+    "src/raven_mcs/e3/delta_cs_rho/atomic_rho.py": "5c58dd03fe2b9d2c350da87c7c293d833207521c3b8e7bb2e52819057360e99a",
+    "src/raven_mcs/e3/delta_cs_rho/delta_cs_v6.py": "580bd1d6d2d0c4c178b16ab9a9ee5f16541fcec617f0551a568fdbcc875398d3",
+    "src/raven_mcs/e3/delta_cs_rho/stratum.py": "ca4f7fdf3837787534cc12d06e89ef6ad4890259c95849dc3e9a57a39b427d5e",
+    "src/raven_mcs/e3/real_runner/runner.py": "f01c89ab17942fe8e6bac97af3e9ebbe07d766609706241ae445f260e286b5c4",
+    "src/raven_mcs/e3/stratum_seal/constants.py": "68f4f2d46bd5bb2f240c6e24669b493b6547afe655563721c408a75a1d4cc41e",
+    "src/raven_mcs/e3/stratum_seal/remap.py": "706a252f3afba8c02864365f1d76553a7f6807cb541e12811fdfcc4da8666753",
+    "src/raven_mcs/e3/stratum_seal/traffic_regions.py": "83ccbd2732b4b14e2cdb4c3c1c43c4722f939a621463501951a1f8bf66545cd0"
+  },
+  "git": {
+    "branch": "e3-stratum-identity-and-traffic-reuse-seal-r1",
+    "commit": "b01db69e8554a33446c438c060ac464dcfadac24"
+  },
+  "methods": {
+    "central_all": {
+      "files": [
+        {
+          "path": "src/raven_mcs/aggregation/method_policy.py",
+          "sha256": "4e381b684b83de0c529ee39be1cffd98bbf08342f2d99f85e9c22f878cb3d22f"
+        },
+        {
+          "path": "src/raven_mcs/e3/protocol_closure/central_reference.py",
+          "sha256": "4c0de5b74d58f8fd25dacb929321c2a46e70808ae83d6ae640d2871372c1c151"
+        },
+        {
+          "path": "src/raven_mcs/models/common_ndmf.py",
+          "sha256": "959723c87af991b8999fb137648d108310b759677c0e4c891eddd1c168b4de38"
+        }
+      ],
+      "implementation_hash": "0807be0ca2d14f2e11ad2724c0d1f823e6ac94d5a7816d11381cf7a04e7db152",
+      "status": "HASHED"
+    },
+    "central_delivered": {
+      "files": [
+        {
+          "path": "src/raven_mcs/aggregation/method_policy.py",
+          "sha256": "4e381b684b83de0c529ee39be1cffd98bbf08342f2d99f85e9c22f878cb3d22f"
+        },
+        {
+          "path": "src/raven_mcs/e3/protocol_closure/central_reference.py",
+          "sha256": "4c0de5b74d58f8fd25dacb929321c2a46e70808ae83d6ae640d2871372c1c151"
+        },
+        {
+          "path": "src/raven_mcs/models/common_ndmf.py",
+          "sha256": "959723c87af991b8999fb137648d108310b759677c0e4c891eddd1c168b4de38"
+        }
+      ],
+      "implementation_hash": "0807be0ca2d14f2e11ad2724c0d1f823e6ac94d5a7816d11381cf7a04e7db152",
+      "status": "HASHED"
+    },
+    "debt_cal": {
+      "files": [
+        {
+          "path": "src/raven_mcs/aggregation/method_policy.py",
+          "sha256": "4e381b684b83de0c529ee39be1cffd98bbf08342f2d99f85e9c22f878cb3d22f"
+        },
+        {
+          "path": "src/raven_mcs/aggregation/methods.py",
+          "sha256": "0729a2d8435f6a81dec1b9724b9d01809d76c435e34a23ea704945baf6cf615d"
+        },
+        {
+          "path": "src/raven_mcs/training/window_runner.py",
+          "sha256": "ad40863d44c9af232fd459e74c9daf900f5830744d9ad8666fb4d95b3aefb90a"
+        },
+        {
+          "path": "src/raven_mcs/aggregation/p2_cvxpy.py",
+          "sha256": "0da4e4b3bb3c90ab08e53219e80bce0f871d734670b61c50f0d3ed551bb09b5e"
+        },
+        {
+          "path": "src/raven_mcs/metrics/debt.py",
+          "sha256": "dd4fce52f02b87ec3b903f2fbb94c4c8f5d68c7616ec3fb3fd597abfb3e6451c"
+        }
+      ],
+      "implementation_hash": "fb026e62b88d14b4574f3537b4ee0173bd55a3ef8b87224a75fc3d94d2afb992",
+      "status": "HASHED"
+    },
+    "fedasync_window": {
+      "files": [
+        {
+          "path": "src/raven_mcs/aggregation/method_policy.py",
+          "sha256": "4e381b684b83de0c529ee39be1cffd98bbf08342f2d99f85e9c22f878cb3d22f"
+        },
+        {
+          "path": "src/raven_mcs/aggregation/methods.py",
+          "sha256": "0729a2d8435f6a81dec1b9724b9d01809d76c435e34a23ea704945baf6cf615d"
+        },
+        {
+          "path": "src/raven_mcs/training/window_runner.py",
+          "sha256": "ad40863d44c9af232fd459e74c9daf900f5830744d9ad8666fb4d95b3aefb90a"
+        }
+      ],
+      "implementation_hash": "f925711e512eec5299f1d6049d06065dddbaf4b163aa090a1def6d62b4dc47e0",
+      "status": "HASHED"
+    },
+    "fedavg_window": {
+      "files": [
+        {
+          "path": "src/raven_mcs/aggregation/method_policy.py",
+          "sha256": "4e381b684b83de0c529ee39be1cffd98bbf08342f2d99f85e9c22f878cb3d22f"
+        },
+        {
+          "path": "src/raven_mcs/aggregation/methods.py",
+          "sha256": "0729a2d8435f6a81dec1b9724b9d01809d76c435e34a23ea704945baf6cf615d"
+        },
+        {
+          "path": "src/raven_mcs/training/window_runner.py",
+          "sha256": "ad40863d44c9af232fd459e74c9daf900f5830744d9ad8666fb4d95b3aefb90a"
+        }
+      ],
+      "implementation_hash": "f925711e512eec5299f1d6049d06065dddbaf4b163aa090a1def6d62b4dc47e0",
+      "status": "HASHED"
+    },
+    "flamf_original": {
+      "files": [],
+      "implementation_hash": null,
+      "reason": "external original FLAMF not faithfully reproduced; TimeAlign must not be renamed",
+      "status": "EXCLUDED_WITH_REASON"
+    },
+    "flamf_timealign_adapted": {
+      "files": [
+        {
+          "path": "src/raven_mcs/aggregation/method_policy.py",
+          "sha256": "4e381b684b83de0c529ee39be1cffd98bbf08342f2d99f85e9c22f878cb3d22f"
+        },
+        {
+          "path": "src/raven_mcs/aggregation/methods.py",
+          "sha256": "0729a2d8435f6a81dec1b9724b9d01809d76c435e34a23ea704945baf6cf615d"
+        },
+        {
+          "path": "src/raven_mcs/training/window_runner.py",
+          "sha256": "ad40863d44c9af232fd459e74c9daf900f5830744d9ad8666fb4d95b3aefb90a"
+        }
+      ],
+      "implementation_hash": "f925711e512eec5299f1d6049d06065dddbaf4b163aa090a1def6d62b4dc47e0",
+      "status": "HASHED"
+    },
+    "inst_cal": {
+      "files": [
+        {
+          "path": "src/raven_mcs/aggregation/method_policy.py",
+          "sha256": "4e381b684b83de0c529ee39be1cffd98bbf08342f2d99f85e9c22f878cb3d22f"
+        },
+        {
+          "path": "src/raven_mcs/aggregation/methods.py",
+          "sha256": "0729a2d8435f6a81dec1b9724b9d01809d76c435e34a23ea704945baf6cf615d"
+        },
+        {
+          "path": "src/raven_mcs/training/window_runner.py",
+          "sha256": "ad40863d44c9af232fd459e74c9daf900f5830744d9ad8666fb4d95b3aefb90a"
+        },
+        {
+          "path": "src/raven_mcs/aggregation/p2_cvxpy.py",
+          "sha256": "0da4e4b3bb3c90ab08e53219e80bce0f871d734670b61c50f0d3ed551bb09b5e"
+        }
+      ],
+      "implementation_hash": "2f8c643cbfd210bc271a0b36a1326d431c99c13fa791c8eef0ca4c3ee442dbb4",
+      "status": "HASHED"
+    },
+    "local_hajek": {
+      "files": [
+        {
+          "path": "src/raven_mcs/aggregation/method_policy.py",
+          "sha256": "4e381b684b83de0c529ee39be1cffd98bbf08342f2d99f85e9c22f878cb3d22f"
+        },
+        {
+          "path": "src/raven_mcs/aggregation/methods.py",
+          "sha256": "0729a2d8435f6a81dec1b9724b9d01809d76c435e34a23ea704945baf6cf615d"
+        },
+        {
+          "path": "src/raven_mcs/training/window_runner.py",
+          "sha256": "ad40863d44c9af232fd459e74c9daf900f5830744d9ad8666fb4d95b3aefb90a"
+        },
+        {
+          "path": "src/raven_mcs/correction/hajek.py",
+          "sha256": "d68c45b6fae1fc1c02dbced3f6cf9e4eeb68464d5ec781659e4c3089c81589fb"
+        }
+      ],
+      "implementation_hash": "2f2f949b564050f0318264caddc31544252bc10939382f376392824947fee7a1",
+      "status": "HASHED"
+    },
+    "raven": {
+      "files": [
+        {
+          "path": "src/raven_mcs/aggregation/method_policy.py",
+          "sha256": "4e381b684b83de0c529ee39be1cffd98bbf08342f2d99f85e9c22f878cb3d22f"
+        },
+        {
+          "path": "src/raven_mcs/aggregation/methods.py",
+          "sha256": "0729a2d8435f6a81dec1b9724b9d01809d76c435e34a23ea704945baf6cf615d"
+        },
+        {
+          "path": "src/raven_mcs/training/window_runner.py",
+          "sha256": "ad40863d44c9af232fd459e74c9daf900f5830744d9ad8666fb4d95b3aefb90a"
+        },
+        {
+          "path": "src/raven_mcs/aggregation/p2_cvxpy.py",
+          "sha256": "0da4e4b3bb3c90ab08e53219e80bce0f871d734670b61c50f0d3ed551bb09b5e"
+        },
+        {
+          "path": "src/raven_mcs/correction/hajek.py",
+          "sha256": "d68c45b6fae1fc1c02dbced3f6cf9e4eeb68464d5ec781659e4c3089c81589fb"
+        },
+        {
+          "path": "src/raven_mcs/metrics/debt.py",
+          "sha256": "dd4fce52f02b87ec3b903f2fbb94c4c8f5d68c7616ec3fb3fd597abfb3e6451c"
+        }
+      ],
+      "implementation_hash": "901dec51ec4b834609ded4ee24f9e443f127513bf051b8bcd47416a06e6949b9",
+      "status": "HASHED"
+    },
+    "raven_simoracle": {
+      "files": [
+        {
+          "path": "src/raven_mcs/aggregation/method_policy.py",
+          "sha256": "4e381b684b83de0c529ee39be1cffd98bbf08342f2d99f85e9c22f878cb3d22f"
+        },
+        {
+          "path": "src/raven_mcs/aggregation/methods.py",
+          "sha256": "0729a2d8435f6a81dec1b9724b9d01809d76c435e34a23ea704945baf6cf615d"
+        },
+        {
+          "path": "src/raven_mcs/training/window_runner.py",
+          "sha256": "ad40863d44c9af232fd459e74c9daf900f5830744d9ad8666fb4d95b3aefb90a"
+        },
+        {
+          "path": "src/raven_mcs/aggregation/p2_cvxpy.py",
+          "sha256": "0da4e4b3bb3c90ab08e53219e80bce0f871d734670b61c50f0d3ed551bb09b5e"
+        },
+        {
+          "path": "src/raven_mcs/simulation/replay.py",
+          "sha256": "9c7ce740d28e7995e26583534ca9dd4de70134078841ea047911d65ce42bd383"
+        },
+        {
+          "path": "src/raven_mcs/e3/protocol_closure/constants.py",
+          "sha256": "9c83a68426a85f6459c10f1a9c46c21aa402ba04c1bac9dd8e4e9bd4cc9612a2"
+        }
+      ],
+      "implementation_hash": "87ad2732cd21d4b0c96cb576a49d1a6a01d812f69a72332f44c4f1702af6740d",
+      "status": "HASHED"
+    },
+    "twostage_hajek": {
+      "files": [
+        {
+          "path": "src/raven_mcs/aggregation/method_policy.py",
+          "sha256": "4e381b684b83de0c529ee39be1cffd98bbf08342f2d99f85e9c22f878cb3d22f"
+        },
+        {
+          "path": "src/raven_mcs/aggregation/methods.py",
+          "sha256": "0729a2d8435f6a81dec1b9724b9d01809d76c435e34a23ea704945baf6cf615d"
+        },
+        {
+          "path": "src/raven_mcs/training/window_runner.py",
+          "sha256": "ad40863d44c9af232fd459e74c9daf900f5830744d9ad8666fb4d95b3aefb90a"
+        },
+        {
+          "path": "src/raven_mcs/correction/hajek.py",
+          "sha256": "d68c45b6fae1fc1c02dbced3f6cf9e4eeb68464d5ec781659e4c3089c81589fb"
+        }
+      ],
+      "implementation_hash": "2f2f949b564050f0318264caddc31544252bc10939382f376392824947fee7a1",
+      "status": "HASHED"
+    }
+  },
+  "round": "E3-STRATUM-IDENTITY-AND-TRAFFIC-REUSE-SEAL-R1"
+}

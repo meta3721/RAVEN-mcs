@@ -1,0 +1,15 @@
+{
+  "authorized_by": "user, 2026-10-08",
+  "caveat": "This run is NOT the sealed E2 Traffic Complete-aligned object and must not be compared with the frozen E3 traffic evidence as if it were.",
+  "created_utc": "2026-10-10T15:37:40.972060+00:00",
+  "exemption": "allow_reused_traffic_rerun=True",
+  "guard": "src/raven_mcs/e3/protocol_closure/reuse_guard.py",
+  "guard_default": "raises DuplicateReusedTrafficRunBlocked",
+  "ledger_record": "ccfa-review-reports/raven-mcs-metric-definition-diagnosis.md Part IX item 65",
+  "run": {
+    "arm": "local_hajek",
+    "block": "traffic",
+    "seed": 30009,
+    "tag": "KLIM_local_hajek"
+  }
+}

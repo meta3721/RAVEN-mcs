@@ -1,0 +1,120 @@
+{
+  "all_pass": true,
+  "gates": {
+    "T2R-G1": {
+      "detail": "runs=0",
+      "pass": true
+    },
+    "T2R-G10": {
+      "detail": "vs FIG-E3",
+      "pass": true
+    },
+    "T2R-G11": {
+      "detail": "vs FIG-E2",
+      "pass": true
+    },
+    "T2R-G12": {
+      "detail": "vs Table III",
+      "pass": true
+    },
+    "T2R-G13": {
+      "detail": "vs master evidence",
+      "pass": true
+    },
+    "T2R-G14": {
+      "detail": "stats unchanged",
+      "pass": true
+    },
+    "T2R-G15": {
+      "detail": "Holm unchanged",
+      "pass": true
+    },
+    "T2R-G16": {
+      "detail": "markers linked",
+      "pass": true
+    },
+    "T2R-G17": {
+      "detail": "old Table II superseded",
+      "pass": true
+    },
+    "T2R-G18": {
+      "detail": "meta complete",
+      "pass": true
+    },
+    "T2R-G19": {
+      "detail": "unit/scale registry",
+      "pass": true
+    },
+    "T2R-G2": {
+      "detail": "T-Drive=0",
+      "pass": true
+    },
+    "T2R-G20": {
+      "detail": "main table registry",
+      "pass": true
+    },
+    "T2R-G21": {
+      "detail": "figure-table registry",
+      "pass": true
+    },
+    "T2R-G22": {
+      "detail": "figure-count wording",
+      "pass": true
+    },
+    "T2R-G23": {
+      "detail": "P2 naming conflict removed",
+      "pass": true
+    },
+    "T2R-G24": {
+      "detail": "math unchanged",
+      "pass": true
+    },
+    "T2R-G25": {
+      "detail": "spec master patched",
+      "pass": true
+    },
+    "T2R-G26": {
+      "detail": "T-Drive reserve",
+      "pass": true
+    },
+    "T2R-G27": {
+      "detail": "no main-text numeric conflict",
+      "pass": true
+    },
+    "T2R-G28": {
+      "detail": "no CORE gap introduced",
+      "pass": true
+    },
+    "T2R-G3": {
+      "detail": "originals unchanged",
+      "pass": true
+    },
+    "T2R-G4": {
+      "detail": "uair audit n=22",
+      "pass": true
+    },
+    "T2R-G5": {
+      "detail": "ss audit n=22",
+      "pass": true
+    },
+    "T2R-G6": {
+      "detail": "rebuilt n=11",
+      "pass": true
+    },
+    "T2R-G7": {
+      "detail": "no U-Air 20.x remains",
+      "pass": true
+    },
+    "T2R-G8": {
+      "detail": "SensorScope MATCH",
+      "pass": true
+    },
+    "T2R-G9": {
+      "detail": "structural vs FIG-E2",
+      "pass": true
+    }
+  },
+  "n_pass": 28,
+  "n_total": 28,
+  "status_if_pass": "RAVEN_MCS_TABLEII_REPAIR_R1_PASS_PAPER_SPEC_FINAL_SEALED"
+}

@@ -1,0 +1,32 @@
+{
+  "rows": [
+    {
+      "Delta_c_s": "READY",
+      "atomic_rho": "READY",
+      "dataset": "sensorscope",
+      "opportunity_stratum_identity": "FROZEN_IDENTITY_CONFIRMED",
+      "prior_fields": "reference prior hotfix hashes",
+      "status": "READY_FOR_REAL_CANARY",
+      "traffic_rmse_rho_reuse": "N/A"
+    },
+    {
+      "Delta_c_s": "READY",
+      "atomic_rho": "READY",
+      "dataset": "uair",
+      "opportunity_stratum_identity": "FROZEN_IDENTITY_CONFIRMED",
+      "prior_fields": "reference prior hotfix hashes",
+      "status": "READY_FOR_REAL_CANARY",
+      "traffic_rmse_rho_reuse": "N/A"
+    },
+    {
+      "Delta_c_s": "READY",
+      "atomic_rho": "READY",
+      "dataset": "traffic",
+      "opportunity_stratum_identity": "FROZEN_IDENTITY_RECOVERED_4_REGION",
+      "prior_fields": "reference prior hotfix hashes",
+      "reuse_policy": "E3_TRAFFIC_REUSE_METRIC_POLICY.json",
+      "status": "READY_FOR_REAL_CANARY",
+      "traffic_rmse_rho_reuse": "NOT_COMPARABLE_FROM_SEALED_OUTPUTS"
+    }
+  ]
+}

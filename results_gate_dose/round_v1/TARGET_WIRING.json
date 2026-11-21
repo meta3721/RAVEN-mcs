@@ -1,0 +1,207 @@
+{
+  "created_utc": "2026-10-06T15:56:15.895413+00:00",
+  "datasets": {
+    "sensorscope": {
+      "consumers": {
+        "T1_pi_target_override": "run_e3_real(pi_target_override=...) -> WorkerSetup.pi_target",
+        "T2_mu_bundle": "production_target_bundle(...)['mu'] (patched), used by Delta_group and the RMSE_mu test weights",
+        "T3_delta_cs_denominator": "raven_mcs.e3.delta_cs_rho.delta_cs_v6.build_pi_tar_client_stratum (patched)"
+      },
+      "levels": {
+        "0": {
+          "m": 0.0,
+          "mass_removed": 4.9960036108132044e-15,
+          "mu_hash": "4170d2c22b737ad923f6d97d3d3b872f3ecafe5b3400a9c4cc69d8c66ff1a6eb",
+          "mu_vs_masked_test_share_max_abs": 0.0,
+          "n_masked_keys": 0,
+          "n_test_units_kept": 3410,
+          "pass": true,
+          "pi_target_hash": "90b47337d3a3959ac7902f04c20f2c00e40a8b6de507ad5a94c7f2a989938b94",
+          "sum_mu": 0.9999999999999999,
+          "sum_pi_target": 0.9999999999999969
+        },
+        "0.1": {
+          "m": 0.1,
+          "mass_removed": 0.10029325513196885,
+          "mu_hash": "e3c6c216568b983ae7d41ee81d9ef3a517a69dbeb04fd6800f21c59861991d7f",
+          "mu_vs_masked_test_share_max_abs": 0.0,
+          "n_masked_keys": 44,
+          "n_test_units_kept": 3068,
+          "pass": true,
+          "pi_target_hash": "ad303010bed08c70f389495e72d84da1469a6ecbcc9b849d7b5ffa02eeb0e27d",
+          "sum_mu": 1.0,
+          "sum_pi_target": 1.0000000000000067
+        },
+        "0.25": {
+          "m": 0.25,
+          "mass_removed": 0.24809384164223092,
+          "mu_hash": "155695c825e7ea6f39eaa68ca2c04902f58836edacdb196efdc6cd5ff6cc9342",
+          "mu_vs_masked_test_share_max_abs": 0.0,
+          "n_masked_keys": 110,
+          "n_test_units_kept": 2564,
+          "pass": true,
+          "pi_target_hash": "41c3b9325ba57e8d4f2e4290d7cd6887b4f63cbe150cb0a3812182e65e2330b9",
+          "sum_mu": 0.9999999999999999,
+          "sum_pi_target": 1.0000000000000082
+        },
+        "0.4": {
+          "m": 0.4,
+          "mass_removed": 0.3900293255131969,
+          "mu_hash": "d32c67a6d03a7dcc44f7293c3765858f3cfde25741947bf149833723556597d4",
+          "mu_vs_masked_test_share_max_abs": 0.0,
+          "n_masked_keys": 176,
+          "n_test_units_kept": 2080,
+          "pass": true,
+          "pi_target_hash": "2dfd5f14342b3d9a695b96b1eb78e8601e5b05759f9055708f9a25111ac2f264",
+          "sum_mu": 1.0,
+          "sum_pi_target": 0.9999999999999974
+        }
+      },
+      "m0_identity": {
+        "T1_pi_target_hash_equal": false,
+        "T1_pi_target_hash_production": "2e2b609d86889a4d8af4f31a2f972a3e3cb1cad38963d80cd0e8a2214c0696d0",
+        "T1_pi_target_hash_rebuilt": "90b47337d3a3959ac7902f04c20f2c00e40a8b6de507ad5a94c7f2a989938b94",
+        "T1_pi_target_max_abs_diff_vs_production": 1.7780915628762273e-17,
+        "T1_pi_target_values_equal_1e-12": true,
+        "T2_mu_max_abs_diff_share_vs_mu": 0.0,
+        "T2_mu_max_abs_diff_vs_production": 0.0,
+        "T3_pi_tar_hash_equal": false,
+        "T3_pi_tar_rebuilt_max_abs_diff_vs_production": 1.7780915628762273e-17,
+        "pass": true,
+        "pi0_sum_before_renorm": 0.999999999999995,
+        "renormalization_noise_note": "1 - sum(pi_tar) before renormalization at m = 0",
+        "sum_mu": 0.9999999999999999,
+        "sum_pi_target": 0.9999999999999969
+      },
+      "n_groups": 220,
+      "rho_frame": {
+        "cross_check_frames": {
+          "delivered_U1_non_test": {
+            "frame_rho_at_m0": 0.0,
+            "n_records": 19396,
+            "n_traces": 20,
+            "note": "c1_deletion_driver-style event-trace frame; for the E3 traces it gives 0 / 0.2543 and is reported as a cross-check only, because the instruction pins m = 0 to 0 / 0.35443 (SCD_PHI phi_train_unit)",
+            "source": "artifacts/e3_formal_runs_r1/eventtraces/sensorscope"
+          }
+        },
+        "n_train_atoms": 10285,
+        "primary": "train atoms (sealed split == 'train'), keyed by (client, stratum)",
+        "primary_rule": "SCD_PHI phi_train_unit; reproduces the pinned m = 0 anchors"
+      },
+      "target_artifact": {
+        "artifact_path": "artifacts/e3_semantic_alignment_and_runner_integration_closure_r1/E3_SENSORSCOPE_TARGET_SEMANTICS_R2.json",
+        "artifact_sha256": "c6194f2aebffe38ee0feed7d83bbebf318e901d5aa788bfb102d01915b159ef6",
+        "n_groups_frozen": 220,
+        "n_groups_runtime": 220
+      }
+    },
+    "uair": {
+      "consumers": {
+        "T1_pi_target_override": "run_e3_real(pi_target_override=...) -> WorkerSetup.pi_target",
+        "T2_mu_bundle": "production_target_bundle(...)['mu'] (patched), used by Delta_group and the RMSE_mu test weights",
+        "T3_delta_cs_denominator": "raven_mcs.e3.delta_cs_rho.delta_cs_v6.build_pi_tar_client_stratum (patched)"
+      },
+      "levels": {
+        "0": {
+          "m": 0.0,
+          "mass_removed": -4.440892098500626e-16,
+          "mu_hash": "cacc463f993f2458bfdc8b9ee0c8080ffc828c06a154eda039b68674663950aa",
+          "mu_vs_masked_test_share_max_abs": 0.0,
+          "n_masked_keys": 0,
+          "n_test_units_kept": 1908,
+          "pass": true,
+          "pi_target_hash": "c2d13679d353c63daef2f32f1989a6095426d249c530efb88354f1d1e263a0c3",
+          "sum_mu": 1.0,
+          "sum_pi_target": 0.9999999999999982
+        },
+        "0.1": {
+          "m": 0.1,
+          "mass_removed": 0.10377358490566013,
+          "mu_hash": "28da0e5d05c48a4fa032276a781e25f81d43887ea9630657953986e7e4f26965",
+          "mu_vs_masked_test_share_max_abs": 0.0,
+          "n_masked_keys": 22,
+          "n_test_units_kept": 1710,
+          "pass": true,
+          "pi_target_hash": "ac24494797ebfb51f80886b2c61b6bf8a335aef0022a7a177c8c3d3a4e823b55",
+          "sum_mu": 1.0,
+          "sum_pi_target": 1.0000000000000016
+        },
+        "0.2": {
+          "m": 0.2,
+          "mass_removed": 0.23060796645702275,
+          "mu_hash": "87b6381d53e36f2280940221c2a075bc035af936b276028bab50efe7d018800b",
+          "mu_vs_masked_test_share_max_abs": 0.0,
+          "n_masked_keys": 43,
+          "n_test_units_kept": 1468,
+          "pass": true,
+          "pi_target_hash": "6047e7697aac7ed994357821e24b3ea50c822347eff78bd3fd17a5faf0b2263f",
+          "sum_mu": 0.9999999999999999,
+          "sum_pi_target": 1.0000000000000004
+        }
+      },
+      "m0_identity": {
+        "T1_pi_target_hash_equal": false,
+        "T1_pi_target_hash_production": "2b14599c90ea44518a43662b0cc7b789cd8279c0b0039921abc4a344bacce6d4",
+        "T1_pi_target_hash_rebuilt": "c2d13679d353c63daef2f32f1989a6095426d249c530efb88354f1d1e263a0c3",
+        "T1_pi_target_max_abs_diff_vs_production": 2.6020852139652106e-18,
+        "T1_pi_target_values_equal_1e-12": true,
+        "T2_mu_max_abs_diff_share_vs_mu": 0.0,
+        "T2_mu_max_abs_diff_vs_production": 0.0,
+        "T3_pi_tar_hash_equal": false,
+        "T3_pi_tar_rebuilt_max_abs_diff_vs_production": 2.6020852139652106e-18,
+        "pass": true,
+        "pi0_sum_before_renorm": 1.0000000000000004,
+        "renormalization_noise_note": "1 - sum(pi_tar) before renormalization at m = 0",
+        "sum_mu": 1.0,
+        "sum_pi_target": 0.9999999999999982
+      },
+      "n_groups": 144,
+      "rho_frame": {
+        "cross_check_frames": {
+          "delivered_U1_non_test": {
+            "frame_rho_at_m0": 0.2543367346938776,
+            "n_records": 15680,
+            "n_traces": 20,
+            "note": "c1_deletion_driver-style event-trace frame; for the E3 traces it gives 0 / 0.2543 and is reported as a cross-check only, because the instruction pins m = 0 to 0 / 0.35443 (SCD_PHI phi_train_unit)",
+            "source": "artifacts/e3_formal_runs_r1/eventtraces/uair"
+          }
+        },
+        "n_train_atoms": 5688,
+        "primary": "train atoms (sealed split == 'train'), keyed by (client, stratum)",
+        "primary_rule": "SCD_PHI phi_train_unit; reproduces the pinned m = 0 anchors"
+      },
+      "target_artifact": {
+        "artifact_path": "artifacts/e3_semantic_alignment_and_runner_integration_closure_r1/E3_UAIR_TARGET_SEMANTICS_R2.json",
+        "artifact_sha256": "c158ec34582e1124e3b7f72e6ac55dd1b2130a5cf9f030a5ac231e81e8ac39b8",
+        "n_groups_frozen": 144,
+        "n_groups_runtime": 144
+      }
+    }
+  },
+  "m0_rho_check": {
+    "sensorscope": {
+      "anchor_printed": 0.0,
+      "anchor_unrounded": 0.0,
+      "diff_vs_printed": 0.0,
+      "diff_vs_unrounded": 0.0,
+      "pass_vs_printed_1e-6": true,
+      "pass_vs_unrounded_1e-6": true,
+      "rho_m0_measured": 0.0,
+      "scd_phi_et_occ": 0.0,
+      "scd_phi_train_pair": 0.0,
+      "scd_phi_train_unit": 0.0
+    },
+    "uair": {
+      "anchor_printed": 0.354,
+      "anchor_unrounded": 0.35443037974683544,
+      "diff_vs_printed": 0.0004303797468354631,
+      "diff_vs_unrounded": 0.0,
+      "pass_vs_printed_1e-6": false,
+      "pass_vs_unrounded_1e-6": true,
+      "rho_m0_measured": 0.35443037974683544,
+      "scd_phi_et_occ": 0.2546875,
+      "scd_phi_train_pair": 0.25,
+      "scd_phi_train_unit": 0.3544303797468354
+    }
+  }
+}

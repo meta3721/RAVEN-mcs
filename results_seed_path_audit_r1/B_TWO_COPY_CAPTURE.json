@@ -1,0 +1,33 @@
+{
+  "dataset": "uair",
+  "arm": "raven",
+  "seed": 30007,
+  "max_abs_model_minus_theta": 0.03477367013692856,
+  "per_param_gap": {
+    "spatial.weight": 0.00020968914031982422,
+    "time_mlp.0.weight": 0.0004381835460662842,
+    "time_mlp.0.bias": 0.00017654895782470703,
+    "time_mlp.2.weight": 0.0006641969084739685,
+    "time_mlp.2.bias": 0.0005240738391876221,
+    "head.0.weight": 0.0021394528448581696,
+    "head.0.bias": 0.0009235385805368423,
+    "head.3.weight": 0.0026905343402177095,
+    "head.3.bias": 0.0016409591771662235,
+    "head.6.weight": 0.0030072592198848724,
+    "head.6.bias": 0.005582094192504883,
+    "head.8.weight": 0.008181020617485046,
+    "head.8.bias": 0.03477367013692856
+  },
+  "theta_keys_in_model": 13,
+  "weight_sum": [
+    0.9999999999999993,
+    0.9999999999999993
+  ],
+  "rmse_mu_live": 1.1424870864095478,
+  "rmse_mu_theta": 1.189412616781117,
+  "max_abs_pred_diff": 0.07071489095687866,
+  "n_units": 1908,
+  "last_window_id": 79,
+  "last_window_active": false,
+  "n_active_windows": 75
+}

@@ -1,0 +1,30 @@
+{
+  "forbidden": [
+    "delivered group counts only",
+    "arrival group counts only",
+    "target-group marginals",
+    "uniform-within-group redistribution (rho_g/n_g)"
+  ],
+  "formula": {
+    "RMSE_rho": "sqrt(sum_i rho_i_arr (y_hat_i - y_i)^2)",
+    "r_hat_i": "sum_k pi_opp_hat(k,s(i)) * nu_hat_k[i|s(i)] * p_obs_hat(k,i) * q_use_hat(k,s(i))",
+    "rho_i_arr": "r_hat_i / sum_j r_hat_j"
+  },
+  "required_fields": [
+    "atomic_unit_id",
+    "spatial_unit",
+    "timestamp",
+    "opportunity_stratum_id",
+    "raw_arrival_score",
+    "rho_atomic",
+    "contributing_client_count",
+    "pi_opp_component_summary",
+    "nu_component_summary",
+    "p_obs_component_summary",
+    "q_component_summary",
+    "support_mask",
+    "normalization_denominator",
+    "source_hashes"
+  ],
+  "schema_version": "E3_ATOMIC_RHO_SCHEMA_V2"
+}

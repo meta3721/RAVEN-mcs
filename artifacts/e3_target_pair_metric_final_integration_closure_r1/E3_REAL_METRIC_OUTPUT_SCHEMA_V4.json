@@ -1,0 +1,45 @@
+{
+  "finite_value_policy": "applicable metrics must be finite floats",
+  "na_policy": "null + *_applicability field; paper renders N/A",
+  "no_placeholder_substitution": true,
+  "per_metric": {
+    "Delta_pair": {
+      "formula_version": "v4",
+      "support": "client×target_group"
+    },
+    "Head_RMSE": {
+      "formula_version": "v4",
+      "partition": "frozen Head groups"
+    },
+    "RMSE_mu": {
+      "formula_version": "v4",
+      "weighting": "mu target"
+    },
+    "RMSE_rho": {
+      "formula_version": "v4",
+      "weighting": "delivered-observation group frequency"
+    },
+    "Tail_RMSE": {
+      "formula_version": "v4",
+      "partition": "frozen Tail groups"
+    }
+  },
+  "required_fields": [
+    "RMSE_mu",
+    "MAE_mu",
+    "Head_RMSE",
+    "Tail_RMSE",
+    "RMSE_rho",
+    "Delta_group",
+    "Delta_pair",
+    "delta_ref",
+    "Q_norm1_over_S",
+    "Q_norm2_over_S",
+    "ESS",
+    "clip_rate_stage1",
+    "clip_rate_stage2",
+    "solver_status",
+    "runtime_seconds"
+  ],
+  "schema_version": "E3_REAL_METRIC_OUTPUT_SCHEMA_V4"
+}

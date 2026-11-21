@@ -1,0 +1,20 @@
+{
+  "events_sha256": "844950f079a74c5973f696cdf5a5aa58594b136bcffde6e1dfe12f5cf97184a3",
+  "metadata": {
+    "dataset": "sensorscope",
+    "generator": "e3-complete-aligned-r3-v1",
+    "notes": [
+      "joint pi_opp",
+      "atomic p_obs",
+      "staleness>S_max possible",
+      "MC q",
+      "opportunity_drift"
+    ],
+    "num_clients": 8,
+    "num_windows": 100,
+    "s_max": 5,
+    "seed": 30012
+  },
+  "metadata_sha256": "479d7a8e2e2e0c5abd45854428ce1f3e9cb8a59f02c1410683b8b02934c3131d",
+  "trace_hash": "f424fb21601ce1e33621d54a756e832206f6bbedbc1264d21e7e182988ca3b8d"
+}

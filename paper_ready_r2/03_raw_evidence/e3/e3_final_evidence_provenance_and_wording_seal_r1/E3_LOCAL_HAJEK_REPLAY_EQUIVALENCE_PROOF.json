@@ -1,0 +1,19 @@
+{
+  "REPLAY_EQUIVALENCE_CERTIFIED": true,
+  "all_identity_fields_match": true,
+  "checkpoint_identity_explanation": "All SensorScope/U-Air Local-Hajek accepted checkpoints are CASE A identical to FedAvg; uniform a_bar explains formal collapse without wiring failure.",
+  "checkpoint_identity_reference": "artifacts/e3_local_hajek_weight_and_p2_certificate_final_closure_r1/E3_LOCAL_HAJEK_CHECKPOINT_IDENTITY_EXPLANATION.csv",
+  "current_source_hash": "f7bff5e30c76898f5ab3e3998021f9b09e52ccf73f135b44bc4e141d9e13c436",
+  "formal_source_hash": "f7bff5e30c76898f5ab3e3998021f9b09e52ccf73f135b44bc4e141d9e13c436",
+  "identity_rows": 40,
+  "no_post_hoc_substitution": true,
+  "no_synthetic_replacement": true,
+  "no_training_state_dependency": true,
+  "reason": "Same frozen window_runner source hash as the formal freeze, same EventTrace/prestate bindings, same branching and H\u00e1jek normalization, model-independent a_bar inputs, and no post-hoc/synthetic weight substitution.",
+  "same_branching_conditions": true,
+  "same_inputs": true,
+  "same_normalization_rule": true,
+  "same_numerical_dtype_tolerance": true,
+  "same_source_function_or_hash_equivalent": true,
+  "uniform_windows": 9666
+}

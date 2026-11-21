@@ -1,0 +1,40 @@
+{
+  "contract": {
+    "id": "raven-mcs-tmc-frozen-2026-09-12",
+    "venue": "IEEE TMC regular paper",
+    "scale": "8 dimensions, 1-5 anchors, weights sum to 1",
+    "dimensions": ["originality","soundness","evidence","clarity","reproducibility","significance","related_work","terminology"],
+    "weights": {"originality":0.10,"soundness":0.20,"evidence":0.25,"clarity":0.15,"reproducibility":0.10,"significance":0.10,"related_work":0.05,"terminology":0.05},
+    "reviewer_roles": ["strict methods reviewer","experiments reviewer","clarity reviewer","AC"],
+    "thresholds": {"decision": "4/10 weak reject", "comparison": "abs weighted delta < 0.05 = unchanged"},
+    "evidence_standard": "manuscript and repository artifacts only"
+  },
+  "relative_progress_scorecard": {
+    "historical": {"originality":2,"soundness":4,"evidence":2,"clarity":4,"reproducibility":2,"significance":2,"related_work":3,"terminology":4},
+    "current":    {"originality":2,"soundness":5,"evidence":2,"clarity":4,"reproducibility":2,"significance":2,"related_work":3,"terminology":4},
+    "deltas":     {"originality":0,"soundness":1,"evidence":0,"clarity":0,"reproducibility":0,"significance":0,"related_work":0,"terminology":0},
+    "weighted_delta": 0.20,
+    "classification": "improved"
+  },
+  "issues": [
+    {"id":"W1","status":"unresolved","origin":"inherited","applies_to":"both","evidence":"main.tex VII-E and Table IV give the endpoint trade but no matched-budget comparison vs simple target calibration","affected_dimensions":["evidence","significance"],"score_effect":{}},
+    {"id":"W2","status":"resolved","origin":"inherited","applies_to":"both","evidence":"main.tex:1145/1160 A6a/A6b; eq:eps_stab at 1295; appendix four-step proof plus support lemma; audit corrected to pi_tar/(pi_opp p_obs) at a_max=20","affected_dimensions":["soundness"],"score_effect":{"current":1}},
+    {"id":"W3","status":"partially_resolved","origin":"inherited","applies_to":"both","evidence":"A6a measured to fail on U-Air at the true margins (23.47 vs 19.26 on SensorScope); Design support cost +6.31..+7.39 percent with all CI lower bounds above +4.75 percent; fixed-active-set control still missing","affected_dimensions":["evidence","soundness"],"score_effect":{}},
+    {"id":"W4","status":"unresolved","origin":"inherited","applies_to":"both","evidence":"no variable/constraint/information mapping against FedIPW and FedPALS in the current build","affected_dimensions":["originality","related_work"],"score_effect":{}},
+    {"id":"W5","status":"resolved","origin":"inherited","applies_to":"both","evidence":"main.tex:2164 opens on the class C_r of (25) with (P2) and RMSE_mu; the former family-bound sentence is gone","affected_dimensions":["soundness"],"score_effect":{"current":1}},
+    {"id":"W6","status":"partially_resolved","origin":"inherited","applies_to":"both","evidence":"Common-NDMF named only in the supplement; T-Drive Y construction and City Scanner standardisation/O=0 rules still incomplete; RAVEN_MCS_PUBLIC_REPRO_R1 still mismatched (M7)","affected_dimensions":["reproducibility","evidence"],"score_effect":{}},
+    {"id":"W7","status":"resolved","origin":"inherited","applies_to":"both","evidence":"items 45/47-50: Table III tolerance scoped, Local-Hajek sentence rewritten, seed counts split, appendix F Design-on opening, X-6 applicability contradiction fixed","affected_dimensions":["clarity"],"score_effect":{"current":1}},
+    {"id":"N1","status":"unresolved","origin":"newly_revealed_by_evidence","applies_to":"current","evidence":"appendix.tex:2440 prints region-level coverage 0 and Design on, while the key-level rho on the same block is 14.35 percent (results_exogenous_target/round_v1/MAP_SUMMARY.csv)","affected_dimensions":["clarity","soundness"],"score_effect":{"current":-1}},
+    {"id":"N3","status":"resolved","origin":"revision_regression","applies_to":"current","evidence":"Design RMSE_mu cost harmonised from 6.886 to 6.885 percent in three places to match Table IV","affected_dimensions":["terminology"],"score_effect":{}}
+  ],
+  "absolute_readiness_scorecard": {
+    "scale": "1-5 per dimension, calibrated to a 1-10 stance",
+    "current_dimension_scores": {"originality":2,"soundness":5,"evidence":2,"clarity":4,"reproducibility":2,"significance":2,"related_work":3,"terminology":4},
+    "stance": "5/10 weak reject, upper edge (was 4/10)",
+    "threshold": "4/10 weak reject; acceptance discussion requires the evidence dimension to move",
+    "evidence_standard": "current manuscript plus repository artifacts",
+    "overall_score": 5,
+    "remaining_blocking_evidence": ["matched-budget comparison against simple target calibration","fixed-active-set mechanism control (M8)","bundle refresh (M7)","N1 object clarification"]
+  },
+  "confidence_and_comparability": "Confidence: high on manuscript text and claims, medium on artifacts not re-run. Comparability: same frozen 8-dimension contract as rounds 2-4; the external review used a different 7-dimension scale and supplied issue definitions only. Reported separately from both scorecards."
+}

@@ -1,0 +1,53 @@
+{
+  "EPS_ZERO": 1e-12,
+  "aliases": "do not mix alias methods",
+  "all_ties_policy": {
+    "p_holm": 1.0,
+    "p_raw": 1.0,
+    "status": "ALL_TIES"
+  },
+  "central_references": "descriptive/reference gap unless protocol requires inference",
+  "created_utc": "2026-08-09T16:46:02.919126+00:00",
+  "eps_applied_before": [
+    "win/tie/loss",
+    "sign-based interpretation",
+    "Wilcoxon"
+  ],
+  "formal_seeds": [
+    30001,
+    30002,
+    30003,
+    30004,
+    30005,
+    30006,
+    30007,
+    30008,
+    30009,
+    30010,
+    30011,
+    30012,
+    30013,
+    30014,
+    30015,
+    30016,
+    30017,
+    30018,
+    30019,
+    30020
+  ],
+  "holm_families": {
+    "primary": "per dataset × RMSE_mu: all main-baseline comparisons",
+    "secondary": "per dataset × metric separate family"
+  },
+  "paired": "same seed + dataset + EventTrace family",
+  "primary_comparisons": "RAVEN vs each canonical MAIN_BASELINE",
+  "primary_metric": "RMSE_mu",
+  "secondary_structural_metrics": [
+    "Tail_RMSE",
+    "Delta_group",
+    "Delta_pair",
+    "delta_ref",
+    "Q/S"
+  ],
+  "simoracle": "RAVEN-to-Oracle gap reported separately"
+}

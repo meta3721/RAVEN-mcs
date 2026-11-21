@@ -1,0 +1,533 @@
+RAVEN-MCS V2.3
+实验设计方案
+Target-Risk-Calibrated Asynchronous Federated Data Completion
+under Two-Stage Non-Random Selection
+供学生直接实施的高质量、可复现、可审计实验计划
+--- TABLE 1 ---
+文档版本 | V2.3-EXP-1.0
+适用论文 | RAVEN-MCS
+实验性质 | 半合成受控实验 + 真实轨迹一致性实验
+建议统计重复 | 主实验 20 个独立种子；大规模敏感性不少于 10 个种子
+编制日期 | 2026年7月26日
+--- END TABLE ---
+使用说明：本方案与论文 V2.3 的系统模型、窗口化异步时序、两阶段选择校正和理论指标严格对应。学生应按“硬门—主实验—扩展实验”的顺序执行，不得先跑结果再改口径。
+[Heading 1] 文档摘要
+本方案的目标不是简单“跑几个数据集、比较几个算法”，而是构建一套能够支撑RAVEN-MCS核心科学主张的完整证据链。实验必须同时证明：原始到达分布确实偏离部署目标；机会设计、观测选择和可用更新选择会产生可分解的目标风险错位；RAVEN-MCS能够在不访问原始客户端记录的条件下，通过两阶段校正、当前组校准和长期目标债务降低这种错位；理论中的分布误差、债务上界、窗口可达性和方差项在实验中具有可观测对应物。
+--- TABLE 2 ---
+最重要的执行原则 / 先验证实现正确，再比较性能；先通过平衡场景和Oracle校正硬门，再运行大规模主结果。任何不满足支持性、可达性、无泄漏或同事件轨迹公平性的运行，不得进入论文主表。
+--- END TABLE ---
+建议将实验分为三层：
+[List Number] 层A：机制正确性。使用小规模半合成数据和固定事件轨迹，验证权重、P2、债务、事件窗口和指标公式。
+[List Number] 层B：论文主证据。在SensorScope、U-Air和NSW Traffic Volume上运行受控机会与两阶段选择实验，完整回答RQ1–RQ6。
+[List Number] 层C：真实轨迹一致性。在T-Drive-Speed上使用真实车辆移动轨迹构造机会流，验证方法在非均匀真实移动模式下仍成立。
+图1  RAVEN-MCS实验总体流水线
+[Heading 1] 目录与阅读顺序
+[List Bullet] 第1–4节：明确研究问题、冻结规则、硬件软件和代码结构。
+[List Bullet] 第5–8节：完成数据审计、公共目标构造、机会分层和两阶段事件模拟。
+[List Bullet] 第9–12节：实现共同补全骨干、对比方法、RAVEN-MCS和参数选择。
+[List Bullet] 第13–16节：运行主实验、消融、鲁棒性、理论诊断与系统开销。
+[List Bullet] 第17–20节：统计报告、质量保证、时间计划和最终验收。
+[List Bullet] 附录：默认配置、输出文件规范、论文图表映射和数据来源。
+[Heading 1] 1. 实验目标与研究问题
+[Heading 2] 1.1 总体目标
+构建一套可复现的窗口化异步联邦数据补全实验平台，系统比较“原始到达分布优化”与“部署目标风险优化”的差异，并验证RAVEN-MCS在机会不平衡和两阶段非随机选择下的有效性、稳健性、理论一致性及系统开销。
+[Heading 2] 1.2 必须回答的研究问题
+--- TABLE 3 ---
+编号 | 问题 | 核心证据
+RQ1 | 目标风险错位是否真实存在？ | 比较平衡、机会偏置、观测偏置、可用更新偏置及完整偏置场景下的RMSE_ρ、RMSE_μ和分布错位。
+RQ2 | 完整RAVEN-MCS能否改善部署目标风险？ | 主表比较RMSE_μ、Tail RMSE、Δ_pair/Δ_c-s及Δ_group。
+RQ3 | 每个组件是否必要？ | 进行设计比、观测IPW、可用更新IPW、当前校准、债务、参考项、方差和陈旧度消融。
+RQ4 | 在估计误差和识别边界下是否稳健？ | 测试倾向模型错设、机会漂移、权重截断、弱支持、总体校准残差及隐藏混杂。
+RQ5 | 理论量是否与实测一致？ | 验证债务上界、窗口可达误差、pair discrepancy、方差代理和目标误差之间关系。
+RQ6 | 额外系统代价是否可接受？ | 统计注册消息、模型通信、客户端计算、P2求解时间、内存和达到固定RMSE的时间。
+--- END TABLE ---
+[Heading 1] 2. 论文—实验一致性的冻结规则
+以下规则是实验实现的“宪法”。任一规则被破坏，实验即使得到更好数值也不能用于论文。
+--- TABLE 4 ---
+冻结项 | 必须遵守的实现口径
+公共预测 | 所有方法预测同一个城市级Y_i；禁止使用客户端索引作为预测目标。
+原子单元 | i=(n,t)，其中t是绝对时间槽；但机会概率不得按每个绝对时间槽单独计数。
+机会分层 | 使用可重复的s(i)=(空间分区、日内时段、工作日类型等)估计机会分布。
+窗口化异步 | 窗口W_r内服务器保持θ_r固定；所有可用到达在窗口关闭时联合求解一次P2。
+尝试集合 | E_r在训练完成前由注册消息确定；失败、超时和过期客户端仍必须保留U=0标签。
+可用结果 | U同时包含计算成功、网络成功、按时到达和τ≤S_max。
+q特征边界 | q估计只能使用注册时可得特征；禁止使用实际到达时延、实际陈旧度或当前更新值。
+P2信息边界 | P2不得读取当前随机更新向量u_{k,r}的坐标来决定其自身权重。
+测试一致性 | 所有方法共享相同测试单元、测试掩码、公共特征和目标权重。
+隐私表述 | 只声明原始记录留在本地；除非另加机制，不声称密码学或差分隐私保证。
+--- END TABLE ---
+--- TABLE 5 ---
+禁止的错误实现 / 禁止把每个到达立即更新模型；禁止直接按“实际陈旧度”采样q；禁止只记录成功上传的客户端；禁止用测试误差调超参数；禁止将组级到达权重冒充原子单元到达分布；禁止用不同事件轨迹比较不同方法。
+--- END TABLE ---
+图2  窗口化异步事件与联合聚合时序
+[Heading 1] 3. 实验执行阶段与硬门
+图3  实验阶段与硬门
+[Heading 2] 3.1 八项前置硬门
+--- TABLE 6 ---
+硬门 | 检查内容 | 状态
+G0 数据完整性 | 数据哈希固定；时间划分无重叠；训练归一化参数未使用验证/测试数据。 | 必须通过
+G1 事件复现 | 同一seed下所有方法的R、O、E、U、计算时延、网络时延完全相同。 | 必须通过
+G2 时间模型 | 窗口内θ固定；窗口关闭后仅产生一次θ_{r+1}。 | 必须通过
+G3 权重正确 | a、m、c、ESS、d、β均满足定义、非负、归一化和截断规则。 | 必须通过
+G4 P2正确 | 解满足单纯形、上界、ESS约束；重复求解一致；λ_β>0时解唯一。 | 必须通过
+G5 债务恒等式 | 每个前缀均满足||ω̄_r−μ||_1 ≤ 2||Q_r||_1/S_r（数值容差10^-8）。 | 必须通过
+G6 平衡场景 | RAVEN-MCS在Balanced场景不应显著劣于最强同骨干基线；若明显恶化先查权重方差。 | 必须通过
+G7 Oracle排序 | RAVEN-SimOracle应在分布错位指标上不差于估计版；若反常，先查真实概率和归一化。 | 必须通过
+--- END TABLE ---
+[Heading 2] 3.2 运行停止规则
+[List Bullet] 任何硬门失败时，不得继续完整20种子实验。
+[List Bullet] 如果一个场景的目标支持N_g^eff不足或窗口可达误差过大，应标记为“stress/unsupported”，不得混入理论一致性主表。
+[List Bullet] 若RAVEN与Oracle差距过大，优先审计机会比、p/q校准和截断率，而不是立即提高λ参数。
+[List Bullet] 若所有方法在RMSE_μ上无差异，先检查生成的到达分布是否真的偏离目标，以及客户端偏差b_{k,i}是否足以使组成变化影响梯度。
+[Heading 1] 4. 软硬件环境与可复现设置
+[Heading 2] 4.1 推荐环境
+--- TABLE 7 ---
+类别 | 要求
+操作系统 | Ubuntu 22.04/24.04或等价Linux；Windows学生可使用WSL2。
+Python | 建议Python 3.11；建立独立conda/venv环境。
+深度学习 | PyTorch 2.x；CUDA非必需，但完整多种子运行建议使用GPU。
+数值与数据 | NumPy、pandas、SciPy、scikit-learn。
+凸优化 | CVXPY；主结果使用CLARABEL或可稳定处理二阶锥约束的求解器。
+配置与日志 | Hydra/OmegaConf或YAML；MLflow/W&B可选，但原始CSV/JSON必须保留。
+绘图 | Matplotlib；论文图同时导出PDF和PNG。
+版本冻结 | 首次通过G0–G7后保存environment.yml、requirements-lock.txt和pip-freeze.txt。
+--- END TABLE ---
+[Heading 2] 4.2 硬件建议
+[List Bullet] 最低可运行：8核CPU、32 GB内存；先完成G0–G7和小规模实验。
+[List Bullet] 推荐主实验：16核以上CPU、64 GB内存、1张16 GB以上显存GPU。P2维度只与窗口内可用客户端数有关，CPU即可求解。
+[List Bullet] 磁盘：预留100–200 GB，保存原始数据、所有种子日志、检查点、逐窗口指标和图表。
+[Heading 2] 4.3 随机性控制
+--- TABLE 8 ---
+def seed_everything(seed): /     random.seed(seed) /     numpy.random.seed(seed) /     torch.manual_seed(seed) /     torch.cuda.manual_seed_all(seed) /     torch.use_deterministic_algorithms(True, warn_only=True) /  / # 每个run同时记录： / # data_seed, opportunity_seed, observation_seed, / # event_seed, model_seed, mc_oracle_seed
+--- END TABLE ---
+[Heading 1] 5. 代码仓库与产物结构
+--- TABLE 9 ---
+raven-mcs/ / ├── configs/ / │   ├── dataset/          # SensorScope, U-Air, Traffic, T-Drive / │   ├── scenario/         # balanced, complete, drift, hidden-confounding / │   ├── method/           # baselines, ablations, RAVEN / │   └── experiment/       # E0...E9 / ├── data/ / │   ├── raw/              # 只读原始数据 / │   ├── interim/          # 清洗、对齐、审计结果 / │   └── processed/        # 固定split与公共目标 / ├── raven/ / │   ├── data/             # 数据加载与公共场构造 / │   ├── opportunity/      # 风险集、机会分层、设计比 / │   ├── selection/        # p_obs、q_use、两阶段事件 / │   ├── models/           # Common-NDMF与FLAMF外部基线 / │   ├── aggregation/      # FedAvg/FedAsync/P2/target debt / │   ├── metrics/          # target、arrival、pair、debt、variance / │   └── utils/            # seed、hash、logging、validation / ├── scripts/              # 下载、预处理、运行、聚合、制图 / ├── tests/                # 单元测试、性质测试、回归测试 / ├── outputs/ / │   └── <run_id>/ / │       ├── config_resolved.yaml / │       ├── manifest.json / │       ├── window_metrics.parquet / │       ├── final_metrics.json / │       ├── predictions.npz / │       └── logs.txt / └── paper_artifacts/ /     ├── tables/ /     ├── figures/ /     └── reports/
+--- END TABLE ---
+每个run的manifest.json至少包含：Git commit、dirty状态、数据哈希、配置哈希、环境哈希、所有seed、运行开始/结束时间、主机信息、求解器状态、是否通过硬门、是否可进入主表。
+[Heading 1] 6. 数据集选择、下载与审计
+[Heading 2] 6.1 数据集角色
+--- TABLE 10 ---
+数据集 | 角色 | 目标变量 | 主要价值
+SensorScope | 环境感知；主受控数据集 | 温度为主目标；可用湿度做辅助诊断 | 固定传感器场，适合精确控制机会与选择偏置
+U-Air | 城市空气质量；主受控数据集 | PM2.5为主目标；PM10可作公开特征或辅助诊断 | 空间异质性和非线性更强
+NSW Traffic Volume | 交通流；主受控数据集 | 小时交通量 | 多站点、强日周期；必须做传感器可用性和质量审计
+T-Drive-Speed | 真实移动轨迹；外部一致性实验 | 网格—时间平均速度 | 机会流来自真实出租车轨迹，验证移动偏置
+--- END TABLE ---
+[Heading 2] 6.2 官方来源与下载记录
+--- TABLE 11 ---
+数据集 | 官方入口 | URL | 下载注意事项
+SensorScope | EPFL/Zenodo SensorScope Data | https://zenodo.org/records/2654726 | 保存下载日期、文件大小和SHA256。
+U-Air | Microsoft Research Urban Air | https://www.microsoft.com/en-us/research/project/urban-air/ | 确认研究用途许可并保留原始压缩包。
+NSW Traffic Volume | Transport for NSW / Data.NSW Traffic Volume Counts | https://data.nsw.gov.au/data/dataset/2-nsw-roads-traffic-volume-counts-api | 当前门户提示数据质量与传感器可用性问题，必须执行质量门。
+T-Drive | Microsoft Research T-Drive trajectory sample | https://www.microsoft.com/en-us/research/publication/t-drive-trajectory-data-sample/ | 样本含一周出租车轨迹；保存原始文本和引用信息。
+--- END TABLE ---
+[Heading 2] 6.3 数据审计硬门
+--- TABLE 12 ---
+审计项 | 通过标准
+Schema | 字段名、单位、时间戳格式、经纬度、站点ID可解释；重复记录已处理。
+Time | 时间单调；时区统一；无训练/验证/测试交叉；夏令时重复小时单独记录。
+Value | 物理范围检查；异常值不静默删除，记录规则和计数。
+Coverage | 每个候选空间单元的有效时段数、连续缺失长度、原始缺失率。
+Public target | 参考值构造不使用客户端自身同一记录；T-Drive参考车队与客户端车队严格分离。
+Station support | Traffic数据至少保留30个高质量站点，优先60个；连续有效小时不少于336，优先720。
+Hash | raw/interim/processed均生成SHA256；处理脚本版本写入manifest。
+--- END TABLE ---
+--- TABLE 13 ---
+Traffic数据特别风险 / Transport for NSW公开门户已提示数据质量与传感器可用性问题。因此学生必须先输出station_quality_report.csv，再选择站点和连续时间段。若无法形成至少30站点×336小时的可靠矩阵，不得静默换数据；应先向教师报告，并将PEMS-BAY作为“需修改论文数据集描述”的备选方案。
+--- END TABLE ---
+[Heading 2] 6.4 建议预处理口径
+--- TABLE 14 ---
+数据集 | 初始矩阵/网格建议 | 清洗原则
+SensorScope | 选择连续312个时间片、55个稳定传感器作为复现起点；随后可扩展到更长区间。 | 负值/极端值依据变量物理范围标记；短缺失仅用于构建公共参考，不作为客户端已观测。
+U-Air | 优先采用36个1 km×1 km区域、264个小时的可复现设置；随后扩大时间范围。 | 统一PM2.5单位；对极端污染值保留但记录winsorization敏感性。
+Traffic | 按站点×小时构造矩阵；方向可合并或作为站点子ID，全文保持一致。 | 仅用训练期统计量标准化；保留质量评级字段。
+T-Drive-Speed | 过滤时间倒序、重复点、速度<5或>120 km/h；500 m网格、15或30分钟槽。 | 30%车辆构造参考场，70%作为客户端；按轨迹长度分层抽样。
+--- END TABLE ---
+[Heading 1] 7. 公共目标、数据划分与客户端测量构造
+[Heading 2] 7.1 时间划分
+[Equation] 按时间顺序划分：训练 60% / 验证 20% / 测试 20%
+[List Bullet] 训练段前20%作为warm-up机会日志和倾向模型初始化，即占全数据约12%；其余训练段用于联邦训练。
+[List Bullet] 归一化中心和尺度仅由训练段计算。推荐RobustScaler：训练中位数和0.995绝对分位尺度。
+[List Bullet] 验证段用于选择模型维度、学习率、λ参数、截断阈值和机会分层粒度。
+[List Bullet] 测试段只在最终冻结配置后运行一次；测试结果不得反向修改配置。
+[Heading 2] 7.2 原子单元、目标组和机会分层
+[Equation] 原子单元：i=(n,t)；目标组：h(i)=(空间单元 n，日内4时段)
+[Equation] 机会分层：s(i)=(较粗空间区 n_s，日内时段 b_s，工作日/周末 d)
+目标组h用于评价和债务；机会分层s用于估计重复机会概率。两者可以相同，也可以让s比h更粗以降低设计比估计方差。所有粒度必须在验证段冻结。
+[Heading 2] 7.3 目标分布
+[List Bullet] 主目标：测试支持上的原子单元均匀分布。由此自动得到μ_g和ν_{i|g}^{tar}。
+[List Bullet] 扩展目标：服务加权目标，例如交通主干道/重点空气监测区域权重为普通区域的2倍；权重在训练前固定。
+[List Bullet] 不得根据某个方法的误差临时提高困难区域权重。
+[Heading 2] 7.4 客户端测量异质性
+[Equation] Z*_{k,i} = Y_i + b_{k,i} + ε_{k,i}
+[List Bullet] ε_{k,i}：零均值噪声，主设置标准差为训练目标标准差的5%；敏感性取2%、10%、20%。
+[List Bullet] 未中心化客户端偏差先按N(0,σ_b²)或空间相关随机效应生成，再按目标客户端组成λ_{k|s}^{tar}中心化，使主受控实验Δ_cal=0。
+[List Bullet] 异质性σ_b取0、0.1σ_Y、0.2σ_Y、0.4σ_Y。若σ_b=0，组成错位对目标梯度影响会变弱，仅用于机制检查。
+[List Bullet] 校准残差stress：在每个机会分层增加共同偏移δ_s^{cal}，形成可控非零Δ_cal。
+[Heading 1] 8. 机会流与两阶段非随机选择模拟器
+[Heading 2] 8.1 固定事件轨迹原则
+每个seed先生成一个与方法无关的EventTrace，包含所有客户端的风险集、机会单元、观测结果、注册时间、下载版本、计算成功、计算时延、网络成功、网络时延和最终U。所有方法读取同一个只读EventTrace，禁止方法改变事件结果。
+--- TABLE 15 ---
+EventTrace/window_r/client_k: /   risk_set: [unit_id, ...] /   opportunity_features: ... /   observation_indicator: O[k,r,i] /   registration_time: T_reg[k,r] /   downloaded_version: s[k,r] /   compute_success: C_cmp[k,r] /   compute_duration: T_cmp[k,r] /   network_success: C_net[k,r] /   network_delay: T_net[k,r] /   usable_indicator: U[k,r] /   pre_outcome_features_for_q: X_use[k,r]
+--- END TABLE ---
+[Heading 2] 8.2 受控机会生成
+对固定传感器数据集，客户端移动是半合成的。为每个客户端生成空间偏好向量、时间偏好和Markov移动矩阵；每个窗口先采样客户端—机会分层，再在分层内采样原子单元。主设置满足分层内交换性，扩展设置引入分层内偏置。
+[Equation] π_{k,s,r}^{opp} ∝ exp(θ_k^T ψ_{s,r} + χ_{k,s,r})
+[List Bullet] 机会偏置强度κ_opp∈{0,0.5,1,2}，0表示接近目标分布。
+[List Bullet] 漂移设置：客户端热点每D个窗口渐变或切换，使用Γ_drift记录相邻机会分布L1变化。
+[List Bullet] 每个窗口风险集大小默认Poisson(6)+1；敏感性取2、5、10、20。
+[List Bullet] T-Drive中风险集直接来自车辆在该时间槽实际进入的网格，不再生成半合成移动。
+[Heading 2] 8.3 第一阶段：观测选择
+[Equation] p_obs = clip(sigmoid(a0 + a^T X_obs), p_lo, p_hi)，O~Bernoulli(p_obs)
+[List Bullet] X_obs只包含距离、时段、设备状态、历史访问、区域热度和感知日程。
+[List Bullet] 禁止Y_i、当前测量误差和当前模型误差进入主生成器。
+[List Bullet] 主平均观测率设置为0.10、0.20、0.30；通过调截距a0实现。
+[List Bullet] 估计模型：客户端本地带L2正则的逻辑回归；仅用上一窗口及更早的风险集结果更新。
+[Heading 2] 8.4 第二阶段：计算—网络—过期事件
+[Equation] T_arr = T_reg + T_cmp + T_net
+[Equation] U=1{C_cmp=1, C_net=1, T_arr<T_{r+1}, r−s_{k,r}≤S_max}
+[List Bullet] 设备能力z_dev∈{低、中、高}影响计算成功率和LogNormal计算时延。
+[List Bullet] 网络状态z_net∈{差、中、好}影响网络成功率和LogNormal网络时延。
+[List Bullet] 注册时间默认均匀分布在窗口前30%；较晚注册会增加超时概率。
+[List Bullet] 模型年龄A_start默认截断几何分布，取0–S_max+2；τ=r−s。
+[List Bullet] q估计模型使用注册时特征：预期计算/网络时延、设备、带宽、能量、m、ESS、模型年龄和历史成功率。
+[List Bullet] RAVEN-SimOracle通过固定事前状态并重复重放M_MC=2000次估计q；小规模验证可用10000次检查误差。
+[Heading 2] 8.5 六类选择场景
+--- TABLE 16 ---
+场景 | 生成方式 | 用途
+Balanced | 机会≈目标；p和q近似常数 | 验证方法不伤害
+Opportunity-only | 仅π^opp偏离目标 | 验证设计比
+Observation-only | 仅p_obs非均匀 | 验证本地观测校正
+Usable-only | 仅q_use非均匀 | 验证第二阶段校正
+Complete-aligned | 三种偏置方向一致，弱势区域持续欠表示 | 主场景，最清晰的错位证据
+Complete-counteracting | 观测偏置与可用更新偏置部分抵消 | 验证只校正一个阶段可能反而加剧目标错位
+Drifting | Complete + 机会分布缓慢漂移 | 验证指数遗忘
+Hidden-confounding | 潜变量同时影响选择与测量/更新 | 只用于识别边界，不做正确性主张
+--- END TABLE ---
+[Heading 1] 9. 共同数据补全骨干与训练协议
+[Heading 2] 9.1 主同骨干：Common-NDMF
+为了把实验重点放在“训练分布校准”而不是网络结构，除FLAMF-Original和集中式参考外，所有主对比方法使用同一轻量非线性矩阵补全骨干Common-NDMF。该模型没有客户端ID输入，预测对象是公共城市级Y_i。
+--- TABLE 17 ---
+组件 | 默认实现
+空间编码 | 每个空间单元一个32维embedding；只由训练梯度更新。
+时间编码 | 小时/日内正余弦、星期正余弦、归一化连续时间趋势；两层MLP输出32维。
+交互特征 | [e_n, e_t, e_n⊙e_t, |e_n−e_t|]。
+预测头 | MLP 128→64→32→1，ReLU，dropout=0.1。
+输出 | 训练标准化域中的标量预测，评价前反标准化。
+损失 | 每个客户端使用Hájek归一化加权平方损失；基线使用归一化原始样本权重。
+优化 | 主理论实验使用SGD；初始lr从{1e-3,3e-3,1e-2,3e-2}验证选择。
+--- END TABLE ---
+--- TABLE 18 ---
+为什么使用Common-NDMF / 它满足论文中一般可微f_θ的要求，能在所有方法间完全共享模型容量和局部优化协议，并能对未来时间槽使用公共时间特征预测。FLAMF-Original仍作为外部系统基线单独复现，但不用于组件级公平比较。
+--- END TABLE ---
+[Heading 2] 9.2 局部训练与更新归一化
+[Equation] u_{k,r}=(θ_{s_{k,r}}−θ_{k,r}^{(E_loc)})/(γ_r E_loc)
+[List Bullet] 默认E_loc=5；敏感性取1、5、10、30。
+[List Bullet] 每个窗口每客户端的局部mini-batch由当前窗口观测缓冲构成；历史缓存是否使用必须全方法一致。主设置仅用当前窗口，扩展设置可用固定长度回放缓存。
+[List Bullet] 梯度裁剪仅作为数值保护，阈值由Balanced验证场景确定；所有方法一致。
+[List Bullet] 模型初始化、优化器状态和学习率日程在同一seed下完全相同。
+[Heading 2] 9.3 FLAMF-Original外部复现
+[List Bullet] 按照原论文实现TIME-DMF和其异步聚合，初始检查使用隐藏维度128、Adam学习率0.001、每客户端30局部epoch。
+[List Bullet] 先在SensorScope N=55、T=312和原论文2–5客户端设置上复现实验趋势；通过后再接入本研究窗口事件。
+[List Bullet] 由于模型骨干和原始训练协议不同，FLAMF-Original只在“外部系统比较”列中报告，不用于归因RAVEN组件。
+[List Bullet] 无法完全复现时，必须报告复现差异，不得把TimeAlign-Agg错误命名为FLAMF。
+[Heading 1] 10. 对比方法与精确定义
+--- TABLE 19 ---
+方法 | 精确定义
+Central-All | 集中使用所有有效观测，忽略计算/网络丢失；信息丰富参考，不称理论上界。
+Central-Delivered | 集中使用最终可用更新对应的原始观测；与联邦方法具有相同信息到达。
+FedAvg-Window | α_k∝原始样本数；无陈旧度和选择校正。
+FedAsync-Window | α_k∝原始样本数×exp(−κ_ττ_k)。
+TimeAlign-Agg | 同骨干，使用时间戳/陈旧度对齐权重；无目标分布校正。
+FLAMF-Original | 原TIME-DMF与原异步聚合，外部系统基线。
+Local-Hajek | 使用ζ和p_obs构造本地Hájek目标；服务器不校正q、不做目标校准。
+TwoStage-Hajek | 使用ζ、p和q，直接令α=β_hat；无债务、方差和陈旧度优化。
+Inst-Cal | P2保留当前组校准与参考项，不使用债务。
+Debt-Cal | 使用债务和当前组校准，但ζ=p=q=1。
+RAVEN-MCS | 完整估计版。
+RAVEN-SimOracle | 受控场景使用生成ζ、真实p和Monte Carlo q；作为校正参考。
+--- END TABLE ---
+公平性要求：除Central-All、Central-Delivered和FLAMF-Original外，其余方法使用同一Common-NDMF、同一局部步数、同一学习率搜索空间、同一事件轨迹和相同通信窗口。
+[Heading 1] 11. RAVEN-MCS核心实现细节
+[Heading 2] 11.1 第一阶段权重与ESS
+[Equation] a_{k,r,i}=min{a_max, ζ_hat_{k,r,i}/max(p_hat_{k,r,i},p_min)}
+[Equation] m_{k,r}=Σ_i O_{k,r,i}a_{k,r,i},  ā_{k,r,i}=Oa/m
+[Equation] n_eff=m²/Σ_i(Oa)²=1/Σ_i ā²
+[List Bullet] 当m=0时不注册训练尝试。
+[List Bullet] m用于第二阶段目标等效质量；n_eff只用于不确定性和稳定性，不得互换。
+[List Bullet] 每个窗口记录p/ζ截断率、a最大值、a均值、ESS分位数。
+[Heading 2] 11.2 第二阶段参考
+[Equation] d_{k,r}=min{d_max,1/max(q_hat_{k,r},q_min)}, b_{k,r}=m_{k,r}d_{k,r}
+[Equation] β_hat_{k,r}=b_{k,r}/Σ_{j∈A_r}b_{j,r}
+必须先基于注册消息构造E_r并获得所有U标签，才能训练q模型。只用A_r会产生幸存者偏差。
+[Heading 2] 11.3 目标债务与P2
+[Equation] Q_{r+1}=[Q_r+η_r(μ−M_rα_r)]_+
+[Equation] P2: −Q_r^T M_rα + (λ_g/2)||M_rα−μ||² + (λ_β/2)||α−β_hat||² + (λ_v/2)α^T V_rα + λ_s τ̄_r^Tα
+[List Bullet] 约束：1^Tα=1；0≤α_k≤α_bar；||α||²≤1/E_bar。
+[List Bullet] 默认λ_β>0，确保强凸和唯一解。
+[List Bullet] 主结果使用CVXPY+CLARABEL；每次记录status、primal residual、solve time和约束违反。
+[List Bullet] 若窗口可用客户端仅1个，α=1；仍更新债务和模型。
+[List Bullet] 空窗口θ和Q均不变，且S_R不增加。
+[Heading 2] 11.4 滞后方差代理
+[Equation] v_{k,r}=S̄²_{k,r^-}/max(n_eff,1)+v_floor
+聚合决策只使用上一窗口以前的方差状态。当前更新完成后的梯度方差只写入未来状态，禁止用于当前α。
+[Heading 1] 12. 参数设置与验证策略
+[Heading 2] 12.1 默认参数
+--- TABLE 20 ---
+参数 | 默认 | 搜索/敏感性范围
+客户端数K | 50 | 主敏感性：20, 50, 100, 200
+窗口数R | 300 | 小规模门控100；主实验300–500
+风险集均值 | 7 | 2, 5, 10, 20
+E_loc | 5 | 1, 5, 10, 30
+S_max | 5 | 1, 2, 5, 10, 20
+p_min/q_min | 0.05/0.05 | 0.02, 0.05, 0.10
+a_max/d_max | 20/10 | 5, 10, 20, 50
+E_min | 3 | 1, 2, 3, 5, 10
+α_max | 0.5 | 0.2, 0.3, 0.5, 1.0
+λ_g | 1.0 | 0.1, 0.3, 1, 3, 10
+λ_β | 1.0 | 0.1, 0.3, 1, 3, 10
+λ_v | 0.1 | 0, 0.03, 0.1, 0.3, 1
+λ_s | 0.1 | 0, 0.03, 0.1, 0.3, 1
+机会遗忘ρ_opp | 0.95 | 0.8, 0.9, 0.95, 0.99, 1.0
+Monte Carlo M_MC | 2000 | 诊断10000
+--- END TABLE ---
+[Heading 2] 12.2 调参顺序
+[List Number] 在Balanced场景选择骨干学习率、模型维度和局部步数，目标是稳定且不过拟合。
+[List Number] 在Complete验证场景选择p_min、q_min、a_max、d_max，使RMSE_μ与ESS达到合理折中。
+[List Number] 固定校正参数后选择λ_β和λ_g，再选择λ_v、λ_s、E_min和α_max。
+[List Number] 选择机会分层粒度和ρ_opp，使用验证期Err_ζ与RMSE_μ，不使用测试结果。
+[List Number] 冻结配置后生成frozen_config.yaml和hash；随后才能运行测试段和20种子主实验。
+--- TABLE 21 ---
+避免组合爆炸 / 不要对所有参数做笛卡尔积。采用分阶段验证和小规模预筛：每阶段最多20–30个候选配置，先3个种子筛选，再用5个种子确认；最终冻结后跑20种子。
+--- END TABLE ---
+[Heading 1] 13. 完整实验矩阵
+[Heading 2] 13.1 E0：单元测试与合成真值检查
+--- TABLE 22 ---
+编号 | 测试 | 通过标准
+E0.1 | 权重归一化 | 构造3客户端5记录手算例；检查Σā=1、Σβ=1、Σα=1。
+E0.2 | IPW无偏性 | 固定已知p/q，重复10^5次，样本均值接近目标质量。
+E0.3 | P2唯一性 | 相同输入重复求解；λ_β>0时解差<10^-8。
+E0.4 | 债务恒等式 | 随机可行α序列，检查所有前缀债务上界。
+E0.5 | 事件窗口 | 窗口内到达不改变θ；窗口关闭只更新一次。
+E0.6 | 信息泄漏 | 静态检查q特征中不存在realized_delay、arrival_staleness、update_norm。
+--- END TABLE ---
+[Heading 2] 13.2 E1：Balanced不伤害硬门
+[List Bullet] 数据集：三个受控数据集。K=50，R=200，5个种子。
+[List Bullet] 机会、p、q近似均匀；σ_b取0.2σ_Y。
+[List Bullet] 比较FedAsync-Window、TwoStage-Hajek和RAVEN-MCS。
+[List Bullet] 通过标准：RAVEN的RMSE_μ相对最强基线恶化不超过2%，且95%CI包含0；权重截断率<5%，中位ESS≥2。
+[Heading 2] 13.3 E2：目标风险错位证据
+[List Bullet] 场景：Balanced、Opportunity-only、Observation-only、Usable-only、Complete-aligned、Complete-counteracting。
+[List Bullet] 方法：FedAvg-Window、FedAsync-Window、TimeAlign-Agg。
+[List Bullet] 主要输出：原子级RMSE_ρ、RMSE_μ、Gap_mis、Δ_group、Δ_pair、tail/head误差。
+[List Bullet] 关键判据：Complete场景中RMSE_ρ可保持较低，但RMSE_μ和Tail RMSE显著增加；counteracting场景展示仅校正p或q可能加剧错位。
+[Heading 2] 13.4 E3：主性能结果
+[List Bullet] 三个受控数据集，Complete-aligned主场景，20个种子。
+[List Bullet] 方法：全部同骨干方法 + Central参考 + FLAMF-Original外部基线。
+[List Bullet] 主指标：RMSE_μ、MAE_μ、Tail RMSE、Δ_pair/Δ_c-s、Δ_group、δ_ref、Q/S。
+[List Bullet] 必须同时报告均值、标准差、95%CI、相对提升、配对p值和效应量。
+[List Bullet] RAVEN-SimOracle只用于受控场景；真实数据不冒充真Oracle。
+[Heading 2] 13.5 E4：消融实验
+--- TABLE 23 ---
+消融 | 改动 | 要验证的作用
+w/o Design | ζ=1 | 机会分布校正贡献
+w/o Obs | p=1 | 第一阶段选择贡献
+w/o Use | q=1 | 第二阶段选择贡献
+w/o Inst | λ_g=0 | 当前组边缘校准
+w/o Debt | 去掉−Q^TMα | 长期组覆盖
+w/o Ref | λ_β=0 | 客户端—记录组成保持
+w/o Var | λ_v=0且去掉ESS约束 | 方差控制
+w/o Stale | λ_s=0 | 陈旧度控制
+No Forget | ρ_opp=1 | 漂移适应
+Current-Var | 当前更新估方差 | 条件中心化风险
+--- END TABLE ---
+[Heading 2] 13.6 E5：支持性与可达性
+[List Bullet] 逐步减少某些目标组的机会概率或可用更新概率。
+[List Bullet] 计算N_g^eff、p/q/π低分位、窗口ε_reach、Q增长和最终Δ_group。
+[List Bullet] 将场景分为supported、weak-support、unsupported；主理论结论只使用supported。
+[List Bullet] 验证弱支持时截断可降低方差但引入残余偏差；unsupported时明确方法不能恢复不存在的目标质量。
+[Heading 2] 13.7 E6：估计误差、漂移与截断
+[List Bullet] 机会模型：正确、遗漏空间热度、遗漏日类型、无遗忘。
+[List Bullet] p模型：正确、遗漏设备状态、非线性生成但线性估计。
+[List Bullet] q模型：正确、遗漏带宽、遗漏模型年龄、概率校准后处理/不处理。
+[List Bullet] 绘制Err_ζ、Brier/ECE与RMSE_μ、Δ_pair的关系。
+[List Bullet] 对a_max、d_max进行对数网格，展示偏差—方差—ESS三者关系。
+[Heading 2] 13.8 E7：识别边界与总体校准残差
+[List Bullet] 隐藏混杂：潜变量H同时影响O和b，或同时影响U和更新方向；H不进入估计特征。
+[List Bullet] 校准残差：控制Δ_cal从0增加到0.05、0.1、0.2个标准差。
+[List Bullet] 目的不是证明RAVEN仍无偏，而是展示残余误差并验证论文限制声明。
+[Heading 2] 13.9 E8：规模与系统开销
+[List Bullet] K∈{20,50,100,200}，窗口可用客户端数和P2维度随之变化。
+[List Bullet] 分别统计客户端校正时间、本地训练时间、注册字节、更新字节、P2求解时间和峰值内存。
+[List Bullet] 比较CVXPY精确求解和投影一阶实现的目标差、约束违反和时间。
+[List Bullet] 报告达到固定RMSE_μ阈值的活动窗口数和墙钟时间。
+[Heading 2] 13.10 E9：T-Drive-Speed真实轨迹一致性实验
+[List Bullet] 每seed按车辆轨迹长度分层，30%车辆构造参考场，70%作为候选客户端。
+[List Bullet] 从客户端车队中选K=50/100/200辆；不足目标覆盖的单元从公共支持中剔除并记录。
+[List Bullet] 机会风险集由车辆实际轨迹决定；观测有效性来自速度过滤与可控缺失；第二阶段计算/网络仍为半合成。
+[List Bullet] 主指标使用RMSE_μ、RMSE_ρ、Δ_c-s、Δ_group、Δ_cal诊断。
+[List Bullet] 只把T-Drive作为真实移动机会验证，不声称计算和网络故障也是真实记录。
+[Heading 1] 14. 指标公式与实现注意事项
+--- TABLE 24 ---
+指标 | 定义 | 注意事项
+目标RMSE | RMSE_μ=[Σ_i ϖ_i^tar(Ŷ_i−Y_i)²]^{1/2} | 论文主精度；测试支持上重新归一化。
+目标MAE | MAE_μ=Σ_i ϖ_i^tar|Ŷ_i−Y_i| | 抗极端误差。
+到达RMSE | RMSE_ρ=[Σ_i ρ_i^arr(Ŷ_i−Y_i)²]^{1/2} | 必须使用原子单元到达权重，不得只用组边缘。
+错位间隙 | Gap_mis=RMSE_μ−RMSE_ρ | 正值表示按到达分布评价低估部署风险。
+组错位 | Δ_group=||ω_hat−μ||_1 | 长期组覆盖。
+pair错位 | Δ_pair=||Π_hat−π^tar||_1 | 受控实验的完整客户端—记录错位。
+client-stratum错位 | Δ_c-s=Σ_{k,s}|Π_hat_{k,s}−π^tar_{k,s}| | 真实大规模轨迹的可估计替代指标。
+参考偏离 | 平均√K_r||α_r−β_hat_r||_2 | P2偏离两阶段统计参考的程度。
+债务 | ||Q_R||_1/S_R及2||Q_R||_1/S_R | 长期组混合及确定性上界。
+ESS/权重 | n_eff、max α、截断率 | 稳定性和弱支持诊断。
+方差 | 实测聚合更新方差与α^TVα | 验证方差代理。
+系统开销 | 时间、内存、字节、达到阈值的窗口数 | 实用性。
+--- END TABLE ---
+--- TABLE 25 ---
+指标实现检查 / 有效训练分布中，记录i未参与当前本地目标时w_{k,r,i}=0。所有学习率加权分布以S_R=Ση_r I_r归一化。测试到达权重由冻结的机会和选择模型预测，不能拿训练到达计数直接映射到未来绝对时间槽。
+--- END TABLE ---
+[Heading 1] 15. 统计检验与报告规范
+[Heading 2] 15.1 重复次数
+[List Bullet] 主结果、主要消融：20个独立种子。
+[List Bullet] 大规模敏感性和系统开销：至少10个种子。
+[List Bullet] 硬门和调参预筛：3–5个种子，但不得用于最终显著性声明。
+[Heading 2] 15.2 配对统计
+[List Bullet] 同一seed下方法共享EventTrace，因此使用配对比较。
+[List Bullet] 两方法比较使用双侧Wilcoxon signed-rank test。
+[List Bullet] 同一张主表多个比较使用Holm校正。
+[List Bullet] 同时报告配对差的bootstrap 95%CI、相对改进和Cliff’s delta或rank-biserial effect size。
+[List Bullet] 不得仅用“平均值更低”声称显著优越。
+[Heading 2] 15.3 结果异常处理
+[List Bullet] 任何run失败都必须保留日志并给出失败原因；不得删除不利seed。
+[List Bullet] 求解器失败可以使用预注册fallback求解器重跑，但必须在manifest标记。
+[List Bullet] 异常值只在明确的实现/数据错误证据下排除，并同时给出包含与排除结果。
+[List Bullet] 如果方法在某些seed不可行，应把不可行率作为结果报告。
+[Heading 1] 16. 论文图表与输出清单
+--- TABLE 26 ---
+表 | 内容
+Table I | 数据集与处理后统计：N、T、目标变量、原始缺失率、客户端数、目标组/机会分层数。
+Table II | 主性能：RMSE_μ、Tail RMSE、Δ_group、Δ_pair/Δ_c-s、δ_ref、Q/S。
+Table III | 主要消融。
+Table IV | 系统开销和通信。
+Appendix Tables | 倾向校准、支持性、完整敏感性、统计p值与效应量。
+--- END TABLE ---
+--- TABLE 27 ---
+图 | 内容
+Fig. 1 | 框架图（论文方法部分，不由实验脚本生成）。
+Fig. 2 | Balanced与Complete下RMSE_ρ/RMSE_μ对比，直接展示目标错位。
+Fig. 3 | 有效组分布/目标分布柱状图或热图。
+Fig. 4 | 训练过程中||ω̄−μ||_1与2||Q||_1/S。
+Fig. 5 | 机会/观测/可用更新偏置强度与RMSE_μ。
+Fig. 6 | a_max、d_max下RMSE_μ—ESS—max weight权衡。
+Fig. 7 | ε_reach与最终Δ_group/Q增长。
+Fig. 8 | 客户端数与P2求解时间/总时间。
+Appendix | propensity reliability diagrams、误差分解、完整消融和T-Drive地图。
+--- END TABLE ---
+每张图同时导出PDF（论文）和PNG（快速查看），并保存对应的plot_data.csv，保证图可重建。
+[Heading 1] 17. 质量保证与自动化测试
+--- TABLE 28 ---
+测试名 | 检查内容
+test_split_no_overlap | 训练/验证/测试时间和单位无交叉。
+test_no_post_outcome_features | p/q特征不含当前结果和未来信息。
+test_event_trace_identity | 所有方法读取相同EventTrace hash。
+test_weight_normalization | ā、β、α均非负且和为1。
+test_ess_identity | m²/Σw²与1/Σā²一致。
+test_p2_feasibility | 单纯形、α上界、L2/ESS约束满足。
+test_p2_unique | λ_β>0时扰动初值不改变解。
+test_debt_bound_prefix | 每个前缀满足确定性债务界。
+test_empty_window | 空窗口θ/Q不更新、S不增加。
+test_metric_atomic_arrival | RMSE_ρ使用原子到达权重而不是目标组内权重。
+test_manifest_complete | 所有主表run均有数据/config/git/environment hash。
+test_oracle_probabilities | MC q的标准误低于预设阈值。
+--- END TABLE ---
+建议采用pytest并设置CI：每次合并代码自动运行单元测试、一个小型end-to-end smoke run和结果schema验证。
+[Heading 1] 18. 建议时间计划与分工
+--- TABLE 29 ---
+时间 | 任务 | 交付物
+第1周 | 下载与审计数据；冻结processed数据；完成G0。 | data_audit_report、dataset_manifest
+第2周 | Common-NDMF、事件轨迹和窗口时序；完成G1–G2。 | smoke模型、EventTrace、时间测试
+第3周 | ζ/p/q、Hájek、ESS、P2和债务；完成G3–G5。 | 单元测试、手算对照、P2日志
+第4周 | Balanced和Oracle硬门；冻结参数流程。 | G6–G7报告、frozen_config
+第5周 | E2错位证据与E3主结果，先5种子审计再20种子。 | 主CSV、主表初稿
+第6周 | 消融E4、支持/可达E5。 | 消融表、债务/可达图
+第7周 | 鲁棒性E6–E7和T-Drive E9。 | 鲁棒性图、真实轨迹结果
+第8周 | 系统开销E8、统计检验、论文图表和复现包。 | 最终报告、paper_artifacts、release
+--- END TABLE ---
+若只有一名学生，先完成SensorScope和U-Air的E0–E5，再扩展Traffic与T-Drive；不要同时铺开所有数据集。
+[Heading 1] 19. 风险清单与应对措施
+--- TABLE 30 ---
+风险 | 等级 | 应对
+真实交通数据质量不足 | 高 | 先做站点质量门；不足时报告教师并决定是否将PEMS-BAY作为正式替代。
+FLAMF复现困难 | 中高 | 把TimeAlign-Agg作为主要同骨干对比；FLAMF只作为外部基线，明确复现差异。
+P2求解慢 | 中 | 主结果用精确求解；规模实验实现投影一阶法；记录objective gap。
+权重爆炸 | 高 | 使用p/q floor、a/d clipping、ESS约束；报告截断率和弱支持。
+方法差异不明显 | 中 | 检查机会/选择错位、σ_b和target shift是否真正非退化，而不是盲目调λ。
+Oracle反而更差 | 高 | 审计MC q、设计比方向、质量m与ESS混用、归一化和事件共享。
+测试泄漏 | 高 | 配置冻结、测试只运行一次、manifest记录选择阶段。
+统计量太多 | 中 | 预注册主指标和主比较，其余放附录；避免挑结果。
+--- END TABLE ---
+[Heading 1] 20. 最终验收标准
+[Heading 2] 20.1 可进入论文主表的必要条件
+[List Bullet] G0–G7全部通过。
+[List Bullet] run的manifest完整，配置、数据、事件和代码可重建。
+[List Bullet] 场景满足目标支持与可达性要求，或明确标为stress。
+[List Bullet] 所有主要方法共享同一事件轨迹和同骨干协议。
+[List Bullet] 主结果为20个配对seed，统计检验和多重比较校正完整。
+[List Bullet] 结果表中没有手工复制数字；全部由聚合脚本生成。
+[List Bullet] 论文中的每个结论都能指向一个CSV/JSON和一条可重跑命令。
+[Heading 2] 20.2 高质量实验的最低证据链
+--- TABLE 31 ---
+证据 | 验收内容
+错位存在 | Complete场景中arrival risk与target risk出现清晰差异；分布错位指标同步增大。
+两阶段必要 | Local-Hajek与TwoStage-Hajek在对应单阶段/双阶段场景呈现预期排序。
+校准有效 | 完整RAVEN显著降低RMSE_μ和目标欠表示组误差，并降低Δ_pair/Δ_group。
+理论一致 | 债务确定性界始终成立；可达误差与残余组错位相关；pair discrepancy与目标误差相关。
+稳健边界清楚 | 弱支持、错设和隐藏混杂下不夸大能力，能够解释残余误差。
+开销可接受 | P2和摘要传输相对本地训练/模型更新占比较小，且规模曲线明确。
+--- END TABLE ---
+--- TABLE 32 ---
+最终提醒 / 高质量实验不是要求RAVEN在每个指标、每个场景都第一，而是要求结果与方法作用和理论边界一致：Balanced不伤害、Complete改善目标风险、Oracle给出校正上限、弱支持和隐藏混杂产生可解释残余。
+--- END TABLE ---
+[Heading 1] 附录A：建议默认配置示例
+--- TABLE 33 ---
+experiment: E3_main_complete / dataset: sensorscope / seed: 26001 / split: /   train: 0.60 /   validation: 0.20 /   test: 0.20 /   warmup_fraction_of_train: 0.20 / clients: /   K: 50 /   local_steps: 5 /   risk_set_mean: 7 / window: /   num_windows: 300 /   duration: 1.0 /   max_staleness: 5 / scenario: /   name: complete_aligned /   opportunity_skew: 1.0 /   mean_observation_rate: 0.20 /   mean_usable_rate: 0.60 /   client_bias_std_ratio: 0.20 / correction: /   p_min: 0.05 /   q_min: 0.05 /   a_max: 20 /   d_max: 10 /   opportunity_forgetting: 0.95 / aggregation: /   lambda_group: 1.0 /   lambda_reference: 1.0 /   lambda_variance: 0.1 /   lambda_staleness: 0.1 /   min_effective_clients: 3 /   alpha_max: 0.5 / solver: /   backend: CLARABEL /   tolerance: 1.0e-6 / statistics: /   paired_seeds: 20 /   test: wilcoxon /   multiplicity: holm
+--- END TABLE ---
+[Heading 1] 附录B：逐窗口输出字段
+--- TABLE 34 ---
+字段 | 用途
+run_id, seed, dataset, method | 身份与复现
+r, I_r, K_attempt, K_usable | 窗口和客户端数量
+mean/min/max p_hat, q_hat, zeta_hat | 校正诊断
+clip_rate_a, clip_rate_d | 截断率
+m_k, n_eff_k, c_k,g | 本地质量摘要
+beta_k, alpha_k, max_alpha | 参考与最终聚合
+group_mismatch, reference_deviation | 当前校准
+Q_norm1, Q_norm2, debt_bound | 债务
+variance_proxy, update_variance | 方差
+mean_staleness, weighted_staleness | 陈旧度
+solver_status, solve_time, constraint_violation | P2
+train_loss, val_snapshot_loss | 优化轨迹
+--- END TABLE ---
+[Heading 1] 附录C：主运行命令建议
+--- TABLE 35 ---
+# 1. 数据审计与预处理 / python scripts/audit_data.py --dataset sensorscope / python scripts/prepare_data.py --dataset sensorscope --freeze /  / # 2. 硬门 / pytest -q / python scripts/run_experiment.py experiment=E1_balanced seeds=26001,26002,26003,26004,26005 / python scripts/check_hard_gates.py outputs/E1_balanced /  / # 3. 主实验 / python scripts/run_grid.py experiment=E2_misalignment --seeds-file configs/seeds_20.txt / python scripts/run_grid.py experiment=E3_main_complete --seeds-file configs/seeds_20.txt / python scripts/run_grid.py experiment=E4_ablation --seeds-file configs/seeds_20.txt /  / # 4. 聚合与制图 / python scripts/aggregate_results.py --experiment E3_main_complete / python scripts/statistical_tests.py --experiment E3_main_complete / python scripts/make_paper_artifacts.py --all /  / # 所有长任务必须支持：--dry-run --resume --max-workers --fail-fast
+--- END TABLE ---
+[Heading 1] 附录D：数据与方法参考资料
+[Small Text] [R1] E. Wang et al., “Federated Learning-Based Distributed Data Completion in Sparse Mobile CrowdSensing,” IEEE Transactions on Mobile Computing, vol. 25, no. 5, pp. 6784–6800, 2026.
+[Small Text] [R2] SensorScope Data, EPFL/Zenodo, https://zenodo.org/records/2654726 (accessed 2026-07-26).
+[Small Text] [R3] Microsoft Research Urban Air Project, https://www.microsoft.com/en-us/research/project/urban-air/ (accessed 2026-07-26).
+[Small Text] [R4] Transport for NSW, NSW Roads Traffic Volume Counts API, https://data.nsw.gov.au/data/dataset/2-nsw-roads-traffic-volume-counts-api (accessed 2026-07-26).
+[Small Text] [R5] Microsoft Research, T-Drive Trajectory Data Sample, https://www.microsoft.com/en-us/research/publication/t-drive-trajectory-data-sample/ (accessed 2026-07-26).
+[Small Text] [R6] D. G. Horvitz and D. J. Thompson, “A Generalization of Sampling Without Replacement from a Finite Universe,” JASA, 1952.
+[Small Text] [R7] B. McMahan et al., “Communication-Efficient Learning of Deep Networks from Decentralized Data,” AISTATS, 2017.
+[Heading 1] 附录E：学生提交给教师的最终实验包
+[List Bullet] README_REPRODUCE.md：从零环境到生成全部论文表图的命令。
+[List Bullet] DATA_AUDIT_REPORT.md：每个数据集质量、split、支持和哈希。
+[List Bullet] HARD_GATE_REPORT.md：G0–G7逐项证据。
+[List Bullet] EXPERIMENT_REPORT.md：RQ1–RQ6的结果与解释。
+[List Bullet] paper_artifacts/tables/*.tex与*.csv。
+[List Bullet] paper_artifacts/figures/*.pdf、*.png和plot_data/*.csv。
+[List Bullet] 所有run的manifest、resolved config、原始逐窗口metrics和日志。
+[List Bullet] environment.yml、requirements-lock.txt、git_provenance.json。
+[List Bullet] 一页LIMITATIONS.md：弱支持、错设、隐藏混杂、真实轨迹半合成部分和无法复现项。

@@ -1,0 +1,16 @@
+{
+  "e9_yaml_not_used_as_protocol": true,
+  "label": "RECOVERED_PROCESSED_TEMPORAL_SPLIT",
+  "n_test_slots": 59,
+  "n_test_units": 74569,
+  "n_train_slots": 178,
+  "n_train_units": 285659,
+  "n_validation_slots": 60,
+  "n_validation_units": 75288,
+  "not": "PRE_REGISTERED_CHRONOLOGICAL_FALLBACK",
+  "performance_tuned": false,
+  "rule": "TemporalSplitConfig 60/20/20 by unique absolute time slots; warmup = first 20% of train slots but remains split=train",
+  "source": "processed split column uniquely linked to atomic_units.parquet",
+  "split_id": "processed_temporal_60_20_20_slot",
+  "status": "FROZEN"
+}

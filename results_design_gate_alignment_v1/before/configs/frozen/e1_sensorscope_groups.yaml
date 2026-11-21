@@ -1,0 +1,32 @@
+group_count: 4
+mapping: repeatable_time_of_day_4
+timezone: UTC
+spatial_partition: none
+boundaries:
+- id: 0
+  name: UTC_00_06
+  start_hour: 0
+  end_hour: 6
+- id: 1
+  name: UTC_06_12
+  start_hour: 6
+  end_hour: 12
+- id: 2
+  name: UTC_12_18
+  start_hour: 12
+  end_hour: 18
+- id: 3
+  name: UTC_18_24
+  start_hour: 18
+  end_hour: 24
+group_names:
+- UTC_00_06
+- UTC_06_12
+- UTC_12_18
+- UTC_18_24
+version: e1-r1-v1
+mapping_hash: abf2b601b42c27be4f5636e2816430659ad0fff0128c72e9cd28dd0be2381b26
+validation_audit_hash: 5bb1e7506a606c535c616a1e20baa896f95cb7958b8142bb77de50ed7d25d266
+fine_grained_diagnostic_groups: station_x_repeatable_time_block
+selection_rule: protocol_predefined_repeatable_utc_time_blocks
+reason: Repeatable UTC blocks preserve all four groups in each chronological split.

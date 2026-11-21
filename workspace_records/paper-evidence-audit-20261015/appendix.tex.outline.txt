@@ -1,0 +1,87 @@
+2: \section{Complete Proofs for Sections III--VI}
+15: \subsection{Deferred Constructions from the Main Text}
+59: \subsubsection{Target-Positive Pairs, Coverage, and the Heuristic Lookup}
+147: \subsection{Proof of Proposition~1}
+232: \subsection{Proof of Proposition~2}
+251: \subsubsection{Target-Measure Compatibility}
+312: \subsubsection{Sequential Inverse-Selection Identity}
+598: \subsection{Proof of Theorem~1}
+759: \subsection{Proof of Proposition~3}
+882: \subsection{Proof of Proposition~4}
+931: \subsection{Proof of the Target-Debt Accounting Bound}
+1145: \subsection{Supplementary Consequences of the Calibration Geometry}
+1247: \subsection{Summary of Theoretical Results}
+1277: \section{Complete Proofs for Aggregate Coverage Certification}
+1287: \caption{Aggregate coverage certificate (diagnostic Gate)}
+1359: \subsection{Proof of Proposition~\ref{prop:pairwise-lcb-barrier}}
+1381: \subsection{Proof of Corollary~\ref{cor:availability-barrier}}
+1400: \subsection{$n_{\min}$ derivation}
+1414: \subsection{Proof of Theorem~2}
+1477: \subsection{Proof of Corollary~\ref{cor:false-safe-gate}}
+1493: \subsection{Proof of Proposition~\ref{prop:drift-boundary}}
+1521: \section{Supplementary Risk-Semantic Evidence}
+1528: \subsection{Balanced No-Harm Control}
+1540: \caption{Balanced control over the five pre-specified paired seeds.}
+1541: \label{tab:app_e1_balanced}
+1557: \subsection{Complete Risk Non-Interchangeability Statistics}
+1571: \caption{Complete-aligned risk non-interchangeability statistics.
+1574: \label{tab:app_e2_daligned}
+1591: \section{Local-H\'ajek Degeneracy Analysis}
+1603: \caption{Local-Hajek provenance audit.}
+1604: \label{tab:app_local_hajek}
+1654: \section{P2 Feasibility Diagnostics}
+1664: \caption{P2 feasibility-certificate coverage in the formal protocol blocks.}
+1665: \label{tab:app_p2_coverage}
+1694: \caption{Numerical feasibility audit of warning-affected P2 allocations.}
+1695: \label{tab:app_p2_warning_audit}
+1715: \section{Supplementary Experimental Comparisons}
+1727: \subsection{Windowed adaptations of FedAU, ObsUse, and TimeAlign}
+1769: \caption{Comparison of target semantics and selection correction.  RAVEN
+1778: \label{tab:nearest_neighbor}
+1799: \caption{Validation-only under-served-block RMSE of the Table~III
+1806: \label{tab:underserved_block}
+1821: \caption{Sealed same-backbone structural alignment on SensorScope and
+1828: \label{fig:e3_structural}
+1834: \caption{Sealed same-backbone deployment-target prediction risk
+1841: \label{fig:e3_prediction}
+1847: \caption{One-factor component removal.  Positive bars mean that removing the
+1855: \label{fig:e4_ablation}
+1861: \caption{U-Air component ablation excluding Design, magnified from
+1865: \label{fig:uair_excl_design}
+1868: \subsection{Full Method Context on the Comparable Datasets}
+1873: \caption{SensorScope full method context (mean $\pm$ std over 20 seeds).
+1876: \label{tab:app_e3_sensorscope}
+1900: \caption{U-Air full method context (mean $\pm$ std over 20 seeds).
+1905: \label{tab:app_e3_uair}
+1932: \subsection{NSW-Traffic Four-Region Protocol Ranking}
+1952: \caption{NSW-Traffic ranking under a four-region public target map
+1959: \label{tab:traffic_four_region}
+1985: \subsection{Four-Block Per-Group RMSE}
+1999: \caption{Four-block $\mathrm{RMSE}_g$ (mean $\pm$ std over 20 paired
+2003: \label{tab:app_block_rmse}
+2029: \subsection{Runtime Diagnostic from Existing Risk-Semantic Logs}
+2039: \caption{Wall-clock runtime on the risk-semantic workloads in seconds (mean $\pm$ std).}
+2040: \label{tab:app_runtime}
+2059: \subsection{Provenance of the w/o-Design Endpoint Trade-off}
+2071: \section{Intermittent Protocol Opportunity (INT-R)}
+2111: \caption{INT-R occupancy audit on the shared EventTraces (eight logical
+2114: \label{tab:int_r_occ}
+2157: \caption{INT-R robustness ranking under intermittent protocol $R$
+2161: \label{tab:int_r_e3}
+2192: \section{Support-Hypothesis Audit for A5, A6a, and A6b}
+2231: \caption{Support-hypothesis audit on the formal-protocol traces.  Each column is
+2238: \label{tab:app_a5_a6_audit}
+2319: \section{Coverage-Stress Audit of the Candidate Gate}
+2334: \caption{Coverage-stress audit of a candidate aggregate coverage Gate.
+2341: \label{tab:certificate_stress}
+2368: \caption{Finite-sample audit of the aggregate coverage certificate.
+2375: \label{fig:certificate_audit}
+2378: \section{Target-Coverage Statistic and City Scanner Hybrid Rankings}
+2397: \caption{Offline target-support statistic per block, and the Design
+2406: \label{tab:scd_phi_freeze}
+2432: \subsection{City Scanner New York {PM}$_{2.5}$}
+2483: \caption{City Scanner New York {PM}$_{2.5}$ hybrid ranking
+2488: \label{tab:cityscanner_hybrid}
+2515: \subsection{City Scanner Pilot~2 with measured observation}
+2552: \caption{City Scanner New York Pilot~2 ranking with measured observation
+2558: \label{tab:cityscanner_p2_measured_o}

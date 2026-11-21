@@ -1,0 +1,289 @@
+{
+  "status": "PASS",
+  "decision": {
+    "decision": {
+      "action": "WAIT",
+      "reason": "INTERVAL_PROVEN",
+      "selected_offset": 0.1,
+      "plan_scores": [],
+      "p2_solves": 4,
+      "cache_hits": 21,
+      "scenario_digest": "b6f58260d5aa7c880aef240f5262557c46fb1265526d6fd9cb8a4354566fd536",
+      "control_cpu_seconds": 1.265625,
+      "wall_seconds": 1.5493505999984336,
+      "forecast_only": true,
+      "evidence_role": "deterministic_interface_or_empirical_planning",
+      "variance_transition": "zero_unknown_gradient_increment",
+      "intervals": [
+        {
+          "offset": 0.0,
+          "L": 0.3391691860461301,
+          "U": 0.33916918604689306,
+          "known_cells": [
+            80,
+            80,
+            80,
+            80
+          ]
+        },
+        {
+          "offset": 0.1,
+          "L": 0.10499999999961863,
+          "U": 0.1050000000003815,
+          "known_cells": [
+            80,
+            80,
+            80,
+            80
+          ]
+        },
+        {
+          "offset": 0.5,
+          "L": 0.16845930232519996,
+          "U": 0.16845930232596285,
+          "known_cells": [
+            80,
+            80,
+            80,
+            80
+          ]
+        },
+        {
+          "offset": 1.0,
+          "L": 0.2449709302321767,
+          "U": 0.2449709302329396,
+          "known_cells": [
+            80,
+            80,
+            80,
+            80
+          ]
+        },
+        {
+          "offset": 2.0,
+          "L": 0.38861918604613016,
+          "U": 0.3886191860468931,
+          "known_cells": [
+            80,
+            80,
+            80,
+            80
+          ]
+        }
+      ],
+      "action_intervals": [
+        {
+          "action": "CLOSE",
+          "L": 0.3391691860461301,
+          "U": 0.33916918604689306,
+          "witness_offset": 0.0
+        },
+        {
+          "action": "WAIT",
+          "L": 0.10499999999961863,
+          "U": 0.1050000000003815,
+          "witness_offset": 0.1
+        }
+      ],
+      "unknown_support": [],
+      "proven": true
+    },
+    "accounting": {
+      "command": [
+        "C:\\Cursor\\raven.mcs\\.venv_new\\Scripts\\python.exe",
+        "-m",
+        "raven_mcs_re_interval.worker",
+        "C:\\Users\\szr\\AppData\\Local\\Packages\\sandbox.{bd795fd4-059b-4f70-a9a0-6525171436fd}\\AC\\Temp\\RE_interval_b5sppmwz\\input.json",
+        "C:\\Users\\szr\\AppData\\Local\\Packages\\sandbox.{bd795fd4-059b-4f70-a9a0-6525171436fd}\\AC\\Temp\\RE_interval_b5sppmwz\\output.json"
+      ],
+      "returncode": 0,
+      "process_tree_cpu_seconds": 1.25,
+      "monitor_cpu_seconds": 0.0,
+      "wall_seconds": 1.5385744999985036,
+      "limit_reason": null,
+      "log": "C:\\Users\\szr\\AppData\\Local\\Packages\\sandbox.{bd795fd4-059b-4f70-a9a0-6525171436fd}\\AC\\Temp\\RE_interval_b5sppmwz\\worker.log",
+      "pids": [
+        {
+          "pid": 11560,
+          "joined_observed_wall": 0.010443199997098418,
+          "root_job_member": true,
+          "image": "C:\\Cursor\\raven.mcs\\.venv_new\\Scripts\\python.exe",
+          "initial_cpu": 0.0,
+          "created_filetime": 13436343228.348017,
+          "exited_filetime": 13436343229.875957,
+          "kernel_cpu": 0.0,
+          "user_cpu": 0.0,
+          "cpu_seconds": 0.0,
+          "exit_code": 0,
+          "exit_observed_wall": 1.5385429999987537
+        },
+        {
+          "pid": 10252,
+          "joined_observed_wall": 0.017479099999036407,
+          "root_job_member": true,
+          "image": "C:\\Windows\\System32\\conhost.exe",
+          "initial_cpu": 0.0,
+          "created_filetime": 13436343228.362764,
+          "exited_filetime": 13436343229.879807,
+          "kernel_cpu": 0.0,
+          "user_cpu": 0.015625,
+          "cpu_seconds": 0.015625,
+          "exit_code": 0,
+          "exit_observed_wall": 1.5385494000001927
+        },
+        {
+          "pid": 11136,
+          "joined_observed_wall": 0.03977540000050794,
+          "root_job_member": true,
+          "image": "C:\\Users\\szr\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+          "initial_cpu": 0.0,
+          "created_filetime": 13436343228.384558,
+          "exited_filetime": 13436343229.863457,
+          "kernel_cpu": 0.609375,
+          "user_cpu": 0.625,
+          "cpu_seconds": 1.234375,
+          "exit_code": 0,
+          "exit_observed_wall": 1.5385547999976552
+        },
+        {
+          "pid": 22696,
+          "joined_observed_wall": 0.3213609999984328,
+          "root_job_member": true,
+          "image": "C:\\Windows\\System32\\cmd.exe",
+          "initial_cpu": 0.0,
+          "created_filetime": 13436343228.664465,
+          "exited_filetime": 13436343228.697527,
+          "kernel_cpu": 0.0,
+          "user_cpu": 0.0,
+          "cpu_seconds": 0.0,
+          "exit_code": 0,
+          "exit_observed_wall": 1.538561599998502
+        }
+      ],
+      "notifications": [
+        {
+          "message": 6,
+          "pid": 11560,
+          "wall": 0.012338199998339405
+        },
+        {
+          "message": 6,
+          "pid": 10252,
+          "wall": 0.017460999999457272
+        },
+        {
+          "message": 6,
+          "pid": 11136,
+          "wall": 0.0397542999999132
+        },
+        {
+          "message": 6,
+          "pid": 22696,
+          "wall": 0.3213355000007141
+        },
+        {
+          "message": 7,
+          "pid": 22696,
+          "wall": 0.3946594999979425
+        },
+        {
+          "message": 7,
+          "pid": 11136,
+          "wall": 1.521962099999655
+        },
+        {
+          "message": 7,
+          "pid": 11560,
+          "wall": 1.532987200000207
+        },
+        {
+          "message": 7,
+          "pid": 10252,
+          "wall": 1.5384907999978168
+        },
+        {
+          "message": 4,
+          "pid": 0,
+          "wall": 1.5384951999985788
+        }
+      ],
+      "errors": [],
+      "job_total_processes": 4,
+      "job_active_processes": 0,
+      "independent_pid_CPU_sum": 1.25,
+      "difference_seconds": 0.0,
+      "predeclared_tolerance_seconds": 0.135,
+      "audit_passed": true,
+      "CPU_limit": 1.934375,
+      "single_CPU_affinity": 1,
+      "mutually_exclusive_costs": [
+        "process_tree_cpu_seconds",
+        "monitor_cpu_seconds"
+      ],
+      "included_not_additive": [
+        "independent_pid_CPU_sum",
+        "individual_PID_CPU",
+        "inner_job_CPU"
+      ],
+      "cpu_scope": "creation through process exit; root created suspended, descendants inherit before execution",
+      "total_cpu_seconds": 1.265625,
+      "decision_wall_seconds": 1.5493505999984336,
+      "training_steps": 0,
+      "startup_included": true,
+      "method": "RE_interval_v3"
+    }
+  },
+  "old_complete_scores": [
+    [
+      0.0,
+      0.3391691860465109
+    ],
+    [
+      0.1,
+      0.10500000000000023
+    ],
+    [
+      0.5,
+      0.1684593023255814
+    ],
+    [
+      1.0,
+      0.24497093023255792
+    ],
+    [
+      2.0,
+      0.388619186046511
+    ]
+  ],
+  "preview_unchanged": true,
+  "actual_P2_residual": 1.1102230246251565e-16,
+  "actual_weights": [
+    0.25,
+    0.2499999999999999,
+    0.25,
+    0.25
+  ],
+  "preview_masses": [
+    8.0,
+    8.0,
+    8.0,
+    8.0
+  ],
+  "preview_beta": [
+    0.25,
+    0.25,
+    0.25,
+    0.25
+  ],
+  "apply_theta": [
+    0.9980000000000001,
+    1.9960000000000002,
+    2.9939999999999998
+  ],
+  "expected_theta": [
+    0.9980000000000001,
+    1.9960000000000002,
+    2.9939999999999998
+  ],
+  "SGD": 0
+}

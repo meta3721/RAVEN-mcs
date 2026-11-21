@@ -1,0 +1,80 @@
+scanned 1115 bundle text files
+
+### E4 UA Design RMSE_mu rel%
+    OLD -6.553093815666225
+        old-in  figures/FIG_E4_E4_COMPONENT_ABLATION.csv
+        old-in  tables/TABLE_E4_COMPONENT_EFFECTS.csv
+    NEW -6.885463676716227
+
+### E4 UA Design Tail rel%
+    OLD -6.875242584162889
+        old-in  figures/FIG_E4_E4_COMPONENT_ABLATION.csv
+        old-in  tables/TABLE_E4_COMPONENT_EFFECTS.csv
+    NEW -7.221248907329521
+
+### E4 UA Obs RMSE_mu rel%
+    OLD -0.0097196306106393
+        old-in  figures/FIG_E4_E4_COMPONENT_ABLATION.csv
+        old-in  tables/TABLE_E4_COMPONENT_EFFECTS.csv
+    NEW -0.009782968291166629
+
+### E4 UA Obs Tail rel%
+    OLD -0.0102288937108689
+        old-in  figures/FIG_E4_E4_COMPONENT_ABLATION.csv
+        old-in  tables/TABLE_E4_COMPONENT_EFFECTS.csv
+    NEW -0.010295794089172574
+
+### E4 UA Use RMSE_mu rel%
+    OLD 0.02397367057784707
+        old-in  tables/TABLE_E4_COMPONENT_EFFECTS.csv
+    NEW 0.02527079699465602
+
+### E4 UA Use Tail rel%
+    OLD 0.0252184289979606
+        old-in  figures/FIG_E4_E4_COMPONENT_ABLATION.csv
+        old-in  tables/TABLE_E4_COMPONENT_EFFECTS.csv
+    NEW 0.026449615882742403
+
+### E4 UA Inst RMSE_mu rel%
+    OLD 0.1306837550913353
+        old-in  figures/FIG_E4_E4_COMPONENT_ABLATION.csv
+        old-in  tables/TABLE_E4_COMPONENT_EFFECTS.csv
+    NEW 0.14293076988935038
+
+### E4 UA Inst Tail rel%
+    OLD 0.1363753990751629
+        old-in  figures/FIG_E4_E4_COMPONENT_ABLATION.csv
+        old-in  tables/TABLE_E4_COMPONENT_EFFECTS.csv
+    NEW 0.14902918597946535
+
+### E4 UA Debt RMSE_mu rel%
+    OLD 0.0007291917853553351
+        old-in  tables/TABLE_E4_COMPONENT_EFFECTS.csv
+    NEW 0.0006719663837970082
+
+### E4 UA Debt Tail rel%
+    OLD 0.000775232954355
+        old-in  figures/FIG_E4_E4_COMPONENT_ABLATION.csv
+        old-in  tables/TABLE_E4_COMPONENT_EFFECTS.csv
+    NEW 0.000715240505846325
+
+### E4 parent UA RMSE_mu
+    OLD 1.191113924600986
+        old-in  tables/TABLE_E4_COMPONENT_EFFECTS.csv
+        old-in  tables/TABLE_E4_CORE_ABLATION.csv
+    NEW 1.195365574077496
+        new-in  w1/audit_v5/round_v5_1/A3P_RESOURCE_UPAIR.csv
+
+### E3 UA RAVEN-SimOracle mean
+    OLD 1.191447
+    NEW 1.195830
+
+### E3 UA TwoStage-Hajek mean
+    OLD 1.215961
+    NEW 1.220198
+
+==========================================================================================
+BUNDLE FILES that hold the superseded value and NOT the corrected value (exact full precision):
+  figures/FIG_E4_E4_COMPONENT_ABLATION.csv   (8: E4 UA Design RMSE_mu rel%, E4 UA Design Tail rel%, E4 UA Obs RMSE_mu rel%, E4 UA Obs Tail rel%, E4 UA Use Tail rel%, E4 UA Inst RMSE_mu rel%, E4 UA Inst Tail rel%, E4 UA Debt Tail rel%)
+  tables/TABLE_E4_COMPONENT_EFFECTS.csv   (11: E4 UA Design RMSE_mu rel%, E4 UA Design Tail rel%, E4 UA Obs RMSE_mu rel%, E4 UA Obs Tail rel%, E4 UA Use RMSE_mu rel%, E4 UA Use Tail rel%, E4 UA Inst RMSE_mu rel%, E4 UA Inst Tail rel%, E4 UA Debt RMSE_mu rel%, E4 UA Debt Tail rel%, E4 parent UA RMSE_mu)
+  tables/TABLE_E4_CORE_ABLATION.csv   (1: E4 parent UA RMSE_mu)

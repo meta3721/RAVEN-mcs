@@ -1,0 +1,128 @@
+{
+  "experiment_id": "PATH-A-MEASURED-LAYER-HAJEK",
+  "gate_unused": true,
+  "generated_utc": "2026-09-11T12:41:10.234884+00:00",
+  "git_commit": "2e47464c2c15d7dae4ceb059592782b9542de625",
+  "hybrid": true,
+  "measured_o": true,
+  "method_independent": true,
+  "num_windows": 100,
+  "o_layer": "MEASURED_FINITE_NO2",
+  "p_obs_bernoulli": false,
+  "r_layer": "REAL_FROM_UNION_PM_NO2_GPS",
+  "rows": [
+    {
+      "elapsed_sec": 2.7572203000017907,
+      "method_independence_canary": true,
+      "n_clients": 351,
+      "n_event_rows": 4144,
+      "n_windows": 100,
+      "path": "artifacts/e3_path_a_no2_eventtraces_v1/cityscanner_nyc_p2_measured_o_no2/seed34001/training_eventtrace",
+      "seed": 34001,
+      "status": "CREATED",
+      "trace_hash": "6befe6b830646b1d4e3a4682a024f2da34d8415854f6cb0c746529311107ef0a"
+    },
+    {
+      "elapsed_sec": 1.5352524999907473,
+      "method_independence_canary": false,
+      "n_clients": 351,
+      "n_event_rows": 4144,
+      "n_windows": 100,
+      "path": "artifacts/e3_path_a_no2_eventtraces_v1/cityscanner_nyc_p2_measured_o_no2/seed34002/training_eventtrace",
+      "seed": 34002,
+      "status": "CREATED",
+      "trace_hash": "4be428f8e9713a707cb101212af0d7604e0277c7d25db38c5f63ed17bd87d6eb"
+    },
+    {
+      "elapsed_sec": 1.4490351999993436,
+      "method_independence_canary": false,
+      "n_clients": 351,
+      "n_event_rows": 4144,
+      "n_windows": 100,
+      "path": "artifacts/e3_path_a_no2_eventtraces_v1/cityscanner_nyc_p2_measured_o_no2/seed34003/training_eventtrace",
+      "seed": 34003,
+      "status": "CREATED",
+      "trace_hash": "e60b1741df83665e6a1872b8c03ff90ba1163c7c1bdc9a8c2d1b98ed58ccf1e0"
+    },
+    {
+      "elapsed_sec": 1.2924611999915214,
+      "method_independence_canary": false,
+      "n_clients": 351,
+      "n_event_rows": 4144,
+      "n_windows": 100,
+      "path": "artifacts/e3_path_a_no2_eventtraces_v1/cityscanner_nyc_p2_measured_o_no2/seed34004/training_eventtrace",
+      "seed": 34004,
+      "status": "CREATED",
+      "trace_hash": "eebcd0137c57e7298efdc3a1bdebda50178a68b48a97307d9eef49a68c36398b"
+    },
+    {
+      "elapsed_sec": 1.1356277000013506,
+      "method_independence_canary": false,
+      "n_clients": 351,
+      "n_event_rows": 4144,
+      "n_windows": 100,
+      "path": "artifacts/e3_path_a_no2_eventtraces_v1/cityscanner_nyc_p2_measured_o_no2/seed34005/training_eventtrace",
+      "seed": 34005,
+      "status": "CREATED",
+      "trace_hash": "c78e909e26ea58f74c9c4c2ab2a949e1517820f44e73e4d3ad20052c8858848d"
+    },
+    {
+      "elapsed_sec": 0.7041412999969907,
+      "method_independence_canary": false,
+      "n_clients": 351,
+      "n_event_rows": 4144,
+      "n_windows": 100,
+      "path": "artifacts/e3_path_a_no2_eventtraces_v1/cityscanner_nyc_p2_measured_o_no2/seed34006/training_eventtrace",
+      "seed": 34006,
+      "status": "CREATED",
+      "trace_hash": "2028948a5472ee07de3e82fb50854656cf8e647c945c7fd5a80843e039448e3a"
+    },
+    {
+      "elapsed_sec": 0.8658545000071172,
+      "method_independence_canary": false,
+      "n_clients": 351,
+      "n_event_rows": 4144,
+      "n_windows": 100,
+      "path": "artifacts/e3_path_a_no2_eventtraces_v1/cityscanner_nyc_p2_measured_o_no2/seed34007/training_eventtrace",
+      "seed": 34007,
+      "status": "CREATED",
+      "trace_hash": "1d09e52c90ab28dd9a33da468cc0f1a1c9e71039a97740b02b7c299137a0102e"
+    },
+    {
+      "elapsed_sec": 0.8591765000019222,
+      "method_independence_canary": false,
+      "n_clients": 351,
+      "n_event_rows": 4144,
+      "n_windows": 100,
+      "path": "artifacts/e3_path_a_no2_eventtraces_v1/cityscanner_nyc_p2_measured_o_no2/seed34008/training_eventtrace",
+      "seed": 34008,
+      "status": "CREATED",
+      "trace_hash": "ee4a4f4e0bc685f5fc8a551d396e6fdf58e13fe891a9d5402380468ded894719"
+    },
+    {
+      "elapsed_sec": 0.9248210999940056,
+      "method_independence_canary": false,
+      "n_clients": 351,
+      "n_event_rows": 4144,
+      "n_windows": 100,
+      "path": "artifacts/e3_path_a_no2_eventtraces_v1/cityscanner_nyc_p2_measured_o_no2/seed34009/training_eventtrace",
+      "seed": 34009,
+      "status": "CREATED",
+      "trace_hash": "3bfec24431a3415a340feebfe31ffa564bd32174df40d7a976c7c711ab974d92"
+    },
+    {
+      "elapsed_sec": 1.0633359999919776,
+      "method_independence_canary": false,
+      "n_clients": 351,
+      "n_event_rows": 4144,
+      "n_windows": 100,
+      "path": "artifacts/e3_path_a_no2_eventtraces_v1/cityscanner_nyc_p2_measured_o_no2/seed34010/training_eventtrace",
+      "seed": 34010,
+      "status": "CREATED",
+      "trace_hash": "b49643d104b4dd82753b39159ffdf845a09c9644c7ba3a7104b6ecb2e736cc9a"
+    }
+  ],
+  "trace_root": "artifacts/e3_path_a_no2_eventtraces_v1/",
+  "u_layer": "CONTROLLED_EXPERIMENTAL compute_usable_r3 s_max=5",
+  "window_map": "rank(time_index)*100//n_train_slots"
+}

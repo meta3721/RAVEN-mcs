@@ -1,0 +1,55 @@
+{
+  "c1_kill": false,
+  "experiment_id": "JOINT-MEASURED-O-CS-NYC-P2",
+  "hybrid": true,
+  "kill_bar": -0.005,
+  "measured_o": true,
+  "n_expected": 50,
+  "n_ledger_rows": 50,
+  "not_mixed_into_table_ii": true,
+  "p_obs_bernoulli": false,
+  "paired": [
+    {
+      "Delta_c_s_paired_mean_diff": -0.5861461450304779,
+      "Delta_c_s_paired_rel_mean": -0.5838270048847992,
+      "Delta_group_paired_mean_diff": -0.18178759481440793,
+      "Delta_group_paired_rel_mean": -0.7866044861458688,
+      "RMSE_mu_paired_mean_diff": -0.003790832895542273,
+      "RMSE_mu_paired_rel_mean": -0.004309149082915118,
+      "WorstGroupRMSE_paired_mean_diff": -0.0039569487809101075,
+      "WorstGroupRMSE_paired_rel_mean": -0.004437750224228277,
+      "comparator": "fedau_window",
+      "n_paired": 10,
+      "scd_method": "raven"
+    },
+    {
+      "Delta_c_s_paired_mean_diff": -0.5886415643063336,
+      "Delta_c_s_paired_rel_mean": -0.5848689701192231,
+      "Delta_group_paired_mean_diff": -0.18482671201964898,
+      "Delta_group_paired_rel_mean": -0.7898177066342017,
+      "RMSE_mu_paired_mean_diff": -0.003945310008792091,
+      "RMSE_mu_paired_rel_mean": -0.004530070576855332,
+      "WorstGroupRMSE_paired_mean_diff": -0.00412326320735098,
+      "WorstGroupRMSE_paired_rel_mean": -0.004669338074783626,
+      "comparator": "obsuse_window",
+      "n_paired": 10,
+      "scd_method": "raven"
+    },
+    {
+      "Delta_c_s_paired_mean_diff": -0.28936521885672195,
+      "Delta_c_s_paired_rel_mean": -0.4096953843610459,
+      "Delta_group_paired_mean_diff": -0.030339051336645752,
+      "Delta_group_paired_rel_mean": -0.3248305856896675,
+      "RMSE_mu_paired_mean_diff": -0.004713815856721315,
+      "RMSE_mu_paired_rel_mean": -0.006528859980661933,
+      "WorstGroupRMSE_paired_mean_diff": -0.00479225585659907,
+      "WorstGroupRMSE_paired_rel_mean": -0.006472749387857378,
+      "comparator": "fedavg_window",
+      "n_paired": 10,
+      "scd_method": "raven"
+    }
+  ],
+  "scd_method": "raven",
+  "status": "PASS",
+  "updated_utc": "2026-09-11T08:20:59.963194+00:00"
+}

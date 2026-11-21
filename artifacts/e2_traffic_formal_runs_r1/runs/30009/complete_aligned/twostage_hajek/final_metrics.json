@@ -1,0 +1,37 @@
+{
+  "Gap_mis": -0.010337661916381302,
+  "P2_solver_failure_count": 0,
+  "RMSE_mu": 1.0060735475576434,
+  "RMSE_rho": 1.0164112094740247,
+  "active_window_count": 100,
+  "arrival_weight_sum": 1.0,
+  "clip_rate_stage1": 0.027198523698523696,
+  "clip_rate_stage2": 0.0,
+  "completed_windows": 100,
+  "denominator_zero_count": 0,
+  "effective_sample_size_mean": 1.4406779661016949,
+  "empirical_risk_objective": 1.0164112094740247,
+  "failed_attempt_count": 780,
+  "group_rmse": {
+    "block0": 0.8384887606908791,
+    "block1": 1.190544055106275,
+    "block2": 1.1784869611491628,
+    "block3": 0.7344697855109353
+  },
+  "hard_arrival_count": 1804,
+  "nonfinite_loss_count": 0,
+  "nonfinite_model_parameter_count": 0,
+  "policy": {
+    "uses_debt": false,
+    "uses_design_ratio": true,
+    "uses_hajek_local_loss": true,
+    "uses_instant_calibration": false,
+    "uses_observation_ipw": true,
+    "uses_staleness_penalty": false,
+    "uses_usable_ipw": true,
+    "uses_variance_penalty": false
+  },
+  "stale_update_count": 1010,
+  "target_risk_objective": 1.0060735475576434,
+  "target_weight_sum": 1.0
+}

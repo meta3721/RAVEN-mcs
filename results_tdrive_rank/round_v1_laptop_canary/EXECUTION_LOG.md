@@ -1,0 +1,498 @@
+# TD-R-E3 execution log
+
+- 2026-09-05T10:32:23.499928+00:00 MICRO fixture PASS method_independence=True
+- 2026-09-05T10:32:23.718081+00:00 START trace seed30001
+- 2026-09-05T10:43:57.163869+00:00 DONE trace seed30001 windows=178 rows=441898 hash=8e183010762598e8e1b705762c44e3dae0ee2fa5b644ba35dc8c989130fd5f34
+- 2026-09-05T10:43:58.006115+00:00 STAGE generate complete
+- 2026-09-05T10:44:18.149249+00:00 MICRO fixture reused
+- 2026-09-05T10:44:18.443287+00:00 START trace seed30002
+- 2026-09-05T10:49:32.004010+00:00 DONE trace seed30002 windows=178 rows=441898 hash=5fdcb5c652ded47d418f05c35db35c401f426639c45b5f2f2501153daa9bbb06
+- 2026-09-05T10:49:32.004010+00:00 START trace seed30003
+- 2026-09-05T10:55:54.198835+00:00 DONE trace seed30003 windows=178 rows=441898 hash=8f7acd4b3b1444fa9c811ecd35bd5adc45e2bf929ae33922af29b7a56a936b0f
+- 2026-09-05T10:55:54.199186+00:00 START trace seed30004
+- 2026-09-05T11:01:27.296897+00:00 DONE trace seed30004 windows=178 rows=441898 hash=9859df3c2e19ebb3ae1cd0da9533547497c53a94e5d2fd8f70745761544337d8
+- 2026-09-05T11:01:27.298200+00:00 START trace seed30005
+- 2026-09-05T11:06:53.122463+00:00 DONE trace seed30005 windows=178 rows=441898 hash=6da5c676232221aa439971451dcb008d4bbfb4b4d1a5ef681c257c5495dc8c3d
+- 2026-09-05T11:06:53.123463+00:00 START trace seed30006
+- 2026-09-05T11:12:26.305421+00:00 DONE trace seed30006 windows=178 rows=441898 hash=aab7695e6cc4347b1c17f62d830db9fde3fce96fd455e908d4fb1b80d92f29fa
+- 2026-09-05T11:12:26.305421+00:00 START trace seed30007
+- 2026-09-05T11:18:07.146270+00:00 DONE trace seed30007 windows=178 rows=441898 hash=75d3ce75c11c9eddf7fd4aaa6949c6c604bfde53b1dcb0cb8c95dcdb17e698e0
+- 2026-09-05T11:18:07.146270+00:00 START trace seed30008
+- 2026-09-05T11:23:45.676475+00:00 DONE trace seed30008 windows=178 rows=441898 hash=8e6d331316b2eff129042c4b405efc5201ca3a5ea452f94d782e3fe5664774ba
+- 2026-09-05T11:23:45.677475+00:00 START trace seed30009
+- 2026-09-05T11:29:40.463393+00:00 DONE trace seed30009 windows=178 rows=441898 hash=93193f7feb8425b77e2e44124294b85e25dd546bfbf8b199d537b45745bebcb4
+- 2026-09-05T11:29:40.464393+00:00 START trace seed30010
+- 2026-09-05T11:37:25.668963+00:00 DONE trace seed30010 windows=178 rows=441898 hash=6953bf50bb115aa13372c709c5e2a2f13cfa523e4534dc6c7b3f6c70624af089
+- 2026-09-05T11:37:26.388976+00:00 STAGE generate complete
+- 2026-09-05T11:37:44.573002+00:00 MICRO fixture reused
+- 2026-09-05T11:37:44.854952+00:00 REUSED trace seed30001
+- 2026-09-05T11:37:44.855959+00:00 REUSED trace seed30002
+- 2026-09-05T11:37:44.858086+00:00 REUSED trace seed30003
+- 2026-09-05T11:37:44.859081+00:00 REUSED trace seed30004
+- 2026-09-05T11:37:44.860084+00:00 REUSED trace seed30005
+- 2026-09-05T11:37:44.862083+00:00 REUSED trace seed30006
+- 2026-09-05T11:37:44.863082+00:00 REUSED trace seed30007
+- 2026-09-05T11:37:44.864080+00:00 REUSED trace seed30008
+- 2026-09-05T11:37:44.865081+00:00 REUSED trace seed30009
+- 2026-09-05T11:37:44.865081+00:00 REUSED trace seed30010
+- 2026-09-05T11:37:44.916895+00:00 STAGE generate complete
+- 2026-09-05T11:37:55.713573+00:00 TRAIN start n=1 device=cpu smoke=True
+- 2026-09-05T11:38:44.677743+00:00 [1/1] TRAIN tdrive_speed fedavg_window seed30001
+- 2026-09-05T11:40:27.534881+00:00 TRAIN start n=1 device=cpu smoke=True
+- 2026-09-05T11:41:26.952317+00:00 [1/1] TRAIN tdrive_speed fedavg_window seed30001
+- 2026-09-05T12:15:44.582818+00:00 TRAIN start n=1 device=cpu smoke=True
+- 2026-09-05T12:16:04.282476+00:00 [1/1] TRAIN tdrive_speed fedavg_window seed30001
+- 2026-09-05T12:16:09.146705+00:00     window 1/178 fedavg_window seed30001
+- 2026-09-05T12:18:49.115149+00:00 TRAIN start n=1 device=cpu smoke=True
+- 2026-09-05T12:19:11.293138+00:00 [1/1] TRAIN tdrive_speed fedavg_window seed30001
+- 2026-09-05T12:19:15.438198+00:00     window 1/178 fedavg_window seed30001
+- 2026-09-05T12:26:13.368102+00:00 TRAIN start n=1 device=cpu smoke=True
+- 2026-09-05T12:26:36.372514+00:00 [1/1] TRAIN tdrive_speed fedavg_window seed30001
+- 2026-09-05T12:28:52.916815+00:00     window 1/178 fedavg_window seed30001 sec=131.7
+- 2026-09-05T12:31:16.751879+00:00     window 2/178 fedavg_window seed30001 sec=143.8
+- 2026-09-05T12:34:12.873625+00:00     window 3/178 fedavg_window seed30001 sec=176.1
+- 2026-09-05T12:53:54.052253+00:00 TRAIN start n=1 device=cpu smoke=True
+- 2026-09-05T12:54:18.599166+00:00 [1/1] TRAIN tdrive_speed fedavg_window seed30001
+- 2026-09-05T12:56:30.201833+00:00     window 1/178 fedavg_window seed30001 sec=126.5
+- 2026-09-05T12:58:59.062136+00:00     window 2/178 fedavg_window seed30001 sec=148.8
+- 2026-09-05T13:01:59.651776+00:00     window 3/178 fedavg_window seed30001 sec=180.6
+- 2026-09-05T13:05:18.449616+00:00     window 4/178 fedavg_window seed30001 sec=198.8
+- 2026-09-05T13:08:03.614981+00:00     window 5/178 fedavg_window seed30001 sec=165.1
+- 2026-09-05T13:12:45.513234+00:00     window 6/178 fedavg_window seed30001 sec=281.9
+- 2026-09-05T13:17:43.602667+00:00     window 7/178 fedavg_window seed30001 sec=298.1
+- 2026-09-05T13:23:20.371289+00:00     window 8/178 fedavg_window seed30001 sec=336.8
+- 2026-09-05T13:29:16.483724+00:00     window 9/178 fedavg_window seed30001 sec=356.1
+- 2026-09-05T13:36:25.469037+00:00     window 10/178 fedavg_window seed30001 sec=429.0
+- 2026-09-05T13:43:41.735203+00:00     window 11/178 fedavg_window seed30001 sec=436.3
+- 2026-09-05T13:51:38.192734+00:00     window 12/178 fedavg_window seed30001 sec=476.4
+- 2026-09-05T14:00:09.335836+00:00     window 13/178 fedavg_window seed30001 sec=511.1
+- 2026-09-05T14:07:37.386192+00:00     window 14/178 fedavg_window seed30001 sec=448.0
+- 2026-09-05T14:16:34.844296+00:00     window 15/178 fedavg_window seed30001 sec=537.4
+- 2026-09-05T14:25:30.143740+00:00     window 16/178 fedavg_window seed30001 sec=535.3
+- 2026-09-05T14:35:16.579088+00:00     window 17/178 fedavg_window seed30001 sec=586.4
+- 2026-09-05T14:45:23.771516+00:00     window 18/178 fedavg_window seed30001 sec=607.2
+- 2026-09-05T15:05:14.420567+00:00 TRAIN start n=1 device=cpu smoke=True
+- 2026-09-05T15:05:39.900892+00:00 [1/1] TRAIN tdrive_speed fedavg_window seed30001
+- 2026-09-05T15:07:28.843187+00:00     window 1/178 fedavg_window seed30001 sec=104.0
+- 2026-09-05T15:09:10.906077+00:00     window 2/178 fedavg_window seed30001 sec=102.1
+- 2026-09-05T15:10:50.297905+00:00     window 3/178 fedavg_window seed30001 sec=99.4
+- 2026-09-05T15:12:25.178835+00:00     window 4/178 fedavg_window seed30001 sec=94.9
+- 2026-09-05T15:14:05.801677+00:00     window 5/178 fedavg_window seed30001 sec=100.6
+- 2026-09-05T15:15:58.257577+00:00     window 6/178 fedavg_window seed30001 sec=112.5
+- 2026-09-05T15:17:48.619427+00:00     window 7/178 fedavg_window seed30001 sec=110.3
+- 2026-09-05T15:17:51.066314+00:00 TRAIN failed fedavg_window seed30001; traceback C:\Cursor\raven.mcs\results_tdrive_rank\round_v1\runs\tdrive_speed\fedavg_window\seed30001\TD_R_TRAIN_TRACEBACK.txt
+- 2026-09-05T15:26:03.845008+00:00 TRAIN start n=1 device=cpu smoke=True
+- 2026-09-05T15:26:30.302944+00:00 [1/1] TRAIN tdrive_speed fedavg_window seed30001
+- 2026-09-05T15:28:16.071698+00:00     window 1/178 fedavg_window seed30001 sec=100.8
+- 2026-09-05T15:29:59.197397+00:00     window 2/178 fedavg_window seed30001 sec=103.1
+- 2026-09-05T15:31:41.610329+00:00     window 3/178 fedavg_window seed30001 sec=102.4
+- 2026-09-05T15:33:19.621947+00:00     window 4/178 fedavg_window seed30001 sec=98.0
+- 2026-09-05T15:34:59.753691+00:00     window 5/178 fedavg_window seed30001 sec=100.1
+- 2026-09-05T15:36:47.533009+00:00     window 6/178 fedavg_window seed30001 sec=107.8
+- 2026-09-05T15:38:38.112667+00:00     window 7/178 fedavg_window seed30001 sec=110.6
+- 2026-09-05T15:40:30.399825+00:00     window 8/178 fedavg_window seed30001 sec=112.3
+- 2026-09-05T15:42:21.969950+00:00     window 9/178 fedavg_window seed30001 sec=111.6
+- 2026-09-05T15:44:15.415849+00:00     window 10/178 fedavg_window seed30001 sec=113.4
+- 2026-09-05T15:46:10.588179+00:00     window 11/178 fedavg_window seed30001 sec=115.2
+- 2026-09-05T15:48:11.150083+00:00     window 12/178 fedavg_window seed30001 sec=120.6
+- 2026-09-05T15:50:15.864594+00:00     window 13/178 fedavg_window seed30001 sec=124.7
+- 2026-09-05T15:52:18.556096+00:00     window 14/178 fedavg_window seed30001 sec=122.7
+- 2026-09-05T15:54:18.197590+00:00     window 15/178 fedavg_window seed30001 sec=119.6
+- 2026-09-05T15:56:13.734679+00:00     window 16/178 fedavg_window seed30001 sec=115.5
+- 2026-09-05T15:58:01.004265+00:00     window 17/178 fedavg_window seed30001 sec=107.3
+- 2026-09-05T15:59:45.528725+00:00     window 18/178 fedavg_window seed30001 sec=104.5
+- 2026-09-05T16:01:22.429381+00:00     window 19/178 fedavg_window seed30001 sec=96.9
+- 2026-09-06T02:13:01.217974+00:00 TRAIN start n=1 device=cpu smoke=True
+- 2026-09-06T02:13:21.316367+00:00 [1/1] TRAIN tdrive_speed fedavg_window seed30001
+- 2026-09-06T02:15:13.416943+00:00     window 1/178 fedavg_window seed30001 sec=107.8
+- 2026-09-06T02:17:13.568187+00:00     window 2/178 fedavg_window seed30001 sec=120.1
+- 2026-09-06T02:19:04.859667+00:00     window 3/178 fedavg_window seed30001 sec=111.3
+- 2026-09-06T02:20:56.053429+00:00     window 4/178 fedavg_window seed30001 sec=111.2
+- 2026-09-06T02:22:54.580659+00:00     window 5/178 fedavg_window seed30001 sec=118.5
+- 2026-09-06T02:24:51.920280+00:00     window 6/178 fedavg_window seed30001 sec=117.3
+- 2026-09-06T02:26:48.166001+00:00     window 7/178 fedavg_window seed30001 sec=116.2
+- 2026-09-06T02:28:44.840124+00:00     window 8/178 fedavg_window seed30001 sec=116.7
+- 2026-09-06T02:30:38.245722+00:00     window 9/178 fedavg_window seed30001 sec=113.4
+- 2026-09-06T02:32:44.079873+00:00     window 10/178 fedavg_window seed30001 sec=125.8
+- 2026-09-06T02:34:47.491630+00:00     window 11/178 fedavg_window seed30001 sec=123.4
+- 2026-09-06T02:36:57.931976+00:00     window 12/178 fedavg_window seed30001 sec=130.4
+- 2026-09-06T02:39:02.207373+00:00     window 13/178 fedavg_window seed30001 sec=124.3
+- 2026-09-06T02:41:04.407125+00:00     window 14/178 fedavg_window seed30001 sec=122.2
+- 2026-09-06T02:43:05.998482+00:00     window 15/178 fedavg_window seed30001 sec=121.6
+- 2026-09-06T02:45:04.956954+00:00     window 16/178 fedavg_window seed30001 sec=119.0
+- 2026-09-06T02:46:55.734648+00:00     window 17/178 fedavg_window seed30001 sec=110.8
+- 2026-09-06T02:48:41.371025+00:00     window 18/178 fedavg_window seed30001 sec=105.6
+- 2026-09-06T02:50:22.462413+00:00     window 19/178 fedavg_window seed30001 sec=101.1
+- 2026-09-06T02:51:56.743082+00:00     window 20/178 fedavg_window seed30001 sec=94.3
+- 2026-09-06T02:53:25.126851+00:00     window 21/178 fedavg_window seed30001 sec=88.4
+- 2026-09-06T02:54:49.888448+00:00     window 22/178 fedavg_window seed30001 sec=84.8
+- 2026-09-06T02:56:08.705357+00:00     window 23/178 fedavg_window seed30001 sec=78.8
+- 2026-09-06T02:57:20.896964+00:00     window 24/178 fedavg_window seed30001 sec=72.2
+- 2026-09-06T02:58:20.607138+00:00     window 25/178 fedavg_window seed30001 sec=59.7
+- 2026-09-06T02:58:46.338268+00:00     window 26/178 fedavg_window seed30001 sec=25.7
+- 2026-09-06T02:59:22.923622+00:00     window 27/178 fedavg_window seed30001 sec=36.6
+- 2026-09-06T03:00:02.147422+00:00     window 28/178 fedavg_window seed30001 sec=39.2
+- 2026-09-06T03:00:32.062892+00:00     window 29/178 fedavg_window seed30001 sec=29.9
+- 2026-09-06T03:00:55.680804+00:00     window 30/178 fedavg_window seed30001 sec=23.6
+- 2026-09-06T03:01:16.385175+00:00     window 31/178 fedavg_window seed30001 sec=20.7
+- 2026-09-06T03:01:35.690427+00:00     window 32/178 fedavg_window seed30001 sec=19.3
+- 2026-09-06T03:01:52.637005+00:00     window 33/178 fedavg_window seed30001 sec=16.9
+- 2026-09-06T03:02:08.773534+00:00     window 34/178 fedavg_window seed30001 sec=16.1
+- 2026-09-06T03:02:27.816692+00:00     window 35/178 fedavg_window seed30001 sec=19.0
+- 2026-09-06T03:02:47.432040+00:00     window 36/178 fedavg_window seed30001 sec=19.6
+- 2026-09-06T03:03:13.224010+00:00     window 37/178 fedavg_window seed30001 sec=25.8
+- 2026-09-06T03:03:40.965310+00:00     window 38/178 fedavg_window seed30001 sec=27.7
+- 2026-09-06T03:04:22.552875+00:00     window 39/178 fedavg_window seed30001 sec=41.6
+- 2026-09-06T03:05:26.190814+00:00     window 40/178 fedavg_window seed30001 sec=63.6
+- 2026-09-06T03:06:48.656854+00:00     window 41/178 fedavg_window seed30001 sec=82.5
+- 2026-09-06T03:08:33.170879+00:00     window 42/178 fedavg_window seed30001 sec=104.5
+- 2026-09-06T03:10:25.551420+00:00     window 43/178 fedavg_window seed30001 sec=112.4
+- 2026-09-06T03:12:20.241387+00:00     window 44/178 fedavg_window seed30001 sec=114.7
+- 2026-09-06T03:14:17.847156+00:00     window 45/178 fedavg_window seed30001 sec=117.6
+- 2026-09-06T03:16:13.305885+00:00     window 46/178 fedavg_window seed30001 sec=115.5
+- 2026-09-06T03:18:23.451708+00:00     window 47/178 fedavg_window seed30001 sec=130.1
+- 2026-09-06T03:20:33.241871+00:00     window 48/178 fedavg_window seed30001 sec=129.8
+- 2026-09-06T03:22:46.181011+00:00     window 49/178 fedavg_window seed30001 sec=132.9
+- 2026-09-06T03:24:47.486819+00:00     window 50/178 fedavg_window seed30001 sec=121.3
+- 2026-09-06T03:26:42.219247+00:00     window 51/178 fedavg_window seed30001 sec=114.7
+- 2026-09-06T03:28:41.122355+00:00     window 52/178 fedavg_window seed30001 sec=118.9
+- 2026-09-06T03:30:40.842312+00:00     window 53/178 fedavg_window seed30001 sec=119.7
+- 2026-09-06T03:32:57.659319+00:00     window 54/178 fedavg_window seed30001 sec=136.8
+- 2026-09-06T03:35:12.176801+00:00     window 55/178 fedavg_window seed30001 sec=134.5
+- 2026-09-06T03:37:30.379334+00:00     window 56/178 fedavg_window seed30001 sec=138.2
+- 2026-09-06T03:39:51.765537+00:00     window 57/178 fedavg_window seed30001 sec=141.4
+- 2026-09-06T03:42:08.380209+00:00     window 58/178 fedavg_window seed30001 sec=136.6
+- 2026-09-06T03:44:38.757135+00:00     window 59/178 fedavg_window seed30001 sec=150.4
+- 2026-09-06T03:47:06.626770+00:00     window 60/178 fedavg_window seed30001 sec=147.9
+- 2026-09-06T03:49:34.665194+00:00     window 61/178 fedavg_window seed30001 sec=148.0
+- 2026-09-06T03:52:06.995794+00:00     window 62/178 fedavg_window seed30001 sec=152.3
+- 2026-09-06T03:54:29.394300+00:00     window 63/178 fedavg_window seed30001 sec=142.4
+- 2026-09-06T03:56:40.055439+00:00     window 64/178 fedavg_window seed30001 sec=130.7
+- 2026-09-06T03:58:46.758065+00:00     window 65/178 fedavg_window seed30001 sec=126.7
+- 2026-09-06T04:00:50.265900+00:00     window 66/178 fedavg_window seed30001 sec=123.5
+- 2026-09-06T04:03:06.084667+00:00     window 67/178 fedavg_window seed30001 sec=135.8
+- 2026-09-06T04:05:08.324385+00:00     window 68/178 fedavg_window seed30001 sec=122.2
+- 2026-09-06T04:06:55.144476+00:00     window 69/178 fedavg_window seed30001 sec=106.8
+- 2026-09-06T04:08:43.811636+00:00     window 70/178 fedavg_window seed30001 sec=108.7
+- 2026-09-06T04:10:19.342416+00:00     window 71/178 fedavg_window seed30001 sec=95.5
+- 2026-09-06T04:11:42.239167+00:00     window 72/178 fedavg_window seed30001 sec=82.9
+- 2026-09-06T04:12:55.988005+00:00     window 73/178 fedavg_window seed30001 sec=73.7
+- 2026-09-06T04:13:59.619506+00:00     window 74/178 fedavg_window seed30001 sec=63.6
+- 2026-09-06T04:14:56.454110+00:00     window 75/178 fedavg_window seed30001 sec=56.8
+- 2026-09-06T04:15:50.385362+00:00     window 76/178 fedavg_window seed30001 sec=53.9
+- 2026-09-06T04:16:32.913092+00:00     window 77/178 fedavg_window seed30001 sec=42.5
+- 2026-09-06T04:17:15.570436+00:00     window 78/178 fedavg_window seed30001 sec=42.7
+- 2026-09-06T04:17:47.770056+00:00     window 79/178 fedavg_window seed30001 sec=32.2
+- 2026-09-06T04:18:24.417933+00:00     window 80/178 fedavg_window seed30001 sec=36.6
+- 2026-09-06T04:18:51.835713+00:00     window 81/178 fedavg_window seed30001 sec=27.4
+- 2026-09-06T04:19:20.998663+00:00     window 82/178 fedavg_window seed30001 sec=29.2
+- 2026-09-06T04:20:00.156266+00:00     window 83/178 fedavg_window seed30001 sec=39.2
+- 2026-09-06T04:20:34.956369+00:00     window 84/178 fedavg_window seed30001 sec=34.8
+- 2026-09-06T04:21:19.680041+00:00     window 85/178 fedavg_window seed30001 sec=44.7
+- 2026-09-06T04:22:30.715053+00:00     window 86/178 fedavg_window seed30001 sec=71.0
+- 2026-09-06T04:24:18.012889+00:00     window 87/178 fedavg_window seed30001 sec=107.3
+- 2026-09-06T04:26:25.719869+00:00     window 88/178 fedavg_window seed30001 sec=127.7
+- 2026-09-06T04:27:50.666848+00:00 TRAIN failed fedavg_window seed30001; traceback C:\Cursor\raven.mcs\results_tdrive_rank\round_v1\runs\tdrive_speed\fedavg_window\seed30001\TD_R_TRAIN_TRACEBACK.txt
+- 2026-09-06T04:43:59.229691+00:00 TRAIN start n=1 device=cpu smoke=True
+- 2026-09-06T04:44:27.946045+00:00 [1/1] TRAIN tdrive_speed fedavg_window seed30001
+- 2026-09-06T04:45:09.520986+00:00     window 1/178 fedavg_window seed30001 sec=35.6 ckpts=2
+- 2026-09-06T04:45:44.435292+00:00     window 2/178 fedavg_window seed30001 sec=34.9 ckpts=3
+- 2026-09-06T04:46:16.625065+00:00     window 3/178 fedavg_window seed30001 sec=32.2 ckpts=4
+- 2026-09-06T04:46:47.604416+00:00     window 4/178 fedavg_window seed30001 sec=31.0 ckpts=5
+- 2026-09-06T04:47:19.812906+00:00     window 5/178 fedavg_window seed30001 sec=32.2 ckpts=6
+- 2026-09-06T04:47:48.334636+00:00     window 6/178 fedavg_window seed30001 sec=28.5 ckpts=7
+- 2026-09-06T04:48:12.343534+00:00     window 7/178 fedavg_window seed30001 sec=24.0 ckpts=8
+- 2026-09-06T04:48:37.098064+00:00     window 8/178 fedavg_window seed30001 sec=24.8 ckpts=9
+- 2026-09-06T04:49:09.427197+00:00     window 9/178 fedavg_window seed30001 sec=32.3 ckpts=9
+- 2026-09-06T04:49:39.957646+00:00     window 10/178 fedavg_window seed30001 sec=30.5 ckpts=9
+- 2026-09-06T04:50:10.106790+00:00     window 11/178 fedavg_window seed30001 sec=30.1 ckpts=9
+- 2026-09-06T04:50:40.926081+00:00     window 12/178 fedavg_window seed30001 sec=30.8 ckpts=9
+- 2026-09-06T04:51:13.057208+00:00     window 13/178 fedavg_window seed30001 sec=32.1 ckpts=9
+- 2026-09-06T04:51:44.576229+00:00     window 14/178 fedavg_window seed30001 sec=31.5 ckpts=9
+- 2026-09-06T04:52:14.074596+00:00     window 15/178 fedavg_window seed30001 sec=29.5 ckpts=9
+- 2026-09-06T04:52:42.227293+00:00     window 16/178 fedavg_window seed30001 sec=28.2 ckpts=9
+- 2026-09-06T04:53:09.817912+00:00     window 17/178 fedavg_window seed30001 sec=27.6 ckpts=9
+- 2026-09-06T04:53:38.872871+00:00     window 18/178 fedavg_window seed30001 sec=29.0 ckpts=9
+- 2026-09-06T04:54:09.700255+00:00     window 19/178 fedavg_window seed30001 sec=30.8 ckpts=9
+- 2026-09-06T04:54:40.203561+00:00     window 20/178 fedavg_window seed30001 sec=30.5 ckpts=9
+- 2026-09-06T04:55:10.373183+00:00     window 21/178 fedavg_window seed30001 sec=30.2 ckpts=9
+- 2026-09-06T04:55:37.238915+00:00     window 22/178 fedavg_window seed30001 sec=26.9 ckpts=9
+- 2026-09-06T04:56:03.862083+00:00     window 23/178 fedavg_window seed30001 sec=26.6 ckpts=9
+- 2026-09-06T04:56:28.789156+00:00     window 24/178 fedavg_window seed30001 sec=24.9 ckpts=9
+- 2026-09-06T04:56:55.761904+00:00     window 25/178 fedavg_window seed30001 sec=27.0 ckpts=9
+- 2026-09-06T04:57:11.234525+00:00     window 26/178 fedavg_window seed30001 sec=15.5 ckpts=9
+- 2026-09-06T04:57:29.035562+00:00     window 27/178 fedavg_window seed30001 sec=17.8 ckpts=9
+- 2026-09-06T04:57:47.372260+00:00     window 28/178 fedavg_window seed30001 sec=18.3 ckpts=9
+- 2026-09-06T04:58:02.678603+00:00     window 29/178 fedavg_window seed30001 sec=15.3 ckpts=9
+- 2026-09-06T04:58:17.038324+00:00     window 30/178 fedavg_window seed30001 sec=14.4 ckpts=9
+- 2026-09-06T04:58:30.670488+00:00     window 31/178 fedavg_window seed30001 sec=13.6 ckpts=9
+- 2026-09-06T04:58:44.460039+00:00     window 32/178 fedavg_window seed30001 sec=13.8 ckpts=9
+- 2026-09-06T04:58:59.106899+00:00     window 33/178 fedavg_window seed30001 sec=14.6 ckpts=9
+- 2026-09-06T04:59:12.163634+00:00     window 34/178 fedavg_window seed30001 sec=13.1 ckpts=9
+- 2026-09-06T04:59:25.676830+00:00     window 35/178 fedavg_window seed30001 sec=13.5 ckpts=9
+- 2026-09-06T04:59:40.295247+00:00     window 36/178 fedavg_window seed30001 sec=14.6 ckpts=9
+- 2026-09-06T04:59:56.829877+00:00     window 37/178 fedavg_window seed30001 sec=16.5 ckpts=9
+- 2026-09-06T05:00:14.647398+00:00     window 38/178 fedavg_window seed30001 sec=17.8 ckpts=9
+- 2026-09-06T05:00:34.684605+00:00     window 39/178 fedavg_window seed30001 sec=20.0 ckpts=9
+- 2026-09-06T05:00:57.028429+00:00     window 40/178 fedavg_window seed30001 sec=22.3 ckpts=9
+- 2026-09-06T05:01:24.628040+00:00     window 41/178 fedavg_window seed30001 sec=27.6 ckpts=9
+- 2026-09-06T05:01:55.173714+00:00     window 42/178 fedavg_window seed30001 sec=30.5 ckpts=9
+- 2026-09-06T05:02:21.487108+00:00     window 43/178 fedavg_window seed30001 sec=26.3 ckpts=9
+- 2026-09-06T05:02:48.973399+00:00     window 44/178 fedavg_window seed30001 sec=27.5 ckpts=9
+- 2026-09-06T05:03:20.889311+00:00     window 45/178 fedavg_window seed30001 sec=31.9 ckpts=9
+- 2026-09-06T05:03:49.792363+00:00     window 46/178 fedavg_window seed30001 sec=28.9 ckpts=9
+- 2026-09-06T05:06:55.265493+00:00 TRAIN start n=1 device=cpu smoke=True
+- 2026-09-06T05:07:23.867462+00:00 [1/1] TRAIN tdrive_speed fedavg_window seed30001
+- 2026-09-06T05:07:54.058269+00:00     window 1/178 fedavg_window seed30001 sec=24.6 ckpts=2
+- 2026-09-06T05:08:20.300552+00:00     window 2/178 fedavg_window seed30001 sec=26.2 ckpts=3
+- 2026-09-06T05:08:44.686492+00:00     window 3/178 fedavg_window seed30001 sec=24.4 ckpts=4
+- 2026-09-06T05:09:09.709631+00:00     window 4/178 fedavg_window seed30001 sec=25.0 ckpts=5
+- 2026-09-06T05:09:34.943378+00:00     window 5/178 fedavg_window seed30001 sec=25.2 ckpts=6
+- 2026-09-06T05:09:59.731305+00:00     window 6/178 fedavg_window seed30001 sec=24.8 ckpts=7
+- 2026-09-06T05:10:22.850594+00:00     window 7/178 fedavg_window seed30001 sec=23.1 ckpts=8
+- 2026-09-06T05:10:44.608102+00:00     window 8/178 fedavg_window seed30001 sec=21.8 ckpts=9
+- 2026-09-06T05:11:08.291539+00:00     window 9/178 fedavg_window seed30001 sec=23.7 ckpts=9
+- 2026-09-06T05:11:31.764320+00:00     window 10/178 fedavg_window seed30001 sec=23.5 ckpts=9
+- 2026-09-06T05:11:51.642227+00:00     window 11/178 fedavg_window seed30001 sec=19.9 ckpts=9
+- 2026-09-06T05:12:13.469546+00:00     window 12/178 fedavg_window seed30001 sec=21.8 ckpts=9
+- 2026-09-06T05:12:35.244158+00:00     window 13/178 fedavg_window seed30001 sec=21.8 ckpts=9
+- 2026-09-06T05:12:56.940409+00:00     window 14/178 fedavg_window seed30001 sec=21.7 ckpts=9
+- 2026-09-06T05:13:22.893945+00:00     window 15/178 fedavg_window seed30001 sec=26.0 ckpts=9
+- 2026-09-06T05:13:48.601825+00:00     window 16/178 fedavg_window seed30001 sec=25.7 ckpts=9
+- 2026-09-06T05:14:15.103648+00:00     window 17/178 fedavg_window seed30001 sec=26.5 ckpts=9
+- 2026-09-06T05:14:40.772894+00:00     window 18/178 fedavg_window seed30001 sec=25.7 ckpts=9
+- 2026-09-06T05:15:05.313435+00:00     window 19/178 fedavg_window seed30001 sec=24.5 ckpts=9
+- 2026-09-06T05:15:29.892552+00:00     window 20/178 fedavg_window seed30001 sec=24.6 ckpts=9
+- 2026-09-06T05:15:53.419085+00:00     window 21/178 fedavg_window seed30001 sec=23.5 ckpts=9
+- 2026-09-06T05:16:17.813052+00:00     window 22/178 fedavg_window seed30001 sec=24.4 ckpts=9
+- 2026-09-06T05:16:40.186193+00:00     window 23/178 fedavg_window seed30001 sec=22.4 ckpts=9
+- 2026-09-06T05:17:00.535429+00:00     window 24/178 fedavg_window seed30001 sec=20.3 ckpts=9
+- 2026-09-06T05:17:20.031192+00:00     window 25/178 fedavg_window seed30001 sec=19.5 ckpts=9
+- 2026-09-06T05:17:33.358763+00:00     window 26/178 fedavg_window seed30001 sec=13.3 ckpts=9
+- 2026-09-06T05:17:47.823150+00:00     window 27/178 fedavg_window seed30001 sec=14.5 ckpts=9
+- 2026-09-06T05:18:02.853916+00:00     window 28/178 fedavg_window seed30001 sec=15.0 ckpts=9
+- 2026-09-06T05:18:16.473054+00:00     window 29/178 fedavg_window seed30001 sec=13.6 ckpts=9
+- 2026-09-06T05:18:29.659015+00:00     window 30/178 fedavg_window seed30001 sec=13.2 ckpts=9
+- 2026-09-06T05:18:42.217502+00:00     window 31/178 fedavg_window seed30001 sec=12.6 ckpts=9
+- 2026-09-06T05:18:55.443121+00:00     window 32/178 fedavg_window seed30001 sec=13.2 ckpts=9
+- 2026-09-06T05:19:06.356043+00:00     window 33/178 fedavg_window seed30001 sec=10.9 ckpts=9
+- 2026-09-06T05:19:16.890069+00:00     window 34/178 fedavg_window seed30001 sec=10.5 ckpts=9
+- 2026-09-06T05:19:28.624227+00:00     window 35/178 fedavg_window seed30001 sec=11.7 ckpts=9
+- 2026-09-06T05:19:40.446261+00:00     window 36/178 fedavg_window seed30001 sec=11.8 ckpts=9
+- 2026-09-06T05:19:54.476561+00:00     window 37/178 fedavg_window seed30001 sec=14.0 ckpts=9
+- 2026-09-06T05:20:09.187690+00:00     window 38/178 fedavg_window seed30001 sec=14.7 ckpts=9
+- 2026-09-06T05:20:28.173010+00:00     window 39/178 fedavg_window seed30001 sec=19.0 ckpts=9
+- 2026-09-06T05:20:49.252563+00:00     window 40/178 fedavg_window seed30001 sec=21.1 ckpts=9
+- 2026-09-06T05:21:11.744305+00:00     window 41/178 fedavg_window seed30001 sec=22.5 ckpts=9
+- 2026-09-06T05:21:35.864416+00:00     window 42/178 fedavg_window seed30001 sec=24.1 ckpts=9
+- 2026-09-06T05:21:59.171989+00:00     window 43/178 fedavg_window seed30001 sec=23.3 ckpts=9
+- 2026-09-06T05:22:22.630356+00:00     window 44/178 fedavg_window seed30001 sec=23.5 ckpts=9
+- 2026-09-06T05:22:48.367704+00:00     window 45/178 fedavg_window seed30001 sec=25.7 ckpts=9
+- 2026-09-06T05:23:12.849017+00:00     window 46/178 fedavg_window seed30001 sec=24.5 ckpts=9
+- 2026-09-06T05:23:40.506287+00:00     window 47/178 fedavg_window seed30001 sec=27.7 ckpts=9
+- 2026-09-06T05:24:10.688789+00:00     window 48/178 fedavg_window seed30001 sec=30.2 ckpts=9
+- 2026-09-06T05:24:39.465427+00:00     window 49/178 fedavg_window seed30001 sec=28.8 ckpts=9
+- 2026-09-06T05:25:07.423371+00:00     window 50/178 fedavg_window seed30001 sec=28.0 ckpts=9
+- 2026-09-06T05:25:34.661510+00:00     window 51/178 fedavg_window seed30001 sec=27.2 ckpts=9
+- 2026-09-06T05:26:01.149567+00:00     window 52/178 fedavg_window seed30001 sec=26.5 ckpts=9
+- 2026-09-06T05:26:27.038949+00:00     window 53/178 fedavg_window seed30001 sec=25.9 ckpts=9
+- 2026-09-06T05:26:56.519637+00:00     window 54/178 fedavg_window seed30001 sec=29.5 ckpts=9
+- 2026-09-06T05:27:27.172071+00:00     window 55/178 fedavg_window seed30001 sec=30.7 ckpts=9
+- 2026-09-06T05:27:57.036263+00:00     window 56/178 fedavg_window seed30001 sec=29.8 ckpts=9
+- 2026-09-06T05:28:29.185174+00:00     window 57/178 fedavg_window seed30001 sec=32.1 ckpts=9
+- 2026-09-06T05:29:00.166082+00:00     window 58/178 fedavg_window seed30001 sec=31.0 ckpts=9
+- 2026-09-06T05:29:32.309454+00:00     window 59/178 fedavg_window seed30001 sec=32.1 ckpts=9
+- 2026-09-06T05:30:03.353745+00:00     window 60/178 fedavg_window seed30001 sec=31.0 ckpts=9
+- 2026-09-06T05:30:35.861658+00:00     window 61/178 fedavg_window seed30001 sec=32.5 ckpts=9
+- 2026-09-06T05:31:07.880622+00:00     window 62/178 fedavg_window seed30001 sec=32.0 ckpts=9
+- 2026-09-06T05:31:40.701911+00:00     window 63/178 fedavg_window seed30001 sec=32.8 ckpts=9
+- 2026-09-06T05:32:12.154883+00:00     window 64/178 fedavg_window seed30001 sec=31.4 ckpts=9
+- 2026-09-06T05:32:43.767187+00:00     window 65/178 fedavg_window seed30001 sec=31.6 ckpts=9
+- 2026-09-06T05:33:13.710091+00:00     window 66/178 fedavg_window seed30001 sec=29.9 ckpts=9
+- 2026-09-06T05:33:46.310668+00:00     window 67/178 fedavg_window seed30001 sec=32.6 ckpts=9
+- 2026-09-06T05:34:20.633197+00:00     window 68/178 fedavg_window seed30001 sec=34.3 ckpts=9
+- 2026-09-06T05:34:53.555547+00:00     window 69/178 fedavg_window seed30001 sec=32.9 ckpts=9
+- 2026-09-06T05:35:28.933696+00:00     window 70/178 fedavg_window seed30001 sec=35.4 ckpts=9
+- 2026-09-06T05:39:11.943269+00:00 TRAIN start n=1 device=cpu smoke=True
+- 2026-09-06T05:39:33.213015+00:00 [1/1] TRAIN tdrive_speed fedavg_window seed30001
+- 2026-09-06T05:39:58.782017+00:00     window 1/178 fedavg_window seed30001 sec=20.9 ckpts=2
+- 2026-09-06T05:40:22.274078+00:00     window 2/178 fedavg_window seed30001 sec=23.5 ckpts=3
+- 2026-09-06T05:40:40.586147+00:00     window 3/178 fedavg_window seed30001 sec=18.3 ckpts=4
+- 2026-09-06T05:41:01.287000+00:00     window 4/178 fedavg_window seed30001 sec=20.7 ckpts=5
+- 2026-09-06T05:41:24.115374+00:00     window 5/178 fedavg_window seed30001 sec=22.8 ckpts=6
+- 2026-09-06T05:41:46.366483+00:00     window 6/178 fedavg_window seed30001 sec=22.2 ckpts=7
+- 2026-09-06T05:42:05.419204+00:00     window 7/178 fedavg_window seed30001 sec=19.0 ckpts=8
+- 2026-09-06T05:42:24.272547+00:00     window 8/178 fedavg_window seed30001 sec=18.8 ckpts=9
+- 2026-09-06T05:42:43.537270+00:00     window 9/178 fedavg_window seed30001 sec=19.3 ckpts=9
+- 2026-09-06T05:43:05.784862+00:00     window 10/178 fedavg_window seed30001 sec=22.2 ckpts=9
+- 2026-09-06T05:43:25.772782+00:00     window 11/178 fedavg_window seed30001 sec=20.0 ckpts=9
+- 2026-09-06T05:43:49.501833+00:00     window 12/178 fedavg_window seed30001 sec=23.7 ckpts=9
+- 2026-09-06T05:44:10.449701+00:00     window 13/178 fedavg_window seed30001 sec=20.9 ckpts=9
+- 2026-09-06T05:44:30.481835+00:00     window 14/178 fedavg_window seed30001 sec=20.0 ckpts=9
+- 2026-09-06T05:44:48.757954+00:00     window 15/178 fedavg_window seed30001 sec=18.3 ckpts=9
+- 2026-09-06T05:45:05.713620+00:00     window 16/178 fedavg_window seed30001 sec=17.0 ckpts=9
+- 2026-09-06T05:45:21.686050+00:00     window 17/178 fedavg_window seed30001 sec=16.0 ckpts=9
+- 2026-09-06T05:45:36.685303+00:00     window 18/178 fedavg_window seed30001 sec=15.0 ckpts=9
+- 2026-09-06T05:45:51.443274+00:00     window 19/178 fedavg_window seed30001 sec=14.8 ckpts=9
+- 2026-09-06T05:46:04.155252+00:00     window 20/178 fedavg_window seed30001 sec=12.7 ckpts=9
+- 2026-09-06T05:46:17.218027+00:00     window 21/178 fedavg_window seed30001 sec=13.1 ckpts=9
+- 2026-09-06T05:46:28.493474+00:00     window 22/178 fedavg_window seed30001 sec=11.3 ckpts=9
+- 2026-09-06T05:46:40.507506+00:00     window 23/178 fedavg_window seed30001 sec=12.0 ckpts=9
+- 2026-09-06T05:46:49.887543+00:00     window 24/178 fedavg_window seed30001 sec=9.4 ckpts=9
+- 2026-09-06T05:46:58.329085+00:00     window 25/178 fedavg_window seed30001 sec=8.4 ckpts=9
+- 2026-09-06T05:47:01.479938+00:00     window 26/178 fedavg_window seed30001 sec=3.1 ckpts=9
+- 2026-09-06T05:47:06.960690+00:00     window 27/178 fedavg_window seed30001 sec=5.5 ckpts=9
+- 2026-09-06T05:47:13.904484+00:00     window 28/178 fedavg_window seed30001 sec=6.9 ckpts=9
+- 2026-09-06T05:47:17.922219+00:00     window 29/178 fedavg_window seed30001 sec=4.0 ckpts=9
+- 2026-09-06T05:47:20.985573+00:00     window 30/178 fedavg_window seed30001 sec=3.1 ckpts=9
+- 2026-09-06T05:47:23.719152+00:00     window 31/178 fedavg_window seed30001 sec=2.7 ckpts=9
+- 2026-09-06T05:47:26.734397+00:00     window 32/178 fedavg_window seed30001 sec=3.0 ckpts=9
+- 2026-09-06T05:47:29.797600+00:00     window 33/178 fedavg_window seed30001 sec=3.1 ckpts=9
+- 2026-09-06T05:47:33.183948+00:00     window 34/178 fedavg_window seed30001 sec=3.4 ckpts=9
+- 2026-09-06T05:47:35.557907+00:00     window 35/178 fedavg_window seed30001 sec=2.4 ckpts=9
+- 2026-09-06T05:47:37.817437+00:00     window 36/178 fedavg_window seed30001 sec=2.3 ckpts=9
+- 2026-09-06T05:47:41.085792+00:00     window 37/178 fedavg_window seed30001 sec=3.3 ckpts=9
+- 2026-09-06T05:47:44.619976+00:00     window 38/178 fedavg_window seed30001 sec=3.5 ckpts=9
+- 2026-09-06T05:47:49.657529+00:00     window 39/178 fedavg_window seed30001 sec=5.0 ckpts=9
+- 2026-09-06T05:47:57.233670+00:00     window 40/178 fedavg_window seed30001 sec=7.6 ckpts=9
+- 2026-09-06T05:48:12.888232+00:00     window 41/178 fedavg_window seed30001 sec=15.7 ckpts=9
+- 2026-09-06T05:48:28.439405+00:00     window 42/178 fedavg_window seed30001 sec=15.5 ckpts=9
+- 2026-09-06T05:48:43.179633+00:00     window 43/178 fedavg_window seed30001 sec=14.7 ckpts=9
+- 2026-09-06T05:48:58.082785+00:00     window 44/178 fedavg_window seed30001 sec=14.9 ckpts=9
+- 2026-09-06T05:49:15.934733+00:00     window 45/178 fedavg_window seed30001 sec=17.8 ckpts=9
+- 2026-09-06T05:49:32.514038+00:00     window 46/178 fedavg_window seed30001 sec=16.6 ckpts=9
+- 2026-09-06T05:49:52.557328+00:00     window 47/178 fedavg_window seed30001 sec=20.0 ckpts=9
+- 2026-09-06T05:50:12.987071+00:00     window 48/178 fedavg_window seed30001 sec=20.4 ckpts=9
+- 2026-09-06T05:50:30.988132+00:00     window 49/178 fedavg_window seed30001 sec=18.0 ckpts=9
+- 2026-09-06T05:50:47.737619+00:00     window 50/178 fedavg_window seed30001 sec=16.7 ckpts=9
+- 2026-09-06T05:51:05.042098+00:00     window 51/178 fedavg_window seed30001 sec=17.3 ckpts=9
+- 2026-09-06T05:51:25.322222+00:00     window 52/178 fedavg_window seed30001 sec=20.3 ckpts=9
+- 2026-09-06T05:51:43.378390+00:00     window 53/178 fedavg_window seed30001 sec=18.0 ckpts=9
+- 2026-09-06T05:52:01.886659+00:00     window 54/178 fedavg_window seed30001 sec=18.5 ckpts=9
+- 2026-09-06T05:52:21.320668+00:00     window 55/178 fedavg_window seed30001 sec=19.4 ckpts=9
+- 2026-09-06T05:52:41.324355+00:00     window 56/178 fedavg_window seed30001 sec=20.0 ckpts=9
+- 2026-09-06T05:53:01.348762+00:00     window 57/178 fedavg_window seed30001 sec=20.0 ckpts=9
+- 2026-09-06T05:53:21.310543+00:00     window 58/178 fedavg_window seed30001 sec=20.0 ckpts=9
+- 2026-09-06T05:53:42.133736+00:00     window 59/178 fedavg_window seed30001 sec=20.8 ckpts=9
+- 2026-09-06T05:53:58.850225+00:00     window 60/178 fedavg_window seed30001 sec=16.7 ckpts=9
+- 2026-09-06T05:54:15.077927+00:00     window 61/178 fedavg_window seed30001 sec=16.2 ckpts=9
+- 2026-09-06T05:54:31.378972+00:00     window 62/178 fedavg_window seed30001 sec=16.3 ckpts=9
+- 2026-09-06T05:54:46.601141+00:00     window 63/178 fedavg_window seed30001 sec=15.2 ckpts=9
+- 2026-09-06T05:55:00.667863+00:00     window 64/178 fedavg_window seed30001 sec=14.1 ckpts=9
+- 2026-09-06T05:55:13.795282+00:00     window 65/178 fedavg_window seed30001 sec=13.1 ckpts=9
+- 2026-09-06T05:55:26.267552+00:00     window 66/178 fedavg_window seed30001 sec=12.5 ckpts=9
+- 2026-09-06T05:55:38.915311+00:00     window 67/178 fedavg_window seed30001 sec=12.6 ckpts=9
+- 2026-09-06T05:55:50.693155+00:00     window 68/178 fedavg_window seed30001 sec=11.8 ckpts=9
+- 2026-09-06T05:56:01.385506+00:00     window 69/178 fedavg_window seed30001 sec=10.7 ckpts=9
+- 2026-09-06T05:56:12.075132+00:00     window 70/178 fedavg_window seed30001 sec=10.7 ckpts=9
+- 2026-09-06T05:56:22.798964+00:00     window 71/178 fedavg_window seed30001 sec=10.7 ckpts=9
+- 2026-09-06T05:56:33.421251+00:00     window 72/178 fedavg_window seed30001 sec=10.6 ckpts=9
+- 2026-09-06T05:56:41.129028+00:00     window 73/178 fedavg_window seed30001 sec=7.7 ckpts=9
+- 2026-09-06T05:56:46.846950+00:00     window 74/178 fedavg_window seed30001 sec=5.7 ckpts=9
+- 2026-09-06T05:56:52.361706+00:00     window 75/178 fedavg_window seed30001 sec=5.5 ckpts=9
+- 2026-09-06T05:56:56.553887+00:00     window 76/178 fedavg_window seed30001 sec=4.2 ckpts=9
+- 2026-09-06T05:57:00.132025+00:00     window 77/178 fedavg_window seed30001 sec=3.6 ckpts=9
+- 2026-09-06T05:57:02.686537+00:00     window 78/178 fedavg_window seed30001 sec=2.6 ckpts=9
+- 2026-09-06T05:57:04.875388+00:00     window 79/178 fedavg_window seed30001 sec=2.2 ckpts=9
+- 2026-09-06T05:57:06.601502+00:00     window 80/178 fedavg_window seed30001 sec=1.7 ckpts=9
+- 2026-09-06T05:57:08.104431+00:00     window 81/178 fedavg_window seed30001 sec=1.5 ckpts=9
+- 2026-09-06T05:57:09.564528+00:00     window 82/178 fedavg_window seed30001 sec=1.5 ckpts=9
+- 2026-09-06T05:57:11.098136+00:00     window 83/178 fedavg_window seed30001 sec=1.5 ckpts=9
+- 2026-09-06T05:57:13.457879+00:00     window 84/178 fedavg_window seed30001 sec=2.4 ckpts=9
+- 2026-09-06T05:57:16.850697+00:00     window 85/178 fedavg_window seed30001 sec=3.4 ckpts=9
+- 2026-09-06T05:57:21.458719+00:00     window 86/178 fedavg_window seed30001 sec=4.6 ckpts=9
+- 2026-09-06T05:57:27.783740+00:00     window 87/178 fedavg_window seed30001 sec=6.3 ckpts=9
+- 2026-09-06T05:57:37.898001+00:00     window 88/178 fedavg_window seed30001 sec=10.1 ckpts=9
+- 2026-09-06T05:57:55.556557+00:00     window 89/178 fedavg_window seed30001 sec=17.7 ckpts=9
+- 2026-09-06T05:58:10.831886+00:00     window 90/178 fedavg_window seed30001 sec=15.3 ckpts=9
+- 2026-09-06T05:58:29.266634+00:00     window 91/178 fedavg_window seed30001 sec=18.4 ckpts=9
+- 2026-09-06T05:58:46.427407+00:00     window 92/178 fedavg_window seed30001 sec=17.1 ckpts=9
+- 2026-09-06T05:59:05.641776+00:00     window 93/178 fedavg_window seed30001 sec=19.2 ckpts=9
+- 2026-09-06T05:59:28.254498+00:00     window 94/178 fedavg_window seed30001 sec=22.6 ckpts=9
+- 2026-09-06T05:59:44.989804+00:00     window 95/178 fedavg_window seed30001 sec=16.7 ckpts=9
+- 2026-09-06T06:00:04.573617+00:00     window 96/178 fedavg_window seed30001 sec=19.6 ckpts=9
+- 2026-09-06T06:00:20.991031+00:00     window 97/178 fedavg_window seed30001 sec=16.4 ckpts=9
+- 2026-09-06T06:00:36.429066+00:00     window 98/178 fedavg_window seed30001 sec=15.4 ckpts=9
+- 2026-09-06T06:00:55.410397+00:00     window 99/178 fedavg_window seed30001 sec=19.0 ckpts=9
+- 2026-09-06T06:01:10.441550+00:00     window 100/178 fedavg_window seed30001 sec=15.0 ckpts=9
+- 2026-09-06T06:01:24.751678+00:00     window 101/178 fedavg_window seed30001 sec=14.3 ckpts=9
+- 2026-09-06T06:01:39.719017+00:00     window 102/178 fedavg_window seed30001 sec=14.9 ckpts=9
+- 2026-09-06T06:01:54.816270+00:00     window 103/178 fedavg_window seed30001 sec=15.1 ckpts=9
+- 2026-09-06T06:02:13.363157+00:00     window 104/178 fedavg_window seed30001 sec=18.5 ckpts=9
+- 2026-09-06T06:02:30.234106+00:00     window 105/178 fedavg_window seed30001 sec=16.9 ckpts=9
+- 2026-09-06T06:02:47.178568+00:00     window 106/178 fedavg_window seed30001 sec=16.9 ckpts=9
+- 2026-09-06T06:03:03.742665+00:00     window 107/178 fedavg_window seed30001 sec=16.5 ckpts=9
+- 2026-09-06T06:03:21.955088+00:00     window 108/178 fedavg_window seed30001 sec=18.2 ckpts=9
+- 2026-09-06T06:03:37.654201+00:00     window 109/178 fedavg_window seed30001 sec=15.7 ckpts=9
+- 2026-09-06T06:03:52.625589+00:00     window 110/178 fedavg_window seed30001 sec=15.0 ckpts=9
+- 2026-09-06T06:04:06.229918+00:00     window 111/178 fedavg_window seed30001 sec=13.6 ckpts=9
+- 2026-09-06T06:04:17.451186+00:00     window 112/178 fedavg_window seed30001 sec=11.2 ckpts=9
+- 2026-09-06T06:04:29.881561+00:00     window 113/178 fedavg_window seed30001 sec=12.4 ckpts=9
+- 2026-09-06T06:04:41.284380+00:00     window 114/178 fedavg_window seed30001 sec=11.4 ckpts=9
+- 2026-09-06T06:04:55.353398+00:00     window 115/178 fedavg_window seed30001 sec=14.1 ckpts=9
+- 2026-09-06T06:05:07.057635+00:00     window 116/178 fedavg_window seed30001 sec=11.7 ckpts=9
+- 2026-09-06T06:05:17.896781+00:00     window 117/178 fedavg_window seed30001 sec=10.8 ckpts=9
+- 2026-09-06T06:05:28.884917+00:00     window 118/178 fedavg_window seed30001 sec=11.0 ckpts=9
+- 2026-09-06T06:05:37.688746+00:00     window 119/178 fedavg_window seed30001 sec=8.8 ckpts=9
+- 2026-09-06T06:05:45.596536+00:00     window 120/178 fedavg_window seed30001 sec=7.9 ckpts=9
+- 2026-09-06T06:05:52.167129+00:00     window 121/178 fedavg_window seed30001 sec=6.6 ckpts=9
+- 2026-09-06T06:05:52.736534+00:00     window 122/178 fedavg_window seed30001 sec=0.6 ckpts=9
+- 2026-09-06T06:05:56.389435+00:00     window 123/178 fedavg_window seed30001 sec=3.6 ckpts=9
+- 2026-09-06T06:05:59.943950+00:00     window 124/178 fedavg_window seed30001 sec=3.6 ckpts=9
+- 2026-09-06T06:06:02.693492+00:00     window 125/178 fedavg_window seed30001 sec=2.7 ckpts=9
+- 2026-09-06T06:06:05.251484+00:00     window 126/178 fedavg_window seed30001 sec=2.6 ckpts=9
+- 2026-09-06T06:06:07.367864+00:00     window 127/178 fedavg_window seed30001 sec=2.1 ckpts=9
+- 2026-09-06T06:06:09.204638+00:00     window 128/178 fedavg_window seed30001 sec=1.8 ckpts=9
+- 2026-09-06T06:06:10.778288+00:00     window 129/178 fedavg_window seed30001 sec=1.6 ckpts=9
+- 2026-09-06T06:06:12.318850+00:00     window 130/178 fedavg_window seed30001 sec=1.5 ckpts=9
+- 2026-09-06T06:06:14.009134+00:00     window 131/178 fedavg_window seed30001 sec=1.7 ckpts=9
+- 2026-09-06T06:06:16.554855+00:00     window 132/178 fedavg_window seed30001 sec=2.5 ckpts=9
+- 2026-09-06T06:06:19.853715+00:00     window 133/178 fedavg_window seed30001 sec=3.3 ckpts=9
+- 2026-09-06T06:06:24.271265+00:00     window 134/178 fedavg_window seed30001 sec=4.4 ckpts=9
+- 2026-09-06T06:06:30.802004+00:00     window 135/178 fedavg_window seed30001 sec=6.5 ckpts=9
+- 2026-09-06T06:06:39.264081+00:00     window 136/178 fedavg_window seed30001 sec=8.5 ckpts=9
+- 2026-09-06T06:06:50.148464+00:00     window 137/178 fedavg_window seed30001 sec=10.9 ckpts=9
+- 2026-09-06T06:07:03.970082+00:00     window 138/178 fedavg_window seed30001 sec=13.8 ckpts=9
+- 2026-09-06T06:07:19.051240+00:00     window 139/178 fedavg_window seed30001 sec=15.1 ckpts=9
+- 2026-09-06T06:07:34.806736+00:00     window 140/178 fedavg_window seed30001 sec=15.8 ckpts=9
+- 2026-09-06T06:07:50.413984+00:00     window 141/178 fedavg_window seed30001 sec=15.6 ckpts=9
+- 2026-09-06T06:08:06.847847+00:00     window 142/178 fedavg_window seed30001 sec=16.4 ckpts=9
+- 2026-09-06T06:08:23.485965+00:00     window 143/178 fedavg_window seed30001 sec=16.6 ckpts=9
+- 2026-09-06T06:08:39.496656+00:00     window 144/178 fedavg_window seed30001 sec=16.0 ckpts=9
+- 2026-09-06T06:08:55.089041+00:00     window 145/178 fedavg_window seed30001 sec=15.6 ckpts=9
+- 2026-09-06T06:09:09.493966+00:00     window 146/178 fedavg_window seed30001 sec=14.4 ckpts=9
+- 2026-09-06T06:09:23.711525+00:00     window 147/178 fedavg_window seed30001 sec=14.2 ckpts=9
+- 2026-09-06T06:09:37.794821+00:00     window 148/178 fedavg_window seed30001 sec=14.1 ckpts=9
+- 2026-09-06T06:09:52.007727+00:00     window 149/178 fedavg_window seed30001 sec=14.2 ckpts=9
+- 2026-09-06T06:10:07.289708+00:00     window 150/178 fedavg_window seed30001 sec=15.3 ckpts=9
+- 2026-09-06T06:10:22.598981+00:00     window 151/178 fedavg_window seed30001 sec=15.3 ckpts=9
+- 2026-09-06T06:10:37.542015+00:00     window 152/178 fedavg_window seed30001 sec=14.9 ckpts=9
+- 2026-09-06T06:10:53.206581+00:00     window 153/178 fedavg_window seed30001 sec=15.7 ckpts=9
+- 2026-09-06T06:11:07.129757+00:00     window 154/178 fedavg_window seed30001 sec=13.9 ckpts=9
+- 2026-09-06T06:11:22.874899+00:00     window 155/178 fedavg_window seed30001 sec=15.7 ckpts=9
+- 2026-09-06T06:11:38.802112+00:00     window 156/178 fedavg_window seed30001 sec=15.9 ckpts=9
+- 2026-09-06T06:11:53.908069+00:00     window 157/178 fedavg_window seed30001 sec=15.1 ckpts=9
+- 2026-09-06T06:12:07.909242+00:00     window 158/178 fedavg_window seed30001 sec=14.0 ckpts=9
+- 2026-09-06T06:12:20.396952+00:00     window 159/178 fedavg_window seed30001 sec=12.5 ckpts=9
+- 2026-09-06T06:12:31.995812+00:00     window 160/178 fedavg_window seed30001 sec=11.6 ckpts=9
+- 2026-09-06T06:12:42.831399+00:00     window 161/178 fedavg_window seed30001 sec=10.8 ckpts=9
+- 2026-09-06T06:12:52.588773+00:00     window 162/178 fedavg_window seed30001 sec=9.7 ckpts=9
+- 2026-09-06T06:13:01.866702+00:00     window 163/178 fedavg_window seed30001 sec=9.3 ckpts=9
+- 2026-09-06T06:13:10.160560+00:00     window 164/178 fedavg_window seed30001 sec=8.3 ckpts=9
+- 2026-09-06T06:13:18.050773+00:00     window 165/178 fedavg_window seed30001 sec=7.9 ckpts=9
+- 2026-09-06T06:13:25.450525+00:00     window 166/178 fedavg_window seed30001 sec=7.4 ckpts=9
+- 2026-09-06T06:13:31.250656+00:00     window 167/178 fedavg_window seed30001 sec=5.8 ckpts=9
+- 2026-09-06T06:13:36.062197+00:00     window 168/178 fedavg_window seed30001 sec=4.8 ckpts=9
+- 2026-09-06T06:13:40.158359+00:00     window 169/178 fedavg_window seed30001 sec=4.1 ckpts=9
+- 2026-09-06T06:13:42.902438+00:00     window 170/178 fedavg_window seed30001 sec=2.7 ckpts=9
+- 2026-09-06T06:13:45.634430+00:00     window 171/178 fedavg_window seed30001 sec=2.7 ckpts=9
+- 2026-09-06T06:13:47.961899+00:00     window 172/178 fedavg_window seed30001 sec=2.3 ckpts=9
+- 2026-09-06T06:13:49.833916+00:00     window 173/178 fedavg_window seed30001 sec=1.9 ckpts=9
+- 2026-09-06T06:13:51.454129+00:00     window 174/178 fedavg_window seed30001 sec=1.6 ckpts=9
+- 2026-09-06T06:13:52.776938+00:00     window 175/178 fedavg_window seed30001 sec=1.3 ckpts=9
+- 2026-09-06T06:13:54.083163+00:00     window 176/178 fedavg_window seed30001 sec=1.3 ckpts=9
+- 2026-09-06T06:13:55.078758+00:00     window 177/178 fedavg_window seed30001 sec=1.0 ckpts=9
+- 2026-09-06T06:13:56.113492+00:00     window 178/178 fedavg_window seed30001 sec=1.0 ckpts=1
+- 2026-09-06T06:14:14.426876+00:00   status=CREATED path=REAL_PATH_EXECUTED RMSE_mu=1.1031353358552016 WorstGroupRMSE=1.3042036618033628 sec=2081.150208400002
+- 2026-09-06T06:14:14.505020+00:00 STAGE smoke complete
+- 2026-09-06T06:15:00+00:00 HARDWARE STOP after canary: CPU-only 16GB host cannot run the 60-run mandatory matrix. FedAvg seed 30001 is REAL_PATH_EXECUTED. Do not invent rankings. C1 remains major. See TD_R_HARDWARE_STOP.json. Manuscript / Table II / tdrive_protocol_seal_r1 untouched.

@@ -1,0 +1,56 @@
+{
+  "candidates": [
+    {
+      "kappa_sum": 3.0,
+      "max_seed_aligned_dtv": 0.5260494803903442,
+      "profile_id": "PROFILE-S2",
+      "std_seed_cancellation_tv": 2.237726045655905e-17
+    },
+    {
+      "kappa_sum": 3.5,
+      "max_seed_aligned_dtv": 0.5388295133488095,
+      "profile_id": "PROFILE-S4",
+      "std_seed_cancellation_tv": 0.0
+    },
+    {
+      "kappa_sum": 4.0,
+      "max_seed_aligned_dtv": 0.5463051277301916,
+      "profile_id": "PROFILE-S5",
+      "std_seed_cancellation_tv": 0.0
+    },
+    {
+      "kappa_sum": 4.5,
+      "max_seed_aligned_dtv": 0.6367530769804726,
+      "profile_id": "PROFILE-S3",
+      "std_seed_cancellation_tv": 5.4460371963073697e-17
+    },
+    {
+      "kappa_sum": 5.0,
+      "max_seed_aligned_dtv": 0.6403048689788592,
+      "profile_id": "PROFILE-S6",
+      "std_seed_cancellation_tv": 3.510833468576701e-17
+    }
+  ],
+  "profile_registry_hash": "471c418ccd60e2daa059e0edec1c5de81a4d49db5fa001be35190a04dcad3dcc",
+  "selected_metrics": {
+    "kappa_sum": 3.0,
+    "max_seed_aligned_dtv": 0.5260494803903442,
+    "profile_id": "PROFILE-S2",
+    "std_seed_cancellation_tv": 2.237726045655905e-17
+  },
+  "selected_profile_id": "PROFILE-S2",
+  "selection_rule": [
+    "min max_seed D_TV_arr_emp(complete_aligned)",
+    "min kappa_opp+kappa_p+kappa_q",
+    "min std_seed cancellation_TV(complete_counteracting)",
+    "profile_id lexicographic"
+  ],
+  "status": "SELECTED",
+  "validation_seed_list": [
+    29101,
+    29102,
+    29103,
+    29104,
+    29105
+  ]
+}

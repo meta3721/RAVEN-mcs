@@ -1,0 +1,39 @@
+{
+  "verdict": "G5_SOLVER_DIVERGE",
+  "reason": "122 windows have ||M \u0394\u03b1||_1 \u2265 0.001",
+  "second_solver": "SCS",
+  "installed_solvers": [
+    "OSQP",
+    "SCS",
+    "CLARABEL"
+  ],
+  "n_compared": 779,
+  "n_warning_compared": 179,
+  "n_second_ok": 779,
+  "n_agree": 475,
+  "n_disagree": 304,
+  "n_material_comp": 122,
+  "max_alpha_l1": 0.00560721259849023,
+  "max_comp_l1": 0.00560721259849023,
+  "max_rel_obj": 0.00016018534040023507,
+  "n_warning_agree": 9,
+  "n_warning_ok": 179,
+  "debt_below_mpid": true,
+  "mpid_pct": 0.5,
+  "seed_scope": "20 formal / 10+10 split seeds are algorithmic EventTrace randomness, not independent cities",
+  "sealed_778": {
+    "warning_count": 778,
+    "affected_runs": 85,
+    "audited_windows": 6438,
+    "max_constraint_residual": 2.686e-08,
+    "hard_tol": 1e-07,
+    "source": "paper_ready_r2/02_supporting_data/solver/E3_P2_INACCURATE_CERTIFICATE_SUMMARY.csv",
+    "feasibility": "CERTIFIED",
+    "exact_optimality": "NOT_RECONSTRUCTABLE"
+  },
+  "formal_rerun_required": false,
+  "main_conclusions_affected": false,
+  "comp_l1_median": 2.454486117131616e-08,
+  "comp_l1_p90": 0.0013399802122283802,
+  "logged_vs_clarabel_comp_l1_max": 0.0005952175671562
+}

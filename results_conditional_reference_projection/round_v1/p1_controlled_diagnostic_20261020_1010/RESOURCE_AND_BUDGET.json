@@ -1,0 +1,19 @@
+{
+  "status": "FAIL_IMPLEMENTATION",
+  "cpu_limit_seconds": 180.0,
+  "wall_limit_seconds": 360.0,
+  "import_cpu_seconds": 3.578125,
+  "import_wall_seconds": 5.185605499999838,
+  "anchor_cpu_seconds": 18.953125,
+  "anchor_wall_seconds": 19.19347519999792,
+  "shadow_cpu_seconds": 2.4375,
+  "shadow_wall_seconds": 2.52229509999961,
+  "scoring_cpu_seconds": 9.484375,
+  "scoring_wall_seconds": 9.66065829999934,
+  "total_cpu_seconds": 39.578125,
+  "total_wall_seconds": 41.99283469999955,
+  "min_free_bytes_sampled": 5912911872,
+  "peak_rss_bytes": 922546176,
+  "rss_error": null,
+  "note": "Shadow time counts the TwoStage one-step. Anchor time counts F steps. They do not overlap. The process stopped when an anchor F weight exceeded the frozen 1e-8 ESS residual."
+}

@@ -1,0 +1,125 @@
+{
+  "activity_audit": {
+    "active_server_window_rate": 1.0,
+    "active_window_equals_usable_rate_identically": false,
+    "definition_alias_forbidden": true,
+    "realized_usable_rate": 0.5906927551560022
+  },
+  "arr_audit": {
+    "empirical_from_A_O_U": true,
+    "expected_alias_used": false,
+    "hard_arrival_event_count": 2905,
+    "total_hard_arrival_mass": 0.8519061583577712
+  },
+  "arrival_mass_mode": "event_mass",
+  "base_random_stream_hash": "dcef6aee12e43c0303d6e64a6d34099ca47155b92b75e520c64d929de002c46e",
+  "chronological_audit": {
+    "chronological_order_status": "PASS",
+    "chronology_status": "PASS",
+    "duplicate_window_payload_count": 0,
+    "global_monotonic_violation_count": 0,
+    "limiting_client": "client-005",
+    "maximum_legal_continuous_windows": 105,
+    "modulo_operator_usage_count": 0,
+    "per_client_monotonic_violation_count": 0,
+    "repeated_block_count": 0,
+    "source_reuse_count": 1538,
+    "unique_window_payload_ratio": 1.0,
+    "wraparound_count": 0
+  },
+  "formal": false,
+  "generated_at": "2026-08-05T04:18:33.690943+00:00",
+  "group_count": 4,
+  "group_mapping_hash": "fcf4116cf00294a280e797cf7aee5c4153c226c58187688c136ac1a6dedb364f",
+  "head_tail_mapping_hash": "3729cce5a731f22093d6ecd177e6c3a7e70c7fd1f1a2fec512c5930644da901d",
+  "nonwrap_schedule": true,
+  "obs_audit": {
+    "actual_O_events_saved": 26411,
+    "expected_observation_rate": 0.2,
+    "exposure_event_count": 26411,
+    "observation_intercept": -1.7773330838281254,
+    "realized_observation_rate": 0.19866722199083714
+  },
+  "opp_audit": {
+    "base_opportunity_uniforms_used_count": 48000,
+    "duplicate_unit_id_within_window_count": 0,
+    "expected_opportunity_rate": 0.55,
+    "opportunity_intercept": 0.1501090728481813,
+    "selected_event_count": 26411,
+    "unknown_unit_count": 0,
+    "unsupported_selected_count": 0
+  },
+  "opportunity_uniforms_used_count": 48000,
+  "profile_id": "PROFILE-S2",
+  "q_feature_audit": {
+    "allowed": [
+      "client_id",
+      "pre_outcome_risk_set_size",
+      "stage2_eligible",
+      "window_id",
+      "z_tail"
+    ],
+    "forbidden_feature_count": 0,
+    "forbidden_features_present": [],
+    "leakage_status": "PASS",
+    "q_input_schema_hash": "0aa9ec625cd98af652ac2c8cf5b3a65f853417630f108aaaac54b79bcf8b82d0",
+    "unregistered_feature_count": 0,
+    "used_q_features": [
+      "client_id",
+      "pre_outcome_risk_set_size",
+      "stage2_eligible",
+      "window_id",
+      "z_tail"
+    ]
+  },
+  "scenario_id": "complete_counteracting",
+  "schedule_audit": {
+    "block_0_99_hash": "e2ae9b88ce6a7fedb03908274a7d97188ff3829bd15a3caf93e252448ee5febd",
+    "block_100_199_hash": "2111374f36295dbf440439a8db8b0fb4b130271ce59363cb6c998054468a0141",
+    "block_200_299_hash": "bf148f60183d6e8671399cf04fb290f0390b56695d1839bf4c6ba78f5d8fa015",
+    "block_hashes_all_equal": false,
+    "chronological_order_status": "PASS",
+    "duplicate_window_payload_count": 0,
+    "global_monotonic_violation_count": 0,
+    "limiting_client": "client-005",
+    "maximum_legal_continuous_windows": 105,
+    "modulo_operator_usage_count": 0,
+    "repeated_block_count": 0,
+    "schedule_uniforms_used_count": 2400,
+    "seed": 29102,
+    "source_reuse_count": 1538,
+    "status": "PASS",
+    "unique_window_payload_ratio": 1.0,
+    "wraparound_count": 0
+  },
+  "schedule_hash": "113c3f25a807b63b80dd8c8877a7d2c6de8780a0a9d90e6b2a83598b1ed0076c",
+  "schedule_uniforms_used_count": 2400,
+  "seed": 29102,
+  "stage2_eligibility_rule": "observed_count > 0",
+  "stratum_count": 111,
+  "stratum_mapping_hash": "749a9b50311ac66e1915b796e2095168ecda50106d7667c32cc388c7fe931557",
+  "supported_test_hash": "d67e5c9e3aa132c9aac214d0977fce3499935446e29672116e7c9d38dccccf0f",
+  "target_weight_hash": "413ad5dab72149c4753668e32a4675a1fab00bb286adb9a9e1e58978a1cc81c5",
+  "use_audit": {
+    "actual_U_events_saved": 2400,
+    "eligibility_rule": "observed_count > 0",
+    "expected_usable_rate": 0.6,
+    "extra_failed_attempt_count": 0,
+    "failed_attempt_omission_count": 0,
+    "forbidden_feature_count": 0,
+    "missing_failed_attempt_count": 0,
+    "not_eligible_count": 509,
+    "q_features_used": [
+      "client_id",
+      "pre_outcome_risk_set_size",
+      "stage2_eligible",
+      "window_id",
+      "z_tail"
+    ],
+    "q_leakage_count": 0,
+    "realized_usable_rate": 0.5906927551560022,
+    "stage2_eligible_count": 1891,
+    "usable_intercept": 0.7143355022890319
+  },
+  "windows": 300
+}

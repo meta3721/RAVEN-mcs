@@ -1,0 +1,16 @@
+source_file,imported_by,role,required_for_formal_chain,included_in_snapshot,sha256,pass
+src/raven_mcs/aggregation/method_policy.py,src/raven_mcs/experiments/r1m_method_freeze.py;src/raven_mcs/training/window_runner.py,formal_chain,True,True,f196e39a29b82f3b530870bcaef55a83c4d606f32607433e8932a5ebf4698309,True
+src/raven_mcs/experiments/r1m_method_freeze.py,(root),formal_chain,True,True,1cfb939753de20c2290913d067b45faf6d293477e02e2e0f6cabe411e6ad9088,True
+src/raven_mcs/sag/aggregate_certificate.py,src/raven_mcs/sag/certificates.py,formal_chain,True,True,a84f9f71cda436c83f8bc832611a26c0db7d409e7c125364923c32991f03c946,True
+src/raven_mcs/sag/availability_stress.py,src/raven_mcs/sag/r1l_spec.py,formal_chain,True,True,8963a35b462daf90a3024a9dc6b94385aa8a7dad11ae8fad0247583dffacd8a1,True
+src/raven_mcs/sag/certificates.py,src/raven_mcs/sag/aggregate_certificate.py;src/raven_mcs/sag/dynamic_cov.py;src/raven_mcs/training/window_runner.py,formal_chain,True,True,78f5eb2751154852f19ef318e9794791bffe00c0f6dac23adc5a951465795fc1,True
+src/raven_mcs/sag/dynamic_cov.py,src/raven_mcs/sag/certificates.py,routing_optional,False,True,dbe4b15846340a6fdbe0832665a4bab9c3f4cd53fb23b7a219bfc8c9e93d0581,True
+src/raven_mcs/sag/gate.py,src/raven_mcs/sag/r1l_design.py;src/raven_mcs/training/window_runner.py,formal_chain,True,True,379005ac5883785a4fad621d95c11d249dde2e50c347aafd56d4e44ca7fbbaee,True
+src/raven_mcs/sag/r1l_block.py,src/raven_mcs/sag/aggregate_certificate.py,formal_chain,True,True,c281006b8ae607f521b61d6b2a206e8fbbb346ccab0c1a68e506342f0ec416f9,True
+src/raven_mcs/sag/r1l_conformal.py,src/raven_mcs/sag/r1l_block.py;src/raven_mcs/sag/r1l_state.py,formal_chain,True,True,cb17ab952d3eb68e5fcff12f0dd0ef9db09bc861d2a37e1b9be6edbca23030cd,True
+src/raven_mcs/sag/r1l_design.py,src/raven_mcs/training/window_runner.py,formal_chain,True,True,a35314e9733fa20fe1c2f8d3efbae127de7c718dec6a7c02a66eda1edb7cff24,True
+src/raven_mcs/sag/r1l_spec.py,src/raven_mcs/sag/aggregate_certificate.py;src/raven_mcs/sag/r1l_block.py;src/raven_mcs/sag/r1l_conformal.py;src/raven_mcs/sag/r1l_design.py;src/raven_mcs/sag/r1l_state.py,formal_chain,True,True,e2b34479f278676402def402609dfc8ff583d70c33ffb1ea820134749a3532e3,True
+src/raven_mcs/sag/r1l_state.py,src/raven_mcs/sag/aggregate_certificate.py;src/raven_mcs/sag/r1l_block.py,formal_chain,True,True,8613c03dddf0ad8ed0804169ea44ffacac3b9d659586f50ff78a0d9191798574,True
+src/raven_mcs/sag/stress_mask.py,src/raven_mcs/sag/availability_stress.py,formal_chain,True,True,6f906a8aa807d5cb95b7531f3249050cb52b7626a1c6a3c963ec82aeeee4fd78,True
+src/raven_mcs/training/window_runner.py,(root),formal_chain,True,True,2ebc18ded70b3383ead6c2e507423df782a12ee90bc2d95cbb96f1a3702bce18,True
+src/raven_mcs/utils/hashing.py,src/raven_mcs/sag/availability_stress.py;src/raven_mcs/sag/r1l_spec.py;src/raven_mcs/sag/stress_mask.py,formal_chain,True,True,02a2a08f99d17143754ae829189905dd0d68808b2866226df2add25aec1bca88,True

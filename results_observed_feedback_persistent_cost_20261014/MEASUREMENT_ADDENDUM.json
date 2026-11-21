@@ -1,0 +1,33 @@
+{
+  "issue": "Popen handle measures venv launcher, not its real interpreter; raw worker_process_CPU zeros must not be interpreted as actual worker cost",
+  "root_all_descendants_unaffected": true,
+  "actual_worker_PID": 16604,
+  "actual_worker_final_retained_CPU": 3.28125,
+  "method": "Recalculate only upward max floor using already retained worker process_time intervals; no rerun and no PID added to total root cost",
+  "phases": [
+    {
+      "label": "INITIALIZATION",
+      "actual_worker_local_CPU": 2.640625,
+      "source": "worker process_time to READY construction; root includes serialization/startup",
+      "recalculated_root_upper": 3.05125,
+      "original_upper_unchanged": true
+    },
+    {
+      "label": "ONLINE_A",
+      "actual_worker_local_CPU": 0.25,
+      "source": "actual worker self-reported process_time interval including response serialization/flush; actual PID independently retained in root audit",
+      "recalculated_root_upper": 0.27,
+      "original_upper_unchanged": true
+    },
+    {
+      "label": "ONLINE_B",
+      "actual_worker_local_CPU": 0.140625,
+      "source": "actual worker self-reported process_time interval including response serialization/flush; actual PID independently retained in root audit",
+      "recalculated_root_upper": 0.17625,
+      "original_upper_unchanged": true
+    }
+  ],
+  "finalization_worker_dump_CPU": 0.03125,
+  "finalization_root_remaining": 0.34375,
+  "missing": "Direct live API per-phase differences for the actual child PID were not sampled; raw launcher handle cannot supply them"
+}

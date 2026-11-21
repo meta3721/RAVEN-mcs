@@ -1,0 +1,253 @@
+{
+  "generated": "2026-09-27T05:22:34.200233+00:00",
+  "note": "p2_cvxpy.py:94-95 'variance_diag must be nonnegative' is unreachable because :80 clamps to >=0 first",
+  "per_call": [
+    {
+      "min": 0.5001,
+      "n": 6,
+      "n_negative": 0,
+      "n_nonfinite": 0
+    },
+    {
+      "min": 0.5001,
+      "n": 3,
+      "n_negative": 0,
+      "n_nonfinite": 0
+    },
+    {
+      "min": 0.4051019567704667,
+      "n": 3,
+      "n_negative": 0,
+      "n_nonfinite": 0
+    },
+    {
+      "min": 0.3646034383596559,
+      "n": 4,
+      "n_negative": 0,
+      "n_nonfinite": 0
+    },
+    {
+      "min": 0.3001004399499932,
+      "n": 2,
+      "n_negative": 0,
+      "n_nonfinite": 0
+    },
+    {
+      "min": 0.7291136279651081,
+      "n": 2,
+      "n_negative": 0,
+      "n_nonfinite": 0
+    },
+    {
+      "min": 0.3281574736766425,
+      "n": 1,
+      "n_negative": 0,
+      "n_nonfinite": 0
+    },
+    {
+      "min": 0.30010875028818856,
+      "n": 2,
+      "n_negative": 0,
+      "n_nonfinite": 0
+    },
+    {
+      "min": 0.27011230176733575,
+      "n": 4,
+      "n_negative": 0,
+      "n_nonfinite": 0
+    },
+    {
+      "min": 0.1772545825899227,
+      "n": 3,
+      "n_negative": 0,
+      "n_nonfinite": 0
+    },
+    {
+      "min": 0.21880210236384437,
+      "n": 3,
+      "n_negative": 0,
+      "n_nonfinite": 0
+    },
+    {
+      "min": 0.3281663364108906,
+      "n": 4,
+      "n_negative": 0,
+      "n_nonfinite": 0
+    },
+    {
+      "min": 0.19693299752037188,
+      "n": 4,
+      "n_negative": 0,
+      "n_nonfinite": 0
+    },
+    {
+      "min": 0.2188021216880265,
+      "n": 3,
+      "n_negative": 0,
+      "n_nonfinite": 0
+    },
+    {
+      "min": 0.23925736404092066,
+      "n": 1,
+      "n_negative": 0,
+      "n_nonfinite": 0
+    },
+    {
+      "min": 0.21534261974005173,
+      "n": 4,
+      "n_negative": 0,
+      "n_nonfinite": 0
+    },
+    {
+      "min": 0.1969344974804563,
+      "n": 2,
+      "n_negative": 0,
+      "n_nonfinite": 0
+    },
+    {
+      "min": 0.23926313914479633,
+      "n": 3,
+      "n_negative": 0,
+      "n_nonfinite": 0
+    },
+    {
+      "min": 0.1772558645233305,
+      "n": 3,
+      "n_negative": 0,
+      "n_nonfinite": 0
+    },
+    {
+      "min": 0.1744494357376758,
+      "n": 4,
+      "n_negative": 0,
+      "n_nonfinite": 0
+    },
+    {
+      "min": 0.15701519995802574,
+      "n": 3,
+      "n_negative": 0,
+      "n_nonfinite": 0
+    },
+    {
+      "min": 0.1571383411302735,
+      "n": 4,
+      "n_negative": 0,
+      "n_nonfinite": 0
+    },
+    {
+      "min": 0.14143667251650605,
+      "n": 1,
+      "n_negative": 0,
+      "n_nonfinite": 0
+    },
+    {
+      "min": 0.11633431334691582,
+      "n": 2,
+      "n_negative": 0,
+      "n_nonfinite": 0
+    },
+    {
+      "min": 0.23925396703078777,
+      "n": 3,
+      "n_negative": 0,
+      "n_nonfinite": 0
+    },
+    {
+      "min": 0.15953434641347927,
+      "n": 4,
+      "n_negative": 0,
+      "n_nonfinite": 0
+    },
+    {
+      "min": 0.15701640204095677,
+      "n": 4,
+      "n_negative": 0,
+      "n_nonfinite": 0
+    },
+    {
+      "min": 0.07071274212470816,
+      "n": 5,
+      "n_negative": 0,
+      "n_nonfinite": 0
+    },
+    {
+      "min": 0.23925416326163032,
+      "n": 1,
+      "n_negative": 0,
+      "n_nonfinite": 0
+    },
+    {
+      "min": 0.22889598151193585,
+      "n": 2,
+      "n_negative": 0,
+      "n_nonfinite": 0
+    },
+    {
+      "min": 0.11449339147612647,
+      "n": 3,
+      "n_negative": 0,
+      "n_nonfinite": 0
+    },
+    {
+      "min": 0.09276537362882979,
+      "n": 4,
+      "n_negative": 0,
+      "n_nonfinite": 0
+    },
+    {
+      "min": 0.09289200139105687,
+      "n": 4,
+      "n_negative": 0,
+      "n_nonfinite": 0
+    },
+    {
+      "min": 0.1854413008617916,
+      "n": 1,
+      "n_negative": 0,
+      "n_nonfinite": 0
+    },
+    {
+      "min": 0.16692497899396436,
+      "n": 2,
+      "n_negative": 0,
+      "n_nonfinite": 0
+    },
+    {
+      "min": 0.14133342729883086,
+      "n": 1,
+      "n_negative": 0,
+      "n_nonfinite": 0
+    },
+    {
+      "min": 0.12721218812684498,
+      "n": 4,
+      "n_negative": 0,
+      "n_nonfinite": 0
+    },
+    {
+      "min": 0.13523190023608478,
+      "n": 1,
+      "n_negative": 0,
+      "n_nonfinite": 0
+    },
+    {
+      "min": 0.1744709463409611,
+      "n": 1,
+      "n_negative": 0,
+      "n_nonfinite": 0
+    },
+    {
+      "min": 0.08349910833401339,
+      "n": 1,
+      "n_negative": 0,
+      "n_nonfinite": 0
+    }
+  ],
+  "totals": {
+    "calls": 171,
+    "calls_with_negative": 0,
+    "calls_with_nonfinite": 0,
+    "min_seen": 0.011557369275859935
+  },
+  "verdict": "sanitisation NEVER load-bearing on these two runs (0 non-finite, 0 negative)"
+}

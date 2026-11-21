@@ -1,0 +1,47 @@
+{
+  "analytical_expectation": "Unequal normalized sample weights change the weighted squared-error gradient and one-step parameter.",
+  "denominator": 1.0,
+  "distinct_gradient": true,
+  "distinct_parameter": true,
+  "fedavg_loss": 0.03125,
+  "gradient_hashes": {
+    "fedavg": "c9e850c0650c928c1e1331fdcc94c750f708f8082edf175a3163ba0aa3781af4",
+    "local_hajek": "ae3409fe7d96d28969f49503097183c3ffd5b3b72c5907a67ca16edaf3cec0f3"
+  },
+  "gradient_values": {
+    "fedavg": [
+      [
+        -0.25
+      ]
+    ],
+    "local_hajek": [
+      [
+        -0.55
+      ]
+    ]
+  },
+  "input_batch": {
+    "targets": [
+      0.0,
+      1.0
+    ],
+    "x": [
+      [
+        1.0
+      ],
+      [
+        3.0
+      ]
+    ]
+  },
+  "local_hajek_loss": 0.03125,
+  "parameter_hashes": {
+    "fedavg_one_step": "6818fb18b9b90d0e2d01a2fae5e2edd81665dfbd1efb286dc7d7a9aa4ef817ba",
+    "local_hajek_one_step": "5686161f137a87353f798be151cfe9bd44af045a4e079d66043414ba2669710f"
+  },
+  "status": "PASS",
+  "weights": [
+    0.2,
+    0.8
+  ]
+}

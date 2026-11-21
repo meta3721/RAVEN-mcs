@@ -1,23 +1,24 @@
 """Full training pipeline WindowRunner — real Common-NDMF training (P10).
 
-Each window:
- 1. Read theta_r and model version
- 2. Read risk sets from EventTrace
- 3. Compute lagged estimators (opportunity/p/q)
- 4. Construct B_{k,r} for each client
- 5. Form E_r (all clients with m > 0) BEFORE reading U
- 6. Execute local SGD for each client with downloaded checkpoint
- 7. Read U from EventTrace → form A_r
- 8. Active window: compute method-specific alpha
- 9. ONE global update
-10. Update debt
-11. Save window metrics
-12. After window close: update opportunity/p/q/variance state
+Each window (SAG v1.2 / PostAudit III–VI):
+ 1. Freeze configured Design; read theta_r; compute independent F_{r-} coverage diagnostic
+ 2. Realize R (risk sets) from EventTrace
+ 3. Freeze p_hat_obs from pre-O features
+ 4. Realize O; E_r = registered/attempted; B_r = {k in E_r : m>0}
+ 5. Local SGD on B_r (not A_r)
+ 6. Freeze q_hat_use from pre-U features
+ 7. Realize U → A_r = B_r ∩ U_r
+ 8. P2 / global update / optional debt
+ 9. Post-window D vs 0 audit updates future coverage diagnostics only for configured Design
+10. After window close: update opportunity/p/q/variance state
 """
 
 from __future__ import annotations
 
 import copy
+import gc
+import os
+import tempfile
 from collections import Counter
 import hashlib
 from dataclasses import dataclass, field
@@ -46,6 +47,7 @@ from raven_mcs.correction.hajek import (
 )
 from raven_mcs.correction.pi_target import build_pi_target
 from raven_mcs.correction.second_stage import beta_hat, d_weight, two_stage_mass
+from raven_mcs.correction.stage1 import reconstruct_stage1
 from raven_mcs.data.processed_dataset import ProcessedDataset
 from raven_mcs.data.target import GroupMapper, RepeatableTimeOfDayMapper, TargetBuilder
 from raven_mcs.data.window_dataset import WindowDataSlice, extract_window_slice
@@ -54,6 +56,36 @@ from raven_mcs.models.features import extract_features
 from raven_mcs.opportunities.estimator import OpportunityEstimator
 from raven_mcs.propensity.observation import ObservationPropensity
 from raven_mcs.propensity.usable import UsablePropensity, deadline_slack_pre
+from raven_mcs.sag.certificates import (
+    CertificateContext,
+    FrozenSagThresholds,
+    compute_certificates,
+    encode_pair,
+    window_opportunity_event_counts,
+    window_opportunity_masses,
+)
+from raven_mcs.sag.counterfactual_audit import audit_design_vs_nodesign
+from raven_mcs.sag.gate import decide_gate, zeta_tilde
+from raven_mcs.sag.r1l_design import (
+    FORMAL_GATE_MODE,
+    apply_formal_design_zeta,
+    legacy_decide_gate_and_design,
+    DesignConfiguration,
+    configured_decide_gate_and_design,
+    apply_configured_design_zeta,
+)
+from raven_mcs.sag.sag_state import SagState
+from raven_mcs.sag.timing import (
+    STAGE_GATE,
+    STAGE_LOCAL,
+    STAGE_O,
+    STAGE_P2,
+    STAGE_P_OBS_FREEZE,
+    STAGE_Q_USE_FREEZE,
+    STAGE_R,
+    STAGE_U,
+    SagStages,
+)
 from raven_mcs.simulation.event_trace import EventTrace
 from raven_mcs.training.client import ClientTrainer, unflatten_params
 from raven_mcs.training.client import _flatten_params as flatten_params
@@ -79,6 +111,13 @@ class WindowMetrics:
     train_loss: float
     e_r_size: int
     a_r_size: int
+    b_r_size: int = 0
+    g_r: int = 0
+    configured_design: int | None = None
+    actual_design: int | None = None
+    coverage_gate: int | None = None
+    configuration_source: str = ""
+    method_version: str = "legacy-v1"
 
 
 @dataclass
@@ -112,6 +151,13 @@ class FullWindowRunner:
     variance_decay: float = 0.9
     seed: int = 26001
     device: str = "cpu"
+    # E3 spatial×time: never remap via coarse time blocks unless explicitly requested.
+    use_coarse_time_groups: bool = False
+    # Paper h(i): frozen unit → UTC TOD block. When set, M/μ/|G| use this map.
+    paper_h_by_unit: dict[str, int] | None = None
+    # Frozen joint opportunity mass on client×stratum (same scale as pi_target).
+    pi_opp_joint: dict[tuple[str, str], float] = field(default_factory=dict)
+    design_configuration: DesignConfiguration | None = None
 
     # State
     theta: dict[str, torch.Tensor] = field(default_factory=dict)
@@ -132,9 +178,27 @@ class FullWindowRunner:
     q_propensity_history: list[dict[str, Any]] = field(default_factory=list)
     q_attempt_diagnostics: list[dict[str, Any]] = field(default_factory=list)
     q_model_version: int = 0
+    sag_thresholds: FrozenSagThresholds | None = None
+    sag_pi_safe: float | None = None
+    sag_state: SagState = field(default_factory=SagState)
+    sag_window_logs: list[dict[str, Any]] = field(default_factory=list)
+    sag_raw_states: list[dict[str, Any]] = field(default_factory=list)
+    design_window_logs: list[dict[str, Any]] = field(default_factory=list)
 
     def __post_init__(self) -> None:
+        if self.policy.design_control == "configured":
+            if not isinstance(self.design_configuration, DesignConfiguration):
+                raise ValueError("CONFIGURATION_REQUIRED: raven_mcs requires explicit Design on/off")
+            if self.policy.coverage_diagnostic != "aggregate_coverage":
+                raise ValueError("Unsupported coverage diagnostic")
         self.mu = np.asarray(self.mu, dtype=np.float64)
+        if self.paper_h_by_unit:
+            if int(self.num_groups) != 4:
+                raise ValueError("paper h(i) requires num_groups=4")
+            if int(self.mu.size) != 4:
+                raise ValueError("paper μ must have length 4")
+        if int(self.mu.size) != int(self.num_groups):
+            raise ValueError("μ length must equal num_groups")
         if len(self.debt) != self.num_groups:
             self.debt = np.zeros(self.num_groups, dtype=np.float64)
         if len(self.omega_sum) != self.num_groups:
@@ -147,7 +211,8 @@ class FullWindowRunner:
             self.opportunity_estimator = OpportunityEstimator()
         if self.pi_target:
             self.opportunity_estimator.initialize_support(
-                key for key, mass in self.pi_target.items() if mass > 0.0
+                key for key, mass in self.pi_target.items()
+                if self._formal_raven_mcs() or mass > 0.0
             )
         if self.obs_propensity is None:
             self.obs_propensity = ObservationPropensity()
@@ -155,6 +220,52 @@ class FullWindowRunner:
             self.usable_propensity = UsablePropensity()
         self.model_versions.setdefault(0, copy.deepcopy(self.theta))
         self._trainer = ClientTrainer(self.model, learning_rate=self.learning_rate)
+        if self.sag_thresholds is None:
+            self.sag_thresholds = FrozenSagThresholds(n_groups=int(self.num_groups))
+        if len(self.trace.events):
+            self._n_clients_pre = int(
+                pd.Series(self.trace.events["client_id"].astype(str)).nunique()
+            )
+        else:
+            self._n_clients_pre = max(
+                len({k for k, _ in self.pi_target}),
+                1,
+            )
+        self._last_cert_diagnostics: dict[str, Any] = {}
+        self._last_gate_to_design: dict[str, Any] = {}
+        # Lagged FedAU participation counters. Updated only after window close.
+        self._fedau_usable_count: dict[str, float] = {}
+        self._fedau_attempt_count: dict[str, float] = {}
+        self._fedau_epsilon: float = 1e-6
+
+    def _lagged_participation_rates(self, client_ids: list[str]) -> dict[str, float]:
+        """Pre-outcome participation rates from windows strictly before the current one."""
+        eps = float(self._fedau_epsilon)
+        rates: dict[str, float] = {}
+        for cid in client_ids:
+            usable = float(self._fedau_usable_count.get(cid, 0.0))
+            attempts = float(self._fedau_attempt_count.get(cid, 0.0))
+            rates[cid] = (usable + eps) / (attempts + eps)
+        return rates
+
+    def _client_observation_rates(
+        self,
+        client_ids: list[str],
+        client_data: dict[str, dict],
+    ) -> dict[str, float]:
+        """Lagged observation propensity, averaged over the client's current risk set."""
+        p_min = float(self.p_min)
+        rates: dict[str, float] = {}
+        for cid in client_ids:
+            p = np.asarray(
+                client_data.get(cid, {}).get("p_hat_model", [1.0]),
+                dtype=np.float64,
+            )
+            if p.size == 0:
+                rates[cid] = 1.0
+            else:
+                rates[cid] = float(np.mean(np.maximum(p, p_min)))
+        return rates
 
     def _theta_hash(self) -> str:
         digest = hashlib.sha256()
@@ -176,15 +287,12 @@ class FullWindowRunner:
         client_id: str,
         stratum_ids: list[str],
     ) -> np.ndarray:
-        """Compute zeta_hat for a client's risk set records."""
-        if self.opportunity_estimator is None:
-            return np.ones(len(stratum_ids), dtype=np.float64)
+        """Compute zeta_hat for a client's risk set records.
 
-        pi_hat_opp = np.array([
-            self.opportunity_estimator.pi_hat().get((client_id, s), self.p_min)
-            for s in stratum_ids
-        ], dtype=np.float64)
-
+        When ``pi_opp_joint`` is provided (E3 production), the design-ratio
+        denominator uses that joint client×stratum mass (same scale as pi_tar).
+        Otherwise falls back to the online opportunity estimator.
+        """
         if not self.pi_target:
             raise RuntimeError("frozen pi target is required for official correction")
         missing = [
@@ -193,11 +301,52 @@ class FullWindowRunner:
         ]
         if missing:
             raise RuntimeError(f"pi target lacks opportunity support: {missing[:3]}")
-        pi_tar = np.array([
-            self.pi_target[(client_id, str(s))] for s in stratum_ids
-        ], dtype=np.float64)
+        pi_tar = np.array(
+            [self.pi_target[(client_id, str(s))] for s in stratum_ids],
+            dtype=np.float64,
+        )
+
+        if self.pi_opp_joint:
+            missing_opp = [
+                (client_id, str(s))
+                for s in stratum_ids
+                if (client_id, str(s)) not in self.pi_opp_joint
+            ]
+            if missing_opp:
+                raise RuntimeError(
+                    f"PIOPP_SCALE_ERROR: joint pi_opp lacks support: {missing_opp[:3]}"
+                )
+            pi_hat_opp = np.array(
+                [float(self.pi_opp_joint[(client_id, str(s))]) for s in stratum_ids],
+                dtype=np.float64,
+            )
+        else:
+            if self.opportunity_estimator is None:
+                if self._formal_raven_mcs():
+                    raise ValueError("DESIGN_INPUT_ERROR: missing lagged opportunity estimator")
+                return np.ones(len(stratum_ids), dtype=np.float64)
+            lagged = self.opportunity_estimator.pi_hat()
+            if self._formal_raven_mcs() and any((client_id, s) not in lagged for s in stratum_ids):
+                raise ValueError("DESIGN_INPUT_ERROR: missing lagged opportunity support")
+            pi_hat_opp = np.array(
+                [
+                    self.opportunity_estimator.pi_hat().get((client_id, s), self.p_min)
+                    for s in stratum_ids
+                ],
+                dtype=np.float64,
+            )
 
         return zeta_hat_stratum(pi_tar, pi_hat_opp, pi_min=self.pi_min)
+
+    def _design_metric_fields(self) -> dict[str, Any]:
+        rec = self._last_gate_to_design
+        return {
+            "configured_design": rec.get("configured_design"),
+            "actual_design": rec.get("Design_t"),
+            "coverage_gate": rec.get("Gate_t"),
+            "configuration_source": rec.get("configuration_source", "legacy_policy"),
+            "method_version": self.policy.method_version,
+        }
 
     def _compute_p_hat(self, features_list: list[dict[str, float]]) -> np.ndarray:
         """Compute observation propensity estimates."""
@@ -221,7 +370,277 @@ class FullWindowRunner:
                 return float(token[5:])
         return 0.0
 
+    def _gate_mode(self) -> str:
+        return str(getattr(self.policy, "gate_mode", "policy") or "policy")
+
+    def _formal_raven_mcs(self) -> bool:
+        return self.policy.design_control == "configured"
+
+    def _certificate_context(self) -> CertificateContext:
+        return CertificateContext(
+            pi_target=dict(self.pi_target),
+            pi_safe=self.sag_pi_safe,
+            b_q=float(np.linalg.norm(np.asarray(self.debt, dtype=np.float64), ord=2)),
+            n_clients=int(self._n_clients_pre),
+            n_groups=int(self.num_groups),
+            source="prewindow_debt_and_public_target",
+            cov_mode=("aggregate_stable_regime" if self._formal_raven_mcs()
+                      else str(getattr(self, "sag_cov_mode", "aggregate_stable_regime") or "aggregate_stable_regime")),
+            rolling_L=getattr(self, "sag_rolling_L", None),
+            regime_certified=bool(getattr(self, "sag_regime_certified", True)),
+            had_active_certified_regime=bool(getattr(self, "sag_had_active_certified_regime", True)),
+            c_hat=getattr(self, "sag_c_hat", None),
+        )
+
+    def _decide_g_r(
+        self, window_id: int = -1,
+    ) -> tuple[int, dict[str, Any], str | None, dict[str, bool]]:
+        """Freeze G_r from F_{r-} only.
+
+        Configured RAVEN-MCS consumes the pre-window setting independently of
+        the aggregate coverage certificate. Only the explicit legacy coverage
+        branch below imposes Design_t := Gate_t.
+
+        always_on / always_off / policy / sag are LEGACY experiment modes.
+        """
+        assert self.sag_thresholds is not None
+        bundle = compute_certificates(
+            self.sag_state.completed(),
+            self.sag_thresholds,
+            self._certificate_context(),
+        )
+        certs = bundle.as_gate_inputs()
+        self._last_cert_diagnostics = dict(bundle.diagnostics)
+        if self._formal_raven_mcs():
+            rec = configured_decide_gate_and_design(
+                self._last_cert_diagnostics,
+                configuration=self._window_design_configuration,
+                window_id=window_id,
+                tau_cov=float(self.sag_thresholds.tau_cov),
+                c_cov_lcb=float(bundle.C_cov_LCB),
+            )
+            self._last_gate_to_design = rec
+            self.design_window_logs.append(dict(rec, actual_design=rec["Design_t"]))
+            return int(rec["Design_t"]), certs, None, {"aggregate_coverage": bool(rec["Gate_t"])}
+        mode = self._gate_mode()
+        if mode == FORMAL_GATE_MODE:
+            rec = legacy_decide_gate_and_design(
+                self._last_cert_diagnostics,
+                tau_cov=float(self.sag_thresholds.tau_cov),
+                window_id=int(window_id),
+                c_cov_lcb=float(bundle.C_cov_LCB)
+                if np.isfinite(float(bundle.C_cov_LCB))
+                else None,
+            )
+            self._last_gate_to_design = rec
+            self.design_window_logs.append(dict(rec, actual_design=rec["Design_t"], method_version=self.policy.method_version, coverage_role="legacy_control"))
+            passed = {"aggregate_coverage": bool(rec["Gate_t"])}
+            return int(rec["Gate_t"]), certs, rec.get("fallback_reason"), passed
+        # --- LEGACY experiment / ablation path (not formal RAVEN-MCS) ---
+        decision = decide_gate(certs, self.sag_thresholds.gate_thresholds())
+        self._last_gate_to_design = {}
+        if mode == "always_on":
+            return 1, certs, None, decision.passed
+        if mode == "always_off":
+            return 0, certs, "OFF_MODE_NO_DESIGN", decision.passed
+        if mode == "sag":
+            return int(decision.G_r), certs, decision.fallback_reason, decision.passed
+        if self.policy.uses_design_ratio:
+            return 1, certs, None, decision.passed
+        return 0, certs, "OFF_MODE_NO_DESIGN", decision.passed
+
+    def _apply_zeta(self, zeta_d: np.ndarray, g_r: int) -> np.ndarray:
+        if self._formal_raven_mcs():
+            return apply_configured_design_zeta(zeta_d, g_r)
+        mode = self._gate_mode()
+        if mode == FORMAL_GATE_MODE:
+            return apply_formal_design_zeta(zeta_d, g_r)
+        if mode == "sag":
+            return zeta_tilde(zeta_d, g_r)
+        if self.policy.uses_design_ratio:
+            return np.asarray(zeta_d, dtype=np.float64)
+        return np.ones(len(zeta_d), dtype=np.float64)
+
+    def _freeze_q_hat_map(
+        self,
+        client_ids: list[str],
+        client_data: dict[str, dict],
+    ) -> dict[str, float]:
+        """Predict q̂_use from pre-U features. Must not read rec.U."""
+        out: dict[str, float] = {}
+        for cid in client_ids:
+            rec = client_data[cid]["record"]
+            if (
+                self.policy.uses_oracle_propensity
+                and getattr(rec, "oracle_q", None) is not None
+            ):
+                out[cid] = float(rec.oracle_q)
+            elif self.usable_propensity is not None:
+                out[cid] = float(
+                    self.usable_propensity.predict(
+                        np.array(
+                            [
+                                1.0,
+                                float(rec.model_age),
+                                0.0,
+                                0.0,
+                                deadline_slack_pre(
+                                    rec.window_close_time,
+                                    rec.registration_time,
+                                ),
+                            ]
+                        )
+                    )
+                )
+            else:
+                out[cid] = 0.5
+        return out
+
+    def _window_opp_events(
+        self, window_slice: WindowDataSlice,
+    ) -> tuple[dict[str, float], dict[str, float]]:
+        pairs = [
+            (str(rec.client_id), str(stratum))
+            for rec in window_slice.records
+            for stratum in rec.opportunity_strata
+        ]
+        counts = window_opportunity_event_counts(pairs)
+        masses = window_opportunity_masses(pairs)
+        return (
+            {encode_pair(key): float(val) for key, val in masses.items()},
+            {encode_pair(key): float(val) for key, val in counts.items()},
+        )
+
+    def _window_opp_mass_map(self, window_slice: WindowDataSlice) -> dict[str, float]:
+        masses, _counts = self._window_opp_events(window_slice)
+        return masses
+
+    def _target_coverage(self, window_slice: WindowDataSlice) -> tuple[int, int]:
+        present = {
+            (str(rec.client_id), str(stratum))
+            for rec in window_slice.records
+            for stratum in rec.opportunity_strata
+        }
+        positive = [
+            key for key, mass in self.pi_target.items() if float(mass) > 0.0
+        ]
+        if not positive:
+            return 0, 0
+        covered = sum(1 for key in positive if key in present)
+        return len(positive), covered
+
+    def _record_sag_window(
+        self,
+        *,
+        window_id: int,
+        g_r: int,
+        stages: SagStages,
+        cert_inputs: dict[str, Any],
+        fallback_reason: str | None,
+        gate_passed: dict[str, bool],
+        b_r: list[str],
+        a_r: list[str],
+        u_r: list[str],
+        m_by_client: dict[str, float],
+        audit: dict[str, Any],
+        p2_invoked: bool,
+        extras: dict[str, Any] | None = None,
+    ) -> None:
+        log = {
+            "window_id": int(window_id),
+            "method_version": self.policy.method_version,
+            "design_control": self.policy.design_control,
+            "coverage_role": "diagnostic_only" if self._formal_raven_mcs() else "legacy_control",
+            "method_gate_mode": self._gate_mode(),
+            "G_r": int(g_r),
+            "fallback_reason": fallback_reason,
+            "gate_stage": stages.marks.get("gate", STAGE_GATE),
+            "R_stage": stages.marks.get("R", STAGE_R),
+            "p_obs_freeze_stage": stages.marks.get("p_obs_freeze", STAGE_P_OBS_FREEZE),
+            "O_stage": stages.marks.get("O", STAGE_O),
+            "local_stage": stages.marks.get("local", STAGE_LOCAL),
+            "q_use_freeze_stage": stages.marks.get("q_use_freeze", STAGE_Q_USE_FREEZE),
+            "U_stage": stages.marks.get("U", STAGE_U),
+            "P2_stage": stages.marks.get("P2", STAGE_P2),
+            "p2_invoked": bool(p2_invoked),
+            "B_r": list(b_r),
+            "A_r": list(a_r),
+            "U_r": list(u_r),
+            "m_by_client": {str(k): float(v) for k, v in m_by_client.items()},
+            "gate_features": dict(cert_inputs),
+            "gate_passed": dict(gate_passed),
+            **audit,
+        }
+        if extras:
+            log.update(extras)
+        log["certificate_diagnostics"] = dict(self._last_cert_diagnostics)
+        if self._last_gate_to_design:
+            log["gate_to_design"] = dict(self._last_gate_to_design)
+        if self._formal_raven_mcs():
+            log.update(self._last_gate_to_design)
+            log["actual_design"] = int(g_r)
+            log["design_configuration"] = self._window_design_configuration.to_dict()
+        self.sag_window_logs.append(log)
+        raw = audit.get("raw_state") or {}
+        if (
+            int(audit.get("both_empty") or 0) == 0
+            and int(audit.get("active_set_mismatch") or 0) == 0
+            and raw
+            and len(self.sag_raw_states) < 10
+        ):
+            self.sag_raw_states.append(
+                {
+                    "window_id": int(window_id),
+                    "gate_mode": self._gate_mode(),
+                    **raw,
+                }
+            )
+        history_row = {
+            "window_id": int(window_id),
+            "G_r": int(g_r),
+            "fallback_reason": fallback_reason,
+            "realized_C_cov": audit.get("realized_C_cov"),
+            "realized_C_ret": audit.get("realized_C_ret"),
+            "realized_C_ESS": audit.get("realized_C_ESS"),
+            "realized_C_clip": audit.get("realized_C_clip"),
+            "active_set_mismatch": audit.get("active_set_mismatch"),
+            "both_empty": audit.get("both_empty"),
+            "Delta_beta": audit.get("Delta_beta"),
+            "Delta_M": audit.get("Delta_M"),
+            "Delta_V": audit.get("Delta_V"),
+            "A_common_size": audit.get("A_common_size"),
+            "A_D_size": audit.get("A_D_size"),
+            "A_0_size": audit.get("A_0_size"),
+            "opp_mass_by_pair": dict(audit.get("opp_mass_by_pair") or {}),
+            "opp_count_by_pair": dict(audit.get("opp_count_by_pair") or {}),
+            "opp_event_total": audit.get("opp_event_total"),
+            "n_groups": int(self.num_groups),
+        }
+        self.sag_state.append_completed(history_row)
+
+    def _policy_extras(self, client_data: dict[str, dict]) -> dict[str, Any]:
+        zetas = [data.get("zeta") for data in client_data.values() if "zeta" in data]
+        ones = True
+        for zeta in zetas:
+            arr = np.asarray(zeta, dtype=np.float64)
+            if arr.size == 0:
+                continue
+            if not np.allclose(arr, 1.0):
+                ones = False
+                break
+        return {
+            "zeta_tilde_all_ones": bool(ones),
+            "uses_observation_ipw": bool(self.policy.uses_observation_ipw),
+            "uses_usable_ipw": bool(self.policy.uses_usable_ipw),
+            "uses_debt": bool(self.policy.uses_debt),
+            "uses_variance_penalty": bool(self.policy.uses_variance_penalty),
+            "uses_staleness_penalty": bool(self.policy.uses_staleness_penalty),
+            "uses_design_ratio": bool(self.policy.uses_design_ratio),
+        }
+
     def run(self) -> list[WindowMetrics]:
+        if getattr(self, "_dynamic_control_owner", False):
+            raise RuntimeError("Dynamic control owns this model; do not run the fixed EventTrace path")
         events = self.trace.events
 
         for window_id in range(int(self.trace.metadata.num_windows)):
@@ -230,19 +649,94 @@ class FullWindowRunner:
 
         return self.metrics
 
+    def build_dynamic_control(self, **kwargs):
+        """Explicit conditional-bundle ownership; never consumes trace final U.
+
+        Local work is prepared at registration and needs separate training
+        authorization. B0 may initialize this interface without running SGD.
+        """
+        from raven_mcs.training.dynamic_control import connect_full_runner
+        return connect_full_runner(self, **kwargs)
+
     def _process_window(
         self, window_id: int, events: "pd.DataFrame",
     ) -> WindowMetrics:
+        # Immutable snapshot before any certificate, event, or local computation.
+        # Replacing external configuration during this call affects only later windows.
+        if self._formal_raven_mcs():
+            if not isinstance(self.design_configuration, DesignConfiguration):
+                raise ValueError("CONFIGURATION_REQUIRED: invalid pre-window Design")
+            self._window_design_configuration = self.design_configuration
         before_hash = self._theta_hash()
         version = self.clock.model_version
+        stages = SagStages()
+        g_r, cert_inputs, fallback_reason, gate_passed = self._decide_g_r(window_id)
+        stages.mark("gate", STAGE_GATE)
 
-        # Step 2: Read risk sets from EventTrace
-        coarse_groups = self.num_groups if self.num_groups in {4, 8} else None
-        window_slice = extract_window_slice(
-            window_id, events, self.dataset, coarse_time_groups=coarse_groups,
+        # Step 2: Realize R (risk sets). Do not use O/U for G_r.
+        coarse_groups = (
+            self.num_groups
+            if (
+                self.paper_h_by_unit is None
+                and self.use_coarse_time_groups
+                and self.num_groups in {4, 8}
+            )
+            else None
         )
+        window_slice = extract_window_slice(
+            window_id,
+            events,
+            self.dataset,
+            coarse_time_groups=coarse_groups,
+            h_by_unit=self.paper_h_by_unit,
+        )
+        stages.mark("R", STAGE_R)
 
         if not window_slice.records:
+            stages.mark("p_obs_freeze", STAGE_P_OBS_FREEZE)
+            stages.mark("O", STAGE_O)
+            stages.mark("local", STAGE_LOCAL)
+            stages.mark("q_use_freeze", STAGE_Q_USE_FREEZE)
+            stages.mark("U", STAGE_U)
+            stages.mark("P2", STAGE_P2)
+            empty_audit = {
+                "A_D_size": 0,
+                "A_0_size": 0,
+                "active_set_mismatch": 0,
+                "both_empty": 1,
+                "service_diff": 0.0,
+                "service_diff_l1": 0.0,
+                "service_diff_l2": 0.0,
+                "Delta_beta": None,
+                "Delta_M": None,
+                "Delta_V": None,
+                "A_common_size": 0,
+                "realized_C_cov": 0.0,
+                "realized_C_ret": 0.0,
+                "realized_C_ESS": 0.0,
+                "realized_C_clip": 0.0,
+                "opp_mass_by_pair": {},
+                "opp_count_by_pair": {},
+                "opp_event_total": 0.0,
+                "opp_count_by_pair": {},
+                "opp_event_total": 0.0,
+                "raw_state": {},
+            }
+            self._record_sag_window(
+                window_id=window_id,
+                g_r=g_r,
+                stages=stages,
+                cert_inputs=cert_inputs,
+                fallback_reason=fallback_reason,
+                gate_passed=gate_passed,
+                b_r=[],
+                a_r=[],
+                u_r=[],
+                m_by_client={},
+                audit=empty_audit,
+                p2_invoked=False,
+                extras=self._policy_extras({}),
+            )
             self.clock.skip_empty_window()
             self.model_versions[self.clock.model_version] = copy.deepcopy(self.theta)
             after_hash = self._theta_hash()
@@ -262,16 +756,18 @@ class FullWindowRunner:
                 train_loss=0.0,
                 e_r_size=0,
                 a_r_size=0,
+                b_r_size=0,
+                g_r=int(g_r),
+                **self._design_metric_fields(),
             )
 
-        # Step 3-4: Compute first-stage weights and form E_r
+        # Freeze p̂_obs from pre-O features (planned_workload_pre / hour_block).
         client_data: dict[str, dict] = {}
         for rec in window_slice.records:
             cid = rec.client_id
-
-            # Compute zeta_hat for this client's records
-            zeta = self._compute_zeta(cid, rec.opportunity_strata)
-
+            # Keep the lagged ratio for the independent D-vs-0 diagnostic;
+            # only the frozen setting decides which factor enters computation.
+            zeta_d = self._compute_zeta(cid, rec.opportunity_strata)
             features_list = [
                 {
                     "bias": 1.0,
@@ -282,28 +778,53 @@ class FullWindowRunner:
                 }
                 for stratum in rec.opportunity_strata
             ]
-            p_hat = self._compute_p_hat(features_list)
-
-            # Stage 1: a = min(a_max, zeta_hat / max(p_hat, p_min))
-            a_raw = raw_weights(zeta, p_hat, a_max=self.a_max, p_min=self.p_min)
-
-            # Compute group masses m_{k,r,g}
-            m_g = group_mass(rec.O, a_raw, np.array(rec.target_groups), n_groups=self.num_groups)
-            m_total = total_mass(m_g)
-
-            # Compute a_bar (Hajek normalized)
-            a_bar = normalized_weights(rec.O, a_raw, m_total)
-
-            # Compute composition from records
-            c_g = composition(m_g, m_total)
-
-            # Compute n_eff
-            n_eff = effective_sample_size(rec.O, a_raw, total_mass=m_total)
-
+            # SimOracle: consume atomic p_obs_true(k,r,i) — never risk-set mean alone.
+            # F-1 also reaches this path through uses_oracle_p alone, leaving q estimated.
+            if (
+                (
+                    self.policy.uses_oracle_propensity
+                    or getattr(self.policy, "uses_oracle_p", False)
+                )
+                and getattr(rec, "p_obs_true_by_unit", None)
+            ):
+                p_map = rec.p_obs_true_by_unit or {}
+                if not p_map:
+                    raise RuntimeError("ATOMIC_POBS_ERROR: SimOracle missing p_obs_true_by_unit")
+                p_hat = np.asarray(
+                    [
+                        float(p_map.get(str(uid), float("nan")))
+                        for uid in rec.risk_set_unit_ids
+                    ],
+                    dtype=np.float64,
+                )
+                if np.isnan(p_hat).any():
+                    raise RuntimeError(
+                        "ATOMIC_POBS_ERROR: SimOracle risk unit lacks atomic p_obs_true"
+                    )
+            else:
+                p_hat = self._compute_p_hat(features_list)
+            p_hat_model = np.asarray(p_hat, dtype=np.float64).copy()
+            if not self.policy.uses_observation_ipw:
+                p_hat = np.ones(len(rec.opportunity_strata), dtype=np.float64)
             client_data[cid] = {
                 "record": rec,
-                "zeta": zeta,
+                "zeta_d": zeta_d,
                 "p_hat": p_hat,
+                "p_hat_model": p_hat_model,
+            }
+        stages.mark("p_obs_freeze", STAGE_P_OBS_FREEZE)
+
+        # Realize O and form masses under frozen G_r / ζ̃.
+        for cid, data in client_data.items():
+            rec = data["record"]
+            zeta = self._apply_zeta(data["zeta_d"], g_r)
+            stage1 = reconstruct_stage1(zeta, data["p_hat"], rec.O,
+                np.array(rec.target_groups), num_groups=self.num_groups,
+                a_max=self.a_max, p_min=self.p_min)
+            a_raw, m_g, m_total = stage1.raw, stage1.groups, stage1.total
+            a_bar, c_g, n_eff = stage1.weights, stage1.composition, stage1.effective_n
+            data.update({
+                "zeta": zeta,
                 "a_raw": a_raw,
                 "a_bar": a_bar,
                 "m_g": m_g,
@@ -311,33 +832,72 @@ class FullWindowRunner:
                 "c_g": c_g,
                 "n_eff": n_eff,
                 "clip_stage1": float(np.mean(np.abs(a_raw) >= self.a_max)),
-            }
+            })
+        stages.mark("O", STAGE_O)
 
-        # Step 5: E_r = all clients with m > 0 (BEFORE reading U)
+        # v2: E_r = registered/attempted; B_r = {k in E_r : m>0} = local train set.
+        # Keep name e_r_clients for the m>0 set (historical source-audit alias of B_r).
         e_r_clients = [
             cid for cid, data in client_data.items()
             if data["m_total"] > 0
         ]
+        b_r_clients = e_r_clients
         attempted_clients = [
             rec.client_id for rec in window_slice.records if rec.attempted == 1
         ]
-        if set(e_r_clients) != set(attempted_clients):
-            raise RuntimeError("E_r must equal the frozen attempted set")
+        if not set(e_r_clients).issubset(set(attempted_clients)):
+            raise RuntimeError("E_r must be a subset of the frozen attempted set")
         if any(rec.U == 1 and rec.attempted != 1 for rec in window_slice.records):
             raise RuntimeError("usable implies attempted")
 
         # Step 6: Execute local SGD for each client
         local_updates: dict[str, np.ndarray] = {}
         train_losses: dict[str, float] = {}
+        lowmem = bool(getattr(self, "_tdrive_lowmem", False))
+        mm = None
+        mm_path: str | None = None
+        mm_index: dict[str, int] = {}
+        update_norms: dict[str, float] = {}
+        n_mm = 0
+        stream_fedavg = lowmem and getattr(self.aggregator, "name", "") == "fedavg_window"
+        fedavg_acc = None
+        fedavg_weight: dict[str, float] = {}
+        if stream_fedavg:
+            ar_ids = [
+                cid for cid in e_r_clients if int(client_data[cid]["record"].U) == 1
+            ]
+            raw_pre = np.asarray(
+                [
+                    float(np.sum(client_data[cid]["record"].O))
+                    for cid in ar_ids
+                ],
+                dtype=np.float64,
+            )
+            tot_pre = float(raw_pre.sum()) if raw_pre.size else 0.0
+            if tot_pre <= 0.0:
+                tot_pre = 1.0
+            for cid, w in zip(ar_ids, raw_pre):
+                fedavg_weight[cid] = float(w / tot_pre)
 
         for cid in e_r_clients:
             data = client_data[cid]
             rec = data["record"]
             downloaded_version = rec.downloaded_version
             self.clock.register_local_work(downloaded_version)
+            if lowmem and int(rec.U) != 1:
+                # Global apply uses A_r = B_r ∩ U only; skip discarded B_r\U
+                # updates so a 16GB host can finish T-Drive windows.
+                continue
             checkpoint = self._get_model_checkpoint(downloaded_version)
 
             observed_records = []
+            # PREPROCESSING_CONSISTENCY_FIX: use the dataset's frozen sorted
+            # spatial_to_idx (same as eval). Rebuilding from unsorted
+            # DataFrame.unique() order scrambled embeddings on U-Air/Traffic.
+            spatial_to_idx = {
+                str(sid): int(i) for sid, i in self.dataset._spatial_to_idx.items()
+            }
+            total_time_slots = int(self.dataset.atomic_df["time_index"].max()) + 1
             for i, (uid, obs_val) in enumerate(zip(rec.observed_unit_ids, rec.observed_values)):
                 unit = self.dataset.get_atomic_by_id(uid)
                 if unit is not None:
@@ -346,9 +906,8 @@ class FullWindowRunner:
                         "absolute_time": unit.absolute_time,
                         "time_index": unit.time_index,
                         "observed_value": obs_val,
-                        "spatial_to_idx": {sid: i for i, sid in enumerate(
-                            self.dataset.atomic_df["spatial_id"].unique())},
-                        "total_time_slots": int(self.dataset.atomic_df["time_index"].max()) + 1,
+                        "spatial_to_idx": spatial_to_idx,
+                        "total_time_slots": total_time_slots,
                     })
 
             a_bar_np = data["a_bar"].astype(np.float64)
@@ -370,31 +929,181 @@ class FullWindowRunner:
                 a_bar_weights=a_bar_observed,
                 local_steps=self.local_steps,
             )
-            local_updates[cid] = update
-            train_losses[cid] = loss
-            raw_local = np.ones(len(observed_records), dtype=np.float64)
-            raw_local /= max(len(observed_records), 1)
-            self.diagnostics.append({
-                "window_id": window_id,
-                "client_id": cid,
-                "raw_local_weights": raw_local.tolist(),
-                "hajek_local_weights": data["a_bar"][obs_mask].tolist(),
-                "applied_local_weights": a_bar_observed.tolist(),
-                "zeta_hat": data["zeta"].tolist(),
-                "p_hat": data["p_hat"].tolist(),
-                "m": float(data["m_total"]),
-                "n_eff": float(data["n_eff"]),
-                "local_loss": float(loss),
-                "update_vector_hash": sha256_json(update.tolist()),
-            })
+            update = np.asarray(update, dtype=np.float64)
+            if not np.all(np.isfinite(update)) or (
+                isinstance(loss, float) and not np.isfinite(loss)
+            ):
+                from raven_mcs.e3.numerical.finite import NonfiniteNumericalState
 
-        # Step 7: Read U → form A_r
+                raise NonfiniteNumericalState(
+                    f"NONFINITE_NUMERICAL_STATE: local update/loss nonfinite "
+                    f"client={cid} window={window_id}"
+                )
+            train_losses[cid] = loss
+            if stream_fedavg:
+                if int(update.size) > 0:
+                    vec = np.asarray(update, dtype=np.float64)
+                    w = float(fedavg_weight.get(cid, 0.0))
+                    if fedavg_acc is None:
+                        fedavg_acc = w * vec
+                    else:
+                        fedavg_acc += w * vec
+                    update_norms[cid] = float(np.linalg.norm(vec))
+                self.diagnostics.append({
+                    "window_id": window_id,
+                    "client_id": cid,
+                    "observed_unit_ids": rec.observed_unit_ids,
+                })
+            elif lowmem:
+                if int(update.size) > 0:
+                    upd_f32 = np.asarray(update, dtype=np.float32)
+                    if mm is None:
+                        n_ar = sum(
+                            1
+                            for c in e_r_clients
+                            if int(client_data[c]["record"].U) == 1
+                        )
+                        tmp = tempfile.NamedTemporaryFile(
+                            prefix=f"tdrive_upd_w{window_id}_",
+                            suffix=".dat",
+                            delete=False,
+                        )
+                        tmp.close()
+                        mm_path = tmp.name
+                        mm = np.memmap(
+                            mm_path,
+                            dtype=np.float32,
+                            mode="w+",
+                            shape=(max(int(n_ar), 1), int(upd_f32.size)),
+                        )
+                    mm[n_mm] = upd_f32
+                    mm_index[cid] = n_mm
+                    update_norms[cid] = float(np.linalg.norm(upd_f32))
+                    n_mm += 1
+                self.diagnostics.append({
+                    "window_id": window_id,
+                    "client_id": cid,
+                    "observed_unit_ids": list(rec.observed_unit_ids),
+                    "a_bar": a_bar_observed.tolist(),
+                    "w_units": a_bar_observed.tolist(),
+                })
+            else:
+                local_updates[cid] = update
+                raw_local = np.ones(len(observed_records), dtype=np.float64)
+                raw_local /= max(len(observed_records), 1)
+                self.diagnostics.append({
+                    "window_id": window_id,
+                    "client_id": cid,
+                    "observed_unit_ids": list(rec.observed_unit_ids),
+                    "risk_set_unit_ids": list(rec.risk_set_unit_ids),
+                    "raw_local_weights": raw_local.tolist(),
+                    "hajek_local_weights": data["a_bar"][obs_mask].tolist(),
+                    "applied_local_weights": a_bar_observed.tolist(),
+                    "a_bar": a_bar_observed.tolist(),
+                    "w_units": a_bar_observed.tolist(),
+                    "zeta_hat": data["zeta"].tolist(),
+                    "p_hat": data["p_hat"].tolist(),
+                    "m": float(data["m_total"]),
+                    "n_eff": float(data["n_eff"]),
+                    "local_loss": float(loss),
+                    "update_vector_hash": sha256_json(update.tolist()),
+                })
+        stages.mark("local", STAGE_LOCAL)
+
+        # Freeze q̂_use from pre-U features on B_r (do not form A_r yet).
+        q_hat_map = self._freeze_q_hat_map(list(client_data.keys()), client_data)
+        stages.mark("q_use_freeze", STAGE_Q_USE_FREEZE)
+
+        # Realize U → A_r = B_r ∩ U_r
         a_r_clients = [
             rec.client_id for rec in window_slice.records
             if rec.U == 1 and rec.client_id in e_r_clients
         ]
+        u_r_clients = [
+            rec.client_id for rec in window_slice.records if rec.U == 1
+        ]
+        stages.mark("U", STAGE_U)
+
+        def _run_counterfactual() -> dict[str, Any]:
+            tar_n, tar_c = self._target_coverage(window_slice)
+            agg = self.aggregator
+            audit_obj = audit_design_vs_nodesign(
+                registered=[rec.client_id for rec in window_slice.records],
+                attempted=attempted_clients,
+                usable={rec.client_id: int(rec.U) for rec in window_slice.records},
+                O={cid: data["record"].O for cid, data in client_data.items()},
+                groups={
+                    cid: np.asarray(data["record"].target_groups, dtype=np.int64)
+                    for cid, data in client_data.items()
+                },
+                zeta_d={cid: data["zeta_d"] for cid, data in client_data.items()},
+                p_hat={cid: data["p_hat"] for cid, data in client_data.items()},
+                q_hat=q_hat_map,
+                variance={cid: float(self.variance_state.get(cid, 1.0)) for cid in client_data},
+                target_positive_count=tar_n,
+                target_covered_count=tar_c,
+                a_max=self.a_max,
+                p_min=self.p_min,
+                d_max=self.d_max,
+                q_min=self.q_min,
+                num_groups=self.num_groups,
+                v_floor=float(self.v_floor),
+                mu=np.asarray(self.mu, dtype=np.float64),
+                debt=np.asarray(self.debt, dtype=np.float64),
+                staleness={
+                    cid: float(data["record"].tau) / float(max(int(self.s_max), 1))
+                    for cid, data in client_data.items()
+                },
+                lambda_group=float(getattr(agg, "lambda_group", 1.0)),
+                lambda_beta=float(getattr(agg, "lambda_beta", 1.0)),
+                lambda_variance=float(getattr(agg, "lambda_variance", 0.1)),
+                lambda_staleness=float(getattr(agg, "lambda_staleness", 0.1)),
+                alpha_max=float(getattr(agg, "alpha_max", 0.5)),
+                e_min=float(getattr(agg, "e_min", 3.0)),
+                max_server_learning_rate=float(getattr(agg, "max_server_learning_rate", 1.0)),
+            )
+            payload = audit_obj.as_dict()
+            masses, counts = self._window_opp_events(window_slice)
+            payload["opp_mass_by_pair"] = masses
+            payload["opp_count_by_pair"] = counts
+            payload["opp_event_total"] = float(sum(counts.values()))
+            payload["old_realized_C_cov"] = payload.get("realized_C_cov")
+            return payload
 
         if not a_r_clients:
+            if mm is not None:
+                mmap_obj = getattr(mm, "_mmap", None)
+                del mm
+                mm = None
+                if mmap_obj is not None:
+                    mmap_obj.close()
+                gc.collect()
+            if mm_path and os.path.exists(mm_path):
+                try:
+                    os.remove(mm_path)
+                except OSError:
+                    pass
+                mm_path = None
+            if not lowmem:
+                stages.mark("P2", STAGE_P2)
+                audit = _run_counterfactual()
+                self._record_sag_window(
+                    window_id=window_id,
+                    g_r=g_r,
+                    stages=stages,
+                    cert_inputs=cert_inputs,
+                    fallback_reason=fallback_reason,
+                    gate_passed=gate_passed,
+                    b_r=b_r_clients,
+                    a_r=[],
+                    u_r=u_r_clients,
+                    m_by_client={cid: float(client_data[cid]["m_total"]) for cid in b_r_clients},
+                    audit=audit,
+                    p2_invoked=False,
+                    extras=self._policy_extras(client_data),
+                )
+            else:
+                stages.mark("P2", STAGE_P2)
             # U=0 attempts are still valid labels for future opportunity/p/q
             # estimators.  Update only after all current-window predictions and
             # local work are complete.
@@ -418,6 +1127,9 @@ class FullWindowRunner:
                 train_loss=0.0,
                 e_r_size=len(e_r_clients),
                 a_r_size=0,
+                b_r_size=len(b_r_clients),
+                g_r=int(g_r),
+                **self._design_metric_fields(),
             )
 
         # Step 8: Compute method-specific alpha
@@ -439,25 +1151,16 @@ class FullWindowRunner:
             else:
                 compositions_mat[:, i] = 1.0 / self.num_groups
 
-        # Stage 2: q → d → b → beta_hat
-        q_hat = np.array([
-            self.usable_propensity.predict(
-                np.array([
-                    1.0,
-                    client_data[cid]["record"].model_age if cid in client_data else 0.0,
-                    0.0,
-                    0.0,
-                    deadline_slack_pre(
-                        client_data[cid]["record"].window_close_time,
-                        client_data[cid]["record"].registration_time,
-                    ) if cid in client_data else 0.0,
-                ])
-            )
-            if self.usable_propensity is not None else 0.5
-            for cid in a_r_clients
-        ], dtype=np.float64)
+        # Stage 2: frozen q → d → b → beta_hat
+        q_hat = np.zeros(n_active, dtype=np.float64)
+        for i, cid in enumerate(a_r_clients):
+            q_hat[i] = float(q_hat_map.get(cid, 0.5))
 
-        d_w = d_weight(q_hat, d_max=self.d_max, q_min=self.q_min)
+        d_w = (
+            d_weight(q_hat, d_max=self.d_max, q_min=self.q_min)
+            if self.policy.uses_usable_ipw
+            else np.ones(n_active, dtype=np.float64)
+        )
         b = two_stage_mass(corrected_masses, d_w)
         beta = beta_hat(b)
         clip_stage2 = float(np.mean(np.abs(d_w) >= self.d_max))
@@ -481,6 +1184,8 @@ class FullWindowRunner:
             + self.v_floor
             for i, cid in enumerate(a_r_clients)
         ], dtype=np.float64)
+        variance_diag = np.where(np.isfinite(variance_diag), variance_diag, 1.0 + self.v_floor)
+        variance_diag = np.maximum(variance_diag, self.v_floor)
         covered_time_slots = {
             cid: [
                 int(unit.time_index)
@@ -499,25 +1204,63 @@ class FullWindowRunner:
             beta_hat=beta,
             staleness=staleness,
             variance_diag=variance_diag,
-            debt=self.debt,
+            debt=(
+                self.debt if self.policy.uses_debt
+                else np.zeros(self.num_groups, dtype=np.float64)
+            ),
             mu=self.mu,
-            extras={"covered_time_slots": covered_time_slots},
+            extras={
+                "covered_time_slots": covered_time_slots,
+                "participation_rate": self._lagged_participation_rates(a_r_clients),
+                "observation_rate": self._client_observation_rates(
+                    a_r_clients, client_data,
+                ),
+            },
         )
 
+        # Always invoke the method aggregator. Instantaneous calibration is
+        # ablated inside RavenWoInstAggregator (λ_g=0, λ_β=1e-8) rather than by
+        # skipping P2; skipping previously invalidated raven_wo_inst evidence.
         alpha = self.aggregator.compute_server_weights(payload)
         if abs(float(alpha.sum()) - 1.0) > 1e-8:
             alpha = alpha / alpha.sum()
+        stages.mark("P2", STAGE_P2)
 
         # Step 9: ONE global update
         theta_flat = flatten_params(self.theta)
-        for i, cid in enumerate(a_r_clients):
-            if cid in local_updates and len(local_updates[cid]) > 0:
-                theta_flat = theta_flat - float(self.eta) * alpha[i] * local_updates[cid]
+        if stream_fedavg and fedavg_acc is not None:
+            theta_flat = theta_flat - float(self.eta) * fedavg_acc
+        else:
+            for i, cid in enumerate(a_r_clients):
+                vec = None
+                if lowmem and cid in mm_index:
+                    vec = np.asarray(mm[mm_index[cid]], dtype=np.float64)
+                elif cid in local_updates and len(local_updates[cid]) > 0:
+                    vec = local_updates[cid]
+                if vec is not None and len(vec) > 0:
+                    theta_flat = theta_flat - float(self.eta) * alpha[i] * vec
 
         self.theta = unflatten_params(theta_flat, self.theta)
         self.model.load_state_dict(self.theta)
         new_version = self.clock.apply_server_update()
         self.model_versions[new_version] = copy.deepcopy(self.theta)
+        if mm is not None:
+            mmap_obj = getattr(mm, "_mmap", None)
+            try:
+                mm.flush()
+            except Exception:
+                pass
+            del mm
+            mm = None
+            if mmap_obj is not None:
+                mmap_obj.close()
+            gc.collect()
+        if mm_path and os.path.exists(mm_path):
+            try:
+                os.remove(mm_path)
+            except OSError:
+                pass
+            mm_path = None
 
         # Step 10: Update debt
         omega = coverage_mix(compositions_mat, alpha)
@@ -553,7 +1296,11 @@ class FullWindowRunner:
                     "lagged_S2": float(lagged_s2[i]),
                     "variance_proxy": float(variance_diag[i]),
                     "cold_start": bool(variance_cold_start[i]),
-                    "update_norm": float(np.linalg.norm(local_updates[cid])),
+                    "update_norm": float(
+                        update_norms[cid]
+                        if lowmem
+                        else np.linalg.norm(local_updates[cid])
+                    ),
                     "variance_state_updated_after_close": True,
                     "global_model_hash": after_hash,
                 })
@@ -575,6 +1322,24 @@ class FullWindowRunner:
 
         avg_train_loss = float(np.mean(list(train_losses.values()))) if train_losses else 0.0
 
+        if not lowmem:
+            audit = _run_counterfactual()
+            self._record_sag_window(
+                window_id=window_id,
+                g_r=g_r,
+                stages=stages,
+                cert_inputs=cert_inputs,
+                fallback_reason=fallback_reason,
+                gate_passed=gate_passed,
+                b_r=b_r_clients,
+                a_r=a_r_clients,
+                u_r=u_r_clients,
+                m_by_client={cid: float(client_data[cid]["m_total"]) for cid in b_r_clients},
+                audit=audit,
+                p2_invoked=True,
+                extras=self._policy_extras(client_data),
+            )
+
         return WindowMetrics(
             window_id=window_id,
             active=True,
@@ -591,6 +1356,9 @@ class FullWindowRunner:
             train_loss=avg_train_loss,
             e_r_size=len(e_r_clients),
             a_r_size=len(a_r_clients),
+            b_r_size=len(b_r_clients),
+            g_r=int(g_r),
+            **self._design_metric_fields(),
         )
 
     def _update_lagged_estimators(
@@ -602,6 +1370,11 @@ class FullWindowRunner:
         opportunity_counts: Counter[tuple[str, str]] = Counter()
         for rec in window_slice.records:
             cid = rec.client_id
+            # FedAU frequency counts: registration attempt vs usable update.
+            # Must run after aggregation so the current window stays pre-outcome.
+            self._fedau_attempt_count[cid] = self._fedau_attempt_count.get(cid, 0.0) + 1.0
+            if int(rec.attempted) == 1 and int(rec.U) == 1:
+                self._fedau_usable_count[cid] = self._fedau_usable_count.get(cid, 0.0) + 1.0
             opportunity_counts.update(
                 (str(cid), str(stratum))
                 for stratum in rec.opportunity_strata
@@ -693,12 +1466,16 @@ class FullWindowRunner:
             if cid not in local_updates:
                 continue
             update = np.asarray(local_updates[cid], dtype=np.float64)
+            if not np.all(np.isfinite(update)):
+                continue
             previous_mean = self.variance_mean.get(
                 cid, np.zeros_like(update),
             )
             if previous_mean.shape != update.shape:
                 raise RuntimeError("variance mean/update shape mismatch")
             deviation = float(np.mean(np.square(update - previous_mean)))
+            if not np.isfinite(deviation):
+                continue
             previous_s2 = self.variance_state.get(cid, 1.0)
             decay = float(self.variance_decay)
             self.variance_state[cid] = (
@@ -719,7 +1496,9 @@ def build_full_runner(
     trace: EventTrace,
     dataset: ProcessedDataset,
     *,
-    method: str = "raven",
+    method: str = "raven_mcs",
+    design: str | None = None,
+    design_source: str = "explicit_api",
     n_groups: int | None = None,
     model_seed: int = 26001,
     learning_rate: float = 0.01,
@@ -733,8 +1512,13 @@ def build_full_runner(
     pi_min: float = 1e-6,
     d_max: float = 10.0,
     q_min: float = 0.05,
+    use_coarse_time_groups: bool = False,
+    pi_opp_joint: dict[tuple[str, str], float] | None = None,
+    paper_h_by_unit: dict[str, int] | None = None,
 ) -> FullWindowRunner:
     """Build a FullWindowRunner for end-to-end training."""
+    from raven_mcs.sag.r1l_design import configuration_for_method
+    design_configuration = configuration_for_method(method, design, source=design_source)
     if n_groups is None:
         n_groups = dataset.num_groups
 
@@ -762,6 +1546,8 @@ def build_full_runner(
             atomic_for_pi["target_group_main"] = (
                 RepeatableTimeOfDayMapper().map(atomic_for_pi)
             )
+        else:
+            atomic_for_pi["target_group_main"] = pd.Categorical(atomic_for_pi["target_group"]).codes
         unit_station = atomic_for_pi.set_index("unit_id")[
             "spatial_id"
         ].astype(str).to_dict()
@@ -794,6 +1580,7 @@ def build_full_runner(
         model=model,
         aggregator=aggregator,
         policy=policy,
+        design_configuration=design_configuration,
         mu=mu,
         num_groups=n_groups,
         learning_rate=learning_rate,
@@ -805,6 +1592,9 @@ def build_full_runner(
         q_min=float(q_min),
         pi_target=dict(pi_target or {}),
         s_max=int(s_max if s_max is not None else trace.metadata.s_max),
+        use_coarse_time_groups=bool(use_coarse_time_groups),
+        paper_h_by_unit=dict(paper_h_by_unit) if paper_h_by_unit else None,
+        pi_opp_joint=dict(pi_opp_joint or {}),
         seed=model_seed,
         device=device,
     )

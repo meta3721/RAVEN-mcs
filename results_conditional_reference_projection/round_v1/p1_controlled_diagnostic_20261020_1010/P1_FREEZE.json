@@ -1,0 +1,25 @@
+{
+  "protocol": "conditional-reference-projection-v1",
+  "stage": "P1_CONTROLLED_DIAGNOSTIC",
+  "status": "FAIL_IMPLEMENTATION",
+  "seed": 33001,
+  "selected_windows": [
+    0,
+    1,
+    2,
+    33,
+    34,
+    35,
+    66,
+    67,
+    68
+  ],
+  "N": 9,
+  "copied_from": "results_conditional_reference_projection/round_v1/p1_controlled_diagnostic_20261020_1002/P1_FREEZE.json",
+  "reselected": false,
+  "labels_used_for_selection": false,
+  "final_pt_opened": false,
+  "epsilon_score": 1e-07,
+  "free_bytes_before_import": 6597771264,
+  "failure": "Traceback (most recent call last):\n  File \"C:\\Cursor\\raven.mcs\\results_conditional_reference_projection\\round_v1\\p1_controlled_diagnostic_20261020_1010\\run_p1.py\", line 574, in main\n    metrics = runner._process_window(window_id, trace.events)\n              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Cursor\\raven.mcs\\results_conditional_reference_projection\\round_v1\\p1_controlled_diagnostic_20261020_1010\\run_p1.py\", line 361, in process_and_prune\n    result = original(window_id, events)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Cursor\\raven.mcs\\src\\raven_mcs\\training\\window_runner.py\", line 1224, in _process_window\n    alpha = self.aggregator.compute_server_weights(payload)\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Cursor\\raven.mcs\\src\\raven_mcs\\aggregation\\methods.py\", line 566, in compute_server_weights\n    return _normalize(result.alpha)\n           ^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Cursor\\raven.mcs\\results_conditional_reference_projection\\round_v1\\p1_controlled_diagnostic_20261020_1010\\run_p1.py\", line 272, in normalize\n    cleaned, _record = clean_server_weights(weights)\n                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Cursor\\raven.mcs\\results_conditional_reference_projection\\round_v1\\implementation\\guards.py\", line 57, in clean_server_weights\n    raise RealConstraintViolation(\nguards.RealConstraintViolation: {\"stage\": \"before_cleanup\", \"a_bar\": 0.5, \"e_bar\": 3.0, \"before\": {\"simplex\": 6.196496649124583e-10, \"negative\": 0.0, \"cap\": 0.0, \"ess\": 1.4537101800105034e-08}, \"limit\": 1e-08}\n"
+}

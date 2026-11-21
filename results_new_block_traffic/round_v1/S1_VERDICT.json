@@ -1,0 +1,73 @@
+{
+  "amendment_A1": {
+    "disclosure": "level 2 is inherited, not retrained, so that rung is not numerically interchangeable with the fresh rungs",
+    "reused_from": "artifacts/e2_traffic_formal_runs_r1 (E2 runner, read-only)",
+    "reused_rung_local_steps": 2
+  },
+  "central_delivered_mean": 0.977673231150311,
+  "central_source": "frozen artifacts/e3_formal_runs_r1/runs/traffic/central_delivered",
+  "created_utc": "2026-10-07T08:27:07.059024+00:00",
+  "failed": "N3",
+  "family": "e3_complete_aligned",
+  "first_run_wall_seconds": 45.93457163332884,
+  "go": false,
+  "instruction_sha256": "25f580aa4e2824daa931addab39eadee67319a24fc89c11ce7f2cf9aa552bb36",
+  "ladder": [
+    {
+      "local_steps": 2,
+      "local_steps_source": "sealed_e2_complete_aligned_read_only",
+      "max_RMSE_mu": 1.0067793683150728,
+      "mean_RMSE_mu": 1.0066307478851952,
+      "mean_runtime_seconds": NaN,
+      "min_RMSE_mu": 1.0063766454710172,
+      "n": 3,
+      "ratio_to_c": 1.029618809037876
+    },
+    {
+      "local_steps": 5,
+      "local_steps_source": "fresh_run_e3_real",
+      "max_RMSE_mu": 1.0056991989120365,
+      "mean_RMSE_mu": 1.0051849366719776,
+      "mean_runtime_seconds": 45.93457163332884,
+      "min_RMSE_mu": 1.0047191416761847,
+      "n": 3,
+      "ratio_to_c": 1.0281399803585671
+    },
+    {
+      "local_steps": 10,
+      "local_steps_source": "fresh_run_e3_real",
+      "max_RMSE_mu": 1.0064562966856474,
+      "mean_RMSE_mu": 1.0048536760557019,
+      "mean_runtime_seconds": 45.87458876666884,
+      "min_RMSE_mu": 1.0036857168922146,
+      "n": 3,
+      "ratio_to_c": 1.027801154863789
+    },
+    {
+      "local_steps": 20,
+      "local_steps_source": "fresh_run_e3_real",
+      "max_RMSE_mu": 1.0095952238436252,
+      "mean_RMSE_mu": 1.0061325088871513,
+      "mean_runtime_seconds": 61.61097009999988,
+      "min_RMSE_mu": 1.0032864264933383,
+      "n": 3,
+      "ratio_to_c": 1.0291091919366102
+    }
+  ],
+  "reason": "no level within 1.01c and best is not 1 % below level 2",
+  "rung_sources": {
+    "10/30001": "results_new_block_traffic/round_v1/runs/s1/fedavg_window/ls10/seed30001",
+    "10/30002": "results_new_block_traffic/round_v1/runs/s1/fedavg_window/ls10/seed30002",
+    "10/30003": "results_new_block_traffic/round_v1/runs/s1/fedavg_window/ls10/seed30003",
+    "2/30001": "artifacts/e2_traffic_formal_runs_r1/runs/30001/complete_aligned/fedavg_window",
+    "2/30002": "artifacts/e2_traffic_formal_runs_r1/runs/30002/complete_aligned/fedavg_window",
+    "2/30003": "artifacts/e2_traffic_formal_runs_r1/runs/30003/complete_aligned/fedavg_window",
+    "20/30001": "results_new_block_traffic/round_v1/runs/s1/fedavg_window/ls20/seed30001",
+    "20/30002": "results_new_block_traffic/round_v1/runs/s1/fedavg_window/ls20/seed30002",
+    "20/30003": "results_new_block_traffic/round_v1/runs/s1/fedavg_window/ls20/seed30003",
+    "5/30001": "results_new_block_traffic/round_v1/runs/s1/fedavg_window/ls5/seed30001",
+    "5/30002": "results_new_block_traffic/round_v1/runs/s1/fedavg_window/ls5/seed30002",
+    "5/30003": "results_new_block_traffic/round_v1/runs/s1/fedavg_window/ls5/seed30003"
+  },
+  "threshold_1p01_c": 0.9874499634618141
+}

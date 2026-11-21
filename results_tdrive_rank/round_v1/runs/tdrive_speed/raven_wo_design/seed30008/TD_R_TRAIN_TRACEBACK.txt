@@ -1,0 +1,19 @@
+Traceback (most recent call last):
+  File "/root/raven.mcs/scripts/run_tdrive_rank_v1.py", line 645, in train_one
+    window_metrics = runner.run()
+                     ^^^^^^^^^^^^
+  File "/root/raven.mcs/src/raven_mcs/training/window_runner.py", line 593, in run
+    window_metrics = self._process_window(window_id, events)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/raven.mcs/scripts/run_tdrive_rank_v1.py", line 622, in _pw
+    out = orig_pw(window_id, events)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/raven.mcs/src/raven_mcs/training/window_runner.py", line 1148, in _process_window
+    alpha = self.aggregator.compute_server_weights(payload)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/raven.mcs/src/raven_mcs/aggregation/methods.py", line 566, in compute_server_weights
+    return _normalize(result.alpha)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/raven.mcs/src/raven_mcs/aggregation/methods.py", line 37, in _normalize
+    raise ValueError("server weights must be nonnegative")
+ValueError: server weights must be nonnegative

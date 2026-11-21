@@ -1,0 +1,2496 @@
+=== PAGE 1 ===
+1
+RA VEN-MCS: Target-Mass-Calibrated
+Windowed-Asynchronous Federated Data
+Completion for Mobile Crowdsensing under
+Two-Stage Non-Random Selection
+**** and Anfeng Liu
+Abstract—Mobile crowdsensing completion learns from up-
+dates selected by opportunity, observation, and usable-update
+delivery. These mechanisms shape an arrival law that can differ
+from the public deployment target. RA VEN-MCS reconstructs
+a selection-corrected reference with a preconfigured opportunity
+Design factor from pre-outcome histories and calibrates it within
+the feasible aggregation set of each asynchronous window. We
+distinguish deployment-target risk from arrival-weighted risk, es-
+tablish ideal Design-on target-moment and group-mass recovery
+under support and identification conditions, and prove unique
+solvability and plug-in stability of the calibration program.
+Paired component comparisons isolate the roles of correction and
+feasibility: on SensorScope, projecting the corrected reference
+improves group mismatch by+0.768percentage points over
+uniform server weights, while the Design factor provides a further
++0.922points on the same active set. Station-based protocol
+experiments and hybrid mobility replays characterize structural
+alignment and its relationship to deployment-weighted prediction
+error. The resulting framework connects the population repre-
+sented by usable observations to the client mixtures that a finite
+sensing window can realize.
+Index Terms—Mobile crowdsensing, federated learning, data
+completion, windowed asynchronous learning, non-random selec-
+tion, selection bias, target-mass alignment.
+I. INTRODUCTION
+Mobile crowdsensing (MCS) collects urban and environ-
+mental data from mobile devices without a dense dedicated
+infrastructure [1]–[3]. Continuous sensing is costly and par-
+ticipation is intermittent, so practical systems observe only
+a sparse field and rely on completion [4]–[11]. Federated
+learning trains those models without centralizing raw records
+[12]–[15], including asynchronous aggregation for irregular or
+stale updates [16]–[19]. The system studied here iswindowed
+asynchronous: one global update per window at close, not
+immediate-update FedAsync.
+A less visible issue arises before aggregation:the data
+that reach the server are not necessarily sampled from the
+distribution that the deployed predictor is intended to serve.
+For an atomic sensing targeti, a mobile client must first
+have an opportunity to coveri, the target must then actu-
+ally be observed, and finally the client’s local update must
+This work was supported in part by the National Natural Science Foundation
+of China (U24A20248).
+*** and Anfeng Liu are with the School of Electronic Information, Cen-
+tral South University, Changsha, 410083, China (E-mail: ****@csu.edu.cn,
+afengliu@mail.csu.edu.cn).
+complete computation and communication before the server’s
+usable-update deadline. The two-stage MCS process therefore
+contains three distinct selection layers, mobile opportunity
+R, observationO, and usable updateU, whose probabili-
+ties depend on mobility, sensing conditions, resource state,
+network quality, deadlines, and staleness. Even when each
+layer is operationally reasonable, their composition can make
+the distribution of observed and successfully delivered data
+differ from the public deployment target, so optimizing the
+distribution induced by arriving updates can optimize the
+wrong population risk.
+Sparse MCS completion primarily asks how to infer missing
+values from the available observations [5], [20]; asynchronous
+federated completion asks how to learn effectively from irreg-
+ular or stale client updates [16], [19]; and participation-aware
+FL studies partial, arbitrary, or biased client participation [21]–
+[28]. These directions establish that sparsity, asynchrony, and
+non-uniform participation matter, but they do not resolve the
+following MCS problem:how should one align asynchronous
+federated data completion with a deployment target when
+sensing-side availability and update-side usability jointly se-
+lect the data that enter learning?Correcting only the final
+client-participation distribution does not identify whether the
+distortion arose from mobile opportunity, actual observation,
+or usable-update censoring, and reconstructing a statistically
+correct target mass does not imply that this mass is realizable
+by the clients available in a finite mobile window.
+We developRA VEN-MCS, short forReference Alignment
+Via Exposure-aware Normalization for Mobile CrowdSens-
+ing. RA VEN-MCS treats deployment-target mass alignment,
+rather than raw update frequency, as the reference semantics
+of asynchronous federated data completion. As illustrated in
+Fig. 1, the method separates the public deployment target from
+the arrival/usable-update law, then factors the opportunity,
+observation, and usable-update layers under their legal pre-
+outcome information boundaries (selection-time covariates,
+not outcome or test labels). RA VEN-Design uses the lagged
+target-mass opportunity ratio with Design configured on before
+the window opens; RA VEN-NoDesign configures that factor
+at one, retaining the arrival opportunity law. The resulting
+statistical reference may still be unattainable in a particular
+mobile window, so RA VEN-MCS maps the corrected reference
+to a feasible aggregation decision through instantaneous target
+calibration, a strongly convex calibration program, and long-
+
+=== PAGE 2 ===
+2
+(a) Selection warps the public target
+Public target
+¹ over h(i)
+Opportunity R
+Observation O
+Usable U
+two-stage
+selection
+Arrival mass
+½ arr ≠ ¹
+≠
+(b) One coupled reconstruction + calibration loop
+Design, observation
+and usable correction
+Normalized
+reconstruction
+Instantaneous
+calibration
+(P2) feasible
+adjustment
+Debt
+update
+Aggregation
+feasible setµr + 1
+not five independent modules
+Fig. 1. RA VEN-MCS aligns asynchronous federated completion with a public deployment target. (a) Three selection layers induce an arrival law that need not
+match the deployment target. (b) RA VEN-Design forms a selection-corrected target-mass reference and calibrates it in the current feasible support. RA VEN-
+NoDesign uses bζ= 1and is not target-mass reconstruction. The Design setting is fixed before the window opens and held throughout it; the coverage Gate
+is a separate diagnostic. (P2) is the per-window calibration program that maps this reference onto the feasible aggregation set; it is defined in Section V.
+term target debt. This separation yields three distinct questions:
+what target should be served,what target mass the selected
+data represent, andwhat target composition can be feasibly
+realized now.
+Our main contributions are as follows.
+•Deployment-target risk semantics under two-stage
+non-random selection.We formulate asynchronous fed-
+erated MCS completion as a deployment-target alignment
+problem rather than an arrival-centered learning problem.
+The formulation distinguishes the atomic deployment law
+from the law induced by mobile opportunity, observation,
+and usable-update selection, and defines structural mis-
+match at both deployment-group and client–opportunity-
+stratum levels. We prove that when the deployment and
+arrival laws differ, their induced risk functionals are not
+generally interchangeable. This distinction identifies the
+population risk represented by selected observations and
+the deployment population the model serves.
+•Selection-layer-aware target reconstruction.We de-
+velop an exposure-aware normalized reconstruction that
+keeps the opportunity/design, observation, and usable-
+update mechanisms separate instead of collapsing them
+into a single missingness probability, using only legal
+pre-outcome information and local H ´ajek normalization
+to yield a selection-corrected reference mass for ag-
+gregation. Usable-update correction supplies the third
+sequential factor. Under compatible target support, se-
+quential pre-outcome ignorability, and correct ideal se-
+lection ratios, the ideal pooled normalized sequential
+estimator with the target-mass opportunity ratio recovers
+compatible target moments or target-group mass. Clip-
+ping controls the finite-sample bias–variance trade-off of
+the practical estimator. That reconstruction is RA VEN-
+Design, the setting that turns the Design factor on; with
+the factor off, RA VEN-NoDesign fixes the opportunity
+factor at one. The factor is an explicit configuration that
+the deployment fixes before the window opens and holds
+throughout it. Both settings are reported; (42) describes
+a block-level target-support check. A finite-sample cov-
+erage bound is audited as an empirical diagnostic in the
+supplemental material.
+•Feasibility-aware instantaneous and long-term tar-
+get calibration.We show that statistically reconstructed
+target mass and instantaneous mobile realizability are
+different problems. RA VEN-MCS therefore calibrates the
+corrected reference inside the current feasible aggrega-
+tion set while accounting for target mismatch, reference
+fidelity, uncertainty, and staleness, and carries unresolved
+group under-service through a long-term target-debt pro-
+cess. The program has a nonempty compact convex
+feasible set and a unique global minimizer under the
+stated conditions, and when the active set is held fixed
+with compatible target support the implemented RA VEN-
+Design clipped plug-in is a Lipschitz perturbation of the
+same-window ideal reference that the calibration program
+does not amplify inα, per (39).
+•Component attribution relative to uniform aggre-
+gation.We separate the published FedAvg-to-RA VEN
+structural difference, per dataset over 20 paired seeds,
+into the part that uniform server weights already close
+and the part that the corrected reference closes:68.96%
+versus31.04%of a2.09pp group gap on SensorScope,
+and83.07%versus16.93%of1.47pp on U-Air. Struc-
+tural improvements are therefore quoted relative to uni-
+form weights. The projected referenceProj Cr(bβr)car-
+ries the reference-side part. On SensorScope, the De-
+sign factor additionally provides a practically significant
+same-active-set improvement:B1(RAVEN)−B1(noζ) =
+
+=== PAGE 3 ===
+3
++0.922pp ([0.721,1.141], stable across seed halves),
+outside the±0.10band in closable-gap units (Sec-
+tion VII-C).
+The empirical structural claim is the projected reference,
+together with the Design configuration. Inverse-probability
+weighting, H ´ajek normalization, and a convex match to a
+known target composition are prior ingredients. What this
+setting adds is deployment-target semantics over sensing units,
+legal pre-outcome histories for the three selection layers, and
+the finite-window feasible set.
+We evaluate these contributions with a no-harm control, a
+risk-semantic block, and a SensorScope/U-Air development
+table under always-on protocolRon station traces (Table III).
+Independent hybrid ceilings, namely a T-Drive taxi replay
+under realRwith controlledOandU, an NSW-Traffic
+four-region protocol table, and the City Scanner PM 2.5 and
+Pilot 2 tables of the supplemental material, provide separate
+evaluations of their respective targets and selection protocols.
+The Design factor is set explicitly on each block, and both
+settings are reported where the trade-off is material. NSW-
+Traffic and City Scanner use locally constructed target maps
+rather than a transferred SensorScope/U-Air lookup object. A
+supplemental occupancy-robustness block thins protocolRon
+the same station clients, and a coverage Gate is audited only
+as a diagnostic that does not switch Design.
+II. RELATEDWORK
+Sparse MCS completion infers unsensed cells from a par-
+tial spatiotemporal field [1]–[11], [20], [29]. Recruitment,
+incentives, and privacy [30]–[33] are orthogonal and do not
+formulate deployment-target risk under sequential selection.
+Federated completion keeps sensing records on clients
+[12]–[15]. Wanget al.[16] combine local completion with
+a time-aware architecture and asynchronous aggregation for
+sparse MCS, in whose spirit we study windowed rather than
+immediate-update asynchrony. FedAsync and staleness-aware
+variants update as models arrive [17]–[19], [34], [35]; those
+works ask how to learn from the updates that participate,
+whereas RA VEN-MCS models which target mass those up-
+dates represent. Federated conformal prediction builds label-
+set coverage under heterogeneity or label shift [36], [37];
+the diagnostic Gate in Section V-E is a window-level lower
+bound on realized aggregate opportunity coverageC t, not a
+prediction set and not the Design rule.
+Non-uniform participation is the complementary FL object.
+Unified convergence under arbitrary participation, FedV ARP,
+and anchor sampling address partial client presence [21]–[23],
+and FedAU estimates aggregation weights from participation
+history so that unknown participation does not replace the
+original FL objective [24]. Correlated availability and semi-
+asynchronous bias have likewise been debiased [25], [27];
+agnostic FL optimizes a worst-case client mixture [26]; and
+FedProx and SCAFFOLD address client drift [38], [39]. These
+methods correct participation, while RA VEN-MCS addition-
+ally separates sensing-side opportunity and observation from
+update-side usability. FedIPW [28] is closest in the two-
+stage FL vocabulary, but its factorization of enrollment and
+round-level participation stays on the client roster: it does not
+factor MCS opportunity or observation of sensing units, and
+the aligned object is not a public deployment measure over
+h(i). It is cited as the nearest enrollment–participation IPW,
+not as an MCS completion baseline. FLOSS [40] reweights
+aggregation for client opt-out and stragglers. FedPALS [41]
+aggregates toward a known target label distribution by a
+convex combination of client models. Projecting the corrected
+reference ontoC r is that same matching step applied to a
+deployment-group composition rather than to labels, and Sec-
+tion VII-C evaluates this deployment-group projection directly.
+Classical survey estimators supply the H ´ajek building blocks
+[42]–[45], and importance weighting can lose effect in over-
+parameterized networks [46]. A nearest-neighbor comparison
+on target, selection, sensing-side correction, and finite-window
+calibration is in the supplemental material.
+III. SYSTEMMODEL ANDTARGET-MASSFORMULATION
+A. Windowed Asynchronous Mobile Crowdsensing
+We consider a mobile crowdsensing (MCS) system with a
+server and clientsK={1, . . . , K}. The prediction domain
+is partitioned into atomic unitsi= (n, t)∈ I, wherenis a
+spatial unit andtan absolute time index; each unit carries a
+target valueY i ∈ Y ⊆R, revealed only if observed, and a
+label-free deployment contextC dep
+i . All clients contribute to
+one completion predictorf θ with parametersθ∈Θ⊆R d,
+returning bYi =f θ(i;C dep
+i )∈ Yand updated by local training
+and aggregation. A client-side observation of unitiis denoted
+byZ k,r,i when available to clientkin server windowr.
+Server time is divided into aggregation windowsW r =
+[Tr, Tr+1), during which the server keepsθ r fixed. Client
+kmay start local training from a previously downloaded
+modelθ σk,r withσ k,r ≤r, andτ k,r ≜r−σ k,r is the
+model-version staleness of that attempt. Updates may arrive
+at different times, but individual arrivals do not modify the
+global model: the server closes the window, determines which
+registered attempts are usable, computes one aggregation
+vector, and performs the single transitionθ r →θ r+1. This
+windowed-asynchronoussemantics is distinct from immediate-
+update FedAsync and keeps exogenous mobile/update events
+independent of the method-specific aggregation weights.
+B. Two-Stage, Three-Layer Non-Random Selection
+Two-stage selection consists of a sensing-side stage with
+two layers, mobile opportunity and actual observation, and an
+update-side stage that determines whether a registered client
+attempt becomes usable before window closure.
+For clientk, windowr, and uniti, letR k,r,i ∈ {0,1}
+be the realized mobile opportunity indicator, which states
+whether(k, i)belongs to the opportunity/risk set in window
+rbefore the current sensing outcome is revealed. Conditional
+onR k,r,i = 1,O k,r,i ∈ {0,1}indicates whether unitiis
+actually observed. A client with a nonempty observed buffer
+registers an update attempt, and the set of registered clients is
+Er. Fork∈ E r the attempted update is usable (U k,r = 1)
+only if computation and transmission succeed, the update
+arrives byT r+1, and its staleness satisfiesτ k,r ≤S max, the
+
+=== PAGE 4 ===
+4
+block’s frozen maximum admissible model-version staleness;
+otherwiseU k,r = 0. We first define the usable setU r ≜{k∈
+Er :U k,r = 1}; Section IV then removes zero-mass clients and
+forms the actual aggregation setA r ⊆ U r. Failures, timeouts,
+network interruptions, and stale arrivals remain recorded as
+Uk,r = 0rather than disappearing from the selection log.
+We distinguish two structural mappings from units to finite
+label-free index sets: thedeployment-target grouph:I → G
+and theopportunity stratums:I → S, withGandSthe
+finite sets of deployment groups and opportunity strata. The
+group mapping specifies which deployment mass the predictor
+should serve, whereas the stratum mapping pools repeatable
+mobile exposure patterns for selection modeling, so the two
+are different scientific objects andh(i)̸=s(i)in general. Both
+are frozen from public/training-side information and do not use
+test-label values.
+For theoretical bookkeeping, let the normalized opportunity-
+event law in windowrbe
+P opp
+r (k, i) =π opp
+k,s(i),rνopp
+k,r (i|s(i)),
+X
+k,i
+P opp
+r (k, i) = 1,
+(1)
+whereπ opp
+k,s,r is the client–stratum opportunity mass and
+νopp
+k,r (i|s)is the conditional atomic opportunity law. The
+realized risk-set indicatorsR k,r,i are the implementation-
+level bookkeeping of the opportunity events induced by this
+mobile exposure process; they are not assumed to be mutually
+independent Bernoulli draws.
+The subsequent selection probabilities are conditional on the
+same process, withPr{·}that probability.
+pobs
+k,r,i ≜Pr
+ 
+Ok,r,i = 1|R k,r,i = 1,H obs
+k,r,i
+
+,(2)
+quse
+k,r ≜Pr
+ 
+Uk,r = 1|k∈ E r,H use
+k,r
+
+.(3)
+The observation historyH obs
+k,r,i contains only information avail-
+able beforeO k,r,i is realized. The usable-update historyH use
+k,r
+is measured after the sensing-side stage but beforeU k,r is
+realized. It may therefore contain the already observed reg-
+istration state, but not the realized computation/transmission
+outcomes, future events, or the current update vector used for
+aggregation. This sequential information boundary is part of
+the statistical model.
+C. Public Deployment Target and Compatible Target Mea-
+sures
+We begin with a public, label-independent atomic deploy-
+ment target over the deployment domainI dep ⊆ I,
+ϖtar
+i ≥0,
+X
+i∈Idep
+ϖtar
+i = 1.(4)
+Its deployment-group marginal isµ g = P
+i:h(i)=g ϖtar
+i , so
+µ∈∆ |G|−1. These define the application-level target served
+by the deployed predictor. Opportunity correction uses a
+compatible client–stratum targetπ tar
+k,i built from the stratum
+mass ofs(i), a frozen public client share, and the conditional
+atomic law ons(i)(supplemental material). Compatibility
+requires X
+k
+πtar
+k,i =ϖ tar
+i ,
+X
+k,s
+πtar
+k,s = 1.(5)
+Equation (5) is the bridge between the deployment-risk target
+and the client–stratum target used for Design and coverage.
+DefineI tar ={(k, s) :π tar
+k,s >0}. The unit lookup used by the
+target-coverage statistic, and the pair opportunity mass used
+byC t, are constructed in the supplemental material. All target
+quantities are frozen before test-label evaluation. The window
+configurationD t ∈ {on,off}is recorded before windowt
+opens and remains fixed during local training and window-
+close aggregation. The reported on/off arms keep the same
+setting across all windows of a run.
+D. Aggregate Coverage Certification Object
+Realized aggregate coverage is
+Ct =
+X
+(k,s)∈Itar
+πtar
+k,s 1
+n
+πopp
+k,s,t ≥π safe
+o
+,(6)
+whereπ opp
+k,s,t is the lagged opportunity mass of that pair,π safe
+is a frozen threshold, and1{·}is the indicator of the event in
+braces.
+E. Deployment-Target Risk Versus Arrival Risk
+For the squared lossℓ(bY , Y) = 1
+2(bY−Y) 2, the deployment-
+target risk is
+Rµ(θ) =
+X
+i∈Idep
+ϖtar
+i ℓ
+
+fθ(i;C dep
+i ), Yi
+
+.(7)
+The data reaching learning, by contrast, follow the opportunity,
+observation, and usable-update mechanisms.
+For evaluation, quantities without a window index denote
+the frozen evaluation-period marginals of their corresponding
+pre-outcome mechanisms. Under (1)–(3), the joint sequential
+probability that clientkcontributes unitito learning is
+P opp(k, i)p obs
+k,i quse
+k , and the label-free atomic arrival intensity
+is the corresponding sum, evaluated by the plug-in
+brarr
+i =
+X
+k
+bπopp
+k,s(i)bνopp
+k (i|s(i))bpobs
+k,ibquse
+k,s(i),(8)
+wherebquse
+k,s is the evaluation-period marginal of the legal pre-U
+usable-update model over registered attempts associated with
+stratums. Normalize
+eρarr
+i = brarr
+iP
+j∈Idep
+brarr
+j
+,(9)
+and define
+Rρ(θ) =
+X
+i∈Idep
+eρarr
+i ℓ
+
+fθ(i;C dep
+i ), Yi
+
+.(10)
+The deployment-target riskR µ measures how accurately the
+predictor serves the deployment population it is intended for,
+and the arrival riskR ρ measures how accurately it fits the
+updates that actually reach training; the loss and the predictor
+are the same in both, and only the weighting law differs.
+Since opportunity, observation, and usable-update selection
+are non-random, those two populations need not coincide,
+so accuracy on the arriving updates need not transfer to the
+deployment population and RA VEN-MCS treats deployment-
+target mass alignment, rather than usable-update frequency, as
+the reference semantics of the learning problem.
+
+=== PAGE 5 ===
+5
+F . Structural Alignment Objective
+Section IV will construct two corrected within-client com-
+positions: a deployment-group compositionc g
+k,r ∈∆ |G|−1 and
+an opportunity-stratum compositionc s
+k,r ∈∆ |S|−1. For the
+final aggregation setA r, defineM r = [cg
+k,r]k∈Ar. Given fea-
+sible aggregation weightsα r ∈ C r, the effective deployment-
+group composition in an active window isω r =M rαr; the
+feasible setC r is (25), andα r is determined by the calibration
+program (P2) of Section V-C rather than supplied as an input.
+Letη r >0denote the server step size and defineI r =
+1{|Ar|>0}andS R =PR−1
+r=0 ηrIr. ForS R >0,
+ωR = 1
+SR
+R−1X
+r=0
+ηrIrωr.(11)
+We measure the group-level structural mismatch∆ group(R) =
+∥ωR −µ∥ 1, theℓ 1 distance between the time-averaged effec-
+tive deployment-group composition and the deployment target.
+Both sides are probability vectors overG, so0≤∆ group ≤2.
+Both structural endpoints are quoted in percentage points of
+target mass,pp = ∆/2×100. Structural contrasts are reported
+relative to uniform server weightsα k,r = 1/|Ar|and, where
+they turn on the reference, in units of the closable gap between
+uniform weighting and the same-support hindsight optimum,
+at the same active set, the sameM r, the sameC r, and with all
+windows known in advance. That gap is3.44pp of target mass
+on SensorScope and1.32pp on U-Air (protocolRalways-
+on) over the20seeds. The pre-registered equivalence band
+is±0.10in those units, and a contrast is read as inside the
+band when its paired interval lies within±0.10; a component
+removal is read as necessary only when that interval lies
+entirely beyond the band in the worsening direction, and the
+band itself is a practical-significance convention rather than
+a hypothesis test. The band and this reading rule were fixed
+before the ladder runs, andw1/ladder_v3/PREREG.mdin
+the released bundle states both. Read-only ladder contrasts in-
+stead use the report-half subset, whose same-support optimum
+differs slightly, so band verdicts are not convertible between
+the two.
+For client–stratum structure, extendα k,r = 0tok /∈ A r
+and define
+bΠk,s(R) = 1
+SR
+R−1X
+r=0
+ηrIr αk,r cs
+k,r,s.(12)
+Because each active-windowα r and eachc s
+k,r are probability
+vectors,P
+k,sbΠk,s(R) = 1. We therefore measure
+∆c-s(R) =
+X
+k,s
+bΠk,s(R)−π tar
+k,s
+ .(13)
+The overall design goal is to keepR µ low while reducing
+∆group and∆ c-s under time-varying mobile feasibility and
+legal pre-outcome information.
+IV. SELECTION-LAYER-AWARETARGET
+RECONSTRUCTION
+RA VEN-MCS (Reference Alignment Via Exposure-aware
+Normalization) first forms a selection-corrected reference for
+the mass the usable data represent. Opportunity, observation,
+and usable-update selection are kept separate because they
+have different conditioning sets and therefore cannot be re-
+placed by a single generic missingness probability.
+A. Opportunity/Design Correction
+For a target-supported client–atomic pair, the ideal oppor-
+tunity/design ratio is
+ζ o
+k,r,i =
+πtar
+k,s(i)
+πopp
+k,s(i),r
+νtar
+i|s(i)
+νopp
+k,r (i|s(i)) =
+πtar
+k,i
+P opp
+r (k, i) .(14)
+Under within-stratum exchangeability,ν opp
+k,r (i|s) =ν tar
+i|s , this
+reduces to
+bζ o
+k,r,s =
+πtar
+k,s
+max{bπopp
+k,s,r, πmin} .(15)
+The opportunity estimate is lagged: current-window outcomes
+cannot alter the weight applied to that same window. One
+admissible implementation uses
+Copp
+k,s,r =ρ oppCopp
+k,s,r−1 +N opp
+k,s,r−1,
+bπopp
+k,s,r =
+Copp
+k,s,r +ϵ opp
+P
+j,u(Copp
+j,u,r +ϵ opp) .
+Other pre-outcome estimators are compatible with the frame-
+work if they preserve the same support and information
+boundary.
+The Design factorD t ∈ {on,off}of (32) applies (15)
+when it is on, which is RA VEN-Design; with the factor off,
+Algorithm 1 runs RA VEN-NoDesign and sets bζ o
+k,r,i = 1on
+observed pairs. The factor is a configuration of the deployment,
+supplied before the window opens and held fixed within it. The
+off setting retains the opportunity layer’s arrival lawπ opp.
+B. Observation Correction and Local H ´ajek Normalization
+The ideal first-stage weight for a realized opportunity is
+a⋆
+k,r,i =ζ o
+k,r,i/pobs
+k,r,i. The implemented plug-in weight is
+stabilized as
+ak,r,i = min
+(
+amax,
+bζ o
+k,r,i
+max{bpobs
+k,r,i, pmin}
+)
+.(16)
+Define the corrected total mass
+mk,r =
+X
+i
+Rk,r,iOk,r,iak,r,i,(17)
+the corrected deployment-group mass
+mg
+k,r,g =
+X
+i
+Rk,r,iOk,r,iak,r,i1{h(i) =g},(18)
+and the corrected opportunity-stratum mass
+ms
+k,r,s =
+X
+i
+Rk,r,iOk,r,iak,r,i1{s(i) =s}.(19)
+RA VEN aggregates only target-relevant usable clients:A r ≜
+{k∈ U r :m k,r >0}. Everyk∈ A r has well-defined normal-
+ized record weights ak,r,i = Rk,r,iOk,r,iak,r,i
+mk,r
+. Its deployment-
+group composition isc g
+k,r,g =
+mg
+k,r,g
+mk,r
+, and its opportunity-
+stratum composition isc s
+k,r,s =
+ms
+k,r,s
+mk,r
+. Both composition
+vectors sum to one fork∈ A r.
+
+=== PAGE 6 ===
+6
+The local effective sample size is
+neff
+k,r =
+m2
+k,rP
+i(Rk,r,iOk,r,iak,r,i)2 = 1P
+i a2
+k,r,i
+.(20)
+It measures weight concentration and is deliberately distinct
+from the target-equivalent corrected massm k,r.
+The local completion objective is
+bF H
+k,r(θ) =
+X
+i
+ak,r,i
+1
+2
+
+fθ(i;C dep
+i )−Z k,r,i
+2
+.(21)
+Starting fromθ σk,r , clientkperformsE loc local steps ofℓ
+with step sizeγ r >0, reachingθ (Eloc)
+k,r . Its normalized model
+displacement is
+uk,r =
+θσk,r −θ (Eloc)
+k,r
+γrEloc
+.(22)
+C. Usable-Update Correction and Reference Aggregation
+Mass
+For a registered attempt,bq use
+k,r is estimated only from vari-
+ables measurable beforeU k,r is realized. Fork∈ A r, define
+dk,r = min
+(
+dmax, 1
+max{bquse
+k,r , qmin}
+)
+,(23)
+andb k,r =m k,rdk,r. The selection-corrected reference aggre-
+gation vector is
+bβk,r = bk,rP
+j∈Ar bj,r
+, k∈ A r.(24)
+Thus bβr is a probability vector onA r. The ideal untruncated
+factorization ofβ ⋆a⋆ is in the supplemental material; the
+implemented bβr is a stabilized plug-in whose clipping con-
+trols the finite-sample bias–variance trade-off. The corrected
+deployment-group composition represented by the usable data
+before server calibration isω ref
+r =M rbβr, which a finite
+mobile window need not make equal toµ, since the current
+feasible client set can lack target support.
+D. Information Boundary and Stabilization
+Every correction applied in windowris measurable before
+its own random outcome: lagged opportunity history, observa-
+tion propensities excluding the current sensing outcome and
+label, and usable-update propensities excluding the realized
+Uoutcome and future events. The server determinesα r
+without inspecting the coordinates, norm, or direction of a
+current random update for the purpose of assigning that
+update’s weight. The clipping constants in (16) and (23) are
+finite-sample bias–variance stabilizers. Exact identification in
+Section VI concerns the ideal ratios, or equivalently regimes
+in which the stabilizing bounds are inactive on target support.
+E. Why Pairwise Positive Lower Bounds Are Not the Formal
+Certificate
+A deterministic pre-window pairwise lower bound is struc-
+turally vacuous under hidden zero-opportunity events by the
+positive pairwise lower-bound barrier proposition in the sup-
+plemental material, whose availability-induced barrier corol-
+lary places the frozen stress levelsa∈ {0.80,0.60,0.40,0.20}
+in that region. Pairwise positive LCBs are not the aggregate
+object (6).
+V. FEASIBILITY-AWARETARGETCALIBRATION
+Selection reconstruction determines what the usable data
+statistically represent; the clients available at window closure
+determine which mixtures are realizable. RA VEN calibrates
+the corrected reference bβr within this current support.
+A. Feasible Aggregation Set
+LetK r =|A r|in an active window and retainM r =
+[cg
+k,r]k∈Ar. The server choosesα r ∈R Kr from
+Cr =
+
+α:1 ⊤α= 1,0≤α k ≤ αr,∥α∥ 2
+2 ≤ 1
+Er
+
+,(25)
+where the coordinate cap αr andℓ 2 support bound Er are
+frozen functions ofK r, the effective-support cap of the
+supplemental material, with0< α max ≤1andE min ≥1
+as frozen design parameters. The cap controls single-client
+dominance and theℓ 2 constraint imposes a minimum effective
+aggregation support; the uniform vector1/K r belongs toC r,
+so every active window has at least one feasible aggregation
+vector.
+RA VEN also uses pre-aggregation uncertainty only. A
+lagged variance proxy is
+vk,r = S
+2
+k,r−
+max{neff
+k,r,1} +v floor, V r = diag(vk,r)⪰0,
+(26)
+where S
+2
+k,r− is available before the current random update
+is weighted. Let τ r ≥0denote the frozen pre-aggregation
+staleness vector.
+B. Long-Term Target Debt
+Finite-window feasibility can makeM rα=µimpossible.
+RA VEN maintains a nonnegative target-debt vectorQr ∈R |G|
++ ,
+initialized byQ 0 =0, updated in an active window by
+Qr+1 = [Q r +η r(µ−ω r)]+ withω r =M rαr, and left
+unchanged in an inactive one. A positiveQ r,g records accumu-
+lated under-service of deployment groupgwithout pretending
+that unavailable target mass can be synthesized in the current
+window. For every prefix withS R >0, the recursion implies
+the deterministic accounting relation
+∥ωR −µ∥ 1 ≤ 2∥QR∥1
+SR
+.(27)
+The full derivation is in the target-debt accounting proof of
+the supplemental material.
+
+=== PAGE 7 ===
+7
+C. Feasibility-Aware Calibration Program
+For every active window, RA VEN solves
+(P2)min α∈Cr Jr(α). The objective is
+Jr(α) =−Q ⊤
+r Mrα+ λg
+2 ∥Mrα−µ∥ 2
+2
++ λβ
+2 ∥α− bβr∥2
+2
++ λv
+2 α⊤Vrα+λ sτ ⊤
+r α.(28)
+The debt term prioritizes accumulated under-served groups;
+the group, reference, variance, and staleness terms are coor-
+dinated terms of one program. Over the3279active windows
+of these two datasets the range of∥M rα−µ∥ 1 overC r has
+median10 −13, so theℓ 1 surface is flat, its minimizer over
+Cr not unique, and the group term only selects among the
+solutions equivalent in∥M rα−µ∥ 1. The reason is support: a
+window’s active clients reach only a few of the target’s220or
+144groups, so the group objective is flat across the feasible set
+and on its own cannot move the window’s group distribution
+towardµ. The endpoint moves only through the tie-break
+among those equivalent points, and that is what the reference
+anchor supplies: the tie-broken per-window rule gains0.0107
+pp of group mass over uniform weights (1.05140against
+1.06213, per-seed maximum0.0337). The constraint is thus
+the load-bearing part of (P2), and the group objective alone
+is not. The flatness is measured on these two datasets, at the
+frozen configuration; where a window’s active clients do cover
+the target’s groups, the group term regains its effect. bβr is the
+selection-corrected reference;α r is the feasible aggregation
+decision.
+D. Global Update and Window Logic
+Letα ⋆
+r denote the solution of (P2). The server update is
+θr+1 =θ r −η r
+X
+k∈Ar
+α⋆
+k,ruk,r.(29)
+After aggregation, the server updates the debt viaQ r+1 =
+[Qr +η r(µ−ω r)]+, whereω r =M rαr, and advances
+lagged selection and variance states. IfA r =∅, the window
+is inactive:θ r+1 =θ r,Q r+1 =Q r, and the window does
+not enterS R. Algorithm 1 records this order: reconstruct bβr,
+solve (P2) forα ⋆
+r, then aggregate and update debt.
+E. Finite-Sample Aggregate Coverage Certificate
+The Design factor (32) is configured on or off. A diagnostic
+Gate, detailed as the aggregate coverage certificate algorithm
+of the supplemental material, uses only pre-window informa-
+tionF t− with
+kn =⌈(n+ 1)(1−α)⌉, α= 0.05,(30)
+and
+CLCB
+t = max{0,bCt −q t},(31)
+soGate t =1{C LCB
+t ≥τ cov}withτ cov = 0.05. W ARMUP
+and RESET force the Gate off. It does not switch Design. The
+predictor and calibration scores use completed past windows;
+Algorithm 1Window-close RA VEN-MCS with the Design
+factor as an explicit configuration
+Require:windowt; recordedR k,t,i,O k,t,i,U k,t; publicµ;
+debtQ t; modelθ t; frozen publicπ tar; Design factorD t ∈
+{on,off}recorded before window opening and held fixed
+within the window
+Ensure:θ t+1,Q t+1
+1:FormE t andU t ={k∈ E t :U k,t = 1}.
+2:ifD t = onthen
+3:Compute lagged opportunity/design ratios bζ o
+k,t,i
+{RA VEN-Design}
+4:else
+5:Set bζ o
+k,t,i ←1on observed pairs{RA VEN-NoDesign}
+6:end if
+7:Compute observation weightsa k,t,i and massesm k,t; set
+At ={k∈ U t :m k,t >0}.
+8:ifA t =∅then
+9:Setθ t+1 ←θ t,Q t+1 ←Q t, and stop.
+10:else
+11:Compute usable-update factorsd k,t and reference bβt.
+12:FormC t and laggedV t, τ t; solve (P2) forα ⋆
+t .
+13:θ t+1 ←θ t −η t
+P
+k∈At α⋆
+k,tuk,t.
+14:ω t ←M tα⋆
+t ,Q t+1 ←[Q t +η t(µ−ω t)]+.
+15:Advance lagged selection and variance states.
+16:end if
+the current window’s realizedC t is used after completion to
+audit the bound and update the diagnostic state for subsequent
+windows.
+LetD t ∈ {on,off}be the Design factor of windowt:
+a configuration of the deployment, fixed before the window
+opens, recorded with it, and held constant through its close.
+The opportunity/design factor is
+bζ o
+k,t,i =
+
+
+
+πtar
+k,s(i)
+max{bπopp
+k,t,s(i), πmin} , D t = on,
+1, D t = off.
+(32)
+WithD t = onthis is the lagged ratio (15), the setting
+called RA VEN-Design; withD t = offit is the uncorrected
+factor one, called RA VEN-NoDesign, and the result is not
+target-mass reconstruction. (32) is the only place the two
+settings differ: the observation, usable-update, calibration, and
+debt steps are identical. The Design-on/off experiments fix
+Dt to on/off, respectively, for the entire run. Equation (42)
+describes a block-level support check on a specified training-
+unit catalogue. It can supply a pre-window configuration only
+when that catalogue and its public target lookup are already
+available. The supplemental material reports the catalogue
+counts separately from the coverage diagnostic.
+VI. THEORETICALANALYSIS
+Proposition 2 recovers compatible target moments or group
+mass under A1–A3 for the ideal Design-on sequential estima-
+tor. The calibration results then establish existence, unique-
+ness, and stability on the current feasible client support. These
+statements condition on the configured Design setting. The
+
+=== PAGE 8 ===
+8
+block-level zero-target check of (42) does not establish the
+positivity and identification assumptions below.
+A. Assumptions
+A1 (Compatible target support and positivity).Public
+targets satisfy (4) and (5). Inverse factors are applied only
+whereP opp
+r ,p obs, andq use are strictly positive on target-
+supported events.
+A2 (Sequential pre-outcome ignorability).Conditional on
+the legal history at each stage,OandUare conditionally
+mean-ignorable for the reconstructed moment. TheOmodel
+uses onlyH obs; theUmodel may use the realized sensing-
+side registration state, but not the futureUoutcome (display
+in the supplemental material).
+A3 (Correct ideal ratios and cluster-level regularity).Ideal
+ratios equal their population counterparts, or stabilizing bounds
+are inactive on relevant support. AsN opp
+R → ∞, weighted
+cluster sums obey a weak law and the H ´ajek denominator
+stays strictly positive.
+A4 (Convex calibration).In every active window,K r ≥1,
+0< α max ≤1,E min ≥1,V r ⪰0,λ β >0, andλ g, λv, λs ≥
+0. The feasible set is (25).
+A5 (Positivity and shared support).Every event that enters
+the estimator, i.e. each target-supported event of A1 that
+belongs to the realized active setA r, has strictly positive
+opportunity, observation, and usable-update margins, so that
+the three inversions in (34) are well defined there. The ideal
+and the practical reference shareA r,M r, andC r, and the
+unnormalized H ´ajek mass obeys1 ⊤b≥B min >0. To retain
+this shared support under Design off, RA VEN-NoDesign fixes
+bζ= 1on{π tar = 0}as well.
+A6a (Inactive stabilization at the true margins).On A5’s
+active support the true margins clear every stabilizer of (15),
+(16), and (23):π opp ≥π min,p obs ≥p min,π tar/(πopppobs)≤
+amax with Design on and1/p obs ≤a max with Design off,
+and1/q use ≤d max; whend max ≤1/q min, as for the frozen
+constants, the last clause also givesq use ≥q min. The ceiling
+clause is stated on the composite weight rather than on1/p obs:
+(16) already carries bζ o, so bounding1/p obs alone leaves it
+unbounded. A6a is exactly what makes the map return the
+ideal untruncated ratios, and hence what makes (37) vanish.
+A6b (Bounded interpolation error).On A5’s active support
+the pre-outcome estimates satisfy|bπopp −π opp| ≤ε π,|bpobs −
+pobs| ≤ε p, and|bquse −q use| ≤ε q.
+B. Target Risk Is Not Arrival Risk
+Proposition 1(Target-vs-arrival risk distinction).Letϖ tar
+andeρarr be two normalized laws on the same finite supported
+atomic domain. Ifϖ tar ̸=eρarr, then the two risk functionals
+are not interchangeable in general: there exists a bounded
+nonnegative error profilee i such that
+X
+i
+ϖtar
+i ei ̸=
+X
+i
+eρarr
+i ei.(33)
+Conversely, equality of the two weighted expectations for every
+bounded error profile implies equality of the two underlying
+laws.
+Proof.See the supplemental material.□
+Proposition 1 distinguishes the risk functionals over
+bounded error profiles. Their values for a fixed predictor
+depend on that predictor’s errors.
+C. Normalized Sequential Target Reconstruction
+For the ideal analysis, letO r denote the multiset of realized
+opportunity events in windowr. Each evente∈ O r carries
+a mark(k e, ie)with marginal opportunity lawP opp
+r (ke, ie)
+in (1). Observation and usable-update selection then occur
+sequentially according to (2)–(3). Define
+χe =O eUke,r
+πtar
+ke,ie
+P opp
+r (ke, ie)pobs
+ke,r,ie
+quse
+ke,r
+.(34)
+Proposition 2(Normalized target reconstruction).Under A1–
+A3, for any bounded test functionψ(k, i)distinct from the
+Design factor of(32),
+bΦR =
+P
+r<R
+P
+e∈Or χeψ(ke, ie)P
+r<R
+P
+e∈Or χe
+p
+− →Φtar,(35)
+where
+Φtar =
+X
+k,i
+πtar
+k,i ψ(k, i).(36)
+Therefore, client–stratum indicators recoverπ tar
+k,s. By the com-
+patibility identity(5), choosingψ(k, i) =1{h(i) =g}then
+recovers the deployment-group massµ g. The result establishes
+moment and group-mass recovery under A1–A3.
+Proof.See the supplemental material.□
+Proposition 2 identifies the ideal pooled correction with the
+target-mass opportunity ratio (RA VEN-Design). Each finite-
+window reference is realized on its current client support,
+motivating the calibration in Section V.
+D. Existence and Uniqueness of Feasible Calibration
+Theorem 1(Unique solution of the calibration program).Un-
+der A4, every active window has a nonempty compact convex
+feasible setC r, and the calibration programmin α∈Cr Jr(α)
+has a unique global minimizerα ⋆
+r.
+Proof.See the supplemental material.□
+The theorem establishes the exact program’s minimizer. Nu-
+merical feasibility and solver accuracy are evaluated separately
+in the supplemental material.
+E. Practical Plug-in Perturbation
+LetTbe the implemented stabilization map: the composi-
+tion of (15), (16), and (23) with the normalization (24). Write
+βT
+r for the referenceTreturns at thetruemargins onA r,
+andβ ⋆
+r for the ideal untruncated reference of the supplemental
+material. The stabilization error is
+εstab,r =
+βT
+r −β ⋆
+r
+
+1.(37)
+It vanishes exactly whenTreproduces the ideal ratios on the
+active support, and it depends only on the true margins,π tar
+and the frozen constants, so it is measurable on a released
+trace. Letn r = maxk∈Ar
+P
+i Rk,r,iOk,r,i andK r =|A r|.
+
+=== PAGE 9 ===
+9
+Proposition 3(Practical plug-in perturbation).Assume A1,
+A4, A5, and A6b. Let the stabilized window mass obey
+1⊤bT
+r ≥B min >0at the true margins, and let the ideal
+and the implemented reference shareA r,M r, andC r. Letβ ⋆
+r
+be the same-window ideal untruncated reference and bβr the
+implemented clipped plug-in. Letα ⋆(β)denote the unique P2
+minimizer at that fixed window state. Then
+bβr −β ⋆
+r
+
+1 ≤C 1
+ 
+επ +ε p +ε q
+
++ε stab,r,(38)
+bαr −α ⋆
+r
+
+2 ≤
+bβr −β ⋆
+r
+
+2,(39)
+Mr(bαr −α ⋆
+r)
+
+2 ≤ ∥M r∥2
+bβr −β ⋆
+r
+
+2,(40)
+whereC 1 is the explicit Lipschitz envelope of
+the stabilized H ´ajek map (supplemental mate-
+rial), withL π =π tar
+max/(π2
+minpmin),L p =
+πtar
+max/(πminp2
+min),L q = min{q −2
+min, d2
+max}, andC 1 =
+(2Krnr/Bmin)(dmax max{Lπ, Lp}+a maxLq); under Design
+offζ≡1, soL π = 0andL p = 1/p2
+min. This stability bound
+compares references on shared target support with a fixed
+active set. It holds with or without A6a, which is exactly what
+drivesε stab,r to zero.
+Proof.See the supplemental material.□
+Two corollaries fix how the bound is read. (a) If A6a holds,
+βT
+r =β ⋆
+r andε stab,r = 0, so (38) returns to the sharp form
+C1(επ +ε p +ε q). (b) Under Design off the observation side
+contributes nothing toε stab,r exactly whenp obs ≥p min and
+1/pobs ≤a max, leaving the usable-update stage as the only
+source. On the main comparison blocks, active stabilization
+retains theε stab,r term.C 1 is a worst-case envelope: atπ min =
+10−6 andp min = 0.05the Design-onL π ≤2×10 13, so the
+informative part of (38) isε stab,r.
+Proposition 4(Group decomposition of the deployment-target
+criterion).Partition the supported test units into groupsG,
+which may be the groups ofhor any coarsening of them, and
+letµ eval
+g andn g be the evaluation mass and the unit count
+of groupg. WriteRMSE g = [n −1
+g
+P
+i:h(i)=g(bYi −Y i)2]1/2
+for the equal-weight score of groupg. ThenRMSE 2
+µ =P
+g∈G µeval
+g RMSE2
+g. Along a feasible directiondof the
+simplex, P
+g dg = 0, and whenRMSE µ >0, the direc-
+tional derivative is P
+g dg RMSE2
+g/(2 RMSEµ). Two meth-
+ods exchange order between evaluation weight vectorsµ eval
+andµ ′eval only when P
+g µeval
+g (RMSE2
+g,a −RMSE 2
+g,b)andP
+g µ′eval
+g (RMSE2
+g,a −RMSE 2
+g,b)have opposite signs.
+Proof.See the supplemental material.□
+The decomposition rests on three stated conditions: the groups
+partition the supported test units, the within-group weights
+do not depend on the other groups’ masses, andµ eval is a
+probability vector. It re-weights one fixed set of predictions,
+so it constrains how a reported value moves with the target
+map and not how a method would perform under a different
+map, and the group scores remain measured. For the two
+Design settings scored under one map it decides the prediction
+endpoint: the sign ofP
+g µeval
+g [RMSE2
+g(on)−RMSE 2
+g(off)]is
+the sign of theRMSE µ difference, and it says nothing about
+the structural endpoints∆ group and∆ c-s.
+F . Aggregate Coverage Guarantees
+The reconstruction results above do not by themselves yield
+a finite-sample coverage certificate. Deterministic pre-window
+pairwise LCBs are vacuous under hidden zero-opportunity
+events, and the frozen stress levelsa∈ {0.80,0.60,0.40,0.20}
+fall in that region (Section IV-E). In a certified regime
+the false-safe probability of an empirical diagnostic Gate is
+bounded byα, by the false-safe Gate corollary in the supple-
+mental material; and no method can simultaneously provide
+nontrivial per-window certification and universal protection
+against arbitrary unannounced regime shifts, by the arbitrary-
+drift applicability boundary proposition in the supplemental
+material.
+Assumption 1(Local score exchangeability within a certi-
+fied stable regime).Conditioned on the frozen public regime
+descriptorg, the current scoreS t and thenhistorical calibra-
+tion scores are exchangeable. Operational regime certification
+selects the pre-registered subset of windows on which this
+exchangeability assumption is imposed.
+Theorem 2(Stable-regime aggregate lower coverage).Assume
+windowtis in operational state CERTIFIED,n≥n min = 19,
+Assumption 1 holds, bCt =f b(Ft−)uses the frozen predictor
+snapshot of the current block, and the calibration scores are
+strictly historical same-block scores. Letq t =S cal
+(kn) withk n
+from(30), and defineC LCB
+t by(31). Then
+P
+ 
+CLCB
+t ≤C t |g
+
+≥1−α.(41)
+Forα= 0.05the right-hand side is0.95. The theorem remains
+conditional on Assumption 1 even when the algorithmic state
+is CERTIFIED.
+Proof.See the supplemental material.□
+If Assumption 1 holds, Theorem 2 bounds the Gate in that
+certified regime.
+VII. EVALUATION
+We evaluate RA VEN-MCS on risk interchangeability,
+RA VEN-Design versus the RA VEN-NoDesign setting, and
+component roles.
+•Risk interchangeability:does two-stage non-random
+selection create a deployment-target mismatch, including
+under real taxi opportunity?
+•RA VEN-Design and RA VEN-NoDesign:does RA VEN-
+Design reduce structural mismatch on the protocol-R
+development table, and how do the two settings trade
+off against each other and against prediction?
+•Component roles:which terms move structural diagnos-
+tics versus prediction, and when is Design useful as a
+reconstruction factor?
+A. Experimental Setup
+1) Datasets and target semantics:Table I summarizes the
+evaluated datasets. SensorScope [47], [48] 1 and U-Air [49] 2
+1https://doi.org/10.5281/zenodo.2654726
+2http://urban-computing.com/data
+
+=== PAGE 10 ===
+10
+TABLE I
+DATASETS AND ROLES. TARGETS USE PUBLIC OR TRAINING-SIDE INFORMATION,NEVER TEST LABELS. T-DRIVE IS A HYBRID RANKING UNDER REALR
+WITH CONTROLLEDOANDU.
+Dataset Spatial IDs Train/Val/Test WG blockss(i)MaxsRole
+SensorScope [47] 55 10285/3465/3410 4 station×block×day 440 main comparison; ablation
+U-Air [49] 36 5688/1908/1908 4 spatial ID×block×day 288 main comparison; ablation
+NSW-Traffic [50] 43 18576/6192/6192 4 region×block×day 32 risk interchangeability; four-region protocol
+T-Drive [51] 9994 cells 285659/–/74569 4 cell×block×day – hybrid (realR)
+City Scanner [52] 446 cells 9343/3290/2090 4 region×block×day 32 hybrid (realR)
+City Scanner P2 416 cells 10141/2835/1984 4 region×block×day 32 hybrid (meas.O)
+provide the main comparison and ablation evidence and the
+coverage-stress audit. SensorScope and U-Air supply station-
+ary sensing traces. For both, the deployment-group mapping
+h(i)is the spatial unit crossed with the four UTC time blocks
+(00–06, 06–12, 12–18, and 18–24), giving220groups on
+SensorScope and144on U-Air, with label-free masses. Their
+opportunity stratas(i)are finer: spatial identity×four time
+blocks×weekday/weekend. Accordingly,h(i)ands(i)retain
+the distinct semantics required by Section III-B.
+NSW-Traffic [50]3 has 43 stations, four coordinate regions,
+and at most 32 strata. It supplies the risk-interchangeability
+evidence and a separate four-region protocol ranking in the
+supplemental material. Each comparison uses one consistent
+data-processing and target specification.
+T-Drive [51] 4 is the public Microsoft Research taxi-
+trajectory sample; use follows that source’s published terms.
+Processed trajectories yieldRon9994cells and5837taxis,
+with Complete-alignedOandUcontrols and the same four
+UTC groupsh(i). The ranking uses the Design-off setting
+there; Design-on is also reported.
+City Scanner New York PM2.5 and its Pilot 2 subset supply
+two further hybrid rankings in the supplemental material.
+Occupied cells are the federated clients in both,Ris visit
+occupancy with RA VEN-Design used (0of9343and0of
+10141train units),O/Uare controlled in the first, and in the
+secondOis measured from finite PM 2.5 in[0,1000](1931of
+14960occupied cell-slots unobserved),Ris visit occupancy
+on the union of kept-PM and NO 2 GPS streams, andUis
+Complete-aligned (Smax = 5).
+2) Selection protocol and compared methods:The main
+comparison and ablation condition isComplete-aligned: pro-
+tocolR,O, andUare all active and non-random in the same
+direction. On SensorScope and U-Air, protocolRis always-on.
+A supplemental ranking thins thatRto the published T-Drive
+active fraction0.425.
+These layers are not measured in every block: opportunity
+is real on T-Drive and on the two City Scanner blocks, obser-
+vation is measured on City Scanner Pilot 2 only, and usable-
+update delivery is measured in no block. The SensorScope, U-
+Air, and NSW-Traffic protocol blocks are semi-synthetic, with
+strata and target maps from the frozen public data while all
+three selection layers are constructed and labeled as controls.
+There, opportunity is always-on with equal client mass and a
+factorexp(−1.25)against UTC blocks 2 and 3; observation
+3https://opendata.transport.nsw.gov.au/data/dataset/
+nsw-roads-traffic-volume-counts-api
+4https://www.microsoft.com/en-us/research/publication/
+t-drive-trajectory-data-sample/
+is Bernoulli at rate0.35, reduced to0.1925on the same two
+blocks; and the usable-update decision is a device-tier compute
+and network process that disadvantages those blocks, with
+Smax = 5and at most four risk units per client-window.
+Both parameters are constant within a stratum: the observation
+rate depends only on the UTC block, and the usable-update
+rate is drawn once per client-window for all its risk units.
+The reported predictive gains describe this construction rather
+than the range attainable when selection varies at the unit
+level, and the compounding direction is therefore part of the
+construction rather than a measured property of these traces,
+and the structural-alignment results of Table III are conditional
+on it.
+The main blocks assume within-stratum exchangeability,
+νopp
+k,r (i|s) =ν tar
+i|s . Paired methods share the same recorded
+selection trace. The five principal same-backbone baselines are
+FedAvg-Window [12], FedAsync-Window [17], TimeAlign-
+Agg (our windowed time-aware adaptation of [16]), Local-
+H´ajek (within-client inverse-probability / H ´ajek normaliza-
+tion [42], [43]), and TwoStage-H ´ajek (sequential H ´ajek on
+opportunity and observation). The main table additionally
+reports FedAU-Window, which adapts participation debiasing
+[24] to window-close aggregation (the windowed-adaptation
+specifications in the supplemental material), and ObsUse-
+Window, which applies the observation and usable-update
+corrections without Design, P2, or debt. These baselines share
+the completion backbone and window-close protocol. Inst-Cal
+and Debt-Cal expose the transition from reconstruction to cal-
+ibration in the appendix. Central-All, Central-Delivered, and
+RA VEN-SimOracle are reference-only methods. The Design-
+on/off comparisons use a fixed setting throughout each run;
+the coverage-certificate audit is reported separately in the
+supplemental material.
+Design is worth1.237%of∆ group and0.597%of∆ c-s on
+SensorScope at unchanged prediction, and costs6.885%of
+RMSEµ,6.943%of∆ group, and7.221%of tail RMSE on U-
+Air while improving∆ c-s by4.990%, over the same 20 paired
+seeds (Section VII-C). The choice is an endpoint-dependent
+deployment decision. The support-compatible mixture-target
+diagnostic on SensorScope exceeds the no-harm threshold;
+the comparison table uses the specified deployment target. All
+experiments use 20 paired seeds except the balanced control
+(five) and four ten-seed tables (the T-Drive ranking here,
+three in the supplement). Those seeds capture algorithmic and
+EventTrace randomness, not independent cities. No test result
+tunes the selection process, parameters, groups, or strata.
+
+=== PAGE 11 ===
+11
+3) Metrics and statistical policy:Prediction is measured on
+the supported test units by
+RMSEµ =
+h X
+i∈Itest
+µeval
+h(i)
+nh(i)
+ bYi −Y i
+2i1/2
+,
+wheren g is the test-unit count in groupg,µis the deployment-
+target marginalµ g =P
+i:h(i)=g ϖtar
+i ,µ eval is the evaluation
+group mass normalized on the supported test units, andµ blk
+aggregatesµto the four UTC blocks. On SensorScope and U-
+Airµ eval is uniform on the supported test units, soRMSE µ
+is the unweighted pooled RMSE. The U-Air and NSW-
+Traffic targets are standardized by their training-split scales
+(σ= 17.363and575.776), so thoseRMSE µ entries are
+dimensionless while SensorScope is reported in physical units;
+ratios of two runs, such as∆ group and∆ c-s, are invariant
+to this standardization. The test-split target means are7.657,
+−0.807and0.003on SensorScope, U-Air and NSW-Traffic,
+against training-split means of0.301,0, and0. Fitted on the
+scored test labels, the test-fitted constant attainsRMSE µ of
+2.088,0.678and1.007; the training-mean predictor, which
+uses only the training split, attains7.647,1.054and1.007.
+On SensorScope and U-Air the two differ by about3.7×and
+1.6×, because their training and test target levels differ, so
+an absoluteRMSE µ there is read against the training-mean
+predictor; the relative quantities are invariant to that difference.
+WorstGroupRMSEis the largest of the four UTC-block
+scores, each restricting the same weights to its own test units
+and renormalizing them inside the block (per-group table in
+the supplemental material), and the under-served-block score
+uses the block whoseµ blk
+b most exceeds opportunity mass
+(Section VII-D).Tail RMSEapplies that block functional
+to the frozen late-day blocks2and3(12–24UTC), fixed
+before the runs rather than ranked by error or arrival ratio.
+For the risk-interchangeability test only,RMSE ρ replaces
+the evaluation weights by the atomic arrival weights of (9).
+Structural alignment is∆ group(R) =∥ ωR −µ∥ 1 and∆ c-s in
+(13); smaller is better.
+All formal method comparisons are paired by seed, using
+the paired Wilcoxon protocol [53] with Holm correction [54]
+within the predeclared comparison families atα= 0.05;
+absolute differences below10 −12 are numerical ties, and
+tables report mean±standard deviation. Reported inter-
+vals are10 000-draw seed-level paired percentile bootstrap
+intervals at seed20261002. The Holm families used are
+the four ablation endpoints per dataset, the four registered
+prediction contrasts per dataset, the trained-rule contrasts
+within dataset and endpoint against the registered contrast list,
+and the20-seedWorstGroupRMSEfamily versus FedAU-
+Window and ObsUse-Window of the availability statement.
+On four-blockWorstGroupRMSE, RA VEN-Design (Sen-
+sorScope) and RA VEN-NoDesign (U-Air) are each compared
+with FedAU-Window and ObsUse-Window by a pre-specified
++0.5%mean-relative point-estimate tolerance on the paired
+relative differences, using TEST seeds30011–30020for the
+ranking prose and the four 20-seed comparisons for the Holm
+tests. This descriptive tolerance summarizes paired point esti-
+mates. The U-Air comparison evaluates the Design-off setting.
+FedAvgFedAsyncTimeAlign2S-HajekRA VEN
+(a) Seed-level Daligned
+−0.05
+−0.04
+−0.03
+−0.02
+−0.01
+0.00
+0.01
+0.02
+Daligned
+FedAvgFedAsyncTimeAlign2S-HajekRA VEN
+(b) Direction count (not a ranking)
+0
+5
+10
+15
+20
+Negative seeds / 20
+Fig. 2. Risk interchangeability on complete-aligned NSW-Traffic. (a) Seed-
+levelD aligned = ∆RMSEµ −∆RMSE ρ over 20 paired seeds. (b) Count
+of negative risk differences across seeds. A negative value means that the
+arrival-weighted risk changes more than the deployment-target risk under the
+same selection shift. Local-H ´ajek is omitted here because the risk-semantic
+experiment reports the five methods used in that test.
+For P2, warning-affected allocations satisfy the recorded fea-
+sibility constraints; the supplemental audit evaluates constraint
+residuals and solver agreement.
+B. Risk Interchangeability under Two-Stage Selection
+Under the balanced control, TimeAlign obtains mean
+deployment-target RMSE7.7108±0.0272and RA VEN
+7.7154±0.0337(mean relative degradation0.0599%; one-
+sided 95% upper bound0.134%, below the 3% no-harm
+margin). The balanced control evaluates the pre-specified no-
+harm criterion under aligned selection.
+We then test the premise of Proposition 1 on the NSW-
+Traffic risk-interchangeability experiment. For each method
+and seed, write∆ µ = RMSE aligned
+µ −RMSE balanced
+µ and
+∆ρ = RMSEaligned
+ρ −RMSE balanced
+ρ , with the pre-specified
+difference-of-differencesD aligned = ∆ µ −∆ ρ, which would
+concentrate around zero if the two risk views reacted inter-
+changeably to the same selection shift. Instead, Fig. 2 shows
+a stable negative shift for all five methods: meanD aligned
+ranges from−0.0209to−0.0214, 17–18 of the 20 paired
+seeds are negative for each method, and the paired Wilcoxon
+tests against zero givep= 4.83×10 −4–5.86×10 −4. The
+mean target-risk change is only about8×10 −4 against a mean
+arrival-risk change of about2.2×10 −2, so the same two-stage
+selection shift changes the arrival-weighted and deployment-
+target-weighted views by materially different amounts. Com-
+plete method-level statistics are in the risk-semantic appendix
+of the supplemental material.
+Risk-interchangeability finding.Under two-stage non-
+random selection, the arrival law need not be an interchange-
+able proxy for the deployment target, which supports Propo-
+sition 1. This test evaluates risk interchangeability for a fixed
+predictor.
+The same mismatch appears under real taxi opportunity.
+Fig. 3 compares the public H1–H4 masses with the mass
+induced by processed T-Drive trajectories. RealRis intermit-
+tent (mean client active fraction0.425, burstiness+0.38, cell
+coverage0.547). Four-blockTV(π opp,µ)is0.142on T-Drive,
+
+=== PAGE 12 ===
+12
+H1 H2 H3 H4
+(a) Four-block masses on T-Drive
+0.0
+0.1
+0.2
+0.3
+0.4
+0.5
+0.6
+0.7
+group mass
+target ¹
+real R
+unit-balanced
+T-Drive SS prot. UA prot.
+(b) Four-block opportunity--target TV
+0.00
+0.05
+0.10
+0.15
+0.20
+0.25
+0.30
+0.35
+TV(¼ opp; ¹)
+0.142
+0.192
+0.278
+Fig. 3. T-Drive real-mobility opportunity. (a) Publicµ, taxi opportunity,
+and a unit-balanced reference; realRunder-serves H3 and over-serves H4.
+(b) Four-blockTV(π opp,µ). Design is off; the RA VEN-NoDesign ranking
+is in Table II.
+0.192on protocol SensorScope, and0.278on protocol U-Air,
+all above0.05.OandUremain Complete-aligned controls.
+Design is off on this block.
+Hybrid ranking under real taxi opportunity.Table II ranks
+the same windowed family under real taxiRwith Complete-
+alignedO/Ucontrols. FedAU-Window and ObsUse-Window
+remain strongest. RA VEN-NoDesign does not meet the+0.5%
+mean-relative tolerance versus those two (paired relative
++2.39%and+2.43%; versus FedAvg+0.32%). Design on
+raisesRMSE µ, worst-group RMSE, and∆ group, as on U-
+Air. RA VEN-NoDesign leaves the four-block structural gap
+unchanged relative to FedAvg; Section VII-C carries the paired
+Design-on/off contrasts.
+TABLE II
+T-DRIVE HYBRID RANKING UNDER REAL TAXIR(MEAN±STD, 10
+SEEDS,178WINDOWS). LOWER IS BETTER.OANDUARE
+COMPLETE-ALIGNED CONTROLS. RAVEN-NODESIGN( bζ= 1)IS NOT
+TARGET-MASS RECONSTRUCTION. WORSTGROUPRMSEIS THE
+MAXIMUM OVERUTC H1–H4. RAVEN-NODESIGN IS OUTSIDE THE
+DESCRIPTIVE+0.5%WORST-GROUP TOLERANCE VERSUS
+FEDAU-WINDOW ANDOBSUSE-WINDOW.
+MethodRMSE µ WorstGroupRMSE∆ group ∆c-s
+FedAvg-Window
+1.1042
+±0.0022
+1.3064
+±0.0035 0.5232
+1.9758
+±0.0004
+TwoStage-H´ajek
+1.1254
+±0.0142
+1.3373
+±0.0198
+0.5948
+±0.0124
+1.9642
+±0.0007
+FedAU-Window
+1.0898
+±0.0050
+1.2801
+±0.0109 0.5232
+1.9915
+±0.0012
+ObsUse-Window
+1.0896
+±0.0049
+1.2796
+±0.0108 0.5232
+1.9916
+±0.0012
+RA VEN-NoDesign
+1.1069
+±0.0028
+1.3106
+±0.0044 0.5232
+1.9936
+±0.0003
+RA VEN-Design
+1.1242
+±0.0159
+1.3355
+±0.0225
+0.5948
+±0.0124
+1.9774
+±0.0006
+Independent four-region ranking on NSW-Traffic.The
+heuristic is applied to a locally frozen four-region map with
+Design on, the ranking uses RA VEN-Design. That map is not
+the SensorScope/U-Air client–stratum lookup, so the NSW-
+Traffic four-region ranking table in the supplemental material
+is a protocol ranking, not a confirmation of that table or of
+a transferred support object. TwoStage-H ´ajek is lowest on
+RMSEµ and WorstGroupRMSE. FedAU-Window is lowest on
+∆group (0.0606versus0.1048for RA VEN-Design). RA VEN-
+Design stays within the descriptive+0.5%worst-group toler-
+ance versus FedAU-Window and ObsUse-Window.
+Hybrid rankings under City Scanner occupancy.The City
+Scanner visit-occupancy ranking of the supplemental material
+ranks the same windowed family on occupied New York
+PM2.5 cells, with real visit occupancyR, Complete-aligned
+O/Ucontrols, and RA VEN-Design on; its target map uses
+test-group sharesµ h(i) on training atoms with all four regions
+positive, not the station client–stratum lookup. Paired mean
+relative error versus FedAU-Window and ObsUse-Window is
+−1.71%and−1.34%onRMSE µ, and−1.56%and−1.23%
+on worst-group RMSE, while FedAvg-Window remains low-
+est on both prediction endpoints (0.2379and0.2489) and
+RA VEN-Design is smallest on∆ group (0.0706). The Pilot 2
+measured-Oranking ranks the same family with measured
+Oand controlledU; TwoStage-H ´ajek is lowest onRMSE µ
+and WorstGroupRMSE, and RA VEN-Design is smallest on
+∆group and lower than FedAU-Window, ObsUse-Window,
+and FedAvg-Window on both prediction endpoints (paired
+mean relative−0.43%,−0.45%, and−0.65%onRMSE µ).
+Clients are occupied cells rather than vehicles in both, and
+each comparison uses its specified occupancy and observation
+protocol.
+C. Structural Alignment, Target RMSE, and Worst-Group Risk
+On SensorScope, Design reduces∆ group/∆c-s from Fe-
+dAvg’s1.0558/1.2903to1.0139/1.2644(3.96%/2.01%); the
+Design-off row gives1.0265/1.2719, so the two settings differ
+by1.237%and0.597%(paired, 20 seeds) while theirRMSE µ
+is indistinguishable (7.9380versus7.9384). Four-block worst-
+group RMSE stays within the descriptive+0.5%worst-group
+tolerance versus FedAU-Window and ObsUse-Window (TEST
+−0.01%and+0.05%; ALL20+0.02%and+0.10%).
+On U-Air the two settings separate: Design-off obtains
+∆group = 1.0165andRMSE µ = 1.1131against1.0924and
+1.1954with Design on. Fig. 4 diagnoses the reversal, since
+estimated and oracle Design both worsen the primaries by
+about7%relative to No-Design, locating the reversal in the
+support compatibility ofπ tar. Design improves∆ c-s (1.2334
+versus1.2949,4.990%,17.1σ), so the U-Air choice is an
+endpoint-dependent trade rather than a dominated setting. On
+the four-block worst-group endpoint the TEST mean relative
+differences versus FedAU-Window and ObsUse-Window are
++0.48%and+0.44%(seeds30011–30020), and+0.002%
+and+0.075%over all20table seeds; both slices stay within
+the descriptive+0.5%tolerance, the Holm tests on the20-
+seed family are not significant, and the comparison is a fall-
+back evaluation. Within the Design-on family, RA VEN-Design
+lowers worst-group RMSE by2.46%against TwoStage-H ´ajek
+on the TEST seeds (10/10), a family-internal comparison
+since both settings reconstruct target mass, and against the no-
+Design baselines RA VEN-NoDesign ties all six on prediction
+and worst-group RMSE, lowers∆ group by2.4%to3.7%and
+∆c-s by1.4%to2.6%against FedAvg, FedAsync, TimeAlign,
+FedAU and ObsUse, all20/20, and ties Debt-Cal on both.
+Design-on reaches a worst-group RMSE of1.2630, compared
+with FedAvg’s1.1690.
+
+=== PAGE 13 ===
+13
+Local-H´ajek coincides with FedAvg-Window wherever the
+two keep the same active set, because the realized within-
+client H´ajek weights are uniform on these traces; on U-Air the
+sealed-family RA VEN bars are Design-on, not the RA VEN-
+NoDesign rows of Table III.
+Where the structural gain comes from.The RA VEN rows of
+Table III sit next to count-weighted FedAvg-Window, and on
+a common ruler most of that difference is not the correction.
+Writing the FedAvg group gap as∆ FedAvg −∆ RAVEN =
+(∆FedAvg−∆unif)+(∆ unif −∆RAVEN), it is2.09pp of target
+mass on SensorScope (95%CI[1.87,2.31]), of which1.44
+pp (68.96%,[1.22,1.65]) is already closed by uniform server
+weights alone and0.65pp (31.04%) requires the corrected
+reference; on U-Air the split is1.47pp ([1.18,1.75])= 1.22pp
+(83.07%)+0.25pp (16.93%). FedAU-Window and ObsUse-
+Window decompose the same way on SensorScope (77.58%
+and74.58%count-to-uniform), while their U-Air active sets
+differ from the reference ruler and admit no decomposition.
+The projected reference carries the reference-side part, and
+the design factor is the only further ingredient both neces-
+sary and practically significant. Replacing uniform weights
+byProj Cr(bβr)is worth+0.768pp ([0.563,0.970]) on Sen-
+sorScope, above the0.5pp practical line and stable across the
+two seed halves, and+0.286pp ([0.098,0.471]) on U-Air,
+below that line and unstable across the halves (+0.170tune,
++0.402report). ImposingC r and projecting onto it is what
+turns the reconstruction into alignment: against the uncorrected
+reference, which violates the recorded feasibility constraints
+and is worse than uniform weights, the projection is worth
++1.188pp ([0.956,1.409]) on SensorScope and+1.399pp
+([1.019,1.782]) on U-Air. Removing the design factor costs
++0.922pp ([0.721,1.141]), outside the±0.10band in the
+same units (−0.268,[−0.320,−0.214]). On U-Air the design-
+free variant does not keep the same active set and no value
+is reported for it. The group-matching, variance, and staleness
+terms and the debt recursion (+0.0073pp,[0.0064,0.0083], on
+SensorScope and+0.0024pp on U-Air) have effect intervals
+inside the±0.10equivalence band atλ g = 1,η= 0.01
+(Section III-F). The group-matching term alone moves the
+client–stratum mismatch by0.135pp on the wrong side
+on SensorScope. Its effect on the group endpoint,+0.039
+([+0.013,+0.063]) in the closable-gap units of Section III-F,
+is well inside the±0.10band, and the variance and staleness
+terms move that group endpoint by at most0.008in the same
+units. They are retained as the definition of the criterion.
+The reference anchor gives the unique minimizer, and debt
+accounts for accumulated group under-service through the one-
+sided bound (27). The anchor term is what makes the problem
+strictly convex, so the flatℓ 1 surface of Section V-C does not
+make the solved point arbitrary.
+Proposition 2 recovers compatible target moments or target-
+group mass for theideal pooledsequential correction under
+A1–A3. The finite-window system evaluates that reference
+after feasibility-aware calibration in (P2). Proposition 3 applies
+when A5 and A6b hold andA r is fixed, with the stabilization
+error (37) carried explicitly, and A6a is the condition that
+makes that error vanish; the support-hypothesis audit in the
+supplemental material reports positive margins on the active
+TABLE III
+DEVELOPMENT TABLE FOR THE MAIN COMPARISON UNDER ALWAYS-ON
+PROTOCOLR(MEAN±STD, 20SEEDS;LOWER IS BETTER). THE STATION
+TRACES USE PROTOCOL-CONSTRUCTEDOANDULAYERS. BOTHDESIGN
+SETTINGS ARE REPORTED ON BOTH BLOCKS,SO THE TABLE IS A
+WITHIN-DATASET FACTOR. WORSTGROUPRMSEIS THE MAXIMUM OVER
+THE FOURUTCGROUPS. ONSENSORSCOPE BOTHRAVENSETTINGS,
+AND ONU-AIRRAVEN-NODESIGN,STAY WITHIN THE DESCRIPTIVE
++0.5%WORST-GROUP TOLERANCE VERSUS THOSE TWO(TESTSEEDS
+30011–30020); U-AIRRAVEN-DESIGN IS OUTSIDE IT AT+7.9%AND
++8.0%. THERMSESUPERIORITY CONTRASTS HAVEHOLM-ADJUSTED
+p >0.05. FITTED ON THE SCORED TEST LABELS,THE TEST-FITTED
+CONSTANT ATTAINSRMSE µ OF2.088ONSENSORSCOPE AND0.678ON
+U-AIR,WHILE THE TRAINING-MEAN PREDICTOR ATTAINS7.647AND
+1.054;THE ABSOLUTE COLUMN ON BOTH BLOCKS IS READ AGAINST THE
+TRAINING-MEAN PREDICTOR. ASUPPLEMENTAL PROTOCOL TABLE USES
+INTERMITTENT OCCUPANCY.
+Dataset MethodRMSE µ WorstGroupRMSE∆ group ∆c-s
+SensorScope
+FedAvg-Window
+7.9389
+±0.0459
+8.6716
+±0.0471
+1.0558
+±0.0288
+1.2903
+±0.0306
+TwoStage-H´ajek
+7.9309
+±0.0543
+8.6633
+±0.0556
+1.0353
+±0.0347
+1.2910
+±0.0324
+FedAU-Window
+7.9364
+±0.0507
+8.6691
+±0.0522
+1.0719
+±0.0263
+1.3057
+±0.0313
+ObsUse-Window
+7.9293
+±0.0513
+8.6618
+±0.0528
+1.0650
+±0.0272
+1.3062
+±0.0311
+RA VEN-Design
+7.9380
+±0.0473
+8.6707
+±0.0486
+1.0139
+±0.0305
+1.2644
+±0.0312
+RA VEN-NoDesign
+7.9384
+±0.0468
+8.6711
+±0.0481
+1.0265
+±0.0278
+1.2719
+±0.0308
+U-Air
+FedAvg-Window
+1.1119
+±0.0603
+1.1690
+±0.0692
+1.0446
+±0.0397
+1.3138
+±0.0337
+TwoStage-H´ajek
+1.2202
+±0.0672
+1.2907
+±0.0753
+1.1196
+±0.0445
+1.2406
+±0.0297
+FedAU-Window
+1.1128
+±0.0600
+1.1701
+±0.0689
+1.0557
+±0.0370
+1.3291
+±0.0360
+ObsUse-Window
+1.1120
+±0.0600
+1.1692
+±0.0689
+1.0413
+±0.0374
+1.3235
+±0.0349
+RA VEN-Design
+1.1954
+±0.0635
+1.2630
+±0.0716
+1.0924
+±0.0479
+1.2334
+±0.0320
+RA VEN-NoDesign
+1.1131
+±0.0638
+1.1703
+±0.0734
+1.0165
+±0.0458
+1.2949
+±0.0293
+SensorScope U-Air
+(a) ¢group vs No-Design
+0
+2
+4
+6
+rel. change (%)
+-1.23%
++7.50%
+-1.03%
++7.48%
+Estimated Design
+Oracle Design
+SensorScope U-Air
+(b) RMSE¹ vs No-Design
+0
+1
+2
+3
+4
+5
+6
+7
+rel. change (%)
+-0.01%
++7.46%
+-0.01%
++7.50%
+Fig. 4. Design versus No-Design, estimated and oracle propensities (20 seeds;
+positive=Design worse). On SensorScope, Design slightly reduces∆ group
+(−1.23%estimated,−1.03%oracle) with a flat RMSE. On U-Air, estimated
+and oracle Design both worsen∆ group andRMSE µ by about7.5%. The
+U-Air Design-off arm runs Algorithm 1 withD t = off; this figure diagnoses
+the reversal, not the selection rule. The U-Air Design-on∆ c-s gain remains
+in Table IV.
+support and active stabilization on both datasets. The perturba-
+tion analysis therefore retainsε stab; A6b requires estimated-
+margin logs beyond this audit. The main comparison evaluates
+the finite-window system after (P2).
+Development-table findings.On SensorScope, RA VEN-
+Design reduces structural mismatch relative to FedAvg and
+
+=== PAGE 14 ===
+14
+stays within the+0.5%worst-group tolerance. On U-Air,
+RA VEN-NoDesign keeps the structural advantage against the
+no-Design baselines. Prediction contrasts are evaluated in Ta-
+ble III, and the under-served-block scores follow below. Under
+intermittent occupancy (supplemental material), the+0.5%
+tolerance and the direction of the U-Air Design trade-off
+persist; the SensorScope∆ c-s gap versus FedAvg approaches
+zero.
+D. A Pre-Registered Under-Served-Block Check
+A validation-only endpoint also targets the under-served
+block rather than the intrinsically hardest one: after freezing
+the heuristic assignment we scoredg ⋆ = arg max b(µblk
+b −
+πopp,4
+b )(SensorScopeg ⋆ = 2, gap+0.114; U-Airg ⋆ = 3, gap
++0.172), where a win requires mean paired relative RMSE
+versus FedAU-Windowandversus ObsUse-Window of at
+most−0.5%. The validation scores are+0.05%/+ 0.15%
+and−0.44%/−0.27%, respectively, above the improvement
+threshold and within the no-harm threshold. Evaluation stops
+at validation, and the descriptive+0.5%worst-group tolerance
+remains the only external endpoint statement.
+E. What the Correction and Calibration Components Do
+The component-removal ablation starts from the fixed
+Design-on arm on both datasets and drops Design, Obs,
+Use, Inst, or Debt under the same Complete-aligned selection
+trace and paired seeds. Table IV reports the relative change
+δremove(M) = (M ablated −M full)/Mfull ×100%, so a pos-
+itive number means that removing the component worsens
+the metric; the magnified component-removal figure in the
+supplemental material visualizes the same one-factor removals,
+and all significance statements below use the pre-specified
+Holm families.
+TABLE IV
+COMPONENT-REMOVAL ABLATION:RELATIVE CHANGE(%)AFTER
+REMOVING ONERAVENCOMPONENT. POSITIVE MEANS THE ABLATION
+WORSENS THE METRIC;NEGATIVE MEANS IT IMPROVES THE METRIC. ∗
+DENOTESHOLM-ADJUSTEDp <0.05.
+Dataset Removed∆ group ∆c-s RMSEµ Tail RMSE
+SensorScope
+Design+1.237 ∗ +0.597∗ +0.005 +0.005
+Obs+0.096−0.070 ∗ +0.012 +0.011
+Use+0.026 +0.026 +0.012 +0.012
+Inst−0.260 +0.310 ∗ −0.002−0.002
+Debt+0.014 ∗ +0.004∗ <0.001<0.001
+U-Air
+Design−6.943 ∗ +4.990∗ −6.885∗ −7.221∗
+Obs+0.123 ∗ +0.022−0.010−0.010
+Use+0.014−0.014 +0.025 +0.026
+Inst−0.089−0.143 +0.143 ∗ +0.149∗
+Debt+0.004 ∗ +0.002∗ <0.001<0.001
+a) Design correction.:Removing Design worsens∆ c-s
+by0.597%on SensorScope and4.990%on U-Air, both Holm-
+significant. On U-Air the same ablation improves∆ group
+by6.943%andRMSE µ by6.885%. The U-Air ranking
+reports the fixed Design-off setting alongside Design on, with
+this endpoint trade-off (Fig. 4). The25.5%figure is the
+realized always-on EventTrace occurrence share (13040of
+51200appearances), not an input of Algorithm 1, and is
+reported with theA r overlap51.6%. Oracle Design tracks
+estimated Design. SensorScope keeps Design on. A 774-
+window check found identical R/O/U and registration events,
+with differences beginning only at the positive-weight/P2-
+support layer (supplemental material).
+b) Setting the Design factor.:The target-support gate is a
+block-level configuration rule evaluated on a specified training-
+unit catalogue. Hererindexes the experimental block, not
+the arriving window. Writen zero
+r for catalogue units whose
+attached client–stratum carries zero public target mass andn r
+for all catalogue units. The rule is
+ρr = nzero
+r
+nr
+, D r = on⇐ ⇒ρ r = 0.(42)
+The rule returns on exactly when no catalogue unit sits on a
+stratum that the public target map declares empty. Applying it
+before a window opens requires the catalogue and lookup to
+have been frozen and made available by then; current-window
+delivered units become available only after delivery. For the
+offline counts reported here, SensorScope, U-Air, and T-Drive
+use the client–stratum or stratum lookup. The rule returns
+on for SensorScope and off for U-Air (35.4%) and T-Drive
+(47.4%), the settings those rankings use. NSW-Traffic and
+both City Scanner rankings are on because their public targets
+are four-region shares with every region positive. That is a
+different lookup from the client–stratum statistic, and a zero
+on one map is not a zero on the other (supplemental material).
+These offline rule outputs coincide with the settings displayed
+in the rankings. The U-Air ablation measures6.943%of
+∆group and6.885%ofRMSE µ that Design costs on U-
+Air (Section VII-C). Separately, an endpoint trade-off chart
+summarizes the measured on/off contrasts. WritingM e,r(D)
+for endpointe∈ E={∆ group,∆ c-s,RMSE µ,Tail}under
+settingD, and weighting the four endpoints relative to their
+Design-on values,
+bJr(D) =
+X
+e∈E
+we
+Me,r(D)
+Me,r(on) ,
+D⋆
+r = arg min
+D∈{on,off}
+bJr(D),
+(43)
+In this measured trade-off chart, the two settings are indifferent
+whenw c 4.990 =w g 6.943 +w µ 6.885 +w t 7.221, so a
+deployment that reads structure only keeps Design on if and
+only ifw c/wg >1.39, one that readsRMSE µ alone keeps it
+off, and on SensorScope all four terms move the same way,
+so Design on is optimal for every weight vector. The switch
+point is a retrospective decision chart for this U-Air ablation
+row, not a step that setsD t during the reported runs. Table IV
+records the Design-off trade-off on U-Air, the4.990% ∆ c-s
+gain. Proposition 4 supplies the block decomposition behind
+theRMSE µ entries of this trade-off, so a deployment can read
+the prediction side of the switch from the per-group scores
+it already reports, though that decomposition covers neither
+∆group nor∆ c-s.
+c) Observation and usable-update correction.:Obser-
+vation correction has a smaller, endpoint-specific effect: re-
+moving Obs worsens∆ group by0.123%on U-Air (Holm-
+
+=== PAGE 15 ===
+15
+significant) while its∆ c-s and prediction effects are not signifi-
+cant, and on SensorScope no group change is significant while
+∆c-s improves by0.070%. In this Complete-aligned family, the
+Use ablation’s core-endpoint contrasts have adjustedp >0.05
+on both datasets.
+d) Instantaneous calibration and debt.:Inst also trades
+endpoints: on SensorScope removing it worsens∆ c-s by
+0.310%(significant) while the group change is not significant
+after Holm correction, and on U-Air the structural changes
+are not significant while removing Inst worsensRMSE µ and
+tail RMSE by0.143%and0.149%(bothp Holm = 0.0194).
+Debt has the narrowest but most consistent role: removing
+it significantly increases both structural mismatches on both
+datasets, but only by0.0141%/0.0040%on SensorScope and
+0.0043%/0.0024%on U-Air, far below the descriptive+0.5%
+worst-group tolerance that governs the external comparisons
+of Section VII-C on a different endpoint. That matches the
+accounting of (27); its long-run alignment implication is
+conditional on∥Q R∥1 =o(S R).
+Server-weight rules trained under the same policy.Re-
+training the same window policy while changing only the
+server weights separates structural movement from prediction.
+With 20 paired seeds per dataset the group endpoint orders
+the same way on both datasets, with the projection-with-debt
+rule lowest, then the projection alone, frozen RA VEN and in-
+stantaneous calibration, uniform weights, and count-weighted
+FedAvg:0.98464,1.01158,1.01394,1.01409,1.02693, and
+1.05577on SensorScope, and1.08001,1.09162,1.09236,
+1.09241,1.09734, and1.12176on U-Air. Paired within
+each dataset, the projection improves on uniform weights
+by+0.768pp (p Holm = 2.7×10 −5) on SensorScope, the
+value Section VII-C also gives, and by+0.286pp (0.0166)
+on U-Air. The projection-with-debt variant usesκ= 1000,
+selected on tuning seeds. Its numerical approximation error
+and endpoint deltas are in Section K-A of the supplemental
+material. Frozen RA VEN trails the projection by0.118pp
+on SensorScope (0.019) and is indistinguishable from it on
+U-Air. These projection rules are new rules of this study
+with their own specified objectives. Their measured runtime
+is18.5–20.0s against27.1s on SensorScope. No prediction-
+endpoint contrast survives Holm correction on either dataset
+(SensorScopep Holm = 1.000throughout; U-Air best raw
+p= 0.027,p Holm = 0.133), and the arm order onRMSE µ
+does not follow the structural order, which is what the ceiling
+measurement of Section VII-F anticipates.
+F . Prediction Sensitivity within the Feasible Weight Class
+The recoverable gain is bounded inside the class the method
+defines: weights inC r of (25), selected by (P2), scored
+by the deployment-target criterionRMSE µ. Two measured
+quantities bound it. The first is the headroom from the
+uncorrected member (FedAvg-Window) to the best mem-
+ber evaluated on true margins,H= (RMSE µ(FedAvg)−
+RMSEµ(oracle))/RMSEµ(FedAvg), over a stress grid vary-
+ing the opportunity tilt, the tail observation scale, the model
+capacity, and the target. The pre-specified continuation thresh-
+old isH≥0.5%with a positive interval lower bound.
+The measured headroom falls below this threshold. Sen-
+sorScope has a paired-difference minimum detectable effect
+of0.17–0.36percentage points, with all six estimates inside
+[−0.03%,+0.08%]. U-Air uses20seeds,270runs and45
+traces, with every estimate satisfying|H| ≤0.217%and a
+95%interval containing zero; its realized detectable effect of
+0.70–0.80points excludes effects above about0.7%without
+resolving the0.5%bar on its own. Hardening the observation
+propensity to vary within a stratum and correlate with the label
+raises the oracle gap by15–21×, to0.104%on SensorScope
+and0.251%on U-Air, both inside the same bound. The bound
+is this weight class at the server step of the grid. NSW-Traffic,
+where that step is replaced, is reported in Section VII-G.
+The second quantity is the cost of estimating the mar-
+gins, measured inside one calibrated member so that only
+the observation and usable-update margins change. Replacing
+those two margins with their true values movesRMSE µ
+by−0.008%on SensorScope (oracle minus calibrated,95%
+interval[−0.041%,+0.025%]) and by+0.040%on U-Air
+([−0.090%,+0.171%]), paired over20seeds. Every member
+we evaluate stays inside0.08%on SensorScope under the
+same substitution, and on U-Air three of the four stay inside
+0.3%while TwoStage-H ´ajek sits2.04%above the oracle-
+margin member ([1.33%,2.75%]). The substitution is not small
+before aggregation: the estimated reference differs from the
+true-margin reference by a median of0.077inℓ 1 and by up
+to1.15, and it reaches the aggregate composition at the same
+order for the members whose weights normalize that reference.
+Accurate margin estimates are therefore not what holds the
+prediction endpoint flat, since three of the four members are
+insensitive to a large change in their own aggregation weights.
+At the composition level the perturbation is already bounded,
+because (40) limits the aggregate difference induced by the
+margin estimates to∥M r∥2 times the reference perturbation
+controlled by Proposition 3; a metric-level bound of the same
+form would require a transfer assumption between the training
+and the deployment distributions, which Proposition 2 does
+not make, so the metric-level ceiling above is measured, at
+the minimum detectable effects stated.
+Active-set geometry and prediction sensitivity.The active-
+client count determines the dimension of the feasible weight
+set. With the frozenE min = 3, the bound in (25) is Er =
+min(3, Kr), and since∥α∥ 2
+2 ≥1/K r on the simplex with
+equality only at1/K r, a window withK r ≤3admits the
+uniform weights alone. Over the20frozen seeds,78.6%of
+the1877active windows on SensorScope haveK r ≤3; on
+U-Air the share is90.2%of1402windows with Design on
+and79.0%of1515with Design off. In those windows (P2)
+returns uniform weights whatever its objective. The projection
+over uniform server weights is worth+0.768and+0.286pp at
+the group endpoint. The target leaves little room at the criterion
+level as well: its largest group carries0.53%of the mass on
+SensorScope (220groups) and0.79%on U-Air (144groups).
+The factor that movesRMSE µ by several points on U-Air is
+Design, and it acts on which client windows are active, as the
+two window counts show, rather than on the weights inside
+a window. NSW-Traffic is the block on which most windows
+haveK r >3; its prediction measurement is in Section VII-G.
+
+=== PAGE 16 ===
+16
+G. Deployment Conditions and Evaluation Scope
+RA VEN-Design and the City Scanner blocks report Design
+on, and RA VEN-NoDesign reports Design off on U-Air and
+T-Drive (bζ o = 1). On Table III, SensorScope RA VEN-Design
+and U-Air RA VEN-NoDesign stay within the descriptive
++0.5%TEST tolerance versus FedAU-Window and ObsUse-
+Window; the RMSE Holm contrasts are reported with the
+table. Table II is outside the tolerance. The NSW-Traffic four-
+region, City Scanner visit-occupancy, and Pilot 2 measured-
+Orankings of the supplemental material use their respective
+targets and selection protocols. A1–A2 specify support and
+confounding boundaries. Stabilization is active on the released
+traces, so Proposition 3 is used in itsε stab form (37). The City
+Scanner non-inferiority comparison has power about0.15at
+the declared margin over ten traces. The single City Scanner
+trace that dominates the paired spread is a trace-level outlier
+reproduced across five model seeds rather than a training
+instability, so it is retained; the no-trace recomputation is a
+sensitivity only. The reported Design cost is estimated over
+n= 10traces andr= 3seeds; the deletion-effect contrast
+remains unresolved at that sample size. The25.5%figure is
+EventTrace occurrence (13040of51200). The supplemental
+material reports target coverage on its specified target map. On
+the fixed coverage-stress oracle, pooled CERTIFIED validity is
+0.959and U-Aira= 1.00is0.750. The stable-regime theorem
+assumes exchangeability within a certified regime; coverage
+across adaptive RESET/CERTIFIED transitions requires sep-
+arate validation. Design is fixed by configuration, while the
+coverage Gate is evaluated as a diagnostic. Equation (42)
+reports the separate offline target-support rule.
+Three measurements characterize the relationship between
+aggregation and prediction. Arrival-weighted validation mis-
+states deployment risk, by−4.11%to−4.12%on Sen-
+sorScope across the nine federated configurations we score,
+RA VEN with and without Design included, and by+0.27%
+to+0.62%on U-Air. It nevertheless selects the same con-
+figuration as the deployment target on all20seeds of both
+datasets, so on these blocks the misstatement does not change
+a selection. Masking up to40%of the positive target keys on
+SensorScope, and with them the deployment target, raisesρ r
+of (42) from0to0.388without a prediction cost of Design
+above0.175%, while on U-Air the cost stays at6.6%–7.5%
+forρ r between0.354and0.466. The statistic is therefore a
+zero-target support check for the rule, not a predictor of the
+size of its cost.
+On NSW-Traffic a window carries12.1active clients on
+average. In the fifteen-seed comparison below,15.1%of active
+windows haveK r ≤3, so the feasible set does not force
+uniform weights. Under the original server step the four frozen
+federated members, the oracle-margin member included, agree
+onRMSE µ within0.002%. That step appliesηtimes the step-
+normalized client update once per window, one gradient step
+at any local budget, and raising the budget from2to20leaves
+window FedAvg2.8%–3.0%above a centralized reference that
+is itself Adam at10 −3 over the pooled training units for
+20minibatch steps of32, so the gap compares two update
+rules and step budgets rather than two aggregators alone. The
+federated parameters move0.26%–0.40%of their initial norm
+over those runs.
+Replacing only this server step by Adam (β 1 = 0.9,
+β2 = 0.99,τ= 10 −3) with step size0.003, one update
+per window, on fifteen seeds not used to choose that step
+size, puts the paired headroom of the oracle-margin weights
+relative to window FedAvg at−1.49%, with bootstrap interval
+[−5.42%,+1.76%]and an80%minimum detectable effect
+of5.80%. The interval contains zero; the detectable effect
+is5.80%, compared with the0.5%practical threshold of
+Section VII-F. Those fifteen runs scoreRMSE µ at0.967
+for window FedAvg and0.973for the oracle-margin arm on
+average, in[0.659,1.572]and[0.795,1.459], against1.007
+for the test-fitted constant on the same test weights, where
+the training-mean predictor takes the same value; both arms
+therefore sit below that reference. Scored on the same runs
+after that prediction contrast, the oracle-margin weights re-
+duce∆ group by0.0079 [0.0051,0.0110]and∆ c-s by0.0099
+[0.0067,0.0132]. The original-step comparison and the Adam
+comparison quantify prediction headroom within this server-
+weight class at their respective detection scales.
+VIII. CONCLUSION
+RA VEN-MCS connects deployment-target semantics with
+feasible aggregation in windowed-asynchronous sensing. The
+sequential reconstruction represents the opportunity, obser-
+vation, and usable-update layers explicitly, while calibration
+maps the corrected reference into the mixtures available at
+window closure. With Design configured on, the ideal correc-
+tion under A1–A3 recovers compatible target moments and
+group mass. The calibration program has a unique minimizer,
+and the clipped plug-in admits a stability bound on shared
+target support.
+The paired experiments attribute structural alignment to
+uniform aggregation, the corrected reference, and its feasible
+projection. On SensorScope, the projection improves group
+mismatch by+0.768percentage points over uniform weights,
+and the Design factor contributes+0.922points on the same
+active set. Separate mobility and observation protocols char-
+acterize how these structural effects relate to deployment-
+weighted prediction. Together, the formulation and measure-
+ments distinguish statistical target reconstruction from finite-
+window realizability and provide a basis for choosing aggre-
+gation weights for a specified sensing population.
+DATA ANDCODEAVAILABILITY
+SensorScope, U-Air, NSW-Traffic, and T-Drive are public
+and cited in Section VII-A. T-Drive use follows the pub-
+lished Microsoft Research terms [51]. City Scanner New
+York PM2.5 [52] (Zenodo 10.5281/zenodo.7961851, CC BY
+4.0) is ranked in the City Scanner visit-occupancy and Pi-
+lot 2 measured-Oranking tables of the supplemental ma-
+terial. The bundleRAVEN_MCS_PUBLIC_REPRO_R1con-
+tains paired seeds, frozen targets, EventTraces, tabulated fig-
+ure and table sources,SCD_PHI.csv, canonical Table II
+(TABLE_II_MAIN_EFFECTIVENESS.csv), the20-seed
+WorstGroupRMSEHolm family versus FedAU-Window and
+
+=== PAGE 17 ===
+17
+ObsUse-Window, ALL20/TEST10 slice relatives, the T-Drive
+hybrid ranking CSVs, and the NSW four-region, City Scanner
+visit-occupancy (cityscanner/), and Pilot 2 measured-
+O(cityscanner_p2/) files. The bundle provides Event-
+Traces and tabulated evidence for reconstructing the reported
+cells. Thew1/subtree holds the ladder, frontier, trade-off,
+and audit artifacts behind the structural, band, andε impl num-
+bers, withw1/PAPER_NUMBERS.csvindexing the printed
+values andverify.pyre-checking the payload against the
+manifest.
+The Adam step replacement and its structural
+readout of Section VII-G are stored separately:
+results_traffic_e1/holds the prediction contrast over
+seeds30006–30020andresults_traffic_struct/the
+structural readout, with the test-fitted constant and the training-
+mean predictor tabulated inTWO_CONSTANTS.json.
+The server-weight comparisons in Section VII-E use a
+shared driver and distinct objectives for RA VEN, projection,
+and projection with debt. The RA VEN replay reproduces its
+recorded endpoints, and all120runs retain their recorded
+active sets. Across240rule runs, replayed server weights
+are bit-identical and endpoint agreement reaches6.9×10 −15
+percentage points. Relative to the reference path’s solver
+tolerance of10 −9, the projection rules differ by2×10 −6 to
+3.7×10 −5 percentage points; uniform weights and the recon-
+structed reference match. Section K-A reports approximation
+relative to exact projection throughε impl and specifies the debt
+weight selected on tuning seeds.
+REFERENCES
+[1] R. K. Ganti, F. Ye, and H. Lei, “Mobile crowdsensing: Current state and
+future challenges,”IEEE Communications Magazine, vol. 49, no. 11, pp.
+32–39, 2011.
+[2] B. Guo, Z. Wang, Z. Yu, Y . Wang, N. Y . Yen, R. Huang, and X. Zhou,
+“Mobile crowd sensing and computing: The review of an emerging
+human-powered sensing paradigm,”ACM Computing Surveys, vol. 48,
+no. 1, pp. 1–31, 2015, art. no. 7.
+[3] H. Ma, D. Zhao, and P. Yuan, “Opportunities in mobile crowd sensing,”
+IEEE Communications Magazine, vol. 52, no. 8, pp. 29–35, 2014.
+[4] E. Wang, M. Zhang, W. Liu, H. Xiong, B. Yang, Y . Yang, and
+J. Wu, “Outlier-concerned data completion exploiting intra- and inter-
+data correlations in sparse crowdsensing,”IEEE/ACM Transactions on
+Networking, vol. 31, no. 2, pp. 648–663, 2023.
+[5] C. Li, Z. Li, S. Long, P. Qiao, Y . Yuan, and G. Wang, “Robust data infer-
+ence and cost-effective cell selection for sparse mobile crowdsensing,”
+IEEE/ACM Transactions on Networking, vol. 32, no. 5, pp. 3760–3775,
+2024.
+[6] E. Wang, W. Liu, W. Liu, C. Xiang, B. Yang, and Y . Yang, “Spa-
+tiotemporal transformer for data inference and long prediction in sparse
+mobile crowdsensing,” inIEEE INFOCOM 2023 – IEEE Conference on
+Computer Communications. IEEE, 2023, pp. 1–10.
+[7] E. Wang, M. Zhang, B. Yang, X. Yang, Z. Song, and Y . Yang, “Few-
+shot data completion for new tasks in sparse crowdsensing,” inIEEE
+INFOCOM 2024 – IEEE Conference on Computer Communications.
+IEEE, 2024, pp. 1831–1840.
+[8] E. Wang, Z. Song, M. Wu, W. Liu, B. Yang, Y . Yang, and J. Wu, “A
+new data completion perspective on sparse crowdsensing: Spatiotem-
+poral evolutionary inference approach,”IEEE Transactions on Mobile
+Computing, vol. 24, no. 3, pp. 1357–1371, 2025.
+[9] Y . Xu, J. Liu, E. Wang, B. Yang, D. Luan, Y . Yang, and J. Deng,
+“Rethinking the effect of sparse data completion on sparse mobile
+crowdsensing tasks,”IEEE Transactions on Mobile Computing, vol. 24,
+no. 6, pp. 5094–5105, 2025.
+[10] W. Liu, H. Du, E. Wang, J. Lv, W. Liu, B. Yang, and J. Wu,
+“Spatio-temporal pyramid-based multi-scale data completion in sparse
+crowdsensing,”IEEE Transactions on Mobile Computing, vol. 25, no. 1,
+pp. 1270–1286, 2026.
+[11] M. Zhang, W. Li, E. Wang, and J. Wu, “MapT-STC: A one-shot
+spatiotemporal data completion framework for cold-start tasks in sparse
+crowdsensing,”IEEE Transactions on Mobile Computing, vol. 25, no. 9,
+pp. 14 336–14 351, Sep. 2026.
+[12] B. McMahan, E. Moore, D. Ramage, S. Hampson, and B. Aguera y
+Arcas, “Communication-efficient learning of deep networks from de-
+centralized data,” inProceedings of the 20th International Conference
+on Artificial Intelligence and Statistics, ser. Proceedings of Machine
+Learning Research, vol. 54. PMLR, 2017, pp. 1273–1282.
+[13] Q. Yang, Y . Liu, T. Chen, and Y . Tong, “Federated machine learning:
+Concept and applications,”ACM Transactions on Intelligent Systems and
+Technology, vol. 10, no. 2, pp. 1–19, 2019, art. no. 12.
+[14] P. Kairouz, H. B. McMahan, B. Aventet al., “Advances and open
+problems in federated learning,”Foundations and Trends in Machine
+Learning, vol. 14, no. 1–2, pp. 1–210, 2021.
+[15] T. Li, A. K. Sahu, A. Talwalkar, and V . Smith, “Federated learning:
+Challenges, methods, and future directions,”IEEE Signal Processing
+Magazine, vol. 37, no. 3, pp. 50–60, 2020.
+[16] E. Wang, B. Li, W. Liu, Z. Han, C. Wang, X. Li, and J. Wu,
+“Federated learning-based distributed data completion in sparse mobile
+crowdsensing,”IEEE Transactions on Mobile Computing, vol. 25, no. 5,
+pp. 6784–6800, 2026.
+[17] C. Xie, O. Koyejo, and I. Gupta, “Asynchronous federated optimization,”
+inProceedings of the 12th Annual Workshop on Optimization for
+Machine Learning (OPT 2020), 2019, arXiv:1903.03934.
+[18] J. Liu, H. Xu, L. Wang, Y . Xu, C. Qian, J. Huang, and H. Huang,
+“Adaptive asynchronous federated learning in resource-constrained edge
+computing,”IEEE Transactions on Mobile Computing, vol. 22, no. 2,
+pp. 674–690, 2023.
+[19] S. Sun, Z. Zhang, Q. Pan, M. Liu, Y . Wang, T. He, Y . Chen, and Z. Wu,
+“Staleness-controlled asynchronous federated learning: Accuracy and
+efficiency tradeoff,”IEEE Transactions on Mobile Computing, vol. 23,
+no. 12, pp. 12 621–12 634, 2024.
+[20] E. Wang, W. Liu, W. Liu, Y . Yang, B. Yang, and J. Wu, “Spatiotemporal
+urban inference and prediction in sparse mobile crowdsensing: A graph
+neural network approach,”IEEE Transactions on Mobile Computing,
+vol. 22, no. 11, pp. 6784–6799, 2023.
+[21] S. Wang and M. Ji, “A unified analysis of federated learning with arbi-
+trary client participation,” inAdvances in Neural Information Processing
+Systems, vol. 35, 2022, pp. 19 124–19 137.
+[22] D. Jhunjhunwala, P. Sharma, A. Nagarkatti, and G. Joshi, “Fedvarp:
+Tackling the variance due to partial client participation in federated
+learning,” inProceedings of the Thirty-Eighth Conference on Uncer-
+tainty in Artificial Intelligence, ser. Proceedings of Machine Learning
+Research, vol. 180. PMLR, 2022, pp. 906–916.
+[23] F. Wu, S. Guo, Z. Qu, S. He, Z. Liu, and J. Gao, “Anchor sampling for
+federated learning with partial client participation,” inProceedings of the
+40th International Conference on Machine Learning, ser. Proceedings of
+Machine Learning Research, vol. 202. PMLR, 2023, pp. 37 379–37 416.
+[24] S. Wang and M. Ji, “A lightweight method for tackling unknown par-
+ticipation statistics in federated averaging,” inThe Twelfth International
+Conference on Learning Representations, 2024, pp. 854–893.
+[25] Z. Sun, Z. Zhang, Z. Xu, G. Joshi, P. Sharma, and E. Wei, “Debi-
+asing federated learning with correlated client participation,” inThe
+Thirteenth International Conference on Learning Representations, 2025,
+pp. 28 564–28 595.
+[26] M. Mohri, G. Sivek, and A. T. Suresh, “Agnostic federated learning,” in
+Proceedings of the 36th International Conference on Machine Learning,
+ser. Proceedings of Machine Learning Research, vol. 97. PMLR, 2019,
+pp. 4615–4625.
+[27] Y . Chen, J. Lu, S. Cao, D. Wang, G. Li, and G. Wen, “FedCure:
+Mitigating participation bias in semi-asynchronous federated learning
+with non-IID data,” inProceedings of the AAAI Conference on Artificial
+Intelligence, vol. 40, no. 25, 2026, pp. 20 418–20 426.
+[28] G. Morishita, “Who trains matters: Federated learning under enrollment
+and participation selection biases,” arXiv preprint arXiv:2604.26604,
+Apr 2026.
+[29] W. Liu, E. Wang, B. Yang, Y . Yang, and J. Wu, “Data pricing via
+uncertainty quantification for sparse mobile crowdsensing,”IEEE Trans-
+actions on Services Computing, vol. 19, no. 2, pp. 1062–1074, 2026.
+[30] Y . Liu, Z. He, J. Liang, Z. Li, and Q. Deng, “Multidimensional trust
+evaluation and task match based workers recruitment scheme for mcs,”
+IEEE Transactions on Dependable and Secure Computing, vol. 23, no. 3,
+pp. 5058–5074, 2026.
+[31] M. Zhang, X. Li, B. Luo, Y . Ren, Y . Miao, X. Liu, and R. H.
+Deng, “An incentive mechanism for privacy preserved data trading with
+
+=== PAGE 18 ===
+18
+verifiable data disturbance,”IEEE Transactions on Dependable and
+Secure Computing, vol. 22, no. 4, pp. 3960–3976, 2025.
+[32] J. Lu, T. Huang, S. Cao, S. Yu, R. Jia, and M. Li, “Piece: Incentivizing
+personalized privacy-preserving for multi-version model marketplace in
+federated learning,”IEEE Transactions on Information Forensics and
+Security, vol. 20, pp. 9387–9398, 2025.
+[33] P. Zhang, Z. Zhang, Y . Cao, X. Cheng, Y . Zhu, Z. Liu, and J. Zhang,
+“Locally differentially private truth discovery for sparse crowdsensing,”
+IEEE Transactions on Knowledge and Data Engineering, vol. 38, no. 2,
+pp. 1189–1205, 2026.
+[34] M. S. Islamet al., “SEAFL: Enhancing efficiency in semi-asynchronous
+federated learning through adaptive aggregation and selective training,”
+arXiv preprint arXiv:2503.05755, 2025.
+[35] M. Li, Z. Wang, C. Ma, C. Jia, L. Qi, and R. Du, “STDFL: A
+spatio-temporal-aware dynamic federated learning framework for spatial
+crowdsourcing,”IEEE Transactions on Mobile Computing, vol. 25,
+no. 9, pp. 13 559–13 576, 2026.
+[36] C. Lu, Y . Yu, S. P. Karimireddy, M. Jordan, and R. Raskar, “Federated
+conformal predictors for distributed uncertainty quantification,” inPro-
+ceedings of the 40th International Conference on Machine Learning, ser.
+Proceedings of Machine Learning Research, vol. 202. PMLR, 2023,
+pp. 22 942–22 964.
+[37] V . Plassier, M. Makni, A. Rubashevskii, E. Moulines, and M. Panov,
+“Conformal prediction for federated uncertainty quantification under
+label shift,” inProceedings of the 40th International Conference on
+Machine Learning, ser. Proceedings of Machine Learning Research, vol.
+202. PMLR, 2023, pp. 27 907–27 947.
+[38] T. Li, A. K. Sahu, M. Zaheer, M. Sanjabi, A. Talwalkar, and V . Smith,
+“Federated optimization in heterogeneous networks,” inProceedings of
+Machine Learning and Systems, vol. 2, 2020, pp. 429–450.
+[39] S. P. Karimireddy, S. Kale, M. Mohri, S. Reddi, S. Stich, and A. T.
+Suresh, “SCAFFOLD: Stochastic controlled averaging for federated
+learning,” inProceedings of the 37th International Conference on
+Machine Learning, ser. Proceedings of Machine Learning Research, vol.
+119. PMLR, 2020, pp. 5132–5143.
+[40] D. J. Goetze, D. J. Felten, J. R. Albrecht, and R. Bhattacharya, “FLOSS:
+Federated learning with opt-out and straggler support,” inProceedings
+of the 4th Workshop on Practical Adoption Challenges of ML for
+Systems, ser. PACMI ’25. Seoul, Republic of Korea: ACM, 2025, pp.
+69–74. [Online]. Available: https://doi.org/10.1145/3766882.3767180
+[41] E. Listo Zec, A. Breitholtz, and F. D. Johansson, “Overcoming label shift
+in target-aware federated learning,” arXiv preprint arXiv:2411.03799,
+Nov 2024, tMLR submission (OpenReview: dQAsAmb1Xb); arXiv
+2411.03799v2, 26 Aug 2025; no TMLR volume at close.
+[42] D. G. Horvitz and D. J. Thompson, “A generalization of sampling
+without replacement from a finite universe,”Journal of the American
+Statistical Association, vol. 47, no. 260, pp. 663–685, 1952.
+[43] J. H ´ajek, “Comment on “an essay on the logical foundations of survey
+sampling, part one”,” inFoundations of Statistical Inference, V . P.
+Godambe and D. A. Sprott, Eds. Toronto: Holt, Rinehart and Winston,
+1971, pp. 236–242.
+[44] H. Shimodaira, “Improving predictive inference under covariate shift by
+weighting the log-likelihood function,”Journal of Statistical Planning
+and Inference, vol. 90, no. 2, pp. 227–244, 2000.
+[45] J. M. Robins, A. Rotnitzky, and L. P. Zhao, “Estimation of regression
+coefficients when some regressors are not always observed,”Journal
+of the American Statistical Association, vol. 89, no. 427, pp. 846–866,
+1994.
+[46] J. Byrd and Z. Lipton, “What is the effect of importance weighting in
+deep learning?” inProceedings of the 36th International Conference
+on Machine Learning, ser. Proceedings of Machine Learning Research,
+vol. 97. PMLR, 2019, pp. 872–881.
+[47] F. Ingelrest, G. Barrenetxea, G. Schaefer, M. Vetterli, O. Couach, and
+M. Parlange, “SensorScope: Application-specific sensor network for
+environmental monitoring,”ACM Transactions on Sensor Networks,
+vol. 6, no. 2, pp. 1–32, 2010, art. no. 17.
+[48] G. Barrenetxea, “SensorScope data,” Zenodo, 2019. [Online]. Available:
+https://doi.org/10.5281/zenodo.2654726
+[49] Y . Zheng, F. Liu, and H.-P. Hsieh, “U-Air: When urban air quality
+inference meets big data,” inProceedings of the 19th ACM SIGKDD
+International Conference on Knowledge Discovery and Data Mining.
+ACM, 2013, pp. 1436–1444.
+[50] Transport for NSW, “NSW roads traffic volume counts,”
+TfNSW Open Data Hub, 2024, accessed: Aug. 14, 2026.
+[Online]. Available: https://opendata.transport.nsw.gov.au/data/dataset/
+nsw-roads-traffic-volume-counts-api
+[51] J. Yuan, Y . Zheng, C. Zhang, W. Xie, X. Xie, G. Sun, and Y . Huang,
+“T-Drive: Driving directions based on taxi trajectories,” inProceedings
+of the 18th SIGSPATIAL International Conference on Advances in
+Geographic Information Systems, 2010, pp. 99–108, public Microsoft
+Research trajectory sample. [Online]. Available: https://www.microsoft.
+com/en-us/research/publication/t-drive-trajectory-data-sample/
+[52] A. Wang, S. Mora, Y . Machida, P. deSouza, S. Paul, O. Oyinlola,
+F. Duarte, and C. Ratti, “Hyperlocal environmental data with a mobile
+platform in urban environments,”Scientific Data, vol. 10, p. 524, 2023,
+NYC PM 2.5 files: Zenodo 10.5281/zenodo.7961851, CC BY 4.0.
+[53] F. Wilcoxon, “Individual comparisons by ranking methods,”Biometrics
+Bulletin, vol. 1, no. 6, pp. 80–83, 1945.
+[54] S. Holm, “A simple sequentially rejective multiple test procedure,”
+Scandinavian Journal of Statistics, vol. 6, no. 2, pp. 65–70, 1979.

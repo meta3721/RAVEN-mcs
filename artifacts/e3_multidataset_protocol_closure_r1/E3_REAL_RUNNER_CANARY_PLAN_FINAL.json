@@ -1,0 +1,73 @@
+{
+  "canary_seed": 31001,
+  "created_utc": "2026-08-09T16:46:02.901599+00:00",
+  "datasets": {
+    "sensorscope": {
+      "central": true,
+      "methods": [
+        "fedavg_window",
+        "fedasync_window",
+        "flamf_timealign_adapted",
+        "local_hajek",
+        "twostage_hajek",
+        "inst_cal",
+        "debt_cal",
+        "raven",
+        "raven_simoracle",
+        "central_all",
+        "central_delivered"
+      ],
+      "pair_state": true,
+      "simoracle": true
+    },
+    "traffic": {
+      "do_not_rerun": [
+        "fedavg_window",
+        "fedasync_window",
+        "flamf_timealign_adapted",
+        "twostage_hajek",
+        "raven"
+      ],
+      "methods": [
+        "local_hajek",
+        "inst_cal",
+        "debt_cal",
+        "raven_simoracle",
+        "central_all",
+        "central_delivered"
+      ],
+      "pair_state": true
+    },
+    "uair": {
+      "central": true,
+      "methods": [
+        "fedavg_window",
+        "fedasync_window",
+        "flamf_timealign_adapted",
+        "local_hajek",
+        "twostage_hajek",
+        "inst_cal",
+        "debt_cal",
+        "raven",
+        "raven_simoracle",
+        "central_all",
+        "central_delivered"
+      ],
+      "pair_state": true,
+      "simoracle": true
+    }
+  },
+  "execute_in_this_round": false,
+  "goals": [
+    "execution integrity",
+    "metric output completeness",
+    "pair-state completeness",
+    "Central semantics",
+    "Oracle semantics",
+    "direct Ledger",
+    "numerical finiteness"
+  ],
+  "next_round": "E3-REAL-RUNNER-CANARY-R1",
+  "no_performance_conclusion": true,
+  "scenario": "complete_aligned"
+}

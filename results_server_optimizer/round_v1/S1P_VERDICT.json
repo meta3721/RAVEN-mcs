@@ -1,0 +1,21 @@
+{
+  "H_verdict_per_block": {
+    "sensorscope": "NO-GO-H",
+    "traffic": "NO-GO-H",
+    "uair": "NO-GO-H"
+  },
+  "N3_prime_per_block": {
+    "sensorscope": "PASS",
+    "traffic": "PASS",
+    "uair": "PASS"
+  },
+  "created_utc": "2026-10-08T11:39:30.593238+00:00",
+  "driver_sha256": "308007730989dafc1544b0ad3e60d0a3a949a3cb4f3b802cfb2084c6605ac98e",
+  "frozen_config_sha256": "a041ba42e9c139f70356a5cbe0213cb15f6819123dd16e4b678a45ed82df4cde",
+  "gate_law_note": "not applicable to this round; H is the endpoint",
+  "instruction_sha256": "14b09cbfafa40db088fb65d117229810916b0a8ef12037f0305eb3c7e22aebd4",
+  "stage_B": {
+    "reason": "section 5 applies Stage B only to blocks not PASS at Stage A; SensorScope, U-Air and NSW-Traffic all PASS, so no block qualified",
+    "run": false
+  }
+}

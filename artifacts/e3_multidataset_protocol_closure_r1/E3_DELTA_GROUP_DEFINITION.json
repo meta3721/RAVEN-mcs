@@ -1,0 +1,9 @@
+{
+  "EPS_ZERO_note": "EPS_ZERO=1e-12 applies only at paired inference, not raw outputs",
+  "code": "raven_mcs.metrics.distribution.delta_group",
+  "formula": "||omega_hat - mu||_1",
+  "sufficient_statistics": [
+    "omega_hat or omega_bar per window/run",
+    "frozen mu"
+  ]
+}

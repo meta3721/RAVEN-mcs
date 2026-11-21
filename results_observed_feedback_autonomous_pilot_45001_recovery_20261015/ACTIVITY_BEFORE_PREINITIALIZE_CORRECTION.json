@@ -1,0 +1,82 @@
+{
+  "start_utc_epoch": 1792022914.4985905,
+  "preinitialize_seconds_conservative": 1500,
+  "role": "active execution interval only; old closed snapshot not directory age; future user approval excluded",
+  "excluded_approval_waits": [
+    {
+      "start_utc": "2026-10-15T08:09:32+08:00",
+      "end_utc": "2026-10-15T12:21:59.4576014+08:00",
+      "seconds": 15147.4576014,
+      "evidence": "prepare script creation immediately before exec requiring escalation; tool returned aborted without launching; first observed return04:21:59Z; includes only documented pending authorization gap",
+      "execution": "none; SOURCE_RESOURCE_MIGRATION absent"
+    },
+    {
+      "start_utc": "2026-10-15T04:22:50.1066367Z",
+      "end_utc": "2026-10-15T06:02:42Z",
+      "seconds": 5991.8933633,
+      "evidence": "pending prepare execution; SOURCE_RESOURCE_MIGRATION persisted at06:02:43Z; no worker beforehand"
+    },
+    {
+      "start_utc": "2026-10-15T06:04:51Z",
+      "end_utc": "2026-10-15T06:40:04.8022059Z",
+      "seconds": 2113.8022059,
+      "evidence": "pending entry_compile execution; budget runtime failed before worker; BUDGET publication minus1sec is conservative approval end"
+    },
+    {
+      "start_utc_epoch": 1792046471.12,
+      "end_utc_epoch": 1792046551.1420608,
+      "seconds": 80.02206087112427,
+      "evidence": "tool dispatch immediately before require_escalated; no live training jobs",
+      "execution": "no worker before this command entry"
+    },
+    {
+      "start_utc_epoch": 1792046711.77,
+      "end_utc_epoch": 1792046992.408763,
+      "seconds": 280.6387629508972,
+      "evidence": "tool dispatch before approval; no actual experiment started",
+      "execution": "no worker before this command entry"
+    },
+    {
+      "start_utc_epoch": 1792047130.893,
+      "end_utc_epoch": 1792047305.789402,
+      "seconds": 174.8964021205902,
+      "evidence": "tool dispatch before approval; no training active; sole fixed05 continuation from verified t75",
+      "execution": "no worker before this command entry"
+    },
+    {
+      "start_utc_epoch": 1792048163.103,
+      "end_utc_epoch": 1792050576.884117,
+      "seconds": 2413.781116962433,
+      "evidence": "tool dispatch, no training jobs active",
+      "execution": "no worker before this command entry"
+    },
+    {
+      "start_utc_epoch": 1792050608.88,
+      "end_utc_epoch": 1792050659.9766436,
+      "seconds": 51.09664344787598,
+      "evidence": "tool dispatch before approval, no training active",
+      "execution": "no worker before this command entry"
+    },
+    {
+      "start_utc_epoch": 1792050714.472,
+      "end_utc_epoch": 1792050725.6545172,
+      "seconds": 11.182517290115356,
+      "evidence": "tool dispatch before approval; fixed05 complete and final audit passed; no training active",
+      "execution": "no worker before this command entry"
+    },
+    {
+      "start_utc_epoch": 1792051355.716,
+      "end_utc_epoch": 1792051385.566179,
+      "seconds": 29.850178956985474,
+      "evidence": "tool dispatch before approval; fixed2 safety-paused and final audit complete; no training active",
+      "execution": "no worker before this command entry"
+    },
+    {
+      "start_utc_epoch": 1792051563.668,
+      "end_utc_epoch": 1792051657.2117512,
+      "seconds": 93.54375123977661,
+      "evidence": "tool dispatch before approval; resume only prior fixed2 t5 actual pair; no training active",
+      "execution": "no worker before this command entry"
+    }
+  ]
+}

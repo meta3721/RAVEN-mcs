@@ -1,0 +1,98 @@
+meaningful documented repair cells (old != new numerically): 17
+   ('Table III (UA)', 'TwoStage-Hajek', 'RMSE_mu', '1.216', '1.2202')
+   ('Table III (UA)', 'RAVEN-Design', 'RMSE_mu', '1.1911', '1.1954')
+   ('appendix tab:app_e3_uair', 'Local-Hajek', 'RMSE_mu', '1.1882', '1.1923')
+   ('appendix tab:app_e3_uair', 'TwoStage-Hajek', 'RMSE_mu', '1.216', '1.2202')
+   ('appendix tab:app_e3_uair', 'Inst-Cal', 'RMSE_mu', '1.1911', '1.1954')
+   ('appendix tab:app_e3_uair', 'RAVEN-Design', 'RMSE_mu', '1.1911', '1.1954')
+   ('appendix tab:app_e3_uair', 'RAVEN-SimOracle', 'RMSE_mu', '1.1914', '1.1958')
+   ('Table IV (UA)', 'Design', 'RMSE_mu', '-6.553094', '-6.885464')
+   ('Table IV (UA)', 'Design', 'Tail_RMSE', '-6.875243', '-7.221249')
+   ('Table IV (UA)', 'Obs', 'RMSE_mu', '-0.00972', '-0.009783')
+   ('Table IV (UA)', 'Obs', 'Tail_RMSE', '-0.010229', '-0.010296')
+   ('Table IV (UA)', 'Use', 'RMSE_mu', '0.023974', '+0.025271')
+   ('Table IV (UA)', 'Use', 'Tail_RMSE', '0.025218', '+0.026450')
+   ('Table IV (UA)', 'Inst', 'RMSE_mu', '0.130684', '+0.142931')
+   ('Table IV (UA)', 'Inst', 'Tail_RMSE', '0.136375', '+0.149029')
+   ('Table IV (UA)', 'Debt', 'RMSE_mu', '0.000729', '+0.000672')
+   ('Table IV (UA)', 'Debt', 'Tail_RMSE', '0.000775', '+0.000715')
+
+BUNDLE FILES holding a superseded value with the corrected value absent:
+  figures/FIG_E4_E4_COMPONENT_ABLATION.csv   (2 cells)
+      Table IV (UA) | Design | RMSE_mu: -6.553094 -> -6.885464
+      Table IV (UA) | Design | Tail_RMSE: -6.875243 -> -7.221249
+  tables/TABLE_E4_COMPONENT_EFFECTS.csv   (3 cells)
+      appendix tab:app_e3_uair | RAVEN-SimOracle | RMSE_mu: 1.1914 -> 1.1958
+      Table IV (UA) | Design | RMSE_mu: -6.553094 -> -6.885464
+      Table IV (UA) | Design | Tail_RMSE: -6.875243 -> -7.221249
+  tables/TABLE_E4_CORE_ABLATION.csv   (1 cells)
+      appendix tab:app_e3_uair | RAVEN-SimOracle | RMSE_mu: 1.1914 -> 1.1958
+  tables/TABLE_II_FREEZE.json   (3 cells)
+      Table III (UA) | RAVEN-Design | RMSE_mu: 1.1911 -> 1.1954
+      appendix tab:app_e3_uair | Inst-Cal | RMSE_mu: 1.1911 -> 1.1954
+      appendix tab:app_e3_uair | RAVEN-Design | RMSE_mu: 1.1911 -> 1.1954
+  w1/audit_v5/round_v5_1/ERRATA_FOR_PAPER.md   (4 cells)
+      Table III (UA) | RAVEN-Design | RMSE_mu: 1.1911 -> 1.1954
+      appendix tab:app_e3_uair | Local-Hajek | RMSE_mu: 1.1882 -> 1.1923
+      appendix tab:app_e3_uair | Inst-Cal | RMSE_mu: 1.1911 -> 1.1954
+      appendix tab:app_e3_uair | RAVEN-Design | RMSE_mu: 1.1911 -> 1.1954
+  w1/audit_v5/round_v5_1/EXECUTION_REPORT.md   (3 cells)
+      Table III (UA) | RAVEN-Design | RMSE_mu: 1.1911 -> 1.1954
+      appendix tab:app_e3_uair | Inst-Cal | RMSE_mu: 1.1911 -> 1.1954
+      appendix tab:app_e3_uair | RAVEN-Design | RMSE_mu: 1.1911 -> 1.1954
+  w1/audit_v5/round_v5_1/TRADEOFF_V51.csv   (1 cells)
+      appendix tab:app_e3_uair | RAVEN-SimOracle | RMSE_mu: 1.1914 -> 1.1958
+  w1/audit_v5/round_v5_1/WORSTGROUP_V51.csv   (1 cells)
+      appendix tab:app_e3_uair | RAVEN-SimOracle | RMSE_mu: 1.1914 -> 1.1958
+  w1/tradeoff_v4/PART_B_REPORT.md   (4 cells)
+      Table III (UA) | RAVEN-Design | RMSE_mu: 1.1911 -> 1.1954
+      appendix tab:app_e3_uair | Local-Hajek | RMSE_mu: 1.1882 -> 1.1923
+      appendix tab:app_e3_uair | Inst-Cal | RMSE_mu: 1.1911 -> 1.1954
+      appendix tab:app_e3_uair | RAVEN-Design | RMSE_mu: 1.1911 -> 1.1954
+  w1/tradeoff_v4/TRAIN_SUMMARY.json   (4 cells)
+      Table III (UA) | RAVEN-Design | RMSE_mu: 1.1911 -> 1.1954
+      appendix tab:app_e3_uair | Local-Hajek | RMSE_mu: 1.1882 -> 1.1923
+      appendix tab:app_e3_uair | Inst-Cal | RMSE_mu: 1.1911 -> 1.1954
+      appendix tab:app_e3_uair | RAVEN-Design | RMSE_mu: 1.1911 -> 1.1954
+  w1/tradeoff_v4/runs/train/v4/C0_frozen/uair/uniform_window/seed30013/final_metrics.json   (2 cells)
+      Table III (UA) | TwoStage-Hajek | RMSE_mu: 1.216 -> 1.2202
+      appendix tab:app_e3_uair | TwoStage-Hajek | RMSE_mu: 1.216 -> 1.2202
+total flagged cell-instances: 28
+
+===============================================================================================
+Presence matrix, key artifacts (O=old only, N=new only, B=both, .=neither)
+===============================================================================================
+  [ 0] Table III (UA) | TwoStage-Hajek | RMSE_mu | 1.216 -> 1.2202
+  [ 1] Table III (UA) | RAVEN-Design | RMSE_mu | 1.1911 -> 1.1954
+  [ 2] appendix tab:app_e3_uair | Local-Hajek | RMSE_mu | 1.1882 -> 1.1923
+  [ 3] appendix tab:app_e3_uair | TwoStage-Hajek | RMSE_mu | 1.216 -> 1.2202
+  [ 4] appendix tab:app_e3_uair | Inst-Cal | RMSE_mu | 1.1911 -> 1.1954
+  [ 5] appendix tab:app_e3_uair | RAVEN-Design | RMSE_mu | 1.1911 -> 1.1954
+  [ 6] appendix tab:app_e3_uair | RAVEN-SimOracle | RMSE_mu | 1.1914 -> 1.1958
+  [ 7] Table IV (UA) | Design | RMSE_mu | -6.553094 -> -6.885464
+  [ 8] Table IV (UA) | Design | Tail_RMSE | -6.875243 -> -7.221249
+  [ 9] Table IV (UA) | Obs | RMSE_mu | -0.00972 -> -0.009783
+  [10] Table IV (UA) | Obs | Tail_RMSE | -0.010229 -> -0.010296
+  [11] Table IV (UA) | Use | RMSE_mu | 0.023974 -> +0.025271
+  [12] Table IV (UA) | Use | Tail_RMSE | 0.025218 -> +0.026450
+  [13] Table IV (UA) | Inst | RMSE_mu | 0.130684 -> +0.142931
+  [14] Table IV (UA) | Inst | Tail_RMSE | 0.136375 -> +0.149029
+  [15] Table IV (UA) | Debt | RMSE_mu | 0.000729 -> +0.000672
+  [16] Table IV (UA) | Debt | Tail_RMSE | 0.000775 -> +0.000715
+
+  artifact                                        0  1  2  3  4  5  6  7  8  9  10 11 12 13 14 15 16 
+  tables/TABLE_II_MAIN_EFFECTIVENESS.csv          .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+  tables/TABLE_II_FREEZE.json                     .  O  .  .  O  O  .  .  .  .  .  .  .  .  .  .  .  
+  tables/TABLE_E3_MAIN_EFFECTIVENESS.csv          .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+  tables/TABLE_E3_FULL_METHODS_SUPPLEMENT.csv     .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+  tables/TABLE_E4_CORE_ABLATION.csv               .  .  .  .  .  .  O  .  .  .  .  .  .  .  .  .  .  
+  tables/TABLE_E4_COMPONENT_EFFECTS.csv           .  .  .  .  .  .  O  O  O  .  .  .  .  .  .  .  .  
+  tables/E4_ABLATION_RELATIVE_CHANGE.csv          .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+  tables/E4_ABLATION_HOLM_RESULTS.csv             .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+  tables/PAPER_EVIDENCE_MASTER_LONG.csv           .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+  tables/TABLE_II_WORSTGROUP_PER_SEED.csv         .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+  figures/FIG_E3_E3_PREDICTION_RISK.csv           .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+  figures/FIG_E4_E4_COMPONENT_ABLATION.csv        .  .  .  .  .  .  .  O  O  .  .  .  .  .  .  .  .  
+  figures/FIG_W1_DESIGN_GATE.csv                  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  
+  w1/audit_v5/round_v5_1/ERRATA_FOR_PAPER.md      .  O  O  .  O  O  .  .  .  .  .  .  .  .  .  .  .  
+  w1/audit_v5/round_v5_1/A3P_RESOURCE_UPAIR.csv   .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  

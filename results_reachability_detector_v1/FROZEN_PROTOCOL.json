@@ -1,0 +1,62 @@
+{
+  "status": "DEFAULTS_RECORDED_NOT_G0_PASSED",
+  "protocol_version": "v1",
+  "stage_order": [
+    "G0",
+    "G1",
+    "G2",
+    "G3",
+    "G4",
+    "G5"
+  ],
+  "H": 4,
+  "eta": 0.05,
+  "distance": "L1",
+  "alpha_per_complete_run": 0.05,
+  "development_seeds": [
+    41001,
+    41002,
+    41003
+  ],
+  "confirmation_seeds": [
+    42001,
+    42002,
+    42003,
+    42004,
+    42005,
+    42006,
+    42007,
+    42008,
+    42009,
+    42010,
+    42011,
+    42012,
+    42013,
+    42014,
+    42015,
+    42016,
+    42017,
+    42018,
+    42019,
+    42020
+  ],
+  "dataset_order": [
+    "traffic",
+    "sensorscope",
+    "uair"
+  ],
+  "max_cpu_cores": 8,
+  "max_cumulative_cpu_seconds": 28800,
+  "gpu_training": 0,
+  "main_improvement_metric": "valid_decision_rate",
+  "minimum_improvement_percentage_points": 2,
+  "delay_alternative_not_selected": true,
+  "cap_ess_deadline_D_resource_B": "NOT_FROZEN_BEFORE_STOP",
+  "calibration_streams_and_alpha_allocation": "NOT_FROZEN_BEFORE_STOP",
+  "synthetic_dimensions_and_sample_budget": "NOT_FROZEN_BEFORE_STOP",
+  "no_parameter_search": true,
+  "no_method_change": true,
+  "no_test_tuning": true,
+  "no_resume_without_user_revision": true,
+  "protocol_line_count": 459
+}

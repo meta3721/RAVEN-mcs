@@ -1,0 +1,15 @@
+{
+  "drift_magnitude": 0.1,
+  "drift_period": 50,
+  "m_mc": 2000,
+  "note": "R3 complete_aligned protocol + opportunity drift; not a sealed formal trace",
+  "num_windows": 100,
+  "scenario": "drifting",
+  "stratum_meta": {
+    "dataset": "sensorscope",
+    "n_unique_strata": 440,
+    "remapped": false,
+    "spatial_rule": "station/node spatial_id (no coarsening)",
+    "status": "FROZEN_IDENTITY_CONFIRMED"
+  }
+}

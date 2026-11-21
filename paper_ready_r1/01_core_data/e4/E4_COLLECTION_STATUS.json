@@ -1,0 +1,12 @@
+{
+  "core_complete": true,
+  "design_774_present": true,
+  "expected_cells": 240,
+  "gen0_archive": "artifacts/e4_core_mechanism_ablation_r1",
+  "gen1_archive": "artifacts/e4_ablation_semantic_integrity_repair_r1",
+  "gen2_source": "artifacts/e4_wo_inst_reference_penalty_final_correction_r1",
+  "n_core_cells": 240,
+  "n_wo_inst_gen2": 40,
+  "round": "E4",
+  "wo_inst_policy": "Only Generation 2 FINAL_VALID_ONE_FACTOR enters PAPER_CORE"
+}

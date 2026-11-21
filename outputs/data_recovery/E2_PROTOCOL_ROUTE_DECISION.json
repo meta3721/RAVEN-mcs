@@ -1,0 +1,17 @@
+{
+  "horizon_common_span_hours": 4254.933055555555,
+  "horizon_max_6h_windows_common": 709,
+  "next_authorized_round": "E2-REPLACEMENT-DATASET-MAPPING-AND-CANARY-R1",
+  "priority_order": [
+    "A_full_sensorscope",
+    "B_replacement_dataset",
+    "C_protocol_revision_teacher_only"
+  ],
+  "provenance_status": "TEST_SLICE_CONFIRMED",
+  "reason": "SensorScope joint fail; selected replacement=traffic",
+  "replacement_status": "READY_WITH_REPLACEMENT_DATASET",
+  "selected_route": "B",
+  "sensorscope_joint": "FULL_SENSORSCOPE_JOINT_FAIL",
+  "spatial_status": "SPATIAL_METADATA_NOT_RECOVERED",
+  "status": "READY_WITH_REPLACEMENT_DATASET"
+}

@@ -1,0 +1,11 @@
+{
+  "gross_preinitialize_conservative": 1500.0,
+  "approval_start_utc": "2026-10-14T23:49:09Z",
+  "approval_end_utc": "2026-10-15T00:08:32Z",
+  "excluded_seconds": 1163.0,
+  "remaining_activity_unknown_reserve": 337.0,
+  "evidence": "recovery_budget.py created23:49:09Z immediately before require_escalated initialize dispatch; pending tool did not create stage until00:08:34.4985905Z; end chosen2.5sec early; no worker or training; source of interval is this task tool execution trace plus file creation metadata",
+  "old_wall_snapshot": 14373.550642,
+  "stage_limit_unchanged": 9000,
+  "role": "remove documented human execution approval waiting from initial gross reserve; keep original1500 and actual unknown margin; not a cap extension"
+}

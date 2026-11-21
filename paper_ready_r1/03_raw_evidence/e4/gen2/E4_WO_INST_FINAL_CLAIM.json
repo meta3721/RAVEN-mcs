@@ -1,0 +1,74 @@
+{
+  "cells": {
+    "SensorScope_Delta_c_s": {
+      "direction": "worsened",
+      "effect_size_paired": 1.651121663063149,
+      "holm_significant": true,
+      "mean_paired_diff": 0.0039223502064779205,
+      "p_holm": 1.9073486328125e-06,
+      "relative_change": 0.0031021934375555205
+    },
+    "SensorScope_Delta_group": {
+      "direction": "improved",
+      "effect_size_paired": -0.6335377979418102,
+      "holm_significant": true,
+      "mean_paired_diff": -0.002640295927521713,
+      "p_holm": 0.017181396484375,
+      "relative_change": -0.0026039873585173754
+    },
+    "SensorScope_RMSE_mu": {
+      "direction": "improved",
+      "effect_size_paired": -0.03247550311056726,
+      "holm_significant": false,
+      "mean_paired_diff": -0.00013937752509662893,
+      "p_holm": 0.9854354858398438,
+      "relative_change": -1.755829187349624e-05
+    },
+    "SensorScope_Tail_RMSE": {
+      "direction": "improved",
+      "effect_size_paired": -0.03438143781448235,
+      "holm_significant": false,
+      "mean_paired_diff": -0.00015018484238007445,
+      "p_holm": 1.0,
+      "relative_change": -1.77522427590535e-05
+    },
+    "UAir_Delta_c_s": {
+      "direction": "improved",
+      "effect_size_paired": -0.6592031807149049,
+      "holm_significant": true,
+      "mean_paired_diff": -0.0017620035343572371,
+      "p_holm": 0.017181396484375,
+      "relative_change": -0.0014285861895493583
+    },
+    "UAir_Delta_group": {
+      "direction": "improved",
+      "effect_size_paired": -0.38237943528401047,
+      "holm_significant": false,
+      "mean_paired_diff": -0.0009770829691805982,
+      "p_holm": 0.10539817810058594,
+      "relative_change": -0.0008944681675125627
+    },
+    "UAir_RMSE_mu": {
+      "direction": "worsened",
+      "effect_size_paired": 0.7246534925209785,
+      "holm_significant": true,
+      "mean_paired_diff": 0.0015565924040846003,
+      "p_holm": 0.00485992431640625,
+      "relative_change": 0.001306837550913353
+    },
+    "UAir_Tail_RMSE": {
+      "direction": "worsened",
+      "effect_size_paired": 0.7260506323911868,
+      "holm_significant": true,
+      "mean_paired_diff": 0.0016363105359298857,
+      "p_holm": 0.00485992431640625,
+      "relative_change": 0.0013637539907516293
+    }
+  },
+  "component": "Inst",
+  "created_utc": "2026-08-12T15:22:45.175245+00:00",
+  "cross_dataset_structural": false,
+  "evidence_generation": "FINAL_VALID_ONE_FACTOR",
+  "paper_safe_wording": "Under true one-factor w/o-Inst semantics (matched E3 λ_β), Inst shows structural mismatch contribution without robust prediction degradation.",
+  "status": "STRUCTURAL_ONLY_SUPPORTED"
+}

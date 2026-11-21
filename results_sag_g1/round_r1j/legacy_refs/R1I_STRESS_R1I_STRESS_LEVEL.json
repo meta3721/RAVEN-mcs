@@ -1,0 +1,25 @@
+{
+  "A_GRID": [
+    1.0,
+    0.8,
+    0.6,
+    0.4,
+    0.2
+  ],
+  "a_1_reproduces_natural": true,
+  "coarse_fixed_grid": true,
+  "dataset_specific_adaptive_rule": false,
+  "forbidden_midpoints": [
+    0.5,
+    0.55,
+    0.65
+  ],
+  "level_search_from_r1h": false,
+  "mechanism": "EXOGENOUS_ENTITY_AVAILABILITY_THINNING_V1",
+  "opportunity_richness_deletion": false,
+  "pair_level_deletion": false,
+  "physical_meaning": "Before each real E3-v2 window, an exogenous availability retention a in (0,1] is applied to deployment entities (spatial_id). Unavailable entities contribute no opportunity records in that window.",
+  "pi_tar_weighted_deletion": false,
+  "seed": 30001,
+  "tau_cov": 0.05
+}

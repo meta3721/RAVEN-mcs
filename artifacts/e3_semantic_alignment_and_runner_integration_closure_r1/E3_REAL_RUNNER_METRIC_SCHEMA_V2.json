@@ -1,0 +1,39 @@
+{
+  "primary": [
+    "RMSE_mu",
+    "MAE_mu",
+    "Tail_RMSE",
+    "Delta_group",
+    "Delta_pair",
+    "delta_ref",
+    "Q_norm1_over_S",
+    "Q_norm2_over_S"
+  ],
+  "required_fields": [
+    "RMSE_mu",
+    "MAE_mu",
+    "Tail_RMSE",
+    "Head_RMSE",
+    "Delta_group",
+    "Delta_pair",
+    "delta_ref",
+    "Q_norm1_over_S",
+    "Q_norm2_over_S",
+    "RMSE_rho",
+    "ESS",
+    "clip_rate_stage1",
+    "clip_rate_stage2",
+    "solver_status",
+    "runtime_seconds"
+  ],
+  "schema_version": "E3_REAL_RUNNER_METRIC_SCHEMA_V2",
+  "secondary": [
+    "Head_RMSE",
+    "RMSE_rho",
+    "ESS",
+    "clip_rate_stage1",
+    "clip_rate_stage2",
+    "solver_status",
+    "runtime_seconds"
+  ]
+}

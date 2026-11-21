@@ -1,0 +1,353 @@
+{
+  "round": "results_gatekeeping/round_v1",
+  "part": "B (C1)",
+  "r": 3,
+  "utc": "2026-10-03T09:15:13.327973+00:00",
+  "pi_floor": 0.00047846889952153106,
+  "pi_floor_definition": "smallest positive control key mass in build_pi_target(split='test') at key level",
+  "region_matching": "M1/M2 are rescaled within region so that each region's marginal equals mu (the frozen test region share); the control map already satisfies this exactly",
+  "key_universe": "control and control_floor: the key-level support returned by build_pi_target(split='test') as used by the frozen runs; M1_mu/M2_mu: the full MAPS_KEY_LEVEL.csv key universe (3568)",
+  "map_sha256_convention": "sha256 over sorted lines 'client|stratum|%.17g', UTF-8, trailing newline per line",
+  "checks": {
+    "control_region_marginals": {
+      "region0": 0.23732057416267946,
+      "region1": 0.4746411483253583,
+      "region2": 0.0708133971291866,
+      "region3": 0.2172248803827749
+    },
+    "control_region_marginals_equal_mu": true,
+    "floor_region_marginals": {
+      "region0": 0.23845623707787023,
+      "region1": 0.4038594073052952,
+      "region2": 0.08890420399724075,
+      "region3": 0.26878015161956287
+    },
+    "mu": {
+      "region0": 0.23732057416267938,
+      "region1": 0.47464114832535875,
+      "region2": 0.07081339712918659,
+      "region3": 0.21722488038277507
+    },
+    "map_sums": {
+      "control": 0.9999999999999972,
+      "control_floor": 0.9999999999999801,
+      "M1_mu": 1.0000000000000007,
+      "M2_mu": 0.9999999999999997
+    },
+    "pi_floor": 0.00047846889952153106,
+    "n_zero_keys_control": 812,
+    "n_zero_keys_control_floor": 0,
+    "key_counts": {
+      "control": 1164,
+      "control_floor": 1164,
+      "M1_mu": 1164,
+      "M2_mu": 1164
+    },
+    "map_sha256": {
+      "control": "783ca56b209c09ee068d63f8495b9049c9148b7aef2c13f7e900e14c9b16ea88",
+      "control_floor": "86a3f8d048ba44ba35a7bfa355eca5b59aaf35439ff8b246d548d4add2be4d92",
+      "M1_mu": "f40b0f0374a0fb3cc31bcc4e271d8b1d6b51ed323d2617d33cb8914099514a6e",
+      "M2_mu": "58ec1cd429a2cd378ba999350a8b994777ea831be0a4bd3341642581ae5f94d1"
+    },
+    "n_positive_keys": {
+      "control": 352,
+      "control_floor": 1164,
+      "M1_mu": 1094,
+      "M2_mu": 1131
+    },
+    "control_vs_maps_key_level": {
+      "n_shared_keys": 1164,
+      "n_control_keys": 1164,
+      "max_abs_dev": 9.80118763926896e-17,
+      "all_control_keys_in_maps_key_level": true,
+      "agree_1e_15": true
+    },
+    "mu_source": "results_c1_cityscanner\\round_v1\\CS_PHI_DECISION.json"
+  },
+  "map_meta": {
+    "M1_mu": {
+      "source_column": "pi_M1",
+      "key_universe": "control map key set (build_pi_target(split='test'))",
+      "raw_region_marginal_on_support": {
+        "region0": 0.0786172383126375,
+        "region1": 0.15053833796042287,
+        "region2": 0.010254392145092953,
+        "region3": 0.11944405005800511
+      },
+      "region_scale_to_mu": {
+        "region0": 3.0186836787489995,
+        "region1": 3.1529586067978497,
+        "region2": 6.90566501916674,
+        "region3": 1.818632910365021
+      },
+      "rejected_alternative": {
+        "key_universe": "full MAPS_KEY_LEVEL.csv cross product (3568 keys)",
+        "raw_region_marginal": {
+          "region0": 0.3060781609339095,
+          "region1": 0.3676982210162341,
+          "region2": 0.06125064169087133,
+          "region3": 0.2649729763588651
+        },
+        "region_scale_to_mu": {
+          "region0": 0.7753593834939543,
+          "region1": 1.2908442880511055,
+          "region2": 1.1561249837443006,
+          "region3": 0.8198001296878571
+        },
+        "resulting_region_marginal_on_the_real_support": {
+          "region0": 0.16697981997479208,
+          "region1": 0.5323093955902675,
+          "region2": 0.03247565099430868,
+          "region3": 0.2682351334406346
+        },
+        "max_abs_dev_from_mu_on_real_support": 0.0703407541878873,
+        "why_rejected": "phantom (cell, stratum) combinations would carry mass and the real support's region marginal would not equal mu, so the arms would not be region-matched"
+      }
+    },
+    "M2_mu": {
+      "source_column": "pi_M2",
+      "key_universe": "control map key set (build_pi_target(split='test'))",
+      "raw_region_marginal_on_support": {
+        "region0": 0.08951120145595043,
+        "region1": 0.1963757641999329,
+        "region2": 0.012669843491168271,
+        "region3": 0.13515890081189844
+      },
+      "region_scale_to_mu": {
+        "region0": 2.651294701696835,
+        "region1": 2.4170047167435587,
+        "region2": 5.589129587792325,
+        "region3": 1.6071814662438577
+      },
+      "rejected_alternative": {
+        "key_universe": "full MAPS_KEY_LEVEL.csv cross product (3568 keys)",
+        "raw_region_marginal": {
+          "region0": 0.21684976820755403,
+          "region1": 0.39914688812501553,
+          "region2": 0.04379795668554057,
+          "region3": 0.34020538698180186
+        },
+        "region_scale_to_mu": {
+          "region0": 1.094400866204902,
+          "region1": 1.189139042408613,
+          "region2": 1.6168196529717307,
+          "region3": 0.6385109956956525
+        },
+        "resulting_region_marginal_on_the_real_support": {
+          "region0": 0.22352057202562062,
+          "region1": 0.5328245319000596,
+          "region2": 0.046740840246157905,
+          "region3": 0.19691405582816246
+        },
+        "max_abs_dev_from_mu_on_real_support": 0.058183383574700875,
+        "why_rejected": "phantom (cell, stratum) combinations would carry mass and the real support's region marginal would not equal mu, so the arms would not be region-matched"
+      }
+    }
+  },
+  "risk_key_coverage": {
+    "n_risk_keys": 959,
+    "min_map_keys": 1164,
+    "hard_error_on_missing": true
+  },
+  "arms": {
+    "fedavg_window": {
+      "method": "fedavg_window",
+      "map": "control",
+      "map_sha256": "783ca56b209c09ee068d63f8495b9049c9148b7aef2c13f7e900e14c9b16ea88",
+      "n_keys": 1164,
+      "n_positive_keys": 352,
+      "n_zero_keys": 812,
+      "region_marginals": {
+        "region0": 0.23732057416267946,
+        "region1": 0.4746411483253583,
+        "region2": 0.0708133971291866,
+        "region3": 0.2172248803827749
+      },
+      "n_risk_keys_missing": 0,
+      "rho_realized_per_trace": {
+        "32001": 0.0,
+        "32002": 0.0,
+        "32003": 0.0,
+        "32004": 0.0,
+        "32005": 0.0,
+        "32006": 0.0,
+        "32007": 0.0,
+        "32008": 0.0,
+        "32009": 0.0,
+        "32010": 0.0
+      },
+      "rho_realized_mean": 0.0,
+      "rho_note": "Design off: no deletion"
+    },
+    "raven_wo_design": {
+      "method": "raven_wo_design",
+      "map": "control",
+      "map_sha256": "783ca56b209c09ee068d63f8495b9049c9148b7aef2c13f7e900e14c9b16ea88",
+      "n_keys": 1164,
+      "n_positive_keys": 352,
+      "n_zero_keys": 812,
+      "region_marginals": {
+        "region0": 0.23732057416267946,
+        "region1": 0.4746411483253583,
+        "region2": 0.0708133971291866,
+        "region3": 0.2172248803827749
+      },
+      "n_risk_keys_missing": 0,
+      "rho_realized_per_trace": {
+        "32001": 0.0,
+        "32002": 0.0,
+        "32003": 0.0,
+        "32004": 0.0,
+        "32005": 0.0,
+        "32006": 0.0,
+        "32007": 0.0,
+        "32008": 0.0,
+        "32009": 0.0,
+        "32010": 0.0
+      },
+      "rho_realized_mean": 0.0,
+      "rho_note": "Design off: no deletion"
+    },
+    "raven_ctrl": {
+      "method": "raven",
+      "map": "control",
+      "map_sha256": "783ca56b209c09ee068d63f8495b9049c9148b7aef2c13f7e900e14c9b16ea88",
+      "n_keys": 1164,
+      "n_positive_keys": 352,
+      "n_zero_keys": 812,
+      "region_marginals": {
+        "region0": 0.23732057416267946,
+        "region1": 0.4746411483253583,
+        "region2": 0.0708133971291866,
+        "region3": 0.2172248803827749
+      },
+      "n_risk_keys_missing": 0,
+      "rho_realized_per_trace": {
+        "32001": 0.1506511791622668,
+        "32002": 0.1296111665004985,
+        "32003": 0.14183891660727013,
+        "32004": 0.15528739282311846,
+        "32005": 0.13,
+        "32006": 0.154987918536417,
+        "32007": 0.14759036144578314,
+        "32008": 0.14644351464435146,
+        "32009": 0.14128895184135978,
+        "32010": 0.13680085500534378
+      },
+      "rho_realized_mean": 0.14345002565664094,
+      "rho_note": "computed from U=1 delivered units on non-test splits"
+    },
+    "raven_ctrl_floor": {
+      "method": "raven",
+      "map": "control_floor",
+      "map_sha256": "86a3f8d048ba44ba35a7bfa355eca5b59aaf35439ff8b246d548d4add2be4d92",
+      "n_keys": 1164,
+      "n_positive_keys": 1164,
+      "n_zero_keys": 0,
+      "region_marginals": {
+        "region0": 0.23845623707787023,
+        "region1": 0.4038594073052952,
+        "region2": 0.08890420399724075,
+        "region3": 0.26878015161956287
+      },
+      "n_risk_keys_missing": 0,
+      "rho_realized_per_trace": {
+        "32001": 0.0,
+        "32002": 0.0,
+        "32003": 0.0,
+        "32004": 0.0,
+        "32005": 0.0,
+        "32006": 0.0,
+        "32007": 0.0,
+        "32008": 0.0,
+        "32009": 0.0,
+        "32010": 0.0
+      },
+      "rho_realized_mean": 0.0,
+      "rho_note": "computed from U=1 delivered units on non-test splits"
+    },
+    "raven_M1mu": {
+      "method": "raven",
+      "map": "M1_mu",
+      "map_sha256": "f40b0f0374a0fb3cc31bcc4e271d8b1d6b51ed323d2617d33cb8914099514a6e",
+      "n_keys": 1164,
+      "n_positive_keys": 1094,
+      "n_zero_keys": 70,
+      "region_marginals": {
+        "region0": 0.2373205741626802,
+        "region1": 0.47464114832536103,
+        "region2": 0.07081339712918677,
+        "region3": 0.2172248803827762
+      },
+      "n_risk_keys_missing": 0,
+      "rho_realized_per_trace": {
+        "32001": 0.014431538190777896,
+        "32002": 0.009637753406447324,
+        "32003": 0.009978617248752673,
+        "32004": 0.007621467132422992,
+        "32005": 0.008,
+        "32006": 0.010010355540214014,
+        "32007": 0.010040160642570281,
+        "32008": 0.011854951185495118,
+        "32009": 0.006728045325779037,
+        "32010": 0.012468827930174564
+      },
+      "rho_realized_mean": 0.01007717166026339,
+      "rho_note": "computed from U=1 delivered units on non-test splits"
+    },
+    "raven_M2mu": {
+      "method": "raven",
+      "map": "M2_mu",
+      "map_sha256": "58ec1cd429a2cd378ba999350a8b994777ea831be0a4bd3341642581ae5f94d1",
+      "n_keys": 1164,
+      "n_positive_keys": 1131,
+      "n_zero_keys": 33,
+      "region_marginals": {
+        "region0": 0.23732057416267902,
+        "region1": 0.4746411483253594,
+        "region2": 0.07081339712918666,
+        "region3": 0.21722488038277493
+      },
+      "n_risk_keys_missing": 0,
+      "rho_realized_per_trace": {
+        "32001": 0.009855684618092221,
+        "32002": 0.009637753406447324,
+        "32003": 0.010691375623663579,
+        "32004": 0.011432200698634487,
+        "32005": 0.004333333333333333,
+        "32006": 0.009665170866413532,
+        "32007": 0.01104417670682731,
+        "32008": 0.00906555090655509,
+        "32009": 0.007790368271954674,
+        "32010": 0.014962593516209476
+      },
+      "rho_realized_mean": 0.009847820794813101,
+      "rho_note": "computed from U=1 delivered units on non-test splits"
+    }
+  },
+  "rho_definition": "share of delivered units (events with U = 1) on non-test splits whose (client, stratum) key carries pi^tar = 0, recomputed exactly as scripts/exogenous_target_cityscanner.py",
+  "inputs": {
+    "results_exogenous_target\\round_v1\\MAPS_KEY_LEVEL.csv": "b9e3ed9c4e4f769077efe6c6ec04cfe0d70a9a9151c0c4f92e96a947e4e3dbe4",
+    "results_c1_cityscanner\\round_v1\\CS_TRAIN_SETUP.json": "cfd4c4a9da618832e80d9397301a3c6aa6700ced12843c1e0d89562bb0f84040",
+    "results_c1_cityscanner\\round_v1\\CS_PHI_DECISION.json": "c7407b6d8100701c73a7b22c2ba071b4c34979c91c79000fc5bcff76b1f8f61e",
+    "data\\processed\\cityscanner_nyc_pm25\\atomic_units.parquet": "bcb3c07f1cbb0bad8799d5094930722f5af4cb26df2f335898953d4ea4104b55",
+    "scripts\\run_nodesign_supplement.py": "480e5c8e3fd9121532e438d90458ec2897a3cb3dc9f0497b6fc1682ec6b446d8"
+  },
+  "traces": [
+    32001,
+    32002,
+    32003,
+    32004,
+    32005,
+    32006,
+    32007,
+    32008,
+    32009,
+    32010
+  ],
+  "model_seed_offsets": [
+    0,
+    100000,
+    200000
+  ]
+}

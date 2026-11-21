@@ -1,0 +1,497 @@
+RAVEN-MCS 面向 IEEE TMC 的内部评审后修改指导手册
+供学生直接执行 | v1.0 | 2026-08-23
+基于材料：当前 21 页 IEEE 双栏论文 + 2026-08-23 内部模拟审稿报告
+总原则
+这不是一次“重新立项”。当前论文的问题定义、R/O/U 信息边界、deployment-target risk、理想顺序重构、P2 可行校准与 claim ceiling 均可保留。本轮只围绕能够真正改变 TMC 审稿结论的漏洞修改：W1/W4 联合修复、真实 mobility 证据、强近邻基线、外部端点、practical estimator 理论与求解审计。
+禁止事项
+不要为了回应 11 条意见而发明 11 个新机制；不要修改测试集后再调权重；不要把 RMSE/test label 直接写进在线 P2 约束；不要隐藏 U-Air 的负消融结果；不要声称 fully asynchronous、真实系统部署、hidden-confounding robustness 或 universal RMSE superiority，除非新证据真正支持。
+1. 修改目标、当前诊断与最终判定标准
+1.1 当前稿真正的优点
+问题语义已经成熟：明确区分公共 deployment target、arrival/usable-update law、deployment group h(i) 与 opportunity stratum s(i)。
+R/O/U 三层选择的 legal-history 信息边界写得清楚，避免 test-label/post-outcome leakage。
+理论边界诚实：Proposition 2 只覆盖 ideal/unclipped/正确指定的顺序校正；实际 clipping 不声称 exact unbiasedness。
+实验叙事克制：prediction 只声称 competitive / selective gains，不声称 universal superiority；Use/Debt 的弱效应没有被隐藏。
+Appendix 已经有 P2 feasibility、Local-Hajek degeneracy、runtime/provenance 等较完整审计。
+1.2 当前稿真正可能导致拒稿的四个核心问题
+W1：U-Air 上移除 Design 后，Δgroup、RMSE_mu、Tail RMSE 同时显著改善；这与“deployment target 为最高层目标”的叙事形成直接冲突。
+W4：实际 propensity 是 estimated + clipped，但论文缺 overlap、calibration、ESS、weight distribution、clipping rate 和 misspecification 证据，导致 W1 无法被科学解释。
+W3：没有独立真实移动轨迹/网络更新 replay，TMC 可能认为论文更像 selection-bias methodology，而不是成熟 mobile computing 证据。
+W7：Related Work 已引用 participation bias / correlated participation 等近邻，但主实验没有真正加入 target-shift、participation-debiasing、semi-async bias mitigation 的强基线。
+只要这四点没有修复，继续增加普通 seed、普通 synthetic scenario、更多 appendix 表格，基本不会改变内部评审给出的 Weak Reject / Reject-and-Resubmit 判断。
+1.3 本轮修改的最终通过标准
+Design reversal 得到可重复、可解释、可修复的因果诊断；修复后的主方法在 primary deployment endpoint 上不再出现明显方向反转。
+实际 propensity 质量被量化，estimated/clipped estimator 的风险与有效范围被报告，而不是只靠理论假设。
+至少有一条真实 mobility trace 驱动的 opportunity replay；若 update/network 仍为仿真，必须明确标注 hybrid trace replay。
+至少加入 2–3 个真正最近邻强基线，并在 same backbone / same selection trace / same tuning budget 下公平比较。
+增加至少一个不直接进入 P2 objective 的外部 deployment endpoint，例如 worst-group prediction error。
+Practical estimator 新增一个非平凡误差传播结果：propensity/clipping error -> reconstruction error -> P2 perturbation / deployment mismatch。
+主文保持 12–14 页核心叙事；proof、完整统计、solver/provenance 诊断移 supplement。
+2. W1–W11 的修改优先级矩阵
+ID
+级别
+问题
+处理方式
+工作类型
+是否新增运行
+W1
+P0
+Design 在 U-Air 反向
+先诊断，后决定 gating / shrinkage / P2 层级修复
+实验+方法
+是
+W2
+P0/P1
+结构指标存在 objective compliance
+增加 worst-group / group-wise 外部端点 + 正式 no-harm/non-inferiority
+实验+统计
+是
+W3
+P0
+缺真实 mobility/system evidence
+真实轨迹 opportunity replay；能做 network trace 更好
+实验
+是
+W4
+P0
+propensity 可靠性与鲁棒性不足
+calibration/overlap/ESS/clipping/misspecification 全套诊断
+实验+理论
+是
+W5
+P1
+理论容易被看成标准工具组合
+nearest-work formal matrix + practical estimator error bound
+理论+写作
+是
+W6
+P1
+windowed 而非 fully async
+统一改为 windowed/buffered asynchronous；不必重做 fully async
+写作
+否
+W7
+P1
+强基线不足
+补 target-risk IW / participation debiasing / semi-async bias correction
+实验
+是
+W8
+P1
+Use/Debt 实证弱
+真实 replay 中再观察；若仍弱，降级贡献措辞
+实验+写作
+条件性
+W9
+P2
+tiny-but-significant
+effect size + CI + practical threshold；seed 推断降级
+统计
+小
+W10
+P1/P2
+778 solver warnings
+KKT/objective gap/第二求解器交叉审计
+复现
+小
+W11
+P2
+21 页、防御性叙事
+主文/补充材料分包；删除审计口吻重复句
+写作
+否
+执行顺序
+必须按 G0 -> G1 -> G2 -> G3 -> G4 -> G5 的门控顺序执行。尤其不要在 W1/W4 诊断完成前直接改 P2 或重新定义 Design。
+3. G0：先冻结当前版本，建立 Post-Review 分支
+3.1 目的
+保证本轮每一项变化都可以追溯到当前正式稿，避免“为了修审稿意见而把旧证据覆盖掉”。
+3.2 学生必须做的仓库/数据动作
+将当前论文、E1–E4 frozen tables、per-seed results、propensity logs、P2 logs、EventTrace、图表源数据全部做只读快照。
+新建 post_review/ 分支或目录；禁止直接覆盖 sealed 数据。
+为每个新实验写 manifest：代码 commit、数据版本、seed、超参数、运行时间、输出文件、是否正式纳入论文。
+所有新的权重/threshold 只能由 train/validation 或预先规则确定；test 只用于一次最终报告。
+保留 full RAVEN、w/o-Design、当前 FedAvg/FedAsync/TimeAlign/TwoStage-Hajek 的原始结果用于 backward comparison。
+3.3 G0 通过门
+必须能从 manifest 一键定位当前 Table II、Table III、Fig. 3–6 对应的原始结果；做不到则先修复复现链，不进入 G1。
+4. G1：W1 + W4 联合修复 —— 先诊断 Design reversal，再改方法
+为什么 W1 与 W4 必须一起做
+U-Air 的 w/o-Design 同时改善 Δgroup、RMSE_mu 与 Tail RMSE，很可能不是“Design 理论一定错误”，而是 estimated/clipped Design correction 在有限样本、弱 overlap 或强 clipping 条件下把 corrected reference 拉向了一个不可靠方向。只有先量化 propensity 质量，才能知道应该修 estimator、修 gating，还是修 P2 目标层级。
+4.1 第一步：为三层 propensity 建立诊断面板
+A. Opportunity/design layer
+不要机械套 AUC。opportunity 是 client–stratum/atomic exposure law，优先报告：预测机会质量的 NLL / cross-entropy、预测 mass 与 realized frequency 的 calibration、TV/L1 deviation、support coverage。
+报告每个 dataset / stratum 的 pi_hat^opp 分位数：min、p1、p5、p50、p95、max；标记近零 mass。
+计算 design ratio zeta 的分位数、最大值、被 a_max 截断的比例，以及截断前后 ESS。
+B. Observation layer
+对 p_hat^obs 报告 Brier score、calibration curve / ECE、AUC（仅作区分能力，不替代 calibration）。
+报告 p_hat^obs 的 min/p1/p5/p50/p95/max、低于 p_min 的比例、对应记录数量。
+按 deployment group、opportunity stratum、dataset 分层查看误差，重点检查 U-Air。
+C. Usable-update layer
+对 q_hat^use 报告 Brier、calibration/ECE、AUC、低 q 事件比例。
+按 deadline、staleness bucket、client/window 分层报告；若 Use 当前无效，先确认是不是 q 几乎恒定或 usable censoring 太弱。
+报告 d_max 截断比例与 usable correction 对 beta_hat 的实际扰动幅度。
+4.2 第二步：必须画出的 6 张诊断图
+U-Air 与 SensorScope 的 propensity calibration panels（p_obs、q_use）。
+opportunity target/estimated exposure mass 的 reliability plot。
+三层 corrected weight 的 log-scale histogram/ECDF。
+ESS ratio = ESS / n 的分布，按 dataset 和 layer 拆分。
+clipping rate 与 primary endpoint degradation 的 scatter / binned curve。
+Design ablation gain 与 overlap/ESS/clipping 的窗口级关联图，重点看 U-Air 反向是否集中在低可靠窗口。
+4.3 第三步：oracle / estimated / misspecified 三组对照
+如果当前 selection generator 保存了真实生成概率，则必须利用它。若没有真实概率日志，不得伪造“oracle”，而应只做可验证的 estimated / perturbed sensitivity。
+变体
+构造
+目的
+Oracle-Design
+使用生成器真实 pi/p/q 或可验证真值
+判断理论 Design 在正确 propensity 下是否仍反转
+Estimated-Design
+当前实际 plug-in estimator
+复现当前 full RAVEN
+Misspecified-1
+系统性缩放/偏置 propensity
+测试 estimator 对轻度 misspecification 的敏感度
+Misspecified-2
+遗漏一个合法 pre-outcome covariate
+测试 omitted-variable 风险，但不得使用 post-outcome 信息
+No-Design
+zeta=1
+作为 U-Air 反向的直接参照
+4.4 第四步：clipping / positivity sensitivity
+围绕当前 p_min、q_min、a_max、d_max 做“小而有解释力”的敏感性网格，不做大规模无意义扫掠。
+每个点至少报告：RMSE_mu、Tail RMSE、Δgroup、Δc-s、ESS、clip rate、max weight。
+先在 validation 上确定稳定区间，再一次性看 test；禁止根据 test 最好点选择 clipping。
+重点判断 U-Air 反向是否随 clipping/ESS 明显变化。如果是，则 W1 可被解释为 practical identification reliability 问题。
+4.5 第五步：lambda_g / lambda_beta 的 Pareto 与目标层级
+P2 同时拉向 deployment group target 和 corrected reference。必须回答内部评审的核心问题：为什么在 U-Air 上 corrected reference 会压过更直接的 deployment target。
+P2 core:  (lambda_g / 2) ||M_r alpha - mu||_2^2  +  (lambda_beta / 2) ||alpha - beta_hat||_2^2  + ...
+只扫 lambda_g : lambda_beta 的相对比例；其余项固定，避免参数维度爆炸。
+输出 Pareto：x 轴 Δgroup，y 轴 Δc-s；用颜色表示 RMSE_mu 或 Tail RMSE。
+在图上标出 full RAVEN、w/o-Design、当前默认点、候选 gated 点。
+权重选择必须由 validation /预注册规则完成，test 只画最终被选点。
+4.6 诊断后的决策树：不要提前决定机制
+观察结果
+结论
+下一步
+Oracle-Design 不反转；Estimated-Design 反转；反转集中在低 ESS/高 clipping
+propensity reliability 是主因
+做 reliability-aware Design gating/shrinkage；不改 target semantics
+Oracle-Design 也反转，但高 lambda_g 可消除
+P2 目标层级冲突
+调整 calibration hierarchy；加入 structural no-harm 约束/优先级
+Oracle/Estimated 都反转，且与 ESS/clipping 无关
+Design target 本身可能不适合该 dataset
+重新审计 client-share lambda^tar_{k|s} 与 support-compatible target construction
+Use 仍无影响且 q 接近常数
+当前数据不需要 Use
+保留理论层但降低经验贡献，不强行制造收益
+Debt 仍只产生 < practical threshold 的变化
+Debt 仅作为 accounting mechanism
+从 headline contribution 降级，不包装成性能来源
+5. G1-B：若诊断确认 practical Design 不可靠，推荐的最小方法修复
+重要
+下面是“候选修复路径”，只有 G1 诊断支持时才实施。不要为了好看直接把它写进论文。任何新公式都必须重新做 III–VI 理论审计。
+5.1 首选：Reliability-aware Design gating / shrinkage
+核心思想：当某个窗口/客户端的 opportunity correction 可靠时使用 Design；当 overlap 太差、ESS 太低或 clipping 太强时，将 Design correction 向 no-Design 收缩，而不是盲目使用高方差 inverse ratio。
+candidate:  zeta_tilde = 1 + g_{k,r} ( zeta_hat - 1 ),     0 <= g_{k,r} <= 1
+g_{k,r} 只能使用 train/online legal pre-outcome diagnostics，例如 ESS ratio、overlap、clip rate、propensity uncertainty。
+g=1 对应原 full Design；g=0 对应 no-Design；中间值是 shrinkage。
+threshold/gating 参数必须用 training/validation 预先确定，不允许用 test endpoint 调。
+至少比较：Full、No-Design、Oracle-Design、Gated-Design 四条线。
+5.2 备选：给 deployment-group alignment 更高层级
+如果 oracle propensity 下仍出现 Design 反转，但通过提高 lambda_g 可以稳定消除，则说明需要把“deployment group target 优先于 client–stratum fidelity”的层级写清楚。
+可以考虑一个只使用公开 target 与当前 feasible support 的 structural no-harm 约束，例如将当前 candidate alpha 的 group mismatch 限制在预声明 safe reference 的容许范围内。
+禁止写法
+不要把当前 test RMSE 或 test label 直接作为 P2 在线硬约束。RMSE non-inferiority 应当是离线评估标准；在线约束只能依赖公开 target、当前 M_r、合法 pre-outcome 状态与预声明 reference。
+6. G2：W2 + W7 —— 加“外部端点”与真正强基线
+6.1 外部端点：优先做 worst-group prediction
+当前最稳定优势来自 P2 直接优化的结构指标，审稿人会质疑 objective compliance。最有性价比的外部端点是 group-wise prediction error，它不直接出现在 P2 objective 中，但与 deployment target 的业务含义直接相关。
+RMSE_g = sqrt( sum_{i:h(i)=g} w_i (Yhat_i - Y_i)^2 / sum_{i:h(i)=g} w_i )
+WorstGroupRMSE = max_g RMSE_g
+报告四个 deployment groups 的 RMSE_g、worst-group RMSE、group error dispersion。
+如果已有 per-record prediction，可以先离线重算，不必重新训练；若没有完整 prediction 则按 frozen seeds 重新导出。
+主文只保留 worst-group + overall RMSE_mu；完整 group-wise 表放 supplement。
+正式 no-harm/non-inferiority margin 必须在 test 前固定，并给出 paired CI；不要仅用“不显著”当作 non-inferiority。
+6.2 强基线：至少选 2–3 个代表
+基线类别
+核心思想
+为什么必须加
+Target-risk IW / covariate-shift FL
+直接对 target risk 做 importance weighting
+检验 RAVEN 是否只是通用 target-shift weighting
+Participation-rate debiasing (FedAU 类)
+根据参与历史修正 aggregation bias
+检验只修 client/update participation 是否足够
+Correlated-participation debiasing
+处理非均匀、时间相关 availability
+检验 opportunity/update temporal bias
+Semi-asynchronous participation-bias correction (FedCure 类)
+在 buffered/semi-async 语义下修偏
+直接回应 W6/W7
+不要求全部照搬原论文系统。允许在统一 backbone 上做“公平 adapted implementation”，但必须明确标注 adapted baseline，不得写成官方复现。
+6.3 公平比较协议
+同 backbone、同 train/val/test、同 EventTrace、同 seed、同 local epochs、同 total update budget。
+所有 baseline 的可调参数使用同等 validation 预算；记录每个 baseline 的 tuning grid。
+任何需要目标分布的 baseline 都只能使用与 RAVEN 相同的 public/train-side target information。
+输出 per-seed paired metrics，统一 Wilcoxon/Holm 或预先选择的统计方案。
+Local-Hajek 若继续退化成 FedAvg，应从主 baseline 列表降级到 diagnostic baseline，避免占据“强基线”名额。
+7. G3：W3 —— 增加真实移动轨迹 / 网络 replay，强化 TMC 属性
+内部评审最明确的 venue-fit 批评是：现有 sensing values 是真实的，但 R/O/U 选择过程主要由 protocol 构造。TMC 需要看到 mobility/intermittent connectivity 不只是装饰变量。
+7.1 最低可接受方案：真实移动 opportunity replay
+使用真实轨迹生成 R：client 在某个 window 内是否覆盖 spatial unit / sensing region，直接由轨迹决定。
+将 mobility-derived R 与当前 target field / completion task 对接时，必须清楚说明这是 trace replay，不得写成原数据集本身含移动客户端。
+报告轨迹覆盖率、client active fraction、opportunity-stratum visitation distribution、inter-arrival gap、temporal burstiness。
+至少比较 Balanced / protocol-generated opportunity 与 real-trace opportunity 下 RQ1/RQ2 的方向是否一致。
+7.2 如果已有 T-Drive reviewer-reserve，优先启用
+优先把真实轨迹用于验证 opportunity layer，而不是为了凑数据集做一个与主线无关的预测任务。T-Drive 若只提供轨迹，不提供 sensing outcome/network delivery，就只能声称 real-mobility opportunity replay。
+7.3 U 层如何处理：分层标注证据强度
+证据层级
+R
+O
+U
+允许的论文表述
+A：最低
+真实轨迹
+现有/trace-grounded observation
+仿真/经验分布
+real-mobility opportunity replay
+B：更强
+真实轨迹
+真实/公开 availability
+真实网络 trace / replay
+hybrid real-trace R/O/U replay
+C：最强
+真实设备/轨迹
+真实 sensing
+真实通信/计算日志
+end-to-end mobile system evidence
+本轮不强制做真实手机硬件。CPU-only trace replay 已足以显著改善 TMC fit；但必须诚实区分 A/B/C 证据层级。
+7.4 真实 replay 最少报告的系统/移动指标
+opportunity coverage、client/window activity、dropout、usable-update rate。
+deadline miss rate、staleness distribution；若 U 为仿真必须注明其来源和参数。
+communication/update count；如果没有真实能耗数据，不要凭空估算 energy。
+端到端 runtime 只作实现指标，不声称 scalability，除非做了规模压力测试。
+8. G4：W5 + W4 —— 新增一个真正有价值的 practical-estimator 理论结果
+不要再加一个普通 convexity lemma。最有价值的是把当前 ideal Proposition 2 与实际 estimated/clipped implementation 接起来。
+8.1 推荐的新理论链
+propensity estimation / clipping error -> normalized reconstruction error -> P2 solution perturbation -> deployment composition error
+8.2 建议的假设结构
+在目标支持上存在正的 lower bounds：pi_opp >= pi_min、p_obs >= p_min_true、q_use >= q_min_true。
+estimated propensity 满足 uniform 或 high-probability error bounds：|pi_hat-pi| <= eps_pi、|p_hat-p| <= eps_p、|q_hat-q| <= eps_q。
+显式定义 clipping bias term，而不是把 clipping 当成 0。
+Hájek denominator 有正的有效样本下界或高概率下界。
+P2 feasible set、M_r 与其他状态固定时，利用已证明的 beta -> alpha non-expansive property。
+8.3 目标定理应达到的形式
+|| beta_hat - beta_star || <= C1(eps_pi + eps_p + eps_q + eps_clip + eps_sample)
+|| alpha_hat - alpha_star || <= || beta_hat - beta_star ||
+|| M_r(alpha_hat - alpha_star) || <= ||M_r|| · || beta_hat - beta_star ||
+其中常数 C1 必须由 positivity margin、denominator lower bound、weight cap 等明确给出。若只能得到高概率界，也可以；不要写无法证明的“unbiased practical estimator”。
+8.4 新理论与实验必须一一对应
+理论中的 eps_pi/eps_p/eps_q 对应 G1 的 propensity diagnostics。
+eps_clip 对应 clipping rate / threshold sensitivity。
+denominator/ESS 条件对应 ESS plots。
+P2 perturbation 对应 gated-vs-ungated / oracle-vs-estimated 结果。
+这一条理论如果做成，将显著缓解“标准 IPW + convex calibration 拼装”的 novelty 质疑。
+9. G5：W9 + W10 —— 统计意义与 P2 数值求解审计
+9.1 P2 warning audit
+对 warning windows 保存 solver status、primal residual、dual/KKT residual、objective value；如果当前旧日志没有，则在复跑窗口中新增保存。
+选一个第二凸优化求解器对 warning windows 交叉验证；至少比较 objective、alpha、M alpha、final metric 的差异。
+报告“是否影响主结论”，而不只报告 feasibility residual。
+如果第二 solver 与当前结果几乎一致，可将 778 warnings 从风险转为 implementation tolerance 证据；否则必须修 solver 配置并重跑相关 formal runs。
+9.2 practical significance
+Debt 的 0.002%–0.014% 即便 p<0.05，也必须写成 quantitatively small。
+为主要 endpoint 报 paired effect size + 95% CI。
+预先定义 minimum practically important difference；如没有外部依据，不要事后凭结果挑阈值。
+20 seeds 主要代表 algorithmic randomness，不能替代独立城市/时间段/真实轨迹重复；正文中要明确这一点。
+10. 论文写作如何同步修改
+10.1 Title：优先解决 asynchronous 语义
+当前系统是 window 内异步到达、window close 后一次全局更新，属于 windowed/buffered asynchronous 语义。建议在最终修订后考虑：
+RAVEN-MCS: Target-Risk-Calibrated Windowed-Asynchronous Federated Data Completion for Mobile Crowdsensing under Two-Stage Non-Random Selection
+若不改标题，至少在 Abstract 第一段和 Section III-A 第一段明确“windowed asynchronous”，并说明与 immediate-update FedAsync 的区别。
+10.2 Abstract：删防御性细节，换成新证据
+不再塞入太多限定语和多个百分比。
+保留 1 个 risk-semantic 结论、1 个 main effectiveness headline、1 个 real-mobility/propensity robustness headline。
+如果 G1 修复了 Design reversal，摘要才可强调 full/gated RAVEN 的稳定性；未修复前不要回避负结果。
+10.3 Introduction：三条贡献不增加
+Contribution 1：deployment-target risk semantics；保留。
+Contribution 2：selection-layer-aware reconstruction；如果新增 reliability-aware gating，将其作为 practical realization，不新开 Contribution 4。
+Contribution 3：feasibility-aware calibration；Debt 放在内部，不作为单独贡献。
+增加一句最近邻差分：RAVEN 的创新不是 IPW/Hájek 本身，而是 target semantics + R/O/U legal histories + finite-support calibration。
+10.4 Related Work：增加一个 nearest-neighbor formal comparison table
+方向
+目标分布
+选择层
+是否处理 sensing-side
+是否有限支持校准
+与 RAVEN 的核心差分
+Covariate-shift FL
+目标域/测试域
+sample/client
+通常否
+通常否
+缺 R/O/U sequential legal histories
+FedAU/participation debiasing
+原 FL objective
+client participation
+否
+否
+修 participation，不修 sensing-side exposure
+Correlated participation
+长期 availability
+client/update
+否
+否/有限
+不区分 opportunity 与 observation
+Targeted/Agnostic FL
+目标 mixture
+client distribution
+否
+不一定
+不解决 finite-window realizability
+Semi-async fairness/queue
+参与公平/调度
+client/update
+否
+可能
+queue 目标与 deployment-target debt 不同
+RAVEN-MCS
+public deployment target
+R/O/U
+是
+是
+顺序重构 + feasibility-aware target alignment
+10.5 Evaluation：主文只保留能改变审稿结论的图表
+保留 framework 图。
+主结果表必须加入新强基线和 worst-group endpoint。
+新增 W1 修复图：propensity reliability / Pareto / gated Design 的核心一张。
+新增 real-mobility replay 的一张核心图。
+原 Fig. 6、完整 E1/E2 统计、runtime、solver/provenance 继续放 supplement。
+10.6 Discussion：从“防御性审计口吻”改成科学边界
+删除反复出现的“not retrospectively reconstructable / cross-vintage path”等审计式重复句，只保留一次。
+把 Traffic/P2/Local-Hajek 细节移 supplement，主文用 1–2 句说明。
+保留 hidden confounding、target misspecification、real mobility evidence boundary。
+新增 metadata privacy：位置、网络状态、设备可用性 propensity covariates 可能是敏感元数据；说明最小化采集/聚合统计的策略。
+10.7 Main paper 与 Supplement 分包
+Main paper：Title/Abstract/I–IX，目标 12–14 页核心内容。
+Supplement：完整 proofs、E1/E2 full stats、Local-Hajek degeneracy、P2 solver audit、runtime/provenance、完整 sensitivity grids、full group-wise results。
+不要把 21 页总 PDF 当成 21 页主文；但提交前必须核对 TMC 当前 portal 对 main/supplement 的实时规则。
+11. 学生应交付的 Post-Review 实验包
+11.1 建议目录
+post_review/
+G1_propensity_design/：propensity diagnostics、oracle/estimated/misspecified、clipping、Pareto、gating。
+G2_external_baselines/：worst-group endpoints、strong baselines、公平 tuning logs。
+G3_real_mobility/：trajectory preprocessing、R trace、network/U replay、mobility diagnostics。
+G4_theory/：assumptions、lemmas、proof、symbol audit。
+G5_solver_stats/：KKT/second-solver、effect sizes、CI。
+paper_tables_figures/：paper-facing CSV、PDF/SVG 图、caption text、source manifest。
+MANIFEST.md：每个正式结果的代码 commit、输入、输出、seed、状态。
+11.2 每一轮实验完成后必须生成的报告
+RUN_MANIFEST.csv：run_id、dataset、method、seed、config、git hash、status、runtime。
+METRICS_PER_SEED.csv：所有 primary/external endpoints。
+DIAGNOSTICS.csv：ESS、clipping、propensity error、solver status。
+STATISTICS.csv：paired effect、CI、p、Holm、practical threshold 判定。
+DECISION.md：本轮回答了哪个 W1–W11；通过/不通过哪个 gate；下一步是否允许继续。
+12. 最终 Gate：学生做到什么程度才可以重新写论文
+Gate
+通过标准
+级别
+Gate A：W1
+Gated/revised RAVEN 对 primary deployment endpoint 不再出现未解释的显著反向；prediction 满足预声明 no-harm/non-inferiority。
+必须
+Gate B：W4
+propensity/overlap/ESS/clipping 全部可审计；oracle/estimated 差异可解释；sensitivity 不出现灾难性不稳定。
+必须
+Gate C：W2
+至少一个不在 P2 目标中的外部 endpoint 支持或至少不伤害 deployment utility。
+必须
+Gate D：W7
+2–3 个最近邻强基线公平完成，RAVEN 仍有清晰不可替代优势。
+必须
+Gate E：W3
+至少 real-mobility opportunity replay 完成；若 U 仍仿真，明确 hybrid evidence。
+TMC 强烈建议
+Gate F：W5
+practical estimator error -> P2 perturbation 理论闭合，或至少得到严格可发表的有限样本/误指定界。
+强烈建议
+Gate G：W10
+第二 solver / KKT audit 证明 warning 不改变主结论。
+建议
+停止规则
+如果 Gate A 失败，即使做完真实 mobility 和强基线，也不要立即投稿 TMC。先解决 Design 目标反转。如果 Gate A/B 通过但 Gate E 暂时做不到，可以考虑保守定位为 methodology-oriented TMC submission，但接受风险仍较高。
+13. 推荐的实际执行顺序（学生按此顺序做）
+步骤
+任务
+工作量
+Step 0
+冻结当前结果、建立 post_review 分支、整理 raw per-seed/logs。
+不跑新实验
+Step 1
+先做 propensity/ESS/clipping 纯诊断；不改算法。
+小
+Step 2
+做 oracle/estimated/misspecified + clipping sensitivity。
+中
+Step 3
+做 lambda_g/lambda_beta Pareto；判断 W1 原因。
+中
+Step 4
+仅在诊断支持时实现 reliability-aware Design gate 或结构 no-harm calibration。
+中
+Step 5
+冻结 revised RAVEN；做 worst-group endpoint + 2–3 个强基线。
+中
+Step 6
+做真实 mobility opportunity replay；若可行再补 trace-grounded U。
+中/大
+Step 7
+做 practical estimator 理论补丁并与 G1 指标对应。
+理论
+Step 8
+做 solver/KKT/second-solver 审计与 effect-size CI。
+小/中
+Step 9
+达到 Gate A–D 后再统一改 Abstract/Intro/Related Work/Evaluation/Discussion。
+写作
+Step 10
+最终 IEEEtran compile + main/supplement 分包 + 全文 claim audit。
+封口
+14. 最容易犯的错误：逐条禁止
+1. 看到 W1 后直接删 Design。错误：先做 oracle/estimated/overlap 诊断；如果理论 Design 在可靠 propensity 下有效，应该修 practical estimator，而不是删主线。
+2. 用 test RMSE 选 lambda 或 gating threshold。错误：所有选择必须 train/validation 或预先规则确定。
+3. 把 RMSE no-harm 写进在线 P2 并用当前标签计算。错误：这破坏 legal pre-outcome boundary。在线只能约束公开 target / structural quantities。
+4. 为了证明 Use 有用，人工把 usable censoring 调得极端。错误：只有真实 replay 或明确预注册的 stress test 才有价值；不能为组件“造收益”。
+5. 把 T-Drive 写成 full real R/O/U system。错误：如果只有 mobility 是真实的，只能称 real-mobility opportunity replay。
+6. 加入很多普通 baseline 但没有最近邻。错误：宁可做 2–3 个强 baseline，也不要再加十个弱方法。
+7. 只报告 p-value。错误：必须 paired effect、CI、practical threshold；Debt 的 tiny effect 要明确 tiny。
+8. 把新的 appendix lemma 当第四个贡献。错误：贡献仍为 risk semantics / reconstruction / calibration 三条。
+9. 为了理论深度随意加 convergence theorem。错误：优先补 practical estimator error propagation，这是直接回应 W4/W5 的结果。
+10. 改完实验马上改全文。错误：先达到 Gate A–D，再统一写作，避免论文反复漂移。
+15. 学生最终提交给导师的材料清单
+01_G1_W1_W4_Diagnosis_Report.pdf/docx：包含所有 propensity、ESS、clipping、Pareto、oracle/estimated 结论。
+02_Revised_Method_Spec.txt：若方法修改，给出唯一公式、算法边界、与旧版差分。
+03_Strong_Baseline_Report：每个 baseline 来源、adaptation、公平 tuning budget、结果。
+04_External_Endpoint_Report：group-wise / worst-group / non-inferiority。
+05_Real_Mobility_Replay_Report：真实轨迹如何生成 R，哪些层仍仿真，完整边界说明。
+06_Theory_PostAudit.txt：新误差界、假设、proof obligations、与 Proposition 2/P2 的一致性。
+07_Solver_Integrity_Report：KKT/second-solver/objective gap。
+08_Final_Paper_Facing_Tables_Figures/：只保留经过 Gate 的图表。
+09_RAVEN_MCS_PostReview_Full_Manuscript.txt：新全文唯一母版。
+10_Final_Claim_Evidence_Matrix.xlsx/txt：每条 claim 对应 theorem/table/figure，不允许无证据 claim。
+16. 最终 Go / No-Go 判定
+可以重新投 TMC 的情形
+W1 不再是未解释的目标反转；最好通过 reliability-aware Design 或目标层级修复稳定解决。
+propensity diagnostics + robustness 能说明 practical estimator 在正常 overlap 下可靠，并清楚标出 failure region。
+至少一个真实 mobility replay 支持 RQ1/RQ2 的方向。
+最邻近强基线加入后，RAVEN 仍能在 deployment alignment + external endpoint 上形成明确价值。
+new theory 把 ideal estimator 与 estimated/clipped practice 的 gap 明显缩小。
+主文精简、supplement 完整、solver warning 不影响主结论。
+暂时不建议投 TMC 的情形
+Oracle Design 仍在 U-Air 伤害 primary deployment endpoints，且无法通过合理目标层级解释。
+真实 mobility replay 下 RQ1/RQ2 方向消失。
+强 baseline 在相同 protocol 下全面达到或超过 RAVEN，而 RAVEN 只剩 Δc-s 小优势。
+propensity misspecification / clipping 稍有变化就导致方法不稳定，且无法用 gating 修复。
+solver cross-check 表明 warning windows 对结论有实质影响。
+给学生的最后一句话
+本轮目标不是“把所有审稿意见都写一段回应”，而是让最关键的审稿人质疑失去证据基础。先把 W1/W4 做透，再用真实 mobility、强 baseline 和外部 endpoint 建立 TMC 级证据；其余问题都应服务于这条主线。
+附录：本指导手册的依据与边界
+依据 1：当前 RAVEN-MCS 21 页 IEEE 双栏论文。现稿已明确 windowed asynchronous 语义、三层 R/O/U、deployment-target risk、Prop.1/Prop.2/Theorem 1、E1–E4、Discussion/Limitations 与 Appendices A–E。
+依据 2：2026-08-23 内部完整模拟审稿报告。报告总体倾向 Weak Reject / Reject-and-Resubmit，决定性风险为 U-Air Design 反向效应，并进一步指出真实 mobility、propensity robustness、强基线、practical theory、solver warnings 与篇幅/定位问题。
+本手册把来源中“审稿人要求”与“建议性修复路径”分开处理。凡涉及 reliability-aware gating、structural no-harm calibration、practical estimator error bound 等内容，均属于本轮推荐研究路线，必须经新实验/理论审计后才能进入正式论文。

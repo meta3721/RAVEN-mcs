@@ -1,0 +1,1243 @@
+{
+  "indexed": {
+    "date-parts": [
+      [
+        2026,
+        10,
+        21
+      ]
+    ],
+    "date-time": "2026-10-21T02:08:50Z",
+    "timestamp": 1792548530652,
+    "version": "4.5.0"
+  },
+  "reference-count": 168,
+  "publisher": "Association for Computing Machinery (ACM)",
+  "issue": "11",
+  "funder": [
+    {
+      "DOI": "10.13039/501100001665",
+      "name": "Agence Nationale de la Recherche",
+      "doi-asserted-by": "crossref",
+      "award": [
+        "ANR-24-CE25-6501"
+      ],
+      "award-info": [
+        {
+          "award-number": [
+            "ANR-24-CE25-6501"
+          ]
+        }
+      ],
+      "id": [
+        {
+          "id": "10.13039/501100001665",
+          "id-type": "DOI",
+          "asserted-by": "crossref"
+        }
+      ]
+    }
+  ],
+  "content-domain": {
+    "domain": [
+      "dl.acm.org"
+    ],
+    "crossmark-restriction": true
+  },
+  "short-container-title": [
+    "ACM Comput. Surv."
+  ],
+  "published-print": {
+    "date-parts": [
+      [
+        2025,
+        11,
+        30
+      ]
+    ]
+  },
+  "abstract": "<jats:p>Federated Learning (FL) enables collaborative model training over multiple clients’ data, without sharing these data for better privacy. Addressing bias in FL remains a challenge. In this article, we first present a taxonomy of FL bias, presenting the causes and the different types of FL bias, namely demographic bias, performance-related bias, and contribution-related bias. We then categorize FL bias mitigation, in terms of used methods and provided guarantees, before providing a comprehensive and comparative analysis of existing works. Finally, we highlight key challenges and open research directions, including the impact of FL bias mitigation on model utility, privacy, and robustness.</jats:p>",
+  "DOI": "10.1145/3735125",
+  "type": "journal-article",
+  "created": {
+    "date-parts": [
+      [
+        2025,
+        5,
+        8
+      ]
+    ],
+    "date-time": "2025-05-08T11:09:22Z",
+    "timestamp": 1746702562000
+  },
+  "page": "1-36",
+  "update-policy": "https://doi.org/10.1145/crossmark-policy",
+  "source": "Crossref",
+  "is-referenced-by-count": 15,
+  "title": [
+    "Bias in Federated Learning: A Comprehensive Survey"
+  ],
+  "prefix": "10.1145",
+  "volume": "57",
+  "author": [
+    {
+      "ORCID": "https://orcid.org/0009-0007-6382-3839",
+      "authenticated-orcid": false,
+      "given": "Nawel",
+      "family": "Benarba",
+      "sequence": "first",
+      "affiliation": [
+        {
+          "name": "Computer Science, INSA Lyon",
+          "place": [
+            "Lyon, France"
+          ]
+        }
+      ],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "ORCID": "https://orcid.org/0000-0003-0558-0123",
+      "authenticated-orcid": false,
+      "given": "Sara",
+      "family": "Bouchenak",
+      "sequence": "additional",
+      "affiliation": [
+        {
+          "name": "Computer Science, INSA Lyon",
+          "place": [
+            "Lyon, France"
+          ]
+        }
+      ],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    }
+  ],
+  "member": "320",
+  "published-online": {
+    "date-parts": [
+      [
+        2025,
+        6,
+        15
+      ]
+    ]
+  },
+  "reference": [
+    {
+      "key": "e_1_3_1_2_2",
+      "volume-title": "Trade-offs between Fairness, Interpretability, and Privacy in Machine Learning",
+      "author": "Agarwal Sushant",
+      "year": "2020",
+      "unstructured": "Sushant Agarwal. 2020. Trade-offs between Fairness, Interpretability, and Privacy in Machine Learning. Master’s Thesis. University of Waterloo."
+    },
+    {
+      "key": "e_1_3_1_3_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1109/JIOT.2022.3165596"
+    },
+    {
+      "key": "e_1_3_1_4_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.3390/app10082864"
+    },
+    {
+      "key": "e_1_3_1_5_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1109/ACCESS.2024.3394528"
+    },
+    {
+      "key": "e_1_3_1_6_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1609/aaai.v38i10.28971"
+    },
+    {
+      "key": "e_1_3_1_7_2",
+      "first-page": "15453",
+      "article-title": "Differential privacy has disparate impact on model accuracy",
+      "volume": "32",
+      "author": "Bagdasaryan Eugene",
+      "year": "2019",
+      "unstructured": "Eugene Bagdasaryan, Omid Poursaeed, and Vitaly Shmatikov. 2019. Differential privacy has disparate impact on model accuracy. Advances in Neural Information Processing Systems 32 (2019), 15453–15462.",
+      "journal-title": "Advances in Neural Information Processing Systems"
+    },
+    {
+      "key": "e_1_3_1_8_2",
+      "volume-title": "Proceedings of the 10th International Conference on Learning Representations",
+      "author": "Balakrishnan Ravikumar",
+      "year": "2022",
+      "unstructured": "Ravikumar Balakrishnan, Tian Li, Tianyi Zhou, Nageen Himayat, Virginia Smith, and Jeff A. Bilmes. 2022. Diverse client selection for federated learning via submodular maximization. In Proceedings of the 10th International Conference on Learning Representations. Virtual Event."
+    },
+    {
+      "key": "e_1_3_1_9_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1016/j.eswa.2023.122861"
+    },
+    {
+      "key": "e_1_3_1_10_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1080/00031305.2021.1952897"
+    },
+    {
+      "key": "e_1_3_1_11_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1145/3468264.3468536"
+    },
+    {
+      "key": "e_1_3_1_12_2",
+      "first-page": "119",
+      "article-title": "Machine learning with adversaries: Byzantine tolerant gradient descent",
+      "volume": "30",
+      "author": "Blanchard Peva",
+      "year": "2017",
+      "unstructured": "Peva Blanchard, El Mahdi El Mhamdi, Rachid Guerraoui, and Julien Stainer. 2017. Machine learning with adversaries: Byzantine tolerant gradient descent. Advances in Neural Information Processing Systems 30 (2017), 119–129.",
+      "journal-title": "Advances in Neural Information Processing Systems"
+    },
+    {
+      "key": "e_1_3_1_13_2",
+      "series-title": "Proceedings of Machine Learning Research",
+      "first-page": "77",
+      "volume-title": "Conference on Fairness, Accountability and Transparency, FAT 2018",
+      "volume": "81",
+      "author": "Buolamwini Joy",
+      "year": "2018",
+      "unstructured": "Joy Buolamwini and Timnit Gebru. 2018. Gender shades: Intersectional accuracy disparities in commercial gender classification. In Conference on Fairness, Accountability and Transparency, FAT 2018(Proceedings of Machine Learning Research, Vol. 81). New York, NY, USA, 77–91."
+    },
+    {
+      "key": "e_1_3_1_14_2",
+      "article-title": "Fairness in machine learning: A survey",
+      "author": "Caton Simon",
+      "year": "2020",
+      "unstructured": "Simon Caton and Christian Haas. 2020. Fairness in machine learning: A survey. Computing Surveys (2020).",
+      "journal-title": "Computing Surveys"
+    },
+    {
+      "key": "e_1_3_1_15_2",
+      "first-page": "19",
+      "volume-title": "Proceedings of the 2019 USENIX Conference on Operational Machine Learning",
+      "author": "Chai Zheng",
+      "year": "2019",
+      "unstructured": "Zheng Chai, Hannan Fayyaz, Zeshan Fayyaz, Ali Anwar, Yi Zhou, Nathalie Baracaldo, Heiko Ludwig, and Yue Cheng. 2019. Towards taming the resource and data heterogeneity in federated learning. In Proceedings of the 2019 USENIX Conference on Operational Machine Learning. Santa Clara, CA, USA, 19–21."
+    },
+    {
+      "key": "e_1_3_1_16_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1145/3468264.3468537"
+    },
+    {
+      "key": "e_1_3_1_17_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1109/EuroSP51992.2021.00028"
+    },
+    {
+      "key": "e_1_3_1_18_2",
+      "volume-title": "Proceedings of the 11th International Conference on Learning Representations",
+      "author": "Chang Hongyan",
+      "year": "2023",
+      "unstructured": "Hongyan Chang and Reza Shokri. 2023. Bias propagation in federated learning. In Proceedings of the 11th International Conference on Learning Representations. Kigali, Rwanda."
+    },
+    {
+      "key": "e_1_3_1_19_2",
+      "article-title": "Privacy and fairness in federated learning: On the perspective of trade-off",
+      "author": "Chen Huiqiang",
+      "year": "2023",
+      "unstructured": "Huiqiang Chen, Tianqing Zhu, Tao Zhang, Wanlei Zhou, and Philip S. Yu. 2023. Privacy and fairness in federated learning: On the perspective of trade-off. Computing Surveys (2023).",
+      "journal-title": "Computing Surveys"
+    },
+    {
+      "key": "e_1_3_1_20_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1016/j.bcra.2024.100271"
+    },
+    {
+      "key": "e_1_3_1_21_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1109/CVPR52733.2024.01148"
+    },
+    {
+      "key": "e_1_3_1_22_2",
+      "article-title": "Metafed: Federated learning among federations with cyclic knowledge distillation for personalized healthcare",
+      "author": "Chen Yiqiang",
+      "year": "2023",
+      "unstructured": "Yiqiang Chen, Wang Lu, Xin Qin, Jindong Wang, and Xing Xie. 2023. Metafed: Federated learning among federations with cyclic knowledge distillation for personalized healthcare. IEEE Transactions on Neural Networks and Learning Systems (2023).",
+      "journal-title": "IEEE Transactions on Neural Networks and Learning Systems"
+    },
+    {
+      "key": "e_1_3_1_23_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1109/ICDE53745.2022.00271"
+    },
+    {
+      "key": "e_1_3_1_24_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1609/aaai.v38i10.29031"
+    },
+    {
+      "key": "e_1_3_1_25_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1109/TETC.2024.3407716"
+    },
+    {
+      "key": "e_1_3_1_26_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1049/cit2.12232"
+    },
+    {
+      "key": "e_1_3_1_27_2",
+      "first-page": "26091",
+      "article-title": "Addressing algorithmic disparity and performance inconsistency in federated learning",
+      "volume": "34",
+      "author": "Cui Sen",
+      "year": "2021",
+      "unstructured": "Sen Cui, Weishen Pan, Jian Liang, Changshui Zhang, and Fei Wang. 2021. Addressing algorithmic disparity and performance inconsistency in federated learning. Advances in Neural Information Processing Systems 34 (2021), 26091–26102.",
+      "journal-title": "Advances in Neural Information Processing Systems"
+    },
+    {
+      "key": "e_1_3_1_28_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1145/3314183.3323847"
+    },
+    {
+      "key": "e_1_3_1_29_2",
+      "volume-title": "Amazon Scraps Secret AI Recruiting Tool That Showed Bias Against Women",
+      "author": "Dastin Jeffrey",
+      "year": "2018",
+      "unstructured": "Jeffrey Dastin. 2018. Amazon Scraps Secret AI Recruiting Tool That Showed Bias Against Women. Reuters. Retrieved November 15, 2022 from https://www.reuters.com/article/us-amazon-com-jobs-automation-insight-idUSKCN1MK08G"
+    },
+    {
+      "key": "e_1_3_1_30_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1145/3589462.3589502"
+    },
+    {
+      "key": "e_1_3_1_31_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1038/s41591-021-01506-3"
+    },
+    {
+      "key": "e_1_3_1_32_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1109/ICCV48922.2021.01481"
+    },
+    {
+      "issue": "2",
+      "key": "e_1_3_1_33_2",
+      "first-page": "1",
+      "article-title": "HFedCWA: Heterogeneous federated learning algorithm based on contribution-weighted aggregation",
+      "volume": "55",
+      "author": "Du Jiawei",
+      "year": "2025",
+      "unstructured": "Jiawei Du, Huaijun Wang, Junhuai Li, Kan Wang, and Rong Fei. 2025. HFedCWA: Heterogeneous federated learning algorithm based on contribution-weighted aggregation. Applied Intelligence 55, 2 (2025), 1–16.",
+      "journal-title": "Applied Intelligence"
+    },
+    {
+      "key": "e_1_3_1_34_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1137/1.9781611976700.21"
+    },
+    {
+      "key": "e_1_3_1_35_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1109/TPDS.2020.3009406"
+    },
+    {
+      "key": "e_1_3_1_36_2",
+      "unstructured": "Departments and Agencies of the Federal Government 2017. Equal Credit Opportunity Act. Departments and Agencies of the Federal Government. Retrieved January 24 2022 from https://www.ecfr.gov/current/title-12/chapter-II/subchapter-A/part-202/section-202.2"
+    },
+    {
+      "key": "e_1_3_1_37_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1016/j.future.2023.07.033"
+    },
+    {
+      "key": "e_1_3_1_38_2",
+      "unstructured": "Future of Life Institute 2021. EU Artificial Intelligence Act. Future of Life Institute. Retrieved June 18 2024 from https://futureoflife.org/eu-ai-act/"
+    },
+    {
+      "key": "e_1_3_1_39_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1609/aaai.v37i6.25911"
+    },
+    {
+      "key": "e_1_3_1_40_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1145/2783258.2783311"
+    },
+    {
+      "key": "e_1_3_1_41_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1109/JIOT.2023.3299573"
+    },
+    {
+      "key": "e_1_3_1_42_2",
+      "first-page": "16937",
+      "article-title": "Inverting gradients-how easy is it to break privacy in federated learning?",
+      "volume": "33",
+      "author": "Geiping Jonas",
+      "year": "2020",
+      "unstructured": "Jonas Geiping, Hartmut Bauermeister, Hannah Dröge, and Michael Moeller. 2020. Inverting gradients-how easy is it to break privacy in federated learning? Advances in Neural Information Processing Systems 33 (2020), 16937–16947.",
+      "journal-title": "Advances in Neural Information Processing Systems"
+    },
+    {
+      "key": "e_1_3_1_43_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1016/j.knosys.2024.111420"
+    },
+    {
+      "key": "e_1_3_1_44_2",
+      "first-page": "100686",
+      "article-title": "Ethical and bias considerations in artificial intelligence (AI)/machine learning",
+      "author": "Hanna Matthew",
+      "year": "2024",
+      "unstructured": "Matthew Hanna, Liron Pantanowitz, Brian Jackson, Octavia Palmer, Shyam Visweswaran, Joshua Pantanowitz, Mustafa Deebajah, and Hooman Rashidi. 2024. Ethical and bias considerations in artificial intelligence (AI)/machine learning. Modern Pathology (2024), 100686.",
+      "journal-title": "Modern Pathology"
+    },
+    {
+      "key": "e_1_3_1_45_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1109/CVPRW53098.2021.00369"
+    },
+    {
+      "key": "e_1_3_1_46_2",
+      "first-page": "3315",
+      "volume-title": "Advances in Neural Information Processing Systems 29: Annual Conference on Neural Information Processing Systems 2016",
+      "author": "Hardt Moritz",
+      "year": "2016",
+      "unstructured": "Moritz Hardt, Eric Price, and Nati Srebro. 2016. Equality of opportunity in supervised learning. In Advances in Neural Information Processing Systems 29: Annual Conference on Neural Information Processing Systems 2016. Barcelona, Spain, 3315–3323."
+    },
+    {
+      "key": "e_1_3_1_47_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1145/3447548.3467281"
+    },
+    {
+      "key": "e_1_3_1_48_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1145/3631326"
+    },
+    {
+      "key": "e_1_3_1_49_2",
+      "first-page": "12876",
+      "article-title": "Fjord: Fair and accurate federated learning under heterogeneous targets with ordered dropout",
+      "volume": "34",
+      "author": "Horvath Samuel",
+      "year": "2021",
+      "unstructured": "Samuel Horvath, Stefanos Laskaridis, Mario Almeida, Ilias Leontiadis, Stylianos Venieris, and Nicholas Lane. 2021. Fjord: Fair and accurate federated learning under heterogeneous targets with ordered dropout. Advances in Neural Information Processing Systems 34 (2021), 12876–12889.",
+      "journal-title": "Advances in Neural Information Processing Systems"
+    },
+    {
+      "key": "e_1_3_1_50_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1109/TMI.2023.3234450"
+    },
+    {
+      "key": "e_1_3_1_51_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1109/TNSE.2022.3169117"
+    },
+    {
+      "key": "e_1_3_1_52_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1109/MNET.129.2200346"
+    },
+    {
+      "key": "e_1_3_1_53_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1109/JIOT.2022.3172113"
+    },
+    {
+      "key": "e_1_3_1_54_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1109/TPDS.2020.3040887"
+    },
+    {
+      "key": "e_1_3_1_55_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1016/j.ins.2021.12.102"
+    },
+    {
+      "key": "e_1_3_1_56_2",
+      "unstructured": "Legal Information Institute. 1978. 29 CFR 1607.4 - Information on Impact. Retrieved from https://www.law.cornell.edu/cfr/text/29/1607.4"
+    },
+    {
+      "issue": "1",
+      "key": "e_1_3_1_57_2",
+      "article-title": "A survey of ethical considerations in AI: Navigating the landscape of bias and fairness",
+      "volume": "1",
+      "author": "Islam Md Mafiqul",
+      "year": "2024",
+      "unstructured": "Md Mafiqul Islam and Jeff Shuford. 2024. A survey of ethical considerations in AI: Navigating the landscape of bias and fairness. Journal of Artificial Intelligence General Science 1, 1 (2024).",
+      "journal-title": "Journal of Artificial Intelligence General Science"
+    },
+    {
+      "key": "e_1_3_1_58_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1109/CVPR52729.2023.02302"
+    },
+    {
+      "key": "e_1_3_1_59_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1109/CVPR52729.2023.01564"
+    },
+    {
+      "key": "e_1_3_1_60_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1109/SECON58729.2023.10287416"
+    },
+    {
+      "key": "e_1_3_1_61_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1145/3493700.3493750"
+    },
+    {
+      "key": "e_1_3_1_62_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1007/978-3-031-33374-3_38"
+    },
+    {
+      "key": "e_1_3_1_63_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1109/VTS-APWCS.2019.8851649"
+    },
+    {
+      "key": "e_1_3_1_64_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1109/MWC.001.1900119"
+    },
+    {
+      "key": "e_1_3_1_65_2",
+      "series-title": "Proceedings of Machine Learning Research",
+      "first-page": "5132",
+      "volume-title": "Proceedings of the 37th International Conference on Machine Learning, 13–18 July 2020",
+      "volume": "119",
+      "author": "Karimireddy Sai Praneeth",
+      "year": "2020",
+      "unstructured": "Sai Praneeth Karimireddy, Satyen Kale, Mehryar Mohri, Sashank J. Reddi, Sebastian U. Stich, and Ananda Theertha Suresh. 2020. SCAFFOLD: Stochastic controlled averaging for federated learning. In Proceedings of the 37th International Conference on Machine Learning, 13–18 July 2020(Proceedings of Machine Learning Research, Vol. 119). Virtual Event, 5132–5143."
+    },
+    {
+      "key": "e_1_3_1_66_2",
+      "series-title": "LIPIcs",
+      "first-page": "43:1–43:23",
+      "volume-title": "Proceedings of the 8th Innovations in Theoretical Computer Science Conference.",
+      "author": "Kleinberg Jon M.",
+      "year": "2017",
+      "unstructured": "Jon M. Kleinberg, Sendhil Mullainathan, and Manish Raghavan. 2017. Inherent trade-offs in the fair determination of risk scores. In Proceedings of the 8th Innovations in Theoretical Computer Science Conference.LIPIcs, Vol. 67,Berkeley, CA, USA, 43:1–43:23."
+    },
+    {
+      "key": "e_1_3_1_67_2",
+      "volume-title": "AMIA Annual Symposium Proceedings",
+      "author": "Kritharidou Maria",
+      "year": "2024",
+      "unstructured": "Maria Kritharidou, Georgios Chrysogonidis, Tasos Ventouris, Vaios Tsarapastsanis, Danai Aristeridou, Anastasia Karatzia, Veena Calambur, Ahsan Huda, and Sabrina Hsueh. 2024. Ethicara for responsible AI in healthcare: A system for bias detection and AI risk management. In AMIA Annual Symposium Proceedings."
+    },
+    {
+      "key": "e_1_3_1_68_2",
+      "first-page": "728",
+      "article-title": "Fairness without demographics through adversarially reweighted learning",
+      "volume": "33",
+      "author": "Lahoti Preethi",
+      "year": "2020",
+      "unstructured": "Preethi Lahoti, Alex Beutel, Jilin Chen, Kang Lee, Flavien Prost, Nithum Thain, Xuezhi Wang, and Ed Chi. 2020. Fairness without demographics through adversarially reweighted learning. Advances in Neural Information Processing Systems 33 (2020), 728–740.",
+      "journal-title": "Advances in Neural Information Processing Systems"
+    },
+    {
+      "key": "e_1_3_1_69_2",
+      "first-page": "19",
+      "volume-title": "Proceedings of the 15th USENIX Symposium on Operating Systems Design and Implementation",
+      "author": "Lai Fan",
+      "year": "2021",
+      "unstructured": "Fan Lai, Xiangfeng Zhu, Harsha V. Madhyastha, and Mosharaf Chowdhury. 2021. Oort: Efficient federated learning via guided participant selection. In Proceedings of the 15th USENIX Symposium on Operating Systems Design and Implementation. Virtual Event, 19–35."
+    },
+    {
+      "key": "e_1_3_1_70_2",
+      "first-page": "19",
+      "volume-title": "Proceedings of the 15th USENIX Symposium on Operating Systems Design and Implementation",
+      "author": "Lai Fan",
+      "year": "2021",
+      "unstructured": "Fan Lai, Xiangfeng Zhu, Harsha V. Madhyastha, and Mosharaf Chowdhury. 2021. Oort: Efficient federated learning via guided participant selection. In Proceedings of the 15th USENIX Symposium on Operating Systems Design and Implementation. Virtual Event, 19–35."
+    },
+    {
+      "key": "e_1_3_1_71_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1109/TWC.2021.3062708"
+    },
+    {
+      "key": "e_1_3_1_72_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1186/s13054-020-03331-5"
+    },
+    {
+      "key": "e_1_3_1_73_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1145/3652613"
+    },
+    {
+      "key": "e_1_3_1_74_2",
+      "first-page": "123",
+      "volume-title": "Proceedings of the ACM Workshop on Information Hiding and Multimedia Security",
+      "author": "Li Denghao",
+      "year": "2022",
+      "unstructured": "Denghao Li, Jianzong Wang, Lingwei Kong, Shijing Si, Zhangcheng Huang, Chenyu Huang, and Jing Xiao. 2022. A nearest neighbor under-sampling strategy for vertical federated learning in financial domain. In Proceedings of the ACM Workshop on Information Hiding and Multimedia Security. Santa Barbara, CA, USA, 123–128."
+    },
+    {
+      "key": "e_1_3_1_75_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1109/TPDS.2021.3138848"
+    },
+    {
+      "key": "e_1_3_1_76_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1109/TKDE.2021.3124599"
+    },
+    {
+      "key": "e_1_3_1_77_2",
+      "first-page": "6357",
+      "volume-title": "Proceedings of the 38th International Conference on Machine Learning",
+      "author": "Li Tian",
+      "year": "2021",
+      "unstructured": "Tian Li, Shengyuan Hu, Ahmad Beirami, and Virginia Smith. 2021. Ditto: Fair and robust federated learning through personalization. In Proceedings of the 38th International Conference on Machine Learning. Virtual Event, 6357–6368."
+    },
+    {
+      "key": "e_1_3_1_78_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1109/MSP.2020.2975749"
+    },
+    {
+      "key": "e_1_3_1_79_2",
+      "first-page": "429",
+      "volume-title": "Proceedings of the Machine Learning and Systems 2020",
+      "volume": "2",
+      "author": "Li Tian",
+      "year": "2020",
+      "unstructured": "Tian Li, Anit Kumar Sahu, Manzil Zaheer, Maziar Sanjabi, Ameet Talwalkar, and Virginia Smith. 2020. Federated optimization in heterogeneous networks. In Proceedings of the Machine Learning and Systems 2020, Vol. 2. Austin, TX, USA, 429–450."
+    },
+    {
+      "key": "e_1_3_1_80_2",
+      "volume-title": "Proceedings of the 8th International Conference on Learning Representations",
+      "author": "Li Tian",
+      "year": "2020",
+      "unstructured": "Tian Li, Maziar Sanjabi, Ahmad Beirami, and Virginia Smith. 2020. Fair resource allocation in federated learning. In Proceedings of the 8th International Conference on Learning Representations. Addis Ababa, Ethiopia."
+    },
+    {
+      "key": "e_1_3_1_81_2",
+      "article-title": "Bias behind the wheel: Fairness testing of autonomous driving systems",
+      "author": "Li Xinyue",
+      "year": "2024",
+      "unstructured": "Xinyue Li, Zhenpeng Chen, Jie Zhang, Federica Sarro, Ying Zhang, and Xuanzhe Liu. 2024. Bias behind the wheel: Fairness testing of autonomous driving systems. ACM Transactions on Software Engineering and Methodology (2024).",
+      "journal-title": "ACM Transactions on Software Engineering and Methodology"
+    },
+    {
+      "key": "e_1_3_1_82_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1109/JIOT.2022.3153343"
+    },
+    {
+      "key": "e_1_3_1_83_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1016/j.knosys.2023.110763"
+    },
+    {
+      "key": "e_1_3_1_84_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1109/JIOT.2022.3156046"
+    },
+    {
+      "key": "e_1_3_1_85_2",
+      "first-page": "8136",
+      "volume-title": "Advances in Neural Information Processing Systems 31: Annual Conference on Neural Information Processing Systems 2018, NeurIPS 2018",
+      "volume": "31",
+      "author": "Lipton Zachary C.",
+      "year": "2018",
+      "unstructured": "Zachary C. Lipton, Julian J. McAuley, and Alexandra Chouldechova. 2018. Does mitigating ML’s impact disparity require treatment disparity?. In Advances in Neural Information Processing Systems 31: Annual Conference on Neural Information Processing Systems 2018, NeurIPS 2018, Vol. 31. Montréal, Canada, 8136–8146."
+    },
+    {
+      "key": "e_1_3_1_86_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1002/cpe.7697"
+    },
+    {
+      "key": "e_1_3_1_87_2",
+      "article-title": "Vertical federated learning: Concepts, advances, and challenges",
+      "author": "Liu Yang",
+      "year": "2024",
+      "unstructured": "Yang Liu, Yan Kang, Tianyuan Zou, Yanhong Pu, Yuanqin He, Xiaozhou Ye, Ye Ouyang, Ya-Qin Zhang, and Qiang Yang. 2024. Vertical federated learning: Concepts, advances, and challenges. IEEE Transactions on Knowledge and Data Engineering (2024).",
+      "journal-title": "IEEE Transactions on Knowledge and Data Engineering"
+    },
+    {
+      "key": "e_1_3_1_88_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1007/s12083-024-01886-6"
+    },
+    {
+      "key": "e_1_3_1_89_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1609/aaai.v36i11.21505"
+    },
+    {
+      "key": "e_1_3_1_90_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1109/TII.2021.3117861"
+    },
+    {
+      "key": "e_1_3_1_91_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1007/978-3-030-63076-8_14"
+    },
+    {
+      "key": "e_1_3_1_92_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1109/TPDS.2020.2996273"
+    },
+    {
+      "key": "e_1_3_1_93_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1007/s11390-023-2972-9"
+    },
+    {
+      "key": "e_1_3_1_94_2",
+      "series-title": "Proceedings of Machine Learning Research",
+      "first-page": "1273",
+      "volume-title": "Proceedings of the 20th International Conference on Artificial Intelligence and Statistics, AISTATS 2017",
+      "volume": "54",
+      "author": "McMahan Brendan",
+      "year": "2017",
+      "unstructured": "Brendan McMahan, Eider Moore, Daniel Ramage, Seth Hampson, and Blaise Agüera y Arcas. 2017. Communication-efficient learning of deep networks from decentralized data. In Proceedings of the 20th International Conference on Artificial Intelligence and Statistics, AISTATS 2017(Proceedings of Machine Learning Research, Vol. 54). Fort Lauderdale, FL, USA, 1273–1282."
+    },
+    {
+      "key": "e_1_3_1_95_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1145/3457607"
+    },
+    {
+      "key": "e_1_3_1_96_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1109/CVPRW53098.2021.00263"
+    },
+    {
+      "key": "e_1_3_1_97_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1161/CIRCULATIONAHA.120.050427"
+    },
+    {
+      "key": "e_1_3_1_98_2",
+      "first-page": "4615",
+      "volume-title": "Proceedings of the International Conference on Machine Learning",
+      "author": "Mohri Mehryar",
+      "year": "2019",
+      "unstructured": "Mehryar Mohri, Gary Sivek, and Ananda Theertha Suresh. 2019. Agnostic federated learning. In Proceedings of the International Conference on Machine Learning. California, USA, 4615–4625."
+    },
+    {
+      "key": "e_1_3_1_99_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1007/978-3-031-35314-7_2"
+    },
+    {
+      "key": "e_1_3_1_100_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1145/3501296"
+    },
+    {
+      "key": "e_1_3_1_101_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1109/GCWkshps50303.2020.9367484"
+    },
+    {
+      "key": "e_1_3_1_102_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1109/ICC.2019.8761315"
+    },
+    {
+      "key": "e_1_3_1_103_2",
+      "volume-title": "Game Theory",
+      "author": "Owen Guillermo",
+      "year": "2013",
+      "unstructured": "Guillermo Owen. 2013. Game Theory."
+    },
+    {
+      "key": "e_1_3_1_104_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1007/978-3-030-92310-5_80"
+    },
+    {
+      "key": "e_1_3_1_105_2",
+      "article-title": "The PRISMA 2020 statement: An updated guideline for reporting systematic reviews",
+      "volume": "372",
+      "author": "Page Matthew J.",
+      "year": "2021",
+      "unstructured": "Matthew J. Page, Joanne E. McKenzie, Patrick M. Bossuyt, Isabelle Boutron, Tammy C. Hoffmann, Cynthia D. Mulrow, Larissa Shamseer, Jennifer M. Tetzlaff, Elie A. Akl, Sue E. Brennan, et al. 2021. The PRISMA 2020 statement: An updated guideline for reporting systematic reviews. bmj 372 (2021).",
+      "journal-title": "bmj"
+    },
+    {
+      "key": "e_1_3_1_106_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1609/aaai.v38i13.29365"
+    },
+    {
+      "key": "e_1_3_1_107_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1609/aaai.v38i13.29368"
+    },
+    {
+      "key": "e_1_3_1_108_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1609/aaai.v37i8.26122"
+    },
+    {
+      "key": "e_1_3_1_109_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1145/3531146.3533081"
+    },
+    {
+      "key": "e_1_3_1_110_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1109/ACCESS.2022.3201876"
+    },
+    {
+      "key": "e_1_3_1_111_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1109/TSE.2022.3220713"
+    },
+    {
+      "key": "e_1_3_1_112_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1109/TSP.2022.3153135"
+    },
+    {
+      "key": "e_1_3_1_113_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1109/OJCS.2022.3206407"
+    },
+    {
+      "key": "e_1_3_1_114_2",
+      "first-page": "7852",
+      "article-title": "FairVFL: A fair vertical federated learning framework with contrastive adversarial learning",
+      "volume": "35",
+      "author": "Qi Tao",
+      "year": "2022",
+      "unstructured": "Tao Qi, Fangzhao Wu, Chuhan Wu, Lingjuan Lyu, Tong Xu, Hao Liao, Zhongliang Yang, Yongfeng Huang, and Xing Xie. 2022. FairVFL: A fair vertical federated learning framework with contrastive adversarial learning. Advances in Neural Information Processing Systems 35 (2022), 7852–7865.",
+      "journal-title": "Advances in Neural Information Processing Systems"
+    },
+    {
+      "key": "e_1_3_1_115_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1145/3524104"
+    },
+    {
+      "key": "e_1_3_1_116_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1016/j.inffus.2023.102198"
+    },
+    {
+      "key": "e_1_3_1_117_2",
+      "first-page": "5738",
+      "article-title": "Fairness in federated learning via core-stability",
+      "volume": "35",
+      "author": "Chaudhury Bhaskar Ray",
+      "year": "2022",
+      "unstructured": "Bhaskar Ray Chaudhury, Linyi Li, Mintong Kang, Bo Li, and Ruta Mehta. 2022. Fairness in federated learning via core-stability. Advances in Neural Information Processing Systems 35 (2022), 5738–5750.",
+      "journal-title": "Advances in Neural Information Processing Systems"
+    },
+    {
+      "key": "e_1_3_1_118_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1016/j.ins.2024.120760"
+    },
+    {
+      "key": "e_1_3_1_119_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1016/j.inffus.2024.102756"
+    },
+    {
+      "key": "e_1_3_1_120_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1108/LHTN-10-2023-0182"
+    },
+    {
+      "key": "e_1_3_1_121_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1109/INFOCOM48880.2022.9796865"
+    },
+    {
+      "key": "e_1_3_1_122_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1109/TNNLS.2019.2944481"
+    },
+    {
+      "key": "e_1_3_1_123_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1145/3287560.3287598"
+    },
+    {
+      "key": "e_1_3_1_124_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1016/j.future.2024.07.046"
+    },
+    {
+      "key": "e_1_3_1_125_2",
+      "article-title": "Towards fairness-aware federated learning",
+      "volume": "34",
+      "author": "Shi Yuxin",
+      "year": "2023",
+      "unstructured": "Yuxin Shi, Han Yu, and Cyril Leung. 2023. Towards fairness-aware federated learning. IEEE Transactions on Neural Networks and Learning Systems 34 (2023).",
+      "journal-title": "IEEE Transactions on Neural Networks and Learning Systems"
+    },
+    {
+      "key": "e_1_3_1_126_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1109/ICDMW51313.2020.00057"
+    },
+    {
+      "key": "e_1_3_1_127_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1109/ACCESS.2022.3210950"
+    },
+    {
+      "key": "e_1_3_1_128_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1056/NEJMc2029240"
+    },
+    {
+      "key": "e_1_3_1_129_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1609/aaai.v38i13.29430"
+    },
+    {
+      "issue": "4",
+      "key": "e_1_3_1_130_2",
+      "first-page": "29",
+      "article-title": "Towards device independent eavesdropping on telephone conversations with built-in accelerometer",
+      "volume": "5",
+      "author": "Su Weigao",
+      "year": "2022",
+      "unstructured": "Weigao Su, Daibo Liu, Taiyuan Zhang, and Hongbo Jiang. 2022. Towards device independent eavesdropping on telephone conversations with built-in accelerometer. Proceedings of the ACM on Interactive, Mobile, Wearable and Ubiquitous Technologies 5, 4 (2022), 29 pages.",
+      "journal-title": "Proceedings of the ACM on Interactive, Mobile, Wearable and Ubiquitous Technologies"
+    },
+    {
+      "key": "e_1_3_1_131_2",
+      "unstructured": "EC 2021. The Artificial Intelligence Act. EC. Retrieved November 15 2022 from https://artificialintelligenceact.eu/"
+    },
+    {
+      "key": "e_1_3_1_132_2",
+      "unstructured": "U.S. House 2020. The National AI Initiative Act. U.S. House. Retrieved November 15 2022 from https://www.ai.gov/"
+    },
+    {
+      "key": "e_1_3_1_133_2",
+      "unstructured": "U.S. Equal Employment Opportunity Commission 1964. Title VII of the Civil Rights Act of 1964. U.S. Equal Employment Opportunity Commission. Retrieved June 18 2024 from https://www.eeoc.gov/statutes/title-vii-civil-rights-act-1964"
+    },
+    {
+      "key": "e_1_3_1_134_2",
+      "unstructured": "The White House 2022. President Biden Issues Executive Order on Safe Secure and Trustworthy Artificial Intelligence. The White House. Retrieved June 18 2024 from https://www.whitehouse.gov/briefing-room/statements-releases/2023/10/30/fact-sheet-president-biden-issues-executive-order-on-safe-secure-and-trustworthy-artificial-intelligence/"
+    },
+    {
+      "key": "e_1_3_1_135_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1109/ACCESS.2023.3295412"
+    },
+    {
+      "key": "e_1_3_1_136_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1155/2023/6692995"
+    },
+    {
+      "key": "e_1_3_1_137_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1109/BigData47090.2019.9006179"
+    },
+    {
+      "key": "e_1_3_1_138_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1145/3637528.3672042"
+    },
+    {
+      "key": "e_1_3_1_139_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1016/j.patcog.2023.110234"
+    },
+    {
+      "key": "e_1_3_1_140_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1007/978-3-030-63076-8_11"
+    },
+    {
+      "key": "e_1_3_1_141_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1109/CVPR52688.2022.01013"
+    },
+    {
+      "key": "e_1_3_1_142_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.24963/ijcai.2021/223"
+    },
+    {
+      "key": "e_1_3_1_143_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1016/j.neucom.2023.127227"
+    },
+    {
+      "key": "e_1_3_1_144_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1109/INFOCOM42981.2021.9488756"
+    },
+    {
+      "key": "e_1_3_1_145_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1007/978-3-030-63076-8_10"
+    },
+    {
+      "key": "e_1_3_1_146_2",
+      "unstructured": "OSTP 2022. Blueprint for an AI Bill of Rights. OSTP. Retrieved January 24 2023 from https://www.whitehouse.gov/wp-content/uploads/2022/10/Blueprint-for-an-AI-Bill-of-Rights.pdf"
+    },
+    {
+      "key": "e_1_3_1_147_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1016/j.neucom.2022.01.063"
+    },
+    {
+      "key": "e_1_3_1_148_2",
+      "first-page": "16104",
+      "volume-title": "Advances in Neural Information Processing Systems 34: Annual Conference on Neural Information Processing Systems 2021",
+      "author": "Xu Xinyi",
+      "year": "2021",
+      "unstructured": "Xinyi Xu, Lingjuan Lyu, Xingjun Ma, Chenglin Miao, Chuan Sheng Foo, and Bryan Kian Hsiang Low. 2021. Gradient driven rewards to guarantee fairness in collaborative machine learning. In Advances in Neural Information Processing Systems 34: Annual Conference on Neural Information Processing Systems 2021. Virtual Event, 16104–16117."
+    },
+    {
+      "key": "e_1_3_1_149_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1145/3298981"
+    },
+    {
+      "key": "e_1_3_1_150_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1109/MDM55031.2022.00103"
+    },
+    {
+      "key": "e_1_3_1_151_2",
+      "article-title": "Bias mitigation in federated learning for edge computing",
+      "author": "Yasmine Djebrouni",
+      "year": "2024",
+      "unstructured": "Djebrouni Yasmine, Benarba Nawel, De Rosa Pasquale, Touat Ousmane, Bouchenak Sara, Bonifati Angela, Felber Pascal, Marangozova Vania, and Schiavoni Valerio. 2024. Bias mitigation in federated learning for edge computing. Proceedings of the ACM on Interactive, Mobile, Wearable and Ubiquitous Technologies (2024).",
+      "journal-title": "Proceedings of the ACM on Interactive, Mobile, Wearable and Ubiquitous Technologies"
+    },
+    {
+      "key": "e_1_3_1_152_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1109/ACCESS.2020.2968399"
+    },
+    {
+      "key": "e_1_3_1_153_2",
+      "first-page": "5636",
+      "volume-title": "Proceedings of the 35th International Conference on Machine Learning",
+      "author": "Yin Dong",
+      "year": "2018",
+      "unstructured": "Dong Yin, Yudong Chen, Kannan Ramchandran, and Peter L. Bartlett. 2018. Byzantine-robust distributed learning: Towards optimal statistical rates. In Proceedings of the 35th International Conference on Machine Learning. Stockholm, Sweden, 5636–5645."
+    },
+    {
+      "key": "e_1_3_1_154_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1016/j.dt.2024.12.024"
+    },
+    {
+      "key": "e_1_3_1_155_2",
+      "article-title": "Decentralized federated learning: A survey and perspective",
+      "author": "Yuan Liangqi",
+      "year": "2024",
+      "unstructured": "Liangqi Yuan, Ziran Wang, Lichao Sun, S. Yu Philip, and Christopher G. Brinton. 2024. Decentralized federated learning: A survey and perspective. IEEE Internet of Things Journal (2024).",
+      "journal-title": "IEEE Internet of Things Journal"
+    },
+    {
+      "key": "e_1_3_1_156_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1287/ijds.2022.0022"
+    },
+    {
+      "key": "e_1_3_1_157_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1145/3472456.3472504"
+    },
+    {
+      "key": "e_1_3_1_158_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1109/ICCWorkshops49005.2020.9145118"
+    },
+    {
+      "key": "e_1_3_1_159_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1109/ICDCS47774.2020.00094"
+    },
+    {
+      "key": "e_1_3_1_160_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1016/j.knosys.2021.106775"
+    },
+    {
+      "key": "e_1_3_1_161_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1109/BigData50022.2020.9378043"
+    },
+    {
+      "key": "e_1_3_1_162_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1016/j.patter.2023.100907"
+    },
+    {
+      "key": "e_1_3_1_163_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1109/ACCESS.2024.3365547"
+    },
+    {
+      "key": "e_1_3_1_164_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.3390/math12101601"
+    },
+    {
+      "key": "e_1_3_1_165_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1145/3442381.3449888"
+    },
+    {
+      "key": "e_1_3_1_166_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1145/3377811.3380331"
+    },
+    {
+      "key": "e_1_3_1_167_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1145/3488560.3498493"
+    },
+    {
+      "key": "e_1_3_1_168_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.3390/s24051599"
+    },
+    {
+      "key": "e_1_3_1_169_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1016/j.neucom.2021.07.098"
+    }
+  ],
+  "container-title": [
+    "ACM Computing Surveys"
+  ],
+  "original-title": [],
+  "language": "en",
+  "link": [
+    {
+      "URL": "https://dl.acm.org/doi/pdf/10.1145/3735125",
+      "content-type": "unspecified",
+      "content-version": "vor",
+      "intended-application": "similarity-checking"
+    }
+  ],
+  "deposited": {
+    "date-parts": [
+      [
+        2025,
+        6,
+        16
+      ]
+    ],
+    "date-time": "2025-06-16T10:07:23Z",
+    "timestamp": 1750068443000
+  },
+  "score": 1,
+  "resource": {
+    "primary": {
+      "URL": "https://dl.acm.org/doi/10.1145/3735125"
+    }
+  },
+  "subtitle": [],
+  "short-title": [],
+  "issued": {
+    "date-parts": [
+      [
+        2025,
+        6,
+        15
+      ]
+    ]
+  },
+  "references-count": 168,
+  "journal-issue": {
+    "issue": "11",
+    "published-print": {
+      "date-parts": [
+        [
+          2025,
+          11,
+          30
+        ]
+      ]
+    }
+  },
+  "alternative-id": [
+    "10.1145/3735125"
+  ],
+  "URL": "https://doi.org/10.1145/3735125",
+  "relation": {},
+  "ISSN": [
+    "0360-0300",
+    "1557-7341"
+  ],
+  "issn-type": [
+    {
+      "value": "0360-0300",
+      "type": "print"
+    },
+    {
+      "value": "1557-7341",
+      "type": "electronic"
+    }
+  ],
+  "subject": [],
+  "published": {
+    "date-parts": [
+      [
+        2025,
+        6,
+        15
+      ]
+    ]
+  },
+  "assertion": [
+    {
+      "value": "2024-08-11",
+      "order": 0,
+      "name": "received",
+      "label": "Received",
+      "group": {
+        "name": "publication_history",
+        "label": "Publication History"
+      }
+    },
+    {
+      "value": "2025-04-18",
+      "order": 2,
+      "name": "accepted",
+      "label": "Accepted",
+      "group": {
+        "name": "publication_history",
+        "label": "Publication History"
+      }
+    },
+    {
+      "value": "2025-06-15",
+      "order": 3,
+      "name": "published",
+      "label": "Published",
+      "group": {
+        "name": "publication_history",
+        "label": "Publication History"
+      }
+    }
+  ]
+}

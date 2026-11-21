@@ -1,0 +1,34 @@
+{
+  "status": "COMPLETE_T100_ACQUISITION",
+  "failure": null,
+  "actual_SGD": 3281,
+  "GPU": 0,
+  "q_fit": 0,
+  "now": 100.0,
+  "next_grid_tick": 1001,
+  "last_complete_marker": "C:\\Cursor\\raven.mcs\\results_observed_feedback_rolling_45011_20261014_s2\\trajectory\\tick1000.complete.json",
+  "last_saved_time": 100.0,
+  "parent_run_id": "OF-v1/development_cost_and_bootstrap_fit_candidate/45011/results_observed_feedback_continuation_45011_20261014",
+  "parent_checkpoint": "C:\\Cursor\\raven.mcs\\results_observed_feedback_continuation_45011_20261014\\trajectory\\stopped_0011_0206.complete.json",
+  "decision_start_tick": 11,
+  "source_packages_changed": false,
+  "spent": {
+    "setup": 0.0,
+    "initialization": 13.46875,
+    "online": 23.1875,
+    "training": 45.796875,
+    "events": 218.046875,
+    "save": 131.421875,
+    "repair": 0.0
+  },
+  "maxima": {
+    "initialization": 5.52,
+    "events": 1.895,
+    "training": 0.316875,
+    "online": 0.36375,
+    "save": 9.73875
+  },
+  "worker_PID": 27240,
+  "session_id": "results_observed_feedback_rolling_45011_20261014_s2",
+  "state": "WAITING_USER_REVIEW"
+}

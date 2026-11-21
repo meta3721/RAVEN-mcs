@@ -1,0 +1,14 @@
+{
+  "limit_cpu_device_seconds": 1800,
+  "audit_process_cpu_seconds": 0.046875,
+  "delivery_check_cpu_seconds": 0.03125,
+  "measured_analysis_and_check_cpu_seconds": 0.078125,
+  "neural_training": 0,
+  "synthetic_replay": 0,
+  "real_control_replay": 0,
+  "audit_scope": "stdlib arithmetic and file hashing only",
+  "other_reads_cpu": "interactive read/write processes not individually metered; not claimed as precise total",
+  "conservative_preparation_charge_seconds": 180.078125,
+  "charge_basis": "180 s reserved for lightweight read/write processes; accounting allowance, not measured CPU",
+  "future_implementation_budget_authorized": false
+}

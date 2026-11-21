@@ -1,0 +1,62 @@
+{
+  "blocker": "City Scanner and Pilot 2 are not served by load_paper_dataset (only sensorscope, uair, traffic, tdrive*); their frozen runs live under results_c1_cityscanner/round_v1 and results_joint_ou/round_v1 with ledger files, not window_metrics.json. The G2 requirement 'logged A_r equals full delivery' therefore needs instrumentation in the hybrid drivers (scripts/run_path_a_no2.py, scripts/run_joint_ou_cs_p2.py), which the plan's SS14 write boundary excludes from src/ changes.",
+  "frozen_leaders": {
+    "cityscanner": {
+      "keys": [
+        "rows",
+        "updated_utc"
+      ],
+      "n": 50,
+      "present": true,
+      "type": "dict"
+    },
+    "pilot2": {
+      "keys": [
+        "rows",
+        "updated_utc"
+      ],
+      "n": 50,
+      "present": true,
+      "type": "dict"
+    }
+  },
+  "generated": "2026-09-27T04:22:31.250967+00:00",
+  "runs": [
+    {
+      "block": "cityscanner_nyc_pm25",
+      "method": "fedavg_window",
+      "seed": 32001,
+      "status": "NOT_EXECUTED"
+    },
+    {
+      "block": "cityscanner_nyc_pm25",
+      "method": "fedau_window",
+      "seed": 32001,
+      "status": "NOT_EXECUTED"
+    },
+    {
+      "block": "cityscanner_nyc_pm25",
+      "method": "obsuse_window",
+      "seed": 32001,
+      "status": "NOT_EXECUTED"
+    },
+    {
+      "block": "cityscanner_nyc_p2_measured_o",
+      "method": "fedavg_window",
+      "seed": 33001,
+      "status": "NOT_EXECUTED"
+    },
+    {
+      "block": "cityscanner_nyc_p2_measured_o",
+      "method": "fedau_window",
+      "seed": 33001,
+      "status": "NOT_EXECUTED"
+    },
+    {
+      "block": "cityscanner_nyc_p2_measured_o",
+      "method": "obsuse_window",
+      "seed": 33001,
+      "status": "NOT_EXECUTED"
+    }
+  ]
+}

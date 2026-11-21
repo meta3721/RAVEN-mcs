@@ -1,0 +1,118 @@
+{
+  "rows": [
+    {
+      "Delta_c_s": true,
+      "RMSE_rho": true,
+      "atomic_rho": true,
+      "method": "fedavg_window",
+      "opportunity_stratum_s": true,
+      "real_training": true,
+      "status": "READY_FOR_REAL_CANARY",
+      "target_h": true
+    },
+    {
+      "Delta_c_s": true,
+      "RMSE_rho": true,
+      "atomic_rho": true,
+      "method": "fedasync_window",
+      "opportunity_stratum_s": true,
+      "real_training": true,
+      "status": "READY_FOR_REAL_CANARY",
+      "target_h": true
+    },
+    {
+      "Delta_c_s": true,
+      "RMSE_rho": true,
+      "atomic_rho": true,
+      "method": "flamf_timealign_adapted",
+      "opportunity_stratum_s": true,
+      "real_training": true,
+      "status": "READY_FOR_REAL_CANARY",
+      "target_h": true
+    },
+    {
+      "Delta_c_s": true,
+      "RMSE_rho": true,
+      "atomic_rho": true,
+      "method": "local_hajek",
+      "opportunity_stratum_s": true,
+      "real_training": true,
+      "status": "READY_FOR_REAL_CANARY",
+      "target_h": true
+    },
+    {
+      "Delta_c_s": true,
+      "RMSE_rho": true,
+      "atomic_rho": true,
+      "method": "twostage_hajek",
+      "opportunity_stratum_s": true,
+      "real_training": true,
+      "status": "READY_FOR_REAL_CANARY",
+      "target_h": true
+    },
+    {
+      "Delta_c_s": true,
+      "RMSE_rho": true,
+      "atomic_rho": true,
+      "method": "inst_cal",
+      "opportunity_stratum_s": true,
+      "real_training": true,
+      "status": "READY_FOR_REAL_CANARY",
+      "target_h": true
+    },
+    {
+      "Delta_c_s": true,
+      "RMSE_rho": true,
+      "atomic_rho": true,
+      "method": "debt_cal",
+      "opportunity_stratum_s": true,
+      "real_training": true,
+      "status": "READY_FOR_REAL_CANARY",
+      "target_h": true
+    },
+    {
+      "Delta_c_s": true,
+      "RMSE_rho": true,
+      "atomic_rho": true,
+      "method": "raven",
+      "opportunity_stratum_s": true,
+      "real_training": true,
+      "status": "READY_FOR_REAL_CANARY",
+      "target_h": true
+    },
+    {
+      "Delta_c_s": true,
+      "RMSE_rho": true,
+      "atomic_rho": true,
+      "method": "raven_simoracle",
+      "opportunity_stratum_s": true,
+      "real_training": true,
+      "status": "READY_FOR_REAL_CANARY",
+      "target_h": true
+    },
+    {
+      "Delta_c_s": false,
+      "RMSE_rho": true,
+      "atomic_rho": true,
+      "method": "central_all",
+      "opportunity_stratum_s": true,
+      "real_training": true,
+      "status": "READY_FOR_REAL_CANARY",
+      "target_h": true
+    },
+    {
+      "Delta_c_s": false,
+      "RMSE_rho": true,
+      "atomic_rho": true,
+      "method": "central_delivered",
+      "opportunity_stratum_s": true,
+      "real_training": true,
+      "status": "READY_FOR_REAL_CANARY",
+      "target_h": true
+    },
+    {
+      "method": "flamf_original",
+      "status": "EXCLUDED_WITH_REASON"
+    }
+  ]
+}
